@@ -69,6 +69,24 @@
     placeholder="e.g. Prusa"
     bind:formVar={$form.brand}
     errorVar={$errors.brand}
+    blur={() => {
+      // Automatically set the ID field based on the brand name
+      $form.id = $form.brand
+        .toLowerCase()
+        .replace(/\s+/g, '_')
+        .replace(/[^a-z0-9_]/g, '');
+      }
+    }
+    required={true}
+  />
+
+  <TextField
+    id="id"
+    title="Brand ID"
+    description='Enter a unique identifier for the brand with spaces as underscores (e.g., "prusa", "bambu_lab"),'
+    placeholder="e.g. prusa"
+    bind:formVar={$form.id}
+    errorVar={$errors.id}
     required={true}
   />
 

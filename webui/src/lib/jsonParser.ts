@@ -8,6 +8,7 @@ export interface FilamentDatabase {
 }
 
 interface Brand {
+  id: string;
   brand: string;
   logo: string;
   website?: string;
@@ -189,6 +190,7 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
       return {
         key: folderName,
         value: {
+          id: brandData?.id ?? folderName,
           brand: brandData?.brand ?? folderName,
           logo,
           website: brandData.website ?? '',

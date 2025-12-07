@@ -7,13 +7,17 @@
         },
         "country_code": {
             "pattern": "^(([A-Z]{2})|Unknown)$"
+        },
+        "id": {
+            "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
+            "maxLength": 50
         }
     },
     "properties": {
         "id": {
             "type": "string",
             "description": "The unique identifier for the filament manufacturer",
-            "$ref": "#/definitions/string_limit"
+            "$ref": "#/definitions/id"
         },
         "brand": {
             "type": "string",

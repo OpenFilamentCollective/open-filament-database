@@ -37,7 +37,7 @@
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="relative flex flex-col md:flex-row items-center md:items-start gap-6 mb-12">
     <img
-      src={`/data/${stripOfIllegalChars(brandData.brand)}/${brandData.logo}`}
+      src={`/data/${stripOfIllegalChars(brandData.id)}/${brandData.logo}`}
       alt={brandData.brand ?? 'Brand logo'}
       class="w-32 h-32 rounded-xl object-contain bg-white shadow-md dark:bg-gray-900" />
     

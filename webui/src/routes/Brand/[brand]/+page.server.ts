@@ -10,6 +10,7 @@ import { stripOfIllegalChars } from '$lib/globalHelpers';
 import { filamentMaterialSchema } from '$lib/validation/filament-material-schema';
 import { refreshDatabase } from '$lib/dataCacher';
 import { setFlash } from 'sveltekit-flash-message/server';
+import { id } from '$lib/components/forms/components/logoUpload.svelte';
 
 export const load: PageServerLoad = async ({ params, parent, cookies }) => {
   const { brand } = params;
@@ -29,10 +30,11 @@ export const load: PageServerLoad = async ({ params, parent, cookies }) => {
     brandData = filamentData.brands?.[brandKey] || null;
 
     const formData = {
+      id: brandData.id,
       brand: brandData.brand,
       website: brandData.website || 'https://',
       origin: brandData.origin || '',
-      oldBrandName: brandData.brand,
+      oldID: brandData.id,
     };
 
     brandForm = await superValidate(formData, zod(brandSchema));
@@ -68,7 +70,7 @@ export const actions = {
     }
 
     setFlash({ type: 'success', message: 'Brand updated successfully!' }, cookies);
-    throw redirect(303, `/Brand/${stripOfIllegalChars(form.data.brand)}/`);
+    throw redirect(303, `/Brand/${stripOfIllegalChars(form.data.id)}/`);
   },
   material: async ({ request, params, cookies }) => {
     const form = await superValidate(request, zod(filamentMaterialSchema));

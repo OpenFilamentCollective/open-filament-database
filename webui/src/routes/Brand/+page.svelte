@@ -20,11 +20,11 @@
   let editedBrands = getEditItems("brand");
   console.log(editedBrands);
 
-  function getConditionalBrandLogo(brandName, brandData) {
+  function getConditionalBrandLogo(brandID, brandData) {
     let inFilData = false;
     // Remove if it exists in the DB
     Object.entries(filamentData.brands).forEach(([brand]) => {
-      if (brandName === brand) {
+      if (brandID === brand) {
         inFilData = true;
       }
     });
@@ -61,7 +61,7 @@
         <BrandItem
           brandName={brandData.brandName}
           brandData={brandData.data}
-          imgOverride = {getConditionalBrandLogo(brandData.brandName, brandData.data)}
+          imgOverride = {getConditionalBrandLogo(brandData.data.id, brandData.data)}
         />
       {/each}
     {/if}

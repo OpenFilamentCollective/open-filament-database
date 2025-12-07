@@ -1,5 +1,5 @@
 <script>
-  export let id, title, description, placeholder, formVar, errorVar = null, required = false;
+  export let id, title, description, placeholder, formVar, blur, errorVar = null, required = false;
 </script>
 
 <div>
@@ -23,6 +23,7 @@
     aria-autocomplete="none"
     class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
     aria-invalid={errorVar ? 'true' : undefined}
+    on:blur={blur}
     bind:value={formVar} />
   {#if errorVar}
     <span class="text-red-600 text-xs">{errorVar}</span>

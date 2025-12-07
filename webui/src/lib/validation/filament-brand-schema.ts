@@ -14,6 +14,7 @@ const formatBytes = (bytes: number, decimals = 2) => {
 };
 
 export const brandSchema = z.object({
+  id : z.string().min(1, 'Name is required').regex(/^[a-z0-9]+(_[a-z0-9]+)*$/, 'Invalid ID format'),
   brand: z.string().min(1, 'Brand name is required'),
   website: z
     .string()
@@ -34,5 +35,5 @@ export const brandSchema = z.object({
       message: `The image is too large. Please choose an image smaller than ${formatBytes(MAX_FILE_SIZE)}.`,
     })
     .optional(),
-  oldBrandName: z.string().optional(),
+  oldID: z.string().optional(),
 });

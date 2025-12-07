@@ -4,13 +4,17 @@
     "definitions": {
         "string_limit": {
             "maxLength": 1000
+        },
+        "id": {
+            "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
+            "maxLength": 50
         }
     },
     "properties": {
         "id": {
             "type": "string",
             "description": "The ID for this store",
-            "$ref": "#/definitions/string_limit"
+            "$ref": "#/definitions/id"
         },
         "name": {
             "type": "string",

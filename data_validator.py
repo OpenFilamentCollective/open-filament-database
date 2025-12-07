@@ -656,7 +656,7 @@ def collect_folder_validation_tasks(data_dir: Path, stores_dir: Path) -> List[
             task_type='folder',
             name=f"Brand Folder: {brand_dir.name}",
             path=brand_dir,
-            extra_data={'json_file': 'brand.json', 'json_key': 'brand'}
+            extra_data={'json_file': 'brand.json', 'json_key': 'id'}
         ))
 
         # Material folders

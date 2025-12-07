@@ -72,7 +72,7 @@ export const getEditItems = (
   filamentName?: string,
   colorName?: string,
 ) => {
-  if (typeof localStorage === 'undefined') return null;
+  if (typeof localStorage === 'undefined' || !localStorage.getItem) return null;
   const existingItems = localStorage.getItem(storageKey);
 
   if (!existingItems) return null;
