@@ -10,14 +10,19 @@
         }
     },
     "properties": {
+        "id": {
+            "type": "string",
+            "description": "The unique identifier for the filament manufacturer",
+            "$ref": "#/definitions/string_limit"
+        },
         "brand": {
             "type": "string",
-            "description": "The name of the filament manufacture",
+            "description": "The name of the filament manufacturer",
             "$ref": "#/definitions/string_limit"
         },
         "website": {
             "type": "string",
-            "description": "The website of the filament manufacture",
+            "description": "The website of the filament manufacturer",
             "$ref": "#/definitions/string_limit"
         },
         "logo": {
@@ -32,6 +37,7 @@
         }
     },
     "required": [
+        "id",
         "brand",
         "logo",
         "website",

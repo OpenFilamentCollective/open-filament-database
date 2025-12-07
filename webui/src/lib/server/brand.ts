@@ -44,9 +44,9 @@ export const createBrand = async (brandData: z.infer<typeof brandSchema>) => {
     ) {
       const arrayBuffer = await brandData.logo.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-      logoPath = path.join(brandDir, brandData.logo.name);
+      logoPath = path.join(brandDir, brandData.logo.id);
       fs.writeFileSync(logoPath, buffer);
-      logoUrl = `${brandData.logo.name}`;
+      logoUrl = `${brandData.logo.id}`;
     }
 
     const brandJson = {
