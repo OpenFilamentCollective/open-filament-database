@@ -62,23 +62,25 @@
   endpoint="brand"
   enhance={enhance}
 >
-  <TextField
-    id="brand"
-    title="Brand Name"
-    description='Enter the official name of the filament manufacturer (e.g., "Prusa", "Hatchbox")'
-    placeholder="e.g. Prusa"
-    bind:formVar={$form.brand}
-    errorVar={$errors.brand}
-    blur={() => {
-      // Automatically set the ID field based on the brand name
-      $form.id = $form.brand
-        .toLowerCase()
-        .replace(/\s+/g, '_')
-        .replace(/[^a-z0-9_]/g, '');
+  {#if formType === 'create'}
+    <TextField
+      id="brand"
+      title="Brand Name"
+      description='Enter the official name of the filament manufacturer (e.g., "Prusa", "Hatchbox")'
+      placeholder="e.g. Prusa"
+      bind:formVar={$form.brand}
+      errorVar={$errors.brand}
+      blur={() => {
+        // Automatically set the ID field based on the brand name
+        $form.id = $form.brand
+          .toLowerCase()
+          .replace(/\s+/g, '_')
+          .replace(/[^a-z0-9_]/g, '');
+        }
       }
-    }
-    required={true}
-  />
+      required={true}
+    />
+  {/if}
 
   <TextField
     id="id"
