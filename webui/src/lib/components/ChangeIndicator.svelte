@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { getChangeCount, getChanges, clearChanges, exportChanges } from '$lib/stores/changes.svelte';
+	import { getChangeCount, getChanges, clearChanges, removeChange, exportChanges, formatChangeDescription } from '$lib/stores/changes.svelte';
 
 	let showDropdown = $state(false);
+	let copyStatus = $state<'idle' | 'copied'>('idle');
 
 	function handleExport() {
 		const json = exportChanges();
@@ -15,10 +16,43 @@
 		showDropdown = false;
 	}
 
+	async function handleCopy() {
+		const json = exportChanges();
+		try {
+			await navigator.clipboard.writeText(json);
+			copyStatus = 'copied';
+			setTimeout(() => {
+				copyStatus = 'idle';
+			}, 2000);
+		} catch {
+			// Fallback for older browsers
+			const textarea = document.createElement('textarea');
+			textarea.value = json;
+			document.body.appendChild(textarea);
+			textarea.select();
+			document.execCommand('copy');
+			document.body.removeChild(textarea);
+			copyStatus = 'copied';
+			setTimeout(() => {
+				copyStatus = 'idle';
+			}, 2000);
+		}
+	}
+
 	function handleClear() {
 		if (confirm('Are you sure you want to clear all pending changes?')) {
 			clearChanges();
 			showDropdown = false;
+			window.location.reload();
+		}
+	}
+
+	function handleRemove(id: string) {
+		removeChange(id);
+		// If no more changes, close dropdown and reload
+		if (getChangeCount() === 0) {
+			showDropdown = false;
+			window.location.reload();
 		}
 	}
 </script>
@@ -46,30 +80,49 @@
 			>
 				<div class="max-h-64 overflow-y-auto p-2">
 					{#each getChanges() as change}
-						<div class="rounded-md p-2 text-xs hover:bg-gray-50 dark:hover:bg-gray-700">
-							<span
-								class="inline-block rounded px-1 py-0.5 font-medium {change.operation === 'create'
-									? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-									: change.operation === 'update'
-										? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-										: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'}"
+						<div class="flex items-start gap-2 rounded-md p-2 text-xs hover:bg-gray-50 dark:hover:bg-gray-700">
+							<div class="flex-1 min-w-0">
+								<span
+									class="inline-block rounded px-1 py-0.5 font-medium {change.operation === 'create'
+										? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+										: change.operation === 'update'
+											? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+											: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'}"
+								>
+									{change.operation}
+								</span>
+								<p class="mt-1 truncate text-gray-600 dark:text-gray-400">{formatChangeDescription(change)}</p>
+							</div>
+							<button
+								onclick={() => handleRemove(change.id)}
+								class="flex-shrink-0 rounded p-1 text-gray-400 hover:bg-red-100 hover:text-red-600 dark:hover:bg-red-900 dark:hover:text-red-400"
+								title="Remove this change"
 							>
-								{change.operation}
-							</span>
-							<p class="mt-1 truncate text-gray-600 dark:text-gray-400">{change.path}</p>
+								<svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+								</svg>
+							</button>
 						</div>
 					{/each}
 				</div>
-				<div class="flex gap-2 border-t border-gray-200 p-2 dark:border-gray-700">
-					<button
-						onclick={handleExport}
-						class="flex-1 rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
-					>
-						Export JSON
-					</button>
+				<div class="flex flex-col gap-2 border-t border-gray-200 p-2 dark:border-gray-700">
+					<div class="flex gap-2">
+						<button
+							onclick={handleCopy}
+							class="flex-1 rounded-md bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+						>
+							{copyStatus === 'copied' ? 'Copied!' : 'Copy JSON'}
+						</button>
+						<button
+							onclick={handleExport}
+							class="flex-1 rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
+						>
+							Download
+						</button>
+					</div>
 					<button
 						onclick={handleClear}
-						class="flex-1 rounded-md bg-red-100 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-200 dark:bg-red-900 dark:text-red-200 dark:hover:bg-red-800"
+						class="w-full rounded-md bg-red-100 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-200 dark:bg-red-900 dark:text-red-200 dark:hover:bg-red-800"
 					>
 						Clear All
 					</button>

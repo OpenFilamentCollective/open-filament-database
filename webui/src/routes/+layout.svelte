@@ -28,7 +28,7 @@
 
 				<nav class="flex items-center gap-4">
 					<a
-						href="/"
+						href="/brands"
 						class="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
 					>
 						Brands
@@ -38,6 +38,12 @@
 						class="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
 					>
 						Stores
+					</a>
+					<a
+						href="/about"
+						class="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+					>
+						About
 					</a>
 				</nav>
 			</div>

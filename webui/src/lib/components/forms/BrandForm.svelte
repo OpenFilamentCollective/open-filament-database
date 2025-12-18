@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { BrandSchema, type Brand } from '$lib/schemas/generated';
+	import { z } from 'zod';
+	import { BrandSchema, LimitedStringSchema, CountryCodeSchema, type Brand } from '$lib/schemas/generated';
 	import { addChange } from '$lib/stores/changes.svelte';
+	import LogoUpload from './LogoUpload.svelte';
 
 	interface Props {
 		initialData?: Brand;
 		brandPath: string;
-		onSave?: () => void;
+		onSave?: (newBrand: string) => void;
 		onCancel?: () => void;
 	}
 
@@ -21,9 +23,23 @@
 	let errors = $state<Record<string, string>>({});
 	let isSubmitting = $state(false);
 
+	// Custom schema that allows embedded content for logo (base64 or raw SVG which exceed the 1000 char limit)
+	const isEmbeddedLogo = (val: string) =>
+		val.startsWith('data:') || val.startsWith('<svg') || val.startsWith('<?xml');
+
+	const FormBrandSchema = z.object({
+		brand: LimitedStringSchema,
+		website: LimitedStringSchema,
+		logo: z.string().refine(
+			(val) => isEmbeddedLogo(val) || val.length <= 1000,
+			{ message: 'Logo filename must be 1000 characters or less' }
+		),
+		origin: CountryCodeSchema
+	}).strict();
+
 	function validate(): boolean {
 		errors = {};
-		const result = BrandSchema.safeParse(formData);
+		const result = FormBrandSchema.safeParse(formData);
 
 		if (!result.success) {
 			for (const issue of result.error.issues) {
@@ -46,10 +62,12 @@
 		}
 
 		const operation = initialData ? 'update' : 'create';
-		addChange(operation, `${brandPath}/brand.json`, formData as Record<string, unknown>);
+		// For new brands, use the brand name as the path; for existing, use brandPath
+		const path = brandPath || formData.brand;
+		addChange(operation, `${path}/brand.json`, formData as Record<string, unknown>);
 
 		isSubmitting = false;
-		onSave?.();
+		onSave?.(formData.brand ?? '');
 	}
 </script>
 
@@ -87,22 +105,11 @@
 		{/if}
 	</div>
 
-	<div>
-		<label for="logo" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-			Logo Filename *
-		</label>
-		<input
-			type="text"
-			id="logo"
-			bind:value={formData.logo}
-			placeholder="brand_logo.png"
-			class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-			class:border-red-500={errors.logo}
-		/>
-		{#if errors.logo}
-			<p class="mt-1 text-sm text-red-600">{errors.logo}</p>
-		{/if}
-	</div>
+	<LogoUpload
+		value={formData.logo ?? ''}
+		onChange={(value) => (formData.logo = value)}
+		error={errors.logo}
+	/>
 
 	<div>
 		<label for="origin" class="block text-sm font-medium text-gray-700 dark:text-gray-300">

@@ -8,30 +8,65 @@ export const load: PageServerLoad = async ({ params }) => {
 	const filamentName = decodeURIComponent(params.filament);
 	const variantName = decodeURIComponent(params.variant);
 
+	// Get stores for purchase links lookup (always needed)
+	const index = await getDataIndex();
+
 	const brand = await getBrand(brandName);
 	if (!brand) {
-		throw error(404, `Brand "${brandName}" not found`);
+		// Brand not found - could be a renamed brand, let client handle
+		return {
+			notFound: true as const,
+			notFoundType: 'brand' as const,
+			notFoundName: brandName,
+			requestedPath: { brandName, materialName, filamentName, variantName },
+			stores: index.stores
+		};
 	}
 
 	const material = await getMaterial(brandName, materialName);
 	if (!material) {
-		throw error(404, `Material "${materialName}" not found`);
+		// Material not found - could be renamed, let client handle
+		return {
+			notFound: true as const,
+			notFoundType: 'material' as const,
+			notFoundName: materialName,
+			requestedPath: { brandName, materialName, filamentName, variantName },
+			brand,
+			stores: index.stores
+		};
 	}
 
 	const filament = await getFilament(brandName, materialName, filamentName);
 	if (!filament) {
-		throw error(404, `Filament "${filamentName}" not found`);
+		// Filament not found - could be renamed, let client handle
+		return {
+			notFound: true as const,
+			notFoundType: 'filament' as const,
+			notFoundName: filamentName,
+			requestedPath: { brandName, materialName, filamentName, variantName },
+			brand,
+			material,
+			stores: index.stores
+		};
 	}
 
 	const variant = await getVariant(brandName, materialName, filamentName, variantName);
 	if (!variant) {
-		throw error(404, `Variant "${variantName}" not found`);
+		// Variant not found - could be renamed, let client handle
+		return {
+			notFound: true as const,
+			notFoundType: 'variant' as const,
+			notFoundName: variantName,
+			requestedPath: { brandName, materialName, filamentName, variantName },
+			brand,
+			material,
+			filament,
+			stores: index.stores
+		};
 	}
 
-	// Get stores for purchase links lookup
-	const index = await getDataIndex();
-
 	return {
+		notFound: false as const,
 		brand,
 		material,
 		filament,
