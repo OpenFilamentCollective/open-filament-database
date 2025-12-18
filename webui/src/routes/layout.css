@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+/* Base styles */
+html {
+	font-family:
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		'Helvetica Neue',
+		Arial,
+		sans-serif;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+	html {
+		color-scheme: dark;
+	}
+}
+
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Focus styles */
+:focus-visible {
+	outline: 2px solid theme('colors.blue.500');
+	outline-offset: 2px;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: theme('colors.gray.100');
+}
+
+::-webkit-scrollbar-thumb {
+	background: theme('colors.gray.400');
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: theme('colors.gray.500');
+}
+
+@media (prefers-color-scheme: dark) {
+	::-webkit-scrollbar-track {
+		background: theme('colors.gray.800');
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: theme('colors.gray.600');
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: theme('colors.gray.500');
+	}
+}

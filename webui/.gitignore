@@ -16,8 +16,6 @@ Thumbs.db
 .env
 .env.*
 !.env.example
-# Change if we ever put passwords or whatever in it, currently it's just whether the server is running locally or not
-!.env
 !.env.test
 
 # Vite

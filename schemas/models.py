@@ -272,8 +272,8 @@ def type_to_zod(type_hint, field_info: Optional[FieldInfo] = None, is_optional: 
             value_type = args[1] if len(args) > 1 else 'any'
             if key_type == str:
                 value_schema = type_to_zod(value_type, field_info)
-                return f"z.record({value_schema})"
-        return "z.record(z.any())"
+                return f"z.record(z.string(), {value_schema})"
+        return "z.record(z.string(), z.any())"
     
     # Handle Literal types
     if origin is Literal:
@@ -371,14 +371,16 @@ def model_to_zod(model_class) -> str:
             origin is Union and type(None) in args
         )
         
-        # Add nullable/optional modifiers based on default value
+        # Add optional/nullish modifiers based on default value
+        # Use .optional() for fields that can be omitted (undefined in JS)
+        # Use .nullish() for fields that can be null or omitted
         if is_optional_type:
-            # Field is Optional[T] in type hint
-            zod_type += ".nullable()"
+            # Field is Optional[T] in type hint - can be null or omitted
+            zod_type += ".nullish()"
         elif default_value is not ... and str(default_value) != "PydanticUndefined":
             # Field has a default value but is not Optional
             if default_value is None:
-                zod_type += ".nullable()"
+                zod_type += ".nullish()"
             else:
                 # Has a non-None default value
                 default_str = f'"{default_value}"' if isinstance(default_value, str) else str(default_value).lower() if isinstance(default_value, bool) else str(default_value)
