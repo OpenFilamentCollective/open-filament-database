@@ -37,7 +37,14 @@ DEFAULT_DIAMETER_TOLERANCE = 0.05
 
 def cleanse_folder_name(name: str) -> str:
     """Clean folder name by replacing invalid characters."""
-    return name.replace("/", " ").strip()
+    # Illegal characters must match data_validator.py:
+    # #%&{}\<>*?/$!'":@+`|=
+    illegal_chars_pattern = r"[#%&{}\\<>*?/$!'\":@+`|=]"
+    # Replace illegal characters with spaces
+    cleaned = re.sub(illegal_chars_pattern, " ", name)
+    # Collapse multiple whitespace characters to a single space and strip
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned
 
 
 def normalize_for_matching(name: str) -> str:
