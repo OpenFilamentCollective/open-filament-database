@@ -218,25 +218,22 @@ def create_brand(brand_path: Path, brand_name: str, dry_run: bool = False, verbo
     if verbose:
         print(f"  Creating brand: {brand_name}")
 
-    if dry_run:
-        return True
+    if not dry_run:
+        brand_path.mkdir(parents=True, exist_ok=True)
 
-    brand_path.mkdir(parents=True, exist_ok=True)
+        brand_data = {
+            "brand": brand_name,
+            "logo": PLACEHOLDER_LOGO,
+            "website": PLACEHOLDER_WEBSITE,
+            "origin": PLACEHOLDER_ORIGIN,
+        }
 
-    brand_data = {
-        "brand": brand_name,
-        "logo": PLACEHOLDER_LOGO,
-        "website": PLACEHOLDER_WEBSITE,
-        "origin": PLACEHOLDER_ORIGIN,
-    }
+        with open(brand_path / "brand.json", "w", encoding="utf-8") as f:
+            json.dump(brand_data, f, indent=4)
 
-    with open(brand_path / "brand.json", "w", encoding="utf-8") as f:
-        json.dump(brand_data, f, indent=4)
-
-    # Copy default logo as placeholder
-    if DEFAULT_LOGO_PATH.exists():
-        shutil.copy(DEFAULT_LOGO_PATH, brand_path / PLACEHOLDER_LOGO)
-
+        # Copy default logo as placeholder
+        if DEFAULT_LOGO_PATH.exists():
+            shutil.copy(DEFAULT_LOGO_PATH, brand_path / PLACEHOLDER_LOGO)
     return True
 
 
