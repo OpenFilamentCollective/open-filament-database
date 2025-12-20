@@ -14,14 +14,13 @@ Options:
 
 import argparse
 import json
-import os
 import re
 import shutil
 import sys
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
-from typing import Any, Optional
+from typing import Optional
 
 # Constants
 SPOOLMANDB_URL = "https://donkie.github.io/SpoolmanDB/filaments.json"
@@ -29,7 +28,7 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 DEFAULT_LOGO_PATH = Path(__file__).parent / "placeholder.svg"
 
 # Placeholder values for missing required fields
-PLACEHOLDER_WEBSITE = "unknown.example.com"
+PLACEHOLDER_WEBSITE = "https://unknown.com"
 PLACEHOLDER_LOGO = "placeholder.svg"
 PLACEHOLDER_ORIGIN = "Unknown"
 DEFAULT_DIAMETER_TOLERANCE = 0.05
@@ -66,12 +65,21 @@ def normalize_color_hex(hex_value: str) -> str:
     """Normalize hex color to uppercase without # prefix.
 
     Also strips alpha channel if present (RGBA -> RGB).
+    Returns a 6-character hexadecimal string (no leading '#').
+    Falls back to '000000' (black) if the input is missing or invalid.
     """
-    if hex_value:
-        hex_value = hex_value.strip().lstrip("#").upper()
-        # Strip alpha channel if present (8 chars -> 6 chars)
-        if len(hex_value) == 8:
-            hex_value = hex_value[:6]
+    # Falsy or missing values fall back to black
+    if not hex_value:
+        return "000000"
+
+    # Normalize: strip whitespace, remove leading '#', and uppercase
+    hex_value = hex_value.strip().lstrip("#").upper()
+    # Strip alpha channel if present (8 chars -> 6 chars)
+    if len(hex_value) == 8:
+        hex_value = hex_value[:6]
+    # Validate that we have exactly 6 hex characters; otherwise fall back
+    if len(hex_value) != 6 or not re.fullmatch(r"[0-9A-F]{6}", hex_value):
+        return "000000"
     return hex_value
 
 
@@ -111,7 +119,7 @@ def group_by_hierarchy(entries: list[dict]) -> dict:
             "filament_weight": entry.get("weight"),
             "diameter": entry.get("diameter", 1.75),
             "empty_spool_weight": entry.get("spool_weight"),
-            "ean": entry.get("ean"),  # Will be written as gtin
+            "ean": entry.get("ean"),  # Keep original SpoolmanDB field; later mapped to 'gtin' in sizes.json to match schemas/sizes_schema.json
         }
 
         # Build variant data (will be merged later)
@@ -132,12 +140,6 @@ def group_by_hierarchy(entries: list[dict]) -> dict:
         }
 
         # Store in hierarchy
-        key = (
-            manufacturer,
-            material,
-            filament_name,
-            color_name,
-        )
         hierarchy[manufacturer][material][filament_name][color_name].append({
             "size": size_entry,
             "variant": variant_data,
@@ -212,10 +214,23 @@ def load_existing_sizes(variant_path: Path) -> list[dict]:
 
 
 def size_exists(existing_sizes: list[dict], new_size: dict) -> bool:
-    """Check if a size entry already exists (by weight and diameter)."""
+    """Check if a size entry already exists (by weight and diameter).
+    If a matching size is found, update it in-place with any additional
+    metadata from ``new_size`` (such as empty_spool_weight, ean, or gtin)
+    that is missing from the existing entry, then return True.
+    """
     for size in existing_sizes:
-        if (size.get("filament_weight") == new_size.get("filament_weight") and
-            size.get("diameter") == new_size.get("diameter")):
+        if (
+            size.get("filament_weight") == new_size.get("filament_weight")
+            and size.get("diameter") == new_size.get("diameter")
+        ):
+            # Merge additional metadata where the existing entry is missing data.
+            for key in ("empty_spool_weight", "ean", "gtin"):
+                existing_value = size.get(key)
+                new_value = new_size.get(key)
+                # Only fill in if the existing value is absent/empty and the new value is meaningful.
+                if (existing_value is None or existing_value == "") and new_value not in (None, ""):
+                    size[key] = new_value
             return True
     return False
 
@@ -236,7 +251,7 @@ def create_brand(brand_path: Path, brand_name: str, dry_run: bool = False, verbo
         }
 
         with open(brand_path / "brand.json", "w", encoding="utf-8") as f:
-            json.dump(brand_data, f, indent=4)
+            json.dump(brand_data, f, indent=2)
 
         # Copy default logo as placeholder
         if DEFAULT_LOGO_PATH.exists():
@@ -259,7 +274,7 @@ def create_material(material_path: Path, material_name: str, dry_run: bool = Fal
     }
 
     with open(material_path / "material.json", "w", encoding="utf-8") as f:
-        json.dump(material_data, f, indent=4)
+        json.dump(material_data, f, indent=2)
 
     return True
 
@@ -296,7 +311,7 @@ def create_filament(filament_path: Path, filament_name: str, filament_data: dict
         filament_json["slicer_settings"] = slicer_settings
 
     with open(filament_path / "filament.json", "w", encoding="utf-8") as f:
-        json.dump(filament_json, f, indent=4)
+        json.dump(filament_json, f, indent=2)
 
     return True
 
@@ -314,13 +329,23 @@ def create_variant(variant_path: Path, variant_data: dict, sizes: list[dict],
     variant_path.mkdir(parents=True, exist_ok=True)
 
     # Build color_hex (single or array)
-    color_hex = variant_data.get("color_hex", "000000")
+    raw_color_hex = variant_data.get("color_hex")
     if variant_data.get("color_hexes"):
         # Multi-color: use array
-        color_hex = [normalize_color_hex(h) for h in variant_data["color_hexes"]]
-        color_hex = ["#" + h for h in color_hex if h]
-    elif color_hex:
-        color_hex = "#" + color_hex
+        normalized_hexes = [normalize_color_hex(h) for h in variant_data["color_hexes"]]
+        color_hex_list = ["#" + h for h in normalized_hexes if h]
+        if color_hex_list:
+            # At least one valid multi-color entry; keep as non-empty array
+            color_hex = color_hex_list
+        else:
+            # All multi-color entries were invalid; fall back to a single color
+            fallback_hex = normalize_color_hex(variant_data.get("color_hex", "000000"))
+            if not fallback_hex:
+                fallback_hex = "000000"
+            color_hex = "#" + fallback_hex
+    else:
+        normalized_single_hex = normalize_color_hex(raw_color_hex) if raw_color_hex else "000000"
+        color_hex = f"#{normalized_single_hex}" if normalized_single_hex else None
 
     # Build traits
     traits = {}
@@ -339,7 +364,7 @@ def create_variant(variant_path: Path, variant_data: dict, sizes: list[dict],
         variant_json["traits"] = traits
 
     with open(variant_path / "variant.json", "w", encoding="utf-8") as f:
-        json.dump(variant_json, f, indent=4)
+        json.dump(variant_json, f, indent=2)
 
     # Write sizes.json
     sizes_json = []
@@ -355,7 +380,7 @@ def create_variant(variant_path: Path, variant_data: dict, sizes: list[dict],
         sizes_json.append(size_entry)
 
     with open(variant_path / "sizes.json", "w", encoding="utf-8") as f:
-        json.dump(sizes_json, f, indent=4)
+        json.dump(sizes_json, f, indent=2)
 
     return True
 
@@ -383,7 +408,7 @@ def extend_sizes(variant_path: Path, new_sizes: list[dict],
 
     if added > 0 and not dry_run:
         with open(variant_path / "sizes.json", "w", encoding="utf-8") as f:
-            json.dump(existing_sizes, f, indent=4)
+            json.dump(existing_sizes, f, indent=2)
 
     return added
 
