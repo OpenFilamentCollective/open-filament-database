@@ -1,3 +1,6 @@
 jsonschema~=4.23.0
 iniconfig~=2.0.0
 Pillow~=11.3.0
+requests
+bs4
+pandas

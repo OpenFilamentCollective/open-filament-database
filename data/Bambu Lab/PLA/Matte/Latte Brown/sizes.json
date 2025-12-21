@@ -7,10 +7,10 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=40489682010248",
-        "spool_refill": true,
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "11800"
   },
   {
     "filament_weight": 1000,
@@ -20,7 +20,6 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-latte-brown-1-75mm-1kg-refill",
-        "spool_refill": true,
         "affiliate": false
       }
     ]

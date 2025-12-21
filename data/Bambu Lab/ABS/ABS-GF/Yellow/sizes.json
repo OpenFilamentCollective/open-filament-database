@@ -7,9 +7,15 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-gf?variant=42166898294920",
-        "affiliate": false,
-        "spool_refill": false
+        "affiliate": false
       }
-    ]
+    ],
+    "article_number": "41400"
+  },
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337037262"
   }
 ]

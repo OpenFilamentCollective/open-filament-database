@@ -12,10 +12,10 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=40489681780872",
-        "spool_refill": true,
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "11100"
   },
   {
     "filament_weight": 1000,
@@ -25,9 +25,20 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-ivory-white-1-75mm-1kg-refill",
-        "spool_refill": true,
         "affiliate": false
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337030041"
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6937285504159"
   }
 ]

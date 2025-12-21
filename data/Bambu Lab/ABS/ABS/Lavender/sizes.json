@@ -2,14 +2,13 @@
   {
     "filament_weight": 1000.0,
     "diameter": 1.75,
-    "ean": "921128098883",
     "purchase_links": [
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-abs-lavender-1-75mm-1kg",
-        "affiliate": false,
-        "spool_refill": false
+        "affiliate": false
       }
-    ]
+    ],
+    "article_number": "40701"
   }
 ]

@@ -7,7 +7,6 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=42831855747208",
-        "spool_refill": true,
         "affiliate": false
       },
       {
@@ -15,6 +14,13 @@
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=41003202248840",
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "14100"
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337036524"
   }
 ]

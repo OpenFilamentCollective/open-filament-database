@@ -91,9 +91,11 @@
   />
 
   <BigCheck
+    title="Discontinued"
+    description="Select if this filament is discontinued"
+    id="filament_discontinued"
     bind:formVar={$form.discontinued}
     errorVar={$errors.discontinued}
-    description="Select if this filament is discontinued"
   />
 
   <TextField

@@ -2,14 +2,19 @@
   {
     "filament_weight": 1000.0,
     "diameter": 1.75,
-    "ean": "921128098885",
     "purchase_links": [
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=42720053362824",
-        "affiliate": false,
-        "spool_refill": true
+        "affiliate": false
       }
-    ]
+    ],
+    "article_number": "40601"
+  },
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337039594"
   }
 ]

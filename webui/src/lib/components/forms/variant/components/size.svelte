@@ -58,7 +58,7 @@
     </button>
   </div>
 
-  <div class="flex space-x-2">
+  <div class="grid grid-cols-2 gap-2">
     <NumberField
       id="filament_weight_{sizeIndex}"
       title="Weight (g)"
@@ -78,9 +78,7 @@
       errorVar={$errors?.sizes?.[sizeIndex]?.diameter}
       required={true}
     />
-  </div>
 
-  <div class="flex space-x-2">
     <NumberField
       id="empty_spool_weight_{sizeIndex}"
       title="Spool weight (g)"
@@ -129,15 +127,23 @@
       bind:formVar={size.article_number}
       errorVar={$errors?.sizes?.[sizeIndex]?.article_number}
     />
+    
+    <BigCheck
+      title="Discontinued"
+      description="Select if this size is discontinued"
+      id="size_discontinued_{sizeIndex}"
+      bind:formVar={size.discontinued}
+      errorVar={$errors?.sizes?.[sizeIndex]?.discontinued}
+    />
+
+    <BigCheck
+      title="Spool refill"
+      description="This is a refill for a reusable spool"
+      id="size_spool_refill_{sizeIndex}"
+      bind:formVar={size.spool_refill}
+      errorVar={$errors?.sizes?.[sizeIndex]?.spool_refill}
+    />
   </div>
-
-  <BigCheck
-    idPrefix="size_"
-    description="Select if this size is discontinued"
-    bind:formVar={size.discontinued}
-    errorVar={$errors?.sizes?.[sizeIndex]?.discontinued}
-  />
-
 
   <fieldset>
     <div class="flex items-center justify-between mb-4">

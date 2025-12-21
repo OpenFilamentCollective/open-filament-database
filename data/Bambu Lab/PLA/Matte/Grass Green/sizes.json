@@ -7,10 +7,10 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=40489681977480",
-        "spool_refill": true,
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "11500"
   },
   {
     "filament_weight": 1000,
@@ -20,9 +20,20 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-grass-green-1-75mm-1kg-refill",
-        "spool_refill": true,
         "affiliate": false
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337038450"
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337030119"
   }
 ]

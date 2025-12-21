@@ -12,7 +12,6 @@
   import { superForm } from 'sveltekit-superforms';
   import { zodClient } from 'sveltekit-superforms/adapters';
   import { storeSchema } from '$lib/validation/store-schema';
-  import BigCheck from '../components/bigCheck.svelte';
   import ShippingList from './components/shippingList.svelte';
 
   type formType = 'edit' | 'create';

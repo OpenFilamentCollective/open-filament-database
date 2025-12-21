@@ -9,7 +9,8 @@
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=43045599543432",
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "A00-A1-1.75-1000-SPL"
   },
   {
     "filament_weight": 1000,
@@ -19,9 +20,14 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-basic-pumpkin-orange-1-75mm-1kg-refill",
-        "spool_refill": true,
         "affiliate": false
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6977252426954"
   }
 ]

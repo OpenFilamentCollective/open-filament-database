@@ -1,20 +1,20 @@
 <script>
-  export let formVar, description, errorVar = null, idPrefix = "", title = "Discontinued", required = false;
+  export let formVar, description, errorVar = null, id = "", title = "", required = false;
 </script>
 
 <div>
   <div>
     <div class="flex flex-row items-center">
       <input
-      id={`${idPrefix}discontinued`}
+      id={id}
       type="checkbox"
-      name={`${idPrefix}discontinued`}
+      name={id}
       class="accent-blue-600 w-4 h-4 mr-2"
       autocomplete="off"
       aria-autocomplete="none"
       bind:checked={formVar} />
 
-      <label for={`${idPrefix}discontinued`} class="inline-block font-medium">
+      <label for={id} class="inline-block font-medium">
         {title}
         {#if required}
           <span class="text-red-500">*</span>
@@ -22,8 +22,8 @@
       </label>
     </div>
     <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-        {description} 
-      </p>
+      {description} 
+    </p>
   </div>
   {#if errorVar}
     <span class="text-red-600 text-xs">{errorVar}</span>

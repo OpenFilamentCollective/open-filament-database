@@ -6,9 +6,15 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pc-tpu/products/tpu-95a-hf?variant=41469410508936",
-        "affiliate": false,
-        "spool_refill": false
+        "affiliate": false
       }
-    ]
+    ],
+    "article_number": "U00-W0-1.75-1000-SPL"
+  },
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337034865"
   }
 ]

@@ -7,7 +7,6 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42720025804936",
-        "spool_refill": true,
         "affiliate": false
       },
       {
@@ -15,6 +14,13 @@
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=41638808027272",
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "32500"
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337038382"
   }
 ]

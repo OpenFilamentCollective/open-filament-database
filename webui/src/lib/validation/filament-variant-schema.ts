@@ -10,7 +10,6 @@ export const purchaseLinkSchema = z.object({
     }, 'URL must use HTTP or HTTPS protocol')
     .default('https://'),
   affiliate: z.boolean().default(false),
-  spool_refill: z.boolean().optional(),
   ships_from: z.union([z.string(), z.array(z.string())]).optional(),
   ships_to: z.union([z.string(), z.array(z.string())]).optional(),
 });
@@ -18,6 +17,7 @@ export const purchaseLinkSchema = z.object({
 export const filamentSizeSchema = z.object({
   filament_weight: z.number(),
   diameter: z.number(),
+  spool_refill: z.boolean().default(false),
   empty_spool_weight: z.number().nullable().optional(),
   spool_core_diameter: z.number().nullable().optional(),
   gtin: z.string().max(1000).optional(),

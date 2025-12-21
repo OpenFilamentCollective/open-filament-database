@@ -9,7 +9,8 @@
         "url": "https://us.store.bambulab.com/collections/pa-pet/products/pet-cf",
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "T01-K0-1.75-500-SPL"
   },
   {
     "filament_weight": 1000,
@@ -22,5 +23,11 @@
         "affiliate": false
       }
     ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337032267"
   }
 ]

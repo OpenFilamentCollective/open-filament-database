@@ -12,10 +12,10 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=41884190146696",
-        "spool_refill": true,
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "A00-G06-1.75-1000-SPL-US"
   },
   {
     "filament_weight": 1000,
@@ -25,9 +25,20 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-basic-bambu-green-1-75mm-1kg-refill",
-        "spool_refill": true,
         "affiliate": false
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337033684"
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6937285503947"
   }
 ]

@@ -6,9 +6,10 @@
       {
         "store_id": "BBLStore",
         "url": "https://eu.store.bambulab.com/products/pla-translucent?id=54407223116124",
-        "affiliate": false,
-        "spool_refill": false
+        "affiliate": false
       }
-    ]
+    ],
+    "gtin": "6977252428422",
+    "article_number": "13711"
   }
 ]

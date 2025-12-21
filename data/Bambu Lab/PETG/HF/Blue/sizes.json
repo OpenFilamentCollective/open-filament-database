@@ -12,7 +12,19 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939453064",
-        "spool_refill": true,
+        "affiliate": false
+      }
+    ],
+    "article_number": "33600"
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "discontinued": true,
+    "purchase_links": [
+      {
+        "store_id": "3deksperten",
+        "url": "https://3deksperten.dk/products/bambu-lab-petg-hf-blue-1-75mm-1kg-refill",
         "affiliate": false
       }
     ]
@@ -20,15 +32,7 @@
   {
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "921191885729",
-    "discontinued": true,
-    "purchase_links": [
-      {
-        "store_id": "3deksperten",
-        "url": "https://3deksperten.dk/products/bambu-lab-petg-hf-blue-1-75mm-1kg-refill",
-        "spool_refill": true,
-        "affiliate": false
-      }
-    ]
+    "spool_refill": true,
+    "gtin": "6975337038269"
   }
 ]

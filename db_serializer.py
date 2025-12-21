@@ -311,14 +311,14 @@ class SizePurchaseLink(IToFromJSONData):
         return self.store.ships_to
 
     def to_dict(self):
-        return shallow_remove_empty({
+        base = {
             "store_id": self.store.store_id,
             "url": self.url,
             "affiliate": self.affiliate,
-            "spool_refill": self.spool_refill,
             "ships_from": self.ships_from,
             "ships_to": self.ships_to
-        })
+        }
+        return shallow_remove_empty(base)
 
     @staticmethod
     def from_json_data(json_data: dict[str, Any], parent: None = None) -> 'SizePurchaseLink':
@@ -335,6 +335,7 @@ class SizePurchaseLink(IToFromJSONData):
 class FilamentSize(IToFromJSONData):
     filament_weight: float  # Required
     diameter: float  # Required
+    spool_refill: Optional[bool]
     empty_spool_weight: Optional[float]
     spool_core_diameter: Optional[float]
     gtin: Optional[str]
@@ -349,6 +350,7 @@ class FilamentSize(IToFromJSONData):
     def __init__(self,
                  filament_weight: float,
                  diameter: float,
+                 spool_refill: Optional[bool] = False,
                  empty_spool_weight: Optional[float] = None,
                  spool_core_diameter: Optional[float] = None,
                  gtin: Optional[str] = None,
@@ -364,6 +366,7 @@ class FilamentSize(IToFromJSONData):
 
         self.filament_weight = filament_weight
         self.diameter = diameter
+        self.spool_refill = spool_refill if spool_refill is not None else False
         self.empty_spool_weight = empty_spool_weight
         self.spool_core_diameter = spool_core_diameter
         # Normalize and validate GTIN/EAN per rules
@@ -408,6 +411,7 @@ class FilamentSize(IToFromJSONData):
         return shallow_remove_empty({
             "filament_weight": self.filament_weight,
             "diameter": self.diameter,
+            "spool_refill": self.spool_refill,
             "empty_spool_weight": self.empty_spool_weight,
             "spool_core_diameter": self.spool_core_diameter,
             "gtin": self.gtin,
@@ -420,6 +424,14 @@ class FilamentSize(IToFromJSONData):
             "purchase_links": [x.to_dict() for x in self.purchase_links]
         })
 
+        # Backward compatibility in DTO only: if size is refill, mark links as refill in the response
+        if self.spool_refill and "purchase_links" in result:
+            for link in result["purchase_links"]:
+                # do not persist; just annotate response
+                link["spool_refill"] = True
+
+        return result
+
     @staticmethod
     def from_json_data(json_data: dict[str, Any], parent: None = None) -> 'FilamentSize':
         purchase_links = []
@@ -429,6 +441,7 @@ class FilamentSize(IToFromJSONData):
         return FilamentSize(
             filament_weight=json_data["filament_weight"],
             diameter=json_data["diameter"],
+            spool_refill=json_data.get("spool_refill", False),
             empty_spool_weight=json_data.get("empty_spool_weight"),
             spool_core_diameter=json_data.get("spool_core_diameter"),
             gtin=json_data.get("gtin"),

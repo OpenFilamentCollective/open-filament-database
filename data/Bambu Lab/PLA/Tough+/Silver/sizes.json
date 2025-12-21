@@ -6,9 +6,15 @@
       {
         "store_id": "BBLStore",
         "url": "https://eu.store.bambulab.com/products/pla-tough-upgrade?id=624496486489088036",
-        "affiliate": false,
-        "spool_refill": false
+        "affiliate": false
       }
-    ]
+    ],
+    "article_number": "12106"
+  },
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337032557"
   }
 ]

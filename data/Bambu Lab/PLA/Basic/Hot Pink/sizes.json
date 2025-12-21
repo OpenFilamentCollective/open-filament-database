@@ -6,10 +6,11 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=43045599019144",
-        "spool_refill": true,
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "10204,A00-R3-1.75-1000-SPL",
+    "gtin": "6977252429092"
   },
   {
     "filament_weight": 1000,
@@ -19,9 +20,14 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-basic-hot-pink-1-75mm-1kg-refill",
-        "spool_refill": true,
         "affiliate": false
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6977252426978"
   }
 ]

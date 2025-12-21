@@ -2,13 +2,14 @@
   {
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "921159956013",
     "purchase_links": [
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-galaxy?variant=41834260168840",
         "affiliate": false
       }
-    ]
+    ],
+    "article_number": "A15-B0-1.75-1000-SPL",
+    "gtin": "6975337036135"
   }
 ]

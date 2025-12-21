@@ -6,9 +6,16 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-silk-upgrade?variant=43128679760008",
-        "affiliate": false,
-        "spool_refill": false
+        "affiliate": false
       }
-    ]
+    ],
+    "article_number": "SKU: A06-S1-1.75-1000-SPL",
+    "gtin": "6975337038894"
+  },
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337032618"
   }
 ]

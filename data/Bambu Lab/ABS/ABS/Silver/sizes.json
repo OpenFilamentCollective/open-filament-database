@@ -7,15 +7,20 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=41195746295944",
-        "affiliate": false,
-        "spool_refill": false
+        "affiliate": false
       },
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=42851556556936",
-        "affiliate": false,
-        "spool_refill": true
+        "affiliate": false
       }
-    ]
+    ],
+    "article_number": "40102,B00-D1-1.75-1000-SPLFREE"
+  },
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337039563"
   }
 ]

@@ -72,13 +72,6 @@
         errorVar={$errors?.sizes?.[sizeIndex]?.purchase_links?.[purchaseIndex]?.affiliate?.[0]}
         required={true}
       />
-
-      <PurchaseCheck
-        id="sizes_{sizeIndex}_spool_refill_{purchaseIndex}"
-        title="Is spool refill"
-        bind:formVar={$localLink.spool_refill}
-        errorVar={$errors?.sizes?.[sizeIndex]?.purchase_links?.[purchaseIndex]?.spool_refill?.[0]}
-      />
     </div>
 
     <div class="grid grid-cols-2 gap-3">

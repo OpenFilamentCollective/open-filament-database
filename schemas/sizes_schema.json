@@ -18,6 +18,11 @@
                 "description": "The diameter of the filament (in mm)",
                 "default": 1.75
             },
+            "spool_refill": {
+                "type": "boolean",
+                "description": "Indicates if this size is a refill for a reusable spool (applies to all purchase links)",
+                "default": false
+            },
             "empty_spool_weight": {
                 "type": "number",
                 "description": "The weight of a spool with no filament (in grams)"
@@ -74,7 +79,7 @@
                         },
                         "spool_refill": {
                             "type": "boolean",
-                            "description": "Indicates if this is a refill for a reusable spool",
+                            "description": "(deprecated) Previously indicated a refill per purchase link. Use parent size.spool_refill now.",
                             "default": false
                         },
                         "ships_from": {

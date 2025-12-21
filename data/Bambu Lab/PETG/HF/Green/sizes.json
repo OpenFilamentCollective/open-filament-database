@@ -6,9 +6,16 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939518600",
-        "affiliate": false,
-        "spool_refill": true
+        "affiliate": false
       }
-    ]
+    ],
+    "gtin": "6975337038597",
+    "article_number": "G02-G0-1.75-1000-SPLFREE"
+  },
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "gtin": "6975337038252"
   }
 ]
