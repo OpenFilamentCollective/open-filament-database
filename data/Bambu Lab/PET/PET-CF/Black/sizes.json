@@ -6,8 +6,7 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pet-cf",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pet-cf"
       }
     ]
   },
@@ -18,8 +17,7 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pet-cf?variant=41090354380936",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pet-cf?variant=41090354380936"
       }
     ]
   }

@@ -2,13 +2,11 @@
   {
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "B0FGTSNC9S",
-    "article_number": "02950424A",
+    "article_number": "B0FGTSNC9S",
     "purchase_links": [
       {
         "store_id": "TECBEARS",
-        "url": "https://www.amazon.ca/TECBEARS-Filament-Transparent-Toughness-Dimensional/dp/B0FGTSNC9S?th=1",
-        "affiliate": false
+        "url": "https://www.amazon.ca/TECBEARS-Filament-Transparent-Toughness-Dimensional/dp/B0FGTSNC9S?th=1"
       }
     ]
   }

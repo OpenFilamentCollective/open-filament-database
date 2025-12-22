@@ -2,7 +2,6 @@
   "id": "prusa3d",
   "name": "Prusa3D Store",
   "storefront_url": "https://www.prusa3d.com/",
-  "storefront_affiliate_link": "https://www.prusa3d.com/#a_aid=SimplyPrint",
   "logo": "prusa.png",
   "ships_from": [
     "EU"

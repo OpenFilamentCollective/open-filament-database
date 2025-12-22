@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "eryone",
-        "url": "https://eryone3d.com/collections/pla-silk/products/silk-pla",
-        "affiliate": false
+        "url": "https://eryone3d.com/collections/pla-silk/products/silk-pla"
       }
     ]
   },
@@ -16,8 +15,7 @@
     "purchase_links": [
       {
         "store_id": "eryone",
-        "url": "https://eryone3d.com/products/pla-silk-dual-color-filament",
-        "affiliate": false
+        "url": "https://eryone3d.com/products/pla-silk-dual-color-filament"
       }
     ]
   }

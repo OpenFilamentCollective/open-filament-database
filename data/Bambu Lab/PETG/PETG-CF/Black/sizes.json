@@ -7,13 +7,11 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-cf?variant=42831994126472",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       },
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/petg/products/petg-cf?variant=41065287811208",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/petg/products/petg-cf?variant=41065287811208"
       }
     ]
   }

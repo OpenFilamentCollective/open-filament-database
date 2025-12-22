@@ -4,12 +4,10 @@
     "diameter": 1.75,
     "empty_spool_weight": 135,
     "spool_core_diameter": 70,
-    "ean": "01050303z",
     "purchase_links": [
       {
         "store_id": "amazon",
-        "url": "https://amzn.to/4ngJ0mI",
-        "affiliate": true
+        "url": "https://www.amazon.co.uk/dp/B0CGKY8YQL?language=en_US"
       }
     ]
   }

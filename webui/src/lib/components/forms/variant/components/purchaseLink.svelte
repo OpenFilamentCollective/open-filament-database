@@ -65,13 +65,6 @@
     />
 
     <div class="grid grid-cols-2 gap-3">
-      <PurchaseCheck
-        id="sizes_{sizeIndex}_affiliate_{purchaseIndex}"
-        title="Affiliate link"
-        bind:formVar={$localLink.affiliate}
-        errorVar={$errors?.sizes?.[sizeIndex]?.purchase_links?.[purchaseIndex]?.affiliate?.[0]}
-        required={true}
-      />
 
       <PurchaseCheck
         id="sizes_{sizeIndex}_spool_refill_{purchaseIndex}"

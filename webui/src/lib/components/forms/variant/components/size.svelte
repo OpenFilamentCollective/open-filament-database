@@ -21,7 +21,7 @@
 
     tempLinks.update(items => [
       ...items,
-      { id: Math.max(0, ...items.map(i => i.id)) + 1, value: { store_id: undefined, url: undefined, affiliate: false }},
+      { id: Math.max(0, ...items.map(i => i.id)) + 1, value: { store_id: undefined, url: undefined }},
     ]);
   }
 
@@ -99,7 +99,18 @@
       errorVar={$errors?.sizes?.[sizeIndex]?.spool_core_diameter}
     />
   </div>
-  
+ 
+  <!--<div class="flex space-x-2">
+    <TextField
+      id="ean_{sizeIndex}"
+      title="EAN"
+      description="(deprecated) legacy EAN alias for gtin"
+      placeholder="1234567890123"
+      bind:formVar={size.ean}
+      errorVar={$errors?.sizes?.[sizeIndex]?.ean}
+    />
+  </div>-->
+
   <!-- GTIN field row -->
   <div class="flex space-x-2">
     <TextField
@@ -110,18 +121,6 @@
       bind:formVar={size.gtin}
       errorVar={$errors?.sizes?.[sizeIndex]?.gtin}
     />
-  </div>
-
-  <div class="flex space-x-2">
-    <!--<TextField
-      id="ean_{sizeIndex}"
-      title="EAN"
-      description="(deprecated) legacy EAN alias for gtin"
-      placeholder="1234567890123"
-      bind:formVar={size.ean}
-      errorVar={$errors?.sizes?.[sizeIndex]?.ean}
-    />-->
-
     <TextField
       id="article_number_{sizeIndex}"
       title="Article number"

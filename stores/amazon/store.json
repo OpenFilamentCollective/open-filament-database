@@ -2,7 +2,6 @@
   "id": "amazon",
   "name": "Amazon",
   "storefront_url": "https://www.amazon.com/",
-  "storefront_affiliate_link": "https://amzn.to/4qpm9rM",
   "logo": "amazon.png",
   "ships_from": [
     "US",

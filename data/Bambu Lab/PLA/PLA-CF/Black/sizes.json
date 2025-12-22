@@ -7,13 +7,11 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=42831855747208",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       },
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=41003202248840",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=41003202248840"
       }
     ]
   }

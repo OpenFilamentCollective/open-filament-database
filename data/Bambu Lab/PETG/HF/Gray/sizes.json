@@ -6,14 +6,12 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939747976",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939747976"
       },
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939780744",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   }

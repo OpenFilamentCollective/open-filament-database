@@ -2,12 +2,11 @@
   {
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "6937285501240",
+    "article_number": "13912",
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://au.store.bambulab.com/products/pla-silk-multi-color?id=601300140146098180",
-        "affiliate": false
+        "url": "https://eu.store.bambulab.com/products/pla-silk-multi-color?id=601314264425144324"
       }
     ]
   }

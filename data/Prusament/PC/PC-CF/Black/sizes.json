@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pc-blend-carbon-fiber-black-800g-2/#a_aid=SimplyPrint",
-        "affiliate": true
+        "url": "https://www.prusa3d.com/product/prusament-pc-blend-carbon-fiber-black-800g-2/"
       }
     ]
   },
@@ -16,8 +15,7 @@
     "purchase_links": [
       {
         "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pc-blend-carbon-fiber-black-25g-sample/#a_aid=SimplyPrint",
-        "affiliate": true
+        "url": "https://www.prusa3d.com/product/prusament-pc-blend-carbon-fiber-black-25g-sample/"
       }
     ]
   }

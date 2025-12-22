@@ -22,11 +22,6 @@
             "description": "A link to the storefront of this store",
             "$ref": "#/definitions/string_limit"
         },
-        "storefront_affiliate_link": {
-            "type": "string",
-            "description": "An affiliate link to the storefront of this store",
-            "$ref": "#/definitions/string_limit"
-        },
         "logo": {
             "type": "string",
             "description": "A link to the logo for this store",

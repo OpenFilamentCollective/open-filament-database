@@ -4,12 +4,10 @@
     "diameter": 1.75,
     "empty_spool_weight": 127,
     "spool_core_diameter": 58,
-    "ean": "45291594219709",
     "purchase_links": [
       {
         "store_id": "Anycubic",
-        "url": "https://www.awin1.com/cread.php?awinmid=69360?awinffid=2609884&ued=https%3A%2F%2Fstore.anycubic.com%2Fproducts%2Fpetg-filament%3Fvariant%3D45291594219709",
-        "affiliate": true
+        "url": "https://store.anycubic.com/products/petg-filament?variant=45291594219709"
       }
     ]
   }

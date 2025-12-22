@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "gst3d",
-        "url": "https://gst3d.eu/products/petg-transluscent?variant=52132955816269",
-        "affiliate": false
+        "url": "https://gst3d.eu/products/petg-transluscent?variant=52132955816269"
       }
     ]
   },
@@ -16,8 +15,7 @@
     "purchase_links": [
       {
         "store_id": "gst3d",
-        "url": "https://gst3d.eu/products/petg-5kg-crystal?variant=52220099068237",
-        "affiliate": false
+        "url": "https://gst3d.eu/products/petg-5kg-crystal?variant=52220099068237"
       }
     ]
   },
@@ -27,8 +25,7 @@
     "purchase_links": [
       {
         "store_id": "gst3d",
-        "url": "https://gst3d.eu/products/petg-5kg-crystal?variant=52250600243533",
-        "affiliate": false
+        "url": "https://gst3d.eu/products/petg-5kg-crystal?variant=52250600243533"
       }
     ]
   }

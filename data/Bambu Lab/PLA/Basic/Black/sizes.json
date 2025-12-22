@@ -6,14 +6,12 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=41078274654344",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=41078274654344"
       },
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=40988815556744",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   }

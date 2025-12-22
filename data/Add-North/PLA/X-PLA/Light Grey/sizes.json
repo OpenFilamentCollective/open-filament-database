@@ -8,8 +8,7 @@
       {
         "store_id": "ADD-North",
         "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%20750g%20-%20Light%20Grey",
-        "ships_from": "SE",
-        "affiliate": false
+        "ships_from": "SE"
       }
     ]
   },
@@ -21,8 +20,7 @@
     "purchase_links": [
       {
         "store_id": "ADD-North",
-        "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%202300g%20-%20Light%20Grey",
-        "affiliate": false
+        "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%202300g%20-%20Light%20Grey"
       }
     ]
   }

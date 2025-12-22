@@ -192,8 +192,6 @@ function transformSizes(sizeData: z.infer<typeof filamentSizesSchema>) {
       Array.from(value.purchase_links).forEach((link, index) => {
         let tempLink = structuredClone(link);
 
-        tempLink.affiliate = link?.affiliate ? link.affiliate : false;
-
         tempLinks[index] = tempLink;
       });
 

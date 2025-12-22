@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "crealitystore",
-        "url": "https://www.awin1.com/cread.php?awinmid=97013&awinaffid=2609884&ued=https%3A%2F%2Fstore.creality.com%2Fproducts%2Fhyper-pc-filament-1-75mm-1kg",
-        "affiliate": true
+        "url": "https://store.creality.com/products/hyper-pc-filament-1-75mm-1kg"
       }
     ]
   }

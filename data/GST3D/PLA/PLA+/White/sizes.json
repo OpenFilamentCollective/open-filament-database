@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "gst3d",
-        "url": "https://gst3d.eu/products/pla-pink-panter",
-        "affiliate": false
+        "url": "https://gst3d.eu/products/pla-pink-panter"
       }
     ]
   },
@@ -16,8 +15,7 @@
     "purchase_links": [
       {
         "store_id": "gst3d",
-        "url": "https://gst3d.eu/products/pla-3-5kg-white?variant=52219971666253",
-        "affiliate": false
+        "url": "https://gst3d.eu/products/pla-3-5kg-white?variant=52219971666253"
       }
     ]
   },
@@ -27,8 +25,7 @@
     "purchase_links": [
       {
         "store_id": "gst3d",
-        "url": "https://gst3d.eu/products/pla-3-5kg-white?variant=52250599096653",
-        "affiliate": false
+        "url": "https://gst3d.eu/products/pla-3-5kg-white?variant=52250599096653"
       }
     ]
   }

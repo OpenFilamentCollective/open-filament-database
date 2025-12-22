@@ -9,9 +9,8 @@
     "purchase_links": [
       {
         "store_id": "Anycubic",
-        "url": "https://www.awin1.com/cread.php?awinmid=69360?awinffid=2609884&ued=https%3A%2F%2Fstore.anycubic.com%2Fproducts%2Fhigh-speed-pla-filament%3Fvariant%3D44831258607805",
-        "spool_refill": true,
-        "affiliate": true
+        "url": "https://store.anycubic.com/products/high-speed-pla-filament?variant=44831258607805",
+        "spool_refill": true
       }
     ]
   }

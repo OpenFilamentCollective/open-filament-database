@@ -7,8 +7,7 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=40489681911944",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   },
@@ -20,8 +19,7 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-lemon-yellow-1-75mm-1kg-refill",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   }

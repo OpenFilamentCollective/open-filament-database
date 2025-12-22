@@ -6,13 +6,11 @@
       {
         "store_id": "microcenter",
         "url": "https://www.microcenter.com/product/611551/inland-175mm-pla-3d-printer-filament-10-kg-(22-lbs)-spool-magenta?sp=664",
-        "affiliate": false,
         "spool_refill": false
       },
       {
         "store_id": "microcenter",
         "url": "https://www.microcenter.com/product/701011/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-magenta?sp=272",
-        "affiliate": false,
         "spool_refill": true
       }
     ]

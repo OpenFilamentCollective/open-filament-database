@@ -6,21 +6,19 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-cf",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-cf"
       }
     ]
   },
   {
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "921082525998",
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-cf?variant=41270316630152",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-cf?variant=41270316630152"
       }
-    ]
+    ],
+    "gtin": "921082525998"
   }
 ]

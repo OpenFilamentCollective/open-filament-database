@@ -7,7 +7,6 @@
     "purchase_links": [
       {
         "store_id": "lostboyslab",
-        "affiliate": false,
         "url": "https://www.lostboyslab.shop/collections/materials/products/3d-filament-addnite-p15r"
       }
     ]
@@ -20,7 +19,6 @@
     "purchase_links": [
       {
         "store_id": "lostboyslab",
-        "affiliate": false,
         "url": "https://www.lostboyslab.shop/collections/addnite-3d-filaments/products/3d-filament-addnite-p15r?variant=41384516550836"
       }
     ]

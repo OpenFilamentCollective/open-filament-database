@@ -86,15 +86,6 @@
     required={true}
   />
 
-  <TextField
-    id="website"
-    title="Website"
-    description='Official website URL of the storefront'
-    placeholder="https://www.example.com"
-    bind:formVar={$form.storefront_affiliate_link}
-    errorVar={$errors.storefront_affiliate_link}
-    required={true}
-  />
 
   {#if formType === 'create'}
     <LogoUpload

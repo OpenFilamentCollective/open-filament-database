@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "microcenter",
-        "url": "",
-        "affiliate": false
+        "url": ""
       }
     ]
   }

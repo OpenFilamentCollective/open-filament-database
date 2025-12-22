@@ -9,7 +9,6 @@
     "purchase_links": [
       {
         "store_id": "LAB3D Store",
-        "affiliate": false,
         "url": "https://shop.lab3d.dk/products/lab3d-filament-pla-dark-blue-1-75mm-1kg",
         "ships_to": "EU"
       }

@@ -23,13 +23,6 @@ export const storeSchema = z.object({
       return url.startsWith('http://') || url.startsWith('https://');
     }, 'URL must use HTTP or HTTPS protocol')
     .default('https://'),
-  storefront_affiliate_link: z
-    .string()
-    .url('Please enter a valid URL')
-    .refine((url) => {
-      return url.startsWith('http://') || url.startsWith('https://');
-    }, 'URL must use HTTP or HTTPS protocol')
-    .optional(),
   logo: z
     .instanceof(File, {
       message: 'Please upload a file.'

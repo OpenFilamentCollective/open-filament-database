@@ -2,13 +2,12 @@
   {
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "921072925224",
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pc-tpu/products/pc-filament?variant=41135409496200",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pc-tpu/products/pc-filament?variant=41135409496200"
       }
-    ]
+    ],
+    "gtin": "921072925224"
   }
 ]

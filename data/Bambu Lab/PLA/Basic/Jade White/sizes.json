@@ -6,14 +6,12 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=41078274687112",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=41078274687112"
       },
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=40475106640008",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   },
@@ -25,8 +23,7 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-basic-jade-white-1-75mm-1kg-refill",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   }

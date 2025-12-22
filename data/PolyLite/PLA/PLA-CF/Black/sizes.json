@@ -5,13 +5,11 @@
     "purchase_links": [
       {
         "store_id": "amazon",
-        "url": "https://amzn.to/48Jakqb",
-        "affiliate": false
+        "url": "https://www.amazon.co.uk/dp/B07DVY9BLN?crid=3V4FV0DWZ5FZT&keywords=polylite+PLA-CF&sprefix=polylite+pla+pro%2Caps%2C571&language=en_US&dib_tag=se&dib=eyJ2IjoiMSJ9.MmV01PY5r_sZb7vAAU7wbOSGkc7_YlZuqlHbjjJEbAO_CYiSUcAGAc6QkxrwyVRcY0NVZOJVSo_xxG7uknqYFinqdWdyGd62EADrSWTRdTZi3PavDlmhPoJerXjuMOUko75piQkbyI4ULlSLVV5mj9zZ_WqM0FcaB-_LfsW1lBt_ug1eeONfTMoom8o6wK3SDcWdFRWr7vFtftEOv5owE8niS4Bvjd_3HhacFH0Yl70.22IHPAKOXqOAlyPg75iJnvV1EqKeiOjfhOeu0V8dmlY&sr=8-1"
       },
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-pla-cf?aff=1306&utm_source=affiliately&utm_campaign=aff",
-        "affiliate": true
+        "url": "https://us.polymaker.com/products/polylite-pla-cf?"
       }
     ]
   }

@@ -6,14 +6,12 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=41078280093832",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=41078280093832"
       },
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=40489682141320",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   },
@@ -25,8 +23,7 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-marine-blue-1-75mm-1kg-refill",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   }

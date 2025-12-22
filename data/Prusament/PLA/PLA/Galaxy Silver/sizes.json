@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pla-galaxy-silver-1kg/#a_aid=SimplyPrint",
-        "affiliate": true
+        "url": "https://www.prusa3d.com/product/prusament-pla-galaxy-silver-1kg/"
       }
     ]
   },
@@ -16,8 +15,7 @@
     "purchase_links": [
       {
         "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pla-galaxy-silver-1kg-refill/#a_aid=SimplyPrint",
-        "affiliate": true
+        "url": "https://www.prusa3d.com/product/prusament-pla-galaxy-silver-1kg-refill/"
       }
     ]
   }

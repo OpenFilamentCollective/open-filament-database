@@ -7,13 +7,11 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=41216786694280",
-        "affiliate": false,
         "spool_refill": false
       },
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=40475105493128",
-        "affiliate": false,
         "spool_refill": true
       }
     ]

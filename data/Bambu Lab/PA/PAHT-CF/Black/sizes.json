@@ -6,8 +6,7 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pa-pet/products/paht-cf",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pa-pet/products/paht-cf"
       }
     ]
   },
@@ -18,8 +17,7 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/pa-pet/products/paht-cf?variant=41009450483848",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/pa-pet/products/paht-cf?variant=41009450483848"
       }
     ]
   }

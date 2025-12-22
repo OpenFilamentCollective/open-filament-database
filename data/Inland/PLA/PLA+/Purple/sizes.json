@@ -6,13 +6,11 @@
       {
         "store_id": "microcenter",
         "url": "https://www.microcenter.com/product/611540/inland-175mm-pla-3d-printer-filament-10-kg-%2822-lbs%29-spool-purple",
-        "affiliate": false,
         "spool_refill": false
       },
       {
         "store_id": "microcenter",
         "url": "https://www.microcenter.com/product/687087/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-purple?sp=289",
-        "affiliate": false,
         "spool_refill": true
       }
     ]

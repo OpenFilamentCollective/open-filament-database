@@ -7,8 +7,7 @@
     "purchase_links": [
       {
         "store_id": "ADD-North",
-        "url": "https://addnorth.com/product/PLA%20CF/PLA%20CF%20-%201.75mm%20-%201000g%20-%20Black",
-        "affiliate": false
+        "url": "https://addnorth.com/product/PLA%20CF/PLA%20CF%20-%201.75mm%20-%201000g%20-%20Black"
       }
     ]
   },
@@ -18,8 +17,7 @@
     "purchase_links": [
       {
         "store_id": "ADD-North",
-        "url": "https://addnorth.com/product/PLA%20CF%202.85/PLA%20CF%20-%202.85mm%20-%201000g%20-%20Black",
-        "affiliate": false
+        "url": "https://addnorth.com/product/PLA%20CF%202.85/PLA%20CF%20-%202.85mm%20-%201000g%20-%20Black"
       }
     ]
   }

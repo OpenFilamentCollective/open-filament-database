@@ -9,7 +9,6 @@
     "purchase_links": [
       {
         "store_id": "LAB3D Store",
-        "affiliate": false,
         "url": "https://shop.lab3d.dk/products/l3d-filament-silk-pla-light-lilla-1-75mm-1kg",
         "ships_from": "DK",
         "ships_to": "EU"

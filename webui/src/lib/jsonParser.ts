@@ -19,7 +19,6 @@ interface Store {
   id: string;
   name: string;
   storefront_url: string;
-  affiliate: boolean;
   logo: string;
   ships_from: string[];
   ships_to: string[];
@@ -51,7 +50,6 @@ interface Size {
 interface PurchaseLink {
   store_id: string;
   url: string;
-  affiliate: boolean;
 }
 
 interface Variant {
@@ -230,7 +228,6 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
           id: storeData?.id ?? folderName,
           name: storeData?.name ?? folderName,
           storefront_url: storeData?.storefront_url ?? '',
-          storefront_affiliate_link: storeData?.storefront_affiliate_link ?? '',
           logo,
           ships_from: storeData?.ships_from ?? [],
           ships_to: storeData?.ships_to ?? [],

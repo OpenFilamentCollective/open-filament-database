@@ -7,8 +7,7 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=40475106672776",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   },
@@ -19,8 +18,7 @@
     "purchase_links": [
       {
         "store_id": "3deksperten",
-        "url": "https://3deksperten.dk/products/bambu-lab-pla-basic-orange-1-75mm-1kg-refill",
-        "affiliate": false
+        "url": "https://3deksperten.dk/products/bambu-lab-pla-basic-orange-1-75mm-1kg-refill"
       }
     ]
   }

@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "crealitystore",
-        "url": "https://www.awin1.com/cread.php?awinmid=97013&awinaffid=2609884&ued=https%3A%2F%2Fstore.creality.com%2Fproducts%2Fhyper-pla-rfid-3d-printing-filament-1kg",
-        "affiliate": true
+        "url": "https://store.creality.com/products/hyper-pla-rfid-3d-printing-filament-1kg"
       }
     ]
   },
@@ -16,8 +15,7 @@
     "purchase_links": [
       {
         "store_id": "crealitystore",
-        "url": "https://www.awin1.com/cread.php?awinmid=97013&awinaffid=2609884&ued=https%3A%2F%2Fstore.creality.com%2Fproducts%2Fhyper-series-pla-3d-printing-filament-1kg",
-        "affiliate": true
+        "url": "https://store.creality.com/products/hyper-series-pla-3d-printing-filament-1kg"
       }
     ]
   }

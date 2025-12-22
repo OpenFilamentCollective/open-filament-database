@@ -22,6 +22,13 @@
       </div>
     {/if}
 
+    {#if size.gtin}
+      <div class="flex justify-between items-center">
+        <span class="font-medium text-gray-700 dark:text-gray-300">GTIN:</span>
+        <span class="font-mono text-sm">{size.gtin}</span>
+      </div>
+    {/if}
+
     {#if size.ean}
       <div class="flex justify-between items-center">
         <span class="font-medium text-gray-700 dark:text-gray-300">EAN:</span>
@@ -63,12 +70,6 @@
             rel="noopener noreferrer"
             class="flex items-center justify-between text-sm text-blue-600 dark:text-blue-400 hover:underline">
             <span>{link.store_id}</span>
-            {#if link.affiliate}
-              <span
-                class="text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded">
-                Affiliate
-              </span>
-            {/if}
           </a>
         {/each}
       </div>

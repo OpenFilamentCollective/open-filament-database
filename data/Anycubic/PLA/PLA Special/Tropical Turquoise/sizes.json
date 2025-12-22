@@ -2,12 +2,10 @@
   {
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "44831261229245",
     "purchase_links": [
       {
         "store_id": "Anycubic",
-        "url": "https://www.awin1.com/cread.php?awinmid=69360?awinffid=2609884&ued=https%3A%2F%2Fstore.anycubic.com%2Fproducts%2Fpla-basic-special-color-filament%3Fvariant%3D44831261229245",
-        "affiliate": true
+        "url": "https://store.anycubic.com/products/pla-basic-special-color-filament?variant=44831261229245"
       }
     ]
   }

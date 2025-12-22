@@ -6,13 +6,11 @@
       {
         "store_id": "microcenter",
         "url": "https://www.microcenter.com/product/611555/inland-175mm-pla-3d-printer-filament-10-kg-(22-lbs)-spool-olive-green?sp=715",
-        "affiliate": false,
         "spool_refill": false
       },
       {
         "store_id": "microcenter",
         "url": "https://www.microcenter.com/product/701012/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-olive-green?sp=293",
-        "affiliate": false,
         "spool_refill": true
       }
     ]

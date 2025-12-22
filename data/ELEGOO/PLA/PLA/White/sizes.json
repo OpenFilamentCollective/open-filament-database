@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "elegoo",
-        "url": "https://www.awin1.com/cread.php?awinmid=61127&awinaffid=2609884&ued=https%3A%2F%2Feu.elegoo.com%2Fproducts%2Fpla-filament-1-75mm-colored-1kg",
-        "affiliate": true
+        "url": "https://eu.elegoo.com/products/pla-filament-1-75mm-colored-1kg"
       }
     ]
   },
@@ -16,8 +15,7 @@
     "purchase_links": [
       {
         "store_id": "elegoo",
-        "url": "https://www.awin1.com/cread.php?awinmid=61127&awinaffid=2609884&ued=https%3A%2F%2Feu.elegoo.com%2Fproducts%2Fpla-basic-filament-1-75mm-colored-1kg",
-        "affiliate": true
+        "url": "https://eu.elegoo.com/products/pla-basic-filament-1-75mm-colored-1kg"
       }
     ]
   },
@@ -27,8 +25,7 @@
     "purchase_links": [
       {
         "store_id": "elegoo",
-        "url": "https://www.awin1.com/cread.php?awinmid=61127&awinaffid=2609884&ued=https%3A%2F%2Feu.elegoo.com%2Fproducts%2Fmulti-color-250-g-filament-bundle",
-        "affiliate": true
+        "url": "https://eu.elegoo.com/products/multi-color-250-g-filament-bundle"
       }
     ]
   },
@@ -38,8 +35,7 @@
     "purchase_links": [
       {
         "store_id": "elegoo",
-        "url": "https://www.awin1.com/cread.php?awinmid=61127&awinaffid=2609884&ued=https%3A%2F%2Feu.elegoo.com%2Fproducts%2Forangestorm-giga-large-3kg-filament",
-        "affiliate": true
+        "url": "https://eu.elegoo.com/products/orangestorm-giga-large-3kg-filament"
       }
     ]
   }

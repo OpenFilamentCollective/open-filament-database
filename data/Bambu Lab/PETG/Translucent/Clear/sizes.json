@@ -7,13 +7,11 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42479468281992",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       },
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42235108098184",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42235108098184"
       }
     ]
   }

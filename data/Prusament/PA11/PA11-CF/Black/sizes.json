@@ -5,8 +5,7 @@
     "purchase_links": [
       {
         "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pa11-carbon-fiber-black-800g/#a_aid=SimplyPrint",
-        "affiliate": true
+        "url": "https://www.prusa3d.com/product/prusament-pa11-carbon-fiber-black-800g/"
       }
     ]
   },
@@ -16,8 +15,7 @@
     "purchase_links": [
       {
         "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pa11-carbon-fiber-black-25g-sample/#a_aid=SimplyPrint",
-        "affiliate": true
+        "url": "https://www.prusa3d.com/product/prusament-pa11-carbon-fiber-black-25g-sample/"
       }
     ]
   }

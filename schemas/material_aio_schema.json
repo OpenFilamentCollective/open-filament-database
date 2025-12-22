@@ -89,7 +89,7 @@
                     },
                     "density": {
                         "type": "number",
-                        "description": "The density of the filament (in g/cm³)",
+                        "description": "The density of the filament (in g/cm\u00b3)",
                         "default": 1.24
                     },
                     "data_sheet_url": {
@@ -211,9 +211,6 @@
                                                             "type": "string",
                                                             "$ref": "#/definitions/string_limit"
                                                         },
-                                                        "affiliate": {
-                                                            "type": "boolean"
-                                                        },
                                                         "ships_from": {
                                                             "type": [
                                                                 "array",
@@ -240,7 +237,6 @@
                                                         }
                                                     },
                                                     "required": [
-                                                        "affiliate",
                                                         "url"
                                                     ]
                                                 }

@@ -6,14 +6,12 @@
     "purchase_links": [
       {
         "store_id": "BBLStore",
-        "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939813512",
-        "affiliate": false
+        "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939813512"
       },
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939846280",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   },
@@ -26,8 +24,7 @@
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-petg-hf-white-1-75mm-1kg-refill",
-        "spool_refill": true,
-        "affiliate": false
+        "spool_refill": true
       }
     ]
   }

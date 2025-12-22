@@ -170,7 +170,6 @@ class Store(IToFromJSONData):
     name: str
     storefront_url: str
     logo: str
-    storefront_affiliate_link: str | None
     ships_from: list[str]
     ships_to: list[str]
 
@@ -179,7 +178,6 @@ class Store(IToFromJSONData):
                  name: str,
                  storefront_url: str,
                  logo: str,
-                 storefront_affiliate_link=None,
                  ships_from: list[str] = None,
                  ships_to: list[str] = None):
         if ships_from is None:
@@ -191,7 +189,6 @@ class Store(IToFromJSONData):
         self.name = name
         self.storefront_url = storefront_url
         self.logo = logo
-        self.storefront_affiliate_link = storefront_affiliate_link
         self.ships_from = ships_from
         self.ships_to = ships_to
 
@@ -201,7 +198,6 @@ class Store(IToFromJSONData):
             "name": self.name,
             "storefront_url": self.storefront_url,
             "logo": self.logo,
-            "storefront_affiliate_link": self.storefront_affiliate_link,
             "ships_from": self.ships_from,
             "ships_to": self.ships_to
         })
@@ -213,7 +209,6 @@ class Store(IToFromJSONData):
             name=json_data["name"],
             storefront_url=json_data["storefront_url"],
             logo=json_data["logo"],
-            storefront_affiliate_link=json_data.get("storefront_affiliate_link"),
             ships_from=json_data.get("ships_from", []),
             ships_to=json_data.get("ships_to", [])
         )
@@ -266,7 +261,6 @@ def save_stores(parent_folder: PathLike):
 class SizePurchaseLink(IToFromJSONData):
     store: Store  # Required
     url: str  # Required
-    affiliate: bool  # Required
     spool_refill: bool
     ships_from: list[str]
     ships_to: list[str]
@@ -274,7 +268,6 @@ class SizePurchaseLink(IToFromJSONData):
     def __init__(self,
                  store_id: str,
                  url: str,
-                 affiliate=False,
                  spool_refill=False,
                  ships_from: list[str] = None,
                  ships_to: list[str] = None):
@@ -285,7 +278,6 @@ class SizePurchaseLink(IToFromJSONData):
 
         self.store = stores[store_id]
         self.url = url
-        self.affiliate = affiliate
         self.spool_refill = spool_refill
         self.ships_from = ships_from
         self.ships_to = ships_to
@@ -314,7 +306,6 @@ class SizePurchaseLink(IToFromJSONData):
         return shallow_remove_empty({
             "store_id": self.store.store_id,
             "url": self.url,
-            "affiliate": self.affiliate,
             "spool_refill": self.spool_refill,
             "ships_from": self.ships_from,
             "ships_to": self.ships_to
@@ -325,7 +316,6 @@ class SizePurchaseLink(IToFromJSONData):
         return SizePurchaseLink(
             store_id=json_data["store_id"],
             url=json_data["url"],
-            affiliate=json_data["affiliate"],
             spool_refill=json_data.get("spool_refill", False),
             ships_from=json_data.get("ships_from", []),
             ships_to=json_data.get("ships_to", [])

@@ -82,7 +82,6 @@ export const load: PageServerLoad = async ({ params, parent }) => {
   };
 
   let stores: string[] = [];
-
   Object.values(filamentData.stores).forEach((value) => {
     stores.push(value.id);
   });

@@ -6,13 +6,11 @@
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?skr=yes&id=43292384100488",
-        "affiliate": false,
         "spool_refill": false
       },
       {
         "store_id": "BBLStore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?id=43292384100488",
-        "affiliate": false,
         "spool_refill": true
       }
     ]

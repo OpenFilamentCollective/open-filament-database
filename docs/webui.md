@@ -14,7 +14,7 @@ To run the WebUI simply take your previous terminal window and run the following
 1. Enter the WebUI folder and install the WebUI needs automatically
    ```bash
    cd webui
-   npm install
+   npm ci
    ```
 
 2. Start the website

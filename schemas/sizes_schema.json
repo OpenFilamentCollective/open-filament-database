@@ -69,9 +69,6 @@
                             "type": "string",
                             "$ref": "#/definitions/string_limit"
                         },
-                        "affiliate": {
-                            "type": "boolean"
-                        },
                         "spool_refill": {
                             "type": "boolean",
                             "description": "Indicates if this is a refill for a reusable spool",
@@ -104,7 +101,6 @@
                     },
                     "required": [
                         "store_id",
-                        "affiliate",
                         "url"
                     ]
                 }
