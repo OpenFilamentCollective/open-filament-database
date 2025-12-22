@@ -333,7 +333,7 @@ def create_variant(variant_path: Path, variant_data: dict, sizes: list[dict],
     if variant_data.get("color_hexes"):
         # Multi-color: use array
         normalized_hexes = [normalize_color_hex(h) for h in variant_data["color_hexes"]]
-        color_hex_list = ["#" + h for h in normalized_hexes if h]
+        color_hex_list = ["#" + h for h in normalized_hexes]
         if color_hex_list:
             # At least one valid multi-color entry; keep as non-empty array
             color_hex = color_hex_list
@@ -345,7 +345,7 @@ def create_variant(variant_path: Path, variant_data: dict, sizes: list[dict],
             color_hex = "#" + fallback_hex
     else:
         normalized_single_hex = normalize_color_hex(raw_color_hex) if raw_color_hex else "000000"
-        color_hex = f"#{normalized_single_hex}" if normalized_single_hex else None
+        color_hex = f"#{normalized_single_hex}"
 
     # Build traits
     traits = {}
