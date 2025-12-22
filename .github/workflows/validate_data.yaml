@@ -36,4 +36,21 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Validate data
-        run: python data_validator.py --${{ matrix.name }}
+        id: validate
+        run: |
+          python data_validator.py --${{ matrix.name }} 2>&1 | tee validation_output.txt
+          exit ${PIPESTATUS[0]}
+      - name: Comment on PR with validation errors
+        if: failure() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "## ❌ Validation Failed: ${{ matrix.name }}"
+            echo ""
+            echo '```'
+            cat validation_output.txt
+            echo '```'
+          } > comment_body.txt
+
+          gh pr comment ${{ github.event.pull_request.number }} --body-file comment_body.txt
