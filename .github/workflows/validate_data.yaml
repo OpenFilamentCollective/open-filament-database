@@ -8,6 +8,14 @@ on:
       - 'data_validator.py'
       - 'db_serializer.py'
       - 'requirements.txt'
+  pull_request_target:
+    paths:
+      - 'data/**'
+      - 'stores/**'
+      - 'schemas/**'
+      - 'data_validator.py'
+      - 'db_serializer.py'
+      - 'requirements.txt'
   push:
     branches: [ main ]
     paths:
@@ -21,14 +29,18 @@ on:
 
 jobs:
   validate_data:
+    # Only run on pull_request (not pull_request_target) to avoid duplicate runs for same-repo PRs
+    if: github.event_name != 'pull_request_target' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-24.04
     strategy:
       matrix:
         name: [ json-files, folder-names, store-ids, logo-files ]
     name: Validate data - ${{ matrix.name }}
     steps:
-      - name: Checkout
+      - name: Checkout PR code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -41,9 +53,44 @@ jobs:
           python data_validator.py --${{ matrix.name }} 2>&1 | tee validation_output.txt
           exit ${PIPESTATUS[0]}
       - name: Upload validation output
-        if: failure() && github.event_name == 'pull_request'
+        if: failure() && (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
         uses: actions/upload-artifact@v4
         with:
           name: validation-output-${{ matrix.name }}
           path: validation_output.txt
           retention-days: 1
+
+  comment:
+    needs: validate_data
+    if: failure() && (github.event_name == 'pull_request' || github.event_name == 'pull_request_target')
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Download validation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: validation-output-*
+          merge-multiple: false
+
+      - name: Post comment with validation errors
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "## :x: Validation Failed"
+            echo ""
+            for dir in artifacts/validation-output-*/; do
+              if [ -d "$dir" ]; then
+                name=$(basename "$dir" | sed 's/validation-output-//')
+                echo "### $name"
+                echo '```'
+                cat "$dir/validation_output.txt"
+                echo '```'
+                echo ""
+              fi
+            done
+          } > comment_body.txt
+
+          gh pr comment ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --body-file comment_body.txt
