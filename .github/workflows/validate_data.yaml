@@ -19,6 +19,9 @@ on:
       - 'requirements.txt'
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+
 jobs:
   validate_data:
     runs-on: ubuntu-24.04
