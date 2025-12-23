@@ -102,7 +102,7 @@ export const updateBrand = async (brandData: z.infer<typeof brandSchema>) => {
     try {
       const files = fs.readdirSync(newDir);
       const logoFile = files.find(
-        (file) => file.toLowerCase().match(/\.(jpg|jpeg|png|gif|webp)$/i) && !file.startsWith('.'),
+        (file) => file.toLowerCase().match(/\.(jpg|jpeg|png|gif)$/i) && !file.startsWith('.'),
       );
       if (logoFile) {
         logoUrl = `/data/${brandData.brand}/${logoFile}`;

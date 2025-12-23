@@ -3,10 +3,19 @@
     "definitions": {
         "string_limit": {
             "maxLength": 1000
+        },
+        "id": {
+            "maxLength": 1000,
+            "pattern": "^[a-z0-9+]+(_[a-z0-9+]+)*$"
         }
     },
     "properties": {
-        "color_name": {
+        "id": {
+            "type": "string",
+            "description": "The unique identifier for this variant",
+            "$ref": "#/definitions/id"
+        },
+        "name": {
             "type": "string",
             "description": "The manufacturer's name for this filament color",
             "$ref": "#/definitions/string_limit"
@@ -85,6 +94,270 @@
                 "biodegradable": {
                     "type": "boolean",
                     "description": "Indicates if the filament will biodegrade"
+                },
+                "filtration_recommended": {
+                    "type": "boolean",
+                    "description": "Releases a higher concentration of unsafe particles/fumes during printing so a HEPA and carbon filter is strongly recommended"
+                },
+                "biocompatible": {
+                    "type": "boolean",
+                    "description": "Certified biocompatibility"
+                },
+                "home_compostable": {
+                    "type": "boolean",
+                    "description": "Decomposes into natural elements in a home compost system"
+                },
+                "industrially_compostable": {
+                    "type": "boolean",
+                    "description": "Decomposes into natural elements in commercial composting facilities"
+                },
+                "bio_based": {
+                    "type": "boolean",
+                    "description": "Predominantly made from renewable biological resources"
+                },
+                "antibacterial": {
+                    "type": "boolean",
+                    "description": "Has antibacterial properties"
+                },
+                "air_filtering": {
+                    "type": "boolean",
+                    "description": "Has air filtering properties"
+                },
+                "abrasive": {
+                    "type": "boolean",
+                    "description": "The material is abrasive and requires an abrasive-resistant nozzle"
+                },
+                "foaming": {
+                    "type": "boolean",
+                    "description": "The material increases its volume during extrusion"
+                },
+                "castable": {
+                    "type": "boolean",
+                    "description": "The material is suitable to be used as a sacrificial pattern for investment casting"
+                },
+                "self_extinguishing": {
+                    "type": "boolean",
+                    "description": "The material is self-extinguishing"
+                },
+                "paramagnetic": {
+                    "type": "boolean",
+                    "description": "The material has paramagnetic properties"
+                },
+                "radiation_shielding": {
+                    "type": "boolean",
+                    "description": "Has radiation shielding properties"
+                },
+                "high_temperature": {
+                    "type": "boolean",
+                    "description": "The material softens at higher temperatures than what is common for the material type"
+                },
+                "esd_safe": {
+                    "type": "boolean",
+                    "description": "The material is static dissipative"
+                },
+                "conductive": {
+                    "type": "boolean",
+                    "description": "The material can conduct electricity"
+                },
+                "emi_shielding": {
+                    "type": "boolean",
+                    "description": "The material can be used for shielding against electromagnetic interference"
+                },
+                "blend": {
+                    "type": "boolean",
+                    "description": "The material is a blend of multiple polymers"
+                },
+                "water_soluble": {
+                    "type": "boolean",
+                    "description": "Can be dissolved in water"
+                },
+                "ipa_soluble": {
+                    "type": "boolean",
+                    "description": "Can be dissolved in IPA"
+                },
+                "limonene_soluble": {
+                    "type": "boolean",
+                    "description": "Can be dissolved in limonene"
+                },
+                "low_outgassing": {
+                    "type": "boolean",
+                    "description": "Releases only minimal gas when placed in a vacuum"
+                },
+                "silk": {
+                    "type": "boolean",
+                    "description": "Produces smooth, shiny/glossy surface"
+                },
+                "transparent": {
+                    "type": "boolean",
+                    "description": "Not fully opaque, does not disperse light (glass-like transparency)"
+                },
+                "without_pigments": {
+                    "type": "boolean",
+                    "description": "The material is of its natural color, no pigments were added"
+                },
+                "iridescent": {
+                    "type": "boolean",
+                    "description": "Changes color based on the viewing angle"
+                },
+                "pearlescent": {
+                    "type": "boolean",
+                    "description": "Reflected light is mostly white (special case of iridescent)"
+                },
+                "glitter": {
+                    "type": "boolean",
+                    "description": "Contains coarse glitter particles"
+                },
+                "neon": {
+                    "type": "boolean",
+                    "description": "Neon color/glows under UV light (fluorescent)"
+                },
+                "illuminescent_color_change": {
+                    "type": "boolean",
+                    "description": "The glow color is different to the material base color"
+                },
+                "temperature_color_change": {
+                    "type": "boolean",
+                    "description": "Changes color based on the temperature"
+                },
+                "gradual_color_change": {
+                    "type": "boolean",
+                    "description": "Transitions between colors as the filament is extruded"
+                },
+                "coextruded": {
+                    "type": "boolean",
+                    "description": "Co-extruded from multiple colors"
+                },
+                "contains_carbon": {
+                    "type": "boolean",
+                    "description": "Contains carbon"
+                },
+                "contains_carbon_fiber": {
+                    "type": "boolean",
+                    "description": "Contains carbon fibers"
+                },
+                "contains_carbon_nano_tubes": {
+                    "type": "boolean",
+                    "description": "Contains carbon nano tubes"
+                },
+                "contains_glass": {
+                    "type": "boolean",
+                    "description": "Contains glass"
+                },
+                "contains_glass_fiber": {
+                    "type": "boolean",
+                    "description": "Contains glass fibers"
+                },
+                "contains_kevlar": {
+                    "type": "boolean",
+                    "description": "Contains kevlar"
+                },
+                "contains_ptfe": {
+                    "type": "boolean",
+                    "description": "Contains PTFE"
+                },
+                "contains_stone": {
+                    "type": "boolean",
+                    "description": "Contains stone"
+                },
+                "contains_magnetite": {
+                    "type": "boolean",
+                    "description": "Contains magnetite"
+                },
+                "contains_ceramic": {
+                    "type": "boolean",
+                    "description": "Contains ceramic"
+                },
+                "contains_boron_carbide": {
+                    "type": "boolean",
+                    "description": "Contains boron carbide"
+                },
+                "contains_organic_material": {
+                    "type": "boolean",
+                    "description": "Contains organic material"
+                },
+                "contains_cork": {
+                    "type": "boolean",
+                    "description": "Contains cork"
+                },
+                "contains_wax": {
+                    "type": "boolean",
+                    "description": "Contains wax"
+                },
+                "contains_wood": {
+                    "type": "boolean",
+                    "description": "Contains wood"
+                },
+                "contains_algae": {
+                    "type": "boolean",
+                    "description": "Contains algae"
+                },
+                "contains_bamboo": {
+                    "type": "boolean",
+                    "description": "Contains bamboo"
+                },
+                "contains_pine": {
+                    "type": "boolean",
+                    "description": "Contains pine"
+                },
+                "contains_metal": {
+                    "type": "boolean",
+                    "description": "Contains metal"
+                },
+                "contains_bronze": {
+                    "type": "boolean",
+                    "description": "Contains bronze"
+                },
+                "contains_iron": {
+                    "type": "boolean",
+                    "description": "Contains iron"
+                },
+                "contains_steel": {
+                    "type": "boolean",
+                    "description": "Contains steel"
+                },
+                "contains_silver": {
+                    "type": "boolean",
+                    "description": "Contains silver"
+                },
+                "contains_copper": {
+                    "type": "boolean",
+                    "description": "Contains copper"
+                },
+                "contains_aluminium": {
+                    "type": "boolean",
+                    "description": "Contains aluminium"
+                },
+                "contains_brass": {
+                    "type": "boolean",
+                    "description": "Contains brass"
+                },
+                "contains_tungsten": {
+                    "type": "boolean",
+                    "description": "Contains tungsten"
+                },
+                "imitates_wood": {
+                    "type": "boolean",
+                    "description": "Imitates wood"
+                },
+                "imitates_metal": {
+                    "type": "boolean",
+                    "description": "Imitates metal"
+                },
+                "imitates_marble": {
+                    "type": "boolean",
+                    "description": "Imitates marble"
+                },
+                "imitates_stone": {
+                    "type": "boolean",
+                    "description": "Imitates stone"
+                },
+                "lithophane": {
+                    "type": "boolean",
+                    "description": "Specifically designed for lithophaning"
+                },
+                "limited_edition": {
+                    "type": "boolean",
+                    "description": "The material is a limited edition run"
                 }
             },
             "additionalProperties": false
@@ -92,7 +365,8 @@
     },
     "additionalProperties": false,
     "required": [
-        "color_name",
+        "id",
+        "name",
         "color_hex"
     ]
 }

@@ -83,7 +83,7 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
       ]);
 
       const brandData = JSON.parse(brandDataBuffer.toString());
-      const logoFile = files.find((file) => /\.(png|jpg|jpeg|svg|webp)$/i.test(file));
+      const logoFile = files.find((file) => /\.(png|jpg|jpeg|svg)$/i.test(file));
       const logo = logoFile ? logoFile : '';
 
       // Get material folders
@@ -219,7 +219,7 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
       ]);
       
       const storeData = JSON.parse(storeDataBuffer.toString());
-      const logoFile = files.find((file) => /\.(png|jpg|jpeg|svg|webp)$/i.test(file));
+      const logoFile = files.find((file) => /\.(png|jpg|jpeg|svg)$/i.test(file));
       const logo = logoFile ? logoFile : '';
 
       return {
