@@ -1,0 +1,197 @@
+name: Build Dataset
+
+on:
+  schedule:
+    - cron: "30 0 * * *"  # Run daily at 00:30 UTC (after profile updates)
+  workflow_dispatch:
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.check.outputs.has_changes }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for changes in last 24 hours
+        id: check
+        run: |
+          # For manual dispatch, always build
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Manual dispatch - will build"
+            exit 0
+          fi
+
+          # Check for commits in the last 24 hours affecting relevant paths
+          CHANGES=$(git log --since="24 hours ago" --oneline -- data/ stores/ builder/ schemas/ | wc -l)
+          if [ "$CHANGES" -gt 0 ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Found $CHANGES commits in last 24 hours"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes in last 24 hours - skipping build"
+          fi
+
+  build:
+    needs: check-changes
+    if: needs.check-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # No external dependencies needed for the builder
+
+      - name: Generate version
+        id: version
+        run: |
+          # Auto-generate version: YYYY.MM.DD
+          echo "version=$(date +%Y.%m.%d)" >> $GITHUB_OUTPUT
+
+      - name: Build dataset
+        run: |
+          python -m builder.build \
+            --version "${{ steps.version.outputs.version }}"
+
+      - name: List generated files
+        run: |
+          echo "=== Generated Files ==="
+          find dist -type f | head -100
+          echo ""
+          echo "=== File counts ==="
+          echo "JSON files: $(find dist -name '*.json' | wc -l)"
+          echo "CSV files: $(find dist -name '*.csv' | wc -l)"
+          echo "SQLite files: $(find dist -name '*.db' | wc -l)"
+          echo ""
+          echo "=== Manifest ==="
+          cat dist/manifest.json | head -50
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dataset-${{ steps.version.outputs.version }}
+          path: dist/
+          retention-days: 30
+
+      # Deploy to GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      # Create Release
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: dataset-v${{ steps.version.outputs.version }}
+          name: Dataset v${{ steps.version.outputs.version }}
+          body: |
+            ## Open Filament Database v${{ steps.version.outputs.version }}
+            
+            ### Downloads
+            
+            | Format | Description | File |
+            |--------|-------------|------|
+            | **SQLite** | Relational database with full schema | `filaments.db` |
+            | **SQLite (compressed)** | XZ compressed SQLite | `filaments.db.xz` |
+            | **JSON** | Complete dataset in one file | `all.json` |
+            | **JSON (compressed)** | Gzipped JSON | `all.json.gz` |
+            | **NDJSON** | Newline-delimited JSON for streaming | `all.ndjson` |
+            | **CSV** | Multiple CSV files | `csv/` directory |
+
+            ### Endpoints
+
+            - `/api/v1/brands/{slug}/index.json` - Individual brand with filaments
+            - `/api/v1/stores/index.json` - List of stores
+            - `/api/v1/stores/{slug}.json` - Individual store
+            - `/api/v1/schemas/index.json` - List of available JSON schemas
+            - `/api/v1/schemas/{name}.json` - Individual JSON schema
+
+            ### Direct Downloads
+
+            - `/json/all.json` - Complete dataset
+            - `/sqlite/filaments.db` - SQLite database
+            - `/csv/` - CSV files
+            
+            ### Checksums
+            
+            See `manifest.json` for SHA256 checksums of all files.
+          files: |
+            dist/json/all.json
+            dist/json/all.json.gz
+            dist/json/all.ndjson
+            dist/sqlite/filaments.db
+            dist/sqlite/filaments.db.xz
+            dist/manifest.json
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+
+  # Validate the build
+  validate:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dataset-${{ needs.build.outputs.version }}
+          path: dist/
+
+      - name: Validate JSON
+        run: |
+          echo "Validating JSON files..."
+          for f in dist/json/*.json; do
+            python -m json.tool "$f" > /dev/null && echo "✓ $f" || echo "✗ $f"
+          done
+
+      - name: Validate SQLite
+        run: |
+          echo "Validating SQLite database..."
+          sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM brand;"
+          sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM filament;"
+          sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM variant;"
+          sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM size;"
+          echo "✓ SQLite database is valid"
+
+      - name: Test SQLite queries
+        run: |
+          echo "Testing example queries..."
+          sqlite3 dist/sqlite/filaments.db "
+            SELECT b.name, COUNT(f.id) as filaments
+            FROM brand b
+            LEFT JOIN filament f ON f.brand_id = b.id
+            GROUP BY b.id
+            ORDER BY filaments DESC
+            LIMIT 10;
+          "
+          echo ""
+          sqlite3 dist/sqlite/filaments.db "
+            SELECT * FROM v_full_size LIMIT 5;
+          "
