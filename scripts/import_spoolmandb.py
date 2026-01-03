@@ -29,7 +29,7 @@ DEFAULT_LOGO_PATH = Path(__file__).parent / "placeholder.svg"
 
 # Placeholder values for missing required fields
 PLACEHOLDER_WEBSITE = "https://unknown.com"
-PLACEHOLDER_LOGO = "placeholder.svg"
+PLACEHOLDER_LOGO = "logo.svg"  # Changed to match schema pattern
 PLACEHOLDER_ORIGIN = "Unknown"
 DEFAULT_DIAMETER_TOLERANCE = 0.05
 
@@ -59,6 +59,31 @@ def normalize_for_matching(name: str) -> str:
     # Remove common suffixes
     name = re.sub(r'(3d|filament)$', '', name)
     return name
+
+
+def generate_id(name: str) -> str:
+    """Generate a valid ID from a name.
+
+    IDs must match pattern: ^[a-z0-9+]+(_[a-z0-9+]+)*$
+    - Lowercase only
+    - Only alphanumeric, plus sign (+), and underscore (_)
+    - No leading/trailing underscores
+    - No consecutive underscores
+    """
+    # Convert to lowercase
+    id_str = name.lower()
+    # Replace spaces and hyphens with underscores
+    id_str = re.sub(r'[\s\-]+', '_', id_str)
+    # Remove all characters except alphanumeric, +, and _
+    id_str = re.sub(r'[^a-z0-9+_]', '', id_str)
+    # Replace consecutive underscores with single underscore
+    id_str = re.sub(r'_+', '_', id_str)
+    # Remove leading/trailing underscores
+    id_str = id_str.strip('_')
+    # Ensure we have a valid ID
+    if not id_str:
+        id_str = "unknown"
+    return id_str
 
 
 def normalize_color_hex(hex_value: str) -> str:
@@ -243,8 +268,10 @@ def create_brand(brand_path: Path, brand_name: str, dry_run: bool = False, verbo
     if not dry_run:
         brand_path.mkdir(parents=True, exist_ok=True)
 
+        brand_id = generate_id(brand_name)
         brand_data = {
-            "brand": brand_name,
+            "id": brand_id,
+            "name": brand_name,
             "logo": PLACEHOLDER_LOGO,
             "website": PLACEHOLDER_WEBSITE,
             "origin": PLACEHOLDER_ORIGIN,
@@ -301,7 +328,9 @@ def create_filament(filament_path: Path, filament_name: str, filament_data: dict
         if generic_settings:
             slicer_settings = {"generic": generic_settings}
 
+    filament_id = generate_id(filament_name)
     filament_json = {
+        "id": filament_id,
         "name": filament_name,
         "density": filament_data.get("density", 1.24),
         "diameter_tolerance": DEFAULT_DIAMETER_TOLERANCE,
@@ -356,8 +385,10 @@ def create_variant(variant_path: Path, variant_data: dict, sizes: list[dict],
     if variant_data.get("finish") == "matte":
         traits["matte"] = True
 
+    variant_id = generate_id(color_name)
     variant_json = {
-        "color_name": color_name,
+        "id": variant_id,
+        "name": color_name,
         "color_hex": color_hex,
     }
     if traits:
