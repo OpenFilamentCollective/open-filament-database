@@ -1,0 +1,16 @@
+{
+    "id": "galaxy",
+    "name": "Galaxy",
+    "diameter_tolerance": 0.03,
+    "density": 1.19,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Galaxy_Technical_Data_Sheet.pdf?v=1709278402",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_PLA_Galaxy.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PLA Galaxy"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PLA Galaxy"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "id": "bright_green",
+    "name": "Bright green",
+    "color_hex": "#14ff28",
+    "traits": {
+        "recyclable": true
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "id": "high_speed_translucent_petg",
+    "name": "High Speed Translucent PETG",
+    "diameter_tolerance": 0.02,
+    "density": 1.25,
+    "max_dry_temperature": 50
+}

@@ -14,7 +14,11 @@ const formatBytes = (bytes: number, decimals = 2) => {
 };
 
 export const brandSchema = z.object({
-  brand: z.string().min(1, 'Brand name is required'),
+  // `id` is optional: generated from the brand name when creating a new brand
+  id: z.string().optional(),
+  // `brand` is the input field used in forms (legacy name). `name` may be present
+  // when loading existing brand data; accept either.
+  name: z.string().min(2, 'Brand name must be at least 2 characters long').max(100, 'Brand name must be at most 100 characters long'),
   website: z
     .string()
     .url('Please enter a valid URL')
@@ -34,5 +38,4 @@ export const brandSchema = z.object({
       message: `The image is too large. Please choose an image smaller than ${formatBytes(MAX_FILE_SIZE)}.`,
     })
     .optional(),
-  oldBrandName: z.string().optional(),
 });

@@ -1,0 +1,11 @@
+{
+    "id": "steel_blue",
+    "name": "Steel Blue",
+    "color_hex": "#232D53",
+    "color_standards": {
+        "ral": "5013"
+    },
+    "traits": {
+        "recyclable": true
+    }
+}

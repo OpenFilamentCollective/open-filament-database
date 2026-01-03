@@ -20,30 +20,26 @@
     !browser
       ? materialKeys
       : materialKeys.filter(
-          (materialKey) => !isItemDeleted('material', materialKey, brandData.brand),
+          (materialKey) => !isItemDeleted('material', materialKey, brandData.id || brandData.name),
         ),
   );
-
-  $effect(() => {
-    materialKeys = Object.keys(brandData.materials ?? {});
-  });
 </script>
 
 <svelte:head>
-	<title>{brandData?.brand ? brandData.brand : "Brand"}</title>
-	<meta name="description" content="This is an overview {brandData?.brand ? brandData.brand : "a Brand"}"/>
+  <title>{brandData?.name ? brandData.name : "Brand"}</title>
+  <meta name="description" content="This is an overview {brandData?.name ? brandData.name : "a Brand"}"/>
 </svelte:head>
 
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="relative flex flex-col md:flex-row items-center md:items-start gap-6 mb-12">
     <img
-      src={`/data/${stripOfIllegalChars(brandData.brand)}/${brandData.logo}`}
-      alt={brandData.brand ?? 'Brand logo'}
+      src={`/data/${brandData.id}/${brandData.logo}`}
+      alt={brandData.name ? `${brandData.name} Logo` : 'Brand logo'}
       class="w-32 h-32 rounded-xl object-contain bg-white shadow-md dark:bg-gray-900" />
     
     <div class="text-center md:text-left">
       <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-        {brandData.brand ?? ''}
+        {brandData.name ?? ''}
       </h1>
       <a
         href={websiteUrl}
@@ -74,7 +70,7 @@
     >
       <MaterialForm
         defaultForm={data.materialForm}
-        brandName={brandData.brand}
+        brandId={brandData.id}
         formType={'create'}
       />
     </EditModal>
@@ -83,7 +79,7 @@
       {#key [filteredMaterialKeys, brandData.materials]}
         {#each filteredMaterialKeys as materialKey}
           {#if brandData.materials[materialKey]}
-            <a href={`/Brand/${stripOfIllegalChars(brandData.brand)}/${materialKey}`}>
+            <a href={`/Brand/${stripOfIllegalChars(brandData.id || brandData.name)}/${materialKey}`}>
               <li
                 class="border rounded p-4 bg-white border-gray-200 text-gray-900 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100 shadow-md transition-colors flex flex-col justify-between">
                 <div>

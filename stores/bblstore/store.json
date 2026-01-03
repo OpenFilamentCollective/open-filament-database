@@ -1,0 +1,8 @@
+{
+    "id": "bblstore",
+    "name": "Bambu Lab Store",
+    "storefront_url": "https://store.bambulab.com",
+    "logo": "logo.svg",
+    "ships_from": [],
+    "ships_to": []
+}

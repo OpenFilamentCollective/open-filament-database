@@ -1,0 +1,11 @@
+{
+    "id": "orange",
+    "name": "Orange",
+    "color_hex": "#FF2300",
+    "color_standards": {
+        "ral": "2005"
+    },
+    "traits": {
+        "recyclable": true
+    }
+}

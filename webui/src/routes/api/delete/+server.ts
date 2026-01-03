@@ -17,47 +17,47 @@ function deleteFolderRecursive(folderPath) {
 
 export async function DELETE({ request }) {
   try {
-    const { type, name, brandName, materialName, filamentName } = await request.json();
+    const { type, id, brandId, materialId, filamentId } = await request.json();
 
     let targetPath;
 
     switch (type) {
       case 'brand':
-        targetPath = path.join(DATA_DIR, name);
+        targetPath = path.join(DATA_DIR, id);
         break;
       
       case 'store':
-        targetPath = path.join(STORE_DIR, name);
+        targetPath = path.join(STORE_DIR, id);
         break;
 
       case 'material':
-        if (!brandName) {
-          return json({ error: 'Brand name is required for material deletion' }, { status: 400 });
+        if (!brandId) {
+          return json({ error: 'Brand ID is required for material deletion' }, { status: 400 });
         }
-        targetPath = path.join(DATA_DIR, brandName, name);
+        targetPath = path.join(DATA_DIR, brandId, id);
         break;
 
       case 'filament':
-        if (!brandName || !materialName) {
+        if (!brandId || !materialId) {
           return json(
-            { error: 'Brand name and material name are required for filament deletion' },
+            { error: 'Brand ID and material ID are required for filament deletion' },
             { status: 400 },
           );
         }
-        targetPath = path.join(DATA_DIR, brandName, materialName, name);
+        targetPath = path.join(DATA_DIR, brandId, materialId, id);
         break;
 
       case 'instance':
-        if (!brandName || !materialName || !filamentName) {
+        if (!brandId || !materialId || !filamentId) {
           return json(
             {
               error:
-                'Brand name, material name, and filament name are required for instance deletion',
+                'Brand ID, material ID, and filament ID are required for instance deletion',
             },
             { status: 400 },
           );
         }
-        targetPath = path.join(DATA_DIR, brandName, materialName, filamentName, name);
+        targetPath = path.join(DATA_DIR, brandId, materialId, filamentId, id);
         break;
 
       default:
@@ -78,9 +78,9 @@ export async function DELETE({ request }) {
 
     if (deleted) {
       await refreshDatabase();
-      return json({ success: true, message: `${type} "${name}" deleted successfully` });
+      return json({ success: true, message: `${type} "${id}" deleted successfully` });
     } else {
-      return json({ error: `${type} "${name}" not found` }, { status: 404 });
+      return json({ error: `${type} "${id}" not found` }, { status: 404 });
     }
   } catch (error) {
     console.error('Delete error:', error);

@@ -64,15 +64,7 @@
       required={true}
     />
 
-    <div class="grid grid-cols-2 gap-3">
-
-      <PurchaseCheck
-        id="sizes_{sizeIndex}_spool_refill_{purchaseIndex}"
-        title="Is spool refill"
-        bind:formVar={$localLink.spool_refill}
-        errorVar={$errors?.sizes?.[sizeIndex]?.purchase_links?.[purchaseIndex]?.spool_refill?.[0]}
-      />
-    </div>
+    <!-- Per-link spool_refill is deprecated; use size-level spool_refill -->
 
     <div class="grid grid-cols-2 gap-3">
       <PurchaseTextField

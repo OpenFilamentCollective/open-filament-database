@@ -1,0 +1,8 @@
+{
+    "id": "brass",
+    "name": "Brass",
+    "color_hex": "#B5A642",
+    "traits": {
+        "recyclable": true
+    }
+}

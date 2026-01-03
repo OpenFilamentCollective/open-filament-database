@@ -2,10 +2,10 @@ import { goto } from '$app/navigation';
 
 export async function realDelete(
   type: 'brand' | 'material' | 'filament' | 'instance' | 'store',
-  name: string,
-  brandName?: string,
-  materialName?: string,
-  filamentName?: string,
+  id: string,
+  brandId?: string,
+  materialId?: string,
+  filamentId?: string,
 ): Promise<boolean> {
   try {
     const response = await fetch('/api/delete', {
@@ -15,10 +15,10 @@ export async function realDelete(
       },
       body: JSON.stringify({
         type,
-        name,
-        brandName,
-        materialName,
-        filamentName,
+        id,
+        brandId,
+        materialId,
+        filamentId,
       }),
     });
 
@@ -33,7 +33,7 @@ export async function realDelete(
       pathSegments.pop(); // Remove the last segment
       const parentPath = pathSegments.length > 0 ? '/' + pathSegments.join('/') : '/';
 
-      await goto(parentPath);
+      await goto(parentPath, { invalidateAll: true });
       return true;
     } else {
       console.error('Delete failed:', result.error);

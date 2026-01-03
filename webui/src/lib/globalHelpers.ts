@@ -5,11 +5,16 @@ const illegal_characters = [
 ];
 // This should at all times be the same as /data_validator.py:22
 
-export const stripOfIllegalChars = (input: string): string => {
-  let value = input;
+export const stripOfIllegalChars = (input?: string | null, exceptions?: string[] | undefined): string => {
+  // Defensive: coerce null/undefined to empty string
+  let value = input == null ? '' : String(input);
 
   illegal_characters.forEach((char) => {
-    value = value.replaceAll(char, "");
+    if (exceptions && exceptions.includes(char)) {
+      return;
+    }
+    // avoid using replaceAll to be robust across runtimes
+    value = value.split(char).join('');
   })
 
   return value;
@@ -83,50 +88,17 @@ export const removeUndefined = (obj: any): any => {
   return obj;
 };
 
-/*
-D:/SP/open-filament-database/webui/src/lib/globalHelpers.ts:85
-      throw new Error("Unsupported file type in Node.js (must be Buffer or Uint8Array)");
-            ^
+export const getIdFromName = (name: string): string => {
+  return stripOfIllegalChars(
+    name
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '_'),
+    ['+']
+  );
+};
 
-Error: Unsupported file type in Node.js (must be Buffer or Uint8Array)
-    at getImageDimensions (D:/SP/open-filament-database/webui/src/lib/globalHelpers.ts:85:13)
-
-Node.js v24.5.0
-
-export const getImageDimensions = async (file) => {
-  if (!browser) {
-    // Use 'sharp' in Node.js
-    const sharp = await import('sharp');
-
-    let buffer;
-    if (Buffer.isBuffer(file)) {
-      buffer = file;
-    } else if (file instanceof Uint8Array) {
-      buffer = Buffer.from(file);
-    } else {
-      throw new Error('Unsupported file type in Node.js (must be Buffer or Uint8Array)');
-    }
-
-    const metadata = await sharp(buffer).metadata();
-    return {
-      width: metadata.width,
-      height: metadata.height,
-      format: metadata.format,
-    };
-  } else {
-    // Use <img> in Browser
-    return new Promise((resolve, reject) => {
-      const blob = file instanceof Blob ? file : new Blob([file]);
-      const img = new Image();
-
-      img.onload = () => {
-        resolve({ width: img.width, height: img.height });
-      };
-      img.onerror = reject;
-
-      const url = URL.createObjectURL(blob);
-      img.src = url;
-    });
-  }
+export const getLogoName = (fileName: string): string => {
+  let logoName = 'logo.' + fileName.split('.').pop();
+  return logoName;
 }
-*/

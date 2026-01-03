@@ -1,0 +1,8 @@
+{
+    "id": "pla",
+    "name": "PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.25,
+    "max_dry_temperature": 50,
+    "safety_sheet_url": "https://devel.lulzbot.com/filament/Monofilament%20Direct/SDS/Polylactide%20PLA%20R17009A%20SDS.pdf"
+}

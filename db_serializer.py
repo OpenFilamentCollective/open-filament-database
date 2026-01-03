@@ -395,9 +395,10 @@ class FilamentSize(IToFromJSONData):
         if (ean_out is None or ean_out == "") and isinstance(self.gtin, str) and len(self.gtin) == 13:
             ean_out = self.gtin
 
-        return shallow_remove_empty({
+        result = shallow_remove_empty({
             "filament_weight": self.filament_weight,
             "diameter": self.diameter,
+            "spool_refill": self.spool_refill,
             "empty_spool_weight": self.empty_spool_weight,
             "spool_core_diameter": self.spool_core_diameter,
             "gtin": self.gtin,
@@ -410,6 +411,14 @@ class FilamentSize(IToFromJSONData):
             "purchase_links": [x.to_dict() for x in self.purchase_links]
         })
 
+        # Backward compatibility in DTO only: if size is refill, mark links as refill in the response
+        if self.spool_refill and "purchase_links" in result:
+            for link in result["purchase_links"]:
+                # do not persist; just annotate response
+                link["spool_refill"] = True
+
+        return result
+
     @staticmethod
     def from_json_data(json_data: dict[str, Any], parent: None = None) -> 'FilamentSize':
         purchase_links = []
@@ -419,6 +428,7 @@ class FilamentSize(IToFromJSONData):
         return FilamentSize(
             filament_weight=json_data["filament_weight"],
             diameter=json_data["diameter"],
+            spool_refill=json_data.get("spool_refill", False),
             empty_spool_weight=json_data.get("empty_spool_weight"),
             spool_core_diameter=json_data.get("spool_core_diameter"),
             gtin=json_data.get("gtin"),

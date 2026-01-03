@@ -1,16 +1,16 @@
 {
-  "id": "amazon",
-  "name": "Amazon",
-  "storefront_url": "https://www.amazon.com/",
-  "logo": "amazon.png",
-  "ships_from": [
-    "US",
-    "CA",
-    "MX"
-  ],
-  "ships_to": [
-    "US",
-    "CA",
-    "MX"
-  ]
+    "id": "amazon",
+    "name": "Amazon",
+    "storefront_url": "https://www.amazon.com/",
+    "logo": "logo.png",
+    "ships_from": [
+        "US",
+        "CA",
+        "MX"
+    ],
+    "ships_to": [
+        "US",
+        "CA",
+        "MX"
+    ]
 }

@@ -1,0 +1,8 @@
+{
+    "id": "bronze",
+    "name": "Bronze",
+    "color_hex": "#CA7E47",
+    "traits": {
+        "recyclable": true
+    }
+}

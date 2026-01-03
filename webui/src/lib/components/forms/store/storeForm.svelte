@@ -12,7 +12,6 @@
   import { superForm } from 'sveltekit-superforms';
   import { zodClient } from 'sveltekit-superforms/adapters';
   import { storeSchema } from '$lib/validation/store-schema';
-  import BigCheck from '../components/bigCheck.svelte';
   import ShippingList from './components/shippingList.svelte';
 
   type formType = 'edit' | 'create';
@@ -43,9 +42,9 @@
       const isLocal = env.PUBLIC_IS_LOCAL === 'true';
 
       if (isLocal) {
-        await realDelete('store', stripOfIllegalChars($form.id));
+        await realDelete('store', $form.id);
       } else {
-        pseudoDelete('store', $form.name);
+        pseudoDelete('store', $form.id);
       }
     }
   }
@@ -55,26 +54,15 @@
   endpoint="store"
   enhance={enhance}
 >
-  <div class="grid grid-cols-2 gap-3">
-    <TextField
-      id="name"
-      title="Store Name"
-      description='Enter the name of the storefront'
-      placeholder="e.g. Bambu Lab Store"
-      bind:formVar={$form.name}
-      errorVar={$errors.name}
-      required={true}
-    />
-    <TextField
-      id="id"
-      title="Store ID"
-      description='Enter an internal ID for usage within the database'
-      placeholder="e.g. BBLStore"
-      bind:formVar={$form.id}
-      errorVar={$errors.id}
-      required={true}
-    />
-  </div>
+  <TextField
+    id="name"
+    title="Store Name"
+    description='Enter the name of the storefront'
+    placeholder="e.g. Bambu Lab Store"
+    bind:formVar={$form.name}
+    errorVar={$errors.name}
+    required={true}
+  />
 
   <TextField
     id="website"

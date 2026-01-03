@@ -1,0 +1,16 @@
+{
+    "id": "for_ams",
+    "name": "for AMS",
+    "diameter_tolerance": 0.05,
+    "density": 1.26,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_TPU_for_AMS_Technical_Data_Sheet.pdf?v=1730944629",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_TPU_for_AMS_MSDS.pdf?v=1730944633",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu TPU for AMS"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu TPU for AMS"
+        }
+    }
+}

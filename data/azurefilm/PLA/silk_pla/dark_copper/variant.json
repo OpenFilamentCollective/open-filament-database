@@ -1,0 +1,8 @@
+{
+    "id": "dark_copper",
+    "name": "Dark copper",
+    "color_hex": "#90535a",
+    "traits": {
+        "recyclable": true
+    }
+}

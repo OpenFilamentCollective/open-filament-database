@@ -1,8 +1,8 @@
 {
-  "id": "biqu",
-  "name": "Biqu",
-  "storefront_url": "https://biqu.equipment/",
-  "logo": "biqu.png",
-  "ships_from": [],
-  "ships_to": []
+    "id": "biqu",
+    "name": "Biqu",
+    "storefront_url": "https://biqu.equipment/",
+    "logo": "logo.png",
+    "ships_from": [],
+    "ships_to": []
 }

@@ -18,6 +18,11 @@
                 "description": "The diameter of the filament (in mm)",
                 "default": 1.75
             },
+            "spool_refill": {
+                "type": "boolean",
+                "description": "Indicates if this size is a refill for a reusable spool (applies to all purchase links)",
+                "default": false
+            },
             "empty_spool_weight": {
                 "type": "number",
                 "description": "The weight of a spool with no filament (in grams)"
@@ -26,19 +31,31 @@
                 "type": "number",
                 "description": "The diameter of the core of the spool"
             },
-                "gtin": {
-                    "type": "string",
-                    "description": "Global Trade Item Number (GTIN-12 or GTIN-13)"
-                },
-                "ean": {
-                    "type": "string",
-                    "$ref": "#/definitions/string_limit",
-                    "description": "(deprecated) legacy EAN alias for gtin"
-                },
-                "article_number": {
-                    "type": "string",
-                    "$ref": "#/definitions/string_limit"
-                },
+            "container_width": {
+                "type": "integer",
+                "description": "Width of the filament spool (in mm)"
+            },
+            "container_outer_diameter": {
+                "type": "integer",
+                "description": "Diameter of the spool (in mm)"
+            },
+            "container_hole_diameter": {
+                "type": "integer",
+                "description": "Diameter of the center hole of the spool (in mm)"
+            },
+            "gtin": {
+                "type": "string",
+                "description": "Global Trade Item Number (GTIN-12 or GTIN-13)"
+            },
+            "ean": {
+                "type": "string",
+                "$ref": "#/definitions/string_limit",
+                "description": "(deprecated) legacy EAN alias for gtin"
+            },
+            "article_number": {
+                "type": "string",
+                "$ref": "#/definitions/string_limit"
+            },
             "barcode_identifier": {
                 "type": "string",
                 "$ref": "#/definitions/string_limit"
@@ -71,7 +88,7 @@
                         },
                         "spool_refill": {
                             "type": "boolean",
-                            "description": "Indicates if this is a refill for a reusable spool",
+                            "description": "(deprecated) Previously indicated a refill per purchase link. Use parent size.spool_refill now.",
                             "default": false
                         },
                         "ships_from": {

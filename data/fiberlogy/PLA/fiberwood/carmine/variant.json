@@ -1,0 +1,8 @@
+{
+    "id": "carmine",
+    "name": "Carmine",
+    "color_hex": "#960018",
+    "traits": {
+        "recyclable": true
+    }
+}

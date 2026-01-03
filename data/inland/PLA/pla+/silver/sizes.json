@@ -1,0 +1,13 @@
+[
+    {
+        "filament_weight": 1000,
+        "diameter": 1.75,
+        "spool_refill": true,
+        "purchase_links": [
+            {
+                "store_id": "microcenter",
+                "url": "https://www.microcenter.com/product/687090/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-%e2%80%93-silver"
+            }
+        ]
+    }
+]

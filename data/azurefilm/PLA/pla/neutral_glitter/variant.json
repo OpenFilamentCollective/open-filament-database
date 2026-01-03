@@ -1,0 +1,8 @@
+{
+    "id": "neutral_glitter",
+    "name": "Neutral glitter",
+    "color_hex": "#f5f5f5",
+    "traits": {
+        "recyclable": true
+    }
+}

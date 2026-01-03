@@ -1,0 +1,12 @@
+{
+    "id": "anycubic",
+    "name": "Anycubic",
+    "storefront_url": "https://store.anycubic.com/",
+    "logo": "logo.png",
+    "ships_from": [
+        "CN, US, CA, EU, UK, AU"
+    ],
+    "ships_to": [
+        "CN, US, CA, EU, UK, AU"
+    ]
+}

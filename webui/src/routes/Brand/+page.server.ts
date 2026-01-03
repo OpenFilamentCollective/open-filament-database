@@ -1,5 +1,5 @@
 import { createBrand, pseudoCreateBrand } from '$lib/server/brand';
-import { stripOfIllegalChars } from '$lib/globalHelpers';
+import { getIdFromName, stripOfIllegalChars } from '$lib/globalHelpers';
 import { brandSchema } from '$lib/validation/filament-brand-schema';
 import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
@@ -37,6 +37,6 @@ export const actions = {
       return fail(500, { form });
     }
 
-    throw redirect(303, `/Brand/${stripOfIllegalChars(form.data.brand)}/`);
+    throw redirect(303, `/Brand/${getIdFromName(form.data.name)}/`);
   },
 };

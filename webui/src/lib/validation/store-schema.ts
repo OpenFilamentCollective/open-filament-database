@@ -14,7 +14,7 @@ const formatBytes = (bytes: number, decimals = 2) => {
 };
 
 export const storeSchema = z.object({
-  id: z.string().min(1, 'Id is required'),
+  id: z.string().optional(),
   name: z.string().min(1, 'Name is required'),
   storefront_url: z
     .string()

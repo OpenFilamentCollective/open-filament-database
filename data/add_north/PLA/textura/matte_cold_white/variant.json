@@ -1,0 +1,8 @@
+{
+    "id": "matte_cold_white",
+    "name": "Matte Cold White",
+    "color_hex": "#F2F3F4",
+    "traits": {
+        "matte": true
+    }
+}

@@ -1,14 +1,14 @@
 {
-  "id": "prusa3d",
-  "name": "Prusa3D Store",
-  "storefront_url": "https://www.prusa3d.com/",
-  "logo": "prusa.png",
-  "ships_from": [
-    "EU"
-  ],
-  "ships_to": [
-    "EU",
-    "US",
-    "UK"
-  ]
+    "id": "prusa3d",
+    "name": "Prusa3D Store",
+    "storefront_url": "https://www.prusa3d.com/",
+    "logo": "logo.png",
+    "ships_from": [
+        "EU"
+    ],
+    "ships_to": [
+        "EU",
+        "US",
+        "UK"
+    ]
 }

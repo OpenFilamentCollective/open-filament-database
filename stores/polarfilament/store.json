@@ -1,8 +1,8 @@
 {
-  "id": "polarfilament",
-  "name": "Polar Filament",
-  "storefront_url": "https://polarfilament.com/",
-  "logo": "polarfilament.jpg",
-  "ships_from": [],
-  "ships_to": []
+    "id": "polarfilament",
+    "name": "Polar Filament",
+    "storefront_url": "https://polarfilament.com/",
+    "logo": "logo.jpg",
+    "ships_from": [],
+    "ships_to": []
 }

@@ -17,7 +17,7 @@
             !isItemDeleted(
               'filament',
               filamentKey,
-              data.brandData.brand,
+              data.brandData.id,
               data.materialData.material,
             ),
         ),
@@ -44,7 +44,7 @@
     >
       <MaterialForm
         defaultForm={data.materialForm}
-        brandName={data.brandData.brand}
+        brandId={data.brandData.id}
         formType={'edit'} />
     </EditModal>
     <EditModal
@@ -54,8 +54,8 @@
     >
       <FilamentForm
         defaultForm={data.filamentForm}
-        brandName={data.brandData.brand}
-        materialName={data.materialData.material}
+        brandId={data.brandData.id}
+        materialId={data.materialData.material}
         formType={'create'} 
       />
     </EditModal>
@@ -67,8 +67,7 @@
         {#if data.materialData.filaments[filamentKey]}
           <MaterialItem
             filament={data.materialData.filaments[filamentKey]}
-            {filamentKey}
-            brandName={data.brandData.brand}
+            brandId={data.brandData.id}
             materialName={data.materialData.material} />
         {/if}
       {/each}

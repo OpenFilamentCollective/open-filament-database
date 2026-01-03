@@ -1,15 +1,15 @@
 {
-  "id": "sunlu",
-  "name": "SUNLU",
-  "storefront_url": "https://sunlu.com/",
-  "logo": "sunlu.png",
-  "ships_from": [
-    "US"
-  ],
-  "ships_to": [
-    "US",
-    "CA",
-    "AU",
-    "EU"
-  ]
+    "id": "sunlu",
+    "name": "SUNLU",
+    "storefront_url": "https://sunlu.com/",
+    "logo": "logo.png",
+    "ships_from": [
+        "US"
+    ],
+    "ships_to": [
+        "US",
+        "CA",
+        "AU",
+        "EU"
+    ]
 }

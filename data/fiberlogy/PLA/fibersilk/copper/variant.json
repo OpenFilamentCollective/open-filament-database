@@ -1,0 +1,8 @@
+{
+    "id": "copper",
+    "name": "Copper",
+    "color_hex": "#8A4730",
+    "traits": {
+        "recyclable": true
+    }
+}

@@ -13,7 +13,7 @@
   import { filamentSchema } from '$lib/validation/filament-schema';
 
   type formType = 'edit' | 'create';
-  let { defaultForm, formType: formType, brandName, materialName } = $props();
+  let { defaultForm, formType: formType, brandId, materialId } = $props();
 
   const {
     form,
@@ -38,9 +38,9 @@
       const isLocal = env.PUBLIC_IS_LOCAL === 'true';
 
       if (isLocal) {
-        await realDelete('filament', $form.name, brandName, materialName);
+        await realDelete('filament', $form.id, brandId, materialId);
       } else {
-        pseudoDelete('filament', $form.name, brandName, materialName);
+        pseudoDelete('filament', $form.id, brandId, materialId);
       }
     }
   }

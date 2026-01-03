@@ -1,8 +1,8 @@
 {
-  "id": "amolen",
-  "name": "Amolen",
-  "storefront_url": "https://www.amolen.com/",
-  "logo": "amolen.jpg",
-  "ships_from": [],
-  "ships_to": []
+    "id": "amolen",
+    "name": "Amolen",
+    "storefront_url": "https://www.amolen.com/",
+    "logo": "logo.jpg",
+    "ships_from": [],
+    "ships_to": []
 }

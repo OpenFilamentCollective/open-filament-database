@@ -5,7 +5,7 @@ import { filamentMaterialSchema } from '$lib/validation/filament-material-schema
 import { zod } from 'sveltekit-superforms/adapters';
 import { createFilament } from '$lib/server/filament';
 import { transformMaterialData } from '$lib/server/material';
-import { removeUndefined } from '$lib/globalHelpers';
+import { getIdFromName, removeUndefined } from '$lib/globalHelpers';
 import { updateMaterial } from '$lib/server/material';
 import { stripOfIllegalChars } from '$lib/globalHelpers';
 import { filamentSchema } from '$lib/validation/filament-schema';
@@ -94,6 +94,6 @@ export const actions = {
     }
 
     setFlash({ type: 'success', message: 'Filament updated successfully!' }, cookies);
-    throw redirect(303, `/Brand/${stripOfIllegalChars(brand)}/${material}/${form.data.name}`);
+    throw redirect(303, `/Brand/${stripOfIllegalChars(brand)}/${material}/${getIdFromName(form.data.name)}`);
   },
 };

@@ -1,13 +1,13 @@
 {
-  "id": "siddament",
-  "name": "Siddament",
-  "storefront_url": "https://siddament.com.au/",
-  "logo": "siddament.jpg",
-  "ships_from": [
-    "AU"
-  ],
-  "ships_to": [
-    "EU",
-    "AU"
-  ]
+    "id": "siddament",
+    "name": "Siddament",
+    "storefront_url": "https://siddament.com.au/",
+    "logo": "logo.jpg",
+    "ships_from": [
+        "AU"
+    ],
+    "ships_to": [
+        "EU",
+        "AU"
+    ]
 }

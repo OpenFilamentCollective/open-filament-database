@@ -1,12 +1,12 @@
 {
-  "id": "polymaker",
-  "name": "PolyMaker",
-  "storefront_url": "https://us.polymaker.com/",
-  "logo": "polymaker.png",
-  "ships_from": [
-    "US"
-  ],
-  "ships_to": [
-    "US"
-  ]
+    "id": "polymaker",
+    "name": "PolyMaker",
+    "storefront_url": "https://us.polymaker.com/",
+    "logo": "logo.svg",
+    "ships_from": [
+        "US"
+    ],
+    "ships_to": [
+        "US"
+    ]
 }

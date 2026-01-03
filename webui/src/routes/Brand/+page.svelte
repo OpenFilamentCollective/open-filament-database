@@ -18,7 +18,6 @@
         ),
   );
   let editedBrands = getEditItems("brand");
-  console.log(editedBrands);
 
   function getConditionalBrandLogo(brandName, brandData) {
     let inFilData = false;

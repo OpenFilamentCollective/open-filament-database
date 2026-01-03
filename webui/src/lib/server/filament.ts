@@ -3,32 +3,34 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { env } from "$env/dynamic/public";
 import { filamentSchema } from '$lib/validation/filament-schema';
-import { removeUndefined } from '$lib/globalHelpers';
+import { getIdFromName, removeUndefined } from '$lib/globalHelpers';
 
 const DATA_DIR = env.PUBLIC_DATA_PATH;
 
 export const createFilament = async (
-  brandName: string,
-  materialName: string,
+  brandId: string,
+  materialId: string,
   filamentData: z.infer<typeof filamentSchema>,
 ) => {
-  const brandDir = path.join(DATA_DIR, brandName);
+  const id = getIdFromName(filamentData.name);
+  const brandDir = path.join(DATA_DIR, brandId);
   if (!fs.existsSync(brandDir)) {
-    throw new Error(`Brand directory "${brandName}" does not exist.`);
+    throw new Error(`Brand directory "${brandId}" does not exist.`);
   }
 
-  const materialDir = path.join(brandDir, materialName);
+  const materialDir = path.join(brandDir, materialId);
   if (!fs.existsSync(materialDir)) {
-    throw new Error(`Material directory "${materialName}" does not exist in brand "${brandName}".`);
+    throw new Error(`Material directory "${materialId}" does not exist in brand "${brandId}".`);
   }
 
-  const filamentDir = path.join(materialDir, filamentData.name);
+  const filamentDir = path.join(materialDir, id);
   if (fs.existsSync(filamentDir)) {
-    throw new Error(`Filament "${filamentData.name}" already exists in material "${materialName}" of brand ${brandName}.`);
+    throw new Error(`Filament "${id}" already exists in material "${materialId}" of brand ${brandId}.`);
   }
 
   try {
     fs.mkdirSync(filamentDir, { recursive: true });
+    filamentData.id = id;
 
     const filamentJsonPath = path.join(filamentDir, 'filament.json');
     fs.writeFileSync(filamentJsonPath, JSON.stringify(filamentData, null, 2), 'utf-8');
@@ -39,66 +41,37 @@ export const createFilament = async (
 };
 
 export function updateFilament(
-  brandName: string,
-  materialName: string,
-  currentFilamentName: string,
+  brandId: string,
+  materialId: string,
   filamentData: any,
 ) {
-  const brandDir = path.join(DATA_DIR, brandName);
-
+  const brandDir = path.join(DATA_DIR, brandId);
   if (!fs.existsSync(brandDir)) {
-    throw new Error(`Brand directory "${brandName}" does not exist.`);
+    throw new Error(`Brand directory "${brandId}" does not exist.`);
   }
 
-  const materialDir = path.join(brandDir, materialName);
+  const materialDir = path.join(brandDir, materialId);
   if (!fs.existsSync(materialDir)) {
-    throw new Error(`Material directory "${materialName}" does not exist in brand "${brandName}".`);
+    throw new Error(`Material directory "${materialId}" does not exist in brand "${brandId}".`);
   }
 
-  const currentFilamentDir = path.join(materialDir, currentFilamentName);
+  const currentFilamentDir = path.join(materialDir, filamentData.id);
   if (!fs.existsSync(currentFilamentDir)) {
     throw new Error(
-      `Filament directory "${currentFilamentName}" not found in material "${materialName}"`,
+      `Filament directory "${filamentData.id}" not found in material "${materialId}"`,
     );
   }
 
-  try {
-    if (filamentData.name !== currentFilamentName) {
-      const newFilamentDir = path.join(materialDir, filamentData.name);
+  const filamentJsonPath = path.join(currentFilamentDir, 'filament.json');
 
-      if (fs.existsSync(newFilamentDir)) {
-        throw new Error(
-          `Filament "${filamentData.name}" already exists in material "${materialName}"`,
-        );
-      }
-
-      fs.renameSync(currentFilamentDir, newFilamentDir);
-
-      const filamentJsonPath = path.join(newFilamentDir, 'filament.json');
-      const transformedData = transformFilamentData(filamentData);
-
-      fs.writeFileSync(filamentJsonPath, JSON.stringify(transformedData, null, 2), 'utf-8');
-
-      console.log(
-        `Filament updated and renamed: ${brandName}/${materialName}/${currentFilamentName} -> ${filamentData.name}`,
-      );
-    } else {
-      const filamentJsonPath = path.join(currentFilamentDir, 'filament.json');
-
-      const transformedData = transformFilamentData(filamentData);
-
-      fs.writeFileSync(filamentJsonPath, JSON.stringify(transformedData, null, 2), 'utf-8');
-
-      console.log(`Filament updated: ${brandName}/${materialName}/${currentFilamentName}`);
-    }
-  } catch (error) {
-    console.error('Error updating filament:', error);
-    throw error;
-  }
+  const transformedData = transformFilamentData(filamentData);
+  fs.writeFileSync(filamentJsonPath, JSON.stringify(transformedData, null, 2), 'utf-8');
+  console.log(`Filament updated: ${brandId}/${materialId}/${filamentData.id}`);
 }
 
 function transformFilamentData(filamentData: any) {
   const transformedData: any = {
+    id: filamentData.id,
     name: filamentData.name,
   };
 

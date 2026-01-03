@@ -1,0 +1,24 @@
+[
+    {
+        "filament_weight": 500,
+        "diameter": 1.75,
+        "ean": "6975337031833",
+        "purchase_links": [
+            {
+                "store_id": "bblstore",
+                "url": "https://us.store.bambulab.com/collections/pa-pet/products/paht-cf"
+            }
+        ]
+    },
+    {
+        "filament_weight": 1000,
+        "diameter": 1.75,
+        "ean": "6975337031840",
+        "purchase_links": [
+            {
+                "store_id": "bblstore",
+                "url": "https://us.store.bambulab.com/collections/pa-pet/products/paht-cf?variant=41009450483848"
+            }
+        ]
+    }
+]

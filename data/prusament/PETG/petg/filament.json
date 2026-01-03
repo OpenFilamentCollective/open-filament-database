@@ -1,0 +1,8 @@
+{
+    "id": "petg",
+    "name": "PETG",
+    "diameter_tolerance": 0.02,
+    "density": 1.27,
+    "data_sheet_url": "https://www.prusa3d.com/file/3464616/prusament-petg-technical-data-sheet.pdf",
+    "safety_sheet_url": "https://www.prusa3d.com/file/3464624/prusament-petg-safety-data-sheet.pdf"
+}

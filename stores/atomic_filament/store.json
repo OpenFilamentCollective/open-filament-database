@@ -1,8 +1,8 @@
 {
-  "id": "atomic_filament",
-  "name": "Atomic Filament",
-  "storefront_url": "https://atomicfilament.com/",
-  "logo": "atomic_filament.jpg",
-  "ships_from": [],
-  "ships_to": []
+    "id": "atomic_filament",
+    "name": "Atomic Filament",
+    "storefront_url": "https://atomicfilament.com/",
+    "logo": "logo.jpg",
+    "ships_from": [],
+    "ships_to": []
 }

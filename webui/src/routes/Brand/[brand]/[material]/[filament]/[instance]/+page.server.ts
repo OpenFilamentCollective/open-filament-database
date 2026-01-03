@@ -56,7 +56,8 @@ export const load: PageServerLoad = async ({ params, parent }) => {
   const colorData = filamentDataObj.colors[colorKey];
 
   const defaultVariantData = {
-    color_name: '',
+    id: '',
+    name: '',
     color_hex: '#000000',
     traits: {
       translucent: false,
@@ -125,6 +126,6 @@ export const actions = {
     }
 
     setFlash({ type: 'success', message: 'Variant updated successfully!' }, cookies);
-    throw redirect(303, `/Brand/${stripOfIllegalChars(brand)}/${material}/${filament}/${form.data.color_name}`);
+    throw redirect(303, `/Brand/${stripOfIllegalChars(brand)}/${material}/${filament}/${form.data.id}`);
   }
 };

@@ -1,0 +1,16 @@
+{
+    "id": "95a_hf",
+    "name": "95A HF",
+    "diameter_tolerance": 0.03,
+    "density": 1.22,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_TPU_95A_HF_Technical_Data_Sheet.pdf?v=1700101819",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_TPU_95A_HF.pdf?v=1705372919",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu TPU 95A HF"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu TPU 95A HF"
+        }
+    }
+}

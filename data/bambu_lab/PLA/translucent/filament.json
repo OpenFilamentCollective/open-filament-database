@@ -1,0 +1,16 @@
+{
+    "id": "translucent",
+    "name": "Translucent",
+    "diameter_tolerance": 0.03,
+    "density": 1.22,
+    "data_sheet_url": "https://store.bblcdn.com/s7/default/729a8bf233e9474db25c8d5be1e64a00/Bambu_PLA_Translucent_Technical_Data_Sheet.pdf",
+    "safety_sheet_url": "https://store.bblcdn.com/s7/default/09499afaaa25439cb4e00b729f5e9bf8/Bambu_PLA_Translucent_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PLA Translucent"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PLA Translucent"
+        }
+    }
+}

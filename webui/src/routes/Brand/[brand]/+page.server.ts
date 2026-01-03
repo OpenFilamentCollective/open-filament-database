@@ -4,7 +4,7 @@ import { fail, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { brandSchema } from '$lib/validation/filament-brand-schema';
 import { createMaterial } from '$lib/server/material';
-import { removeUndefined } from '$lib/globalHelpers';
+import { getIdFromName, removeUndefined } from '$lib/globalHelpers';
 import { updateBrand } from '$lib/server/brand';
 import { stripOfIllegalChars } from '$lib/globalHelpers';
 import { filamentMaterialSchema } from '$lib/validation/filament-material-schema';
@@ -28,11 +28,11 @@ export const load: PageServerLoad = async ({ params, parent, cookies }) => {
   if (filamentData.brands?.[brandKey]) {
     brandData = filamentData.brands?.[brandKey] || null;
 
-    const formData = {
-      brand: brandData.brand,
+    const formData: any = {
+      id: brandData.id || getIdFromName(brandData.name),
+      name: brandData.name || brandData.brand,
       website: brandData.website || 'https://',
       origin: brandData.origin || '',
-      oldBrandName: brandData.brand,
     };
 
     brandForm = await superValidate(formData, zod(brandSchema));
@@ -68,7 +68,7 @@ export const actions = {
     }
 
     setFlash({ type: 'success', message: 'Brand updated successfully!' }, cookies);
-    throw redirect(303, `/Brand/${stripOfIllegalChars(form.data.brand)}/`);
+    throw redirect(303, `/Brand/${form.data.id}/`);
   },
   material: async ({ request, params, cookies }) => {
     const form = await superValidate(request, zod(filamentMaterialSchema));

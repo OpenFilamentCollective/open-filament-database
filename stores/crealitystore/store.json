@@ -1,12 +1,12 @@
 {
-  "id": "crealitystore",
-  "name": "Creality Store",
-  "storefront_url": "https://store.creality.com",
-  "logo": "crealitystore.png",
-  "ships_from": [
-    "US"
-  ],
-  "ships_to": [
-    "US"
-  ]
+    "id": "crealitystore",
+    "name": "Creality Store",
+    "storefront_url": "https://store.creality.com",
+    "logo": "logo.png",
+    "ships_from": [
+        "US"
+    ],
+    "ships_to": [
+        "US"
+    ]
 }

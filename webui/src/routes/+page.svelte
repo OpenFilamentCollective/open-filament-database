@@ -19,7 +19,7 @@
     
     if (!arr.includes(source.logo)) {
       if (sourceType == "brand") {
-        return `/data/${source.brand}/${source.logo}`;
+        return `/data/${source.id}/${source.logo}`;
       } else {
         return `/stores/${source.id}/${source.logo}`
       }
@@ -28,7 +28,7 @@
       let source = dict[sourceKey];
 
       if (sourceType == "brand") {
-        return `/data/${source.brand}/${source.logo}`;
+        return `/data/${source.id}/${source.logo}`;
       } else {
         return `/stores/${source.id}/${source.logo}`
       }

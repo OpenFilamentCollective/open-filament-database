@@ -7,10 +7,22 @@
         },
         "country_code": {
             "pattern": "^(([A-Z]{2})|Unknown)$"
+        },
+        "id": {
+            "maxLength": 1000,
+            "pattern": "^[a-z0-9+]+(_[a-z0-9+]+)*$"
+        },
+        "logo": {
+            "pattern": "^logo\\.(png|jpg|svg)$"
         }
     },
     "properties": {
-        "brand": {
+        "id": {
+            "type": "string",
+            "description": "The unique identifier for this brand",
+            "$ref": "#/definitions/id"
+        },
+        "name": {
             "type": "string",
             "description": "The name of the filament manufacture",
             "$ref": "#/definitions/string_limit"
@@ -22,8 +34,8 @@
         },
         "logo": {
             "type": "string",
-            "description": "A link to the logo for this brand",
-            "$ref": "#/definitions/string_limit"
+            "description": "The name of the logo file",
+            "$ref": "#/definitions/logo"
         },
         "origin": {
             "type": "string",
@@ -32,7 +44,8 @@
         }
     },
     "required": [
-        "brand",
+        "id",
+        "name",
         "logo",
         "website",
         "origin"

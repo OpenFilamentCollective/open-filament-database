@@ -2,7 +2,8 @@
   import Fa from 'svelte-fa'
   import { faPen, faX, faCheck } from '@fortawesome/free-solid-svg-icons'
   import Tooltip from "sv-tooltip"
-  let { color, brandName, materialName, filamentName } = $props();
+  import { traitLabels } from '$lib/validation/filament-variant-schema';
+  let { color, brandId, materialId, filamentId } = $props();
 
   $inspect('Color Item', color);
 </script>
@@ -11,7 +12,7 @@
   class="border rounded p-4 bg-white border-gray-200 text-gray-900 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100 transition-colors relative">
   <div class="absolute top-2 right-2">
     <a
-      href={`/Brand/${brandName}/${materialName}/${filamentName}/${color.name}`}
+      href={`/Brand/${brandId}/${materialId}/${filamentId}/${color.id}`}
       class="flex items-center gap-2 p-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-green-100 hover:text-green-700 dark:hover:bg-green-900 dark:hover:text-green-300 shadow transition-colors"
       title="Edit {color.name}">
       <Fa icon={faPen} />
@@ -50,7 +51,7 @@
         {#each Object.entries(color.variant.traits) as [trait, value], i}
           <span>
             <Fa class="text-green-600 inline" icon={faCheck} />
-            {trait}{i < Object.entries(color.variant.traits).length - 1 ? ', ' : ''}
+            {traitLabels[trait] || trait}{i < Object.entries(color.variant.traits).length - 1 ? ', ' : ''}
           </span>
         {/each}
     </div>

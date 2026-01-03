@@ -1,0 +1,9 @@
+{
+    "id": "adura",
+    "name": "Adura",
+    "diameter_tolerance": 0.02,
+    "density": 1.1,
+    "max_dry_temperature": 70,
+    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/Adura_TDS_KRM71m.pdf",
+    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_Adura_t8J10I.pdf"
+}

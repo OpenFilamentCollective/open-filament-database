@@ -1,16 +1,16 @@
 {
-  "id": "hatchbox",
-  "name": "Hatchbox",
-  "storefront_url": "https://www.hatchbox3d.com/",
-  "logo": "hatchbox.png",
-  "ships_from": [
-    "US",
-    "CA",
-    "MX"
-  ],
-  "ships_to": [
-    "US",
-    "CA",
-    "MX"
-  ]
+    "id": "hatchbox",
+    "name": "Hatchbox",
+    "storefront_url": "https://www.hatchbox3d.com/",
+    "logo": "logo.png",
+    "ships_from": [
+        "US",
+        "CA",
+        "MX"
+    ],
+    "ships_to": [
+        "US",
+        "CA",
+        "MX"
+    ]
 }

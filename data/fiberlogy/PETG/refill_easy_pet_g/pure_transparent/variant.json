@@ -1,0 +1,8 @@
+{
+    "id": "pure_transparent",
+    "name": "Pure Transparent",
+    "color_hex": "#F2F2F2",
+    "traits": {
+        "recyclable": true
+    }
+}
