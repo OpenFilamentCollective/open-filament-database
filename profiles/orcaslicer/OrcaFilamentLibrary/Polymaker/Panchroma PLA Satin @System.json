@@ -1,13 +1,10 @@
 {
     "type": "filament",
-    "name": "Panchroma PLA Stain @BBL X1C",
+    "name": "Panchroma PLA Satin @System",
     "from": "system",
     "instantiation": "true",
     "activate_air_filtration": [
         "0"
-    ],
-    "additional_cooling_fan_speed": [
-        "70"
     ],
     "chamber_temperatures": [
         "0"
@@ -24,29 +21,8 @@
     "cool_plate_temp_initial_layer": [
         "35"
     ],
-    "counter_coef_1": [
-        "0"
-    ],
-    "counter_coef_2": [
-        "0.008"
-    ],
-    "counter_coef_3": [
-        "-0.041"
-    ],
-    "counter_limit_min": [
-        "-0.035"
-    ],
-    "counter_limit_max": [
-        "0.033"
-    ],
-    "circle_compensation_speed": [
-        "200"
-    ],
     "during_print_exhaust_fan_speed": [
         "70"
-    ],
-    "diameter_limit": [
-        "50"
     ],
     "eng_plate_temp": [
         "0"
@@ -78,32 +54,17 @@
     "filament_flow_ratio": [
         "0.95"
     ],
-    "filament_flush_temp": [
-        "0"
-    ],
-    "filament_flush_volumetric_speed": [
-        "0"
-    ],
     "filament_is_support": [
         "0"
     ],
     "filament_long_retractions_when_cut": [
         "nil"
     ],
-    "filament_long_retractions_when_ec": [
-        "nil"
-    ],
     "filament_max_volumetric_speed": [
         "16"
     ],
-    "filament_ramming_volumetric_speed": [
-        "-1"
-    ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
-    ],
-    "filament_printable": [
-        "3"
     ],
     "filament_retract_before_wipe": [
         "nil"
@@ -115,9 +76,6 @@
         "nil"
     ],
     "filament_retraction_distances_when_cut": [
-        "nil"
-    ],
-    "filament_retraction_distances_when_ec": [
         "nil"
     ],
     "filament_retraction_length": [
@@ -147,9 +105,6 @@
     "filament_wipe_distance": [
         "nil"
     ],
-    "filament_prime_volume": [
-        "45"
-    ],
     "filament_z_hop": [
         "nil"
     ],
@@ -158,9 +113,6 @@
     ],
     "full_fan_speed_layer": [
         "0"
-    ],
-    "filament_extruder_variant": [
-        "Direct Drive Standard"
     ],
     "filament_scarf_seam_type": [
         "none"
@@ -177,44 +129,11 @@
     "filament_shrink": [
         "100%"
     ],
-    "filament_pre_cooling_temperature": [
-        "0"
-    ],
-    "filament_ramming_travel_time": [
-        "0"
-    ],
     "hot_plate_temp": [
         "55"
     ],
     "hot_plate_temp_initial_layer": [
         "55"
-    ],
-    "hole_coef_1": [
-        "0"
-    ],
-    "hole_coef_2": [
-        "-0.008"
-    ],
-    "hole_coef_3": [
-        "0.23415"
-    ],
-    "hole_limit_min": [
-        "0.088"
-    ],
-    "hole_limit_max": [
-        "0.22"
-    ],
-    "impact_strength_z": [
-        "10.0"
-    ],
-    "long_retractions_when_ec": [
-        "0"
-    ],
-    "nozzle_temperature_range_low": [
-        "190"
-    ],
-    "nozzle_temperature_range_high": [
-        "240"
     ],
     "nozzle_temperature": [
         "230"
@@ -234,9 +153,6 @@
     "required_nozzle_HRC": [
         "3"
     ],
-    "retraction_distances_when_ec": [
-        "0"
-    ],
     "supertack_plate_temp": [
         "45"
     ],
@@ -247,10 +163,10 @@
         "1"
     ],
     "slow_down_layer_time": [
-        "15"
+        "4"
     ],
     "slow_down_min_speed": [
-        "20"
+        "10"
     ],
     "temperature_vitrification": [
         "59"
@@ -261,35 +177,23 @@
     "textured_plate_temp_initial_layer": [
         "55"
     ],
-    "filament_velocity_adaptation_factor": [
-        "1"
-    ],
-    "compatible_printers": [
-        "Bambu Lab X1 Carbon 0.4 nozzle",
-        "Bambu Lab X1 Carbon 0.6 nozzle",
-        "Bambu Lab X1 Carbon 0.8 nozzle",
-        "Bambu Lab P1S 0.4 nozzle",
-        "Bambu Lab P1S 0.6 nozzle",
-        "Bambu Lab P1S 0.8 nozzle",
-        "Bambu Lab X1E 0.4 nozzle",
-        "Bambu Lab X1E 0.6 nozzle",
-        "Bambu Lab X1E 0.8 nozzle"
-    ],
     "filament_start_gcode": [
-        "; filament start gcode\n{if  (bed_temperature[current_extruder] >45)||(bed_temperature_initial_layer[current_extruder] >45)}M106 P3 S255\n{elsif(bed_temperature[current_extruder] >35)||(bed_temperature_initial_layer[current_extruder] >35)}M106 P3 S180\n{endif}\n\n{if activate_air_filtration[current_extruder] && support_air_filtration}\nM106 P3 S{during_print_exhaust_fan_speed_num[current_extruder]} \n{endif}"
+        "; Filament gcode\n"
     ],
     "filament_end_gcode": [
-        "; filament end gcode \n\n"
+        "; filament end gcode\n"
     ],
-    "filament_adaptive_volumetric_speed": [
-        "0"
+    "compatible_printers": [],
+    "filament_id": "OGFPM005",
+    "additional_cooling_fan_speed": [
+        "70"
     ],
-    "volumetric_speed_coefficients": [
-        "0 0 0 0 0 0"
+    "nozzle_temperature_range_low": [
+        "190"
     ],
-    "filament_adhesiveness_category": [
-        "100"
+    "nozzle_temperature_range_high": [
+        "240"
     ],
-    "filament_id": "GFPM005",
-    "setting_id": "GFSPM005_08"
+    "renamed_from": "Panchroma PLA Stain @System",
+    "setting_id": "OGFSPM005"
 }

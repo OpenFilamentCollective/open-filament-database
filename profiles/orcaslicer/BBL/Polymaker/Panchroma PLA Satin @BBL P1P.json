@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "Panchroma PLA Stain @BBL A1",
+    "name": "Panchroma PLA Satin @BBL P1P",
     "from": "system",
     "instantiation": "true",
     "activate_air_filtration": [
@@ -247,7 +247,7 @@
         "1"
     ],
     "slow_down_layer_time": [
-        "5"
+        "15"
     ],
     "slow_down_min_speed": [
         "20"
@@ -265,9 +265,9 @@
         "1"
     ],
     "compatible_printers": [
-        "Bambu Lab A1 0.4 nozzle",
-        "Bambu Lab A1 0.6 nozzle",
-        "Bambu Lab A1 0.8 nozzle"
+        "Bambu Lab P1P 0.4 nozzle",
+        "Bambu Lab P1P 0.6 nozzle",
+        "Bambu Lab P1P 0.8 nozzle"
     ],
     "filament_start_gcode": [
         "; filament start gcode\n{if  (bed_temperature[current_extruder] >45)||(bed_temperature_initial_layer[current_extruder] >45)}M106 P3 S255\n{elsif(bed_temperature[current_extruder] >35)||(bed_temperature_initial_layer[current_extruder] >35)}M106 P3 S180\n{endif}\n\n{if activate_air_filtration[current_extruder] && support_air_filtration}\nM106 P3 S{during_print_exhaust_fan_speed_num[current_extruder]} \n{endif}"
@@ -284,6 +284,7 @@
     "filament_adhesiveness_category": [
         "100"
     ],
+    "renamed_from": "Panchroma PLA Stain @BBL P1P",
     "filament_id": "GFPM005",
-    "setting_id": "GFSPM005_00"
+    "setting_id": "GFSPM005_04"
 }
