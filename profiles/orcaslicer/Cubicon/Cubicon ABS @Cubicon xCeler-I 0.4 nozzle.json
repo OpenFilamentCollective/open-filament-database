@@ -64,7 +64,7 @@
         "1.75"
     ],
     "filament_max_volumetric_speed": [
-        "25"
+        "23"
     ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
@@ -156,11 +156,13 @@
     "nozzle_temperature_range_low": [
         "220"
     ],
-    "filament_id": "P510cfb0",
+    "version": "1.0.0.0",
     "compatible_printers": [
         "Cubicon xCeler-I 0.4 nozzle"
     ],
     "default_filament_colour": "",
+    "filament_id": "P510cfb0",
+    "is_custom_defined": "0",
     "additional_cooling_fan_speed": [
         "0"
     ]

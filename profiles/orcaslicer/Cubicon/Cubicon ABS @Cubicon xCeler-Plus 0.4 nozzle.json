@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "Cubicon ABSk @Cubicon xCeler-I 0.4 nozzle",
+    "name": "Cubicon ABS @Cubicon xCeler-Plus 0.4 nozzle",
     "from": "system",
     "instantiation": "true",
     "cool_plate_temp": [
@@ -94,7 +94,7 @@
         "nil"
     ],
     "filament_settings_id": [
-        "Cubicon ABSk @Cubicon xCeler-I 0.4 nozzle"
+        "Cubicon ABS @Cubicon xCeler-Plus 0.4 nozzle"
     ],
     "filament_soluble": [
         "0"
@@ -136,10 +136,10 @@
         "; Filament gcode\n"
     ],
     "nozzle_temperature": [
-        "240"
+        "245"
     ],
     "temperature_vitrification": [
-        "85"
+        "78"
     ],
     "activate_air_filtration": [
         "0"
@@ -151,17 +151,17 @@
         "0"
     ],
     "nozzle_temperature_range_high": [
-        "240"
+        "260"
     ],
     "nozzle_temperature_range_low": [
         "220"
     ],
     "version": "1.0.0.0",
     "compatible_printers": [
-        "Cubicon xCeler-I 0.4 nozzle"
+        "Cubicon xCeler-Plus 0.4 nozzle"
     ],
     "default_filament_colour": "",
-    "filament_id": "P510cfb2",
+    "filament_id": "P510cfb0",
     "is_custom_defined": "0",
     "additional_cooling_fan_speed": [
         "0"

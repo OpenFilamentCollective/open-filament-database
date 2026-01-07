@@ -64,7 +64,7 @@
         "1.75"
     ],
     "filament_max_volumetric_speed": [
-        "24.5"
+        "23"
     ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
@@ -94,7 +94,7 @@
         "nil"
     ],
     "filament_settings_id": [
-        "Cubicon PLA @Cubicon xCeler-I 0.4 nozzle"
+        "CBC_MTC_0"
     ],
     "filament_soluble": [
         "0"
@@ -150,9 +150,11 @@
     "additional_cooling_fan_speed": [
         "80"
     ],
-    "filament_id": "P510cfa0",
+    "version": "1.0.0.0",
     "compatible_printers": [
         "Cubicon xCeler-I 0.4 nozzle"
     ],
-    "default_filament_colour": ""
+    "default_filament_colour": "",
+    "filament_id": "P510cfa0",
+    "is_custom_defined": "0"
 }

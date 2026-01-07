@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "Cubicon ABSk @Cubicon xCeler-I 0.4 nozzle",
+    "name": "Cubicon PA-CF @Cubicon xCeler-Plus 0.4 nozzle",
     "from": "system",
     "instantiation": "true",
     "cool_plate_temp": [
@@ -10,7 +10,7 @@
         "100"
     ],
     "hot_plate_temp": [
-        "115"
+        "100"
     ],
     "textured_plate_temp": [
         "100"
@@ -19,19 +19,19 @@
         "0"
     ],
     "eng_plate_temp_initial_layer": [
-        "105"
+        "100"
     ],
     "hot_plate_temp_initial_layer": [
-        "115"
+        "100"
     ],
     "textured_plate_temp_initial_layer": [
-        "105"
+        "100"
     ],
     "overhang_fan_threshold": [
-        "25%"
+        "95%"
     ],
     "overhang_fan_speed": [
-        "80"
+        "30"
     ],
     "slow_down_for_layer_cooling": [
         "1"
@@ -46,10 +46,10 @@
         "0.99"
     ],
     "reduce_fan_stop_start_freq": [
-        "1"
+        "0"
     ],
     "fan_cooling_layer_time": [
-        "30"
+        "5"
     ],
     "filament_cost": [
         "20"
@@ -64,7 +64,7 @@
         "1.75"
     ],
     "filament_max_volumetric_speed": [
-        "23"
+        "10"
     ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
@@ -94,13 +94,13 @@
         "nil"
     ],
     "filament_settings_id": [
-        "Cubicon ABSk @Cubicon xCeler-I 0.4 nozzle"
+        "Cubicon PA-CF @Cubicon xCeler-Plus 0.4 nozzle"
     ],
     "filament_soluble": [
         "0"
     ],
     "filament_type": [
-        "ABS"
+        "PA"
     ],
     "filament_vendor": [
         "Cubicon"
@@ -115,32 +115,33 @@
         "Cool Plate"
     ],
     "nozzle_temperature_initial_layer": [
-        "240"
+        "265"
     ],
     "full_fan_speed_layer": [
         "0"
     ],
     "fan_max_speed": [
-        "80"
+        "50"
     ],
     "fan_min_speed": [
-        "70"
+        "50"
     ],
     "slow_down_min_speed": [
-        "30"
+        "20"
     ],
     "slow_down_layer_time": [
-        "3"
+        "2"
     ],
     "filament_start_gcode": [
         "; Filament gcode\n"
     ],
     "nozzle_temperature": [
-        "240"
+        "270"
     ],
     "temperature_vitrification": [
-        "85"
+        "108"
     ],
+    "filament_id": "P510cfd0",
     "activate_air_filtration": [
         "0"
     ],
@@ -151,17 +152,19 @@
         "0"
     ],
     "nozzle_temperature_range_high": [
-        "240"
+        "280"
     ],
     "nozzle_temperature_range_low": [
-        "220"
+        "260"
+    ],
+    "required_nozzle_HRC": [
+        "40"
     ],
     "version": "1.0.0.0",
     "compatible_printers": [
-        "Cubicon xCeler-I 0.4 nozzle"
+        "Cubicon xCeler-Plus 0.4 nozzle"
     ],
     "default_filament_colour": "",
-    "filament_id": "P510cfb2",
     "is_custom_defined": "0",
     "additional_cooling_fan_speed": [
         "0"
