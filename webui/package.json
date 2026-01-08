@@ -13,7 +13,8 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"test:e2e": "playwright test",
-		"test": "npm run test:e2e"
+		"test": "npm run test:e2e",
+		"generate:types": "node scripts/generate-types.js"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
@@ -38,5 +39,11 @@
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.48.1",
 		"vite": "^7.2.6"
+	},
+	"dependencies": {
+		"@sjsf/ajv8-validator": "^3.2.0",
+		"@sjsf/basic-theme": "^3.2.0",
+		"@sjsf/form": "^3.2.0",
+		"ajv": "^8.17.1"
 	}
 }
