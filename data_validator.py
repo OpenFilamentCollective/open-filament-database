@@ -1,7 +1,6 @@
 import json
 import re
 import os
-import sys
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from enum import Enum
@@ -50,15 +49,6 @@ class ValidationError:
         path_str = f" [{self.path}]" if self.path else ""
         return f"{self.level.value} - {self.category}: {self.message}{path_str}"
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Convert to dictionary for JSON serialization."""
-        return {
-            'level': self.level.value,
-            'category': self.category,
-            'message': self.message,
-            'path': str(self.path) if self.path else None
-        }
-
 
 @dataclass
 class ValidationResult:
@@ -82,15 +72,6 @@ class ValidationResult:
     @property
     def warning_count(self) -> int:
         return len([e for e in self.errors if e.level == ValidationLevel.WARNING])
-
-    def to_dict(self) -> Dict[str, Any]:
-        """Convert to dictionary for JSON serialization."""
-        return {
-            'errors': [e.to_dict() for e in self.errors],
-            'error_count': self.error_count,
-            'warning_count': self.warning_count,
-            'is_valid': self.is_valid
-        }
 
 
 # -------------------------
@@ -800,24 +781,11 @@ class ValidationOrchestrator:
 
     def __init__(self, data_dir: Path = Path("./data"),
                  stores_dir: Path = Path("./stores"),
-                 max_workers: Optional[int] = None,
-                 progress_mode: bool = False):
+                 max_workers: Optional[int] = None):
         self.data_dir = data_dir
         self.stores_dir = stores_dir
         self.max_workers = max_workers
         self.schema_cache = SchemaCache()
-        self.progress_mode = progress_mode
-
-    def emit_progress(self, stage: str, percent: int, message: str = '') -> None:
-        """Emit progress event as JSON to stdout for SSE streaming."""
-        if self.progress_mode and hasattr(sys.stdout, 'isatty') and not sys.stdout.isatty():
-            # Only emit when stdout is piped (not terminal)
-            print(json.dumps({
-                'type': 'progress',
-                'stage': stage,
-                'percent': percent,
-                'message': message
-            }), flush=True)
 
     def run_tasks_parallel(self, tasks: List[ValidationTask]) -> ValidationResult:
         """Run validation tasks in parallel using process pool."""
@@ -846,42 +814,34 @@ class ValidationOrchestrator:
 
     def validate_json_files(self) -> ValidationResult:
         """Validate all JSON files against schemas."""
-        if not self.progress_mode:
-            print("Collecting JSON validation tasks...")
+        print("Collecting JSON validation tasks...")
         tasks = collect_json_validation_tasks(self.data_dir, self.stores_dir)
-        if not self.progress_mode:
-            print(f"Running {len(tasks)} JSON validation tasks...")
+        print(f"Running {len(tasks)} JSON validation tasks...")
         return self.run_tasks_parallel(tasks)
 
     def validate_logo_files(self) -> ValidationResult:
         """Validate all logo files."""
-        if not self.progress_mode:
-            print("Collecting logo validation tasks...")
+        print("Collecting logo validation tasks...")
         tasks = collect_logo_validation_tasks(self.data_dir, self.stores_dir)
-        if not self.progress_mode:
-            print(f"Running {len(tasks)} logo validation tasks...")
+        print(f"Running {len(tasks)} logo validation tasks...")
         return self.run_tasks_parallel(tasks)
 
     def validate_folder_names(self) -> ValidationResult:
         """Validate all folder names."""
-        if not self.progress_mode:
-            print("Collecting folder name validation tasks...")
+        print("Collecting folder name validation tasks...")
         tasks = collect_folder_validation_tasks(self.data_dir, self.stores_dir)
-        if not self.progress_mode:
-            print(f"Running {len(tasks)} folder name validation tasks...")
+        print(f"Running {len(tasks)} folder name validation tasks...")
         return self.run_tasks_parallel(tasks)
 
     def validate_store_ids(self) -> ValidationResult:
         """Validate store IDs."""
-        if not self.progress_mode:
-            print("Validating store IDs...")
+        print("Validating store IDs...")
         validator = StoreIdValidator(self.schema_cache)
         return validator.validate_store_ids(self.data_dir, self.stores_dir)
 
     def validate_gtin(self) -> ValidationResult:
         """Validate GTIN/EAN rules."""
-        if not self.progress_mode:
-            print("Validating GTIN/EAN...")
+        print("Validating GTIN/EAN...")
         validator = GTINValidator(self.schema_cache)
         return validator.validate_gtin_ean(self.data_dir)
 
@@ -890,32 +850,15 @@ class ValidationOrchestrator:
         result = ValidationResult()
 
         # Check for missing files first
-        self.emit_progress('missing_files', 0, 'Checking for missing required files...')
-        if not self.progress_mode:
-            print("Checking for missing required files...")
+        print("Checking for missing required files...")
         validator = MissingFileValidator(self.schema_cache)
         result.merge(validator.validate_required_files(self.data_dir, self.stores_dir))
-        self.emit_progress('missing_files', 100, 'Missing files check complete')
 
-        self.emit_progress('json_files', 0, 'Validating JSON files...')
         result.merge(self.validate_json_files())
-        self.emit_progress('json_files', 100, 'JSON validation complete')
-
-        self.emit_progress('logo_files', 0, 'Validating logo files...')
         result.merge(self.validate_logo_files())
-        self.emit_progress('logo_files', 100, 'Logo validation complete')
-
-        self.emit_progress('folder_names', 0, 'Validating folder names...')
         result.merge(self.validate_folder_names())
-        self.emit_progress('folder_names', 100, 'Folder name validation complete')
-
-        self.emit_progress('store_ids', 0, 'Validating store IDs...')
         result.merge(self.validate_store_ids())
-        self.emit_progress('store_ids', 100, 'Store ID validation complete')
-
-        self.emit_progress('gtin', 0, 'Validating GTIN/EAN...')
         result.merge(self.validate_gtin())
-        self.emit_progress('gtin', 100, 'GTIN/EAN validation complete')
 
         return result
 
@@ -933,18 +876,15 @@ def main():
     parser.add_argument("--folder-names", action="store_true",
                         help="Validate folder names")
     parser.add_argument("--store-ids", action="store_true", help="Validate store IDs")
-    parser.add_argument("--json", action="store_true", help="Output results as JSON")
-    parser.add_argument("--progress", action="store_true", help="Emit progress events (for SSE streaming)")
 
     args = parser.parse_args()
 
-    orchestrator = ValidationOrchestrator(max_workers=os.cpu_count(), progress_mode=args.progress)
+    orchestrator = ValidationOrchestrator(max_workers=os.cpu_count())
     result = ValidationResult()
 
     # Run requested validations
-    if not any([args.json_files, args.logo_files, args.folder_names, args.store_ids]):
-        if not args.json and not args.progress:
-            print("No args passed, validating all")
+    if not any(vars(args).values()):
+        print("No args passed, validating all")
         result = orchestrator.validate_all()
     else:
         if args.json_files:
@@ -956,39 +896,28 @@ def main():
         if args.store_ids:
             result.merge(orchestrator.validate_store_ids())
 
-    # Output results
-    if args.json:
-        # JSON output mode
-        output = result.to_dict()
-        # Use compact output in progress mode for SSE compatibility, pretty output otherwise
-        if args.progress:
-            print(json.dumps(output))
-        else:
-            print(json.dumps(output, indent=2))
-        sys.exit(0 if result.is_valid else 1)
+    # Print results
+    if result.errors:
+        # Group errors by category
+        errors_by_category: Dict[str, List[ValidationError]] = {}
+        for error in result.errors:
+            if error.category not in errors_by_category:
+                errors_by_category[error.category] = []
+            errors_by_category[error.category].append(error)
+
+        # Print errors grouped by category
+        for category, errors in sorted(errors_by_category.items()):
+            print(f"\n{category} ({len(errors)}):")
+            print("-" * 80)
+            for error in errors:
+                print(f"  {error}")
+
+        print(
+            f"\nValidation failed: {result.error_count} errors, {result.warning_count} warnings")
+        exit(1)
     else:
-        # Text output mode
-        if result.errors:
-            # Group errors by category
-            errors_by_category: Dict[str, List[ValidationError]] = {}
-            for error in result.errors:
-                if error.category not in errors_by_category:
-                    errors_by_category[error.category] = []
-                errors_by_category[error.category].append(error)
-
-            # Print errors grouped by category
-            for category, errors in sorted(errors_by_category.items()):
-                print(f"\n{category} ({len(errors)}):")
-                print("-" * 80)
-                for error in errors:
-                    print(f"  {error}")
-
-            print(
-                f"\nValidation failed: {result.error_count} errors, {result.warning_count} warnings")
-            exit(1)
-        else:
-            print("All validations passed!")
-            exit(0)
+        print("All validations passed!")
+        exit(0)
 
 
 if __name__ == '__main__':

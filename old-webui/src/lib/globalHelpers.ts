@@ -93,8 +93,7 @@ export const getIdFromName = (name: string): string => {
     name
       .trim()
       .toLowerCase()
-      .replace(/\s+/g, '_')
-      .replace(/-/g, '_'),
+      .replace(/\s+/g, '_'),
     ['+']
   );
 };

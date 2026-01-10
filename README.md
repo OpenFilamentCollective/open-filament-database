@@ -35,52 +35,33 @@ git clone https://github.com/YOUR_USERNAME/open-filament-database.git
 cd open-filament-database
 ```
 ### 5. Make your changes!
-Use the web editor (recommended) or edit files manually:
-
-**Using the WebUI (Recommended):**
+Either use the web editor by simply running these commands or [following the guide](docs/webui.md), if you want to do it manually you can [use this one](docs/manual.md)
 ```bash
 cd webui
 npm ci
 npm run dev
 ```
-Then access it in your browser at http://localhost:5173
+and access it in your browser at http://localhost:5173
 
-The WebUI includes built-in validation and data sorting features to help ensure your changes are correct. [Full WebUI guide](docs/webui.md)
-
-**Manual editing:** If you prefer to edit files directly, [follow this guide](docs/manual.md)
-
-### 6. Validate and sort your changes
-The WebUI can validate and sort your data automatically:
-
-1. Click the "Validate" button in the top-right corner to check for errors
-2. Click the "Sort Data" button to organize your JSON files consistently
-3. Fix any validation errors that appear (they'll be highlighted in red)
-
-Alternatively, you can use the command-line validation scripts ([see guide](docs/validation.md)):
+### 6. Validate your changes
+Once you've finished modifying the database you can use these commands or [this guide](docs/validation.md) to make sure your data is correct, fix any errors that pop up
 ```bash
-python data_validator.py --folder-names  # Validates folder names
-python data_validator.py --logo-files    # Validates logo files
-python data_validator.py --json-files    # Validates JSON files
-python data_validator.py --store-ids     # Validates store IDs
+python data_validator.py --folder-names # Validates folder names.
+python data_validator.py --logo-files # Validates logo files.
+python data_validator.py --json-files # Validates json files.
+python data_validator.py --store-ids # Validates store ids.
 ```
 ### 7. Submit your changes
-Before submitting, make sure your data is sorted consistently:
-- **In the WebUI:** Click the "Sort Data" button in the top-right corner
-- **Or via command line:** Run `python scripts/sort_data.py`
-
-Then add your changes:
+Start by running this command to add all your changes up
 ```bash
 git add .
 ```
-
-Create a commit with a descriptive message (e.g., "Added Elegoo Red PLA variant"):
+Then run this command but replace `COMMIT_MESSAGE` with a title of what you did, e.g. "Added filament A to brand B"
 ```bash
 git commit -m "COMMIT_MESSAGE"
 ```
-
-Upload your changes to GitHub:
+When that's done you can run this command to upload your stuff
 ```bash
 git push -u origin YOUR_BRANCHNAME
 ```
-
-Finally, make a pull request [using this guide](docs/pull-requesting.md)
+Afterwards you can make a pull request [using this guide](docs/pull-requesting.md)
