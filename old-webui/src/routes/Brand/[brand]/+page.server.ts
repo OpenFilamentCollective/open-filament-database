@@ -10,6 +10,7 @@ import { stripOfIllegalChars } from '$lib/globalHelpers';
 import { filamentMaterialSchema } from '$lib/validation/filament-material-schema';
 import { refreshDatabase } from '$lib/dataCacher';
 import { setFlash } from 'sveltekit-flash-message/server';
+import { triggerBackgroundValidation } from '$lib/server/validationTrigger';
 
 export const load: PageServerLoad = async ({ params, parent, cookies }) => {
   const { brand } = params;
@@ -61,6 +62,11 @@ export const actions = {
     try {
       await updateBrand(form.data);
       await refreshDatabase();
+
+      // Trigger background validation (non-blocking)
+      triggerBackgroundValidation().catch((err) => {
+        console.error('Failed to trigger background validation:', err);
+      });
     } catch (error) {
       console.error('Failed to update brand:', error);
       setFlash({ type: 'error', message: 'Failed to update brand. Please try again.' }, cookies);
@@ -83,12 +89,17 @@ export const actions = {
 
       await createMaterial(brand, filteredData);
       await refreshDatabase();
+
+      // Trigger background validation (non-blocking)
+      triggerBackgroundValidation().catch((err) => {
+        console.error('Failed to trigger background validation:', err);
+      });
     } catch (error) {
       console.error('Failed to create material:', error);
       setFlash({ type: 'error', message: 'Failed to create material. Please try again.' }, cookies);
       return fail(500, { form });
     }
-    
+
     setFlash({ type: 'success', message: 'Material created successfully!' }, cookies);
     throw redirect(303, `/Brand/${stripOfIllegalChars(brand)}/${form.data.material}`);
   },

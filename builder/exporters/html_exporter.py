@@ -35,8 +35,10 @@ def build_abstract_file_tree(db: Database) -> str:
     api_filaments = li_dir("{filament-slug}", li_dir("variants", api_variants) + "\n" + li_file("index.json"))
     api_materials = li_dir("{material-slug}", li_dir("filaments", api_filaments) + "\n" + li_file("index.json"))
     api_brands_inner = li_dir("{brand-slug}", li_dir("materials", api_materials) + "\n" + li_file("index.json"))
-    api_brands = li_dir("brands", api_brands_inner + "\n" + li_file("index.json", "api/v1/brands/index.json"))
-    api_stores = li_dir("stores", li_placeholder("{store-slug}.json") + "\n" + li_file("index.json", "api/v1/stores/index.json"))
+    api_brand_logos = li_dir("logo", li_placeholder("{logo-id}.json") + "\n" + li_placeholder("{logo-id}.{ext}") + "\n" + li_file("index.json", "api/v1/brands/logo/index.json"))
+    api_brands = li_dir("brands", api_brands_inner + "\n" + api_brand_logos + "\n" + li_file("index.json", "api/v1/brands/index.json"))
+    api_store_logos = li_dir("logo", li_placeholder("{logo-id}.json") + "\n" + li_placeholder("{logo-id}.{ext}") + "\n" + li_file("index.json", "api/v1/stores/logo/index.json"))
+    api_stores = li_dir("stores", li_placeholder("{store-slug}.json") + "\n" + api_store_logos + "\n" + li_file("index.json", "api/v1/stores/index.json"))
     api_schemas = li_dir("schemas", li_placeholder("*.json") + "\n" + li_file("index.json", "api/v1/schemas/index.json"))
     api_v1 = li_dir("v1", api_brands + "\n" + api_stores + "\n" + api_schemas + "\n" + li_file("index.json", "api/v1/index.json"))
     lines.append(li_dir("api", api_v1))
@@ -67,6 +69,8 @@ def build_abstract_file_tree(db: Database) -> str:
     sqlite_files = "\n".join([
         li_file("filaments.db", "sqlite/filaments.db"),
         li_file("filaments.db.xz", "sqlite/filaments.db.xz"),
+        li_file("stores.db", "sqlite/stores.db"),
+        li_file("stores.db.xz", "sqlite/stores.db.xz"),
     ])
     lines.append(li_dir("sqlite", sqlite_files))
 

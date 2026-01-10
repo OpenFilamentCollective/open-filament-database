@@ -8,6 +8,7 @@ import { filamentVariantSchema } from '$lib/validation/filament-variant-schema';
 import { refreshDatabase } from '$lib/dataCacher';
 import { stripOfIllegalChars } from '$lib/globalHelpers';
 import { updateVariant } from '$lib/server/variant';
+import { triggerBackgroundValidation } from '$lib/server/validationTrigger';
 
 export const load: PageServerLoad = async ({ params, parent }) => {
   const { brand, material, filament, instance } = params;
@@ -119,6 +120,11 @@ export const actions = {
 
       await updateVariant(brand, material, filament, instance, filteredData);
       await refreshDatabase();
+
+      // Trigger background validation (non-blocking)
+      triggerBackgroundValidation().catch((err) => {
+        console.error('Failed to trigger background validation:', err);
+      });
     } catch (error) {
       console.error('Failed to update variant:', error);
       setFlash({ type: 'error', message: 'Variant to update filament. Please try again.' }, cookies);

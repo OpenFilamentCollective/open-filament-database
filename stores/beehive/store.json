@@ -1,0 +1,12 @@
+{
+  "id": "beehive",
+  "name": "Beehive",
+  "storefront_url": "https://www.beehive.com.br/",
+  "logo": "logo.jpg",
+  "ships_from": [
+    "BR"
+  ],
+  "ships_to": [
+    "BR"
+  ]
+}

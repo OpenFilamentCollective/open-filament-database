@@ -7,6 +7,7 @@ import { setFlash } from 'sveltekit-flash-message/server';
 import { refreshDatabase } from '$lib/dataCacher';
 import { stripOfIllegalChars } from '$lib/globalHelpers';
 import { updateStore } from '$lib/server/store';
+import { triggerBackgroundValidation } from '$lib/server/validationTrigger';
 
 export const load: PageServerLoad = async ({ params, parent }) => {
   const { store } = params;
@@ -66,6 +67,11 @@ export const actions = {
     try {
       await updateStore(form.data);
       await refreshDatabase();
+
+      // Trigger background validation (non-blocking)
+      triggerBackgroundValidation().catch((err) => {
+        console.error('Failed to trigger background validation:', err);
+      });
     } catch (error) {
       console.error('Failed to update store:', error);
       setFlash({ type: 'error', message: 'Failed to update store. Please try again.' }, cookies);

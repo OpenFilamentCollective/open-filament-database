@@ -1,5 +1,5 @@
-# What to install and how to do it
-In this document we'll go through what we need to install and how to do it, depending on your computer.
+# Software Installation Guide
+This guide will walk you through installing the required software for contributing to the database.
 
 - [Git](#git)
 - [Python](#python)
@@ -7,7 +7,7 @@ In this document we'll go through what we need to install and how to do it, depe
 - [NodeJS/NPM](#nodejsnpm)
 
 ## Git
-You'll need git installed to be able to share your changes with us, please follow the instructions below depending on your operating system (If you're in doubt you're properly on Windows)
+Git is required to download the database and upload your changes. Follow the instructions for your operating system below.
 
 <details>
 <summary><strong>Windows</strong></summary>
@@ -18,10 +18,10 @@ Go to https://git-scm.com/downloads and click the `Download for Windows` Button
 You'll most likely want to click on `Git for Windows/x64 Setup` on most systems as of writing
 ![](img/windowsGitDownload02.png)
 
-Once the download is complete, click on the executable in the top right to start installing Git. Simply click through the setup wizard leaving all options on default.
+Once the download is complete, click on the installer to start installing Git. Click through the setup wizard, leaving all options on their default settings.
 ![](img/windowsGitInstaller01.png)
 
-Once it's done installing we'd recommend you uncheck `View Release Notes` and click finish, this will close the installer without opening a text file with info about git
+When installation is complete, uncheck "View Release Notes" and click "Finish" to close the installer.
 ![](img/windowsGitInstaller02.png)
 
 </details>
@@ -57,7 +57,7 @@ If you don't have homebrew you can also use the [latest macOS Git Installer](htt
 </details>
 
 ## Python
-You'll need python to run our data validator, please follow the instructions below depending on your operating system (If you're in doubt you're properly on Windows)
+Python is required to run the data validation and sorting scripts. Follow the instructions for your operating system below.
 
 <details>
 <summary><strong>Windows</strong></summary>
@@ -153,8 +153,8 @@ pip3 install -r requirements.txt
 
 > **Note:** You'll need to activate the virtual environment each time you open a new terminal to run the validator.
 
-## NodeJS/NPM
-You'll need NodeJS to be able to run our WebUI for easy editing of the data, please follow the instructions below depending on your operating system (If you're in doubt you're properly on Windows)
+## Node.js/NPM
+Node.js is required to run the WebUI for easy editing of the database. Follow the instructions for your operating system below.
 
 <details>
 <summary><strong>Windows</strong></summary>

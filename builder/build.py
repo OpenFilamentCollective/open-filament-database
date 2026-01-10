@@ -5,7 +5,7 @@ Main build script for the Open Filament Database.
 This script crawls the data directory, normalizes all entities,
 and exports them to multiple formats:
 - JSON (all.json, all.ndjson, per-brand)
-- SQLite database (filaments.db)
+- SQLite databases (filaments.db, stores.db)
 - CSV files
 - Static API (for GitHub Pages)
 - HTML landing page (index.html)
@@ -19,7 +19,7 @@ Options:
     --stores-dir DIR    Stores directory (default: stores)
     --version VERSION   Dataset version (default: auto-generated)
     --skip-json         Skip JSON export
-    --skip-sqlite       Skip SQLite export
+    --skip-sqlite       Skip SQLite export (both filaments and stores)
     --skip-csv          Skip CSV export
     --skip-api          Skip static API export
     --skip-html         Skip HTML landing page export
@@ -37,7 +37,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from builder.crawler import crawl_data
 from builder.errors import BuildResult
-from builder.exporters import export_json, export_sqlite, export_csv, export_api, export_html
+from builder.exporters import export_json, export_sqlite, export_sqlite_stores, export_csv, export_api, export_html
 from builder.utils import get_current_timestamp
 
 
@@ -147,6 +147,7 @@ def main():
     data_dir = project_root / args.data_dir
     stores_dir = project_root / args.stores_dir
     schemas_dir = project_root / "schemas"
+    builder_schemas_dir = project_root / "builder" / "schemas"
     output_dir = project_root / args.output_dir
 
     # Generate version if not provided
@@ -170,44 +171,51 @@ def main():
     build_result = BuildResult()
 
     # Step 1: Crawl data
-    print("\n[1/6] Crawling data...")
+    print("\n[1/7] Crawling data...")
     db, crawl_result = crawl_data(str(data_dir), str(stores_dir))
     build_result.merge(crawl_result)
 
     # Step 2: Export JSON
     if not args.skip_json:
-        print("\n[2/6] Exporting JSON...")
+        print("\n[2/7] Exporting JSON...")
         export_json(db, str(output_dir), version, generated_at)
     else:
-        print("\n[2/6] Skipping JSON export")
+        print("\n[2/7] Skipping JSON export")
 
-    # Step 3: Export SQLite
+    # Step 3: Export SQLite (filaments)
     if not args.skip_sqlite:
-        print("\n[3/6] Exporting SQLite...")
+        print("\n[3/7] Exporting SQLite (filaments)...")
         export_sqlite(db, str(output_dir), version, generated_at)
     else:
-        print("\n[3/6] Skipping SQLite export")
+        print("\n[3/7] Skipping SQLite export")
 
-    # Step 4: Export CSV
+    # Step 4: Export SQLite (stores)
+    if not args.skip_sqlite:
+        print("\n[4/7] Exporting SQLite (stores)...")
+        export_sqlite_stores(db, str(output_dir), version, generated_at)
+    else:
+        print("\n[4/7] Skipping SQLite stores export")
+
+    # Step 5: Export CSV
     if not args.skip_csv:
-        print("\n[4/6] Exporting CSV...")
+        print("\n[5/7] Exporting CSV...")
         export_csv(db, str(output_dir), version, generated_at)
     else:
-        print("\n[4/6] Skipping CSV export")
+        print("\n[5/7] Skipping CSV export")
 
-    # Step 5: Export Static API
+    # Step 6: Export Static API
     if not args.skip_api:
-        print("\n[5/6] Exporting Static API...")
-        export_api(db, str(output_dir), version, generated_at, schemas_dir=str(schemas_dir))
+        print("\n[6/7] Exporting Static API...")
+        export_api(db, str(output_dir), version, generated_at, schemas_dir=str(schemas_dir), builder_schemas_dir=str(builder_schemas_dir), data_dir=str(data_dir), stores_dir=str(stores_dir))
     else:
-        print("\n[5/6] Skipping Static API export")
+        print("\n[6/7] Skipping Static API export")
 
-    # Step 6: Export HTML landing page
+    # Step 7: Export HTML landing page
     if not args.skip_html:
-        print("\n[6/6] Exporting HTML landing page...")
+        print("\n[7/7] Exporting HTML landing page...")
         export_html(db, str(output_dir), version, generated_at, Path(__file__).parent.resolve().joinpath("templates"))
     else:
-        print("\n[6/6] Skipping HTML export")
+        print("\n[7/7] Skipping HTML export")
 
     # Calculate checksums and write manifest
     print("\nGenerating checksums and manifest...")
