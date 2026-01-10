@@ -1,67 +1,73 @@
 <script lang="ts">
-  import SectionsItem from "$lib/components/items/sectionsItem.svelte";
-  const { data } = $props();
+	import { onMount } from 'svelte';
+	import type { Store, Brand } from '$lib/types/database';
+	import { db } from '$lib/services/database';
 
-  let filamentData = data.filamentData;
+	let stores: Store[] = $state([]);
+	let brands: Brand[] = $state([]);
+	let loading: boolean = $state(true);
+	let error: string | null = $state(null);
 
-  let brandImages = [], storeImages = [];
-
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-
-  type imageSourceType = "brand" | "store";
-
-  function getRandomImage(dict, arr, sourceType: imageSourceType) {
-    let index = getRandomInt(Object.keys(dict).length - 1);
-    let sourceKey = Object.keys(dict)[index];
-    let source = dict[sourceKey];
-    
-    if (!arr.includes(source.logo)) {
-      if (sourceType == "brand") {
-        return `/data/${source.id}/${source.logo}`;
-      } else {
-        return `/stores/${source.id}/${source.logo}`
-      }
-    } else {
-      sourceKey = Object.keys(dict)[index + 1];
-      let source = dict[sourceKey];
-
-      if (sourceType == "brand") {
-        return `/data/${source.id}/${source.logo}`;
-      } else {
-        return `/stores/${source.id}/${source.logo}`
-      }
-    }
-  }
-
-  for(let i = 0; i < 3; i++){
-    brandImages[i] = getRandomImage(filamentData.brands, brandImages, "brand");
-    storeImages[i] = getRandomImage(filamentData.stores, storeImages, "store");
-  }
+	onMount(async () => {
+		try {
+			const index = await db.loadIndex();
+			stores = index.stores;
+			brands = index.brands;
+		} catch (e) {
+			error = e instanceof Error ? e.message : 'Failed to load database';
+		} finally {
+			loading = false;
+		}
+	});
 </script>
 
-<svelte:head>
-	<title>WebUI Landing</title>
-	<meta name="description" content="This is a overview of the sections of the webui"/>
-</svelte:head>
+<div class="container mx-auto px-4 py-8">
+	<header class="mb-12">
+		<h1 class="text-4xl font-bold mb-3">Filament Database Editor</h1>
+		<p class="text-lg text-gray-600">Browse and edit filament stores, brands, materials, and filaments</p>
+	</header>
 
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex h-screen flex-col">
-  <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 text-center">Open Filament Database WebUI</h1>
-  <p class="mb-8 text-center">Hello and welcome to our WebUI, below you can select whether you'd like to edit our brands or stores.</p>
+	{#if loading}
+		<div class="flex justify-center items-center py-12">
+			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+		</div>
+	{:else if error}
+		<div class="bg-red-50 border border-red-200 rounded-lg p-4">
+			<p class="text-red-800">Error: {error}</p>
+		</div>
+	{:else}
+		<div class="grid grid-cols-2 gap-8">
+			<section class="bg-white rounded-lg border border-gray-200 p-6">
+				<div class="flex items-center justify-between mb-6">
+					<div>
+						<h2 class="text-2xl font-semibold mb-2">Brands</h2>
+						<p class="text-gray-600">Browse and edit filament brands</p>
+					</div>
+					<span class="text-3xl font-bold text-green-600">{brands.length}</span>
+				</div>
+				<a
+					href="/brands"
+					class="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+				>
+					View All Brands →
+				</a>
+			</section>
 
-  <div class="flex w-full aspect-3/1 space-x-4">
-    <SectionsItem
-      link="/Brand/"
-      title="Filament Brands"
-      images={brandImages}
-    />
-
-    <SectionsItem
-      link="/Store/"
-      title="Filament Storefronts"
-      images={storeImages}
-    />
-  </div>
-
-</section>
+			<section class="bg-white rounded-lg border border-gray-200 p-6">
+				<div class="flex items-center justify-between mb-6">
+					<div>
+						<h2 class="text-2xl font-semibold mb-2">Stores</h2>
+						<p class="text-gray-600">Browse and edit filament stores</p>
+					</div>
+					<span class="text-3xl font-bold text-blue-600">{stores.length}</span>
+				</div>
+				<a
+					href="/stores"
+					class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+				>
+					View All Stores →
+				</a>
+			</section>
+		</div>
+	{/if}
+</div>
