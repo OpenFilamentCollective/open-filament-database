@@ -2,11 +2,10 @@
 	import { onMount } from 'svelte';
 	import type { Brand } from '$lib/types/database';
 	import { db } from '$lib/services/database';
-	import Modal from '$lib/components/Modal.svelte';
-	import BrandForm from '$lib/components/forms/BrandForm.svelte';
-	import MessageBanner from '$lib/components/MessageBanner.svelte';
-	import DataDisplay from '$lib/components/DataDisplay.svelte';
-	import EntityCard from '$lib/components/EntityCard.svelte';
+	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { BrandForm } from '$lib/components/forms';
+	import { DataDisplay } from '$lib/components/layout';
+	import { EntityCard } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 

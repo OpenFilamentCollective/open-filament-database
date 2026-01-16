@@ -53,17 +53,44 @@ export const POST: RequestHandler = async ({ params, request }) => {
 	const { brandId, materialType, filamentId } = params;
 
 	try {
+		const { PUBLIC_APP_MODE } = await import('$env/static/public');
+		const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
+
 		const variantData = await request.json();
 
-		// TODO: Implement variant creation logic
-		// This should:
-		// 1. Validate the variant data
-		// 2. Generate a new ID if not provided
-		// 3. Save to your data storage
+		// Generate variant slug from color name if not provided
+		const variantSlug = variantData.slug ||
+			variantData.color_name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-		return json({ success: true, variant: variantData }, { status: 201 });
+		if (IS_LOCAL) {
+			const variantDir = path.join(DATA_DIR, brandId, materialType, filamentId, variantSlug);
+
+			// Create the variant directory
+			await fs.mkdir(variantDir, { recursive: true });
+
+			// Write the variant.json file (without internal tracking fields)
+			const { brandId: bid, materialType: mt, filamentId: fid, variantDir: vd, ...cleanData } = variantData;
+			// Ensure id and slug are set
+			cleanData.id = variantSlug;
+			cleanData.slug = variantSlug;
+			cleanData.filament_id = filamentId;
+			const content = JSON.stringify(cleanData, null, 4) + '\n';
+			await fs.writeFile(path.join(variantDir, 'variant.json'), content, 'utf-8');
+
+			return json({
+				success: true,
+				variant: { ...cleanData, brandId, materialType, filamentId }
+			}, { status: 201 });
+		} else {
+			// In cloud mode, pretend success but don't write
+			return json({
+				success: true,
+				mode: 'cloud',
+				variant: { ...variantData, id: variantSlug, slug: variantSlug }
+			}, { status: 201 });
+		}
 	} catch (error) {
-		console.error('Error creating variant:', error);
+		console.error(`Error creating variant for ${brandId}/${materialType}/${filamentId}:`, error);
 		return json({ error: 'Failed to create variant' }, { status: 500 });
 	}
 };

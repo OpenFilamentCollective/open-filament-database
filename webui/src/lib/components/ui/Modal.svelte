@@ -5,20 +5,33 @@
 		show: boolean;
 		title: string;
 		onClose: () => void;
-		maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+		maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
+		height?: 'auto' | '1/2' | '2/3' | '3/4' | 'full';
+		contentClass?: string;
 		children: Snippet;
 	}
 
-	let { show, title, onClose, maxWidth = '2xl', children }: Props = $props();
+	let { show, title, onClose, maxWidth = '2xl', height = 'auto', contentClass = '', children }: Props = $props();
 
-	const maxWidthClasses = {
+	const maxWidthClasses: Record<string, string> = {
 		sm: 'max-w-sm',
 		md: 'max-w-md',
 		lg: 'max-w-lg',
 		xl: 'max-w-xl',
 		'2xl': 'max-w-2xl',
 		'3xl': 'max-w-3xl',
-		'4xl': 'max-w-4xl'
+		'4xl': 'max-w-4xl',
+		'5xl': 'max-w-5xl',
+		'6xl': 'max-w-6xl',
+		'7xl': 'max-w-7xl'
+	};
+
+	const heightClasses: Record<string, string> = {
+		auto: '',
+		'1/2': 'h-[50vh]',
+		'2/3': 'h-[66vh]',
+		'3/4': 'h-[75vh]',
+		full: 'h-[90vh]'
 	};
 
 	// Handle click on backdrop to close modal
@@ -41,13 +54,13 @@
 	>
 		<!-- Modal content - stops propagation to prevent closing when clicking inside -->
 		<div
-			class="bg-white rounded-lg shadow-xl {maxWidthClasses[maxWidth]} w-full max-h-[90vh] overflow-auto"
+			class="bg-white rounded-lg shadow-xl {maxWidthClasses[maxWidth]} w-full max-h-[90vh] {heightClasses[height]} flex flex-col {contentClass}"
 			onclick={(e) => e.stopPropagation()}
 			role="dialog"
 			aria-modal="true"
 		>
-			<div class="p-6">
-				<div class="flex justify-between items-center mb-4">
+			<div class="p-6 flex flex-col flex-1 min-h-0">
+				<div class="flex justify-between items-center mb-4 flex-shrink-0">
 					<h3 class="text-xl font-semibold">{title}</h3>
 					<button
 						type="button"
@@ -67,7 +80,9 @@
 					</button>
 				</div>
 
-				{@render children()}
+				<div class="flex-1 overflow-auto min-h-0">
+					{@render children()}
+				</div>
 			</div>
 		</div>
 	</div>

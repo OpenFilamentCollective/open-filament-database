@@ -3,13 +3,11 @@
 	import { page } from '$app/stores';
 	import type { Store } from '$lib/types/database';
 	import { db } from '$lib/services/database';
-	import Modal from '$lib/components/Modal.svelte';
-	import StoreForm from '$lib/components/forms/StoreForm.svelte';
-	import MessageBanner from '$lib/components/MessageBanner.svelte';
-	import BackButton from '$lib/components/BackButton.svelte';
-	import DataDisplay from '$lib/components/DataDisplay.svelte';
-	import EntityDetails from '$lib/components/EntityDetails.svelte';
-	import Logo from '$lib/components/Logo.svelte';
+	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { StoreForm } from '$lib/components/forms';
+	import { BackButton } from '$lib/components/actions';
+	import { DataDisplay } from '$lib/components/layout';
+	import { EntityDetails, Logo } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
 	import { changeStore } from '$lib/stores/changes';

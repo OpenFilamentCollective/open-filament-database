@@ -469,6 +469,45 @@ export class DatabaseService {
 	}
 
 	/**
+	 * Create a new material
+	 */
+	async createMaterial(brandId: string, material: Material): Promise<{ success: boolean; materialType?: string }> {
+		try {
+			// Generate materialType from material name if not provided
+			const materialType = material.materialType ||
+				material.material.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+			const entityPath = `brands/${brandId}/materials/${materialType}`;
+			const entity: EntityIdentifier = {
+				type: 'material',
+				path: entityPath,
+				id: materialType
+			};
+
+			const materialWithId = { ...material, id: materialType, materialType };
+
+			if (get(isCloudMode)) {
+				changeStore.trackCreate(entity, materialWithId);
+				return { success: true, materialType };
+			}
+
+			const response = await apiFetch(`/api/brands/${brandId}/materials`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(materialWithId)
+			});
+
+			if (response.ok) {
+				return { success: true, materialType };
+			}
+			return { success: false };
+		} catch (error) {
+			console.error(`Error creating material for brand ${brandId}:`, error);
+			return { success: false };
+		}
+	}
+
+	/**
 	 * Delete a material
 	 */
 	async deleteMaterial(brandId: string, materialType: string, material?: Material): Promise<boolean> {
@@ -590,6 +629,49 @@ export class DatabaseService {
 		} catch (error) {
 			console.error(`Error saving filament ${brandId}/${materialType}/${filamentId}:`, error);
 			return false;
+		}
+	}
+
+	/**
+	 * Create a new filament
+	 */
+	async createFilament(
+		brandId: string,
+		materialType: string,
+		filament: Filament
+	): Promise<{ success: boolean; filamentId?: string }> {
+		try {
+			// Generate filamentId from name if not provided
+			const filamentId = filament.slug || filament.id ||
+				filament.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+			const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
+			const entity: EntityIdentifier = {
+				type: 'filament',
+				path: entityPath,
+				id: filamentId
+			};
+
+			const filamentWithId = { ...filament, id: filamentId, slug: filamentId };
+
+			if (get(isCloudMode)) {
+				changeStore.trackCreate(entity, filamentWithId);
+				return { success: true, filamentId };
+			}
+
+			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}/filaments`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(filamentWithId)
+			});
+
+			if (response.ok) {
+				return { success: true, filamentId };
+			}
+			return { success: false };
+		} catch (error) {
+			console.error(`Error creating filament for ${brandId}/${materialType}:`, error);
+			return { success: false };
 		}
 	}
 
@@ -734,6 +816,58 @@ export class DatabaseService {
 		} catch (error) {
 			console.error(`Error saving variant ${brandId}/${materialType}/${filamentId}/${variantSlug}:`, error);
 			return false;
+		}
+	}
+
+	/**
+	 * Create a new variant
+	 */
+	async createVariant(
+		brandId: string,
+		materialType: string,
+		filamentId: string,
+		variant: Variant
+	): Promise<{ success: boolean; variantSlug?: string }> {
+		try {
+			// Generate variantSlug from color name if not provided
+			const variantSlug = variant.slug || variant.id ||
+				variant.color_name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+			const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`;
+			const entity: EntityIdentifier = {
+				type: 'variant',
+				path: entityPath,
+				id: variantSlug
+			};
+
+			const variantWithId = {
+				...variant,
+				id: variantSlug,
+				slug: variantSlug,
+				filament_id: filamentId
+			};
+
+			if (get(isCloudMode)) {
+				changeStore.trackCreate(entity, variantWithId);
+				return { success: true, variantSlug };
+			}
+
+			const response = await apiFetch(
+				`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants`,
+				{
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(variantWithId)
+				}
+			);
+
+			if (response.ok) {
+				return { success: true, variantSlug };
+			}
+			return { success: false };
+		} catch (error) {
+			console.error(`Error creating variant for ${brandId}/${materialType}/${filamentId}:`, error);
+			return { success: false };
 		}
 	}
 

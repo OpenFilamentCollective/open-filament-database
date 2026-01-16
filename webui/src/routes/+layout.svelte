@@ -1,8 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import EnvironmentIndicator from '$lib/components/EnvironmentIndicator.svelte';
-	import ChangesMenu from '$lib/components/ChangesMenu.svelte';
+	import { ChangesMenu } from '$lib/components/layout';
 	import { isLocalMode } from '$lib/stores/environment';
 	import { db } from '$lib/services/database';
 	import { page } from '$app/stores';

@@ -34,21 +34,57 @@ export const GET: RequestHandler = async ({ params }) => {
 
 export const PUT: RequestHandler = async ({ params, request }) => {
 	try {
-		const normalizedBrandId = await normalizeBrandId(DATA_DIR, params.brandId);
+		const { PUBLIC_APP_MODE } = await import('$env/static/public');
+		const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
+
 		const material = await request.json();
-		const materialPath = path.join(
-			DATA_DIR,
-			normalizedBrandId,
-			params.materialType,
-			'material.json'
-		);
-		await fs.writeFile(materialPath, JSON.stringify(material, null, 4));
-		return json({ success: true });
+
+		if (IS_LOCAL) {
+			const normalizedBrandId = await normalizeBrandId(DATA_DIR, params.brandId);
+			const materialPath = path.join(
+				DATA_DIR,
+				normalizedBrandId,
+				params.materialType,
+				'material.json'
+			);
+			// Remove internal tracking fields before saving
+			const { id, brandId, materialType, ...cleanData } = material;
+			const content = JSON.stringify(cleanData, null, 4) + '\n';
+			await fs.writeFile(materialPath, content, 'utf-8');
+			return json({ success: true });
+		} else {
+			return json({ success: true, mode: 'cloud' });
+		}
 	} catch (error) {
 		console.error(
 			`Error saving material ${params.materialType} for brand ${params.brandId}:`,
 			error
 		);
 		return json({ error: 'Failed to save material' }, { status: 500 });
+	}
+};
+
+export const DELETE: RequestHandler = async ({ params }) => {
+	try {
+		const { PUBLIC_APP_MODE } = await import('$env/static/public');
+		const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
+
+		if (IS_LOCAL) {
+			const normalizedBrandId = await normalizeBrandId(DATA_DIR, params.brandId);
+			const materialDir = path.join(DATA_DIR, normalizedBrandId, params.materialType);
+
+			// Recursively delete the material directory and all its contents
+			await fs.rm(materialDir, { recursive: true, force: true });
+
+			return json({ success: true });
+		} else {
+			return json({ success: true, mode: 'cloud' });
+		}
+	} catch (error) {
+		console.error(
+			`Error deleting material ${params.materialType} for brand ${params.brandId}:`,
+			error
+		);
+		return json({ error: 'Failed to delete material' }, { status: 500 });
 	}
 };

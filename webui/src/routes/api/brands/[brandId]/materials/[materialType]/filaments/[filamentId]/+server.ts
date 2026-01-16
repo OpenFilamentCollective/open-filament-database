@@ -33,21 +33,61 @@ export const GET: RequestHandler = async ({ params }) => {
 
 export const PUT: RequestHandler = async ({ params, request }) => {
 	try {
+		const { PUBLIC_APP_MODE } = await import('$env/static/public');
+		const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
+
 		const filament = await request.json();
-		const filamentPath = path.join(
-			DATA_DIR,
-			params.brandId,
-			params.materialType,
-			params.filamentId,
-			'filament.json'
-		);
-		await fs.writeFile(filamentPath, JSON.stringify(filament, null, 4));
-		return json({ success: true });
+
+		if (IS_LOCAL) {
+			const filamentPath = path.join(
+				DATA_DIR,
+				params.brandId,
+				params.materialType,
+				params.filamentId,
+				'filament.json'
+			);
+			// Remove internal tracking fields before saving
+			const { brandId, materialType, filamentDir, ...cleanData } = filament;
+			const content = JSON.stringify(cleanData, null, 4) + '\n';
+			await fs.writeFile(filamentPath, content, 'utf-8');
+			return json({ success: true });
+		} else {
+			return json({ success: true, mode: 'cloud' });
+		}
 	} catch (error) {
 		console.error(
 			`Error saving filament ${params.filamentId} for ${params.brandId}/${params.materialType}:`,
 			error
 		);
 		return json({ error: 'Failed to save filament' }, { status: 500 });
+	}
+};
+
+export const DELETE: RequestHandler = async ({ params }) => {
+	try {
+		const { PUBLIC_APP_MODE } = await import('$env/static/public');
+		const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
+
+		if (IS_LOCAL) {
+			const filamentDir = path.join(
+				DATA_DIR,
+				params.brandId,
+				params.materialType,
+				params.filamentId
+			);
+
+			// Recursively delete the filament directory and all its contents (including variants)
+			await fs.rm(filamentDir, { recursive: true, force: true });
+
+			return json({ success: true });
+		} else {
+			return json({ success: true, mode: 'cloud' });
+		}
+	} catch (error) {
+		console.error(
+			`Error deleting filament ${params.filamentId} for ${params.brandId}/${params.materialType}:`,
+			error
+		);
+		return json({ error: 'Failed to delete filament' }, { status: 500 });
 	}
 };

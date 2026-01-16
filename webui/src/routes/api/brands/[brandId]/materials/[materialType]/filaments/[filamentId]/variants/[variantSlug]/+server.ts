@@ -75,11 +75,30 @@ export const DELETE: RequestHandler = async ({ params }) => {
 	const { brandId, materialType, filamentId, variantSlug } = params;
 
 	try {
-		// TODO: Implement variant deletion logic
+		const { PUBLIC_APP_MODE } = await import('$env/static/public');
+		const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
 
-		return json({ success: true });
+		if (IS_LOCAL) {
+			const variantDir = path.join(
+				DATA_DIR,
+				brandId,
+				materialType,
+				filamentId,
+				variantSlug
+			);
+
+			// Recursively delete the variant directory
+			await fs.rm(variantDir, { recursive: true, force: true });
+
+			return json({ success: true });
+		} else {
+			return json({ success: true, mode: 'cloud' });
+		}
 	} catch (error) {
-		console.error('Error deleting variant:', error);
+		console.error(
+			`Error deleting variant ${brandId}/${materialType}/${filamentId}/${variantSlug}:`,
+			error
+		);
 		return json({ error: 'Failed to delete variant' }, { status: 500 });
 	}
 };

@@ -5,13 +5,15 @@
 	import { formDefaults } from '$lib/utils/formDefaults';
 	import { createUiSchema, removeIdFromSchema, applyFormattedTitles } from '$lib/utils/schemaUtils';
 	import { customTranslation } from '$lib/utils/translations';
-	import EntityForm from '$lib/components/EntityForm.svelte';
-	import MessageBanner from '$lib/components/MessageBanner.svelte';
-	import BackButton from '$lib/components/BackButton.svelte';
-	import DataDisplay from '$lib/components/DataDisplay.svelte';
+	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { EntityFormWrapper } from '$lib/components/forms';
+	import { BackButton } from '$lib/components/actions';
+	import { DataDisplay } from '$lib/components/layout';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { db } from '$lib/services/database';
 	import { apiFetch } from '$lib/utils/api';
+	import { isCloudMode } from '$lib/stores/environment';
+	import { changeStore } from '$lib/stores/changes';
 	import '@sjsf/basic-theme/css/basic.css';
 	import '$lib/styles/sjsf-buttons.css';
 
@@ -28,6 +30,9 @@
 	let editMode: boolean = $state(false);
 	let formData: any = $state({});
 	let form: any = $state(null);
+
+	let showDeleteModal: boolean = $state(false);
+	let deleting: boolean = $state(false);
 
 	// Create message handler
 	const messageHandler = createMessageHandler();
@@ -128,6 +133,55 @@
 			formData = { ...variant };
 		}
 	}
+
+	function openDeleteModal() {
+		showDeleteModal = true;
+	}
+
+	function closeDeleteModal() {
+		showDeleteModal = false;
+	}
+
+	async function handleDelete() {
+		if (!variant) return;
+
+		deleting = true;
+		messageHandler.clear();
+
+		try {
+			if ($isCloudMode) {
+				const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`;
+				const change = $changeStore.changes[entityPath];
+
+				if (change && change.operation === 'create') {
+					changeStore.removeChange(entityPath);
+					messageHandler.showSuccess('Local variant creation removed');
+				} else {
+					await db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant);
+					messageHandler.showSuccess('Variant marked for deletion - export to save');
+				}
+			} else {
+				const success = await db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant);
+				if (success) {
+					messageHandler.showSuccess('Variant deleted successfully');
+				} else {
+					messageHandler.showError('Failed to delete variant');
+					deleting = false;
+					showDeleteModal = false;
+					return;
+				}
+			}
+
+			showDeleteModal = false;
+			setTimeout(() => {
+				window.location.href = `/brands/${brandId}/${materialType}/${filamentId}`;
+			}, 1500);
+		} catch (e) {
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete variant');
+			deleting = false;
+			showDeleteModal = false;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -164,13 +218,14 @@
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
 			{/if}
 
-			<EntityForm
+			<EntityFormWrapper
 				title="Variant Details"
 				{editMode}
 				{saving}
 				{form}
 				onEdit={toggleEditMode}
 				onCancel={cancelEdit}
+				onDelete={openDeleteModal}
 				editButtonClass="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 transition-colors"
 			>
 				{#snippet children()}
@@ -201,7 +256,52 @@
 						</div>
 					</dl>
 				{/snippet}
-			</EntityForm>
+			</EntityFormWrapper>
 		{/snippet}
 	</DataDisplay>
 </div>
+
+<Modal show={showDeleteModal} title="Delete Variant" onClose={closeDeleteModal} maxWidth="md">
+	{#if variant}
+		<div class="space-y-4">
+			<p class="text-gray-700">
+				Are you sure you want to delete the variant <strong>{variant.color_name}</strong>?
+			</p>
+
+			{#if $isCloudMode}
+				<div class="bg-blue-50 border border-blue-200 rounded p-3">
+					<p class="text-sm text-blue-800">
+						{#if $changeStore.changes[`brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`]?.operation === 'create'}
+							This will remove the locally created variant. The change will be discarded.
+						{:else}
+							This will mark the variant for deletion. Remember to export your changes.
+						{/if}
+					</p>
+				</div>
+			{:else}
+				<div class="bg-red-50 border border-red-200 rounded p-3">
+					<p class="text-sm text-red-800">
+						This action cannot be undone. The variant will be permanently deleted.
+					</p>
+				</div>
+			{/if}
+
+			<div class="flex justify-end gap-2 pt-4">
+				<button
+					onclick={closeDeleteModal}
+					disabled={deleting}
+					class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+				>
+					Cancel
+				</button>
+				<button
+					onclick={handleDelete}
+					disabled={deleting}
+					class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+				>
+					{deleting ? 'Deleting...' : 'Delete Variant'}
+				</button>
+			</div>
+		</div>
+	{/if}
+</Modal>

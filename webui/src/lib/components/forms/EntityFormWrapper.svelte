@@ -9,8 +9,10 @@
 		form?: any;
 		onEdit: () => void;
 		onCancel: () => void;
+		onDelete?: () => void;
 		editButtonText?: string;
 		editButtonClass?: string;
+		deleteButtonClass?: string;
 		children?: Snippet;
 		formContent?: Snippet;
 	}
@@ -22,8 +24,10 @@
 		form = null,
 		onEdit,
 		onCancel,
+		onDelete,
 		editButtonText = 'Edit',
 		editButtonClass = 'px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors',
+		deleteButtonClass = 'px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors',
 		children,
 		formContent
 	}: Props = $props();
@@ -34,9 +38,16 @@
 		<div class="mb-6">
 			<div class="flex justify-between items-center mb-4">
 				<h2 class="text-xl font-semibold">{title}</h2>
-				<button onclick={onEdit} class={editButtonClass}>
-					{editButtonText}
-				</button>
+				<div class="flex gap-2">
+					<button onclick={onEdit} class={editButtonClass}>
+						{editButtonText}
+					</button>
+					{#if onDelete}
+						<button onclick={onDelete} class={deleteButtonClass}>
+							Delete
+						</button>
+					{/if}
+				</div>
 			</div>
 
 			{#if children}

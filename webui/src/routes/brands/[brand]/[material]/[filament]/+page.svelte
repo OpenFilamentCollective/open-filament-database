@@ -5,14 +5,16 @@
 	import { formDefaults } from '$lib/utils/formDefaults';
 	import { createUiSchema, removeIdFromSchema, applyFormattedTitles } from '$lib/utils/schemaUtils';
 	import { customTranslation } from '$lib/utils/translations';
-	import EntityForm from '$lib/components/EntityForm.svelte';
-	import MessageBanner from '$lib/components/MessageBanner.svelte';
-	import BackButton from '$lib/components/BackButton.svelte';
-	import DataDisplay from '$lib/components/DataDisplay.svelte';
-	import EntityCard from '$lib/components/EntityCard.svelte';
+	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { EntityFormWrapper } from '$lib/components/forms';
+	import { BackButton } from '$lib/components/actions';
+	import { DataDisplay } from '$lib/components/layout';
+	import { EntityCard } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { db } from '$lib/services/database';
 	import { apiFetch } from '$lib/utils/api';
+	import { isCloudMode } from '$lib/stores/environment';
+	import { changeStore } from '$lib/stores/changes';
 	import '@sjsf/basic-theme/css/basic.css';
 	import '$lib/styles/sjsf-buttons.css';
 
@@ -29,6 +31,9 @@
 	let editMode: boolean = $state(false);
 	let formData: any = $state({});
 	let form: any = $state(null);
+
+	let showDeleteModal: boolean = $state(false);
+	let deleting: boolean = $state(false);
 
 	// Create message handler
 	const messageHandler = createMessageHandler();
@@ -124,6 +129,55 @@
 			formData = { ...filament };
 		}
 	}
+
+	function openDeleteModal() {
+		showDeleteModal = true;
+	}
+
+	function closeDeleteModal() {
+		showDeleteModal = false;
+	}
+
+	async function handleDelete() {
+		if (!filament) return;
+
+		deleting = true;
+		messageHandler.clear();
+
+		try {
+			if ($isCloudMode) {
+				const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
+				const change = $changeStore.changes[entityPath];
+
+				if (change && change.operation === 'create') {
+					changeStore.removeChange(entityPath);
+					messageHandler.showSuccess('Local filament creation removed');
+				} else {
+					await db.deleteFilament(brandId, materialType, filamentId, filament);
+					messageHandler.showSuccess('Filament marked for deletion - export to save');
+				}
+			} else {
+				const success = await db.deleteFilament(brandId, materialType, filamentId, filament);
+				if (success) {
+					messageHandler.showSuccess('Filament deleted successfully');
+				} else {
+					messageHandler.showError('Failed to delete filament');
+					deleting = false;
+					showDeleteModal = false;
+					return;
+				}
+			}
+
+			showDeleteModal = false;
+			setTimeout(() => {
+				window.location.href = `/brands/${brandId}/${materialType}`;
+			}, 1500);
+		} catch (e) {
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete filament');
+			deleting = false;
+			showDeleteModal = false;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -154,13 +208,14 @@
 			{/if}
 
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-				<EntityForm
+				<EntityFormWrapper
 					title="Filament Details"
 					{editMode}
 					{saving}
 					{form}
 					onEdit={toggleEditMode}
 					onCancel={cancelEdit}
+					onDelete={openDeleteModal}
 				>
 					{#snippet children()}
 						<dl class="space-y-4">
@@ -271,7 +326,7 @@
 							{/if}
 						</dl>
 					{/snippet}
-				</EntityForm>
+				</EntityFormWrapper>
 
 				<div class="bg-white border border-gray-200 rounded-lg p-6">
 					<div class="flex justify-between items-center mb-4">
@@ -319,3 +374,51 @@
 		{/snippet}
 	</DataDisplay>
 </div>
+
+<Modal show={showDeleteModal} title="Delete Filament" onClose={closeDeleteModal} maxWidth="md">
+	{#if filament}
+		<div class="space-y-4">
+			<p class="text-gray-700">
+				Are you sure you want to delete the filament <strong>{filament.name}</strong>?
+			</p>
+			<p class="text-gray-600 text-sm">
+				This will also delete all variants within this filament.
+			</p>
+
+			{#if $isCloudMode}
+				<div class="bg-blue-50 border border-blue-200 rounded p-3">
+					<p class="text-sm text-blue-800">
+						{#if $changeStore.changes[`brands/${brandId}/materials/${materialType}/filaments/${filamentId}`]?.operation === 'create'}
+							This will remove the locally created filament. The change will be discarded.
+						{:else}
+							This will mark the filament for deletion. Remember to export your changes.
+						{/if}
+					</p>
+				</div>
+			{:else}
+				<div class="bg-red-50 border border-red-200 rounded p-3">
+					<p class="text-sm text-red-800">
+						This action cannot be undone. The filament and all its variants will be permanently deleted.
+					</p>
+				</div>
+			{/if}
+
+			<div class="flex justify-end gap-2 pt-4">
+				<button
+					onclick={closeDeleteModal}
+					disabled={deleting}
+					class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+				>
+					Cancel
+				</button>
+				<button
+					onclick={handleDelete}
+					disabled={deleting}
+					class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+				>
+					{deleting ? 'Deleting...' : 'Delete Filament'}
+				</button>
+			</div>
+		</div>
+	{/if}
+</Modal>

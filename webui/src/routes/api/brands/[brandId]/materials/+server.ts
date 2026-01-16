@@ -39,3 +39,44 @@ export const GET: RequestHandler = async ({ params }) => {
 		return json([], { status: 500 });
 	}
 };
+
+export const POST: RequestHandler = async ({ params, request }) => {
+	try {
+		const { PUBLIC_APP_MODE } = await import('$env/static/public');
+		const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
+
+		const materialData = await request.json();
+
+		// Generate materialType from the material name (lowercase, hyphenated)
+		const materialType = materialData.materialType ||
+			materialData.material.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+		if (IS_LOCAL) {
+			const normalizedBrandId = await normalizeBrandId(DATA_DIR, params.brandId);
+			const materialDir = path.join(DATA_DIR, normalizedBrandId, materialType);
+
+			// Create the material directory
+			await fs.mkdir(materialDir, { recursive: true });
+
+			// Write the material.json file (without internal tracking fields)
+			const { id, brandId, materialType: mt, ...cleanData } = materialData;
+			const content = JSON.stringify(cleanData, null, 4) + '\n';
+			await fs.writeFile(path.join(materialDir, 'material.json'), content, 'utf-8');
+
+			return json({
+				success: true,
+				material: { ...materialData, id: materialType, materialType }
+			}, { status: 201 });
+		} else {
+			// In cloud mode, pretend success but don't write
+			return json({
+				success: true,
+				mode: 'cloud',
+				material: { ...materialData, id: materialType, materialType }
+			}, { status: 201 });
+		}
+	} catch (error) {
+		console.error(`Error creating material for brand ${params.brandId}:`, error);
+		return json({ error: 'Failed to create material' }, { status: 500 });
+	}
+};

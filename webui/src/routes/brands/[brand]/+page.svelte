@@ -2,14 +2,11 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import type { Brand, Material } from '$lib/types/database';
-	import Logo from '$lib/components/Logo.svelte';
-	import Modal from '$lib/components/Modal.svelte';
-	import BrandForm from '$lib/components/forms/BrandForm.svelte';
-	import MessageBanner from '$lib/components/MessageBanner.svelte';
-	import BackButton from '$lib/components/BackButton.svelte';
-	import DataDisplay from '$lib/components/DataDisplay.svelte';
-	import EntityDetails from '$lib/components/EntityDetails.svelte';
-	import EntityCard from '$lib/components/EntityCard.svelte';
+	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { BrandForm, MaterialForm } from '$lib/components/forms';
+	import { BackButton } from '$lib/components/actions';
+	import { DataDisplay } from '$lib/components/layout';
+	import { Logo, EntityDetails, EntityCard } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
 	import { db } from '$lib/services/database';
@@ -27,9 +24,11 @@
 
 	let showEditModal: boolean = $state(false);
 	let showDeleteModal: boolean = $state(false);
+	let showCreateMaterialModal: boolean = $state(false);
 	let logoDataUrl: string = $state('');
 	let logoChanged: boolean = $state(false);
 	let deleting: boolean = $state(false);
+	let creatingMaterial: boolean = $state(false);
 
 	// Create message handler
 	const messageHandler = createMessageHandler();
@@ -148,6 +147,41 @@
 		showDeleteModal = false;
 	}
 
+	function openCreateMaterialModal() {
+		showCreateMaterialModal = true;
+	}
+
+	function closeCreateMaterialModal() {
+		showCreateMaterialModal = false;
+	}
+
+	async function handleCreateMaterial(data: any) {
+		if (!brand) return;
+
+		creatingMaterial = true;
+		messageHandler.clear();
+
+		try {
+			const result = await db.createMaterial(brandId, data);
+
+			if (result.success && result.materialType) {
+				messageHandler.showSuccess('Material created successfully!');
+				showCreateMaterialModal = false;
+
+				// Reload the page to show the new material
+				setTimeout(() => {
+					window.location.reload();
+				}, 500);
+			} else {
+				messageHandler.showError('Failed to create material');
+			}
+		} catch (e) {
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create material');
+		} finally {
+			creatingMaterial = false;
+		}
+	}
+
 	async function handleDelete() {
 		if (!brand) return;
 
@@ -252,7 +286,18 @@
 				</EntityDetails>
 
 				<div class="bg-white border border-gray-200 rounded-lg p-6">
-					<h2 class="text-xl font-semibold mb-4">Materials</h2>
+					<div class="flex justify-between items-center mb-4">
+						<h2 class="text-xl font-semibold">Materials</h2>
+						<button
+							onclick={openCreateMaterialModal}
+							class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-3 py-1.5 rounded text-sm transition-colors flex items-center gap-1"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+							</svg>
+							Add Material
+						</button>
+					</div>
 
 					{#if materials.length === 0}
 						<p class="text-gray-500">No materials found for this brand.</p>
@@ -333,4 +378,11 @@
 			</div>
 		</div>
 	{/if}
+</Modal>
+
+<Modal show={showCreateMaterialModal} title="Create New Material" onClose={closeCreateMaterialModal} maxWidth="5xl" height="3/4">
+	<MaterialForm
+		onSubmit={handleCreateMaterial}
+		saving={creatingMaterial}
+	/>
 </Modal>
