@@ -1,8 +1,8 @@
 [
   {
     "filament_weight": 1000,
-    "empty_spool_weight": 140,
     "diameter": 1.75,
+    "empty_spool_weight": 140,
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -12,8 +12,8 @@
   },
   {
     "filament_weight": 3000,
-    "empty_spool_weight": 425,
     "diameter": 1.75,
+    "empty_spool_weight": 425,
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -23,8 +23,8 @@
   },
   {
     "filament_weight": 5000,
-    "empty_spool_weight": 819,
     "diameter": 1.75,
+    "empty_spool_weight": 819,
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -34,8 +34,8 @@
   },
   {
     "filament_weight": 1000,
-    "empty_spool_weight": 140,
     "diameter": 2.85,
+    "empty_spool_weight": 140,
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -45,8 +45,8 @@
   },
   {
     "filament_weight": 3000,
-    "empty_spool_weight": 425,
     "diameter": 2.85,
+    "empty_spool_weight": 425,
     "purchase_links": [
       {
         "store_id": "polymaker",

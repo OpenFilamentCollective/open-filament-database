@@ -1,0 +1,9 @@
+{
+  "id": "pla_lite",
+  "name": "PLA Lite",
+  "diameter_tolerance": 0.03,
+  "density": 1.4,
+  "max_dry_temperature": 65,
+  "data_sheet_url": "https://www.bigdipper.com.ar/File/hojas-de-datos/BL-A18-D0-1.75-1000-SPL.pdf",
+  "safety_sheet_url": "https://pro.m.jd.com/mall/active/37K64zyenq9gQNR7WTvYZf1VvNk/index.html"
+}

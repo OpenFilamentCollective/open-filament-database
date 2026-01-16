@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 244,
     "spool_core_diameter": 55,
+    "gtin": "191314037698",
     "purchase_links": [
       {
         "store_id": "amazon",
         "url": "https://www.amazon.com/HATCHBOX-3D-Filament-Dimensional-Accuracy/dp/B09WW47SJD?crid=1MZ80T0KJHGS9&dib=eyJ2IjoiMSJ9.m65DvFTtGZsixXqnNmbYpsUg1G8HPWqfBSerrN9kPE1VFEhMfHQ5My6_wuyODbHJnomxp5DbsQ2Pr3FzT_NIhmyl2xxfyTIeDzy822xJqlNcID9qC13P02_oNp6VBiWwNLHWEh4HYJdlY1MAJx_Kto2l9SFkAl5cv96D86X0DhbhCU6U5zU6qGtwHoqGRObqUG5Wvwtk1_oETqtegvE-IqAoeRUn2KEabPy4SMLR9ea5W046TUckoCxOa_G7G2S6G4SYdwM7m_laL23YosQIHSQL9jK4yR_wgP233fSQSy4.YahwppGFqaNMOVRdIxGxNR67nPZYqRZPC2XrMvwSpR4&dib_tag=se&keywords=hatchbox%2Bpla&qid=1717766883&s=industrial&sprefix=hatchbox%2Bpla%2Cindustrial%2C92&sr=1-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&language=en_US"
       }
-    ],
-    "gtin": "191314037698"
+    ]
   }
 ]

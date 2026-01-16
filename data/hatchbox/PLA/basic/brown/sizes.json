@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 244,
     "spool_core_diameter": 55,
+    "gtin": "849344041740",
     "purchase_links": [
       {
         "store_id": "hatchbox",
         "url": "https://www.hatchbox3d.com/products/hatchbox-abs-3d-printer-filament-dimensional-accuracy-0-03-mm-1-kg-spool-1-75-mm-brown?srsltid=AfmBOoqCWPuUTsrtp1q0N-cj5x1tIbfwbk84X58Ou4WABAF2DkDVpi9A"
       }
-    ],
-    "gtin": "849344041740"
+    ]
   }
 ]

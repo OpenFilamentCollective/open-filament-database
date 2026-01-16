@@ -1,0 +1,7 @@
+{
+  "id": "asa_basic",
+  "name": "ASA Basic",
+  "diameter_tolerance": 0.02,
+  "density": 1.08,
+  "max_dry_temperature": 80
+}

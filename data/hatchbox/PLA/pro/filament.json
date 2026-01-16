@@ -1,6 +1,6 @@
 {
-    "id": "pro",
-    "name": "Pro",
-    "density": 1.25,
-    "diameter_tolerance": 0.03
+  "id": "pro",
+  "name": "Pro",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

@@ -54,19 +54,21 @@ cd ..
 **Run these in order after any data changes:**
 ```bash
 # Validate folder naming consistency
-python3 data_validator.py --folder-names
+python -m ofd validate --folder-names
 
-# Validate JSON schema compliance  
-python3 data_validator.py --json-files
+# Validate JSON schema compliance
+python -m ofd validate --json-files
 
 # Validate store ID references
-python3 data_validator.py --store-ids
+python -m ofd validate --store-ids
+
+# Run all validations at once
+python -m ofd validate
 ```
 
 **Platform Notes:**
-- Linux/macOS: Use `python3`
-- Windows: Use `python.exe`
-- If `python3` command fails, try `python`
+- Use `python -m ofd` or `uv run -m ofd` for the unified CLI
+- If `python` command fails, try `python3 -m ofd`
 
 ### WebUI Development & Testing
 ```bash
@@ -98,7 +100,7 @@ npm test
 ### Profile Management
 ```bash
 # Update slicer profiles (automated daily via GitHub Actions)
-python3 load_profiles.py
+python -m ofd script load_profiles
 ```
 
 ## GitHub Actions & CI/CD
@@ -125,7 +127,7 @@ The repository runs these validations on every PR:
 1. Create brand folder with consistent naming (no illegal characters)
 2. Add `brand.json` with required fields: brand, logo, website, origin
 3. Add logo image file
-4. **Always validate**: `python3 data_validator.py --folder-names --json-files`
+4. **Always validate**: `python -m ofd validate --folder-names --json-files`
 
 ### Modifying WebUI
 1. Navigate to `webui/` directory
@@ -139,14 +141,13 @@ The repository runs these validations on every PR:
 - Check folder naming matches JSON content exactly
 - Verify JSON schema compliance using files in `/schemas/`
 - Ensure all required JSON files exist at each hierarchy level
-- Use illegal character list: `#%&{}\\<>*?/$!'":@+\`|=` (see `data_validator.py:18`)
+- Use illegal character list: `#%&{}\\<>*?/$!'":@+\`|=` (see `ofd/validation/validators.py`)
 
 ## Critical Configuration Files
 
 **Root Level:**
 - `requirements.txt` - Python dependencies (jsonschema, Pillow, iniconfig)
-- `data_validator.py` - Main validation script with schema checks
-- `*.py` - Additional Python utilities for profiles and serialization
+- `ofd/` - Unified CLI package with validation, build, serve, and script commands
 
 **WebUI Configuration:**
 - `webui/package.json` - npm scripts and dependencies

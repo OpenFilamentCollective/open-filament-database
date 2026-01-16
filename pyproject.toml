@@ -1,0 +1,76 @@
+[project]
+name = "ofd"
+version = "1.0.0"
+description = "Open Filament Database CLI - Unified tooling for the OFD project"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Open Filament Collective" }
+]
+keywords = ["filament", "3d-printing", "database", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Database",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "jsonschema>=4.23.0",
+    "Pillow>=11.0.0",
+    "iniconfig>=2.0.0",
+    "referencing>=0.30.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+ofd = "ofd.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/OpenFilamentCollective/open-filament-database"
+Documentation = "https://api.openfilamentdatabase.org/"
+Repository = "https://github.com/OpenFilamentCollective/open-filament-database"
+Issues = "https://github.com/OpenFilamentCollective/open-filament-database/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ofd"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+ignore = ["E501"]  # Line too long - handled by formatter
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]

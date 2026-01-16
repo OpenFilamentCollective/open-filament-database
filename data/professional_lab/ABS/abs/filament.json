@@ -1,0 +1,7 @@
+{
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.03,
+  "density": 1.05,
+  "max_dry_temperature": 80
+}

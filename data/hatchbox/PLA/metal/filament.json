@@ -1,6 +1,6 @@
 {
-    "id": "metal",
-    "name": "Metal",
-    "density": 1.25,
-    "diameter_tolerance": 0.03
+  "id": "metal",
+  "name": "Metal",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

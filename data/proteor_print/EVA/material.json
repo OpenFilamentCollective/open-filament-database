@@ -1,12 +1,12 @@
 {
-    "material": "EVA",
-    "default_max_dry_temperature": 50,
-    "default_slicer_settings": {
-        "generic": {
-            "first_layer_bed_temp": 45,
-            "first_layer_nozzle_temp": 250,
-            "bed_temp": 10,
-            "nozzle_temp": 250
-        }
+  "material": "EVA",
+  "default_max_dry_temperature": 50,
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 10,
+      "first_layer_bed_temp": 45,
+      "first_layer_nozzle_temp": 250,
+      "nozzle_temp": 250
     }
+  }
 }

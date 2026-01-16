@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 282,
     "spool_core_diameter": 52,
+    "gtin": "191314044603",
     "purchase_links": [
       {
         "store_id": "amazon",
         "url": "https://www.amazon.co.uk/dp/B0CY13NWR4?crid=MDZZED3P40CX&keywords=hatchbox+pla&sprefix=hatchbox+pla%2Cindustrial%2C147&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&language=en_US&s=industrial&dib_tag=se&dib=eyJ2IjoiMSJ9.J75lwbM-N0HgxblO2Ae1IVNY2bgHwGWKTdaCyn8mTNM8sa3JJF55xYxT1G2xS4grtKaDnDJUh1-iufJiL40_DSVJA3SXLV3u4PpkcDaMr474r7n8KpgeN1TE3iAV2VRLwAoJpMntLpefCBlEJ2phk6a_MzDCZW5_z7Nwnu8BljYBU04G8Bnx2kfhw4U4Wuu-Qxv9Z_rAd6Haovyaajo5A9w_gcxwaGg9vnhZ0ZzczgxyM_Y_mUFA1tqlfJL21Zmxg7sv2PB8svIcT85oVuLGUhZ7tMzI0wNO5F1J-vWVKEE.zI5Rxt8iNYmpjEJfWnfWTNMG0_VhwHGFizIn6JqwXqU&sr=1-1-spons"
       }
-    ],
-    "gtin": "191314044603"
+    ]
   }
 ]

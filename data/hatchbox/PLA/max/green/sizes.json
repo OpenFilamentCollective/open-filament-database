@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 282,
     "spool_core_diameter": 52,
+    "gtin": "191314044528",
     "purchase_links": [
       {
         "store_id": "hatchbox",
         "url": "https://www.hatchbox3d.com/collections/pla-max-1-75mm-filament/products/hb-pla-1kg1-75-grn"
       }
-    ],
-    "gtin": "191314044528"
+    ]
   }
 ]

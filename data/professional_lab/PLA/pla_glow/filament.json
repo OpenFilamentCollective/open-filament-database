@@ -1,0 +1,7 @@
+{
+  "id": "pla_glow",
+  "name": "PLA Glow",
+  "diameter_tolerance": 0.03,
+  "density": 1.29,
+  "max_dry_temperature": 50
+}

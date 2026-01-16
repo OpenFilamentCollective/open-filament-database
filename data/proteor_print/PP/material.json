@@ -1,12 +1,12 @@
 {
-    "material": "PP",
-    "default_max_dry_temperature": 55,
-    "default_slicer_settings": {
-        "generic": {
-            "first_layer_bed_temp": 80,
-            "first_layer_nozzle_temp": 260,
-            "bed_temp": 10,
-            "nozzle_temp": 260
-        }
+  "material": "PP",
+  "default_max_dry_temperature": 55,
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 10,
+      "first_layer_bed_temp": 80,
+      "first_layer_nozzle_temp": 260,
+      "nozzle_temp": 260
     }
+  }
 }

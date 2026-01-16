@@ -11,6 +11,7 @@ import { stripOfIllegalChars } from '$lib/globalHelpers';
 import { filamentSchema } from '$lib/validation/filament-schema';
 import { refreshDatabase } from '$lib/dataCacher';
 import { setFlash } from 'sveltekit-flash-message/server';
+import { triggerBackgroundValidation } from '$lib/server/validationTrigger';
 
 export const load: PageServerLoad = async ({ params, parent }) => {
   const { brand, material } = params;
@@ -66,6 +67,11 @@ export const actions = {
     try {
       updateMaterial(brand, material, form.data);
       await refreshDatabase();
+
+      // Trigger background validation (non-blocking)
+      triggerBackgroundValidation().catch((err) => {
+        console.error('Failed to trigger background validation:', err);
+      });
     } catch (error) {
       console.error('Failed to update material:', error);
       setFlash({ type: 'error', message: 'Failed to update material. Please try again.' }, cookies);
@@ -87,6 +93,11 @@ export const actions = {
       const filteredFilament = removeUndefined(form.data);
       await createFilament(brand, material, filteredFilament);
       await refreshDatabase();
+
+      // Trigger background validation (non-blocking)
+      triggerBackgroundValidation().catch((err) => {
+        console.error('Failed to trigger background validation:', err);
+      });
     } catch (error) {
       console.error('Failed to update filament:', error);
       setFlash({ type: 'error', message: 'Failed to update fiilament. Please try again.' }, cookies);

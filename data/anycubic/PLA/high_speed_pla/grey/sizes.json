@@ -1,17 +1,17 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 125,
-        "spool_core_diameter": 52,
-        "ean": "6974662352064",
-        "article_number": "AHPLGY-10-US-1127",
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/high-speed-pla-filament?variant=44831258607805"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "empty_spool_weight": 125,
+    "spool_core_diameter": 52,
+    "ean": "6974662352064",
+    "article_number": "AHPLGY-10-US-1127",
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/high-speed-pla-filament?variant=44831258607805"
+      }
+    ]
+  }
 ]

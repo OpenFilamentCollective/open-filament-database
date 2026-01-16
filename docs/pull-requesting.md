@@ -1,34 +1,58 @@
-# Pull requesting
-To make a pull request we assume you have your data in the cloud already so let's get started!
+# Creating a Pull Request
+Before creating a pull request, make sure you have:
+1. Validated your changes (no errors should remain)
+2. Sorted your data using the WebUI or `python -m ofd script style_data`
+3. Pushed your changes to GitHub
 
-To begin with we'll go to this link, the pull requests tab of the main database
-https://github.com/OpenFilamentCollective/open-filament-database/pulls
-If you've pushed a yellowish banner will appear, click the compare and pull request button.  
-![](img/pullRequesting01.png)  
-You should be brought to a page that looks like this, simply change the title to whatever describes what you've changed and write a short description about the same  
-![](img/pullRequesting02.png)  
-When you're ready press the `Create pull request` button and wait for someone to come merge it, or be ready for some feedback \:D
+## Method 1: Quick Pull Request
 
-### Alternative method
-If the last method didn't work, because of the yellow banner not appearing, it is also possible to go to your profile, and go to your repositories \
-![](img/pullRequesting03.png) \
-After getting to your repository list you can search up your version of the database \
-![](img/pullRequesting04.png) \
-Click on the database and then the pull requests tab \
-![](img/pullRequesting05.png) \
-You can then click the "New Pull request" button \
-![](img/pullRequesting06.png)
-Find your branch on the right side \
-![](img/pullRequesting07.png)
-Click the "Create pull request" button
-![](img/pullRequesting08.png)
-And then you just fill it out with whatever info you think we need and wait for someone to come merge it, or be ready for some feedback \:D
-![](img/pullRequesting02.png)
+1. Go to the [pull requests tab](https://github.com/OpenFilamentCollective/open-filament-database/pulls) of the main database
+2. If you've recently pushed changes, a yellow banner will appear
+3. Click the "Compare & pull request" button
+   ![](img/pullRequesting01.png)
 
-### Using PR Templates
+4. You'll be brought to a page to create your pull request:
+   - Change the title to describe what you've changed (e.g., "Add Elegoo Red PLA variant")
+   - Write a short description explaining your changes
+   ![](img/pullRequesting02.png)
+
+5. Click "Create pull request"
+6. A maintainer will review your changes and either merge them or provide feedback
+
+## Method 2: Alternative Method
+If the yellow banner doesn't appear, follow these steps:
+
+1. Go to your GitHub profile and click on "Repositories"
+   ![](img/pullRequesting03.png)
+
+2. Search for your forked version of the database
+   ![](img/pullRequesting04.png)
+
+3. Click on the database, then click the "Pull requests" tab
+   ![](img/pullRequesting05.png)
+
+4. Click the "New Pull request" button
+   ![](img/pullRequesting06.png)
+
+5. Find and select your branch on the right side
+   ![](img/pullRequesting07.png)
+
+6. Click "Create pull request"
+   ![](img/pullRequesting08.png)
+
+7. Fill in the title and description, then click "Create pull request"
+   ![](img/pullRequesting02.png)
+
+8. Wait for a maintainer to review and merge your changes, or be ready to address any feedback!
+
+## Using Pull Request Templates
 When creating a pull request, you can use one of our templates to help structure your submission:
 
-- **Data Addition** - Use this when adding new brands, materials, filaments, variants, or stores. It includes checklists for validation and data quality.
-- **WebUI Changes** - Use this when making changes to the web interface code.
+- **Data Addition** - Use when adding new brands, materials, filaments, variants, or stores
+  - Includes checklists for validation and data quality
+  - Ensures you've sorted your data before submitting
 
-To use a template, look for the "Choose a template" option when creating your PR, or you can find them in the `.github/PULL_REQUEST_TEMPLATE/` folder.
+- **WebUI Changes** - Use when making changes to the web interface code
+  - For developers modifying the WebUI application
+
+To use a template, look for the "Choose a template" option when creating your PR, or find them in the `.github/PULL_REQUEST_TEMPLATE/` folder.

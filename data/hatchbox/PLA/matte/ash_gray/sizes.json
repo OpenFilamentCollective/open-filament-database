@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 244,
     "spool_core_diameter": 55,
+    "gtin": "191314034284",
     "purchase_links": [
       {
         "store_id": "amazon",
         "url": "https://www.hatchbox3d.com/products/3d-pla-1kg1-75-mat-agry?srsltid=AfmBOopUcfDuUj8l3D0j6m82OglmGd6BQ7pJ0JvKIMzdLBMdYvoDGGJN"
       }
-    ],
-    "gtin": "191314034284"
+    ]
   }
 ]

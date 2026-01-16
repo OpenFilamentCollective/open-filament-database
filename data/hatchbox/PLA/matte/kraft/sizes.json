@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 244,
     "spool_core_diameter": 55,
+    "gtin": "191314034338",
     "purchase_links": [
       {
         "store_id": "amazon",
         "url": "https://www.amazon.co.uk/dp/B09G8C3NSC?crid=2HT8CJGT76B0Y&keywords=hatchbox+matte+pla&sprefix=hatchbox+matte%2Caps%2C79&language=en_US&dib_tag=se&dib=eyJ2IjoiMSJ9.vX1D_hTIZV32yY9_g-zOgvVoEl8vBWlVzZjCg6Iva4VH5rFSAfW9Zfjg-Wtac36A3yLOJcx6KZjXIDeSPMVJYmMEWu5asUboyFThVBlNXunx1rOWbbKNDWQKEh-Dep5bySHIMLxOJpkC7bd6T_oo0VvNBamJ1mDYq6tG91RCn799YkGt02HLG-u-4SzG6tTzKm2EHET-okrc81VzekuNZsxUlsKNQ31q7dDBb-wpbE4.iZ_F10OsRmQ1rkijkFpuqfpUB76ktXhK237HymSFs8c&sr=8-3"
       }
-    ],
-    "gtin": "191314034338"
+    ]
   }
 ]

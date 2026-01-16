@@ -4,9 +4,14 @@ on:
     schedule:
         -   cron: "0 0 * * *"
     workflow_dispatch:
+    push:
+        branches:
+            - main
 
 jobs:
     update_slicer_profiles:
+        # Only run on main branch, not on PRs
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         runs-on: ubuntu-latest
         permissions:
             contents: write
@@ -22,7 +27,7 @@ jobs:
             -   name: Run update script
                 run: |
                     pip install -r requirements.txt
-                    python load_profiles.py
+                    python -m ofd script load_profiles
 
             -   name: Commit changes
                 run: |

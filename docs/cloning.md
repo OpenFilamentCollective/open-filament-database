@@ -1,16 +1,19 @@
-# Cloning your repository
-So now we need to clone our repository, that may sound like we're gonna do like in Star Wars and create an army but sadly it's just the process of getting your cloud folder onto your computer, you can imagine this as copy pasting a folder from the cloud.
+# Cloning Your Repository
+Now we need to clone your repository. "Cloning" is the process of downloading your forked copy from GitHub to your computer - think of it as copying a folder from the cloud to your local machine.
 
-To be able to make a PR we also need to make what's called a branch after cloning, we won't be explaining this as it's require a greater understanding of git though if you're studious [here's a link](https://www.w3schools.com/git/git_branch.asp)
+After cloning, we'll create a "branch" for your changes. Branches allow you to work on changes without affecting the main codebase. If you're curious about how branches work, [here's a helpful guide](https://www.w3schools.com/git/git_branch.asp).
 
 ## Cloning on Windows
-To clone your files you simply need to open a commandline window, we'll do this by holding the `windows key` and pressing `R`, this will spawn a small little windowin the bottom left with a text input, simply type in `cmd` and press `enter`.
-Now, don't be scared by the hackerman window that appeared.
-You now have to write or copy in the following command while replacing `YOUR_USERNAME` with you username on github
+To clone your files, you need to open a command line window:
+1. Hold the `Windows key` and press `R`
+2. A small window will appear in the bottom left with a text input
+3. Type `cmd` and press `Enter`
+
+A black terminal window will appear. Now type or paste the following command, replacing `YOUR_USERNAME` with your GitHub username:
 ```bash
 git clone https://github.com/YOUR_USERNAME/open-filament-database.git
 ```
-press enter and let it run, when it allows you to write again you then enter the following two lines, first one will be speedy.
+Press `Enter` and let it run. When it finishes and you can type again, enter the following two commands:
 
 **Remember to replace YOUR_BRANCHNAME with a descriptive name for your changes.**
 Use lowercase with hyphens, for example:
@@ -25,8 +28,8 @@ git checkout -b YOUR_BRANCHNAME
 
 Leave the window open and continue with [Step 5 in the README](../README.md#5-make-your-changes) to make your changes.
 
-## Cloning on Linux and MacOS
-Simply open you terminal and run the following to clone your repository and create a branch for your changes
+## Cloning on Linux and macOS
+Open your terminal and run the following commands to clone your repository and create a branch for your changes:
 ```bash
 git clone https://github.com/YOUR_USERNAME/open-filament-database.git
 cd open-filament-database

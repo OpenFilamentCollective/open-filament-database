@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 244,
     "spool_core_diameter": 55,
+    "gtin": "849344041794",
     "purchase_links": [
       {
         "store_id": "amazon",
         "url": "https://www.amazon.co.uk/dp/B015I1CYFE?hvlocphy=9016261&hvnetw=g&keywords=hatchbox+pla+1.75&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&hvadid=580878722529&language=en_US&hydadcr=8490_13507418&dib_tag=se&hvdev=c&hvqmt=b&dib=eyJ2IjoiMSJ9.XGC3yT5ySlxRvFTR0LLrayIx7ZQH9kSKupzMVAtAhBnvW_gwQIPD-gZ8uXjEBDKSmWNiKdvi4aWc99b6X4pUTvSkpbYdruywYUJBR-_IJbhbk8hAzomaF1yEYvfC1tjx_FpXILoxm7887xaNRGT3oAbZyWGQij6uC62DgEQmOWAftisgoq1mP9IOw0SaSgVSlASb6Arx-YomvYyZIOwGZy92mtNYpOHGNRqDbXmlVEQ.8OzeqpVZ2gBqTW72EvqdYhLPJ4klvd91Lk-dNwjoOCM&hvtargid=kwd-301276193970&hvrand=6078365362487083671&sr=8-1-spons"
       }
-    ],
-    "gtin": "849344041794"
+    ]
   }
 ]

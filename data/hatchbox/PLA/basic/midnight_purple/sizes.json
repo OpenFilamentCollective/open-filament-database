@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 244,
     "spool_core_diameter": 55,
+    "gtin": "191314037711",
     "purchase_links": [
       {
         "store_id": "amazon",
         "url": "https://www.amazon.co.uk/dp/B09WW63ZJV?crid=31E4GCP46RJ9V&keywords=hatchbox&sprefix=hatchbox%2Caps%2C114&language=en_US&dib_tag=se&dib=eyJ2IjoiMSJ9.XGC3yT5ySlxRvFTR0LLrawO2Z14sy2O8QkdlXEUPhbikyhW-0O1XpqmIN0GOwamR782HTDz2T82Iuc7dsm9vNXyVJl7l4OtpFPBHMRtjTJLkH2cJmTVpLVGqdxn6o4Htb7NM4qfLkVP8G9lZAaHH11xA1fwH7YjAqBHWNJtfVCcA7R7ADvetHZf9Ph_r8xrgK1nkoJyVm0auZjOXbxYPTmp7XZjMfUkBTmvcSb_W9AA.6jUf3vy-auncm-42d1Fx__zxD0Fnqy8llBvT8BrYxns&sr=8-2"
       }
-    ],
-    "gtin": "191314037711"
+    ]
   }
 ]

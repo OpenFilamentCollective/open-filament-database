@@ -4,12 +4,12 @@
     "diameter": 1.75,
     "empty_spool_weight": 244,
     "spool_core_diameter": 55,
+    "gtin": "191314034291",
     "purchase_links": [
       {
         "store_id": "amazon",
         "url": "https://www.amazon.co.uk/dp/B09G8HR699?hvlocphy=9016261&hvnetw=g&keywords=hatchbox+matt+pla&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&hvadid=709981086607&language=en_US&hydadcr=8490_13654109&dib_tag=se&hvdev=c&hvqmt=b&dib=eyJ2IjoiMSJ9.m65DvFTtGZsixXqnNmbYps2Ze6R4wL6MnyBcKHhR9tz7lMnWz0BOT8UpSWgPj6mAEgjcx78tGtxEodjlUXLb5gYd0OBCd-FBKXl_y0A-N2LZf8eqfGlhYLVsMuNbUC6rQRj9N0ym8JGniKXJPfCUYNhEAoLdmSo20eMTuZNZgIpNVtzc7upPvhDmMgH_TUX5L6f3WFoyoIGHi4RsajYWBrnesrcfHyRdWJ3fYgY0Uro.fWX55b6JcxIycwGQLmTYSSGEIGHiSGTcwLrECm_rPPE&hvtargid=kwd-1545346375382&hvrand=10060992156284842567&sr=8-2-spons"
       }
-    ],
-    "gtin": "191314034291"
+    ]
   }
 ]

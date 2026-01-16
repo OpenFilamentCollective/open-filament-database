@@ -1,25 +1,25 @@
 [
-    {
-        "filament_weight": 1000.0,
-        "diameter": 1.75,
-        "ean": "6975337032151",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=41195746295944"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000.0,
-        "diameter": 1.75,
-        "ean": "6975337032151",
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=42851556556936"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "ean": "6975337032151",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=41195746295944"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "ean": "6975337032151",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=42851556556936"
+      }
+    ]
+  }
 ]

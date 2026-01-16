@@ -1,6 +1,6 @@
 {
-    "id": "max",
-    "name": "Max",
-    "density": 1.25,
-    "diameter_tolerance": 0.03
+  "id": "max",
+  "name": "Max",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

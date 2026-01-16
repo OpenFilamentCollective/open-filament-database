@@ -7,6 +7,7 @@ import { zod } from 'sveltekit-superforms/adapters';
 import { redirect, setFlash } from 'sveltekit-flash-message/server';
 import { refreshDatabase } from '$lib/dataCacher';
 import { env } from '$env/dynamic/public';
+import { triggerBackgroundValidation } from '$lib/server/validationTrigger';
 
 export const load = async () => {
   const form = await superValidate(zod(brandSchema));
@@ -27,6 +28,11 @@ export const actions = {
       if (isLocal) {
         await createBrand(form.data);
         await refreshDatabase();
+
+        // Trigger background validation (non-blocking)
+        triggerBackgroundValidation().catch((err) => {
+          console.error('Failed to trigger background validation:', err);
+        });
       } else {
         let pseudoData = await pseudoCreateBrand(form.data);
         return { form: form, success: true, data: JSON.stringify(pseudoData), redirect: `/Brand/${stripOfIllegalChars(form.data.brand)}/`};

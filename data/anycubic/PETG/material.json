@@ -3,9 +3,9 @@
   "default_max_dry_temperature": 65,
   "default_slicer_settings": {
     "orcaslicer": {
+      "bed_temp": 70,
       "first_layer_bed_temp": 70,
       "first_layer_nozzle_temp": 245,
-      "bed_temp": 70,
       "nozzle_temp": 245,
       "profile_name": "PETG"
     }

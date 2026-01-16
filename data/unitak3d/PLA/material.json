@@ -3,9 +3,9 @@
   "default_max_dry_temperature": 50,
   "default_slicer_settings": {
     "orcaslicer": {
+      "bed_temp": 60,
       "first_layer_bed_temp": 60,
       "first_layer_nozzle_temp": 230,
-      "bed_temp": 60,
       "nozzle_temp": 230,
       "profile_name": "PLA"
     }

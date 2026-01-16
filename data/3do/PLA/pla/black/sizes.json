@@ -1,14 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "empty_spool_weight": 220,
-        "diameter": 1.75,
-        "gtin": "571203011010",
-        "purchase_links": [
-            {
-                "store_id": "3dodk",
-                "url": "https://3do.dk/filament/328-filament-3do-asa-1kg-hvid.html"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 220,
+    "gtin": "571203011010",
+    "purchase_links": [
+      {
+        "store_id": "3dodk",
+        "url": "https://3do.dk/filament/328-filament-3do-asa-1kg-hvid.html"
+      }
+    ]
+  }
 ]

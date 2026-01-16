@@ -69,6 +69,8 @@ jobs:
 
       - name: Build dataset
         run: |
+          # Build the dataset
+          # Output will be deployed to https://api.openfilamentdatabase.org/
           python -m builder.build \
             --version "${{ steps.version.outputs.version }}"
 
@@ -105,53 +107,136 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      # Get the last release tag for generating release notes
+      - name: Get last release tag
+        id: last_release
+        run: |
+          LAST_TAG=$(git tag -l 'dataset-v*' --sort=-version:refname | head -n 1)
+          if [ -z "$LAST_TAG" ]; then
+            echo "previous_tag=" >> $GITHUB_OUTPUT
+            echo "No previous dataset release found"
+          else
+            echo "previous_tag=$LAST_TAG" >> $GITHUB_OUTPUT
+            echo "Last release: $LAST_TAG"
+          fi
+
+      # Generate release notes with only changes since last release
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          PREVIOUS_TAG="${{ steps.last_release.outputs.previous_tag }}"
+
+          # Start building release notes
+          cat > release_notes.md << 'EOF'
+          ## Open Filament Database v${{ steps.version.outputs.version }}
+
+          All paths below are relative to the base API URL: **https://api.openfilamentdatabase.org/**
+
+          ### Downloads
+
+          | Format | Description | File |
+          |--------|-------------|------|
+          | **SQLite (Filaments)** | Relational database with full schema | `sqlite/filaments.db` |
+          | **SQLite (Stores)** | Store information database | `sqlite/stores.db` |
+          | **SQLite (compressed)** | XZ compressed SQLite files | `sqlite/*.db.xz` |
+          | **JSON** | Complete dataset in one file | `json/all.json` |
+          | **JSON (compressed)** | Gzipped JSON | `json/all.json.gz` |
+          | **NDJSON** | Newline-delimited JSON for streaming | `json/all.ndjson` |
+          | **CSV** | Multiple CSV files | `csv/` directory |
+
+          ### API Endpoints
+
+          All endpoints are relative to: **https://api.openfilamentdatabase.org/**
+
+          #### Brands & Filaments
+          - `api/v1/index.json` - API root with version and stats
+          - `api/v1/brands/index.json` - List of all brands
+          - `api/v1/brands/{slug}/index.json` - Individual brand with materials
+          - `api/v1/brands/{slug}/materials/{material_slug}/index.json` - Material with filaments
+          - `api/v1/brands/{slug}/materials/{material_slug}/filaments/{filament_slug}/index.json` - Filament with variants
+          - `api/v1/brands/{slug}/materials/{material_slug}/filaments/{filament_slug}/variants/{variant_slug}.json` - Variant details with sizes
+
+          #### Stores
+          - `api/v1/stores/index.json` - List of stores
+          - `api/v1/stores/{slug}.json` - Individual store details
+
+          #### Logos
+          - `api/v1/brands/logo/index.json` - List of all brand logos
+          - `api/v1/brands/logo/{logo_id}.json` - Brand logo metadata
+          - `api/v1/brands/logo/{logo_id}.{ext}` - Brand logo image file
+          - `api/v1/stores/logo/index.json` - List of all store logos
+          - `api/v1/stores/logo/{logo_id}.json` - Store logo metadata
+          - `api/v1/stores/logo/{logo_id}.{ext}` - Store logo image file
+
+          #### Schemas
+          - `api/v1/schemas/index.json` - List of available JSON schemas
+          - `api/v1/schemas/{name}.json` - Individual JSON schema
+
+          ### Direct Downloads
+
+          All paths relative to: **https://api.openfilamentdatabase.org/**
+
+          - `json/all.json` - Complete dataset
+          - `sqlite/filaments.db` - SQLite database (filaments)
+          - `sqlite/stores.db` - SQLite database (stores)
+          - `csv/` - CSV files
+
+          ### Checksums
+
+          See `manifest.json` for SHA256 checksums of all files.
+
+          EOF
+
+          # Add changes section only if there was a previous release
+          if [ -n "$PREVIOUS_TAG" ]; then
+            echo "" >> release_notes.md
+            echo "### Changes Since $PREVIOUS_TAG" >> release_notes.md
+            echo "" >> release_notes.md
+
+            # Verify tag exists before running git log
+            if git rev-parse "$PREVIOUS_TAG" >/dev/null 2>&1; then
+              # Get commit log since last release, using -- to separate paths from revisions
+              if git log "$PREVIOUS_TAG..HEAD" --oneline --no-merges -- data/ stores/ builder/ schemas/ > commits.txt 2>/dev/null; then
+                if [ -s commits.txt ]; then
+                  # Group changes by type
+                  echo "#### Recent Updates" >> release_notes.md
+                  echo "" >> release_notes.md
+                  while read line; do
+                    echo "- $line" >> release_notes.md
+                  done < commits.txt
+                else
+                  echo "- Infrastructure and maintenance updates" >> release_notes.md
+                fi
+              else
+                echo "- Unable to retrieve commit history" >> release_notes.md
+              fi
+            else
+              echo "- First release or previous tag not found" >> release_notes.md
+            fi
+          fi
+
+          # Set output
+          echo "notes_file=release_notes.md" >> $GITHUB_OUTPUT
+
       # Create Release
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: dataset-v${{ steps.version.outputs.version }}
           name: Dataset v${{ steps.version.outputs.version }}
-          body: |
-            ## Open Filament Database v${{ steps.version.outputs.version }}
-            
-            ### Downloads
-            
-            | Format | Description | File |
-            |--------|-------------|------|
-            | **SQLite** | Relational database with full schema | `filaments.db` |
-            | **SQLite (compressed)** | XZ compressed SQLite | `filaments.db.xz` |
-            | **JSON** | Complete dataset in one file | `all.json` |
-            | **JSON (compressed)** | Gzipped JSON | `all.json.gz` |
-            | **NDJSON** | Newline-delimited JSON for streaming | `all.ndjson` |
-            | **CSV** | Multiple CSV files | `csv/` directory |
-
-            ### Endpoints
-
-            - `/api/v1/brands/{slug}/index.json` - Individual brand with filaments
-            - `/api/v1/stores/index.json` - List of stores
-            - `/api/v1/stores/{slug}.json` - Individual store
-            - `/api/v1/schemas/index.json` - List of available JSON schemas
-            - `/api/v1/schemas/{name}.json` - Individual JSON schema
-
-            ### Direct Downloads
-
-            - `/json/all.json` - Complete dataset
-            - `/sqlite/filaments.db` - SQLite database
-            - `/csv/` - CSV files
-            
-            ### Checksums
-            
-            See `manifest.json` for SHA256 checksums of all files.
+          body_path: release_notes.md
           files: |
             dist/json/all.json
             dist/json/all.json.gz
             dist/json/all.ndjson
             dist/sqlite/filaments.db
             dist/sqlite/filaments.db.xz
+            dist/sqlite/stores.db
+            dist/sqlite/stores.db.xz
             dist/manifest.json
           draft: false
           prerelease: false
-          generate_release_notes: true
+          generate_release_notes: false
 
   # Validate the build
   validate:
@@ -173,12 +258,16 @@ jobs:
 
       - name: Validate SQLite
         run: |
-          echo "Validating SQLite database..."
+          echo "Validating SQLite databases..."
+          echo "Filaments database:"
           sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM brand;"
           sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM filament;"
           sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM variant;"
           sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM size;"
-          echo "✓ SQLite database is valid"
+          echo ""
+          echo "Stores database:"
+          sqlite3 dist/sqlite/stores.db "SELECT COUNT(*) FROM store;"
+          echo "✓ SQLite databases are valid"
 
       - name: Test SQLite queries
         run: |

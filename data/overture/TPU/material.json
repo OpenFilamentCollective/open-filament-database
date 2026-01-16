@@ -3,9 +3,9 @@
   "default_max_dry_temperature": 70,
   "default_slicer_settings": {
     "bambustudio": {
+      "bed_temp": 35,
       "first_layer_bed_temp": 35,
       "first_layer_nozzle_temp": 210,
-      "bed_temp": 35,
       "nozzle_temp": 210,
       "profile_name": "profiles/filament/TPU.ini"
     }
