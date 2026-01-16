@@ -165,10 +165,93 @@ export function normalizeDataForForm(data: any, schema: any): any {
 }
 
 /**
+ * Resolve external schema references by inlining them
+ * Converts references like "./material_types_schema.json" to inline definitions
+ */
+export function resolveExternalReferences(schema: any): any {
+	const schemaCopy = JSON.parse(JSON.stringify(schema));
+
+	// Helper function to recursively process schema objects
+	function processObject(obj: any): any {
+		if (!obj || typeof obj !== 'object') {
+			return obj;
+		}
+
+		// Check if this object has a $ref to an external file
+		if (obj.$ref && typeof obj.$ref === 'string' && obj.$ref.startsWith('./')) {
+			// For material_types_schema.json, inline the enum directly
+			if (obj.$ref === './material_types_schema.json') {
+				return {
+					type: 'string',
+					enum: [
+						'PLA',
+						'PETG',
+						'TPU',
+						'ABS',
+						'ASA',
+						'PC',
+						'PCTG',
+						'PP',
+						'PA6',
+						'PA11',
+						'PA12',
+						'PA66',
+						'CPE',
+						'TPE',
+						'HIPS',
+						'PHA',
+						'PET',
+						'PEI',
+						'PBT',
+						'PVB',
+						'PVA',
+						'PEKK',
+						'PEEK',
+						'BVOH',
+						'TPC',
+						'PPS',
+						'PPSU',
+						'PVC',
+						'PEBA',
+						'PVDF',
+						'PPA',
+						'PCL',
+						'PES',
+						'PMMA',
+						'POM',
+						'PPE',
+						'PS',
+						'PSU',
+						'TPI',
+						'SBS',
+						'OBC',
+						'EVA'
+					]
+				};
+			}
+			// If we encounter other external references, keep them as-is
+			return obj;
+		}
+
+		// Recursively process all properties
+		for (const key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				obj[key] = processObject(obj[key]);
+			}
+		}
+
+		return obj;
+	}
+
+	return processObject(schemaCopy);
+}
+
+/**
  * Process schema for editing: normalize types, format titles, and remove ID field
  */
 export function prepareSchemaForEdit(schema: any) {
-	let schemaCopy = normalizeSchema(schema);
+	let schemaCopy = resolveExternalReferences(schema);
+	schemaCopy = normalizeSchema(schemaCopy);
 	schemaCopy = removeIdFromSchema(schemaCopy);
 	schemaCopy = applyFormattedTitles(schemaCopy);
 

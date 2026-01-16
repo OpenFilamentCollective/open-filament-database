@@ -2,12 +2,14 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { normalizeBrandId } from '../../../../utils';
 
 const DATA_DIR = path.join(process.cwd(), '../data');
 
 export const GET: RequestHandler = async ({ params }) => {
 	try {
-		const materialsDir = path.join(DATA_DIR, params.brandId, params.materialType);
+		const normalizedBrandId = await normalizeBrandId(DATA_DIR, params.brandId);
+		const materialsDir = path.join(DATA_DIR, normalizedBrandId, params.materialType);
 		const entries = await fs.readdir(materialsDir, { withFileTypes: true });
 
 		const filaments = await Promise.all(

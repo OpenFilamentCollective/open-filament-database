@@ -28,6 +28,7 @@
 	let formData: any = $state({ ...store });
 	let form: any = $state(null);
 	let initialized = $state(false);
+	let logoError: string | null = $state(null);
 
 	// Initialize form when component mounts
 	$effect(() => {
@@ -55,6 +56,12 @@
 
 			// Normalize the data to match the schema (convert strings to arrays where needed)
 			const normalizedData = normalizeDataForForm({ ...store }, normalizedSchema);
+
+			// Prefill storefront_url with "https://" for new stores only
+			if (!normalizedData.storefront_url || normalizedData.storefront_url === '') {
+				normalizedData.storefront_url = 'https://';
+			}
+
 			formData = normalizedData;
 
 			form = createForm({
@@ -64,12 +71,26 @@
 				translation: customTranslation,
 				initialValue: normalizedData,
 				onSubmit: (data: any) => {
+					// Check if logo exists before allowing submission
+					if (!store.logo && !logoChanged) {
+						logoError = 'A logo is required. Please upload a logo before submitting.';
+						return; // Prevent submission
+					}
+
+					logoError = null; // Clear error if logo exists
 					// Merge the name field back in
 					onSubmit({ ...data, name: formData.name });
 				}
 			});
 
 			initialized = true;
+		}
+	});
+
+	// Clear logo error when logo is uploaded
+	$effect(() => {
+		if (logoChanged || store.logo) {
+			logoError = null;
 		}
 	});
 </script>
@@ -89,6 +110,9 @@
 		/>
 		{#if logoChanged}
 			<p class="text-sm text-green-600 mt-2">Logo will be updated when you save</p>
+		{/if}
+		{#if logoError}
+			<p class="text-sm text-red-600 mt-2">{logoError}</p>
 		{/if}
 	</div>
 

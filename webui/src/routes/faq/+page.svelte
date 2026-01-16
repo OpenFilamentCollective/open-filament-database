@@ -166,6 +166,10 @@
 	let filteredFAQs = $derived(filterFAQs(selectedCategory));
 </script>
 
+<svelte:head>
+	<title>FAQs</title>
+</svelte:head>
+
 <div class="container mx-auto px-4 py-8 max-w-4xl">
 	<div class="mb-8">
 		<a href="/" class="text-blue-600 hover:text-blue-800 flex items-center gap-2 mb-4">

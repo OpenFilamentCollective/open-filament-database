@@ -107,7 +107,13 @@ export function buildApiUrl(path: string): string {
 
 	// Handle schemas endpoints
 	if (path.startsWith('/api/schemas')) {
-		// /api/schemas/[type] -> /api/v1/schemas/index.json (all schemas in one file)
+		// /api/schemas/[type] -> /api/v1/schemas/[type]_schema.json
+		const match = path.match(/^\/api\/schemas\/([^/]+)$/);
+		if (match) {
+			const schemaType = match[1];
+			return `${baseUrl}/api/v1/schemas/${schemaType}_schema.json`;
+		}
+		// /api/schemas -> /api/v1/schemas/index.json
 		return `${baseUrl}/api/v1/schemas/index.json`;
 	}
 
@@ -136,14 +142,22 @@ function transformCloudResponse(data: any, path: string): any {
 	// 1. Transform stores index response
 	if (path === '/api/stores' || path.match(/^\/api\/stores$/)) {
 		if (data && typeof data === 'object' && 'stores' in data) {
-			return data.stores;
+			// Map logo_slug to logo for consistency with local API
+			return data.stores.map((store: any) => ({
+				...store,
+				logo: store.logo_slug || store.logo
+			}));
 		}
 	}
 
 	// 2. Transform brands index response
 	if (path === '/api/brands' || path.match(/^\/api\/brands$/)) {
 		if (data && typeof data === 'object' && 'brands' in data) {
-			return data.brands;
+			// Map logo_slug to logo for consistency with local API
+			return data.brands.map((brand: any) => ({
+				...brand,
+				logo: brand.logo_slug || brand.logo
+			}));
 		}
 	}
 
@@ -176,7 +190,16 @@ function transformCloudResponse(data: any, path: string): any {
 		return data.variants;
 	}
 
-	// For individual store/brand endpoints and other endpoints, return as-is
+	// 6. Transform individual store/brand responses to map logo_slug to logo
+	// This handles /api/brands/[id] and /api/stores/[id] endpoints
+	if (data && typeof data === 'object' && 'logo_slug' in data) {
+		return {
+			...data,
+			logo: data.logo_slug || data.logo
+		};
+	}
+
+	// For other endpoints, return as-is
 	// The cloud API structure matches local API for these
 	return data;
 }

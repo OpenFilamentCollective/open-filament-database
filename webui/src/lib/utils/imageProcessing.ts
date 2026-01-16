@@ -239,6 +239,121 @@ export async function fileToDataUrl(file: File): Promise<string> {
 }
 
 /**
+ * Detect if a data URL is an SVG
+ */
+export function isSvgDataUrl(dataUrl: string): boolean {
+	return dataUrl.startsWith('data:image/svg');
+}
+
+/**
+ * Process an SVG file to fit 400x400 canvas
+ * Centers all elements and scales until something hits the border
+ * @param svgDataUrl - SVG file as data URL
+ * @returns Processed SVG as data URL
+ */
+export async function processSvg(svgDataUrl: string): Promise<ProcessedImage> {
+	return new Promise((resolve, reject) => {
+		try {
+			// Parse SVG from data URL
+			const base64 = svgDataUrl.split(',')[1];
+			const svgText = atob(base64);
+
+			// Create DOM parser
+			const parser = new DOMParser();
+			const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+			const svgElement = svgDoc.documentElement as unknown as SVGSVGElement;
+
+			// Check for parsing errors
+			const parserError = svgDoc.querySelector('parsererror');
+			if (parserError) {
+				reject(new Error('Invalid SVG file'));
+				return;
+			}
+
+			// Get or calculate bounding box
+			const viewBox = svgElement.getAttribute('viewBox');
+			let bbox: { x: number; y: number; width: number; height: number };
+
+			if (viewBox) {
+				const parts = viewBox.trim().split(/\s+|,/);
+				const [x, y, w, h] = parts.map(Number);
+				bbox = { x, y, width: w, height: h };
+			} else {
+				// Calculate from content using temporary DOM element
+				const tempDiv = document.createElement('div');
+				tempDiv.style.position = 'absolute';
+				tempDiv.style.visibility = 'hidden';
+				tempDiv.style.width = '0';
+				tempDiv.style.height = '0';
+				tempDiv.innerHTML = svgText;
+				document.body.appendChild(tempDiv);
+
+				try {
+					const tempSvg = tempDiv.querySelector('svg') as SVGSVGElement;
+					if (tempSvg) {
+						// Get bounding box of all content
+						const bboxResult = tempSvg.getBBox();
+						bbox = {
+							x: bboxResult.x,
+							y: bboxResult.y,
+							width: bboxResult.width,
+							height: bboxResult.height
+						};
+					} else {
+						// Fallback if getBBox fails
+						bbox = { x: 0, y: 0, width: 400, height: 400 };
+					}
+				} finally {
+					document.body.removeChild(tempDiv);
+				}
+			}
+
+			// Ensure bbox has valid dimensions
+			if (bbox.width <= 0 || bbox.height <= 0) {
+				bbox = { x: 0, y: 0, width: 400, height: 400 };
+			}
+
+			// Calculate scale to fit 400x400 (scale until max dimension hits 400)
+			const maxDim = Math.max(bbox.width, bbox.height);
+			const scale = 400 / maxDim;
+
+			// Calculate centering offset
+			const scaledWidth = bbox.width * scale;
+			const scaledHeight = bbox.height * scale;
+			const offsetX = (400 - scaledWidth) / 2;
+			const offsetY = (400 - scaledHeight) / 2;
+
+			// Set new viewBox centered in 400x400 space
+			// Transform coordinates: newX = bbox.x - (offsetX / scale)
+			const newX = bbox.x - offsetX / scale;
+			const newY = bbox.y - offsetY / scale;
+			const newWidth = 400 / scale;
+			const newHeight = 400 / scale;
+
+			svgElement.setAttribute('viewBox', `${newX} ${newY} ${newWidth} ${newHeight}`);
+			svgElement.setAttribute('width', '400');
+			svgElement.setAttribute('height', '400');
+
+			// Serialize back to string
+			const serializer = new XMLSerializer();
+			const processedSvg = serializer.serializeToString(svgElement);
+
+			// Convert back to data URL
+			const processedBase64 = btoa(processedSvg);
+			const dataUrl = `data:image/svg+xml;base64,${processedBase64}`;
+
+			resolve({
+				dataUrl,
+				width: 400,
+				height: 400
+			});
+		} catch (e) {
+			reject(new Error(`Failed to process SVG: ${e instanceof Error ? e.message : 'Unknown error'}`));
+		}
+	});
+}
+
+/**
  * Process an uploaded image file
  * Returns the processed image data URL ready to be saved
  */

@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { isCloudMode, apiBaseUrl } from '$lib/stores/environment';
+	import { changeStore } from '$lib/stores/changes';
 	import {
 		validateImage,
 		resizeImage,
 		cropImage as cropImageUtil,
 		fileToDataUrl,
+		processSvg,
+		isSvgDataUrl,
 		type ImageValidationResult,
 		type ProcessedImage
 	} from '$lib/utils/imageProcessing';
@@ -44,9 +48,32 @@
 	let resizeStartSize: number = 0;
 
 	$effect(() => {
-		// Update preview when currentLogo prop changes - construct API URL
+		// Update preview when currentLogo prop changes - construct API URL or use base64
 		if (currentLogo) {
-			previewUrl = `/api/${entityType}s/${entityId}/logo/${currentLogo}`;
+			// Check if currentLogo is already a data URL (base64)
+			if (currentLogo.startsWith('data:')) {
+				previewUrl = currentLogo;
+			} else if ($isCloudMode) {
+				// Check if it's an image ID referencing stored base64 in change store
+				const imageData = changeStore.getImage(currentLogo);
+				if (imageData) {
+					// Get the image reference to access mimeType
+					const imageRef = $changeStore.images[currentLogo];
+					if (imageRef) {
+						previewUrl = `data:${imageRef.mimeType};base64,${imageData}`;
+					} else {
+						// Fallback to API if image reference not found
+						previewUrl = `${$apiBaseUrl}/api/v1/${entityType}s/logo/${currentLogo}`;
+					}
+				} else {
+					// In cloud mode, currentLogo contains the logo_slug
+					// Format: /api/v1/brands/logo/{logo_slug} or /api/v1/stores/logo/{logo_slug}
+					previewUrl = `${$apiBaseUrl}/api/v1/${entityType}s/logo/${currentLogo}`;
+				}
+			} else {
+				// In local mode, use local API endpoint
+				previewUrl = `/api/${entityType}s/${entityId}/logo/${currentLogo}`;
+			}
 		} else {
 			previewUrl = '';
 		}
@@ -62,7 +89,20 @@
 		processing = true;
 
 		try {
-			// Validate the image
+			// Convert to data URL first
+			const dataUrl = await fileToDataUrl(file);
+			originalImageUrl = dataUrl;
+
+			// Special handling for SVG files
+			if (file.type === 'image/svg+xml' || isSvgDataUrl(dataUrl)) {
+				const processed = await processSvg(dataUrl);
+				previewUrl = processed.dataUrl;
+				onLogoChange(processed.dataUrl);
+				processing = false;
+				return;
+			}
+
+			// Validate the image (for raster images)
 			validation = await validateImage(file);
 
 			if (!validation.valid) {
@@ -70,10 +110,6 @@
 				processing = false;
 				return;
 			}
-
-			// Convert to data URL
-			const dataUrl = await fileToDataUrl(file);
-			originalImageUrl = dataUrl;
 
 			// If square and in range, process immediately
 			if (validation.isSquare && !validation.needsResize) {
@@ -458,7 +494,7 @@
 
 <div class="logo-upload">
 	<div class="font-bold">
-		{label}
+		{label} {#if !currentLogo}*{/if}
 	</div>
 
 	<div class="flex items-start gap-4">

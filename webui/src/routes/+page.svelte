@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Store, Brand } from '$lib/types/database';
 	import { db } from '$lib/services/database';
+	import { env } from '$env/dynamic/public';
 
 	let stores: Store[] = $state([]);
 	let brands: Brand[] = $state([]);
@@ -20,6 +21,10 @@
 		}
 	});
 </script>
+
+<svelte:head>
+	<title>Filament Database Editor</title>
+</svelte:head>
 
 <div class="container mx-auto px-4 py-8">
 	<header class="mb-12">
@@ -66,6 +71,36 @@
 					class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
 				>
 					View All Stores →
+				</a>
+			</section>
+
+			<section class="bg-white rounded-lg border border-gray-200 p-6">
+				<div class="flex items-center justify-between mb-6">
+					<div>
+						<h2 class="text-2xl font-semibold mb-2">FAQ</h2>
+						<p class="text-gray-600">If you've got any questions, we've got answers.</p>
+					</div>
+				</div>
+				<a
+					href="/faq"
+					class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+				>
+					View Our FAQ →
+				</a>
+			</section>
+
+			<section class="bg-white rounded-lg border border-gray-200 p-6">
+				<div class="flex items-center justify-between mb-6">
+					<div>
+						<h2 class="text-2xl font-semibold mb-2">API</h2>
+						<p class="text-gray-600">Want to use our data? take a look at our API documentation.</p>
+					</div>
+				</div>
+				<a
+					href={env.PUBLIC_API_BASE_URL}
+					class="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+				>
+					View Our API →
 				</a>
 			</section>
 		</div>

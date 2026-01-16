@@ -2,6 +2,7 @@ import type { RequestHandler } from './$types';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { PUBLIC_APP_MODE } from '$env/static/public';
+import { normalizeBrandId } from '../../../utils';
 
 const DATA_DIR = path.join(process.cwd(), '../data');
 
@@ -14,7 +15,8 @@ export const GET: RequestHandler = async ({ params }) => {
 	}
 
 	try {
-		const logoPath = path.join(DATA_DIR, params.id, params.filename);
+		const normalizedId = await normalizeBrandId(DATA_DIR, params.id);
+		const logoPath = path.join(DATA_DIR, normalizedId, params.filename);
 		const fileBuffer = await fs.readFile(logoPath);
 
 		const ext = path.extname(params.filename).toLowerCase();

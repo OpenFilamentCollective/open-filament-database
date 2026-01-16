@@ -3,7 +3,7 @@ import type { RequestHandler } from './$types';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-const SCHEMA_DIR = path.join(process.cwd(), '../dist/api/v1/schemas');
+const SCHEMA_DIR = path.join(process.cwd(), '../schemas');
 
 export const GET: RequestHandler = async () => {
 	try {

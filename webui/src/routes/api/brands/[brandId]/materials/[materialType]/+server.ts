@@ -2,14 +2,16 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { normalizeBrandId } from '../../../utils';
 
 const DATA_DIR = path.join(process.cwd(), '../data');
 
 export const GET: RequestHandler = async ({ params }) => {
 	try {
+		const normalizedBrandId = await normalizeBrandId(DATA_DIR, params.brandId);
 		const materialPath = path.join(
 			DATA_DIR,
-			params.brandId,
+			normalizedBrandId,
 			params.materialType,
 			'material.json'
 		);
@@ -17,6 +19,7 @@ export const GET: RequestHandler = async ({ params }) => {
 		const material = JSON.parse(content);
 		return json({
 			...material,
+			id: params.materialType, // Use materialType as id for change tracking
 			brandId: params.brandId,
 			materialType: params.materialType
 		});
@@ -31,10 +34,11 @@ export const GET: RequestHandler = async ({ params }) => {
 
 export const PUT: RequestHandler = async ({ params, request }) => {
 	try {
+		const normalizedBrandId = await normalizeBrandId(DATA_DIR, params.brandId);
 		const material = await request.json();
 		const materialPath = path.join(
 			DATA_DIR,
-			params.brandId,
+			normalizedBrandId,
 			params.materialType,
 			'material.json'
 		);

@@ -7,7 +7,13 @@
 	import StoreForm from '$lib/components/forms/StoreForm.svelte';
 	import MessageBanner from '$lib/components/MessageBanner.svelte';
 	import BackButton from '$lib/components/BackButton.svelte';
-	import RefreshButton from '$lib/components/RefreshButton.svelte';
+	import DataDisplay from '$lib/components/DataDisplay.svelte';
+	import EntityDetails from '$lib/components/EntityDetails.svelte';
+	import Logo from '$lib/components/Logo.svelte';
+	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
+	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
+	import { changeStore } from '$lib/stores/changes';
+	import { isCloudMode } from '$lib/stores/environment';
 
 	let storeId: string = $derived($page.params.store!);
 	let store: Store | null = $state(null);
@@ -15,15 +21,27 @@
 	let loading: boolean = $state(true);
 	let saving: boolean = $state(false);
 	let error: string | null = $state(null);
-	let successMessage: string | null = $state(null);
 
 	let showEditModal: boolean = $state(false);
+	let showDeleteModal: boolean = $state(false);
 	let logoDataUrl: string = $state('');
 	let logoChanged: boolean = $state(false);
+	let deleting: boolean = $state(false);
 
-	async function loadData() {
-		loading = true;
-		error = null;
+	// Create message handler
+	const messageHandler = createMessageHandler();
+
+	// Check if this store has local changes
+	let hasLocalChanges = $derived.by(() => {
+		if (!$isCloudMode || !store) return false;
+
+		const entityPath = `stores/${storeId}`;
+		const change = $changeStore.changes[entityPath];
+
+		return change && (change.operation === 'create' || change.operation === 'update');
+	});
+
+	onMount(async () => {
 		try {
 			const [storeData, schemaData] = await Promise.all([
 				db.getStore(storeId),
@@ -32,6 +50,7 @@
 
 			if (!storeData) {
 				error = 'Store not found';
+				loading = false;
 				return;
 			}
 
@@ -42,26 +61,13 @@
 		} finally {
 			loading = false;
 		}
-	}
-
-	onMount(loadData);
-
-	// Reload data when storeId changes (reactive to route changes and localStorage updates)
-	$effect(() => {
-		// Access storeId to make this effect reactive to it
-		const id = storeId;
-		// Only reload if we're not in initial mount (onMount handles that)
-		if (store && store.id !== id) {
-			loadData();
-		}
 	});
 
 	async function handleSubmit(data: any) {
 		if (!store) return;
 
 		saving = true;
-		error = null;
-		successMessage = null;
+		messageHandler.clear();
 
 		try {
 			// If logo was changed, save the new logo and delete the old one
@@ -69,23 +75,27 @@
 			if (logoChanged && logoDataUrl) {
 				// Delete old logo first
 				if (store.logo) {
-					await deleteLogoImage(store.id, store.logo);
+					await deleteLogoImage(store.id, store.logo, 'store');
 				}
 
 				// Upload new logo
-				const savedPath = await saveLogoImage(store.id, logoDataUrl);
+				const savedPath = await saveLogoImage(store.id, logoDataUrl, 'store');
 				if (!savedPath) {
-					error = 'Failed to save logo';
+					messageHandler.showError('Failed to save logo');
 					saving = false;
 					return;
 				}
-				// Generate new logo filename based on the uploaded file type
-				logoFilename = getLogoFilename(logoDataUrl);
+				// In cloud mode, savedPath is the imageId for change store lookup
+				// In local mode, savedPath is the file path but we use the filename
+				logoFilename = savedPath;
 			}
 
 			// Update store data with new logo filename (or keep existing if not changed)
+			// Preserve id and slug from original store since form doesn't include them
 			const updatedStore = {
 				...data,
+				id: store.id,
+				slug: store.slug ?? store.id,
 				logo: logoFilename
 			};
 
@@ -96,83 +106,26 @@
 				store = updatedStore;
 				logoChanged = false;
 				logoDataUrl = '';
-				successMessage = 'Store saved successfully!';
+				messageHandler.showSuccess('Store saved successfully!');
 				showEditModal = false;
 
+				// Reload the page to ensure UI is in sync
 				setTimeout(() => {
-					successMessage = null;
-				}, 3000);
+					window.location.reload();
+				}, 500);
 			} else {
-				error = 'Failed to save store';
+				messageHandler.showError('Failed to save store');
 			}
 		} catch (e) {
-			error = e instanceof Error ? e.message : 'Failed to save store';
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to save store');
 		} finally {
 			saving = false;
-		}
-	}
-
-	async function deleteLogoImage(storeId: string, logoFilename: string): Promise<void> {
-		try {
-			const response = await fetch('/api/stores/logo', {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					storeId,
-					logoFilename,
-					type: 'store'
-				})
-			});
-
-			if (!response.ok) {
-				console.warn('Failed to delete old logo:', logoFilename);
-			}
-		} catch (e) {
-			console.warn('Error deleting old logo:', e);
-		}
-	}
-
-	async function saveLogoImage(storeId: string, dataUrl: string): Promise<string | null> {
-		try {
-			const response = await fetch('/api/stores/logo', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					storeId,
-					imageData: dataUrl,
-					type: 'store'
-				})
-			});
-
-			if (!response.ok) {
-				throw new Error('Failed to save logo');
-			}
-
-			const result = await response.json();
-			return result.path;
-		} catch (e) {
-			console.error('Error saving logo:', e);
-			return null;
 		}
 	}
 
 	function handleLogoChange(dataUrl: string) {
 		logoDataUrl = dataUrl;
 		logoChanged = true;
-	}
-
-	function getLogoFilename(dataUrl: string): string {
-		// Extract the file type from the data URL
-		const match = dataUrl.match(/^data:image\/(\w+);base64,/);
-		if (match) {
-			const extension = match[1];
-			return `logo.${extension}`;
-		}
-		return 'logo.png'; // Default fallback
 	}
 
 	function openEditModal() {
@@ -184,85 +137,127 @@
 		logoChanged = false;
 		logoDataUrl = '';
 	}
+
+	function openDeleteModal() {
+		showDeleteModal = true;
+	}
+
+	function closeDeleteModal() {
+		showDeleteModal = false;
+	}
+
+	async function handleDelete() {
+		if (!store) return;
+
+		deleting = true;
+		messageHandler.clear();
+
+		try {
+			if ($isCloudMode) {
+				// In cloud mode, check if this is a newly created store
+				const entityPath = `stores/${storeId}`;
+				const change = $changeStore.changes[entityPath];
+
+				if (change && change.operation === 'create') {
+					// If it was created locally, just remove the change
+					changeStore.removeChange(entityPath);
+					messageHandler.showSuccess('Local store creation removed');
+				} else {
+					// Otherwise, track as a delete or remove existing update changes
+					await db.deleteStore(store.id, store);
+					messageHandler.showSuccess('Store marked for deletion - export to save');
+				}
+			} else {
+				// In local mode, delete from filesystem
+				const success = await db.deleteStore(store.id, store);
+				if (success) {
+					messageHandler.showSuccess('Store deleted successfully');
+				} else {
+					messageHandler.showError('Failed to delete store');
+					deleting = false;
+					showDeleteModal = false;
+					return;
+				}
+			}
+
+			// Navigate back to stores list after successful delete
+			showDeleteModal = false;
+			setTimeout(() => {
+				window.location.href = '/stores';
+			}, 1500);
+		} catch (e) {
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete store');
+			deleting = false;
+			showDeleteModal = false;
+		}
+	}
 </script>
+
+<svelte:head>
+	<title>{store ? `${store.name}` : 'Store Not Found'}</title>
+</svelte:head>
 
 <div class="container mx-auto px-4 py-8 max-w-4xl">
 	<div class="mb-6">
-		<BackButton
-			href="/stores"
-			label="Stores"
-		/>
+		<BackButton href="/stores" label="Stores" />
 	</div>
 
-	{#if loading}
-		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-		</div>
-	{:else if error && !store}
-		<div class="bg-red-50 border border-red-200 rounded-lg p-4">
-			<p class="text-red-800">Error: {error}</p>
-		</div>
-	{:else if store}
-		<header class="mb-6">
-			<div class="flex justify-between items-start">
+	<DataDisplay {loading} {error} data={store}>
+		{#snippet children(storeData)}
+			<header class="mb-6 flex items-center gap-4">
+				<Logo src={storeData.logo} alt={storeData.name} type="store" id={storeData.id} size="lg" />
 				<div>
-					<h1 class="text-3xl font-bold mb-2">{store.name}</h1>
-					<p class="text-gray-600">Store ID: {store.id}</p>
+					<h1 class="text-3xl font-bold mb-2">{storeData.name}</h1>
+					<p class="text-gray-600">Store ID: {storeData.id}</p>
 				</div>
-			</div>
-		</header>
+			</header>
 
-		{#if successMessage}
-			<MessageBanner type="success" message={successMessage} />
-		{/if}
+			{#if hasLocalChanges}
+				<MessageBanner type="info" message="Local changes - export to save" />
+			{/if}
 
-		{#if error}
-			<MessageBanner type="error" message={`Error: ${error}`} />
-		{/if}
+			{#if messageHandler.message}
+				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
+			{/if}
 
-		<div class="bg-white border border-gray-200 rounded-lg p-6">
-			<div class="flex justify-between items-center mb-4">
-				<h2 class="text-xl font-semibold">Store Details</h2>
-				<button
-					onclick={openEditModal}
-					class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-				>
-					Edit
-				</button>
-			</div>
-
-			<dl class="space-y-4">
-				<div>
-					<dt class="text-sm font-medium text-gray-500">Name</dt>
-					<dd class="mt-1 text-lg">{store.name}</dd>
-				</div>
-				<div>
-					<dt class="text-sm font-medium text-gray-500">Storefront URL</dt>
-					<dd class="mt-1">
-						<a href={store.storefront_url} target="_blank" class="text-blue-600 hover:underline">
-							{store.storefront_url}
-						</a>
-					</dd>
-				</div>
-				<div>
-					<dt class="text-sm font-medium text-gray-500">Logo</dt>
-					<dd class="mt-1">{store.logo}</dd>
-				</div>
-				<div>
-					<dt class="text-sm font-medium text-gray-500">Ships From</dt>
-					<dd class="mt-1">
-						{Array.isArray(store.ships_from) ? store.ships_from.join(', ') : store.ships_from}
-					</dd>
-				</div>
-				<div>
-					<dt class="text-sm font-medium text-gray-500">Ships To</dt>
-					<dd class="mt-1">
-						{Array.isArray(store.ships_to) ? store.ships_to.join(', ') : store.ships_to}
-					</dd>
-				</div>
-			</dl>
-		</div>
-	{/if}
+			<EntityDetails
+				entity={storeData}
+				title="Store Details"
+				fields={[
+					{ key: 'name' },
+					{ key: 'storefront_url', label: 'Storefront URL', type: 'link' },
+					{ key: 'logo', type: 'logo', logoType: 'store', logoEntityId: storeData.slug ?? storeData.id },
+					{
+						key: 'ships_from',
+						label: 'Ships From',
+						format: (v) => (Array.isArray(v) ? v.join(', ') : v)
+					},
+					{
+						key: 'ships_to',
+						label: 'Ships To',
+						format: (v) => (Array.isArray(v) ? v.join(', ') : v)
+					}
+				]}
+			>
+				{#snippet actions()}
+					<div class="flex gap-2">
+						<button
+							onclick={openEditModal}
+							class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+						>
+							Edit
+						</button>
+						<button
+							onclick={openDeleteModal}
+							class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+						>
+							Delete
+						</button>
+					</div>
+				{/snippet}
+			</EntityDetails>
+		{/snippet}
+	</DataDisplay>
 </div>
 
 <Modal show={showEditModal} title="Edit Store" onClose={closeEditModal} maxWidth="3xl">
@@ -275,5 +270,50 @@
 			{logoChanged}
 			{saving}
 		/>
+	{/if}
+</Modal>
+
+<Modal show={showDeleteModal} title="Delete Store" onClose={closeDeleteModal} maxWidth="md">
+	{#if store}
+		<div class="space-y-4">
+			<p class="text-gray-700">
+				Are you sure you want to delete the store <strong>{store.name}</strong>?
+			</p>
+
+			{#if $isCloudMode}
+				<div class="bg-blue-50 border border-blue-200 rounded p-3">
+					<p class="text-sm text-blue-800">
+						{#if $changeStore.changes[`stores/${storeId}`]?.operation === 'create'}
+							This will remove the locally created store. The change will be discarded.
+						{:else}
+							This will mark the store for deletion. Remember to export your changes.
+						{/if}
+					</p>
+				</div>
+			{:else}
+				<div class="bg-red-50 border border-red-200 rounded p-3">
+					<p class="text-sm text-red-800">
+						This action cannot be undone. The store will be permanently deleted from the filesystem.
+					</p>
+				</div>
+			{/if}
+
+			<div class="flex justify-end gap-2 pt-4">
+				<button
+					onclick={closeDeleteModal}
+					disabled={deleting}
+					class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+				>
+					Cancel
+				</button>
+				<button
+					onclick={handleDelete}
+					disabled={deleting}
+					class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+				>
+					{deleting ? 'Deleting...' : 'Delete Store'}
+				</button>
+			</div>
+		</div>
 	{/if}
 </Modal>

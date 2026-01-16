@@ -2,21 +2,26 @@
 	import { onMount } from 'svelte';
 	import type { Store } from '$lib/types/database';
 	import { db } from '$lib/services/database';
-	import Logo from '$lib/components/Logo.svelte';
 	import Modal from '$lib/components/Modal.svelte';
 	import StoreForm from '$lib/components/forms/StoreForm.svelte';
 	import MessageBanner from '$lib/components/MessageBanner.svelte';
+	import DataDisplay from '$lib/components/DataDisplay.svelte';
+	import EntityCard from '$lib/components/EntityCard.svelte';
+	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
+	import { saveLogoImage } from '$lib/utils/logoManagement';
 
 	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
-	let successMessage: string | null = $state(null);
 
 	let showCreateModal: boolean = $state(false);
 	let schema: any = $state(null);
 	let saving: boolean = $state(false);
 	let logoDataUrl: string = $state('');
 	let logoChanged: boolean = $state(false);
+
+	// Create message handler
+	const messageHandler = createMessageHandler();
 
 	// Empty store template for new store creation
 	const newStore: Store = {
@@ -28,7 +33,9 @@
 		ships_to: []
 	};
 
-	onMount(async () => {
+	async function loadData() {
+		loading = true;
+		error = null;
 		try {
 			const index = await db.loadIndex();
 			stores = index.stores;
@@ -36,6 +43,16 @@
 			error = e instanceof Error ? e.message : 'Failed to load stores';
 		} finally {
 			loading = false;
+		}
+	}
+
+	onMount(loadData);
+
+	// Reload when navigating back to this page
+	$effect(() => {
+		// This effect will run whenever the component is shown
+		if (typeof window !== 'undefined') {
+			loadData();
 		}
 	});
 
@@ -62,8 +79,7 @@
 
 	async function handleSubmit(data: any) {
 		saving = true;
-		error = null;
-		successMessage = null;
+		messageHandler.clear();
 
 		try {
 			// Generate slug from name (URL-friendly format with hyphens)
@@ -72,13 +88,15 @@
 			// If logo was uploaded, save it
 			let logoFilename = '';
 			if (logoChanged && logoDataUrl) {
-				const savedPath = await saveLogoImage(slug, logoDataUrl);
+				const savedPath = await saveLogoImage(slug, logoDataUrl, 'store');
 				if (!savedPath) {
-					error = 'Failed to save logo';
+					messageHandler.showError('Failed to save logo');
 					saving = false;
 					return;
 				}
-				logoFilename = getLogoFilename(logoDataUrl);
+				// In cloud mode, savedPath is the imageId for change store lookup
+				// In local mode, savedPath is the filename
+				logoFilename = savedPath;
 			}
 
 			// Create new store with generated ID and slug
@@ -93,51 +111,22 @@
 			const success = await db.saveStore(newStoreData);
 
 			if (success) {
-				successMessage = 'Store created successfully!';
+				messageHandler.showSuccess('Store created successfully!');
 				showCreateModal = false;
 				logoChanged = false;
 				logoDataUrl = '';
 
-				// Reload stores list
-				const index = await db.loadIndex();
-				stores = index.stores;
-
+				// Reload the page to ensure UI is in sync
 				setTimeout(() => {
-					successMessage = null;
-				}, 3000);
+					window.location.reload();
+				}, 500);
 			} else {
-				error = 'Failed to create store';
+				messageHandler.showError('Failed to create store');
 			}
 		} catch (e) {
-			error = e instanceof Error ? e.message : 'Failed to create store';
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create store');
 		} finally {
 			saving = false;
-		}
-	}
-
-	async function saveLogoImage(storeId: string, dataUrl: string): Promise<string | null> {
-		try {
-			const response = await fetch('/api/stores/logo', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					storeId,
-					imageData: dataUrl,
-					type: 'store'
-				})
-			});
-
-			if (!response.ok) {
-				throw new Error('Failed to save logo');
-			}
-
-			const result = await response.json();
-			return result.path;
-		} catch (e) {
-			console.error('Error saving logo:', e);
-			return null;
 		}
 	}
 
@@ -145,16 +134,11 @@
 		logoDataUrl = dataUrl;
 		logoChanged = true;
 	}
-
-	function getLogoFilename(dataUrl: string): string {
-		const match = dataUrl.match(/^data:image\/(\w+);base64,/);
-		if (match) {
-			const extension = match[1];
-			return `logo.${extension}`;
-		}
-		return 'logo.png';
-	}
 </script>
+
+<svelte:head>
+	<title>Stores</title>
+</svelte:head>
 
 <div class="container mx-auto px-4 py-8">
 	<div class="mb-6">
@@ -162,12 +146,8 @@
 			← Back to Home
 		</a>
 
-		{#if successMessage}
-			<MessageBanner type="success" message={successMessage} />
-		{/if}
-
-		{#if error}
-			<MessageBanner type="error" message={`Error: ${error}`} />
+		{#if messageHandler.message}
+			<MessageBanner type={messageHandler.type} message={messageHandler.message} />
 		{/if}
 
 		<div class="flex items-center justify-between mb-2">
@@ -185,37 +165,30 @@
 		<p class="text-gray-600">Browse and edit filament stores</p>
 	</div>
 
-	{#if loading}
-		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-		</div>
-	{:else if error}
-		<div class="bg-red-50 border border-red-200 rounded-lg p-4">
-			<p class="text-red-800">Error: {error}</p>
-		</div>
-	{:else}
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-			{#each stores as store}
-				<a
-					href="/stores/{store.slug ?? store.id}"
-					class="block p-6 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-lg transition-all"
-				>
-					<div class="flex items-center gap-4 mb-4">
-						<Logo src={store.logo} alt={store.name} type="store" id={store.slug ?? store.id} size="md" />
-						<div>
-							<h3 class="font-semibold text-lg">{store.name}</h3>
-							<p class="text-xs text-gray-500">ID: {store.id}</p>
-						</div>
-					</div>
-					<p class="text-sm text-gray-600">
-						Ships from: {Array.isArray(store.ships_from)
-							? store.ships_from.join(', ')
-							: store.ships_from}
-					</p>
-				</a>
-			{/each}
-		</div>
-	{/if}
+	<DataDisplay {loading} {error} data={stores}>
+		{#snippet children(storesList)}
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+				{#each storesList as store}
+					<EntityCard
+						entity={store}
+						href="/stores/{store.slug ?? store.id}"
+						logo={store.logo}
+						logoType="store"
+						logoEntityId={store.slug ?? store.id}
+						hoverColor="blue"
+						fields={[
+							{
+								key: 'ships_from',
+								label: 'Ships from',
+								format: (v) => (Array.isArray(v) ? v.join(', ') : v),
+								class: 'text-gray-600'
+							}
+						]}
+					/>
+				{/each}
+			</div>
+		{/snippet}
+	</DataDisplay>
 </div>
 
 <Modal show={showCreateModal} title="Create New Store" onClose={closeCreateModal} maxWidth="3xl">

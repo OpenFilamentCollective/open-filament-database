@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { isCloudMode, apiBaseUrl } from '$lib/stores/environment';
+	import { changeStore } from '$lib/stores/changes';
 
 	interface Props {
 		src: string;
@@ -18,16 +19,51 @@
 		lg: 'h-24 w-24'
 	};
 
-	// Build logo URL based on environment mode
+	// Build logo URL based on environment mode, supporting base64 data URLs
 	const logoUrl = $derived.by(() => {
 		if (!src || !browser) return ''; // Don't generate URL during SSR
 
+		// Support data URLs directly (base64 encoded images)
+		if (src.startsWith('data:')) {
+			return src;
+		}
+
 		if ($isCloudMode) {
-			// In cloud mode, logos are served from a centralized icons endpoint
-			// Format: /api/v1/stores/icons/{slug}.{ext} or /api/v1/brands/icons/{slug}.{ext}
-			// Extract extension from src (e.g., "logo.png" -> "png")
-			const ext = src.split('.').pop() || 'png';
-			return `${$apiBaseUrl}/api/v1/${type}s/icons/${id}.${ext}`;
+			// First, check if src is an image ID referencing stored base64 in change store
+			// Subscribe to changeStore to make this reactive
+			const imageRef = $changeStore.images[src];
+			if (imageRef) {
+				// Get the base64 data from localStorage
+				try {
+					const imageData = localStorage.getItem(imageRef.storageKey);
+					if (imageData) {
+						return `data:${imageRef.mimeType};base64,${imageData}`;
+					}
+				} catch (e) {
+					console.error('Failed to retrieve image from localStorage:', e);
+				}
+			}
+
+			// Also check if there's an image stored for this entity's logo property
+			// This handles the case where we need to look up by entity path
+			const entityPath = `${type}s/${id}`;
+			for (const [, imgRef] of Object.entries($changeStore.images)) {
+				if (imgRef.entityPath === entityPath && imgRef.property === 'logo') {
+					try {
+						const imageData = localStorage.getItem(imgRef.storageKey);
+						if (imageData) {
+							return `data:${imgRef.mimeType};base64,${imageData}`;
+						}
+					} catch (e) {
+						console.error('Failed to retrieve image from localStorage:', e);
+					}
+				}
+			}
+
+			// In cloud mode, logos are served from the cloud API
+			// The src contains the logo_slug (e.g., "3d_prima_basic_logo_png_b73af01c.png")
+			// Format: /api/v1/brands/logo/{logo_slug} or /api/v1/stores/logo/{logo_slug}
+			return `${$apiBaseUrl}/api/v1/${type}s/logo/${src}`;
 		} else {
 			// In local mode, use local API endpoint
 			// ID should be the slug/directory name

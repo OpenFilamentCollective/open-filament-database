@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { normalizeBrandId } from '../../../../../../utils';
 import { promises as fs } from 'fs';
 import path from 'path';
 

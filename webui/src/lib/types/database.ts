@@ -18,6 +18,7 @@ export interface Brand {
 }
 
 export interface Material {
+	id: string; // Same as materialType, used for change tracking
 	material: string;
 	material_class?: 'FFF' | 'SLA';
 	default_max_dry_temperature?: number;

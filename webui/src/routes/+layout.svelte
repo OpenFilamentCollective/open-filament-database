@@ -6,6 +6,7 @@
 	import { isLocalMode } from '$lib/stores/environment';
 	import { db } from '$lib/services/database';
 	import { page } from '$app/stores';
+	import { env } from '$env/dynamic/public';
 
 	let { children } = $props();
 
@@ -51,6 +52,12 @@
 						class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
 					>
 						FAQ
+					</a>
+					<a
+						href={env.PUBLIC_API_BASE_URL}
+						class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+					>
+						API
 					</a>
 				</nav>
 			</div>
