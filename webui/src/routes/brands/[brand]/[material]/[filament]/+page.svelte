@@ -15,8 +15,6 @@
 	import { apiFetch } from '$lib/utils/api';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
-	import '@sjsf/basic-theme/css/basic.css';
-	import '$lib/styles/sjsf-buttons.css';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -195,12 +193,12 @@
 				<div class="flex items-center gap-3 mb-2">
 					<h1 class="text-3xl font-bold">{filamentData.name}</h1>
 					{#if filamentData.discontinued}
-						<span class="px-3 py-1 text-sm bg-red-100 text-red-800 rounded-full"
+						<span class="px-3 py-1 text-sm bg-destructive/10 text-destructive rounded-full"
 							>Discontinued</span
 						>
 					{/if}
 				</div>
-				<p class="text-gray-600">Filament ID: {filamentData.id}</p>
+				<p class="text-muted-foreground">Filament ID: {filamentData.id}</p>
 			</header>
 
 			{#if messageHandler.message}
@@ -221,20 +219,20 @@
 						<dl class="space-y-4">
 							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 								<div>
-									<dt class="text-sm font-medium text-gray-500">Name</dt>
+									<dt class="text-sm font-medium text-muted-foreground">Name</dt>
 									<dd class="mt-1 text-lg">{filamentData.name}</dd>
 								</div>
 								<div>
-									<dt class="text-sm font-medium text-gray-500">Density</dt>
+									<dt class="text-sm font-medium text-muted-foreground">Density</dt>
 									<dd class="mt-1">{filamentData.density} g/cm³</dd>
 								</div>
 								<div>
-									<dt class="text-sm font-medium text-gray-500">Diameter Tolerance</dt>
+									<dt class="text-sm font-medium text-muted-foreground">Diameter Tolerance</dt>
 									<dd class="mt-1">{filamentData.diameter_tolerance} mm</dd>
 								</div>
 								{#if filamentData.min_print_temperature}
 									<div>
-										<dt class="text-sm font-medium text-gray-500">Print Temperature Range</dt>
+										<dt class="text-sm font-medium text-muted-foreground">Print Temperature Range</dt>
 										<dd class="mt-1">
 											{filamentData.min_print_temperature}°C - {filamentData.max_print_temperature}°C
 										</dd>
@@ -242,7 +240,7 @@
 								{/if}
 								{#if filamentData.min_bed_temperature}
 									<div>
-										<dt class="text-sm font-medium text-gray-500">Bed Temperature Range</dt>
+										<dt class="text-sm font-medium text-muted-foreground">Bed Temperature Range</dt>
 										<dd class="mt-1">
 											{filamentData.min_bed_temperature}°C - {filamentData.max_bed_temperature}°C
 										</dd>
@@ -250,31 +248,31 @@
 								{/if}
 								{#if filamentData.preheat_temperature}
 									<div>
-										<dt class="text-sm font-medium text-gray-500">Preheat Temperature</dt>
+										<dt class="text-sm font-medium text-muted-foreground">Preheat Temperature</dt>
 										<dd class="mt-1">{filamentData.preheat_temperature}°C</dd>
 									</div>
 								{/if}
 								{#if filamentData.shore_hardness_a}
 									<div>
-										<dt class="text-sm font-medium text-gray-500">Shore Hardness A</dt>
+										<dt class="text-sm font-medium text-muted-foreground">Shore Hardness A</dt>
 										<dd class="mt-1">{filamentData.shore_hardness_a}</dd>
 									</div>
 								{/if}
 								{#if filamentData.shore_hardness_d}
 									<div>
-										<dt class="text-sm font-medium text-gray-500">Shore Hardness D</dt>
+										<dt class="text-sm font-medium text-muted-foreground">Shore Hardness D</dt>
 										<dd class="mt-1">{filamentData.shore_hardness_d}</dd>
 									</div>
 								{/if}
 								{#if filamentData.max_dry_temperature}
 									<div>
-										<dt class="text-sm font-medium text-gray-500">Max Dry Temperature</dt>
+										<dt class="text-sm font-medium text-muted-foreground">Max Dry Temperature</dt>
 										<dd class="mt-1">{filamentData.max_dry_temperature}°C</dd>
 									</div>
 								{/if}
 								{#if filamentData.min_nozzle_diameter}
 									<div>
-										<dt class="text-sm font-medium text-gray-500">Min Nozzle Diameter</dt>
+										<dt class="text-sm font-medium text-muted-foreground">Min Nozzle Diameter</dt>
 										<dd class="mt-1">{filamentData.min_nozzle_diameter} mm</dd>
 									</div>
 								{/if}
@@ -282,11 +280,11 @@
 
 							{#if filamentData.certifications && filamentData.certifications.length > 0}
 								<div>
-									<dt class="text-sm font-medium text-gray-500">Certifications</dt>
+									<dt class="text-sm font-medium text-muted-foreground">Certifications</dt>
 									<dd class="mt-1">
 										<div class="flex flex-wrap gap-2">
 											{#each filamentData.certifications as cert}
-												<span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm"
+												<span class="px-2 py-1 bg-primary/10 text-primary rounded text-sm"
 													>{cert}</span
 												>
 											{/each}
@@ -297,12 +295,12 @@
 
 							{#if filamentData.data_sheet_url}
 								<div>
-									<dt class="text-sm font-medium text-gray-500">Data Sheet</dt>
+									<dt class="text-sm font-medium text-muted-foreground">Data Sheet</dt>
 									<dd class="mt-1">
 										<a
 											href={filamentData.data_sheet_url}
 											target="_blank"
-											class="text-blue-600 hover:underline"
+											class="text-primary hover:underline"
 										>
 											{filamentData.data_sheet_url}
 										</a>
@@ -312,12 +310,12 @@
 
 							{#if filamentData.safety_sheet_url}
 								<div>
-									<dt class="text-sm font-medium text-gray-500">Safety Sheet</dt>
+									<dt class="text-sm font-medium text-muted-foreground">Safety Sheet</dt>
 									<dd class="mt-1">
 										<a
 											href={filamentData.safety_sheet_url}
 											target="_blank"
-											class="text-blue-600 hover:underline"
+											class="text-primary hover:underline"
 										>
 											{filamentData.safety_sheet_url}
 										</a>
@@ -328,12 +326,12 @@
 					{/snippet}
 				</EntityFormWrapper>
 
-				<div class="bg-white border border-gray-200 rounded-lg p-6">
+				<div class="bg-card border border-border rounded-lg p-6">
 					<div class="flex justify-between items-center mb-4">
 						<h2 class="text-xl font-semibold">Variants</h2>
 						<a
 							href="/brands/{brandId}/{materialType}/{filamentId}/new"
-							class="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-3 py-1.5 rounded text-sm transition-colors flex items-center gap-1"
+							class="bg-orange-500 text-white hover:bg-orange-600 px-4 py-2 rounded-md font-medium text-sm flex items-center gap-1"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -352,7 +350,7 @@
 					</div>
 
 					{#if variants.length === 0}
-						<p class="text-gray-500">No variants found for this filament.</p>
+						<p class="text-muted-foreground">No variants found for this filament.</p>
 					{:else}
 						<div class="space-y-2">
 							{#each variants as variant}
@@ -378,16 +376,16 @@
 <Modal show={showDeleteModal} title="Delete Filament" onClose={closeDeleteModal} maxWidth="md">
 	{#if filament}
 		<div class="space-y-4">
-			<p class="text-gray-700">
+			<p class="text-foreground">
 				Are you sure you want to delete the filament <strong>{filament.name}</strong>?
 			</p>
-			<p class="text-gray-600 text-sm">
+			<p class="text-muted-foreground text-sm">
 				This will also delete all variants within this filament.
 			</p>
 
 			{#if $isCloudMode}
-				<div class="bg-blue-50 border border-blue-200 rounded p-3">
-					<p class="text-sm text-blue-800">
+				<div class="bg-primary/10 border border-primary/20 rounded p-3">
+					<p class="text-sm text-primary">
 						{#if $changeStore.changes[`brands/${brandId}/materials/${materialType}/filaments/${filamentId}`]?.operation === 'create'}
 							This will remove the locally created filament. The change will be discarded.
 						{:else}
@@ -396,8 +394,8 @@
 					</p>
 				</div>
 			{:else}
-				<div class="bg-red-50 border border-red-200 rounded p-3">
-					<p class="text-sm text-red-800">
+				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
+					<p class="text-sm text-destructive">
 						This action cannot be undone. The filament and all its variants will be permanently deleted.
 					</p>
 				</div>
@@ -407,14 +405,14 @@
 				<button
 					onclick={closeDeleteModal}
 					disabled={deleting}
-					class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					Cancel
 				</button>
 				<button
 					onclick={handleDelete}
 					disabled={deleting}
-					class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					{deleting ? 'Deleting...' : 'Delete Filament'}
 				</button>

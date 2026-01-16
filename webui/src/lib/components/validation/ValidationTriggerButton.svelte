@@ -25,7 +25,7 @@
 
 <button
 	onclick={handleRunValidation}
-	class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+	class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium"
 	disabled={$validationStore.isValidating}
 >
 	{#if $validationStore.isValidating}

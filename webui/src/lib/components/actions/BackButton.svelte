@@ -5,7 +5,7 @@
 
 <a
     href={href}
-    class="text-blue-600 hover:text-blue-800 flex items-center gap-2 cursor-pointer"
+    class="text-primary hover:text-primary/80 flex items-center gap-2 cursor-pointer"
 >
     ← Back to {label}
 </a>

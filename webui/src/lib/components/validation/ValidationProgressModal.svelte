@@ -53,54 +53,54 @@
 
 {#if isOpen}
 	<div
-		class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+		class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
 		onclick={onClose}
 		aria-label="validation-progress-title"
 		role="button"
 		tabindex="-1"
 	>
 		<div
-			class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full mx-4"
+			class="bg-card dark:bg-card rounded-lg p-6 max-w-md w-full mx-4"
 			onclick={(e) => e.stopPropagation()}
 			role="dialog"
 			aria-labelledby="validation-progress-title"
 			aria-modal="true"
 			tabindex="-1"
 		>
-			<h2 class="text-xl font-bold mb-4 dark:text-white">
+			<h2 class="text-xl font-bold mb-4 text-foreground">
 				{jobType === 'validation' ? 'Running Validation...' : 'Sorting Data...'}
 			</h2>
 
 			{#if error}
-				<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+				<div class="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded mb-4">
 					<strong>Error:</strong>
 					{error}
 				</div>
 			{:else}
 				<div class="mb-4">
-					<div class="bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+					<div class="bg-muted dark:bg-muted rounded-full h-4 overflow-hidden">
 						<div
-							class="bg-blue-600 h-full transition-all duration-300"
+							class="bg-primary h-full transition-all duration-300"
 							style="width: {progress.percent}%"
 						></div>
 					</div>
-					<p class="text-sm mt-2 dark:text-gray-300">
+					<p class="text-sm mt-2 text-foreground">
 						{progress.stage || 'Initializing...'}
 					</p>
 					{#if progress.message}
-						<p class="text-xs text-gray-600 dark:text-gray-400 mt-1">{progress.message}</p>
+						<p class="text-xs text-muted-foreground dark:text-muted-foreground mt-1">{progress.message}</p>
 					{/if}
 				</div>
 
 				<div class="text-center">
-					<div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600">
+					<div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary">
 					</div>
 				</div>
 			{/if}
 
 			<button
 				onclick={onClose}
-				class="mt-4 w-full bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-white font-semibold py-2 px-4 rounded"
+				class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md mt-4 w-full font-semibold"
 			>
 				Close
 			</button>

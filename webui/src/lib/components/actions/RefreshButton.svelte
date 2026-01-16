@@ -30,7 +30,7 @@
 	<button
 		onclick={handleRefresh}
 		disabled={refreshing}
-		class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+		class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium flex items-center gap-2"
 		title="Refresh data from filesystem"
 	>
 		<svg

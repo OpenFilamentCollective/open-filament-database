@@ -3,9 +3,7 @@
 	import { formDefaults } from '$lib/utils/formDefaults';
 	import { applyFormattedTitles } from '$lib/utils/schemaUtils';
 	import { customTranslation } from '$lib/utils/translations';
-	import '@sjsf/basic-theme/css/basic.css';
-	import '$lib/styles/sjsf-buttons.css';
-
+	
 	interface Props {
 		material?: any;
 		onSubmit: (data: any) => void;
@@ -198,7 +196,7 @@
 {#snippet infoIcon(fieldKey: string)}
 	<button
 		type="button"
-		class="inline-flex items-center justify-center w-4 h-4 ml-1 text-gray-400 hover:text-purple-600 transition-colors relative"
+		class="inline-flex items-center justify-center w-4 h-4 ml-1 text-muted-foreground hover:text-secondary-600 transition-colors relative"
 		onmouseenter={() => activeTooltip = fieldKey}
 		onmouseleave={() => activeTooltip = null}
 		onfocus={() => activeTooltip = fieldKey}
@@ -208,9 +206,9 @@
 			<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.94 6.94a.75.75 0 11-1.061-1.061 3 3 0 112.871 5.026v.345a.75.75 0 01-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 108.94 6.94zM10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
 		</svg>
 		{#if activeTooltip === fieldKey && FIELD_DESCRIPTIONS[fieldKey]}
-			<div class="absolute left-6 top-0 z-50 w-64 p-2 text-xs text-left text-white bg-gray-800 rounded-lg shadow-lg">
+			<div class="absolute left-6 top-0 z-50 w-64 p-2 text-xs text-left text-white bg-foreground rounded-lg shadow-lg">
 				{FIELD_DESCRIPTIONS[fieldKey]}
-				<div class="absolute left-0 top-2 -translate-x-1 w-2 h-2 bg-gray-800 rotate-45"></div>
+				<div class="absolute left-0 top-2 -translate-x-1 w-2 h-2 bg-foreground rotate-45"></div>
 			</div>
 		{/if}
 	</button>
@@ -221,14 +219,14 @@
 	<div class="w-1/2 space-y-4 flex flex-col">
 		<!-- Material Type Dropdown -->
 		<div>
-			<label for="material-type" class="flex items-center text-sm font-medium text-gray-700 mb-1">
-				Material Type <span class="text-red-500 ml-1">*</span>
+			<label for="material-type" class="flex items-center text-sm font-medium text-foreground mb-1">
+				Material Type <span class="text-destructive ml-1">*</span>
 				{@render infoIcon('material')}
 			</label>
 			<select
 				id="material-type"
 				bind:value={formData.material}
-				class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+				class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-ring"
 				required
 			>
 				<option value="">Select a material type...</option>
@@ -240,14 +238,14 @@
 
 		<!-- Material Class -->
 		<div>
-			<label for="material-class" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+			<label for="material-class" class="flex items-center text-sm font-medium text-foreground mb-1">
 				Material Class
 				{@render infoIcon('material_class')}
 			</label>
 			<select
 				id="material-class"
 				bind:value={formData.material_class}
-				class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+				class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-ring"
 			>
 				<option value="FFF">FFF (Filament)</option>
 				<option value="SLA">SLA (Resin)</option>
@@ -256,7 +254,7 @@
 
 		<!-- Default Max Dry Temperature -->
 		<div>
-			<label for="max-dry-temp" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+			<label for="max-dry-temp" class="flex items-center text-sm font-medium text-foreground mb-1">
 				Default Max Dry Temperature (°C)
 				{@render infoIcon('default_max_dry_temperature')}
 			</label>
@@ -264,14 +262,14 @@
 				id="max-dry-temp"
 				type="number"
 				bind:value={formData.default_max_dry_temperature}
-				class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+				class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-ring"
 				placeholder="e.g., 55"
 			/>
 		</div>
 
 		<!-- Slicer Toggles Section -->
 		<div class="border-t pt-4 mt-4">
-			<h3 class="flex items-center text-sm font-medium text-gray-700 mb-3">
+			<h3 class="flex items-center text-sm font-medium text-foreground mb-3">
 				Default Slicer Settings
 				{@render infoIcon('slicer_settings')}
 			</h3>
@@ -284,10 +282,10 @@
 							onchange={() => toggleSlicer(key)}
 							class="sr-only peer"
 						/>
-						<div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
-						<span class="ms-2 text-sm font-medium text-gray-700">{SLICER_LABELS[key]}</span>
+						<div class="relative w-11 h-6 bg-muted peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-ring rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+						<span class="ms-2 text-sm font-medium text-foreground">{SLICER_LABELS[key]}</span>
 						<!-- Slicer tooltip on hover -->
-						<div class="invisible group-hover:visible absolute left-0 top-8 z-50 w-56 p-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg">
+						<div class="invisible group-hover:visible absolute left-0 top-8 z-50 w-56 p-2 text-xs text-white bg-foreground rounded-lg shadow-lg">
 							{SLICER_DESCRIPTIONS[key]}
 						</div>
 					</label>
@@ -304,7 +302,7 @@
 				type="button"
 				onclick={handleSubmit}
 				disabled={saving || !formData.material}
-				class="w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+				class="w-full px-6 py-3 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
 			>
 				{saving ? 'Saving...' : (material ? 'Update Material' : 'Create Material')}
 			</button>
@@ -313,16 +311,16 @@
 
 	<!-- Right side: Slicer settings forms -->
 	<div class="w-1/2 border-l pl-4 flex flex-col min-w-0">
-		<h3 class="text-sm font-medium text-gray-700 mb-3 flex-shrink-0">
+		<h3 class="text-sm font-medium text-foreground mb-3 flex-shrink-0">
 			Slicer Configuration
 		</h3>
 		<div class="flex-1 overflow-y-auto space-y-4 pr-1 min-h-0">
 			{#if hasAnySlicerEnabled}
 				{#each SLICER_KEYS as key}
 					{#if slicerEnabled[key]}
-						<div class="border border-gray-200 rounded-lg p-3">
-							<h4 class="font-medium text-gray-800 mb-2 flex items-center gap-2 text-sm">
-								<span class="w-2 h-2 rounded-full bg-purple-500 flex-shrink-0"></span>
+						<div class="border border-border rounded-lg p-3">
+							<h4 class="font-medium text-foreground mb-2 flex items-center gap-2 text-sm">
+								<span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>
 								<span class="truncate">{SLICER_LABELS[key]}</span>
 							</h4>
 							{#if slicerForms[key]}
@@ -330,18 +328,18 @@
 									<BasicForm form={slicerForms[key]} />
 								</div>
 							{:else}
-								<div class="text-sm text-gray-500">Loading...</div>
+								<div class="text-sm text-muted-foreground">Loading...</div>
 							{/if}
 						</div>
 					{/if}
 				{/each}
 			{:else}
 				<div class="flex flex-col items-center justify-center h-full text-center p-4">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-muted-foreground mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 					</svg>
-					<p class="text-sm text-gray-500">Enable a slicer toggle on the left to configure its settings here.</p>
+					<p class="text-sm text-muted-foreground">Enable a slicer toggle on the left to configure its settings here.</p>
 				</div>
 			{/if}
 		</div>

@@ -244,7 +244,7 @@
 				<Logo src={brandData.logo} alt={brandData.name} type="brand" id={brandData.id} size="lg" />
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{brandData.name}</h1>
-					<p class="text-gray-600">Brand ID: {brandData.id}</p>
+					<p class="text-muted-foreground">Brand ID: {brandData.id}</p>
 				</div>
 			</header>
 
@@ -271,13 +271,13 @@
 						<div class="flex gap-2">
 							<button
 								onclick={openEditModal}
-								class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+								class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
 							>
 								Edit
 							</button>
 							<button
 								onclick={openDeleteModal}
-								class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+								class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
 							>
 								Delete
 							</button>
@@ -285,12 +285,12 @@
 					{/snippet}
 				</EntityDetails>
 
-				<div class="bg-white border border-gray-200 rounded-lg p-6">
+				<div class="bg-card border border-border rounded-lg p-6">
 					<div class="flex justify-between items-center mb-4">
 						<h2 class="text-xl font-semibold">Materials</h2>
 						<button
 							onclick={openCreateMaterialModal}
-							class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-3 py-1.5 rounded text-sm transition-colors flex items-center gap-1"
+							class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded-md font-medium text-sm flex items-center gap-1"
 						>
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
@@ -300,7 +300,7 @@
 					</div>
 
 					{#if materials.length === 0}
-						<p class="text-gray-500">No materials found for this brand.</p>
+						<p class="text-muted-foreground">No materials found for this brand.</p>
 					{:else}
 						<div class="space-y-2">
 							{#each materials as material}
@@ -338,13 +338,13 @@
 <Modal show={showDeleteModal} title="Delete Brand" onClose={closeDeleteModal} maxWidth="md">
 	{#if brand}
 		<div class="space-y-4">
-			<p class="text-gray-700">
+			<p class="text-foreground">
 				Are you sure you want to delete the brand <strong>{brand.name}</strong>?
 			</p>
 
 			{#if $isCloudMode}
-				<div class="bg-blue-50 border border-blue-200 rounded p-3">
-					<p class="text-sm text-blue-800">
+				<div class="bg-primary/10 border border-primary/20 rounded p-3">
+					<p class="text-sm text-primary">
 						{#if $changeStore.changes[`brands/${brandId}`]?.operation === 'create'}
 							This will remove the locally created brand. The change will be discarded.
 						{:else}
@@ -353,8 +353,8 @@
 					</p>
 				</div>
 			{:else}
-				<div class="bg-red-50 border border-red-200 rounded p-3">
-					<p class="text-sm text-red-800">
+				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
+					<p class="text-sm text-destructive">
 						This action cannot be undone. The brand will be permanently deleted from the filesystem.
 					</p>
 				</div>
@@ -364,14 +364,14 @@
 				<button
 					onclick={closeDeleteModal}
 					disabled={deleting}
-					class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					Cancel
 				</button>
 				<button
 					onclick={handleDelete}
 					disabled={deleting}
-					class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					{deleting ? 'Deleting...' : 'Delete Brand'}
 				</button>

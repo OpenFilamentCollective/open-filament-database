@@ -46,7 +46,7 @@
 {#if show}
 	<!-- Backdrop with light transparent overlay and click-to-close -->
 	<div
-		class="fixed inset-0 bg-gray-500 bg-opacity-20 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
+		class="fixed inset-0 bg-background/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
 		onclick={handleBackdropClick}
 		role="button"
 		tabindex="-1"
@@ -54,7 +54,7 @@
 	>
 		<!-- Modal content - stops propagation to prevent closing when clicking inside -->
 		<div
-			class="bg-white rounded-lg shadow-xl {maxWidthClasses[maxWidth]} w-full max-h-[90vh] {heightClasses[height]} flex flex-col {contentClass}"
+			class="bg-card rounded-lg shadow-xl {maxWidthClasses[maxWidth]} w-full max-h-[90vh] {heightClasses[height]} flex flex-col {contentClass}"
 			onclick={(e) => e.stopPropagation()}
 			role="dialog"
 			aria-modal="true"
@@ -65,7 +65,7 @@
 					<button
 						type="button"
 						onclick={onClose}
-						class="text-gray-400 hover:text-gray-600 transition-colors"
+						class="text-muted-foreground hover:text-foreground transition-colors"
 						aria-label="Close modal"
 					>
 						<svg

@@ -55,7 +55,7 @@
 	<button
 		onclick={toggleDropdown}
 		aria-expanded="{isOpen}"
-		class="relative px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+		class="relative px-3 py-2 text-sm font-medium text-foreground/80 dark:text-foreground/80 hover:text-foreground dark:hover:text-foreground transition-colors rounded-md hover:bg-muted dark:hover:bg-muted"
 	>
 		<span class="flex items-center gap-2">
 			{#if $validationStore.isValidating}
@@ -69,8 +69,8 @@
 			<span
 				class="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 rounded-full {$errorCount >
 				0
-					? 'bg-red-600'
-					: 'bg-yellow-600'}"
+					? 'bg-destructive'
+					: 'bg-orange-500'}"
 			>
 				{$errorCount + $warningCount}
 			</span>
@@ -79,16 +79,16 @@
 
 	{#if isOpen}
 		<div
-			class="absolute right-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 max-h-128 overflow-y-auto z-50"
+			class="absolute right-0 mt-2 w-96 bg-card dark:bg-card rounded-lg shadow-lg border border-border dark:border-border max-h-128 overflow-y-auto z-50"
 			role="menu"
 			aria-label="Validation results"
 		>
 			<!-- Run Validation Button -->
-			<div class="p-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900" role="menuitem">
+			<div class="p-3 border-b border-border dark:border-border bg-muted dark:bg-muted" role="menuitem">
 				<button
 					onclick={handleRunValidation}
 					disabled={$validationStore.isValidating}
-					class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+					class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md w-full text-sm font-medium flex items-center justify-center gap-2"
 				>
 					{#if $validationStore.isValidating}
 						<LoadingSpinner size="md" />
@@ -118,27 +118,27 @@
 						/>
 					</svg>
 					<p class="font-medium">No validation issues</p>
-					<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+					<p class="text-xs text-muted-foreground dark:text-muted-foreground mt-1">
 						All checks passed successfully
 					</p>
 				</div>
 			{:else}
-				<div class="divide-y divide-gray-200 dark:divide-gray-700" role="menuitem">
+				<div class="divide-y divide-border dark:divide-border" role="menuitem">
 					{#each [...$errorsByCategory.entries()] as [category, errors]}
 						<div>
-							<div class="bg-gray-50 dark:bg-gray-900 px-4 py-2 sticky top-0">
-								<h4 class="font-semibold text-sm text-gray-900 dark:text-white">
+							<div class="bg-muted dark:bg-muted px-4 py-2 sticky top-0">
+								<h4 class="font-semibold text-sm text-foreground dark:text-foreground">
 									{category}
-									<span class="text-gray-500 dark:text-gray-400">({errors.length})</span>
+									<span class="text-muted-foreground dark:text-muted-foreground">({errors.length})</span>
 								</h4>
 							</div>
-							<div class="divide-y divide-gray-100 dark:divide-gray-700">
+							<div class="divide-y divide-muted dark:divide-muted">
 								{#each errors.slice(0, 5) as error}
 									<button
-										class="w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors {error.level ===
+										class="w-full text-left px-4 py-2 hover:bg-muted dark:hover:bg-muted transition-colors {error.level ===
 										'ERROR'
-											? 'border-l-4 border-red-500'
-											: 'border-l-4 border-yellow-500'}"
+											? 'border-l-4 border-destructive'
+											: 'border-l-4 border-orange-500'}"
 										onclick={() => handleErrorClick(error)}
 									>
 										<div class="flex items-start gap-2">
@@ -146,11 +146,11 @@
 												{error.level === 'ERROR' ? '✗' : '⚠'}
 											</span>
 											<div class="flex-1 min-w-0">
-												<p class="text-sm font-medium text-gray-900 dark:text-white truncate">
+												<p class="text-sm font-medium text-foreground dark:text-foreground truncate">
 													{error.message}
 												</p>
 												{#if error.path}
-													<p class="text-xs text-gray-600 dark:text-gray-400 truncate">
+													<p class="text-xs text-muted-foreground dark:text-muted-foreground truncate">
 														{error.path}
 													</p>
 												{/if}
@@ -159,7 +159,7 @@
 									</button>
 								{/each}
 								{#if errors.length > 5}
-									<div class="px-4 py-2 text-xs text-gray-500 dark:text-gray-400 text-center">
+									<div class="px-4 py-2 text-xs text-muted-foreground dark:text-muted-foreground text-center">
 										... and {errors.length - 5} more
 									</div>
 								{/if}

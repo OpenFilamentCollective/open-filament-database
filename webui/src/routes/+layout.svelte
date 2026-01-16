@@ -27,34 +27,34 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <div class="min-h-screen flex flex-col">
-	<header class="bg-white border-b border-gray-200">
+	<header class="bg-card border-b border-border">
 		<div class="container mx-auto px-4 py-3 flex justify-between items-center">
 			<div class="flex items-center gap-6">
-				<a href="/" class="text-xl font-bold text-gray-800 hover:text-gray-600">
+				<a href="/" class="text-xl font-bold text-foreground hover:text-muted-foreground">
 					Filament Database
 				</a>
 				<nav class="flex items-center gap-4">
 					<a
 						href="/brands"
-						class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+						class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
 					>
 						Brands
 					</a>
 					<a
 						href="/stores"
-						class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+						class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
 					>
 						Stores
 					</a>
 					<a
 						href="/faq"
-						class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+						class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
 					>
 						FAQ
 					</a>
 					<a
 						href={env.PUBLIC_API_BASE_URL}
-						class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+						class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
 					>
 						API
 					</a>
@@ -65,7 +65,7 @@
 					<button
 						onclick={handleRefresh}
 						disabled={refreshing}
-						class="px-3 py-1.5 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
+						class="bg-muted text-muted-foreground hover:bg-muted/80 px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5"
 						title="Refresh data from filesystem"
 					>
 						<svg

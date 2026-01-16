@@ -11,8 +11,6 @@
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { db } from '$lib/services/database';
 	import { apiFetch } from '$lib/utils/api';
-	import '@sjsf/basic-theme/css/basic.css';
-	import '$lib/styles/sjsf-buttons.css';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -100,7 +98,7 @@
 
 	<header class="mb-6">
 		<h1 class="text-3xl font-bold mb-2">New Variant</h1>
-		<p class="text-gray-600">Create a new color variant for this filament</p>
+		<p class="text-muted-foreground">Create a new color variant for this filament</p>
 	</header>
 
 	{#if messageHandler.message}
@@ -109,19 +107,19 @@
 
 	{#if loading}
 		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
+			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
 		</div>
 	{:else if error}
-		<div class="bg-red-50 border border-red-200 rounded p-4">
-			<p class="text-red-800">{error}</p>
+		<div class="bg-destructive/10 border border-destructive/20 rounded p-4">
+			<p class="text-destructive">{error}</p>
 		</div>
 	{:else if form}
-		<div class="bg-white border border-gray-200 rounded-lg p-6">
+		<div class="bg-card border border-border rounded-lg p-6">
 			<BasicForm {form} />
 
 			{#if saving}
 				<div class="flex justify-center mt-4">
-					<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-600"></div>
+					<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
 				</div>
 			{/if}
 		</div>

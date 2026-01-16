@@ -206,7 +206,7 @@
 				<Logo src={storeData.logo} alt={storeData.name} type="store" id={storeData.id} size="lg" />
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{storeData.name}</h1>
-					<p class="text-gray-600">Store ID: {storeData.id}</p>
+					<p class="text-muted-foreground">Store ID: {storeData.id}</p>
 				</div>
 			</header>
 
@@ -241,13 +241,13 @@
 					<div class="flex gap-2">
 						<button
 							onclick={openEditModal}
-							class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+							class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
 						>
 							Edit
 						</button>
 						<button
 							onclick={openDeleteModal}
-							class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+							class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
 						>
 							Delete
 						</button>
@@ -274,13 +274,13 @@
 <Modal show={showDeleteModal} title="Delete Store" onClose={closeDeleteModal} maxWidth="md">
 	{#if store}
 		<div class="space-y-4">
-			<p class="text-gray-700">
+			<p class="text-foreground">
 				Are you sure you want to delete the store <strong>{store.name}</strong>?
 			</p>
 
 			{#if $isCloudMode}
-				<div class="bg-blue-50 border border-blue-200 rounded p-3">
-					<p class="text-sm text-blue-800">
+				<div class="bg-primary/10 border border-primary/20 rounded p-3">
+					<p class="text-sm text-primary">
 						{#if $changeStore.changes[`stores/${storeId}`]?.operation === 'create'}
 							This will remove the locally created store. The change will be discarded.
 						{:else}
@@ -289,8 +289,8 @@
 					</p>
 				</div>
 			{:else}
-				<div class="bg-red-50 border border-red-200 rounded p-3">
-					<p class="text-sm text-red-800">
+				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
+					<p class="text-sm text-destructive">
 						This action cannot be undone. The store will be permanently deleted from the filesystem.
 					</p>
 				</div>
@@ -300,14 +300,14 @@
 				<button
 					onclick={closeDeleteModal}
 					disabled={deleting}
-					class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					Cancel
 				</button>
 				<button
 					onclick={handleDelete}
 					disabled={deleting}
-					class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					{deleting ? 'Deleting...' : 'Delete Store'}
 				</button>

@@ -44,7 +44,7 @@
 	}
 </script>
 
-<div class="bg-white border border-gray-200 rounded-lg p-6 {className}">
+<div class="bg-card border border-border rounded-lg p-6 {className}">
 	{#if title || actions}
 		<div class="flex justify-between items-center mb-4">
 			{#if title}
@@ -60,7 +60,7 @@
 		{#each fields as field}
 			{#if !shouldHideField(field)}
 				<div>
-					<dt class="text-sm font-medium text-gray-500">{getFieldLabel(field)}</dt>
+					<dt class="text-sm font-medium text-muted-foreground">{getFieldLabel(field)}</dt>
 					<dd class="mt-1">
 						{#if field.customRender}
 							{@render field.customRender(entity[field.key])}
@@ -74,23 +74,23 @@
 										id={field.logoEntityId || entity.slug || entity.id}
 										size="md"
 									/>
-									<span class="text-sm text-gray-500">{entity[field.key]}</span>
+									<span class="text-sm text-muted-foreground">{entity[field.key]}</span>
 								</div>
 							{:else}
-								<span class="text-sm text-gray-400">No logo</span>
+								<span class="text-sm text-muted-foreground">No logo</span>
 							{/if}
 						{:else if field.type === 'link'}
 							<a
 								href={entity[field.key]}
 								target="_blank"
-								class="text-blue-600 hover:underline truncate block"
+								class="text-primary hover:underline truncate block"
 							>
 								{field.format ? field.format(entity[field.key]) : entity[field.key]}
 							</a>
 						{:else if field.type === 'color'}
 							<div class="flex items-center gap-2">
 								<div
-									class="w-8 h-8 rounded border-2 border-gray-300"
+									class="w-8 h-8 rounded border-2 border-border"
 									style="background-color: {entity[field.key]}"
 								></div>
 								<span class="font-mono">

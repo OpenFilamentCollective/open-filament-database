@@ -81,13 +81,13 @@
 
 {#if !browser}
 	<!-- Show placeholder during SSR -->
-	<div class="flex items-center justify-center bg-gray-200 rounded {sizeClasses[size]}">
-		<span class="text-gray-500 text-xs font-medium">{alt.charAt(0).toUpperCase()}</span>
+	<div class="flex items-center justify-center bg-muted rounded {sizeClasses[size]}">
+		<span class="text-muted-foreground text-xs font-medium">{alt.charAt(0).toUpperCase()}</span>
 	</div>
 {:else if imageError}
 	<!-- Placeholder when logo is not available -->
-	<div class="flex items-center justify-center bg-gray-200 rounded {sizeClasses[size]}">
-		<span class="text-gray-500 text-xs font-medium">{alt.charAt(0).toUpperCase()}</span>
+	<div class="flex items-center justify-center bg-muted rounded {sizeClasses[size]}">
+		<span class="text-muted-foreground text-xs font-medium">{alt.charAt(0).toUpperCase()}</span>
 	</div>
 {:else}
 	<img

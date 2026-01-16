@@ -34,11 +34,11 @@
 			case 'create':
 				return 'text-green-600 dark:text-green-400';
 			case 'update':
-				return 'text-blue-600 dark:text-blue-400';
+				return 'text-primary dark:text-primary';
 			case 'delete':
-				return 'text-red-600 dark:text-red-400';
+				return 'text-destructive dark:text-destructive';
 			default:
-				return 'text-gray-600 dark:text-gray-400';
+				return 'text-muted-foreground dark:text-muted-foreground';
 		}
 	}
 
@@ -134,7 +134,7 @@
 															{#if propChange.oldValue === undefined}
 																<span class="text-green-600">added</span>
 															{:else if propChange.newValue === undefined}
-																<span class="text-red-600">removed</span>
+																<span class="text-destructive">removed</span>
 															{:else}
 																changed
 															{/if}
@@ -189,23 +189,23 @@
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.5rem 1rem;
-		background: white;
-		border: 1px solid #e5e7eb;
+		background: hsl(var(--background));
+		border: 1px solid hsl(var(--border));
 		border-radius: 0.375rem;
 		cursor: pointer;
 		transition: all 0.2s;
 		font-size: 0.875rem;
-		color: #6b7280;
+		color: hsl(var(--muted-foreground));
 	}
 
 	.changes-button:hover {
-		background: #f9fafb;
-		border-color: #d1d5db;
+		background: hsl(var(--muted));
+		border-color: hsl(var(--border));
 	}
 
 	.changes-button.has-changes {
-		border-color: #3b82f6;
-		color: #3b82f6;
+		border-color: hsl(var(--primary));
+		color: hsl(var(--primary));
 	}
 
 	.changes-button .icon {
@@ -216,7 +216,7 @@
 		position: absolute;
 		top: -0.25rem;
 		right: -0.25rem;
-		background: #ef4444;
+		background: hsl(var(--destructive));
 		color: white;
 		border-radius: 9999px;
 		padding: 0.125rem 0.375rem;
@@ -244,8 +244,8 @@
 		width: 28rem;
 		max-width: 90vw;
 		max-height: 80vh;
-		background: white;
-		border: 1px solid #e5e7eb;
+		background: hsl(var(--card));
+		border: 1px solid hsl(var(--border));
 		border-radius: 0.5rem;
 		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 		display: flex;
@@ -258,21 +258,21 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem;
-		border-bottom: 1px solid #e5e7eb;
+		border-bottom: 1px solid hsl(var(--border));
 	}
 
 	.menu-header h3 {
 		margin: 0;
 		font-size: 1rem;
 		font-weight: 600;
-		color: #111827;
+		color: hsl(var(--foreground));
 	}
 
 	.close-button {
 		background: none;
 		border: none;
 		font-size: 1.5rem;
-		color: #6b7280;
+		color: hsl(var(--muted-foreground));
 		cursor: pointer;
 		padding: 0;
 		line-height: 1;
@@ -280,7 +280,7 @@
 	}
 
 	.close-button:hover {
-		color: #111827;
+		color: hsl(var(--foreground));
 	}
 
 	.menu-content {
@@ -298,8 +298,8 @@
 	.change-item {
 		position: relative;
 		padding: 0.75rem;
-		background: #f9fafb;
-		border: 1px solid #e5e7eb;
+		background: hsl(var(--muted));
+		border: 1px solid hsl(var(--border));
 		border-radius: 0.375rem;
 		font-size: 0.875rem;
 	}
@@ -321,11 +321,11 @@
 	}
 
 	.entity-type {
-		background: #e5e7eb;
+		background: hsl(var(--secondary));
 		padding: 0.125rem 0.375rem;
 		border-radius: 0.25rem;
 		font-size: 0.75rem;
-		color: #4b5563;
+		color: hsl(var(--muted-foreground));
 		text-transform: uppercase;
 		font-weight: 500;
 	}
@@ -333,19 +333,19 @@
 	.timestamp {
 		margin-left: auto;
 		font-size: 0.75rem;
-		color: #9ca3af;
+		color: hsl(var(--muted-foreground));
 	}
 
 	.change-description {
 		margin-bottom: 0.25rem;
-		color: #111827;
+		color: hsl(var(--foreground));
 		font-weight: 500;
 	}
 
 	.change-path {
 		font-family: 'Courier New', monospace;
 		font-size: 0.75rem;
-		color: #6b7280;
+		color: hsl(var(--muted-foreground));
 		margin-bottom: 0.5rem;
 	}
 
@@ -355,16 +355,16 @@
 	}
 
 	.property-changes details {
-		background: white;
+		background: hsl(var(--background));
 		padding: 0.5rem;
 		border-radius: 0.25rem;
-		border: 1px solid #e5e7eb;
+		border: 1px solid hsl(var(--border));
 	}
 
 	.property-changes summary {
 		cursor: pointer;
 		font-weight: 500;
-		color: #4b5563;
+		color: hsl(var(--muted-foreground));
 	}
 
 	.property-changes ul {
@@ -378,7 +378,7 @@
 	}
 
 	.property-changes code {
-		background: #f3f4f6;
+		background: hsl(var(--muted));
 		padding: 0.125rem 0.25rem;
 		border-radius: 0.25rem;
 		font-family: 'Courier New', monospace;
@@ -388,27 +388,27 @@
 		position: absolute;
 		top: 0.75rem;
 		right: 0.75rem;
-		background: white;
-		border: 1px solid #e5e7eb;
+		background: hsl(var(--background));
+		border: 1px solid hsl(var(--border));
 		padding: 0.25rem 0.5rem;
 		border-radius: 0.25rem;
 		font-size: 0.75rem;
-		color: #6b7280;
+		color: hsl(var(--muted-foreground));
 		cursor: pointer;
 		transition: all 0.2s;
 	}
 
 	.undo-button:hover {
-		background: #fee2e2;
-		border-color: #fecaca;
-		color: #dc2626;
+		background: hsl(var(--destructive) / 0.1);
+		border-color: hsl(var(--destructive) / 0.3);
+		color: hsl(var(--destructive));
 	}
 
 	.menu-actions {
 		display: flex;
 		gap: 0.5rem;
 		padding: 0.5rem;
-		border-top: 1px solid #e5e7eb;
+		border-top: 1px solid hsl(var(--border));
 		margin-top: 0.5rem;
 	}
 
@@ -424,30 +424,30 @@
 	}
 
 	.export-button {
-		background: #3b82f6;
-		border-color: #3b82f6;
-		color: white;
+		background: hsl(var(--primary));
+		border-color: hsl(var(--primary));
+		color: hsl(var(--primary-foreground));
 	}
 
 	.export-button:hover {
-		background: #2563eb;
-		border-color: #2563eb;
+		background: hsl(var(--primary) / 0.9);
+		border-color: hsl(var(--primary) / 0.9);
 	}
 
 	.clear-button {
-		background: white;
-		border-color: #ef4444;
-		color: #ef4444;
+		background: hsl(var(--background));
+		border-color: hsl(var(--destructive));
+		color: hsl(var(--destructive));
 	}
 
 	.clear-button:hover {
-		background: #fef2f2;
+		background: hsl(var(--destructive) / 0.1);
 	}
 
 	.empty-state {
 		text-align: center;
 		padding: 2rem;
-		color: #6b7280;
+		color: hsl(var(--muted-foreground));
 	}
 
 	.empty-state p {
@@ -456,72 +456,6 @@
 
 	.empty-hint {
 		font-size: 0.875rem;
-		color: #9ca3af;
-	}
-
-	/* Dark mode support */
-	@media (prefers-color-scheme: dark) {
-		.changes-button {
-			background: #1f2937;
-			border-color: #374151;
-			color: #9ca3af;
-		}
-
-		.changes-button:hover {
-			background: #374151;
-			border-color: #4b5563;
-		}
-
-		.menu-panel {
-			background: #1f2937;
-			border-color: #374151;
-		}
-
-		.menu-header {
-			border-bottom-color: #374151;
-		}
-
-		.menu-header h3 {
-			color: #f9fafb;
-		}
-
-		.change-item {
-			background: #111827;
-			border-color: #374151;
-		}
-
-		.change-description {
-			color: #f9fafb;
-		}
-
-		.entity-type {
-			background: #374151;
-			color: #9ca3af;
-		}
-
-		.property-changes details {
-			background: #1f2937;
-			border-color: #374151;
-		}
-
-		.undo-button {
-			background: #1f2937;
-			border-color: #374151;
-			color: #9ca3af;
-		}
-
-		.undo-button:hover {
-			background: #7f1d1d;
-			border-color: #991b1b;
-			color: #fca5a5;
-		}
-
-		.action-button.clear-button {
-			background: #1f2937;
-		}
-
-		.action-button.clear-button:hover {
-			background: #7f1d1d;
-		}
+		color: hsl(var(--muted-foreground));
 	}
 </style>

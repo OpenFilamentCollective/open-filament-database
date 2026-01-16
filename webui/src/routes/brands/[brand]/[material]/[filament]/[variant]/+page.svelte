@@ -14,8 +14,6 @@
 	import { apiFetch } from '$lib/utils/api';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
-	import '@sjsf/basic-theme/css/basic.css';
-	import '$lib/styles/sjsf-buttons.css';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -198,20 +196,20 @@
 			<header class="mb-6">
 				<div class="flex items-center gap-3 mb-2">
 					<div
-						class="w-12 h-12 rounded-full border-2 border-gray-300"
+						class="w-12 h-12 rounded-full border-2 border-border"
 						style="background-color: {variantData.color_hex}"
 						title={variantData.color_hex}
 					></div>
 					<div>
 						<h1 class="text-3xl font-bold">{variantData.color_name}</h1>
 						{#if variantData.discontinued}
-							<span class="px-3 py-1 text-sm bg-red-100 text-red-800 rounded-full"
+							<span class="px-3 py-1 text-sm bg-destructive/10 text-destructive rounded-full"
 								>Discontinued</span
 							>
 						{/if}
 					</div>
 				</div>
-				<p class="text-gray-600">Variant ID: {variantData.id}</p>
+				<p class="text-muted-foreground">Variant ID: {variantData.id}</p>
 			</header>
 
 			{#if messageHandler.message}
@@ -226,30 +224,30 @@
 				onEdit={toggleEditMode}
 				onCancel={cancelEdit}
 				onDelete={openDeleteModal}
-				editButtonClass="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 transition-colors"
+				editButtonClass="px-4 py-2 bg-warning text-warning-foreground hover:bg-warning/90 rounded-md font-medium transition-colors"
 			>
 				{#snippet children()}
 					<dl class="space-y-4">
 						<div>
-							<dt class="text-sm font-medium text-gray-500">Color Name</dt>
+							<dt class="text-sm font-medium text-muted-foreground">Color Name</dt>
 							<dd class="mt-1 text-lg">{variantData.color_name}</dd>
 						</div>
 						<div>
-							<dt class="text-sm font-medium text-gray-500">Slug</dt>
+							<dt class="text-sm font-medium text-muted-foreground">Slug</dt>
 							<dd class="mt-1">{variantData.slug}</dd>
 						</div>
 						<div>
-							<dt class="text-sm font-medium text-gray-500">Color</dt>
+							<dt class="text-sm font-medium text-muted-foreground">Color</dt>
 							<dd class="mt-1 flex items-center gap-2">
 								<div
-									class="w-8 h-8 rounded border-2 border-gray-300"
+									class="w-8 h-8 rounded border-2 border-border"
 									style="background-color: {variantData.color_hex}"
 								></div>
 								<span class="font-mono">{variantData.color_hex}</span>
 							</dd>
 						</div>
 						<div>
-							<dt class="text-sm font-medium text-gray-500">Status</dt>
+							<dt class="text-sm font-medium text-muted-foreground">Status</dt>
 							<dd class="mt-1">
 								{variantData.discontinued ? 'Discontinued' : 'Active'}
 							</dd>
@@ -264,13 +262,13 @@
 <Modal show={showDeleteModal} title="Delete Variant" onClose={closeDeleteModal} maxWidth="md">
 	{#if variant}
 		<div class="space-y-4">
-			<p class="text-gray-700">
+			<p class="text-foreground">
 				Are you sure you want to delete the variant <strong>{variant.color_name}</strong>?
 			</p>
 
 			{#if $isCloudMode}
-				<div class="bg-blue-50 border border-blue-200 rounded p-3">
-					<p class="text-sm text-blue-800">
+				<div class="bg-primary/10 border border-primary/20 rounded p-3">
+					<p class="text-sm text-primary">
 						{#if $changeStore.changes[`brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`]?.operation === 'create'}
 							This will remove the locally created variant. The change will be discarded.
 						{:else}
@@ -279,8 +277,8 @@
 					</p>
 				</div>
 			{:else}
-				<div class="bg-red-50 border border-red-200 rounded p-3">
-					<p class="text-sm text-red-800">
+				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
+					<p class="text-sm text-destructive">
 						This action cannot be undone. The variant will be permanently deleted.
 					</p>
 				</div>
@@ -290,14 +288,14 @@
 				<button
 					onclick={closeDeleteModal}
 					disabled={deleting}
-					class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					Cancel
 				</button>
 				<button
 					onclick={handleDelete}
 					disabled={deleting}
-					class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					{deleting ? 'Deleting...' : 'Delete Variant'}
 				</button>

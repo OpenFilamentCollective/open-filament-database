@@ -27,15 +27,15 @@
 		{@render loadingContent()}
 	{:else}
 		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
 		</div>
 	{/if}
 {:else if error && !hasData}
 	{#if errorContent}
 		{@render errorContent()}
 	{:else}
-		<div class="bg-red-50 border border-red-200 rounded-lg p-4">
-			<p class="text-red-800">Error: {error}</p>
+		<div class="bg-destructive/10 border border-destructive/20 rounded-lg p-4">
+			<p class="text-destructive">Error: {error}</p>
 		</div>
 	{/if}
 {:else if hasData}

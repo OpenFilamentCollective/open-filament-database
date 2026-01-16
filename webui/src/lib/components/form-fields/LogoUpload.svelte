@@ -503,7 +503,7 @@
 				<img
 					src={previewUrl}
 					alt="Logo preview"
-					class="w-24 h-24 object-cover border border-gray-300 rounded"
+					class="w-24 h-24 object-cover border border-border rounded"
 				/>
 			</div>
 		{/if}
@@ -521,39 +521,39 @@
 				type="button"
 				onclick={triggerFileSelect}
 				disabled={processing}
-				class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+				class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
 			>
 				{processing ? 'Processing...' : previewUrl ? 'Change Logo' : 'Upload Logo'}
 			</button>
 
-			<p class="text-xs text-gray-500 mt-2">
+			<p class="text-xs text-muted-foreground mt-2">
 				Image must be square, between 100x100 and 400x400 pixels. Non-square images will be cropped.
 			</p>
 
 			{#if error}
-				<p class="text-sm text-red-600 mt-2">{error}</p>
+				<p class="text-sm text-destructive mt-2">{error}</p>
 			{/if}
 		</div>
 	</div>
 </div>
 
 {#if showCropModal}
-	<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-		<div class="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-auto">
+	<div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+		<div class="bg-card rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-auto">
 			<div class="p-6">
 				<h3 class="text-xl font-semibold mb-4">Crop Image</h3>
 
-				<p class="text-sm text-gray-600 mb-4">
+				<p class="text-sm text-muted-foreground mb-4">
 					Drag the crop area to move it. Use the corner handles to resize. The crop area must be square.
 				</p>
 
 				{#if validation}
-					<div class="mb-4 bg-gray-50 p-4 rounded flex items-center justify-center">
+					<div class="mb-4 bg-muted p-4 rounded flex items-center justify-center">
 						<canvas
 							bind:this={cropCanvas}
 							width={600}
 							height={600 * (validation.height / validation.width)}
-							class="max-w-full border border-gray-300"
+							class="max-w-full border border-border"
 							onmousedown={handleMouseDown}
 							onmousemove={(e) => {
 								handleMouseMove(e);
@@ -570,7 +570,7 @@
 						type="button"
 						onclick={cancelCrop}
 						disabled={processing}
-						class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+						class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium"
 					>
 						Cancel
 					</button>
@@ -578,7 +578,7 @@
 						type="button"
 						onclick={applyCrop}
 						disabled={processing}
-						class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors disabled:opacity-50"
+						class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
 					>
 						{processing ? 'Processing...' : 'Apply Crop'}
 					</button>

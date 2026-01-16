@@ -141,7 +141,7 @@
 
 <div class="container mx-auto px-4 py-8">
 	<div class="mb-6">
-		<a href="/" class="text-blue-600 hover:text-blue-800 flex items-center gap-2 mb-4">
+		<a href="/" class="text-primary hover:text-primary flex items-center gap-2 mb-4">
 			← Back to Home
 		</a>
 
@@ -153,7 +153,7 @@
 			<h1 class="text-3xl font-bold">Stores</h1>
 			<button
 				onclick={openCreateModal}
-				class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+				class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium flex items-center gap-2"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 					<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
@@ -161,7 +161,7 @@
 				Add Store
 			</button>
 		</div>
-		<p class="text-gray-600">Browse and edit filament stores</p>
+		<p class="text-muted-foreground">Browse and edit filament stores</p>
 	</div>
 
 	<DataDisplay {loading} {error} data={stores}>
@@ -180,7 +180,7 @@
 								key: 'ships_from',
 								label: 'Ships from',
 								format: (v) => (Array.isArray(v) ? v.join(', ') : v),
-								class: 'text-gray-600'
+								class: 'text-muted-foreground'
 							}
 						]}
 					/>
@@ -202,7 +202,7 @@
 		/>
 	{:else}
 		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
 		</div>
 	{/if}
 </Modal>

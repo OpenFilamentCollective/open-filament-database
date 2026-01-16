@@ -6,8 +6,6 @@
 	import { formDefaults } from '$lib/utils/formDefaults';
 	import { createUiSchema, applyFormattedTitles, removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { customTranslation } from '$lib/utils/translations';
-	import '@sjsf/basic-theme/css/basic.css';
-	import '$lib/styles/sjsf-buttons.css';
 	import { Modal, MessageBanner } from '$lib/components/ui';
 	import { MaterialForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
@@ -217,7 +215,7 @@
 		{#snippet children(materialData)}
 			<header class="mb-6">
 				<h1 class="text-3xl font-bold mb-2">{materialData.material}</h1>
-				<p class="text-gray-600">Material Type: {materialType}</p>
+				<p class="text-muted-foreground">Material Type: {materialType}</p>
 			</header>
 
 			{#if messageHandler.message}
@@ -247,13 +245,13 @@
 						<div class="flex gap-2">
 							<button
 								onclick={openEditModal}
-								class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
+								class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded-md font-medium"
 							>
 								Edit
 							</button>
 							<button
 								onclick={openDeleteModal}
-								class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+								class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
 							>
 								Delete
 							</button>
@@ -261,12 +259,12 @@
 					{/snippet}
 				</EntityDetails>
 
-				<div class="bg-white border border-gray-200 rounded-lg p-6">
+				<div class="bg-card border border-border rounded-lg p-6">
 					<div class="flex justify-between items-center mb-4">
 						<h2 class="text-xl font-semibold">Filaments</h2>
 						<button
 							onclick={openCreateFilamentModal}
-							class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1.5 rounded text-sm transition-colors flex items-center gap-1"
+							class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium text-sm flex items-center gap-1"
 						>
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
@@ -276,7 +274,7 @@
 					</div>
 
 					{#if filaments.length === 0}
-						<p class="text-gray-500">No filaments found for this material.</p>
+						<p class="text-muted-foreground">No filaments found for this material.</p>
 					{:else}
 						<div class="space-y-2">
 							{#each filaments as filament}
@@ -314,16 +312,16 @@
 <Modal show={showDeleteModal} title="Delete Material" onClose={closeDeleteModal} maxWidth="md">
 	{#if material}
 		<div class="space-y-4">
-			<p class="text-gray-700">
+			<p class="text-foreground">
 				Are you sure you want to delete the material <strong>{material.material}</strong>?
 			</p>
-			<p class="text-gray-600 text-sm">
+			<p class="text-muted-foreground text-sm">
 				This will also delete all filaments and variants within this material.
 			</p>
 
 			{#if $isCloudMode}
-				<div class="bg-blue-50 border border-blue-200 rounded p-3">
-					<p class="text-sm text-blue-800">
+				<div class="bg-primary/10 border border-primary/20 rounded p-3">
+					<p class="text-sm text-primary">
 						{#if $changeStore.changes[`brands/${brandId}/materials/${materialType}`]?.operation === 'create'}
 							This will remove the locally created material. The change will be discarded.
 						{:else}
@@ -332,8 +330,8 @@
 					</p>
 				</div>
 			{:else}
-				<div class="bg-red-50 border border-red-200 rounded p-3">
-					<p class="text-sm text-red-800">
+				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
+					<p class="text-sm text-destructive">
 						This action cannot be undone. The material and all its contents will be permanently deleted.
 					</p>
 				</div>
@@ -343,14 +341,14 @@
 				<button
 					onclick={closeDeleteModal}
 					disabled={deleting}
-					class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors disabled:opacity-50"
+					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					Cancel
 				</button>
 				<button
 					onclick={handleDelete}
 					disabled={deleting}
-					class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
 				>
 					{deleting ? 'Deleting...' : 'Delete Material'}
 				</button>
@@ -365,13 +363,13 @@
 			<BasicForm form={filamentForm} />
 			{#if creatingFilament}
 				<div class="flex justify-center">
-					<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+					<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
 				</div>
 			{/if}
 		</div>
 	{:else}
 		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
 		</div>
 	{/if}
 </Modal>

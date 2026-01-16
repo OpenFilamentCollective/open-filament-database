@@ -139,7 +139,7 @@
 
 <div class="container mx-auto px-4 py-8">
 	<div class="mb-6">
-		<a href="/" class="text-blue-600 hover:text-blue-800 flex items-center gap-2 mb-4">
+		<a href="/" class="text-primary hover:text-primary flex items-center gap-2 mb-4">
 			← Back to Home
 		</a>
 
@@ -151,7 +151,7 @@
 			<h1 class="text-3xl font-bold">Brands</h1>
 			<button
 				onclick={openCreateModal}
-				class="bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+				class="bg-green-600 text-white hover:bg-green-700 px-4 py-2 rounded-md font-medium flex items-center gap-2"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 					<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
@@ -159,7 +159,7 @@
 				Add Brand
 			</button>
 		</div>
-		<p class="text-gray-600">Browse and edit filament brands and their materials</p>
+		<p class="text-muted-foreground">Browse and edit filament brands and their materials</p>
 	</div>
 
 	<DataDisplay {loading} {error} data={brands}>
@@ -174,8 +174,8 @@
 						logoEntityId={brand.id}
 						hoverColor="green"
 						fields={[
-							{ key: 'origin', label: 'Origin', class: 'text-gray-600' },
-							{ key: 'website', class: 'text-blue-600 truncate' }
+							{ key: 'origin', label: 'Origin', class: 'text-muted-foreground' },
+							{ key: 'website', class: 'text-primary truncate' }
 						]}
 					/>
 				{/each}

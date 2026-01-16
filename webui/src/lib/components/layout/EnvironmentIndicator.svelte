@@ -50,11 +50,11 @@
 		border-radius: 0.375rem;
 		cursor: help;
 		transition: background-color 0.2s;
-		color: #6b7280;
+		color: hsl(var(--muted-foreground));
 	}
 
 	.environment-indicator:hover {
-		background-color: #f3f4f6;
+		background-color: hsl(var(--muted));
 	}
 
 	.icon {
@@ -62,14 +62,11 @@
 		height: 1.25rem;
 	}
 
-	/* Dark mode support */
-	@media (prefers-color-scheme: dark) {
-		.environment-indicator {
-			color: #9ca3af;
-		}
+	:global(.dark) .environment-indicator {
+		color: hsl(var(--muted-foreground));
+	}
 
-		.environment-indicator:hover {
-			background-color: #374151;
-		}
+	:global(.dark) .environment-indicator:hover {
+		background-color: hsl(var(--muted));
 	}
 </style>

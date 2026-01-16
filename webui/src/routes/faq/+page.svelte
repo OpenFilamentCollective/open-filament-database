@@ -172,24 +172,24 @@
 
 <div class="container mx-auto px-4 py-8 max-w-4xl">
 	<div class="mb-8">
-		<a href="/" class="text-blue-600 hover:text-blue-800 flex items-center gap-2 mb-4">
+		<a href="/" class="text-primary hover:text-primary flex items-center gap-2 mb-4">
 			← Back to Home
 		</a>
 		<h1 class="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
-		<p class="text-gray-600">
+		<p class="text-muted-foreground">
 			Everything you need to know about using the Open Filament Database web interface
 		</p>
 	</div>
 
 	<!-- Current mode indicator -->
-	<div class="mb-8 p-4 rounded-lg border-2 {$isLocalMode ? 'bg-green-50 border-green-300' : 'bg-blue-50 border-blue-300'}">
+	<div class="mb-8 p-4 rounded-lg border-2 {$isLocalMode ? 'bg-green-50 border-green-300' : 'bg-primary/10 border-primary/30'}">
 		<div class="flex items-center gap-3">
 			<span class="text-3xl">{$isLocalMode ? '💻' : '☁️'}</span>
 			<div>
 				<h2 class="font-semibold text-lg">
 					Currently running in: {$isLocalMode ? 'Local Mode' : 'Cloud Mode'}
 				</h2>
-				<p class="text-sm text-gray-700">
+				<p class="text-sm text-foreground">
 					{#if $isLocalMode}
 						Changes are saved directly to the filesystem.
 					{:else}
@@ -207,8 +207,8 @@
 			<button
 				onclick={() => (selectedCategory = null)}
 				class="px-4 py-2 rounded-lg border-2 transition-colors {selectedCategory === null
-					? 'bg-gray-800 text-white border-gray-800'
-					: 'bg-white border-gray-300 hover:border-gray-400'}"
+					? 'bg-foreground text-background border-foreground'
+					: 'bg-card border-border hover:border-muted-foreground'}"
 			>
 				All Questions
 			</button>
@@ -216,8 +216,8 @@
 				<button
 					onclick={() => (selectedCategory = category.id)}
 					class="px-4 py-2 rounded-lg border-2 transition-colors {selectedCategory === category.id
-						? 'bg-gray-800 text-white border-gray-800'
-						: 'bg-white border-gray-300 hover:border-gray-400'}"
+						? 'bg-foreground text-background border-foreground'
+						: 'bg-card border-border hover:border-muted-foreground'}"
 				>
 					<span class="mr-2">{category.icon}</span>
 					{category.name}
@@ -229,7 +229,7 @@
 	<!-- FAQ items -->
 	<div class="space-y-4">
 		{#each filteredFAQs as faq}
-			<details class="group bg-white border border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors">
+			<details class="group bg-card border border-border rounded-lg p-6 hover:border-primary/30 transition-colors">
 				<summary class="cursor-pointer font-semibold text-lg list-none flex items-start gap-3">
 					<span class="text-2xl flex-shrink-0">
 						{categories.find((c) => c.id === faq.category)?.icon || '❓'}
@@ -249,7 +249,7 @@
 						/>
 					</svg>
 				</summary>
-				<div class="mt-4 ml-11 text-gray-700 whitespace-pre-line leading-relaxed">
+				<div class="mt-4 ml-11 text-foreground whitespace-pre-line leading-relaxed">
 					{faq.answer}
 				</div>
 			</details>
@@ -257,14 +257,14 @@
 	</div>
 
 	<!-- Additional resources -->
-	<div class="mt-12 p-6 bg-gray-50 border border-gray-200 rounded-lg">
+	<div class="mt-12 p-6 bg-card border border-border rounded-lg">
 		<h2 class="text-xl font-semibold mb-4">Additional Resources</h2>
-		<ul class="space-y-3 text-gray-700">
+		<ul class="space-y-3 text-foreground">
 			<li>
 				<a
 					href="https://github.com/OpenPrintTag/open-filament-database"
 					target="_blank"
-					class="text-blue-600 hover:underline flex items-center gap-2"
+					class="text-primary hover:underline flex items-center gap-2"
 				>
 					<span>📦</span>
 					<span>GitHub Repository</span>
@@ -274,7 +274,7 @@
 				<a
 					href="/CHANGE_TRACKING_SYSTEM.md"
 					target="_blank"
-					class="text-blue-600 hover:underline flex items-center gap-2"
+					class="text-primary hover:underline flex items-center gap-2"
 				>
 					<span>📖</span>
 					<span>Change Tracking System Documentation</span>
@@ -284,7 +284,7 @@
 				<a
 					href="https://api.openfilamentdatabase.org"
 					target="_blank"
-					class="text-blue-600 hover:underline flex items-center gap-2"
+					class="text-primary hover:underline flex items-center gap-2"
 				>
 					<span>🌐</span>
 					<span>API Documentation</span>
@@ -296,13 +296,13 @@
 	<!-- Still have questions -->
 	<div class="mt-8 text-center p-6">
 		<h3 class="text-lg font-semibold mb-2">Still have questions?</h3>
-		<p class="text-gray-600 mb-4">
+		<p class="text-muted-foreground mb-4">
 			Open an issue on GitHub or join our community discussions.
 		</p>
 		<a
 			href="https://github.com/OpenPrintTag/open-filament-database/issues"
 			target="_blank"
-			class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+			class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium inline-flex items-center gap-2"
 		>
 			<span>💬</span>
 			<span>Ask a Question on GitHub</span>

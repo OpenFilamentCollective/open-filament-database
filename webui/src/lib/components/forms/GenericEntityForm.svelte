@@ -10,9 +10,7 @@
 	} from '$lib/utils/schemaUtils';
 	import { customTranslation } from '$lib/utils/translations';
 	import { NameField, LogoUpload } from '$lib/components/form-fields';
-	import '@sjsf/basic-theme/css/basic.css';
-	import '$lib/styles/sjsf-buttons.css';
-
+	
 	interface Props {
 		entity: any;
 		entityType: 'brand' | 'store';
@@ -133,7 +131,7 @@
 			<p class="text-sm text-green-600 mt-2">Logo will be updated when you save</p>
 		{/if}
 		{#if logoError}
-			<p class="text-sm text-red-600 mt-2">{logoError}</p>
+			<p class="text-sm text-destructive mt-2">{logoError}</p>
 		{/if}
 	</div>
 

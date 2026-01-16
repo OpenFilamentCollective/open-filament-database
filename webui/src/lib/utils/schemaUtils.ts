@@ -66,42 +66,49 @@ export function removeIdFromSchema(schema: any): any {
 export function createUiSchema(hideArrayItemLabels = true) {
 	const baseUiSchema: any = {
 		'ui:options': {
-			// Submit button - Green (uses submitButton option, not button/buttons)
+			// Submit button - Success green
 			submitButton: {
 				class:
-					'sjsf-submit-button w-full px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all disabled:opacity-50'
+					'sjsf-submit-button w-full px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition-all disabled:opacity-50 font-medium'
 			},
 			// Base button styling - applies to all other buttons
 			button: {
 				class:
-					'sjsf-button px-4 py-2 rounded-lg font-medium transition-all hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed'
+					'sjsf-button px-4 py-2 rounded-md font-medium transition-all hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed'
 			},
 			// Specific button type styling
 			buttons: {
-				// Add item/property buttons - Blue
+				// Add item/property buttons - Secondary
 				'array-item-add': {
-					class: 'sjsf-button w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700'
+					class:
+						'sjsf-button w-full px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80'
 				},
 				'object-property-add': {
-					class: 'sjsf-button w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700'
+					class:
+						'sjsf-button w-full px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80'
 				},
-				// Remove buttons - Red
+				// Remove buttons - Destructive
 				'array-item-remove': {
-					class: 'sjsf-button px-2 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 min-w-10'
+					class:
+						'sjsf-button px-2 py-2 bg-destructive text-destructive-foreground rounded-md hover:bg-destructive/90 min-w-10'
 				},
 				'object-property-remove': {
-					class: 'sjsf-button px-2 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 min-w-10'
+					class:
+						'sjsf-button px-2 py-2 bg-destructive text-destructive-foreground rounded-md hover:bg-destructive/90 min-w-10'
 				},
-				// Move buttons - Gray
+				// Move buttons - Muted
 				'array-item-move-up': {
-					class: 'sjsf-button px-2 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 min-w-10'
+					class:
+						'sjsf-button px-2 py-2 bg-muted text-muted-foreground rounded-md hover:bg-muted/80 min-w-10'
 				},
 				'array-item-move-down': {
-					class: 'sjsf-button px-2 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 min-w-10'
+					class:
+						'sjsf-button px-2 py-2 bg-muted text-muted-foreground rounded-md hover:bg-muted/80 min-w-10'
 				},
-				// Copy button - Purple
+				// Copy button - Accent
 				'array-item-copy': {
-					class: 'sjsf-button px-2 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 min-w-10'
+					class:
+						'sjsf-button px-2 py-2 bg-accent text-accent-foreground rounded-md hover:bg-accent/80 min-w-10'
 				}
 			}
 		}

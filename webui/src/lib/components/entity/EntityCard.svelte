@@ -66,13 +66,13 @@
 
 <a
 	{href}
-	class="block p-6 border border-gray-200 rounded-lg {hoverClass} hover:shadow-lg transition-all"
+	class="block p-6 border border-border rounded-lg {hoverClass} hover:shadow-lg transition-all"
 >
 	<div class="flex items-center gap-4 mb-4">
 		{#if colorHex}
 			<!-- Color swatch for variants -->
 			<div
-				class="w-8 h-8 rounded-full border-2 border-gray-300 flex-shrink-0"
+				class="w-8 h-8 rounded-full border-2 border-border shrink-0"
 				style="background-color: {colorHex}"
 				title={colorHex}
 			></div>
@@ -82,7 +82,7 @@
 		{/if}
 		<div class="flex-1 min-w-0">
 			<h3 class="font-semibold text-lg truncate">{displayName}</h3>
-			<p class="text-xs text-gray-500 truncate">
+			<p class="text-xs text-muted-foreground truncate">
 				{#if displayId}
 					ID: {displayId}
 				{/if}
@@ -95,13 +95,13 @@
 				</span>
 			{/if}
 		</div>
-		<span class="text-gray-400 flex-shrink-0">→</span>
+		<span class="text-muted-foreground shrink-0">→</span>
 	</div>
 
 	{#if fields.length > 0}
 		<div class="space-y-1 text-sm">
 			{#each fields as field}
-				<p class={field.class ?? 'text-gray-600'}>
+				<p class={field.class ?? 'text-muted-foreground'}>
 					{#if field.label}
 						{field.label}:
 					{/if}
