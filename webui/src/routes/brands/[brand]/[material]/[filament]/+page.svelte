@@ -1,18 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import type { Filament, Variant } from '$lib/types/database';
-	import { createForm, BasicForm } from '@sjsf/form';
-	import { formDefaults } from '$lib/utils/formDefaults';
-	import { createUiSchema, removeIdFromSchema, applyFormattedTitles } from '$lib/utils/schemaUtils';
-	import { customTranslation } from '$lib/utils/translations';
 	import { Modal, MessageBanner } from '$lib/components/ui';
-	import { EntityFormWrapper } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { EntityCard } from '$lib/components/entity';
+	import { EntityDetails, EntityCard } from '$lib/components/entity';
+	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { db } from '$lib/services/database';
-	import { apiFetch } from '$lib/utils/api';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
 
@@ -20,21 +15,39 @@
 	let materialType: string = $derived($page.params.material!);
 	let filamentId: string = $derived($page.params.filament!);
 	let filament: Filament | null = $state(null);
+	let originalFilament: Filament | null = $state(null); // Keep original for revert detection
 	let variants: Variant[] = $state([]);
-	let schema: any = $state(null);
 	let loading: boolean = $state(true);
 	let saving: boolean = $state(false);
 	let error: string | null = $state(null);
 
-	let editMode: boolean = $state(false);
-	let formData: any = $state({});
-	let form: any = $state(null);
-
+	let showEditModal: boolean = $state(false);
 	let showDeleteModal: boolean = $state(false);
+	let showCreateVariantModal: boolean = $state(false);
 	let deleting: boolean = $state(false);
+	let creatingVariant: boolean = $state(false);
 
 	// Create message handler
 	const messageHandler = createMessageHandler();
+
+	const SLICER_LABELS: Record<string, string> = {
+		prusaslicer: 'PrusaSlicer',
+		bambustudio: 'Bambu Studio',
+		orcaslicer: 'Orca Slicer',
+		cura: 'Cura',
+		generic: 'Generic'
+	};
+
+	// Check if this filament has local changes
+	let hasLocalChanges = $derived.by(() => {
+		if (!$isCloudMode || !filament) return false;
+
+		// Use filament.id for the entity path (not URL slug)
+		const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.id}`;
+		const change = $changeStore.changes[entityPath];
+
+		return change && (change.operation === 'create' || change.operation === 'update');
+	});
 
 	// Load data when route parameters change
 	$effect(() => {
@@ -43,15 +56,14 @@
 
 		loading = true;
 		error = null;
-		editMode = false; // Exit edit mode when navigating
+		showEditModal = false; // Close edit modal when navigating
 
 		(async () => {
 			try {
 				// Use DatabaseService for filament and variants to apply pending changes
-				const [filamentData, variantsData, schemaData] = await Promise.all([
+				const [filamentData, variantsData] = await Promise.all([
 					db.getFilament(params.brandId, params.materialType, params.filamentId),
-					db.loadVariants(params.brandId, params.materialType, params.filamentId),
-					apiFetch('/api/schemas/filament').then((r) => r.json())
+					db.loadVariants(params.brandId, params.materialType, params.filamentId)
 				]);
 
 				if (!filamentData) {
@@ -61,9 +73,8 @@
 				}
 
 				filament = filamentData;
+				originalFilament = structuredClone(filamentData); // Deep clone for revert detection
 				variants = variantsData || [];
-				schema = schemaData;
-				formData = { ...filamentData };
 			} catch (e) {
 				error = e instanceof Error ? e.message : 'Failed to load filament';
 			} finally {
@@ -79,21 +90,22 @@
 		messageHandler.clear();
 
 		try {
-			// Preserve id and slug from original filament since form doesn't include them
+			// Merge with original filament to preserve fields not in the form (like material_id, material)
+			// Form data takes precedence for fields it manages
 			const updatedFilament = {
+				...filament,
 				...data,
 				id: filament.id,
 				slug: filament.slug ?? filament.id
 			};
 
-			// Use DatabaseService for saving (handles cloud vs local mode)
-			const success = await db.saveFilament(brandId, materialType, filamentId, updatedFilament, filament);
+			// Pass the original filament data so change tracking can detect reverts
+			const success = await db.saveFilament(brandId, materialType, filamentId, updatedFilament, originalFilament ?? filament);
 
 			if (success) {
 				filament = updatedFilament;
-				formData = { ...updatedFilament };
 				messageHandler.showSuccess('Filament saved successfully!');
-				editMode = false;
+				showEditModal = false;
 			} else {
 				messageHandler.showError('Failed to save filament');
 			}
@@ -104,28 +116,14 @@
 		}
 	}
 
-	function toggleEditMode() {
-		editMode = !editMode;
-		if (editMode && filament && schema) {
-			formData = { ...filament };
-			let editSchema = removeIdFromSchema(schema);
-			editSchema = applyFormattedTitles(editSchema);
-			form = createForm({
-				...formDefaults,
-				schema: editSchema,
-				uiSchema: createUiSchema(),
-				translation: customTranslation,
-				initialValue: formData,
-				onSubmit: handleSubmit
-			});
+	function openEditModal() {
+		if (filament) {
+			showEditModal = true;
 		}
 	}
 
-	function cancelEdit() {
-		editMode = false;
-		if (filament) {
-			formData = { ...filament };
-		}
+	function closeEditModal() {
+		showEditModal = false;
 	}
 
 	function openDeleteModal() {
@@ -176,7 +174,64 @@
 			showDeleteModal = false;
 		}
 	}
+
+	function openCreateVariantModal() {
+		showCreateVariantModal = true;
+	}
+
+	function closeCreateVariantModal() {
+		showCreateVariantModal = false;
+	}
+
+	async function handleCreateVariant(data: any) {
+		creatingVariant = true;
+		messageHandler.clear();
+
+		try {
+			const result = await db.createVariant(brandId, materialType, filamentId, data);
+
+			if (result.success && result.variantSlug) {
+				messageHandler.showSuccess('Variant created successfully!');
+				showCreateVariantModal = false;
+
+				setTimeout(() => {
+					window.location.reload();
+				}, 500);
+			} else {
+				messageHandler.showError('Failed to create variant');
+			}
+		} catch (e) {
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create variant');
+		} finally {
+			creatingVariant = false;
+		}
+	}
 </script>
+
+{#snippet certificationsRender(certifications: string[])}
+	<div class="flex flex-wrap gap-2">
+		{#each certifications as cert}
+			<span class="px-2 py-1 bg-primary/10 text-primary rounded text-sm">{cert}</span>
+		{/each}
+	</div>
+{/snippet}
+
+{#snippet slicerSettingsRender(settings: Record<string, any>)}
+	<div class="space-y-2">
+		{#each Object.entries(settings) as [slicerKey, slicerSettings]}
+			<div class="bg-muted/50 rounded p-2">
+				<div class="font-medium text-sm">{SLICER_LABELS[slicerKey] || slicerKey}</div>
+				<div class="text-xs text-muted-foreground mt-1 space-y-0.5">
+					{#each Object.entries(slicerSettings as Record<string, any>) as [key, value]}
+						{#if value !== undefined && value !== null && value !== ''}
+							<div><span class="font-medium">{key}:</span> {typeof value === 'object' ? JSON.stringify(value) : value}</div>
+						{/if}
+					{/each}
+				</div>
+			</div>
+		{/each}
+	</div>
+{/snippet}
 
 <svelte:head>
 	<title>{filament ? `${filament.name}` : 'Filament Not Found'}</title>
@@ -201,136 +256,106 @@
 				<p class="text-muted-foreground">Filament ID: {filamentData.id}</p>
 			</header>
 
+			{#if hasLocalChanges}
+				<MessageBanner type="info" message="Local changes - export to save" />
+			{/if}
+
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
 			{/if}
 
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-				<EntityFormWrapper
+				<EntityDetails
+					entity={filamentData}
 					title="Filament Details"
-					{editMode}
-					{saving}
-					{form}
-					onEdit={toggleEditMode}
-					onCancel={cancelEdit}
-					onDelete={openDeleteModal}
+					grid={true}
+					fields={[
+						{ key: 'name', label: 'Name', fullWidth: true },
+						{ key: 'density', label: 'Density', format: (v) => `${v} g/cm³` },
+						{ key: 'diameter_tolerance', label: 'Diameter Tolerance', format: (v) => `${v} mm` },
+						{
+							key: 'min_print_temperature',
+							label: 'Print Temperature Range',
+							format: (v) => `${v}°C - ${filamentData.max_print_temperature}°C`,
+							hide: (v) => !v
+						},
+						{
+							key: 'min_bed_temperature',
+							label: 'Bed Temperature Range',
+							format: (v) => `${v}°C - ${filamentData.max_bed_temperature}°C`,
+							hide: (v) => !v
+						},
+						{
+							key: 'preheat_temperature',
+							label: 'Preheat Temperature',
+							format: (v) => `${v}°C`,
+							hide: (v) => !v
+						},
+						{
+							key: 'max_dry_temperature',
+							label: 'Max Dry Temperature',
+							format: (v) => `${v}°C`,
+							hide: (v) => !v
+						},
+						{ key: 'shore_hardness_a', label: 'Shore Hardness A', hide: (v) => !v },
+						{ key: 'shore_hardness_d', label: 'Shore Hardness D', hide: (v) => !v },
+						{
+							key: 'min_nozzle_diameter',
+							label: 'Min Nozzle Diameter',
+							format: (v) => `${v} mm`,
+							hide: (v) => !v
+						},
+						{
+							key: 'certifications',
+							label: 'Certifications',
+							hide: (v) => !v || v.length === 0,
+							customRender: certificationsRender,
+							fullWidth: true
+						},
+						{
+							key: 'slicer_settings',
+							label: 'Slicer Settings',
+							hide: (v) => !v || Object.keys(v).length === 0,
+							customRender: slicerSettingsRender,
+							fullWidth: true
+						},
+						{
+							key: 'data_sheet_url',
+							label: 'Data Sheet',
+							type: 'link',
+							hide: (v) => !v
+						},
+						{
+							key: 'safety_sheet_url',
+							label: 'Safety Sheet',
+							type: 'link',
+							hide: (v) => !v
+						}
+					]}
 				>
-					{#snippet children()}
-						<dl class="space-y-4">
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-								<div>
-									<dt class="text-sm font-medium text-muted-foreground">Name</dt>
-									<dd class="mt-1 text-lg">{filamentData.name}</dd>
-								</div>
-								<div>
-									<dt class="text-sm font-medium text-muted-foreground">Density</dt>
-									<dd class="mt-1">{filamentData.density} g/cm³</dd>
-								</div>
-								<div>
-									<dt class="text-sm font-medium text-muted-foreground">Diameter Tolerance</dt>
-									<dd class="mt-1">{filamentData.diameter_tolerance} mm</dd>
-								</div>
-								{#if filamentData.min_print_temperature}
-									<div>
-										<dt class="text-sm font-medium text-muted-foreground">Print Temperature Range</dt>
-										<dd class="mt-1">
-											{filamentData.min_print_temperature}°C - {filamentData.max_print_temperature}°C
-										</dd>
-									</div>
-								{/if}
-								{#if filamentData.min_bed_temperature}
-									<div>
-										<dt class="text-sm font-medium text-muted-foreground">Bed Temperature Range</dt>
-										<dd class="mt-1">
-											{filamentData.min_bed_temperature}°C - {filamentData.max_bed_temperature}°C
-										</dd>
-									</div>
-								{/if}
-								{#if filamentData.preheat_temperature}
-									<div>
-										<dt class="text-sm font-medium text-muted-foreground">Preheat Temperature</dt>
-										<dd class="mt-1">{filamentData.preheat_temperature}°C</dd>
-									</div>
-								{/if}
-								{#if filamentData.shore_hardness_a}
-									<div>
-										<dt class="text-sm font-medium text-muted-foreground">Shore Hardness A</dt>
-										<dd class="mt-1">{filamentData.shore_hardness_a}</dd>
-									</div>
-								{/if}
-								{#if filamentData.shore_hardness_d}
-									<div>
-										<dt class="text-sm font-medium text-muted-foreground">Shore Hardness D</dt>
-										<dd class="mt-1">{filamentData.shore_hardness_d}</dd>
-									</div>
-								{/if}
-								{#if filamentData.max_dry_temperature}
-									<div>
-										<dt class="text-sm font-medium text-muted-foreground">Max Dry Temperature</dt>
-										<dd class="mt-1">{filamentData.max_dry_temperature}°C</dd>
-									</div>
-								{/if}
-								{#if filamentData.min_nozzle_diameter}
-									<div>
-										<dt class="text-sm font-medium text-muted-foreground">Min Nozzle Diameter</dt>
-										<dd class="mt-1">{filamentData.min_nozzle_diameter} mm</dd>
-									</div>
-								{/if}
-							</div>
-
-							{#if filamentData.certifications && filamentData.certifications.length > 0}
-								<div>
-									<dt class="text-sm font-medium text-muted-foreground">Certifications</dt>
-									<dd class="mt-1">
-										<div class="flex flex-wrap gap-2">
-											{#each filamentData.certifications as cert}
-												<span class="px-2 py-1 bg-primary/10 text-primary rounded text-sm"
-													>{cert}</span
-												>
-											{/each}
-										</div>
-									</dd>
-								</div>
-							{/if}
-
-							{#if filamentData.data_sheet_url}
-								<div>
-									<dt class="text-sm font-medium text-muted-foreground">Data Sheet</dt>
-									<dd class="mt-1">
-										<a
-											href={filamentData.data_sheet_url}
-											target="_blank"
-											class="text-primary hover:underline"
-										>
-											{filamentData.data_sheet_url}
-										</a>
-									</dd>
-								</div>
-							{/if}
-
-							{#if filamentData.safety_sheet_url}
-								<div>
-									<dt class="text-sm font-medium text-muted-foreground">Safety Sheet</dt>
-									<dd class="mt-1">
-										<a
-											href={filamentData.safety_sheet_url}
-											target="_blank"
-											class="text-primary hover:underline"
-										>
-											{filamentData.safety_sheet_url}
-										</a>
-									</dd>
-								</div>
-							{/if}
-						</dl>
+					{#snippet actions()}
+						<div class="flex gap-2">
+							<button
+								onclick={openEditModal}
+								class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded-md font-medium"
+							>
+								Edit
+							</button>
+							<button
+								onclick={openDeleteModal}
+								class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
+							>
+								Delete
+							</button>
+						</div>
 					{/snippet}
-				</EntityFormWrapper>
+				</EntityDetails>
 
 				<div class="bg-card border border-border rounded-lg p-6">
 					<div class="flex justify-between items-center mb-4">
 						<h2 class="text-xl font-semibold">Variants</h2>
-						<a
-							href="/brands/{brandId}/{materialType}/{filamentId}/new"
+						<button
+							onclick={openCreateVariantModal}
 							class="bg-orange-500 text-white hover:bg-orange-600 px-4 py-2 rounded-md font-medium text-sm flex items-center gap-1"
 						>
 							<svg
@@ -346,7 +371,7 @@
 								/>
 							</svg>
 							Add Variant
-						</a>
+						</button>
 					</div>
 
 					{#if variants.length === 0}
@@ -354,6 +379,10 @@
 					{:else}
 						<div class="space-y-2">
 							{#each variants as variant}
+								{@const variantPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`}
+								{@const variantChange = $isCloudMode ? $changeStore.changes[variantPath] : undefined}
+								{@const sizesCount = variant.sizes?.length ?? 0}
+								{@const sizesInfo = sizesCount > 0 ? `${sizesCount} size${sizesCount !== 1 ? 's' : ''}` : undefined}
 								<EntityCard
 									entity={variant}
 									name={variant.color_name}
@@ -363,6 +392,9 @@
 									hoverColor="orange"
 									showLogo={false}
 									badge={variant.discontinued ? { text: 'Discontinued', color: 'red' } : undefined}
+									secondaryInfo={sizesInfo}
+									hasLocalChanges={!!variantChange}
+									localChangeType={variantChange?.operation}
 								/>
 							{/each}
 						</div>
@@ -419,4 +451,20 @@
 			</div>
 		</div>
 	{/if}
+</Modal>
+
+<Modal show={showEditModal} title="Edit Filament" onClose={closeEditModal} maxWidth="5xl">
+	{#if filament}
+		<div class="h-[70vh]">
+			<FilamentForm filament={filament} onSubmit={handleSubmit} {saving} />
+		</div>
+	{:else}
+		<div class="flex justify-center items-center py-12">
+			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+		</div>
+	{/if}
+</Modal>
+
+<Modal show={showCreateVariantModal} title="Create New Variant" onClose={closeCreateVariantModal} maxWidth="5xl" height="3/4">
+	<VariantForm onSubmit={handleCreateVariant} saving={creatingVariant} />
 </Modal>

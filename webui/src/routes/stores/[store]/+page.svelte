@@ -15,6 +15,7 @@
 
 	let storeId: string = $derived($page.params.store!);
 	let store: Store | null = $state(null);
+	let originalStore: Store | null = $state(null); // Keep original for revert detection
 	let schema: any = $state(null);
 	let loading: boolean = $state(true);
 	let saving: boolean = $state(false);
@@ -29,11 +30,11 @@
 	// Create message handler
 	const messageHandler = createMessageHandler();
 
-	// Check if this store has local changes
+	// Check if this store has local changes (use store.id which is the UUID, not the URL slug)
 	let hasLocalChanges = $derived.by(() => {
 		if (!$isCloudMode || !store) return false;
 
-		const entityPath = `stores/${storeId}`;
+		const entityPath = `stores/${store.id}`;
 		const change = $changeStore.changes[entityPath];
 
 		return change && (change.operation === 'create' || change.operation === 'update');
@@ -53,6 +54,7 @@
 			}
 
 			store = storeData;
+			originalStore = structuredClone(storeData); // Deep clone for revert detection
 			schema = schemaData;
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to load store';
@@ -97,8 +99,8 @@
 				logo: logoFilename
 			};
 
-			// Pass the old store data so change tracking knows this is an update, not a create
-			const success = await db.saveStore(updatedStore, store);
+			// Pass the original store data so change tracking can detect reverts
+			const success = await db.saveStore(updatedStore, originalStore ?? store);
 
 			if (success) {
 				store = updatedStore;

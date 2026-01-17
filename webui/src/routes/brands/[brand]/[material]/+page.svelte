@@ -2,26 +2,21 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import type { Material, Filament } from '$lib/types/database';
-	import { createForm, BasicForm } from '@sjsf/form';
-	import { formDefaults } from '$lib/utils/formDefaults';
-	import { createUiSchema, applyFormattedTitles, removeIdFromSchema } from '$lib/utils/schemaUtils';
-	import { customTranslation } from '$lib/utils/translations';
 	import { Modal, MessageBanner } from '$lib/components/ui';
-	import { MaterialForm } from '$lib/components/forms';
+	import { MaterialForm, FilamentForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityDetails, EntityCard } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { db } from '$lib/services/database';
-	import { apiFetch } from '$lib/utils/api';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
 	let material: Material | null = $state(null);
+	let originalMaterial: Material | null = $state(null); // Keep original for revert detection
 	let filaments: Filament[] = $state([]);
-	let filamentSchema: any = $state(null);
 	let loading: boolean = $state(true);
 	let saving: boolean = $state(false);
 	let error: string | null = $state(null);
@@ -31,10 +26,20 @@
 	let showCreateFilamentModal: boolean = $state(false);
 	let deleting: boolean = $state(false);
 	let creatingFilament: boolean = $state(false);
-	let filamentForm: any = $state(null);
 
 	// Create message handler
 	const messageHandler = createMessageHandler();
+
+	// Check if this material has local changes
+	let hasLocalChanges = $derived.by(() => {
+		if (!$isCloudMode || !material) return false;
+
+		// For materials, the entity path uses materialType
+		const entityPath = `brands/${brandId}/materials/${material.materialType ?? materialType}`;
+		const change = $changeStore.changes[entityPath];
+
+		return change && (change.operation === 'create' || change.operation === 'update');
+	});
 
 	onMount(async () => {
 		try {
@@ -51,6 +56,10 @@
 			}
 
 			material = materialData;
+			// For revert detection, use the true original data if there are pending changes
+			// Otherwise use the current data (which is the API data when no changes exist)
+			const trueOriginal = db.getOriginalMaterial(brandId, materialType);
+			originalMaterial = trueOriginal ? structuredClone(trueOriginal) : structuredClone(materialData);
 			filaments = filamentsData;
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to load material';
@@ -66,14 +75,26 @@
 		messageHandler.clear();
 
 		try {
-			// Preserve materialType from original material since form doesn't include it
+			// Derive materialType from the material name, preserving uppercase (e.g., "PLA" -> "PLA")
+			// This ensures the ID always matches the material name with uppercase letters
+			const newMaterialType = data.material.toUpperCase().replace(/[^A-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+			// Merge form data with existing material to preserve fields the form doesn't manage
 			const updatedMaterial = {
+				...material,
 				...data,
-				materialType: material.materialType ?? materialType
+				id: newMaterialType,
+				materialType: newMaterialType
 			};
 
-			// Use DatabaseService for saving (handles cloud vs local mode)
-			const success = await db.saveMaterial(brandId, materialType, updatedMaterial, material);
+			// If material_class is not in the form data (set to "Not set"), remove it
+			// This handles the case where the user explicitly clears the value
+			if (!('material_class' in data)) {
+				delete updatedMaterial.material_class;
+			}
+
+			// Pass the original material data so change tracking can detect reverts
+			const success = await db.saveMaterial(brandId, materialType, updatedMaterial, originalMaterial ?? material);
 
 			if (success) {
 				material = updatedMaterial;
@@ -146,36 +167,12 @@
 		}
 	}
 
-	async function openCreateFilamentModal() {
+	function openCreateFilamentModal() {
 		showCreateFilamentModal = true;
-		if (!filamentSchema) {
-			try {
-				const response = await apiFetch('/api/schemas/filament');
-				filamentSchema = await response.json();
-			} catch (e) {
-				console.error('Failed to load filament schema:', e);
-				messageHandler.showError('Failed to load filament schema');
-				showCreateFilamentModal = false;
-				return;
-			}
-		}
-
-		let processedSchema = removeIdFromSchema(filamentSchema);
-		processedSchema = applyFormattedTitles(processedSchema);
-
-		filamentForm = createForm({
-			...formDefaults,
-			schema: processedSchema,
-			uiSchema: createUiSchema(),
-			translation: customTranslation,
-			initialValue: { name: '', density: 1.24, diameter_tolerance: 0.02 },
-			onSubmit: handleCreateFilament
-		});
 	}
 
 	function closeCreateFilamentModal() {
 		showCreateFilamentModal = false;
-		filamentForm = null;
 	}
 
 	async function handleCreateFilament(data: any) {
@@ -188,7 +185,6 @@
 			if (result.success && result.filamentId) {
 				messageHandler.showSuccess('Filament created successfully!');
 				showCreateFilamentModal = false;
-				filamentForm = null;
 
 				setTimeout(() => {
 					window.location.reload();
@@ -202,7 +198,32 @@
 			creatingFilament = false;
 		}
 	}
+
+	const SLICER_LABELS: Record<string, string> = {
+		prusaslicer: 'PrusaSlicer',
+		bambustudio: 'Bambu Studio',
+		orcaslicer: 'Orca Slicer',
+		cura: 'Cura',
+		generic: 'Generic'
+	};
 </script>
+
+{#snippet slicerSettingsRender(settings: Record<string, any>)}
+	<div class="space-y-2">
+		{#each Object.entries(settings) as [slicerKey, slicerSettings]}
+			<div class="bg-muted/50 rounded p-2">
+				<div class="font-medium text-sm">{SLICER_LABELS[slicerKey] || slicerKey}</div>
+				<div class="text-xs text-muted-foreground mt-1 space-y-0.5">
+					{#each Object.entries(slicerSettings as Record<string, any>) as [key, value]}
+						{#if value !== undefined && value !== null && value !== ''}
+							<div><span class="font-medium">{key}:</span> {typeof value === 'object' ? JSON.stringify(value) : value}</div>
+						{/if}
+					{/each}
+				</div>
+			</div>
+		{/each}
+	</div>
+{/snippet}
 
 <svelte:head>
 	<title>{material ? `${material.material}` : 'Material Not Found'}</title>
@@ -215,8 +236,14 @@
 		{#snippet children(materialData)}
 			<header class="mb-6">
 				<h1 class="text-3xl font-bold mb-2">{materialData.material}</h1>
-				<p class="text-muted-foreground">Material Type: {materialType}</p>
+				<p class="text-muted-foreground">
+					Material ID: {materialData.materialType ?? materialType}
+				</p>
 			</header>
+
+			{#if hasLocalChanges}
+				<MessageBanner type="info" message="Local changes - export to save" />
+			{/if}
 
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
@@ -227,7 +254,10 @@
 					entity={materialData}
 					title="Material Details"
 					fields={[
-						{ key: 'material' },
+						{
+							key: 'material',
+							label: 'Material Type'
+						},
 						{
 							key: 'material_class',
 							label: 'Material Class',
@@ -238,6 +268,12 @@
 							label: 'Max Dry Temperature',
 							format: (v) => `${v}°C`,
 							hide: (v) => !v
+						},
+						{
+							key: 'default_slicer_settings',
+							label: 'Default Slicer Settings',
+							hide: (v) => !v || Object.keys(v).length === 0,
+							customRender: slicerSettingsRender
 						}
 					]}
 				>
@@ -279,6 +315,8 @@
 						<div class="space-y-2">
 							{#each filaments as filament}
 								{@const filamentHref = `/brands/${brandId}/${materialType}/${filament.slug ?? filament.id}`}
+								{@const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.id}`}
+								{@const filamentChange = $isCloudMode ? $changeStore.changes[filamentPath] : undefined}
 								<EntityCard
 									entity={filament}
 									href={filamentHref}
@@ -289,6 +327,8 @@
 									badge={filament.discontinued
 										? { text: 'Discontinued', color: 'red' }
 										: undefined}
+									hasLocalChanges={!!filamentChange}
+									localChangeType={filamentChange?.operation}
 								/>
 							{/each}
 						</div>
@@ -299,7 +339,7 @@
 	</DataDisplay>
 </div>
 
-<Modal show={showEditModal} title="Edit Material" onClose={closeEditModal} maxWidth="5xl" height="1/2">
+<Modal show={showEditModal} title="Edit Material" onClose={closeEditModal} maxWidth="5xl" height="3/4">
 	{#if material}
 		<MaterialForm
 			{material}
@@ -357,19 +397,8 @@
 	{/if}
 </Modal>
 
-<Modal show={showCreateFilamentModal} title="Create New Filament" onClose={closeCreateFilamentModal} maxWidth="3xl">
-	{#if filamentForm}
-		<div class="space-y-4">
-			<BasicForm form={filamentForm} />
-			{#if creatingFilament}
-				<div class="flex justify-center">
-					<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-				</div>
-			{/if}
-		</div>
-	{:else}
-		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-		</div>
-	{/if}
+<Modal show={showCreateFilamentModal} title="Create New Filament" onClose={closeCreateFilamentModal} maxWidth="5xl">
+	<div class="h-[70vh]">
+		<FilamentForm onSubmit={handleCreateFilament} saving={creatingFilament} />
+	</div>
 </Modal>

@@ -11,6 +11,8 @@
 		hide?: boolean | ((value: any) => boolean);
 		logoType?: 'brand' | 'store';
 		logoEntityId?: string;
+		/** If true, this field spans the full width in grid mode */
+		fullWidth?: boolean;
 	}
 
 	interface Props {
@@ -24,9 +26,11 @@
 		actions?: Snippet;
 		/** Custom class for the container */
 		class?: string;
+		/** Display fields in a 2-column grid */
+		grid?: boolean;
 	}
 
-	let { entity, fields, title, actions, class: className = '' }: Props = $props();
+	let { entity, fields, title, actions, class: className = '', grid = false }: Props = $props();
 
 	function shouldHideField(field: Field): boolean {
 		if (field.hide === undefined) return false;
@@ -56,10 +60,10 @@
 		</div>
 	{/if}
 
-	<dl class="space-y-4">
+	<dl class={grid ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'space-y-4'}>
 		{#each fields as field}
 			{#if !shouldHideField(field)}
-				<div>
+				<div class={grid && field.fullWidth ? 'md:col-span-2' : ''}>
 					<dt class="text-sm font-medium text-muted-foreground">{getFieldLabel(field)}</dt>
 					<dd class="mt-1">
 						{#if field.customRender}

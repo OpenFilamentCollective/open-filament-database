@@ -81,7 +81,46 @@
 			closeMenu();
 		}
 	}
+
+	function isPlainObject(val: any): boolean {
+		return val !== null && typeof val === 'object' && !Array.isArray(val);
+	}
 </script>
+
+{#snippet renderValue(value: any, label: string, isNew: boolean)}
+	{#if isPlainObject(value)}
+		<details class="nested-details">
+			<summary class="nested-summary">
+				<code>{label}</code>
+				{#if isNew}
+					<span class="text-green-600 text-xs ml-1">added</span>
+				{:else}
+					<span class="text-destructive text-xs ml-1">removed</span>
+				{/if}
+				<span class="text-muted-foreground text-xs ml-1">({Object.keys(value).length} properties)</span>
+			</summary>
+			<ul class="nested-list">
+				{#each Object.entries(value) as [key, val]}
+					<li>
+						{@render renderValue(val, key, isNew)}
+					</li>
+				{/each}
+			</ul>
+		</details>
+	{:else}
+		<div class="leaf-value">
+			<code>{label}</code>:
+			{#if isNew}
+				<span class="text-green-600">added</span>
+			{:else}
+				<span class="text-destructive">removed</span>
+			{/if}
+			<span class="value-display {isNew ? 'new-value' : 'old-value'}">
+				{Array.isArray(value) ? JSON.stringify(value) : value}
+			</span>
+		</div>
+	{/if}
+{/snippet}
 
 {#if $isCloudMode}
 	<div class="changes-menu-container">
@@ -100,7 +139,8 @@
 
 		<!-- Dropdown menu -->
 		{#if menuOpen}
-			<div class="menu-backdrop" on:click={closeMenu} role="button" tabindex="-1"></div>
+			<!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
+			<div class="menu-backdrop" on:click={closeMenu} role="presentation" aria-hidden="true"></div>
 			<div class="menu-panel">
 				<div class="menu-header">
 					<h3>Pending Changes</h3>
@@ -130,13 +170,22 @@
 												<ul>
 													{#each change.propertyChanges as propChange}
 														<li>
-															<code>{propChange.property}</code>:
 															{#if propChange.oldValue === undefined}
-																<span class="text-green-600">added</span>
+																<!-- Property was added -->
+																{@render renderValue(propChange.newValue, propChange.property, true)}
 															{:else if propChange.newValue === undefined}
-																<span class="text-destructive">removed</span>
+																<!-- Property was removed -->
+																{@render renderValue(propChange.oldValue, propChange.property, false)}
 															{:else}
-																changed
+																<!-- Property was changed -->
+																<div class="changed-property">
+																	<code>{propChange.property}</code>: <span class="text-primary">changed</span>
+																	<div class="change-comparison">
+																		{@render renderValue(propChange.oldValue, 'old', false)}
+																		<span class="value-arrow">→</span>
+																		{@render renderValue(propChange.newValue, 'new', true)}
+																	</div>
+																</div>
 															{/if}
 														</li>
 													{/each}
@@ -382,6 +431,79 @@
 		padding: 0.125rem 0.25rem;
 		border-radius: 0.25rem;
 		font-family: 'Courier New', monospace;
+	}
+
+	.value-display {
+		display: block;
+		margin-top: 0.25rem;
+		padding: 0.25rem 0.5rem;
+		background: hsl(var(--muted));
+		border-radius: 0.25rem;
+		font-family: 'Courier New', monospace;
+		font-size: 0.7rem;
+		white-space: pre-wrap;
+		word-break: break-all;
+		max-height: 8rem;
+		overflow-y: auto;
+	}
+
+	.value-display.old-value {
+		background: hsl(var(--destructive) / 0.1);
+		text-decoration: line-through;
+		opacity: 0.7;
+	}
+
+	.value-display.new-value {
+		background: hsl(var(--primary) / 0.1);
+	}
+
+	.value-arrow {
+		display: block;
+		text-align: center;
+		color: hsl(var(--muted-foreground));
+		font-size: 0.875rem;
+		margin: 0.125rem 0;
+	}
+
+	.nested-details {
+		margin-top: 0.25rem;
+	}
+
+	.nested-summary {
+		cursor: pointer;
+		padding: 0.25rem;
+		border-radius: 0.25rem;
+		background: hsl(var(--background));
+	}
+
+	.nested-summary:hover {
+		background: hsl(var(--muted));
+	}
+
+	.nested-list {
+		margin-left: 1rem;
+		padding-left: 0.5rem;
+		border-left: 2px solid hsl(var(--border));
+		margin-top: 0.25rem;
+		list-style: none;
+	}
+
+	.nested-list li {
+		margin-top: 0.25rem;
+	}
+
+	.leaf-value {
+		padding: 0.25rem;
+	}
+
+	.changed-property {
+		padding: 0.25rem;
+	}
+
+	.change-comparison {
+		margin-top: 0.25rem;
+		padding-left: 0.5rem;
+		border-left: 2px solid hsl(var(--border));
 	}
 
 	.undo-button {

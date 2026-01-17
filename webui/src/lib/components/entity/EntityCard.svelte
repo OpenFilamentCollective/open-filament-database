@@ -41,6 +41,12 @@
 		colorHex?: string;
 		/** Whether to show logo (default: true if logo provided) */
 		showLogo?: boolean;
+		/** Secondary info text (e.g., sizes count) */
+		secondaryInfo?: string;
+		/** Whether this entity has local changes */
+		hasLocalChanges?: boolean;
+		/** The type of local change: 'create', 'update', or 'delete' */
+		localChangeType?: 'create' | 'update' | 'delete';
 	}
 
 	let {
@@ -56,17 +62,35 @@
 		badge,
 		children,
 		colorHex,
-		showLogo = true
+		showLogo = true,
+		secondaryInfo,
+		hasLocalChanges = false,
+		localChangeType
 	}: Props = $props();
 
 	const displayName = $derived(name ?? entity.name);
 	const displayId = $derived(id ?? entity.slug ?? entity.id);
 	const hoverClass = $derived(`hover:border-${hoverColor}-500`);
+
+	// Determine local change styling
+	const localChangeClass = $derived.by(() => {
+		if (!hasLocalChanges) return '';
+		switch (localChangeType) {
+			case 'create':
+				return 'border-l-4 border-l-success';
+			case 'update':
+				return 'border-l-4 border-l-warning';
+			case 'delete':
+				return 'border-l-4 border-l-destructive';
+			default:
+				return 'border-l-4 border-l-primary';
+		}
+	});
 </script>
 
 <a
 	{href}
-	class="block p-6 border border-border rounded-lg {hoverClass} hover:shadow-lg transition-all"
+	class="block p-6 border border-border rounded-lg {hoverClass} hover:shadow-lg transition-all {localChangeClass}"
 >
 	<div class="flex items-center gap-4 mb-4">
 		{#if colorHex}
@@ -81,12 +105,25 @@
 			<Logo src={logo} alt={displayName} type={logoType} id={logoEntityId ?? displayId} size="md" />
 		{/if}
 		<div class="flex-1 min-w-0">
-			<h3 class="font-semibold text-lg truncate">{displayName}</h3>
+			<div class="flex items-center gap-2">
+				<h3 class="font-semibold text-lg truncate">{displayName}</h3>
+				{#if hasLocalChanges}
+					<span
+						class="shrink-0 px-1.5 py-0.5 text-xs rounded {localChangeType === 'create' ? 'bg-success/20 text-success' : localChangeType === 'update' ? 'bg-warning/20 text-warning' : localChangeType === 'delete' ? 'bg-destructive/20 text-destructive' : 'bg-primary/20 text-primary'}"
+						title={localChangeType === 'create' ? 'Locally created' : localChangeType === 'update' ? 'Locally modified' : localChangeType === 'delete' ? 'Marked for deletion' : 'Has local changes'}
+					>
+						{localChangeType === 'create' ? 'New' : localChangeType === 'update' ? 'Modified' : localChangeType === 'delete' ? 'Deleted' : 'Changed'}
+					</span>
+				{/if}
+			</div>
 			<p class="text-xs text-muted-foreground truncate">
 				{#if displayId}
 					ID: {displayId}
 				{/if}
 			</p>
+			{#if secondaryInfo}
+				<p class="text-xs text-muted-foreground mt-0.5">{secondaryInfo}</p>
+			{/if}
 			{#if badge}
 				<span
 					class="inline-block mt-1 px-2 py-1 text-xs bg-{badge.color}-100 text-{badge.color}-800 rounded"

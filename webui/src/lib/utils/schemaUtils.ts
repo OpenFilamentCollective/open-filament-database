@@ -66,10 +66,10 @@ export function removeIdFromSchema(schema: any): any {
 export function createUiSchema(hideArrayItemLabels = true) {
 	const baseUiSchema: any = {
 		'ui:options': {
-			// Submit button - Success green
+			// Submit button - Success
 			submitButton: {
 				class:
-					'sjsf-submit-button w-full px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition-all disabled:opacity-50 font-medium'
+					'sjsf-submit-button w-full px-6 py-3 bg-success text-success-foreground rounded-md hover:bg-success/90 transition-all disabled:opacity-50 font-medium'
 			},
 			// Base button styling - applies to all other buttons
 			button: {

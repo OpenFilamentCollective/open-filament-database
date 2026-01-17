@@ -44,24 +44,28 @@
 </script>
 
 {#if show}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<!-- Backdrop with light transparent overlay and click-to-close -->
 	<div
 		class="fixed inset-0 bg-background/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
 		onclick={handleBackdropClick}
-		role="button"
-		tabindex="-1"
-		aria-label="Close modal"
+		onkeydown={(e) => e.key === 'Escape' && onClose()}
+		role="presentation"
 	>
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<!-- Modal content - stops propagation to prevent closing when clicking inside -->
 		<div
 			class="bg-card rounded-lg shadow-xl {maxWidthClasses[maxWidth]} w-full max-h-[90vh] {heightClasses[height]} flex flex-col {contentClass}"
 			onclick={(e) => e.stopPropagation()}
+			onkeydown={(e) => e.stopPropagation()}
 			role="dialog"
 			aria-modal="true"
+			aria-labelledby="modal-title"
+			tabindex="-1"
 		>
-			<div class="p-6 flex flex-col flex-1 min-h-0">
-				<div class="flex justify-between items-center mb-4 flex-shrink-0">
-					<h3 class="text-xl font-semibold">{title}</h3>
+			<div class="flex flex-col flex-1 min-h-0">
+				<div class="flex justify-between items-center px-6 pt-6 pb-4 flex-shrink-0">
+					<h3 id="modal-title" class="text-xl font-semibold">{title}</h3>
 					<button
 						type="button"
 						onclick={onClose}
@@ -80,7 +84,7 @@
 					</button>
 				</div>
 
-				<div class="flex-1 overflow-auto min-h-0">
+				<div class="flex-1 overflow-auto min-h-0 px-6 pb-6">
 					{@render children()}
 				</div>
 			</div>

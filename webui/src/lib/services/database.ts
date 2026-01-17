@@ -71,13 +71,22 @@ export class DatabaseService {
 					// Update existing entity
 					if (change.data) {
 						const dataId = String(change.data[idKey]);
+						// If the ID changed, remove the old entry and add the new one
+						// Use case-insensitive matching since paths use lowercase but data may use original case
+						const oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+						if (oldKey && oldKey !== dataId) {
+							result.delete(oldKey);
+						}
 						result.set(dataId, change.data);
 					}
 					break;
 
 				case 'delete':
-					// Remove entity
-					result.delete(change.entity.id);
+					// Remove entity - use case-insensitive matching
+					const keyToDelete = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+					if (keyToDelete) {
+						result.delete(keyToDelete);
+					}
 					break;
 			}
 		}
@@ -176,7 +185,7 @@ export class DatabaseService {
 	}
 
 	/**
-	 * Get a specific store by ID
+	 * Get a specific store by ID (can be slug or UUID)
 	 * In cloud mode, returns version with changes applied
 	 */
 	async getStore(id: string): Promise<Store | null> {
@@ -198,10 +207,12 @@ export class DatabaseService {
 			if (!response.ok) {
 				return null;
 			}
-			const baseStore = await response.json();
+			const baseStore: Store = await response.json();
 
-			// Apply changes
-			return this.getEntityWithChanges(baseStore, entityPath);
+			// Apply changes - use the actual store.id for lookup since changes are tracked by UUID
+			// The `id` parameter might be a slug, but changes are stored by store.id (UUID)
+			const actualEntityPath = `stores/${baseStore.id}`;
+			return this.getEntityWithChanges(baseStore, actualEntityPath);
 		} catch (error) {
 			console.error(`Error loading store ${id}:`, error);
 			return null;
@@ -209,7 +220,7 @@ export class DatabaseService {
 	}
 
 	/**
-	 * Get a specific brand by ID
+	 * Get a specific brand by ID (can be slug or UUID)
 	 * In cloud mode, returns version with changes applied
 	 */
 	async getBrand(id: string): Promise<Brand | null> {
@@ -231,10 +242,11 @@ export class DatabaseService {
 			if (!response.ok) {
 				return null;
 			}
-			const baseBrand = await response.json();
+			const baseBrand: Brand = await response.json();
 
-			// Apply changes
-			return this.getEntityWithChanges(baseBrand, entityPath);
+			// Apply changes - use the actual brand.id for lookup since changes are tracked by UUID
+			const actualEntityPath = `brands/${baseBrand.id}`;
+			return this.getEntityWithChanges(baseBrand, actualEntityPath);
 		} catch (error) {
 			console.error(`Error loading brand ${id}:`, error);
 			return null;
@@ -384,20 +396,119 @@ export class DatabaseService {
 	 * In cloud mode, layers pending changes over base data
 	 */
 	async loadMaterials(brandId: string): Promise<Material[]> {
+		let baseMaterials: Material[] = [];
+
 		try {
 			const response = await apiFetch(`/api/brands/${brandId}/materials`);
-			if (!response.ok) {
-				throw new Error(`Failed to load materials: ${response.statusText}`);
+			if (response.ok) {
+				baseMaterials = await response.json();
 			}
-			const baseMaterials = await response.json();
-
-			// Layer changes over base data
-			// Materials use materialType as their id (e.g., "pla", "petg")
-			return this.layerChanges(baseMaterials, `brands/${brandId}/materials/`);
+			// If response is not ok (e.g., brand doesn't exist on server),
+			// we still continue with empty baseMaterials to pick up local changes
 		} catch (error) {
 			console.error(`Error loading materials for brand ${brandId}:`, error);
-			return [];
+			// Continue with empty baseMaterials to pick up local changes
 		}
+
+		// Layer changes over base data using custom material matching
+		// This is called even when API fails, to show locally created materials
+		return this.layerMaterialChanges(baseMaterials, brandId);
+	}
+
+	/**
+	 * Layer material changes over base data
+	 * Materials are matched by slug, materialType, or material name (case-insensitive)
+	 */
+	private layerMaterialChanges(baseData: Material[], brandId: string): Material[] {
+		if (!get(isCloudMode)) {
+			return baseData;
+		}
+
+		const changeSet = get(changeStore);
+		const entityPathPrefix = `brands/${brandId}/materials/`;
+
+		// Create a map using material identifier (slug or materialType or material name, lowercase)
+		const result = new Map<string, Material>();
+		for (const item of baseData) {
+			// Use slug, materialType, or derive from material name as the key
+			const key = (item.slug || item.materialType || item.material || item.id).toLowerCase();
+			result.set(key, item);
+		}
+
+		// Apply changes
+		for (const [path, change] of Object.entries(changeSet.changes)) {
+			if (!path.startsWith(entityPathPrefix)) continue;
+
+			const relativePath = path.slice(entityPathPrefix.length);
+			const entityId = relativePath.split('/')[0];
+
+			// Only apply if this is a direct child
+			if (relativePath !== entityId) continue;
+
+			switch (change.operation) {
+				case 'create':
+					if (change.data) {
+						const newKey = (change.data.materialType || change.data.material || '').toLowerCase();
+						if (newKey) {
+							result.set(newKey, change.data);
+						}
+					}
+					break;
+
+				case 'update':
+					if (change.data) {
+						const newKey = (change.data.materialType || change.data.material || '').toLowerCase();
+						// Find and remove the old entry (matched by entityId from path)
+						const oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+						if (oldKey && oldKey !== newKey) {
+							result.delete(oldKey);
+						}
+						if (newKey) {
+							result.set(newKey, change.data);
+						}
+					}
+					break;
+
+				case 'delete':
+					// Remove by entityId (case-insensitive)
+					const keyToDelete = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+					if (keyToDelete) {
+						result.delete(keyToDelete);
+					}
+					break;
+			}
+		}
+
+		return Array.from(result.values());
+	}
+
+	/**
+	 * Get the original (pre-change) material data for a brand/materialType
+	 * Returns null if there are no pending changes or no original data
+	 */
+	getOriginalMaterial(brandId: string, materialType: string): Material | null {
+		if (!get(isCloudMode)) return null;
+
+		const changeSet = get(changeStore);
+		const materialPrefix = `brands/${brandId}/materials/`;
+
+		// Look for a change that contains this material
+		for (const [path, change] of Object.entries(changeSet.changes)) {
+			if (!path.startsWith(materialPrefix)) continue;
+
+			// Check if this change's data matches the materialType we're looking for
+			if (change.data?.materialType?.toUpperCase() === materialType.toUpperCase()) {
+				return change.originalData || null;
+			}
+
+			// Also check by path
+			const pathMaterialType = path.slice(materialPrefix.length).split('/')[0];
+			if (pathMaterialType.toLowerCase() === materialType.toLowerCase()) {
+				return change.originalData || null;
+			}
+		}
+
+		return null;
 	}
 
 	/**
@@ -407,18 +518,38 @@ export class DatabaseService {
 	async getMaterial(brandId: string, materialType: string): Promise<Material | null> {
 		try {
 			const entityPath = `brands/${brandId}/materials/${materialType}`;
+			const materialPrefix = `brands/${brandId}/materials/`;
 
-			// In cloud mode, check if this is a newly created material first
+			// In cloud mode, check for changes
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
-				const change = changeSet.changes[entityPath];
 
-				if (change && change.operation === 'create') {
-					return change.data || null;
+				// First check for exact path match
+				let change = changeSet.changes[entityPath];
+
+				// If not found, look for a change where the NEW materialType matches what we're looking for
+				// This handles the case where material was renamed (e.g., path is "materials/pla" but data.materialType is "PETG")
+				if (!change) {
+					for (const [path, c] of Object.entries(changeSet.changes)) {
+						if (path.startsWith(materialPrefix) && c.data?.materialType?.toUpperCase() === materialType.toUpperCase()) {
+							change = c;
+							break;
+						}
+					}
+				}
+
+				if (change) {
+					if (change.operation === 'create' || change.operation === 'update') {
+						return change.data || null;
+					}
+					if (change.operation === 'delete') {
+						return null;
+					}
 				}
 			}
 
-			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}`);
+			// Try to fetch from API - use lowercase for filesystem compatibility
+			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType.toLowerCase()}`);
 			if (!response.ok) {
 				return null;
 			}
@@ -440,21 +571,89 @@ export class DatabaseService {
 	 */
 	async saveMaterial(brandId: string, materialType: string, material: Material, oldMaterial?: Material): Promise<boolean> {
 		try {
-			const entityPath = `brands/${brandId}/materials/${materialType}`;
+			// In cloud mode, we need to find the correct path for this material
+			// If there's an existing change, use that path to ensure we update in place
+			// This handles the case where material type changed (e.g., PLA -> PETG -> PLA should revert)
+			let entityPath = `brands/${brandId}/materials/${materialType}`;
+			const materialPrefix = `brands/${brandId}/materials/`;
+
+			if (get(isCloudMode)) {
+				const changeSet = get(changeStore);
+
+				// Look for an existing change for this material
+				// Strategy: Find a change where the originalData matches our oldMaterial
+				// This works even when the materialType has changed multiple times
+				let existingPath: string | undefined;
+
+				// First, try to find by originalData match (most reliable for multi-step edits)
+				if (oldMaterial) {
+					const oldKey = (oldMaterial.slug || oldMaterial.materialType || oldMaterial.material || '').toLowerCase();
+					for (const [path, change] of Object.entries(changeSet.changes)) {
+						if (!path.startsWith(materialPrefix)) continue;
+
+						// Check if this change's originalData matches our oldMaterial
+						// by comparing the original slug/materialType/material
+						const origData = change.originalData;
+						if (origData) {
+							const origKey = (origData.slug || origData.materialType || origData.material || '').toLowerCase();
+							if (origKey === oldKey) {
+								existingPath = path;
+								break;
+							}
+						}
+
+						// Also check if the change data matches our current material type
+						// (for newly created entities or first-time edits)
+						if (change.data) {
+							const dataKey = (change.data.slug || change.data.materialType || change.data.material || '').toLowerCase();
+							if (dataKey === oldKey) {
+								existingPath = path;
+								break;
+							}
+						}
+					}
+				}
+
+				// Fallback: try original key-based lookup
+				if (!existingPath) {
+					const originalKey = oldMaterial?.materialType || oldMaterial?.slug || materialType;
+					existingPath = Object.keys(changeSet.changes).find(
+						(path) => path.startsWith(materialPrefix) &&
+							path.slice(materialPrefix.length).toLowerCase() === originalKey.toLowerCase()
+					);
+				}
+
+				// If we found an existing change, use its path and get the true original data
+				let trueOriginalData = oldMaterial;
+				if (existingPath) {
+					entityPath = existingPath;
+					const existingChange = changeSet.changes[existingPath];
+					// Use the originalData from the existing change if available
+					// This is the actual data from the API before any edits
+					if (existingChange?.originalData) {
+						trueOriginalData = existingChange.originalData;
+					}
+				}
+
+				const entity: EntityIdentifier = {
+					type: 'material',
+					path: entityPath,
+					id: material.materialType || materialType
+				};
+
+				if (!oldMaterial) {
+					changeStore.trackCreate(entity, material);
+				} else {
+					changeStore.trackUpdate(entity, trueOriginalData, material);
+				}
+				return true;
+			}
+
 			const entity: EntityIdentifier = {
 				type: 'material',
 				path: entityPath,
 				id: materialType
 			};
-
-			if (get(isCloudMode)) {
-				if (!oldMaterial) {
-					changeStore.trackCreate(entity, material);
-				} else {
-					changeStore.trackUpdate(entity, oldMaterial, material);
-				}
-				return true;
-			}
 
 			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}`, {
 				method: 'PUT',
@@ -473,9 +672,9 @@ export class DatabaseService {
 	 */
 	async createMaterial(brandId: string, material: Material): Promise<{ success: boolean; materialType?: string }> {
 		try {
-			// Generate materialType from material name if not provided
+			// Generate materialType from material name if not provided (uppercase)
 			const materialType = material.materialType ||
-				material.material.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+				material.material.toUpperCase().replace(/[^A-Z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 			const entityPath = `brands/${brandId}/materials/${materialType}`;
 			const entity: EntityIdentifier = {
@@ -543,19 +742,21 @@ export class DatabaseService {
 	 * In cloud mode, layers pending changes over base data
 	 */
 	async loadFilaments(brandId: string, materialType: string): Promise<Filament[]> {
+		let baseFilaments: Filament[] = [];
+
 		try {
 			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}/filaments`);
-			if (!response.ok) {
-				throw new Error(`Failed to load filaments: ${response.statusText}`);
+			if (response.ok) {
+				baseFilaments = await response.json();
 			}
-			const baseFilaments = await response.json();
-
-			// Layer changes over base data
-			return this.layerChanges(baseFilaments, `brands/${brandId}/materials/${materialType}/filaments/`);
+			// If response is not ok, continue with empty array to pick up local changes
 		} catch (error) {
 			console.error(`Error loading filaments for ${brandId}/${materialType}:`, error);
-			return [];
+			// Continue with empty array to pick up local changes
 		}
+
+		// Layer changes over base data - called even when API fails
+		return this.layerChanges(baseFilaments, `brands/${brandId}/materials/${materialType}/filaments/`);
 	}
 
 	/**
@@ -580,13 +781,16 @@ export class DatabaseService {
 			if (!response.ok) {
 				return null;
 			}
-			const baseFilament = await response.json();
+			const baseFilament: Filament = await response.json();
 
-			if (baseFilament.error) {
+			if ((baseFilament as any).error) {
 				return null;
 			}
 
-			return this.getEntityWithChanges(baseFilament, entityPath);
+			// Apply changes - use the actual filament.id for lookup since changes are tracked by ID
+			// The `filamentId` parameter might be a slug, but changes are stored by filament.id
+			const actualEntityPath = `brands/${brandId}/materials/${materialType}/filaments/${baseFilament.id}`;
+			return this.getEntityWithChanges(baseFilament, actualEntityPath);
 		} catch (error) {
 			console.error(`Error loading filament ${brandId}/${materialType}/${filamentId}:`, error);
 			return null;
@@ -716,22 +920,24 @@ export class DatabaseService {
 	 * In cloud mode, layers pending changes over base data
 	 */
 	async loadVariants(brandId: string, materialType: string, filamentId: string): Promise<Variant[]> {
+		let baseVariants: Variant[] = [];
+
 		try {
 			const response = await apiFetch(
 				`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants`
 			);
-			if (!response.ok) {
-				throw new Error(`Failed to load variants: ${response.statusText}`);
+			if (response.ok) {
+				baseVariants = await response.json();
 			}
-			const baseVariants = await response.json();
-
-			// Layer changes over base data
-			// Variants use slug as their id
-			return this.layerChanges(baseVariants, `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/`);
+			// If response is not ok, continue with empty array to pick up local changes
 		} catch (error) {
 			console.error(`Error loading variants for ${brandId}/${materialType}/${filamentId}:`, error);
-			return [];
+			// Continue with empty array to pick up local changes
 		}
+
+		// Layer changes over base data - called even when API fails
+		// Variants use slug as their id
+		return this.layerChanges(baseVariants, `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/`);
 	}
 
 	/**
@@ -763,13 +969,16 @@ export class DatabaseService {
 			if (!response.ok) {
 				return null;
 			}
-			const baseVariant = await response.json();
+			const baseVariant: Variant = await response.json();
 
-			if (baseVariant.error) {
+			if ((baseVariant as any).error) {
 				return null;
 			}
 
-			return this.getEntityWithChanges(baseVariant, entityPath);
+			// Apply changes - use the actual variant.slug for lookup since changes are tracked by slug
+			// The `variantSlug` parameter should match, but use the actual slug from the data to be safe
+			const actualEntityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${baseVariant.slug}`;
+			return this.getEntityWithChanges(baseVariant, actualEntityPath);
 		} catch (error) {
 			console.error(`Error loading variant ${brandId}/${materialType}/${filamentId}/${variantSlug}:`, error);
 			return null;

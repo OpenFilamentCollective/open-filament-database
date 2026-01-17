@@ -17,7 +17,9 @@ const STORAGE_KEY_IMAGES_PREFIX = 'ofd_image_';
  * Calculate a user-friendly description for a change
  */
 function describeChange(entity: EntityIdentifier, operation: ChangeOperation, data?: any): string {
-	const entityName = data?.name || data?.id || entity.id;
+	// For materials, use the 'material' field (e.g., "PLA"); for variants use 'color_name'
+	// Fall back to 'name', then 'id', then entity.id
+	const entityName = data?.name || data?.material || data?.color_name || data?.id || entity.id;
 
 	switch (operation) {
 		case 'create':
@@ -32,21 +34,56 @@ function describeChange(entity: EntityIdentifier, operation: ChangeOperation, da
 }
 
 /**
+ * Check if two values are effectively equal (handles undefined/null/empty equivalence)
+ */
+function areValuesEqual(oldValue: any, newValue: any): boolean {
+	// Handle undefined/null equivalence
+	const oldEmpty = oldValue === undefined || oldValue === null || oldValue === '';
+	const newEmpty = newValue === undefined || newValue === null || newValue === '';
+	if (oldEmpty && newEmpty) return true;
+
+	// Handle empty array vs undefined/null
+	if (Array.isArray(oldValue) && oldValue.length === 0 && newEmpty) return true;
+	if (Array.isArray(newValue) && newValue.length === 0 && oldEmpty) return true;
+
+	// Deep comparison using JSON
+	return JSON.stringify(oldValue) === JSON.stringify(newValue);
+}
+
+/**
  * Deep comparison to find changed properties
  */
 function findChangedProperties(oldObj: any, newObj: any, prefix = ''): PropertyChange[] {
 	const changes: PropertyChange[] = [];
 
+	// Fields to skip (internal identifiers, separately tracked fields, and related data)
+	const skipFields = new Set([
+		'id', 'slug', 'logo', 'logo_name', 'logo_slug',
+		// Context fields added when loading data (not part of the actual stored entity)
+		'brandId', 'brand_id', 'materialType', 'filament_id',
+		// Related data that's loaded separately, not part of the entity itself
+		'materials', 'filaments', 'variants'
+	]);
+
 	// Get all unique keys from both objects
 	const allKeys = new Set([...Object.keys(oldObj || {}), ...Object.keys(newObj || {})]);
 
 	for (const key of allKeys) {
-		const propertyPath = prefix ? `${prefix}.${key}` : key;
-		const oldValue = oldObj?.[key];
-		const newValue = newObj?.[key];
+		// Skip internal identifier fields at root level
+		if (!prefix && skipFields.has(key)) {
+			continue;
+		}
 
-		// Skip if values are identical
-		if (JSON.stringify(oldValue) === JSON.stringify(newValue)) {
+		const propertyPath = prefix ? `${prefix}.${key}` : key;
+
+		// Check if key exists in each object (vs just being undefined)
+		const oldHasKey = oldObj && key in oldObj;
+		const newHasKey = newObj && key in newObj;
+		const oldValue = oldHasKey ? oldObj[key] : undefined;
+		const newValue = newHasKey ? newObj[key] : undefined;
+
+		// Skip if values are effectively equal (including missing vs null vs empty string)
+		if (areValuesEqual(oldValue, newValue)) {
 			continue;
 		}
 
@@ -141,13 +178,6 @@ function createChangeStore() {
 		trackUpdate(entity: EntityIdentifier, oldData: any, newData: any) {
 			if (!get(isCloudMode)) return;
 
-			const propertyChanges = findChangedProperties(oldData, newData);
-
-			if (propertyChanges.length === 0) {
-				// No actual changes
-				return;
-			}
-
 			update((changeSet) => {
 				const existingChange = changeSet.changes[entity.path];
 
@@ -159,17 +189,35 @@ function createChangeStore() {
 						timestamp: Date.now(),
 						description: describeChange(entity, 'create', newData)
 					};
-				} else {
-					// Track as an update
-					changeSet.changes[entity.path] = {
-						entity,
-						operation: 'update',
-						data: newData,
-						propertyChanges,
-						timestamp: Date.now(),
-						description: describeChange(entity, 'update', newData)
-					};
+					changeSet.lastModified = Date.now();
+					persist(changeSet);
+					return changeSet;
 				}
+
+				// For updates, use the original data from existing change or the provided oldData
+				const originalData = existingChange?.originalData ?? oldData;
+
+				// Compare against the original data to see if there are still changes
+				const propertyChanges = findChangedProperties(originalData, newData);
+
+				if (propertyChanges.length === 0) {
+					// All changes have been reverted - remove the change entry
+					delete changeSet.changes[entity.path];
+					changeSet.lastModified = Date.now();
+					persist(changeSet);
+					return changeSet;
+				}
+
+				// Track as an update, preserving the original data
+				changeSet.changes[entity.path] = {
+					entity,
+					operation: 'update',
+					data: newData,
+					originalData,
+					propertyChanges,
+					timestamp: Date.now(),
+					description: describeChange(entity, 'update', newData)
+				};
 
 				changeSet.lastModified = Date.now();
 				persist(changeSet);

@@ -16,6 +16,7 @@
 
 	let brandId: string = $derived($page.params.brand!);
 	let brand: Brand | null = $state(null);
+	let originalBrand: Brand | null = $state(null); // Keep original for revert detection
 	let materials: Material[] = $state([]);
 	let schema: any = $state(null);
 	let loading: boolean = $state(true);
@@ -33,11 +34,11 @@
 	// Create message handler
 	const messageHandler = createMessageHandler();
 
-	// Check if this brand has local changes
+	// Check if this brand has local changes (use brand.id which is the UUID, not the URL slug)
 	let hasLocalChanges = $derived.by(() => {
 		if (!$isCloudMode || !brand) return false;
 
-		const entityPath = `brands/${brandId}`;
+		const entityPath = `brands/${brand.id}`;
 		const change = $changeStore.changes[entityPath];
 
 		return change && (change.operation === 'create' || change.operation === 'update');
@@ -59,6 +60,7 @@
 			}
 
 			brand = brandData;
+			originalBrand = structuredClone(brandData); // Deep clone for revert detection
 			materials = materialsData;
 			schema = schemaData;
 
@@ -105,8 +107,8 @@
 				logo: logoFilename
 			};
 
-			// Use DatabaseService for saving (handles cloud vs local mode)
-			const success = await db.saveBrand(updatedBrand, brand);
+			// Pass the original brand data so change tracking can detect reverts
+			const success = await db.saveBrand(updatedBrand, originalBrand ?? brand);
 
 			if (success) {
 				brand = updatedBrand;
@@ -305,6 +307,8 @@
 						<div class="space-y-2">
 							{#each materials as material}
 								{@const materialHref = `/brands/${brandData.slug ?? brandData.id}/${material.materialType ?? material.material.toLowerCase()}`}
+								{@const materialPath = `brands/${brandData.id}/materials/${material.materialType ?? material.material.toLowerCase()}`}
+								{@const materialChange = $isCloudMode ? $changeStore.changes[materialPath] : undefined}
 								<EntityCard
 									entity={material}
 									href={materialHref}
@@ -312,6 +316,8 @@
 									id={material.materialType ?? material.material}
 									hoverColor="purple"
 									showLogo={false}
+									hasLocalChanges={!!materialChange}
+									localChangeType={materialChange?.operation}
 								/>
 							{/each}
 						</div>

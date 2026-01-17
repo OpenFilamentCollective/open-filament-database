@@ -8,6 +8,8 @@
 	import { EntityCard } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
+	import { isCloudMode } from '$lib/stores/environment';
+	import { changeStore } from '$lib/stores/changes';
 
 	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
@@ -168,6 +170,8 @@
 		{#snippet children(storesList)}
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each storesList as store}
+					{@const storePath = `stores/${store.id}`}
+					{@const storeChange = $isCloudMode ? $changeStore.changes[storePath] : undefined}
 					<EntityCard
 						entity={store}
 						href="/stores/{store.slug ?? store.id}"
@@ -183,6 +187,8 @@
 								class: 'text-muted-foreground'
 							}
 						]}
+						hasLocalChanges={!!storeChange}
+						localChangeType={storeChange?.operation}
 					/>
 				{/each}
 			</div>

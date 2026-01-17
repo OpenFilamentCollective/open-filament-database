@@ -1,29 +1,29 @@
 @theme {
-	--color-background: hsl(0 0% 100%);
-	--color-foreground: hsl(0 0% 3.9%);
-	--color-card: hsl(0 0% 100%);
-	--color-card-foreground: hsl(0 0% 3.9%);
-	--color-popover: hsl(0 0% 100%);
-	--color-popover-foreground: hsl(0 0% 3.9%);
-	--color-primary: hsl(0 0% 9%);
-	--color-primary-foreground: hsl(0 0% 98%);
-	--color-secondary: hsl(0 0% 96.1%);
-	--color-secondary-foreground: hsl(0 0% 9%);
-	--color-muted: hsl(0 0% 96.1%);
-	--color-muted-foreground: hsl(0 0% 45.1%);
-	--color-accent: hsl(0 0% 96.1%);
-	--color-accent-foreground: hsl(0 0% 9%);
-	--color-destructive: hsl(0 84.2% 60.2%);
-	--color-destructive-foreground: hsl(0 0% 98%);
-	--color-border: hsl(0 0% 89.8%);
-	--color-input: hsl(0 0% 89.8%);
-	--color-ring: hsl(0 0% 3.9%);
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
+	--color-card: hsl(var(--card));
+	--color-card-foreground: hsl(var(--card-foreground));
+	--color-popover: hsl(var(--popover));
+	--color-popover-foreground: hsl(var(--popover-foreground));
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+	--color-accent: hsl(var(--accent));
+	--color-accent-foreground: hsl(var(--accent-foreground));
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
+	--color-border: hsl(var(--border));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
 
 	/* Custom success/warning colors */
-	--color-success: hsl(142.1 76.2% 36.3%);
-	--color-success-foreground: hsl(355.7 100% 97.3%);
-	--color-warning: hsl(32.1 94.6% 43.7%);
-	--color-warning-foreground: hsl(26 83.3% 14.1%);
+	--color-success: hsl(var(--success));
+	--color-success-foreground: hsl(var(--success-foreground));
+	--color-warning: hsl(var(--warning));
+	--color-warning-foreground: hsl(var(--warning-foreground));
 
 	--radius: 0.5rem;
 }
@@ -84,5 +84,19 @@
 @layer base {
 	body {
 		@apply bg-background text-foreground;
+	}
+
+	/* Ensure all interactive elements have pointer cursor */
+	button:not(:disabled),
+	[role="button"]:not(:disabled),
+	input[type="submit"]:not(:disabled),
+	input[type="button"]:not(:disabled) {
+		cursor: pointer;
+	}
+
+	/* Disabled elements show not-allowed cursor */
+	button:disabled,
+	[role="button"][aria-disabled="true"] {
+		cursor: not-allowed;
 	}
 }

@@ -9,7 +9,7 @@
 		applyFormattedTitles
 	} from '$lib/utils/schemaUtils';
 	import { customTranslation } from '$lib/utils/translations';
-	import { NameField, LogoUpload } from '$lib/components/form-fields';
+	import { TextField, LogoUpload } from '$lib/components/form-fields';
 	
 	interface Props {
 		entity: any;
@@ -116,7 +116,7 @@
 
 <div class="space-y-4">
 	<!-- Name Field (Manual) -->
-	<NameField bind:value={formData.name} id={config.nameFieldId} />
+	<TextField bind:value={formData.name} id={config.nameFieldId} label="Name" required />
 
 	<!-- Logo Upload Section -->
 	<div>

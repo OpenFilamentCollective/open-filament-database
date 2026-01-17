@@ -40,12 +40,37 @@
 	let cropSize: number = $state(0);
 	let isDragging: boolean = $state(false);
 	let isResizing: boolean = $state(false);
-	let resizeCorner: 'tl' | 'tr' | 'bl' | 'br' | null = $state(null);
+	let resizeHandle: 'tl' | 'tr' | 'bl' | 'br' | 't' | 'r' | 'b' | 'l' | null = $state(null);
 	let dragStartX: number = 0;
 	let dragStartY: number = 0;
 	let resizeStartX: number = 0;
 	let resizeStartY: number = 0;
 	let resizeStartSize: number = 0;
+
+	// Canvas dimensions (constrained to viewport)
+	let canvasWidth: number = $state(400);
+	let canvasHeight: number = $state(400);
+	let needsRedraw: boolean = $state(false);
+
+	// Redraw when canvas becomes available or dimensions change
+	$effect(() => {
+		// Track these reactive values
+		const canvas = cropCanvas;
+		const image = cropImage;
+		const width = canvasWidth;
+		const height = canvasHeight;
+		const redraw = needsRedraw;
+
+		if (redraw && canvas && image && width > 0 && height > 0) {
+			// Use multiple frames to ensure canvas has been resized by browser
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
+					drawCropPreview();
+				});
+			});
+			needsRedraw = false;
+		}
+	});
 
 	$effect(() => {
 		// Update preview when currentLogo prop changes - construct API URL or use base64
@@ -152,7 +177,33 @@
 			cropX = Math.round((validation!.width - minDimension) / 2);
 			cropY = Math.round((validation!.height - minDimension) / 2);
 
-			drawCropPreview();
+			// Calculate canvas size constrained to viewport
+			// Use 3/4 of viewport with padding for modal chrome
+			const maxWidth = Math.min(window.innerWidth * 0.75 - 48, 700);
+			const maxHeight = Math.min(window.innerHeight * 0.7 - 120, 600);
+
+			const aspectRatio = validation!.width / validation!.height;
+
+			if (aspectRatio > 1) {
+				// Wider than tall
+				canvasWidth = Math.min(maxWidth, validation!.width);
+				canvasHeight = canvasWidth / aspectRatio;
+				if (canvasHeight > maxHeight) {
+					canvasHeight = maxHeight;
+					canvasWidth = canvasHeight * aspectRatio;
+				}
+			} else {
+				// Taller than wide
+				canvasHeight = Math.min(maxHeight, validation!.height);
+				canvasWidth = canvasHeight * aspectRatio;
+				if (canvasWidth > maxWidth) {
+					canvasWidth = maxWidth;
+					canvasHeight = canvasWidth / aspectRatio;
+				}
+			}
+
+			// Signal that canvas needs redraw (effect will handle timing)
+			needsRedraw = true;
 		};
 		img.src = originalImageUrl;
 	}
@@ -194,38 +245,47 @@
 		ctx.drawImage(cropImage, 0, 0, cropCanvas.width, cropCanvas.height);
 		ctx.restore();
 
-		// Draw crop border
-		ctx.strokeStyle = '#3b82f6';
+		// Draw crop border with primary color
+		ctx.strokeStyle = 'hsl(var(--primary))';
 		ctx.lineWidth = 2;
 		ctx.strokeRect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
 
-		// Draw corner handles
-		const handleSize = 10;
-		ctx.fillStyle = '#3b82f6';
+		// Handle styling - larger, rounded, with border
+		const cornerSize = 14;
+		const sideSize = 10;
+		const sideLength = 24;
 
+		// Helper to draw rounded rect handle
+		function drawHandle(x: number, y: number, w: number, h: number) {
+			const radius = 3;
+			ctx.beginPath();
+			ctx.roundRect(x, y, w, h, radius);
+			ctx.fillStyle = 'hsl(var(--primary))';
+			ctx.fill();
+			ctx.strokeStyle = 'hsl(var(--primary-foreground))';
+			ctx.lineWidth = 1.5;
+			ctx.stroke();
+		}
+
+		// Corner handles (squares)
 		// Top-left
-		ctx.fillRect(canvasCropX - handleSize / 2, canvasCropY - handleSize / 2, handleSize, handleSize);
+		drawHandle(canvasCropX - cornerSize / 2, canvasCropY - cornerSize / 2, cornerSize, cornerSize);
 		// Top-right
-		ctx.fillRect(
-			canvasCropX + canvasCropSize - handleSize / 2,
-			canvasCropY - handleSize / 2,
-			handleSize,
-			handleSize
-		);
+		drawHandle(canvasCropX + canvasCropSize - cornerSize / 2, canvasCropY - cornerSize / 2, cornerSize, cornerSize);
 		// Bottom-left
-		ctx.fillRect(
-			canvasCropX - handleSize / 2,
-			canvasCropY + canvasCropSize - handleSize / 2,
-			handleSize,
-			handleSize
-		);
+		drawHandle(canvasCropX - cornerSize / 2, canvasCropY + canvasCropSize - cornerSize / 2, cornerSize, cornerSize);
 		// Bottom-right
-		ctx.fillRect(
-			canvasCropX + canvasCropSize - handleSize / 2,
-			canvasCropY + canvasCropSize - handleSize / 2,
-			handleSize,
-			handleSize
-		);
+		drawHandle(canvasCropX + canvasCropSize - cornerSize / 2, canvasCropY + canvasCropSize - cornerSize / 2, cornerSize, cornerSize);
+
+		// Side handles (pill shapes on edges)
+		// Top center
+		drawHandle(canvasCropX + canvasCropSize / 2 - sideLength / 2, canvasCropY - sideSize / 2, sideLength, sideSize);
+		// Bottom center
+		drawHandle(canvasCropX + canvasCropSize / 2 - sideLength / 2, canvasCropY + canvasCropSize - sideSize / 2, sideLength, sideSize);
+		// Left center
+		drawHandle(canvasCropX - sideSize / 2, canvasCropY + canvasCropSize / 2 - sideLength / 2, sideSize, sideLength);
+		// Right center
+		drawHandle(canvasCropX + canvasCropSize - sideSize / 2, canvasCropY + canvasCropSize / 2 - sideLength / 2, sideSize, sideLength);
 	}
 
 	function handleMouseDown(event: MouseEvent) {
@@ -238,16 +298,25 @@
 		const mouseX = (event.clientX - rect.left) * scaleX;
 		const mouseY = (event.clientY - rect.top) * scaleY;
 
-		// Check for corner handle clicks (with tolerance)
-		const handleTolerance = 15;
+		// Handle tolerance for hit detection
+		const cornerTolerance = 18;
+		const sideTolerance = 16;
 
+		// Helper to check if mouse is near a point
+		function nearPoint(mx: number, my: number, px: number, py: number, tol: number) {
+			return Math.abs(mx - px) < tol && Math.abs(my - py) < tol;
+		}
+
+		// Helper to check if mouse is near a side handle
+		function nearSideH(mx: number, my: number, cx: number, cy: number, tolX: number, tolY: number) {
+			return Math.abs(mx - cx) < tolX && Math.abs(my - cy) < tolY;
+		}
+
+		// Corner handles
 		// Top-left
-		if (
-			Math.abs(mouseX - cropX) < handleTolerance &&
-			Math.abs(mouseY - cropY) < handleTolerance
-		) {
+		if (nearPoint(mouseX, mouseY, cropX, cropY, cornerTolerance)) {
 			isResizing = true;
-			resizeCorner = 'tl';
+			resizeHandle = 'tl';
 			resizeStartX = cropX;
 			resizeStartY = cropY;
 			resizeStartSize = cropSize;
@@ -255,12 +324,9 @@
 		}
 
 		// Top-right
-		if (
-			Math.abs(mouseX - (cropX + cropSize)) < handleTolerance &&
-			Math.abs(mouseY - cropY) < handleTolerance
-		) {
+		if (nearPoint(mouseX, mouseY, cropX + cropSize, cropY, cornerTolerance)) {
 			isResizing = true;
-			resizeCorner = 'tr';
+			resizeHandle = 'tr';
 			resizeStartX = cropX;
 			resizeStartY = cropY;
 			resizeStartSize = cropSize;
@@ -268,12 +334,9 @@
 		}
 
 		// Bottom-left
-		if (
-			Math.abs(mouseX - cropX) < handleTolerance &&
-			Math.abs(mouseY - (cropY + cropSize)) < handleTolerance
-		) {
+		if (nearPoint(mouseX, mouseY, cropX, cropY + cropSize, cornerTolerance)) {
 			isResizing = true;
-			resizeCorner = 'bl';
+			resizeHandle = 'bl';
 			resizeStartX = cropX;
 			resizeStartY = cropY;
 			resizeStartSize = cropSize;
@@ -281,12 +344,50 @@
 		}
 
 		// Bottom-right
-		if (
-			Math.abs(mouseX - (cropX + cropSize)) < handleTolerance &&
-			Math.abs(mouseY - (cropY + cropSize)) < handleTolerance
-		) {
+		if (nearPoint(mouseX, mouseY, cropX + cropSize, cropY + cropSize, cornerTolerance)) {
 			isResizing = true;
-			resizeCorner = 'br';
+			resizeHandle = 'br';
+			resizeStartX = cropX;
+			resizeStartY = cropY;
+			resizeStartSize = cropSize;
+			return;
+		}
+
+		// Side handles (for maintaining square, resize from center of each side)
+		// Top center
+		if (nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY, cropSize / 3, sideTolerance)) {
+			isResizing = true;
+			resizeHandle = 't';
+			resizeStartX = cropX;
+			resizeStartY = cropY;
+			resizeStartSize = cropSize;
+			return;
+		}
+
+		// Bottom center
+		if (nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY + cropSize, cropSize / 3, sideTolerance)) {
+			isResizing = true;
+			resizeHandle = 'b';
+			resizeStartX = cropX;
+			resizeStartY = cropY;
+			resizeStartSize = cropSize;
+			return;
+		}
+
+		// Left center
+		if (nearSideH(mouseX, mouseY, cropX, cropY + cropSize / 2, sideTolerance, cropSize / 3)) {
+			isResizing = true;
+			resizeHandle = 'l';
+			resizeStartX = cropX;
+			resizeStartY = cropY;
+			resizeStartSize = cropSize;
+			return;
+		}
+
+		// Right center
+		if (nearSideH(mouseX, mouseY, cropX + cropSize, cropY + cropSize / 2, sideTolerance, cropSize / 3)) {
+			isResizing = true;
+			resizeHandle = 'r';
 			resizeStartX = cropX;
 			resizeStartY = cropY;
 			resizeStartSize = cropSize;
@@ -316,44 +417,68 @@
 		const mouseX = (event.clientX - rect.left) * scaleX;
 		const mouseY = (event.clientY - rect.top) * scaleY;
 
-		if (isResizing && resizeCorner) {
-			// Handle resizing from corners
+		if (isResizing && resizeHandle) {
+			// Handle resizing from corners and sides
 			let newX = cropX;
 			let newY = cropY;
 			let newSize = cropSize;
 
-			if (resizeCorner === 'tl') {
+			const minSize = 50;
+
+			if (resizeHandle === 'tl') {
 				// Top-left: adjust both position and size
 				const deltaX = mouseX - resizeStartX;
 				const deltaY = mouseY - resizeStartY;
-				const delta = Math.max(deltaX, deltaY); // Use max to maintain square
+				const delta = Math.max(deltaX, deltaY);
 
 				newX = resizeStartX + delta;
 				newY = resizeStartY + delta;
 				newSize = resizeStartSize - delta;
-			} else if (resizeCorner === 'tr') {
+			} else if (resizeHandle === 'tr') {
 				// Top-right: adjust Y and size
 				const deltaX = mouseX - (resizeStartX + resizeStartSize);
 				const deltaY = mouseY - resizeStartY;
-				const delta = Math.max(deltaX, -deltaY); // Use max to maintain square
+				const delta = Math.max(deltaX, -deltaY);
 
 				newY = resizeStartY - delta;
 				newSize = resizeStartSize + delta;
-			} else if (resizeCorner === 'bl') {
+			} else if (resizeHandle === 'bl') {
 				// Bottom-left: adjust X and size
 				const deltaX = mouseX - resizeStartX;
 				const deltaY = mouseY - (resizeStartY + resizeStartSize);
-				const delta = Math.max(-deltaX, deltaY); // Use max to maintain square
+				const delta = Math.max(-deltaX, deltaY);
 
 				newX = resizeStartX - delta;
 				newSize = resizeStartSize + delta;
-			} else if (resizeCorner === 'br') {
+			} else if (resizeHandle === 'br') {
 				// Bottom-right: only adjust size
 				const deltaX = mouseX - (resizeStartX + resizeStartSize);
 				const deltaY = mouseY - (resizeStartY + resizeStartSize);
-				const delta = Math.max(deltaX, deltaY); // Use max to maintain square
+				const delta = Math.max(deltaX, deltaY);
 
 				newSize = resizeStartSize + delta;
+			} else if (resizeHandle === 't') {
+				// Top edge: resize from top, maintain center horizontally
+				const delta = resizeStartY - mouseY;
+				newSize = resizeStartSize + delta * 2;
+				newX = resizeStartX + resizeStartSize / 2 - newSize / 2;
+				newY = resizeStartY - delta;
+			} else if (resizeHandle === 'b') {
+				// Bottom edge: resize from bottom, maintain center horizontally
+				const delta = mouseY - (resizeStartY + resizeStartSize);
+				newSize = resizeStartSize + delta * 2;
+				newX = resizeStartX + resizeStartSize / 2 - newSize / 2;
+			} else if (resizeHandle === 'l') {
+				// Left edge: resize from left, maintain center vertically
+				const delta = resizeStartX - mouseX;
+				newSize = resizeStartSize + delta * 2;
+				newX = resizeStartX - delta;
+				newY = resizeStartY + resizeStartSize / 2 - newSize / 2;
+			} else if (resizeHandle === 'r') {
+				// Right edge: resize from right, maintain center vertically
+				const delta = mouseX - (resizeStartX + resizeStartSize);
+				newSize = resizeStartSize + delta * 2;
+				newY = resizeStartY + resizeStartSize / 2 - newSize / 2;
 			}
 
 			// Snap to pixel
@@ -362,7 +487,6 @@
 			newSize = Math.round(newSize);
 
 			// Constrain minimum size
-			const minSize = 50;
 			if (newSize < minSize) {
 				return;
 			}
@@ -398,7 +522,7 @@
 	function handleMouseUp() {
 		isDragging = false;
 		isResizing = false;
-		resizeCorner = null;
+		resizeHandle = null;
 	}
 
 	function getCursorStyle(event: MouseEvent): string {
@@ -411,37 +535,47 @@
 		const mouseX = (event.clientX - rect.left) * scaleX;
 		const mouseY = (event.clientY - rect.top) * scaleY;
 
-		const handleTolerance = 15;
+		const cornerTolerance = 18;
+		const sideTolerance = 16;
 
-		// Check corner positions for cursor feedback
-		if (
-			Math.abs(mouseX - cropX) < handleTolerance &&
-			Math.abs(mouseY - cropY) < handleTolerance
-		) {
+		// Helper functions
+		function nearPoint(mx: number, my: number, px: number, py: number, tol: number) {
+			return Math.abs(mx - px) < tol && Math.abs(my - py) < tol;
+		}
+
+		function nearSideH(mx: number, my: number, cx: number, cy: number, tolX: number, tolY: number) {
+			return Math.abs(mx - cx) < tolX && Math.abs(my - cy) < tolY;
+		}
+
+		// Corner handles
+		if (nearPoint(mouseX, mouseY, cropX, cropY, cornerTolerance)) {
+			return 'nwse-resize';
+		}
+		if (nearPoint(mouseX, mouseY, cropX + cropSize, cropY, cornerTolerance)) {
+			return 'nesw-resize';
+		}
+		if (nearPoint(mouseX, mouseY, cropX, cropY + cropSize, cornerTolerance)) {
+			return 'nesw-resize';
+		}
+		if (nearPoint(mouseX, mouseY, cropX + cropSize, cropY + cropSize, cornerTolerance)) {
 			return 'nwse-resize';
 		}
 
-		if (
-			Math.abs(mouseX - (cropX + cropSize)) < handleTolerance &&
-			Math.abs(mouseY - cropY) < handleTolerance
-		) {
-			return 'nesw-resize';
+		// Side handles
+		if (nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY, cropSize / 3, sideTolerance)) {
+			return 'ns-resize';
+		}
+		if (nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY + cropSize, cropSize / 3, sideTolerance)) {
+			return 'ns-resize';
+		}
+		if (nearSideH(mouseX, mouseY, cropX, cropY + cropSize / 2, sideTolerance, cropSize / 3)) {
+			return 'ew-resize';
+		}
+		if (nearSideH(mouseX, mouseY, cropX + cropSize, cropY + cropSize / 2, sideTolerance, cropSize / 3)) {
+			return 'ew-resize';
 		}
 
-		if (
-			Math.abs(mouseX - cropX) < handleTolerance &&
-			Math.abs(mouseY - (cropY + cropSize)) < handleTolerance
-		) {
-			return 'nesw-resize';
-		}
-
-		if (
-			Math.abs(mouseX - (cropX + cropSize)) < handleTolerance &&
-			Math.abs(mouseY - (cropY + cropSize)) < handleTolerance
-		) {
-			return 'nwse-resize';
-		}
-
+		// Inside crop area
 		if (
 			mouseX >= cropX &&
 			mouseX <= cropX + cropSize &&
@@ -538,22 +672,22 @@
 </div>
 
 {#if showCropModal}
-	<div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-		<div class="bg-card rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-auto">
-			<div class="p-6">
-				<h3 class="text-xl font-semibold mb-4">Crop Image</h3>
+	<div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+		<div class="bg-card rounded-lg shadow-xl max-w-[90vw] max-h-[90vh] overflow-hidden border border-border">
+			<div class="p-4 sm:p-6">
+				<h3 class="text-lg font-semibold text-foreground mb-2">Crop Image</h3>
 
 				<p class="text-sm text-muted-foreground mb-4">
-					Drag the crop area to move it. Use the corner handles to resize. The crop area must be square.
+					Drag to move. Use corner or side handles to resize. The crop must be square.
 				</p>
 
 				{#if validation}
-					<div class="mb-4 bg-muted p-4 rounded flex items-center justify-center">
+					<div class="mb-4 bg-muted/50 p-3 rounded-lg flex items-center justify-center">
 						<canvas
 							bind:this={cropCanvas}
-							width={600}
-							height={600 * (validation.height / validation.width)}
-							class="max-w-full border border-border"
+							width={canvasWidth}
+							height={canvasHeight}
+							class="border border-border rounded shadow-sm"
 							onmousedown={handleMouseDown}
 							onmousemove={(e) => {
 								handleMouseMove(e);
@@ -565,12 +699,12 @@
 					</div>
 				{/if}
 
-				<div class="flex justify-end gap-2">
+				<div class="flex justify-end gap-3">
 					<button
 						type="button"
 						onclick={cancelCrop}
 						disabled={processing}
-						class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium"
+						class="px-4 py-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md font-medium transition-colors disabled:opacity-50"
 					>
 						Cancel
 					</button>
@@ -578,7 +712,7 @@
 						type="button"
 						onclick={applyCrop}
 						disabled={processing}
-						class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
+						class="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md font-medium transition-colors disabled:opacity-50"
 					>
 						{processing ? 'Processing...' : 'Apply Crop'}
 					</button>

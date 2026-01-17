@@ -47,9 +47,9 @@ export const POST: RequestHandler = async ({ params, request }) => {
 
 		const materialData = await request.json();
 
-		// Generate materialType from the material name (lowercase, hyphenated)
+		// Generate materialType from the material name (uppercase, hyphenated)
 		const materialType = materialData.materialType ||
-			materialData.material.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+			materialData.material.toUpperCase().replace(/[^A-Z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 		if (IS_LOCAL) {
 			const normalizedBrandId = await normalizeBrandId(DATA_DIR, params.brandId);

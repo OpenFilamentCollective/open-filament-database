@@ -4,9 +4,8 @@ import { createFormMerger } from '@sjsf/form/mergers/modern';
 import { createFormIdBuilder } from '@sjsf/form/id-builders/modern';
 import { createFormValidator } from '@sjsf/ajv8-validator';
 
-// Using the base theme from @sjsf/form
-// Styling is handled via Tailwind classes in schemaUtils.ts createUiSchema()
-import { base as theme } from '@sjsf/form/theme';
+// Custom theme with foundational components (form, submitButton) + base fields/templates
+import { theme } from '$lib/sjsf-theme';
 
 export const formDefaults = {
 	theme,

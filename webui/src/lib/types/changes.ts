@@ -41,9 +41,11 @@ export interface EntityChange {
 	/** Type of operation */
 	operation: ChangeOperation;
 	/** For 'create': the entire new entity */
-	/** For 'update': only the changed properties */
+	/** For 'update': the current modified data */
 	/** For 'delete': undefined (entity is marked as deleted) */
 	data?: any;
+	/** For 'update': the original data before any changes (used to detect if changes are reverted) */
+	originalData?: any;
 	/** For 'update': detailed property-level changes */
 	propertyChanges?: PropertyChange[];
 	/** When the change was made */
