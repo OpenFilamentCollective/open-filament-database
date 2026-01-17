@@ -1,119 +1,95 @@
 <script lang="ts">
-  import BackBtn from '$lib/components/backBtn.svelte';
-  import Breadcrumb from '$lib/components/breadcrumb.svelte';
-  import ValidationDropdown from '$lib/components/ValidationDropdown.svelte';
-  import SortDataButton from '$lib/components/SortDataButton.svelte';
-  import { getFlash, updateFlash } from 'sveltekit-flash-message';
-  import '../app.css';
-  import type { LayoutProps } from './$types';
-  import { page } from '$app/state';
-  import { env } from '$env/dynamic/public';
-  const isDev = env.PUBLIC_IS_DEV === 'true';
+	import './layout.css';
+	import favicon from '$lib/assets/favicon.svg';
+	import { ChangesMenu } from '$lib/components/layout';
+	import { isLocalMode } from '$lib/stores/environment';
+	import { db } from '$lib/services/database';
+	import { page } from '$app/stores';
+	import { env } from '$env/dynamic/public';
 
-  let flash = getFlash(page);
-  let { children }: LayoutProps = $props();
+	let { children } = $props();
 
-  let currentYear = new Date().getFullYear();
+	let refreshing = $state(false);
+
+	async function handleRefresh() {
+		refreshing = true;
+		try {
+			// Clear the database cache
+			db.clearCache();
+			// Reload the current page
+			window.location.reload();
+		} finally {
+			refreshing = false;
+		}
+	}
 </script>
 
-{#if $flash}
-  {@const isSuccess = $flash.type == 'success'}
-  {@const isError = $flash.type == 'error'}
-  <div class="fixed top-4 right-4 z-50 transform transition-all duration-300 ease-in-out">
-    <div
-      class="max-w-sm rounded-lg shadow-lg border-l-4 {isSuccess
-        ? 'bg-green-50 border-green-500 dark:bg-green-900/20 dark:border-green-400'
-        : 'bg-red-50 border-red-500 dark:bg-red-900/20 dark:border-red-400'}">
-      <div class="flex items-center justify-between p-4">
-        <div class="flex items-center space-x-3">
-          {#if isSuccess}
-            <svg
-              class="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 13l4 4L19 7"></path>
-            </svg>
-          {:else}
-            <svg
-              class="w-6 h-6 text-red-600 dark:text-red-400 flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          {/if}
-          <p
-            class="font-medium text-sm {isSuccess
-              ? 'text-green-800 dark:text-green-200'
-              : 'text-red-800 dark:text-red-200'}">
-            {$flash.message}
-          </p>
-        </div>
+<svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
-        <button
-          aria-label="close"
-          class="ml-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors flex-shrink-0"
-          onclick={() => flash.set(undefined)}>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-{/if}
+<div class="min-h-screen flex flex-col">
+	<header class="bg-card border-b border-border">
+		<div class="container mx-auto px-4 py-3 flex justify-between items-center">
+			<div class="flex items-center gap-6">
+				<a href="/" class="text-xl font-bold text-foreground hover:text-muted-foreground">
+					Filament Database
+				</a>
+				<nav class="flex items-center gap-4">
+					<a
+						href="/brands"
+						class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+					>
+						Brands
+					</a>
+					<a
+						href="/stores"
+						class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+					>
+						Stores
+					</a>
+					<a
+						href="/faq"
+						class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+					>
+						FAQ
+					</a>
+					<a
+						href={env.PUBLIC_API_BASE_URL}
+						class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+					>
+						API
+					</a>
+				</nav>
+			</div>
+			<div class="flex items-center gap-3">
+				{#if $isLocalMode}
+					<button
+						onclick={handleRefresh}
+						disabled={refreshing}
+						class="bg-muted text-muted-foreground hover:bg-muted/80 px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-1.5"
+						title="Refresh data from filesystem"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4 {refreshing ? 'animate-spin' : ''}"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+						<span class="hidden sm:inline">{refreshing ? 'Refreshing...' : 'Refresh'}</span>
+					</button>
+				{:else}
+					<ChangesMenu />
+				{/if}
+			</div>
+		</div>
+	</header>
 
-<div
-  class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors">
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mb-12">
-    <nav class="sm:px-6 lg:px-8 flex gap-4 items-center justify-between">
-      <div class="flex gap-4 items-center">
-        <BackBtn />
-        <Breadcrumb />
-      </div>
-
-      <div class="flex gap-3 items-center">
-        <SortDataButton />
-        <ValidationDropdown />
-      </div>
-    </nav>
-    {@render children()}
-  </main>
-
-  <footer
-    class="bg-gray-900 dark:bg-gray-800 text-white text-center p-2 mt-5 shadow-inner"
-    style="position: fixed; bottom: 0; width: 100vw; display: inline;"
-  >
-    © {currentYear} Open Filament Database – All rights reserved
-
-    {#if isDev}
-      <button
-        style="float: right;"
-        class="bg-red-900"
-        onclick={async () => {
-        const response = await fetch('/api/refreshData', {
-          method: 'POST'
-        });
-
-        await updateFlash(page);
-
-        location.reload();
-      }}>
-        Refresh DB Data
-      </button>
-    {/if}
-  </footer>
+	<main class="flex-1">
+		{@render children()}
+	</main>
 </div>
