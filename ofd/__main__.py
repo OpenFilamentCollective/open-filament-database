@@ -30,7 +30,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from ofd.commands import validate, build, serve, script
+from ofd.commands import validate, build, serve, script, webui
 
 
 class CommandHelpFormatter(argparse.RawDescriptionHelpFormatter):
@@ -63,6 +63,7 @@ Command Details:
   build      [-o DIR] [--skip-json] [--skip-sqlite] [--skip-csv] [--skip-api]
   serve      [-d DIR] [-p PORT] [--host HOST]
   script     [--list] <script_name> [script_args...]
+  webui      [-p PORT] [--host HOST] [--open] [--install]
 
 Examples:
   ofd validate                     Run all data validations
@@ -72,7 +73,9 @@ Examples:
   ofd serve                        Start development server on port 8000
   ofd serve -p 3000                Start server on port 3000
   ofd script --list                List available utility scripts
-  ofd script style_data --dry-run   Preview sorting changes
+  ofd script style_data --dry-run  Preview sorting changes
+  ofd webui                        Start the WebUI on port 5173
+  ofd webui --open                 Start WebUI and open browser
         """
     )
 
@@ -94,6 +97,7 @@ Examples:
     build.register_subcommand(subparsers)
     serve.register_subcommand(subparsers)
     script.register_subcommand(subparsers)
+    webui.register_subcommand(subparsers)
 
     return parser
 

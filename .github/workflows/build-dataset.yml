@@ -59,7 +59,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # No external dependencies needed for the builder
+          pip install -r requirements.txt
 
       - name: Generate version
         id: version
@@ -71,7 +71,7 @@ jobs:
         run: |
           # Build the dataset
           # Output will be deployed to https://api.openfilamentdatabase.org/
-          python -m builder.build \
+          python -m ofd build \
             --version "${{ steps.version.outputs.version }}"
 
       - name: List generated files

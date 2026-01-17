@@ -39,7 +39,16 @@ data/
 ## Build, Test & Validation Commands
 
 ### Environment Setup
-**Always install dependencies first:**
+**Recommended: Use the OFD wrapper script (auto-installs everything):**
+```bash
+# Linux/macOS - runs setup automatically on first use
+./ofd.sh setup
+
+# Windows
+ofd.bat setup
+```
+
+**Manual setup (if needed):**
 ```bash
 # Python dependencies (required for validation)
 pip install -r requirements.txt
@@ -53,41 +62,46 @@ cd ..
 ### Data Validation (Critical for PRs)
 **Run these in order after any data changes:**
 ```bash
-# Validate folder naming consistency
+# Using wrapper script (recommended)
+./ofd.sh validate                   # Run all validations (Linux/macOS)
+ofd.bat validate                    # Run all validations (Windows)
+
+# Individual validation types
+./ofd.sh validate --folder-names    # Validate folder naming consistency
+./ofd.sh validate --json-files      # Validate JSON schema compliance
+./ofd.sh validate --store-ids       # Validate store ID references
+```
+
+**Direct Python invocation (if not using wrapper):**
+```bash
 python -m ofd validate --folder-names
-
-# Validate JSON schema compliance
 python -m ofd validate --json-files
-
-# Validate store ID references
 python -m ofd validate --store-ids
-
-# Run all validations at once
-python -m ofd validate
+python -m ofd validate              # Run all
 ```
 
 **Platform Notes:**
-- Use `python -m ofd` or `uv run -m ofd` for the unified CLI
+- Use `./ofd.sh` (Linux/macOS) or `ofd.bat` (Windows) wrapper for automatic setup
+- Or use `python -m ofd` or `uv run -m ofd` for direct CLI access
 - If `python` command fails, try `python3 -m ofd`
 
 ### WebUI Development & Testing
 ```bash
+# Using wrapper script (recommended - handles all setup)
+./ofd.sh webui                      # Start dev server (Linux/macOS)
+./ofd.sh webui --port 3000          # Custom port
+./ofd.sh webui --open               # Open browser automatically
+ofd.bat webui                       # Start dev server (Windows)
+
+# Manual approach
 cd webui
-
-# Start development server (http://localhost:5173)
-npm run dev
-
-# Type checking (expect ~103 TypeScript errors - this is normal)
-npm run check
-
-# Build for production (succeeds despite TypeScript errors)
-npm run build
-
-# Preview production build
-npm run preview
+npm run dev                         # Start development server (http://localhost:5173)
+npm run check                       # Type checking (expect ~103 TypeScript errors - this is normal)
+npm run build                       # Build for production (succeeds despite TypeScript errors)
+npm run preview                     # Preview production build
 
 # Run Playwright tests (may fail in CI due to browser installation)
-npm run test:install  # Install browsers first
+npm run test:install                # Install browsers first
 npm test
 ```
 
@@ -130,12 +144,11 @@ The repository runs these validations on every PR:
 4. **Always validate**: `python -m ofd validate --folder-names --json-files`
 
 ### Modifying WebUI
-1. Navigate to `webui/` directory
-2. Install dependencies: `npm ci`
-3. Start dev server: `npm run dev`
-4. Make changes
-5. Build to verify: `npm run build`
-6. **Note**: TypeScript errors are expected and don't block builds
+1. Start the WebUI: `./ofd.sh webui` (or `ofd.bat webui` on Windows)
+   - Wrapper handles all setup automatically on first run
+2. Make changes
+3. Build to verify: `cd webui && npm run build`
+4. **Note**: TypeScript errors are expected and don't block builds
 
 ### Debugging Validation Failures
 - Check folder naming matches JSON content exactly
@@ -147,7 +160,9 @@ The repository runs these validations on every PR:
 
 **Root Level:**
 - `requirements.txt` - Python dependencies (jsonschema, Pillow, iniconfig)
-- `ofd/` - Unified CLI package with validation, build, serve, and script commands
+- `ofd/` - Unified CLI package with validation, build, serve, script, and webui commands
+- `ofd.sh` - Cross-platform wrapper script for Linux/macOS (auto-setup, dependency detection)
+- `ofd.bat` - Cross-platform wrapper script for Windows (auto-setup, dependency detection)
 
 **WebUI Configuration:**
 - `webui/package.json` - npm scripts and dependencies

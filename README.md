@@ -27,7 +27,8 @@ If you don’t have one already, [create a free GitHub account](https://github.c
 Click the **Fork** button in the top right of this page, a guide is [available here if needed](docs/forking.md)
 ![Fork button getting pressed](docs/img/forking01.png)
 ### 3. Install our requirements
-If you don't have have Git, Python and Nodejs/NPM installed [follow this guide](docs/installing-software.md).
+If you don't have Git installed, [follow this guide](docs/installing-software.md#git). The OFD wrapper script will help you install Python and Node.js automatically (see step 5).
+
 ### 4. Download the database
 Download the database using either [this guide](docs/cloning.md) or by just using the command below, with `YOUR_USERNAME` replaced ofc!
 ```bash
@@ -37,15 +38,34 @@ cd open-filament-database
 ### 5. Make your changes!
 Use the web editor (recommended) or edit files manually:
 
-**Using the WebUI (Recommended):**
+**Using the OFD Wrapper (Recommended - handles setup automatically):**
+
+Linux/macOS:
+```bash
+./ofd.sh webui
+```
+
+Windows:
+```cmd
+ofd.bat webui
+```
+
+On first run, the wrapper will:
+- Check if Python 3.10+ and Node.js are installed (and help install them if not)
+- Create a Python virtual environment
+- Install all required dependencies
+- Start the WebUI development server
+
+Then access it in your browser at http://localhost:5173
+
+The WebUI includes built-in validation and data sorting features to help ensure your changes are correct. [Full WebUI guide](docs/webui.md)
+
+**Manual setup:** If you prefer to set things up manually, [install our requirements](docs/installing-software.md) and then:
 ```bash
 cd webui
 npm ci
 npm run dev
 ```
-Then access it in your browser at http://localhost:5173
-
-The WebUI includes built-in validation and data sorting features to help ensure your changes are correct. [Full WebUI guide](docs/webui.md)
 
 **Manual editing:** If you prefer to edit files directly, [follow this guide](docs/manual.md)
 
@@ -57,17 +77,24 @@ The WebUI can validate and sort your data automatically:
 3. Fix any validation errors that appear (they'll be highlighted in red)
 
 Alternatively, you can use the command-line validation scripts ([see guide](docs/validation.md)):
+
+Linux/macOS:
 ```bash
-python -m ofd validate --folder-names  # Validates folder names
-python -m ofd validate --logo-files    # Validates logo files
-python -m ofd validate --json-files    # Validates JSON files
-python -m ofd validate --store-ids     # Validates store IDs
-python -m ofd validate                 # Run all validations
+./ofd.sh validate                 # Run all validations
+./ofd.sh validate --folder-names  # Validates folder names
+./ofd.sh validate --json-files    # Validates JSON files
+```
+
+Windows:
+```cmd
+ofd.bat validate                  # Run all validations
+ofd.bat validate --folder-names   # Validates folder names
+ofd.bat validate --json-files     # Validates JSON files
 ```
 ### 7. Submit your changes
 Before submitting, make sure your data is sorted consistently:
 - **In the WebUI:** Click the "Sort Data" button in the top-right corner
-- **Or via command line:** Run `python -m ofd script style_data`
+- **Or via command line:** Run `./ofd.sh script style_data` (Linux/macOS) or `ofd.bat script style_data` (Windows)
 
 Then add your changes:
 ```bash

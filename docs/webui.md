@@ -13,19 +13,56 @@ You can add a brand on the homepage of the website, then modify the brand's mate
 
 ## Getting Started
 
-1. Enter the WebUI folder and install dependencies:
+### Quick Start (Recommended)
+
+The easiest way to start the WebUI is using the OFD wrapper script, which handles all setup automatically:
+
+**Linux/macOS:**
+```bash
+./ofd.sh webui
+```
+
+**Windows:**
+```cmd
+ofd.bat webui
+```
+
+On first run, the wrapper will automatically:
+- Check for Python 3.10+ and Node.js (offering to install if missing)
+- Create a Python virtual environment
+- Install all required dependencies
+- Start the WebUI development server
+
+Then navigate to http://localhost:5173 and start editing!
+
+### WebUI Command Options
+
+```bash
+./ofd.sh webui              # Start on default port (5173)
+./ofd.sh webui --port 3000  # Start on custom port
+./ofd.sh webui --open       # Open browser automatically
+./ofd.sh webui --install    # Force reinstall npm dependencies
+```
+
+### Manual Setup
+
+If you prefer manual setup:
+
+1. [Install dependencies manually](installing-software.md)
+
+2. Enter the WebUI folder and install dependencies:
    ```bash
    cd webui
    npm ci
    ```
 
-2. Start the development server:
+3. Start the development server:
    ```bash
    npm run dev
    ```
 
-3. Navigate to the link printed in the terminal, typically http://localhost:5173
-4. Start editing the database!
+4. Navigate to the link printed in the terminal, typically http://localhost:5173
+5. Start editing the database!
 
 ## Features
 
