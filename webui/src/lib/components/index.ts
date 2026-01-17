@@ -4,9 +4,6 @@ export * from './ui';
 // Entity display components
 export * from './entity';
 
-// Validation components
-export * from './validation';
-
 // Form components
 export * from './forms';
 
