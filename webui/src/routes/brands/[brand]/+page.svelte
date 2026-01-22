@@ -2,12 +2,14 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import type { Brand, Material } from '$lib/types/database';
-	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { BrandForm, MaterialForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { Logo, EntityDetails, EntityCard } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
+	import { createEntityState } from '$lib/utils/entityState.svelte';
+	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
 	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
 	import { db } from '$lib/services/database';
 	import { apiFetch } from '$lib/utils/api';
@@ -16,37 +18,22 @@
 
 	let brandId: string = $derived($page.params.brand!);
 	let brand: Brand | null = $state(null);
-	let originalBrand: Brand | null = $state(null); // Keep original for revert detection
+	let originalBrand: Brand | null = $state(null);
 	let materials: Material[] = $state([]);
 	let schema: any = $state(null);
 	let loading: boolean = $state(true);
-	let saving: boolean = $state(false);
 	let error: string | null = $state(null);
 
-	let showEditModal: boolean = $state(false);
-	let showDeleteModal: boolean = $state(false);
-	let showCreateMaterialModal: boolean = $state(false);
-	let logoDataUrl: string = $state('');
-	let logoChanged: boolean = $state(false);
-	let deleting: boolean = $state(false);
-	let creatingMaterial: boolean = $state(false);
-
-	// Create message handler
 	const messageHandler = createMessageHandler();
 
-	// Check if this brand has local changes (use brand.id which is the UUID, not the URL slug)
-	let hasLocalChanges = $derived.by(() => {
-		if (!$isCloudMode || !brand) return false;
-
-		const entityPath = `brands/${brand.id}`;
-		const change = $changeStore.changes[entityPath];
-
-		return change && (change.operation === 'create' || change.operation === 'update');
+	// Unified entity state management
+	const entityState = createEntityState({
+		getEntityPath: () => (brand ? `brands/${brand.id}` : null),
+		getEntity: () => brand
 	});
 
 	onMount(async () => {
 		try {
-			// Use DatabaseService for brand and materials to apply pending changes
 			const [brandData, materialsData, schemaData] = await Promise.all([
 				db.getBrand(brandId),
 				db.loadMaterials(brandId),
@@ -60,10 +47,9 @@
 			}
 
 			brand = brandData;
-			originalBrand = structuredClone(brandData); // Deep clone for revert detection
+			originalBrand = structuredClone(brandData);
 			materials = materialsData;
 			schema = schemaData;
-
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to load brand';
 		} finally {
@@ -74,93 +60,77 @@
 	async function handleSubmit(data: any) {
 		if (!brand) return;
 
-		saving = true;
+		entityState.saving = true;
 		messageHandler.clear();
 
 		try {
-			// If logo was changed, save the new logo and delete the old one
 			let logoFilename = brand.logo;
-			if (logoChanged && logoDataUrl) {
-				// Delete old logo first
+			if (entityState.logoChanged && entityState.logoDataUrl) {
 				if (brand.logo) {
 					await deleteLogoImage(brand.id, brand.logo, 'brand');
 				}
-
-				// Upload new logo
-				const savedPath = await saveLogoImage(brand.id, logoDataUrl, 'brand');
+				const savedPath = await saveLogoImage(brand.id, entityState.logoDataUrl, 'brand');
 				if (!savedPath) {
 					messageHandler.showError('Failed to save logo');
-					saving = false;
+					entityState.saving = false;
 					return;
 				}
-				// In cloud mode, savedPath is the imageId for change store lookup
-				// In local mode, savedPath is the filename
 				logoFilename = savedPath;
 			}
 
-			// Update brand data with new logo filename (or keep existing if not changed)
-			// Preserve id and slug from original brand since form doesn't include them
-			const updatedBrand = {
-				...data,
-				id: brand.id,
-				slug: brand.slug ?? brand.id,
-				logo: logoFilename
-			};
+			const updatedBrand = mergeEntityData(brand, { ...data, logo: logoFilename }, [
+				'id',
+				'slug'
+			]) as Brand;
 
-			// Pass the original brand data so change tracking can detect reverts
 			const success = await db.saveBrand(updatedBrand, originalBrand ?? brand);
 
 			if (success) {
 				brand = updatedBrand;
-				logoChanged = false;
-				logoDataUrl = '';
+				entityState.resetLogo();
 				messageHandler.showSuccess('Brand saved successfully!');
-				showEditModal = false;
+				entityState.closeEdit();
 			} else {
 				messageHandler.showError('Failed to save brand');
 			}
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to save brand');
 		} finally {
-			saving = false;
+			entityState.saving = false;
 		}
 	}
 
-	function handleLogoChange(dataUrl: string) {
-		logoDataUrl = dataUrl;
-		logoChanged = true;
-	}
+	async function handleDelete() {
+		if (!brand) return;
 
-	function openEditModal() {
-		showEditModal = true;
-	}
+		entityState.deleting = true;
+		messageHandler.clear();
 
-	function closeEditModal() {
-		showEditModal = false;
-		logoChanged = false;
-		logoDataUrl = '';
-	}
+		try {
+			const result = await deleteEntity(`brands/${brand.id}`, 'Brand', () =>
+				db.deleteBrand(brand!.id, brand!)
+			);
 
-	function openDeleteModal() {
-		showDeleteModal = true;
-	}
-
-	function closeDeleteModal() {
-		showDeleteModal = false;
-	}
-
-	function openCreateMaterialModal() {
-		showCreateMaterialModal = true;
-	}
-
-	function closeCreateMaterialModal() {
-		showCreateMaterialModal = false;
+			if (result.success) {
+				messageHandler.showSuccess(result.message);
+				entityState.closeDelete();
+				setTimeout(() => {
+					window.location.href = '/brands';
+				}, 1500);
+			} else {
+				messageHandler.showError(result.message);
+				entityState.deleting = false;
+			}
+		} catch (e) {
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete brand');
+			entityState.deleting = false;
+		}
 	}
 
 	async function handleCreateMaterial(data: any) {
 		if (!brand) return;
 
-		creatingMaterial = true;
+		entityState.creating = true;
 		messageHandler.clear();
 
 		try {
@@ -168,9 +138,7 @@
 
 			if (result.success && result.materialType) {
 				messageHandler.showSuccess('Material created successfully!');
-				showCreateMaterialModal = false;
-
-				// Reload the page to show the new material
+				entityState.closeCreate();
 				setTimeout(() => {
 					window.location.reload();
 				}, 500);
@@ -180,53 +148,7 @@
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create material');
 		} finally {
-			creatingMaterial = false;
-		}
-	}
-
-	async function handleDelete() {
-		if (!brand) return;
-
-		deleting = true;
-		messageHandler.clear();
-
-		try {
-			if ($isCloudMode) {
-				// In cloud mode, check if this is a newly created brand
-				const entityPath = `brands/${brandId}`;
-				const change = $changeStore.changes[entityPath];
-
-				if (change && change.operation === 'create') {
-					// If it was created locally, just remove the change
-					changeStore.removeChange(entityPath);
-					messageHandler.showSuccess('Local brand creation removed');
-				} else {
-					// Otherwise, track as a delete or remove existing update changes
-					await db.deleteBrand(brand.id, brand);
-					messageHandler.showSuccess('Brand marked for deletion - export to save');
-				}
-			} else {
-				// In local mode, delete from filesystem
-				const success = await db.deleteBrand(brand.id, brand);
-				if (success) {
-					messageHandler.showSuccess('Brand deleted successfully');
-				} else {
-					messageHandler.showError('Failed to delete brand');
-					deleting = false;
-					showDeleteModal = false;
-					return;
-				}
-			}
-
-			// Navigate back to brands list after successful delete
-			showDeleteModal = false;
-			setTimeout(() => {
-				window.location.href = '/brands';
-			}, 1500);
-		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete brand');
-			deleting = false;
-			showDeleteModal = false;
+			entityState.creating = false;
 		}
 	}
 </script>
@@ -237,7 +159,7 @@
 
 <div class="container mx-auto px-4 py-8 max-w-6xl">
 	<div class="mb-6">
-		<BackButton href="/brands" label="Brand" />
+		<BackButton href="/brands" label="Brands" />
 	</div>
 
 	<DataDisplay {loading} {error} data={brand}>
@@ -246,11 +168,20 @@
 				<Logo src={brandData.logo} alt={brandData.name} type="brand" id={brandData.id} size="lg" />
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{brandData.name}</h1>
-					<p class="text-muted-foreground">Brand ID: {brandData.id}</p>
+					{#if $isCloudMode}
+						{#if brandData.slug}
+							<p class="text-muted-foreground">Native ID: {brandData.slug}</p>
+							<p class="text-muted-foreground">Cloud ID: {brandData.id}</p>
+						{:else}
+							<p class="text-muted-foreground">Native ID: {brandData.id}</p>
+						{/if}
+					{:else}
+						<p class="text-muted-foreground">ID: {brandData.id}</p>
+					{/if}
 				</div>
 			</header>
 
-			{#if hasLocalChanges}
+			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
 			{/if}
 
@@ -266,24 +197,20 @@
 						{ key: 'name' },
 						{ key: 'website', type: 'link' },
 						{ key: 'origin' },
-						{ key: 'logo', type: 'logo', logoType: 'brand', logoEntityId: brandData.slug ?? brandData.id }
+						{
+							key: 'logo',
+							type: 'logo',
+							logoType: 'brand',
+							logoEntityId: brandData.slug ?? brandData.id
+						}
 					]}
 				>
 					{#snippet actions()}
-						<div class="flex gap-2">
-							<button
-								onclick={openEditModal}
-								class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
-							>
-								Edit
-							</button>
-							<button
-								onclick={openDeleteModal}
-								class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
-							>
-								Delete
-							</button>
-						</div>
+						<ActionButtons
+							onEdit={entityState.openEdit}
+							onDelete={entityState.openDelete}
+							editVariant="primary"
+						/>
 					{/snippet}
 				</EntityDetails>
 
@@ -291,11 +218,20 @@
 					<div class="flex justify-between items-center mb-4">
 						<h2 class="text-xl font-semibold">Materials</h2>
 						<button
-							onclick={openCreateMaterialModal}
+							onclick={entityState.openCreate}
 							class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded-md font-medium text-sm flex items-center gap-1"
 						>
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-4 w-4"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+									clip-rule="evenodd"
+								/>
 							</svg>
 							Add Material
 						</button>
@@ -308,7 +244,9 @@
 							{#each materials as material}
 								{@const materialHref = `/brands/${brandData.slug ?? brandData.id}/${material.materialType ?? material.material.toLowerCase()}`}
 								{@const materialPath = `brands/${brandData.id}/materials/${material.materialType ?? material.material.toLowerCase()}`}
-								{@const materialChange = $isCloudMode ? $changeStore.changes[materialPath] : undefined}
+								{@const materialChange = $isCloudMode
+									? $changeStore.changes[materialPath]
+									: undefined}
 								<EntityCard
 									entity={material}
 									href={materialHref}
@@ -328,67 +266,35 @@
 	</DataDisplay>
 </div>
 
-<Modal show={showEditModal} title="Edit Brand" onClose={closeEditModal} maxWidth="3xl">
+<Modal show={entityState.showEditModal} title="Edit Brand" onClose={entityState.closeEdit} maxWidth="3xl">
 	{#if brand && schema}
 		<BrandForm
 			{brand}
 			{schema}
 			onSubmit={handleSubmit}
-			onLogoChange={handleLogoChange}
-			{logoChanged}
-			{saving}
+			onLogoChange={entityState.handleLogoChange}
+			logoChanged={entityState.logoChanged}
+			saving={entityState.saving}
 		/>
 	{/if}
 </Modal>
 
-<Modal show={showDeleteModal} title="Delete Brand" onClose={closeDeleteModal} maxWidth="md">
-	{#if brand}
-		<div class="space-y-4">
-			<p class="text-foreground">
-				Are you sure you want to delete the brand <strong>{brand.name}</strong>?
-			</p>
+<DeleteConfirmationModal
+	show={entityState.showDeleteModal}
+	title="Delete Brand"
+	entityName={brand?.name ?? ''}
+	isLocalCreate={entityState.isLocalCreate}
+	deleting={entityState.deleting}
+	onClose={entityState.closeDelete}
+	onDelete={handleDelete}
+/>
 
-			{#if $isCloudMode}
-				<div class="bg-primary/10 border border-primary/20 rounded p-3">
-					<p class="text-sm text-primary">
-						{#if $changeStore.changes[`brands/${brandId}`]?.operation === 'create'}
-							This will remove the locally created brand. The change will be discarded.
-						{:else}
-							This will mark the brand for deletion. Remember to export your changes.
-						{/if}
-					</p>
-				</div>
-			{:else}
-				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
-					<p class="text-sm text-destructive">
-						This action cannot be undone. The brand will be permanently deleted from the filesystem.
-					</p>
-				</div>
-			{/if}
-
-			<div class="flex justify-end gap-2 pt-4">
-				<button
-					onclick={closeDeleteModal}
-					disabled={deleting}
-					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
-					Cancel
-				</button>
-				<button
-					onclick={handleDelete}
-					disabled={deleting}
-					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
-					{deleting ? 'Deleting...' : 'Delete Brand'}
-				</button>
-			</div>
-		</div>
-	{/if}
-</Modal>
-
-<Modal show={showCreateMaterialModal} title="Create New Material" onClose={closeCreateMaterialModal} maxWidth="5xl" height="3/4">
-	<MaterialForm
-		onSubmit={handleCreateMaterial}
-		saving={creatingMaterial}
-	/>
+<Modal
+	show={entityState.showCreateModal}
+	title="Create New Material"
+	onClose={entityState.closeCreate}
+	maxWidth="5xl"
+	height="3/4"
+>
+	<MaterialForm onSubmit={handleCreateMaterial} saving={entityState.creating} />
 </Modal>

@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import type { Filament, Variant } from '$lib/types/database';
-	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityDetails, EntityCard } from '$lib/components/entity';
 	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
+	import { createEntityState } from '$lib/utils/entityState.svelte';
+	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
@@ -15,20 +17,20 @@
 	let materialType: string = $derived($page.params.material!);
 	let filamentId: string = $derived($page.params.filament!);
 	let filament: Filament | null = $state(null);
-	let originalFilament: Filament | null = $state(null); // Keep original for revert detection
+	let originalFilament: Filament | null = $state(null);
 	let variants: Variant[] = $state([]);
 	let loading: boolean = $state(true);
-	let saving: boolean = $state(false);
 	let error: string | null = $state(null);
 
-	let showEditModal: boolean = $state(false);
-	let showDeleteModal: boolean = $state(false);
-	let showCreateVariantModal: boolean = $state(false);
-	let deleting: boolean = $state(false);
-	let creatingVariant: boolean = $state(false);
-
-	// Create message handler
 	const messageHandler = createMessageHandler();
+
+	const entityState = createEntityState({
+		getEntityPath: () =>
+			filament
+				? `brands/${brandId}/materials/${materialType}/filaments/${filament.id}`
+				: null,
+		getEntity: () => filament
+	});
 
 	const SLICER_LABELS: Record<string, string> = {
 		prusaslicer: 'PrusaSlicer',
@@ -38,29 +40,16 @@
 		generic: 'Generic'
 	};
 
-	// Check if this filament has local changes
-	let hasLocalChanges = $derived.by(() => {
-		if (!$isCloudMode || !filament) return false;
-
-		// Use filament.id for the entity path (not URL slug)
-		const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.id}`;
-		const change = $changeStore.changes[entityPath];
-
-		return change && (change.operation === 'create' || change.operation === 'update');
-	});
-
 	// Load data when route parameters change
 	$effect(() => {
-		// Track all route parameters to reload when any change
 		const params = { brandId, materialType, filamentId };
 
 		loading = true;
 		error = null;
-		showEditModal = false; // Close edit modal when navigating
+		entityState.showEditModal = false;
 
 		(async () => {
 			try {
-				// Use DatabaseService for filament and variants to apply pending changes
 				const [filamentData, variantsData] = await Promise.all([
 					db.getFilament(params.brandId, params.materialType, params.filamentId),
 					db.loadVariants(params.brandId, params.materialType, params.filamentId)
@@ -73,7 +62,7 @@
 				}
 
 				filament = filamentData;
-				originalFilament = structuredClone(filamentData); // Deep clone for revert detection
+				originalFilament = structuredClone(filamentData);
 				variants = variantsData || [];
 			} catch (e) {
 				error = e instanceof Error ? e.message : 'Failed to load filament';
@@ -86,105 +75,65 @@
 	async function handleSubmit(data: any) {
 		if (!filament) return;
 
-		saving = true;
+		entityState.saving = true;
 		messageHandler.clear();
 
 		try {
-			// Merge with original filament to preserve fields not in the form (like material_id, material)
-			// Form data takes precedence for fields it manages
-			const updatedFilament = {
-				...filament,
-				...data,
-				id: filament.id,
-				slug: filament.slug ?? filament.id
-			};
+			const updatedFilament = mergeEntityData(filament, data, ['id', 'slug']) as Filament;
 
-			// Pass the original filament data so change tracking can detect reverts
-			const success = await db.saveFilament(brandId, materialType, filamentId, updatedFilament, originalFilament ?? filament);
+			const success = await db.saveFilament(
+				brandId,
+				materialType,
+				filamentId,
+				updatedFilament,
+				originalFilament ?? filament
+			);
 
 			if (success) {
 				filament = updatedFilament;
 				messageHandler.showSuccess('Filament saved successfully!');
-				showEditModal = false;
+				entityState.closeEdit();
 			} else {
 				messageHandler.showError('Failed to save filament');
 			}
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to save filament');
 		} finally {
-			saving = false;
+			entityState.saving = false;
 		}
-	}
-
-	function openEditModal() {
-		if (filament) {
-			showEditModal = true;
-		}
-	}
-
-	function closeEditModal() {
-		showEditModal = false;
-	}
-
-	function openDeleteModal() {
-		showDeleteModal = true;
-	}
-
-	function closeDeleteModal() {
-		showDeleteModal = false;
 	}
 
 	async function handleDelete() {
 		if (!filament) return;
 
-		deleting = true;
+		entityState.deleting = true;
 		messageHandler.clear();
 
 		try {
-			if ($isCloudMode) {
-				const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
-				const change = $changeStore.changes[entityPath];
+			const result = await deleteEntity(
+				`brands/${brandId}/materials/${materialType}/filaments/${filamentId}`,
+				'Filament',
+				() => db.deleteFilament(brandId, materialType, filamentId, filament!)
+			);
 
-				if (change && change.operation === 'create') {
-					changeStore.removeChange(entityPath);
-					messageHandler.showSuccess('Local filament creation removed');
-				} else {
-					await db.deleteFilament(brandId, materialType, filamentId, filament);
-					messageHandler.showSuccess('Filament marked for deletion - export to save');
-				}
+			if (result.success) {
+				messageHandler.showSuccess(result.message);
+				entityState.closeDelete();
+				setTimeout(() => {
+					window.location.href = `/brands/${brandId}/${materialType}`;
+				}, 1500);
 			} else {
-				const success = await db.deleteFilament(brandId, materialType, filamentId, filament);
-				if (success) {
-					messageHandler.showSuccess('Filament deleted successfully');
-				} else {
-					messageHandler.showError('Failed to delete filament');
-					deleting = false;
-					showDeleteModal = false;
-					return;
-				}
+				messageHandler.showError(result.message);
+				entityState.deleting = false;
 			}
-
-			showDeleteModal = false;
-			setTimeout(() => {
-				window.location.href = `/brands/${brandId}/${materialType}`;
-			}, 1500);
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete filament');
-			deleting = false;
-			showDeleteModal = false;
+			entityState.deleting = false;
 		}
 	}
 
-	function openCreateVariantModal() {
-		showCreateVariantModal = true;
-	}
-
-	function closeCreateVariantModal() {
-		showCreateVariantModal = false;
-	}
-
 	async function handleCreateVariant(data: any) {
-		creatingVariant = true;
+		entityState.creating = true;
 		messageHandler.clear();
 
 		try {
@@ -192,8 +141,7 @@
 
 			if (result.success && result.variantSlug) {
 				messageHandler.showSuccess('Variant created successfully!');
-				showCreateVariantModal = false;
-
+				entityState.closeCreate();
 				setTimeout(() => {
 					window.location.reload();
 				}, 500);
@@ -203,7 +151,7 @@
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create variant');
 		} finally {
-			creatingVariant = false;
+			entityState.creating = false;
 		}
 	}
 </script>
@@ -253,10 +201,19 @@
 						>
 					{/if}
 				</div>
-				<p class="text-muted-foreground">Filament ID: {filamentData.id}</p>
+				{#if $isCloudMode}
+					{#if filamentData.slug}
+						<p class="text-muted-foreground">Native ID: {filamentData.slug}</p>
+						<p class="text-muted-foreground">Cloud ID: {filamentData.id}</p>
+					{:else}
+						<p class="text-muted-foreground">Native ID: {filamentData.id}</p>
+					{/if}
+				{:else}
+					<p class="text-muted-foreground">ID: {filamentData.id}</p>
+				{/if}
 			</header>
 
-			{#if hasLocalChanges}
+			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
 			{/if}
 
@@ -334,20 +291,7 @@
 					]}
 				>
 					{#snippet actions()}
-						<div class="flex gap-2">
-							<button
-								onclick={openEditModal}
-								class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded-md font-medium"
-							>
-								Edit
-							</button>
-							<button
-								onclick={openDeleteModal}
-								class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
-							>
-								Delete
-							</button>
-						</div>
+						<ActionButtons onEdit={entityState.openEdit} onDelete={entityState.openDelete} />
 					{/snippet}
 				</EntityDetails>
 
@@ -355,7 +299,7 @@
 					<div class="flex justify-between items-center mb-4">
 						<h2 class="text-xl font-semibold">Variants</h2>
 						<button
-							onclick={openCreateVariantModal}
+							onclick={entityState.openCreate}
 							class="bg-orange-500 text-white hover:bg-orange-600 px-4 py-2 rounded-md font-medium text-sm flex items-center gap-1"
 						>
 							<svg
@@ -405,66 +349,25 @@
 	</DataDisplay>
 </div>
 
-<Modal show={showDeleteModal} title="Delete Filament" onClose={closeDeleteModal} maxWidth="md">
-	{#if filament}
-		<div class="space-y-4">
-			<p class="text-foreground">
-				Are you sure you want to delete the filament <strong>{filament.name}</strong>?
-			</p>
-			<p class="text-muted-foreground text-sm">
-				This will also delete all variants within this filament.
-			</p>
-
-			{#if $isCloudMode}
-				<div class="bg-primary/10 border border-primary/20 rounded p-3">
-					<p class="text-sm text-primary">
-						{#if $changeStore.changes[`brands/${brandId}/materials/${materialType}/filaments/${filamentId}`]?.operation === 'create'}
-							This will remove the locally created filament. The change will be discarded.
-						{:else}
-							This will mark the filament for deletion. Remember to export your changes.
-						{/if}
-					</p>
-				</div>
-			{:else}
-				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
-					<p class="text-sm text-destructive">
-						This action cannot be undone. The filament and all its variants will be permanently deleted.
-					</p>
-				</div>
-			{/if}
-
-			<div class="flex justify-end gap-2 pt-4">
-				<button
-					onclick={closeDeleteModal}
-					disabled={deleting}
-					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
-					Cancel
-				</button>
-				<button
-					onclick={handleDelete}
-					disabled={deleting}
-					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
-					{deleting ? 'Deleting...' : 'Delete Filament'}
-				</button>
-			</div>
-		</div>
-	{/if}
-</Modal>
-
-<Modal show={showEditModal} title="Edit Filament" onClose={closeEditModal} maxWidth="5xl">
+<Modal show={entityState.showEditModal} title="Edit Filament" onClose={entityState.closeEdit} maxWidth="5xl">
 	{#if filament}
 		<div class="h-[70vh]">
-			<FilamentForm filament={filament} onSubmit={handleSubmit} {saving} />
-		</div>
-	{:else}
-		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+			<FilamentForm {filament} onSubmit={handleSubmit} saving={entityState.saving} />
 		</div>
 	{/if}
 </Modal>
 
-<Modal show={showCreateVariantModal} title="Create New Variant" onClose={closeCreateVariantModal} maxWidth="5xl" height="3/4">
-	<VariantForm onSubmit={handleCreateVariant} saving={creatingVariant} />
+<DeleteConfirmationModal
+	show={entityState.showDeleteModal}
+	title="Delete Filament"
+	entityName={filament?.name ?? ''}
+	isLocalCreate={entityState.isLocalCreate}
+	deleting={entityState.deleting}
+	onClose={entityState.closeDelete}
+	onDelete={handleDelete}
+	cascadeWarning="This will also delete all variants within this filament."
+/>
+
+<Modal show={entityState.showCreateModal} title="Create New Variant" onClose={entityState.closeCreate} maxWidth="5xl" height="3/4">
+	<VariantForm onSubmit={handleCreateVariant} saving={entityState.creating} />
 </Modal>

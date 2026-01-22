@@ -7,24 +7,25 @@
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityCard } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
+	import { createEntityState } from '$lib/utils/entityState.svelte';
+	import { generateSlug } from '$lib/services/entityService';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
+	import { BackButton } from '$lib/components';
 
 	let brands: Brand[] = $state([]);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
-
-	let showCreateModal: boolean = $state(false);
 	let schema: any = $state(null);
-	let saving: boolean = $state(false);
-	let logoDataUrl: string = $state('');
-	let logoChanged: boolean = $state(false);
 
-	// Create message handler
 	const messageHandler = createMessageHandler();
 
-	// Empty brand template for new brand creation
+	const entityState = createEntityState({
+		getEntityPath: () => null,
+		getEntity: () => null
+	});
+
 	const newBrand: Brand = {
 		id: '',
 		name: '',
@@ -57,8 +58,7 @@
 	});
 
 	function openCreateModal() {
-		showCreateModal = true;
-		// Load schema when modal opens
+		entityState.openCreate();
 		if (!schema) {
 			fetch('/api/schemas/brand')
 				.then((r) => r.json())
@@ -71,35 +71,24 @@
 		}
 	}
 
-	function closeCreateModal() {
-		showCreateModal = false;
-		logoChanged = false;
-		logoDataUrl = '';
-	}
-
 	async function handleSubmit(data: any) {
-		saving = true;
+		entityState.creating = true;
 		messageHandler.clear();
 
 		try {
-			// Generate slug from name (URL-friendly format with hyphens)
-			const slug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+			const slug = generateSlug(data.name);
 
-			// If logo was uploaded, save it
 			let logoFilename = '';
-			if (logoChanged && logoDataUrl) {
-				const savedPath = await saveLogoImage(slug, logoDataUrl, 'brand');
+			if (entityState.logoChanged && entityState.logoDataUrl) {
+				const savedPath = await saveLogoImage(slug, entityState.logoDataUrl, 'brand');
 				if (!savedPath) {
 					messageHandler.showError('Failed to save logo');
-					saving = false;
+					entityState.creating = false;
 					return;
 				}
-				// In cloud mode, savedPath is the imageId for change store lookup
-				// In local mode, savedPath is the filename
 				logoFilename = savedPath;
 			}
 
-			// Create new brand with generated ID and slug
 			const newBrandData = {
 				...data,
 				id: slug,
@@ -111,11 +100,8 @@
 
 			if (success) {
 				messageHandler.showSuccess('Brand created successfully!');
-				showCreateModal = false;
-				logoChanged = false;
-				logoDataUrl = '';
-
-				// Reload the page to ensure UI is in sync
+				entityState.closeCreate();
+				entityState.resetLogo();
 				setTimeout(() => {
 					window.location.reload();
 				}, 500);
@@ -125,13 +111,8 @@
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create brand');
 		} finally {
-			saving = false;
+			entityState.creating = false;
 		}
-	}
-
-	function handleLogoChange(dataUrl: string) {
-		logoDataUrl = dataUrl;
-		logoChanged = true;
 	}
 </script>
 
@@ -141,9 +122,7 @@
 
 <div class="container mx-auto px-4 py-8">
 	<div class="mb-6">
-		<a href="/" class="text-primary hover:text-primary flex items-center gap-2 mb-4">
-			← Back to Home
-		</a>
+		<BackButton href="/" label="Home" />
 
 		{#if messageHandler.message}
 			<MessageBanner type={messageHandler.type} message={messageHandler.message} />
@@ -175,7 +154,7 @@
 						href="/brands/{brand.slug ?? brand.id}"
 						logo={brand.logo}
 						logoType="brand"
-						logoEntityId={brand.id}
+						logoEntityId={brand.slug ?? brand.id}
 						hoverColor="green"
 						fields={[
 							{ key: 'origin', label: 'Origin', class: 'text-muted-foreground' },
@@ -190,15 +169,15 @@
 	</DataDisplay>
 </div>
 
-<Modal show={showCreateModal} title="Create New Brand" onClose={closeCreateModal} maxWidth="3xl">
+<Modal show={entityState.showCreateModal} title="Create New Brand" onClose={entityState.closeCreate} maxWidth="3xl">
 	{#if schema}
 		<BrandForm
 			brand={newBrand}
 			{schema}
 			onSubmit={handleSubmit}
-			onLogoChange={handleLogoChange}
-			{logoChanged}
-			{saving}
+			onLogoChange={entityState.handleLogoChange}
+			logoChanged={entityState.logoChanged}
+			saving={entityState.creating}
 		/>
 	{:else}
 		<div class="flex justify-center items-center py-12">

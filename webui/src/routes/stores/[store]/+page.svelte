@@ -3,41 +3,29 @@
 	import { page } from '$app/stores';
 	import type { Store } from '$lib/types/database';
 	import { db } from '$lib/services/database';
-	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { StoreForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityDetails, Logo } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
+	import { createEntityState } from '$lib/utils/entityState.svelte';
+	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
 	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
-	import { changeStore } from '$lib/stores/changes';
 	import { isCloudMode } from '$lib/stores/environment';
 
 	let storeId: string = $derived($page.params.store!);
 	let store: Store | null = $state(null);
-	let originalStore: Store | null = $state(null); // Keep original for revert detection
+	let originalStore: Store | null = $state(null);
 	let schema: any = $state(null);
 	let loading: boolean = $state(true);
-	let saving: boolean = $state(false);
 	let error: string | null = $state(null);
 
-	let showEditModal: boolean = $state(false);
-	let showDeleteModal: boolean = $state(false);
-	let logoDataUrl: string = $state('');
-	let logoChanged: boolean = $state(false);
-	let deleting: boolean = $state(false);
-
-	// Create message handler
 	const messageHandler = createMessageHandler();
 
-	// Check if this store has local changes (use store.id which is the UUID, not the URL slug)
-	let hasLocalChanges = $derived.by(() => {
-		if (!$isCloudMode || !store) return false;
-
-		const entityPath = `stores/${store.id}`;
-		const change = $changeStore.changes[entityPath];
-
-		return change && (change.operation === 'create' || change.operation === 'update');
+	const entityState = createEntityState({
+		getEntityPath: () => (store ? `stores/${store.id}` : null),
+		getEntity: () => store
 	});
 
 	onMount(async () => {
@@ -54,7 +42,7 @@
 			}
 
 			store = storeData;
-			originalStore = structuredClone(storeData); // Deep clone for revert detection
+			originalStore = structuredClone(storeData);
 			schema = schemaData;
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to load store';
@@ -66,50 +54,36 @@
 	async function handleSubmit(data: any) {
 		if (!store) return;
 
-		saving = true;
+		entityState.saving = true;
 		messageHandler.clear();
 
 		try {
-			// If logo was changed, save the new logo and delete the old one
 			let logoFilename = store.logo;
-			if (logoChanged && logoDataUrl) {
-				// Delete old logo first
+			if (entityState.logoChanged && entityState.logoDataUrl) {
 				if (store.logo) {
 					await deleteLogoImage(store.id, store.logo, 'store');
 				}
-
-				// Upload new logo
-				const savedPath = await saveLogoImage(store.id, logoDataUrl, 'store');
+				const savedPath = await saveLogoImage(store.id, entityState.logoDataUrl, 'store');
 				if (!savedPath) {
 					messageHandler.showError('Failed to save logo');
-					saving = false;
+					entityState.saving = false;
 					return;
 				}
-				// In cloud mode, savedPath is the imageId for change store lookup
-				// In local mode, savedPath is the file path but we use the filename
 				logoFilename = savedPath;
 			}
 
-			// Update store data with new logo filename (or keep existing if not changed)
-			// Preserve id and slug from original store since form doesn't include them
-			const updatedStore = {
-				...data,
-				id: store.id,
-				slug: store.slug ?? store.id,
-				logo: logoFilename
-			};
+			const updatedStore = mergeEntityData(store, { ...data, logo: logoFilename }, [
+				'id',
+				'slug'
+			]) as Store;
 
-			// Pass the original store data so change tracking can detect reverts
 			const success = await db.saveStore(updatedStore, originalStore ?? store);
 
 			if (success) {
 				store = updatedStore;
-				logoChanged = false;
-				logoDataUrl = '';
+				entityState.resetLogo();
 				messageHandler.showSuccess('Store saved successfully!');
-				showEditModal = false;
-
-				// Reload the page to ensure UI is in sync
+				entityState.closeEdit();
 				setTimeout(() => {
 					window.location.reload();
 				}, 500);
@@ -119,76 +93,34 @@
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to save store');
 		} finally {
-			saving = false;
+			entityState.saving = false;
 		}
-	}
-
-	function handleLogoChange(dataUrl: string) {
-		logoDataUrl = dataUrl;
-		logoChanged = true;
-	}
-
-	function openEditModal() {
-		showEditModal = true;
-	}
-
-	function closeEditModal() {
-		showEditModal = false;
-		logoChanged = false;
-		logoDataUrl = '';
-	}
-
-	function openDeleteModal() {
-		showDeleteModal = true;
-	}
-
-	function closeDeleteModal() {
-		showDeleteModal = false;
 	}
 
 	async function handleDelete() {
 		if (!store) return;
 
-		deleting = true;
+		entityState.deleting = true;
 		messageHandler.clear();
 
 		try {
-			if ($isCloudMode) {
-				// In cloud mode, check if this is a newly created store
-				const entityPath = `stores/${storeId}`;
-				const change = $changeStore.changes[entityPath];
+			const result = await deleteEntity(`stores/${store.id}`, 'Store', () =>
+				db.deleteStore(store!.id, store!)
+			);
 
-				if (change && change.operation === 'create') {
-					// If it was created locally, just remove the change
-					changeStore.removeChange(entityPath);
-					messageHandler.showSuccess('Local store creation removed');
-				} else {
-					// Otherwise, track as a delete or remove existing update changes
-					await db.deleteStore(store.id, store);
-					messageHandler.showSuccess('Store marked for deletion - export to save');
-				}
+			if (result.success) {
+				messageHandler.showSuccess(result.message);
+				entityState.closeDelete();
+				setTimeout(() => {
+					window.location.href = '/stores';
+				}, 1500);
 			} else {
-				// In local mode, delete from filesystem
-				const success = await db.deleteStore(store.id, store);
-				if (success) {
-					messageHandler.showSuccess('Store deleted successfully');
-				} else {
-					messageHandler.showError('Failed to delete store');
-					deleting = false;
-					showDeleteModal = false;
-					return;
-				}
+				messageHandler.showError(result.message);
+				entityState.deleting = false;
 			}
-
-			// Navigate back to stores list after successful delete
-			showDeleteModal = false;
-			setTimeout(() => {
-				window.location.href = '/stores';
-			}, 1500);
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete store');
-			deleting = false;
-			showDeleteModal = false;
+			entityState.deleting = false;
 		}
 	}
 </script>
@@ -208,11 +140,20 @@
 				<Logo src={storeData.logo} alt={storeData.name} type="store" id={storeData.id} size="lg" />
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{storeData.name}</h1>
-					<p class="text-muted-foreground">Store ID: {storeData.id}</p>
+					{#if $isCloudMode}
+						{#if storeData.slug}
+							<p class="text-muted-foreground">Native ID: {storeData.slug}</p>
+							<p class="text-muted-foreground">Cloud ID: {storeData.id}</p>
+						{:else}
+							<p class="text-muted-foreground">Native ID: {storeData.id}</p>
+						{/if}
+					{:else}
+						<p class="text-muted-foreground">ID: {storeData.id}</p>
+					{/if}
 				</div>
 			</header>
 
-			{#if hasLocalChanges}
+			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
 			{/if}
 
@@ -226,7 +167,12 @@
 				fields={[
 					{ key: 'name' },
 					{ key: 'storefront_url', label: 'Storefront URL', type: 'link' },
-					{ key: 'logo', type: 'logo', logoType: 'store', logoEntityId: storeData.slug ?? storeData.id },
+					{
+						key: 'logo',
+						type: 'logo',
+						logoType: 'store',
+						logoEntityId: storeData.slug ?? storeData.id
+					},
 					{
 						key: 'ships_from',
 						label: 'Ships From',
@@ -240,80 +186,32 @@
 				]}
 			>
 				{#snippet actions()}
-					<div class="flex gap-2">
-						<button
-							onclick={openEditModal}
-							class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
-						>
-							Edit
-						</button>
-						<button
-							onclick={openDeleteModal}
-							class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
-						>
-							Delete
-						</button>
-					</div>
+					<ActionButtons onEdit={entityState.openEdit} onDelete={entityState.openDelete} editVariant="primary" />
 				{/snippet}
 			</EntityDetails>
 		{/snippet}
 	</DataDisplay>
 </div>
 
-<Modal show={showEditModal} title="Edit Store" onClose={closeEditModal} maxWidth="3xl">
+<Modal show={entityState.showEditModal} title="Edit Store" onClose={entityState.closeEdit} maxWidth="3xl">
 	{#if store && schema}
 		<StoreForm
 			{store}
 			{schema}
 			onSubmit={handleSubmit}
-			onLogoChange={handleLogoChange}
-			{logoChanged}
-			{saving}
+			onLogoChange={entityState.handleLogoChange}
+			logoChanged={entityState.logoChanged}
+			saving={entityState.saving}
 		/>
 	{/if}
 </Modal>
 
-<Modal show={showDeleteModal} title="Delete Store" onClose={closeDeleteModal} maxWidth="md">
-	{#if store}
-		<div class="space-y-4">
-			<p class="text-foreground">
-				Are you sure you want to delete the store <strong>{store.name}</strong>?
-			</p>
-
-			{#if $isCloudMode}
-				<div class="bg-primary/10 border border-primary/20 rounded p-3">
-					<p class="text-sm text-primary">
-						{#if $changeStore.changes[`stores/${storeId}`]?.operation === 'create'}
-							This will remove the locally created store. The change will be discarded.
-						{:else}
-							This will mark the store for deletion. Remember to export your changes.
-						{/if}
-					</p>
-				</div>
-			{:else}
-				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
-					<p class="text-sm text-destructive">
-						This action cannot be undone. The store will be permanently deleted from the filesystem.
-					</p>
-				</div>
-			{/if}
-
-			<div class="flex justify-end gap-2 pt-4">
-				<button
-					onclick={closeDeleteModal}
-					disabled={deleting}
-					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
-					Cancel
-				</button>
-				<button
-					onclick={handleDelete}
-					disabled={deleting}
-					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
-					{deleting ? 'Deleting...' : 'Delete Store'}
-				</button>
-			</div>
-		</div>
-	{/if}
-</Modal>
+<DeleteConfirmationModal
+	show={entityState.showDeleteModal}
+	title="Delete Store"
+	entityName={store?.name ?? ''}
+	isLocalCreate={entityState.isLocalCreate}
+	deleting={entityState.deleting}
+	onClose={entityState.closeDelete}
+	onDelete={handleDelete}
+/>

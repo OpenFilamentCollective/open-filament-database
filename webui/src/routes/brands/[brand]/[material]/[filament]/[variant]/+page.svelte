@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import type { Variant } from '$lib/types/database';
-	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { VariantForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
+	import { createEntityState } from '$lib/utils/entityState.svelte';
+	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { isCloudMode } from '$lib/stores/environment';
-	import { changeStore } from '$lib/stores/changes';
 	import { getTraitLabel } from '$lib/config/traitConfig';
 
 	let brandId: string = $derived($page.params.brand!);
@@ -16,42 +17,36 @@
 	let filamentId: string = $derived($page.params.filament!);
 	let variantSlug: string = $derived($page.params.variant!);
 	let variant: Variant | null = $state(null);
-	let originalVariant: Variant | null = $state(null); // Keep original for revert detection
+	let originalVariant: Variant | null = $state(null);
 	let loading: boolean = $state(true);
-	let saving: boolean = $state(false);
 	let error: string | null = $state(null);
 
-	let showEditModal: boolean = $state(false);
-	let showDeleteModal: boolean = $state(false);
-	let deleting: boolean = $state(false);
-
-	// Create message handler
 	const messageHandler = createMessageHandler();
 
-	// Check if this variant has local changes
-	let hasLocalChanges = $derived.by(() => {
-		if (!$isCloudMode || !variant) return false;
-
-		// Use variant.slug for the entity path
-		const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`;
-		const change = $changeStore.changes[entityPath];
-
-		return change && (change.operation === 'create' || change.operation === 'update');
+	const entityState = createEntityState({
+		getEntityPath: () =>
+			variant
+				? `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`
+				: null,
+		getEntity: () => variant
 	});
 
 	// Load data when route parameters change
 	$effect(() => {
-		// Track all route parameters to reload when any change
 		const params = { brandId, materialType, filamentId, variantSlug };
 
 		loading = true;
 		error = null;
-		showEditModal = false; // Close edit modal when navigating
+		entityState.showEditModal = false;
 
 		(async () => {
 			try {
-				// Use DatabaseService for variant to apply pending changes
-				const variantData = await db.getVariant(params.brandId, params.materialType, params.filamentId, params.variantSlug);
+				const variantData = await db.getVariant(
+					params.brandId,
+					params.materialType,
+					params.filamentId,
+					params.variantSlug
+				);
 
 				if (!variantData) {
 					error = 'Variant not found';
@@ -60,7 +55,7 @@
 				}
 
 				variant = variantData;
-				originalVariant = structuredClone(variantData); // Deep clone for revert detection
+				originalVariant = structuredClone(variantData);
 			} catch (e) {
 				error = e instanceof Error ? e.message : 'Failed to load variant';
 			} finally {
@@ -72,20 +67,12 @@
 	async function handleSubmit(data: any) {
 		if (!variant) return;
 
-		saving = true;
+		entityState.saving = true;
 		messageHandler.clear();
 
 		try {
-			// Merge with original variant to preserve fields not in the form (like filament_id)
-			// Form data takes precedence for fields it manages
-			const updatedVariant = {
-				...variant,
-				...data,
-				id: variant.id,
-				slug: variant.slug ?? variantSlug
-			};
+			const updatedVariant = mergeEntityData(variant, data, ['id', 'slug']) as Variant;
 
-			// Pass the original variant data so change tracking can detect reverts
 			const success = await db.saveVariant(
 				brandId,
 				materialType,
@@ -98,77 +85,46 @@
 			if (success) {
 				variant = updatedVariant;
 				messageHandler.showSuccess('Variant saved successfully!');
-				showEditModal = false;
+				entityState.closeEdit();
 			} else {
 				messageHandler.showError('Failed to save variant');
 			}
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to save variant');
 		} finally {
-			saving = false;
+			entityState.saving = false;
 		}
-	}
-
-	function openEditModal() {
-		if (variant) {
-			showEditModal = true;
-		}
-	}
-
-	function closeEditModal() {
-		showEditModal = false;
-	}
-
-	function openDeleteModal() {
-		showDeleteModal = true;
-	}
-
-	function closeDeleteModal() {
-		showDeleteModal = false;
 	}
 
 	async function handleDelete() {
 		if (!variant) return;
 
-		deleting = true;
+		entityState.deleting = true;
 		messageHandler.clear();
 
 		try {
-			if ($isCloudMode) {
-				const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`;
-				const change = $changeStore.changes[entityPath];
+			const result = await deleteEntity(
+				`brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`,
+				'Variant',
+				() => db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant!)
+			);
 
-				if (change && change.operation === 'create') {
-					changeStore.removeChange(entityPath);
-					messageHandler.showSuccess('Local variant creation removed');
-				} else {
-					await db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant);
-					messageHandler.showSuccess('Variant marked for deletion - export to save');
-				}
+			if (result.success) {
+				messageHandler.showSuccess(result.message);
+				entityState.closeDelete();
+				setTimeout(() => {
+					window.location.href = `/brands/${brandId}/${materialType}/${filamentId}`;
+				}, 1500);
 			} else {
-				const success = await db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant);
-				if (success) {
-					messageHandler.showSuccess('Variant deleted successfully');
-				} else {
-					messageHandler.showError('Failed to delete variant');
-					deleting = false;
-					showDeleteModal = false;
-					return;
-				}
+				messageHandler.showError(result.message);
+				entityState.deleting = false;
 			}
-
-			showDeleteModal = false;
-			setTimeout(() => {
-				window.location.href = `/brands/${brandId}/${materialType}/${filamentId}`;
-			}, 1500);
 		} catch (e) {
 			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete variant');
-			deleting = false;
-			showDeleteModal = false;
+			entityState.deleting = false;
 		}
 	}
 
-	// Get active traits as array
 	function getActiveTraits(traits: Record<string, boolean> | undefined): string[] {
 		if (!traits) return [];
 		return Object.entries(traits)
@@ -204,10 +160,19 @@
 						{/if}
 					</div>
 				</div>
-				<p class="text-muted-foreground">Variant ID: {variantData.id}</p>
+				{#if $isCloudMode}
+					{#if variantData.slug}
+						<p class="text-muted-foreground">Native ID: {variantData.slug}</p>
+						<p class="text-muted-foreground">Cloud ID: {variantData.id}</p>
+					{:else}
+						<p class="text-muted-foreground">Native ID: {variantData.id}</p>
+					{/if}
+				{:else}
+					<p class="text-muted-foreground">ID: {variantData.id}</p>
+				{/if}
 			</header>
 
-			{#if hasLocalChanges}
+			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
 			{/if}
 
@@ -218,20 +183,7 @@
 			<div class="bg-card border border-border rounded-lg p-6">
 				<div class="flex justify-between items-center mb-4">
 					<h2 class="text-xl font-semibold">Variant Details</h2>
-					<div class="flex gap-2">
-						<button
-							onclick={openEditModal}
-							class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded-md font-medium"
-						>
-							Edit
-						</button>
-						<button
-							onclick={openDeleteModal}
-							class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
-						>
-							Delete
-						</button>
-					</div>
+					<ActionButtons onEdit={entityState.openEdit} onDelete={entityState.openDelete} />
 				</div>
 
 				<dl class="space-y-4">
@@ -327,59 +279,20 @@
 	</DataDisplay>
 </div>
 
-<Modal show={showDeleteModal} title="Delete Variant" onClose={closeDeleteModal} maxWidth="md">
-	{#if variant}
-		<div class="space-y-4">
-			<p class="text-foreground">
-				Are you sure you want to delete the variant <strong>{variant.color_name}</strong>?
-			</p>
-
-			{#if $isCloudMode}
-				<div class="bg-primary/10 border border-primary/20 rounded p-3">
-					<p class="text-sm text-primary">
-						{#if $changeStore.changes[`brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`]?.operation === 'create'}
-							This will remove the locally created variant. The change will be discarded.
-						{:else}
-							This will mark the variant for deletion. Remember to export your changes.
-						{/if}
-					</p>
-				</div>
-			{:else}
-				<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
-					<p class="text-sm text-destructive">
-						This action cannot be undone. The variant will be permanently deleted.
-					</p>
-				</div>
-			{/if}
-
-			<div class="flex justify-end gap-2 pt-4">
-				<button
-					onclick={closeDeleteModal}
-					disabled={deleting}
-					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
-					Cancel
-				</button>
-				<button
-					onclick={handleDelete}
-					disabled={deleting}
-					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
-					{deleting ? 'Deleting...' : 'Delete Variant'}
-				</button>
-			</div>
-		</div>
-	{/if}
-</Modal>
-
-<Modal show={showEditModal} title="Edit Variant" onClose={closeEditModal} maxWidth="5xl">
+<Modal show={entityState.showEditModal} title="Edit Variant" onClose={entityState.closeEdit} maxWidth="5xl">
 	{#if variant}
 		<div class="h-[70vh]">
-			<VariantForm variant={variant} onSubmit={handleSubmit} {saving} />
-		</div>
-	{:else}
-		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+			<VariantForm {variant} onSubmit={handleSubmit} saving={entityState.saving} />
 		</div>
 	{/if}
 </Modal>
+
+<DeleteConfirmationModal
+	show={entityState.showDeleteModal}
+	title="Delete Variant"
+	entityName={variant?.color_name ?? ''}
+	isLocalCreate={entityState.isLocalCreate}
+	deleting={entityState.deleting}
+	onClose={entityState.closeDelete}
+	onDelete={handleDelete}
+/>
