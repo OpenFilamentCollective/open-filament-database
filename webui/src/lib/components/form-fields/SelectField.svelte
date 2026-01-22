@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Tooltip from './Tooltip.svelte';
 	import type { Snippet } from 'svelte';
+	import { INPUT_CLASSES, LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
 
 	interface Props {
 		value: string | number;
@@ -27,19 +28,13 @@
 
 <div class="flex flex-col">
 	{#if label}
-		<label for={id} class="flex items-center text-sm font-medium text-foreground mb-1">
+		<label for={id} class={LABEL_CLASSES}>
 			{label}
-			{#if required}<span class="text-destructive ml-1">*</span>{/if}
+			{#if required}<span class={REQUIRED_INDICATOR}>*</span>{/if}
 			{#if tooltip}<Tooltip text={tooltip} />{/if}
 		</label>
 	{/if}
-	<select
-		{id}
-		bind:value
-		class="w-full px-3 py-2 bg-background text-foreground border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-ring outline-none transition-colors"
-		{required}
-		{disabled}
-	>
+	<select {id} bind:value class={INPUT_CLASSES} {required} {disabled}>
 		{#if children}
 			{@render children()}
 		{:else}

@@ -143,7 +143,9 @@
 					{#if $isCloudMode}
 						{#if storeData.slug}
 							<p class="text-muted-foreground">Native ID: {storeData.slug}</p>
-							<p class="text-muted-foreground">Cloud ID: {storeData.id}</p>
+							{#if !entityState.isLocalCreate}
+								<p class="text-muted-foreground">Cloud ID: {storeData.id}</p>
+							{/if}
 						{:else}
 							<p class="text-muted-foreground">Native ID: {storeData.id}</p>
 						{/if}

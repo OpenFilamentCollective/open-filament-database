@@ -39,7 +39,7 @@
 		error = null;
 		try {
 			const index = await db.loadIndex();
-			brands = index.brands;
+			brands = index.brands.sort((a, b) => a.name.localeCompare(b.name));
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to load brands';
 		} finally {

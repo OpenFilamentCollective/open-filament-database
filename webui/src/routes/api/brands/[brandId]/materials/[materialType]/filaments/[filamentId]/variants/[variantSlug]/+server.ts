@@ -5,6 +5,25 @@ import path from 'path';
 
 const DATA_DIR = path.join(process.cwd(), '../data');
 
+// Transform raw variant data to frontend format
+function transformVariant(raw: any): any {
+	const { name, ...rest } = raw;
+	return {
+		...rest,
+		color_name: name ?? rest.color_name ?? '',
+		discontinued: raw.discontinued ?? false
+	};
+}
+
+// Transform frontend variant data back to storage format
+function transformVariantForStorage(data: any): any {
+	const { color_name, brandId, materialType, filamentId, variantDir, ...rest } = data;
+	return {
+		...rest,
+		name: color_name ?? rest.name ?? ''
+	};
+}
+
 // GET a specific variant
 export const GET: RequestHandler = async ({ params }) => {
 	const { brandId, materialType, filamentId, variantSlug } = params;
@@ -22,7 +41,7 @@ export const GET: RequestHandler = async ({ params }) => {
 		const content = await fs.readFile(variantPath, 'utf-8');
 		const variant = JSON.parse(content);
 
-		return json(variant);
+		return json(transformVariant(variant));
 	} catch (error) {
 		console.error(
 			`Error reading variant ${brandId}/${materialType}/${filamentId}/${variantSlug}:`,
@@ -53,8 +72,9 @@ export const PUT: RequestHandler = async ({ params, request }) => {
 		const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
 
 		if (IS_LOCAL) {
-			// Write the updated variant data with proper formatting
-			const content = JSON.stringify(variantData, null, 4) + '\n';
+			// Transform to storage format and write with proper formatting
+			const storageData = transformVariantForStorage(variantData);
+			const content = JSON.stringify(storageData, null, 4) + '\n';
 			await fs.writeFile(variantPath, content, 'utf-8');
 			return json({ success: true, variant: variantData });
 		} else {

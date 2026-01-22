@@ -6,6 +6,25 @@ import path from 'path';
 
 const DATA_DIR = path.join(process.cwd(), '../data');
 
+// Transform raw variant data to frontend format
+function transformVariant(raw: any): any {
+	const { name, ...rest } = raw;
+	return {
+		...rest,
+		color_name: name ?? rest.color_name ?? '',
+		discontinued: raw.discontinued ?? false
+	};
+}
+
+// Transform frontend variant data back to storage format
+function transformVariantForStorage(data: any): any {
+	const { color_name, brandId, materialType, filamentId, variantDir, ...rest } = data;
+	return {
+		...rest,
+		name: color_name ?? rest.name ?? ''
+	};
+}
+
 export const GET: RequestHandler = async ({ params }) => {
 	const { brandId, materialType, filamentId } = params;
 
@@ -25,7 +44,7 @@ export const GET: RequestHandler = async ({ params }) => {
 						const content = await fs.readFile(variantPath, 'utf-8');
 						const variant = JSON.parse(content);
 						return {
-							...variant,
+							...transformVariant(variant),
 							brandId,
 							materialType,
 							filamentId,
@@ -68,18 +87,17 @@ export const POST: RequestHandler = async ({ params, request }) => {
 			// Create the variant directory
 			await fs.mkdir(variantDir, { recursive: true });
 
-			// Write the variant.json file (without internal tracking fields)
-			const { brandId: bid, materialType: mt, filamentId: fid, variantDir: vd, ...cleanData } = variantData;
-			// Ensure id and slug are set
-			cleanData.id = variantSlug;
-			cleanData.slug = variantSlug;
-			cleanData.filament_id = filamentId;
-			const content = JSON.stringify(cleanData, null, 4) + '\n';
+			// Transform to storage format and add required fields
+			const storageData = transformVariantForStorage(variantData);
+			storageData.id = variantSlug;
+			storageData.slug = variantSlug;
+			storageData.filament_id = filamentId;
+			const content = JSON.stringify(storageData, null, 4) + '\n';
 			await fs.writeFile(path.join(variantDir, 'variant.json'), content, 'utf-8');
 
 			return json({
 				success: true,
-				variant: { ...cleanData, brandId, materialType, filamentId }
+				variant: { ...variantData, id: variantSlug, slug: variantSlug, brandId, materialType, filamentId }
 			}, { status: 201 });
 		} else {
 			// In cloud mode, pretend success but don't write

@@ -100,3 +100,30 @@
 		cursor: not-allowed;
 	}
 }
+
+/* Shared checkbox styling */
+.checkbox-styled {
+	width: 1rem;
+	height: 1rem;
+	cursor: pointer;
+	accent-color: hsl(var(--primary));
+	border: 1px solid hsl(var(--border));
+	border-radius: 0.25rem;
+	background-color: hsl(var(--background));
+}
+
+.checkbox-styled:checked {
+	background-color: hsl(var(--primary));
+	border-color: hsl(var(--primary));
+}
+
+.checkbox-styled:focus {
+	outline: 2px solid hsl(var(--ring));
+	outline-offset: 2px;
+}
+
+/* Small checkbox variant */
+.checkbox-sm {
+	width: 0.875rem;
+	height: 0.875rem;
+}

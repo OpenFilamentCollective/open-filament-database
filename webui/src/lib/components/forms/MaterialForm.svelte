@@ -1,18 +1,17 @@
 <script lang="ts">
-	import { BasicForm } from '@sjsf/form';
 	import { apiBaseUrl } from '$lib/stores/environment';
 	import { get } from 'svelte/store';
-	import { SelectField, NumberField, ToggleField, Tooltip } from '$lib/components/form-fields';
+	import { SelectField, NumberField, FormSection, TwoColumnLayout } from '$lib/components/form-fields';
+	import { SlicerConfigPanel } from '$lib/components/forms';
 	import {
 		SLICER_KEYS,
-		SLICER_LABELS,
-		SLICER_DESCRIPTIONS,
 		initializeSlicerForm,
 		buildSlicerSettings,
 		initializeSlicerEnabled,
 		initializeSlicerForms,
 		type SlicerKey
 	} from '$lib/config/slicerConfig';
+	import { BTN_SUBMIT } from '$lib/styles/formStyles';
 
 	interface Props {
 		material?: any;
@@ -51,10 +50,14 @@
 
 	// Tooltip descriptions
 	const TOOLTIPS = {
-		material: 'The type of material (e.g., PLA, PETG, ABS). This determines the base properties and recommended settings.',
-		material_class: 'The manufacturing process class. FFF (Fused Filament Fabrication) for standard filament printing, SLA for resin-based printing.',
-		default_max_dry_temperature: 'Maximum temperature (in °C) that can be used to dry this material without degradation. Common values: PLA ~45°C, PETG ~65°C, ABS ~80°C.',
-		slicer_settings: 'Configure default slicer profiles and temperature overrides for different slicing software. Toggle each slicer to configure its specific settings.'
+		material:
+			'The type of material (e.g., PLA, PETG, ABS). This determines the base properties and recommended settings.',
+		material_class:
+			'The manufacturing process class. FFF (Fused Filament Fabrication) for standard filament printing, SLA for resin-based printing.',
+		default_max_dry_temperature:
+			'Maximum temperature (in °C) that can be used to dry this material without degradation. Common values: PLA ~45°C, PETG ~65°C, ABS ~80°C.',
+		slicer_settings:
+			'Configure default slicer profiles and temperature overrides for different slicing software. Toggle each slicer to configure its specific settings.'
 	};
 
 	// Form data state
@@ -72,11 +75,6 @@
 
 	// Slicer settings forms
 	let slicerForms = $state<Record<SlicerKey, any>>(initializeSlicerForms());
-
-	// Track which slicers have any enabled
-	let hasAnySlicerEnabled = $derived(
-		SLICER_KEYS.some(key => slicerEnabled[key])
-	);
 
 	// Toggle slicer
 	function toggleSlicer(key: SlicerKey) {
@@ -123,9 +121,8 @@
 	});
 </script>
 
-<div class="flex gap-6 h-full">
-	<!-- Left side: Main form -->
-	<div class="w-1/2 space-y-4 flex flex-col">
+<TwoColumnLayout>
+	{#snippet leftContent()}
 		<!-- Material Type Dropdown -->
 		<SelectField
 			bind:value={formData.material}
@@ -167,72 +164,22 @@
 		/>
 
 		<!-- Slicer Toggles Section -->
-		<div class="border-t pt-4 mt-4">
-			<h3 class="flex items-center text-sm font-medium text-foreground mb-3">
-				Default Slicer Settings
-				<Tooltip text={TOOLTIPS.slicer_settings} />
-			</h3>
-			<div class="flex flex-wrap gap-3">
-				{#each SLICER_KEYS as key}
-					<ToggleField
-						bind:checked={slicerEnabled[key]}
-						label={SLICER_LABELS[key]}
-						tooltip={SLICER_DESCRIPTIONS[key]}
-						onchange={() => toggleSlicer(key)}
-					/>
-				{/each}
-			</div>
-		</div>
+		<FormSection title="Default Slicer Settings" tooltip={TOOLTIPS.slicer_settings}>
+			<SlicerConfigPanel {slicerEnabled} {slicerForms} onToggle={toggleSlicer} togglesOnly />
+		</FormSection>
 
 		<!-- Spacer to push submit button to bottom -->
 		<div class="flex-1"></div>
 
 		<!-- Submit Button -->
 		<div class="pt-4">
-			<button
-				type="button"
-				onclick={handleSubmit}
-				disabled={saving || !formData.material}
-				class="w-full px-6 py-3 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-			>
-				{saving ? 'Saving...' : (material ? 'Update Material' : 'Create Material')}
+			<button type="button" onclick={handleSubmit} disabled={saving || !formData.material} class={BTN_SUBMIT}>
+				{saving ? 'Saving...' : material ? 'Update Material' : 'Create Material'}
 			</button>
 		</div>
-	</div>
+	{/snippet}
 
-	<!-- Right side: Slicer settings forms -->
-	<div class="w-1/2 border-l pl-4 flex flex-col min-w-0">
-		<h3 class="text-sm font-medium text-foreground mb-3 flex-shrink-0">
-			Slicer Configuration
-		</h3>
-		<div class="flex-1 overflow-y-auto space-y-4 pr-1 min-h-0">
-			{#if hasAnySlicerEnabled}
-				{#each SLICER_KEYS as key}
-					{#if slicerEnabled[key]}
-						<div class="border border-border rounded-lg p-3">
-							<h4 class="font-medium text-foreground mb-2 flex items-center gap-2 text-sm">
-								<span class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>
-								<span class="truncate">{SLICER_LABELS[key]}</span>
-							</h4>
-							{#if slicerForms[key]}
-								<div class="text-sm">
-									<BasicForm form={slicerForms[key]} />
-								</div>
-							{:else}
-								<div class="text-sm text-muted-foreground">Loading...</div>
-							{/if}
-						</div>
-					{/if}
-				{/each}
-			{:else}
-				<div class="flex flex-col items-center justify-center h-full text-center p-4">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-muted-foreground mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-					</svg>
-					<p class="text-sm text-muted-foreground">Enable a slicer toggle on the left to configure its settings here.</p>
-				</div>
-			{/if}
-		</div>
-	</div>
-</div>
+	{#snippet rightContent()}
+		<SlicerConfigPanel {slicerEnabled} {slicerForms} onToggle={toggleSlicer} panelOnly />
+	{/snippet}
+</TwoColumnLayout>
