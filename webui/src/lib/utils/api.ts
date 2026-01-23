@@ -1,5 +1,6 @@
 import { get } from 'svelte/store';
 import { isLocalMode, apiBaseUrl, isCloudMode } from '$lib/stores/environment';
+import { apiCache, getTTLForPath, isCacheEnabled } from './cache';
 
 /**
  * Build the appropriate API URL based on environment mode
@@ -205,20 +206,40 @@ function transformCloudResponse(data: any, path: string): any {
 }
 
 /**
- * Fetch data from an API endpoint with automatic URL building and response transformation
- * Wraps the standard fetch API with environment-aware URL building and data normalization
+ * Fetch data from an API endpoint with automatic URL building, caching, and response transformation
+ * Wraps the standard fetch API with environment-aware URL building, TTL-based caching, and data normalization
  *
  * @param path - The API path (e.g., '/api/stores')
  * @param options - Standard fetch options
  * @returns Promise with the fetch Response
  */
 export async function apiFetch(path: string, options?: RequestInit): Promise<Response> {
+	const method = options?.method?.toUpperCase() || 'GET';
+
+	// Only cache GET requests in cloud mode when caching is enabled
+	const shouldCache = method === 'GET' && get(isCloudMode) && isCacheEnabled();
+
+	// Check cache first for GET requests
+	if (shouldCache) {
+		const cached = apiCache.get<{ data: any; status: number; statusText: string }>(path);
+		if (cached) {
+			return new Response(JSON.stringify(cached.data), {
+				status: cached.status,
+				statusText: cached.statusText,
+				headers: { 'Content-Type': 'application/json', 'X-Cache': 'HIT' }
+			});
+		}
+	}
+
 	const url = buildApiUrl(path);
 	const response = await fetch(url, options);
 
-	// Only transform GET requests (not PUT, POST, DELETE)
-	const method = options?.method?.toUpperCase() || 'GET';
+	// Only transform and cache GET requests
 	if (method !== 'GET' || !response.ok) {
+		// Invalidate related cache entries on mutations
+		if (method !== 'GET' && response.ok) {
+			invalidateCacheForPath(path);
+		}
 		return response;
 	}
 
@@ -229,14 +250,56 @@ export async function apiFetch(path: string, options?: RequestInit): Promise<Res
 		const data = await response.json();
 		const transformedData = transformCloudResponse(data, path);
 
+		// Cache the transformed response in cloud mode
+		if (shouldCache) {
+			const ttl = getTTLForPath(path);
+			apiCache.set(path, {
+				data: transformedData,
+				status: clonedResponse.status,
+				statusText: clonedResponse.statusText
+			}, { ttl });
+		}
+
 		// Create a new response with transformed data
 		return new Response(JSON.stringify(transformedData), {
 			status: clonedResponse.status,
 			statusText: clonedResponse.statusText,
-			headers: clonedResponse.headers
+			headers: new Headers({
+				'Content-Type': 'application/json',
+				'X-Cache': 'MISS'
+			})
 		});
 	} catch (error) {
 		// If JSON parsing fails, return the original response
 		return clonedResponse;
 	}
+}
+
+/**
+ * Invalidate cache entries related to a mutated path
+ * Called after PUT, POST, DELETE operations
+ */
+function invalidateCacheForPath(path: string): void {
+	// Extract the base entity path and invalidate related entries
+	// e.g., /api/brands/acme -> invalidate /api/brands and /api/brands/acme*
+
+	if (path.startsWith('/api/stores')) {
+		apiCache.delete('/api/stores');
+		apiCache.deleteByPrefix('/api/stores/');
+	} else if (path.startsWith('/api/brands')) {
+		apiCache.delete('/api/brands');
+		// Extract brand ID and invalidate all related entries
+		const match = path.match(/^\/api\/brands\/([^/]+)/);
+		if (match) {
+			apiCache.deleteByPrefix(`/api/brands/${match[1]}`);
+		}
+	}
+}
+
+/**
+ * Clear the API response cache
+ * Useful when changes are synced or user wants fresh data
+ */
+export function clearApiCache(): void {
+	apiCache.clear();
 }
