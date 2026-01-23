@@ -150,7 +150,8 @@
         "20"
     ],
     "compatible_printers": [
-        "Prusa CORE One HF 0.4 nozzle"
+        "Prusa CORE One HF 0.4 nozzle",
+        "Prusa CORE One L HF 0.4 nozzle"
     ],
     "filament_notes": [
         ""

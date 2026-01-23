@@ -8,6 +8,7 @@ from .sqlite_stores_exporter import export_sqlite_stores
 from .csv_exporter import export_csv
 from .api_exporter import export_api
 from .html_exporter import export_html
+from .directory_listing_exporter import export_directory_listings
 
 __all__ = [
     'export_json',
@@ -19,4 +20,5 @@ __all__ = [
     'export_csv',
     'export_api',
     'export_html',
+    'export_directory_listings',
 ]

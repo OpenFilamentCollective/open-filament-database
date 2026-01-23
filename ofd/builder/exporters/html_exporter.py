@@ -8,6 +8,7 @@ Uses templates/index.html and replaces placeholders:
 - <OUTPUTFILES/> - file tree with ul/li structure
 """
 
+import shutil
 from pathlib import Path
 
 from ..models import Database
@@ -133,6 +134,7 @@ def export_html(
     version: str,
     generated_at: str,
     templates_dir: str = None,
+    config_dir: str = None,
     **kwargs
 ):
     """Export index.html landing page from template."""
@@ -164,3 +166,24 @@ def export_html(
         f.write(html_content)
 
     print(f"  Written: {index_file}")
+
+    # Copy CSS files from config directory
+    if config_dir:
+        config_path = Path(config_dir)
+    else:
+        project_root = Path(__file__).parent.parent.parent
+        config_path = project_root / "config"
+
+    # Copy adwaita.css (base Adwaita theme)
+    adwaita_source = config_path / "adwaita.css"
+    if adwaita_source.exists():
+        adwaita_dest = output_path / "adwaita.css"
+        shutil.copy2(adwaita_source, adwaita_dest)
+        print(f"  Written: {adwaita_dest}")
+
+    # Copy theme.css (application-specific overrides)
+    theme_source = config_path / "theme.css"
+    if theme_source.exists():
+        theme_dest = output_path / "theme.css"
+        shutil.copy2(theme_source, theme_dest)
+        print(f"  Written: {theme_dest}")

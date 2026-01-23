@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index of <PATH/></title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/OpenFilamentCollective/open-filament-database/blob/main/docs/img/logo.png?raw=true">
+    <link rel="stylesheet" href="<ADWAITA_PATH/>">
+    <link rel="stylesheet" href="<CSS_PATH/>">
+</head>
+<body>
+    <header class="headerbar">
+        <a href="<ROOT_PATH/>" class="headerbar-back">Home</a>
+        <h1><PATH/></h1>
+        <div class="headerbar-spacer"></div>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">
+            <span class="theme-icon-light">☀️</span>
+            <span class="theme-icon-dark">🌙</span>
+        </button>
+    </header>
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+
+            function getPreferred() {
+                const saved = localStorage.getItem('theme');
+                if (saved) return saved;
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            function setTheme(theme) {
+                root.classList.remove('light-mode', 'dark-mode');
+                root.classList.add(theme + '-mode');
+                localStorage.setItem('theme', theme);
+            }
+
+            setTheme(getPreferred());
+
+            toggle.addEventListener('click', function() {
+                const current = root.classList.contains('dark-mode') ? 'dark' : 'light';
+                setTheme(current === 'dark' ? 'light' : 'dark');
+            });
+        })();
+    </script>
+
+    <main class="content">
+        <section class="view">
+            <div class="view-content">
+                <div class="file-tree">
+                    <LISTING/>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="<ROOT_PATH/>">Home</a>
+        <a href="https://github.com/OpenFilamentCollective/open-filament-database">GitHub</a>
+    </footer>
+</body>
+</html>

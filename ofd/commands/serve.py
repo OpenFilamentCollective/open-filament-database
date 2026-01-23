@@ -81,6 +81,8 @@ def run_serve(args: argparse.Namespace) -> int:
     Returns:
         Exit code (0 for success, 1 for errors)
     """
+    import errno
+
     # Resolve directory path
     project_root = Path(__file__).parent.parent.parent
     serve_dir = project_root / args.directory
@@ -98,36 +100,46 @@ def run_serve(args: argparse.Namespace) -> int:
     def handler(*handler_args, **handler_kwargs):
         return CORSRequestHandler(*handler_args, directory=str(serve_dir), **handler_kwargs)
 
-    # Start server
-    try:
-        with socketserver.TCPServer((args.host, args.port), handler) as httpd:
-            host_display = args.host if args.host else 'localhost'
-            print("=" * 60)
-            print("Open Filament Database - Development Server")
-            print("=" * 60)
-            print(f"  Serving directory: {serve_dir}")
-            print(f"  Server address:    http://{host_display}:{args.port}")
-            print(f"  CORS:              Enabled (all origins)")
-            print(f"  Cache:             Disabled (development mode)")
-            print("\nMain Endpoints:")
-            print(f"  - API Root:      http://{host_display}:{args.port}/api/v1/index.json")
-            print(f"  - Brands:        http://{host_display}:{args.port}/api/v1/brands/index.json")
-            print(f"  - Stores:        http://{host_display}:{args.port}/api/v1/stores/index.json")
-            print(f"  - Brand Logos:   http://{host_display}:{args.port}/api/v1/brands/logo/index.json")
-            print(f"  - Store Logos:   http://{host_display}:{args.port}/api/v1/stores/logo/index.json")
-            print(f"  - Schemas:       http://{host_display}:{args.port}/api/v1/schemas/index.json")
-            print(f"  - All Data:      http://{host_display}:{args.port}/json/all.json")
-            print(f"  - HTML:          http://{host_display}:{args.port}/index.html")
-            print(f"\nNote: All paths match https://api.openfilamentdatabase.org/")
-            print("\nPress Ctrl+C to stop")
-            print("=" * 60)
-            try:
-                httpd.serve_forever()
-            except KeyboardInterrupt:
-                print("\n\nShutting down server...")
-                return 0
-    except OSError as e:
-        print(f"Error starting server: {e}", file=sys.stderr)
-        return 1
+    # Try to find an available port
+    max_port_attempts = 10
+    port = args.port
 
-    return 0
+    for attempt in range(max_port_attempts):
+        try:
+            with socketserver.TCPServer((args.host, port), handler) as httpd:
+                host_display = args.host if args.host else 'localhost'
+                print("=" * 60)
+                print("Open Filament Database - Development Server")
+                print("=" * 60)
+                print(f"  Serving directory: {serve_dir}")
+                print(f"  Server address:    http://{host_display}:{port}")
+                if port != args.port:
+                    print(f"  (Port {args.port} was in use, using {port} instead)")
+                print(f"  CORS:              Enabled (all origins)")
+                print(f"  Cache:             Disabled (development mode)")
+                print("\nMain Endpoints:")
+                print(f"  - API Root:      http://{host_display}:{port}/api/v1/index.json")
+                print(f"  - Brands:        http://{host_display}:{port}/api/v1/brands/index.json")
+                print(f"  - Stores:        http://{host_display}:{port}/api/v1/stores/index.json")
+                print(f"  - Brand Logos:   http://{host_display}:{port}/api/v1/brands/logo/index.json")
+                print(f"  - Store Logos:   http://{host_display}:{port}/api/v1/stores/logo/index.json")
+                print(f"  - Schemas:       http://{host_display}:{port}/api/v1/schemas/index.json")
+                print(f"  - All Data:      http://{host_display}:{port}/json/all.json")
+                print(f"  - HTML:          http://{host_display}:{port}/index.html")
+                print(f"\nNote: All paths match https://api.openfilamentdatabase.org/")
+                print("\nPress Ctrl+C to stop")
+                print("=" * 60)
+                try:
+                    httpd.serve_forever()
+                except KeyboardInterrupt:
+                    print("\n\nShutting down server...")
+                    return 0
+        except OSError as e:
+            if e.errno == errno.EADDRINUSE:
+                port += 1
+                continue
+            print(f"Error starting server: {e}", file=sys.stderr)
+            return 1
+
+    print(f"Error: Could not find an available port (tried {args.port}-{port - 1})", file=sys.stderr)
+    return 1
