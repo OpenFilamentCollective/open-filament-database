@@ -1,18 +1,36 @@
 <script lang="ts">
+	import { Button } from '$lib/components/ui';
+
 	interface Props {
 		text: string;
 	}
 
 	let { text }: Props = $props();
 	let active = $state(false);
+	let buttonEl: HTMLButtonElement | null = $state(null);
+	let tooltipStyle = $state('');
+
+	function updatePosition() {
+		if (buttonEl) {
+			const rect = buttonEl.getBoundingClientRect();
+			tooltipStyle = `left: ${rect.right + 8}px; top: ${rect.top}px;`;
+		}
+	}
+
+	function handleEnter() {
+		updatePosition();
+		active = true;
+	}
 </script>
 
-<button
-	type="button"
-	class="inline-flex items-center justify-center w-4 h-4 ml-1 text-muted-foreground hover:text-foreground transition-colors relative"
-	onmouseenter={() => (active = true)}
+<Button
+	bind:ref={buttonEl}
+	variant="ghost"
+	size="icon"
+	class="w-4 h-4 ml-1"
+	onmouseenter={handleEnter}
 	onmouseleave={() => (active = false)}
-	onfocus={() => (active = true)}
+	onfocus={handleEnter}
 	onblur={() => (active = false)}
 >
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
@@ -22,14 +40,16 @@
 			clip-rule="evenodd"
 		/>
 	</svg>
-	{#if active}
+</Button>
+
+{#if active}
+	<div
+		class="fixed z-50 w-64 max-w-64 p-2 text-xs text-left bg-popover text-popover-foreground border border-border rounded-lg shadow-lg wrap-break-word"
+		style={tooltipStyle}
+	>
+		{text}
 		<div
-			class="absolute left-6 top-0 z-50 w-64 p-2 text-xs text-left bg-popover text-popover-foreground border border-border rounded-lg shadow-lg"
-		>
-			{text}
-			<div
-				class="absolute left-0 top-2 -translate-x-1 w-2 h-2 bg-popover border-l border-b border-border rotate-45"
-			></div>
-		</div>
-	{/if}
-</button>
+			class="absolute left-0 top-2 -translate-x-1 w-2 h-2 bg-popover border-l border-b border-border rotate-45"
+		></div>
+	</div>
+{/if}

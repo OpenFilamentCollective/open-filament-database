@@ -18,7 +18,7 @@
 		type SlicerKey
 	} from '$lib/config/slicerConfig';
 	import { buildOptionalFields } from '$lib/utils/formUtils';
-	import { BTN_SUBMIT } from '$lib/styles/formStyles';
+	import { Button } from '$lib/components/ui';
 
 	interface Props {
 		filament?: any;
@@ -283,14 +283,13 @@
 
 		<!-- Submit Button -->
 		<div class="pt-4">
-			<button
-				type="button"
+			<Button
 				onclick={handleSubmit}
 				disabled={saving || !formData.name || !formData.density || !formData.diameter_tolerance}
-				class={BTN_SUBMIT}
+				class="w-full"
 			>
 				{saving ? 'Saving...' : filament ? 'Update Filament' : 'Create Filament'}
-			</button>
+			</Button>
 		</div>
 	{/snippet}
 

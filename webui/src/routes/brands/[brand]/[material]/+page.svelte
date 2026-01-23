@@ -2,8 +2,9 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import type { Material, Filament } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
-	import { MaterialForm, FilamentForm } from '$lib/components/forms';
+	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons, Button } from '$lib/components/ui';
+	import { MaterialFormSchema, FilamentForm } from '$lib/components/forms';
+	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityDetails, EntityCard } from '$lib/components/entity';
@@ -19,6 +20,7 @@
 	let material: Material | null = $state(null);
 	let originalMaterial: Material | null = $state(null);
 	let filaments: Filament[] = $state([]);
+	let materialSchema: any = $state(null);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
 
@@ -34,9 +36,10 @@
 
 	onMount(async () => {
 		try {
-			const [materialData, filamentsData] = await Promise.all([
+			const [materialData, filamentsData, schema] = await Promise.all([
 				db.getMaterial(brandId, materialType),
-				db.loadFilaments(brandId, materialType)
+				db.loadFilaments(brandId, materialType),
+				fetchEntitySchema('material')
 			]);
 
 			if (!materialData) {
@@ -46,6 +49,7 @@
 			}
 
 			material = materialData;
+			materialSchema = schema;
 			const trueOriginal = db.getOriginalMaterial(brandId, materialType);
 			originalMaterial = trueOriginal ? structuredClone(trueOriginal) : structuredClone(materialData);
 			filaments = filamentsData;
@@ -231,24 +235,12 @@
 				<div class="bg-card border border-border rounded-lg p-6">
 					<div class="flex justify-between items-center mb-4">
 						<h2 class="text-xl font-semibold">Filaments</h2>
-						<button
-							onclick={entityState.openCreate}
-							class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium text-sm flex items-center gap-1"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-4 w-4"
-								viewBox="0 0 20 20"
-								fill="currentColor"
-							>
-								<path
-									fill-rule="evenodd"
-									d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-									clip-rule="evenodd"
-								/>
+						<Button onclick={entityState.openCreate} size="sm">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
 							</svg>
 							Add Filament
-						</button>
+						</Button>
 					</div>
 
 					{#if filaments.length === 0}
@@ -290,8 +282,8 @@
 	maxWidth="5xl"
 	height="3/4"
 >
-	{#if material}
-		<MaterialForm {material} onSubmit={handleSubmit} saving={entityState.saving} />
+	{#if material && materialSchema}
+		<MaterialFormSchema entity={material} schema={materialSchema} onSubmit={handleSubmit} saving={entityState.saving} />
 	{/if}
 </Modal>
 

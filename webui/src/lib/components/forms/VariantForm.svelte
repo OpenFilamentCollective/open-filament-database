@@ -13,7 +13,7 @@
 	import { TRAIT_CATEGORIES, findTraitByKey } from '$lib/config/traitConfig';
 	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
 	import { toggleSetItem } from '$lib/utils/setHelpers';
-	import { BTN_SUBMIT, BTN_DASHED, BTN_PILL, BTN_PRIMARY_SM } from '$lib/styles/formStyles';
+	import { Button } from '$lib/components/ui';
 
 	interface Props {
 		variant?: any;
@@ -77,7 +77,7 @@
 	let showTraitDropdown = $state(false);
 	let traitDropdownRef = $state<HTMLDivElement | null>(null);
 	let dropdownMenuRef = $state<HTMLDivElement | null>(null);
-	let addButtonRef = $state<HTMLButtonElement | null>(null);
+	let addButtonRef = $state<HTMLSpanElement | null>(null);
 	let dropdownPosition = $state({ top: 0, right: 0 });
 
 	// Sizes state
@@ -358,33 +358,33 @@
 					<Tooltip text={TOOLTIPS.traits} />
 				</h3>
 				<!-- Add Trait button -->
-				<button
-					type="button"
-					bind:this={addButtonRef}
-					onclick={(e) => toggleTraitDropdown(e)}
-					aria-label="Add trait"
-					aria-haspopup="listbox"
-					aria-expanded={showTraitDropdown}
-					class={BTN_DASHED}
-				>
-					<PlusIcon class="h-3 w-3" />
-					Add
-				</button>
+				<span bind:this={addButtonRef}>
+					<Button
+						variant="outline"
+						size="sm"
+						onclick={(e) => toggleTraitDropdown(e)}
+						class="border-dashed"
+					>
+						<PlusIcon class="h-3 w-3" />
+						Add
+					</Button>
+				</span>
 			</div>
 
 			<!-- Selected traits as tiles -->
 			<div class="flex flex-wrap gap-1.5">
 				{#each [...selectedTraits] as traitKey}
 					{@const traitInfo = findTraitByKey(traitKey)}
-					<button
-						type="button"
+					<Button
+						variant="secondary"
+						size="sm"
 						onclick={() => removeTrait(traitKey)}
-						class={BTN_PILL}
+						class="h-7 rounded-full px-3 text-xs"
 						title="Click to remove: {traitInfo?.description}"
 					>
 						{traitInfo?.label || traitKey}
 						<CloseIcon class="h-3 w-3" />
-					</button>
+					</Button>
 				{/each}
 				{#if selectedTraits.size === 0}
 					<span class="text-xs text-muted-foreground">No traits selected</span>
@@ -417,28 +417,30 @@
 							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key))}
 							{#if unselectedTraits.length > 0}
 								<div class="mb-1">
-									<button
-										type="button"
+									<Button
+										variant="ghost"
+										size="sm"
 										onclick={() => toggleCategory(catKey)}
-										class="w-full px-2 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground flex items-center justify-between rounded hover:bg-muted/50"
+										class="w-full h-auto justify-between px-2 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground"
 									>
 										<span>{category.label}</span>
 										<ChevronDownIcon
 											class="h-3 w-3 transition-transform {expandedCategories.has(catKey) ? 'rotate-180' : ''}"
 										/>
-									</button>
+									</Button>
 									{#if expandedCategories.has(catKey)}
 										<div class="pl-2 py-1 space-y-0.5">
 											{#each unselectedTraits as trait}
-												<button
-													type="button"
+												<Button
+													variant="ghost"
+													size="sm"
 													onclick={() => addTrait(trait.key)}
-													class="w-full text-left px-2 py-1 text-xs text-foreground hover:bg-primary/10 rounded flex items-center gap-2"
+													class="w-full h-auto justify-start px-2 py-1 text-xs hover:bg-primary/10"
 													title={trait.description}
 												>
 													<PlusIcon class="h-3 w-3 text-muted-foreground" />
 													{trait.label}
-												</button>
+												</Button>
 											{/each}
 										</div>
 									{/if}
@@ -459,14 +461,13 @@
 
 		<!-- Submit Button -->
 		<div class="pt-4">
-			<button
-				type="button"
+			<Button
 				onclick={handleSubmit}
 				disabled={saving || !formData.color_name || !formData.color_hex || sizes.length === 0}
-				class={BTN_SUBMIT}
+				class="w-full"
 			>
 				{saving ? 'Saving...' : variant ? 'Update Variant' : 'Create Variant'}
-			</button>
+			</Button>
 		</div>
 	{/snippet}
 
@@ -476,9 +477,9 @@
 				Sizes <span class="text-destructive ml-1">*</span>
 				<Tooltip text={TOOLTIPS.sizes} />
 			</h3>
-			<button type="button" onclick={addSize} aria-label="Add new size configuration" class={BTN_PRIMARY_SM}>
+			<Button size="sm" onclick={addSize}>
 				+ Add Size
-			</button>
+			</Button>
 		</div>
 
 		<div class="flex-1 overflow-y-auto space-y-4 pr-1 min-h-0">

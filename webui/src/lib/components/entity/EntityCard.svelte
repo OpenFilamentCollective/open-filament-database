@@ -31,8 +31,6 @@
 		logoEntityId?: string;
 		/** Fields to display in the card body */
 		fields?: Field[];
-		/** Hover border color (e.g., 'green', 'blue', 'orange') */
-		hoverColor?: string;
 		/** Badge to display (e.g., discontinued) */
 		badge?: Badge;
 		/** Custom content snippet */
@@ -58,7 +56,6 @@
 		logoType,
 		logoEntityId,
 		fields = [],
-		hoverColor = 'blue',
 		badge,
 		children,
 		colorHex,
@@ -70,16 +67,15 @@
 
 	const displayName = $derived(name ?? entity.name);
 	const displayId = $derived(id ?? entity.slug ?? entity.id);
-	const hoverClass = $derived(`hover:border-${hoverColor}-500`);
 
 	// Determine local change styling
 	const localChangeClass = $derived.by(() => {
 		if (!hasLocalChanges) return '';
 		switch (localChangeType) {
 			case 'create':
-				return 'border-l-4 border-l-success';
+				return 'border-l-4 border-l-green-500';
 			case 'update':
-				return 'border-l-4 border-l-warning';
+				return 'border-l-4 border-l-yellow-500';
 			case 'delete':
 				return 'border-l-4 border-l-destructive';
 			default:
@@ -90,7 +86,7 @@
 
 <a
 	{href}
-	class="block p-6 border border-border rounded-lg {hoverClass} hover:shadow-lg transition-all {localChangeClass}"
+	class="block rounded-lg border bg-card p-6 shadow-sm transition-colors hover:bg-accent {localChangeClass}"
 >
 	<div class="flex items-center gap-4 mb-4">
 		{#if colorHex}
@@ -109,7 +105,7 @@
 				<h3 class="font-semibold text-lg truncate">{displayName}</h3>
 				{#if hasLocalChanges}
 					<span
-						class="shrink-0 px-1.5 py-0.5 text-xs rounded {localChangeType === 'create' ? 'bg-success/20 text-success' : localChangeType === 'update' ? 'bg-warning/20 text-warning' : localChangeType === 'delete' ? 'bg-destructive/20 text-destructive' : 'bg-primary/20 text-primary'}"
+						class="shrink-0 px-1.5 py-0.5 text-xs rounded {localChangeType === 'create' ? 'bg-green-500/20 text-green-700 dark:text-green-400' : localChangeType === 'update' ? 'bg-yellow-500/20 text-yellow-700 dark:text-yellow-400' : localChangeType === 'delete' ? 'bg-destructive/20 text-destructive' : 'bg-primary/20 text-primary'}"
 						title={localChangeType === 'create' ? 'Locally created' : localChangeType === 'update' ? 'Locally modified' : localChangeType === 'delete' ? 'Marked for deletion' : 'Has local changes'}
 					>
 						{localChangeType === 'create' ? 'New' : localChangeType === 'update' ? 'Modified' : localChangeType === 'delete' ? 'Deleted' : 'Changed'}

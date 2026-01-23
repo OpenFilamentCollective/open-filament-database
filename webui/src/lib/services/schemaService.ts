@@ -10,27 +10,36 @@ import { apiBaseUrl } from '$lib/stores/environment';
 const schemaCache = new Map<string, any>();
 
 /**
- * Fetch a schema from the API with caching
+ * Fetch a schema from a specific URL with caching
  */
-export async function fetchSchema(schemaName: string): Promise<any | null> {
-	if (schemaCache.has(schemaName)) {
-		return schemaCache.get(schemaName);
+async function fetchSchemaFromUrl(url: string): Promise<any | null> {
+	if (schemaCache.has(url)) {
+		return schemaCache.get(url);
 	}
 
 	try {
-		const baseUrl = get(apiBaseUrl);
-		const response = await fetch(`${baseUrl}/api/v1/schemas/${schemaName}`);
+		const response = await fetch(url);
 		if (!response.ok) {
-			console.warn(`Failed to fetch schema ${schemaName}: ${response.status}`);
+			console.warn(`Failed to fetch schema from ${url}: ${response.status}`);
 			return null;
 		}
 		const schema = await response.json();
-		schemaCache.set(schemaName, schema);
+		schemaCache.set(url, schema);
 		return schema;
 	} catch (error) {
-		console.error(`Error fetching schema ${schemaName}:`, error);
+		console.error(`Error fetching schema from ${url}:`, error);
 		return null;
 	}
+}
+
+/**
+ * Fetch a schema from the external API with caching
+ * Uses /api/v1/schemas/{schemaName} path for external API
+ */
+export async function fetchSchema(schemaName: string): Promise<any | null> {
+	const baseUrl = get(apiBaseUrl);
+	const url = `${baseUrl}/api/v1/schemas/${schemaName}`;
+	return fetchSchemaFromUrl(url);
 }
 
 /**
@@ -164,6 +173,7 @@ export function extractTraitsFromSchema(schema: any): Record<string, { descripti
 
 /**
  * Schema names for different entity types
+ * Maps entity type to the schema file name for external API
  */
 export const SCHEMA_NAMES = {
 	brand: 'brand_schema.json',
@@ -174,11 +184,35 @@ export const SCHEMA_NAMES = {
 	materialTypes: 'material_types_schema.json'
 } as const;
 
+/**
+ * Entity types that have local API routes
+ * Maps entity type to the local API route
+ */
+export const ENTITY_ROUTES = {
+	brand: 'brand',
+	material: 'material',
+	filament: 'filament',
+	variant: 'variant',
+	store: 'store',
+	materialTypes: 'material_types_schema.json'
+} as const;
+
 export type SchemaName = keyof typeof SCHEMA_NAMES;
 
 /**
  * Fetch a schema by entity type
+ * Uses local API routes (/api/schemas/{entity}) when in local mode
+ * Falls back to external API with full schema file names when in cloud mode
  */
 export async function fetchEntitySchema(entityType: SchemaName): Promise<any | null> {
+	const baseUrl = get(apiBaseUrl);
+
+	// In local mode (empty baseUrl), use the local API routes
+	if (!baseUrl) {
+		const route = ENTITY_ROUTES[entityType];
+		return fetchSchemaFromUrl(`/api/schemas/${route}`);
+	}
+
+	// In cloud mode, use the external API with full schema file names
 	return fetchSchema(SCHEMA_NAMES[entityType]);
 }

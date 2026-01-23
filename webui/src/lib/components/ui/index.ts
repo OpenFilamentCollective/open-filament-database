@@ -1,3 +1,6 @@
+export { default as Button } from './Button.svelte';
+export { default as Checkbox } from './Checkbox.svelte';
+export { default as Switch } from './Switch.svelte';
 export { default as LoadingSpinner } from './LoadingSpinner.svelte';
 export { default as Modal } from './Modal.svelte';
 export { default as MessageBanner } from './MessageBanner.svelte';

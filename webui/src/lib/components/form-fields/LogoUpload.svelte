@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { isCloudMode, apiBaseUrl } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
+	import { Button } from '$lib/components/ui';
 	import {
 		validateImage,
 		resizeImage,
@@ -626,7 +626,7 @@
 	}
 </script>
 
-<div class="logo-upload">
+<div class="mb-4">
 	<div class="font-bold">
 		{label} {#if !currentLogo}*{/if}
 	</div>
@@ -651,14 +651,14 @@
 				class="hidden"
 			/>
 
-			<button
+			<Button
 				type="button"
 				onclick={triggerFileSelect}
 				disabled={processing}
-				class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
+				variant="primary"
 			>
 				{processing ? 'Processing...' : previewUrl ? 'Change Logo' : 'Upload Logo'}
-			</button>
+			</Button>
 
 			<p class="text-xs text-muted-foreground mt-2">
 				Image must be square, between 100x100 and 400x400 pixels. Non-square images will be cropped.
@@ -700,30 +700,24 @@
 				{/if}
 
 				<div class="flex justify-end gap-3">
-					<button
+					<Button
 						type="button"
 						onclick={cancelCrop}
 						disabled={processing}
-						class="px-4 py-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md font-medium transition-colors disabled:opacity-50"
+						variant="secondary"
 					>
 						Cancel
-					</button>
-					<button
+					</Button>
+					<Button
 						type="button"
 						onclick={applyCrop}
 						disabled={processing}
-						class="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md font-medium transition-colors disabled:opacity-50"
+						variant="primary"
 					>
 						{processing ? 'Processing...' : 'Apply Crop'}
-					</button>
+					</Button>
 				</div>
 			</div>
 		</div>
 	</div>
 {/if}
-
-<style>
-	.logo-upload {
-		margin-bottom: 1rem;
-	}
-</style>

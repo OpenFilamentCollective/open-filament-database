@@ -11,6 +11,24 @@
 	}
 
 	let { value = $bindable(''), id = 'color-hex', label = '', required = false, tooltip = '' }: Props = $props();
+
+	// Strip # prefix for display, always store with #
+	let hexValue = $derived(value.startsWith('#') ? value.slice(1) : value);
+
+	// Full color value for the color picker (needs #)
+	let colorPickerValue = $derived(value.startsWith('#') ? value : `#${value}`);
+
+	function handleTextInput(e: Event) {
+		const input = e.target as HTMLInputElement;
+		// Remove any non-hex characters and limit to 6
+		let cleaned = input.value.replace(/[^0-9a-fA-F]/g, '').slice(0, 6).toUpperCase();
+		value = `#${cleaned}`;
+	}
+
+	function handleColorPicker(e: Event) {
+		const input = e.target as HTMLInputElement;
+		value = input.value.toUpperCase();
+	}
 </script>
 
 <div class="flex flex-col">
@@ -21,19 +39,25 @@
 			{#if tooltip}<Tooltip text={tooltip} />{/if}
 		</label>
 	{/if}
-	<div class="flex gap-2">
-		<input
-			{id}
-			type="text"
-			bind:value
-			class="flex-1 px-3 py-2 bg-background text-foreground border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-ring font-mono outline-none transition-colors"
-			placeholder="#FF5733"
-			{required}
-		/>
+	<div class="flex">
+		<div class="flex flex-1 mr-2 items-center bg-background border border-border rounded-lg focus-within:ring-2 focus-within:ring-ring focus-within:border-ring transition-colors">
+			<span class="pl-3 pr-3 text-muted-foreground font-mono select-none">#</span>
+			<input
+				{id}
+				type="text"
+				value={hexValue}
+				oninput={handleTextInput}
+				class="flex-1 pr-3 py-2 bg-transparent border-0 border-l border-border text-foreground font-mono outline-none uppercase"
+				placeholder="FF5733"
+				maxlength="6"
+				{required}
+			/>
+		</div>
 		<input
 			type="color"
-			bind:value
-			class="w-10 h-10 cursor-pointer shrink-0 rounded border border-border"
+			value={colorPickerValue}
+			oninput={handleColorPicker}
+			class="w-10 h-10 cursor-pointer shrink-0 bg-background [&::-webkit-color-swatch-wrapper]:p-1 [&::-webkit-color-swatch]:rounded [&::-webkit-color-swatch]:border-none [&::-moz-color-swatch]:rounded [&::-moz-color-swatch]:border-none"
 		/>
 	</div>
 </div>

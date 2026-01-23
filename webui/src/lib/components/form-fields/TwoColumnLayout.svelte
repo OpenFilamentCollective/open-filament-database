@@ -16,7 +16,7 @@
 </script>
 
 <div class="flex gap-6 h-full">
-	<div class="{leftWidthClasses[leftWidth]} {spacingClasses[leftSpacing]} flex flex-col overflow-y-auto px-1">
+	<div class="{leftWidthClasses[leftWidth]} {spacingClasses[leftSpacing]} flex flex-col overflow-y-auto pl-1 pr-4">
 		{@render leftContent()}
 	</div>
 	<div class="{rightWidthClasses[leftWidth]} border-l pl-4 flex flex-col min-w-0">

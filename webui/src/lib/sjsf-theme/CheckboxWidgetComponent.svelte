@@ -23,7 +23,7 @@
 <input
 	id={config.path.id}
 	type="checkbox"
-	class="h-4 w-4 rounded border-input text-primary focus:ring-ring focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed"
+	class="h-4 w-4 rounded border-border bg-background text-primary focus:ring-ring focus:ring-2 focus:ring-offset-0 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
 	class:border-destructive={errors.length > 0}
 	bind:checked={value}
 	{disabled}

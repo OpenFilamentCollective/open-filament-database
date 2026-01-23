@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import Button from './Button.svelte';
 
 	interface Props {
 		show: boolean;
@@ -66,12 +67,7 @@
 			<div class="flex flex-col flex-1 min-h-0">
 				<div class="flex justify-between items-center px-6 pt-6 pb-4 flex-shrink-0">
 					<h3 id="modal-title" class="text-xl font-semibold">{title}</h3>
-					<button
-						type="button"
-						onclick={onClose}
-						class="text-muted-foreground hover:text-foreground transition-colors"
-						aria-label="Close modal"
-					>
+					<Button onclick={onClose} variant="ghost" size="icon" title="Close modal">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-6 w-6"
@@ -81,7 +77,7 @@
 						>
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 						</svg>
-					</button>
+					</Button>
 				</div>
 
 				<div class="flex-1 overflow-auto min-h-0 px-6 pb-6">

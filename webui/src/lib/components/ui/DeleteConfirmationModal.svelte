@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Modal from './Modal.svelte';
+	import Button from './Button.svelte';
 	import { isCloudMode } from '$lib/stores/environment';
 
 	interface Props {
@@ -55,20 +56,12 @@
 		{/if}
 
 		<div class="flex justify-end gap-2 pt-4">
-			<button
-				onclick={onClose}
-				disabled={deleting}
-				class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-			>
+			<Button onclick={onClose} disabled={deleting} variant="secondary">
 				Cancel
-			</button>
-			<button
-				onclick={onDelete}
-				disabled={deleting}
-				class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-			>
+			</Button>
+			<Button onclick={onDelete} disabled={deleting} variant="destructive">
 				{deleting ? 'Deleting...' : 'Delete'}
-			</button>
+			</Button>
 		</div>
 	</div>
 </Modal>

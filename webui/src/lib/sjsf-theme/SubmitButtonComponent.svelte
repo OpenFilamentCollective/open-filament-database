@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { Config } from '@sjsf/form';
+	import { Button } from '$lib/components/ui';
 
 	let {
 		config,
@@ -17,10 +18,7 @@
 </script>
 
 {#if !isHidden}
-	<button
-		type="submit"
-		class="w-full px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md font-medium transition-colors"
-	>
+	<Button type="submit" variant="primary" class="w-full px-6 py-3">
 		{@render children()}
-	</button>
+	</Button>
 {/if}

@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import type { Brand, Material } from '$lib/types/database';
-	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { Modal, MessageBanner, Button, ActionButtons } from '$lib/components/ui';
 	import { BrandForm, MaterialForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
@@ -288,35 +288,19 @@
 					]}
 				>
 					{#snippet actions()}
-						<div class="flex gap-2">
-							<button
-								onclick={openEditModal}
-								class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium"
-							>
-								Edit
-							</button>
-							<button
-								onclick={openDeleteModal}
-								class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium"
-							>
-								Delete
-							</button>
-						</div>
+						<ActionButtons onEdit={openEditModal} onDelete={openDeleteModal} editVariant="primary" />
 					{/snippet}
 				</EntityDetails>
 
 				<div class="bg-card border border-border rounded-lg p-6">
 					<div class="flex justify-between items-center mb-4">
 						<h2 class="text-xl font-semibold">Materials</h2>
-						<button
-							onclick={openCreateMaterialModal}
-							class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded-md font-medium text-sm flex items-center gap-1"
-						>
+						<Button onclick={openCreateMaterialModal} variant="secondary" size="sm">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
 							</svg>
 							Add Material
-						</button>
+						</Button>
 					</div>
 
 					{#if materials.length === 0}
@@ -385,20 +369,12 @@
 			{/if}
 
 			<div class="flex justify-end gap-2 pt-4">
-				<button
-					onclick={closeDeleteModal}
-					disabled={deleting}
-					class="bg-muted text-muted-foreground hover:bg-muted/80 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
+				<Button onclick={closeDeleteModal} disabled={deleting} variant="secondary">
 					Cancel
-				</button>
-				<button
-					onclick={handleDelete}
-					disabled={deleting}
-					class="bg-destructive text-destructive-foreground hover:bg-destructive/90 px-4 py-2 rounded-md font-medium disabled:opacity-50"
-				>
+				</Button>
+				<Button onclick={handleDelete} disabled={deleting} variant="destructive">
 					{deleting ? 'Deleting...' : 'Delete Brand'}
-				</button>
+				</Button>
 			</div>
 		</div>
 	{/if}

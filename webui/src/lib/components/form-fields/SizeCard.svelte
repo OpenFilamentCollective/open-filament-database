@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { Store } from '$lib/types/database';
 	import { TrashIcon } from '$lib/components/icons';
-	import { FormFieldRow, PurchaseLinksSection } from '$lib/components/form-fields';
+	import { FormFieldRow, PurchaseLinksSection, CheckboxField } from '$lib/components/form-fields';
+	import { Button } from '$lib/components/ui';
 	import {
 		CARD_CLASSES,
 		CARD_HEADER_CLASSES,
@@ -60,14 +61,16 @@
 			Size {index + 1}
 		</h4>
 		{#if canRemove}
-			<button
+			<Button
 				type="button"
 				onclick={onRemove}
-				aria-label="Remove size {index + 1}"
+				title="Remove size {index + 1}"
+				variant="ghost"
+				size="icon"
 				class="text-destructive hover:text-destructive/80"
 			>
 				<TrashIcon />
-			</button>
+			</Button>
 		{/if}
 	</div>
 
@@ -147,14 +150,8 @@
 
 	<!-- Checkboxes: Discontinued and Spool Refill -->
 	<div class="flex gap-4 mb-3 mt-2">
-		<label class="flex items-center gap-1.5 text-xs text-foreground cursor-pointer">
-			<input type="checkbox" bind:checked={value.discontinued} class="checkbox-styled checkbox-sm" />
-			Discontinued
-		</label>
-		<label class="flex items-center gap-1.5 text-xs text-foreground cursor-pointer">
-			<input type="checkbox" bind:checked={value.spool_refill} class="checkbox-styled checkbox-sm" />
-			Spool Refill
-		</label>
+		<CheckboxField bind:checked={value.discontinued} id="size-{id}-discontinued" label="Discontinued" />
+		<CheckboxField bind:checked={value.spool_refill} id="size-{id}-spool-refill" label="Spool Refill" />
 	</div>
 
 	<!-- Purchase Links Section -->

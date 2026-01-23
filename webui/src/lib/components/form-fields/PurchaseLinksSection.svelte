@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Store } from '$lib/types/database';
-	import { BTN_SMALL } from '$lib/styles/formStyles';
+	import { Button } from '$lib/components/ui';
 	import PurchaseLinkCard from './PurchaseLinkCard.svelte';
 
 	interface PurchaseLinkWithId {
@@ -26,14 +26,15 @@
 <div class="border-t pt-2 mt-2">
 	<div class="flex items-center justify-between mb-2">
 		<span class="text-xs font-medium text-muted-foreground">Purchase Links</span>
-		<button
+		<Button
 			type="button"
 			onclick={onAddLink}
-			aria-label="Add purchase link to size {sizeIndex + 1}"
-			class={BTN_SMALL}
+			title="Add purchase link to size {sizeIndex + 1}"
+			variant="secondary"
+			size="sm"
 		>
 			+ Add Link
-		</button>
+		</Button>
 	</div>
 
 	{#if links.length > 0}

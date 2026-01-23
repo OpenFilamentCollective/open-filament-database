@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Tooltip from './Tooltip.svelte';
-	import { INPUT_CLASSES, LABEL_CLASSES, BTN_SECONDARY_LG } from '$lib/styles/formStyles';
+	import { Button } from '$lib/components/ui';
+	import { INPUT_CLASSES, LABEL_CLASSES } from '$lib/styles/formStyles';
 
 	interface Props {
 		tags: string[];
@@ -46,16 +47,16 @@
 			class={INPUT_CLASSES}
 			{placeholder}
 		/>
-		<button type="button" onclick={handleAdd} class={BTN_SECONDARY_LG}>
+		<Button type="button" onclick={handleAdd} variant="secondary">
 			Add
-		</button>
+		</Button>
 	</div>
 	{#if tags.length > 0}
 		<div class="flex flex-wrap gap-2">
 			{#each tags as tag}
 				<span class="inline-flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary rounded text-sm">
 					{tag}
-					<button type="button" onclick={() => handleRemove(tag)} class="hover:text-destructive">
+					<Button type="button" onclick={() => handleRemove(tag)} variant="ghost" size="icon" class="h-5 w-5 hover:text-destructive">
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 							<path
 								fill-rule="evenodd"
@@ -63,7 +64,7 @@
 								clip-rule="evenodd"
 							/>
 						</svg>
-					</button>
+					</Button>
 				</span>
 			{/each}
 		</div>

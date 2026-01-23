@@ -11,7 +11,7 @@
 		initializeSlicerForms,
 		type SlicerKey
 	} from '$lib/config/slicerConfig';
-	import { BTN_SUBMIT } from '$lib/styles/formStyles';
+	import { Button } from '$lib/components/ui';
 
 	interface Props {
 		material?: any;
@@ -173,9 +173,9 @@
 
 		<!-- Submit Button -->
 		<div class="pt-4">
-			<button type="button" onclick={handleSubmit} disabled={saving || !formData.material} class={BTN_SUBMIT}>
+			<Button onclick={handleSubmit} disabled={saving || !formData.material} class="w-full">
 				{saving ? 'Saving...' : material ? 'Update Material' : 'Create Material'}
-			</button>
+			</Button>
 		</div>
 	{/snippet}
 

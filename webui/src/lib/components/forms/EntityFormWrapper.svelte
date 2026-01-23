@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { BasicForm } from '@sjsf/form';
 	import type { Snippet } from 'svelte';
+	import { Button } from '$lib/components/ui';
 
 	interface Props {
 		title: string;
@@ -11,8 +12,6 @@
 		onCancel: () => void;
 		onDelete?: () => void;
 		editButtonText?: string;
-		editButtonClass?: string;
-		deleteButtonClass?: string;
 		children?: Snippet;
 		formContent?: Snippet;
 	}
@@ -26,8 +25,6 @@
 		onCancel,
 		onDelete,
 		editButtonText = 'Edit',
-		editButtonClass = 'px-4 py-2 bg-secondary text-secondary-foreground rounded hover:bg-secondary/80 transition-colors',
-		deleteButtonClass = 'px-4 py-2 bg-destructive text-destructive-foreground rounded hover:bg-destructive/90 transition-colors',
 		children,
 		formContent
 	}: Props = $props();
@@ -39,13 +36,13 @@
 			<div class="flex justify-between items-center mb-4">
 				<h2 class="text-xl font-semibold">{title}</h2>
 				<div class="flex gap-2">
-					<button onclick={onEdit} class={editButtonClass}>
+					<Button onclick={onEdit} variant="secondary">
 						{editButtonText}
-					</button>
+					</Button>
 					{#if onDelete}
-						<button onclick={onDelete} class={deleteButtonClass}>
+						<Button onclick={onDelete} variant="destructive">
 							Delete
-						</button>
+						</Button>
 					{/if}
 				</div>
 			</div>
@@ -58,13 +55,9 @@
 		<div>
 			<div class="flex justify-between items-center mb-4">
 				<h2 class="text-xl font-semibold">Edit {title}</h2>
-				<button
-					onclick={onCancel}
-					class="px-4 py-2 bg-muted text-muted-foreground rounded hover:bg-muted/80 transition-colors"
-					disabled={saving}
-				>
+				<Button onclick={onCancel} variant="secondary" disabled={saving}>
 					Cancel
-				</button>
+				</Button>
 			</div>
 
 			{#if formContent}

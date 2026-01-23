@@ -65,7 +65,7 @@
 	<div class="flex flex-wrap gap-3">
 		{#each SLICER_KEYS as key}
 			<ToggleField
-				bind:checked={slicerEnabled[key]}
+				checked={slicerEnabled[key]}
 				label={SLICER_LABELS[key]}
 				tooltip={SLICER_DESCRIPTIONS[key]}
 				onchange={() => onToggle(key)}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import type { Variant } from '$lib/types/database';
+	import type { Variant, Store } from '$lib/types/database';
 	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { VariantForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
@@ -18,8 +18,14 @@
 	let variantSlug: string = $derived($page.params.variant!);
 	let variant: Variant | null = $state(null);
 	let originalVariant: Variant | null = $state(null);
+	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
+
+	function getStoreName(storeId: string): string {
+		const store = stores.find((s) => s.id === storeId);
+		return store?.name || storeId;
+	}
 
 	const messageHandler = createMessageHandler();
 
@@ -41,12 +47,10 @@
 
 		(async () => {
 			try {
-				const variantData = await db.getVariant(
-					params.brandId,
-					params.materialType,
-					params.filamentId,
-					params.variantSlug
-				);
+				const [variantData, storesData] = await Promise.all([
+					db.getVariant(params.brandId, params.materialType, params.filamentId, params.variantSlug),
+					db.loadStores()
+				]);
 
 				if (!variantData) {
 					error = 'Variant not found';
@@ -56,6 +60,7 @@
 
 				variant = variantData;
 				originalVariant = structuredClone(variantData);
+				stores = storesData;
 			} catch (e) {
 				error = e instanceof Error ? e.message : 'Failed to load variant';
 			} finally {
@@ -261,7 +266,7 @@
 													{#each size.purchase_links as link}
 														<li>
 															<a href={link.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-																{link.store_id}
+																{getStoreName(link.store_id)}
 															</a>
 														</li>
 													{/each}

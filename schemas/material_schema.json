@@ -76,21 +76,27 @@
     },
     "properties": {
         "material": {
-            "description": "The material type of the filament",
+            "title": "Material Type",
+            "description": "The type of material (e.g., PLA, PETG, ABS). This determines the base properties and recommended settings.",
             "$ref": "#/definitions/material_type"
         },
         "material_class": {
             "type": "string",
+            "title": "Material Class",
             "enum": ["FFF", "SLA"],
             "default": "FFF",
-            "description": "The class of the material (FFF for filament, SLA for resin)"
+            "description": "The manufacturing process class. FFF (Fused Filament Fabrication) for standard filament printing, SLA for resin-based printing."
         },
         "default_max_dry_temperature": {
-            "type": "integer"
+            "type": "integer",
+            "title": "Default Max Dry Temperature (°C)",
+            "description": "Maximum temperature (in °C) that can be used to dry this material without degradation. Common values: PLA ~45°C, PETG ~65°C, ABS ~80°C.",
+            "x-placeholder": "e.g., 55"
         },
         "default_slicer_settings": {
             "$ref": "#/definitions/slicer_settings",
-            "description": "The default slicer settings that should be used for this type of filament material. This will be used in any case where a filament does not specify its own \"slicer_settings\""
+            "title": "Default Slicer Settings",
+            "description": "Configure default slicer profiles and temperature overrides for different slicing software. Toggle each slicer to configure its specific settings."
         }
     },
     "additionalProperties": false,

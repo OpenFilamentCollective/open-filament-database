@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { isCloudMode, isLocalMode } from '$lib/stores/environment';
+	import { Button } from '$lib/components/ui';
 
 	interface FAQItem {
 		question: string;
@@ -204,24 +205,26 @@
 	<div class="mb-8">
 		<h2 class="text-lg font-semibold mb-3">Filter by category:</h2>
 		<div class="flex flex-wrap gap-2">
-			<button
+			<Button
 				onclick={() => (selectedCategory = null)}
-				class="px-4 py-2 rounded-lg border-2 transition-colors {selectedCategory === null
-					? 'bg-foreground text-background border-foreground'
-					: 'bg-card border-border hover:border-muted-foreground'}"
+				variant="outline"
+				size="flex"
+				active={selectedCategory === null}
+				class="rounded-lg border-2"
 			>
 				All Questions
-			</button>
+			</Button>
 			{#each categories as category}
-				<button
+				<Button
 					onclick={() => (selectedCategory = category.id)}
-					class="px-4 py-2 rounded-lg border-2 transition-colors {selectedCategory === category.id
-						? 'bg-foreground text-background border-foreground'
-						: 'bg-card border-border hover:border-muted-foreground'}"
+					variant="outline"
+					size="flex"
+					active={selectedCategory === category.id}
+					class="rounded-lg border-2"
 				>
-					<span class="mr-2">{category.icon}</span>
+					<span>{category.icon}</span>
 					{category.name}
-				</button>
+				</Button>
 			{/each}
 		</div>
 	</div>
@@ -262,7 +265,7 @@
 		<ul class="space-y-3 text-foreground">
 			<li>
 				<a
-					href="https://github.com/OpenPrintTag/open-filament-database"
+					href="https://github.com/OpenFilamentCollective/open-filament-database"
 					target="_blank"
 					class="text-primary hover:underline flex items-center gap-2"
 				>
@@ -299,14 +302,14 @@
 		<p class="text-muted-foreground mb-4">
 			Open an issue on GitHub or join our community discussions.
 		</p>
-		<a
-			href="https://github.com/OpenPrintTag/open-filament-database/issues"
-			target="_blank"
-			class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md font-medium inline-flex items-center gap-2"
+		<Button
+			onclick={() => window.open('https://github.com/OpenPrintTag/open-filament-database/issues', '_blank')}
+			variant="primary"
+			class="inline-flex items-center gap-2"
 		>
 			<span>💬</span>
 			<span>Ask a Question on GitHub</span>
-		</a>
+		</Button>
 	</div>
 </div>
 

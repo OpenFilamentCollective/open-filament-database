@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Store } from '$lib/types/database';
+	import { Button } from '$lib/components/ui';
 	import { INPUT_XS_CLASSES, LABEL_COMPACT_CLASSES } from '$lib/styles/formStyles';
 
 	interface Props {
@@ -26,14 +27,16 @@
 <div class="border border-border/50 rounded p-2 mb-2 bg-muted/30">
 	<div class="flex justify-between items-center mb-2">
 		<span class="text-xs font-medium">Link {index + 1}</span>
-		<button
+		<Button
 			type="button"
 			onclick={onRemove}
-			aria-label="Remove purchase link {index + 1}"
-			class="text-destructive hover:text-destructive/80 text-xs"
+			title="Remove purchase link {index + 1}"
+			variant="ghost"
+			size="sm"
+			class="text-destructive hover:text-destructive/80 h-6 px-2 text-xs"
 		>
 			Remove
-		</button>
+		</Button>
 	</div>
 
 	<div class="space-y-2">

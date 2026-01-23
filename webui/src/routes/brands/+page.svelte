@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { Brand } from '$lib/types/database';
 	import { db } from '$lib/services/database';
-	import { Modal, MessageBanner } from '$lib/components/ui';
+	import { Modal, MessageBanner, Button, LoadingSpinner } from '$lib/components/ui';
 	import { BrandForm } from '$lib/components/forms';
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityCard } from '$lib/components/entity';
@@ -130,15 +130,12 @@
 
 		<div class="flex items-center justify-between mb-2">
 			<h1 class="text-3xl font-bold">Brands</h1>
-			<button
-				onclick={openCreateModal}
-				class="bg-green-600 text-white hover:bg-green-700 px-4 py-2 rounded-md font-medium flex items-center gap-2"
-			>
+			<Button onclick={openCreateModal}>
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 					<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
 				</svg>
 				Add Brand
-			</button>
+			</Button>
 		</div>
 		<p class="text-muted-foreground">Browse and edit filament brands and their materials</p>
 	</div>
@@ -181,7 +178,7 @@
 		/>
 	{:else}
 		<div class="flex justify-center items-center py-12">
-			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+			<LoadingSpinner size="xl" class="text-primary" />
 		</div>
 	{/if}
 </Modal>
