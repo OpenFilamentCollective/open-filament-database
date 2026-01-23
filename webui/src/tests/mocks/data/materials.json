@@ -1,0 +1,16 @@
+[
+	{
+		"id": "PLA",
+		"material": "PLA",
+		"materialType": "PLA",
+		"material_class": "FFF",
+		"default_max_dry_temperature": 45
+	},
+	{
+		"id": "PETG",
+		"material": "PETG",
+		"materialType": "PETG",
+		"material_class": "FFF",
+		"default_max_dry_temperature": 65
+	}
+]

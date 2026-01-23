@@ -12,11 +12,17 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
+		"test": "npm run test:unit && npm run test:e2e",
+		"test:unit": "vitest run",
+		"test:unit:watch": "vitest",
+		"test:unit:coverage": "vitest run --coverage",
 		"test:e2e": "playwright test",
-		"test": "npm run test:e2e",
 		"generate:types": "node scripts/generate-types.js"
 	},
 	"devDependencies": {
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/svelte": "^5.2.6",
+		"@vitest/coverage-v8": "^3.0.0",
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.39.1",
 		"@playwright/test": "^1.57.0",
@@ -38,7 +44,9 @@
 		"tailwindcss": "^4.1.17",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.48.1",
-		"vite": "^7.2.6"
+		"vite": "^7.2.6",
+		"vitest": "^3.0.0",
+		"jsdom": "^26.0.0"
 	},
 	"dependencies": {
 		"@sjsf/ajv8-validator": "^3.2.0",
