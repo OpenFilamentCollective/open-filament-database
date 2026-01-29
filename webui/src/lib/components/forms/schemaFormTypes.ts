@@ -9,6 +9,12 @@ export interface EnumSource {
 	path?: string; // JSON path to enum array (default: 'enum')
 }
 
+/**
+ * Transform function that takes a value and returns the transformed value
+ * Can also return a validation error string (starts with "Error:") to reject the value
+ */
+export type FieldTransform = (value: any) => any;
+
 export interface SchemaFormConfig {
 	// Layout configuration
 	splitAfterKey?: string; // Field key after which to create TwoColumnLayout
@@ -34,7 +40,22 @@ export interface SchemaFormConfig {
 
 	// Component type overrides for specific fields
 	typeOverrides?: Record<string, FieldType>;
+
+	// Field name mappings for data transformation
+	// Maps schema field names to different names for initialization/submission
+	// e.g., { 'name': 'color_name' } means:
+	//   - When initializing, read from entity.color_name into formData.name
+	//   - When submitting, write formData.name to submitData.color_name
+	fieldMappings?: Record<string, string>;
+
+	// Value transforms applied during submission
+	// Maps field keys to transform functions that modify values before submission
+	// e.g., { 'origin': transforms.uppercase, 'website': transforms.urlWithProtocol }
+	transforms?: Record<string, FieldTransform>;
 }
+
+// Entity types that can be auto-loaded by SchemaForm
+export type EntityType = 'brand' | 'store' | 'material' | 'filament' | 'variant';
 
 export interface ProcessedField {
 	key: string;

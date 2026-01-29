@@ -325,6 +325,69 @@ function createChangeStore() {
 		},
 
 		/**
+		 * Move a change from one path to another (for entity renames)
+		 * Also moves all child entities under the old path
+		 * Returns the new path
+		 */
+		moveChange(oldPath: string, newPath: string, newEntity: EntityIdentifier): string {
+			if (!get(isCloudMode)) return newPath;
+			if (oldPath === newPath) return newPath;
+
+			update((changeSet) => {
+				const existingChange = changeSet.changes[oldPath];
+				if (!existingChange) return changeSet;
+
+				// Move the main entity to the new path
+				changeSet.changes[newPath] = {
+					...existingChange,
+					entity: newEntity
+				};
+				delete changeSet.changes[oldPath];
+
+				// Move all child entities (paths that start with oldPath + "/")
+				const oldPrefix = oldPath + '/';
+				const newPrefix = newPath + '/';
+				const childPaths = Object.keys(changeSet.changes).filter(p => p.startsWith(oldPrefix));
+
+				for (const childPath of childPaths) {
+					const newChildPath = newPrefix + childPath.slice(oldPrefix.length);
+					const childChange = changeSet.changes[childPath];
+
+					// Update the entity path in the child change
+					changeSet.changes[newChildPath] = {
+						...childChange,
+						entity: {
+							...childChange.entity,
+							path: newChildPath
+						}
+					};
+					delete changeSet.changes[childPath];
+				}
+
+				// Also update image references that point to the old path
+				for (const [imageId, imageRef] of Object.entries(changeSet.images)) {
+					if (imageRef.entityPath === oldPath) {
+						changeSet.images[imageId] = {
+							...imageRef,
+							entityPath: newPath
+						};
+					} else if (imageRef.entityPath.startsWith(oldPrefix)) {
+						changeSet.images[imageId] = {
+							...imageRef,
+							entityPath: newPrefix + imageRef.entityPath.slice(oldPrefix.length)
+						};
+					}
+				}
+
+				changeSet.lastModified = Date.now();
+				persist(changeSet);
+				return changeSet;
+			});
+
+			return newPath;
+		},
+
+		/**
 		 * Clear all changes
 		 */
 		clear() {

@@ -12,11 +12,16 @@
 
 	let { value = $bindable(''), id = 'color-hex', label = '', required = false, tooltip = '' }: Props = $props();
 
+	// Normalize value to string (handles array values from schema with type ["string", "array"])
+	let normalizedValue = $derived(
+		typeof value === 'string' ? value : (Array.isArray(value) && value.length > 0 ? String(value[0]) : '')
+	);
+
 	// Strip # prefix for display, always store with #
-	let hexValue = $derived(value.startsWith('#') ? value.slice(1) : value);
+	let hexValue = $derived(normalizedValue.startsWith('#') ? normalizedValue.slice(1) : normalizedValue);
 
 	// Full color value for the color picker (needs #)
-	let colorPickerValue = $derived(value.startsWith('#') ? value : `#${value}`);
+	let colorPickerValue = $derived(normalizedValue.startsWith('#') ? normalizedValue : `#${normalizedValue}`);
 
 	function handleTextInput(e: Event) {
 		const input = e.target as HTMLInputElement;

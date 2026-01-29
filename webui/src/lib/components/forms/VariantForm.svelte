@@ -1,62 +1,91 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { db } from '$lib/services/database';
 	import type { Store, VariantSize, PurchaseLink } from '$lib/types/database';
-	import {
-		TextField,
-		CheckboxField,
-		Tooltip,
-		TwoColumnLayout,
-		ColorHexField,
-		SizeCard
-	} from '$lib/components/form-fields';
+	import { SchemaForm } from '$lib/components/forms';
+	import { Tooltip, SizeCard } from '$lib/components/form-fields';
+	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { TRAIT_CATEGORIES, findTraitByKey } from '$lib/config/traitConfig';
 	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
 	import { toggleSetItem } from '$lib/utils/setHelpers';
 	import { Button } from '$lib/components/ui';
+	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
+	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
+	import type { SchemaFormConfig } from './schemaFormTypes';
 
 	interface Props {
 		variant?: any;
+		schema?: any;
 		onSubmit: (data: any) => void;
 		saving?: boolean;
 	}
 
-	let { variant = null, onSubmit, saving = false }: Props = $props();
+	let { variant = null, schema: externalSchema, onSubmit, saving = false }: Props = $props();
 
 	// Stores list for purchase link dropdowns
 	let stores: Store[] = $state([]);
 
-	// Tooltip descriptions
-	const TOOLTIPS: Record<string, string> = {
-		color_name: 'The official color name as specified by the manufacturer.',
-		color_hex: 'Hex color code representing this variant (e.g., #FF5733).',
-		discontinued: 'Mark if this color variant has been discontinued.',
+	// Internal schema state (loaded if not provided externally)
+	let internalSchema: any = $state(null);
+	let schema = $derived(externalSchema || internalSchema);
+
+	// Load schema and stores on mount
+	onMount(async () => {
+		try {
+			const [schemaData, storesData] = await Promise.all([
+				externalSchema ? Promise.resolve(null) : fetchEntitySchema('variant'),
+				db.loadStores()
+			]);
+			if (schemaData) internalSchema = schemaData;
+			stores = storesData;
+		} catch (e) {
+			console.error('Failed to load data:', e);
+		}
+		initializeSizes();
+	});
+
+	// Config for variant form - labels, tooltips, and placeholders come from schema
+	// Note: Schema uses 'name' but API expects 'color_name', so we use fieldMappings
+	const config: SchemaFormConfig = {
+		hiddenFields: ['id', 'traits', 'sizes', 'hex_variants', 'color_standards'],
+		fieldOrder: ['name', 'color_hex', 'discontinued'],
+		typeOverrides: {
+			color_hex: 'color'
+		},
+		// Map schema 'name' field to API 'color_name' field
+		fieldMappings: {
+			name: 'color_name'
+		}
+	};
+
+	// Tooltips for custom sections (not from schema since these are custom UI sections)
+	const SECTION_TOOLTIPS = {
 		traits: 'Select traits that describe this filament variant. Click to add/remove traits.',
 		sizes: 'Different spool sizes and configurations available for this variant.'
 	};
 
-	// Internal size type with ID for keying
-	interface SizeWithId {
-		id: number;
-		value: {
-			filament_weight: number | undefined;
-			diameter: number;
-			empty_spool_weight?: number;
-			spool_core_diameter?: number;
-			gtin?: string;
-			article_number?: string;
-			discontinued?: boolean;
-			spool_refill?: boolean;
-			purchase_links: Array<{ id: number; value: { store_id: string; url: string } }>;
-		};
-	}
+	// Prepare schema - remove id field
+	let preparedSchema = $derived(schema ? removeIdFromSchema(schema) : null);
 
-	// Form data state
-	let formData = $state({
-		color_name: variant?.color_name || '',
-		color_hex: variant?.color_hex || '',
-		discontinued: variant?.discontinued || false
+	// Form data state - initialized when schema is available
+	let formData = $state<Record<string, any>>({});
+
+	// Track entity and schema changes to reinitialize form data
+	let lastEntity = $state<any>(variant);
+	let lastSchema = $state<any>(null);
+
+	// Use $effect.pre to ensure formData is initialized before DOM renders
+	$effect.pre(() => {
+		const prevEntity = untrack(() => lastEntity);
+		const prevSchema = untrack(() => lastSchema);
+		if (preparedSchema && (preparedSchema !== prevSchema || variant !== prevEntity)) {
+			lastEntity = variant;
+			lastSchema = preparedSchema;
+			formData = initializeFormData(preparedSchema, variant, config.hiddenFields, config.fieldMappings, config.typeOverrides);
+		}
 	});
+
+	// ==================== TRAITS HANDLING ====================
 
 	// Traits state - set of selected trait keys
 	let selectedTraits = $state<Set<string>>(
@@ -80,11 +109,6 @@
 	let addButtonRef = $state<HTMLSpanElement | null>(null);
 	let dropdownPosition = $state({ top: 0, right: 0 });
 
-	// Sizes state
-	let sizes = $state<SizeWithId[]>([]);
-	let nextSizeId = $state(1);
-	let nextLinkId = $state(1);
-
 	// Filter traits by search
 	let filteredCategories = $derived.by(() => {
 		if (!traitSearch.trim()) return TRAIT_CATEGORIES;
@@ -102,11 +126,6 @@
 		}
 		return filtered;
 	});
-
-	// Toggle trait selection
-	function toggleTrait(key: string) {
-		selectedTraits = toggleSetItem(selectedTraits, key);
-	}
 
 	// Toggle category expansion
 	function toggleCategory(catKey: string) {
@@ -130,7 +149,6 @@
 	function toggleTraitDropdown(event: MouseEvent) {
 		event.stopPropagation();
 		if (!showTraitDropdown && addButtonRef) {
-			// Calculate position when opening
 			const rect = addButtonRef.getBoundingClientRect();
 			dropdownPosition = {
 				top: rect.bottom + 4,
@@ -139,7 +157,7 @@
 		}
 		showTraitDropdown = !showTraitDropdown;
 		if (showTraitDropdown) {
-			traitSearch = ''; // Clear search when opening
+			traitSearch = '';
 		}
 	}
 
@@ -154,6 +172,29 @@
 		selectedTraits.add(key);
 		selectedTraits = new Set(selectedTraits);
 	}
+
+	// ==================== SIZES HANDLING ====================
+
+	// Internal size type with ID for keying
+	interface SizeWithId {
+		id: number;
+		value: {
+			filament_weight: number | undefined;
+			diameter: number;
+			empty_spool_weight?: number;
+			spool_core_diameter?: number;
+			gtin?: string;
+			article_number?: string;
+			discontinued?: boolean;
+			spool_refill?: boolean;
+			purchase_links: Array<{ id: number; value: { store_id: string; url: string } }>;
+		};
+	}
+
+	// Sizes state
+	let sizes = $state<SizeWithId[]>([]);
+	let nextSizeId = $state(1);
+	let nextLinkId = $state(1);
 
 	// Initialize sizes from variant data
 	function initializeSizes() {
@@ -176,7 +217,6 @@
 				}
 			}));
 			nextSizeId = sizes.length + 1;
-			// Find max link ID
 			let maxLinkId = 0;
 			sizes.forEach((s) => {
 				s.value.purchase_links.forEach((pl) => {
@@ -185,7 +225,6 @@
 			});
 			nextLinkId = maxLinkId + 1;
 		} else {
-			// Start with one empty size
 			sizes = [
 				{
 					id: 1,
@@ -246,10 +285,11 @@
 		sizes[sizeIndex].value.purchase_links = sizes[sizeIndex].value.purchase_links.filter((_, i) => i !== linkIndex);
 	}
 
-	// Handle form submission
-	function handleSubmit() {
+	// ==================== FORM SUBMISSION ====================
+
+	function handleSubmit(data: any) {
 		// Validate required fields
-		if (!formData.color_name || !formData.color_hex) {
+		if (!data.name || !data.color_hex) {
 			return;
 		}
 
@@ -271,16 +311,13 @@
 				diameter: s.value.diameter
 			};
 
-			// Add optional fields only if they have values
 			if (s.value.empty_spool_weight) sizeValue.empty_spool_weight = s.value.empty_spool_weight;
 			if (s.value.spool_core_diameter) sizeValue.spool_core_diameter = s.value.spool_core_diameter;
 			if (s.value.gtin) sizeValue.gtin = s.value.gtin;
 			if (s.value.article_number) sizeValue.article_number = s.value.article_number;
-			// Always include boolean fields (even when false)
 			sizeValue.discontinued = s.value.discontinued ?? false;
 			sizeValue.spool_refill = s.value.spool_refill ?? false;
 
-			// Add purchase links if any valid ones exist
 			const validLinks = s.value.purchase_links
 				.filter((pl) => pl.value.store_id && pl.value.url)
 				.map((pl) => ({ store_id: pl.value.store_id, url: pl.value.url }));
@@ -298,14 +335,11 @@
 			traitsData[trait] = true;
 		}
 
-		const submitData: any = {
-			color_name: formData.color_name,
-			color_hex: formData.color_hex,
-			discontinued: formData.discontinued,
-			sizes: sizesData
-		};
+		// Build submit data using utility (handles field mappings automatically)
+		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, config.fieldMappings);
 
-		// Only include traits if any are selected
+		// Add custom fields not handled by schema
+		submitData.sizes = sizesData;
 		if (Object.keys(traitsData).length > 0) {
 			submitData.traits = traitsData;
 		}
@@ -313,56 +347,41 @@
 		onSubmit(submitData);
 	}
 
-	// Load stores on mount
-	onMount(async () => {
-		try {
-			stores = await db.loadStores();
-		} catch (e) {
-			console.error('Failed to load stores:', e);
-		}
-		initializeSizes();
-	});
+	// Check if form can be submitted
+	let canSubmit = $derived(
+		!!formData.name && !!formData.color_hex && sizes.length > 0
+	);
 </script>
 
 <svelte:window onclick={handleClickOutside} />
 
-<TwoColumnLayout>
-	{#snippet leftContent()}
-		<!-- Color Name (required) -->
-		<TextField
-			bind:value={formData.color_name}
-			id="color-name"
-			label="Color Name"
-			required
-			placeholder="e.g., Galaxy Black"
-			tooltip={TOOLTIPS.color_name}
-		/>
-
-		<!-- Color Hex (required) - with color picker -->
-		<ColorHexField
-			bind:value={formData.color_hex}
-			id="color-hex"
-			label="Color Hex"
-			required
-			tooltip={TOOLTIPS.color_hex}
-		/>
-
-		<!-- Discontinued checkbox -->
-		<CheckboxField bind:checked={formData.discontinued} id="discontinued" label="Discontinued" tooltip={TOOLTIPS.discontinued} />
-
+{#if !preparedSchema}
+	<div class="flex items-center justify-center h-32">
+		<p class="text-muted-foreground">Loading form...</p>
+	</div>
+{:else}
+<SchemaForm
+	schema={preparedSchema}
+	bind:data={formData}
+	{config}
+	{saving}
+	submitLabel={variant ? 'Update Variant' : 'Create Variant'}
+	submitDisabled={!canSubmit}
+	onSubmit={handleSubmit}
+>
+	{#snippet afterFields()}
 		<!-- Traits Section -->
 		<div class="border-t pt-4 mt-2" bind:this={traitDropdownRef}>
 			<div class="flex items-center justify-between mb-3">
 				<h3 class="text-sm font-medium text-foreground flex items-center">
 					Traits
-					<Tooltip text={TOOLTIPS.traits} />
+					<Tooltip text={SECTION_TOOLTIPS.traits} />
 				</h3>
-				<!-- Add Trait button -->
 				<span bind:this={addButtonRef}>
 					<Button
 						variant="outline"
 						size="sm"
-						onclick={(e) => toggleTraitDropdown(e)}
+						onclick={toggleTraitDropdown}
 						class="border-dashed"
 					>
 						<PlusIcon class="h-3 w-3" />
@@ -391,7 +410,7 @@
 				{/if}
 			</div>
 
-			<!-- Dropdown menu (fixed position, doesn't move) -->
+			<!-- Dropdown menu -->
 			{#if showTraitDropdown}
 				<div
 					bind:this={dropdownMenuRef}
@@ -401,7 +420,6 @@
 					aria-label="Select traits"
 					onkeydown={(e) => e.key === 'Escape' && (showTraitDropdown = false)}
 				>
-					<!-- Search input -->
 					<div class="p-2 border-b border-border">
 						<input
 							type="text"
@@ -411,7 +429,6 @@
 						/>
 					</div>
 
-					<!-- Categories and traits -->
 					<div class="overflow-y-auto flex-1 p-1">
 						{#each Object.entries(filteredCategories) as [catKey, category]}
 							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key))}
@@ -455,27 +472,13 @@
 				</div>
 			{/if}
 		</div>
-
-		<!-- Spacer to push submit button to bottom -->
-		<div class="flex-1"></div>
-
-		<!-- Submit Button -->
-		<div class="pt-4">
-			<Button
-				onclick={handleSubmit}
-				disabled={saving || !formData.color_name || !formData.color_hex || sizes.length === 0}
-				class="w-full"
-			>
-				{saving ? 'Saving...' : variant ? 'Update Variant' : 'Create Variant'}
-			</Button>
-		</div>
 	{/snippet}
 
-	{#snippet rightContent()}
+	{#snippet rightColumnContent()}
 		<div class="flex items-center justify-between mb-3 shrink-0">
 			<h3 class="text-sm font-medium text-foreground flex items-center">
 				Sizes <span class="text-destructive ml-1">*</span>
-				<Tooltip text={TOOLTIPS.sizes} />
+				<Tooltip text={SECTION_TOOLTIPS.sizes} />
 			</h3>
 			<Button size="sm" onclick={addSize}>
 				+ Add Size
@@ -504,4 +507,5 @@
 			{/if}
 		</div>
 	{/snippet}
-</TwoColumnLayout>
+</SchemaForm>
+{/if}

@@ -11,6 +11,7 @@
 	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
 	import { db } from '$lib/services/database';
 	import { apiFetch } from '$lib/utils/api';
+	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { changeStore } from '$lib/stores/changes';
 	import { isCloudMode } from '$lib/stores/environment';
 
@@ -19,6 +20,7 @@
 	let originalBrand: Brand | null = $state(null); // Keep original for revert detection
 	let materials: Material[] = $state([]);
 	let schema: any = $state(null);
+	let materialSchema: any = $state(null);
 	let loading: boolean = $state(true);
 	let saving: boolean = $state(false);
 	let error: string | null = $state(null);
@@ -54,10 +56,11 @@
 	onMount(async () => {
 		try {
 			// Use DatabaseService for brand and materials to apply pending changes
-			const [brandData, materialsData, schemaData] = await Promise.all([
+			const [brandData, materialsData, schemaData, matSchemaData] = await Promise.all([
 				db.getBrand(brandId),
 				db.loadMaterials(brandId),
-				apiFetch('/api/schemas/brand').then((r) => r.json())
+				apiFetch('/api/schemas/brand').then((r) => r.json()),
+				fetchEntitySchema('material')
 			]);
 
 			if (!brandData) {
@@ -70,6 +73,7 @@
 			originalBrand = structuredClone(brandData); // Deep clone for revert detection
 			materials = materialsData;
 			schema = schemaData;
+			materialSchema = matSchemaData;
 
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to load brand';
@@ -381,8 +385,11 @@
 </Modal>
 
 <Modal show={showCreateMaterialModal} title="Create New Material" onClose={closeCreateMaterialModal} maxWidth="5xl" height="3/4">
-	<MaterialForm
-		onSubmit={handleCreateMaterial}
-		saving={creatingMaterial}
-	/>
+	{#if materialSchema}
+		<MaterialForm
+			schema={materialSchema}
+			onSubmit={handleCreateMaterial}
+			saving={creatingMaterial}
+		/>
+	{/if}
 </Modal>

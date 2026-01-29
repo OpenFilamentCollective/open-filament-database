@@ -19,27 +19,34 @@
     "properties": {
         "id": {
             "type": "string",
+            "title": "ID",
             "description": "The unique identifier for this brand",
             "$ref": "#/definitions/id"
         },
         "name": {
             "type": "string",
-            "description": "The name of the filament manufacture",
+            "title": "Name",
+            "description": "The name of the filament manufacturer",
             "$ref": "#/definitions/string_limit"
         },
         "website": {
             "type": "string",
-            "description": "The website of the filament manufacture",
+            "title": "Website",
+            "description": "The manufacturer's official website",
+            "x-placeholder": "https://...",
             "$ref": "#/definitions/string_limit"
         },
         "logo": {
             "type": "string",
+            "title": "Logo",
             "description": "The name of the logo file",
             "$ref": "#/definitions/logo"
         },
         "origin": {
             "type": "string",
-            "description": "The country of origin",
+            "title": "Country of Origin",
+            "description": "Two-letter country code (e.g., US, DE, CN)",
+            "x-placeholder": "e.g., US",
             "$ref": "#/definitions/country_code"
         }
     },

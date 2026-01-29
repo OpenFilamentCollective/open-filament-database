@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import type { Material, Filament } from '$lib/types/database';
 	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons, Button } from '$lib/components/ui';
-	import { MaterialFormSchema, FilamentForm } from '$lib/components/forms';
+	import { MaterialForm, FilamentForm } from '$lib/components/forms';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
@@ -91,6 +91,13 @@
 				material = updatedMaterial;
 				messageHandler.showSuccess('Material saved successfully!');
 				entityState.closeEdit();
+
+				// If material type changed, redirect to new URL
+				if (newMaterialType.toLowerCase() !== materialType.toLowerCase()) {
+					setTimeout(() => {
+						window.location.href = `/brands/${brandId}/${newMaterialType.toLowerCase()}`;
+					}, 500);
+				}
 			} else {
 				messageHandler.showError('Failed to save material');
 			}
@@ -283,7 +290,7 @@
 	height="3/4"
 >
 	{#if material && materialSchema}
-		<MaterialFormSchema entity={material} schema={materialSchema} onSubmit={handleSubmit} saving={entityState.saving} />
+		<MaterialForm entity={material} schema={materialSchema} onSubmit={handleSubmit} saving={entityState.saving} />
 	{/if}
 </Modal>
 

@@ -78,92 +78,130 @@
     "properties": {
         "id": {
             "type": "string",
+            "title": "ID",
             "description": "The unique identifier for this filament",
             "$ref": "#/definitions/id"
         },
         "name": {
             "type": "string",
-            "description": "The manufacture's name for this filament",
+            "title": "Name",
+            "description": "The manufacturer's name for this filament",
             "$ref": "#/definitions/string_limit"
         },
         "diameter_tolerance": {
             "type": "number",
-            "description": "The diameter tolerance of the filament (in mm)"
+            "title": "Diameter Tolerance (mm)",
+            "description": "The diameter tolerance of the filament in mm (e.g., ±0.02)"
         },
         "density": {
             "type": "number",
-            "description": "The density of the filament (in g/cm³)",
+            "title": "Density (g/cm³)",
+            "description": "The density of the filament in g/cm³. Used for weight calculations.",
             "default": 1.24
         },
         "shore_hardness_a": {
             "type": "integer",
-            "description": "Hardness of the material on the Shore A hardness scale"
+            "title": "Shore Hardness A",
+            "description": "Hardness on Shore A scale (for flexible materials, typically 20-95)",
+            "x-placeholder": "e.g., 95"
         },
         "shore_hardness_d": {
             "type": "integer",
-            "description": "Hardness of the material on the Shore D hardness scale"
+            "title": "Shore Hardness D",
+            "description": "Hardness on Shore D scale (for rigid materials, typically 20-90)",
+            "x-placeholder": "e.g., 55"
         },
         "certifications": {
             "type": "array",
+            "title": "Certifications",
             "items": {
                 "type": "string"
             },
-            "description": "Certifications the material has"
+            "description": "Certifications the material has (e.g., food-safe, medical-grade)",
+            "x-placeholder": "Add certification..."
         },
         "max_dry_temperature": {
-            "type": "integer"
+            "type": "integer",
+            "title": "Max Dry Temp (°C)",
+            "description": "Maximum temperature (°C) for drying without degradation",
+            "x-placeholder": "e.g., 55"
         },
         "min_print_temperature": {
             "type": "integer",
-            "description": "Minimum recommended nozzle temperature for printing (°C)"
+            "title": "Min Print Temp (°C)",
+            "description": "Minimum recommended nozzle temperature for printing (°C)",
+            "x-placeholder": "e.g., 190"
         },
         "max_print_temperature": {
             "type": "integer",
-            "description": "Maximum recommended nozzle temperature for printing (°C)"
+            "title": "Max Print Temp (°C)",
+            "description": "Maximum recommended nozzle temperature for printing (°C)",
+            "x-placeholder": "e.g., 220"
         },
         "preheat_temperature": {
             "type": "integer",
-            "description": "Recommended nozzle temperature for preheating/load cell bed leveling (°C)"
+            "title": "Preheat Temp (°C)",
+            "description": "Recommended nozzle temperature for preheating/load cell bed leveling (°C)",
+            "x-placeholder": "e.g., 170"
         },
         "min_bed_temperature": {
             "type": "integer",
-            "description": "Minimum recommended heatbed temperature (°C)"
+            "title": "Min Bed Temp (°C)",
+            "description": "Minimum recommended bed temperature (°C)",
+            "x-placeholder": "e.g., 50"
         },
         "max_bed_temperature": {
             "type": "integer",
-            "description": "Maximum recommended heatbed temperature (°C)"
+            "title": "Max Bed Temp (°C)",
+            "description": "Maximum recommended bed temperature (°C)",
+            "x-placeholder": "e.g., 70"
         },
         "min_chamber_temperature": {
             "type": "integer",
-            "description": "Minimum recommended temperature of the chamber (°C)"
+            "title": "Min Chamber Temp (°C)",
+            "description": "Minimum recommended chamber temperature (°C)",
+            "x-placeholder": "e.g., 40"
         },
         "max_chamber_temperature": {
             "type": "integer",
-            "description": "Maximum recommended temperature of the chamber (°C)"
+            "title": "Max Chamber Temp (°C)",
+            "description": "Maximum recommended chamber temperature (°C)",
+            "x-placeholder": "e.g., 60"
         },
         "chamber_temperature": {
             "type": "integer",
-            "description": "Ideal chamber temperature for printing (°C)"
+            "title": "Chamber Temp (°C)",
+            "description": "Ideal chamber temperature for printing (°C)",
+            "x-placeholder": "e.g., 50"
         },
         "min_nozzle_diameter": {
             "type": "number",
-            "description": "Minimum nozzle diameter recommended for printing this material (mm)"
+            "title": "Min Nozzle Diameter (mm)",
+            "description": "Minimum nozzle diameter recommended for this material (mm)",
+            "x-placeholder": "e.g., 0.4"
         },
         "data_sheet_url": {
             "type": "string",
-            "description": "A link to the data sheet for this filament",
+            "title": "Data Sheet URL",
+            "description": "URL to the manufacturer's technical data sheet",
+            "x-placeholder": "https://...",
             "$ref": "#/definitions/string_limit"
         },
         "safety_sheet_url": {
             "type": "string",
-            "description": "A link to the safety sheet for this filament",
+            "title": "Safety Sheet URL",
+            "description": "URL to the safety data sheet (SDS/MSDS)",
+            "x-placeholder": "https://...",
             "$ref": "#/definitions/string_limit"
         },
         "discontinued": {
-            "type": "boolean"
+            "type": "boolean",
+            "title": "Discontinued",
+            "description": "Mark if this filament has been discontinued by the manufacturer"
         },
         "slicer_ids": {
             "type": "object",
+            "title": "Slicer IDs",
             "properties": {
                 "prusaslicer": {
                     "$ref": "#/definitions/slicer_id"
@@ -181,7 +219,8 @@
         },
         "slicer_settings": {
             "$ref": "#/definitions/slicer_settings",
-            "description": "The slicer settings that should be used for this filament. This will override what is set in \"default_slicer_settings\""
+            "title": "Slicer Settings",
+            "description": "Configure slicer profiles and temperature overrides for different slicing software"
         }
     },
     "additionalProperties": false,

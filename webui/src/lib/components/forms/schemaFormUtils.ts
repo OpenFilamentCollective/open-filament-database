@@ -2,7 +2,70 @@
  * Utility functions for the SchemaForm component
  */
 
-import type { SchemaFormConfig, ProcessedField, RenderItem, FieldType } from './schemaFormTypes';
+import type { SchemaFormConfig, ProcessedField, RenderItem, FieldType, FieldTransform } from './schemaFormTypes';
+
+// ============================================
+// Built-in transform functions
+// ============================================
+
+/**
+ * Transform string to uppercase
+ */
+export const uppercaseTransform: FieldTransform = (value: any) => {
+	if (typeof value === 'string') {
+		return value.toUpperCase();
+	}
+	return value;
+};
+
+/**
+ * Ensure URL has a protocol (https:// by default)
+ * Also validates the resulting URL
+ */
+export const urlWithProtocolTransform: FieldTransform = (value: any) => {
+	if (typeof value !== 'string' || !value.trim()) {
+		return value;
+	}
+
+	let url = value.trim();
+
+	// Add https:// if no protocol present
+	if (!url.match(/^https?:\/\//i)) {
+		url = 'https://' + url;
+	}
+
+	// Validate the URL
+	try {
+		new URL(url);
+		return url;
+	} catch {
+		// Return original value if URL is invalid - let schema validation handle it
+		return value;
+	}
+};
+
+/**
+ * Transform array of strings to uppercase
+ */
+export const uppercaseArrayTransform: FieldTransform = (value: any) => {
+	if (Array.isArray(value)) {
+		return value.map(item => typeof item === 'string' ? item.toUpperCase() : item);
+	}
+	return value;
+};
+
+/**
+ * Collection of built-in transforms for easy access
+ */
+export const transforms = {
+	uppercase: uppercaseTransform,
+	uppercaseArray: uppercaseArrayTransform,
+	urlWithProtocol: urlWithProtocolTransform
+};
+
+// ============================================
+// Schema utilities
+// ============================================
 
 /**
  * Check if a property has an external $ref (pointing to another schema file)
@@ -49,13 +112,18 @@ export function getFieldType(
 		return 'color';
 	}
 
+	// Normalize type for union types like ["array", "string"]
+	const schemaType = Array.isArray(propSchema.type)
+		? (propSchema.items ? 'array' : propSchema.type[0])
+		: propSchema.type;
+
 	// Boolean -> Checkbox
-	if (propSchema.type === 'boolean') {
+	if (schemaType === 'boolean') {
 		return 'checkbox';
 	}
 
 	// String with enum -> Select
-	if (propSchema.type === 'string' && propSchema.enum) {
+	if (schemaType === 'string' && propSchema.enum) {
 		return 'select';
 	}
 
@@ -70,17 +138,17 @@ export function getFieldType(
 	}
 
 	// Array of strings -> Tags
-	if (propSchema.type === 'array' && propSchema.items?.type === 'string') {
+	if (schemaType === 'array' && propSchema.items?.type === 'string') {
 		return 'tags';
 	}
 
 	// Number/Integer -> Number field
-	if (propSchema.type === 'number' || propSchema.type === 'integer') {
+	if (schemaType === 'number' || schemaType === 'integer') {
 		return 'number';
 	}
 
 	// Complex objects -> custom handling
-	if (propSchema.type === 'object') {
+	if (schemaType === 'object') {
 		return 'custom';
 	}
 
@@ -268,14 +336,50 @@ export function getFieldPlaceholder(schema: any, configPlaceholder?: string): st
 }
 
 /**
- * Get the default value for a field based on its schema type
+ * Normalize schema type to handle union types like ["array", "string"]
+ * Returns the primary type to use for form field rendering
  */
-export function getDefaultValue(propSchema: any): any {
+export function normalizeSchemaType(propSchema: any): string {
+	if (Array.isArray(propSchema.type)) {
+		// For union types, prefer 'array' if items is defined
+		if (propSchema.items) return 'array';
+		// Otherwise use first type
+		return propSchema.type[0];
+	}
+	return propSchema.type;
+}
+
+/**
+ * Get the default value for a field based on its schema type or type override
+ *
+ * @param propSchema - The JSON schema for the field
+ * @param typeOverride - Optional type override (e.g., 'color' forces string default)
+ */
+export function getDefaultValue(propSchema: any, typeOverride?: string): any {
 	if (propSchema.default !== undefined) {
 		return propSchema.default;
 	}
 
-	switch (propSchema.type) {
+	// If there's a type override, use that to determine default
+	if (typeOverride) {
+		switch (typeOverride) {
+			case 'color':
+			case 'text':
+				return '';
+			case 'number':
+				return undefined;
+			case 'checkbox':
+				return false;
+			case 'tags':
+				return [];
+			case 'select':
+				return '';
+		}
+	}
+
+	const type = normalizeSchemaType(propSchema);
+
+	switch (type) {
 		case 'string':
 			return '';
 		case 'number':
@@ -288,18 +392,29 @@ export function getDefaultValue(propSchema: any): any {
 		case 'object':
 			return {};
 		default:
-			return undefined;
+			// For fields without explicit type (e.g., $ref to external schema),
+			// default to empty string to avoid undefined binding errors
+			return '';
 	}
 }
 
 /**
  * Initialize form data from schema and existing entity
  * Extracts values from entity based on schema properties, using defaults for missing values
+ *
+ * @param schema - JSON schema defining the form fields
+ * @param entity - Existing entity data to populate the form
+ * @param hiddenFields - Fields to exclude from form data
+ * @param fieldMappings - Maps schema field names to entity field names
+ *                        e.g., { 'name': 'color_name' } reads entity.color_name into formData.name
+ * @param typeOverrides - Maps field names to override types (affects default values)
  */
 export function initializeFormData(
 	schema: any,
 	entity?: any,
-	hiddenFields?: string[]
+	hiddenFields?: string[],
+	fieldMappings?: Record<string, string>,
+	typeOverrides?: Record<string, string>
 ): Record<string, any> {
 	const properties = schema?.properties || {};
 	const data: Record<string, any> = {};
@@ -308,11 +423,15 @@ export function initializeFormData(
 		// Skip hidden fields
 		if (hiddenFields?.includes(key)) continue;
 
+		// Determine the entity field to read from (may be different from schema field)
+		const entityField = fieldMappings?.[key] || key;
+
 		// Use entity value if available, otherwise use default
-		if (entity && entity[key] !== undefined) {
-			data[key] = entity[key];
+		if (entity && entity[entityField] !== undefined) {
+			data[key] = entity[entityField];
 		} else {
-			data[key] = getDefaultValue(propSchema);
+			// Pass type override to get correct default value
+			data[key] = getDefaultValue(propSchema, typeOverrides?.[key]);
 		}
 	}
 
@@ -322,35 +441,51 @@ export function initializeFormData(
 /**
  * Build submit data by filtering out empty optional fields
  * Required fields are always included; optional fields are only included if they have values
+ *
+ * @param schema - JSON schema defining the form fields
+ * @param formData - Current form data
+ * @param hiddenFields - Fields to exclude from submission
+ * @param fieldMappings - Maps schema field names to API field names
+ *                        e.g., { 'name': 'color_name' } writes formData.name to submitData.color_name
+ * @param fieldTransforms - Maps field keys to transform functions applied before submission
  */
 export function buildSubmitData(
 	schema: any,
 	formData: Record<string, any>,
-	hiddenFields?: string[]
+	hiddenFields?: string[],
+	fieldMappings?: Record<string, string>,
+	fieldTransforms?: Record<string, FieldTransform>
 ): Record<string, any> {
 	const properties = schema?.properties || {};
 	const required = new Set(schema?.required || []);
 	const submitData: Record<string, any> = {};
 
-	for (const [key, value] of Object.entries(formData)) {
+	for (const [key, rawValue] of Object.entries(formData)) {
 		// Skip hidden fields - they're handled separately
 		if (hiddenFields?.includes(key)) continue;
 
 		// Skip if property not in schema
 		if (!(key in properties)) continue;
 
+		// Apply transform if one is defined for this field
+		const transform = fieldTransforms?.[key];
+		const value = transform ? transform(rawValue) : rawValue;
+
 		const isRequired = required.has(key);
 		const propSchema = properties[key];
 
+		// Determine the submit field name (may be different from schema field)
+		const submitField = fieldMappings?.[key] || key;
+
 		// Always include required fields
 		if (isRequired) {
-			submitData[key] = value;
+			submitData[submitField] = value;
 			continue;
 		}
 
 		// For optional fields, only include if they have meaningful values
 		if (hasValue(value, propSchema)) {
-			submitData[key] = value;
+			submitData[submitField] = value;
 		}
 	}
 

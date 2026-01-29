@@ -125,6 +125,36 @@ export class DatabaseService {
 	}
 
 	/**
+	 * Check if an entity or any of its ancestors is a local create
+	 * This helps avoid unnecessary API calls for entities that don't exist on the server
+	 */
+	private isLocalCreate(entityPath: string): boolean {
+		if (!get(isCloudMode)) {
+			return false;
+		}
+
+		const changeSet = get(changeStore);
+
+		// Check the exact path
+		const change = changeSet.changes[entityPath];
+		if (change?.operation === 'create') {
+			return true;
+		}
+
+		// Check ancestor paths (e.g., for brands/X/materials/Y, check brands/X)
+		const parts = entityPath.split('/');
+		for (let i = parts.length - 2; i >= 2; i -= 2) {
+			const ancestorPath = parts.slice(0, i).join('/');
+			const ancestorChange = changeSet.changes[ancestorPath];
+			if (ancestorChange?.operation === 'create') {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Load the complete database index
 	 */
 	async loadIndex(): Promise<DatabaseIndex> {
@@ -260,14 +290,23 @@ export class DatabaseService {
 	 */
 	async saveStore(store: Store, oldStore?: Store): Promise<boolean> {
 		try {
-			const entityPath = `stores/${store.id}`;
+			const newPath = `stores/${store.id}`;
 			const entity: EntityIdentifier = {
 				type: 'store',
-				path: entityPath,
+				path: newPath,
 				id: store.id
 			};
 
 			if (get(isCloudMode)) {
+				// If store ID changed, find and move the existing change
+				if (oldStore && oldStore.id !== store.id) {
+					const oldPath = `stores/${oldStore.id}`;
+					const changeSet = get(changeStore);
+					if (changeSet.changes[oldPath]) {
+						changeStore.moveChange(oldPath, newPath, entity);
+					}
+				}
+
 				// Track change in cloud mode
 				if (!oldStore) {
 					// New store
@@ -301,18 +340,41 @@ export class DatabaseService {
 	 */
 	async deleteStore(id: string, store?: Store): Promise<boolean> {
 		try {
-			const entityPath = `stores/${id}`;
+			let entityPath = `stores/${id}`;
+			const storePrefix = 'stores/';
+
+			if (get(isCloudMode)) {
+				// Find the actual path for this store in case it was renamed
+				const changeSet = get(changeStore);
+
+				for (const [path, change] of Object.entries(changeSet.changes)) {
+					if (!path.startsWith(storePrefix)) continue;
+
+					// Check if this change's data matches our current store
+					if (change.data) {
+						const dataId = (change.data.id || change.data.slug || change.data.name || '').toLowerCase();
+						if (dataId === id.toLowerCase()) {
+							entityPath = path;
+							break;
+						}
+					}
+				}
+
+				const entity: EntityIdentifier = {
+					type: 'store',
+					path: entityPath,
+					id
+				};
+				// Track deletion in cloud mode
+				changeStore.trackDelete(entity, store);
+				return true;
+			}
+
 			const entity: EntityIdentifier = {
 				type: 'store',
 				path: entityPath,
 				id
 			};
-
-			if (get(isCloudMode)) {
-				// Track deletion in cloud mode
-				changeStore.trackDelete(entity, store);
-				return true;
-			}
 
 			// In local mode, delete from filesystem via API
 			const response = await apiFetch(`/api/stores/${id}`, {
@@ -330,14 +392,23 @@ export class DatabaseService {
 	 */
 	async saveBrand(brand: Brand, oldBrand?: Brand): Promise<boolean> {
 		try {
-			const entityPath = `brands/${brand.id}`;
+			const newPath = `brands/${brand.id}`;
 			const entity: EntityIdentifier = {
 				type: 'brand',
-				path: entityPath,
+				path: newPath,
 				id: brand.id
 			};
 
 			if (get(isCloudMode)) {
+				// If brand ID changed, find and move the existing change
+				if (oldBrand && oldBrand.id !== brand.id) {
+					const oldPath = `brands/${oldBrand.id}`;
+					const changeSet = get(changeStore);
+					if (changeSet.changes[oldPath]) {
+						changeStore.moveChange(oldPath, newPath, entity);
+					}
+				}
+
 				if (!oldBrand) {
 					changeStore.trackCreate(entity, brand);
 				} else {
@@ -365,17 +436,42 @@ export class DatabaseService {
 	 */
 	async deleteBrand(id: string, brand?: Brand): Promise<boolean> {
 		try {
-			const entityPath = `brands/${id}`;
+			let entityPath = `brands/${id}`;
+			const brandPrefix = 'brands/';
+
+			if (get(isCloudMode)) {
+				// Find the actual path for this brand in case it was renamed
+				const changeSet = get(changeStore);
+
+				for (const [path, change] of Object.entries(changeSet.changes)) {
+					if (!path.startsWith(brandPrefix)) continue;
+					// Only match direct brand paths (not nested materials/filaments)
+					if (path.slice(brandPrefix.length).includes('/')) continue;
+
+					// Check if this change's data matches our current brand
+					if (change.data) {
+						const dataId = (change.data.id || change.data.slug || change.data.name || '').toLowerCase();
+						if (dataId === id.toLowerCase()) {
+							entityPath = path;
+							break;
+						}
+					}
+				}
+
+				const entity: EntityIdentifier = {
+					type: 'brand',
+					path: entityPath,
+					id
+				};
+				changeStore.trackDelete(entity, brand);
+				return true;
+			}
+
 			const entity: EntityIdentifier = {
 				type: 'brand',
 				path: entityPath,
 				id
 			};
-
-			if (get(isCloudMode)) {
-				changeStore.trackDelete(entity, brand);
-				return true;
-			}
 
 			const response = await apiFetch(`/api/brands/${id}`, {
 				method: 'DELETE'
@@ -397,21 +493,25 @@ export class DatabaseService {
 	 */
 	async loadMaterials(brandId: string): Promise<Material[]> {
 		let baseMaterials: Material[] = [];
+		const brandPath = `brands/${brandId}`;
 
-		try {
-			const response = await apiFetch(`/api/brands/${brandId}/materials`);
-			if (response.ok) {
-				baseMaterials = await response.json();
+		// Skip API call if the brand is a local create (doesn't exist on server)
+		if (!this.isLocalCreate(brandPath)) {
+			try {
+				const response = await apiFetch(`/api/brands/${brandId}/materials`);
+				if (response.ok) {
+					baseMaterials = await response.json();
+				}
+				// If response is not ok (e.g., brand doesn't exist on server),
+				// we still continue with empty baseMaterials to pick up local changes
+			} catch (error) {
+				console.error(`Error loading materials for brand ${brandId}:`, error);
+				// Continue with empty baseMaterials to pick up local changes
 			}
-			// If response is not ok (e.g., brand doesn't exist on server),
-			// we still continue with empty baseMaterials to pick up local changes
-		} catch (error) {
-			console.error(`Error loading materials for brand ${brandId}:`, error);
-			// Continue with empty baseMaterials to pick up local changes
 		}
 
 		// Layer changes over base data using custom material matching
-		// This is called even when API fails, to show locally created materials
+		// This is called even when API fails or skipped, to show locally created materials
 		return this.layerMaterialChanges(baseMaterials, brandId);
 	}
 
@@ -546,6 +646,11 @@ export class DatabaseService {
 						return null;
 					}
 				}
+
+				// Skip API call if the brand is a local create (the material can't exist on server)
+				if (this.isLocalCreate(`brands/${brandId}`)) {
+					return null;
+				}
 			}
 
 			// Try to fetch from API - use lowercase for filesystem compatibility
@@ -574,72 +679,61 @@ export class DatabaseService {
 			// In cloud mode, we need to find the correct path for this material
 			// If there's an existing change, use that path to ensure we update in place
 			// This handles the case where material type changed (e.g., PLA -> PETG -> PLA should revert)
-			let entityPath = `brands/${brandId}/materials/${materialType}`;
 			const materialPrefix = `brands/${brandId}/materials/`;
+
+			// Get the NEW material type from the material object (not the URL param which is old)
+			const newMaterialType = material.materialType || materialType;
+			let entityPath = `brands/${brandId}/materials/${newMaterialType}`;
 
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
 
-				// Look for an existing change for this material
-				// Strategy: Find a change where the originalData matches our oldMaterial
-				// This works even when the materialType has changed multiple times
-				let existingPath: string | undefined;
+				// The new path is based on the NEW material type from the material object
+				const newPath = `brands/${brandId}/materials/${newMaterialType}`;
 
-				// First, try to find by originalData match (most reliable for multi-step edits)
+				// Look for an existing change for this material
+				// Strategy: Find a change where the originalData or data matches our oldMaterial
+				let existingPath: string | undefined;
+				let trueOriginalData = oldMaterial;
+
 				if (oldMaterial) {
 					const oldKey = (oldMaterial.slug || oldMaterial.materialType || oldMaterial.material || '').toLowerCase();
 					for (const [path, change] of Object.entries(changeSet.changes)) {
 						if (!path.startsWith(materialPrefix)) continue;
 
 						// Check if this change's originalData matches our oldMaterial
-						// by comparing the original slug/materialType/material
 						const origData = change.originalData;
 						if (origData) {
 							const origKey = (origData.slug || origData.materialType || origData.material || '').toLowerCase();
 							if (origKey === oldKey) {
 								existingPath = path;
+								if (origData) trueOriginalData = origData;
 								break;
 							}
 						}
 
-						// Also check if the change data matches our current material type
-						// (for newly created entities or first-time edits)
+						// Also check if the change data matches our old material
 						if (change.data) {
 							const dataKey = (change.data.slug || change.data.materialType || change.data.material || '').toLowerCase();
 							if (dataKey === oldKey) {
 								existingPath = path;
+								if (change.originalData) trueOriginalData = change.originalData;
 								break;
 							}
 						}
-					}
-				}
-
-				// Fallback: try original key-based lookup
-				if (!existingPath) {
-					const originalKey = oldMaterial?.materialType || oldMaterial?.slug || materialType;
-					existingPath = Object.keys(changeSet.changes).find(
-						(path) => path.startsWith(materialPrefix) &&
-							path.slice(materialPrefix.length).toLowerCase() === originalKey.toLowerCase()
-					);
-				}
-
-				// If we found an existing change, use its path and get the true original data
-				let trueOriginalData = oldMaterial;
-				if (existingPath) {
-					entityPath = existingPath;
-					const existingChange = changeSet.changes[existingPath];
-					// Use the originalData from the existing change if available
-					// This is the actual data from the API before any edits
-					if (existingChange?.originalData) {
-						trueOriginalData = existingChange.originalData;
 					}
 				}
 
 				const entity: EntityIdentifier = {
 					type: 'material',
-					path: entityPath,
+					path: newPath,
 					id: material.materialType || materialType
 				};
+
+				// If the path changed (material was renamed), move the change and its children
+				if (existingPath && existingPath !== newPath) {
+					changeStore.moveChange(existingPath, newPath, entity);
+				}
 
 				if (!oldMaterial) {
 					changeStore.trackCreate(entity, material);
@@ -652,17 +746,17 @@ export class DatabaseService {
 			const entity: EntityIdentifier = {
 				type: 'material',
 				path: entityPath,
-				id: materialType
+				id: newMaterialType
 			};
 
-			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}`, {
+			const response = await apiFetch(`/api/brands/${brandId}/materials/${newMaterialType}`, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(material)
 			});
 			return response.ok;
 		} catch (error) {
-			console.error(`Error saving material ${brandId}/${materialType}:`, error);
+			console.error(`Error saving material ${brandId}/${newMaterialType}:`, error);
 			return false;
 		}
 	}
@@ -711,17 +805,41 @@ export class DatabaseService {
 	 */
 	async deleteMaterial(brandId: string, materialType: string, material?: Material): Promise<boolean> {
 		try {
-			const entityPath = `brands/${brandId}/materials/${materialType}`;
+			let entityPath = `brands/${brandId}/materials/${materialType}`;
+			const materialPrefix = `brands/${brandId}/materials/`;
+
+			if (get(isCloudMode)) {
+				// Find the actual path for this material in case it was renamed
+				// (the change might be stored under the original path, not the current materialType)
+				const changeSet = get(changeStore);
+
+				for (const [path, change] of Object.entries(changeSet.changes)) {
+					if (!path.startsWith(materialPrefix)) continue;
+
+					// Check if this change's data matches our current material
+					if (change.data) {
+						const dataKey = (change.data.materialType || change.data.material || '').toLowerCase();
+						if (dataKey === materialType.toLowerCase()) {
+							entityPath = path;
+							break;
+						}
+					}
+				}
+
+				const entity: EntityIdentifier = {
+					type: 'material',
+					path: entityPath,
+					id: materialType
+				};
+				changeStore.trackDelete(entity, material);
+				return true;
+			}
+
 			const entity: EntityIdentifier = {
 				type: 'material',
 				path: entityPath,
 				id: materialType
 			};
-
-			if (get(isCloudMode)) {
-				changeStore.trackDelete(entity, material);
-				return true;
-			}
 
 			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}`, {
 				method: 'DELETE'
@@ -743,20 +861,24 @@ export class DatabaseService {
 	 */
 	async loadFilaments(brandId: string, materialType: string): Promise<Filament[]> {
 		let baseFilaments: Filament[] = [];
+		const materialPath = `brands/${brandId}/materials/${materialType}`;
 
-		try {
-			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}/filaments`);
-			if (response.ok) {
-				baseFilaments = await response.json();
+		// Skip API call if the material is a local create (doesn't exist on server)
+		if (!this.isLocalCreate(materialPath)) {
+			try {
+				const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}/filaments`);
+				if (response.ok) {
+					baseFilaments = await response.json();
+				}
+				// If response is not ok, continue with empty array to pick up local changes
+			} catch (error) {
+				console.error(`Error loading filaments for ${brandId}/${materialType}:`, error);
+				// Continue with empty array to pick up local changes
 			}
-			// If response is not ok, continue with empty array to pick up local changes
-		} catch (error) {
-			console.error(`Error loading filaments for ${brandId}/${materialType}:`, error);
-			// Continue with empty array to pick up local changes
 		}
 
-		// Layer changes over base data - called even when API fails
-		return this.layerChanges(baseFilaments, `brands/${brandId}/materials/${materialType}/filaments/`);
+		// Layer changes over base data - called even when API fails or skipped
+		return this.layerChanges(baseFilaments, `${materialPath}/filaments/`);
 	}
 
 	/**
@@ -808,14 +930,26 @@ export class DatabaseService {
 		oldFilament?: Filament
 	): Promise<boolean> {
 		try {
-			const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
+			const newPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
 			const entity: EntityIdentifier = {
 				type: 'filament',
-				path: entityPath,
+				path: newPath,
 				id: filamentId
 			};
 
 			if (get(isCloudMode)) {
+				// If filament ID changed, find and move the existing change
+				if (oldFilament) {
+					const oldId = oldFilament.slug || oldFilament.id;
+					if (oldId && oldId !== filamentId) {
+						const oldPath = `brands/${brandId}/materials/${materialType}/filaments/${oldId}`;
+						const changeSet = get(changeStore);
+						if (changeSet.changes[oldPath]) {
+							changeStore.moveChange(oldPath, newPath, entity);
+						}
+					}
+				}
+
 				if (!oldFilament) {
 					changeStore.trackCreate(entity, filament);
 				} else {
@@ -889,17 +1023,40 @@ export class DatabaseService {
 		filament?: Filament
 	): Promise<boolean> {
 		try {
-			const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
+			let entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
+			const filamentPrefix = `brands/${brandId}/materials/${materialType}/filaments/`;
+
+			if (get(isCloudMode)) {
+				// Find the actual path for this filament in case it was renamed
+				const changeSet = get(changeStore);
+
+				for (const [path, change] of Object.entries(changeSet.changes)) {
+					if (!path.startsWith(filamentPrefix)) continue;
+
+					// Check if this change's data matches our current filament
+					if (change.data) {
+						const dataId = (change.data.id || change.data.slug || change.data.name || '').toLowerCase();
+						if (dataId === filamentId.toLowerCase()) {
+							entityPath = path;
+							break;
+						}
+					}
+				}
+
+				const entity: EntityIdentifier = {
+					type: 'filament',
+					path: entityPath,
+					id: filamentId
+				};
+				changeStore.trackDelete(entity, filament);
+				return true;
+			}
+
 			const entity: EntityIdentifier = {
 				type: 'filament',
 				path: entityPath,
 				id: filamentId
 			};
-
-			if (get(isCloudMode)) {
-				changeStore.trackDelete(entity, filament);
-				return true;
-			}
 
 			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}`, {
 				method: 'DELETE'
@@ -921,23 +1078,27 @@ export class DatabaseService {
 	 */
 	async loadVariants(brandId: string, materialType: string, filamentId: string): Promise<Variant[]> {
 		let baseVariants: Variant[] = [];
+		const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
 
-		try {
-			const response = await apiFetch(
-				`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants`
-			);
-			if (response.ok) {
-				baseVariants = await response.json();
+		// Skip API call if the filament is a local create (doesn't exist on server)
+		if (!this.isLocalCreate(filamentPath)) {
+			try {
+				const response = await apiFetch(
+					`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants`
+				);
+				if (response.ok) {
+					baseVariants = await response.json();
+				}
+				// If response is not ok, continue with empty array to pick up local changes
+			} catch (error) {
+				console.error(`Error loading variants for ${brandId}/${materialType}/${filamentId}:`, error);
+				// Continue with empty array to pick up local changes
 			}
-			// If response is not ok, continue with empty array to pick up local changes
-		} catch (error) {
-			console.error(`Error loading variants for ${brandId}/${materialType}/${filamentId}:`, error);
-			// Continue with empty array to pick up local changes
 		}
 
-		// Layer changes over base data - called even when API fails
+		// Layer changes over base data - called even when API fails or skipped
 		// Variants use slug as their id
-		return this.layerChanges(baseVariants, `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/`);
+		return this.layerChanges(baseVariants, `${filamentPath}/variants/`);
 	}
 
 	/**
@@ -997,14 +1158,26 @@ export class DatabaseService {
 		oldVariant?: Variant
 	): Promise<boolean> {
 		try {
-			const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`;
+			const newPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`;
 			const entity: EntityIdentifier = {
 				type: 'variant',
-				path: entityPath,
+				path: newPath,
 				id: variantSlug
 			};
 
 			if (get(isCloudMode)) {
+				// If variant slug changed, find and move the existing change
+				if (oldVariant) {
+					const oldSlug = oldVariant.slug || oldVariant.id;
+					if (oldSlug && oldSlug !== variantSlug) {
+						const oldPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${oldSlug}`;
+						const changeSet = get(changeStore);
+						if (changeSet.changes[oldPath]) {
+							changeStore.moveChange(oldPath, newPath, entity);
+						}
+					}
+				}
+
 				if (!oldVariant) {
 					changeStore.trackCreate(entity, variant);
 				} else {
@@ -1091,17 +1264,40 @@ export class DatabaseService {
 		variant?: Variant
 	): Promise<boolean> {
 		try {
-			const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`;
+			let entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`;
+			const variantPrefix = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/`;
+
+			if (get(isCloudMode)) {
+				// Find the actual path for this variant in case it was renamed
+				const changeSet = get(changeStore);
+
+				for (const [path, change] of Object.entries(changeSet.changes)) {
+					if (!path.startsWith(variantPrefix)) continue;
+
+					// Check if this change's data matches our current variant
+					if (change.data) {
+						const dataId = (change.data.id || change.data.slug || change.data.color_name || '').toLowerCase();
+						if (dataId === variantSlug.toLowerCase()) {
+							entityPath = path;
+							break;
+						}
+					}
+				}
+
+				const entity: EntityIdentifier = {
+					type: 'variant',
+					path: entityPath,
+					id: variantSlug
+				};
+				changeStore.trackDelete(entity, variant);
+				return true;
+			}
+
 			const entity: EntityIdentifier = {
 				type: 'variant',
 				path: entityPath,
 				id: variantSlug
 			};
-
-			if (get(isCloudMode)) {
-				changeStore.trackDelete(entity, variant);
-				return true;
-			}
 
 			const response = await apiFetch(
 				`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`,

@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
-		onclick?: () => void;
+		onclick?: (e: MouseEvent) => void;
 		onmouseenter?: () => void;
 		onmouseleave?: () => void;
 		onfocus?: () => void;
