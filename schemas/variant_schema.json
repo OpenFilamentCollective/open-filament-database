@@ -12,12 +12,15 @@
     "properties": {
         "id": {
             "type": "string",
+            "title": "ID",
             "description": "The unique identifier for this variant",
             "$ref": "#/definitions/id"
         },
         "name": {
             "type": "string",
+            "title": "Color Name",
             "description": "The manufacturer's name for this filament color",
+            "x-placeholder": "e.g., Galaxy Black",
             "$ref": "#/definitions/string_limit"
         },
         "color_hex": {
@@ -25,15 +28,17 @@
                 "string",
                 "array"
             ],
+            "title": "Color Hex",
             "items": {
                 "type": "string",
                 "pattern": "^#?[a-fA-F0-9]{6}$"
             },
             "pattern": "^#?[a-fA-F0-9]{6}$",
-            "description": "The official hex color code for this filament"
+            "description": "The official hex color code for this filament (e.g., #FF5733)"
         },
         "hex_variants": {
             "type": "array",
+            "title": "Hex Variants",
             "items": {
                 "type": "string",
                 "pattern": "^#?[a-fA-F0-9]{6}$"
@@ -41,7 +46,9 @@
             "description": "Alternative hex color codes that this filament is known to report or be identified as (e.g., via NFC)"
         },
         "discontinued": {
-            "type": "boolean"
+            "type": "boolean",
+            "title": "Discontinued",
+            "description": "Mark if this color variant has been discontinued"
         },
         "color_standards": {
             "type": "object",

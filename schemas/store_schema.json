@@ -16,21 +16,26 @@
     "properties": {
         "id": {
             "type": "string",
-            "description": "The ID for this store",
+            "title": "ID",
+            "description": "The unique identifier for this store",
             "$ref": "#/definitions/id"
         },
         "name": {
             "type": "string",
+            "title": "Name",
             "description": "The name of this store",
             "$ref": "#/definitions/string_limit"
         },
         "storefront_url": {
             "type": "string",
+            "title": "Storefront URL",
             "description": "A link to the storefront of this store",
+            "x-placeholder": "https://...",
             "$ref": "#/definitions/string_limit"
         },
         "logo": {
             "type": "string",
+            "title": "Logo",
             "description": "The name of the logo file",
             "$ref": "#/definitions/logo"
         },
@@ -39,7 +44,9 @@
                 "array",
                 "string"
             ],
-            "description": "A list of locations the shop linked ships from",
+            "title": "Ships From",
+            "description": "Countries/regions the store ships from",
+            "x-placeholder": "Add location...",
             "items": {
                 "type": "string",
                 "$ref": "#/definitions/string_limit"
@@ -51,7 +58,9 @@
                 "array",
                 "string"
             ],
-            "description": "A list of locations the shop linked ships to",
+            "title": "Ships To",
+            "description": "Countries/regions the store ships to",
+            "x-placeholder": "Add location...",
             "items": {
                 "type": "string",
                 "$ref": "#/definitions/string_limit"
