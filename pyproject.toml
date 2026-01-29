@@ -30,6 +30,7 @@ dependencies = [
     "Pillow>=11.0.0",
     "iniconfig>=2.0.0",
     "referencing>=0.30.0",
+    "pyyaml>=6.0.3",
 ]
 
 [project.optional-dependencies]
