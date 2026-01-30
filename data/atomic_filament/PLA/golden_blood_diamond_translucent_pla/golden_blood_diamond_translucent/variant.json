@@ -3,7 +3,7 @@
   "name": "Golden Blood Diamond Translucent",
   "color_hex": "#C01616",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

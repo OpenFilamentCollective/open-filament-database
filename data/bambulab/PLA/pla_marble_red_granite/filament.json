@@ -1,6 +1,6 @@
 {
   "id": "pla_marble_red_granite",
   "name": "PLA Marble Red Granite",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

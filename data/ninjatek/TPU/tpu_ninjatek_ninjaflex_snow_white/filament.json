@@ -1,6 +1,6 @@
 {
   "id": "tpu_ninjatek_ninjaflex_snow_white",
   "name": "TPU NinjaTek NinjaFlex - Snow White",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

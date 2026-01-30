@@ -1,8 +1,8 @@
 {
   "id": "sovb_3d",
-  "name": "SOVB 3D",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "SOVB 3D",
   "origin": "FR",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "sovb3d.com"
 }

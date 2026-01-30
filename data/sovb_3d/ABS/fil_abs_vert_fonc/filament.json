@@ -1,6 +1,6 @@
 {
   "id": "fil_abs_vert_fonc",
   "name": "Fil ABS Vert Foncé",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

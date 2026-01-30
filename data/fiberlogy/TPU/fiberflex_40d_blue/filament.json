@@ -1,7 +1,7 @@
 {
   "id": "fiberflex_40d_blue",
   "name": "FiberFlex 40D Blue",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_d": 40
 }

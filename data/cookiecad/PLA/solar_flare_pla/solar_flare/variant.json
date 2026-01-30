@@ -3,8 +3,8 @@
   "name": "Solar Flare",
   "color_hex": "#FADB24",
   "traits": {
-    "iridescent": true,
+    "industrially_compostable": true,
     "silk": true,
-    "industrially_compostable": true
+    "iridescent": true
   }
 }

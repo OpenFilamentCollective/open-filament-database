@@ -1,6 +1,6 @@
 {
   "id": "pa_nylon_carbon_fiber",
   "name": "PA Nylon Carbon Fiber",
-  "density": 1.0,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.0
 }

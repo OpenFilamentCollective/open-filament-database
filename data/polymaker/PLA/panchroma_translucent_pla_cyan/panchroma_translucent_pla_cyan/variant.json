@@ -3,7 +3,7 @@
   "name": "Panchroma Translucent Pla Cyan",
   "color_hex": "#08ABFB",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

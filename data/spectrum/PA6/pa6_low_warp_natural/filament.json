@@ -1,6 +1,6 @@
 {
   "id": "pa6_low_warp_natural",
   "name": "PA6 Low Warp™ Natural",
-  "density": 1.15,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.15
 }

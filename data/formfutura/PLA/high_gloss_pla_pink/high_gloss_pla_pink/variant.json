@@ -3,7 +3,7 @@
   "name": "High Gloss Pla Pink",
   "color_hex": "#FF67F5",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Fluorescent Pink Pla Pro",
   "color_hex": "#FF0078",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Mystic Green",
   "color_hex": "#555846",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

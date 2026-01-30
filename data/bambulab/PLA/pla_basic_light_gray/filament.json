@@ -1,6 +1,6 @@
 {
   "id": "pla_basic_light_gray",
   "name": "PLA Basic Light Gray",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

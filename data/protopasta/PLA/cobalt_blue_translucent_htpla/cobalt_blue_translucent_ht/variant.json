@@ -3,7 +3,7 @@
   "name": "Cobalt Blue Translucent Ht",
   "color_hex": "#0353BA",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

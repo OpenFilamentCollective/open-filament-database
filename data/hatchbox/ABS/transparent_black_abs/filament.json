@@ -1,6 +1,6 @@
 {
   "id": "transparent_black_abs",
   "name": "Transparent Black ABS",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

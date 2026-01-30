@@ -3,7 +3,7 @@
   "name": "Grngold",
   "color_hex": "#686751",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

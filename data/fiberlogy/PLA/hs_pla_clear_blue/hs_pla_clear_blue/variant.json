@@ -3,7 +3,7 @@
   "name": "Hs Pla Clear Blue",
   "color_hex": "#0E21AE",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

@@ -1,6 +1,6 @@
 {
   "id": "impact_pla_graphite",
   "name": "Impact PLA Graphite",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -3,7 +3,7 @@
   "name": "Star Dust Glitter Black",
   "color_hex": "#1D1D1D",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

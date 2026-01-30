@@ -3,7 +3,7 @@
   "name": "Translucent Flamingo Sunset",
   "color_hex": "#FD4E6F",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

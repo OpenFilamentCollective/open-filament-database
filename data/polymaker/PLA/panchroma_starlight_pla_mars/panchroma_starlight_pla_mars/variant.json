@@ -3,7 +3,7 @@
   "name": "Panchroma Starlight Pla Mars",
   "color_hex": "#D33D3D",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

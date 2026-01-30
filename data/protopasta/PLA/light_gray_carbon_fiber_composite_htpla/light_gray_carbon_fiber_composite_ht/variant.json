@@ -3,7 +3,7 @@
   "name": "Light Gray Carbon Fiber Composite Ht",
   "color_hex": "#BAC4C4",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

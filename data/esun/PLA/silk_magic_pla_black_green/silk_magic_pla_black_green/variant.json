@@ -3,9 +3,9 @@
   "name": "Silk Magic Pla Black Green",
   "color_hex": "#000000",
   "traits": {
-    "iridescent": true,
-    "silk": true,
     "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
     "coextruded": true
   }
 }

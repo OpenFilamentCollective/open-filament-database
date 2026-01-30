@@ -3,8 +3,8 @@
   "name": "Black Star Stuff",
   "color_hex": "#1D1D1D",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

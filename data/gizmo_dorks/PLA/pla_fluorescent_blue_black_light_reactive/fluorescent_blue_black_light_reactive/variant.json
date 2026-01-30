@@ -3,7 +3,7 @@
   "name": "Fluorescent Blue Black Light Reactive",
   "color_hex": "#2E56F1",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

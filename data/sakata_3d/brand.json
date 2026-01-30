@@ -1,8 +1,8 @@
 {
   "id": "sakata_3d",
-  "name": "Sakata 3D",
-  "website": "",
   "logo": "logo.png",
+  "name": "Sakata 3D",
   "origin": "ES",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "sakata3d.com"
 }

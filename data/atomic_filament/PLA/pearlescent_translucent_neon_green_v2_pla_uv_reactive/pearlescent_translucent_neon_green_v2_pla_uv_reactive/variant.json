@@ -3,9 +3,9 @@
   "name": "Pearlescent Translucent Neon Green V2 Pla Uv Reactive",
   "color_hex": "#83E665",
   "traits": {
-    "neon": true,
-    "pearlescent": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "pearlescent": true,
+    "neon": true
   }
 }

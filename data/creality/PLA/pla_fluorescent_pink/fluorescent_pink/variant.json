@@ -3,7 +3,7 @@
   "name": "Fluorescent Pink",
   "color_hex": "#F14147",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

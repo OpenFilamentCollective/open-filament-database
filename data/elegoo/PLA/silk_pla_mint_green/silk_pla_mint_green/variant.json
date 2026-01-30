@@ -3,7 +3,7 @@
   "name": "Silk Pla Mint Green",
   "color_hex": "#9AE0DD",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Iris Alexandrite",
   "color_hex": "#6E8451",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

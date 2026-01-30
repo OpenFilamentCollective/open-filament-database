@@ -3,7 +3,7 @@
   "name": "Stainless Steel Metal Composite Pla Gold Color",
   "color_hex": "#ACA078",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

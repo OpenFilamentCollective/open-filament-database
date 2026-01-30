@@ -3,7 +3,7 @@
   "name": "Cf Midnight Blue",
   "color_hex": "#282D42",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Digilab Pla Tra 01 Translucent",
   "color_hex": "#FFFFFF",
   "traits": {
-    "transparent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "transparent": true
   }
 }

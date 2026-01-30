@@ -3,7 +3,7 @@
   "name": "The Filament Pla Cf Black",
   "color_hex": "#000000",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

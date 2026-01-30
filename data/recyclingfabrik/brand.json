@@ -1,8 +1,8 @@
 {
   "id": "recyclingfabrik",
-  "name": "RecyclingFabrik",
-  "website": "",
   "logo": "logo.png",
+  "name": "RecyclingFabrik",
   "origin": "DE",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "recyclingfabrik.com"
 }

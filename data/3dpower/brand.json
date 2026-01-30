@@ -1,8 +1,8 @@
 {
   "id": "3dpower",
-  "name": "3DPower",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "3DPower",
   "origin": "PL",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "3dpower.com"
 }

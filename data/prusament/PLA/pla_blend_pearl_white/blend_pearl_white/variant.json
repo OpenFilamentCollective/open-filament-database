@@ -3,8 +3,8 @@
   "name": "Blend Pearl White",
   "color_hex": "#D0D7D8",
   "traits": {
+    "industrially_compostable": true,
     "blend": true,
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

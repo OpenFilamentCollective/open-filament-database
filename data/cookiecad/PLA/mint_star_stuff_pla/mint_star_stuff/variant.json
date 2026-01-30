@@ -3,8 +3,8 @@
   "name": "Mint Star Stuff",
   "color_hex": "#98FBCB",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

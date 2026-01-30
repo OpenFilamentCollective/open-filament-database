@@ -3,8 +3,8 @@
   "name": "Ps Imports Pla Bicolor Silk Magic Black Bronze",
   "color_hex": "#000000",
   "traits": {
-    "silk": true,
     "industrially_compostable": true,
+    "silk": true,
     "coextruded": true
   }
 }

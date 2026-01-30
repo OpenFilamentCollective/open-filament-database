@@ -1,8 +1,8 @@
 {
   "id": "phrozen",
-  "name": "Phrozen",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "Phrozen",
   "origin": "TW",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "phrozen.com"
 }

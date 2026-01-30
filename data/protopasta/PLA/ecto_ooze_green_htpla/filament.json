@@ -1,6 +1,6 @@
 {
   "id": "ecto_ooze_green_htpla",
   "name": "Ecto Ooze Green HTPLA",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

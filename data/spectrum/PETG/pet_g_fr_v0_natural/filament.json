@@ -1,6 +1,6 @@
 {
   "id": "pet_g_fr_v0_natural",
   "name": "PET-G FR V0 Natural",
-  "density": 1.26,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.26
 }

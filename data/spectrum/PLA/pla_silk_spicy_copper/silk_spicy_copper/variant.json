@@ -3,7 +3,7 @@
   "name": "Silk Spicy Copper",
   "color_hex": "#C06341",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

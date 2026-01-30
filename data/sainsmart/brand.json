@@ -1,8 +1,8 @@
 {
   "id": "sainsmart",
-  "name": "SainSmart",
-  "website": "",
   "logo": "logo.png",
+  "name": "SainSmart",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "sainsmart.com"
 }

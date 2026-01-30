@@ -3,7 +3,7 @@
   "name": "Crystal Yellow",
   "color_hex": "#FFC946",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

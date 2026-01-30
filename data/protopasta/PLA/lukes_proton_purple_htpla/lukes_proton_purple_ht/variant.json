@@ -3,8 +3,8 @@
   "name": "Lukes Proton Purple Ht",
   "color_hex": "#7B4D64",
   "traits": {
-    "glitter": true,
+    "industrially_compostable": true,
     "silk": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

@@ -1,8 +1,8 @@
 {
   "id": "epax",
-  "name": "EPAX",
-  "website": "",
   "logo": "logo.png",
+  "name": "EPAX",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "epax.com"
 }

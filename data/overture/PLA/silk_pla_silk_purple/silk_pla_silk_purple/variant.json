@@ -3,7 +3,7 @@
   "name": "Silk Pla Silk Purple",
   "color_hex": "#7769BC",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

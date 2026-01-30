@@ -1,7 +1,7 @@
 {
   "id": "tpu_flex_93a_straw",
   "name": "TPU Flex 93A Straw",
-  "density": 1.21,
   "diameter_tolerance": 0.02,
+  "density": 1.21,
   "shore_hardness_a": 93
 }

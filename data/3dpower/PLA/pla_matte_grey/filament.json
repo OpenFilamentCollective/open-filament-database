@@ -1,6 +1,6 @@
 {
   "id": "pla_matte_grey",
   "name": "PLA MATTE Grey",
-  "density": 1.29,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.29
 }

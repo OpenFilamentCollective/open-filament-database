@@ -3,7 +3,7 @@
   "name": "Easy Pla Alien Green",
   "color_hex": "#244852",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

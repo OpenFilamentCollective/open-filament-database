@@ -1,8 +1,8 @@
 {
   "id": "igus",
-  "name": "igus",
-  "website": "",
   "logo": "logo.png",
+  "name": "igus",
   "origin": "DE",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "igus.com"
 }

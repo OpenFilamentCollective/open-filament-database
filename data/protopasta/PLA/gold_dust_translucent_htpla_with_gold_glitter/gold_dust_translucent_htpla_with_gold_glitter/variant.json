@@ -3,8 +3,8 @@
   "name": "Gold Dust Translucent Htpla With Gold Glitter",
   "color_hex": "#DDB95D",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

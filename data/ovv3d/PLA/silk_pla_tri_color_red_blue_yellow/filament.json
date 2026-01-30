@@ -1,6 +1,6 @@
 {
   "id": "silk_pla_tri_color_red_blue_yellow",
   "name": "Silk PLA Tri-color Red Blue Yellow",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

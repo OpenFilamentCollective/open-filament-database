@@ -3,7 +3,7 @@
   "name": "Stainless Steel Metal Composite Pla Burgundy Color",
   "color_hex": "#863938",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

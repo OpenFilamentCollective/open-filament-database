@@ -3,8 +3,8 @@
   "name": "Pearlescent Translucent Neon Green Petg Pro V2 Uv Reactive",
   "color_hex": "#58C91B",
   "traits": {
+    "translucent": true,
     "pearlescent": true,
-    "neon": true,
-    "translucent": true
+    "neon": true
   }
 }

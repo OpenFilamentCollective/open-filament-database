@@ -3,7 +3,7 @@
   "name": "The Filament Pla Cf Grey",
   "color_hex": "#AABCCF",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

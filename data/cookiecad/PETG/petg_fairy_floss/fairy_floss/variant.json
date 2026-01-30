@@ -3,7 +3,7 @@
   "name": "Fairy Floss",
   "color_hex": "#000000",
   "traits": {
-    "glitter": true,
-    "translucent": true
+    "translucent": true,
+    "glitter": true
   }
 }

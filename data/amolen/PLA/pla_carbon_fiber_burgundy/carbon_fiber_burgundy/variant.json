@@ -3,7 +3,7 @@
   "name": "Carbon Fiber Burgundy",
   "color_hex": "#833F4D",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

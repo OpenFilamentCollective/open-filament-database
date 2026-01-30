@@ -3,7 +3,7 @@
   "name": "Mystic Brown",
   "color_hex": "#482E31",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

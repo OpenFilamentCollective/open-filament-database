@@ -3,7 +3,7 @@
   "name": "Panchroma Neon Pla Red",
   "color_hex": "#FF4F4D",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

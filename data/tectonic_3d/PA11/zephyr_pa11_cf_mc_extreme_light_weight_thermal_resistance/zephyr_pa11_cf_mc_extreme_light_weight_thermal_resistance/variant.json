@@ -3,7 +3,7 @@
   "name": "Zephyr Pa11 Cf Mc Extreme Light Weight Thermal Resistance",
   "color_hex": "#000000",
   "traits": {
-    "foaming": true,
-    "abrasive": true
+    "abrasive": true,
+    "foaming": true
   }
 }

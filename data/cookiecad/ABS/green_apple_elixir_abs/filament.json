@@ -1,6 +1,6 @@
 {
   "id": "green_apple_elixir_abs",
   "name": "Green Apple Elixir ABS",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

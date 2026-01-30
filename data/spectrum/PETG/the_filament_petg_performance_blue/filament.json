@@ -1,6 +1,6 @@
 {
   "id": "the_filament_petg_performance_blue",
   "name": "The Filament PETG Performance Blue",
-  "density": 1.27,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

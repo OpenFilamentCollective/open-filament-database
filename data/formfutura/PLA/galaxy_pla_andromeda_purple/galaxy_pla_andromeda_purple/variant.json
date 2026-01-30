@@ -3,7 +3,7 @@
   "name": "Galaxy Pla Andromeda Purple",
   "color_hex": "#9F6979",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

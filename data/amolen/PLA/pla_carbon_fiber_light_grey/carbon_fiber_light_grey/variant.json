@@ -3,7 +3,7 @@
   "name": "Carbon Fiber Light Grey",
   "color_hex": "#A2AAAD",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

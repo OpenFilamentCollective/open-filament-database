@@ -3,7 +3,7 @@
   "name": "Glow White Green In Dark",
   "color_hex": "#4DFF64",
   "traits": {
-    "industrially_compostable": true,
-    "glow": true
+    "glow": true,
+    "industrially_compostable": true
   }
 }

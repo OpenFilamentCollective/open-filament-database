@@ -3,7 +3,7 @@
   "name": "Ps Imports Pla Rainbow Luminous Rainbow Colorful",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
-    "glow": true
+    "glow": true,
+    "industrially_compostable": true
   }
 }

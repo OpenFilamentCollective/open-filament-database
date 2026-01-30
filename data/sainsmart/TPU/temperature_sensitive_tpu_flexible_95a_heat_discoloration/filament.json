@@ -1,7 +1,7 @@
 {
   "id": "temperature_sensitive_tpu_flexible_95a_heat_discoloration",
   "name": "Temperature Sensitive TPU Flexible 95A Heat Discoloration",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 95
 }

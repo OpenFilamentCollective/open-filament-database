@@ -3,7 +3,7 @@
   "name": "Magic Neon",
   "color_hex": "#000000",
   "traits": {
-    "coextruded": true,
-    "neon": true
+    "neon": true,
+    "coextruded": true
   }
 }

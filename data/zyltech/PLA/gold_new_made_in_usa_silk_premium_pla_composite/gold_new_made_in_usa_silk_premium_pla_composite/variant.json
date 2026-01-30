@@ -3,7 +3,7 @@
   "name": "Gold New Made In Usa Silk Premium Pla Composite",
   "color_hex": "#FFCB47",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

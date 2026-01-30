@@ -3,8 +3,8 @@
   "name": "Chameleon Pla Polaris",
   "color_hex": "#000000",
   "traits": {
+    "industrially_compostable": true,
     "iridescent": true,
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

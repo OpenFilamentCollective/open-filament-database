@@ -1,6 +1,6 @@
 {
   "id": "slk_cop_01_silk_copper",
   "name": "SLK-COP-01 Silk Copper",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

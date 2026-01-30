@@ -1,6 +1,6 @@
 {
   "id": "asa_extrafill_green_grass",
   "name": "ASA Extrafill \"Green Grass\"",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

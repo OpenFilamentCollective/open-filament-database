@@ -3,7 +3,7 @@
   "name": "Huracan Pla Ola Pink",
   "color_hex": "#EB0075",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

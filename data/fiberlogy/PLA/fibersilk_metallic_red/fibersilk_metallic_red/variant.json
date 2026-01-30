@@ -3,7 +3,7 @@
   "name": "Fibersilk Metallic Red",
   "color_hex": "#BF1D2D",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

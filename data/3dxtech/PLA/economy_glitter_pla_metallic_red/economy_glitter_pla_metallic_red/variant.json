@@ -3,7 +3,7 @@
   "name": "Economy Glitter Pla Metallic Red",
   "color_hex": "#8A2D40",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

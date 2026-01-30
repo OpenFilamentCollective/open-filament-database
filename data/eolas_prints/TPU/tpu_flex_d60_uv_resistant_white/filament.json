@@ -1,7 +1,7 @@
 {
   "id": "tpu_flex_d60_uv_resistant_white",
   "name": "TPU Flex D60 UV Resistant White",
-  "density": 1.16,
   "diameter_tolerance": 0.02,
+  "density": 1.16,
   "shore_hardness_d": 60
 }

@@ -3,7 +3,7 @@
   "name": "Shimmering Violet",
   "color_hex": "#1D1991",
   "traits": {
-    "glitter": true,
-    "translucent": true
+    "translucent": true,
+    "glitter": true
   }
 }

@@ -1,8 +1,8 @@
 {
   "id": "primacreator",
-  "name": "PrimaCreator",
-  "website": "",
   "logo": "logo.png",
+  "name": "PrimaCreator",
   "origin": "SE",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "primacreator.com"
 }

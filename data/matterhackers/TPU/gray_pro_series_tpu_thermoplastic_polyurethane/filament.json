@@ -1,6 +1,6 @@
 {
   "id": "gray_pro_series_tpu_thermoplastic_polyurethane",
   "name": "Gray PRO Series TPU (Thermoplastic Polyurethane)",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

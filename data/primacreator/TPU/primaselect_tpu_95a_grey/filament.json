@@ -1,7 +1,7 @@
 {
   "id": "primaselect_tpu_95a_grey",
   "name": "PrimaSelect TPU 95A Grey",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 95
 }

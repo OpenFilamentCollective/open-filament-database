@@ -3,7 +3,7 @@
   "name": "Lw Pla Ht Dark Gray",
   "color_hex": "#6A6C6E",
   "traits": {
-    "foaming": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "foaming": true
   }
 }

@@ -4,7 +4,7 @@
   "color_hex": "#F1E6B2",
   "traits": {
     "glow": true,
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

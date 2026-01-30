@@ -3,8 +3,8 @@
   "name": "Metal Filled Copper",
   "color_hex": "#AF784D",
   "traits": {
-    "silk": true,
+    "industrially_compostable": true,
     "abrasive": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

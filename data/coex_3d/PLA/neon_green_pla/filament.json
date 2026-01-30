@@ -1,6 +1,6 @@
 {
   "id": "neon_green_pla",
   "name": "Neon Green PLA",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

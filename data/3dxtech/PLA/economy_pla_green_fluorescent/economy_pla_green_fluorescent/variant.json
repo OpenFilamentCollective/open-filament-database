@@ -3,7 +3,7 @@
   "name": "Economy Pla Green Fluorescent",
   "color_hex": "#4DFF64",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

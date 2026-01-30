@@ -1,15 +1,15 @@
 {
   "id": "rpla_corn_pigment",
   "name": "rPLA Corn Pigment",
-  "density": 1.16,
   "diameter_tolerance": 0.02,
+  "density": 1.16,
   "shore_hardness_d": 86,
   "min_print_temperature": 195,
   "max_print_temperature": 215,
   "preheat_temperature": 170,
   "min_bed_temperature": 40,
   "max_bed_temperature": 60,
-  "chamber_temperature": 20,
   "min_chamber_temperature": 18,
-  "max_chamber_temperature": 40
+  "max_chamber_temperature": 40,
+  "chamber_temperature": 20
 }

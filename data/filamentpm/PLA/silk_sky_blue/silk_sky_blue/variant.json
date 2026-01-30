@@ -3,7 +3,7 @@
   "name": "Silk Sky Blue",
   "color_hex": "#5FBCDD",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

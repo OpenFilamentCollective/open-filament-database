@@ -3,7 +3,7 @@
   "name": "The Filament Pla Cf Purple",
   "color_hex": "#7142A3",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

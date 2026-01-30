@@ -3,7 +3,7 @@
   "name": "Sparkle Slate Gray",
   "color_hex": "#6F727E",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

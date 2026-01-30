@@ -3,7 +3,7 @@
   "name": "Silk Pink",
   "color_hex": "#F8B9A6",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

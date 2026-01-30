@@ -3,7 +3,7 @@
   "name": "Safeguard Pla Bahama Yellow",
   "color_hex": "#F2DE00",
   "traits": {
-    "antibacterial": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "antibacterial": true
   }
 }

@@ -1,8 +1,8 @@
 {
   "id": "siraya_tech",
-  "name": "Siraya Tech",
-  "website": "",
   "logo": "logo.png",
+  "name": "Siraya Tech",
   "origin": "TW",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "sirayatech.com"
 }

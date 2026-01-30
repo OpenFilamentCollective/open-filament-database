@@ -3,8 +3,8 @@
   "name": "Crystal Electric Yellow",
   "color_hex": "#FBF942",
   "traits": {
-    "silk": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "silk": true
   }
 }

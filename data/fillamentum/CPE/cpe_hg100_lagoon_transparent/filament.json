@@ -1,6 +1,6 @@
 {
   "id": "cpe_hg100_lagoon_transparent",
   "name": "CPE HG100 \"Lagoon Transparent\"",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

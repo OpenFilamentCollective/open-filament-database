@@ -1,6 +1,6 @@
 {
   "id": "high_precision_pla_white_aluminium",
   "name": "High Precision PLA White Aluminium",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -1,6 +1,6 @@
 {
   "id": "abs_fighter_jet_blue",
   "name": "ABS (Fighter Jet Blue)",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -3,7 +3,7 @@
   "name": "Panchroma Neon Pla Yellow",
   "color_hex": "#FFD342",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

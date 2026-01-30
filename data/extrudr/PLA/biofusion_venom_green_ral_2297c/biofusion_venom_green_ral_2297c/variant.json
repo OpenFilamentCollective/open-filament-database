@@ -3,7 +3,7 @@
   "name": "Biofusion Venom Green Ral 2297c",
   "color_hex": "#91C500",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

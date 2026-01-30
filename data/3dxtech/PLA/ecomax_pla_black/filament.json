@@ -1,6 +1,6 @@
 {
   "id": "ecomax_pla_black",
   "name": "ECOMAX PLA Black",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

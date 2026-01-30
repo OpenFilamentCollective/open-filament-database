@@ -3,7 +3,7 @@
   "name": "Panchroma Silk Pla Lime",
   "color_hex": "#91C500",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

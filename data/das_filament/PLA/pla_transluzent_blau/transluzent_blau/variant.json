@@ -3,7 +3,7 @@
   "name": "Transluzent Blau",
   "color_hex": "#0078BF",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

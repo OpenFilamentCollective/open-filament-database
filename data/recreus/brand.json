@@ -1,8 +1,8 @@
 {
   "id": "recreus",
-  "name": "Recreus",
-  "website": "",
   "logo": "logo.png",
+  "name": "Recreus",
   "origin": "ES",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "recreus.com"
 }

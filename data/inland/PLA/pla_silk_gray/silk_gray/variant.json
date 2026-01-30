@@ -3,7 +3,7 @@
   "name": "Silk Gray",
   "color_hex": "#88899D",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

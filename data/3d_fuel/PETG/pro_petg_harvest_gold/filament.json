@@ -1,6 +1,6 @@
 {
   "id": "pro_petg_harvest_gold",
   "name": "Pro PETG, Harvest Gold",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

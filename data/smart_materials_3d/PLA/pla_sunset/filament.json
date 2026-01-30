@@ -1,6 +1,6 @@
 {
   "id": "pla_sunset",
   "name": "PLA Sunset",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -3,8 +3,8 @@
   "name": "Panchroma Dual Special Pla Yin Yang",
   "color_hex": "#000000",
   "traits": {
-    "glitter": true,
     "industrially_compostable": true,
+    "glitter": true,
     "coextruded": true
   }
 }

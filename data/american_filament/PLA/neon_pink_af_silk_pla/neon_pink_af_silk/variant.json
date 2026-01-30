@@ -3,8 +3,8 @@
   "name": "Neon Pink Af Silk",
   "color_hex": "#F092B3",
   "traits": {
-    "silk": true,
     "industrially_compostable": true,
+    "silk": true,
     "neon": true
   }
 }

@@ -1,6 +1,6 @@
 {
   "id": "mysterypla_magic_in_a_jar",
   "name": "mysteryPLA Magic in a Jar",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

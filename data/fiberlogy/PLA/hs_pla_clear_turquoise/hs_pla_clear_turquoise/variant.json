@@ -3,7 +3,7 @@
   "name": "Hs Pla Clear Turquoise",
   "color_hex": "#005DA4",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

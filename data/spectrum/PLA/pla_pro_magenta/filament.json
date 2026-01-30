@@ -1,6 +1,6 @@
 {
   "id": "pla_pro_magenta",
   "name": "PLA Pro Magenta",
-  "density": 1.22,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.22
 }

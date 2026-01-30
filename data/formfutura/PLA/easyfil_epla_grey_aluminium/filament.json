@@ -1,6 +1,6 @@
 {
   "id": "easyfil_epla_grey_aluminium",
   "name": "EasyFil ePLA Grey Aluminium",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

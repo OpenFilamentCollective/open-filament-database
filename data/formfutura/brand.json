@@ -1,8 +1,8 @@
 {
   "id": "formfutura",
-  "name": "FormFutura",
-  "website": "",
   "logo": "logo.png",
+  "name": "FormFutura",
   "origin": "NL",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "formfutura.com"
 }

@@ -3,7 +3,7 @@
   "name": "Filafetti Confetti Frosting Ht",
   "color_hex": "#E3E0D3",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

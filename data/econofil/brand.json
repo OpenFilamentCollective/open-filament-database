@@ -1,8 +1,8 @@
 {
   "id": "econofil",
-  "name": "EconoFil",
-  "website": "",
   "logo": "logo.png",
+  "name": "EconoFil",
   "origin": "CA",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "econofil.com"
 }

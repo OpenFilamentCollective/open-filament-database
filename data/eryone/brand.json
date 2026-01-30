@@ -1,8 +1,8 @@
 {
   "id": "eryone",
-  "name": "ERYONE",
-  "website": "",
   "logo": "logo.png",
+  "name": "ERYONE",
   "origin": "CH",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "eryone.com"
 }

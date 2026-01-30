@@ -1,6 +1,6 @@
 {
   "id": "abs_color_change_grey_to_white_heat_activated",
   "name": "ABS Color Change Grey to White (Heat Activated)",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

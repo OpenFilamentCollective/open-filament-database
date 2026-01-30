@@ -1,8 +1,8 @@
 {
   "id": "das_filament",
-  "name": "Das Filament",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "Das Filament",
   "origin": "DE",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "dasfilament.com"
 }

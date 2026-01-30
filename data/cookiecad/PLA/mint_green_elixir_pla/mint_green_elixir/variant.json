@@ -3,8 +3,8 @@
   "name": "Mint Green Elixir",
   "color_hex": "#98FBCB",
   "traits": {
+    "industrially_compostable": true,
     "silk": true,
-    "iridescent": true,
-    "industrially_compostable": true
+    "iridescent": true
   }
 }

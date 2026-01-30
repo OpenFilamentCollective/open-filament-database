@@ -1,8 +1,8 @@
 {
   "id": "protopasta",
-  "name": "Protopasta",
-  "website": "",
   "logo": "logo.png",
+  "name": "Protopasta",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "protopasta.com"
 }

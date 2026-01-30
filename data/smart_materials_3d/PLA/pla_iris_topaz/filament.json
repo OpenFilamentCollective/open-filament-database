@@ -1,6 +1,6 @@
 {
   "id": "pla_iris_topaz",
   "name": "PLA IRIS Topaz",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

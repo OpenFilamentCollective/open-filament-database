@@ -1,6 +1,6 @@
 {
   "id": "pla_high_speed_grey",
   "name": "PLA High Speed Grey",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

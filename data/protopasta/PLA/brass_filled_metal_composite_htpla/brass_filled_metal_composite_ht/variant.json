@@ -3,7 +3,7 @@
   "name": "Brass Filled Metal Composite Ht",
   "color_hex": "#A6884C",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

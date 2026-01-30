@@ -3,7 +3,7 @@
   "name": "Cf Brick Red",
   "color_hex": "#462B2E",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

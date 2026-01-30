@@ -1,8 +1,8 @@
 {
   "id": "petg_v0_jet_black",
   "name": "PETG V0 Jet Black",
-  "density": 1.27,
   "diameter_tolerance": 0.02,
+  "density": 1.27,
   "shore_hardness_d": 79,
   "min_print_temperature": 220,
   "max_print_temperature": 240,

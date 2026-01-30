@@ -1,6 +1,6 @@
 {
   "id": "pla_matte_nardo_gray",
   "name": "PLA Matte Nardo Gray",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

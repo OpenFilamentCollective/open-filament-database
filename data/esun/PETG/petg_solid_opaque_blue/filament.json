@@ -1,6 +1,6 @@
 {
   "id": "petg_solid_opaque_blue",
   "name": "PETG Solid Opaque Blue",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

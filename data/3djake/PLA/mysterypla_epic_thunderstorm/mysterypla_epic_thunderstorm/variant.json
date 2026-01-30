@@ -3,7 +3,7 @@
   "name": "Mysterypla Epic Thunderstorm",
   "color_hex": "#000000",
   "traits": {
-    "coextruded": true,
-    "iridescent": true
+    "iridescent": true,
+    "coextruded": true
   }
 }

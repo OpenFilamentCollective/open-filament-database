@@ -3,7 +3,7 @@
   "name": "Cf Marsala",
   "color_hex": "#6E485F",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

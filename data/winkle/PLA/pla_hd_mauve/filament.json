@@ -1,6 +1,6 @@
 {
   "id": "pla_hd_mauve",
   "name": "PLA HD Mauve",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

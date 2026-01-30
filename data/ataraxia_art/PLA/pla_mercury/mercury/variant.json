@@ -3,7 +3,7 @@
   "name": "Mercury",
   "color_hex": "#6299DF",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

@@ -3,8 +3,8 @@
   "name": "Glitter Red Sparkle",
   "color_hex": "#AC1A17",
   "traits": {
+    "industrially_compostable": true,
     "silk": true,
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

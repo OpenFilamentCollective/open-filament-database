@@ -3,7 +3,7 @@
   "name": "Arctic White Af Silk",
   "color_hex": "#FFFFFF",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

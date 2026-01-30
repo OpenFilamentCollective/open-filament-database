@@ -1,6 +1,6 @@
 {
   "id": "pla_mould_co_product",
   "name": "PLA Mould - Co-product",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

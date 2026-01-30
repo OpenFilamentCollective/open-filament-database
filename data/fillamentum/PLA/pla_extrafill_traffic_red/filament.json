@@ -1,6 +1,6 @@
 {
   "id": "pla_extrafill_traffic_red",
   "name": "PLA Extrafill \"Traffic Red\"",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

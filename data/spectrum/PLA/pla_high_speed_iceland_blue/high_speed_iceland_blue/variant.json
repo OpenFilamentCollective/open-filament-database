@@ -3,7 +3,7 @@
   "name": "High Speed Iceland Blue",
   "color_hex": "#6AC4CD",
   "traits": {
-    "transparent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "transparent": true
   }
 }

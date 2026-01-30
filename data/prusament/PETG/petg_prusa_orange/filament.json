@@ -1,8 +1,8 @@
 {
   "id": "petg_prusa_orange",
   "name": "PETG Prusa Orange",
-  "density": 1.27,
   "diameter_tolerance": 0.02,
+  "density": 1.27,
   "shore_hardness_d": 74,
   "min_print_temperature": 240,
   "max_print_temperature": 260,

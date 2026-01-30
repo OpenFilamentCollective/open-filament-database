@@ -3,7 +3,7 @@
   "name": "Cf Lava Gray",
   "color_hex": "#55555E",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

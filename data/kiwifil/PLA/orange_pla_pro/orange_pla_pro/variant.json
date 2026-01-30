@@ -3,7 +3,7 @@
   "name": "Orange Pla Pro",
   "color_hex": "#FF7A33",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

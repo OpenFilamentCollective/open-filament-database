@@ -1,6 +1,6 @@
 {
   "id": "cosmic_graphite_petg_pro_v2",
   "name": "Cosmic Graphite PETG PRO v2",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

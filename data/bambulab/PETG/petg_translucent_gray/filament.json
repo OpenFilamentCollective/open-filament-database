@@ -1,6 +1,6 @@
 {
   "id": "petg_translucent_gray",
   "name": "PETG Translucent Gray",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

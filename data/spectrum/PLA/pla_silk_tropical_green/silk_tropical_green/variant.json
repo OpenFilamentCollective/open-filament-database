@@ -3,7 +3,7 @@
   "name": "Silk Tropical Green",
   "color_hex": "#4E7642",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

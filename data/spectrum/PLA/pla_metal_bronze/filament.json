@@ -1,6 +1,6 @@
 {
   "id": "pla_metal_bronze",
   "name": "PLA Metal Bronze",
-  "density": 2.28,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 2.28
 }

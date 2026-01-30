@@ -3,7 +3,7 @@
   "name": "Panchroma Starlight Pla Meteor",
   "color_hex": "#4E7642",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

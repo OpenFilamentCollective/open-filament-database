@@ -4,7 +4,7 @@
   "color_hex": "#9FEC41",
   "traits": {
     "industrially_compostable": true,
-    "neon": true,
-    "foaming": true
+    "foaming": true,
+    "neon": true
   }
 }

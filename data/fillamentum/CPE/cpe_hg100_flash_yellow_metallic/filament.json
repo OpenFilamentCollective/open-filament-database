@@ -1,6 +1,6 @@
 {
   "id": "cpe_hg100_flash_yellow_metallic",
   "name": "CPE HG100 \"Flash Yellow Metallic\"",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

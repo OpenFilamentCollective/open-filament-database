@@ -3,7 +3,7 @@
   "name": "Panchroma Silk Pla Pezriwinkle",
   "color_hex": "#7894F2",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

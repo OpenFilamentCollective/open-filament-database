@@ -1,6 +1,6 @@
 {
   "id": "rock_pla_mist_gray",
   "name": "Rock PLA Mist Gray",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

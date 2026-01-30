@@ -1,6 +1,6 @@
 {
   "id": "pla_hs_pro_voxel_grey",
   "name": "PLA+ HS (Pro) Voxel Grey",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

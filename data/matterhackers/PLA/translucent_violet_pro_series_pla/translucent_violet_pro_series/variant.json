@@ -3,7 +3,7 @@
   "name": "Translucent Violet Pro Series",
   "color_hex": "#F300EA",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

@@ -1,8 +1,8 @@
 {
   "id": "ninjatek",
-  "name": "NinjaTek",
-  "website": "",
   "logo": "logo.png",
+  "name": "NinjaTek",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "ninjatek.com"
 }

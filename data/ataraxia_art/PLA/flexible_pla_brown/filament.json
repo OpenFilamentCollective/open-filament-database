@@ -1,7 +1,7 @@
 {
   "id": "flexible_pla_brown",
   "name": "Flexible PLA Brown",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 89
 }

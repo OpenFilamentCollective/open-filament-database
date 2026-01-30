@@ -3,7 +3,7 @@
   "name": "Burnt Titanium Red",
   "color_hex": "#684257",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

@@ -1,6 +1,6 @@
 {
   "id": "deep_blue_pla",
   "name": "Deep Blue PLA",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -1,6 +1,6 @@
 {
   "id": "pet_g_cf15",
   "name": "PET-G CF15",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

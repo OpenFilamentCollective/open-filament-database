@@ -1,7 +1,7 @@
 {
   "id": "tpu_85a_neon_orange",
   "name": "TPU 85A Neon Orange",
-  "density": 1.18,
   "diameter_tolerance": 0.02,
+  "density": 1.18,
   "shore_hardness_a": 85
 }

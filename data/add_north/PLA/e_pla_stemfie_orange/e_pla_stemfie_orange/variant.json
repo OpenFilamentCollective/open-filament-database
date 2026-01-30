@@ -3,7 +3,7 @@
   "name": "E Pla Stemfie Orange",
   "color_hex": "#FF8E24",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

@@ -3,8 +3,8 @@
   "name": "Purple Star Stuff",
   "color_hex": "#C63DBA",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

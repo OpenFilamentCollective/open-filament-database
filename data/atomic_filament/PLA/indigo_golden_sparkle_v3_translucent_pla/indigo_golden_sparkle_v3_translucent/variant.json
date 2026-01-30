@@ -3,8 +3,8 @@
   "name": "Indigo Golden Sparkle V3 Translucent",
   "color_hex": "#6C47B2",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

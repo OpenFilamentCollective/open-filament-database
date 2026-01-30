@@ -3,8 +3,8 @@
   "name": "Panchroma Dual Silk Pla Crown Gold Sliver",
   "color_hex": "#000000",
   "traits": {
-    "silk": true,
     "industrially_compostable": true,
+    "silk": true,
     "coextruded": true
   }
 }

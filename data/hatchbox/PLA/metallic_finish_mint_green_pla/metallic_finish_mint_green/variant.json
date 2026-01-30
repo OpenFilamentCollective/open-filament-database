@@ -3,7 +3,7 @@
   "name": "Metallic Finish Mint Green",
   "color_hex": "#98FBCB",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

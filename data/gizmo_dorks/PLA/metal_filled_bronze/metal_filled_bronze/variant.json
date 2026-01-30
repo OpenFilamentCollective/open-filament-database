@@ -3,7 +3,7 @@
   "name": "Metal Filled Bronze",
   "color_hex": "#A98C4B",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

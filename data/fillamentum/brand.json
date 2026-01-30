@@ -1,8 +1,8 @@
 {
   "id": "fillamentum",
-  "name": "Fillamentum",
-  "website": "",
   "logo": "logo.png",
+  "name": "Fillamentum",
   "origin": "CZ",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "fillamentum.com"
 }

@@ -3,7 +3,7 @@
   "name": "Carbon Fiber Green",
   "color_hex": "#656D60",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Lipstick Pink Plasilk",
   "color_hex": "#E23288",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

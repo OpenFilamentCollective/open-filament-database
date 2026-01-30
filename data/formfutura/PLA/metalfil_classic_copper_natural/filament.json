@@ -1,6 +1,6 @@
 {
   "id": "metalfil_classic_copper_natural",
   "name": "MetalFil – Classic Copper Natural",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

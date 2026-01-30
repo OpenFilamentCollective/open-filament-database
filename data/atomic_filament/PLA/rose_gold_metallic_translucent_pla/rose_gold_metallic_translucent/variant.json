@@ -3,7 +3,7 @@
   "name": "Rose Gold Metallic Translucent",
   "color_hex": "#BF7473",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

@@ -3,9 +3,9 @@
   "name": "High Gloss Pla Colormorph Pink Purple",
   "color_hex": "#000000",
   "traits": {
-    "iridescent": true,
-    "silk": true,
     "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
     "coextruded": true
   }
 }

@@ -1,6 +1,6 @@
 {
   "id": "petg_black",
   "name": "PETG Black",
-  "density": 1.27,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

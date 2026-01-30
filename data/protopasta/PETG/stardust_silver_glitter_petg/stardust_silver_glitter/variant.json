@@ -3,7 +3,7 @@
   "name": "Stardust Silver Glitter",
   "color_hex": "#EAECF5",
   "traits": {
-    "glitter": true,
-    "silk": true
+    "silk": true,
+    "glitter": true
   }
 }

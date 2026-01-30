@@ -1,6 +1,6 @@
 {
   "id": "pla_pastel_green",
   "name": "PLA Pastel Green",
-  "density": 1.29,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.29
 }

@@ -3,7 +3,7 @@
   "name": "Copperfill",
   "color_hex": "#904029",
   "traits": {
-    "abrasive": true,
-    "home_compostable": true
+    "home_compostable": true,
+    "abrasive": true
   }
 }

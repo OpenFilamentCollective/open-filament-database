@@ -3,7 +3,7 @@
   "name": "Silk Pla Bronze",
   "color_hex": "#A45B27",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

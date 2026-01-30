@@ -1,7 +1,7 @@
 {
   "id": "elasti_tpu_90a_yellow",
   "name": "Elasti TPU 90A Yellow",
-  "density": 1.21,
   "diameter_tolerance": 0.02,
+  "density": 1.21,
   "shore_hardness_a": 90
 }

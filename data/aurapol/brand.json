@@ -1,8 +1,8 @@
 {
   "id": "aurapol",
-  "name": "AURAPOL",
-  "website": "",
   "logo": "logo.png",
+  "name": "AURAPOL",
   "origin": "CZ",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "aurapol.com"
 }

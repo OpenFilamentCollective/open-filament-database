@@ -3,7 +3,7 @@
   "name": "Crystal Clear",
   "color_hex": "#E4E7E5",
   "traits": {
-    "transparent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "transparent": true
   }
 }

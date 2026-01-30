@@ -3,7 +3,7 @@
   "name": "Dark Forest Green Pla Pro",
   "color_hex": "#34695A",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

@@ -1,6 +1,6 @@
 {
   "id": "virgin_petg_esd",
   "name": "Virgin PETG ESD",
-  "density": 1.3,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.3
 }

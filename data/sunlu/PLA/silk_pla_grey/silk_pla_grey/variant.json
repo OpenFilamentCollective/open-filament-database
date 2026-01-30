@@ -3,7 +3,7 @@
   "name": "Silk Pla Grey",
   "color_hex": "#949A9E",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

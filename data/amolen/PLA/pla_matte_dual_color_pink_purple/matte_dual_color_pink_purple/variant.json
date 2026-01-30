@@ -3,8 +3,8 @@
   "name": "Matte Dual Color Pink Purple",
   "color_hex": "#000000",
   "traits": {
+    "matte": true,
     "industrially_compostable": true,
-    "coextruded": true,
-    "matte": true
+    "coextruded": true
   }
 }

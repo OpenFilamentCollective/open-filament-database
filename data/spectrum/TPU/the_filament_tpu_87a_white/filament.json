@@ -1,7 +1,7 @@
 {
   "id": "the_filament_tpu_87a_white",
   "name": "The Filament TPU 87A White",
-  "density": 1.21,
   "diameter_tolerance": 0.02,
+  "density": 1.21,
   "shore_hardness_a": 87
 }

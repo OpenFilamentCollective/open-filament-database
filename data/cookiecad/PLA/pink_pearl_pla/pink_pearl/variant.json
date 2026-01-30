@@ -3,9 +3,9 @@
   "name": "Pink Pearl",
   "color_hex": "#EFEFEF",
   "traits": {
-    "neon": true,
+    "industrially_compostable": true,
     "silk": true,
     "iridescent": true,
-    "industrially_compostable": true
+    "neon": true
   }
 }

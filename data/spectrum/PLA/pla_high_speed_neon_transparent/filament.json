@@ -1,6 +1,6 @@
 {
   "id": "pla_high_speed_neon_transparent",
   "name": "PLA High Speed Neon Transparent",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

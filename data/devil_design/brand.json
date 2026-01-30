@@ -1,8 +1,8 @@
 {
   "id": "devil_design",
-  "name": "Devil Design",
-  "website": "",
   "logo": "logo.png",
+  "name": "Devil Design",
   "origin": "PL",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "devildesign.com"
 }

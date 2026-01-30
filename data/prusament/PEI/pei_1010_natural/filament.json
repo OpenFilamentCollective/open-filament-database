@@ -1,8 +1,8 @@
 {
   "id": "pei_1010_natural",
   "name": "PEI 1010 Natural",
-  "density": 1.27,
   "diameter_tolerance": 0.02,
+  "density": 1.27,
   "shore_hardness_d": 83,
   "min_print_temperature": 400,
   "max_print_temperature": 420,

@@ -1,6 +1,6 @@
 {
   "id": "pet_g_premium_silver_star",
   "name": "PET-G Premium Silver Star",
-  "density": 1.27,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

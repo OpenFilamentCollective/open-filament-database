@@ -1,8 +1,8 @@
 {
   "id": "filkemp",
-  "name": "Filkemp",
-  "website": "",
   "logo": "logo.png",
+  "name": "Filkemp",
   "origin": "PT",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "filkemp.com"
 }

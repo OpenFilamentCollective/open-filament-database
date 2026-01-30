@@ -1,6 +1,6 @@
 {
   "id": "neon_yellow_uv_reactive_abs",
   "name": "Neon Yellow UV Reactive ABS",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

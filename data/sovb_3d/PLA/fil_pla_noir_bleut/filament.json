@@ -1,6 +1,6 @@
 {
   "id": "fil_pla_noir_bleut",
   "name": "Fil PLA Noir Bleuté",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

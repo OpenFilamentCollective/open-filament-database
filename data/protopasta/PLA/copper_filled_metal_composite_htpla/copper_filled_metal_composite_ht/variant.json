@@ -3,7 +3,7 @@
   "name": "Copper Filled Metal Composite Ht",
   "color_hex": "#C06341",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

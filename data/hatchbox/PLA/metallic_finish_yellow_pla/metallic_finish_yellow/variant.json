@@ -3,7 +3,7 @@
   "name": "Metallic Finish Yellow",
   "color_hex": "#FFFB00",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

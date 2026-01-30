@@ -1,8 +1,8 @@
 {
   "id": "dremel",
-  "name": "Dremel",
-  "website": "",
   "logo": "logo.png",
+  "name": "Dremel",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "dremel.com"
 }

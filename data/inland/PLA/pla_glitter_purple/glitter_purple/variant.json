@@ -3,7 +3,7 @@
   "name": "Glitter Purple",
   "color_hex": "#583061",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

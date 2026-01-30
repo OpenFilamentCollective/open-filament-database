@@ -1,6 +1,6 @@
 {
   "id": "pla_temperature_color_change_purple_green_to_pink_yellow",
   "name": "PLA Temperature Color Change Purple Green to Pink Yellow",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

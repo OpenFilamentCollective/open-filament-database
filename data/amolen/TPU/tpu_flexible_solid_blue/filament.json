@@ -1,7 +1,7 @@
 {
   "id": "tpu_flexible_solid_blue",
   "name": "TPU Flexible Solid Blue",
-  "density": 1.19,
   "diameter_tolerance": 0.02,
+  "density": 1.19,
   "shore_hardness_a": 95
 }

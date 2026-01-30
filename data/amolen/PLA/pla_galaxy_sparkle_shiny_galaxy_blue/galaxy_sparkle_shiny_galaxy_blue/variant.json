@@ -3,9 +3,9 @@
   "name": "Galaxy Sparkle Shiny Galaxy Blue",
   "color_hex": "#0095FF",
   "traits": {
-    "iridescent": true,
-    "glitter": true,
+    "industrially_compostable": true,
     "silk": true,
-    "industrially_compostable": true
+    "iridescent": true,
+    "glitter": true
   }
 }

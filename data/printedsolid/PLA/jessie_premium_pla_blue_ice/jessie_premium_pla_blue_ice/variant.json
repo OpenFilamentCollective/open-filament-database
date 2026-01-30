@@ -3,7 +3,7 @@
   "name": "Jessie Premium Pla Blue Ice",
   "color_hex": "#033877",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

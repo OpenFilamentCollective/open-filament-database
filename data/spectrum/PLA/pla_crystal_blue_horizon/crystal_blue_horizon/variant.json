@@ -3,8 +3,8 @@
   "name": "Crystal Blue Horizon",
   "color_hex": "#0099E6",
   "traits": {
-    "silk": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "silk": true
   }
 }

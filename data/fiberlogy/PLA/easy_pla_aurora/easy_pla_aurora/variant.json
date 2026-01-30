@@ -3,7 +3,7 @@
   "name": "Easy Pla Aurora",
   "color_hex": "#062B4D",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

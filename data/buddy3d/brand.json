@@ -1,8 +1,8 @@
 {
   "id": "buddy3d",
-  "name": "Buddy3D",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "Buddy3D",
   "origin": "CZ",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "buddy3d.com"
 }

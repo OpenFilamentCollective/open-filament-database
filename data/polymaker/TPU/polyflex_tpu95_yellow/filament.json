@@ -1,7 +1,7 @@
 {
   "id": "polyflex_tpu95_yellow",
   "name": "PolyFlex™ TPU95 Yellow",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 95
 }

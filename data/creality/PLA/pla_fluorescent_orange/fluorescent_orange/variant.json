@@ -3,7 +3,7 @@
   "name": "Fluorescent Orange",
   "color_hex": "#FF5F2E",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

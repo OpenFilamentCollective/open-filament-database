@@ -1,8 +1,8 @@
 {
   "id": "ovv3d",
-  "name": "OVV3D",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "OVV3D",
   "origin": "CH",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "ovv3d.com"
 }

@@ -1,8 +1,8 @@
 {
   "id": "polymaker",
-  "name": "Polymaker",
-  "website": "",
   "logo": "logo.svg",
+  "name": "Polymaker",
   "origin": "CH",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "polymaker.com"
 }

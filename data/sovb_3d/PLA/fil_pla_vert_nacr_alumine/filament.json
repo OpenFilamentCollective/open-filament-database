@@ -1,6 +1,6 @@
 {
   "id": "fil_pla_vert_nacr_alumine",
   "name": "Fil PLA Vert Nacré Alumine",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

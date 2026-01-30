@@ -3,7 +3,7 @@
   "name": "Translucent Cosmic Ray Blue",
   "color_hex": "#2E56F1",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

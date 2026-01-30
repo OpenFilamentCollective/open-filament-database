@@ -3,7 +3,7 @@
   "name": "Magic Vintage Glass",
   "color_hex": "#000000",
   "traits": {
-    "coextruded": true,
-    "translucent": true
+    "translucent": true,
+    "coextruded": true
   }
 }

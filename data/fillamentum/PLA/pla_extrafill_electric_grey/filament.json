@@ -1,6 +1,6 @@
 {
   "id": "pla_extrafill_electric_grey",
   "name": "PLA Extrafill \"Electric Grey\"",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

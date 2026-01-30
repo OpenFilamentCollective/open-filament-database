@@ -1,8 +1,8 @@
 {
   "id": "eolas_prints",
-  "name": "Eolas Prints",
-  "website": "",
   "logo": "logo.png",
+  "name": "Eolas Prints",
   "origin": "ES",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "eolasprints.com"
 }

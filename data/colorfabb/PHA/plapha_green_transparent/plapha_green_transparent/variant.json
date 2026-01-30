@@ -3,7 +3,7 @@
   "name": "Plapha Green Transparent",
   "color_hex": "#267F67",
   "traits": {
-    "home_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "home_compostable": true
   }
 }

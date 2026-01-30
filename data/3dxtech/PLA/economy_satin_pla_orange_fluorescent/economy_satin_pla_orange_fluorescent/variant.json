@@ -3,7 +3,7 @@
   "name": "Economy Satin Pla Orange Fluorescent",
   "color_hex": "#F47D59",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

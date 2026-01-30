@@ -1,6 +1,6 @@
 {
   "id": "pla_goprint_fuchsia",
   "name": "PLA Go&Print Fuchsia",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

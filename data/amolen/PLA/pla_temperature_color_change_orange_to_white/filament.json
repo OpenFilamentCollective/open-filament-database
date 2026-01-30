@@ -1,6 +1,6 @@
 {
   "id": "pla_temperature_color_change_orange_to_white",
   "name": "PLA Temperature Color Change Orange to White",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

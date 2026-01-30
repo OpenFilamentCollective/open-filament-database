@@ -3,9 +3,9 @@
   "name": "Crystal Neon Orange",
   "color_hex": "#FA8423",
   "traits": {
-    "silk": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "neon": true,
-    "translucent": true
+    "silk": true,
+    "neon": true
   }
 }

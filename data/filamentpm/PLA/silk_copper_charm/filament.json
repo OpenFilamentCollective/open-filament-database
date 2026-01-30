@@ -1,6 +1,6 @@
 {
   "id": "silk_copper_charm",
   "name": "SILK - Copper Charm",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

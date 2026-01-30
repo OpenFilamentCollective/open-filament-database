@@ -3,7 +3,7 @@
   "name": "Panchroma Starlight Pla Comet",
   "color_hex": "#668C80",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

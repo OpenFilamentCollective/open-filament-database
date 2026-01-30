@@ -3,7 +3,7 @@
   "name": "Marsala",
   "color_hex": "#6E485F",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

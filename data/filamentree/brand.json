@@ -1,8 +1,8 @@
 {
   "id": "filamentree",
-  "name": "Filamentree",
-  "website": "",
   "logo": "logo.png",
+  "name": "Filamentree",
   "origin": "SK",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "filamentree.com"
 }

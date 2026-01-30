@@ -1,6 +1,6 @@
 {
   "id": "ppa_cf_black",
   "name": "PPA-CF Black",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

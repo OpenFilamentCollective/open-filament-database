@@ -3,9 +3,9 @@
   "name": "Fluorescent Yellow Pla Pro",
   "color_hex": "#E4FF33",
   "traits": {
-    "neon": true,
-    "silk": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "silk": true,
+    "neon": true
   }
 }

@@ -3,8 +3,8 @@
   "name": "Glitter Stardust Blue",
   "color_hex": "#375680",
   "traits": {
+    "industrially_compostable": true,
     "silk": true,
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

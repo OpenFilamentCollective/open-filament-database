@@ -1,6 +1,6 @@
 {
   "id": "cool_gray_tpu",
   "name": "Cool Gray TPU",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

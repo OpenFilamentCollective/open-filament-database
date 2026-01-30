@@ -1,6 +1,6 @@
 {
   "id": "easy_pla_sandstone",
   "name": "Easy PLA Sandstone",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -1,6 +1,6 @@
 {
   "id": "pla_basic_silver",
   "name": "PLA Basic Silver",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -3,7 +3,7 @@
   "name": "Rose Gold Af Silk",
   "color_hex": "#E69E7A",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

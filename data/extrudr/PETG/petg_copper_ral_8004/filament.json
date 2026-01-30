@@ -1,6 +1,6 @@
 {
   "id": "petg_copper_ral_8004",
   "name": "PETG copper | RAL 8004",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -3,7 +3,7 @@
   "name": "Carbon Fiber Sapphire Blue",
   "color_hex": "#375680",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

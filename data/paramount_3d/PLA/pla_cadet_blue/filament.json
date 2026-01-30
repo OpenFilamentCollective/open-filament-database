@@ -1,6 +1,6 @@
 {
   "id": "pla_cadet_blue",
   "name": "PLA (Cadet Blue)",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

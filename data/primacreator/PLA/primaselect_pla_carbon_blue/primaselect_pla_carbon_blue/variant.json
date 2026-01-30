@@ -3,7 +3,7 @@
   "name": "Primaselect Pla Carbon Blue",
   "color_hex": "#033877",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

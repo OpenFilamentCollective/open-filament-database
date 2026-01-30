@@ -1,8 +1,8 @@
 {
   "id": "fiberlogy",
-  "name": "Fiberlogy",
-  "website": "",
   "logo": "logo.png",
+  "name": "Fiberlogy",
   "origin": "PL",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "fiberlogy.com"
 }

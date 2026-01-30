@@ -1,8 +1,8 @@
 {
   "id": "forward_am",
-  "name": "Forward AM",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "Forward AM",
   "origin": "DE",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "forwardam.com"
 }

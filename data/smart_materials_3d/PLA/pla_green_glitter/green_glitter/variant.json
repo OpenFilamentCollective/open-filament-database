@@ -3,7 +3,7 @@
   "name": "Green Glitter",
   "color_hex": "#02A76B",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }
