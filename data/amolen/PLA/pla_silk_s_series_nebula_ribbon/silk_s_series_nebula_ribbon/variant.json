@@ -1,0 +1,9 @@
+{
+  "id": "silk_s_series_nebula_ribbon",
+  "name": "Silk S Series Nebula Ribbon",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

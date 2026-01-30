@@ -1,7 +1,8 @@
 {
-    "id": "lostboyslab",
-    "name": "lostboyslab",
-    "website": "https://www.lostboyslab.com",
-    "logo": "logo.svg",
-    "origin": "SE"
+  "id": "lostboyslab",
+  "name": "lostboyslab",
+  "website": "https://www.lostboyslab.com",
+  "logo": "logo.svg",
+  "origin": "SE",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

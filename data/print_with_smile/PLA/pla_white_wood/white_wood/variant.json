@@ -1,0 +1,8 @@
+{
+  "id": "white_wood",
+  "name": "White Wood",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "economy_pla_orange",
+  "name": "Economy Pla Orange",
+  "color_hex": "#FF8133",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

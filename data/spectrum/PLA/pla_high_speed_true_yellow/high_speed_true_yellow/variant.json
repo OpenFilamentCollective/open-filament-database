@@ -1,0 +1,8 @@
+{
+  "id": "high_speed_true_yellow",
+  "name": "High Speed True Yellow",
+  "color_hex": "#FAD61B",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

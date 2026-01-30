@@ -1,0 +1,9 @@
+{
+  "id": "matte_black_af",
+  "name": "Matte Black Af",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

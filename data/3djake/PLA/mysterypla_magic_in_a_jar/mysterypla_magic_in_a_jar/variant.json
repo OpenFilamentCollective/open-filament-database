@@ -1,0 +1,9 @@
+{
+  "id": "mysterypla_magic_in_a_jar",
+  "name": "Mysterypla Magic In A Jar",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

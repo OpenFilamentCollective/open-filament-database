@@ -1,0 +1,8 @@
+{
+  "id": "upgrade_pla_black",
+  "name": "Upgrade Pla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

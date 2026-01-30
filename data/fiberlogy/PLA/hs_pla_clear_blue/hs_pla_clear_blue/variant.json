@@ -1,0 +1,9 @@
+{
+  "id": "hs_pla_clear_blue",
+  "name": "Hs Pla Clear Blue",
+  "color_hex": "#0E21AE",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

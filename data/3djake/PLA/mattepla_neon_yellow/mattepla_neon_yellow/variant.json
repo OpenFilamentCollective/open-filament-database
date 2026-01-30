@@ -1,0 +1,9 @@
+{
+  "id": "mattepla_neon_yellow",
+  "name": "Mattepla Neon Yellow",
+  "color_hex": "#F6FB38",
+  "traits": {
+    "neon": true,
+    "matte": true
+  }
+}

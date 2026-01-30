@@ -1,0 +1,9 @@
+{
+  "id": "textura_matte_cold_white",
+  "name": "Textura Matte Cold White",
+  "color_hex": "#EAECF5",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

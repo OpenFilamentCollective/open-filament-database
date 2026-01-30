@@ -1,0 +1,9 @@
+{
+  "id": "textura_matte_white",
+  "name": "Textura Matte White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silky_sunset",
+  "name": "Silky Sunset",
+  "color_hex": "#DC9C43",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

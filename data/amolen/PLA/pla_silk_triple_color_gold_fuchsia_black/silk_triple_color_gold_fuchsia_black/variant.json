@@ -1,0 +1,9 @@
+{
+  "id": "silk_triple_color_gold_fuchsia_black",
+  "name": "Silk Triple Color Gold Fuchsia Black",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

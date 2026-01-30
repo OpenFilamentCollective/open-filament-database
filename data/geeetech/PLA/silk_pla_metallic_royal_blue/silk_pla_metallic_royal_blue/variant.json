@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_metallic_royal_blue",
+  "name": "Silk Pla Metallic Royal Blue",
+  "color_hex": "#0E21AE",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

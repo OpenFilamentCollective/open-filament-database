@@ -1,0 +1,9 @@
+{
+  "id": "matte_basic_navy_blue",
+  "name": "Matte Basic Navy Blue",
+  "color_hex": "#003B80",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

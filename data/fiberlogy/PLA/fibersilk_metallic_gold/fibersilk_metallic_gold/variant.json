@@ -1,0 +1,9 @@
+{
+  "id": "fibersilk_metallic_gold",
+  "name": "Fibersilk Metallic Gold",
+  "color_hex": "#E3B145",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

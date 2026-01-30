@@ -1,0 +1,10 @@
+{
+  "id": "nebula_stardust_multicolor_ht",
+  "name": "Nebula Stardust Multicolor Ht",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

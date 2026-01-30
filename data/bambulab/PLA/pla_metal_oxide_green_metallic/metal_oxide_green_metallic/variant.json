@@ -1,0 +1,9 @@
+{
+  "id": "metal_oxide_green_metallic",
+  "name": "Metal Oxide Green Metallic",
+  "color_hex": "#1D7C6A",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

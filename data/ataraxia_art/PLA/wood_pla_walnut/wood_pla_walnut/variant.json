@@ -1,0 +1,8 @@
+{
+  "id": "wood_pla_walnut",
+  "name": "Wood Pla Walnut",
+  "color_hex": "#D99773",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

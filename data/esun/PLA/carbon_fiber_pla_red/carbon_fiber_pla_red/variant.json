@@ -1,0 +1,10 @@
+{
+  "id": "carbon_fiber_pla_red",
+  "name": "Carbon Fiber Pla Red",
+  "color_hex": "#4F3638",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

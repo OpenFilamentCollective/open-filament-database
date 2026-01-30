@@ -1,0 +1,9 @@
+{
+  "id": "purple_af_silk",
+  "name": "Purple Af Silk",
+  "color_hex": "#CE92CE",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

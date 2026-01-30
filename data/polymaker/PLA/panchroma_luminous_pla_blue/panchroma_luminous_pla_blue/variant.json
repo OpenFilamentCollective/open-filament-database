@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_luminous_pla_blue",
+  "name": "Panchroma Luminous Pla Blue",
+  "color_hex": "#40B6E4",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

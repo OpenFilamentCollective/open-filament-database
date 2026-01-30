@@ -1,0 +1,9 @@
+{
+  "id": "silk_jade_green",
+  "name": "Silk Jade Green",
+  "color_hex": "#02A76B",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

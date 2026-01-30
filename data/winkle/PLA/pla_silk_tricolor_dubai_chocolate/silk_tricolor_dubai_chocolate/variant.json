@@ -1,0 +1,9 @@
+{
+  "id": "silk_tricolor_dubai_chocolate",
+  "name": "Silk Tricolor Dubai Chocolate",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

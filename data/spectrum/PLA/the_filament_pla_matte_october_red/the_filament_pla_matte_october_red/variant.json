@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_matte_october_red",
+  "name": "The Filament Pla Matte October Red",
+  "color_hex": "#AD4F54",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

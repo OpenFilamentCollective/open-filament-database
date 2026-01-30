@@ -1,0 +1,8 @@
+{
+  "id": "green_flexible",
+  "name": "Green Flexible",
+  "color_hex": "#4DFF64",
+  "traits": {
+    "translucent": true
+  }
+}

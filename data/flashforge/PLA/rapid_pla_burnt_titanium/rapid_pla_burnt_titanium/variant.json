@@ -1,0 +1,10 @@
+{
+  "id": "rapid_pla_burnt_titanium",
+  "name": "Rapid Pla Burnt Titanium",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

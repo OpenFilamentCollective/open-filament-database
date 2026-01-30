@@ -1,0 +1,10 @@
+{
+  "id": "silk_magic_pla_black_gold",
+  "name": "Silk Magic Pla Black Gold",
+  "color_hex": "#CE8D00",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magicpla_tropical_sea",
+  "name": "Magicpla Tropical Sea",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

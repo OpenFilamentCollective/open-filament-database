@@ -1,0 +1,9 @@
+{
+  "id": "hdglass_fluor_orange_stained",
+  "name": "Hdglass Fluor Orange Stained",
+  "color_hex": "#F17231",
+  "traits": {
+    "silk": true,
+    "translucent": true
+  }
+}

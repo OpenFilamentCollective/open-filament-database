@@ -1,0 +1,9 @@
+{
+  "id": "high_gloss_pla_copper",
+  "name": "High Gloss Pla Copper",
+  "color_hex": "#8D5D4F",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_emerald_translucid",
+  "name": "Pet G Emerald Translucid",
+  "color_hex": "#06B100",
+  "traits": {
+    "translucent": true
+  }
+}

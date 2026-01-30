@@ -1,0 +1,10 @@
+{
+  "id": "matte_dual_color_blue_pink",
+  "name": "Matte Dual Color Blue Pink",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

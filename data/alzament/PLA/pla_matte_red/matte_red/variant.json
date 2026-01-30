@@ -1,0 +1,9 @@
+{
+  "id": "matte_red",
+  "name": "Matte Red",
+  "color_hex": "#DB3E14",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

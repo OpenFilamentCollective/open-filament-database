@@ -1,0 +1,8 @@
+{
+  "id": "vanilla_redberry",
+  "name": "Vanilla Redberry",
+  "color_hex": "#EAECF5",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

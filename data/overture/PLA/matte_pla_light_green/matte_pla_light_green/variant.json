@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_light_green",
+  "name": "Matte Pla Light Green",
+  "color_hex": "#AFDEB9",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

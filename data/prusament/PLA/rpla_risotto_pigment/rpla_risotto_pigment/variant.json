@@ -1,0 +1,9 @@
+{
+  "id": "rpla_risotto_pigment",
+  "name": "Rpla Risotto Pigment",
+  "color_hex": "#CCC9C0",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

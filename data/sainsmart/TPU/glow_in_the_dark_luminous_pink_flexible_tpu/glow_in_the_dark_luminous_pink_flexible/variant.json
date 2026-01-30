@@ -1,0 +1,9 @@
+{
+  "id": "glow_in_the_dark_luminous_pink_flexible",
+  "name": "Glow In The Dark Luminous Pink Flexible",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

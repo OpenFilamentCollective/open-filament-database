@@ -1,0 +1,9 @@
+{
+  "id": "flameguard_pla_industrial_grey",
+  "name": "Flameguard Pla Industrial Grey",
+  "color_hex": "#5A696C",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

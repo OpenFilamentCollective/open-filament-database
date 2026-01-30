@@ -1,0 +1,9 @@
+{
+  "id": "matte_basic_black",
+  "name": "Matte Basic Black",
+  "color_hex": "#3B353A",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

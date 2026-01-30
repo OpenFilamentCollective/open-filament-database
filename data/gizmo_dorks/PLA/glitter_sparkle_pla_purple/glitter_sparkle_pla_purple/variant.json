@@ -1,0 +1,9 @@
+{
+  "id": "glitter_sparkle_pla_purple",
+  "name": "Glitter Sparkle Pla Purple",
+  "color_hex": "#6C47B2",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

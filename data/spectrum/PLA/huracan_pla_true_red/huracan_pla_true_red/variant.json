@@ -1,0 +1,9 @@
+{
+  "id": "huracan_pla_true_red",
+  "name": "Huracan Pla True Red",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

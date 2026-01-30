@@ -1,0 +1,9 @@
+{
+  "id": "fluorescent_red_black_light_reactive",
+  "name": "Fluorescent Red Black Light Reactive",
+  "color_hex": "#ED1536",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

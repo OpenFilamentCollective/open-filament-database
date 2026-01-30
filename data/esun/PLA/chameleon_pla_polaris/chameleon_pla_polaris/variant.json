@@ -1,0 +1,10 @@
+{
+  "id": "chameleon_pla_polaris",
+  "name": "Chameleon Pla Polaris",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

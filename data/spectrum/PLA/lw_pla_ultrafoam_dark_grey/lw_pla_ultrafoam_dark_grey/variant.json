@@ -1,0 +1,9 @@
+{
+  "id": "lw_pla_ultrafoam_dark_grey",
+  "name": "Lw Pla Ultrafoam Dark Grey",
+  "color_hex": "#5A696C",
+  "traits": {
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "easyfil_abs_glow_in_the_dark_green",
+  "name": "Easyfil Abs Glow In The Dark Green",
+  "color_hex": "#06B100",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

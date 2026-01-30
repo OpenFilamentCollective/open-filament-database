@@ -1,0 +1,9 @@
+{
+  "id": "3dxstat_esd_pla_black",
+  "name": "3dxstat Esd Pla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "esd_safe": true,
+    "industrially_compostable": true
+  }
+}

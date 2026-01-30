@@ -1,0 +1,10 @@
+{
+  "id": "sparkle_clear",
+  "name": "Sparkle Clear",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "transparent": true,
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

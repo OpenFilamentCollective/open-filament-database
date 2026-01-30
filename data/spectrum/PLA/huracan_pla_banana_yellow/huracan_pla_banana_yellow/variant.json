@@ -1,0 +1,9 @@
+{
+  "id": "huracan_pla_banana_yellow",
+  "name": "Huracan Pla Banana Yellow",
+  "color_hex": "#E8BD00",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

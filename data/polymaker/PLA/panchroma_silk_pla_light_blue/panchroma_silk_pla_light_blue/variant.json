@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_light_blue",
+  "name": "Panchroma Silk Pla Light Blue",
+  "color_hex": "#36DBE7",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

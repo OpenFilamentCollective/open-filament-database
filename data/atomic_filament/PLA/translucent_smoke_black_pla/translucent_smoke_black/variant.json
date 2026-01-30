@@ -1,0 +1,9 @@
+{
+  "id": "translucent_smoke_black",
+  "name": "Translucent Smoke Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

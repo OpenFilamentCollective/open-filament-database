@@ -1,0 +1,10 @@
+{
+  "id": "silk_dual_color_black_purple",
+  "name": "Silk Dual Color Black Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

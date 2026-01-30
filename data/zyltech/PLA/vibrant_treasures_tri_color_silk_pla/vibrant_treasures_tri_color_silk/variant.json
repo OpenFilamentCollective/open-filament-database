@@ -1,0 +1,10 @@
+{
+  "id": "vibrant_treasures_tri_color_silk",
+  "name": "Vibrant Treasures Tri Color Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

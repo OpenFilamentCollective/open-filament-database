@@ -1,0 +1,8 @@
+{
+  "id": "starter_glow_in_the_dark_blue",
+  "name": "Starter Glow In The Dark Blue",
+  "color_hex": "#0378D0",
+  "traits": {
+    "glow": true
+  }
+}

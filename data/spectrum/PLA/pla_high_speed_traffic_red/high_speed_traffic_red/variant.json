@@ -1,0 +1,8 @@
+{
+  "id": "high_speed_traffic_red",
+  "name": "High Speed Traffic Red",
+  "color_hex": "#E60000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

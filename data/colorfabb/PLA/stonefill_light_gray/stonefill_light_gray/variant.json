@@ -1,0 +1,8 @@
+{
+  "id": "stonefill_light_gray",
+  "name": "Stonefill Light Gray",
+  "color_hex": "#C3CCD5",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "shimmering_pearl",
+  "name": "Shimmering Pearl",
+  "color_hex": "#1E606C",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

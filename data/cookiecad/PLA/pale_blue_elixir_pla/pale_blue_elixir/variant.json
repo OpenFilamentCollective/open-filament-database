@@ -1,0 +1,10 @@
+{
+  "id": "pale_blue_elixir",
+  "name": "Pale Blue Elixir",
+  "color_hex": "#82E3EC",
+  "traits": {
+    "iridescent": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

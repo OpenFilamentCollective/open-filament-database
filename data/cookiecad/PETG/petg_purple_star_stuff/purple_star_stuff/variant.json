@@ -1,0 +1,9 @@
+{
+  "id": "purple_star_stuff",
+  "name": "Purple Star Stuff",
+  "color_hex": "#E65FE2",
+  "traits": {
+    "glitter": true,
+    "translucent": true
+  }
+}

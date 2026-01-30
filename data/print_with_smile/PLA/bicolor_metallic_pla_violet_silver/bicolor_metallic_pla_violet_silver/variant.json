@@ -1,0 +1,10 @@
+{
+  "id": "bicolor_metallic_pla_violet_silver",
+  "name": "Bicolor Metallic Pla Violet Silver",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

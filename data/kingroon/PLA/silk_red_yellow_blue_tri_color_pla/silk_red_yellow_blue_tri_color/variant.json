@@ -1,0 +1,9 @@
+{
+  "id": "silk_red_yellow_blue_tri_color",
+  "name": "Silk Red Yellow Blue Tri Color",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

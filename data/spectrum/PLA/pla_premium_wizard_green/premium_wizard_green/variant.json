@@ -1,0 +1,9 @@
+{
+  "id": "premium_wizard_green",
+  "name": "Premium Wizard Green",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

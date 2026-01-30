@@ -1,0 +1,9 @@
+{
+  "id": "carbonx_placf",
+  "name": "Carbonx Placf",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

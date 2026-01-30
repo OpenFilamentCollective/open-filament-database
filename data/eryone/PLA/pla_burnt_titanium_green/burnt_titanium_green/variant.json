@@ -1,0 +1,9 @@
+{
+  "id": "burnt_titanium_green",
+  "name": "Burnt Titanium Green",
+  "color_hex": "#34695A",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

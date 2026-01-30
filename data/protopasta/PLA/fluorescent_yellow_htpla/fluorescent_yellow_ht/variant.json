@@ -1,0 +1,9 @@
+{
+  "id": "fluorescent_yellow_ht",
+  "name": "Fluorescent Yellow Ht",
+  "color_hex": "#EBFF57",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

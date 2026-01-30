@@ -1,0 +1,8 @@
+{
+  "id": "shamrock",
+  "name": "Shamrock",
+  "color_hex": "#018E63",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

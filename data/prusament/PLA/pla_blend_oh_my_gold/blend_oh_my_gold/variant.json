@@ -1,0 +1,10 @@
+{
+  "id": "blend_oh_my_gold",
+  "name": "Blend Oh My Gold",
+  "color_hex": "#CE9F2E",
+  "traits": {
+    "silk": true,
+    "blend": true,
+    "industrially_compostable": true
+  }
+}

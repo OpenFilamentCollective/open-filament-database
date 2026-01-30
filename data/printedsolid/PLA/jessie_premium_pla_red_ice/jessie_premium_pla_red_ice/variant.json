@@ -1,0 +1,9 @@
+{
+  "id": "jessie_premium_pla_red_ice",
+  "name": "Jessie Premium Pla Red Ice",
+  "color_hex": "#ED1536",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

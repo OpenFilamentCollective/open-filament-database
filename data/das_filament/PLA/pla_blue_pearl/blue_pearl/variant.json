@@ -1,0 +1,9 @@
+{
+  "id": "blue_pearl",
+  "name": "Blue Pearl",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

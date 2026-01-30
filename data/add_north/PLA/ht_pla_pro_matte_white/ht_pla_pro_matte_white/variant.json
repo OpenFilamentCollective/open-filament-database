@@ -1,0 +1,9 @@
+{
+  "id": "ht_pla_pro_matte_white",
+  "name": "Ht Pla Pro Matte White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

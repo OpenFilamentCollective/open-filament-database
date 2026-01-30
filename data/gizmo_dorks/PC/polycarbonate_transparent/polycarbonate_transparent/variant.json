@@ -1,0 +1,8 @@
+{
+  "id": "polycarbonate_transparent",
+  "name": "Polycarbonate Transparent",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "translucent": true
+  }
+}

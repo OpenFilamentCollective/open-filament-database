@@ -1,0 +1,9 @@
+{
+  "id": "arctic_white_af_silk",
+  "name": "Arctic White Af Silk",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

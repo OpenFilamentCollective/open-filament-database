@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_blue_and_green_2_in_1",
+  "name": "Silk Pla Blue And Green 2 In 1",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

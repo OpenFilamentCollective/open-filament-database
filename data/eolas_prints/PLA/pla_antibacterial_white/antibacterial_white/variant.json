@@ -1,0 +1,8 @@
+{
+  "id": "antibacterial_white",
+  "name": "Antibacterial White",
+  "color_hex": "#F6F3F7",
+  "traits": {
+    "antibacterial": true
+  }
+}

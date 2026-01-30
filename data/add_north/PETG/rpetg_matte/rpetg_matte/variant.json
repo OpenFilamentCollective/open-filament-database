@@ -1,0 +1,9 @@
+{
+  "id": "rpetg_matte",
+  "name": "Rpetg Matte",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "recycled": true
+  }
+}

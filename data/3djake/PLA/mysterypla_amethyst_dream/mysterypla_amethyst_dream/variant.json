@@ -1,0 +1,9 @@
+{
+  "id": "mysterypla_amethyst_dream",
+  "name": "Mysterypla Amethyst Dream",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

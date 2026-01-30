@@ -1,0 +1,8 @@
+{
+  "id": "fil_abs_phosphorescent",
+  "name": "Fil Abs Phosphorescent",
+  "color_hex": "#70FA00",
+  "traits": {
+    "glow": true
+  }
+}

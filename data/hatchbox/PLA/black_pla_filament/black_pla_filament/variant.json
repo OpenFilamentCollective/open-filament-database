@@ -1,0 +1,8 @@
+{
+  "id": "black_pla_filament",
+  "name": "Black Pla Filament",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

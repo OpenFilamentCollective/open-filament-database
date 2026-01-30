@@ -1,0 +1,9 @@
+{
+  "id": "high_speed_neon_green_uv",
+  "name": "High Speed Neon Green Uv",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

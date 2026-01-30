@@ -1,0 +1,8 @@
+{
+  "id": "basic_fire_engine_red",
+  "name": "Basic Fire Engine Red",
+  "color_hex": "#D33D3D",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

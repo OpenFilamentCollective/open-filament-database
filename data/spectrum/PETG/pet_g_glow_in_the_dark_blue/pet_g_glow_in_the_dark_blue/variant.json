@@ -1,0 +1,9 @@
+{
+  "id": "pet_g_glow_in_the_dark_blue",
+  "name": "Pet G Glow In The Dark Blue",
+  "color_hex": "#00E3E2",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

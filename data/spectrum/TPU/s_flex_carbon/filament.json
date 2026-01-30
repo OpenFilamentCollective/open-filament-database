@@ -1,6 +1,7 @@
 {
-    "id": "s_flex_carbon",
-    "name": "S-Flex Carbon",
-    "diameter_tolerance": 0.02,
-    "density": 1.09
+  "id": "s_flex_carbon",
+  "name": "S-Flex Carbon",
+  "density": 1.22,
+  "diameter_tolerance": 0.02,
+  "shore_hardness_a": 90
 }

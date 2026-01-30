@@ -1,0 +1,9 @@
+{
+  "id": "crystal_transparent_blue_purple",
+  "name": "Crystal Transparent Blue Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

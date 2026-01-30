@@ -1,0 +1,9 @@
+{
+  "id": "silk_champagne",
+  "name": "Silk Champagne",
+  "color_hex": "#E3B899",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

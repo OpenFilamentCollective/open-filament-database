@@ -1,0 +1,9 @@
+{
+  "id": "skydiver_blue",
+  "name": "Skydiver Blue",
+  "color_hex": "#2E56F1",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

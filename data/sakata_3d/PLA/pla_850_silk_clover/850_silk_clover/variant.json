@@ -1,0 +1,9 @@
+{
+  "id": "850_silk_clover",
+  "name": "850 Silk Clover",
+  "color_hex": "#4E7642",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

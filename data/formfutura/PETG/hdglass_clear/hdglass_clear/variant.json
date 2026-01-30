@@ -1,0 +1,9 @@
+{
+  "id": "hdglass_clear",
+  "name": "Hdglass Clear",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "translucent": true,
+    "silk": true
+  }
+}

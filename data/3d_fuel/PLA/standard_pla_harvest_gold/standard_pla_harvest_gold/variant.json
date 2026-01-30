@@ -1,0 +1,8 @@
+{
+  "id": "standard_pla_harvest_gold",
+  "name": "Standard Pla Harvest Gold",
+  "color_hex": "#F6C500",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

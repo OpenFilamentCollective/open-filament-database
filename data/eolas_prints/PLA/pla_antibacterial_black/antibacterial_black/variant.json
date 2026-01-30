@@ -1,0 +1,8 @@
+{
+  "id": "antibacterial_black",
+  "name": "Antibacterial Black",
+  "color_hex": "#000000",
+  "traits": {
+    "antibacterial": true
+  }
+}

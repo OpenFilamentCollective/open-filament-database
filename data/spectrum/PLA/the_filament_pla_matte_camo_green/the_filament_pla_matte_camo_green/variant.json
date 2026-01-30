@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_matte_camo_green",
+  "name": "The Filament Pla Matte Camo Green",
+  "color_hex": "#938E6D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

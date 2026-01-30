@@ -1,0 +1,9 @@
+{
+  "id": "plus_transparent_green",
+  "name": "Plus Transparent Green",
+  "color_hex": "#06B100",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

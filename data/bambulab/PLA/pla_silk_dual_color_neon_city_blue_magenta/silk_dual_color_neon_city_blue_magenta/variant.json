@@ -1,0 +1,10 @@
+{
+  "id": "silk_dual_color_neon_city_blue_magenta",
+  "name": "Silk Dual Color Neon City Blue Magenta",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

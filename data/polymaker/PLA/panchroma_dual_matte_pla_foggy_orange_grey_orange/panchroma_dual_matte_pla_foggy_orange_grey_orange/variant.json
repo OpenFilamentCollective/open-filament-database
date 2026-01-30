@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_matte_pla_foggy_orange_grey_orange",
+  "name": "Panchroma Dual Matte Pla Foggy Orange Grey Orange",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

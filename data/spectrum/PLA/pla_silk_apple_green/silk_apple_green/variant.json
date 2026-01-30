@@ -1,0 +1,9 @@
+{
+  "id": "silk_apple_green",
+  "name": "Silk Apple Green",
+  "color_hex": "#91C500",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "rec_pla_just_grey",
+  "name": "Rec Pla Just Grey",
+  "color_hex": "#8E8D71",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

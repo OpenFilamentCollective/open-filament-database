@@ -1,0 +1,10 @@
+{
+  "id": "matte_pla_black_white",
+  "name": "Matte Pla Black White",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

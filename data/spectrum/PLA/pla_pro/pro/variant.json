@@ -1,0 +1,8 @@
+{
+  "id": "pro",
+  "name": "Pro",
+  "color_hex": "#AB713E",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

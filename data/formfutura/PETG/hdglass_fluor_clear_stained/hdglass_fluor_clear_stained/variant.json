@@ -1,0 +1,9 @@
+{
+  "id": "hdglass_fluor_clear_stained",
+  "name": "Hdglass Fluor Clear Stained",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "silk": true,
+    "translucent": true
+  }
+}

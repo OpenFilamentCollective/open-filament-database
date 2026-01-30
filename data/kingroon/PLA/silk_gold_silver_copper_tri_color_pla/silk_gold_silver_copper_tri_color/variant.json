@@ -1,0 +1,9 @@
+{
+  "id": "silk_gold_silver_copper_tri_color",
+  "name": "Silk Gold Silver Copper Tri Color",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

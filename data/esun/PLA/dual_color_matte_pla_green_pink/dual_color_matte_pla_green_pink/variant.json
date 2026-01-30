@@ -1,0 +1,10 @@
+{
+  "id": "dual_color_matte_pla_green_pink",
+  "name": "Dual Color Matte Pla Green Pink",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

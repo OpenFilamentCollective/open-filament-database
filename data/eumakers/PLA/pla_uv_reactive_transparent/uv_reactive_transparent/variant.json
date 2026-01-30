@@ -1,0 +1,9 @@
+{
+  "id": "uv_reactive_transparent",
+  "name": "Uv Reactive Transparent",
+  "color_hex": "#0099E6",
+  "traits": {
+    "glow": true,
+    "translucent": true
+  }
+}

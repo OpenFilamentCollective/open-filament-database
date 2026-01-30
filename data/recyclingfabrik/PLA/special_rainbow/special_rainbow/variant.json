@@ -1,0 +1,9 @@
+{
+  "id": "special_rainbow",
+  "name": "Special Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

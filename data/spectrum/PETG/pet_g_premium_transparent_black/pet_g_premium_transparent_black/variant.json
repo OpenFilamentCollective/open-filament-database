@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_premium_transparent_black",
+  "name": "Pet G Premium Transparent Black",
+  "color_hex": "#000000",
+  "traits": {
+    "translucent": true
+  }
+}

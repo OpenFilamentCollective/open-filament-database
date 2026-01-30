@@ -1,0 +1,9 @@
+{
+  "id": "tail_light_red_r",
+  "name": "Tail Light Red R",
+  "color_hex": "#D21B3C",
+  "traits": {
+    "recycled": true,
+    "translucent": true
+  }
+}

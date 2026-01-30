@@ -1,0 +1,10 @@
+{
+  "id": "lw_pla_natural",
+  "name": "Lw Pla Natural",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "foaming": true,
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

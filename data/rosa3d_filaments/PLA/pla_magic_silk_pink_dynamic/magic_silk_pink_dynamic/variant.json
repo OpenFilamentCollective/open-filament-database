@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_pink_dynamic",
+  "name": "Magic Silk Pink Dynamic",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "hg100_neon_yellow_transparent",
+  "name": "Hg100 Neon Yellow Transparent",
+  "color_hex": "#FFFB00",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

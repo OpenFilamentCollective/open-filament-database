@@ -1,0 +1,10 @@
+{
+  "id": "lw_pla_yellow",
+  "name": "Lw Pla Yellow",
+  "color_hex": "#F3C102",
+  "traits": {
+    "matte": true,
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

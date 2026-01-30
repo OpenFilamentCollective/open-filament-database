@@ -1,0 +1,9 @@
+{
+  "id": "transluzent_grn",
+  "name": "Transluzent Grn",
+  "color_hex": "#97D7D0",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

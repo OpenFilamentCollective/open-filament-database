@@ -1,0 +1,10 @@
+{
+  "id": "shiny_glitter_sky_blue",
+  "name": "Shiny Glitter Sky Blue",
+  "color_hex": "#9AE0DD",
+  "traits": {
+    "glitter": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

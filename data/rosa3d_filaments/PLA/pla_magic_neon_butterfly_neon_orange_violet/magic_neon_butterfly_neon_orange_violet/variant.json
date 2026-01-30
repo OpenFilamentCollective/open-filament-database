@@ -1,0 +1,9 @@
+{
+  "id": "magic_neon_butterfly_neon_orange_violet",
+  "name": "Magic Neon Butterfly Neon Orange Violet",
+  "color_hex": "#000000",
+  "traits": {
+    "neon": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "jessie_premium_pla_neon_yellow",
+  "name": "Jessie Premium Pla Neon Yellow",
+  "color_hex": "#E4FF33",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

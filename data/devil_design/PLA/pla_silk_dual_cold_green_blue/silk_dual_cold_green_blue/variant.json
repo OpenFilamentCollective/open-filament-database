@@ -1,0 +1,9 @@
+{
+  "id": "silk_dual_cold_green_blue",
+  "name": "Silk Dual Cold Green Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

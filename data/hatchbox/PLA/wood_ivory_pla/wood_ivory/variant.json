@@ -1,0 +1,8 @@
+{
+  "id": "wood_ivory",
+  "name": "Wood Ivory",
+  "color_hex": "#F2D483",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

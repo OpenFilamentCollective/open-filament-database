@@ -1,0 +1,9 @@
+{
+  "id": "red_af_silk",
+  "name": "Red Af Silk",
+  "color_hex": "#FC8397",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

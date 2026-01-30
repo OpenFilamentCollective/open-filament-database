@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_off_white",
+  "name": "Silk Pla Off White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

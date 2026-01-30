@@ -1,0 +1,9 @@
+{
+  "id": "fibersilk_metallic_inox",
+  "name": "Fibersilk Metallic Inox",
+  "color_hex": "#BCBFC2",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

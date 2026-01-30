@@ -1,0 +1,10 @@
+{
+  "id": "magic_pla_blue_green",
+  "name": "Magic Pla Blue Green",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

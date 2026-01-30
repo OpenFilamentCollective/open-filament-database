@@ -1,0 +1,9 @@
+{
+  "id": "gold_plasilk",
+  "name": "Gold Plasilk",
+  "color_hex": "#BCA463",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

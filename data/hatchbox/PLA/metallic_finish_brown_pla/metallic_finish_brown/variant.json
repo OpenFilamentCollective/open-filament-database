@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_brown",
+  "name": "Metallic Finish Brown",
+  "color_hex": "#C06341",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

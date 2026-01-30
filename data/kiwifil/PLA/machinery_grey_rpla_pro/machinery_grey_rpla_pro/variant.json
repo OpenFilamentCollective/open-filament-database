@@ -1,0 +1,9 @@
+{
+  "id": "machinery_grey_rpla_pro",
+  "name": "Machinery Grey Rpla Pro",
+  "color_hex": "#697272",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

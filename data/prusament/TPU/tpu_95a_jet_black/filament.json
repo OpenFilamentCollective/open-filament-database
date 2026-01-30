@@ -1,0 +1,14 @@
+{
+  "id": "tpu_95a_jet_black",
+  "name": "TPU 95A Jet Black",
+  "density": 1.25,
+  "diameter_tolerance": 0.02,
+  "shore_hardness_a": 95,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 75,
+  "chamber_temperature": 30,
+  "max_chamber_temperature": 40
+}

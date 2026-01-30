@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_metallic_pla_blue",
+  "name": "Panchroma Metallic Pla Blue",
+  "color_hex": "#1E2F5A",
+  "traits": {
+    "glitter": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "rec_pla_low_grey",
+  "name": "Rec Pla Low Grey",
+  "color_hex": "#C4BCB3",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "silk_mystic_pla_red_green_blue",
+  "name": "Silk Mystic Pla Red Green Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "iridescent": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

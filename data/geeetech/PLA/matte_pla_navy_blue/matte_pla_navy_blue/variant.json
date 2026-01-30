@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_navy_blue",
+  "name": "Matte Pla Navy Blue",
+  "color_hex": "#003287",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

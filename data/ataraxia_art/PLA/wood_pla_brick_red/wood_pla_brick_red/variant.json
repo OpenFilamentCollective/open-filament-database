@@ -1,0 +1,8 @@
+{
+  "id": "wood_pla_brick_red",
+  "name": "Wood Pla Brick Red",
+  "color_hex": "#B54230",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "teak_wood",
+  "name": "Teak Wood",
+  "color_hex": "#D2A273",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

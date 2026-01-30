@@ -34,10 +34,12 @@ data/
    - Naming: Use lowercase snake_case (e.g., `colorfab.png`)
    - Keep the filename simple
 3. Create a `brand.json` file with the following fields:
-   - `brand` - The brand name
+   - `id` - Unique brand identifier (lowercase snake_case)
+   - `name` - The brand name
    - `website` - The brand's website URL
    - `logo` - The filename of the logo (e.g., `colorfab.png`)
-   - `origin` - Country of origin (use an empty string `""` if unknown)
+   - `origin` - Country of origin (2-letter ISO code or "Unknown")
+   - `source` (optional) - Where this data was found (e.g., "manufacturer_website", "third_party_retailer", "user_contribution", "web_scraping", "data_import")
 
 ### 🧪 Adding a Material Type
 1. Navigate to your brand's folder and create a new folder named after the material type

@@ -1,0 +1,8 @@
+{
+  "id": "mineral_marble",
+  "name": "Mineral Marble",
+  "color_hex": "#E0E0DC",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

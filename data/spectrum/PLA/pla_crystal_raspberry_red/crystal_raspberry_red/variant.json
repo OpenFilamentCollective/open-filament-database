@@ -1,0 +1,10 @@
+{
+  "id": "crystal_raspberry_red",
+  "name": "Crystal Raspberry Red",
+  "color_hex": "#FF4F4D",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

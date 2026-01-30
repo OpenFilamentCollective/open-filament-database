@@ -1,0 +1,10 @@
+{
+  "id": "ps_imports_pla_tricolor_silk_magic_gold_green_black",
+  "name": "Ps Imports Pla Tricolor Silk Magic Gold Green Black",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

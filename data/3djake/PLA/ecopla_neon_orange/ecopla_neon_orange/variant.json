@@ -1,0 +1,9 @@
+{
+  "id": "ecopla_neon_orange",
+  "name": "Ecopla Neon Orange",
+  "color_hex": "#FF520E",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "steel_filled_metal_composite",
+  "name": "Steel Filled Metal Composite",
+  "color_hex": "#6F727E",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

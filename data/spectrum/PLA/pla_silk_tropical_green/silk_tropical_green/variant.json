@@ -1,0 +1,9 @@
+{
+  "id": "silk_tropical_green",
+  "name": "Silk Tropical Green",
+  "color_hex": "#4E7642",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "metal_bronze",
+  "name": "Metal Bronze",
+  "color_hex": "#8C7354",
+  "traits": {
+    "silk": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "silk_triple_color_black_gold_purple",
+  "name": "Silk Triple Color Black Gold Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

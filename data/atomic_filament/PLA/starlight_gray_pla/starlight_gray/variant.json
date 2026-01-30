@@ -1,0 +1,9 @@
+{
+  "id": "starlight_gray",
+  "name": "Starlight Gray",
+  "color_hex": "#55555E",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_matte_pla_chameleon_teal_yellow",
+  "name": "Panchroma Dual Matte Pla Chameleon Teal Yellow",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

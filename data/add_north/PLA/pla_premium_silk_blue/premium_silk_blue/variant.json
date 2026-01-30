@@ -1,0 +1,9 @@
+{
+  "id": "premium_silk_blue",
+  "name": "Premium Silk Blue",
+  "color_hex": "#2E56F1",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

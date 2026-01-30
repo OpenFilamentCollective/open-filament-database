@@ -1,0 +1,9 @@
+{
+  "id": "silk_dark_pink",
+  "name": "Silk Dark Pink",
+  "color_hex": "#B33174",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

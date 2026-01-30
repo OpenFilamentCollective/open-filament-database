@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_skin",
+  "name": "Matte Pla Skin",
+  "color_hex": "#E6BA83",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

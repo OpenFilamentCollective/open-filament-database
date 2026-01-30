@@ -1,0 +1,9 @@
+{
+  "id": "seafoam_blue_matte",
+  "name": "Seafoam Blue Matte",
+  "color_hex": "#D7EDE6",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

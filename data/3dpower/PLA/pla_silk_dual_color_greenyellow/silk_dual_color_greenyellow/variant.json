@@ -1,0 +1,9 @@
+{
+  "id": "silk_dual_color_greenyellow",
+  "name": "Silk Dual Color Greenyellow",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

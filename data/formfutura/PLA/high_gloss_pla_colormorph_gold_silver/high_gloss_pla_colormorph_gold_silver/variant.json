@@ -1,0 +1,10 @@
+{
+  "id": "high_gloss_pla_colormorph_gold_silver",
+  "name": "High Gloss Pla Colormorph Gold Silver",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "silk": true
+  }
+}

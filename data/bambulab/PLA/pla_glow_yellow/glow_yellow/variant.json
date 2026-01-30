@@ -1,0 +1,10 @@
+{
+  "id": "glow_yellow",
+  "name": "Glow Yellow",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

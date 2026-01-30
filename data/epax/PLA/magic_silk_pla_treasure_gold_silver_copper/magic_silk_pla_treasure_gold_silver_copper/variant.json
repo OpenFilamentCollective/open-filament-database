@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_pla_treasure_gold_silver_copper",
+  "name": "Magic Silk Pla Treasure Gold Silver Copper",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

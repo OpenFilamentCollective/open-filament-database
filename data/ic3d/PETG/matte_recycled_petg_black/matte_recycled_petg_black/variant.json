@@ -1,0 +1,9 @@
+{
+  "id": "matte_recycled_petg_black",
+  "name": "Matte Recycled Petg Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "recycled": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "glow_in_the_dark_rapid_pla_dark_purple",
+  "name": "Glow In The Dark Rapid Pla Dark Purple",
+  "color_hex": "#8A68B5",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

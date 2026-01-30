@@ -1,0 +1,9 @@
+{
+  "id": "r_pla_anthracite",
+  "name": "R Pla Anthracite",
+  "color_hex": "#26272B",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

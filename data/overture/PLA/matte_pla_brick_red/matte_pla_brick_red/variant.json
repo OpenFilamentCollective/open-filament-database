@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_brick_red",
+  "name": "Matte Pla Brick Red",
+  "color_hex": "#EC0000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

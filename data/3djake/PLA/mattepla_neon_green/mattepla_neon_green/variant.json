@@ -1,0 +1,9 @@
+{
+  "id": "mattepla_neon_green",
+  "name": "Mattepla Neon Green",
+  "color_hex": "#62E480",
+  "traits": {
+    "matte": true,
+    "neon": true
+  }
+}

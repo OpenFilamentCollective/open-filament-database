@@ -1,0 +1,9 @@
+{
+  "id": "premium_s_flex_glow_in_the_dark",
+  "name": "Premium S Flex Glow In The Dark",
+  "color_hex": "#70FA00",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

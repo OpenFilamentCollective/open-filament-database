@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_neon_red",
+  "name": "Pet G Neon Red",
+  "color_hex": "#CB4726",
+  "traits": {
+    "neon": true
+  }
+}

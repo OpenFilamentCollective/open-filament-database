@@ -1,0 +1,8 @@
+{
+  "id": "x_pla_black",
+  "name": "X Pla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

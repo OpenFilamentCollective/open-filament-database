@@ -1,0 +1,9 @@
+{
+  "id": "translucent_cosmic_ray_blue",
+  "name": "Translucent Cosmic Ray Blue",
+  "color_hex": "#2E56F1",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

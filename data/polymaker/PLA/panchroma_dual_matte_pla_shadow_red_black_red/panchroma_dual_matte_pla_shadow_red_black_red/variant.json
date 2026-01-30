@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_matte_pla_shadow_red_black_red",
+  "name": "Panchroma Dual Matte Pla Shadow Red Black Red",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

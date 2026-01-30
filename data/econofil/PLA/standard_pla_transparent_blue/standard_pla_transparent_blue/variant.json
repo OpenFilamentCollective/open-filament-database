@@ -1,0 +1,8 @@
+{
+  "id": "standard_pla_transparent_blue",
+  "name": "Standard Pla Transparent Blue",
+  "color_hex": "#473FC9",
+  "traits": {
+    "translucent": true
+  }
+}

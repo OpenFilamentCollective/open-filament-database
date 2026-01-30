@@ -1,0 +1,9 @@
+{
+  "id": "hs_pla_clear_light_green",
+  "name": "Hs Pla Clear Light Green",
+  "color_hex": "#58C91B",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "dual_color_matte_pla_purple_yellow",
+  "name": "Dual Color Matte Pla Purple Yellow",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

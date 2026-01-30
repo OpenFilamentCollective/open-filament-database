@@ -1,0 +1,8 @@
+{
+  "id": "fog_gray",
+  "name": "Fog Gray",
+  "color_hex": "#C3CCD5",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

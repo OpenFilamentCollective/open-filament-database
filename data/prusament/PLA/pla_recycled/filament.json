@@ -1,6 +1,7 @@
 {
-    "id": "pla_recycled",
-    "name": "PLA Recycled",
-    "diameter_tolerance": 0.05,
-    "density": 1.24
+  "id": "pla_recycled",
+  "name": "PLA Recycled",
+  "density": 1.24,
+  "diameter_tolerance": 0.02,
+  "shore_hardness_d": 80
 }

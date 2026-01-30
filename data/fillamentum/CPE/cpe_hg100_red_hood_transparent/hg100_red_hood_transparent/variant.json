@@ -1,0 +1,8 @@
+{
+  "id": "hg100_red_hood_transparent",
+  "name": "Hg100 Red Hood Transparent",
+  "color_hex": "#D21B3C",
+  "traits": {
+    "translucent": true
+  }
+}

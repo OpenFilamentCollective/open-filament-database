@@ -1,0 +1,9 @@
+{
+  "id": "luminous_petg_glow_in_the_dark_green_to_glow_green",
+  "name": "Luminous Petg Glow In The Dark Green To Glow Green",
+  "color_hex": "#00CC00",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

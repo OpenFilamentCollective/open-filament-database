@@ -1,0 +1,9 @@
+{
+  "id": "e_pla_stemfie_orange",
+  "name": "E Pla Stemfie Orange",
+  "color_hex": "#FF8E24",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

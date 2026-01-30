@@ -1,0 +1,9 @@
+{
+  "id": "high_gloss_pla_pink",
+  "name": "High Gloss Pla Pink",
+  "color_hex": "#FF67F5",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

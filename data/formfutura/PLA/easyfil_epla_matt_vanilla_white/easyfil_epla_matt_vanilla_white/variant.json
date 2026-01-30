@@ -1,0 +1,9 @@
+{
+  "id": "easyfil_epla_matt_vanilla_white",
+  "name": "Easyfil Epla Matt Vanilla White",
+  "color_hex": "#D9D4C6",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

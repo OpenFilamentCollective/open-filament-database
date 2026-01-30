@@ -1,0 +1,11 @@
+{
+  "id": "silk_magic_pla_red_gold",
+  "name": "Silk Magic Pla Red Gold",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

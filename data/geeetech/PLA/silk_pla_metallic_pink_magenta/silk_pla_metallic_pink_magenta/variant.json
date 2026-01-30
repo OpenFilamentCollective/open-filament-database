@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_metallic_pink_magenta",
+  "name": "Silk Pla Metallic Pink Magenta",
+  "color_hex": "#F2306E",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

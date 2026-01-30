@@ -1,0 +1,9 @@
+{
+  "id": "matte_rainbow_pla_paddy_field",
+  "name": "Matte Rainbow Pla Paddy Field",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

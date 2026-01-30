@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_ash_grey",
+  "name": "Panchroma Matte Pla Ash Grey",
+  "color_hex": "#45444A",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

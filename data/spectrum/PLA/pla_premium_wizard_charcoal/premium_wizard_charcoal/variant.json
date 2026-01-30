@@ -1,0 +1,9 @@
+{
+  "id": "premium_wizard_charcoal",
+  "name": "Premium Wizard Charcoal",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

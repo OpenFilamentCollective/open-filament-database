@@ -1,0 +1,9 @@
+{
+  "id": "magicpla_frozen_raspberry",
+  "name": "Magicpla Frozen Raspberry",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "green_apple",
+  "name": "Green Apple",
+  "color_hex": "#B3FF94",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

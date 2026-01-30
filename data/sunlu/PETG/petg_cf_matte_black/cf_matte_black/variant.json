@@ -1,0 +1,9 @@
+{
+  "id": "cf_matte_black",
+  "name": "Cf Matte Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

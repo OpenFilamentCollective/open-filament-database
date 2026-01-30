@@ -1,0 +1,8 @@
+{
+  "id": "light_blue",
+  "name": "Light Blue",
+  "color_hex": "#1ADAFB",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

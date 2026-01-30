@@ -1,0 +1,9 @@
+{
+  "id": "hdglass_see_through_red",
+  "name": "Hdglass See Through Red",
+  "color_hex": "#AA0101",
+  "traits": {
+    "translucent": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "recycled_petg_translucent_cherry",
+  "name": "Recycled Petg Translucent Cherry",
+  "color_hex": "#C00000",
+  "traits": {
+    "recycled": true,
+    "translucent": true
+  }
+}

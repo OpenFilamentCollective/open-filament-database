@@ -1,0 +1,10 @@
+{
+  "id": "amber_alchemy_ht",
+  "name": "Amber Alchemy Ht",
+  "color_hex": "#BE6730",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

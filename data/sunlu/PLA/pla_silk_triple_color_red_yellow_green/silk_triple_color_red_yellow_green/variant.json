@@ -1,0 +1,10 @@
+{
+  "id": "silk_triple_color_red_yellow_green",
+  "name": "Silk Triple Color Red Yellow Green",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

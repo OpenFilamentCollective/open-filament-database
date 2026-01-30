@@ -1,7 +1,8 @@
 {
-    "id": "anycubic",
-    "name": "Anycubic",
-    "website": "https://www.anycubic.com/",
-    "logo": "logo.png",
-    "origin": "CN"
+  "id": "anycubic",
+  "name": "Anycubic",
+  "website": "https://www.anycubic.com/",
+  "logo": "logo.png",
+  "origin": "CN",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

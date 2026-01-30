@@ -1,0 +1,8 @@
+{
+  "id": "bone",
+  "name": "Bone",
+  "color_hex": "#EADAC2",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

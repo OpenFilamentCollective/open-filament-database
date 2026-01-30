@@ -1,0 +1,9 @@
+{
+  "id": "translucent_blood_red",
+  "name": "Translucent Blood Red",
+  "color_hex": "#932721",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

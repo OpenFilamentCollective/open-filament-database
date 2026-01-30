@@ -1,0 +1,8 @@
+{
+  "id": "standard_pla_transparent_green",
+  "name": "Standard Pla Transparent Green",
+  "color_hex": "#70FA00",
+  "traits": {
+    "translucent": true
+  }
+}

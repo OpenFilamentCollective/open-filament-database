@@ -1,0 +1,8 @@
+{
+  "id": "rapid_pla_black",
+  "name": "Rapid Pla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "timberfill_charcoal",
+  "name": "Timberfill Charcoal",
+  "color_hex": "#45444A",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

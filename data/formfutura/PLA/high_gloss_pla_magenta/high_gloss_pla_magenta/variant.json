@@ -1,0 +1,9 @@
+{
+  "id": "high_gloss_pla_magenta",
+  "name": "High Gloss Pla Magenta",
+  "color_hex": "#C80181",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

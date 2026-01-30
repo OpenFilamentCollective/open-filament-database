@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS brand (
     slug TEXT NOT NULL UNIQUE,
     website TEXT NOT NULL,
     logo TEXT NOT NULL,
-    origin TEXT NOT NULL
+    origin TEXT NOT NULL,
+    source TEXT
 );
 CREATE INDEX IF NOT EXISTS ix_brand_name ON brand(name);
 

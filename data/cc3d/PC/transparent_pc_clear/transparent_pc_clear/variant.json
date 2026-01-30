@@ -1,0 +1,8 @@
+{
+  "id": "transparent_pc_clear",
+  "name": "Transparent Pc Clear",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "translucent": true
+  }
+}

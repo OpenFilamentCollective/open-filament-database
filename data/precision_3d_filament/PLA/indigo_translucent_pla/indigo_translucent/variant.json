@@ -1,0 +1,9 @@
+{
+  "id": "indigo_translucent",
+  "name": "Indigo Translucent",
+  "color_hex": "#09048E",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

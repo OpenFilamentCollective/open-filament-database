@@ -1,0 +1,8 @@
+{
+  "id": "e_pla_green",
+  "name": "E Pla Green",
+  "color_hex": "#06B100",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

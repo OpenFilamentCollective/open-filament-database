@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_standard_neon_green_glow_in_the_dark_uv_glow",
+  "name": "Pet G Standard Neon Green Glow In The Dark Uv Glow",
+  "color_hex": "#00FF6F",
+  "traits": {
+    "glow": true
+  }
+}

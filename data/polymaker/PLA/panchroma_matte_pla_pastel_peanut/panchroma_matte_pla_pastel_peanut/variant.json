@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_pastel_peanut",
+  "name": "Panchroma Matte Pla Pastel Peanut",
+  "color_hex": "#C29572",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "matte_rainbow_pla_sunrise",
+  "name": "Matte Rainbow Pla Sunrise",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

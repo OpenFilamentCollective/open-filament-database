@@ -1,0 +1,9 @@
+{
+  "id": "volcano_pla_gold",
+  "name": "Volcano Pla Gold",
+  "color_hex": "#CE8D00",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_indigo_blue",
+  "name": "Silk Indigo Blue",
+  "color_hex": "#0353BA",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

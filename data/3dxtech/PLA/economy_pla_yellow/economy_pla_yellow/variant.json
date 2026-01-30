@@ -1,0 +1,8 @@
+{
+  "id": "economy_pla_yellow",
+  "name": "Economy Pla Yellow",
+  "color_hex": "#FBE200",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

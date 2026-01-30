@@ -1,0 +1,9 @@
+{
+  "id": "high_gloss_pla_gold",
+  "name": "High Gloss Pla Gold",
+  "color_hex": "#CE8D00",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

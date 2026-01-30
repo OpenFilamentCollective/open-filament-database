@@ -1,0 +1,10 @@
+{
+  "id": "glow_in_the_dark_glow_rainbow_10m",
+  "name": "Glow In The Dark Glow Rainbow 10m",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

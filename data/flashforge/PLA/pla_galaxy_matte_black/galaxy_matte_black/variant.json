@@ -1,0 +1,10 @@
+{
+  "id": "galaxy_matte_black",
+  "name": "Galaxy Matte Black",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "matte": true,
+    "industrially_compostable": true
+  }
+}
