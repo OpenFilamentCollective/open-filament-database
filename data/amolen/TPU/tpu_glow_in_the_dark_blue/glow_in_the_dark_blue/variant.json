@@ -1,0 +1,9 @@
+{
+  "id": "glow_in_the_dark_blue",
+  "name": "Glow In The Dark Blue",
+  "color_hex": "#0095FF",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

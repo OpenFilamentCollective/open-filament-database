@@ -1,0 +1,9 @@
+{
+  "id": "graphite_af_silk",
+  "name": "Graphite Af Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

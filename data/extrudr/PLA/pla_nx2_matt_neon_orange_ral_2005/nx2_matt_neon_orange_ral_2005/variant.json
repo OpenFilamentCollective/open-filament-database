@@ -1,0 +1,10 @@
+{
+  "id": "nx2_matt_neon_orange_ral_2005",
+  "name": "Nx2 Matt Neon Orange Ral 2005",
+  "color_hex": "#F67405",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

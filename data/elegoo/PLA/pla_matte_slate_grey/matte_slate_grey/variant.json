@@ -1,0 +1,9 @@
+{
+  "id": "matte_slate_grey",
+  "name": "Matte Slate Grey",
+  "color_hex": "#B2B8B8",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

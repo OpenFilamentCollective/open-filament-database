@@ -1,0 +1,9 @@
+{
+  "id": "mysterypla_orion_nebula",
+  "name": "Mysterypla Orion Nebula",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

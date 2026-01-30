@@ -1,0 +1,9 @@
+{
+  "id": "luminous_petg_glow_in_the_dark_white_to_glow_blue",
+  "name": "Luminous Petg Glow In The Dark White To Glow Blue",
+  "color_hex": "#1ADAFB",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

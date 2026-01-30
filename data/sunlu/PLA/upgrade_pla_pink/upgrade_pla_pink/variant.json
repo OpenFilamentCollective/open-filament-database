@@ -1,0 +1,8 @@
+{
+  "id": "upgrade_pla_pink",
+  "name": "Upgrade Pla Pink",
+  "color_hex": "#F4A0B1",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

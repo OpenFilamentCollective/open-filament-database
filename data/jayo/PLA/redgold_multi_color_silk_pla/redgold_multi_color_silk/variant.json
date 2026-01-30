@@ -1,0 +1,10 @@
+{
+  "id": "redgold_multi_color_silk",
+  "name": "Redgold Multi Color Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

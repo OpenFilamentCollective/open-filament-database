@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_brass",
+  "name": "Silk Pla Brass",
+  "color_hex": "#FFB031",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "matte_dual_color_red_gold",
+  "name": "Matte Dual Color Red Gold",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_pro_bronze",
+  "name": "Silk Pla Pro Bronze",
+  "color_hex": "#99A45F",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

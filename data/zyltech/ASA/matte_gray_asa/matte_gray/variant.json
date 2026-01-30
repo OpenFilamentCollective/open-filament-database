@@ -1,0 +1,8 @@
+{
+  "id": "matte_gray",
+  "name": "Matte Gray",
+  "color_hex": "#A9A8A0",
+  "traits": {
+    "matte": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "high_speed_clear",
+  "name": "High Speed Clear",
+  "color_hex": "#F5F5F4",
+  "traits": {
+    "transparent": true
+  }
+}

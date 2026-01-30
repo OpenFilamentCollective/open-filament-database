@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_pastel_ice",
+  "name": "Panchroma Matte Pla Pastel Ice",
+  "color_hex": "#95C5D3",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

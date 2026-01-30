@@ -1,0 +1,9 @@
+{
+  "id": "high_speed_neon_transparent",
+  "name": "High Speed Neon Transparent",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

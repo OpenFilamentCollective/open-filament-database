@@ -1,0 +1,9 @@
+{
+  "id": "silk_blue",
+  "name": "Silk Blue",
+  "color_hex": "#005DA4",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

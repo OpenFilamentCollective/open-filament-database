@@ -1,0 +1,8 @@
+{
+  "id": "pine_natural",
+  "name": "Pine Natural",
+  "color_hex": "#7C594A",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

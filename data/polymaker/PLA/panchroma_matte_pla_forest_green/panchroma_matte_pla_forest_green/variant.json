@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_forest_green",
+  "name": "Panchroma Matte Pla Forest Green",
+  "color_hex": "#519F61",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

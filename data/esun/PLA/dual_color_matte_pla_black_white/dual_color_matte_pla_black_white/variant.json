@@ -1,0 +1,10 @@
+{
+  "id": "dual_color_matte_pla_black_white",
+  "name": "Dual Color Matte Pla Black White",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

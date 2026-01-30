@@ -1,0 +1,8 @@
+{
+  "id": "bubblegum",
+  "name": "Bubblegum",
+  "color_hex": "#F300EA",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "matte_dark_chocolate",
+  "name": "Matte Dark Chocolate",
+  "color_hex": "#503529",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

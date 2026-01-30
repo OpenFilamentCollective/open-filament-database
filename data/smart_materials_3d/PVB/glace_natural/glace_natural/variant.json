@@ -1,0 +1,8 @@
+{
+  "id": "glace_natural",
+  "name": "Glace Natural",
+  "color_hex": "#EADAC2",
+  "traits": {
+    "translucent": true
+  }
+}

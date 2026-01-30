@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_pastel_banana",
+  "name": "Panchroma Matte Pla Pastel Banana",
+  "color_hex": "#F5CF6F",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

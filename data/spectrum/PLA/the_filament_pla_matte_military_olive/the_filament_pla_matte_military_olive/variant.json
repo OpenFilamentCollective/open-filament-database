@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_matte_military_olive",
+  "name": "The Filament Pla Matte Military Olive",
+  "color_hex": "#7B6B57",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

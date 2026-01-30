@@ -1,0 +1,9 @@
+{
+  "id": "rec_pla_just_brown",
+  "name": "Rec Pla Just Brown",
+  "color_hex": "#BE6730",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

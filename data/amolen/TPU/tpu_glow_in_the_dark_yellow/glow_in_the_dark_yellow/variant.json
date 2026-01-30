@@ -1,0 +1,9 @@
+{
+  "id": "glow_in_the_dark_yellow",
+  "name": "Glow In The Dark Yellow",
+  "color_hex": "#FFFB00",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

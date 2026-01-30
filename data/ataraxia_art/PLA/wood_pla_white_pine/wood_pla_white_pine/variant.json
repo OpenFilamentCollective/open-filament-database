@@ -1,0 +1,8 @@
+{
+  "id": "wood_pla_white_pine",
+  "name": "Wood Pla White Pine",
+  "color_hex": "#E6D1BD",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

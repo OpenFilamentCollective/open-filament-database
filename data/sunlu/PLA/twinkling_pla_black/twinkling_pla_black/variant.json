@@ -1,0 +1,9 @@
+{
+  "id": "twinkling_pla_black",
+  "name": "Twinkling Pla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

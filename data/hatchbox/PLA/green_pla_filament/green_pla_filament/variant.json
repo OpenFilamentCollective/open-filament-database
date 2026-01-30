@@ -1,0 +1,8 @@
+{
+  "id": "green_pla_filament",
+  "name": "Green Pla Filament",
+  "color_hex": "#089A45",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "premium",
+  "name": "Premium",
+  "color_hex": "#C4BCB3",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

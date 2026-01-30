@@ -1,0 +1,11 @@
+{
+  "id": "galaxy_sparkle_shiny_galaxy_green",
+  "name": "Galaxy Sparkle Shiny Galaxy Green",
+  "color_hex": "#11784F",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "orange_matte",
+  "name": "Orange Matte",
+  "color_hex": "#FF8B47",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

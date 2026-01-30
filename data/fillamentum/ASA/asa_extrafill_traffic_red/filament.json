@@ -1,0 +1,6 @@
+{
+  "id": "asa_extrafill_traffic_red",
+  "name": "ASA Extrafill \"Traffic Red\"",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
+}

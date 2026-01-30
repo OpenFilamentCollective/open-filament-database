@@ -1,0 +1,10 @@
+{
+  "id": "high_gloss_pla_colormorph_white_green",
+  "name": "High Gloss Pla Colormorph White Green",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

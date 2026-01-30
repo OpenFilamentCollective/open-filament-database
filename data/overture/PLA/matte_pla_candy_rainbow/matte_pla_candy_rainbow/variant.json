@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_candy_rainbow",
+  "name": "Matte Pla Candy Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

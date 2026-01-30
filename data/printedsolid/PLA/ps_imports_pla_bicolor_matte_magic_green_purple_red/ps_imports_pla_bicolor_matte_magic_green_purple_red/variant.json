@@ -1,0 +1,10 @@
+{
+  "id": "ps_imports_pla_bicolor_matte_magic_green_purple_red",
+  "name": "Ps Imports Pla Bicolor Matte Magic Green Purple Red",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

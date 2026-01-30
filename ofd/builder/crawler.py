@@ -150,7 +150,8 @@ class DataCrawler:
             directory_name=brand_name,
             website=brand_data.get("website", ""),
             logo=brand_data.get("logo", ""),
-            origin=brand_data.get("origin", "Unknown")
+            origin=brand_data.get("origin", "Unknown"),
+            source=brand_data.get("source", "")
         )
 
         self.db.brands.append(brand)

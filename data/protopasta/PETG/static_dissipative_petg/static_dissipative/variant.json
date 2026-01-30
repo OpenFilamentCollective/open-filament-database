@@ -1,0 +1,8 @@
+{
+  "id": "static_dissipative",
+  "name": "Static Dissipative",
+  "color_hex": "#000000",
+  "traits": {
+    "esd_safe": true
+  }
+}

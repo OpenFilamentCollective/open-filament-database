@@ -1,0 +1,11 @@
+{
+  "id": "pink_pearl",
+  "name": "Pink Pearl",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "neon": true
+  }
+}

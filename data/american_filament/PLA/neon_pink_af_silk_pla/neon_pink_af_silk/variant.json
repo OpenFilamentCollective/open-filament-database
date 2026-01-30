@@ -1,0 +1,10 @@
+{
+  "id": "neon_pink_af_silk",
+  "name": "Neon Pink Af Silk",
+  "color_hex": "#F092B3",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "neon": true
+  }
+}

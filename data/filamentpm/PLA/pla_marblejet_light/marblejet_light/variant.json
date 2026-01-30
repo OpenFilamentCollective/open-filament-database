@@ -1,0 +1,8 @@
+{
+  "id": "marblejet_light",
+  "name": "Marblejet Light",
+  "color_hex": "#E0DABB",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

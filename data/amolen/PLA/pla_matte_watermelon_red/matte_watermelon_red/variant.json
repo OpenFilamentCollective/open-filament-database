@@ -1,0 +1,9 @@
+{
+  "id": "matte_watermelon_red",
+  "name": "Matte Watermelon Red",
+  "color_hex": "#E0493E",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "lavender",
+  "name": "Lavender",
+  "color_hex": "#B894E2",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

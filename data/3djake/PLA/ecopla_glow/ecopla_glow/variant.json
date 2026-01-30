@@ -1,0 +1,8 @@
+{
+  "id": "ecopla_glow",
+  "name": "Ecopla Glow",
+  "color_hex": "#B3FF94",
+  "traits": {
+    "glow": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "magic_silk_gold_copper",
+  "name": "Magic Silk Gold Copper",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "transparent_yellow_green_red",
+  "name": "Transparent Yellow Green Red",
+  "color_hex": "#000000",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

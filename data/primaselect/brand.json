@@ -1,7 +1,8 @@
 {
-    "id": "primaselect",
-    "name": "PrimaSelect",
-    "website": "https://primacreator.com/",
-    "logo": "logo.png",
-    "origin": "SW"
+  "id": "primaselect",
+  "name": "PrimaSelect",
+  "website": "https://primacreator.com/",
+  "logo": "logo.png",
+  "origin": "SW",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

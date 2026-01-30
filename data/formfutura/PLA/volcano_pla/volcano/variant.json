@@ -1,0 +1,9 @@
+{
+  "id": "volcano",
+  "name": "Volcano",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

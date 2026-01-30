@@ -1,0 +1,9 @@
+{
+  "id": "s_flex_carbon",
+  "name": "S Flex Carbon",
+  "color_hex": "#595959",
+  "traits": {
+    "abrasive": true,
+    "esd_safe": true
+  }
+}

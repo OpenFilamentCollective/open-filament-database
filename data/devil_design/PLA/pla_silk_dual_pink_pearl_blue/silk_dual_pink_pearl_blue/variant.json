@@ -1,0 +1,9 @@
+{
+  "id": "silk_dual_pink_pearl_blue",
+  "name": "Silk Dual Pink Pearl Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "premium_transparent_red",
+  "name": "Premium Transparent Red",
+  "color_hex": "#AC1A17",
+  "traits": {
+    "translucent": true
+  }
+}

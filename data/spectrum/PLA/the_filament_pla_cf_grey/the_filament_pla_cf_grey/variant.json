@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_cf_grey",
+  "name": "The Filament Pla Cf Grey",
+  "color_hex": "#AABCCF",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

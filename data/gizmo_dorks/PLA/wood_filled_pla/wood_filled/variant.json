@@ -1,0 +1,8 @@
+{
+  "id": "wood_filled",
+  "name": "Wood Filled",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

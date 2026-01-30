@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_premium_transparent_yellow",
+  "name": "Pet G Premium Transparent Yellow",
+  "color_hex": "#FADB24",
+  "traits": {
+    "translucent": true
+  }
+}

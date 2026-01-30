@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_matte_desert_beige",
+  "name": "The Filament Pla Matte Desert Beige",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

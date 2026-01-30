@@ -1,0 +1,9 @@
+{
+  "id": "rpla_basalt_grey",
+  "name": "Rpla Basalt Grey",
+  "color_hex": "#9C9D9D",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

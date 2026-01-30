@@ -1,0 +1,9 @@
+{
+  "id": "matt_pla_purple_camouflage",
+  "name": "Matt Pla Purple Camouflage",
+  "color_hex": "#9D7185",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

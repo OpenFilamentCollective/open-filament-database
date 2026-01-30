@@ -1,0 +1,9 @@
+{
+  "id": "bloopiter",
+  "name": "Bloopiter",
+  "color_hex": "#584E6A",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

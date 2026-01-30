@@ -1,0 +1,9 @@
+{
+  "id": "matte_charcoal",
+  "name": "Matte Charcoal",
+  "color_hex": "#1D1D1D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

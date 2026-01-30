@@ -1,0 +1,9 @@
+{
+  "id": "matte_powder_blue",
+  "name": "Matte Powder Blue",
+  "color_hex": "#9AE0DD",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

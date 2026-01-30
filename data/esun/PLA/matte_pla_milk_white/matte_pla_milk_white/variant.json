@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_milk_white",
+  "name": "Matte Pla Milk White",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

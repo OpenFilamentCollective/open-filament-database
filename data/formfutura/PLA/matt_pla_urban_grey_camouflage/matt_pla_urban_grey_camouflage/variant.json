@@ -1,0 +1,9 @@
+{
+  "id": "matt_pla_urban_grey_camouflage",
+  "name": "Matt Pla Urban Grey Camouflage",
+  "color_hex": "#ACB1BA",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

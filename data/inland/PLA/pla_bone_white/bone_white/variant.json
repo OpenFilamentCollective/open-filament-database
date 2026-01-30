@@ -1,0 +1,8 @@
+{
+  "id": "bone_white",
+  "name": "Bone White",
+  "color_hex": "#CCB2A1",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

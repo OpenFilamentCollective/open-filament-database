@@ -1,0 +1,9 @@
+{
+  "id": "fairy_floss",
+  "name": "Fairy Floss",
+  "color_hex": "#000000",
+  "traits": {
+    "translucent": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "textura_matte_black",
+  "name": "Textura Matte Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

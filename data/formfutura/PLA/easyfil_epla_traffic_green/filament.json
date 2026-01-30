@@ -1,0 +1,6 @@
+{
+  "id": "easyfil_epla_traffic_green",
+  "name": "EasyFil ePLA Traffic Green",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
+}

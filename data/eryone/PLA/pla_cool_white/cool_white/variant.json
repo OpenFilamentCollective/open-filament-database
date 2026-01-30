@@ -1,0 +1,8 @@
+{
+  "id": "cool_white",
+  "name": "Cool White",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

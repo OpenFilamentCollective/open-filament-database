@@ -1,0 +1,9 @@
+{
+  "id": "volcano_pla_light_grey",
+  "name": "Volcano Pla Light Grey",
+  "color_hex": "#C3CCD5",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

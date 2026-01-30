@@ -1,0 +1,9 @@
+{
+  "id": "mysterypla_northern_lights",
+  "name": "Mysterypla Northern Lights",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

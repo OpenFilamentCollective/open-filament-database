@@ -1,0 +1,8 @@
+{
+  "id": "silk_copper",
+  "name": "Silk Copper",
+  "color_hex": "#C06341",
+  "traits": {
+    "silk": true
+  }
+}

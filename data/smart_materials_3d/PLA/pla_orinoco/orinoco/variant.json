@@ -1,0 +1,8 @@
+{
+  "id": "orinoco",
+  "name": "Orinoco",
+  "color_hex": "#FBE200",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

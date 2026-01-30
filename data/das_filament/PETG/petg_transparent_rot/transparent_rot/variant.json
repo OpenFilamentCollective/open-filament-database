@@ -1,0 +1,8 @@
+{
+  "id": "transparent_rot",
+  "name": "Transparent Rot",
+  "color_hex": "#AC1A17",
+  "traits": {
+    "translucent": true
+  }
+}

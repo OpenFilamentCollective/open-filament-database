@@ -1,0 +1,9 @@
+{
+  "id": "silk_golden_glory",
+  "name": "Silk Golden Glory",
+  "color_hex": "#E3B145",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

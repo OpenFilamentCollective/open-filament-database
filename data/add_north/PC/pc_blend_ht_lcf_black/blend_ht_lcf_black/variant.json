@@ -1,0 +1,9 @@
+{
+  "id": "blend_ht_lcf_black",
+  "name": "Blend Ht Lcf Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "blend": true
+  }
+}

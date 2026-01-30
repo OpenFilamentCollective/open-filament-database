@@ -1,0 +1,10 @@
+{
+  "id": "pastel_rainbow_elixir",
+  "name": "Pastel Rainbow Elixir",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

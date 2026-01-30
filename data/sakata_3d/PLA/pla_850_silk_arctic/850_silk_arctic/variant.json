@@ -1,0 +1,9 @@
+{
+  "id": "850_silk_arctic",
+  "name": "850 Silk Arctic",
+  "color_hex": "#CAC2DA",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

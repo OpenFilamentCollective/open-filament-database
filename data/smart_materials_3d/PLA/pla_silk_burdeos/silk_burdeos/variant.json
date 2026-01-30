@@ -1,0 +1,9 @@
+{
+  "id": "silk_burdeos",
+  "name": "Silk Burdeos",
+  "color_hex": "#512628",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

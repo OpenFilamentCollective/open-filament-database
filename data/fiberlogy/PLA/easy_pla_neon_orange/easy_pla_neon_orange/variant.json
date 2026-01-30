@@ -1,0 +1,9 @@
+{
+  "id": "easy_pla_neon_orange",
+  "name": "Easy Pla Neon Orange",
+  "color_hex": "#F67405",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "high_speed_luminous_green",
+  "name": "High Speed Luminous Green",
+  "color_hex": "#00FA9A",
+  "traits": {
+    "glow": true
+  }
+}

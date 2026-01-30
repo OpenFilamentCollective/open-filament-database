@@ -1,0 +1,11 @@
+{
+  "id": "high_gloss_pla_colormorph_magenta_silver",
+  "name": "High Gloss Pla Colormorph Magenta Silver",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

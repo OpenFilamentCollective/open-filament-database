@@ -1,0 +1,10 @@
+{
+  "id": "solar_flare",
+  "name": "Solar Flare",
+  "color_hex": "#FADB24",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "orange_pla_matte",
+  "name": "Orange Pla Matte",
+  "color_hex": "#FF8E24",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "standard_pla_fire_engine_red",
+  "name": "Standard Pla Fire Engine Red",
+  "color_hex": "#E20010",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_coffee",
+  "name": "Silk Pla Coffee",
+  "color_hex": "#877674",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

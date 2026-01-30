@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_brown",
+  "name": "Matte Pla Brown",
+  "color_hex": "#6E4325",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

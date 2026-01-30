@@ -1,0 +1,9 @@
+{
+  "id": "cf_sailor_blue",
+  "name": "Cf Sailor Blue",
+  "color_hex": "#4D6383",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

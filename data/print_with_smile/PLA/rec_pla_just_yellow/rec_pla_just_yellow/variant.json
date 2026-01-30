@@ -1,0 +1,9 @@
+{
+  "id": "rec_pla_just_yellow",
+  "name": "Rec Pla Just Yellow",
+  "color_hex": "#F2DE00",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "basic_yellow",
+  "name": "Basic Yellow",
+  "color_hex": "#FBF942",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

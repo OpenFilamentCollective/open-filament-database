@@ -1,0 +1,9 @@
+{
+  "id": "impact_pla_onyx",
+  "name": "Impact Pla Onyx",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

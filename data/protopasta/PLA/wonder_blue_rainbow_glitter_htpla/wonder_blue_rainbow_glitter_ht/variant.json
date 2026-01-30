@@ -1,0 +1,11 @@
+{
+  "id": "wonder_blue_rainbow_glitter_ht",
+  "name": "Wonder Blue Rainbow Glitter Ht",
+  "color_hex": "#0378D0",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true
+  }
+}

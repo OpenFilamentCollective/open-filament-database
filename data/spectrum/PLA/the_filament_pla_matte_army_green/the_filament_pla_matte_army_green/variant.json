@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_matte_army_green",
+  "name": "The Filament Pla Matte Army Green",
+  "color_hex": "#616247",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

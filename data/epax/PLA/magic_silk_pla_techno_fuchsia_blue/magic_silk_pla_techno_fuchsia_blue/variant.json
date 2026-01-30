@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_pla_techno_fuchsia_blue",
+  "name": "Magic Silk Pla Techno Fuchsia Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

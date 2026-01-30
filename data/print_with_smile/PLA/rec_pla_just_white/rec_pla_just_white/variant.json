@@ -1,0 +1,9 @@
+{
+  "id": "rec_pla_just_white",
+  "name": "Rec Pla Just White",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

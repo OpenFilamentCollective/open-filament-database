@@ -1,0 +1,6 @@
+{
+  "id": "apollox_traffic_yellow",
+  "name": "ApolloX Traffic Yellow",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
+}

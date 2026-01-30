@@ -1,0 +1,8 @@
+{
+  "id": "economy_light_grey",
+  "name": "Economy Light Grey",
+  "color_hex": "#C5C5BF",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

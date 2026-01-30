@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_neon_pla_green",
+  "name": "Panchroma Neon Pla Green",
+  "color_hex": "#9AEE6C",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

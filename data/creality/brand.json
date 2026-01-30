@@ -1,7 +1,8 @@
 {
-    "id": "creality",
-    "name": "Creality",
-    "website": "https://www.creality.com/",
-    "logo": "logo.png",
-    "origin": "CN"
+  "id": "creality",
+  "logo": "logo.png",
+  "name": "Creality",
+  "origin": "CH",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "creality.com"
 }

@@ -1,0 +1,9 @@
+{
+  "id": "matte_basic_olive_green",
+  "name": "Matte Basic Olive Green",
+  "color_hex": "#748C45",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

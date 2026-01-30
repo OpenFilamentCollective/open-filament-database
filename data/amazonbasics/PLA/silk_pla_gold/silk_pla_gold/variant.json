@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_gold",
+  "name": "Silk Pla Gold",
+  "color_hex": "#DDB95D",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

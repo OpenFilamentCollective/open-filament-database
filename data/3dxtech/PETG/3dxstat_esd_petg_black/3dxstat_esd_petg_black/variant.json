@@ -1,0 +1,8 @@
+{
+  "id": "3dxstat_esd_petg_black",
+  "name": "3dxstat Esd Petg Black",
+  "color_hex": "#000000",
+  "traits": {
+    "esd_safe": true
+  }
+}

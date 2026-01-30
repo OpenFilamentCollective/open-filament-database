@@ -1,0 +1,9 @@
+{
+  "id": "silk_dual_color_redgold",
+  "name": "Silk Dual Color Redgold",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

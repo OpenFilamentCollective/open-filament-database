@@ -1,0 +1,9 @@
+{
+  "id": "silk_dual_gold_brown",
+  "name": "Silk Dual Gold Brown",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

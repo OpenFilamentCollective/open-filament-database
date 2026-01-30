@@ -1,0 +1,10 @@
+{
+  "id": "high_gloss_pla_colormorph_silver_purple",
+  "name": "High Gloss Pla Colormorph Silver Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

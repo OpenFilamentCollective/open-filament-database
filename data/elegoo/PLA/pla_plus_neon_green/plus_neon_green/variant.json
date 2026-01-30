@@ -1,0 +1,9 @@
+{
+  "id": "plus_neon_green",
+  "name": "Plus Neon Green",
+  "color_hex": "#83E665",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

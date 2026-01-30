@@ -1,0 +1,9 @@
+{
+  "id": "rec_pla_eco_tyrkys",
+  "name": "Rec Pla Eco Tyrkys",
+  "color_hex": "#40E0D0",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "rock_pla_fossil_rock",
+  "name": "Rock Pla Fossil Rock",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "silk_mystic_pla_red_black_gold",
+  "name": "Silk Mystic Pla Red Black Gold",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

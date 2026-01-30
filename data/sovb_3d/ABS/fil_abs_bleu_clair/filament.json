@@ -1,0 +1,6 @@
+{
+  "id": "fil_abs_bleu_clair",
+  "name": "Fil ABS Bleu Clair",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
+}

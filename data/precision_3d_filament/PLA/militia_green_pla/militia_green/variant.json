@@ -1,0 +1,8 @@
+{
+  "id": "militia_green",
+  "name": "Militia Green",
+  "color_hex": "#4E7642",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

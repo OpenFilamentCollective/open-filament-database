@@ -1,0 +1,11 @@
+{
+  "id": "silk_magic_pla_red_green",
+  "name": "Silk Magic Pla Red Green",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

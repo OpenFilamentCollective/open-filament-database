@@ -1,0 +1,8 @@
+{
+  "id": "economy_pla_yellow_gold",
+  "name": "Economy Pla Yellow Gold",
+  "color_hex": "#E3B145",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

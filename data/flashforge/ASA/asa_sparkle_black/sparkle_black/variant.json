@@ -1,0 +1,9 @@
+{
+  "id": "sparkle_black",
+  "name": "Sparkle Black",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "glitter": true
+  }
+}

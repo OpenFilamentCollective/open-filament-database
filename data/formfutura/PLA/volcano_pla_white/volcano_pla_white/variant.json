@@ -1,0 +1,9 @@
+{
+  "id": "volcano_pla_white",
+  "name": "Volcano Pla White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "magic_pla_dark_twinkling_purple",
+  "name": "Magic Pla Dark Twinkling Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "glitter": true
+  }
+}

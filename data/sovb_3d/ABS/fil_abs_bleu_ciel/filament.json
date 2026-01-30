@@ -1,0 +1,6 @@
+{
+  "id": "fil_abs_bleu_ciel",
+  "name": "Fil ABS Bleu Ciel",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
+}

@@ -1,0 +1,8 @@
+{
+  "id": "metallic_finish_copper",
+  "name": "Metallic Finish Copper",
+  "color_hex": "#C88582",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

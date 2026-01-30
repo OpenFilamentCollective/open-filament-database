@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_red",
+  "name": "Silk Pla Red",
+  "color_hex": "#FC496D",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

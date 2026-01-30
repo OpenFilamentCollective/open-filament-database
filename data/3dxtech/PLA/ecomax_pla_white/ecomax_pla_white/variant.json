@@ -1,0 +1,8 @@
+{
+  "id": "ecomax_pla_white",
+  "name": "Ecomax Pla White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_matte_trooper_grey",
+  "name": "The Filament Pla Matte Trooper Grey",
+  "color_hex": "#D6D7D8",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

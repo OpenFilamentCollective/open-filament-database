@@ -1,0 +1,10 @@
+{
+  "id": "lw_pla_green",
+  "name": "Lw Pla Green",
+  "color_hex": "#91C500",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

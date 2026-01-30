@@ -24,5 +24,6 @@ Example:
 from . import style_data
 from . import load_profiles
 from . import export_data
+from . import import_openprinttag
 
-__all__ = ['style_data', 'load_profiles', 'export_data']
+__all__ = ['style_data', 'load_profiles', 'export_data', 'import_openprinttag']

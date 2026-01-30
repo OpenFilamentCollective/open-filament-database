@@ -1,0 +1,9 @@
+{
+  "id": "navy_matte_pla_filament",
+  "name": "Navy Matte Pla Filament",
+  "color_hex": "#324485",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

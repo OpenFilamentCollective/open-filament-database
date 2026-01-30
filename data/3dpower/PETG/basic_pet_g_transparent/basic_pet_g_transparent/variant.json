@@ -1,0 +1,8 @@
+{
+  "id": "basic_pet_g_transparent",
+  "name": "Basic Pet G Transparent",
+  "color_hex": "#DEE2DA",
+  "traits": {
+    "transparent": true
+  }
+}

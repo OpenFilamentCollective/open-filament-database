@@ -1,0 +1,9 @@
+{
+  "id": "iris_tanzanite",
+  "name": "Iris Tanzanite",
+  "color_hex": "#395E65",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

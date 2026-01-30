@@ -1,0 +1,8 @@
+{
+  "id": "plus_wood_color",
+  "name": "Plus Wood Color",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

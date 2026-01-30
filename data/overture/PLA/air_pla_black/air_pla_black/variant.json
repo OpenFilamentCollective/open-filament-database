@@ -1,0 +1,9 @@
+{
+  "id": "air_pla_black",
+  "name": "Air Pla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_deep_black",
+  "name": "Matte Pla Deep Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

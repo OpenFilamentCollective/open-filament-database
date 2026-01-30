@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_yellow",
+  "name": "Panchroma Silk Pla Yellow",
+  "color_hex": "#FFFB00",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "matt_pla_earth_red_camouflage",
+  "name": "Matt Pla Earth Red Camouflage",
+  "color_hex": "#98282F",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

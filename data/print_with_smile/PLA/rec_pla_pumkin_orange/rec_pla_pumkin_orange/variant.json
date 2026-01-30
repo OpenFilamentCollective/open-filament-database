@@ -1,0 +1,9 @@
+{
+  "id": "rec_pla_pumkin_orange",
+  "name": "Rec Pla Pumkin Orange",
+  "color_hex": "#FFB031",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

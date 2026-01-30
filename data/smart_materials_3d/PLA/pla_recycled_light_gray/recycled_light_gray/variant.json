@@ -1,0 +1,9 @@
+{
+  "id": "recycled_light_gray",
+  "name": "Recycled Light Gray",
+  "color_hex": "#BCBFC2",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

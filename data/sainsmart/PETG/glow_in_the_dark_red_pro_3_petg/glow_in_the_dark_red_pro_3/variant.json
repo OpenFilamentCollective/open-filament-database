@@ -1,0 +1,9 @@
+{
+  "id": "glow_in_the_dark_red_pro_3",
+  "name": "Glow In The Dark Red Pro 3",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}
