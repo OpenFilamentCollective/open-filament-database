@@ -25,6 +25,5 @@ from . import style_data
 from . import load_profiles
 from . import export_data
 from . import import_openprinttag
-from . import fix_ids
 
 __all__ = ['style_data', 'load_profiles', 'export_data', 'import_openprinttag']

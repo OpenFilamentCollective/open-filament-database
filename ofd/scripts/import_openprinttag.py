@@ -329,7 +329,7 @@ def merge_dict(base: Dict[str, Any], overlay: Dict[str, Any]) -> Dict[str, Any]:
 class ImportOpenPrintTagScript(BaseScript):
     """Import filament data from OpenPrintTag database."""
 
-    name = "import-openprinttag"
+    name = "import_openprinttag"
     description = "Import filament data from OpenPrintTag database"
 
     OPT_REPO_URL = "https://github.com/OpenPrintTag/openprinttag-database.git"
@@ -638,22 +638,26 @@ class ImportOpenPrintTagScript(BaseScript):
         origin = countries[0] if countries else 'Unknown'
         website = opt_brand.get('website', '')
 
+        # Check if brand already exists
+        brand_json_path = brand_dir / "brand.json"
+
+        # Detect existing logo extension or default to png
+        logo_filename = "logo.png"
+        for ext in ('png', 'jpg', 'jpeg', 'svg', 'webp'):
+            if (brand_dir / f"logo.{ext}").exists():
+                logo_filename = f"logo.{ext}"
+                break
+
+        logo_exists = logo_filename != "logo.png" or (brand_dir / "logo.png").exists()
+        logo_path = brand_dir / logo_filename
+
         ofd_brand = {
             "id": brand_id,
             "name": brand_name,
             "website": website,
-            "logo": "logo.png",
+            "logo": logo_filename,
             "origin": origin if len(origin) == 2 else 'Unknown'
         }
-
-        # Check if brand already exists
-        brand_json_path = brand_dir / "brand.json"
-        logo_path = brand_dir / "logo.png"
-
-        logo_exists = any(
-            (brand_dir / f"logo.{ext}").exists()
-            for ext in ('png', 'jpg', 'jpeg', 'svg', 'webp')
-        )
 
         if brand_json_path.exists():
             existing = load_json(brand_json_path)
