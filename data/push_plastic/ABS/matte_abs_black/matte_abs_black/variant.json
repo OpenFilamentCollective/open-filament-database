@@ -1,0 +1,8 @@
+{
+  "id": "matte_abs_black",
+  "name": "Matte Abs Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true
+  }
+}

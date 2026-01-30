@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_white",
+  "name": "Panchroma Silk Pla White",
+  "color_hex": "#E6EAEF",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

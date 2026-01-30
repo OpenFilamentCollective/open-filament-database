@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_black",
+  "name": "Panchroma Silk Pla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "rapid_pla_luminous_purple",
+  "name": "Rapid Pla Luminous Purple",
+  "color_hex": "#AE96D4",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

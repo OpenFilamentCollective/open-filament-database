@@ -1,0 +1,9 @@
+{
+  "id": "hs_pla_clear_turquoise",
+  "name": "Hs Pla Clear Turquoise",
+  "color_hex": "#005DA4",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

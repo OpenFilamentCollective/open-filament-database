@@ -1,0 +1,9 @@
+{
+  "id": "ps_imports_pla_special_series_carbon_fiber",
+  "name": "Ps Imports Pla Special Series Carbon Fiber",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

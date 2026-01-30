@@ -1,0 +1,10 @@
+{
+  "id": "fluorescent_translucent_neon_hot_pink_pla_uv_reactive",
+  "name": "Fluorescent Translucent Neon Hot Pink Pla Uv Reactive",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

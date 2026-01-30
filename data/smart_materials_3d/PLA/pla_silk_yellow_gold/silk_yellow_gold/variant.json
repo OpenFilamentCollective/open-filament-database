@@ -1,0 +1,9 @@
+{
+  "id": "silk_yellow_gold",
+  "name": "Silk Yellow Gold",
+  "color_hex": "#CE8D00",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "silk_fuchsia",
+  "name": "Silk Fuchsia",
+  "color_hex": "#CE0058",
+  "traits": {
+    "silk": true
+  }
+}

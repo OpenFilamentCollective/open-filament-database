@@ -1,0 +1,9 @@
+{
+  "id": "silk_s_series_amber_sea",
+  "name": "Silk S Series Amber Sea",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

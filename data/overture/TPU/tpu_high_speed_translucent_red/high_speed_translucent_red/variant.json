@@ -1,0 +1,8 @@
+{
+  "id": "high_speed_translucent_red",
+  "name": "High Speed Translucent Red",
+  "color_hex": "#C00000",
+  "traits": {
+    "translucent": true
+  }
+}

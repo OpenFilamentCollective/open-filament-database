@@ -1,0 +1,8 @@
+{
+  "id": "standard_petg_transparent_red",
+  "name": "Standard Petg Transparent Red",
+  "color_hex": "#AA0101",
+  "traits": {
+    "translucent": true
+  }
+}

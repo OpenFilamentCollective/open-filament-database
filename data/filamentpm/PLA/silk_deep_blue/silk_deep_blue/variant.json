@@ -1,0 +1,9 @@
+{
+  "id": "silk_deep_blue",
+  "name": "Silk Deep Blue",
+  "color_hex": "#0378D0",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

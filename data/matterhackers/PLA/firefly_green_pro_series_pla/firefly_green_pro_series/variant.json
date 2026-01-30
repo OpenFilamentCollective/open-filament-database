@@ -1,0 +1,9 @@
+{
+  "id": "firefly_green_pro_series",
+  "name": "Firefly Green Pro Series",
+  "color_hex": "#C6F666",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "stonefil_granite",
+  "name": "Stonefil Granite",
+  "color_hex": "#ACB1BA",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

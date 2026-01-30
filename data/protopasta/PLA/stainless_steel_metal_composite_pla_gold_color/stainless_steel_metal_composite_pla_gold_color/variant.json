@@ -1,0 +1,9 @@
+{
+  "id": "stainless_steel_metal_composite_pla_gold_color",
+  "name": "Stainless Steel Metal Composite Pla Gold Color",
+  "color_hex": "#ACA078",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

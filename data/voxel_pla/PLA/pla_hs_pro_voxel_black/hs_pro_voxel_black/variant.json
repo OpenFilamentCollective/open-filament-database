@@ -1,0 +1,8 @@
+{
+  "id": "hs_pro_voxel_black",
+  "name": "Hs Pro Voxel Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

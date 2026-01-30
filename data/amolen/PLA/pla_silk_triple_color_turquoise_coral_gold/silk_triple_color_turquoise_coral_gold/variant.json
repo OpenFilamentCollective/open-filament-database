@@ -1,0 +1,9 @@
+{
+  "id": "silk_triple_color_turquoise_coral_gold",
+  "name": "Silk Triple Color Turquoise Coral Gold",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

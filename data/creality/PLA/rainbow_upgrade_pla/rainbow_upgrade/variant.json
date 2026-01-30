@@ -1,0 +1,8 @@
+{
+  "id": "rainbow_upgrade",
+  "name": "Rainbow Upgrade",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

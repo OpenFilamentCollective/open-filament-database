@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_matte_jungle_green",
+  "name": "The Filament Pla Matte Jungle Green",
+  "color_hex": "#11784F",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

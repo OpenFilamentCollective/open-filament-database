@@ -1,0 +1,9 @@
+{
+  "id": "silky_sea_green_v2",
+  "name": "Silky Sea Green V2",
+  "color_hex": "#00A594",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_tri_color_blue_green_orange",
+  "name": "Silk Pla Tri Color Blue Green Orange",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

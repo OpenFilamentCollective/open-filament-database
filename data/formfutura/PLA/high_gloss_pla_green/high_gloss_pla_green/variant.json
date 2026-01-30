@@ -1,0 +1,9 @@
+{
+  "id": "high_gloss_pla_green",
+  "name": "High Gloss Pla Green",
+  "color_hex": "#11784F",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

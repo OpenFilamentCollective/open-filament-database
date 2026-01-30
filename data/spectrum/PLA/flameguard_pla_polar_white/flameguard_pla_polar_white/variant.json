@@ -1,0 +1,9 @@
+{
+  "id": "flameguard_pla_polar_white",
+  "name": "Flameguard Pla Polar White",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

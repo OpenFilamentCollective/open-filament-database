@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_matte_pla_foggy_purple_grey_purple",
+  "name": "Panchroma Dual Matte Pla Foggy Purple Grey Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "high_gloss_pla_blue",
+  "name": "High Gloss Pla Blue",
+  "color_hex": "#0353BA",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

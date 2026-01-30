@@ -1,0 +1,9 @@
+{
+  "id": "silky_copper_mh_build_series",
+  "name": "Silky Copper Mh Build Series",
+  "color_hex": "#C9774B",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

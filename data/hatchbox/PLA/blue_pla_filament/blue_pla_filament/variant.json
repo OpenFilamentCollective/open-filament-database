@@ -1,0 +1,8 @@
+{
+  "id": "blue_pla_filament",
+  "name": "Blue Pla Filament",
+  "color_hex": "#0353BA",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

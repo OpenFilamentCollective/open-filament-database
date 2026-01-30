@@ -1,0 +1,9 @@
+{
+  "id": "high_speed_petg_matte_black",
+  "name": "High Speed Petg Matte Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "recycled": true
+  }
+}

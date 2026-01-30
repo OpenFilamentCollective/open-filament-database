@@ -1,0 +1,8 @@
+{
+  "id": "super_pla_red",
+  "name": "Super Pla Red",
+  "color_hex": "#E60000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

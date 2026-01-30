@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_dragon_fruit",
+  "name": "Magic Silk Dragon Fruit",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

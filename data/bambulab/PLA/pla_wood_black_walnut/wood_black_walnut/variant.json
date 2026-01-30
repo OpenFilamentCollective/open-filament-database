@@ -1,0 +1,9 @@
+{
+  "id": "wood_black_walnut",
+  "name": "Wood Black Walnut",
+  "color_hex": "#6A5346",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

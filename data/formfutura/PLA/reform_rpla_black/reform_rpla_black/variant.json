@@ -1,0 +1,9 @@
+{
+  "id": "reform_rpla_black",
+  "name": "Reform Rpla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

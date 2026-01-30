@@ -1,0 +1,10 @@
+{
+  "id": "electric_dream_tri_color_silk",
+  "name": "Electric Dream Tri Color Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

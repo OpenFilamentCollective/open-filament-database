@@ -1,0 +1,9 @@
+{
+  "id": "850_silk_snow",
+  "name": "850 Silk Snow",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

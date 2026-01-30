@@ -1,0 +1,9 @@
+{
+  "id": "glitter_pink",
+  "name": "Glitter Pink",
+  "color_hex": "#FB6066",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

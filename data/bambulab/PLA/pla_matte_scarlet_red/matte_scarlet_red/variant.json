@@ -1,0 +1,9 @@
+{
+  "id": "matte_scarlet_red",
+  "name": "Matte Scarlet Red",
+  "color_hex": "#D33D3D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

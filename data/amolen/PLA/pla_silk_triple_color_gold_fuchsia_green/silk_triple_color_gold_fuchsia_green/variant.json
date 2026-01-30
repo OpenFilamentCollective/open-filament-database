@@ -1,0 +1,9 @@
+{
+  "id": "silk_triple_color_gold_fuchsia_green",
+  "name": "Silk Triple Color Gold Fuchsia Green",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

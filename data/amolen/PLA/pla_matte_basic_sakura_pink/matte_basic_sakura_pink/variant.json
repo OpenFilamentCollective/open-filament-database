@@ -1,0 +1,9 @@
+{
+  "id": "matte_basic_sakura_pink",
+  "name": "Matte Basic Sakura Pink",
+  "color_hex": "#FFBADE",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "easyfil_epla_matt_mauve",
+  "name": "Easyfil Epla Matt Mauve",
+  "color_hex": "#DECAE3",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

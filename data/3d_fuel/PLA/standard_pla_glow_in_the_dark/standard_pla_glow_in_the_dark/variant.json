@@ -1,0 +1,10 @@
+{
+  "id": "standard_pla_glow_in_the_dark",
+  "name": "Standard Pla Glow In The Dark",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

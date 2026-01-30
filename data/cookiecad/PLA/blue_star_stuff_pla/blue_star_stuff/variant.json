@@ -1,0 +1,10 @@
+{
+  "id": "blue_star_stuff",
+  "name": "Blue Star Stuff",
+  "color_hex": "#36DBE7",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

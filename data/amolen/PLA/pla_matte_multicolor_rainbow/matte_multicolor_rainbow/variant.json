@@ -1,0 +1,9 @@
+{
+  "id": "matte_multicolor_rainbow",
+  "name": "Matte Multicolor Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

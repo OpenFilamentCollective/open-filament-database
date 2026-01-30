@@ -1,0 +1,12 @@
+{
+  "id": "petg_carbon_fiber_black",
+  "name": "PETG Carbon Fiber Black",
+  "density": 1.27,
+  "diameter_tolerance": 0.02,
+  "shore_hardness_d": 77,
+  "min_print_temperature": 255,
+  "max_print_temperature": 275,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100
+}

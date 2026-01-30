@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_army_blue",
+  "name": "Panchroma Matte Pla Army Blue",
+  "color_hex": "#062B4D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

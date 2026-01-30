@@ -1,0 +1,9 @@
+{
+  "id": "huracan_pla_light_grey",
+  "name": "Huracan Pla Light Grey",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

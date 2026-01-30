@@ -1,0 +1,8 @@
+{
+  "id": "temperature_color_change_orange_to_white",
+  "name": "Temperature Color Change Orange To White",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "e_pla_glitz_black",
+  "name": "E Pla Glitz Black",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

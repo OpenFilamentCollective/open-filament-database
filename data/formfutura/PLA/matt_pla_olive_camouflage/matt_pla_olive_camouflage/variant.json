@@ -1,0 +1,9 @@
+{
+  "id": "matt_pla_olive_camouflage",
+  "name": "Matt Pla Olive Camouflage",
+  "color_hex": "#737254",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

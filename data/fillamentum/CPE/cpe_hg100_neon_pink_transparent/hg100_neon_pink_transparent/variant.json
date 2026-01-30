@@ -1,0 +1,9 @@
+{
+  "id": "hg100_neon_pink_transparent",
+  "name": "Hg100 Neon Pink Transparent",
+  "color_hex": "#F54053",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

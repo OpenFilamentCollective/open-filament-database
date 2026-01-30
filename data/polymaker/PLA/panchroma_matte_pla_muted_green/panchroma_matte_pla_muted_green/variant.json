@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_muted_green",
+  "name": "Panchroma Matte Pla Muted Green",
+  "color_hex": "#656D60",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

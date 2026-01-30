@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_tri_color_red_yellow_blue",
+  "name": "Silk Pla Tri Color Red Yellow Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true,
+    "industrially_compostable": true
+  }
+}

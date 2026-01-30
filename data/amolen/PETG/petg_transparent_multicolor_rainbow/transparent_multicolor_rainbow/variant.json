@@ -1,0 +1,8 @@
+{
+  "id": "transparent_multicolor_rainbow",
+  "name": "Transparent Multicolor Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "translucent": true
+  }
+}

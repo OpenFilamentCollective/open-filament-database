@@ -1,0 +1,9 @@
+{
+  "id": "safeguard_pla_true_red",
+  "name": "Safeguard Pla True Red",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "antibacterial": true,
+    "industrially_compostable": true
+  }
+}

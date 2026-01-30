@@ -1,0 +1,8 @@
+{
+  "id": "wood_pla_ebony",
+  "name": "Wood Pla Ebony",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

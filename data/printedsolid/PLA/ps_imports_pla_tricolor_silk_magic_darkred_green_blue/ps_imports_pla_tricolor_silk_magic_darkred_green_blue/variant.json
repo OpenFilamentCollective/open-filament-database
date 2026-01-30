@@ -1,0 +1,10 @@
+{
+  "id": "ps_imports_pla_tricolor_silk_magic_darkred_green_blue",
+  "name": "Ps Imports Pla Tricolor Silk Magic Darkred Green Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

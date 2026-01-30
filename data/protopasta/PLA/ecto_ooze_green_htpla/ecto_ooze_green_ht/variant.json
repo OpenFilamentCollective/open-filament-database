@@ -1,0 +1,10 @@
+{
+  "id": "ecto_ooze_green_ht",
+  "name": "Ecto Ooze Green Ht",
+  "color_hex": "#95D05C",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

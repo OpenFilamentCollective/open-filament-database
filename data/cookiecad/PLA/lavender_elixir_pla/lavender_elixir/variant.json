@@ -1,0 +1,9 @@
+{
+  "id": "lavender_elixir",
+  "name": "Lavender Elixir",
+  "color_hex": "#F19DCD",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "fast_pla_crystal_spring",
+  "name": "Fast Pla Crystal Spring",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "translucent": true
+  }
+}

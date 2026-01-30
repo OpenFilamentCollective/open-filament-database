@@ -1,0 +1,8 @@
+{
+  "id": "3dxstat_esd_pei_ultem_1010_black",
+  "name": "3dxstat Esd Pei Ultem 1010 Black",
+  "color_hex": "#000000",
+  "traits": {
+    "esd_safe": true
+  }
+}

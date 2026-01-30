@@ -1,7 +1,8 @@
 {
-    "id": "azurefilm",
-    "name": "AzureFilm",
-    "website": "https://www.azurefilm.com/",
-    "logo": "logo.png",
-    "origin": "SL"
+  "id": "azurefilm",
+  "name": "AzureFilm",
+  "website": "https://www.azurefilm.com/",
+  "logo": "logo.png",
+  "origin": "SL",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

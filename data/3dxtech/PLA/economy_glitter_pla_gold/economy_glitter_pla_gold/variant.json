@@ -1,0 +1,9 @@
+{
+  "id": "economy_glitter_pla_gold",
+  "name": "Economy Glitter Pla Gold",
+  "color_hex": "#BAB3A1",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

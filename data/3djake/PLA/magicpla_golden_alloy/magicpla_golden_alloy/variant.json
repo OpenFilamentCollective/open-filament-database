@@ -1,0 +1,9 @@
+{
+  "id": "magicpla_golden_alloy",
+  "name": "Magicpla Golden Alloy",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

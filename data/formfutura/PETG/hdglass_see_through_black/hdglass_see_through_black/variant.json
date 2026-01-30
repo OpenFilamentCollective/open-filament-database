@@ -1,0 +1,9 @@
+{
+  "id": "hdglass_see_through_black",
+  "name": "Hdglass See Through Black",
+  "color_hex": "#000000",
+  "traits": {
+    "translucent": true,
+    "silk": true
+  }
+}

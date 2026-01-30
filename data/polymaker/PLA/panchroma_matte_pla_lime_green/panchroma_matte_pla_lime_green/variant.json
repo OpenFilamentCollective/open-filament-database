@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_lime_green",
+  "name": "Panchroma Matte Pla Lime Green",
+  "color_hex": "#DEDE00",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

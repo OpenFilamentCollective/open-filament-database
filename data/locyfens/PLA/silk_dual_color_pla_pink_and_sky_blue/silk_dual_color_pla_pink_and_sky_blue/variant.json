@@ -1,0 +1,10 @@
+{
+  "id": "silk_dual_color_pla_pink_and_sky_blue",
+  "name": "Silk Dual Color Pla Pink And Sky Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

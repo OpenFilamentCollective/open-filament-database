@@ -1,0 +1,9 @@
+{
+  "id": "polylite_lw_pla_white",
+  "name": "Polylite Lw Pla White",
+  "color_hex": "#EAD7B8",
+  "traits": {
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

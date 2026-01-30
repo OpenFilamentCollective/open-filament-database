@@ -1,0 +1,9 @@
+{
+  "id": "silk_gold_green_rose_red_tri_color",
+  "name": "Silk Gold Green Rose Red Tri Color",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

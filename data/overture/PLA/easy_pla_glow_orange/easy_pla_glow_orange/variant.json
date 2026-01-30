@@ -1,0 +1,10 @@
+{
+  "id": "easy_pla_glow_orange",
+  "name": "Easy Pla Glow Orange",
+  "color_hex": "#FF9C66",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

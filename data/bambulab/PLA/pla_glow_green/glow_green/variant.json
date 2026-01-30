@@ -1,0 +1,10 @@
+{
+  "id": "glow_green",
+  "name": "Glow Green",
+  "color_hex": "#9AEE6C",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

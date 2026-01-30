@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_gold_to_red_gradient",
+  "name": "Silk Pla Gold To Red Gradient",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

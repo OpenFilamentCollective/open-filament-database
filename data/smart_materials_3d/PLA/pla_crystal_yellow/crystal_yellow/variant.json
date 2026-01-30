@@ -1,0 +1,9 @@
+{
+  "id": "crystal_yellow",
+  "name": "Crystal Yellow",
+  "color_hex": "#FFC946",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

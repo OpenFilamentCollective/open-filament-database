@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_purple",
+  "name": "Panchroma Silk Pla Purple",
+  "color_hex": "#6C47B2",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

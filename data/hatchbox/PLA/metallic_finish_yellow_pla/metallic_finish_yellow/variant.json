@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_yellow",
+  "name": "Metallic Finish Yellow",
+  "color_hex": "#FFFB00",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

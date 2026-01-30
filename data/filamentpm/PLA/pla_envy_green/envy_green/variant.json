@@ -1,0 +1,9 @@
+{
+  "id": "envy_green",
+  "name": "Envy Green",
+  "color_hex": "#6E694D",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magic_neon_blue_lagoon_neon_green_blue_sky",
+  "name": "Magic Neon Blue Lagoon Neon Green Blue Sky",
+  "color_hex": "#000000",
+  "traits": {
+    "neon": true,
+    "coextruded": true
+  }
+}

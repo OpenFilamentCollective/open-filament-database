@@ -1,0 +1,9 @@
+{
+  "id": "high_gloss_pla_silver",
+  "name": "High Gloss Pla Silver",
+  "color_hex": "#ABACB0",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

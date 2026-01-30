@@ -1,0 +1,8 @@
+{
+  "id": "esd_black",
+  "name": "Esd Black",
+  "color_hex": "#000000",
+  "traits": {
+    "esd_safe": true
+  }
+}

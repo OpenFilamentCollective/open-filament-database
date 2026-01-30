@@ -1,0 +1,8 @@
+{
+  "id": "hg100_grey_mouse_transparent",
+  "name": "Hg100 Grey Mouse Transparent",
+  "color_hex": "#949597",
+  "traits": {
+    "translucent": true
+  }
+}

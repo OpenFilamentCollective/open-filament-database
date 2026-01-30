@@ -1,0 +1,9 @@
+{
+  "id": "matte_rainbow_pla_macaron",
+  "name": "Matte Rainbow Pla Macaron",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

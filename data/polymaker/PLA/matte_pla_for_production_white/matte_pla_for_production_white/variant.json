@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_for_production_white",
+  "name": "Matte Pla For Production White",
+  "color_hex": "#F5F5F4",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

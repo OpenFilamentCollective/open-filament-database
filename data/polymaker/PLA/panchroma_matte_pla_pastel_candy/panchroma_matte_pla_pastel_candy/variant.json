@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_pastel_candy",
+  "name": "Panchroma Matte Pla Pastel Candy",
+  "color_hex": "#DABCC8",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

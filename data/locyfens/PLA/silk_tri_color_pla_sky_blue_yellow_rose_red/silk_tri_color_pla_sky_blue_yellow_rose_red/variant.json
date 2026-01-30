@@ -1,0 +1,9 @@
+{
+  "id": "silk_tri_color_pla_sky_blue_yellow_rose_red",
+  "name": "Silk Tri Color Pla Sky Blue Yellow Rose Red",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

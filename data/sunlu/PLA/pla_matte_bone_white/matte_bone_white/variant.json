@@ -1,0 +1,9 @@
+{
+  "id": "matte_bone_white",
+  "name": "Matte Bone White",
+  "color_hex": "#E3E0D3",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

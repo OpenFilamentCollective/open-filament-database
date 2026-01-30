@@ -1,0 +1,9 @@
+{
+  "id": "black_chrome_plasilk",
+  "name": "Black Chrome Plasilk",
+  "color_hex": "#2A3940",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

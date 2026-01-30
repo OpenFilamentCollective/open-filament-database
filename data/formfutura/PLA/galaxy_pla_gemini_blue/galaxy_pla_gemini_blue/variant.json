@@ -1,0 +1,9 @@
+{
+  "id": "galaxy_pla_gemini_blue",
+  "name": "Galaxy Pla Gemini Blue",
+  "color_hex": "#5A6A92",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "shimmering_plum",
+  "name": "Shimmering Plum",
+  "color_hex": "#A38496",
+  "traits": {
+    "recycled": true,
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

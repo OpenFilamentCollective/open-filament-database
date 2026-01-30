@@ -1,0 +1,10 @@
+{
+  "id": "chameleon_rapid_pla_nebula_purple",
+  "name": "Chameleon Rapid Pla Nebula Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

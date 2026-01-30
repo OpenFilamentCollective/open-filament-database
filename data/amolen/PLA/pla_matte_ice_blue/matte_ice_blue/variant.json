@@ -1,0 +1,9 @@
+{
+  "id": "matte_ice_blue",
+  "name": "Matte Ice Blue",
+  "color_hex": "#5CADBF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "kings_cake_dual_color_matte",
+  "name": "Kings Cake Dual Color Matte",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

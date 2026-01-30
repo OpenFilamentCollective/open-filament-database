@@ -1,0 +1,9 @@
+{
+  "id": "hs_pla_clear_pure_transparent",
+  "name": "Hs Pla Clear Pure Transparent",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

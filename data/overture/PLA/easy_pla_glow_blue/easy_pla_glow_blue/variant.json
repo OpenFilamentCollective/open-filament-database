@@ -1,0 +1,10 @@
+{
+  "id": "easy_pla_glow_blue",
+  "name": "Easy Pla Glow Blue",
+  "color_hex": "#5FBCDD",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

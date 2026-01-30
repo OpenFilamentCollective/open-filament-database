@@ -1,0 +1,9 @@
+{
+  "id": "x_glow_in_the_dark_green",
+  "name": "X Glow In The Dark Green",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

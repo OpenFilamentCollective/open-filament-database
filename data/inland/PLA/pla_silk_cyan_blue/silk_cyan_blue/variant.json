@@ -1,0 +1,9 @@
+{
+  "id": "silk_cyan_blue",
+  "name": "Silk Cyan Blue",
+  "color_hex": "#08ABFB",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

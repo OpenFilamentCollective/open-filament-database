@@ -1,0 +1,9 @@
+{
+  "id": "premium_fluorescent_orange",
+  "name": "Premium Fluorescent Orange",
+  "color_hex": "#F47D59",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

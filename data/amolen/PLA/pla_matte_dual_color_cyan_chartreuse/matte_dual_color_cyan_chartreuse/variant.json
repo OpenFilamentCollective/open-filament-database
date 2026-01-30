@@ -1,0 +1,10 @@
+{
+  "id": "matte_dual_color_cyan_chartreuse",
+  "name": "Matte Dual Color Cyan Chartreuse",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "high_speed_yellow",
+  "name": "High Speed Yellow",
+  "color_hex": "#FBE200",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

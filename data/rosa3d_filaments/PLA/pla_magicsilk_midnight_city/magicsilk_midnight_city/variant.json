@@ -1,0 +1,9 @@
+{
+  "id": "magicsilk_midnight_city",
+  "name": "Magicsilk Midnight City",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

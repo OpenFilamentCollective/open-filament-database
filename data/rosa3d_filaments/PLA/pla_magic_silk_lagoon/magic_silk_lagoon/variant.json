@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_lagoon",
+  "name": "Magic Silk Lagoon",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

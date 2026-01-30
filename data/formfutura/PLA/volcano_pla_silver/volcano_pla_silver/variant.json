@@ -1,0 +1,9 @@
+{
+  "id": "volcano_pla_silver",
+  "name": "Volcano Pla Silver",
+  "color_hex": "#949597",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "metallic_violet",
+  "name": "Metallic Violet",
+  "color_hex": "#8D5984",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

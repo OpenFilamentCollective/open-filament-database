@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_silky_royal_navy_blue",
+  "name": "Silk Pla Silky Royal Navy Blue",
+  "color_hex": "#0099E6",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

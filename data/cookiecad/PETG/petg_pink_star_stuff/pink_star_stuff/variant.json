@@ -1,0 +1,9 @@
+{
+  "id": "pink_star_stuff",
+  "name": "Pink Star Stuff",
+  "color_hex": "#FF00A2",
+  "traits": {
+    "glitter": true,
+    "translucent": true
+  }
+}

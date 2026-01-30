@@ -1,0 +1,8 @@
+{
+  "id": "economy_pla_leaf_green",
+  "name": "Economy Pla Leaf Green",
+  "color_hex": "#0B6A2F",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

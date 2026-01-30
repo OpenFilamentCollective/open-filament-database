@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_ambar_translucid",
+  "name": "Pet G Ambar Translucid",
+  "color_hex": "#FFBF00",
+  "traits": {
+    "translucent": true
+  }
+}

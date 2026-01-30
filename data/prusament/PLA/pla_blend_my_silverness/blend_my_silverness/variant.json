@@ -1,0 +1,10 @@
+{
+  "id": "blend_my_silverness",
+  "name": "Blend My Silverness",
+  "color_hex": "#AEB8C1",
+  "traits": {
+    "silk": true,
+    "blend": true,
+    "industrially_compostable": true
+  }
+}

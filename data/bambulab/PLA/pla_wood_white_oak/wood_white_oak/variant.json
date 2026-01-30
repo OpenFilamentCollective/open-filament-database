@@ -1,0 +1,9 @@
+{
+  "id": "wood_white_oak",
+  "name": "Wood White Oak",
+  "color_hex": "#DBC9AD",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

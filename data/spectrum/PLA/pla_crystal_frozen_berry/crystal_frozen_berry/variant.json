@@ -1,0 +1,10 @@
+{
+  "id": "crystal_frozen_berry",
+  "name": "Crystal Frozen Berry",
+  "color_hex": "#B13566",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

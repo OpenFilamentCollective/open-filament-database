@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_lime",
+  "name": "Panchroma Silk Pla Lime",
+  "color_hex": "#91C500",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

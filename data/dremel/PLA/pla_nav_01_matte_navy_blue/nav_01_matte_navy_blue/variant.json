@@ -1,0 +1,9 @@
+{
+  "id": "nav_01_matte_navy_blue",
+  "name": "Nav 01 Matte Navy Blue",
+  "color_hex": "#1E2C73",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

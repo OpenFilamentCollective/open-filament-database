@@ -1,0 +1,9 @@
+{
+  "id": "silk_teal_blue",
+  "name": "Silk Teal Blue",
+  "color_hex": "#00688D",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

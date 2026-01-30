@@ -1,0 +1,9 @@
+{
+  "id": "matt_pla_stealth_white",
+  "name": "Matt Pla Stealth White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

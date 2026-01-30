@@ -1,0 +1,8 @@
+{
+  "id": "glass_fiber_natural",
+  "name": "Glass Fiber Natural",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "abrasive": true
+  }
+}

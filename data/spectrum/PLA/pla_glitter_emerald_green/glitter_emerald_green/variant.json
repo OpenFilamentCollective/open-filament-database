@@ -1,0 +1,10 @@
+{
+  "id": "glitter_emerald_green",
+  "name": "Glitter Emerald Green",
+  "color_hex": "#446B20",
+  "traits": {
+    "silk": true,
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "clear_abs_transparent",
+  "name": "Clear Abs Transparent",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "translucent": true
+  }
+}

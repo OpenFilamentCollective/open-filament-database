@@ -1,0 +1,9 @@
+{
+  "id": "galaxy_nebulae",
+  "name": "Galaxy Nebulae",
+  "color_hex": "#444A62",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

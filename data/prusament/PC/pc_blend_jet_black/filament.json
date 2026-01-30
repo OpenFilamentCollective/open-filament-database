@@ -1,0 +1,14 @@
+{
+  "id": "pc_blend_jet_black",
+  "name": "PC Blend Jet Black",
+  "density": 1.22,
+  "diameter_tolerance": 0.02,
+  "shore_hardness_d": 79,
+  "min_print_temperature": 265,
+  "max_print_temperature": 285,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 120,
+  "chamber_temperature": 90,
+  "min_chamber_temperature": 60
+}

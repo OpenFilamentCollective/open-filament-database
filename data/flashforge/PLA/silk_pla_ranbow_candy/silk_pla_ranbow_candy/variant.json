@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_ranbow_candy",
+  "name": "Silk Pla Ranbow Candy",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

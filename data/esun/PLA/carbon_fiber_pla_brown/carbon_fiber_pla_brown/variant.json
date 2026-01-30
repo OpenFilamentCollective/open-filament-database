@@ -1,0 +1,10 @@
+{
+  "id": "carbon_fiber_pla_brown",
+  "name": "Carbon Fiber Pla Brown",
+  "color_hex": "#504835",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

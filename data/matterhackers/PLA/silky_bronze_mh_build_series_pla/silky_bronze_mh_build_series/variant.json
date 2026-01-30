@@ -1,0 +1,9 @@
+{
+  "id": "silky_bronze_mh_build_series",
+  "name": "Silky Bronze Mh Build Series",
+  "color_hex": "#7F773A",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

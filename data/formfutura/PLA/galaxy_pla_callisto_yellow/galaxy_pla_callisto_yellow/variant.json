@@ -1,0 +1,9 @@
+{
+  "id": "galaxy_pla_callisto_yellow",
+  "name": "Galaxy Pla Callisto Yellow",
+  "color_hex": "#C4C67D",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

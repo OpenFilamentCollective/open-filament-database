@@ -1,0 +1,9 @@
+{
+  "id": "fluorescent_blue",
+  "name": "Fluorescent Blue",
+  "color_hex": "#386DFF",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

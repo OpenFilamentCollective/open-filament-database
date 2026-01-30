@@ -1,0 +1,9 @@
+{
+  "id": "metallic_silver_pla_prime",
+  "name": "Metallic Silver Pla Prime",
+  "color_hex": "#848484",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

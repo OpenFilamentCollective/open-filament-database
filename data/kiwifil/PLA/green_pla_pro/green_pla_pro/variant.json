@@ -1,0 +1,8 @@
+{
+  "id": "green_pla_pro",
+  "name": "Green Pla Pro",
+  "color_hex": "#3D9441",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

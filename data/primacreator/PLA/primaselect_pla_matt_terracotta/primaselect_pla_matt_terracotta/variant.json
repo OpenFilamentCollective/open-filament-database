@@ -1,0 +1,9 @@
+{
+  "id": "primaselect_pla_matt_terracotta",
+  "name": "Primaselect Pla Matt Terracotta",
+  "color_hex": "#BB6D48",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

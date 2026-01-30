@@ -1,0 +1,9 @@
+{
+  "id": "purple_translucent",
+  "name": "Purple Translucent",
+  "color_hex": "#C80181",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

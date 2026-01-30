@@ -1,0 +1,8 @@
+{
+  "id": "glow_in_the_dark_rainbow_flux",
+  "name": "Glow In The Dark Rainbow Flux",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true
+  }
+}

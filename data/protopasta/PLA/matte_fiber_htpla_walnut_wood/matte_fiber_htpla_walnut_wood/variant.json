@@ -1,0 +1,9 @@
+{
+  "id": "matte_fiber_htpla_walnut_wood",
+  "name": "Matte Fiber Htpla Walnut Wood",
+  "color_hex": "#6A5346",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

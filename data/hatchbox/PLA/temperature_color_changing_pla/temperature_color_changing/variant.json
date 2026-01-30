@@ -1,0 +1,8 @@
+{
+  "id": "temperature_color_changing",
+  "name": "Temperature Color Changing",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

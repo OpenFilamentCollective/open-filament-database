@@ -1,0 +1,9 @@
+{
+  "id": "silk_vintage_metal_rainbow",
+  "name": "Silk Vintage Metal Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

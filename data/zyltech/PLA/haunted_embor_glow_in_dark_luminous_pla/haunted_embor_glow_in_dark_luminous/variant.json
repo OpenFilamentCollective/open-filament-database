@@ -1,0 +1,10 @@
+{
+  "id": "haunted_embor_glow_in_dark_luminous",
+  "name": "Haunted Embor Glow In Dark Luminous",
+  "color_hex": "#FF9A14",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

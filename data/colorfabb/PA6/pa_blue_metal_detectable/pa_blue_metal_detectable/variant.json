@@ -1,0 +1,8 @@
+{
+  "id": "pa_blue_metal_detectable",
+  "name": "Pa Blue Metal Detectable",
+  "color_hex": "#003B80",
+  "traits": {
+    "abrasive": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "magic_pla_dark_twinkling_green",
+  "name": "Magic Pla Dark Twinkling Green",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "iridescent": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

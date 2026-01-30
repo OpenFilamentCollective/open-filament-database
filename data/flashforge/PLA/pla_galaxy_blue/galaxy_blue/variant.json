@@ -1,0 +1,9 @@
+{
+  "id": "galaxy_blue",
+  "name": "Galaxy Blue",
+  "color_hex": "#183681",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

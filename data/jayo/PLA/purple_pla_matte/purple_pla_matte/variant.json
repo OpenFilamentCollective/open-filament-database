@@ -1,0 +1,9 @@
+{
+  "id": "purple_pla_matte",
+  "name": "Purple Pla Matte",
+  "color_hex": "#AE00FF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

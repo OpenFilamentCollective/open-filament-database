@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_pla_prism_pink_blue_gold",
+  "name": "Magic Silk Pla Prism Pink Blue Gold",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

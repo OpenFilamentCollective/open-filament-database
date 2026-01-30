@@ -1,0 +1,9 @@
+{
+  "id": "huracan_pla_purple_grape",
+  "name": "Huracan Pla Purple Grape",
+  "color_hex": "#6C47B2",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

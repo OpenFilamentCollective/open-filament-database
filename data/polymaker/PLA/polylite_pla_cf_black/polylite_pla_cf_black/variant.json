@@ -1,0 +1,9 @@
+{
+  "id": "polylite_pla_cf_black",
+  "name": "Polylite Pla Cf Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

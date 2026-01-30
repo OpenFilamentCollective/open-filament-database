@@ -1,0 +1,9 @@
+{
+  "id": "rpla_corn_pigment",
+  "name": "Rpla Corn Pigment",
+  "color_hex": "#B37B47",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

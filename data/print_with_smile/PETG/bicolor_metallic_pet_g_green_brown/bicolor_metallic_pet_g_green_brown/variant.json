@@ -1,0 +1,9 @@
+{
+  "id": "bicolor_metallic_pet_g_green_brown",
+  "name": "Bicolor Metallic Pet G Green Brown",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

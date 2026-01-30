@@ -1,0 +1,9 @@
+{
+  "id": "primavalue_pla_matte_black",
+  "name": "Primavalue Pla Matte Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

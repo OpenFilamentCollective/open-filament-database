@@ -1,0 +1,10 @@
+{
+  "id": "textura_flare_galaxy_black",
+  "name": "Textura Flare Galaxy Black",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

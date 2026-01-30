@@ -1,0 +1,9 @@
+{
+  "id": "easyfil_epla_matt_light_grey",
+  "name": "Easyfil Epla Matt Light Grey",
+  "color_hex": "#C3CCD5",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "plus_transparent_red",
+  "name": "Plus Transparent Red",
+  "color_hex": "#C01616",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

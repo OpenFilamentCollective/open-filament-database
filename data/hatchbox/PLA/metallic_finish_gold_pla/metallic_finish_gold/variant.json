@@ -1,0 +1,8 @@
+{
+  "id": "metallic_finish_gold",
+  "name": "Metallic Finish Gold",
+  "color_hex": "#F6C500",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_light_khaki",
+  "name": "Matte Pla Light Khaki",
+  "color_hex": "#EADAC2",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

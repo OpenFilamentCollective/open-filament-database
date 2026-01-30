@@ -1,0 +1,10 @@
+{
+  "id": "glow_in_the_dark_glow_orange",
+  "name": "Glow In The Dark Glow Orange",
+  "color_hex": "#FA8423",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_dual_colors_green_magenta",
+  "name": "Silk Pla Dual Colors Green Magenta",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magicpla_arabian_nights",
+  "name": "Magicpla Arabian Nights",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

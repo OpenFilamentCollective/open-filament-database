@@ -1,0 +1,8 @@
+{
+  "id": "wood_arce",
+  "name": "Wood Arce",
+  "color_hex": "#EAD7B8",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

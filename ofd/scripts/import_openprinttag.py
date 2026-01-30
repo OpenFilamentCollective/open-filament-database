@@ -656,7 +656,8 @@ class ImportOpenPrintTagScript(BaseScript):
             "name": brand_name,
             "website": website,
             "logo": logo_filename,
-            "origin": origin if len(origin) == 2 else 'Unknown'
+            "origin": origin if len(origin) == 2 else 'Unknown',
+            "source": "https://github.com/OpenPrintTag/openprinttag-database"
         }
 
         if brand_json_path.exists():

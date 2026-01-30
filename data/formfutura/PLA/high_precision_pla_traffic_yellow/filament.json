@@ -1,0 +1,6 @@
+{
+  "id": "high_precision_pla_traffic_yellow",
+  "name": "High Precision PLA Traffic Yellow",
+  "density": 1.24,
+  "diameter_tolerance": 0.02
+}

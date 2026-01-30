@@ -1,0 +1,10 @@
+{
+  "id": "silk_dual_color_pla_goldpurple",
+  "name": "Silk Dual Color Pla Goldpurple",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

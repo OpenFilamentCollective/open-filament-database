@@ -1,0 +1,10 @@
+{
+  "id": "ps_imports_pla_bicolor_silk_magic_blue_redwine",
+  "name": "Ps Imports Pla Bicolor Silk Magic Blue Redwine",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

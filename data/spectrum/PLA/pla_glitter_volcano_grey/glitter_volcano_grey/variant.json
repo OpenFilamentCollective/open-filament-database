@@ -1,0 +1,10 @@
+{
+  "id": "glitter_volcano_grey",
+  "name": "Glitter Volcano Grey",
+  "color_hex": "#3F4647",
+  "traits": {
+    "silk": true,
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_green",
+  "name": "Metallic Finish Green",
+  "color_hex": "#02A76B",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

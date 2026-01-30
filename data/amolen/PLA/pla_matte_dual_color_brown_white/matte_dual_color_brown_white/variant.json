@@ -1,0 +1,10 @@
+{
+  "id": "matte_dual_color_brown_white",
+  "name": "Matte Dual Color Brown White",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

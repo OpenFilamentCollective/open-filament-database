@@ -1,0 +1,9 @@
+{
+  "id": "texas_tea_black_with_gold_glitter",
+  "name": "Texas Tea Black With Gold Glitter",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

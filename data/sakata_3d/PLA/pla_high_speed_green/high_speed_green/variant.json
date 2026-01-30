@@ -1,0 +1,8 @@
+{
+  "id": "high_speed_green",
+  "name": "High Speed Green",
+  "color_hex": "#7FE200",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

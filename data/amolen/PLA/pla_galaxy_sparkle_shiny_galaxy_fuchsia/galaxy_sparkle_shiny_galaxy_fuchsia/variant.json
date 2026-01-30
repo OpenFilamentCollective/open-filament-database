@@ -1,0 +1,11 @@
+{
+  "id": "galaxy_sparkle_shiny_galaxy_fuchsia",
+  "name": "Galaxy Sparkle Shiny Galaxy Fuchsia",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "silk": true,
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "blend_pearl_white",
+  "name": "Blend Pearl White",
+  "color_hex": "#D0D7D8",
+  "traits": {
+    "blend": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

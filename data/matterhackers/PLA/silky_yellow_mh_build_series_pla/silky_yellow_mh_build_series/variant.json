@@ -1,0 +1,9 @@
+{
+  "id": "silky_yellow_mh_build_series",
+  "name": "Silky Yellow Mh Build Series",
+  "color_hex": "#F3C102",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

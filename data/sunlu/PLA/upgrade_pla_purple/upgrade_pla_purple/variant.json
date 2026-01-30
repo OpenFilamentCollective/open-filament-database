@@ -1,0 +1,8 @@
+{
+  "id": "upgrade_pla_purple",
+  "name": "Upgrade Pla Purple",
+  "color_hex": "#7142A3",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

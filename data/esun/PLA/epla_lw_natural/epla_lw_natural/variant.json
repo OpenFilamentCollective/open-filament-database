@@ -1,0 +1,9 @@
+{
+  "id": "epla_lw_natural",
+  "name": "Epla Lw Natural",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "matte_impact_modified_pla_moss_green",
+  "name": "Matte Impact Modified Pla Moss Green",
+  "color_hex": "#737282",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

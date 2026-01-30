@@ -1,7 +1,8 @@
 {
-    "id": "polymax",
-    "name": "PolyMax",
-    "website": "https://polymaker.com/",
-    "logo": "logo.svg",
-    "origin": "CN"
+  "id": "polymax",
+  "name": "PolyMax",
+  "website": "https://polymaker.com/",
+  "logo": "logo.svg",
+  "origin": "CN",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

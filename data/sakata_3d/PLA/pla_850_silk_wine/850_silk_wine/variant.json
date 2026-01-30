@@ -1,0 +1,9 @@
+{
+  "id": "850_silk_wine",
+  "name": "850 Silk Wine",
+  "color_hex": "#751A39",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

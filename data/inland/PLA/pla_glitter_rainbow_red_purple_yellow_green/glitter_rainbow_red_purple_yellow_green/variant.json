@@ -1,0 +1,9 @@
+{
+  "id": "glitter_rainbow_red_purple_yellow_green",
+  "name": "Glitter Rainbow Red Purple Yellow Green",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

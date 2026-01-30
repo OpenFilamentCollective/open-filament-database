@@ -1,0 +1,9 @@
+{
+  "id": "stainless_steel_metal_composite_pla_blue_color",
+  "name": "Stainless Steel Metal Composite Pla Blue Color",
+  "color_hex": "#23668C",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "wood_clay_brown",
+  "name": "Wood Clay Brown",
+  "color_hex": "#C37C4F",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

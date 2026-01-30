@@ -1,0 +1,9 @@
+{
+  "id": "matte_sunset_rainbow",
+  "name": "Matte Sunset Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "m_matte_yellow",
+  "name": "M Matte Yellow",
+  "color_hex": "#FBE200",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

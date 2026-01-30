@@ -1,0 +1,8 @@
+{
+  "id": "standard",
+  "name": "Standard",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

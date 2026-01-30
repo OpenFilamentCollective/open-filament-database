@@ -1,0 +1,8 @@
+{
+  "id": "silk_pla_copper",
+  "name": "Silk Pla Copper",
+  "color_hex": "#C25C56",
+  "traits": {
+    "silk": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "translucent_neon_green_pla_v2_uv_reactive",
+  "name": "Translucent Neon Green Pla V2 Uv Reactive",
+  "color_hex": "#0BD10B",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

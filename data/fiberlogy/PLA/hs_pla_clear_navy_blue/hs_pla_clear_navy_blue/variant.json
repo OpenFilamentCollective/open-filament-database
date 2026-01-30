@@ -1,0 +1,9 @@
+{
+  "id": "hs_pla_clear_navy_blue",
+  "name": "Hs Pla Clear Navy Blue",
+  "color_hex": "#09048E",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

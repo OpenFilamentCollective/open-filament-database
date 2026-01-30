@@ -1,0 +1,9 @@
+{
+  "id": "totally_translucent_yellow_ht",
+  "name": "Totally Translucent Yellow Ht",
+  "color_hex": "#FFD342",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

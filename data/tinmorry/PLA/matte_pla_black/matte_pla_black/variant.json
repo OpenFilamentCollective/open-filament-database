@@ -1,0 +1,8 @@
+{
+  "id": "matte_pla_black",
+  "name": "Matte Pla Black",
+  "color_hex": "#1D1D1D",
+  "traits": {
+    "matte": true
+  }
+}

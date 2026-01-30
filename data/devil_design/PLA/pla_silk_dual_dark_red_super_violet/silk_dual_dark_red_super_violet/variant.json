@@ -1,0 +1,9 @@
+{
+  "id": "silk_dual_dark_red_super_violet",
+  "name": "Silk Dual Dark Red Super Violet",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

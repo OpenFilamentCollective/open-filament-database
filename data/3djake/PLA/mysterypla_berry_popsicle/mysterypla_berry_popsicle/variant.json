@@ -1,0 +1,9 @@
+{
+  "id": "mysterypla_berry_popsicle",
+  "name": "Mysterypla Berry Popsicle",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

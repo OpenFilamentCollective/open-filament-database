@@ -1,0 +1,9 @@
+{
+  "id": "850_silk_ocean",
+  "name": "850 Silk Ocean",
+  "color_hex": "#375680",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

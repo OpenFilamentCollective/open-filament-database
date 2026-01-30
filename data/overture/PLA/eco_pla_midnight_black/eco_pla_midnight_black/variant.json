@@ -1,0 +1,9 @@
+{
+  "id": "eco_pla_midnight_black",
+  "name": "Eco Pla Midnight Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

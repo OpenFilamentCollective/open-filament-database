@@ -1,0 +1,10 @@
+{
+  "id": "silk_dual_color_gilded_rose_pink_gold",
+  "name": "Silk Dual Color Gilded Rose Pink Gold",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

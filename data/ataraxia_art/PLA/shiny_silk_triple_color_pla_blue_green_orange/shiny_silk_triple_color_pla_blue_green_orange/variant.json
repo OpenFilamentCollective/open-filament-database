@@ -1,0 +1,10 @@
+{
+  "id": "shiny_silk_triple_color_pla_blue_green_orange",
+  "name": "Shiny Silk Triple Color Pla Blue Green Orange",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

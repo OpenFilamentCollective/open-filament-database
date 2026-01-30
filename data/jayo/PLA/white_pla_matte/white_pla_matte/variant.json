@@ -1,0 +1,9 @@
+{
+  "id": "white_pla_matte",
+  "name": "White Pla Matte",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

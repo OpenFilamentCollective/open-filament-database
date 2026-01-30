@@ -1,0 +1,10 @@
+{
+  "id": "shimmering_candle",
+  "name": "Shimmering Candle",
+  "color_hex": "#8A2D40",
+  "traits": {
+    "recycled": true,
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

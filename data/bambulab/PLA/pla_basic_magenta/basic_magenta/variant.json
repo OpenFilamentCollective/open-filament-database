@@ -1,0 +1,8 @@
+{
+  "id": "basic_magenta",
+  "name": "Basic Magenta",
+  "color_hex": "#C80181",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

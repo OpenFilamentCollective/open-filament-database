@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_matte_pla_camouflage_dark_green_brown",
+  "name": "Panchroma Dual Matte Pla Camouflage Dark Green Brown",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

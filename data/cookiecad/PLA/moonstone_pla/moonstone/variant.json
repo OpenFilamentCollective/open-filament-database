@@ -1,0 +1,11 @@
+{
+  "id": "moonstone",
+  "name": "Moonstone",
+  "color_hex": "#EAECF5",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true,
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

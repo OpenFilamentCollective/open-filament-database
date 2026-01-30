@@ -1,0 +1,10 @@
+{
+  "id": "glowfill",
+  "name": "Glowfill",
+  "color_hex": "#62E480",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "home_compostable": true
+  }
+}

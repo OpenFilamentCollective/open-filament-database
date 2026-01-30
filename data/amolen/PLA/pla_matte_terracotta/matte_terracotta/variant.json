@@ -1,0 +1,9 @@
+{
+  "id": "matte_terracotta",
+  "name": "Matte Terracotta",
+  "color_hex": "#B47D6C",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

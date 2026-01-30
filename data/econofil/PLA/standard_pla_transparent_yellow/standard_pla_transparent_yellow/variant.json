@@ -1,0 +1,8 @@
+{
+  "id": "standard_pla_transparent_yellow",
+  "name": "Standard Pla Transparent Yellow",
+  "color_hex": "#D0FF61",
+  "traits": {
+    "translucent": true
+  }
+}

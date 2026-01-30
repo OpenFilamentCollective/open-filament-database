@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_rose",
+  "name": "Panchroma Silk Pla Rose",
+  "color_hex": "#FF0078",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

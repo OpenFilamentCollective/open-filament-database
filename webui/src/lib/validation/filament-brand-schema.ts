@@ -30,6 +30,7 @@ export const brandSchema = z.object({
     z.literal("Unknown"),
     z.string().regex(/^[A-Z]{2}$/, "Must be an uppercase two-letter string or Unknown"),
   ]),
+  source: z.string().max(1000, 'Source must be at most 1000 characters long').optional(),
   logo: z
     .instanceof(File, {
       message: 'Please upload a file.'
