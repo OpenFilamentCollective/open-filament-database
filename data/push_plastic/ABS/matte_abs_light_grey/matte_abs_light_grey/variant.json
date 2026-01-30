@@ -1,0 +1,8 @@
+{
+  "id": "matte_abs_light_grey",
+  "name": "Matte Abs Light Grey",
+  "color_hex": "#C5C5BF",
+  "traits": {
+    "matte": true
+  }
+}

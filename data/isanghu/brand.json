@@ -1,7 +1,8 @@
 {
-    "id": "isanghu",
-    "name": "iSangHu",
-    "website": "https://www.isanghu3d.com/",
-    "logo": "logo.jpg",
-    "origin": "CN"
+  "id": "isanghu",
+  "name": "iSangHu",
+  "website": "https://www.isanghu3d.com/",
+  "logo": "logo.jpg",
+  "origin": "CN",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

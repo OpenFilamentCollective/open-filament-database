@@ -1,0 +1,9 @@
+{
+  "id": "silky_aqua",
+  "name": "Silky Aqua",
+  "color_hex": "#82E3EC",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_watermelon_red",
+  "name": "Silk Pla Watermelon Red",
+  "color_hex": "#E24749",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

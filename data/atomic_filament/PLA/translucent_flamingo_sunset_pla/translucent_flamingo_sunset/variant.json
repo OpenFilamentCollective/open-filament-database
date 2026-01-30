@@ -1,0 +1,9 @@
+{
+  "id": "translucent_flamingo_sunset",
+  "name": "Translucent Flamingo Sunset",
+  "color_hex": "#FD4E6F",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

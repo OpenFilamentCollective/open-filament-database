@@ -1,0 +1,10 @@
+{
+  "id": "matte_pla_light_blue_yellow",
+  "name": "Matte Pla Light Blue Yellow",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

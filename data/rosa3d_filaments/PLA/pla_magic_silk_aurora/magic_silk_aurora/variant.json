@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_aurora",
+  "name": "Magic Silk Aurora",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

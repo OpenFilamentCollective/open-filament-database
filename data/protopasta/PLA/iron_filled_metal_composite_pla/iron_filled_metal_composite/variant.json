@@ -1,0 +1,9 @@
+{
+  "id": "iron_filled_metal_composite",
+  "name": "Iron Filled Metal Composite",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

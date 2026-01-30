@@ -1,0 +1,9 @@
+{
+  "id": "matte_sunshine_yellow",
+  "name": "Matte Sunshine Yellow",
+  "color_hex": "#FFD342",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

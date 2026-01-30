@@ -1,0 +1,9 @@
+{
+  "id": "plus_clear",
+  "name": "Plus Clear",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

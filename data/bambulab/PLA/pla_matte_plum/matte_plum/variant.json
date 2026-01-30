@@ -1,0 +1,9 @@
+{
+  "id": "matte_plum",
+  "name": "Matte Plum",
+  "color_hex": "#B33174",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

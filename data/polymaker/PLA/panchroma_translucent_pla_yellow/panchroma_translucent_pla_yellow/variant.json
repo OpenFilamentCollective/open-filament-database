@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_translucent_pla_yellow",
+  "name": "Panchroma Translucent Pla Yellow",
+  "color_hex": "#FFD342",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

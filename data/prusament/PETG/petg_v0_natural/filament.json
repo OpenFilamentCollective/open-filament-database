@@ -1,0 +1,12 @@
+{
+  "id": "petg_v0_natural",
+  "name": "PETG V0 Natural",
+  "density": 1.27,
+  "diameter_tolerance": 0.02,
+  "shore_hardness_d": 79,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_mistic_red",
+  "name": "Magic Silk Mistic Red",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

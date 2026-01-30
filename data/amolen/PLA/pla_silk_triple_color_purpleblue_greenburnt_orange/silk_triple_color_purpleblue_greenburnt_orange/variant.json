@@ -1,0 +1,9 @@
+{
+  "id": "silk_triple_color_purpleblue_greenburnt_orange",
+  "name": "Silk Triple Color Purpleblue Greenburnt Orange",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

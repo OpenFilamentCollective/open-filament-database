@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_red",
+  "name": "Metallic Finish Red",
+  "color_hex": "#F54053",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

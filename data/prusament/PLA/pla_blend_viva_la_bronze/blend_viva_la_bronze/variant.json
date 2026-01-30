@@ -1,0 +1,10 @@
+{
+  "id": "blend_viva_la_bronze",
+  "name": "Blend Viva La Bronze",
+  "color_hex": "#B38E3F",
+  "traits": {
+    "blend": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

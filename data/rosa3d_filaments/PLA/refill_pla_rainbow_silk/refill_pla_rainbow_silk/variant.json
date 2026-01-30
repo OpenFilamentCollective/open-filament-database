@@ -1,0 +1,8 @@
+{
+  "id": "refill_pla_rainbow_silk",
+  "name": "Refill Pla Rainbow Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true
+  }
+}

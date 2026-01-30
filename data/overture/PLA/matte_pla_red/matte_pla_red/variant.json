@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_red",
+  "name": "Matte Pla Red",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

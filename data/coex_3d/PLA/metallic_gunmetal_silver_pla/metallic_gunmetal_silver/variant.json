@@ -1,0 +1,9 @@
+{
+  "id": "metallic_gunmetal_silver",
+  "name": "Metallic Gunmetal Silver",
+  "color_hex": "#494C56",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

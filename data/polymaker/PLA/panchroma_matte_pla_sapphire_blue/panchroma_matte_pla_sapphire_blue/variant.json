@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_sapphire_blue",
+  "name": "Panchroma Matte Pla Sapphire Blue",
+  "color_hex": "#0066D9",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

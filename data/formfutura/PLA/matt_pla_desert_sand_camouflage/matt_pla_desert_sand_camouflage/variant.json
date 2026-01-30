@@ -1,0 +1,9 @@
+{
+  "id": "matt_pla_desert_sand_camouflage",
+  "name": "Matt Pla Desert Sand Camouflage",
+  "color_hex": "#AA6500",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

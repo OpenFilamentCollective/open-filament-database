@@ -1,0 +1,9 @@
+{
+  "id": "blue_pla_matte",
+  "name": "Blue Pla Matte",
+  "color_hex": "#0353BA",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

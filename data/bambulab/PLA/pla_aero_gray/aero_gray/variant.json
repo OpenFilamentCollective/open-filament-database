@@ -1,0 +1,9 @@
+{
+  "id": "aero_gray",
+  "name": "Aero Gray",
+  "color_hex": "#C3CCD5",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

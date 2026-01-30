@@ -1,0 +1,9 @@
+{
+  "id": "burnt_titanium_nebula",
+  "name": "Burnt Titanium Nebula",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

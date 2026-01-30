@@ -1,0 +1,9 @@
+{
+  "id": "silk_candy_pla_gold_blue_green",
+  "name": "Silk Candy Pla Gold Blue Green",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

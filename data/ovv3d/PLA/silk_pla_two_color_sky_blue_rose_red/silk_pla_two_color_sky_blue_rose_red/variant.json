@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_two_color_sky_blue_rose_red",
+  "name": "Silk Pla Two Color Sky Blue Rose Red",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

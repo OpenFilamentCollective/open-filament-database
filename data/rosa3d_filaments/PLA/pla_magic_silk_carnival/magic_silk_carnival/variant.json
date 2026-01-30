@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_carnival",
+  "name": "Magic Silk Carnival",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

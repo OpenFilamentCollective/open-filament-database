@@ -1,0 +1,10 @@
+{
+  "id": "lw_pla_black",
+  "name": "Lw Pla Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

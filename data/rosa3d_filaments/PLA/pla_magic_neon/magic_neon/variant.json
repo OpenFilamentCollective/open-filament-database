@@ -1,0 +1,9 @@
+{
+  "id": "magic_neon",
+  "name": "Magic Neon",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "neon": true
+  }
+}

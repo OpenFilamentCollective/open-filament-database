@@ -41,6 +41,11 @@
             "type": "string",
             "description": "The country of origin",
             "$ref": "#/definitions/country_code"
+        },
+        "source": {
+            "type": "string",
+            "description": "The source where this brand data was found",
+            "$ref": "#/definitions/string_limit"
         }
     },
     "required": [

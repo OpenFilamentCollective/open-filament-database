@@ -1,0 +1,10 @@
+{
+  "id": "tropical_breeze_tri_color_silk",
+  "name": "Tropical Breeze Tri Color Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

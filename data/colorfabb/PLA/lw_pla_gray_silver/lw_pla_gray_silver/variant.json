@@ -1,0 +1,10 @@
+{
+  "id": "lw_pla_gray_silver",
+  "name": "Lw Pla Gray Silver",
+  "color_hex": "#ABACB0",
+  "traits": {
+    "matte": true,
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

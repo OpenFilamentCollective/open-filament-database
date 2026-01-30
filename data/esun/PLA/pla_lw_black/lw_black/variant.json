@@ -1,0 +1,9 @@
+{
+  "id": "lw_black",
+  "name": "Lw Black",
+  "color_hex": "#000000",
+  "traits": {
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

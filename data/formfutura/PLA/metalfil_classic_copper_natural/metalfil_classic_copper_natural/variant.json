@@ -1,0 +1,9 @@
+{
+  "id": "metalfil_classic_copper_natural",
+  "name": "Metalfil Classic Copper Natural",
+  "color_hex": "#8D5D4F",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

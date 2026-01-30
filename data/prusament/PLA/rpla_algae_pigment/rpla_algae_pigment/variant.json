@@ -1,0 +1,9 @@
+{
+  "id": "rpla_algae_pigment",
+  "name": "Rpla Algae Pigment",
+  "color_hex": "#674B42",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

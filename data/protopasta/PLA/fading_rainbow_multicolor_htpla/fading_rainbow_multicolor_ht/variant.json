@@ -1,0 +1,9 @@
+{
+  "id": "fading_rainbow_multicolor_ht",
+  "name": "Fading Rainbow Multicolor Ht",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

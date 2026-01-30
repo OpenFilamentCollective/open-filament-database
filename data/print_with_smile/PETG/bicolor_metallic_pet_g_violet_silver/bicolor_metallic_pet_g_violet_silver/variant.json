@@ -1,0 +1,9 @@
+{
+  "id": "bicolor_metallic_pet_g_violet_silver",
+  "name": "Bicolor Metallic Pet G Violet Silver",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

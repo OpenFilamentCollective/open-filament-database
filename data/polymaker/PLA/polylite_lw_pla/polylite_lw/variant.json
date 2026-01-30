@@ -1,0 +1,9 @@
+{
+  "id": "polylite_lw",
+  "name": "Polylite Lw",
+  "color_hex": "#EF3340",
+  "traits": {
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

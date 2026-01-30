@@ -1,0 +1,8 @@
+{
+  "id": "military_brown",
+  "name": "Military Brown",
+  "color_hex": "#665A28",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

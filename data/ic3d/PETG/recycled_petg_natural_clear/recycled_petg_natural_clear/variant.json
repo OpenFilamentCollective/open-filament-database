@@ -1,0 +1,9 @@
+{
+  "id": "recycled_petg_natural_clear",
+  "name": "Recycled Petg Natural Clear",
+  "color_hex": "#D9D8DE",
+  "traits": {
+    "recycled": true,
+    "translucent": true
+  }
+}

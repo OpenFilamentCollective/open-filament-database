@@ -1,0 +1,10 @@
+{
+  "id": "glow_in_the_dark_pla_red",
+  "name": "Glow In The Dark Pla Red",
+  "color_hex": "#F00C00",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

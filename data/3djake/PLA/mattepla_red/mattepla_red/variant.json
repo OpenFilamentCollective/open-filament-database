@@ -1,0 +1,8 @@
+{
+  "id": "mattepla_red",
+  "name": "Mattepla Red",
+  "color_hex": "#E60000",
+  "traits": {
+    "matte": true
+  }
+}

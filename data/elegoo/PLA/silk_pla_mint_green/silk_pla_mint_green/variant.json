@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_mint_green",
+  "name": "Silk Pla Mint Green",
+  "color_hex": "#9AE0DD",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

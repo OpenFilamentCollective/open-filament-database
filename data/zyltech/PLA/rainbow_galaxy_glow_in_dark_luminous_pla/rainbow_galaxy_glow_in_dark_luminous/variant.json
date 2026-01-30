@@ -1,0 +1,10 @@
+{
+  "id": "rainbow_galaxy_glow_in_dark_luminous",
+  "name": "Rainbow Galaxy Glow In Dark Luminous",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

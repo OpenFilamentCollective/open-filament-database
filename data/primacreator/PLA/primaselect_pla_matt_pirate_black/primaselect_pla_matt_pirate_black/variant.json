@@ -1,0 +1,9 @@
+{
+  "id": "primaselect_pla_matt_pirate_black",
+  "name": "Primaselect Pla Matt Pirate Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

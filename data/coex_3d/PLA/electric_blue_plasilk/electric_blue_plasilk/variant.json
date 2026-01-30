@@ -1,0 +1,9 @@
+{
+  "id": "electric_blue_plasilk",
+  "name": "Electric Blue Plasilk",
+  "color_hex": "#4F7BBB",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

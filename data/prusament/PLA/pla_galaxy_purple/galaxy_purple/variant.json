@@ -1,0 +1,9 @@
+{
+  "id": "galaxy_purple",
+  "name": "Galaxy Purple",
+  "color_hex": "#453A72",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

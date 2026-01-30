@@ -1,0 +1,9 @@
+{
+  "id": "rpla_wine_pigment",
+  "name": "Rpla Wine Pigment",
+  "color_hex": "#5E4940",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "chameleon_nebula_purple",
+  "name": "Chameleon Nebula Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "industrially_compostable": true
+  }
+}

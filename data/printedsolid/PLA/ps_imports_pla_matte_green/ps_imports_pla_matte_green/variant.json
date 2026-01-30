@@ -1,0 +1,9 @@
+{
+  "id": "ps_imports_pla_matte_green",
+  "name": "Ps Imports Pla Matte Green",
+  "color_hex": "#206233",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

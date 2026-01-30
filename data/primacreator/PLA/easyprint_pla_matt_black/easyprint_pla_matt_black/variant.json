@@ -1,0 +1,9 @@
+{
+  "id": "easyprint_pla_matt_black",
+  "name": "Easyprint Pla Matt Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

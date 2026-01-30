@@ -1,0 +1,9 @@
+{
+  "id": "copper_plasilk",
+  "name": "Copper Plasilk",
+  "color_hex": "#C88582",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

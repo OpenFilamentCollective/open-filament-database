@@ -1,0 +1,9 @@
+{
+  "id": "hdglass_see_through_green",
+  "name": "Hdglass See Through Green",
+  "color_hex": "#26A648",
+  "traits": {
+    "translucent": true,
+    "silk": true
+  }
+}

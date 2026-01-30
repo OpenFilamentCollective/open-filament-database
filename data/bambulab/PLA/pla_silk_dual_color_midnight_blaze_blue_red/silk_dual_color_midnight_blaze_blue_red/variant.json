@@ -1,0 +1,10 @@
+{
+  "id": "silk_dual_color_midnight_blaze_blue_red",
+  "name": "Silk Dual Color Midnight Blaze Blue Red",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "flex_medium_transparent",
+  "name": "Flex Medium Transparent",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "translucent": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "premium_natural",
+  "name": "Premium Natural",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

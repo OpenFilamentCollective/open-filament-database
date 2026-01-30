@@ -1,7 +1,8 @@
 {
-    "id": "l3d",
-    "name": "L3D",
-    "website": "https://shop.lab3d.dk",
-    "logo": "logo.png",
-    "origin": "DK"
+  "id": "l3d",
+  "name": "L3D",
+  "website": "https://shop.lab3d.dk",
+  "logo": "logo.png",
+  "origin": "DK",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

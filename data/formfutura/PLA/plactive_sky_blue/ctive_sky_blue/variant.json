@@ -1,0 +1,10 @@
+{
+  "id": "ctive_sky_blue",
+  "name": "Ctive Sky Blue",
+  "color_hex": "#0378D0",
+  "traits": {
+    "antibacterial": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

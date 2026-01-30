@@ -1,0 +1,8 @@
+{
+  "id": "hg100_lemonade_translucent",
+  "name": "Hg100 Lemonade Translucent",
+  "color_hex": "#FBE200",
+  "traits": {
+    "translucent": true
+  }
+}

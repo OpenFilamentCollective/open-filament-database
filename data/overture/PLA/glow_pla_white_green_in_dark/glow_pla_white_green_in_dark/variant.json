@@ -1,0 +1,10 @@
+{
+  "id": "glow_pla_white_green_in_dark",
+  "name": "Glow Pla White Green In Dark",
+  "color_hex": "#4DFF64",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_teal",
+  "name": "Silk Pla Teal",
+  "color_hex": "#00A594",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

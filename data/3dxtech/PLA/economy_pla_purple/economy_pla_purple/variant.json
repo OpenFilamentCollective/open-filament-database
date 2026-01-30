@@ -1,0 +1,8 @@
+{
+  "id": "economy_pla_purple",
+  "name": "Economy Pla Purple",
+  "color_hex": "#A67DFF",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

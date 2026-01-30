@@ -1,0 +1,9 @@
+{
+  "id": "glitter_fast_color_change_rainbow",
+  "name": "Glitter Fast Color Change Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

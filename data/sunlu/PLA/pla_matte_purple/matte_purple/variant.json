@@ -1,0 +1,9 @@
+{
+  "id": "matte_purple",
+  "name": "Matte Purple",
+  "color_hex": "#9761B5",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "rapid_pla_luminous_blue",
+  "name": "Rapid Pla Luminous Blue",
+  "color_hex": "#82E3EC",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

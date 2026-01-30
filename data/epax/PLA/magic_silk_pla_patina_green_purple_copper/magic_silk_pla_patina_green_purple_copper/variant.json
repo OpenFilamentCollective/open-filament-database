@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_pla_patina_green_purple_copper",
+  "name": "Magic Silk Pla Patina Green Purple Copper",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

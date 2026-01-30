@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_plus_fire_red",
+  "name": "Silk Pla Plus Fire Red",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

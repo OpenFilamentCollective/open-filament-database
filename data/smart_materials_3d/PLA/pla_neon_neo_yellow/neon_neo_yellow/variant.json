@@ -1,0 +1,9 @@
+{
+  "id": "neon_neo_yellow",
+  "name": "Neon Neo Yellow",
+  "color_hex": "#EBFF57",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

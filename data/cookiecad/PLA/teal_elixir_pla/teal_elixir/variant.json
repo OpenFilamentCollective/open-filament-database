@@ -1,0 +1,10 @@
+{
+  "id": "teal_elixir",
+  "name": "Teal Elixir",
+  "color_hex": "#98FBCB",
+  "traits": {
+    "iridescent": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

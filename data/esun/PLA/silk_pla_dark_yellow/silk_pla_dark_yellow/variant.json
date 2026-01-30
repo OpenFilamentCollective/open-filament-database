@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_dark_yellow",
+  "name": "Silk Pla Dark Yellow",
+  "color_hex": "#EA9E3F",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

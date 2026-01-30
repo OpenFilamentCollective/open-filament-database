@@ -1,0 +1,10 @@
+{
+  "id": "silk_triple_color_orange_blue_green",
+  "name": "Silk Triple Color Orange Blue Green",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,7 +1,8 @@
 {
-    "id": "polylite",
-    "name": "PolyLite",
-    "website": "https://polymaker.com/",
-    "logo": "logo.svg",
-    "origin": "CN"
+  "id": "polylite",
+  "name": "PolyLite",
+  "website": "https://polymaker.com/",
+  "logo": "logo.svg",
+  "origin": "CN",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

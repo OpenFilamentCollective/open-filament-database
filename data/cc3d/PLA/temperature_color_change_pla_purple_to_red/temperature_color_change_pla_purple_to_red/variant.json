@@ -1,0 +1,8 @@
+{
+  "id": "temperature_color_change_pla_purple_to_red",
+  "name": "Temperature Color Change Pla Purple To Red",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

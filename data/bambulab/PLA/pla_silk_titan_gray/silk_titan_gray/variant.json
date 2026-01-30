@@ -1,0 +1,9 @@
+{
+  "id": "silk_titan_gray",
+  "name": "Silk Titan Gray",
+  "color_hex": "#63646B",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

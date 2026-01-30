@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_cf_violet",
+  "name": "The Filament Pla Cf Violet",
+  "color_hex": "#C80181",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

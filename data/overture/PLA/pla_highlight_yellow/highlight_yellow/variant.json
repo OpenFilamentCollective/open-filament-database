@@ -1,0 +1,8 @@
+{
+  "id": "highlight_yellow",
+  "name": "Highlight Yellow",
+  "color_hex": "#E4FF33",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

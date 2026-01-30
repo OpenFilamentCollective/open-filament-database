@@ -1,0 +1,9 @@
+{
+  "id": "air_pla_yellow",
+  "name": "Air Pla Yellow",
+  "color_hex": "#F3C102",
+  "traits": {
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

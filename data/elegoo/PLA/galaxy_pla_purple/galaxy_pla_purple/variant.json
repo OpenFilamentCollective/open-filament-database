@@ -1,0 +1,9 @@
+{
+  "id": "galaxy_pla_purple",
+  "name": "Galaxy Pla Purple",
+  "color_hex": "#3A0A8C",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

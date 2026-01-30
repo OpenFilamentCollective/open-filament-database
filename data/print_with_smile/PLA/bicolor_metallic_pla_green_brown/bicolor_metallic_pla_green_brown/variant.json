@@ -1,0 +1,10 @@
+{
+  "id": "bicolor_metallic_pla_green_brown",
+  "name": "Bicolor Metallic Pla Green Brown",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

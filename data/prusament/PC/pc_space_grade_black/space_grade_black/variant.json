@@ -1,0 +1,9 @@
+{
+  "id": "space_grade_black",
+  "name": "Space Grade Black",
+  "color_hex": "#000000",
+  "traits": {
+    "esd_safe": true,
+    "abrasive": true
+  }
+}

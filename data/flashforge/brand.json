@@ -1,7 +1,8 @@
 {
   "id": "flashforge",
   "name": "FLASHFORGE",
-  "website": "https://www.flashforge.com/",
+  "website": "",
   "logo": "logo.png",
-  "origin": "Unknown"
+  "origin": "CH",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

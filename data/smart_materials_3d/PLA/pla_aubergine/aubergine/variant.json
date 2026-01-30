@@ -1,0 +1,8 @@
+{
+  "id": "aubergine",
+  "name": "Aubergine",
+  "color_hex": "#492972",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

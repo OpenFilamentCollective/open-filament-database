@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_purple",
+  "name": "Metallic Finish Purple",
+  "color_hex": "#B645A9",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

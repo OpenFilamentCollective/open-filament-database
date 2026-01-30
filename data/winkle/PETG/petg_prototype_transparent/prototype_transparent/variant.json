@@ -1,0 +1,8 @@
+{
+  "id": "prototype_transparent",
+  "name": "Prototype Transparent",
+  "color_hex": "#F2ECE9",
+  "traits": {
+    "transparent": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_copper_charm",
+  "name": "Silk Copper Charm",
+  "color_hex": "#866855",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

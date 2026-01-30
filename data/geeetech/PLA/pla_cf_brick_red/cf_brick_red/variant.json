@@ -1,0 +1,9 @@
+{
+  "id": "cf_brick_red",
+  "name": "Cf Brick Red",
+  "color_hex": "#462B2E",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

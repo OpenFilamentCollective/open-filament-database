@@ -1,0 +1,10 @@
+{
+  "id": "glitter_stardust_blue",
+  "name": "Glitter Stardust Blue",
+  "color_hex": "#375680",
+  "traits": {
+    "silk": true,
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

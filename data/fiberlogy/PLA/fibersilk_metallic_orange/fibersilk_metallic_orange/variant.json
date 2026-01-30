@@ -1,0 +1,9 @@
+{
+  "id": "fibersilk_metallic_orange",
+  "name": "Fibersilk Metallic Orange",
+  "color_hex": "#F67405",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

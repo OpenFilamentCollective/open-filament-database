@@ -1,0 +1,9 @@
+{
+  "id": "lemon_drop",
+  "name": "Lemon Drop",
+  "color_hex": "#EEEA44",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "chameleon_pla_tech_black",
+  "name": "Chameleon Pla Tech Black",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

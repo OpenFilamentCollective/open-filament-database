@@ -1,0 +1,9 @@
+{
+  "id": "lemonade_matte",
+  "name": "Lemonade Matte",
+  "color_hex": "#D0DCAA",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

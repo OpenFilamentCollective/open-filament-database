@@ -1,0 +1,8 @@
+{
+  "id": "regulation_gray",
+  "name": "Regulation Gray",
+  "color_hex": "#949A9E",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_s_series_berry_pop",
+  "name": "Silk S Series Berry Pop",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

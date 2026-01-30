@@ -1,0 +1,9 @@
+{
+  "id": "nerfed_translucent_orange_ht",
+  "name": "Nerfed Translucent Orange Ht",
+  "color_hex": "#FF9A14",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

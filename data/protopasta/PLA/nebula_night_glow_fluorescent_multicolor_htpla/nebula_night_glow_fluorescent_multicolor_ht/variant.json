@@ -1,0 +1,11 @@
+{
+  "id": "nebula_night_glow_fluorescent_multicolor_ht",
+  "name": "Nebula Night Glow Fluorescent Multicolor Ht",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "neon": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

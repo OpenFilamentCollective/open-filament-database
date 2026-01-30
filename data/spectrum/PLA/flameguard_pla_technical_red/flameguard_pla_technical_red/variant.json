@@ -1,0 +1,9 @@
+{
+  "id": "flameguard_pla_technical_red",
+  "name": "Flameguard Pla Technical Red",
+  "color_hex": "#FF2C29",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

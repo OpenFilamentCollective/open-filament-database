@@ -1,0 +1,9 @@
+{
+  "id": "silk_s_series_green_fuchsia",
+  "name": "Silk S Series Green Fuchsia",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

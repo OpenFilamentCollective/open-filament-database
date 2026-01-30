@@ -1,0 +1,9 @@
+{
+  "id": "magicpla_lemon_grass",
+  "name": "Magicpla Lemon Grass",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

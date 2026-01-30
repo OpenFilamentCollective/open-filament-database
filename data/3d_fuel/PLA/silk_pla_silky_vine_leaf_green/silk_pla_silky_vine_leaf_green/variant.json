@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_silky_vine_leaf_green",
+  "name": "Silk Pla Silky Vine Leaf Green",
+  "color_hex": "#67D8BC",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

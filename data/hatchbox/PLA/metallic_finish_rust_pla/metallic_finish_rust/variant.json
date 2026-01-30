@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_rust",
+  "name": "Metallic Finish Rust",
+  "color_hex": "#DE6300",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

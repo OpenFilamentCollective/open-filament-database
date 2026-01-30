@@ -1,0 +1,8 @@
+{
+  "id": "mahogany",
+  "name": "Mahogany",
+  "color_hex": "#C65E0A",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

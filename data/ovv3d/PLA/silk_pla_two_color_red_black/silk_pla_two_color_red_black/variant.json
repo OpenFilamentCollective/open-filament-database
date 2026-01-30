@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_two_color_red_black",
+  "name": "Silk Pla Two Color Red Black",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

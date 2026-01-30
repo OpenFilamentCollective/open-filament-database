@@ -1,0 +1,9 @@
+{
+  "id": "safeguard_pla_industrial_grey",
+  "name": "Safeguard Pla Industrial Grey",
+  "color_hex": "#3F4647",
+  "traits": {
+    "antibacterial": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "easy_pla_glow_yellow",
+  "name": "Easy Pla Glow Yellow",
+  "color_hex": "#EBFF57",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

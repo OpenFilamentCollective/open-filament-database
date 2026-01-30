@@ -1,0 +1,9 @@
+{
+  "id": "matte_fiber_htpla_gray",
+  "name": "Matte Fiber Htpla Gray",
+  "color_hex": "#949A9E",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

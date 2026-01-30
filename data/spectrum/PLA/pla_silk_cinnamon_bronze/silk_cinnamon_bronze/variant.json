@@ -1,0 +1,9 @@
+{
+  "id": "silk_cinnamon_bronze",
+  "name": "Silk Cinnamon Bronze",
+  "color_hex": "#8C7354",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

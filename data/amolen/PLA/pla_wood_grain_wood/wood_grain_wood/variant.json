@@ -1,0 +1,8 @@
+{
+  "id": "wood_grain_wood",
+  "name": "Wood Grain Wood",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

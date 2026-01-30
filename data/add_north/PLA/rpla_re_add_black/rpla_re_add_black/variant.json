@@ -1,0 +1,9 @@
+{
+  "id": "rpla_re_add_black",
+  "name": "Rpla Re Add Black",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

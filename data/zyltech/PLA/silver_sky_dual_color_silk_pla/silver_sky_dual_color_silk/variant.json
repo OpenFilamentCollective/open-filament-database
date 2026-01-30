@@ -1,0 +1,10 @@
+{
+  "id": "silver_sky_dual_color_silk",
+  "name": "Silver Sky Dual Color Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "victory_red",
+  "name": "Victory Red",
+  "color_hex": "#E60000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

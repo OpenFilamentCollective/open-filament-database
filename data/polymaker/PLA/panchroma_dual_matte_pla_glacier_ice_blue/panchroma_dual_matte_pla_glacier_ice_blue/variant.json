@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_matte_pla_glacier_ice_blue",
+  "name": "Panchroma Dual Matte Pla Glacier Ice Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

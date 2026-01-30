@@ -1,0 +1,9 @@
+{
+  "id": "huracan_pla_fresh_green",
+  "name": "Huracan Pla Fresh Green",
+  "color_hex": "#26A648",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

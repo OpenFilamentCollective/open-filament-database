@@ -1,0 +1,9 @@
+{
+  "id": "easypetg_matte_neon_green",
+  "name": "Easypetg Matte Neon Green",
+  "color_hex": "#62E480",
+  "traits": {
+    "matte": true,
+    "neon": true
+  }
+}

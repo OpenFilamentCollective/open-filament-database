@@ -1,0 +1,10 @@
+{
+  "id": "crystal_electric_yellow",
+  "name": "Crystal Electric Yellow",
+  "color_hex": "#FBF942",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

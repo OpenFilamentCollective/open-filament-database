@@ -1,0 +1,10 @@
+{
+  "id": "clear_pla_pro",
+  "name": "Clear Pla Pro",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "translucent": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

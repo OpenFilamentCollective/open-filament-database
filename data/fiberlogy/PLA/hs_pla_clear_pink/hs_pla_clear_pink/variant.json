@@ -1,0 +1,9 @@
+{
+  "id": "hs_pla_clear_pink",
+  "name": "Hs Pla Clear Pink",
+  "color_hex": "#C60F3E",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

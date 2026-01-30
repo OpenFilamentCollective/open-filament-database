@@ -1,0 +1,9 @@
+{
+  "id": "crystal_blue",
+  "name": "Crystal Blue",
+  "color_hex": "#0353BA",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

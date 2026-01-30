@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_gradient_translucent_pla_rainbow",
+  "name": "Panchroma Gradient Translucent Pla Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

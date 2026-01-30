@@ -1,0 +1,9 @@
+{
+  "id": "matte_fiber_htpla_daffodil_wood",
+  "name": "Matte Fiber Htpla Daffodil Wood",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

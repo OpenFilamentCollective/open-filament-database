@@ -1,0 +1,9 @@
+{
+  "id": "silk_amethyst_violet",
+  "name": "Silk Amethyst Violet",
+  "color_hex": "#0353BA",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

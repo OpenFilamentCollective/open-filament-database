@@ -1,0 +1,10 @@
+{
+  "id": "luminous_rainbow",
+  "name": "Luminous Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

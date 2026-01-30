@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_dual_colors_red_gold",
+  "name": "Silk Pla Dual Colors Red Gold",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

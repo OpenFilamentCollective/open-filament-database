@@ -1,0 +1,9 @@
+{
+  "id": "x_cf_black",
+  "name": "X Cf Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

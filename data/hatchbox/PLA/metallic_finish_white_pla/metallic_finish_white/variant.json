@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_white",
+  "name": "Metallic Finish White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

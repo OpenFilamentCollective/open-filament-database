@@ -1,0 +1,9 @@
+{
+  "id": "iridescent_bubblegum",
+  "name": "Iridescent Bubblegum",
+  "color_hex": "#FF5786",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

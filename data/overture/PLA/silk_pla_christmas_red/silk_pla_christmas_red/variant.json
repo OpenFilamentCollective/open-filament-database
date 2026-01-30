@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_christmas_red",
+  "name": "Silk Pla Christmas Red",
+  "color_hex": "#D33D3D",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

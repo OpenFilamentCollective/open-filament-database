@@ -1,0 +1,8 @@
+{
+  "id": "timberfill_southern_pine",
+  "name": "Timberfill Southern Pine",
+  "color_hex": "#BE6730",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

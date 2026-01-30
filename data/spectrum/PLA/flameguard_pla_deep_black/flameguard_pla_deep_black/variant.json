@@ -1,0 +1,9 @@
+{
+  "id": "flameguard_pla_deep_black",
+  "name": "Flameguard Pla Deep Black",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

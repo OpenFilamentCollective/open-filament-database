@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_treasure",
+  "name": "Magic Silk Treasure",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "aqua_ice_translucent_ht",
+  "name": "Aqua Ice Translucent Ht",
+  "color_hex": "#00B4BC",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

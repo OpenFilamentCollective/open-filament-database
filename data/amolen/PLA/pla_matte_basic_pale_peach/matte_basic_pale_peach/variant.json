@@ -1,0 +1,9 @@
+{
+  "id": "matte_basic_pale_peach",
+  "name": "Matte Basic Pale Peach",
+  "color_hex": "#E2D1C0",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

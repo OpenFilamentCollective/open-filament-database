@@ -1,0 +1,10 @@
+{
+  "id": "air_pla_neon_green",
+  "name": "Air Pla Neon Green",
+  "color_hex": "#9FEC41",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true,
+    "foaming": true
+  }
+}

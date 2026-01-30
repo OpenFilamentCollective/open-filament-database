@@ -1,0 +1,9 @@
+{
+  "id": "silk_green_shiny_blue",
+  "name": "Silk Green Shiny Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

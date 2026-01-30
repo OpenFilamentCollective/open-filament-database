@@ -1,0 +1,9 @@
+{
+  "id": "primaselect_pla_matt_carbon_grey",
+  "name": "Primaselect Pla Matt Carbon Grey",
+  "color_hex": "#26272B",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

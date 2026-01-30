@@ -1,0 +1,10 @@
+{
+  "id": "dual_color_silk_pla_silky_blue_orange",
+  "name": "Dual Color Silk Pla Silky Blue Orange",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

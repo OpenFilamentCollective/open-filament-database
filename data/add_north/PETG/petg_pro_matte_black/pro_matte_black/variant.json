@@ -1,0 +1,8 @@
+{
+  "id": "pro_matte_black",
+  "name": "Pro Matte Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true
+  }
+}

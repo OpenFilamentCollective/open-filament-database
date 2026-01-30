@@ -1,0 +1,11 @@
+{
+  "id": "glow_in_the_dark_translucent",
+  "name": "Glow In The Dark Translucent",
+  "color_hex": "#06B100",
+  "traits": {
+    "transparent": true,
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

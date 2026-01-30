@@ -1,0 +1,9 @@
+{
+  "id": "fibersilk_metallic_navy_blue",
+  "name": "Fibersilk Metallic Navy Blue",
+  "color_hex": "#2E56F1",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "matte_basic_lilac_purple",
+  "name": "Matte Basic Lilac Purple",
+  "color_hex": "#F0C7E7",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

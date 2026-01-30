@@ -1,0 +1,8 @@
+{
+  "id": "economy_pla_dark_green",
+  "name": "Economy Pla Dark Green",
+  "color_hex": "#267F67",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "upgrade_pla_pure_yellow",
+  "name": "Upgrade Pla Pure Yellow",
+  "color_hex": "#FBE200",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

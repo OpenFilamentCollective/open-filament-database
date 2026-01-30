@@ -1,0 +1,10 @@
+{
+  "id": "rainbow_matte_tri_color_red_yellow_blue",
+  "name": "Rainbow Matte Tri Color Red Yellow Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

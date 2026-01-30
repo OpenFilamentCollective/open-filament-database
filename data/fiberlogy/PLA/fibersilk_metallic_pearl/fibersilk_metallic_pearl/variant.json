@@ -1,0 +1,9 @@
+{
+  "id": "fibersilk_metallic_pearl",
+  "name": "Fibersilk Metallic Pearl",
+  "color_hex": "#F5F5F4",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

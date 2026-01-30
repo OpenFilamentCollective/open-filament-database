@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_gold_silver",
+  "name": "Magic Silk Gold Silver",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

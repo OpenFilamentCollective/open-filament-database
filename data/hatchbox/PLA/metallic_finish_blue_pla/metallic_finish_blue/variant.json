@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_blue",
+  "name": "Metallic Finish Blue",
+  "color_hex": "#0E21AE",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "glow_grn_v2",
+  "name": "Glow Grn V2",
+  "color_hex": "#70FA00",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

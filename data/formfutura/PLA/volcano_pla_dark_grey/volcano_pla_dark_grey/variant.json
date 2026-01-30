@@ -1,0 +1,9 @@
+{
+  "id": "volcano_pla_dark_grey",
+  "name": "Volcano Pla Dark Grey",
+  "color_hex": "#6A6C6E",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

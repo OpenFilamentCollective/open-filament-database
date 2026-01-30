@@ -1,0 +1,10 @@
+{
+  "id": "translucent_neon_yellow_pla_uv_reactive",
+  "name": "Translucent Neon Yellow Pla Uv Reactive",
+  "color_hex": "#EBFF57",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

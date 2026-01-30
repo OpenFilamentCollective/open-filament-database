@@ -1,0 +1,9 @@
+{
+  "id": "tough_pro_pla_natural",
+  "name": "Tough Pro Pla Natural",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

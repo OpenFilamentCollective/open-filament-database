@@ -1,0 +1,9 @@
+{
+  "id": "silk_triple_color_black_blue_purple",
+  "name": "Silk Triple Color Black Blue Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

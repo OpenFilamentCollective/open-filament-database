@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_pla_matte_stealth_black",
+  "name": "The Filament Pla Matte Stealth Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

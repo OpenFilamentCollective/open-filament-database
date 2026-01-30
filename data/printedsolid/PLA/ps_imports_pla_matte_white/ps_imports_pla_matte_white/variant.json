@@ -1,0 +1,9 @@
+{
+  "id": "ps_imports_pla_matte_white",
+  "name": "Ps Imports Pla Matte White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

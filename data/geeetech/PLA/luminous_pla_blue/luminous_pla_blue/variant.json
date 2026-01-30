@@ -1,0 +1,10 @@
+{
+  "id": "luminous_pla_blue",
+  "name": "Luminous Pla Blue",
+  "color_hex": "#0078BF",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,6 +1,6 @@
 {
-    "id": "pla_premium",
-    "name": "PLA Premium",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "id": "pla_premium",
+  "name": "PLA Premium",
+  "density": 1.24,
+  "diameter_tolerance": 0.02
 }

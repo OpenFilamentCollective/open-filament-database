@@ -1,0 +1,11 @@
+{
+  "id": "polished_glass_transparent",
+  "name": "Polished Glass Transparent",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "recycled": true,
+    "silk": true,
+    "industrially_compostable": true,
+    "transparent": true
+  }
+}

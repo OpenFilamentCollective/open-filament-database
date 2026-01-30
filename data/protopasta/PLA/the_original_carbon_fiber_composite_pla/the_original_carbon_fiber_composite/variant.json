@@ -1,0 +1,9 @@
+{
+  "id": "the_original_carbon_fiber_composite",
+  "name": "The Original Carbon Fiber Composite",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

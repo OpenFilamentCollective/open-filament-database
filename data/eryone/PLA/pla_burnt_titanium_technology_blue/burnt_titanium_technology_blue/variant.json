@@ -1,0 +1,10 @@
+{
+  "id": "burnt_titanium_technology_blue",
+  "name": "Burnt Titanium Technology Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "coextruded": true,
+    "iridescent": true
+  }
+}

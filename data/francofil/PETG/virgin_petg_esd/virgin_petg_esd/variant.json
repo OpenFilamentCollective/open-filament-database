@@ -1,0 +1,8 @@
+{
+  "id": "virgin_petg_esd",
+  "name": "Virgin Petg Esd",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "esd_safe": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "galactic_blue_translucent_iridescent",
+  "name": "Galactic Blue Translucent Iridescent",
+  "color_hex": "#565670",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

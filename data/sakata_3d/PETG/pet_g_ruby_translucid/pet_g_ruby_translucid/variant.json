@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_ruby_translucid",
+  "name": "Pet G Ruby Translucid",
+  "color_hex": "#CA0230",
+  "traits": {
+    "translucent": true
+  }
+}

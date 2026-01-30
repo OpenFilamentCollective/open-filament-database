@@ -1,0 +1,8 @@
+{
+  "id": "raspberry_partially_transparent",
+  "name": "Raspberry Partially Transparent",
+  "color_hex": "#B13566",
+  "traits": {
+    "translucent": true
+  }
+}

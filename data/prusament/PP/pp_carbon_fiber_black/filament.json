@@ -1,0 +1,15 @@
+{
+  "id": "pp_carbon_fiber_black",
+  "name": "PP Carbon Fiber Black",
+  "density": 0.81,
+  "diameter_tolerance": 0.02,
+  "shore_hardness_d": 62,
+  "min_print_temperature": 260,
+  "max_print_temperature": 280,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 65,
+  "max_bed_temperature": 85,
+  "chamber_temperature": 50,
+  "min_chamber_temperature": 40,
+  "max_chamber_temperature": 90
+}

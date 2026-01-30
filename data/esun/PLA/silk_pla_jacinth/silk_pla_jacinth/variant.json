@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_jacinth",
+  "name": "Silk Pla Jacinth",
+  "color_hex": "#E03F26",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

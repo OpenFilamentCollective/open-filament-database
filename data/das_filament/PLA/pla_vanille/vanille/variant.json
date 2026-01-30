@@ -1,0 +1,8 @@
+{
+  "id": "vanille",
+  "name": "Vanille",
+  "color_hex": "#FFF5B5",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

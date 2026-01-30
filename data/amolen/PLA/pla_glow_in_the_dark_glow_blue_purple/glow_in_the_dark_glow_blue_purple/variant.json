@@ -1,0 +1,10 @@
+{
+  "id": "glow_in_the_dark_glow_blue_purple",
+  "name": "Glow In The Dark Glow Blue Purple",
+  "color_hex": "#AE00FF",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

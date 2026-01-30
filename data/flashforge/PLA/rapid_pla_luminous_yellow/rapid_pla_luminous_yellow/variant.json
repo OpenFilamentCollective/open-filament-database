@@ -1,0 +1,10 @@
+{
+  "id": "rapid_pla_luminous_yellow",
+  "name": "Rapid Pla Luminous Yellow",
+  "color_hex": "#F5E457",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

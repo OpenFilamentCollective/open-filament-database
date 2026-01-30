@@ -1,0 +1,8 @@
+{
+  "id": "electrically_conductive_black",
+  "name": "Electrically Conductive Black",
+  "color_hex": "#000000",
+  "traits": {
+    "conductive": true
+  }
+}

@@ -1,7 +1,8 @@
 {
-    "id": "copymaster",
-    "name": "Copymaster",
-    "website": "https://copymaster3d.com/",
-    "logo": "logo.png",
-    "origin": "Unknown"
+  "id": "copymaster",
+  "name": "Copymaster",
+  "website": "https://copymaster3d.com/",
+  "logo": "logo.png",
+  "origin": "Unknown",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

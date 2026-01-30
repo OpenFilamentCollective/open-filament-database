@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_luminous_pla_rainbow",
+  "name": "Panchroma Luminous Pla Rainbow",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

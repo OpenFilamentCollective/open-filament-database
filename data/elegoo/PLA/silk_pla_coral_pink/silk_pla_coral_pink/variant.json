@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_coral_pink",
+  "name": "Silk Pla Coral Pink",
+  "color_hex": "#FC8397",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

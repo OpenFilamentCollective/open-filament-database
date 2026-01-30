@@ -1,0 +1,9 @@
+{
+  "id": "metalfil_ancient_bronze",
+  "name": "Metalfil Ancient Bronze",
+  "color_hex": "#8C7354",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

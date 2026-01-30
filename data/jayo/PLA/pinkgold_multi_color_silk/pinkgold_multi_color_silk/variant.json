@@ -1,0 +1,10 @@
+{
+  "id": "pinkgold_multi_color_silk",
+  "name": "Pinkgold Multi Color Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

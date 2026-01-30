@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_silk_pla_jadeite_green_chrome",
+  "name": "Panchroma Dual Silk Pla Jadeite Green Chrome",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

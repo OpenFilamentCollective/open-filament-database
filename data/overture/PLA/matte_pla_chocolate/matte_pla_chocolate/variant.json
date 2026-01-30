@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_chocolate",
+  "name": "Matte Pla Chocolate",
+  "color_hex": "#503529",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

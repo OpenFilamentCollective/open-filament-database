@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_mistic_tiger",
+  "name": "Magic Silk Mistic Tiger",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "shiny_glitter_gold_silver",
+  "name": "Shiny Glitter Gold Silver",
+  "color_hex": "#F6C500",
+  "traits": {
+    "glitter": true,
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

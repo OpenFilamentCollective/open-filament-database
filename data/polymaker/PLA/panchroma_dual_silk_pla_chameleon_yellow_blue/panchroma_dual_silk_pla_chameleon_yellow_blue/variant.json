@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_silk_pla_chameleon_yellow_blue",
+  "name": "Panchroma Dual Silk Pla Chameleon Yellow Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

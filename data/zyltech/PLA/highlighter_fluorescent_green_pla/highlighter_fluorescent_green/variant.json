@@ -1,0 +1,9 @@
+{
+  "id": "highlighter_fluorescent_green",
+  "name": "Highlighter Fluorescent Green",
+  "color_hex": "#E4FF33",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

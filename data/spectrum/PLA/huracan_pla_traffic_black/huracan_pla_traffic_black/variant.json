@@ -1,0 +1,9 @@
+{
+  "id": "huracan_pla_traffic_black",
+  "name": "Huracan Pla Traffic Black",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

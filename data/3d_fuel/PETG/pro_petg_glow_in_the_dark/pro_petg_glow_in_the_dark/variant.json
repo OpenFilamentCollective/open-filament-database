@@ -1,0 +1,9 @@
+{
+  "id": "pro_petg_glow_in_the_dark",
+  "name": "Pro Petg Glow In The Dark",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

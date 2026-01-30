@@ -1,0 +1,9 @@
+{
+  "id": "blue_ombr_elixir",
+  "name": "Blue Ombr Elixir",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

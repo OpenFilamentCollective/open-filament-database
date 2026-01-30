@@ -1,0 +1,10 @@
+{
+  "id": "rapid_pla_luminous_red",
+  "name": "Rapid Pla Luminous Red",
+  "color_hex": "#F7A7A1",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

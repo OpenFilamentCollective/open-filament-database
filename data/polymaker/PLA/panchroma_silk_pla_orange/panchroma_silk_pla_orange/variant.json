@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_orange",
+  "name": "Panchroma Silk Pla Orange",
+  "color_hex": "#F97429",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

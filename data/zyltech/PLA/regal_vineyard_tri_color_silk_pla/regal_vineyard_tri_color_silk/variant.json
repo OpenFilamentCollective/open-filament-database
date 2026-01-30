@@ -1,0 +1,10 @@
+{
+  "id": "regal_vineyard_tri_color_silk",
+  "name": "Regal Vineyard Tri Color Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

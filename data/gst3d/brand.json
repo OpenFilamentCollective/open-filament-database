@@ -1,7 +1,8 @@
 {
-    "id": "gst3d",
-    "name": "GST3D",
-    "website": "https://gst3d.eu/",
-    "logo": "logo.png",
-    "origin": "ES"
+  "id": "gst3d",
+  "name": "GST3D",
+  "website": "https://gst3d.eu/",
+  "logo": "logo.png",
+  "origin": "ES",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_two_color_green_purple",
+  "name": "Silk Pla Two Color Green Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

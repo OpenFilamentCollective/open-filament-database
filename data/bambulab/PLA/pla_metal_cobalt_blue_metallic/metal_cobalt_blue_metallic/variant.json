@@ -1,0 +1,9 @@
+{
+  "id": "metal_cobalt_blue_metallic",
+  "name": "Metal Cobalt Blue Metallic",
+  "color_hex": "#436176",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

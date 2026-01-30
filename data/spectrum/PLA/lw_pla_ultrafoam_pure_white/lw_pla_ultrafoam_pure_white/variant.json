@@ -1,0 +1,9 @@
+{
+  "id": "lw_pla_ultrafoam_pure_white",
+  "name": "Lw Pla Ultrafoam Pure White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

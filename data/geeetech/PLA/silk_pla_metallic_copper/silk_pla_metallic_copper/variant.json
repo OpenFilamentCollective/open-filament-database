@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_metallic_copper",
+  "name": "Silk Pla Metallic Copper",
+  "color_hex": "#C66547",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

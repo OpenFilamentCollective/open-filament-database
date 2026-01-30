@@ -1,0 +1,9 @@
+{
+  "id": "fluorescent_green_black_light_reactive",
+  "name": "Fluorescent Green Black Light Reactive",
+  "color_hex": "#9AEE6C",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "petg_tungsten_75",
+  "name": "PETG Tungsten 75%",
+  "density": 4.12,
+  "diameter_tolerance": 0.02,
+  "shore_hardness_d": 79,
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_gold_shiny_red_black",
+  "name": "Silk Gold Shiny Red Black",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

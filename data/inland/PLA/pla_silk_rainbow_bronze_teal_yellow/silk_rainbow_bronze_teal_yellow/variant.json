@@ -1,0 +1,9 @@
+{
+  "id": "silk_rainbow_bronze_teal_yellow",
+  "name": "Silk Rainbow Bronze Teal Yellow",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "silk_mystic_pla_gold_silver_copper",
+  "name": "Silk Mystic Pla Gold Silver Copper",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

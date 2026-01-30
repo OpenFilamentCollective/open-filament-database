@@ -1,0 +1,9 @@
+{
+  "id": "economy_glitter_pla_purple",
+  "name": "Economy Glitter Pla Purple",
+  "color_hex": "#B645A9",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

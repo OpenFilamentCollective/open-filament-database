@@ -1,0 +1,8 @@
+{
+  "id": "dijon_yellow",
+  "name": "Dijon Yellow",
+  "color_hex": "#FFD342",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silk_s_series_blue_red_yellow_green",
+  "name": "Silk S Series Blue Red Yellow Green",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

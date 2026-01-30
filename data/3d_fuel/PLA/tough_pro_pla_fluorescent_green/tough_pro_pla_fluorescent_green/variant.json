@@ -1,0 +1,9 @@
+{
+  "id": "tough_pro_pla_fluorescent_green",
+  "name": "Tough Pro Pla Fluorescent Green",
+  "color_hex": "#62E480",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_goblin",
+  "name": "Magic Silk Goblin",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

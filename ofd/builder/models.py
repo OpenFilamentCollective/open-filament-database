@@ -86,6 +86,7 @@ class Brand:
     website: str
     logo: str
     origin: str  # ISO 3166-1 alpha-2 country code
+    source: Optional[str] = None  # Source where brand data was found
 
 
 @dataclass

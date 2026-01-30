@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_silk_pla_sovereign_gold_purple",
+  "name": "Panchroma Dual Silk Pla Sovereign Gold Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

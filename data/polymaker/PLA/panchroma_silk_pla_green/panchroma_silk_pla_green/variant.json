@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_green",
+  "name": "Panchroma Silk Pla Green",
+  "color_hex": "#26A648",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

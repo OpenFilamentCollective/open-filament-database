@@ -1,0 +1,10 @@
+{
+  "id": "green_glow_in_the_dark_natural",
+  "name": "Green Glow In The Dark Natural",
+  "color_hex": "#0CCF81",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

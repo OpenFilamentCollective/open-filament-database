@@ -1,0 +1,9 @@
+{
+  "id": "matte_dark_brown",
+  "name": "Matte Dark Brown",
+  "color_hex": "#926043",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

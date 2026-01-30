@@ -1,0 +1,10 @@
+{
+  "id": "matte_pla_dual_color_bluerose",
+  "name": "Matte Pla Dual Color Bluerose",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

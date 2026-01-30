@@ -1,0 +1,9 @@
+{
+  "id": "silk_multicolor_pla_blue_green_purple_tri_color",
+  "name": "Silk Multicolor Pla Blue Green Purple Tri Color",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

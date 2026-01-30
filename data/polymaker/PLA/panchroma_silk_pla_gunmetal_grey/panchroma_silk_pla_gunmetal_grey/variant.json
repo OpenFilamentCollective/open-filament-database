@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_silk_pla_gunmetal_grey",
+  "name": "Panchroma Silk Pla Gunmetal Grey",
+  "color_hex": "#828E88",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

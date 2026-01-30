@@ -1,0 +1,10 @@
+{
+  "id": "dual_color_silk_lime_green_to_magenta",
+  "name": "Dual Color Silk Lime Green To Magenta",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true,
+    "industrially_compostable": true
+  }
+}

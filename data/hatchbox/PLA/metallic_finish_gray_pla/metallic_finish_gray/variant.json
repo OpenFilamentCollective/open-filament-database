@@ -1,0 +1,9 @@
+{
+  "id": "metallic_finish_gray",
+  "name": "Metallic Finish Gray",
+  "color_hex": "#ACB1BA",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

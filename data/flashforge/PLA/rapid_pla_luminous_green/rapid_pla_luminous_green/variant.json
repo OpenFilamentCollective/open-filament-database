@@ -1,0 +1,10 @@
+{
+  "id": "rapid_pla_luminous_green",
+  "name": "Rapid Pla Luminous Green",
+  "color_hex": "#83E665",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

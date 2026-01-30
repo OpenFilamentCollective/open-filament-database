@@ -1,0 +1,9 @@
+{
+  "id": "aero_white",
+  "name": "Aero White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "f3_pa_esd",
+  "name": "F3 Pa Esd",
+  "color_hex": "#000000",
+  "traits": {
+    "esd_safe": true
+  }
+}

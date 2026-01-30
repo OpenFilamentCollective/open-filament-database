@@ -1,7 +1,8 @@
 {
-    "id": "prografen",
-    "name": "Prografen",
-    "website": "https://prografen.com/",
-    "logo": "logo.svg",
-    "origin": "PL"
+  "id": "prografen",
+  "name": "Prografen",
+  "website": "https://prografen.com/",
+  "logo": "logo.svg",
+  "origin": "PL",
+  "source": "https://github.com/OpenPrintTag/openprinttag-database"
 }

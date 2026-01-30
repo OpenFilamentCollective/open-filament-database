@@ -1,0 +1,9 @@
+{
+  "id": "matte_mandarin_orange",
+  "name": "Matte Mandarin Orange",
+  "color_hex": "#FF854D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

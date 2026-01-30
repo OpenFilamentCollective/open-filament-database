@@ -1,0 +1,10 @@
+{
+  "id": "panchroma_dual_silk_pla_banquet_gold_magenta",
+  "name": "Panchroma Dual Silk Pla Banquet Gold Magenta",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

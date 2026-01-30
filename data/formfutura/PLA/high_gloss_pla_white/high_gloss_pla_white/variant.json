@@ -1,0 +1,9 @@
+{
+  "id": "high_gloss_pla_white",
+  "name": "High Gloss Pla White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

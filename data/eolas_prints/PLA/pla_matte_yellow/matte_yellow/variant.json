@@ -1,0 +1,8 @@
+{
+  "id": "matte_yellow",
+  "name": "Matte Yellow",
+  "color_hex": "#E2FF4D",
+  "traits": {
+    "matte": true
+  }
+}

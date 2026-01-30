@@ -1,0 +1,8 @@
+{
+  "id": "stonefill_red_brick",
+  "name": "Stonefill Red Brick",
+  "color_hex": "#B47D6C",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

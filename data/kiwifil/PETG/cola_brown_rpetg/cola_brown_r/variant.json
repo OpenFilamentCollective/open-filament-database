@@ -1,0 +1,9 @@
+{
+  "id": "cola_brown_r",
+  "name": "Cola Brown R",
+  "color_hex": "#623412",
+  "traits": {
+    "recycled": true,
+    "translucent": true
+  }
+}

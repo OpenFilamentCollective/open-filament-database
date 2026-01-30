@@ -1,0 +1,9 @@
+{
+  "id": "pet_g_glow_in_the_dark_yellow_green",
+  "name": "Pet G Glow In The Dark Yellow Green",
+  "color_hex": "#4DFF64",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

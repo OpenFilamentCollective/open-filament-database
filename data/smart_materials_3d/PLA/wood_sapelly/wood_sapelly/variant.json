@@ -1,0 +1,8 @@
+{
+  "id": "wood_sapelly",
+  "name": "Wood Sapelly",
+  "color_hex": "#BF4427",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

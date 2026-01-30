@@ -1,0 +1,9 @@
+{
+  "id": "recycled_petg_translucent_honey",
+  "name": "Recycled Petg Translucent Honey",
+  "color_hex": "#FF9A14",
+  "traits": {
+    "recycled": true,
+    "translucent": true
+  }
+}

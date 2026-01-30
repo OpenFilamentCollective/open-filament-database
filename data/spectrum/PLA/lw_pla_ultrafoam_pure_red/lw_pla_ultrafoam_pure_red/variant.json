@@ -1,0 +1,9 @@
+{
+  "id": "lw_pla_ultrafoam_pure_red",
+  "name": "Lw Pla Ultrafoam Pure Red",
+  "color_hex": "#000000",
+  "traits": {
+    "foaming": true,
+    "industrially_compostable": true
+  }
+}

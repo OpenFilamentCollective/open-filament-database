@@ -1,0 +1,8 @@
+{
+  "id": "easy_pla_brick",
+  "name": "Easy Pla Brick",
+  "color_hex": "#BF4427",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

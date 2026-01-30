@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_pastel_mint",
+  "name": "Panchroma Matte Pla Pastel Mint",
+  "color_hex": "#BEC9A5",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

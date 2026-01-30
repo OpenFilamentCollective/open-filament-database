@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_translucent_pla_magenta",
+  "name": "Panchroma Translucent Pla Magenta",
+  "color_hex": "#F2306E",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

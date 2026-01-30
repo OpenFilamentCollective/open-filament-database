@@ -1,0 +1,9 @@
+{
+  "id": "huracan_pla_ola_pink",
+  "name": "Huracan Pla Ola Pink",
+  "color_hex": "#EB0075",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

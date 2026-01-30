@@ -1,0 +1,10 @@
+{
+  "id": "rapid_pla_luminous_melody",
+  "name": "Rapid Pla Luminous Melody",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "glow_in_the_dark_glow_firefly_blue",
+  "name": "Glow In The Dark Glow Firefly Blue",
+  "color_hex": "#0095FF",
+  "traits": {
+    "glow": true,
+    "glitter": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "prusa_orange_transparent",
+  "name": "Prusa Orange Transparent",
+  "color_hex": "#F17231",
+  "traits": {
+    "translucent": true
+  }
+}

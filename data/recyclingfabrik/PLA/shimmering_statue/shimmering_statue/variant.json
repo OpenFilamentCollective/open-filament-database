@@ -1,0 +1,10 @@
+{
+  "id": "shimmering_statue",
+  "name": "Shimmering Statue",
+  "color_hex": "#613B3A",
+  "traits": {
+    "recycled": true,
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

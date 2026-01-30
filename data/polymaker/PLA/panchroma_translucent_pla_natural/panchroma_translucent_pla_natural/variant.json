@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_translucent_pla_natural",
+  "name": "Panchroma Translucent Pla Natural",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "transparent": true,
+    "industrially_compostable": true
+  }
+}

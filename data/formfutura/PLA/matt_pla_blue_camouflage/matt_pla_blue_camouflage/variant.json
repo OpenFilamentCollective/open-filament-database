@@ -1,0 +1,9 @@
+{
+  "id": "matt_pla_blue_camouflage",
+  "name": "Matt Pla Blue Camouflage",
+  "color_hex": "#23668C",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "easyprint_pla_transparent_clear",
+  "name": "Easyprint Pla Transparent Clear",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

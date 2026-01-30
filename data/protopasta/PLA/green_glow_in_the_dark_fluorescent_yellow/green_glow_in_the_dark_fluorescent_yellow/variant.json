@@ -1,0 +1,10 @@
+{
+  "id": "green_glow_in_the_dark_fluorescent_yellow",
+  "name": "Green Glow In The Dark Fluorescent Yellow",
+  "color_hex": "#000000",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

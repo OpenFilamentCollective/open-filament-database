@@ -1,0 +1,9 @@
+{
+  "id": "soft_purple_matte",
+  "name": "Soft Purple Matte",
+  "color_hex": "#A38496",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

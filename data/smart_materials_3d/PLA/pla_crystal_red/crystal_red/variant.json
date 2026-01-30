@@ -1,0 +1,9 @@
+{
+  "id": "crystal_red",
+  "name": "Crystal Red",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

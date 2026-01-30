@@ -1,0 +1,9 @@
+{
+  "id": "standard_pla_fluorescent_orange",
+  "name": "Standard Pla Fluorescent Orange",
+  "color_hex": "#FF8133",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

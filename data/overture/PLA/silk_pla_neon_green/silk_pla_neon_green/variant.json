@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_neon_green",
+  "name": "Silk Pla Neon Green",
+  "color_hex": "#69EE00",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

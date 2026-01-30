@@ -1,0 +1,9 @@
+{
+  "id": "matte_beige",
+  "name": "Matte Beige",
+  "color_hex": "#E6D1BD",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

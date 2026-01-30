@@ -1,0 +1,9 @@
+{
+  "id": "conductive",
+  "name": "Conductive",
+  "color_hex": "#000000",
+  "traits": {
+    "conductive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magicpla_purple_delirium",
+  "name": "Magicpla Purple Delirium",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "iridescent": true
+  }
+}

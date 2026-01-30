@@ -1,0 +1,9 @@
+{
+  "id": "matte_pla_peach_pink",
+  "name": "Matte Pla Peach Pink",
+  "color_hex": "#FFCCCD",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

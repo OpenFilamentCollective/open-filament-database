@@ -1,0 +1,9 @@
+{
+  "id": "standard_pla_fluorescent_green",
+  "name": "Standard Pla Fluorescent Green",
+  "color_hex": "#84D18B",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

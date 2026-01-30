@@ -1,0 +1,9 @@
+{
+  "id": "comet",
+  "name": "Comet",
+  "color_hex": "#567BAC",
+  "traits": {
+    "iridescent": true,
+    "industrially_compostable": true
+  }
+}

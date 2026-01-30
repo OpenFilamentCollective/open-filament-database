@@ -1,0 +1,9 @@
+{
+  "id": "jessie_premium_pla_purple_ice",
+  "name": "Jessie Premium Pla Purple Ice",
+  "color_hex": "#8846AE",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "fluorescent_redhot_pink",
+  "name": "Fluorescent Redhot Pink",
+  "color_hex": "#FC496D",
+  "traits": {
+    "neon": true,
+    "industrially_compostable": true
+  }
+}

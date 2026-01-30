@@ -1,0 +1,9 @@
+{
+  "id": "metal_brass",
+  "name": "Metal Brass",
+  "color_hex": "#998D58",
+  "traits": {
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_storm_shadow",
+  "name": "Magic Silk Storm Shadow",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

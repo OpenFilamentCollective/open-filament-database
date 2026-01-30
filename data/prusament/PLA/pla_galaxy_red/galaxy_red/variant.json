@@ -1,0 +1,9 @@
+{
+  "id": "galaxy_red",
+  "name": "Galaxy Red",
+  "color_hex": "#BF1D2D",
+  "traits": {
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

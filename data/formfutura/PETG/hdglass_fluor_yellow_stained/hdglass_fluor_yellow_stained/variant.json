@@ -1,0 +1,9 @@
+{
+  "id": "hdglass_fluor_yellow_stained",
+  "name": "Hdglass Fluor Yellow Stained",
+  "color_hex": "#C6F666",
+  "traits": {
+    "silk": true,
+    "translucent": true
+  }
+}

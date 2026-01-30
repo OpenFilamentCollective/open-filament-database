@@ -1,0 +1,10 @@
+{
+  "id": "blue_glow_in_the_dark_mh_build_series",
+  "name": "Blue Glow In The Dark Mh Build Series",
+  "color_hex": "#82E3EC",
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

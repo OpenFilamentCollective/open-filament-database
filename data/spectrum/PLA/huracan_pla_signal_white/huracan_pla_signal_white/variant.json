@@ -1,0 +1,9 @@
+{
+  "id": "huracan_pla_signal_white",
+  "name": "Huracan Pla Signal White",
+  "color_hex": "#E3DFD9",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

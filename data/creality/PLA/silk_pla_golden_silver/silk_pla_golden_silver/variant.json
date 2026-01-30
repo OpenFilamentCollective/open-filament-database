@@ -1,0 +1,10 @@
+{
+  "id": "silk_pla_golden_silver",
+  "name": "Silk Pla Golden Silver",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

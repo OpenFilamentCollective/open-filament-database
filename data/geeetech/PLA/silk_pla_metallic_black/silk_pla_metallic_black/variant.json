@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_metallic_black",
+  "name": "Silk Pla Metallic Black",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

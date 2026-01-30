@@ -1,0 +1,9 @@
+{
+  "id": "panchroma_matte_pla_army_purple",
+  "name": "Panchroma Matte Pla Army Purple",
+  "color_hex": "#3F3956",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

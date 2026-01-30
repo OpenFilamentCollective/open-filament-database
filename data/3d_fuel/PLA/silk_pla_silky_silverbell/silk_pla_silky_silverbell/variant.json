@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_silky_silverbell",
+  "name": "Silk Pla Silky Silverbell",
+  "color_hex": "#ECEFED",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magic_pla_gold_violet",
+  "name": "Magic Pla Gold Violet",
+  "color_hex": "#000000",
+  "traits": {
+    "coextruded": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "magic_silk_pla_royal_harvest_gold_copper_purple",
+  "name": "Magic Silk Pla Royal Harvest Gold Copper Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "estars_pla_luminous_shiny_galaxy_black",
+  "name": "Estars Pla Luminous Shiny Galaxy Black",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true,
+    "glow": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

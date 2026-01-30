@@ -1,0 +1,8 @@
+{
+  "id": "wood_pla_composite",
+  "name": "Wood Pla Composite",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

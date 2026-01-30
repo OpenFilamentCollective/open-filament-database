@@ -1,0 +1,10 @@
+{
+  "id": "lucky_clover_tri_color_silk",
+  "name": "Lucky Clover Tri Color Silk",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

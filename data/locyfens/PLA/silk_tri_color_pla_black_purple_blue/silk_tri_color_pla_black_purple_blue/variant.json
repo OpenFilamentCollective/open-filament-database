@@ -1,0 +1,10 @@
+{
+  "id": "silk_tri_color_pla_black_purple_blue",
+  "name": "Silk Tri Color Pla Black Purple Blue",
+  "color_hex": "#000000",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

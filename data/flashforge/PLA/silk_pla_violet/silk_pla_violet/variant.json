@@ -1,0 +1,9 @@
+{
+  "id": "silk_pla_violet",
+  "name": "Silk Pla Violet",
+  "color_hex": "#5C50E0",
+  "traits": {
+    "silk": true,
+    "industrially_compostable": true
+  }
+}

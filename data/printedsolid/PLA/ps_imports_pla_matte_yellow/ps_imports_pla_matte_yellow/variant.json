@@ -1,0 +1,9 @@
+{
+  "id": "ps_imports_pla_matte_yellow",
+  "name": "Ps Imports Pla Matte Yellow",
+  "color_hex": "#EA9E3F",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

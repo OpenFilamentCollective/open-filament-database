@@ -1,0 +1,9 @@
+{
+  "id": "economy_pla_natural_transparent",
+  "name": "Economy Pla Natural Transparent",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "transparent": true,
+    "industrially_compostable": true
+  }
+}

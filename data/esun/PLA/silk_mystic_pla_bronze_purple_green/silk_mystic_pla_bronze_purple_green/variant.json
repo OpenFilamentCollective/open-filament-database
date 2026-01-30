@@ -1,0 +1,11 @@
+{
+  "id": "silk_mystic_pla_bronze_purple_green",
+  "name": "Silk Mystic Pla Bronze Purple Green",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "silk": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

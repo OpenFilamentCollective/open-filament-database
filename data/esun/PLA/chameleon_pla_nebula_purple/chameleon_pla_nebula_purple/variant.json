@@ -1,0 +1,10 @@
+{
+  "id": "chameleon_pla_nebula_purple",
+  "name": "Chameleon Pla Nebula Purple",
+  "color_hex": "#000000",
+  "traits": {
+    "iridescent": true,
+    "glitter": true,
+    "industrially_compostable": true
+  }
+}

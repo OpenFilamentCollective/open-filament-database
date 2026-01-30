@@ -1,0 +1,10 @@
+{
+  "id": "carbon_fiber_pla_purple",
+  "name": "Carbon Fiber Pla Purple",
+  "color_hex": "#2F2936",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "industrially_compostable": true
+  }
+}

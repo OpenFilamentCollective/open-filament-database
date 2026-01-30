@@ -1,0 +1,9 @@
+{
+  "id": "glacier_blue",
+  "name": "Glacier Blue",
+  "color_hex": "#005DA4",
+  "traits": {
+    "industrially_compostable": true,
+    "translucent": true
+  }
+}

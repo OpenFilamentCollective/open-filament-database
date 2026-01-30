@@ -1,0 +1,9 @@
+{
+  "id": "schwarz_matt",
+  "name": "Schwarz Matt",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}
