@@ -20,10 +20,12 @@ Example:
             return ScriptResult(success=True, message="Done!")
 """
 
-# Import all scripts to register them
-from . import style_data
-from . import load_profiles
-from . import export_data
-from . import import_openprinttag
+import importlib
+import pkgutil
 
-__all__ = ['style_data', 'load_profiles', 'export_data', 'import_openprinttag']
+# Automatically import all modules in this package to register scripts
+__all__ = []
+for importer, modname, ispkg in pkgutil.iter_modules(__path__):
+    if not ispkg:
+        importlib.import_module(f'.{modname}', __package__)
+        __all__.append(modname)
