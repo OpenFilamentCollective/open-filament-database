@@ -27,7 +27,7 @@
 		"eslint-config-prettier": "^10.1.2",
 		"json-schema-to-zod": "^2.6.1",
 		"sharp": "^0.34.3",
-		"sv-tooltip": "^0.2.5",
+		"sv-tooltip": "^0.2.3",
 		"svelte": "^5.20.2",
 		"svelte-check": "^4.0.0",
 		"sveltekit-flash-message": "^2.4.6",
