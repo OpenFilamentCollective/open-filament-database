@@ -3,7 +3,7 @@
   "name": "Pink Star Stuff",
   "color_hex": "#FF00A2",
   "traits": {
-    "glitter": true,
-    "translucent": true
+    "translucent": true,
+    "glitter": true
   }
 }

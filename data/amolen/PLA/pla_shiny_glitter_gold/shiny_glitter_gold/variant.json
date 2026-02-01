@@ -3,8 +3,8 @@
   "name": "Shiny Glitter Gold",
   "color_hex": "#F6C500",
   "traits": {
-    "glitter": true,
+    "industrially_compostable": true,
     "silk": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

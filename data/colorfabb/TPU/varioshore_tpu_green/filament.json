@@ -1,6 +1,6 @@
 {
   "id": "varioshore_tpu_green",
   "name": "varioShore TPU Green",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

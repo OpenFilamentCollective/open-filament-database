@@ -3,7 +3,7 @@
   "name": "Double Espresso Metallic Brown Ht",
   "color_hex": "#724E3D",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

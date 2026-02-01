@@ -3,7 +3,7 @@
   "name": "Cf Sailor Blue",
   "color_hex": "#4D6383",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

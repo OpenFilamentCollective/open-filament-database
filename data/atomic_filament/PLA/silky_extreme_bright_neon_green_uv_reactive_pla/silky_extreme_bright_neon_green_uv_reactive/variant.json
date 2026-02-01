@@ -3,8 +3,8 @@
   "name": "Silky Extreme Bright Neon Green Uv Reactive",
   "color_hex": "#9FEC41",
   "traits": {
+    "industrially_compostable": true,
     "silk": true,
-    "neon": true,
-    "industrially_compostable": true
+    "neon": true
   }
 }

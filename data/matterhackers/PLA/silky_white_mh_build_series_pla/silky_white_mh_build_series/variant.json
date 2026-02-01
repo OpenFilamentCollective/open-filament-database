@@ -3,7 +3,7 @@
   "name": "Silky White Mh Build Series",
   "color_hex": "#FFFFFF",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

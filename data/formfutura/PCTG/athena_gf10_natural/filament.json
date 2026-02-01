@@ -1,6 +1,6 @@
 {
   "id": "athena_gf10_natural",
   "name": "Athena GF10 Natural",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -3,7 +3,7 @@
   "name": "Silk Dual Color Black Silver",
   "color_hex": "#000000",
   "traits": {
-    "coextruded": true,
-    "silk": true
+    "silk": true,
+    "coextruded": true
   }
 }

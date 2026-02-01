@@ -3,7 +3,7 @@
   "name": "Fleck N Fire Red Glitter Ht",
   "color_hex": "#D32E1A",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

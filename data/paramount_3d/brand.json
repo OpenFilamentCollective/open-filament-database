@@ -1,8 +1,8 @@
 {
   "id": "paramount_3d",
-  "name": "Paramount 3D",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "Paramount 3D",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "paramount3d.com"
 }

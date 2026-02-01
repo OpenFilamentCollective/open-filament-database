@@ -1,7 +1,7 @@
 {
   "id": "flexifil_tpc_40d_white",
   "name": "FlexiFil TPC 40D White",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_d": 40
 }

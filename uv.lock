@@ -328,7 +328,7 @@ requires-dist = [
     { name = "pillow", specifier = ">=11.0.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0.0" },
-    { name = "pyyaml", specifier = ">=6.0.3" },
+    { name = "pyyaml", specifier = ">=6.0.0" },
     { name = "referencing", specifier = ">=0.30.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1.0" },
 ]

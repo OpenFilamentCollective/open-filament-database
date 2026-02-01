@@ -1,6 +1,6 @@
 {
   "id": "ecopla_cmyk_cyan",
   "name": "ecoPLA CMYK Cyan",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

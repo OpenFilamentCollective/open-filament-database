@@ -4,7 +4,7 @@
   "color_hex": "#0E21AE",
   "traits": {
     "glow": true,
-    "transparent": true,
-    "abrasive": true
+    "abrasive": true,
+    "transparent": true
   }
 }

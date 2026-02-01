@@ -3,7 +3,7 @@
   "name": "Silk Pla Silky Vine Leaf Green",
   "color_hex": "#67D8BC",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

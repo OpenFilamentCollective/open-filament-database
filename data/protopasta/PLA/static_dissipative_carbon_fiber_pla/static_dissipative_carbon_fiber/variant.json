@@ -3,8 +3,8 @@
   "name": "Static Dissipative Carbon Fiber",
   "color_hex": "#000000",
   "traits": {
-    "esd_safe": true,
+    "industrially_compostable": true,
     "abrasive": true,
-    "industrially_compostable": true
+    "esd_safe": true
   }
 }

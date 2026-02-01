@@ -1,6 +1,6 @@
 {
   "id": "digilab_petg_tra_01_translucent",
   "name": "DigiLab PETG-TRA-01 Translucent",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -1,8 +1,8 @@
 {
   "id": "3d_fuel",
-  "name": "3D Fuel",
-  "website": "",
   "logo": "logo.png",
+  "name": "3D Fuel",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "3dfuel.com"
 }

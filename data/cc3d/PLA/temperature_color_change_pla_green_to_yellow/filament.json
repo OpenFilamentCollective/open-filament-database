@@ -1,6 +1,6 @@
 {
   "id": "temperature_color_change_pla_green_to_yellow",
   "name": "Temperature Color Change PLA Green to Yellow",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

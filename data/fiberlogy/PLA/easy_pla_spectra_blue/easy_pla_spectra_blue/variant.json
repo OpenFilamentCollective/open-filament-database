@@ -3,7 +3,7 @@
   "name": "Easy Pla Spectra Blue",
   "color_hex": "#23668C",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

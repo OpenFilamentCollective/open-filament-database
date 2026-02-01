@@ -3,7 +3,7 @@
   "name": "Fluorescent Yellow",
   "color_hex": "#E4FF33",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

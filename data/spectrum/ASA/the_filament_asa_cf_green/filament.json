@@ -1,6 +1,6 @@
 {
   "id": "the_filament_asa_cf_green",
   "name": "The Filament ASA CF Green",
-  "density": 1.12,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.12
 }

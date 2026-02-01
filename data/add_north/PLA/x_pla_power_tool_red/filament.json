@@ -1,6 +1,6 @@
 {
   "id": "x_pla_power_tool_red",
   "name": "X-PLA Power Tool Red",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

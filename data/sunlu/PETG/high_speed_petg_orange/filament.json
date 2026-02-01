@@ -1,6 +1,6 @@
 {
   "id": "high_speed_petg_orange",
   "name": "High Speed PETG Orange",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

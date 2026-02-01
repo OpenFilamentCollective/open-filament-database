@@ -3,7 +3,7 @@
   "name": "Galaxy Blue",
   "color_hex": "#183681",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

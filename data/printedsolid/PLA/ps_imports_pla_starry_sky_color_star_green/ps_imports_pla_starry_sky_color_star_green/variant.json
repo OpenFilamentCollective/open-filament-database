@@ -3,8 +3,8 @@
   "name": "Ps Imports Pla Starry Sky Color Star Green",
   "color_hex": "#3D9441",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

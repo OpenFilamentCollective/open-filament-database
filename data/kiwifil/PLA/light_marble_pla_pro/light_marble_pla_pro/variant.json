@@ -3,7 +3,7 @@
   "name": "Light Marble Pla Pro",
   "color_hex": "#ECEFED",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

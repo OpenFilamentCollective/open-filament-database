@@ -1,6 +1,6 @@
 {
   "id": "abs_color_change_purple_to_pink_heat_activated",
   "name": "ABS Color Change Purple to Pink (Heat Activated)",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

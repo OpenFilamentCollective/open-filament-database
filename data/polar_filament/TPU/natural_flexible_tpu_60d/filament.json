@@ -1,6 +1,6 @@
 {
   "id": "natural_flexible_tpu_60d",
   "name": "Natural Flexible TPU-60D",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

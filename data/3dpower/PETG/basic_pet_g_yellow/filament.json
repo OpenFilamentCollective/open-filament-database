@@ -1,6 +1,6 @@
 {
   "id": "basic_pet_g_yellow",
   "name": "Basic PET-G Yellow",
-  "density": 1.27,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

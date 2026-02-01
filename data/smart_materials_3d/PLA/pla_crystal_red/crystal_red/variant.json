@@ -3,7 +3,7 @@
   "name": "Crystal Red",
   "color_hex": "#E72F1D",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Purple Af Silk",
   "color_hex": "#CE92CE",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

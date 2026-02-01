@@ -1,8 +1,8 @@
 {
   "id": "nobufil",
-  "name": "Nobufil",
-  "website": "",
   "logo": "logo.png",
+  "name": "Nobufil",
   "origin": "AT",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "nobufil.com"
 }

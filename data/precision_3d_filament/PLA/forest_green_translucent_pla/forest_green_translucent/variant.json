@@ -3,7 +3,7 @@
   "name": "Forest Green Translucent",
   "color_hex": "#34695A",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

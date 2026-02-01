@@ -3,7 +3,7 @@
   "name": "Uvht C15",
   "color_hex": "#2A3940",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

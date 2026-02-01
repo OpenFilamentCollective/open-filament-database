@@ -3,7 +3,7 @@
   "name": "Kratir Pp Cf",
   "color_hex": "#000000",
   "traits": {
-    "esd_safe": true,
-    "abrasive": true
+    "abrasive": true,
+    "esd_safe": true
   }
 }

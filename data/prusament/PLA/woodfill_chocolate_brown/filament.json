@@ -1,8 +1,8 @@
 {
   "id": "woodfill_chocolate_brown",
   "name": "Woodfill Chocolate Brown",
-  "density": 1.16,
   "diameter_tolerance": 0.02,
+  "density": 1.16,
   "shore_hardness_d": 67,
   "min_print_temperature": 185,
   "max_print_temperature": 205,

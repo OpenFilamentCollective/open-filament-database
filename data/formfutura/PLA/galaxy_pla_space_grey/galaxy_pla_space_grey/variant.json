@@ -3,7 +3,7 @@
   "name": "Galaxy Pla Space Grey",
   "color_hex": "#76797D",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

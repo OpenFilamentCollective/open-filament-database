@@ -3,7 +3,7 @@
   "name": "Huracan Pla Lion Orange",
   "color_hex": "#FA8423",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Seafoam",
   "color_hex": "#00B4BC",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

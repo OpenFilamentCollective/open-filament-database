@@ -3,7 +3,7 @@
   "name": "Cloverleaf Metallic Green Ht",
   "color_hex": "#1E5A4F",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

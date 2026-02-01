@@ -3,7 +3,7 @@
   "name": "Mattepla Neon Orange",
   "color_hex": "#FF7A33",
   "traits": {
-    "neon": true,
-    "matte": true
+    "matte": true,
+    "neon": true
   }
 }

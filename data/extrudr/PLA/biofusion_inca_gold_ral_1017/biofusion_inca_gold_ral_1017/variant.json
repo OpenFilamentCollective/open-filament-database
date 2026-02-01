@@ -3,7 +3,7 @@
   "name": "Biofusion Inca Gold Ral 1017",
   "color_hex": "#F6C500",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

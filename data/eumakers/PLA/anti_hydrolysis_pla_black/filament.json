@@ -1,6 +1,6 @@
 {
   "id": "anti_hydrolysis_pla_black",
   "name": "ANTI HYDROLYSIS PLA Black",
-  "density": 1.3,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.3
 }

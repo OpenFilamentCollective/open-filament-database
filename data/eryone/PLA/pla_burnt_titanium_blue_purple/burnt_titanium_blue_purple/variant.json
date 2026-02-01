@@ -3,7 +3,7 @@
   "name": "Burnt Titanium Blue Purple",
   "color_hex": "#003287",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

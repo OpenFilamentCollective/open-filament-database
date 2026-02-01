@@ -3,7 +3,7 @@
   "name": "Polylite Metallic Pla Pro Silver",
   "color_hex": "#A8B0BD",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

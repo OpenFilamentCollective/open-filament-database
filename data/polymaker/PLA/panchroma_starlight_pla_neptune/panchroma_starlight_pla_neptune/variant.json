@@ -3,7 +3,7 @@
   "name": "Panchroma Starlight Pla Neptune",
   "color_hex": "#2D889E",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

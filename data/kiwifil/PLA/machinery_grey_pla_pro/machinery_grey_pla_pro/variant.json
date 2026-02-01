@@ -3,7 +3,7 @@
   "name": "Machinery Grey Pla Pro",
   "color_hex": "#697272",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

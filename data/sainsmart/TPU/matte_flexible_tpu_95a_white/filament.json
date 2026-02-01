@@ -1,7 +1,7 @@
 {
   "id": "matte_flexible_tpu_95a_white",
   "name": "Matte Flexible TPU 95A White",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 95
 }

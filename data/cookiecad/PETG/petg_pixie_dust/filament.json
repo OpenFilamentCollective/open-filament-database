@@ -1,6 +1,6 @@
 {
   "id": "petg_pixie_dust",
   "name": "PETG Pixie Dust",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

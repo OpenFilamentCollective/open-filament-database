@@ -1,6 +1,6 @@
 {
   "id": "the_filament_pla_silver_aluminium",
   "name": "The Filament PLA Silver Aluminium",
-  "density": 1.22,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.22
 }

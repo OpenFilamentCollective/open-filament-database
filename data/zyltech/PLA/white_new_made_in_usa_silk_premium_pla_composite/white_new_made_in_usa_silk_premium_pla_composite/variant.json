@@ -3,7 +3,7 @@
   "name": "White New Made In Usa Silk Premium Pla Composite",
   "color_hex": "#FFFFFF",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

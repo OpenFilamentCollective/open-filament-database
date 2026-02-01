@@ -3,7 +3,7 @@
   "name": "Translucent Neon Yellow Petg Pro Uv Reactive",
   "color_hex": "#E4FF33",
   "traits": {
-    "neon": true,
-    "translucent": true
+    "translucent": true,
+    "neon": true
   }
 }

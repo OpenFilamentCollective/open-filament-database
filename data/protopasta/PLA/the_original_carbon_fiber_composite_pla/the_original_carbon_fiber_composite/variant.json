@@ -3,7 +3,7 @@
   "name": "The Original Carbon Fiber Composite",
   "color_hex": "#000000",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

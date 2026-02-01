@@ -1,8 +1,8 @@
 {
   "id": "push_plastic",
-  "name": "Push Plastic",
-  "website": "",
   "logo": "logo.png",
+  "name": "Push Plastic",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "pushplastic.com"
 }

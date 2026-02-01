@@ -1,6 +1,6 @@
 {
   "id": "basic_pet_g_flame_red",
   "name": "Basic PET-G Flame Red",
-  "density": 1.27,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

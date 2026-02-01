@@ -1,7 +1,7 @@
 {
   "id": "tpu_for_ams_blue",
   "name": "TPU for AMS Blue",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_d": 68
 }

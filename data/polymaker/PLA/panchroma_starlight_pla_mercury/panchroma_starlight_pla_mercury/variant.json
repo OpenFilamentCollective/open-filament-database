@@ -3,8 +3,8 @@
   "name": "Panchroma Starlight Pla Mercury",
   "color_hex": "#000000",
   "traits": {
-    "glitter": true,
     "industrially_compostable": true,
-    "iridescent": true
+    "iridescent": true,
+    "glitter": true
   }
 }

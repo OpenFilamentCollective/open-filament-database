@@ -1,8 +1,8 @@
 {
   "id": "petg_magnetite_40_grey",
   "name": "PETG Magnetite 40% Grey",
-  "density": 1.82,
   "diameter_tolerance": 0.02,
+  "density": 1.82,
   "shore_hardness_d": 82,
   "min_print_temperature": 260,
   "max_print_temperature": 280,

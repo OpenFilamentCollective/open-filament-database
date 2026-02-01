@@ -3,8 +3,8 @@
   "name": "Galactic Purple Translucent Iridescent",
   "color_hex": "#A2918D",
   "traits": {
-    "industrially_compostable": true,
     "translucent": true,
+    "industrially_compostable": true,
     "iridescent": true
   }
 }

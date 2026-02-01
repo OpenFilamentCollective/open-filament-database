@@ -3,8 +3,8 @@
   "name": "Stardust Silver Glitter Ht",
   "color_hex": "#C9D0D4",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

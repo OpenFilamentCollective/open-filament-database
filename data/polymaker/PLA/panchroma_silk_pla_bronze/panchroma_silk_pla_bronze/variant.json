@@ -3,7 +3,7 @@
   "name": "Panchroma Silk Pla Bronze",
   "color_hex": "#B5522B",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

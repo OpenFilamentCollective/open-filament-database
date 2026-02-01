@@ -3,7 +3,7 @@
   "name": "Frost White Plasilk",
   "color_hex": "#F0EBE5",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

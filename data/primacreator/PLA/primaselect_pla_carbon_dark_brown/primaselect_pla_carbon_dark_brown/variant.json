@@ -3,7 +3,7 @@
   "name": "Primaselect Pla Carbon Dark Brown",
   "color_hex": "#6E4325",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

@@ -1,6 +1,6 @@
 {
   "id": "pla_extrafill_chocolate_brown",
   "name": "PLA Extrafill \"Chocolate Brown\"",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

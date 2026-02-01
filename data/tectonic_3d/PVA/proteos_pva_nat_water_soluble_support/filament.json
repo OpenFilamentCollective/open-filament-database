@@ -1,6 +1,6 @@
 {
   "id": "proteos_pva_nat_water_soluble_support",
   "name": "PROTEOS PVA Nat - Water Soluble Support",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

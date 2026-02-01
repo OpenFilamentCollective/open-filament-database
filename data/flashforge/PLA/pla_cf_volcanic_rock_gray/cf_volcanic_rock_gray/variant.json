@@ -3,7 +3,7 @@
   "name": "Cf Volcanic Rock Gray",
   "color_hex": "#26272B",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

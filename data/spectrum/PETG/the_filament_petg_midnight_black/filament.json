@@ -1,6 +1,6 @@
 {
   "id": "the_filament_petg_midnight_black",
   "name": "The Filament PETG Midnight Black",
-  "density": 1.27,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

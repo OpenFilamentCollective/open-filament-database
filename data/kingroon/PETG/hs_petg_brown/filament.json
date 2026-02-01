@@ -1,6 +1,6 @@
 {
   "id": "hs_petg_brown",
   "name": "HS-PETG Brown",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

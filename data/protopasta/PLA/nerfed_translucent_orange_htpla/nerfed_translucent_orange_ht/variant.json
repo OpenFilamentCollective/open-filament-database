@@ -3,7 +3,7 @@
   "name": "Nerfed Translucent Orange Ht",
   "color_hex": "#FF9A14",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

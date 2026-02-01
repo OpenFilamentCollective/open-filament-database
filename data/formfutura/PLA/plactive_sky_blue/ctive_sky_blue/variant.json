@@ -3,8 +3,8 @@
   "name": "Ctive Sky Blue",
   "color_hex": "#0378D0",
   "traits": {
+    "industrially_compostable": true,
     "antibacterial": true,
-    "abrasive": true,
-    "industrially_compostable": true
+    "abrasive": true
   }
 }

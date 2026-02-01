@@ -1,8 +1,8 @@
 {
   "id": "colorfabb",
-  "name": "colorFabb",
-  "website": "",
   "logo": "logo.png",
+  "name": "colorFabb",
   "origin": "NL",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "colorfabb.com"
 }

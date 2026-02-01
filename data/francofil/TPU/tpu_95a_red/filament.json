@@ -1,7 +1,7 @@
 {
   "id": "tpu_95a_red",
   "name": "TPU 95A Red",
-  "density": 1.21,
   "diameter_tolerance": 0.02,
+  "density": 1.21,
   "shore_hardness_a": 95
 }

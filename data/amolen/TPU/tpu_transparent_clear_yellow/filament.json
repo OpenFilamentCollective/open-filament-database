@@ -1,7 +1,7 @@
 {
   "id": "tpu_transparent_clear_yellow",
   "name": "TPU Transparent Clear Yellow",
-  "density": 1.18,
   "diameter_tolerance": 0.02,
+  "density": 1.18,
   "shore_hardness_a": 95
 }

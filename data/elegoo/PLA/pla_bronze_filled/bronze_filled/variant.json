@@ -3,7 +3,7 @@
   "name": "Bronze Filled",
   "color_hex": "#A8865C",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

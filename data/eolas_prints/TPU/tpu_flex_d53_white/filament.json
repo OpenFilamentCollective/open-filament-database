@@ -1,7 +1,7 @@
 {
   "id": "tpu_flex_d53_white",
   "name": "TPU Flex D53 White",
-  "density": 1.17,
   "diameter_tolerance": 0.02,
+  "density": 1.17,
   "shore_hardness_d": 53
 }

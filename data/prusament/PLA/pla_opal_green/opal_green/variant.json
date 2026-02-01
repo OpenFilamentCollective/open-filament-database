@@ -3,7 +3,7 @@
   "name": "Opal Green",
   "color_hex": "#065B4A",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

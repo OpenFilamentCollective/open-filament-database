@@ -1,7 +1,7 @@
 {
   "id": "peba_90a_flexible_brown",
   "name": "PEBA 90A Flexible Brown",
-  "density": 1.01,
   "diameter_tolerance": 0.02,
+  "density": 1.01,
   "shore_hardness_a": 90
 }

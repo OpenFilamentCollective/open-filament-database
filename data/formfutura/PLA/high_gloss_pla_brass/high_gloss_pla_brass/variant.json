@@ -3,7 +3,7 @@
   "name": "High Gloss Pla Brass",
   "color_hex": "#998D58",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

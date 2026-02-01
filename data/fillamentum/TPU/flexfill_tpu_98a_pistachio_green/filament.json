@@ -1,7 +1,7 @@
 {
   "id": "flexfill_tpu_98a_pistachio_green",
   "name": "Flexfill TPU 98A \"Pistachio Green\"",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 98
 }

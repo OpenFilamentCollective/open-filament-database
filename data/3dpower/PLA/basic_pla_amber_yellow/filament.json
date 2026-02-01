@@ -1,6 +1,6 @@
 {
   "id": "basic_pla_amber_yellow",
   "name": "Basic PLA Amber Yellow",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

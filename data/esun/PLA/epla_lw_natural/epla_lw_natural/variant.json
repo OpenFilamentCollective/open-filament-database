@@ -3,7 +3,7 @@
   "name": "Epla Lw Natural",
   "color_hex": "#F2EFE9",
   "traits": {
-    "foaming": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "foaming": true
   }
 }

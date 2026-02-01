@@ -3,7 +3,7 @@
   "name": "Galaxy Pla Ruby Red",
   "color_hex": "#AD4E38",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

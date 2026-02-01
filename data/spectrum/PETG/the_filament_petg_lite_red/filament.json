@@ -1,6 +1,6 @@
 {
   "id": "the_filament_petg_lite_red",
   "name": "The Filament PETG Lite Red",
-  "density": 1.29,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.29
 }

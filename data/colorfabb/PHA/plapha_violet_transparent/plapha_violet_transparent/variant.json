@@ -3,7 +3,7 @@
   "name": "Plapha Violet Transparent",
   "color_hex": "#CE0058",
   "traits": {
-    "home_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "home_compostable": true
   }
 }

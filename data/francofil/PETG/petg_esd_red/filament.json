@@ -1,6 +1,6 @@
 {
   "id": "petg_esd_red",
   "name": "PETG ESD Red",
-  "density": 1.3,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.3
 }

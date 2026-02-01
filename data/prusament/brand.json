@@ -1,8 +1,8 @@
 {
   "id": "prusament",
-  "name": "Prusament",
-  "website": "",
   "logo": "logo.png",
+  "name": "Prusament",
   "origin": "CZ",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "prusament.com"
 }

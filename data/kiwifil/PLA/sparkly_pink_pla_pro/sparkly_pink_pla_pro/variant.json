@@ -3,8 +3,8 @@
   "name": "Sparkly Pink Pla Pro",
   "color_hex": "#FF72B6",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

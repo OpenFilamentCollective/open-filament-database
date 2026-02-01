@@ -3,8 +3,8 @@
   "name": "Translucent Blue Pla Pro",
   "color_hex": "#0353BA",
   "traits": {
-    "silk": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "silk": true
   }
 }

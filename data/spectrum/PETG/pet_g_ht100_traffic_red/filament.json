@@ -1,6 +1,6 @@
 {
   "id": "pet_g_ht100_traffic_red",
   "name": "PET-G HT100™ Traffic Red",
-  "density": 1.18,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.18
 }

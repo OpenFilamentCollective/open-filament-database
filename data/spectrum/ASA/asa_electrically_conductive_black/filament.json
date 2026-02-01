@@ -1,6 +1,6 @@
 {
   "id": "asa_electrically_conductive_black",
   "name": "ASA Electrically Conductive Black",
-  "density": 1.17,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.17
 }

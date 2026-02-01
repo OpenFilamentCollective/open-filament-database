@@ -1,6 +1,6 @@
 {
   "id": "f3_pa_esd",
   "name": "F3 PA ESD",
-  "density": 1.2,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.2
 }

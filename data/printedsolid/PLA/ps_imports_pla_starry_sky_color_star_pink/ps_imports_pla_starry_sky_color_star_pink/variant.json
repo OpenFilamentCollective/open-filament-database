@@ -3,8 +3,8 @@
   "name": "Ps Imports Pla Starry Sky Color Star Pink",
   "color_hex": "#C63DBA",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

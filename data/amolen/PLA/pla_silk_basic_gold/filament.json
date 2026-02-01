@@ -1,6 +1,6 @@
 {
   "id": "pla_silk_basic_gold",
   "name": "PLA Silk Basic Gold",
-  "density": 1.27,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

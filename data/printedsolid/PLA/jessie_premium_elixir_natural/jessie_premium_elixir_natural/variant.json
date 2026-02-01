@@ -3,7 +3,7 @@
   "name": "Jessie Premium Elixir Natural",
   "color_hex": "#DFDFD3",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

@@ -1,8 +1,8 @@
 {
   "id": "anasa_tpc_l80a_34d_black",
   "name": "ANASA TPC L80A (34D) Black",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
-  "shore_hardness_d": 34,
-  "shore_hardness_a": 80
+  "density": 1.24,
+  "shore_hardness_a": 80,
+  "shore_hardness_d": 34
 }

@@ -3,8 +3,8 @@
   "name": "Witchcraft",
   "color_hex": "#AE00FF",
   "traits": {
+    "industrially_compostable": true,
     "silk": true,
-    "iridescent": true,
-    "industrially_compostable": true
+    "iridescent": true
   }
 }

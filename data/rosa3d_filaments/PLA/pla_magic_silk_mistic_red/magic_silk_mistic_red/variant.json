@@ -3,7 +3,7 @@
   "name": "Magic Silk Mistic Red",
   "color_hex": "#000000",
   "traits": {
-    "coextruded": true,
-    "silk": true
+    "silk": true,
+    "coextruded": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Fluorescent Blue",
   "color_hex": "#386DFF",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

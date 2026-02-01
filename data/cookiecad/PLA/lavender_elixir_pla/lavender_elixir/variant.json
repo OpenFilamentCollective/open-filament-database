@@ -3,7 +3,7 @@
   "name": "Lavender Elixir",
   "color_hex": "#F19DCD",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

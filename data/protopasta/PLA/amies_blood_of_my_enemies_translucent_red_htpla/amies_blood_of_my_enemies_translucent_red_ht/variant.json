@@ -3,7 +3,7 @@
   "name": "Amies Blood Of My Enemies Translucent Red Ht",
   "color_hex": "#AD0028",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

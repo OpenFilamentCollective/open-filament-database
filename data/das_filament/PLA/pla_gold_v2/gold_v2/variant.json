@@ -3,7 +3,7 @@
   "name": "Gold V2",
   "color_hex": "#AF7D00",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Cf Matcha Green",
   "color_hex": "#363C32",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

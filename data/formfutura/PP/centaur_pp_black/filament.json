@@ -1,6 +1,6 @@
 {
   "id": "centaur_pp_black",
   "name": "Centaur PP Black",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

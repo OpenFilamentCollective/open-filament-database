@@ -3,8 +3,8 @@
   "name": "Blue Pearl",
   "color_hex": "#EFEFEF",
   "traits": {
-    "neon": true,
+    "industrially_compostable": true,
     "iridescent": true,
-    "industrially_compostable": true
+    "neon": true
   }
 }

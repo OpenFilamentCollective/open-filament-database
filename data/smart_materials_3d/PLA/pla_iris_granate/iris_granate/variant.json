@@ -3,7 +3,7 @@
   "name": "Iris Granate",
   "color_hex": "#5D4546",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

@@ -3,8 +3,8 @@
   "name": "Stratocumulus Multicolor Ht",
   "color_hex": "#000000",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

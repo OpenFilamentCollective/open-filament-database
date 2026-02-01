@@ -3,7 +3,7 @@
   "name": "Yellow Af Silk",
   "color_hex": "#EFDC4C",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

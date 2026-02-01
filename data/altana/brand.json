@@ -1,8 +1,8 @@
 {
   "id": "altana",
-  "name": "Altana",
-  "website": "",
   "logo": "logo.png",
+  "name": "Altana",
   "origin": "DE",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "altana.com"
 }

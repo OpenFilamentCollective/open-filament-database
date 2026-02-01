@@ -3,7 +3,7 @@
   "name": "Huracan Pla True Red",
   "color_hex": "#E72F1D",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

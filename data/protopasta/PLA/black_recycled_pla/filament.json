@@ -1,6 +1,6 @@
 {
   "id": "black_recycled_pla",
   "name": "Black Recycled PLA",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

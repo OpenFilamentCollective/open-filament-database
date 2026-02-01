@@ -3,7 +3,7 @@
   "name": "Safeguard Pla Performance Blue",
   "color_hex": "#0066D9",
   "traits": {
-    "antibacterial": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "antibacterial": true
   }
 }

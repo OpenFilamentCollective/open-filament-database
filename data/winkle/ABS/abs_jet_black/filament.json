@@ -1,6 +1,6 @@
 {
   "id": "abs_jet_black",
   "name": "ABS Jet Black",
-  "density": 1.05,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.05
 }

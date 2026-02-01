@@ -3,7 +3,7 @@
   "name": "Translucent Blood Red",
   "color_hex": "#932721",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

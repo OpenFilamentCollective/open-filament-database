@@ -1,6 +1,6 @@
 {
   "id": "silk_pla_lettuce_tomato",
   "name": "Silk PLA Lettuce Tomato",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

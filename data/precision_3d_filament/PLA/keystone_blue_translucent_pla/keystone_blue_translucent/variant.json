@@ -3,7 +3,7 @@
   "name": "Keystone Blue Translucent",
   "color_hex": "#2C3294",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

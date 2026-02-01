@@ -1,6 +1,6 @@
 {
   "id": "cpe_cf112_carbon",
   "name": "CPE CF112 Carbon",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

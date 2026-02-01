@@ -3,7 +3,7 @@
   "name": "Silk Purple Rose",
   "color_hex": "#C63DBA",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

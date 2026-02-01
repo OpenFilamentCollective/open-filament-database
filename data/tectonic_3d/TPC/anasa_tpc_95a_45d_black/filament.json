@@ -1,8 +1,8 @@
 {
   "id": "anasa_tpc_95a_45d_black",
   "name": "ANASA TPC 95A (45D) Black",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
-  "shore_hardness_d": 45,
-  "shore_hardness_a": 95
+  "density": 1.24,
+  "shore_hardness_a": 95,
+  "shore_hardness_d": 45
 }

@@ -3,7 +3,7 @@
   "name": "High Gloss Pla Bronze",
   "color_hex": "#8C7547",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

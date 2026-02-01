@@ -1,8 +1,8 @@
 {
   "id": "liqcreate",
-  "name": "Liqcreate",
-  "website": "",
   "logo": "logo.png",
+  "name": "Liqcreate",
   "origin": "NL",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "liqcreate.com"
 }

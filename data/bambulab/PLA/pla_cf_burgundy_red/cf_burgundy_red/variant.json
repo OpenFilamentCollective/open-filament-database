@@ -3,7 +3,7 @@
   "name": "Cf Burgundy Red",
   "color_hex": "#983B4E",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

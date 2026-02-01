@@ -1,8 +1,8 @@
 {
   "id": "amazonbasics",
-  "name": "AmazonBasics",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "AmazonBasics",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "amazonbasics.com"
 }

@@ -1,7 +1,7 @@
 {
   "id": "tpe_88a_gray",
   "name": "TPE 88A Gray",
-  "density": 1.17,
   "diameter_tolerance": 0.02,
+  "density": 1.17,
   "shore_hardness_a": 88
 }

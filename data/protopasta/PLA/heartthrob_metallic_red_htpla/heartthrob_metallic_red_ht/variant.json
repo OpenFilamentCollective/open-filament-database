@@ -3,8 +3,8 @@
   "name": "Heartthrob Metallic Red Ht",
   "color_hex": "#8B3A3A",
   "traits": {
-    "glitter": true,
+    "industrially_compostable": true,
     "silk": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

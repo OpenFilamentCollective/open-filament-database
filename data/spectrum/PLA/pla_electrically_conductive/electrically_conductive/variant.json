@@ -3,7 +3,7 @@
   "name": "Electrically Conductive",
   "color_hex": "#000000",
   "traits": {
-    "conductive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "conductive": true
   }
 }

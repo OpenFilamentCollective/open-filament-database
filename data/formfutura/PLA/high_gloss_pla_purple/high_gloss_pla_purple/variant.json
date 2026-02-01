@@ -3,7 +3,7 @@
   "name": "High Gloss Pla Purple",
   "color_hex": "#492972",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

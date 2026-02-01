@@ -1,6 +1,6 @@
 {
   "id": "rpla_re_add_black",
   "name": "rPLA RE-ADD Black",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

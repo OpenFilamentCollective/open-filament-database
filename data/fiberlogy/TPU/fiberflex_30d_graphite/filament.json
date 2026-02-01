@@ -1,6 +1,6 @@
 {
   "id": "fiberflex_30d_graphite",
   "name": "FiberFlex 30D Graphite",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -1,6 +1,6 @@
 {
   "id": "orange_mh_build_series_abs",
   "name": "Orange MH Build Series ABS",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

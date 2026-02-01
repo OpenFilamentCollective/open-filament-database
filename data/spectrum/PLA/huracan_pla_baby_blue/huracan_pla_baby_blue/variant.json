@@ -3,7 +3,7 @@
   "name": "Huracan Pla Baby Blue",
   "color_hex": "#39B9DB",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

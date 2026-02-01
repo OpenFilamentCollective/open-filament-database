@@ -3,7 +3,7 @@
   "name": "Extrafill Vertigo Jade",
   "color_hex": "#178B9F",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

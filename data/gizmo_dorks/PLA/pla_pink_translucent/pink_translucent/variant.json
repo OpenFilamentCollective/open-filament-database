@@ -3,7 +3,7 @@
   "name": "Pink Translucent",
   "color_hex": "#FF72B6",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

@@ -1,8 +1,8 @@
 {
   "id": "print_with_smile",
-  "name": "Print With Smile",
-  "website": "",
   "logo": "logo.png",
+  "name": "Print With Smile",
   "origin": "CZ",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "printwithsmile.com"
 }

@@ -3,7 +3,7 @@
   "name": "Fluorescent Pla Red",
   "color_hex": "#E03F26",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

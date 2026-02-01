@@ -3,7 +3,7 @@
   "name": "Sparkly Red Pla Pro",
   "color_hex": "#BB264D",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

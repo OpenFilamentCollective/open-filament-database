@@ -1,6 +1,6 @@
 {
   "id": "rock_pla_white_oak",
   "name": "Rock PLA White Oak",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

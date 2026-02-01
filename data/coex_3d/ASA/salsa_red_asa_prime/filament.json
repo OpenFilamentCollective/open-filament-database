@@ -1,6 +1,6 @@
 {
   "id": "salsa_red_asa_prime",
   "name": "Salsa Red ASA Prime",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

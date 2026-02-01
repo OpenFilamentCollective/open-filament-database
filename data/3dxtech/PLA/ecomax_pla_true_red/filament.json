@@ -1,6 +1,6 @@
 {
   "id": "ecomax_pla_true_red",
   "name": "ECOMAX PLA True Red",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

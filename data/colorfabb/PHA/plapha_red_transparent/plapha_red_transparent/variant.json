@@ -3,7 +3,7 @@
   "name": "Plapha Red Transparent",
   "color_hex": "#C01616",
   "traits": {
-    "home_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "home_compostable": true
   }
 }

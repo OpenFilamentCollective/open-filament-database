@@ -3,7 +3,7 @@
   "name": "Comet",
   "color_hex": "#567BAC",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "iridescent": true
   }
 }

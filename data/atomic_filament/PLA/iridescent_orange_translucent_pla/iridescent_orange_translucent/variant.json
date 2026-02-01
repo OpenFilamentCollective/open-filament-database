@@ -3,7 +3,7 @@
   "name": "Iridescent Orange Translucent",
   "color_hex": "#F67405",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Hdglass Fluor Clear Stained",
   "color_hex": "#E4E7E5",
   "traits": {
-    "silk": true,
-    "translucent": true
+    "translucent": true,
+    "silk": true
   }
 }

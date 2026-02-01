@@ -3,7 +3,7 @@
   "name": "Sparkly Green Pla Pro",
   "color_hex": "#15817B",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

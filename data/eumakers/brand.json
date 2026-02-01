@@ -1,8 +1,8 @@
 {
   "id": "eumakers",
-  "name": "EUMAKERS",
-  "website": "",
   "logo": "logo.png",
+  "name": "EUMAKERS",
   "origin": "IT",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "eumakers.com"
 }

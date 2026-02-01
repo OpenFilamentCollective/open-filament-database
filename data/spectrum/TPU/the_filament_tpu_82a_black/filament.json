@@ -1,7 +1,7 @@
 {
   "id": "the_filament_tpu_82a_black",
   "name": "The Filament TPU 82A Black",
-  "density": 1.21,
   "diameter_tolerance": 0.02,
+  "density": 1.21,
   "shore_hardness_a": 82
 }

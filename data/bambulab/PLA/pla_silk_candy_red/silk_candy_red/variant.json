@@ -3,7 +3,7 @@
   "name": "Silk Candy Red",
   "color_hex": "#DF3303",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

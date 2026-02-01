@@ -1,8 +1,8 @@
 {
   "id": "cc3d",
-  "name": "CC3D",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "CC3D",
   "origin": "CH",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "cc3d.com"
 }

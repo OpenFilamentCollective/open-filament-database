@@ -1,8 +1,8 @@
 {
   "id": "precision_3d_filament",
-  "name": "Precision 3D Filament",
-  "website": "",
   "logo": "logo.png",
+  "name": "Precision 3D Filament",
   "origin": "US",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "precision3dfilament.com"
 }

@@ -3,7 +3,7 @@
   "name": "Purple Ice Translucent Ht",
   "color_hex": "#8873C7",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

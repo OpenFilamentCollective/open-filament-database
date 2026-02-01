@@ -1,6 +1,6 @@
 {
   "id": "tpu_ninjatek_ninjaflex_neon_glow",
   "name": "TPU NinjaTek NinjaFlex - Neon Glow",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

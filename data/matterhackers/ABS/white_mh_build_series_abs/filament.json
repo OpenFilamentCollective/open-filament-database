@@ -1,6 +1,6 @@
 {
   "id": "white_mh_build_series_abs",
   "name": "White MH Build Series ABS",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -3,8 +3,8 @@
   "name": "Amber Alchemy Ht",
   "color_hex": "#BE6730",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

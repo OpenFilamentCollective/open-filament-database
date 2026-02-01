@@ -3,7 +3,7 @@
   "name": "Sparkly Purple Pla Pro",
   "color_hex": "#6C47B2",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

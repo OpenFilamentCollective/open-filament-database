@@ -3,7 +3,7 @@
   "name": "Silk Pla Pro Bronze",
   "color_hex": "#99A45F",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

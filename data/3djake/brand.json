@@ -1,8 +1,8 @@
 {
   "id": "3djake",
-  "name": "3DJAKE",
-  "website": "",
   "logo": "logo.png",
+  "name": "3DJAKE",
   "origin": "CZ",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "3djake.com"
 }

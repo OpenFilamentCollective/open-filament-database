@@ -3,7 +3,7 @@
   "name": "Twinkling Pla Blue",
   "color_hex": "#39B9DB",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

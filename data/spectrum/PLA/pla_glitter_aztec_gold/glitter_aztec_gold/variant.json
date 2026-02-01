@@ -3,8 +3,8 @@
   "name": "Glitter Aztec Gold",
   "color_hex": "#BCA463",
   "traits": {
+    "industrially_compostable": true,
     "silk": true,
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

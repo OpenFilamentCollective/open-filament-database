@@ -1,6 +1,6 @@
 {
   "id": "red_texas_size_spool_petg",
   "name": "Red Texas Size Spool PETG",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

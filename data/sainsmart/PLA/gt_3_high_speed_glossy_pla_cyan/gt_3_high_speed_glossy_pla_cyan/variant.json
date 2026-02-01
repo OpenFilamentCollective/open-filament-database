@@ -3,7 +3,7 @@
   "name": "Gt 3 High Speed Glossy Pla Cyan",
   "color_hex": "#08ABFB",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

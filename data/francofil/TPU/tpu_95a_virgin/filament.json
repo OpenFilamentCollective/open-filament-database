@@ -1,7 +1,7 @@
 {
   "id": "tpu_95a_virgin",
   "name": "TPU 95A Virgin",
-  "density": 1.21,
   "diameter_tolerance": 0.02,
+  "density": 1.21,
   "shore_hardness_a": 95
 }

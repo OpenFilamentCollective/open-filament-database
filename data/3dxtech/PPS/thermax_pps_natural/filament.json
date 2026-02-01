@@ -1,6 +1,6 @@
 {
   "id": "thermax_pps_natural",
   "name": "ThermaX PPS Natural",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

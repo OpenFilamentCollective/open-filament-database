@@ -3,7 +3,7 @@
   "name": "Polylite Metallic Pla Pro Magenta",
   "color_hex": "#771B6B",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

@@ -3,8 +3,8 @@
   "name": "Crystal Raspberry Red",
   "color_hex": "#FF4F4D",
   "traits": {
-    "silk": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "silk": true
   }
 }

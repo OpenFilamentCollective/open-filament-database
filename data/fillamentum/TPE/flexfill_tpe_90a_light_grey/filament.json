@@ -1,7 +1,7 @@
 {
   "id": "flexfill_tpe_90a_light_grey",
   "name": "Flexfill TPE 90A \"Light Grey\"",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 90
 }

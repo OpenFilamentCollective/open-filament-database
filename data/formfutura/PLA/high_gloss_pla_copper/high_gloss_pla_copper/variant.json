@@ -3,7 +3,7 @@
   "name": "High Gloss Pla Copper",
   "color_hex": "#8D5D4F",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

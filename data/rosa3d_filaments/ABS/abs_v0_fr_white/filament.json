@@ -1,6 +1,6 @@
 {
   "id": "abs_v0_fr_white",
   "name": "ABS V0 FR White",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

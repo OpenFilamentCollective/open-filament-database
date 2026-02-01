@@ -3,7 +3,7 @@
   "name": "E Pla Glitz Sapphire",
   "color_hex": "#1F2761",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

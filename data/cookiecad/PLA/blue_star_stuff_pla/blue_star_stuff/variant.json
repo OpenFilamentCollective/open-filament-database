@@ -3,8 +3,8 @@
   "name": "Blue Star Stuff",
   "color_hex": "#36DBE7",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

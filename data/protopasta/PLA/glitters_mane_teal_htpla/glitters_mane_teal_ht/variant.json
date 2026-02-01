@@ -3,8 +3,8 @@
   "name": "Glitters Mane Teal Ht",
   "color_hex": "#39B9DB",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

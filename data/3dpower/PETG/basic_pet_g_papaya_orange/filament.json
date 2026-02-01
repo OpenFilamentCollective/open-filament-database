@@ -1,6 +1,6 @@
 {
   "id": "basic_pet_g_papaya_orange",
   "name": "Basic PET-G Papaya Orange",
-  "density": 1.27,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

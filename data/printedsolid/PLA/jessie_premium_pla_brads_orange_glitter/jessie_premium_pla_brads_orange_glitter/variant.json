@@ -3,7 +3,7 @@
   "name": "Jessie Premium Pla Brads Orange Glitter",
   "color_hex": "#F67405",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

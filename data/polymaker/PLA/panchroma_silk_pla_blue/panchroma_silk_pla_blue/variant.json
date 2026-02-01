@@ -3,7 +3,7 @@
   "name": "Panchroma Silk Pla Blue",
   "color_hex": "#0378D0",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

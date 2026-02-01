@@ -1,6 +1,6 @@
 {
   "id": "pla_caf_coproduced",
   "name": "PLA Café - Coproduced",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

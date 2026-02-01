@@ -3,7 +3,7 @@
   "name": "Silk Red",
   "color_hex": "#FC496D",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

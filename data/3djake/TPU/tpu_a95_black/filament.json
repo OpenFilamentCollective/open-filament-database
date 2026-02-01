@@ -1,7 +1,7 @@
 {
   "id": "tpu_a95_black",
   "name": "TPU A95 Black",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 95
 }

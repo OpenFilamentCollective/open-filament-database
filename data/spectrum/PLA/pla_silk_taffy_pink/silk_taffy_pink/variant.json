@@ -3,7 +3,7 @@
   "name": "Silk Taffy Pink",
   "color_hex": "#DA8CBF",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

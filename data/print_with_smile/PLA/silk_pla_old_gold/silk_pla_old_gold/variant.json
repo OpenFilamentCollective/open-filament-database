@@ -3,7 +3,7 @@
   "name": "Silk Pla Old Gold",
   "color_hex": "#D0BD93",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

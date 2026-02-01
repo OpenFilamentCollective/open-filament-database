@@ -1,6 +1,6 @@
 {
   "id": "carbon_fiber_filament",
   "name": "Carbon Fiber Filament",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

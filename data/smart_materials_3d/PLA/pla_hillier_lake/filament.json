@@ -1,6 +1,6 @@
 {
   "id": "pla_hillier_lake",
   "name": "PLA Hillier Lake",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

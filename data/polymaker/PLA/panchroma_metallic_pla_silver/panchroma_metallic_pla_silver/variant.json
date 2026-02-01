@@ -3,7 +3,7 @@
   "name": "Panchroma Metallic Pla Silver",
   "color_hex": "#959FA1",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

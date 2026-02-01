@@ -1,7 +1,7 @@
 {
   "id": "tpu_for_ams_red",
   "name": "TPU for AMS Red",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_d": 68
 }

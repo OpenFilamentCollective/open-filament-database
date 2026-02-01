@@ -1,6 +1,6 @@
 {
   "id": "pet_g_hf_white",
   "name": "PET-G HF White",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

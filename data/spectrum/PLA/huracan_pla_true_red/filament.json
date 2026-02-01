@@ -1,6 +1,6 @@
 {
   "id": "huracan_pla_true_red",
   "name": "Huracan PLA True Red",
-  "density": 1.23,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

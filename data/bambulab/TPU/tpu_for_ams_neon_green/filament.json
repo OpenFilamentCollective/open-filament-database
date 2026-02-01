@@ -1,7 +1,7 @@
 {
   "id": "tpu_for_ams_neon_green",
   "name": "TPU for AMS Neon Green",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_d": 68
 }

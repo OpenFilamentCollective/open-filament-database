@@ -3,8 +3,8 @@
   "name": "Shiny Glitter Sky Blue",
   "color_hex": "#9AE0DD",
   "traits": {
-    "glitter": true,
+    "industrially_compostable": true,
     "silk": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

@@ -3,7 +3,7 @@
   "name": "Silk Pla Silky Black Hills Gold",
   "color_hex": "#F5BB91",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

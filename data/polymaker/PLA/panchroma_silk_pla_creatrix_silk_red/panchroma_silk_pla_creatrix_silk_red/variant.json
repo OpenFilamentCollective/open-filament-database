@@ -3,7 +3,7 @@
   "name": "Panchroma Silk Pla Creatrix Silk Red",
   "color_hex": "#E20010",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

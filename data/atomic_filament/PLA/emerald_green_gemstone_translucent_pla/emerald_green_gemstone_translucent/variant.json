@@ -3,7 +3,7 @@
   "name": "Emerald Green Gemstone Translucent",
   "color_hex": "#267F67",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

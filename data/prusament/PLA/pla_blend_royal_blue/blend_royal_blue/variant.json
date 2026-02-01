@@ -3,8 +3,8 @@
   "name": "Blend Royal Blue",
   "color_hex": "#00518F",
   "traits": {
-    "silk": true,
+    "industrially_compostable": true,
     "blend": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

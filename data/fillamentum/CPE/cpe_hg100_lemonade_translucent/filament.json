@@ -1,6 +1,6 @@
 {
   "id": "cpe_hg100_lemonade_translucent",
   "name": "CPE HG100 \"Lemonade Translucent\"",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

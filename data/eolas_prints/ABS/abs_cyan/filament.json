@@ -1,6 +1,6 @@
 {
   "id": "abs_cyan",
   "name": "ABS Cyan",
-  "density": 1.04,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.04
 }

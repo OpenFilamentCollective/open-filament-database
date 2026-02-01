@@ -1,6 +1,6 @@
 {
   "id": "petg_prototype_transparent",
   "name": "PETG Prototype Transparent",
-  "density": 1.23,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

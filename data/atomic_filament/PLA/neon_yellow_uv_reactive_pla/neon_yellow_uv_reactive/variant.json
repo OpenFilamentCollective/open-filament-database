@@ -3,7 +3,7 @@
   "name": "Neon Yellow Uv Reactive",
   "color_hex": "#EBFF57",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "neon": true
   }
 }

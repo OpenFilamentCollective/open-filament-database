@@ -1,6 +1,6 @@
 {
   "id": "green_bay_green_pla",
   "name": "Green Bay Green PLA",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -3,7 +3,7 @@
   "name": "Cf Royal Blue",
   "color_hex": "#1E2C73",
   "traits": {
-    "abrasive": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "abrasive": true
   }
 }

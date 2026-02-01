@@ -1,7 +1,7 @@
 {
   "id": "tpu_glow_in_the_dark_green",
   "name": "TPU Glow-in-the-Dark Green",
-  "density": 1.2,
   "diameter_tolerance": 0.02,
+  "density": 1.2,
   "shore_hardness_a": 95
 }

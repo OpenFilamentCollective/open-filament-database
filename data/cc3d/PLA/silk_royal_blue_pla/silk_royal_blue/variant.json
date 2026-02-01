@@ -3,7 +3,7 @@
   "name": "Silk Royal Blue",
   "color_hex": "#4921C1",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

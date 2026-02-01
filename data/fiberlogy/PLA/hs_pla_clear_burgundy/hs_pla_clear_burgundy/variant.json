@@ -3,7 +3,7 @@
   "name": "Hs Pla Clear Burgundy",
   "color_hex": "#861D2B",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

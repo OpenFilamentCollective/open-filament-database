@@ -3,7 +3,7 @@
   "name": "Silk Pla Metallic Copper",
   "color_hex": "#C66547",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

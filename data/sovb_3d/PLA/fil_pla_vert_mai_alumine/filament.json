@@ -1,6 +1,6 @@
 {
   "id": "fil_pla_vert_mai_alumine",
   "name": "Fil PLA Vert mai alumine",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

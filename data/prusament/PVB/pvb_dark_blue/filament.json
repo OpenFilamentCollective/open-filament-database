@@ -1,8 +1,8 @@
 {
   "id": "pvb_dark_blue",
   "name": "PVB Dark Blue",
-  "density": 1.1,
   "diameter_tolerance": 0.02,
+  "density": 1.1,
   "shore_hardness_d": 77,
   "min_print_temperature": 205,
   "max_print_temperature": 225,

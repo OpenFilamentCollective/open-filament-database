@@ -3,7 +3,7 @@
   "name": "Glitter Sparkle Pla Green",
   "color_hex": "#58C91B",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

@@ -1,7 +1,7 @@
 {
   "id": "tpu_high_speed_luminous_green",
   "name": "TPU High Speed Luminous Green",
-  "density": 1.24,
   "diameter_tolerance": 0.02,
+  "density": 1.24,
   "shore_hardness_a": 95
 }

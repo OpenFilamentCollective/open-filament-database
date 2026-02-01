@@ -3,7 +3,7 @@
   "name": "The Original Nebula Multicolor Ht",
   "color_hex": "#000000",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

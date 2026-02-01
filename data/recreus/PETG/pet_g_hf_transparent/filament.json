@@ -1,6 +1,6 @@
 {
   "id": "pet_g_hf_transparent",
   "name": "PET-G HF Transparent",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

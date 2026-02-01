@@ -3,7 +3,7 @@
   "name": "Gecko Green Translucent",
   "color_hex": "#98FBCB",
   "traits": {
-    "industrially_compostable": true,
-    "translucent": true
+    "translucent": true,
+    "industrially_compostable": true
   }
 }

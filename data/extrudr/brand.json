@@ -1,8 +1,8 @@
 {
   "id": "extrudr",
-  "name": "extrudr",
-  "website": "",
   "logo": "logo.png",
+  "name": "extrudr",
   "origin": "AT",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "extrudr.com"
 }

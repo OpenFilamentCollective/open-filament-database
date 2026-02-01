@@ -1,6 +1,6 @@
 {
   "id": "fil_pla_vert_mai",
   "name": "Fil PLA Vert mai",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

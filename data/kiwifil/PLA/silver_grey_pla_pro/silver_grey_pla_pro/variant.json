@@ -3,7 +3,7 @@
   "name": "Silver Grey Pla Pro",
   "color_hex": "#6F727E",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "silk": true
   }
 }

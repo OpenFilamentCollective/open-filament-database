@@ -3,7 +3,7 @@
   "name": "Panchroma Starlight Pla Jupiter",
   "color_hex": "#C0894D",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "glitter": true
   }
 }

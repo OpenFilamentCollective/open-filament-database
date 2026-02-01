@@ -1,6 +1,6 @@
 {
   "id": "pla_basic_gradient_arctic_whisper",
   "name": "PLA Basic Gradient Arctic Whisper",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

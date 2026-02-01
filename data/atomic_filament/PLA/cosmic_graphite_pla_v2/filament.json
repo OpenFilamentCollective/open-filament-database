@@ -1,6 +1,6 @@
 {
   "id": "cosmic_graphite_pla_v2",
   "name": "Cosmic Graphite PLA v2",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

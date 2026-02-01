@@ -3,8 +3,8 @@
   "name": "Gloop Purple Ht",
   "color_hex": "#663D7E",
   "traits": {
-    "glitter": true,
+    "translucent": true,
     "industrially_compostable": true,
-    "translucent": true
+    "glitter": true
   }
 }

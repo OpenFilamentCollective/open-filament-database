@@ -3,7 +3,7 @@
   "name": "S Flex Carbon",
   "color_hex": "#595959",
   "traits": {
-    "esd_safe": true,
-    "abrasive": true
+    "abrasive": true,
+    "esd_safe": true
   }
 }

@@ -3,8 +3,8 @@
   "name": "Metallic Finish Neon Green",
   "color_hex": "#9FEC41",
   "traits": {
-    "neon": true,
+    "industrially_compostable": true,
     "silk": true,
-    "industrially_compostable": true
+    "neon": true
   }
 }

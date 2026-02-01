@@ -3,8 +3,8 @@
   "name": "Bicolor Metallic Pla Violet Sparkle",
   "color_hex": "#000000",
   "traits": {
-    "iridescent": true,
     "industrially_compostable": true,
+    "iridescent": true,
     "coextruded": true
   }
 }

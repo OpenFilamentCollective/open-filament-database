@@ -1,8 +1,8 @@
 {
   "id": "fiberthree",
-  "name": "FiberThree",
-  "website": "",
   "logo": "logo.jpg",
+  "name": "FiberThree",
   "origin": "DE",
-  "source": "https://github.com/OpenPrintTag/openprinttag-database"
+  "source": "https://github.com/OpenPrintTag/openprinttag-database",
+  "website": "fiberthree.com"
 }

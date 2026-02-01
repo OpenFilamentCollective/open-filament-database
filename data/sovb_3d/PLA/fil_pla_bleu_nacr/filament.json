@@ -1,6 +1,6 @@
 {
   "id": "fil_pla_bleu_nacr",
   "name": "Fil PLA Bleu Nacré",
-  "density": 1.24,
-  "diameter_tolerance": 0.02
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }
