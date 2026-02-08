@@ -22,8 +22,7 @@
 		hiddenFields: ['id', 'logo'],
 		fieldOrder: ['name', 'website', 'origin'],
 		transforms: {
-			origin: transforms.uppercase,
-			website: transforms.urlWithProtocol
+			origin: transforms.uppercase
 		}
 	};
 

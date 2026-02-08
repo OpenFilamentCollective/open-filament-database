@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Store } from '$lib/types/database';
 	import { Button } from '$lib/components/ui';
+	import UrlField from './UrlField.svelte';
 	import { INPUT_XS_CLASSES, LABEL_COMPACT_CLASSES } from '$lib/styles/formStyles';
 
 	interface Props {
@@ -58,12 +59,12 @@
 			<label for="size-{sizeId}-link-{linkId}-url" class={LABEL_COMPACT_CLASSES}>
 				URL <span class="text-destructive">*</span>
 			</label>
-			<input
-				id="size-{sizeId}-link-{linkId}-url"
-				type="url"
+			<UrlField
 				bind:value={url}
-				class={INPUT_XS_CLASSES}
-				placeholder="https://store.com/product/..."
+				id="size-{sizeId}-link-{linkId}-url"
+				required
+				placeholder="store.com/product/..."
+				compact
 			/>
 		</div>
 	</div>

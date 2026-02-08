@@ -33,7 +33,7 @@
             "type": "string",
             "title": "Website",
             "description": "The manufacturer's official website",
-            "x-placeholder": "https://...",
+            "x-placeholder": "example.com/...",
             "$ref": "#/definitions/string_limit"
         },
         "logo": {

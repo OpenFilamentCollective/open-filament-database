@@ -4,6 +4,7 @@
 	import { get } from 'svelte/store';
 	import {
 		TextField,
+		UrlField,
 		NumberField,
 		SelectField,
 		CheckboxField,
@@ -159,10 +160,7 @@
 		return enumLoading[field.key] || false;
 	}
 
-	function getInputType(field: ProcessedField): 'text' | 'url' | 'email' {
-		if (field.schema.format === 'uri' || field.key.includes('url')) {
-			return 'url';
-		}
+	function getInputType(field: ProcessedField): 'text' | 'email' {
 		if (field.schema.format === 'email') {
 			return 'email';
 		}
@@ -178,6 +176,15 @@
 
 	{#if field.type === 'custom' && customFields}
 		{@render customFields(field.key, field.schema, field)}
+	{:else if field.type === 'url'}
+		<UrlField
+			bind:value={data[field.key]}
+			id={field.key}
+			{label}
+			{required}
+			{tooltip}
+			{placeholder}
+		/>
 	{:else if field.type === 'text'}
 		<TextField
 			bind:value={data[field.key]}

@@ -22,7 +22,6 @@
 		hiddenFields: ['id', 'logo'],
 		fieldOrder: ['name', 'storefront_url', 'ships_from', 'ships_to'],
 		transforms: {
-			storefront_url: transforms.urlWithProtocol,
 			ships_from: transforms.uppercaseArray,
 			ships_to: transforms.uppercaseArray
 		}

@@ -30,7 +30,7 @@
             "type": "string",
             "title": "Storefront URL",
             "description": "A link to the storefront of this store",
-            "x-placeholder": "https://...",
+            "x-placeholder": "example.com/...",
             "$ref": "#/definitions/string_limit"
         },
         "logo": {

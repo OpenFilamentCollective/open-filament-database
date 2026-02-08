@@ -19,32 +19,6 @@ export const uppercaseTransform: FieldTransform = (value: any) => {
 };
 
 /**
- * Ensure URL has a protocol (https:// by default)
- * Also validates the resulting URL
- */
-export const urlWithProtocolTransform: FieldTransform = (value: any) => {
-	if (typeof value !== 'string' || !value.trim()) {
-		return value;
-	}
-
-	let url = value.trim();
-
-	// Add https:// if no protocol present
-	if (!url.match(/^https?:\/\//i)) {
-		url = 'https://' + url;
-	}
-
-	// Validate the URL
-	try {
-		new URL(url);
-		return url;
-	} catch {
-		// Return original value if URL is invalid - let schema validation handle it
-		return value;
-	}
-};
-
-/**
  * Transform array of strings to uppercase
  */
 export const uppercaseArrayTransform: FieldTransform = (value: any) => {
@@ -59,8 +33,7 @@ export const uppercaseArrayTransform: FieldTransform = (value: any) => {
  */
 export const transforms = {
 	uppercase: uppercaseTransform,
-	uppercaseArray: uppercaseArrayTransform,
-	urlWithProtocol: urlWithProtocolTransform
+	uppercaseArray: uppercaseArrayTransform
 };
 
 // ============================================
@@ -150,6 +123,11 @@ export function getFieldType(
 	// Complex objects -> custom handling
 	if (schemaType === 'object') {
 		return 'custom';
+	}
+
+	// Detect URL fields by schema format or field name
+	if (propSchema.format === 'uri' || key.includes('url') || key === 'website') {
+		return 'url';
 	}
 
 	// Default to text for strings and unknown types

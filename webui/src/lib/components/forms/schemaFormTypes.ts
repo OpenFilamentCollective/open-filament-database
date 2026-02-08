@@ -2,7 +2,7 @@
  * Type definitions for the SchemaForm component
  */
 
-export type FieldType = 'text' | 'number' | 'select' | 'checkbox' | 'tags' | 'color' | 'custom' | 'hidden';
+export type FieldType = 'text' | 'url' | 'number' | 'select' | 'checkbox' | 'tags' | 'color' | 'custom' | 'hidden';
 
 export interface EnumSource {
 	url: string;
@@ -50,7 +50,7 @@ export interface SchemaFormConfig {
 
 	// Value transforms applied during submission
 	// Maps field keys to transform functions that modify values before submission
-	// e.g., { 'origin': transforms.uppercase, 'website': transforms.urlWithProtocol }
+	// e.g., { 'origin': transforms.uppercase }
 	transforms?: Record<string, FieldTransform>;
 }
 
