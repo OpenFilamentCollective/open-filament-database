@@ -150,6 +150,21 @@ function createChangeStore() {
 	}
 
 	/**
+	 * Remove all child entity changes (and their images) for a given parent path.
+	 * E.g., deleting "brands/acme" removes changes for "brands/acme/materials/PLA/filaments/..." etc.
+	 */
+	function cleanupChildChanges(changeSet: ChangeSet, entityPath: string) {
+		const pathPrefix = entityPath + '/';
+
+		for (const childPath of Object.keys(changeSet.changes)) {
+			if (childPath.startsWith(pathPrefix)) {
+				cleanupImagesForEntity(changeSet, childPath);
+				delete changeSet.changes[childPath];
+			}
+		}
+	}
+
+	/**
 	 * Remove all images associated with an entity path (and child paths) from localStorage and the changeSet
 	 */
 	function cleanupImagesForEntity(changeSet: ChangeSet, entityPath: string) {
@@ -254,8 +269,9 @@ function createChangeStore() {
 			update((changeSet) => {
 				const existingChange = changeSet.changes[entity.path];
 
-				// Clean up any images associated with this entity
+				// Clean up any images and child entity changes
 				cleanupImagesForEntity(changeSet, entity.path);
+				cleanupChildChanges(changeSet, entity.path);
 
 				if (existingChange?.operation === 'create') {
 					// If this entity was created in this session, just remove it
@@ -340,8 +356,9 @@ function createChangeStore() {
 		 */
 		removeChange(entityPath: string) {
 			update((changeSet) => {
-				// Clean up any images associated with this entity
+				// Clean up any images and child entity changes
 				cleanupImagesForEntity(changeSet, entityPath);
+				cleanupChildChanges(changeSet, entityPath);
 
 				delete changeSet.changes[entityPath];
 				changeSet.lastModified = Date.now();

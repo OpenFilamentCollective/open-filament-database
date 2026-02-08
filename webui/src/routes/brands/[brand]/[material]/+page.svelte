@@ -148,7 +148,7 @@
 				messageHandler.showSuccess('Filament created successfully!');
 				entityState.closeCreate();
 				setTimeout(() => {
-					window.location.reload();
+					window.location.href = `/brands/${brandId}/${materialType}/${result.filamentId}`;
 				}, 500);
 			} else {
 				messageHandler.showError('Failed to create filament');

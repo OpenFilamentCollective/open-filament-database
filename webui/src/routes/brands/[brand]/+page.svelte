@@ -181,9 +181,8 @@
 				messageHandler.showSuccess('Material created successfully!');
 				showCreateMaterialModal = false;
 
-				// Reload the page to show the new material
 				setTimeout(() => {
-					window.location.reload();
+					window.location.href = `/brands/${brandId}/${result.materialType.toLowerCase()}`;
 				}, 500);
 			} else {
 				messageHandler.showError('Failed to create material');
@@ -257,17 +256,9 @@
 				<Logo src={brandData.logo} alt={brandData.name} type="brand" id={brandData.id} size="lg" />
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{brandData.name}</h1>
-					{#if $isCloudMode}
-						{#if brandData.slug}
-							<p class="text-muted-foreground">Native ID: {brandData.slug}</p>
-							{#if !isLocalCreate}
-								<p class="text-muted-foreground">Cloud ID: {brandData.id}</p>
-							{/if}
-						{:else}
-							<p class="text-muted-foreground">Native ID: {brandData.id}</p>
-						{/if}
-					{:else}
-						<p class="text-muted-foreground">ID: {brandData.id}</p>
+					<p class="text-muted-foreground">ID: {brandData.slug || brandData.id}</p>
+					{#if $isCloudMode && !isLocalCreate && brandData.slug && brandData.slug !== brandData.id}
+						<p class="text-muted-foreground">UUID: {brandData.id}</p>
 					{/if}
 				</div>
 			</header>

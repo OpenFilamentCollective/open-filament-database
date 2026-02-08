@@ -140,17 +140,9 @@
 				<Logo src={storeData.logo} alt={storeData.name} type="store" id={storeData.id} size="lg" />
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{storeData.name}</h1>
-					{#if $isCloudMode}
-						{#if storeData.slug}
-							<p class="text-muted-foreground">Native ID: {storeData.slug}</p>
-							{#if !entityState.isLocalCreate}
-								<p class="text-muted-foreground">Cloud ID: {storeData.id}</p>
-							{/if}
-						{:else}
-							<p class="text-muted-foreground">Native ID: {storeData.id}</p>
-						{/if}
-					{:else}
-						<p class="text-muted-foreground">ID: {storeData.id}</p>
+					<p class="text-muted-foreground">ID: {storeData.slug || storeData.id}</p>
+					{#if $isCloudMode && !entityState.isLocalCreate && storeData.slug && storeData.slug !== storeData.id}
+						<p class="text-muted-foreground">UUID: {storeData.id}</p>
 					{/if}
 				</div>
 			</header>

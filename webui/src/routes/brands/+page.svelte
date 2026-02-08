@@ -103,7 +103,7 @@
 				entityState.closeCreate();
 				entityState.resetLogo();
 				setTimeout(() => {
-					window.location.reload();
+					window.location.href = `/brands/${slug}`;
 				}, 500);
 			} else {
 				messageHandler.showError('Failed to create brand');

@@ -104,7 +104,7 @@
 				entityState.closeCreate();
 				entityState.resetLogo();
 				setTimeout(() => {
-					window.location.reload();
+					window.location.href = `/stores/${slug}`;
 				}, 500);
 			} else {
 				messageHandler.showError('Failed to create store');

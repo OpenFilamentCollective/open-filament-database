@@ -165,15 +165,9 @@
 						{/if}
 					</div>
 				</div>
-				{#if $isCloudMode}
-					{#if variantData.slug}
-						<p class="text-muted-foreground">Native ID: {variantData.slug}</p>
-						<p class="text-muted-foreground">Cloud ID: {variantData.id}</p>
-					{:else}
-						<p class="text-muted-foreground">Native ID: {variantData.id}</p>
-					{/if}
-				{:else}
-					<p class="text-muted-foreground">ID: {variantData.id}</p>
+				<p class="text-muted-foreground">ID: {variantData.slug || variantData.id}</p>
+				{#if $isCloudMode && !entityState.isLocalCreate && variantData.slug && variantData.slug !== variantData.id}
+					<p class="text-muted-foreground">UUID: {variantData.id}</p>
 				{/if}
 			</header>
 

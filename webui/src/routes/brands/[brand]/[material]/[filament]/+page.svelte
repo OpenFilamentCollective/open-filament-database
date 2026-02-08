@@ -143,7 +143,7 @@
 				messageHandler.showSuccess('Variant created successfully!');
 				entityState.closeCreate();
 				setTimeout(() => {
-					window.location.reload();
+					window.location.href = `/brands/${brandId}/${materialType}/${filamentId}/${result.variantSlug}`;
 				}, 500);
 			} else {
 				messageHandler.showError('Failed to create variant');
@@ -201,15 +201,9 @@
 						>
 					{/if}
 				</div>
-				{#if $isCloudMode}
-					{#if filamentData.slug}
-						<p class="text-muted-foreground">Native ID: {filamentData.slug}</p>
-						<p class="text-muted-foreground">Cloud ID: {filamentData.id}</p>
-					{:else}
-						<p class="text-muted-foreground">Native ID: {filamentData.id}</p>
-					{/if}
-				{:else}
-					<p class="text-muted-foreground">ID: {filamentData.id}</p>
+				<p class="text-muted-foreground">ID: {filamentData.slug || filamentData.id}</p>
+				{#if $isCloudMode && !entityState.isLocalCreate && filamentData.slug && filamentData.slug !== filamentData.id}
+					<p class="text-muted-foreground">UUID: {filamentData.id}</p>
 				{/if}
 			</header>
 
