@@ -149,6 +149,26 @@ function createChangeStore() {
 		}
 	}
 
+	/**
+	 * Remove all images associated with an entity path (and child paths) from localStorage and the changeSet
+	 */
+	function cleanupImagesForEntity(changeSet: ChangeSet, entityPath: string) {
+		if (!browser) return;
+
+		const pathPrefix = entityPath + '/';
+
+		for (const [imageId, imageRef] of Object.entries(changeSet.images)) {
+			if (imageRef.entityPath === entityPath || imageRef.entityPath.startsWith(pathPrefix)) {
+				try {
+					localStorage.removeItem(imageRef.storageKey);
+				} catch (e) {
+					console.error('Failed to remove image during entity cleanup:', e);
+				}
+				delete changeSet.images[imageId];
+			}
+		}
+	}
+
 	return {
 		subscribe,
 
@@ -234,6 +254,9 @@ function createChangeStore() {
 			update((changeSet) => {
 				const existingChange = changeSet.changes[entity.path];
 
+				// Clean up any images associated with this entity
+				cleanupImagesForEntity(changeSet, entity.path);
+
 				if (existingChange?.operation === 'create') {
 					// If this entity was created in this session, just remove it
 					delete changeSet.changes[entity.path];
@@ -317,6 +340,9 @@ function createChangeStore() {
 		 */
 		removeChange(entityPath: string) {
 			update((changeSet) => {
+				// Clean up any images associated with this entity
+				cleanupImagesForEntity(changeSet, entityPath);
+
 				delete changeSet.changes[entityPath];
 				changeSet.lastModified = Date.now();
 				persist(changeSet);
