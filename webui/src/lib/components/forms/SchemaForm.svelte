@@ -9,6 +9,7 @@
 		SelectField,
 		CheckboxField,
 		TagInput,
+		CountryCodeList,
 		ColorHexField,
 		FormFieldRow,
 		TwoColumnLayout
@@ -21,7 +22,8 @@
 		splitFields,
 		fetchEnumValues,
 		getFieldLabel,
-		getFieldPlaceholder
+		getFieldPlaceholder,
+		transforms
 	} from './schemaFormUtils';
 
 	interface Props {
@@ -128,6 +130,13 @@
 		onSubmit?.(data);
 	}
 
+	function handleFormSubmit(e: SubmitEvent) {
+		e.preventDefault();
+		if (!saving && !submitDisabled) {
+			handleSubmit();
+		}
+	}
+
 	function getLabel(field: ProcessedField): string {
 		return getFieldLabel(field.key, field.schema, config.labels?.[field.key]);
 	}
@@ -149,11 +158,17 @@
 
 	function getEnumOptions(field: ProcessedField): string[] {
 		// Check dynamic enums first
-		if (dynamicEnums[field.key]?.length) {
-			return dynamicEnums[field.key];
+		let options = dynamicEnums[field.key]?.length
+			? dynamicEnums[field.key]
+			: (field.schema.enum || []);
+
+		// Filter out excluded values
+		const excluded = config.excludeEnumValues?.[field.key];
+		if (excluded?.length) {
+			options = options.filter((v: string) => !excluded.includes(v));
 		}
-		// Fall back to schema enum
-		return field.schema.enum || [];
+
+		return options;
 	}
 
 	function isEnumLoading(field: ProcessedField): boolean {
@@ -166,6 +181,17 @@
 		}
 		return 'text';
 	}
+
+	function isAutoUppercase(field: ProcessedField): boolean {
+		const transform = config.transforms?.[field.key];
+		return transform === transforms.uppercase;
+	}
+
+	function getMaxLength(field: ProcessedField): number | undefined {
+		return config.maxLengths?.[field.key] ?? field.schema.maxLength;
+	}
+
+
 </script>
 
 {#snippet renderField(field: ProcessedField)}
@@ -194,6 +220,8 @@
 			{tooltip}
 			{placeholder}
 			type={getInputType(field)}
+			autoUppercase={isAutoUppercase(field)}
+			maxLength={getMaxLength(field)}
 		/>
 	{:else if field.type === 'number'}
 		<NumberField
@@ -245,6 +273,14 @@
 			{tooltip}
 			{placeholder}
 		/>
+	{:else if field.type === 'countryList'}
+		<CountryCodeList
+			bind:values={data[field.key]}
+			{label}
+			{required}
+			{tooltip}
+			{placeholder}
+		/>
 	{:else if field.type === 'color'}
 		<ColorHexField
 			bind:value={data[field.key]}
@@ -278,8 +314,7 @@
 	{#if onSubmit}
 		<div class="pt-4">
 			<Button
-				type="button"
-				onclick={handleSubmit}
+				type="submit"
 				disabled={saving || submitDisabled}
 				class="w-full"
 			>
@@ -290,6 +325,7 @@
 {/snippet}
 
 <!-- Main layout -->
+<form onsubmit={handleFormSubmit} class="contents">
 {#if config.splitAfterKey && rightColumnContent}
 	<TwoColumnLayout leftWidth={config.leftWidth} leftSpacing={config.leftSpacing}>
 		{#snippet leftContent()}
@@ -331,3 +367,4 @@
 		{@render submitButton()}
 	</div>
 {/if}
+</form>

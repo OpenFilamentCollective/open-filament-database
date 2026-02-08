@@ -8,10 +8,10 @@
 	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
+	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { isCloudMode } from '$lib/stores/environment';
-	import { changeStore } from '$lib/stores/changes';
+	import { changes } from '$lib/stores/changes';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -79,12 +79,19 @@
 		messageHandler.clear();
 
 		try {
-			const updatedFilament = mergeEntityData(filament, data, ['id', 'slug']) as Filament;
+			// For locally created filaments, regenerate id/slug from name
+			const newId = entityState.isLocalCreate ? generateSlug(data.name) : (filament.slug || filament.id);
+			const updatedFilament = {
+				...filament,
+				...data,
+				id: newId,
+				slug: newId
+			} as Filament;
 
 			const success = await db.saveFilament(
 				brandId,
 				materialType,
-				filamentId,
+				newId,
 				updatedFilament,
 				originalFilament ?? filament
 			);
@@ -93,6 +100,13 @@
 				filament = updatedFilament;
 				messageHandler.showSuccess('Filament saved successfully!');
 				entityState.closeEdit();
+
+				// If filament ID changed, redirect to new URL
+				if (newId !== filamentId) {
+					setTimeout(() => {
+						window.location.href = `/brands/${brandId}/${materialType}/${newId}`;
+					}, 500);
+				}
 			} else {
 				messageHandler.showError('Failed to save filament');
 			}
@@ -209,6 +223,8 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
+			{:else if entityState.hasDescendantChanges}
+				<MessageBanner type="info" message="Contains items with local changes" />
 			{/if}
 
 			{#if messageHandler.message}
@@ -306,7 +322,7 @@
 						<div class="space-y-2">
 							{#each variants as variant}
 								{@const variantPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`}
-								{@const variantChange = $isCloudMode ? $changeStore.changes[variantPath] : undefined}
+								{@const variantChange = $isCloudMode ? $changes.get(variantPath) : undefined}
 								{@const sizesCount = variant.sizes?.length ?? 0}
 								{@const sizesInfo = sizesCount > 0 ? `${sizesCount} size${sizesCount !== 1 ? 's' : ''}` : undefined}
 								<EntityCard

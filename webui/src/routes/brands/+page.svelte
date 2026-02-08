@@ -11,7 +11,7 @@
 	import { generateSlug } from '$lib/services/entityService';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { isCloudMode } from '$lib/stores/environment';
-	import { changeStore } from '$lib/stores/changes';
+	import { changes } from '$lib/stores/changes';
 	import { BackButton } from '$lib/components';
 
 	let brands: Brand[] = $state([]);
@@ -25,6 +25,8 @@
 		getEntityPath: () => null,
 		getEntity: () => null
 	});
+
+	let createError: string | null = $state(null);
 
 	const newBrand: Brand = {
 		id: '',
@@ -58,6 +60,7 @@
 	});
 
 	function openCreateModal() {
+		createError = null;
 		entityState.openCreate();
 		if (!schema) {
 			fetch('/api/schemas/brand')
@@ -73,16 +76,24 @@
 
 	async function handleSubmit(data: any) {
 		entityState.creating = true;
-		messageHandler.clear();
+		createError = null;
 
 		try {
 			const slug = generateSlug(data.name);
+
+			// Check for duplicate brand
+			const duplicate = brands.find((b) => (b.slug ?? b.id).toLowerCase() === slug.toLowerCase());
+			if (duplicate) {
+				createError = `Brand "${data.name}" already exists`;
+				entityState.creating = false;
+				return;
+			}
 
 			let logoFilename = '';
 			if (entityState.logoChanged && entityState.logoDataUrl) {
 				const savedPath = await saveLogoImage(slug, entityState.logoDataUrl, 'brand');
 				if (!savedPath) {
-					messageHandler.showError('Failed to save logo');
+					createError = 'Failed to save logo';
 					entityState.creating = false;
 					return;
 				}
@@ -106,10 +117,10 @@
 					window.location.href = `/brands/${slug}`;
 				}, 500);
 			} else {
-				messageHandler.showError('Failed to create brand');
+				createError = 'Failed to create brand';
 			}
 		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create brand');
+			createError = e instanceof Error ? e.message : 'Failed to create brand';
 		} finally {
 			entityState.creating = false;
 		}
@@ -145,7 +156,7 @@
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each brandsList as brand}
 					{@const brandPath = `brands/${brand.id}`}
-					{@const brandChange = $isCloudMode ? $changeStore.changes[brandPath] : undefined}
+					{@const brandChange = $isCloudMode ? $changes.get(brandPath) : undefined}
 					<EntityCard
 						entity={brand}
 						href="/brands/{brand.slug ?? brand.id}"
@@ -159,6 +170,7 @@
 						]}
 						hasLocalChanges={!!brandChange}
 						localChangeType={brandChange?.operation}
+						hasDescendantChanges={$isCloudMode ? $changes.hasDescendantChanges(brandPath) : false}
 					/>
 				{/each}
 			</div>
@@ -166,7 +178,10 @@
 	</DataDisplay>
 </div>
 
-<Modal show={entityState.showCreateModal} title="Create New Brand" onClose={entityState.closeCreate} maxWidth="3xl">
+<Modal show={entityState.showCreateModal} title="Create New Brand" onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="3xl">
+	{#if createError}
+		<MessageBanner type="error" message={createError} />
+	{/if}
 	{#if schema}
 		<BrandForm
 			brand={newBrand}

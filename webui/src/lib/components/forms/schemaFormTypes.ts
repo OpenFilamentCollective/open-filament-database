@@ -2,7 +2,7 @@
  * Type definitions for the SchemaForm component
  */
 
-export type FieldType = 'text' | 'url' | 'number' | 'select' | 'checkbox' | 'tags' | 'color' | 'custom' | 'hidden';
+export type FieldType = 'text' | 'url' | 'number' | 'select' | 'checkbox' | 'tags' | 'countryList' | 'color' | 'custom' | 'hidden';
 
 export interface EnumSource {
 	url: string;
@@ -34,9 +34,14 @@ export interface SchemaFormConfig {
 	placeholders?: Record<string, string>; // Placeholder text by field key
 	labels?: Record<string, string>; // Custom labels (overrides formatLabel)
 	steps?: Record<string, number>; // Step values for number inputs
+	maxLengths?: Record<string, number>; // Max input length by field key (overrides schema maxLength)
 
 	// Dynamic enums from API
 	enumSources?: Record<string, EnumSource>;
+
+	// Values to exclude from enum dropdowns
+	// e.g., { 'material': ['PLA', 'PETG'] } hides already-used material types
+	excludeEnumValues?: Record<string, string[]>;
 
 	// Component type overrides for specific fields
 	typeOverrides?: Record<string, FieldType>;

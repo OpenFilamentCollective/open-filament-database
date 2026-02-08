@@ -1,16 +1,34 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { get, writable } from 'svelte/store';
+import { get } from 'svelte/store';
 
-// Create mock isCloudMode store
-const mockIsCloudMode = writable(true);
+// vi.hoisted runs before imports, so the mock is ready when changes.ts loads
+const mocks = vi.hoisted(() => {
+	let value = true;
+	const subs = new Set<(v: boolean) => void>();
+	return {
+		mockIsCloudMode: {
+			subscribe(fn: (v: boolean) => void) {
+				fn(value);
+				subs.add(fn);
+				return () => {
+					subs.delete(fn);
+				};
+			},
+			set(v: boolean) {
+				value = v;
+				for (const fn of subs) fn(v);
+			}
+		}
+	};
+});
 
 // Mock the dependencies
 vi.mock('$app/environment', () => ({
 	browser: true
 }));
 
-vi.mock('./environment', () => ({
-	isCloudMode: mockIsCloudMode
+vi.mock('$lib/stores/environment', () => ({
+	isCloudMode: mocks.mockIsCloudMode
 }));
 
 // Mock localStorage
@@ -40,7 +58,13 @@ Object.defineProperty(globalThis, 'localStorage', {
 });
 
 // Import after mocks are set up
-import { changeStore, changeCount, hasChanges, changesList } from '../changes';
+import { changeStore, changeCount, hasChanges, changesList, changes } from '../changes';
+
+/** Helper to get a change from the tree-based store by path */
+function getChangeAt(path: string) {
+	const state = get(changeStore);
+	return state._index.get(path)?.change;
+}
 
 describe('Change Store', () => {
 	beforeEach(() => {
@@ -49,7 +73,7 @@ describe('Change Store', () => {
 		localStorageMock.getItem.mockClear();
 		localStorageMock.setItem.mockClear();
 		localStorageMock.removeItem.mockClear();
-		mockIsCloudMode.set(true);
+		mocks.mockIsCloudMode.set(true);
 		changeStore.clear();
 	});
 
@@ -60,10 +84,10 @@ describe('Change Store', () => {
 
 			changeStore.trackCreate(entity, data);
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test']).toBeDefined();
-			expect(state.changes['brands/test'].operation).toBe('create');
-			expect(state.changes['brands/test'].data).toEqual(data);
+			const change = getChangeAt('brands/test');
+			expect(change).toBeDefined();
+			expect(change!.operation).toBe('create');
+			expect(change!.data).toEqual(data);
 		});
 
 		it('should generate description', () => {
@@ -72,8 +96,8 @@ describe('Change Store', () => {
 
 			changeStore.trackCreate(entity, data);
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test'].description).toBe('Created brand "Test Brand"');
+			const change = getChangeAt('brands/test');
+			expect(change!.description).toBe('Created brand "Test Brand"');
 		});
 
 		it('should persist to localStorage', () => {
@@ -86,15 +110,14 @@ describe('Change Store', () => {
 		});
 
 		it('should do nothing in local mode', () => {
-			mockIsCloudMode.set(false);
+			mocks.mockIsCloudMode.set(false);
 
 			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
 			const data = { id: 'test', name: 'Test Brand' };
 
 			changeStore.trackCreate(entity, data);
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test']).toBeUndefined();
+			expect(getChangeAt('brands/test')).toBeUndefined();
 		});
 	});
 
@@ -106,10 +129,10 @@ describe('Change Store', () => {
 
 			changeStore.trackUpdate(entity, oldData, newData);
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test']).toBeDefined();
-			expect(state.changes['brands/test'].operation).toBe('update');
-			expect(state.changes['brands/test'].data).toEqual(newData);
+			const change = getChangeAt('brands/test');
+			expect(change).toBeDefined();
+			expect(change!.operation).toBe('update');
+			expect(change!.data).toEqual(newData);
 		});
 
 		it('should preserve original data', () => {
@@ -119,8 +142,8 @@ describe('Change Store', () => {
 			changeStore.trackUpdate(entity, oldData, { id: 'test', name: 'First Edit' });
 			changeStore.trackUpdate(entity, { id: 'test', name: 'First Edit' }, { id: 'test', name: 'Second Edit' });
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test'].originalData).toEqual(oldData);
+			const change = getChangeAt('brands/test');
+			expect(change!.originalData).toEqual(oldData);
 		});
 
 		it('should detect property changes', () => {
@@ -130,9 +153,9 @@ describe('Change Store', () => {
 
 			changeStore.trackUpdate(entity, oldData, newData);
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test'].propertyChanges).toBeDefined();
-			expect(state.changes['brands/test'].propertyChanges?.length).toBe(2);
+			const change = getChangeAt('brands/test');
+			expect(change!.propertyChanges).toBeDefined();
+			expect(change!.propertyChanges?.length).toBe(2);
 		});
 
 		it('should remove change if reverted to original', () => {
@@ -140,10 +163,10 @@ describe('Change Store', () => {
 			const original = { id: 'test', name: 'Original' };
 
 			changeStore.trackUpdate(entity, original, { id: 'test', name: 'Changed' });
-			expect(get(changeStore).changes['brands/test']).toBeDefined();
+			expect(getChangeAt('brands/test')).toBeDefined();
 
 			changeStore.trackUpdate(entity, { id: 'test', name: 'Changed' }, { id: 'test', name: 'Original' });
-			expect(get(changeStore).changes['brands/test']).toBeUndefined();
+			expect(getChangeAt('brands/test')).toBeUndefined();
 		});
 
 		it('should update create entry data if entity was created in session', () => {
@@ -153,9 +176,9 @@ describe('Change Store', () => {
 			changeStore.trackCreate(entity, createData);
 			changeStore.trackUpdate(entity, createData, { id: 'test', name: 'Updated' });
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test'].operation).toBe('create');
-			expect(state.changes['brands/test'].data.name).toBe('Updated');
+			const change = getChangeAt('brands/test');
+			expect(change!.operation).toBe('create');
+			expect(change!.data.name).toBe('Updated');
 		});
 	});
 
@@ -165,19 +188,19 @@ describe('Change Store', () => {
 
 			changeStore.trackDelete(entity, { name: 'Test Brand' });
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test']).toBeDefined();
-			expect(state.changes['brands/test'].operation).toBe('delete');
+			const change = getChangeAt('brands/test');
+			expect(change).toBeDefined();
+			expect(change!.operation).toBe('delete');
 		});
 
 		it('should remove create entry if entity was created in session', () => {
 			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
 
 			changeStore.trackCreate(entity, { id: 'test', name: 'Test' });
-			expect(get(changeStore).changes['brands/test']).toBeDefined();
+			expect(getChangeAt('brands/test')).toBeDefined();
 
 			changeStore.trackDelete(entity);
-			expect(get(changeStore).changes['brands/test']).toBeUndefined();
+			expect(getChangeAt('brands/test')).toBeUndefined();
 		});
 
 		it('should preserve for existing entities', () => {
@@ -187,8 +210,8 @@ describe('Change Store', () => {
 			changeStore.trackUpdate(entity, { id: 'test', name: 'Old' }, { id: 'test', name: 'New' });
 			changeStore.trackDelete(entity, { name: 'New' });
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test'].operation).toBe('delete');
+			const change = getChangeAt('brands/test');
+			expect(change!.operation).toBe('delete');
 		});
 	});
 
@@ -235,9 +258,8 @@ describe('Change Store', () => {
 
 			changeStore.removeChange('brands/test1');
 
-			const state = get(changeStore);
-			expect(state.changes['brands/test1']).toBeUndefined();
-			expect(state.changes['brands/test2']).toBeDefined();
+			expect(getChangeAt('brands/test1')).toBeUndefined();
+			expect(getChangeAt('brands/test2')).toBeDefined();
 		});
 
 		it('should persist after removal', () => {
@@ -258,8 +280,8 @@ describe('Change Store', () => {
 
 			changeStore.clear();
 
-			const state = get(changeStore);
-			expect(Object.keys(state.changes).length).toBe(0);
+			expect(getChangeAt('brands/test')).toBeUndefined();
+			expect(get(changeCount)).toBe(0);
 		});
 
 		it('should remove all image data', () => {
@@ -370,13 +392,52 @@ describe('Change Store', () => {
 			vi.useRealTimers();
 		});
 	});
+
+	describe('changes derived store', () => {
+		it('should provide get() for path lookup', () => {
+			changeStore.trackCreate({ type: 'brand', id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
+
+			const $changes = get(changes);
+			expect($changes.get('brands/test')).toBeDefined();
+			expect($changes.get('brands/test')!.operation).toBe('create');
+			expect($changes.get('brands/nonexistent')).toBeUndefined();
+		});
+
+		it('should provide has() for existence check', () => {
+			changeStore.trackCreate({ type: 'brand', id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
+
+			const $changes = get(changes);
+			expect($changes.has('brands/test')).toBe(true);
+			expect($changes.has('brands/nonexistent')).toBe(false);
+		});
+	});
+
+	describe('moveChange', () => {
+		it('should move change and children to new path', () => {
+			const oldEntity = { type: 'brand', id: 'old', path: 'brands/old' };
+			const newEntity = { type: 'brand', id: 'new', path: 'brands/new' };
+
+			changeStore.trackCreate(oldEntity, { id: 'old', name: 'Old' });
+			changeStore.trackCreate(
+				{ type: 'material', id: 'PLA', path: 'brands/old/materials/PLA' },
+				{ material: 'PLA' }
+			);
+
+			changeStore.moveChange('brands/old', 'brands/new', newEntity);
+
+			expect(getChangeAt('brands/old')).toBeUndefined();
+			expect(getChangeAt('brands/new')).toBeDefined();
+			expect(getChangeAt('brands/old/materials/PLA')).toBeUndefined();
+			expect(getChangeAt('brands/new/materials/PLA')).toBeDefined();
+		});
+	});
 });
 
 describe('findChangedProperties (via trackUpdate)', () => {
 	beforeEach(() => {
 		localStorageMock.clear();
 		localStorageMock._setStore({});
-		mockIsCloudMode.set(true);
+		mocks.mockIsCloudMode.set(true);
 		changeStore.clear();
 	});
 
@@ -387,9 +448,8 @@ describe('findChangedProperties (via trackUpdate)', () => {
 
 		changeStore.trackUpdate(entity, oldData, newData);
 
-		const state = get(changeStore);
-		const changes = state.changes['brands/test'].propertyChanges;
-		expect(changes?.some((c) => c.property === 'website')).toBe(true);
+		const change = getChangeAt('brands/test');
+		expect(change?.propertyChanges?.some((c) => c.property === 'website')).toBe(true);
 	});
 
 	it('should detect removed properties', () => {
@@ -399,9 +459,8 @@ describe('findChangedProperties (via trackUpdate)', () => {
 
 		changeStore.trackUpdate(entity, oldData, newData);
 
-		const state = get(changeStore);
-		const changes = state.changes['brands/test'].propertyChanges;
-		expect(changes?.some((c) => c.property === 'website')).toBe(true);
+		const change = getChangeAt('brands/test');
+		expect(change?.propertyChanges?.some((c) => c.property === 'website')).toBe(true);
 	});
 
 	it('should detect modified properties', () => {
@@ -411,24 +470,22 @@ describe('findChangedProperties (via trackUpdate)', () => {
 
 		changeStore.trackUpdate(entity, oldData, newData);
 
-		const state = get(changeStore);
-		const changes = state.changes['brands/test'].propertyChanges;
-		const nameChange = changes?.find((c) => c.property === 'name');
+		const change = getChangeAt('brands/test');
+		const nameChange = change?.propertyChanges?.find((c) => c.property === 'name');
 		expect(nameChange).toBeDefined();
 		expect(nameChange?.oldValue).toBe('Old Name');
 		expect(nameChange?.newValue).toBe('New Name');
 	});
 
 	it('should recurse into nested objects', () => {
-		const entity = { type: 'filament', id: 'test', path: 'filaments/test' };
+		const entity = { type: 'filament', id: 'test', path: 'brands/b/materials/PLA/filaments/test' };
 		const oldData = { name: 'Test', settings: { temp: 200 } };
 		const newData = { name: 'Test', settings: { temp: 210 } };
 
 		changeStore.trackUpdate(entity, oldData, newData);
 
-		const state = get(changeStore);
-		const changes = state.changes['filaments/test'].propertyChanges;
-		expect(changes?.some((c) => c.property === 'settings.temp')).toBe(true);
+		const change = getChangeAt('brands/b/materials/PLA/filaments/test');
+		expect(change?.propertyChanges?.some((c) => c.property === 'settings.temp')).toBe(true);
 	});
 
 	it('should skip internal fields (id, slug, logo)', () => {
@@ -438,12 +495,11 @@ describe('findChangedProperties (via trackUpdate)', () => {
 
 		changeStore.trackUpdate(entity, oldData, newData);
 
-		const state = get(changeStore);
-		const changes = state.changes['brands/test'].propertyChanges;
-		expect(changes?.some((c) => c.property === 'id')).toBe(false);
-		expect(changes?.some((c) => c.property === 'slug')).toBe(false);
-		expect(changes?.some((c) => c.property === 'logo')).toBe(false);
-		expect(changes?.some((c) => c.property === 'name')).toBe(true);
+		const change = getChangeAt('brands/test');
+		expect(change?.propertyChanges?.some((c) => c.property === 'id')).toBe(false);
+		expect(change?.propertyChanges?.some((c) => c.property === 'slug')).toBe(false);
+		expect(change?.propertyChanges?.some((c) => c.property === 'logo')).toBe(false);
+		expect(change?.propertyChanges?.some((c) => c.property === 'name')).toBe(true);
 	});
 
 	it('should handle null/undefined/empty equivalence', () => {
@@ -454,7 +510,6 @@ describe('findChangedProperties (via trackUpdate)', () => {
 		changeStore.trackUpdate(entity, oldData, newData);
 
 		// Should be reverted since null and undefined are equivalent
-		const state = get(changeStore);
-		expect(state.changes['brands/test']).toBeUndefined();
+		expect(getChangeAt('brands/test')).toBeUndefined();
 	});
 });

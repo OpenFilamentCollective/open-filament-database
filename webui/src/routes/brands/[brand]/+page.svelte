@@ -10,9 +10,10 @@
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
 	import { db } from '$lib/services/database';
+	import { generateMaterialType, generateSlug } from '$lib/services/entityService';
 	import { apiFetch } from '$lib/utils/api';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
-	import { changeStore } from '$lib/stores/changes';
+	import { changes, changeStore } from '$lib/stores/changes';
 	import { isCloudMode } from '$lib/stores/environment';
 
 	let brandId: string = $derived($page.params.brand!);
@@ -32,6 +33,7 @@
 	let logoChanged: boolean = $state(false);
 	let deleting: boolean = $state(false);
 	let creatingMaterial: boolean = $state(false);
+	let createMaterialError: string | null = $state(null);
 
 	// Create message handler
 	const messageHandler = createMessageHandler();
@@ -41,16 +43,21 @@
 		if (!$isCloudMode || !brand) return false;
 
 		const entityPath = `brands/${brand.id}`;
-		const change = $changeStore.changes[entityPath];
+		const change = $changes.get(entityPath);
 
 		return change && (change.operation === 'create' || change.operation === 'update');
+	});
+
+	let hasDescendantChanges = $derived.by(() => {
+		if (!$isCloudMode || !brand) return false;
+		return $changes.hasDescendantChanges(`brands/${brand.id}`);
 	});
 
 	// Check if this brand was locally created
 	let isLocalCreate = $derived.by(() => {
 		if (!$isCloudMode || !brand) return false;
 		const entityPath = `brands/${brand.id}`;
-		return $changeStore.changes[entityPath]?.operation === 'create';
+		return $changes.get(entityPath)?.operation === 'create';
 	});
 
 	onMount(async () => {
@@ -110,11 +117,12 @@
 			}
 
 			// Update brand data with new logo filename (or keep existing if not changed)
-			// Preserve id and slug from original brand since form doesn't include them
+			// For locally created brands, regenerate id/slug from name so it stays in sync
+			const newId = isLocalCreate ? generateSlug(data.name) : brand.id;
 			const updatedBrand = {
 				...data,
-				id: brand.id,
-				slug: brand.slug ?? brand.id,
+				id: newId,
+				slug: newId,
 				logo: logoFilename
 			};
 
@@ -127,6 +135,13 @@
 				logoDataUrl = '';
 				messageHandler.showSuccess('Brand saved successfully!');
 				showEditModal = false;
+
+				// If brand ID changed, redirect to new URL
+				if (newId !== brandId) {
+					setTimeout(() => {
+						window.location.href = `/brands/${newId}`;
+					}, 500);
+				}
 			} else {
 				messageHandler.showError('Failed to save brand');
 			}
@@ -161,10 +176,12 @@
 	}
 
 	function openCreateMaterialModal() {
+		createMaterialError = null;
 		showCreateMaterialModal = true;
 	}
 
 	function closeCreateMaterialModal() {
+		createMaterialError = null;
 		showCreateMaterialModal = false;
 	}
 
@@ -172,9 +189,20 @@
 		if (!brand) return;
 
 		creatingMaterial = true;
-		messageHandler.clear();
+		createMaterialError = null;
 
 		try {
+			// Check for duplicate material
+			const newMaterialType = generateMaterialType(data.material);
+			const duplicate = materials.find(
+				(m) => (m.materialType || m.material || '').toLowerCase() === newMaterialType.toLowerCase()
+			);
+			if (duplicate) {
+				createMaterialError = `Material "${data.material}" already exists in this brand`;
+				creatingMaterial = false;
+				return;
+			}
+
 			const result = await db.createMaterial(brandId, data);
 
 			if (result.success && result.materialType) {
@@ -185,10 +213,10 @@
 					window.location.href = `/brands/${brandId}/${result.materialType.toLowerCase()}`;
 				}, 500);
 			} else {
-				messageHandler.showError('Failed to create material');
+				createMaterialError = 'Failed to create material';
 			}
 		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create material');
+			createMaterialError = e instanceof Error ? e.message : 'Failed to create material';
 		} finally {
 			creatingMaterial = false;
 		}
@@ -204,7 +232,7 @@
 			if ($isCloudMode) {
 				// In cloud mode, check if this is a newly created brand
 				const entityPath = `brands/${brandId}`;
-				const change = $changeStore.changes[entityPath];
+				const change = $changes.get(entityPath);
 
 				if (change && change.operation === 'create') {
 					// If it was created locally, just remove the change
@@ -265,6 +293,8 @@
 
 			{#if hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
+			{:else if hasDescendantChanges}
+				<MessageBanner type="info" message="Contains items with local changes" />
 			{/if}
 
 			{#if messageHandler.message}
@@ -304,8 +334,8 @@
 						<div class="space-y-2">
 							{#each materials as material}
 								{@const materialHref = `/brands/${brandData.slug ?? brandData.id}/${material.materialType ?? material.material.toLowerCase()}`}
-								{@const materialPath = `brands/${brandData.id}/materials/${material.materialType ?? material.material.toLowerCase()}`}
-								{@const materialChange = $isCloudMode ? $changeStore.changes[materialPath] : undefined}
+								{@const materialPath = `brands/${brandId}/materials/${material.materialType ?? material.material.toLowerCase()}`}
+								{@const materialChange = $isCloudMode ? $changes.get(materialPath) : undefined}
 								<EntityCard
 									entity={material}
 									href={materialHref}
@@ -315,6 +345,7 @@
 									showLogo={false}
 									hasLocalChanges={!!materialChange}
 									localChangeType={materialChange?.operation}
+									hasDescendantChanges={$isCloudMode ? $changes.hasDescendantChanges(materialPath) : false}
 								/>
 							{/each}
 						</div>
@@ -348,7 +379,7 @@
 			{#if $isCloudMode}
 				<div class="bg-primary/10 border border-primary/20 rounded p-3">
 					<p class="text-sm text-primary">
-						{#if $changeStore.changes[`brands/${brandId}`]?.operation === 'create'}
+						{#if $changes.get(`brands/${brandId}`)?.operation === 'create'}
 							This will remove the locally created brand. The change will be discarded.
 						{:else}
 							This will mark the brand for deletion. Remember to export your changes.
@@ -376,9 +407,13 @@
 </Modal>
 
 <Modal show={showCreateMaterialModal} title="Create New Material" onClose={closeCreateMaterialModal} maxWidth="5xl" height="3/4">
+	{#if createMaterialError}
+		<MessageBanner type="error" message={createMaterialError} />
+	{/if}
 	{#if materialSchema}
 		<MaterialForm
 			schema={materialSchema}
+			config={{ excludeEnumValues: { material: materials.map(m => m.material) } }}
 			onSubmit={handleCreateMaterial}
 			saving={creatingMaterial}
 		/>

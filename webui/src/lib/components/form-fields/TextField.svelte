@@ -10,6 +10,8 @@
 		placeholder?: string;
 		tooltip?: string;
 		type?: 'text' | 'url' | 'email';
+		autoUppercase?: boolean;
+		maxLength?: number;
 	}
 
 	let {
@@ -19,8 +21,31 @@
 		required = false,
 		placeholder = '',
 		tooltip = '',
-		type = 'text'
+		type = 'text',
+		autoUppercase = false,
+		maxLength = undefined as number | undefined
 	}: Props = $props();
+
+	function handleInput(e: Event) {
+		const input = e.target as HTMLInputElement;
+		let val = input.value;
+
+		if (autoUppercase) {
+			val = val.toUpperCase();
+		}
+
+		// Enforce maxLength client-side
+		if (maxLength && val.length > maxLength) {
+			val = val.slice(0, maxLength);
+		}
+
+		if (input.value !== val) {
+			const pos = input.selectionStart;
+			input.value = val;
+			input.setSelectionRange(pos, pos);
+		}
+		value = val;
+	}
 </script>
 
 <div class="flex flex-col">
@@ -31,5 +56,14 @@
 			{#if tooltip}<Tooltip text={tooltip} />{/if}
 		</label>
 	{/if}
-	<input {id} {type} bind:value class={INPUT_CLASSES} {required} {placeholder} />
+	<input
+		{id}
+		{type}
+		bind:value
+		class="{INPUT_CLASSES}{autoUppercase ? ' uppercase' : ''}"
+		{required}
+		{placeholder}
+		maxlength={maxLength}
+		oninput={handleInput}
+	/>
 </div>

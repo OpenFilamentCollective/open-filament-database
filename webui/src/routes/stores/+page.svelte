@@ -11,7 +11,7 @@
 	import { generateSlug } from '$lib/services/entityService';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { isCloudMode } from '$lib/stores/environment';
-	import { changeStore } from '$lib/stores/changes';
+	import { changes } from '$lib/stores/changes';
 	import { BackButton } from '$lib/components';
 
 	let stores: Store[] = $state([]);
@@ -146,7 +146,7 @@
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each storesList as store}
 					{@const storePath = `stores/${store.id}`}
-					{@const storeChange = $isCloudMode ? $changeStore.changes[storePath] : undefined}
+					{@const storeChange = $isCloudMode ? $changes.get(storePath) : undefined}
 					<EntityCard
 						entity={store}
 						href="/stores/{store.slug ?? store.id}"

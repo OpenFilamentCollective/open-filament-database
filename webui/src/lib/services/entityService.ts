@@ -45,7 +45,7 @@ export function generateMaterialType(material: string): string {
  */
 export function hasLocalChanges(entityPath: string): boolean {
 	if (!get(isCloudMode)) return false;
-	const change = get(changeStore).changes[entityPath];
+	const change = get(changeStore)._index.get(entityPath)?.change;
 	return change !== undefined && (change.operation === 'create' || change.operation === 'update');
 }
 
@@ -55,7 +55,7 @@ export function hasLocalChanges(entityPath: string): boolean {
  */
 export function isLocallyCreated(entityPath: string): boolean {
 	if (!get(isCloudMode)) return false;
-	return get(changeStore).changes[entityPath]?.operation === 'create';
+	return get(changeStore)._index.get(entityPath)?.change?.operation === 'create';
 }
 
 // ============ Entity Operations ============
@@ -86,7 +86,7 @@ export async function deleteEntity(
 	deleteFunction: () => Promise<boolean>
 ): Promise<DeleteResult> {
 	if (get(isCloudMode)) {
-		const change = get(changeStore).changes[entityPath];
+		const change = get(changeStore)._index.get(entityPath)?.change;
 
 		if (change?.operation === 'create') {
 			// Entity was created locally but not synced - just remove the change

@@ -7,7 +7,7 @@
 	import { DataDisplay } from '$lib/components/layout';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
+	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { getTraitLabel } from '$lib/config/traitConfig';
@@ -76,13 +76,20 @@
 		messageHandler.clear();
 
 		try {
-			const updatedVariant = mergeEntityData(variant, data, ['id', 'slug']) as Variant;
+			// For locally created variants, regenerate id/slug from color_name
+			const newSlug = entityState.isLocalCreate ? generateSlug(data.color_name) : (variant.slug || variant.id);
+			const updatedVariant = {
+				...variant,
+				...data,
+				id: newSlug,
+				slug: newSlug
+			} as Variant;
 
 			const success = await db.saveVariant(
 				brandId,
 				materialType,
 				filamentId,
-				variantSlug,
+				newSlug,
 				updatedVariant,
 				originalVariant ?? variant
 			);
@@ -91,6 +98,13 @@
 				variant = updatedVariant;
 				messageHandler.showSuccess('Variant saved successfully!');
 				entityState.closeEdit();
+
+				// If variant slug changed, redirect to new URL
+				if (newSlug !== variantSlug) {
+					setTimeout(() => {
+						window.location.href = `/brands/${brandId}/${materialType}/${filamentId}/${newSlug}`;
+					}, 500);
+				}
 			} else {
 				messageHandler.showError('Failed to save variant');
 			}

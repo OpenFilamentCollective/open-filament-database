@@ -5,6 +5,9 @@
         "string_limit": {
             "maxLength": 1000
         },
+        "country_code": {
+            "pattern": "^[A-Z]{2}$"
+        },
         "id": {
             "maxLength": 1000,
             "pattern": "^[a-z0-9+]+(_[a-z0-9+]+)*$"
@@ -46,10 +49,10 @@
             ],
             "title": "Ships From",
             "description": "Countries/regions the store ships from",
-            "x-placeholder": "Add location...",
+            "x-placeholder": "e.g., US",
             "items": {
                 "type": "string",
-                "$ref": "#/definitions/string_limit"
+                "$ref": "#/definitions/country_code"
             },
             "$ref": "#/definitions/string_limit"
         },
@@ -60,10 +63,10 @@
             ],
             "title": "Ships To",
             "description": "Countries/regions the store ships to",
-            "x-placeholder": "Add location...",
+            "x-placeholder": "e.g., US",
             "items": {
                 "type": "string",
-                "$ref": "#/definitions/string_limit"
+                "$ref": "#/definitions/country_code"
             },
             "$ref": "#/definitions/string_limit"
         }

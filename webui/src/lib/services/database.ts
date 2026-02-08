@@ -1,9 +1,12 @@
 import type { Store, Brand, DatabaseIndex, Material, Filament, Variant } from '$lib/types/database';
-import type { EntityIdentifier } from '$lib/types/changes';
+import type { EntityChange, EntityIdentifier } from '$lib/types/changes';
+import type { TreeChangeSet } from '$lib/types/changeTree';
 import { get } from 'svelte/store';
 import { isCloudMode } from '$lib/stores/environment';
 import { changeStore } from '$lib/stores/changes';
 import { apiFetch } from '$lib/utils/api';
+import { parsePath } from '$lib/utils/changePaths';
+import { getDirectChildren } from '$lib/utils/changeTreeOps';
 
 /**
  * Service for indexing and managing the filament database
@@ -20,6 +23,38 @@ export class DatabaseService {
 			DatabaseService.instance = new DatabaseService();
 		}
 		return DatabaseService.instance;
+	}
+
+	/**
+	 * Get direct child changes from the tree for a given path prefix.
+	 * Replaces O(n) prefix scanning with O(k) tree navigation.
+	 */
+	private getDirectChildChanges(
+		changeSet: TreeChangeSet,
+		prefix: string
+	): Array<{ entityId: string; change: EntityChange }> {
+		// Root-level: stores/ or brands/
+		if (prefix === 'stores/') {
+			return Object.values(changeSet.tree.stores)
+				.filter((n) => n.change)
+				.map((n) => ({ entityId: n.key, change: n.change! }));
+		}
+		if (prefix === 'brands/') {
+			return Object.values(changeSet.tree.brands)
+				.filter((n) => n.change)
+				.map((n) => ({ entityId: n.key, change: n.change! }));
+		}
+
+		// Nested: parse parent path and namespace from prefix (e.g., "brands/X/materials/" → parent="brands/X", ns="materials")
+		const parts = prefix.slice(0, -1).split('/');
+		const namespace = parts.pop()!;
+		const parentPath = parts.join('/');
+		const parentEp = parsePath(parentPath);
+		if (!parentEp) return [];
+
+		return getDirectChildren(changeSet.tree, parentEp, namespace)
+			.filter((n) => n.change)
+			.map((n) => ({ entityId: n.key, change: n.change! }));
 	}
 
 	/**
@@ -47,17 +82,8 @@ export class DatabaseService {
 			result.set(itemId, item);
 		}
 
-		// Apply changes - only match direct children, not nested paths
-		for (const [path, change] of Object.entries(changeSet.changes)) {
-			if (!path.startsWith(entityPathPrefix)) continue;
-
-			// Extract the entity id from the path (the part after the prefix, before any further slashes)
-			const relativePath = path.slice(entityPathPrefix.length);
-			const entityId = relativePath.split('/')[0];
-
-			// Only apply if this is a direct child (no further path segments beyond the entity id)
-			if (relativePath !== entityId) continue;
-
+		// Apply direct child changes from the tree (O(k) instead of O(n) scan)
+		for (const { entityId, change } of this.getDirectChildChanges(changeSet, entityPathPrefix)) {
 			switch (change.operation) {
 				case 'create':
 					// Add new entity
@@ -73,7 +99,12 @@ export class DatabaseService {
 						const dataId = String(change.data[idKey]);
 						// If the ID changed, remove the old entry and add the new one
 						// Use case-insensitive matching since paths use lowercase but data may use original case
-						const oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+						let oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+						// If not found by entityId (e.g. after a rename/moveSubtree), try originalData
+						if (!oldKey && change.originalData) {
+							const origId = String(change.originalData[idKey]);
+							oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === origId.toLowerCase());
+						}
 						if (oldKey && oldKey !== dataId) {
 							result.delete(oldKey);
 						}
@@ -103,7 +134,7 @@ export class DatabaseService {
 		}
 
 		const changeSet = get(changeStore);
-		const change = changeSet.changes[entityPath];
+		const change = changeSet._index.get(entityPath)?.change;
 
 		if (!change) {
 			return baseData;
@@ -135,8 +166,8 @@ export class DatabaseService {
 
 		const changeSet = get(changeStore);
 
-		// Check the exact path
-		const change = changeSet.changes[entityPath];
+		// Check the exact path via O(1) index lookup
+		const change = changeSet._index.get(entityPath)?.change;
 		if (change?.operation === 'create') {
 			return true;
 		}
@@ -145,13 +176,31 @@ export class DatabaseService {
 		const parts = entityPath.split('/');
 		for (let i = parts.length - 2; i >= 2; i -= 2) {
 			const ancestorPath = parts.slice(0, i).join('/');
-			const ancestorChange = changeSet.changes[ancestorPath];
+			const ancestorChange = changeSet._index.get(ancestorPath)?.change;
 			if (ancestorChange?.operation === 'create') {
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Get the original material type for API calls when a material has been renamed.
+	 * Returns the original materialType (lowercased) if there's a pending rename,
+	 * otherwise returns the input unchanged.
+	 */
+	private getApiMaterialType(brandId: string, materialType: string): string {
+		if (!get(isCloudMode)) return materialType;
+
+		const original = this.getOriginalMaterial(brandId, materialType);
+		if (original) {
+			const origType = ((original as any).slug || original.materialType || original.material || '');
+			if (origType && origType.toLowerCase() !== materialType.toLowerCase()) {
+				return origType.toLowerCase();
+			}
+		}
+		return materialType;
 	}
 
 	/**
@@ -225,7 +274,7 @@ export class DatabaseService {
 			// In cloud mode, check if this is a newly created store first
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
-				const change = changeSet.changes[entityPath];
+				const change = changeSet._index.get(entityPath)?.change;
 
 				// If it's a newly created store, return it directly
 				if (change && change.operation === 'create') {
@@ -260,7 +309,7 @@ export class DatabaseService {
 			// In cloud mode, check if this is a newly created brand first
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
-				const change = changeSet.changes[entityPath];
+				const change = changeSet._index.get(entityPath)?.change;
 
 				// If it's a newly created brand, return it directly
 				if (change && change.operation === 'create') {
@@ -302,7 +351,7 @@ export class DatabaseService {
 				if (oldStore && oldStore.id !== store.id) {
 					const oldPath = `stores/${oldStore.id}`;
 					const changeSet = get(changeStore);
-					if (changeSet.changes[oldPath]) {
+					if (changeSet._index.has(oldPath)) {
 						changeStore.moveChange(oldPath, newPath, entity);
 					}
 				}
@@ -347,14 +396,11 @@ export class DatabaseService {
 				// Find the actual path for this store in case it was renamed
 				const changeSet = get(changeStore);
 
-				for (const [path, change] of Object.entries(changeSet.changes)) {
-					if (!path.startsWith(storePrefix)) continue;
-
-					// Check if this change's data matches our current store
+				for (const { entityId, change } of this.getDirectChildChanges(changeSet, storePrefix)) {
 					if (change.data) {
 						const dataId = (change.data.id || change.data.slug || change.data.name || '').toLowerCase();
 						if (dataId === id.toLowerCase()) {
-							entityPath = path;
+							entityPath = change.entity.path;
 							break;
 						}
 					}
@@ -404,7 +450,7 @@ export class DatabaseService {
 				if (oldBrand && oldBrand.id !== brand.id) {
 					const oldPath = `brands/${oldBrand.id}`;
 					const changeSet = get(changeStore);
-					if (changeSet.changes[oldPath]) {
+					if (changeSet._index.has(oldPath)) {
 						changeStore.moveChange(oldPath, newPath, entity);
 					}
 				}
@@ -443,16 +489,11 @@ export class DatabaseService {
 				// Find the actual path for this brand in case it was renamed
 				const changeSet = get(changeStore);
 
-				for (const [path, change] of Object.entries(changeSet.changes)) {
-					if (!path.startsWith(brandPrefix)) continue;
-					// Only match direct brand paths (not nested materials/filaments)
-					if (path.slice(brandPrefix.length).includes('/')) continue;
-
-					// Check if this change's data matches our current brand
+				for (const { entityId, change } of this.getDirectChildChanges(changeSet, brandPrefix)) {
 					if (change.data) {
 						const dataId = (change.data.id || change.data.slug || change.data.name || '').toLowerCase();
 						if (dataId === id.toLowerCase()) {
-							entityPath = path;
+							entityPath = change.entity.path;
 							break;
 						}
 					}
@@ -535,16 +576,8 @@ export class DatabaseService {
 			result.set(key, item);
 		}
 
-		// Apply changes
-		for (const [path, change] of Object.entries(changeSet.changes)) {
-			if (!path.startsWith(entityPathPrefix)) continue;
-
-			const relativePath = path.slice(entityPathPrefix.length);
-			const entityId = relativePath.split('/')[0];
-
-			// Only apply if this is a direct child
-			if (relativePath !== entityId) continue;
-
+		// Apply direct child changes from the tree (O(k) instead of O(n) scan)
+		for (const { entityId, change } of this.getDirectChildChanges(changeSet, entityPathPrefix)) {
 			switch (change.operation) {
 				case 'create':
 					if (change.data) {
@@ -559,7 +592,12 @@ export class DatabaseService {
 					if (change.data) {
 						const newKey = (change.data.materialType || change.data.material || '').toLowerCase();
 						// Find and remove the old entry (matched by entityId from path)
-						const oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+						let oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+						// If not found by entityId (e.g. after a rename/moveSubtree), try originalData
+						if (!oldKey && change.originalData) {
+							const origKey = ((change.originalData as any).slug || change.originalData.materialType || change.originalData.material || '').toLowerCase();
+							oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === origKey);
+						}
 						if (oldKey && oldKey !== newKey) {
 							result.delete(oldKey);
 						}
@@ -592,18 +630,15 @@ export class DatabaseService {
 		const changeSet = get(changeStore);
 		const materialPrefix = `brands/${brandId}/materials/`;
 
-		// Look for a change that contains this material
-		for (const [path, change] of Object.entries(changeSet.changes)) {
-			if (!path.startsWith(materialPrefix)) continue;
-
+		// Look for a change that contains this material (O(k) tree navigation)
+		for (const { entityId, change } of this.getDirectChildChanges(changeSet, materialPrefix)) {
 			// Check if this change's data matches the materialType we're looking for
 			if (change.data?.materialType?.toUpperCase() === materialType.toUpperCase()) {
 				return change.originalData || null;
 			}
 
-			// Also check by path
-			const pathMaterialType = path.slice(materialPrefix.length).split('/')[0];
-			if (pathMaterialType.toLowerCase() === materialType.toLowerCase()) {
+			// Also check by path segment (entityId is the tree node key)
+			if (entityId.toLowerCase() === materialType.toLowerCase()) {
 				return change.originalData || null;
 			}
 		}
@@ -624,14 +659,14 @@ export class DatabaseService {
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
 
-				// First check for exact path match
-				let change = changeSet.changes[entityPath];
+				// First check for exact path match via O(1) index lookup
+				let change = changeSet._index.get(entityPath)?.change;
 
 				// If not found, look for a change where the NEW materialType matches what we're looking for
 				// This handles the case where material was renamed (e.g., path is "materials/pla" but data.materialType is "PETG")
 				if (!change) {
-					for (const [path, c] of Object.entries(changeSet.changes)) {
-						if (path.startsWith(materialPrefix) && c.data?.materialType?.toUpperCase() === materialType.toUpperCase()) {
+					for (const { entityId, change: c } of this.getDirectChildChanges(changeSet, materialPrefix)) {
+						if (c.data?.materialType?.toUpperCase() === materialType.toUpperCase()) {
 							change = c;
 							break;
 						}
@@ -698,15 +733,13 @@ export class DatabaseService {
 
 				if (oldMaterial) {
 					const oldKey = (oldMaterial.slug || oldMaterial.materialType || oldMaterial.material || '').toLowerCase();
-					for (const [path, change] of Object.entries(changeSet.changes)) {
-						if (!path.startsWith(materialPrefix)) continue;
-
+					for (const { entityId, change } of this.getDirectChildChanges(changeSet, materialPrefix)) {
 						// Check if this change's originalData matches our oldMaterial
 						const origData = change.originalData;
 						if (origData) {
 							const origKey = (origData.slug || origData.materialType || origData.material || '').toLowerCase();
 							if (origKey === oldKey) {
-								existingPath = path;
+								existingPath = change.entity.path;
 								if (origData) trueOriginalData = origData;
 								break;
 							}
@@ -716,7 +749,7 @@ export class DatabaseService {
 						if (change.data) {
 							const dataKey = (change.data.slug || change.data.materialType || change.data.material || '').toLowerCase();
 							if (dataKey === oldKey) {
-								existingPath = path;
+								existingPath = change.entity.path;
 								if (change.originalData) trueOriginalData = change.originalData;
 								break;
 							}
@@ -813,14 +846,11 @@ export class DatabaseService {
 				// (the change might be stored under the original path, not the current materialType)
 				const changeSet = get(changeStore);
 
-				for (const [path, change] of Object.entries(changeSet.changes)) {
-					if (!path.startsWith(materialPrefix)) continue;
-
-					// Check if this change's data matches our current material
+				for (const { entityId, change } of this.getDirectChildChanges(changeSet, materialPrefix)) {
 					if (change.data) {
 						const dataKey = (change.data.materialType || change.data.material || '').toLowerCase();
 						if (dataKey === materialType.toLowerCase()) {
-							entityPath = path;
+							entityPath = change.entity.path;
 							break;
 						}
 					}
@@ -862,11 +892,13 @@ export class DatabaseService {
 	async loadFilaments(brandId: string, materialType: string): Promise<Filament[]> {
 		let baseFilaments: Filament[] = [];
 		const materialPath = `brands/${brandId}/materials/${materialType}`;
+		// Use original materialType for API if material was renamed locally
+		const apiMaterialType = this.getApiMaterialType(brandId, materialType);
 
 		// Skip API call if the material is a local create (doesn't exist on server)
 		if (!this.isLocalCreate(materialPath)) {
 			try {
-				const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}/filaments`);
+				const response = await apiFetch(`/api/brands/${brandId}/materials/${apiMaterialType}/filaments`);
 				if (response.ok) {
 					baseFilaments = await response.json();
 				}
@@ -892,14 +924,16 @@ export class DatabaseService {
 			// In cloud mode, check if this is a newly created filament first
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
-				const change = changeSet.changes[entityPath];
+				const change = changeSet._index.get(entityPath)?.change;
 
 				if (change && change.operation === 'create') {
 					return change.data || null;
 				}
 			}
 
-			const response = await apiFetch(`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}`);
+			// Use original materialType for API if material was renamed locally
+			const apiMaterialType = this.getApiMaterialType(brandId, materialType);
+			const response = await apiFetch(`/api/brands/${brandId}/materials/${apiMaterialType}/filaments/${filamentId}`);
 			if (!response.ok) {
 				return null;
 			}
@@ -944,7 +978,7 @@ export class DatabaseService {
 					if (oldId && oldId !== filamentId) {
 						const oldPath = `brands/${brandId}/materials/${materialType}/filaments/${oldId}`;
 						const changeSet = get(changeStore);
-						if (changeSet.changes[oldPath]) {
+						if (changeSet._index.has(oldPath)) {
 							changeStore.moveChange(oldPath, newPath, entity);
 						}
 					}
@@ -1030,14 +1064,11 @@ export class DatabaseService {
 				// Find the actual path for this filament in case it was renamed
 				const changeSet = get(changeStore);
 
-				for (const [path, change] of Object.entries(changeSet.changes)) {
-					if (!path.startsWith(filamentPrefix)) continue;
-
-					// Check if this change's data matches our current filament
+				for (const { entityId, change } of this.getDirectChildChanges(changeSet, filamentPrefix)) {
 					if (change.data) {
 						const dataId = (change.data.id || change.data.slug || change.data.name || '').toLowerCase();
 						if (dataId === filamentId.toLowerCase()) {
-							entityPath = path;
+							entityPath = change.entity.path;
 							break;
 						}
 					}
@@ -1079,12 +1110,14 @@ export class DatabaseService {
 	async loadVariants(brandId: string, materialType: string, filamentId: string): Promise<Variant[]> {
 		let baseVariants: Variant[] = [];
 		const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
+		// Use original materialType for API if material was renamed locally
+		const apiMaterialType = this.getApiMaterialType(brandId, materialType);
 
 		// Skip API call if the filament is a local create (doesn't exist on server)
 		if (!this.isLocalCreate(filamentPath)) {
 			try {
 				const response = await apiFetch(
-					`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants`
+					`/api/brands/${brandId}/materials/${apiMaterialType}/filaments/${filamentId}/variants`
 				);
 				if (response.ok) {
 					baseVariants = await response.json();
@@ -1117,15 +1150,17 @@ export class DatabaseService {
 			// In cloud mode, check if this is a newly created variant first
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
-				const change = changeSet.changes[entityPath];
+				const change = changeSet._index.get(entityPath)?.change;
 
 				if (change && change.operation === 'create') {
 					return change.data || null;
 				}
 			}
 
+			// Use original materialType for API if material was renamed locally
+			const apiMaterialType = this.getApiMaterialType(brandId, materialType);
 			const response = await apiFetch(
-				`/api/brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`
+				`/api/brands/${brandId}/materials/${apiMaterialType}/filaments/${filamentId}/variants/${variantSlug}`
 			);
 			if (!response.ok) {
 				return null;
@@ -1172,7 +1207,7 @@ export class DatabaseService {
 					if (oldSlug && oldSlug !== variantSlug) {
 						const oldPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${oldSlug}`;
 						const changeSet = get(changeStore);
-						if (changeSet.changes[oldPath]) {
+						if (changeSet._index.has(oldPath)) {
 							changeStore.moveChange(oldPath, newPath, entity);
 						}
 					}
@@ -1271,14 +1306,11 @@ export class DatabaseService {
 				// Find the actual path for this variant in case it was renamed
 				const changeSet = get(changeStore);
 
-				for (const [path, change] of Object.entries(changeSet.changes)) {
-					if (!path.startsWith(variantPrefix)) continue;
-
-					// Check if this change's data matches our current variant
+				for (const { entityId, change } of this.getDirectChildChanges(changeSet, variantPrefix)) {
 					if (change.data) {
 						const dataId = (change.data.id || change.data.slug || change.data.color_name || '').toLowerCase();
 						if (dataId === variantSlug.toLowerCase()) {
-							entityPath = path;
+							entityPath = change.entity.path;
 							break;
 						}
 					}

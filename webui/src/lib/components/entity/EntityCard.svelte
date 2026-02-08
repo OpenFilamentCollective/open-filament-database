@@ -45,6 +45,8 @@
 		hasLocalChanges?: boolean;
 		/** The type of local change: 'create', 'update', or 'delete' */
 		localChangeType?: 'create' | 'update' | 'delete';
+		/** Whether any descendant entity has local changes */
+		hasDescendantChanges?: boolean;
 	}
 
 	let {
@@ -62,7 +64,8 @@
 		showLogo = true,
 		secondaryInfo,
 		hasLocalChanges = false,
-		localChangeType
+		localChangeType,
+		hasDescendantChanges = false
 	}: Props = $props();
 
 	const displayName = $derived(name ?? entity.name);
@@ -70,17 +73,22 @@
 
 	// Determine local change styling
 	const localChangeClass = $derived.by(() => {
-		if (!hasLocalChanges) return '';
-		switch (localChangeType) {
-			case 'create':
-				return 'border-l-4 border-l-green-500';
-			case 'update':
-				return 'border-l-4 border-l-yellow-500';
-			case 'delete':
-				return 'border-l-4 border-l-destructive';
-			default:
-				return 'border-l-4 border-l-primary';
+		if (hasLocalChanges) {
+			switch (localChangeType) {
+				case 'create':
+					return 'border-l-4 border-l-green-500';
+				case 'update':
+					return 'border-l-4 border-l-yellow-500';
+				case 'delete':
+					return 'border-l-4 border-l-destructive';
+				default:
+					return 'border-l-4 border-l-primary';
+			}
 		}
+		if (hasDescendantChanges) {
+			return 'border-l-4 border-l-blue-400/50';
+		}
+		return '';
 	});
 </script>
 
@@ -110,6 +118,11 @@
 					>
 						{localChangeType === 'create' ? 'New' : localChangeType === 'update' ? 'Modified' : localChangeType === 'delete' ? 'Deleted' : 'Changed'}
 					</span>
+				{:else if hasDescendantChanges}
+					<span
+						class="shrink-0 w-2 h-2 rounded-full bg-blue-400"
+						title="Contains items with local changes"
+					></span>
 				{/if}
 			</div>
 			<p class="text-xs text-muted-foreground truncate">

@@ -13,7 +13,7 @@
 	import { deleteEntity, generateMaterialType } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { isCloudMode } from '$lib/stores/environment';
-	import { changeStore } from '$lib/stores/changes';
+	import { changes } from '$lib/stores/changes';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -70,13 +70,19 @@
 			const newMaterialType = generateMaterialType(data.material);
 
 			const updatedMaterial: Material = {
-				...material,
+				...(originalMaterial ?? material),
 				...data,
 				id: newMaterialType,
 				materialType: newMaterialType
 			};
 
+			// Handle material_class: strip if not in form data, or if the original
+			// didn't have it and the value is just the schema default ("FFF").
+			// This prevents phantom changes when the form injects schema defaults.
+			const orig = originalMaterial ?? material;
 			if (!('material_class' in data)) {
+				delete (updatedMaterial as any).material_class;
+			} else if (orig && !('material_class' in (orig as Record<string, any>)) && data.material_class === 'FFF') {
 				delete (updatedMaterial as any).material_class;
 			}
 
@@ -207,6 +213,8 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
+			{:else if entityState.hasDescendantChanges}
+				<MessageBanner type="info" message="Contains items with local changes" />
 			{/if}
 
 			{#if messageHandler.message}
@@ -258,7 +266,7 @@
 								{@const filamentHref = `/brands/${brandId}/${materialType}/${filament.slug ?? filament.id}`}
 								{@const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.id}`}
 								{@const filamentChange = $isCloudMode
-									? $changeStore.changes[filamentPath]
+									? $changes.get(filamentPath)
 									: undefined}
 								<EntityCard
 									entity={filament}
@@ -272,6 +280,7 @@
 										: undefined}
 									hasLocalChanges={!!filamentChange}
 									localChangeType={filamentChange?.operation}
+									hasDescendantChanges={$isCloudMode ? $changes.hasDescendantChanges(filamentPath) : false}
 								/>
 							{/each}
 						</div>

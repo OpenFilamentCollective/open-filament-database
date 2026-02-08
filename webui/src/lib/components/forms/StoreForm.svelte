@@ -3,7 +3,7 @@
 	import { SchemaForm } from '$lib/components/forms';
 	import { LogoUpload } from '$lib/components/form-fields';
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
-	import { initializeFormData, buildSubmitData, transforms } from './schemaFormUtils';
+	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
 
 	interface Props {
@@ -21,9 +21,10 @@
 	const config: SchemaFormConfig = {
 		hiddenFields: ['id', 'logo'],
 		fieldOrder: ['name', 'storefront_url', 'ships_from', 'ships_to'],
-		transforms: {
-			ships_from: transforms.uppercaseArray,
-			ships_to: transforms.uppercaseArray
+		fieldGroups: [['ships_from', 'ships_to']],
+		typeOverrides: {
+			ships_from: 'countryList',
+			ships_to: 'countryList'
 		}
 	};
 
@@ -64,7 +65,14 @@
 		}
 
 		logoError = null;
-		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, undefined, config.transforms);
+		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields);
+		// Filter empty strings from country code arrays
+		if (Array.isArray(submitData.ships_from)) {
+			submitData.ships_from = submitData.ships_from.filter((v: string) => v.trim());
+		}
+		if (Array.isArray(submitData.ships_to)) {
+			submitData.ships_to = submitData.ships_to.filter((v: string) => v.trim());
+		}
 		onSubmit(submitData);
 	}
 

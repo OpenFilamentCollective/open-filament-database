@@ -45,7 +45,7 @@
         "origin": {
             "type": "string",
             "title": "Country of Origin",
-            "description": "Two-letter country code (e.g., US, DE, CN)",
+            "description": "Two-letter country code (e.g., US, DE, CN) or Unknown",
             "x-placeholder": "e.g., US",
             "$ref": "#/definitions/country_code"
         }

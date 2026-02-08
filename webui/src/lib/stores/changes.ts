@@ -2,12 +2,28 @@ import { writable, derived, get } from 'svelte/store';
 import { browser } from '$app/environment';
 import type {
 	EntityChange,
-	ChangeSet,
 	EntityIdentifier,
 	PropertyChange,
 	ChangeOperation,
 	ChangeExport
 } from '$lib/types/changes';
+import type { TreeChangeSet } from '$lib/types/changeTree';
+import { parsePath } from '$lib/utils/changePaths';
+import {
+	createEmptyChangeSet,
+	serialize,
+	deserialize,
+	getChange as treeGetChange,
+	setChange as treeSetChange,
+	removeChange as treeRemoveChange,
+	removeDescendants,
+	moveSubtree,
+	getAllChanges,
+	countChanges,
+	findImagesForEntity,
+	moveImageReferences,
+	hasDescendantChanges as treeHasDescendantChanges
+} from '$lib/utils/changeTreeOps';
 import { isCloudMode } from './environment';
 
 const STORAGE_KEY_CHANGES = 'ofd_pending_changes';
@@ -45,6 +61,12 @@ function areValuesEqual(oldValue: any, newValue: any): boolean {
 	// Handle empty array vs undefined/null
 	if (Array.isArray(oldValue) && oldValue.length === 0 && newEmpty) return true;
 	if (Array.isArray(newValue) && newValue.length === 0 && oldEmpty) return true;
+
+	// Handle empty object vs undefined/null (e.g. {} from form vs undefined from original)
+	const isEmptyObj = (v: any) =>
+		typeof v === 'object' && v !== null && !Array.isArray(v) && Object.keys(v).length === 0;
+	if (isEmptyObj(oldValue) && newEmpty) return true;
+	if (isEmptyObj(newValue) && oldEmpty) return true;
 
 	// Deep comparison using JSON
 	return JSON.stringify(oldValue) === JSON.stringify(newValue);
@@ -112,16 +134,12 @@ function findChangedProperties(oldObj: any, newObj: any, prefix = ''): PropertyC
 }
 
 /**
- * Create the change tracking store
+ * Create the change tracking store (tree-based, v2)
  */
 function createChangeStore() {
-	const initialChangeSet: ChangeSet = {
-		changes: {},
-		images: {},
-		lastModified: Date.now()
-	};
+	const initialChangeSet: TreeChangeSet = createEmptyChangeSet();
 
-	const { subscribe, set, update } = writable<ChangeSet>(initialChangeSet);
+	const { subscribe, set, update } = writable<TreeChangeSet>(initialChangeSet);
 
 	// Load from localStorage on initialization
 	if (browser) {
@@ -129,7 +147,11 @@ function createChangeStore() {
 			const stored = localStorage.getItem(STORAGE_KEY_CHANGES);
 			if (stored) {
 				const parsed = JSON.parse(stored);
-				set(parsed);
+
+				if (parsed.version === 2) {
+					set(deserialize(parsed));
+				}
+				// Old format data is simply discarded
 			}
 		} catch (e) {
 			console.error('Failed to load changes from localStorage:', e);
@@ -139,10 +161,10 @@ function createChangeStore() {
 	/**
 	 * Persist changes to localStorage
 	 */
-	function persist(changeSet: ChangeSet) {
+	function persistChangeSet(changeSet: TreeChangeSet) {
 		if (browser) {
 			try {
-				localStorage.setItem(STORAGE_KEY_CHANGES, JSON.stringify(changeSet));
+				localStorage.setItem(STORAGE_KEY_CHANGES, JSON.stringify(serialize(changeSet)));
 			} catch (e) {
 				console.error('Failed to persist changes to localStorage:', e);
 			}
@@ -150,30 +172,15 @@ function createChangeStore() {
 	}
 
 	/**
-	 * Remove all child entity changes (and their images) for a given parent path.
-	 * E.g., deleting "brands/acme" removes changes for "brands/acme/materials/PLA/filaments/..." etc.
+	 * Remove images associated with an entity path from localStorage and the changeSet
 	 */
-	function cleanupChildChanges(changeSet: ChangeSet, entityPath: string) {
-		const pathPrefix = entityPath + '/';
-
-		for (const childPath of Object.keys(changeSet.changes)) {
-			if (childPath.startsWith(pathPrefix)) {
-				cleanupImagesForEntity(changeSet, childPath);
-				delete changeSet.changes[childPath];
-			}
-		}
-	}
-
-	/**
-	 * Remove all images associated with an entity path (and child paths) from localStorage and the changeSet
-	 */
-	function cleanupImagesForEntity(changeSet: ChangeSet, entityPath: string) {
+	function cleanupImages(changeSet: TreeChangeSet, entityPath: string) {
 		if (!browser) return;
 
-		const pathPrefix = entityPath + '/';
-
-		for (const [imageId, imageRef] of Object.entries(changeSet.images)) {
-			if (imageRef.entityPath === entityPath || imageRef.entityPath.startsWith(pathPrefix)) {
+		const imageIds = findImagesForEntity(changeSet.images, entityPath);
+		for (const imageId of imageIds) {
+			const imageRef = changeSet.images[imageId];
+			if (imageRef) {
 				try {
 					localStorage.removeItem(imageRef.storageKey);
 				} catch (e) {
@@ -193,16 +200,19 @@ function createChangeStore() {
 		trackCreate(entity: EntityIdentifier, data: any) {
 			if (!get(isCloudMode)) return;
 
+			const ep = parsePath(entity.path);
+			if (!ep) return;
+
 			update((changeSet) => {
-				changeSet.changes[entity.path] = {
+				treeSetChange(changeSet, ep, {
 					entity,
 					operation: 'create',
 					data,
 					timestamp: Date.now(),
 					description: describeChange(entity, 'create', data)
-				};
+				});
 				changeSet.lastModified = Date.now();
-				persist(changeSet);
+				persistChangeSet(changeSet);
 				return changeSet;
 			});
 		},
@@ -213,19 +223,22 @@ function createChangeStore() {
 		trackUpdate(entity: EntityIdentifier, oldData: any, newData: any) {
 			if (!get(isCloudMode)) return;
 
+			const ep = parsePath(entity.path);
+			if (!ep) return;
+
 			update((changeSet) => {
-				const existingChange = changeSet.changes[entity.path];
+				const existingChange = treeGetChange(changeSet, entity.path);
 
 				if (existingChange?.operation === 'create') {
 					// If this entity was created in this session, just update the creation data
-					changeSet.changes[entity.path] = {
+					treeSetChange(changeSet, ep, {
 						...existingChange,
 						data: newData,
 						timestamp: Date.now(),
 						description: describeChange(entity, 'create', newData)
-					};
+					});
 					changeSet.lastModified = Date.now();
-					persist(changeSet);
+					persistChangeSet(changeSet);
 					return changeSet;
 				}
 
@@ -237,14 +250,14 @@ function createChangeStore() {
 
 				if (propertyChanges.length === 0) {
 					// All changes have been reverted - remove the change entry
-					delete changeSet.changes[entity.path];
+					treeRemoveChange(changeSet, ep);
 					changeSet.lastModified = Date.now();
-					persist(changeSet);
+					persistChangeSet(changeSet);
 					return changeSet;
 				}
 
 				// Track as an update, preserving the original data
-				changeSet.changes[entity.path] = {
+				treeSetChange(changeSet, ep, {
 					entity,
 					operation: 'update',
 					data: newData,
@@ -252,10 +265,10 @@ function createChangeStore() {
 					propertyChanges,
 					timestamp: Date.now(),
 					description: describeChange(entity, 'update', newData)
-				};
+				});
 
 				changeSet.lastModified = Date.now();
-				persist(changeSet);
+				persistChangeSet(changeSet);
 				return changeSet;
 			});
 		},
@@ -266,28 +279,37 @@ function createChangeStore() {
 		trackDelete(entity: EntityIdentifier, data?: any) {
 			if (!get(isCloudMode)) return;
 
-			update((changeSet) => {
-				const existingChange = changeSet.changes[entity.path];
+			const ep = parsePath(entity.path);
+			if (!ep) return;
 
-				// Clean up any images and child entity changes
-				cleanupImagesForEntity(changeSet, entity.path);
-				cleanupChildChanges(changeSet, entity.path);
+			update((changeSet) => {
+				const existingChange = treeGetChange(changeSet, entity.path);
+
+				// Clean up images for this entity and descendants
+				cleanupImages(changeSet, entity.path);
+
+				// Remove all descendant changes (tree operation replaces O(n) prefix scan)
+				const removedDescendants = removeDescendants(changeSet, ep);
+				// Also clean up images for each removed descendant
+				for (const desc of removedDescendants) {
+					cleanupImages(changeSet, desc.entity.path);
+				}
 
 				if (existingChange?.operation === 'create') {
 					// If this entity was created in this session, just remove it
-					delete changeSet.changes[entity.path];
+					treeRemoveChange(changeSet, ep);
 				} else {
 					// Track as a deletion
-					changeSet.changes[entity.path] = {
+					treeSetChange(changeSet, ep, {
 						entity,
 						operation: 'delete',
 						timestamp: Date.now(),
 						description: describeChange(entity, 'delete', data)
-					};
+					});
 				}
 
 				changeSet.lastModified = Date.now();
-				persist(changeSet);
+				persistChangeSet(changeSet);
 				return changeSet;
 			});
 		},
@@ -327,7 +349,7 @@ function createChangeStore() {
 					storageKey
 				};
 				changeSet.lastModified = Date.now();
-				persist(changeSet);
+				persistChangeSet(changeSet);
 				return changeSet;
 			});
 		},
@@ -352,17 +374,24 @@ function createChangeStore() {
 		},
 
 		/**
-		 * Remove a specific change
+		 * Remove a specific change and its descendants
 		 */
 		removeChange(entityPath: string) {
-			update((changeSet) => {
-				// Clean up any images and child entity changes
-				cleanupImagesForEntity(changeSet, entityPath);
-				cleanupChildChanges(changeSet, entityPath);
+			const ep = parsePath(entityPath);
+			if (!ep) return;
 
-				delete changeSet.changes[entityPath];
+			update((changeSet) => {
+				// Clean up images for this entity and descendants
+				cleanupImages(changeSet, entityPath);
+				const removedDescendants = removeDescendants(changeSet, ep);
+				for (const desc of removedDescendants) {
+					cleanupImages(changeSet, desc.entity.path);
+				}
+
+				// Remove the change itself
+				treeRemoveChange(changeSet, ep);
 				changeSet.lastModified = Date.now();
-				persist(changeSet);
+				persistChangeSet(changeSet);
 				return changeSet;
 			});
 		},
@@ -376,54 +405,19 @@ function createChangeStore() {
 			if (!get(isCloudMode)) return newPath;
 			if (oldPath === newPath) return newPath;
 
+			const oldEp = parsePath(oldPath);
+			const newEp = parsePath(newPath);
+			if (!oldEp || !newEp) return newPath;
+
 			update((changeSet) => {
-				const existingChange = changeSet.changes[oldPath];
-				if (!existingChange) return changeSet;
+				// Move the subtree in the tree structure
+				moveSubtree(changeSet, oldEp, newEp, newEntity);
 
-				// Move the main entity to the new path
-				changeSet.changes[newPath] = {
-					...existingChange,
-					entity: newEntity
-				};
-				delete changeSet.changes[oldPath];
-
-				// Move all child entities (paths that start with oldPath + "/")
-				const oldPrefix = oldPath + '/';
-				const newPrefix = newPath + '/';
-				const childPaths = Object.keys(changeSet.changes).filter(p => p.startsWith(oldPrefix));
-
-				for (const childPath of childPaths) {
-					const newChildPath = newPrefix + childPath.slice(oldPrefix.length);
-					const childChange = changeSet.changes[childPath];
-
-					// Update the entity path in the child change
-					changeSet.changes[newChildPath] = {
-						...childChange,
-						entity: {
-							...childChange.entity,
-							path: newChildPath
-						}
-					};
-					delete changeSet.changes[childPath];
-				}
-
-				// Also update image references that point to the old path
-				for (const [imageId, imageRef] of Object.entries(changeSet.images)) {
-					if (imageRef.entityPath === oldPath) {
-						changeSet.images[imageId] = {
-							...imageRef,
-							entityPath: newPath
-						};
-					} else if (imageRef.entityPath.startsWith(oldPrefix)) {
-						changeSet.images[imageId] = {
-							...imageRef,
-							entityPath: newPrefix + imageRef.entityPath.slice(oldPrefix.length)
-						};
-					}
-				}
+				// Also update image references
+				moveImageReferences(changeSet.images, oldPath, newPath);
 
 				changeSet.lastModified = Date.now();
-				persist(changeSet);
+				persistChangeSet(changeSet);
 				return changeSet;
 			});
 
@@ -447,7 +441,7 @@ function createChangeStore() {
 			}
 
 			// Clear the change set
-			set(initialChangeSet);
+			set(createEmptyChangeSet());
 			localStorage.removeItem(STORAGE_KEY_CHANGES);
 		},
 
@@ -456,7 +450,7 @@ function createChangeStore() {
 		 */
 		exportChanges(): ChangeExport {
 			const changeSet = get({ subscribe });
-			const changes = Object.values(changeSet.changes);
+			const changes = getAllChanges(changeSet.tree);
 
 			// Build image export with embedded base64 data
 			const images: ChangeExport['images'] = {};
@@ -490,7 +484,7 @@ function createChangeStore() {
 		 */
 		getSummary() {
 			const changeSet = get({ subscribe });
-			const changes = Object.values(changeSet.changes);
+			const changes = getAllChanges(changeSet.tree);
 
 			const summary = {
 				total: changes.length,
@@ -508,10 +502,29 @@ function createChangeStore() {
 export const changeStore = createChangeStore();
 
 // Derived stores for convenient access
-export const changeCount = derived(changeStore, ($store) => Object.keys($store.changes).length);
+export const changeCount = derived(changeStore, ($store) => countChanges($store.tree));
 
 export const hasChanges = derived(changeCount, ($count) => $count > 0);
 
 export const changesList = derived(changeStore, ($store) =>
-	Object.values($store.changes).sort((a, b) => b.timestamp - a.timestamp)
+	getAllChanges($store.tree).sort((a, b) => b.timestamp - a.timestamp)
 );
+
+/**
+ * Derived store for O(1) path-based change lookups.
+ * Replaces `$changeStore.changes[path]` with `$changes.get(path)`.
+ */
+export const changes = derived(changeStore, ($store) => ({
+	get(path: string): EntityChange | undefined {
+		return $store._index.get(path)?.change;
+	},
+	has(path: string): boolean {
+		const node = $store._index.get(path);
+		return node?.change !== undefined;
+	},
+	hasDescendantChanges(path: string): boolean {
+		const node = $store._index.get(path);
+		if (!node) return false;
+		return treeHasDescendantChanges(node);
+	}
+}));

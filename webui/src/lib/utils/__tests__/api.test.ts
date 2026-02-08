@@ -1,31 +1,56 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { writable } from 'svelte/store';
 
-// Mock stores
-const mockIsLocalMode = writable(true);
-const mockIsCloudMode = writable(false);
-const mockApiBaseUrl = writable('');
+// vi.hoisted runs before imports, so mock stores are ready when modules load
+const envMocks = vi.hoisted(() => {
+	let isLocalVal = true;
+	let isCloudVal = false;
+	let apiBaseVal = '';
+
+	function makeStore<T>(initial: T) {
+		let value = initial;
+		const subs = new Set<(v: T) => void>();
+		return {
+			subscribe(fn: (v: T) => void) {
+				fn(value);
+				subs.add(fn);
+				return () => { subs.delete(fn); };
+			},
+			set(v: T) {
+				value = v;
+				for (const fn of subs) fn(v);
+			}
+		};
+	}
+
+	return {
+		mockIsLocalMode: makeStore(true),
+		mockIsCloudMode: makeStore(false),
+		mockApiBaseUrl: makeStore('')
+	};
+});
 
 vi.mock('$lib/stores/environment', () => ({
-	isLocalMode: mockIsLocalMode,
-	isCloudMode: mockIsCloudMode,
-	apiBaseUrl: mockApiBaseUrl
+	isLocalMode: envMocks.mockIsLocalMode,
+	isCloudMode: envMocks.mockIsCloudMode,
+	apiBaseUrl: envMocks.mockApiBaseUrl
 }));
 
-// Mock cache module
-const mockCacheGet = vi.fn();
-const mockCacheSet = vi.fn();
-const mockCacheDelete = vi.fn();
-const mockCacheDeleteByPrefix = vi.fn();
-const mockCacheClear = vi.fn();
+// Mock cache module - use vi.hoisted so mocks are available when factory runs
+const cacheMocks = vi.hoisted(() => ({
+	mockCacheGet: vi.fn(),
+	mockCacheSet: vi.fn(),
+	mockCacheDelete: vi.fn(),
+	mockCacheDeleteByPrefix: vi.fn(),
+	mockCacheClear: vi.fn()
+}));
 
-vi.mock('./cache', () => ({
+vi.mock('$lib/utils/cache', () => ({
 	apiCache: {
-		get: (...args: any[]) => mockCacheGet(...args),
-		set: (...args: any[]) => mockCacheSet(...args),
-		delete: (...args: any[]) => mockCacheDelete(...args),
-		deleteByPrefix: (...args: any[]) => mockCacheDeleteByPrefix(...args),
-		clear: () => mockCacheClear()
+		get: (...args: any[]) => cacheMocks.mockCacheGet(...args),
+		set: (...args: any[]) => cacheMocks.mockCacheSet(...args),
+		delete: (...args: any[]) => cacheMocks.mockCacheDelete(...args),
+		deleteByPrefix: (...args: any[]) => cacheMocks.mockCacheDeleteByPrefix(...args),
+		clear: () => cacheMocks.mockCacheClear()
 	},
 	getTTLForPath: () => 300000,
 	isCacheEnabled: () => true
@@ -39,22 +64,22 @@ import { buildApiUrl, apiFetch, clearApiCache } from '../api';
 
 describe('API Utils', () => {
 	beforeEach(() => {
-		mockIsLocalMode.set(true);
-		mockIsCloudMode.set(false);
-		mockApiBaseUrl.set('');
-		mockCacheGet.mockReset();
-		mockCacheSet.mockReset();
-		mockCacheDelete.mockReset();
-		mockCacheDeleteByPrefix.mockReset();
-		mockCacheClear.mockReset();
+		envMocks.mockIsLocalMode.set(true);
+		envMocks.mockIsCloudMode.set(false);
+		envMocks.mockApiBaseUrl.set('');
+		cacheMocks.mockCacheGet.mockReset();
+		cacheMocks.mockCacheSet.mockReset();
+		cacheMocks.mockCacheDelete.mockReset();
+		cacheMocks.mockCacheDeleteByPrefix.mockReset();
+		cacheMocks.mockCacheClear.mockReset();
 		mockFetch.mockReset();
 	});
 
 	describe('buildApiUrl', () => {
 		describe('Local mode', () => {
 			it('should return path unchanged', () => {
-				mockIsLocalMode.set(true);
-				mockApiBaseUrl.set('');
+				envMocks.mockIsLocalMode.set(true);
+				envMocks.mockApiBaseUrl.set('');
 
 				expect(buildApiUrl('/api/stores')).toBe('/api/stores');
 				expect(buildApiUrl('/api/brands')).toBe('/api/brands');
@@ -64,8 +89,8 @@ describe('API Utils', () => {
 
 		describe('Cloud mode', () => {
 			beforeEach(() => {
-				mockIsLocalMode.set(false);
-				mockApiBaseUrl.set('https://api.example.com');
+				envMocks.mockIsLocalMode.set(false);
+				envMocks.mockApiBaseUrl.set('https://api.example.com');
 			});
 
 			it('should transform /api/stores to /api/v1/stores/index.json', () => {
@@ -142,8 +167,8 @@ describe('API Utils', () => {
 
 	describe('apiFetch', () => {
 		beforeEach(() => {
-			mockIsLocalMode.set(true);
-			mockIsCloudMode.set(false);
+			envMocks.mockIsLocalMode.set(true);
+			envMocks.mockIsCloudMode.set(false);
 		});
 
 		it('should make fetch request with correct URL', async () => {
@@ -162,13 +187,13 @@ describe('API Utils', () => {
 
 		describe('Cloud mode caching', () => {
 			beforeEach(() => {
-				mockIsLocalMode.set(false);
-				mockIsCloudMode.set(true);
-				mockApiBaseUrl.set('https://api.example.com');
+				envMocks.mockIsLocalMode.set(false);
+				envMocks.mockIsCloudMode.set(true);
+				envMocks.mockApiBaseUrl.set('https://api.example.com');
 			});
 
 			it('should check cache for GET requests in cloud mode', async () => {
-				mockCacheGet.mockReturnValue({
+				cacheMocks.mockCacheGet.mockReturnValue({
 					data: [{ id: 'cached' }],
 					status: 200,
 					statusText: 'OK'
@@ -177,12 +202,12 @@ describe('API Utils', () => {
 				const response = await apiFetch('/api/stores');
 				const data = await response.json();
 
-				expect(mockCacheGet).toHaveBeenCalledWith('/api/stores');
+				expect(cacheMocks.mockCacheGet).toHaveBeenCalledWith('/api/stores');
 				expect(data).toEqual([{ id: 'cached' }]);
 			});
 
 			it('should return cached response with X-Cache: HIT header', async () => {
-				mockCacheGet.mockReturnValue({
+				cacheMocks.mockCacheGet.mockReturnValue({
 					data: [{ id: 'cached' }],
 					status: 200,
 					statusText: 'OK'
@@ -194,7 +219,7 @@ describe('API Utils', () => {
 			});
 
 			it('should cache transformed responses', async () => {
-				mockCacheGet.mockReturnValue(null);
+				cacheMocks.mockCacheGet.mockReturnValue(null);
 				mockFetch.mockResolvedValue(
 					new Response(JSON.stringify({ stores: [{ id: 'test', logo_slug: 'test.png' }] }), {
 						status: 200,
@@ -205,8 +230,8 @@ describe('API Utils', () => {
 
 				await apiFetch('/api/stores');
 
-				expect(mockCacheSet).toHaveBeenCalled();
-				const cachedData = mockCacheSet.mock.calls[0][1];
+				expect(cacheMocks.mockCacheSet).toHaveBeenCalled();
+				const cachedData = cacheMocks.mockCacheSet.mock.calls[0][1];
 				expect(cachedData.data).toEqual([{ id: 'test', logo_slug: 'test.png', logo: 'test.png' }]);
 			});
 
@@ -221,8 +246,8 @@ describe('API Utils', () => {
 
 				await apiFetch('/api/stores/test', { method: 'PUT', body: '{}' });
 
-				expect(mockCacheGet).not.toHaveBeenCalled();
-				expect(mockCacheSet).not.toHaveBeenCalled();
+				expect(cacheMocks.mockCacheGet).not.toHaveBeenCalled();
+				expect(cacheMocks.mockCacheSet).not.toHaveBeenCalled();
 			});
 
 			it('should invalidate cache on mutations', async () => {
@@ -236,17 +261,17 @@ describe('API Utils', () => {
 
 				await apiFetch('/api/stores/test', { method: 'PUT', body: '{}' });
 
-				expect(mockCacheDelete).toHaveBeenCalledWith('/api/stores');
-				expect(mockCacheDeleteByPrefix).toHaveBeenCalledWith('/api/stores/');
+				expect(cacheMocks.mockCacheDelete).toHaveBeenCalledWith('/api/stores');
+				expect(cacheMocks.mockCacheDeleteByPrefix).toHaveBeenCalledWith('/api/stores/');
 			});
 		});
 
 		describe('Response transformation', () => {
 			beforeEach(() => {
-				mockIsLocalMode.set(false);
-				mockIsCloudMode.set(true);
-				mockApiBaseUrl.set('https://api.example.com');
-				mockCacheGet.mockReturnValue(null);
+				envMocks.mockIsLocalMode.set(false);
+				envMocks.mockIsCloudMode.set(true);
+				envMocks.mockApiBaseUrl.set('https://api.example.com');
+				cacheMocks.mockCacheGet.mockReturnValue(null);
 			});
 
 			it('should extract stores array from cloud response', async () => {
@@ -358,8 +383,8 @@ describe('API Utils', () => {
 			});
 
 			it('should return data unchanged in local mode', async () => {
-				mockIsLocalMode.set(true);
-				mockIsCloudMode.set(false);
+				envMocks.mockIsLocalMode.set(true);
+				envMocks.mockIsCloudMode.set(false);
 
 				const localData = [{ id: 'store1', logo: 'logo.png' }];
 				mockFetch.mockResolvedValue(
@@ -397,7 +422,7 @@ describe('API Utils', () => {
 		it('should clear all cached responses', () => {
 			clearApiCache();
 
-			expect(mockCacheClear).toHaveBeenCalled();
+			expect(cacheMocks.mockCacheClear).toHaveBeenCalled();
 		});
 	});
 });

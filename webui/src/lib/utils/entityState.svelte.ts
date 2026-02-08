@@ -10,6 +10,7 @@
 import { get } from 'svelte/store';
 import { changeStore } from '$lib/stores/changes';
 import { isCloudMode } from '$lib/stores/environment';
+import { hasDescendantChanges as treeHasDescendantChanges } from '$lib/utils/changeTreeOps';
 
 export interface EntityStateConfig {
 	/** Function returning the entity path for change detection */
@@ -58,8 +59,22 @@ export function createEntityState(config: EntityStateConfig) {
 		const path = config.getEntityPath();
 		if (!path) return false;
 
-		const change = get(changeStore).changes[path];
+		const change = get(changeStore)._index.get(path)?.change;
 		return change !== undefined && (change.operation === 'create' || change.operation === 'update');
+	});
+
+	// Check if any descendant entity has local changes
+	const hasDescendantChanges = $derived.by(() => {
+		if (!get(isCloudMode)) return false;
+		const entity = config.getEntity();
+		if (!entity) return false;
+
+		const path = config.getEntityPath();
+		if (!path) return false;
+
+		const node = get(changeStore)._index.get(path);
+		if (!node) return false;
+		return treeHasDescendantChanges(node);
 	});
 
 	// Check if entity was locally created (for delete modal messaging)
@@ -67,7 +82,7 @@ export function createEntityState(config: EntityStateConfig) {
 		if (!get(isCloudMode)) return false;
 		const path = config.getEntityPath();
 		if (!path) return false;
-		return get(changeStore).changes[path]?.operation === 'create';
+		return get(changeStore)._index.get(path)?.change?.operation === 'create';
 	});
 
 	return {
@@ -133,6 +148,9 @@ export function createEntityState(config: EntityStateConfig) {
 		},
 		get isLocalCreate() {
 			return isLocalCreate;
+		},
+		get hasDescendantChanges() {
+			return hasDescendantChanges;
 		},
 
 		// Modal helpers

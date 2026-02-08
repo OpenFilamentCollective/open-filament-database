@@ -62,7 +62,7 @@
 			type="color"
 			value={colorPickerValue}
 			oninput={handleColorPicker}
-			class="w-10 h-10 cursor-pointer shrink-0 bg-background [&::-webkit-color-swatch-wrapper]:p-1 [&::-webkit-color-swatch]:rounded [&::-webkit-color-swatch]:border-none [&::-moz-color-swatch]:rounded [&::-moz-color-swatch]:border-none"
+			class="w-10 h-10 cursor-pointer shrink-0 rounded-md border border-border bg-background [&::-webkit-color-swatch-wrapper]:p-1 [&::-webkit-color-swatch]:rounded [&::-webkit-color-swatch]:border-none [&::-moz-color-swatch]:rounded [&::-moz-color-swatch]:border-none"
 		/>
 	</div>
 </div>
