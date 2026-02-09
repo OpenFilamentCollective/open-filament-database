@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "FlyingBear PLA Basic @Ghost7",
+    "name": "InfiMech PLA Hyper @EX+APS",
     "from": "system",
     "instantiation": "true",
     "cool_plate_temp": [
@@ -43,7 +43,7 @@
         "; filament end gcode \n"
     ],
     "filament_flow_ratio": [
-        "0.98"
+        "0.94"
     ],
     "reduce_fan_stop_start_freq": [
         "1"
@@ -64,7 +64,7 @@
         "1.75"
     ],
     "filament_max_volumetric_speed": [
-        "12"
+        "25"
     ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
@@ -103,7 +103,7 @@
         "PLA"
     ],
     "filament_vendor": [
-        "FlyingBear"
+        "InfiMech"
     ],
     "filament_wipe": [
         "nil"
@@ -115,7 +115,7 @@
         "Cool Plate"
     ],
     "nozzle_temperature_initial_layer": [
-        "210"
+        "220"
     ],
     "full_fan_speed_layer": [
         "0"
@@ -136,7 +136,7 @@
         "; filament start gcode\n"
     ],
     "nozzle_temperature": [
-        "210"
+        "220"
     ],
     "temperature_vitrification": [
         "60"
@@ -150,16 +150,15 @@
     "additional_cooling_fan_speed": [
         "100"
     ],
-    "renamed_from": "FlyingBear PLA @Ghost7",
     "setting_id": "GFSA04",
     "filament_id": "GFL99",
     "enable_pressure_advance": [
         "1"
     ],
     "pressure_advance": [
-        "0.034"
+        "0.02"
     ],
     "compatible_printers": [
-        "FlyingBear Ghost7 0.4 nozzle"
+        "InfiMech EX+APS 0.4 nozzle"
     ]
 }

@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "Elegoo PETG PRO @0.2 nozzle",
+    "name": "Elegoo RAPID PETG @ECC2",
     "from": "system",
     "instantiation": "true",
     "activate_air_filtration": [
@@ -34,16 +34,16 @@
         "30"
     ],
     "fan_max_speed": [
-        "40"
+        "80"
     ],
     "fan_min_speed": [
-        "10"
+        "30"
     ],
     "filament_cost": [
         "0"
     ],
     "filament_density": [
-        "1.25"
+        "1.26"
     ],
     "filament_deretraction_speed": [
         "nil"
@@ -58,7 +58,7 @@
         "0"
     ],
     "filament_max_volumetric_speed": [
-        "1"
+        "18"
     ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
@@ -115,10 +115,10 @@
         "70"
     ],
     "nozzle_temperature": [
-        "240"
+        "250"
     ],
     "nozzle_temperature_initial_layer": [
-        "240"
+        "250"
     ],
     "overhang_fan_speed": [
         "90"
@@ -151,16 +151,9 @@
         "70"
     ],
     "compatible_printers": [
-        "Elegoo Centauri 0.2 nozzle",
-        "Elegoo Centauri Carbon 0.2 nozzle",
-        "Elegoo Centauri Carbon 2 0.2 nozzle",
-        "Elegoo Neptune 4 0.2 nozzle",
-        "Elegoo Neptune 4 Pro 0.2 nozzle",
-        "Elegoo Neptune 4 Plus 0.2 nozzle",
-        "Elegoo Neptune 4 Max 0.2 nozzle",
-        "Elegoo Neptune 3 Pro 0.2 nozzle",
-        "Elegoo Neptune 3 Plus 0.2 nozzle",
-        "Elegoo Neptune 3 Max 0.2 nozzle"
+        "Elegoo Centauri Carbon 2 0.4 nozzle",
+        "Elegoo Centauri Carbon 2 0.6 nozzle",
+        "Elegoo Centauri Carbon 2 0.8 nozzle"
     ],
     "filament_start_gcode": [
         "; Filament start gcode\n"
@@ -174,6 +167,9 @@
     "nozzle_temperature_range_low": [
         "230"
     ],
-    "filament_id": "EPETGPROB00",
-    "setting_id": "EGPETG00020"
+    "filament_id": "ERPETGB00",
+    "setting_id": "ERPETGECC2",
+    "pressure_advance": [
+        "0.024"
+    ]
 }

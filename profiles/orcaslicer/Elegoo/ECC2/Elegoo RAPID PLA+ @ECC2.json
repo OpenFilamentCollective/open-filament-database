@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "Elegoo PETG PRO @0.2 nozzle",
+    "name": "Elegoo RAPID PLA+ @ECC2",
     "from": "system",
     "instantiation": "true",
     "activate_air_filtration": [
@@ -10,34 +10,34 @@
         "0"
     ],
     "close_fan_the_first_x_layers": [
-        "3"
+        "1"
     ],
     "complete_print_exhaust_fan_speed": [
         "70"
     ],
     "cool_plate_temp": [
-        "0"
+        "35"
     ],
     "cool_plate_temp_initial_layer": [
-        "0"
+        "35"
     ],
     "during_print_exhaust_fan_speed": [
         "70"
     ],
     "eng_plate_temp": [
-        "70"
+        "0"
     ],
     "eng_plate_temp_initial_layer": [
-        "70"
+        "0"
     ],
     "fan_cooling_layer_time": [
-        "30"
+        "80"
     ],
     "fan_max_speed": [
-        "40"
+        "100"
     ],
     "fan_min_speed": [
-        "10"
+        "60"
     ],
     "filament_cost": [
         "0"
@@ -58,7 +58,7 @@
         "0"
     ],
     "filament_max_volumetric_speed": [
-        "1"
+        "21"
     ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
@@ -88,7 +88,7 @@
         "0"
     ],
     "filament_type": [
-        "PETG"
+        "PLA"
     ],
     "filament_vendor": [
         "Elegoo"
@@ -109,22 +109,22 @@
         "0"
     ],
     "hot_plate_temp": [
-        "70"
+        "60"
     ],
     "hot_plate_temp_initial_layer": [
-        "70"
+        "60"
     ],
     "nozzle_temperature": [
-        "240"
+        "220"
     ],
     "nozzle_temperature_initial_layer": [
-        "240"
+        "220"
     ],
     "overhang_fan_speed": [
-        "90"
+        "100"
     ],
     "overhang_fan_threshold": [
-        "10%"
+        "50%"
     ],
     "reduce_fan_stop_start_freq": [
         "1"
@@ -136,44 +136,43 @@
         "1"
     ],
     "slow_down_layer_time": [
-        "12"
+        "4"
     ],
     "slow_down_min_speed": [
-        "10"
+        "20"
     ],
     "temperature_vitrification": [
-        "70"
+        "45"
     ],
     "textured_plate_temp": [
-        "70"
+        "60"
     ],
     "textured_plate_temp_initial_layer": [
-        "70"
+        "60"
     ],
     "compatible_printers": [
-        "Elegoo Centauri 0.2 nozzle",
-        "Elegoo Centauri Carbon 0.2 nozzle",
-        "Elegoo Centauri Carbon 2 0.2 nozzle",
-        "Elegoo Neptune 4 0.2 nozzle",
-        "Elegoo Neptune 4 Pro 0.2 nozzle",
-        "Elegoo Neptune 4 Plus 0.2 nozzle",
-        "Elegoo Neptune 4 Max 0.2 nozzle",
-        "Elegoo Neptune 3 Pro 0.2 nozzle",
-        "Elegoo Neptune 3 Plus 0.2 nozzle",
-        "Elegoo Neptune 3 Max 0.2 nozzle"
+        "Elegoo Centauri Carbon 2 0.4 nozzle",
+        "Elegoo Centauri Carbon 2 0.6 nozzle",
+        "Elegoo Centauri Carbon 2 0.8 nozzle"
     ],
     "filament_start_gcode": [
-        "; Filament start gcode\n"
+        "; filament start gcode\n{if  (bed_temperature[current_extruder] >55)||(bed_temperature_initial_layer[current_extruder] >55)}M106 P3 S200\n{elsif(bed_temperature[current_extruder] >50)||(bed_temperature_initial_layer[current_extruder] >50)}M106 P3 S150\n{elsif(bed_temperature[current_extruder] >45)||(bed_temperature_initial_layer[current_extruder] >45)}M106 P3 S50\n{endif}\n\n{if activate_air_filtration[current_extruder] && support_air_filtration}\nM106 P3 S{during_print_exhaust_fan_speed_num[current_extruder]} \n{endif}"
     ],
     "filament_end_gcode": [
         "; filament end gcode \n"
     ],
-    "nozzle_temperature_range_high": [
-        "270"
-    ],
     "nozzle_temperature_range_low": [
-        "230"
+        "190"
     ],
-    "filament_id": "EPETGPROB00",
-    "setting_id": "EGPETG00020"
+    "nozzle_temperature_range_high": [
+        "240"
+    ],
+    "additional_cooling_fan_speed": [
+        "0"
+    ],
+    "filament_id": "EPLAB00",
+    "setting_id": "ERPLAPLUSECC2",
+    "pressure_advance": [
+        "0.024"
+    ]
 }

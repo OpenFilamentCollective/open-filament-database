@@ -1,61 +1,61 @@
 {
     "type": "filament",
-    "name": "FlyingBear PLA Basic @Ghost7",
+    "name": "Generic PETG @LONGER LK10",
     "from": "system",
     "instantiation": "true",
     "cool_plate_temp": [
         "60"
     ],
     "eng_plate_temp": [
-        "60"
+        "0"
     ],
     "hot_plate_temp": [
-        "60"
+        "80"
     ],
     "textured_plate_temp": [
-        "60"
+        "80"
     ],
     "cool_plate_temp_initial_layer": [
         "60"
     ],
     "eng_plate_temp_initial_layer": [
-        "60"
+        "0"
     ],
     "hot_plate_temp_initial_layer": [
-        "60"
+        "80"
     ],
     "textured_plate_temp_initial_layer": [
-        "60"
+        "80"
     ],
     "overhang_fan_threshold": [
-        "50%"
+        "25%"
     ],
     "overhang_fan_speed": [
-        "100"
+        "90"
     ],
     "slow_down_for_layer_cooling": [
         "1"
     ],
     "close_fan_the_first_x_layers": [
-        "1"
+        "3"
     ],
     "filament_end_gcode": [
         "; filament end gcode \n"
     ],
     "filament_flow_ratio": [
-        "0.98"
+        "0.95"
     ],
     "reduce_fan_stop_start_freq": [
         "1"
     ],
     "fan_cooling_layer_time": [
-        "100"
+        "30"
     ],
     "filament_cost": [
-        "20"
+        "0"
     ],
     "filament_density": [
-        "1.24"
+        "1.27"
     ],
     "filament_deretraction_speed": [
         "nil"
@@ -64,7 +64,7 @@
         "1.75"
     ],
     "filament_max_volumetric_speed": [
-        "12"
+        "10"
     ],
     "filament_minimal_purge_on_wipe_tower": [
         "15"
@@ -100,10 +100,10 @@
         "0"
     ],
     "filament_type": [
-        "PLA"
+        "PETG"
     ],
     "filament_vendor": [
-        "FlyingBear"
+        "Generic"
     ],
     "filament_wipe": [
         "nil"
@@ -115,19 +115,19 @@
         "Cool Plate"
     ],
     "nozzle_temperature_initial_layer": [
-        "210"
+        "240"
     ],
     "full_fan_speed_layer": [
         "0"
     ],
     "fan_max_speed": [
-        "100"
+        "50"
     ],
     "fan_min_speed": [
-        "100"
+        "20"
     ],
     "slow_down_min_speed": [
-        "20"
+        "10"
     ],
     "slow_down_layer_time": [
         "8"
@@ -136,30 +136,23 @@
         "; filament start gcode\n"
     ],
     "nozzle_temperature": [
-        "210"
+        "250"
     ],
     "temperature_vitrification": [
-        "60"
-    ],
-    "nozzle_temperature_range_low": [
-        "190"
+        "70"
     ],
     "nozzle_temperature_range_high": [
-        "230"
+        "260"
     ],
-    "additional_cooling_fan_speed": [
-        "100"
+    "nozzle_temperature_range_low": [
+        "220"
     ],
-    "renamed_from": "FlyingBear PLA @Ghost7",
-    "setting_id": "GFSA04",
-    "filament_id": "GFL99",
-    "enable_pressure_advance": [
-        "1"
-    ],
-    "pressure_advance": [
-        "0.034"
-    ],
+    "setting_id": "GFLLK10G",
+    "filament_id": "GFLLK10PETG",
     "compatible_printers": [
-        "FlyingBear Ghost7 0.4 nozzle"
+        "LONGER LK10 (0.2 nozzle)",
+        "LONGER LK10 (0.4 nozzle)",
+        "LONGER LK10 (0.6 nozzle)",
+        "LONGER LK10 (0.8 nozzle)"
     ]
 }
