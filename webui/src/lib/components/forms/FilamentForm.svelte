@@ -99,8 +99,9 @@
 	let slicerForms = $state<Record<SlicerKey, any>>(initializeSlicerForms());
 
 	// Track entity and schema changes to reinitialize form data
-	let lastEntity = $state<any>(filament);
-	let lastSchema = $state<any>(null);
+	// NOTE: must be plain variables, NOT $state — proxy identity breaks !== comparisons.
+	let lastEntity: any = filament;
+	let lastSchema: any = null;
 
 	// Use $effect.pre to ensure formData is initialized before DOM renders
 	$effect.pre(() => {

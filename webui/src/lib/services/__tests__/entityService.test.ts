@@ -53,22 +53,22 @@ describe('Entity Service', () => {
 			expect(generateSlug('UPPERCASE')).toBe('uppercase');
 		});
 
-		it('should replace spaces and special chars with hyphens', () => {
-			expect(generateSlug('Test Brand')).toBe('test-brand');
-			expect(generateSlug('Test & Brand!')).toBe('test-brand');
-			expect(generateSlug('Test@Brand#Name')).toBe('test-brand-name');
+		it('should replace spaces and special chars with underscores', () => {
+			expect(generateSlug('Test Brand')).toBe('test_brand');
+			expect(generateSlug('Test & Brand!')).toBe('test_brand');
+			expect(generateSlug('Test@Brand#Name')).toBe('test_brand_name');
 		});
 
-		it('should remove leading/trailing hyphens', () => {
-			expect(generateSlug(' Test Brand ')).toBe('test-brand');
+		it('should remove leading/trailing underscores', () => {
+			expect(generateSlug(' Test Brand ')).toBe('test_brand');
 			expect(generateSlug('--test--')).toBe('test');
 			expect(generateSlug('!Test!')).toBe('test');
 		});
 
 		it('should handle multiple consecutive special chars', () => {
-			expect(generateSlug('Test   Brand')).toBe('test-brand');
-			expect(generateSlug('Test---Brand')).toBe('test-brand');
-			expect(generateSlug('Test   @#$  Brand')).toBe('test-brand');
+			expect(generateSlug('Test   Brand')).toBe('test_brand');
+			expect(generateSlug('Test---Brand')).toBe('test_brand');
+			expect(generateSlug('Test   @#$  Brand')).toBe('test_brand');
 		});
 
 		it('should handle numbers', () => {

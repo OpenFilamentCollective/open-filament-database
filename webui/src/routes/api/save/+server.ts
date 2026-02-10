@@ -57,18 +57,25 @@ function entityPathToDir(entityPath: string): string | null {
  * These are internal tracking fields added by the webui.
  */
 const STRIP_FIELDS = new Set([
-	'brandId', 'brand_id', 'materialType', 'filamentDir', 'filament_id'
+	'brandId', 'brand_id', 'materialType', 'filamentDir', 'filament_id', 'slug'
 ]);
 
 /**
- * Remove internal tracking fields from entity data.
+ * Remove internal tracking fields and empty strings from entity data.
  */
 function cleanEntityData(data: any): any {
 	const clean: Record<string, any> = {};
 	for (const [key, value] of Object.entries(data)) {
-		if (!STRIP_FIELDS.has(key)) {
-			clean[key] = value;
+		if (STRIP_FIELDS.has(key)) continue;
+
+		// Default required fields that would fail validation if empty
+		if (key === 'origin' && (value === '' || value === undefined)) {
+			clean[key] = 'Unknown';
+			continue;
 		}
+
+		if (value === '') continue;
+		clean[key] = value;
 	}
 	return clean;
 }

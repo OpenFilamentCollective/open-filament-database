@@ -71,8 +71,9 @@
 	let formData = $state<Record<string, any>>({});
 
 	// Track entity and schema changes to reinitialize form data
-	let lastEntity = $state<any>(variant);
-	let lastSchema = $state<any>(null);
+	// NOTE: must be plain variables, NOT $state — proxy identity breaks !== comparisons.
+	let lastEntity: any = variant;
+	let lastSchema: any = null;
 
 	// Use $effect.pre to ensure formData is initialized before DOM renders
 	$effect.pre(() => {

@@ -54,7 +54,8 @@
 	let slicerForms = $state<Record<SlicerKey, any>>(initializeSlicerForms());
 
 	// Track entity changes to reinitialize form data and slicer state
-	let lastEntity = $state<any>(entity);
+	// NOTE: must be a plain variable, NOT $state — proxy identity breaks !== comparisons.
+	let lastEntity: any = entity;
 	$effect(() => {
 		// Reinitialize if entity reference changed
 		if (entity !== untrack(() => lastEntity)) {

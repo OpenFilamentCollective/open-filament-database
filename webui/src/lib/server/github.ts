@@ -48,6 +48,27 @@ export async function forkRepo(
 }
 
 /**
+ * Sync a fork's default branch with its upstream.
+ */
+export async function syncFork(
+	token: string,
+	owner: string,
+	repo: string,
+	branch: string = 'main'
+): Promise<void> {
+	const response = await ghFetch(token, `/repos/${owner}/${repo}/merge-upstream`, {
+		method: 'POST',
+		body: JSON.stringify({ branch })
+	});
+
+	// 200 = updated, 409 = already up to date — both are fine
+	if (!response.ok && response.status !== 409) {
+		const error = await response.json().catch(() => ({ message: response.statusText }));
+		throw new Error(`Failed to sync fork: ${error.message}`);
+	}
+}
+
+/**
  * Get the latest commit SHA on a branch
  */
 export async function getLatestCommitSha(

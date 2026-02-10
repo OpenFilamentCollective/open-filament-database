@@ -1,3 +1,4 @@
 @import 'tailwindcss';
 @import './globals.css';
+@import './webui.css';
 @plugin '@tailwindcss/forms';

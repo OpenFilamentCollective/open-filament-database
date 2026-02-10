@@ -11,7 +11,7 @@ export const GET: RequestHandler = async ({ url }) => {
 	const params = new URLSearchParams({
 		client_id: PUBLIC_GITHUB_CLIENT_ID,
 		redirect_uri: redirectUri,
-		scope: 'public_repo'
+		scope: 'public_repo workflow'
 	});
 
 	throw redirect(302, `https://github.com/login/oauth/authorize?${params}`);

@@ -222,6 +222,17 @@ class StyleDataScript(BaseScript):
             action='store_true',
             help='Only fix indentation to 2 spaces across all JSON files (skip sorting)'
         )
+        parser.add_argument(
+            '--format-stdin',
+            action='store_true',
+            help='Read JSON from stdin, sort keys per schema, output styled JSON to stdout'
+        )
+        parser.add_argument(
+            '--schema-type',
+            type=str,
+            choices=['brand', 'material', 'filament', 'variant', 'store', 'sizes'],
+            help='Schema type to use when formatting stdin (required with --format-stdin)'
+        )
 
     def _fix_json_indentation(
         self,
@@ -295,6 +306,43 @@ class StyleDataScript(BaseScript):
         dry_run = getattr(args, 'dry_run', False)
         do_validate = getattr(args, 'validate', False)
         fix_indent_only = getattr(args, 'fix_indent_only', False)
+        format_stdin = getattr(args, 'format_stdin', False)
+        schema_type = getattr(args, 'schema_type', None)
+
+        # Handle --format-stdin mode: read JSON from stdin, sort keys, output to stdout
+        if format_stdin:
+            # Disable json_mode so main() doesn't append result dict to stdout
+            self.json_mode = False
+
+            if not schema_type:
+                return ScriptResult(
+                    success=False,
+                    message="--schema-type is required with --format-stdin"
+                )
+
+            import sys
+            try:
+                input_data = json.loads(sys.stdin.read())
+            except json.JSONDecodeError as e:
+                return ScriptResult(success=False, message=f"Invalid JSON input: {e}")
+
+            key_order_map = build_key_order_map(self.schemas_dir)
+            if schema_type not in key_order_map:
+                return ScriptResult(
+                    success=False,
+                    message=f"Unknown schema type: {schema_type}"
+                )
+
+            extra_keys: Set[str] = set()
+            styled = sort_json_keys(input_data, key_order_map[schema_type], extra_keys)
+            # Output styled JSON with 2-space indent (matching repo convention) + trailing newline
+            print(json.dumps(styled, indent=2, ensure_ascii=False))
+
+            return ScriptResult(
+                success=True,
+                message="Formatted successfully",
+                data={'extra_keys': sorted(extra_keys)} if extra_keys else {}
+            )
 
         if dry_run:
             self.log("=== DRY RUN MODE - No files will be modified ===\n")
