@@ -12,12 +12,22 @@
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
+	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { BackButton } from '$lib/components';
 
 	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
 	let schema: any = $state(null);
+
+	let displayStores = $derived.by(() => withDeletedStubs({
+		changes: $changes,
+		isCloudMode: $isCloudMode,
+		rootNamespace: 'stores',
+		items: stores,
+		getKeys: (s) => [s.id, s.slug],
+		buildStub: (id, name) => ({ id, slug: id, name, logo: '', storefront_url: '', ships_from: [], ships_to: [] } as Store)
+	}));
 
 	const messageHandler = createMessageHandler();
 
@@ -141,12 +151,12 @@
 		<p class="text-muted-foreground">Browse and edit filament stores</p>
 	</div>
 
-	<DataDisplay {loading} {error} data={stores}>
+	<DataDisplay {loading} {error} data={displayStores}>
 		{#snippet children(storesList)}
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each storesList as store}
 					{@const storePath = `stores/${store.id}`}
-					{@const storeChange = $isCloudMode ? $changes.get(storePath) : undefined}
+					{@const changeProps = getChildChangeProps($changes, $isCloudMode, storePath)}
 					<EntityCard
 						entity={store}
 						href="/stores/{store.slug ?? store.id}"
@@ -162,8 +172,9 @@
 								class: 'text-muted-foreground'
 							}
 						]}
-						hasLocalChanges={!!storeChange}
-						localChangeType={storeChange?.operation}
+						hasLocalChanges={changeProps.hasLocalChanges}
+						localChangeType={changeProps.localChangeType}
+						hasDescendantChanges={changeProps.hasDescendantChanges}
 					/>
 				{/each}
 			</div>

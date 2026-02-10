@@ -12,6 +12,7 @@
 	import { db } from '$lib/services/database';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
+	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -21,6 +22,23 @@
 	let variants: Variant[] = $state([]);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
+
+	let displayVariants = $derived.by(() => withDeletedStubs({
+		changes: $changes,
+		isCloudMode: $isCloudMode,
+		parentPath: `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`,
+		namespace: 'variants',
+		items: variants,
+		getKeys: (v) => [v.id, v.slug],
+		buildStub: (id, name) => ({
+			id,
+			slug: id,
+			filament_id: filamentId,
+			color_name: name,
+			color_hex: '#808080',
+			discontinued: false
+		} as unknown as Variant)
+	}));
 
 	const messageHandler = createMessageHandler();
 
@@ -56,7 +74,13 @@
 				]);
 
 				if (!filamentData) {
-					error = 'Filament not found';
+					const filamentPath = `brands/${params.brandId}/materials/${params.materialType}/filaments/${params.filamentId}`;
+					const change = $changes.get(filamentPath);
+					if ($isCloudMode && change?.operation === 'delete') {
+						error = 'This filament has been deleted in your local changes. Export your changes to finalize the deletion.';
+					} else {
+						error = 'Filament not found';
+					}
 					loading = false;
 					return;
 				}
@@ -316,13 +340,13 @@
 						</Button>
 					</div>
 
-					{#if variants.length === 0}
+					{#if displayVariants.length === 0}
 						<p class="text-muted-foreground">No variants found for this filament.</p>
 					{:else}
 						<div class="space-y-2">
-							{#each variants as variant}
+							{#each displayVariants as variant}
 								{@const variantPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`}
-								{@const variantChange = $isCloudMode ? $changes.get(variantPath) : undefined}
+								{@const changeProps = getChildChangeProps($changes, $isCloudMode, variantPath)}
 								{@const sizesCount = variant.sizes?.length ?? 0}
 								{@const sizesInfo = sizesCount > 0 ? `${sizesCount} size${sizesCount !== 1 ? 's' : ''}` : undefined}
 								<EntityCard
@@ -335,8 +359,9 @@
 									showLogo={false}
 									badge={variant.discontinued ? { text: 'Discontinued', color: 'red' } : undefined}
 									secondaryInfo={sizesInfo}
-									hasLocalChanges={!!variantChange}
-									localChangeType={variantChange?.operation}
+									hasLocalChanges={changeProps.hasLocalChanges}
+									localChangeType={changeProps.localChangeType}
+									hasDescendantChanges={changeProps.hasDescendantChanges}
 								/>
 							{/each}
 						</div>

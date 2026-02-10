@@ -104,8 +104,6 @@
 
 	// Dropdown state for traits
 	let showTraitDropdown = $state(false);
-	let traitDropdownRef = $state<HTMLDivElement | null>(null);
-	let dropdownMenuRef = $state<HTMLDivElement | null>(null);
 	let addButtonRef = $state<HTMLSpanElement | null>(null);
 	let dropdownPosition = $state({ top: 0, right: 0 });
 
@@ -132,22 +130,8 @@
 		expandedCategories = toggleSetItem(expandedCategories, catKey);
 	}
 
-	// Handle click outside to close dropdown
-	function handleClickOutside(event: MouseEvent) {
-		if (!showTraitDropdown) return;
-
-		const target = event.target as Node;
-		const clickedInSection = traitDropdownRef?.contains(target);
-		const clickedInDropdown = dropdownMenuRef?.contains(target);
-
-		if (!clickedInSection && !clickedInDropdown) {
-			showTraitDropdown = false;
-		}
-	}
-
-	// Toggle dropdown (with stop propagation to prevent immediate close)
+	// Toggle dropdown
 	function toggleTraitDropdown(event: MouseEvent) {
-		event.stopPropagation();
 		if (!showTraitDropdown && addButtonRef) {
 			const rect = addButtonRef.getBoundingClientRect();
 			dropdownPosition = {
@@ -353,7 +337,7 @@
 	);
 </script>
 
-<svelte:window onclick={handleClickOutside} />
+<svelte:window onkeydown={(e) => { if (e.key === 'Escape' && showTraitDropdown) { e.stopImmediatePropagation(); showTraitDropdown = false; } }} />
 
 {#if !preparedSchema}
 	<div class="flex items-center justify-center h-32">
@@ -371,7 +355,7 @@
 >
 	{#snippet afterFields()}
 		<!-- Traits Section -->
-		<div class="border-t pt-4 mt-2" bind:this={traitDropdownRef}>
+		<div class="border-t pt-4 mt-2">
 			<div class="flex items-center justify-between mb-3">
 				<h3 class="text-sm font-medium text-foreground flex items-center">
 					Traits
@@ -412,13 +396,13 @@
 
 			<!-- Dropdown menu -->
 			{#if showTraitDropdown}
+				<!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
+				<div class="fixed inset-0 z-[99]" onclick={() => (showTraitDropdown = false)}></div>
 				<div
-					bind:this={dropdownMenuRef}
 					class="fixed w-72 bg-popover border border-border rounded-lg shadow-lg z-100 max-h-80 overflow-hidden flex flex-col"
 					style="top: {dropdownPosition.top}px; right: {dropdownPosition.right}px;"
 					role="listbox"
 					aria-label="Select traits"
-					onkeydown={(e) => e.key === 'Escape' && (showTraitDropdown = false)}
 				>
 					<div class="p-2 border-b border-border">
 						<input

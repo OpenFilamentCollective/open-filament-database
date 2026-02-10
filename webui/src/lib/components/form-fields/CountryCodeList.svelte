@@ -9,6 +9,8 @@
 		required?: boolean;
 		tooltip?: string;
 		placeholder?: string;
+		maxLength?: number;
+		uppercase?: boolean;
 	}
 
 	let {
@@ -16,14 +18,16 @@
 		label = '',
 		required = false,
 		tooltip = '',
-		placeholder = 'e.g., US'
+		placeholder = 'e.g., US',
+		maxLength,
+		uppercase = false
 	}: Props = $props();
 
 	function handleInput(index: number, e: Event) {
 		const input = e.target as HTMLInputElement;
-		const upper = input.value.toUpperCase();
-		input.value = upper;
-		values[index] = upper;
+		const val = uppercase ? input.value.toUpperCase() : input.value;
+		input.value = val;
+		values[index] = val;
 		values = values;
 	}
 
@@ -51,9 +55,9 @@
 					type="text"
 					value={value}
 					oninput={(e) => handleInput(index, e)}
-					class="{INPUT_CLASSES} rounded-r-none border-r-0 uppercase"
+					class="{INPUT_CLASSES} rounded-r-none border-r-0{uppercase ? ' uppercase' : ''}"
 					{placeholder}
-					maxlength="2"
+					maxlength={maxLength}
 				/>
 				<button
 					type="button"

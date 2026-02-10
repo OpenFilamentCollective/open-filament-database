@@ -111,7 +111,7 @@
 			onpaste={handlePaste}
 			class={inputClasses}
 			{required}
-			{placeholder}
+			placeholder={placeholder.replace(/^https?:\/\//i, '')}
 		/>
 	</div>
 </div>

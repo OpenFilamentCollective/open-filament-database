@@ -10,6 +10,7 @@
 	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { isCloudMode } from '$lib/stores/environment';
+	import { changes } from '$lib/stores/changes';
 	import { getTraitLabel } from '$lib/config/traitConfig';
 
 	let brandId: string = $derived($page.params.brand!);
@@ -53,7 +54,14 @@
 				]);
 
 				if (!variantData) {
-					error = 'Variant not found';
+					// Check if this was locally deleted
+					const variantPath = `brands/${params.brandId}/materials/${params.materialType}/filaments/${params.filamentId}/variants/${params.variantSlug}`;
+					const change = $changes.get(variantPath);
+					if ($isCloudMode && change?.operation === 'delete') {
+						error = 'This variant has been deleted in your local changes. Export your changes to finalize the deletion.';
+					} else {
+						error = 'Variant not found';
+					}
 					loading = false;
 					return;
 				}

@@ -38,7 +38,7 @@
 	}
 </script>
 
-<svelte:window onclick={handleClickOutside} />
+<svelte:window onclick={handleClickOutside} onkeydown={(e) => { if (e.key === 'Escape' && themeMenuOpen) themeMenuOpen = false; }} />
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 

@@ -672,7 +672,8 @@
 </div>
 
 {#if showCropModal}
-	<div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onkeydown={(e) => e.key === 'Escape' && cancelCrop()} role="dialog" aria-modal="true">
 		<div class="bg-card rounded-lg shadow-xl max-w-[90vw] max-h-[90vh] overflow-hidden border border-border">
 			<div class="p-4 sm:p-6">
 				<h3 class="text-lg font-semibold text-foreground mb-2">Crop Image</h3>

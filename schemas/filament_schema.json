@@ -184,14 +184,14 @@
             "type": "string",
             "title": "Data Sheet URL",
             "description": "URL to the manufacturer's technical data sheet",
-            "x-placeholder": "example.com/...",
+            "x-placeholder": "https://example.com/...",
             "$ref": "#/definitions/string_limit"
         },
         "safety_sheet_url": {
             "type": "string",
             "title": "Safety Sheet URL",
             "description": "URL to the safety data sheet (SDS/MSDS)",
-            "x-placeholder": "example.com/...",
+            "x-placeholder": "https://example.com/...",
             "$ref": "#/definitions/string_limit"
         },
         "discontinued": {

@@ -71,6 +71,9 @@
 			['shore_hardness_a', 'shore_hardness_d'],
 			['data_sheet_url', 'safety_sheet_url']
 		],
+		typeOverrides: {
+			certifications: 'stringList'
+		},
 		steps: {
 			density: 0.01,
 			diameter_tolerance: 0.001,

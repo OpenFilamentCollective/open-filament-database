@@ -235,8 +235,8 @@ export class DatabaseService {
 			}
 			const baseStores = await response.json();
 
-			// Layer changes over base data
-			return this.layerChanges(baseStores, 'stores/');
+			// Layer changes over base data (keyed by slug to match tree paths)
+			return this.layerChanges(baseStores, 'stores/', 'slug' as keyof Store);
 		} catch (error) {
 			console.error('Error loading stores:', error);
 			return [];
@@ -255,8 +255,8 @@ export class DatabaseService {
 			}
 			const baseBrands = await response.json();
 
-			// Layer changes over base data
-			return this.layerChanges(baseBrands, 'brands/');
+			// Layer changes over base data (keyed by slug to match tree paths)
+			return this.layerChanges(baseBrands, 'brands/', 'slug' as keyof Brand);
 		} catch (error) {
 			console.error('Error loading brands:', error);
 			return [];
@@ -271,14 +271,16 @@ export class DatabaseService {
 		try {
 			const entityPath = `stores/${id}`;
 
-			// In cloud mode, check if this is a newly created store first
+			// In cloud mode, check for local changes first
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
 				const change = changeSet._index.get(entityPath)?.change;
 
-				// If it's a newly created store, return it directly
 				if (change && change.operation === 'create') {
 					return change.data || null;
+				}
+				if (change && change.operation === 'delete') {
+					return null;
 				}
 			}
 
@@ -288,9 +290,8 @@ export class DatabaseService {
 			}
 			const baseStore: Store = await response.json();
 
-			// Apply changes - use the actual store.id for lookup since changes are tracked by UUID
-			// The `id` parameter might be a slug, but changes are stored by store.id (UUID)
-			const actualEntityPath = `stores/${baseStore.id}`;
+			// Apply changes - use slug for lookup since tree paths use slugs (matching URL structure)
+			const actualEntityPath = `stores/${baseStore.slug || baseStore.id}`;
 			return this.getEntityWithChanges(baseStore, actualEntityPath);
 		} catch (error) {
 			console.error(`Error loading store ${id}:`, error);
@@ -306,14 +307,16 @@ export class DatabaseService {
 		try {
 			const entityPath = `brands/${id}`;
 
-			// In cloud mode, check if this is a newly created brand first
+			// In cloud mode, check for local changes first
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
 				const change = changeSet._index.get(entityPath)?.change;
 
-				// If it's a newly created brand, return it directly
 				if (change && change.operation === 'create') {
 					return change.data || null;
+				}
+				if (change && change.operation === 'delete') {
+					return null;
 				}
 			}
 
@@ -323,8 +326,8 @@ export class DatabaseService {
 			}
 			const baseBrand: Brand = await response.json();
 
-			// Apply changes - use the actual brand.id for lookup since changes are tracked by UUID
-			const actualEntityPath = `brands/${baseBrand.id}`;
+			// Apply changes - use slug for lookup since tree paths use slugs (matching URL structure)
+			const actualEntityPath = `brands/${baseBrand.slug || baseBrand.id}`;
 			return this.getEntityWithChanges(baseBrand, actualEntityPath);
 		} catch (error) {
 			console.error(`Error loading brand ${id}:`, error);
@@ -339,7 +342,8 @@ export class DatabaseService {
 	 */
 	async saveStore(store: Store, oldStore?: Store): Promise<boolean> {
 		try {
-			const newPath = `stores/${store.id}`;
+			const slug = store.slug || store.id;
+			const newPath = `stores/${slug}`;
 			const entity: EntityIdentifier = {
 				type: 'store',
 				path: newPath,
@@ -347,9 +351,10 @@ export class DatabaseService {
 			};
 
 			if (get(isCloudMode)) {
-				// If store ID changed, find and move the existing change
-				if (oldStore && oldStore.id !== store.id) {
-					const oldPath = `stores/${oldStore.id}`;
+				// If store slug changed, find and move the existing change
+				const oldSlug = oldStore ? (oldStore.slug || oldStore.id) : slug;
+				if (oldStore && oldSlug !== slug) {
+					const oldPath = `stores/${oldSlug}`;
 					const changeSet = get(changeStore);
 					if (changeSet._index.has(oldPath)) {
 						changeStore.moveChange(oldPath, newPath, entity);
@@ -438,7 +443,8 @@ export class DatabaseService {
 	 */
 	async saveBrand(brand: Brand, oldBrand?: Brand): Promise<boolean> {
 		try {
-			const newPath = `brands/${brand.id}`;
+			const slug = brand.slug || brand.id;
+			const newPath = `brands/${slug}`;
 			const entity: EntityIdentifier = {
 				type: 'brand',
 				path: newPath,
@@ -446,9 +452,10 @@ export class DatabaseService {
 			};
 
 			if (get(isCloudMode)) {
-				// If brand ID changed, find and move the existing change
-				if (oldBrand && oldBrand.id !== brand.id) {
-					const oldPath = `brands/${oldBrand.id}`;
+				// If brand slug changed, find and move the existing change
+				const oldSlug = oldBrand ? (oldBrand.slug || oldBrand.id) : slug;
+				if (oldBrand && oldSlug !== slug) {
+					const oldPath = `brands/${oldSlug}`;
 					const changeSet = get(changeStore);
 					if (changeSet._index.has(oldPath)) {
 						changeStore.moveChange(oldPath, newPath, entity);
@@ -910,7 +917,8 @@ export class DatabaseService {
 		}
 
 		// Layer changes over base data - called even when API fails or skipped
-		return this.layerChanges(baseFilaments, `${materialPath}/filaments/`);
+		// Keyed by slug to match tree paths (which use URL slugs, not UUIDs)
+		return this.layerChanges(baseFilaments, `${materialPath}/filaments/`, 'slug' as keyof Filament);
 	}
 
 	/**
@@ -921,13 +929,16 @@ export class DatabaseService {
 		try {
 			const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`;
 
-			// In cloud mode, check if this is a newly created filament first
+			// In cloud mode, check for local changes first
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
 				const change = changeSet._index.get(entityPath)?.change;
 
 				if (change && change.operation === 'create') {
 					return change.data || null;
+				}
+				if (change && change.operation === 'delete') {
+					return null;
 				}
 			}
 
@@ -943,9 +954,9 @@ export class DatabaseService {
 				return null;
 			}
 
-			// Apply changes - use the actual filament.id for lookup since changes are tracked by ID
-			// The `filamentId` parameter might be a slug, but changes are stored by filament.id
-			const actualEntityPath = `brands/${brandId}/materials/${materialType}/filaments/${baseFilament.id}`;
+			// Apply changes - use slug for lookup since tree paths use slugs (matching URL structure)
+			const filamentSlug = (baseFilament as any).slug || baseFilament.id;
+			const actualEntityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentSlug}`;
 			return this.getEntityWithChanges(baseFilament, actualEntityPath);
 		} catch (error) {
 			console.error(`Error loading filament ${brandId}/${materialType}/${filamentId}:`, error);
@@ -1130,8 +1141,8 @@ export class DatabaseService {
 		}
 
 		// Layer changes over base data - called even when API fails or skipped
-		// Variants use slug as their id
-		return this.layerChanges(baseVariants, `${filamentPath}/variants/`);
+		// Keyed by slug to match tree paths (which use URL slugs, not UUIDs)
+		return this.layerChanges(baseVariants, `${filamentPath}/variants/`, 'slug' as keyof Variant);
 	}
 
 	/**
@@ -1147,13 +1158,16 @@ export class DatabaseService {
 		try {
 			const entityPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`;
 
-			// In cloud mode, check if this is a newly created variant first
+			// In cloud mode, check for local changes first
 			if (get(isCloudMode)) {
 				const changeSet = get(changeStore);
 				const change = changeSet._index.get(entityPath)?.change;
 
 				if (change && change.operation === 'create') {
 					return change.data || null;
+				}
+				if (change && change.operation === 'delete') {
+					return null;
 				}
 			}
 

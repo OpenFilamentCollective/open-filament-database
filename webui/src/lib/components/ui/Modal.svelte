@@ -44,13 +44,14 @@
 	}
 </script>
 
+<svelte:window onkeydown={(e) => { if (show && e.key === 'Escape') onClose(); }} />
+
 {#if show}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<!-- Backdrop with light transparent overlay and click-to-close -->
 	<div
 		class="fixed inset-0 bg-background/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
 		onclick={handleBackdropClick}
-		onkeydown={(e) => e.key === 'Escape' && onClose()}
 		role="presentation"
 	>
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -58,7 +59,6 @@
 		<div
 			class="bg-card rounded-lg shadow-xl {maxWidthClasses[maxWidth]} w-full max-h-[90vh] {heightClasses[height]} flex flex-col {contentClass}"
 			onclick={(e) => e.stopPropagation()}
-			onkeydown={(e) => e.stopPropagation()}
 			role="dialog"
 			aria-modal="true"
 			aria-labelledby="modal-title"

@@ -22,7 +22,8 @@ import {
 	countChanges,
 	findImagesForEntity,
 	moveImageReferences,
-	hasDescendantChanges as treeHasDescendantChanges
+	hasDescendantChanges as treeHasDescendantChanges,
+	getDirectChildren
 } from '$lib/utils/changeTreeOps';
 import { isCloudMode } from './environment';
 
@@ -526,5 +527,18 @@ export const changes = derived(changeStore, ($store) => ({
 		const node = $store._index.get(path);
 		if (!node) return false;
 		return treeHasDescendantChanges(node);
+	},
+	getChildChanges(parentPath: string, namespace: string): Array<{ id: string; change: EntityChange }> {
+		const ep = parsePath(parentPath);
+		if (!ep) return [];
+		return getDirectChildren($store.tree, ep, namespace)
+			.filter((n) => n.change)
+			.map((n) => ({ id: n.key, change: n.change! }));
+	},
+	getRootChanges(namespace: 'brands' | 'stores'): Array<{ id: string; change: EntityChange }> {
+		const nodes = $store.tree[namespace];
+		return Object.values(nodes)
+			.filter((n) => n.change)
+			.map((n) => ({ id: n.key, change: n.change! }));
 	}
 }));

@@ -349,6 +349,8 @@ export function getDefaultValue(propSchema: any, typeOverride?: string): any {
 			case 'checkbox':
 				return false;
 			case 'tags':
+			case 'stringList':
+			case 'countryList':
 				return [];
 			case 'select':
 				return '';

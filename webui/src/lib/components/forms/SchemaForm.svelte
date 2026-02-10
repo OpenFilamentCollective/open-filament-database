@@ -280,6 +280,16 @@
 			{required}
 			{tooltip}
 			{placeholder}
+			maxLength={2}
+			uppercase
+		/>
+	{:else if field.type === 'stringList'}
+		<CountryCodeList
+			bind:values={data[field.key]}
+			{label}
+			{required}
+			{tooltip}
+			{placeholder}
 		/>
 	{:else if field.type === 'color'}
 		<ColorHexField

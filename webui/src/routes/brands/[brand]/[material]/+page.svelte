@@ -14,6 +14,7 @@
 	import { db } from '$lib/services/database';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
+	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -23,6 +24,16 @@
 	let materialSchema: any = $state(null);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
+
+	let displayFilaments = $derived.by(() => withDeletedStubs({
+		changes: $changes,
+		isCloudMode: $isCloudMode,
+		parentPath: `brands/${brandId}/materials/${materialType}`,
+		namespace: 'filaments',
+		items: filaments,
+		getKeys: (f) => [f.id, (f as any).slug],
+		buildStub: (id, name) => ({ id, slug: id, name } as unknown as Filament)
+	}));
 
 	const messageHandler = createMessageHandler();
 
@@ -43,7 +54,13 @@
 			]);
 
 			if (!materialData) {
-				error = 'Material not found';
+				const materialPath = `brands/${brandId}/materials/${materialType}`;
+				const change = $changes.get(materialPath);
+				if ($isCloudMode && change?.operation === 'delete') {
+					error = 'This material has been deleted in your local changes. Export your changes to finalize the deletion.';
+				} else {
+					error = 'Material not found';
+				}
 				loading = false;
 				return;
 			}
@@ -258,16 +275,14 @@
 						</Button>
 					</div>
 
-					{#if filaments.length === 0}
+					{#if displayFilaments.length === 0}
 						<p class="text-muted-foreground">No filaments found for this material.</p>
 					{:else}
 						<div class="space-y-2">
-							{#each filaments as filament}
+							{#each displayFilaments as filament}
 								{@const filamentHref = `/brands/${brandId}/${materialType}/${filament.slug ?? filament.id}`}
-								{@const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.id}`}
-								{@const filamentChange = $isCloudMode
-									? $changes.get(filamentPath)
-									: undefined}
+								{@const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.slug ?? filament.id}`}
+								{@const changeProps = getChildChangeProps($changes, $isCloudMode, filamentPath)}
 								<EntityCard
 									entity={filament}
 									href={filamentHref}
@@ -278,9 +293,9 @@
 									badge={filament.discontinued
 										? { text: 'Discontinued', color: 'red' }
 										: undefined}
-									hasLocalChanges={!!filamentChange}
-									localChangeType={filamentChange?.operation}
-									hasDescendantChanges={$isCloudMode ? $changes.hasDescendantChanges(filamentPath) : false}
+									hasLocalChanges={changeProps.hasLocalChanges}
+									localChangeType={changeProps.localChangeType}
+									hasDescendantChanges={changeProps.hasDescendantChanges}
 								/>
 							{/each}
 						</div>

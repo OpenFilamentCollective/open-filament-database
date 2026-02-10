@@ -13,6 +13,7 @@
 	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
 	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
 	import { isCloudMode } from '$lib/stores/environment';
+	import { changes } from '$lib/stores/changes';
 
 	let storeId: string = $derived($page.params.store!);
 	let store: Store | null = $state(null);
@@ -24,7 +25,7 @@
 	const messageHandler = createMessageHandler();
 
 	const entityState = createEntityState({
-		getEntityPath: () => (store ? `stores/${store.id}` : null),
+		getEntityPath: () => (store ? `stores/${storeId}` : null),
 		getEntity: () => store
 	});
 
@@ -36,7 +37,13 @@
 			]);
 
 			if (!storeData) {
-				error = 'Store not found';
+				const storePath = `stores/${storeId}`;
+				const change = $changes.get(storePath);
+				if ($isCloudMode && change?.operation === 'delete') {
+					error = 'This store has been deleted in your local changes. Export your changes to finalize the deletion.';
+				} else {
+					error = 'Store not found';
+				}
 				loading = false;
 				return;
 			}
@@ -104,8 +111,8 @@
 		messageHandler.clear();
 
 		try {
-			const result = await deleteEntity(`stores/${store.id}`, 'Store', () =>
-				db.deleteStore(store!.id, store!)
+			const result = await deleteEntity(`stores/${storeId}`, 'Store', () =>
+				db.deleteStore(storeId, store!)
 			);
 
 			if (result.success) {

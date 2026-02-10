@@ -2,7 +2,7 @@
  * Type definitions for the SchemaForm component
  */
 
-export type FieldType = 'text' | 'url' | 'number' | 'select' | 'checkbox' | 'tags' | 'countryList' | 'color' | 'custom' | 'hidden';
+export type FieldType = 'text' | 'url' | 'number' | 'select' | 'checkbox' | 'tags' | 'countryList' | 'stringList' | 'color' | 'custom' | 'hidden';
 
 export interface EnumSource {
 	url: string;

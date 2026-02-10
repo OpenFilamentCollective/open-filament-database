@@ -63,9 +63,35 @@
 		}
 	}
 
-	function undoChange(entityPath: string) {
+	function entityPathToUrl(entityPath: string): string {
+		const parts = entityPath.split('/');
+		const urlParts = [parts[0]];
+		for (let i = 1; i < parts.length; i += 2) {
+			urlParts.push(parts[i]);
+		}
+		return '/' + urlParts.join('/');
+	}
+
+	function undoChange(change: EntityChange) {
 		if (confirm('Are you sure you want to undo this change?')) {
-			changeStore.removeChange(entityPath);
+			changeStore.removeChange(change.entity.path);
+
+			const entityUrl = entityPathToUrl(change.entity.path);
+			const currentPath = window.location.pathname;
+
+			if (change.operation === 'delete' && currentPath === entityUrl) {
+				// Undoing deletion of current entity — navigate up one level
+				const parts = currentPath.split('/').filter(Boolean);
+				parts.pop();
+				window.location.href = '/' + parts.join('/');
+			} else if (
+				currentPath === entityUrl ||
+				currentPath.startsWith(entityUrl + '/') ||
+				entityUrl.startsWith(currentPath + '/')
+			) {
+				// Change is related to current page — reload to reflect updated data
+				window.location.reload();
+			}
 		}
 	}
 
@@ -87,6 +113,7 @@
 		if (confirm('Are you sure you want to clear all pending changes? This cannot be undone.')) {
 			changeStore.clear();
 			closeMenu();
+			window.location.reload();
 		}
 	}
 
@@ -131,6 +158,8 @@
 		}
 	}
 </script>
+
+<svelte:window onkeydown={(e) => { if (e.key === 'Escape' && menuOpen) closeMenu(); }} />
 
 {#if $isCloudMode}
 	<div class="relative">
@@ -198,7 +227,7 @@
 											<p class="truncate text-xs text-muted-foreground">{change.entity.path}</p>
 										</div>
 										<Button
-											onclick={() => undoChange(change.entity.path)}
+											onclick={() => undoChange(change)}
 											variant="ghost"
 											size="sm"
 											class="h-7 shrink-0 text-xs hover:bg-destructive/10 hover:text-destructive"
