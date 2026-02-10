@@ -1,0 +1,8 @@
+{
+  "id": "gris_aluminium",
+  "name": "Gris aluminium",
+  "color_hex": "#B1B3C5",
+  "traits": {
+    "contains_aluminium": true
+  }
+}

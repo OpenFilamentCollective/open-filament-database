@@ -1,0 +1,15 @@
+{
+  "id": "dreamy_trio",
+  "name": "Dreamy Trio",
+  "color_hex": [
+    "#C38C7B",
+    "#84D18B",
+    "#5FBCDD",
+    "#A67DFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "blue_yellow_fuchsia",
+  "name": "Blue-Yellow-Fuchsia",
+  "color_hex": [
+    "#0353BA",
+    "#FBF942",
+    "#CC00E3"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "stratocumulus_multicolor_ht",
+  "name": "Stratocumulus Multicolor HT",
+  "color_hex": [
+    "#D7EDE6",
+    "#39B9DB",
+    "#C3CCD5"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

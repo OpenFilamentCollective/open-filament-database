@@ -39,7 +39,16 @@ data/
 ## Build, Test & Validation Commands
 
 ### Environment Setup
-**Always install dependencies first:**
+**Recommended: Use the OFD wrapper script (auto-installs everything):**
+```bash
+# Linux/macOS - runs setup automatically on first use
+./ofd.sh setup
+
+# Windows
+ofd.bat setup
+```
+
+**Manual setup (if needed):**
 ```bash
 # Python dependencies (required for validation)
 pip install -r requirements.txt
@@ -53,39 +62,46 @@ cd ..
 ### Data Validation (Critical for PRs)
 **Run these in order after any data changes:**
 ```bash
-# Validate folder naming consistency
-python3 data_validator.py --folder-names
+# Using wrapper script (recommended)
+./ofd.sh validate                   # Run all validations (Linux/macOS)
+ofd.bat validate                    # Run all validations (Windows)
 
-# Validate JSON schema compliance  
-python3 data_validator.py --json-files
+# Individual validation types
+./ofd.sh validate --folder-names    # Validate folder naming consistency
+./ofd.sh validate --json-files      # Validate JSON schema compliance
+./ofd.sh validate --store-ids       # Validate store ID references
+```
 
-# Validate store ID references
-python3 data_validator.py --store-ids
+**Direct Python invocation (if not using wrapper):**
+```bash
+python -m ofd validate --folder-names
+python -m ofd validate --json-files
+python -m ofd validate --store-ids
+python -m ofd validate              # Run all
 ```
 
 **Platform Notes:**
-- Linux/macOS: Use `python3`
-- Windows: Use `python.exe`
-- If `python3` command fails, try `python`
+- Use `./ofd.sh` (Linux/macOS) or `ofd.bat` (Windows) wrapper for automatic setup
+- Or use `python -m ofd` or `uv run -m ofd` for direct CLI access
+- If `python` command fails, try `python3 -m ofd`
 
 ### WebUI Development & Testing
 ```bash
+# Using wrapper script (recommended - handles all setup)
+./ofd.sh webui                      # Start dev server (Linux/macOS)
+./ofd.sh webui --port 3000          # Custom port
+./ofd.sh webui --open               # Open browser automatically
+ofd.bat webui                       # Start dev server (Windows)
+
+# Manual approach
 cd webui
-
-# Start development server (http://localhost:5173)
-npm run dev
-
-# Type checking (expect ~103 TypeScript errors - this is normal)
-npm run check
-
-# Build for production (succeeds despite TypeScript errors)
-npm run build
-
-# Preview production build
-npm run preview
+npm run dev                         # Start development server (http://localhost:5173)
+npm run check                       # Type checking (expect ~103 TypeScript errors - this is normal)
+npm run build                       # Build for production (succeeds despite TypeScript errors)
+npm run preview                     # Preview production build
 
 # Run Playwright tests (may fail in CI due to browser installation)
-npm run test:install  # Install browsers first
+npm run test:install                # Install browsers first
 npm test
 ```
 
@@ -98,7 +114,7 @@ npm test
 ### Profile Management
 ```bash
 # Update slicer profiles (automated daily via GitHub Actions)
-python3 load_profiles.py
+python -m ofd script load_profiles
 ```
 
 ## GitHub Actions & CI/CD
@@ -125,28 +141,28 @@ The repository runs these validations on every PR:
 1. Create brand folder with consistent naming (no illegal characters)
 2. Add `brand.json` with required fields: brand, logo, website, origin
 3. Add logo image file
-4. **Always validate**: `python3 data_validator.py --folder-names --json-files`
+4. **Always validate**: `python -m ofd validate --folder-names --json-files`
 
 ### Modifying WebUI
-1. Navigate to `webui/` directory
-2. Install dependencies: `npm ci`
-3. Start dev server: `npm run dev`
-4. Make changes
-5. Build to verify: `npm run build`
-6. **Note**: TypeScript errors are expected and don't block builds
+1. Start the WebUI: `./ofd.sh webui` (or `ofd.bat webui` on Windows)
+   - Wrapper handles all setup automatically on first run
+2. Make changes
+3. Build to verify: `cd webui && npm run build`
+4. **Note**: TypeScript errors are expected and don't block builds
 
 ### Debugging Validation Failures
 - Check folder naming matches JSON content exactly
 - Verify JSON schema compliance using files in `/schemas/`
 - Ensure all required JSON files exist at each hierarchy level
-- Use illegal character list: `#%&{}\\<>*?/$!'":@+\`|=` (see `data_validator.py:18`)
+- Use illegal character list: `#%&{}\\<>*?/$!'":@+\`|=` (see `ofd/validation/validators.py`)
 
 ## Critical Configuration Files
 
 **Root Level:**
-- `requirements.txt` - Python dependencies (jsonschema, Pillow, iniconfig)
-- `data_validator.py` - Main validation script with schema checks
-- `*.py` - Additional Python utilities for profiles and serialization
+- `requirements.txt` - Python dependencies (jsonschema, iniconfig)
+- `ofd/` - Unified CLI package with validation, build, serve, script, and webui commands
+- `ofd.sh` - Cross-platform wrapper script for Linux/macOS (auto-setup, dependency detection)
+- `ofd.bat` - Cross-platform wrapper script for Windows (auto-setup, dependency detection)
 
 **WebUI Configuration:**
 - `webui/package.json` - npm scripts and dependencies

@@ -1,0 +1,50 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175658302",
+    "article_number": "80105",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-604-Filament-Spectrum-PLA-Pro-1-75mm-SILVER-STAR-1kg-RAL-9007.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175654380",
+    "article_number": "80624",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1443-Filament-Spectrum-PLA-Pro-1-75mm-SILVER-STAR-2kg-RAL-9007.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175654205",
+    "article_number": "80626",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1437-Filament-Spectrum-PLA-Pro-1-75mm-SILVER-STAR-4-5kg-RAL-9007.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654564",
+    "article_number": "80678",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1461-Filament-Spectrum-PLA-Pro-1-75mm-SILVER-STAR-8kg-RAL-9007.html"
+      }
+    ]
+  }
+]

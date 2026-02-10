@@ -1,0 +1,12 @@
+{
+  "id": "bluegreen",
+  "name": "Bluegreen",
+  "color_hex": [
+    "#32A584",
+    "#3292B2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "wood",
+  "name": "Wood",
+  "color_hex": [
+    "#875117",
+    "#B38F6E"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

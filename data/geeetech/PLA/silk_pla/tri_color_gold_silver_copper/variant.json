@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_gold_silver_copper",
+  "name": "Tri-Color Gold Silver Copper",
+  "color_hex": [
+    "#ABACB0",
+    "#E3B145",
+    "#C9774B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

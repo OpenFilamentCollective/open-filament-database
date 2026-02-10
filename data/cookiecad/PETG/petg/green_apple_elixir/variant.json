@@ -1,0 +1,11 @@
+{
+  "id": "green_apple_elixir",
+  "name": "Green Apple Elixir",
+  "color_hex": [
+    "#70FA00",
+    "#567BAC"
+  ],
+  "traits": {
+    "iridescent": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_huaguo_mountain",
+  "name": "Rainbow Huaguo Mountain",
+  "color_hex": [
+    "#76a971",
+    "#d1ad61",
+    "#e6b7a9"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_pink_gold",
+  "name": "Dual Color (Pink Gold)",
+  "color_hex": [
+    "#FFCB47",
+    "#F87FB5"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

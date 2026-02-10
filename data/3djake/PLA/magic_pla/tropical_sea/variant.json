@@ -1,0 +1,12 @@
+{
+  "id": "tropical_sea",
+  "name": "Tropical Sea",
+  "color_hex": [
+    "#61C680",
+    "#39B9DB"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

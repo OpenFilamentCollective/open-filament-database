@@ -1,0 +1,8 @@
+{
+  "id": "light_orange",
+  "name": "Light Orange",
+  "color_hex": "#FD9106",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

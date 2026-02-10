@@ -1,0 +1,50 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175654045",
+    "article_number": "80659",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1409-Filament-Spectrum-Premium-PCTG-1-75mm-IRON-GREY-1kg-RAL-7011.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175654311",
+    "article_number": "80644",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1421-Filament-Spectrum-Premium-PCTG-1-75mm-IRON-GREY-2kg-RAL-7011.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175654137",
+    "article_number": "80648",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1424-Filament-Spectrum-Premium-PCTG-1-75mm-IRON-GREY-4-5kg-RAL-7011.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654663",
+    "article_number": "80688",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1463-Filament-Spectrum-Premium-PCTG-1-75mm-IRON-GREY-8kg-RAL-7011.html"
+      }
+    ]
+  }
+]

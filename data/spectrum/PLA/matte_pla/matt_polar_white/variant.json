@@ -1,0 +1,9 @@
+{
+  "id": "matt_polar_white",
+  "name": "MATT Polar White",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

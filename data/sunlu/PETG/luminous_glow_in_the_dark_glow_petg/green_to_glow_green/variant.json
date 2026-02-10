@@ -1,0 +1,9 @@
+{
+  "id": "green_to_glow_green",
+  "name": "Green To Glow Green",
+  "color_hex": "#00CC00",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

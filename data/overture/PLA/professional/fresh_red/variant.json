@@ -1,0 +1,8 @@
+{
+  "id": "fresh_red",
+  "name": "Fresh Red",
+  "color_hex": "#F00C00",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

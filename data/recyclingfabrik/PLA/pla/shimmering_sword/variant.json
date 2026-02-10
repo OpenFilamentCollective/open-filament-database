@@ -1,0 +1,9 @@
+{
+  "id": "shimmering_sword",
+  "name": "Shimmering Sword",
+  "color_hex": "#6A6C6E",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175652744",
+    "article_number": "80514",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1312-Filament-Spectrum-Spectrum-WOOD-1-75mm-OAK-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175652751",
+    "article_number": "80513",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1311-Filament-Spectrum-Spectrum-WOOD-1-75mm-OAK-0-5kg.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "id": "ruby_red_elixir",
+  "name": "Ruby Red Elixir",
+  "color_hex": "#FF4F4D",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

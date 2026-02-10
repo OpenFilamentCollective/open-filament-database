@@ -3,11 +3,11 @@
   "default_max_dry_temperature": 55,
   "default_slicer_settings": {
     "prusaslicer": {
-      "profile_name": "LBL/PETG/matte",
+      "bed_temp": 80,
       "first_layer_bed_temp": 85,
       "first_layer_nozzle_temp": 240,
-      "bed_temp": 80,
-      "nozzle_temp": 235
+      "nozzle_temp": 235,
+      "profile_name": "LBL/PETG/matte"
     }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "id": "aluminium",
+  "name": "Aluminium",
+  "color_hex": "#D6D7D8",
+  "traits": {
+    "imitates_metal": true
+  }
+}

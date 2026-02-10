@@ -1,0 +1,12 @@
+{
+  "id": "xmas",
+  "name": "XMAS",
+  "color_hex": [
+    "#206233",
+    "#E2FF4D"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403760",
+    "article_number": "81309",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1887-Filament-Spectrum-ReFill-PLA-SILK-1-75mm-ALUMINIUM-SILVER-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175652225",
+    "article_number": "80446",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1277-Filament-Spectrum-SILK-PLA-1-75mm-ALUMINIUM-SILVER-1kg.html"
+      }
+    ]
+  }
+]

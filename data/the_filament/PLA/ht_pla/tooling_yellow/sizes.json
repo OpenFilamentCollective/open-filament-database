@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138403305",
+    "article_number": "TF-24186",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3349-The-Filament-ReFill-HT-PLA-1-75mm-TOOLING-YELLOW-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401868",
+    "article_number": "TF-24144",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3305-The-Filament-HT-PLA-1-75mm-TOOLING-YELLOW-1kg.html"
+      }
+    ]
+  }
+]

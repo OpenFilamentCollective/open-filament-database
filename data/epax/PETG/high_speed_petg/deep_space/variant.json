@@ -1,0 +1,11 @@
+{
+  "id": "deep_space",
+  "name": "Deep Space",
+  "color_hex": [
+    "#2C365E",
+    "#7F068C"
+  ],
+  "traits": {
+    "iridescent": true
+  }
+}

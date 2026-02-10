@@ -1,0 +1,9 @@
+{
+  "id": "white_r",
+  "name": "White r",
+  "color_hex": "#F0EBE5",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

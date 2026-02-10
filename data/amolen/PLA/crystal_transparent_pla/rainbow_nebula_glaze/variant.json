@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_nebula_glaze",
+  "name": "Rainbow Nebula Glaze",
+  "color_hex": [
+    "#FD3DB5",
+    "#40B6E4",
+    "#F8B9A6"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

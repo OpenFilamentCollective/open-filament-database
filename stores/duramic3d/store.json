@@ -1,0 +1,10 @@
+{
+    "id": "duramic3d",
+    "name": "DuramiC 3D",
+    "storefront_url": "https://duramic3d.com/collections/all",
+    "logo": "logo.jpg",
+    "ships_from": [
+        "CN"
+    ],
+    "ships_to": []
+}

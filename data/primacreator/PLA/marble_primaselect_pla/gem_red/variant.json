@@ -1,0 +1,9 @@
+{
+  "id": "gem_red",
+  "name": "Gem Red",
+  "color_hex": "#CD5A2E",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

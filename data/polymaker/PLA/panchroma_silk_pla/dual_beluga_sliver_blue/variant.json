@@ -1,0 +1,13 @@
+{
+  "id": "dual_beluga_sliver_blue",
+  "name": "Dual Beluga Sliver Blue",
+  "color_hex": [
+    "#0095FF",
+    "#C9D0D4"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

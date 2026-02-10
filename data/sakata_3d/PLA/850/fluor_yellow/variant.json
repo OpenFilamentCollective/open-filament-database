@@ -1,0 +1,8 @@
+{
+  "id": "fluor_yellow",
+  "name": "Fluor Yellow",
+  "color_hex": "#FBE200",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

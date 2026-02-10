@@ -1,0 +1,8 @@
+{
+  "id": "ruby_translucid",
+  "name": "Ruby (translucid)",
+  "color_hex": "#CA0230",
+  "traits": {
+    "translucent": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "snow",
+  "name": "Snow",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "gold",
+  "name": "Gold",
+  "color_hex": "#F3BC00",
+  "traits": {
+    "silk": true
+  }
+}

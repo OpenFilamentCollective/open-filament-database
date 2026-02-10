@@ -1,0 +1,10 @@
+{
+  "id": "wood_classic_birch",
+  "name": "Wood Classic Birch",
+  "color_hex": "#CEB378",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "imitates_wood": true
+  }
+}

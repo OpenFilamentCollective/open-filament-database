@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_g_yellow_series",
+  "name": "Rainbow G Yellow Series",
+  "color_hex": [
+    "#018E63",
+    "#7FE200",
+    "#9A491A",
+    "#EFDC4C",
+    "#36DBE7"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

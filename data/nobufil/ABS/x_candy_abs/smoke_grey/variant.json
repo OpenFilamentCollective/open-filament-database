@@ -1,0 +1,8 @@
+{
+  "id": "smoke_grey",
+  "name": "Smoke Grey",
+  "color_hex": "#40382D",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "ht",
+  "name": "HT",
+  "color_hex": "#292B2B",
+  "traits": {
+    "high_temperature": true,
+    "contains_glass_fiber": true
+  }
+}

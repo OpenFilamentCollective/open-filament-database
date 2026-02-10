@@ -1,0 +1,12 @@
+{
+  "id": "green_brown",
+  "name": "GREEN BROWN",
+  "color_hex": [
+    "#705939",
+    "#739549"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

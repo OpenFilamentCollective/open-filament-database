@@ -1,0 +1,14 @@
+{
+  "id": "darkred_green_blue",
+  "name": "DarkRed-Green-Blue",
+  "color_hex": [
+    "#41A840",
+    "#0378D0",
+    "#C60F3E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "glitter_lemon_gold",
+  "name": "Glitter lemon-gold",
+  "color_hex": "#90903B",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

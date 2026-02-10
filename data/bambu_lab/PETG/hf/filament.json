@@ -1,0 +1,8 @@
+{
+    "id": "hf",
+    "name": "HF",
+    "diameter_tolerance": 0.03,
+    "density": 1.28,
+    "data_sheet_url": "https://store.bblcdn.com/ce12d65176a94f1086e6aefa238e62e2.pdf",
+    "safety_sheet_url": "https://store.bblcdn.com/84de0227cd6c44389be1dfccb5280dcb.pdf"
+}

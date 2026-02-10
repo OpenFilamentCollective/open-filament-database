@@ -1,0 +1,8 @@
+{
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": "#AE00FF",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

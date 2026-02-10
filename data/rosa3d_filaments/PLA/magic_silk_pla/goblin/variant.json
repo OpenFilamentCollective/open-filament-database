@@ -1,0 +1,12 @@
+{
+  "id": "goblin",
+  "name": "Goblin",
+  "color_hex": [
+    "#58C91B",
+    "#6000B0"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "bronze_carbon_fiber",
+  "name": "Bronze Carbon Fiber",
+  "color_hex": "#8C7354",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

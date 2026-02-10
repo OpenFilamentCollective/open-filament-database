@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138403268",
+    "article_number": "TF-24184",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3359-The-Filament-ReFill-HT-PLA-1-75mm-CAMEL-BEIGE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401820",
+    "article_number": "TF-24142",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3315-The-Filament-HT-PLA-1-75mm-CAMEL-BEIGE-1kg.html"
+      }
+    ]
+  }
+]

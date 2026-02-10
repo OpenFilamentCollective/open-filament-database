@@ -1,0 +1,10 @@
+{
+  "id": "maple_wood",
+  "name": "Maple Wood",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

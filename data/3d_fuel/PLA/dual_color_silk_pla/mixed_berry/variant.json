@@ -1,0 +1,10 @@
+{
+  "id": "mixed_berry",
+  "name": "Mixed Berry",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

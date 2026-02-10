@@ -1,0 +1,13 @@
+{
+  "id": "northern_lights",
+  "name": "Northern Lights",
+  "color_hex": [
+    "#F6C500",
+    "#000000",
+    "#62E480"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "id": "lab3d_store",
+    "name": "LAB3D Store",
+    "storefront_url": "https://shop.lab3d.dk/",
+    "logo": "logo.png",
+    "ships_from": [
+        "DK"
+    ],
+    "ships_to": []
+}

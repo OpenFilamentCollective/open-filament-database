@@ -1,0 +1,12 @@
+{
+  "id": "venom_green",
+  "name": "Venom Green",
+  "color_hex": "#91C500",
+  "color_standards": {
+    "pantone": "2297C"
+  },
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

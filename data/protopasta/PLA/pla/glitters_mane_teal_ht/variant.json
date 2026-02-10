@@ -1,0 +1,11 @@
+{
+  "id": "glitters_mane_teal_ht",
+  "name": "Glitter's Mane Teal HT",
+  "color_hex": "#39B9DB",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

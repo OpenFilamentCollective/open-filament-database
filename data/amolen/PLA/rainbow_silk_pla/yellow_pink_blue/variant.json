@@ -1,0 +1,13 @@
+{
+  "id": "yellow_pink_blue",
+  "name": "Yellow Pink Blue",
+  "color_hex": [
+    "#E5FF6D",
+    "#00EDDD",
+    "#E8BEDD"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

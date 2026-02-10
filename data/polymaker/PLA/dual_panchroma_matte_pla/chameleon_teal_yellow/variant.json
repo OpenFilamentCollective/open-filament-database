@@ -1,0 +1,13 @@
+{
+  "id": "chameleon_teal_yellow",
+  "name": "Chameleon Teal Yellow",
+  "color_hex": [
+    "#FBE200",
+    "#75C8CE"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

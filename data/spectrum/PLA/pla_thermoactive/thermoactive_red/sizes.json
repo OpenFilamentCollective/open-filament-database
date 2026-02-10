@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175651013",
+    "article_number": "80171",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-678-Filament-Spectrum-PLA-Special-1-75mm-THERMOACTIVE-RED-0-50kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175651358",
+    "article_number": "80172",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-679-Filament-Spectrum-PLA-Special-1-75mm-THERMOACTIVE-RED-1-0kg.html"
+      }
+    ]
+  }
+]

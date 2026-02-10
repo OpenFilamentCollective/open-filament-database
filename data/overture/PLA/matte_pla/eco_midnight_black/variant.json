@@ -1,0 +1,9 @@
+{
+  "id": "eco_midnight_black",
+  "name": "Eco Midnight Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

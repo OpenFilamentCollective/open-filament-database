@@ -1,0 +1,13 @@
+{
+  "id": "gradient_silver_to_blue",
+  "name": "Gradient Silver to Blue",
+  "color_hex": [
+    "#ABACB0",
+    "#0078BF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

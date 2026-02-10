@@ -5,8 +5,7 @@ on:
       - 'data/**'
       - 'stores/**'
       - 'schemas/**'
-      - 'data_validator.py'
-      - 'db_serializer.py'
+      - 'ofd/**'
       - 'requirements.txt'
   push:
     branches: [ main ]
@@ -14,8 +13,7 @@ on:
       - 'data/**'
       - 'stores/**'
       - 'schemas/**'
-      - 'data_validator.py'
-      - 'db_serializer.py'
+      - 'ofd/**'
       - 'requirements.txt'
   workflow_dispatch:
 
@@ -36,4 +34,4 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Validate data
-        run: python data_validator.py --${{ matrix.name }}
+        run: python -m ofd validate --${{ matrix.name }}

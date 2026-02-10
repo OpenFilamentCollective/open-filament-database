@@ -1,0 +1,12 @@
+{
+  "material": "ABS",
+  "default_max_dry_temperature": 80,
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 90,
+      "first_layer_bed_temp": 95,
+      "first_layer_nozzle_temp": 250,
+      "nozzle_temp": 250
+    }
+  }
+}

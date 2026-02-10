@@ -1,0 +1,9 @@
+{
+  "id": "sparkly_green",
+  "name": "Sparkly Green",
+  "color_hex": "#15817B",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

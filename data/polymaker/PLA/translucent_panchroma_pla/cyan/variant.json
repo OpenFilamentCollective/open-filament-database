@@ -1,0 +1,9 @@
+{
+  "id": "cyan",
+  "name": "Cyan",
+  "color_hex": "#08ABFB",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

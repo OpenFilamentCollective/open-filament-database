@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_red_yellow",
+  "name": "Dual Color Red Yellow",
+  "color_hex": [
+    "#E03F26",
+    "#FCE575"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

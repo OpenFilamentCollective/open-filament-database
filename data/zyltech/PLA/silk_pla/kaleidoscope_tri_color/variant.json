@@ -1,0 +1,14 @@
+{
+  "id": "kaleidoscope_tri_color",
+  "name": "Kaleidoscope Tri-Color",
+  "color_hex": [
+    "#02A76B",
+    "#0353BA",
+    "#F87FB5"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

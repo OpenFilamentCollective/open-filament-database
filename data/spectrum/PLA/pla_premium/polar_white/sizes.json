@@ -1,0 +1,50 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175657114",
+    "article_number": "80012",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-512-Filament-Spectrum-PLA-Premium-1-75mm-POLAR-WHITE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175658500",
+    "article_number": "80125",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-623-Filament-Spectrum-PLA-Premium-1-75mm-POLAR-WHITE-2kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175653109",
+    "article_number": "80611",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1477-Filament-Spectrum-PLA-Premium-1-75mm-POLAR-WHITE-4-5kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654496",
+    "article_number": "80671",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1454-Filament-Spectrum-PLA-Premium-1-75mm-POLAR-WHITE-8kg.html"
+      }
+    ]
+  }
+]

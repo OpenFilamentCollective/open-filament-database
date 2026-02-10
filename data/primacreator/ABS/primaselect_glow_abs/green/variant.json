@@ -1,0 +1,13 @@
+{
+  "id": "green",
+  "name": "Green",
+  "color_hex": [
+    "#E4E7E5",
+    "#06B100"
+  ],
+  "traits": {
+    "glow": true,
+    "filtration_recommended": true,
+    "abrasive": true
+  }
+}

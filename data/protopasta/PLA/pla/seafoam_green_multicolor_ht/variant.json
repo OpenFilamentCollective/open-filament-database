@@ -1,0 +1,13 @@
+{
+  "id": "seafoam_green_multicolor_ht",
+  "name": "Seafoam Green Multicolor HT",
+  "color_hex": [
+    "#40E0D0",
+    "#32A584"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "gradual_color_change": true
+  }
+}

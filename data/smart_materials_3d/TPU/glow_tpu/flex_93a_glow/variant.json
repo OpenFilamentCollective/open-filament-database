@@ -1,0 +1,9 @@
+{
+  "id": "flex_93a_glow",
+  "name": "FLEX 93A GLOW",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

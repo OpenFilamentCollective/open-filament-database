@@ -1,0 +1,13 @@
+{
+  "id": "golden_halo_dual_color",
+  "name": "Golden Halo Dual Color",
+  "color_hex": [
+    "#ACB1BA",
+    "#F7D979"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

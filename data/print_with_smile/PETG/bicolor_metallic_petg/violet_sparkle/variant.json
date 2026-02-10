@@ -1,0 +1,12 @@
+{
+  "id": "violet_sparkle",
+  "name": "VIOLET SPARKLE",
+  "color_hex": [
+    "#4E486A",
+    "#705939"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

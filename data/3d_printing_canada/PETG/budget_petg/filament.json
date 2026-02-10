@@ -1,0 +1,7 @@
+{
+    "id": "budget_petg",
+    "name": "Budget PETG",
+    "diameter_tolerance": 0.03,
+    "density": 1.27,
+    "max_dry_temperature": 65
+}

@@ -1,0 +1,8 @@
+{
+    "id": "neon_lime",
+    "name": "Neon lime",
+    "color_hex": "#acff2d",
+    "traits": {
+        "recyclable": true
+    }
+}

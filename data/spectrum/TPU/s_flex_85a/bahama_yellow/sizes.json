@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175653543",
+    "article_number": "80572",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1383-Filament-Spectrum-S-Flex-85A-1-75mm-BAHAMA-YELLOW-0-50kg-RAL-1018.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175653468",
+    "article_number": "80565",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1376-Filament-Spectrum-S-Flex-85A-1-75mm-BAHAMA-YELLOW-0-25kg-RAL-1018.html"
+      }
+    ]
+  }
+]

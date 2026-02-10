@@ -1,0 +1,8 @@
+{
+  "id": "uv_glow",
+  "name": "UV Glow",
+  "color_hex": "#00FF6F",
+  "traits": {
+    "glow": true
+  }
+}

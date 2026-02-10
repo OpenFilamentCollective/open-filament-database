@@ -1,0 +1,12 @@
+{
+  "id": "steampunk_copper",
+  "name": "Steampunk Copper",
+  "color_hex": "#E87A27",
+  "color_standards": {
+    "ral": "8029"
+  },
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

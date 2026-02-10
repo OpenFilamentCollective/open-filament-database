@@ -1,0 +1,10 @@
+{
+  "id": "blend_carbon_fiber_black",
+  "name": "Blend Carbon Fiber Black",
+  "color_hex": "#262727",
+  "traits": {
+    "abrasive": true,
+    "blend": true,
+    "contains_carbon_fiber": true
+  }
+}

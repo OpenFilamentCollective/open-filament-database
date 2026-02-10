@@ -1,0 +1,14 @@
+{
+  "id": "spring",
+  "name": "Spring",
+  "color_hex": [
+    "#FF5786",
+    "#E6B0A2",
+    "#EE8881"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

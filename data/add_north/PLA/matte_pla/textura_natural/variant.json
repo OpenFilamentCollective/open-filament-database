@@ -1,0 +1,9 @@
+{
+  "id": "textura_natural",
+  "name": "Textura™ Natural",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

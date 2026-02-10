@@ -1,0 +1,15 @@
+{
+  "id": "candy_rainbow_multicolor_ht",
+  "name": "Candy Rainbow Multicolor HT",
+  "color_hex": [
+    "#91C500",
+    "#0378D0",
+    "#D55D8C"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "gradual_color_change": true
+  }
+}

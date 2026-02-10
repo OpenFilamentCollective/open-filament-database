@@ -1,0 +1,14 @@
+{
+  "id": "christmas_prism",
+  "name": "Christmas Prism",
+  "color_hex": [
+    "#00CC00",
+    "#E2FF4D",
+    "#BE2ED6",
+    "#DA445A",
+    "#00BFB3"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

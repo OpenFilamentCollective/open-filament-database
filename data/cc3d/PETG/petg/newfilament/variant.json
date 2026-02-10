@@ -1,0 +1,9 @@
+{
+  "id": "newfilament",
+  "name": "NewFilament",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "glitter": true
+  }
+}

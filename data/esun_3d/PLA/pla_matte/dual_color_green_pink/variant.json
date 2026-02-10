@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_green_pink",
+  "name": "Dual Color Green Pink",
+  "color_hex": [
+    "#62E480",
+    "#F87FB5"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

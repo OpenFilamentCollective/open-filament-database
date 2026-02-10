@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404231",
+    "article_number": "81356",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1815-Filament-Spectrum-ReFill-PET-G-Premium-1-75mm-LIGHT-GREY-1kg-RAL-7035.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175653901",
+    "article_number": "80600",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1552-Filament-Spectrum-PET-G-Premium-1-75mm-LIGHT-GREY-1kg-RAL-7035.html"
+      }
+    ]
+  }
+]

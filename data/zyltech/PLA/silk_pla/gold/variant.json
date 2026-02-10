@@ -1,0 +1,9 @@
+{
+  "id": "gold",
+  "name": "Gold New Made In USA Premium Composite",
+  "color_hex": "#FFCB47",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

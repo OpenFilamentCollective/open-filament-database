@@ -1,0 +1,14 @@
+{
+  "id": "vintage_glass",
+  "name": "Vintage Glass",
+  "color_hex": [
+    "#D55D8C",
+    "#EA9E3F",
+    "#4921C1",
+    "#6E8451"
+  ],
+  "traits": {
+    "translucent": true,
+    "coextruded": true
+  }
+}

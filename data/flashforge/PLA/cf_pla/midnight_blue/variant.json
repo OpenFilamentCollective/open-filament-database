@@ -1,0 +1,10 @@
+{
+  "id": "midnight_blue",
+  "name": "Midnight Blue",
+  "color_hex": "#282D42",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

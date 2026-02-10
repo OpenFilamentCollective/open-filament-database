@@ -1,0 +1,9 @@
+{
+  "id": "black_hills_gold",
+  "name": "Black Hills Gold",
+  "color_hex": "#F5BB91",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

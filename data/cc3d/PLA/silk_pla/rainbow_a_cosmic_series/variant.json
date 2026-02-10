@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_a_cosmic_series",
+  "name": "Rainbow A Cosmic Series",
+  "color_hex": [
+    "#0099E6",
+    "#0353BA",
+    "#F300EA",
+    "#EA9E3F",
+    "#008059"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_green_purple",
+  "name": "Dual Color Green Purple",
+  "color_hex": [
+    "#8846AE",
+    "#62E480"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

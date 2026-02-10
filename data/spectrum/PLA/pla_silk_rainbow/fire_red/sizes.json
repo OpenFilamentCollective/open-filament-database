@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403524",
+    "article_number": "81285",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1866-Filament-Spectrum-ReFill-PLA-SILK-Rainbow-1-75mm-FIRE-RED-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991400820",
+    "article_number": "81017",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1742-Filament-Spectrum-PLA-SILK-Rainbow-1-75mm-FIRE-RED-1kg.html"
+      }
+    ]
+  }
+]

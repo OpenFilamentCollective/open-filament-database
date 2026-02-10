@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_purple_yellow",
+  "name": "Dual Color Purple Yellow",
+  "color_hex": [
+    "#8846AE",
+    "#F3C102"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

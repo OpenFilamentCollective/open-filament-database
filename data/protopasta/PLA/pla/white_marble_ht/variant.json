@@ -1,0 +1,10 @@
+{
+  "id": "white_marble_ht",
+  "name": "White Marble HT",
+  "color_hex": "#EDF0F2",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "imitates_marble": true
+  }
+}

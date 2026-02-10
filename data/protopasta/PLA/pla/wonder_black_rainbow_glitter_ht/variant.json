@@ -1,0 +1,10 @@
+{
+  "id": "wonder_black_rainbow_glitter_ht",
+  "name": "Wonder Black Rainbow Glitter HT",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

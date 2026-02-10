@@ -1,0 +1,62 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404163",
+    "article_number": "81349",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1846-Filament-Spectrum-ReFill-PET-G-Premium-1-75mm-ARCTIC-WHITE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175657619",
+    "article_number": "80057",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-565-Filament-Spectrum-PET-G-Premium-1-75mm-ARCTIC-WHITE-1kg-RAL-9016.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175651297",
+    "article_number": "80161",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-668-Filament-Spectrum-PET-G-Premium-1-75mm-ARCTIC-WHITE-2kg-RAL-9016.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175653123",
+    "article_number": "80629",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1347-Filament-Spectrum-PET-G-Premium-1-75mm-ARCTIC-WHITE-4-5kg-RAL-9016.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654595",
+    "article_number": "80681",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1465-Filament-Spectrum-Premium-PET-G-1-75mm-ARCTIC-WHITE-8kg-RAL-9016.html"
+      }
+    ]
+  }
+]

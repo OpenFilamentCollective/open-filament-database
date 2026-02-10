@@ -1,0 +1,8 @@
+{
+  "id": "yellow_fluorescent",
+  "name": "Yellow (Fluorescent)",
+  "color_hex": "#E4FF33",
+  "traits": {
+    "neon": true
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138402797",
+    "article_number": "TF-24164",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3327-The-Filament-ReFill-PLA-Matte-1-75mm-TROOPER-GREY-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401653",
+    "article_number": "TF-24206",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3249-The-Filament-PLA-Matte-1-75mm-TROOPER-GREY-1kg.html"
+      }
+    ]
+  }
+]

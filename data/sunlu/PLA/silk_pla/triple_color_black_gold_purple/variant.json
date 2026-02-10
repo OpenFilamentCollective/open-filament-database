@@ -1,0 +1,14 @@
+{
+  "id": "triple_color_black_gold_purple",
+  "name": "Triple Color (Black Gold Purple)",
+  "color_hex": [
+    "#000000",
+    "#6C47B2",
+    "#FFCB47"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

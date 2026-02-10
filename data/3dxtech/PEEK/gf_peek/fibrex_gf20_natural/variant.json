@@ -1,0 +1,11 @@
+{
+  "id": "fibrex_gf20_natural",
+  "name": "FibreX +GF20 Natural",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "abrasive": true,
+    "low_outgassing": true,
+    "without_pigments": true,
+    "contains_glass_fiber": true
+  }
+}

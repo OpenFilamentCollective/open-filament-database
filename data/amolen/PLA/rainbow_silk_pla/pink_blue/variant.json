@@ -1,0 +1,12 @@
+{
+  "id": "pink_blue",
+  "name": "Pink Blue",
+  "color_hex": [
+    "#F6ABD7",
+    "#CBE4ED"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

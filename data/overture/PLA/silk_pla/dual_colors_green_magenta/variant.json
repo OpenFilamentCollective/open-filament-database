@@ -1,0 +1,13 @@
+{
+  "id": "dual_colors_green_magenta",
+  "name": "Dual Colors Green-Magenta",
+  "color_hex": [
+    "#9AED51",
+    "#E23288"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

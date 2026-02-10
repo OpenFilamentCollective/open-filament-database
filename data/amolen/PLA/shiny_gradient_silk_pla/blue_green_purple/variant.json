@@ -1,0 +1,13 @@
+{
+  "id": "blue_green_purple",
+  "name": "Blue Green Purple",
+  "color_hex": [
+    "#00A594",
+    "#6802BC",
+    "#0378D0"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

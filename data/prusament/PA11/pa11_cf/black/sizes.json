@@ -1,0 +1,22 @@
+[
+  {
+    "filament_weight": 800,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pa11-carbon-fiber-black-800g/"
+      }
+    ]
+  },
+  {
+    "filament_weight": 25,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pa11-carbon-fiber-black-25g-sample/"
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "id": "violet_translucide",
+  "name": "Violet translucide",
+  "color_hex": "#6459EB",
+  "traits": {
+    "translucent": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "lemon_sprinkle_yellow",
+  "name": "Lemon Sprinkle Yellow",
+  "color_hex": "#E6B535",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

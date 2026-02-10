@@ -1,0 +1,16 @@
+{
+    "id": "tough+",
+    "name": "Tough+",
+    "diameter_tolerance": 0.03,
+    "density": 1.22,
+    "data_sheet_url": "https://store.bblcdn.eu/s8/default/f0d6e1c73b9e42c3abeb9540f3433225/new_Bambu_PLA_Tough_Technical_Data_Sheet.pdf",
+    "safety_sheet_url": "https://store.bblcdn.eu/s8/default/fa69ce6fe3a9411988e30bd8d44b29c0/Bambu_PLA_Tough_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PLA Translucent"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PLA Translucent"
+        }
+    }
+}

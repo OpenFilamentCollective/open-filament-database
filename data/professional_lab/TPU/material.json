@@ -1,0 +1,12 @@
+{
+  "material": "TPU",
+  "default_max_dry_temperature": 60,
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 60,
+      "first_layer_bed_temp": 60,
+      "first_layer_nozzle_temp": 220,
+      "nozzle_temp": 220
+    }
+  }
+}

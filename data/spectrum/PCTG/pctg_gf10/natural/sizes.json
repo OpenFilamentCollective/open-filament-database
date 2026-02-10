@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175655172",
+    "article_number": "80728",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1511-Filament-Spectrum-PCTG-GF10-1-75mm-NATURAL-0-5kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175654991",
+    "article_number": "80718",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1503-Filament-Spectrum-PCTG-GF10-1-75mm-NATURAL-1kg.html"
+      }
+    ]
+  }
+]

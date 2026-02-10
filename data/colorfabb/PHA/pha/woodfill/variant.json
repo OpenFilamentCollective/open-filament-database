@@ -1,0 +1,9 @@
+{
+  "id": "woodfill",
+  "name": "woodFill",
+  "color_hex": "#F0DDC2",
+  "traits": {
+    "home_compostable": true,
+    "contains_wood": true
+  }
+}

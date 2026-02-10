@@ -1,0 +1,9 @@
+{
+  "id": "army_edition_woodland_green",
+  "name": "Army edition - Woodland Green",
+  "color_hex": "#4C5E46",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "outdoor_green",
+  "name": "Outdoor Green",
+  "color_hex": "#144F3B",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

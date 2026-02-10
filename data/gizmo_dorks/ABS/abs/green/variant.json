@@ -1,0 +1,8 @@
+{
+  "id": "green",
+  "name": "Green",
+  "color_hex": "#83E665",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

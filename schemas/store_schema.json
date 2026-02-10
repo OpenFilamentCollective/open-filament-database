@@ -4,13 +4,20 @@
     "definitions": {
         "string_limit": {
             "maxLength": 1000
+        },
+        "id": {
+            "maxLength": 1000,
+            "pattern": "^[a-z0-9+]+(_[a-z0-9+]+)*$"
+        },
+        "logo": {
+            "pattern": "^logo\\.(png|jpg|svg)$"
         }
     },
     "properties": {
         "id": {
             "type": "string",
             "description": "The ID for this store",
-            "$ref": "#/definitions/string_limit"
+            "$ref": "#/definitions/id"
         },
         "name": {
             "type": "string",
@@ -22,15 +29,10 @@
             "description": "A link to the storefront of this store",
             "$ref": "#/definitions/string_limit"
         },
-        "storefront_affiliate_link": {
-            "type": "string",
-            "description": "An affiliate link to the storefront of this store",
-            "$ref": "#/definitions/string_limit"
-        },
         "logo": {
             "type": "string",
-            "description": "A link to the logo for this store",
-            "$ref": "#/definitions/string_limit"
+            "description": "The name of the logo file",
+            "$ref": "#/definitions/logo"
         },
         "ships_from": {
             "type": [
@@ -54,6 +56,11 @@
                 "type": "string",
                 "$ref": "#/definitions/string_limit"
             },
+            "$ref": "#/definitions/string_limit"
+        },
+        "source": {
+            "type": "string",
+            "description": "The source of the data, like another DB or company",
             "$ref": "#/definitions/string_limit"
         }
     },

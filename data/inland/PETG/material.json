@@ -1,0 +1,11 @@
+{
+  "material": "PETG",
+  "default_slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Inland PETG"
+    },
+    "orcaslicer": {
+      "profile_name": "Inland PETG"
+    }
+  }
+}

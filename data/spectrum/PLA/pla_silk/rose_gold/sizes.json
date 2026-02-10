@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403838",
+    "article_number": "81316",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1893-Filament-Spectrum-ReFill-PLA-SILK-1-75mm-ROSE-GOLD-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175652188",
+    "article_number": "80442",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1273-Filament-Spectrum-SILK-PLA-1-75mm-ROSE-GOLD-1kg.html"
+      }
+    ]
+  }
+]

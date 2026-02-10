@@ -1,0 +1,38 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138402889",
+    "article_number": "TF-24173",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3335-The-Filament-ReFill-ASA-1-75mm-MIDNIGHT-BLACK-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401745",
+    "article_number": "TF-24214",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3259-The-Filament-ASA-1-75mm-MIDNIGHT-BLACK-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "ean": "5907138401943",
+    "article_number": "TF-24194",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3260-The-Filament-ASA-1-75mm-MIDNIGHT-BLACK-3kg.html"
+      }
+    ]
+  }
+]

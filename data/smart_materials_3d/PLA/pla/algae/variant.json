@@ -1,0 +1,8 @@
+{
+  "id": "algae",
+  "name": "ALGAE",
+  "color_hex": "#452F25",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

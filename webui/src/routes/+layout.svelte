@@ -1,6 +1,7 @@
 <script lang="ts">
   import BackBtn from '$lib/components/backBtn.svelte';
   import Breadcrumb from '$lib/components/breadcrumb.svelte';
+  import ValidationDropdown from '$lib/components/ValidationDropdown.svelte';
   import { getFlash, updateFlash } from 'sveltekit-flash-message';
   import '../app.css';
   import type { LayoutProps } from './$types';
@@ -77,9 +78,15 @@
 <div
   class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors">
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mb-12">
-    <nav class="sm:px-6 lg:px-8 flex gap-4 align-center">
-      <BackBtn />
-      <Breadcrumb />
+    <nav class="sm:px-6 lg:px-8 flex gap-4 items-center justify-between">
+      <div class="flex gap-4 items-center">
+        <BackBtn />
+        <Breadcrumb />
+      </div>
+
+      <div class="flex gap-3 items-center">
+        <ValidationDropdown />
+      </div>
     </nav>
     {@render children()}
   </main>

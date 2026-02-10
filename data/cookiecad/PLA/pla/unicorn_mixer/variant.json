@@ -1,0 +1,12 @@
+{
+  "id": "unicorn_mixer",
+  "name": "Unicorn Mixer",
+  "color_hex": [
+    "#FF72B6",
+    "#8ED9F9"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

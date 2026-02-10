@@ -1,0 +1,10 @@
+{
+  "id": "silver_surfer",
+  "name": "Silver Surfer",
+  "color_hex": "#999AA0",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "imitates_metal": true
+  }
+}

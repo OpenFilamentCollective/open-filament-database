@@ -1,0 +1,13 @@
+{
+  "id": "just_peachy_thermochromic_ht",
+  "name": "Just Peachy Thermochromic HT",
+  "color_hex": [
+    "#F3C102",
+    "#FB6066"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "temperature_color_change": true
+  }
+}

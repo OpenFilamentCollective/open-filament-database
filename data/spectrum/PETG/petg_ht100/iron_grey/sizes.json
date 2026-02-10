@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175650276",
+    "article_number": "80400",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1237-Filament-Spectrum-PET-G-HT100-1-75mm-IRON-GREY-0-5kg-RAL-7011.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650207",
+    "article_number": "80401",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1233-Filament-Spectrum-PET-G-HT100-1-75mm-IRON-GREY-1kg-RAL-7011.html"
+      }
+    ]
+  }
+]

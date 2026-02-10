@@ -1,0 +1,12 @@
+{
+  "id": "redgold_multi_color",
+  "name": "Red+Gold Multi-Color",
+  "color_hex": [
+    "#FFCB47"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "fibrex_nylon_gf30_white",
+  "name": "FIBREX™ Nylon +GF30 White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

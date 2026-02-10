@@ -1,0 +1,13 @@
+{
+  "id": "aqua_serenity_dual_color",
+  "name": "Aqua Serenity Dual Color",
+  "color_hex": [
+    "#0353BA",
+    "#11784F"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

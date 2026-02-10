@@ -1,0 +1,12 @@
+{
+  "id": "glamour",
+  "name": "Glamour",
+  "color_hex": [
+    "#C9D0D4",
+    "#FCB4AD"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

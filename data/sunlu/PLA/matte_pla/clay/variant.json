@@ -1,0 +1,9 @@
+{
+  "id": "clay",
+  "name": "Clay",
+  "color_hex": "#8E8D71",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

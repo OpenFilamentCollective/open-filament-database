@@ -1,0 +1,9 @@
+{
+  "id": "signal_blue",
+  "name": "Signal Blue",
+  "color_hex": "#0378D0",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

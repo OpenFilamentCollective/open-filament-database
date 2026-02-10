@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403951",
+    "article_number": "81328",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1904-Filament-Spectrum-ReFill-ASA-275-1-75mm-FOREST-GREEN-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175652935",
+    "article_number": "80532",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1336-Filament-Spectrum-ASA-275-1-75-mm-FOREST-GREEN-1kg-RAL-6024.html"
+      }
+    ]
+  }
+]

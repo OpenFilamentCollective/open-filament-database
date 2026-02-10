@@ -1,8 +1,0 @@
-{
-  "name": "X-PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "max_dry_temperature": 50,
-  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/XPLA_TDS_kdctbP.pdf",
-  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_XPLA_5chi81.pdf"
-}

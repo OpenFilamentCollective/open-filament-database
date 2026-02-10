@@ -1,0 +1,13 @@
+{
+  "id": "sedimentary_rock",
+  "name": "Sedimentary Rock",
+  "color_hex": [
+    "#C3CCD5",
+    "#5A696C"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true,
+    "imitates_marble": true
+  }
+}

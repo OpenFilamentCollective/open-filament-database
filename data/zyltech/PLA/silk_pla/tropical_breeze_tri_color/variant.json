@@ -1,0 +1,14 @@
+{
+  "id": "tropical_breeze_tri_color",
+  "name": "Tropical Breeze Tri-Color",
+  "color_hex": [
+    "#60AB61",
+    "#F6A25C",
+    "#0378D0"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

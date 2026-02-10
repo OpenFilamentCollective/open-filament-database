@@ -1,0 +1,14 @@
+{
+  "id": "dual_special_yin_yang",
+  "name": "Dual Special Yin Yang",
+  "color_hex": [
+    "#000000",
+    "#C3CCD5"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true,
+    "coextruded": true,
+    "imitates_marble": true
+  }
+}

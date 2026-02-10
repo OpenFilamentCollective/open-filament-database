@@ -1,8 +1,8 @@
 {
-  "id": "3deksperten",
-  "name": "3D Eksperten",
-  "storefront_url": "https://3deksperten.dk/",
-  "logo": "3deksperten.jpg",
-  "ships_from": "DK",
-  "ships_to": []
+    "id": "3deksperten",
+    "name": "3D Eksperten",
+    "storefront_url": "https://3deksperten.dk/",
+    "logo": "logo.jpg",
+    "ships_from": "DK",
+    "ships_to": []
 }

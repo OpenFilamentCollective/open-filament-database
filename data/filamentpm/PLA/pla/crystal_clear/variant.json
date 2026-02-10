@@ -1,0 +1,9 @@
+{
+  "id": "crystal_clear",
+  "name": "Crystal Clear",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

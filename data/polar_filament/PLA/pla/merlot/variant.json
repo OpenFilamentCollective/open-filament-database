@@ -1,0 +1,8 @@
+{
+  "id": "merlot",
+  "name": "Merlot",
+  "color_hex": "#915672",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

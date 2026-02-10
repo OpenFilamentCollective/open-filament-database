@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5905991400547",
+    "article_number": "80991",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1614-Filament-Spectrum-PLA-Nature-1-75mm-PILS-BEER-0-25kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175659989",
+    "article_number": "80936",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1607-Filament-Spectrum-PLA-Nature-1-75mm-PILS-BEER-1kg.html"
+      }
+    ]
+  }
+]

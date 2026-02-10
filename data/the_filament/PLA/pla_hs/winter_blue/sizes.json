@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991406242",
+    "article_number": "TF-24074",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2644-The-Filament-ReFill-PLA-HS-1-75mm-WINTER-BLUE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991405375",
+    "article_number": "TF-24033",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2614-The-Filament-PLA-HS-1-75mm-WINTER-BLUE-1kg.html"
+      }
+    ]
+  }
+]

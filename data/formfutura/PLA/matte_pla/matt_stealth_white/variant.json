@@ -1,0 +1,9 @@
+{
+  "id": "matt_stealth_white",
+  "name": "Matt Stealth White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

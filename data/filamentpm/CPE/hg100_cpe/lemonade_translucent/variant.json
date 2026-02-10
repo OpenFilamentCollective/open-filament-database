@@ -1,0 +1,8 @@
+{
+  "id": "lemonade_translucent",
+  "name": "\"Lemonade Translucent\"",
+  "color_hex": "#FBE200",
+  "traits": {
+    "translucent": true
+  }
+}

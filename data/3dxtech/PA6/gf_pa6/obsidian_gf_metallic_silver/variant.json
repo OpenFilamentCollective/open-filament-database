@@ -1,0 +1,9 @@
+{
+  "id": "obsidian_gf_metallic_silver",
+  "name": "OBSIDIAN GF+ Metallic Silver",
+  "color_hex": "#ABACB0",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

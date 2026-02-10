@@ -1,0 +1,13 @@
+{
+  "id": "shadow_blade_dual_color",
+  "name": "Shadow Blade Dual Color",
+  "color_hex": [
+    "#000000",
+    "#ACB1BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

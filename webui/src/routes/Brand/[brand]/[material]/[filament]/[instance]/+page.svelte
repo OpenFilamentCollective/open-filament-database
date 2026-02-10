@@ -5,13 +5,14 @@
   import VariantForm from '$lib/components/forms/variant/VariantForm.svelte';
   import SizeItem from '$lib/components/items/sizeItem.svelte';
   import Tooltip from "sv-tooltip"
+  import { traitLabels } from '$lib/validation/filament-variant-schema';
 
   const { data } = $props();
 </script>
 
 <svelte:head>
-	<title>{data?.colorData?.variant?.color_name ? data.colorData.variant.color_name : "Variant"}</title>
-	<meta name="description" content="This is an overview of {data?.colorData?.variant?.color_name ? data.colorData.variant.color_name : "a Variant"}"/>
+  <title>{data?.colorData?.name ? data.colorData.name : "Variant"}</title>
+  <meta name="description" content="This is an overview of {data?.colorData?.name ? data.colorData.name : "a Variant"}"/>
 </svelte:head>
 
 <div class="max-w-6xl mx-auto p-6">
@@ -60,9 +61,9 @@
           >
             <VariantForm
               defaultForm={data.variantForm}
-              brandName={data.brandData.brand}
-              materialName={data.materialData.material}
-              filamentName={data.filamentData.name}
+              brandId={data.brandData.id}
+              materialId={data.materialData.material}
+              filamentId={data.filamentData.id}
               colorData={data.colorData}
               formType={'edit'}
               stores={data.stores} />
@@ -89,7 +90,7 @@
                 stroke-width="3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
-              <span class="capitalize">{trait}</span>
+              <span>{traitLabels[trait] || trait}</span>
             </div>
           {/if}
         {/each}

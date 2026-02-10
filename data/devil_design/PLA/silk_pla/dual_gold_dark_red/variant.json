@@ -1,0 +1,12 @@
+{
+  "id": "dual_gold_dark_red",
+  "name": "DUAL GOLD + DARK RED",
+  "color_hex": [
+    "#CC393F",
+    "#F6C500"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

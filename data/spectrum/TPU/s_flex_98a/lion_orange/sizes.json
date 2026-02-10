@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5903175652812",
+    "article_number": "80526",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1325-Filament-Spectrum-S-Flex-98A-1-75mm-LION-ORANGE-0-25kg-RAL-2004.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175652805",
+    "article_number": "80517",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1316-Filament-Spectrum-S-Flex-98A-1-75mm-LION-ORANGE-0-50kg-RAL-2004.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "id": "easyfil_glow_in_the_dark_green",
+  "name": "EasyFil – Glow in the Dark Green",
+  "color_hex": [
+    "#06B100",
+    "#DFDFD3"
+  ],
+  "traits": {
+    "glow": true,
+    "filtration_recommended": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": "#D6ABFF",
+  "traits": {
+    "translucent": true
+  }
+}

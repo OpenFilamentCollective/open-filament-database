@@ -1,0 +1,9 @@
+{
+  "id": "green_camo",
+  "name": "Green Camo",
+  "color_hex": "#4D5D4C",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "evergreen_bronze",
+  "name": "Evergreen Bronze",
+  "color_hex": [
+    "#26A648",
+    "#99A45F"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

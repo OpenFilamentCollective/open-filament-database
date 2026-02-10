@@ -1,0 +1,9 @@
+{
+  "id": "recycled_translucent_cherry",
+  "name": "Recycled Translucent Cherry",
+  "color_hex": "#C00000",
+  "traits": {
+    "translucent": true,
+    "recycled": true
+  }
+}

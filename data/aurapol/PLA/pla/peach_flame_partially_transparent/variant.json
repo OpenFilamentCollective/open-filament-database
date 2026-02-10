@@ -1,0 +1,8 @@
+{
+  "id": "peach_flame_partially_transparent",
+  "name": "Peach flame partially transparent",
+  "color_hex": "#F6A25C",
+  "traits": {
+    "translucent": true
+  }
+}

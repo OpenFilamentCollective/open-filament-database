@@ -1,0 +1,12 @@
+{
+  "id": "red_green",
+  "name": "Red & Green",
+  "color_hex": [
+    "#E80078",
+    "#2D9E59"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

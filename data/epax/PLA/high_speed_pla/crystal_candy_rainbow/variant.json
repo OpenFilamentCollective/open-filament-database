@@ -1,0 +1,18 @@
+{
+  "id": "crystal_candy_rainbow",
+  "name": "Crystal Candy Rainbow",
+  "color_hex": [
+    "#D93382",
+    "#EC0000",
+    "#FA8423",
+    "#F8CC00",
+    "#62E480",
+    "#0353BA",
+    "#6C47B2"
+  ],
+  "traits": {
+    "translucent": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

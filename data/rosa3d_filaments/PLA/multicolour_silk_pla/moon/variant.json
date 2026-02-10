@@ -1,0 +1,13 @@
+{
+  "id": "moon",
+  "name": "Moon",
+  "color_hex": [
+    "#545252",
+    "#AEB8C1",
+    "#AABCCF"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

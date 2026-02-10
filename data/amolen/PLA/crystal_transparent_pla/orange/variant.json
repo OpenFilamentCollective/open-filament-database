@@ -1,0 +1,8 @@
+{
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#F17231",
+  "traits": {
+    "translucent": true
+  }
+}

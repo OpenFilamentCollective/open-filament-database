@@ -1,0 +1,9 @@
+{
+  "id": "fluorescent_green",
+  "name": "Fluorescent Green",
+  "color_hex": "#84D18B",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

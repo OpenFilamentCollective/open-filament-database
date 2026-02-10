@@ -1,0 +1,8 @@
+{
+  "id": "banana_yellow",
+  "name": "Banana Yellow",
+  "color_hex": "#FCE575",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

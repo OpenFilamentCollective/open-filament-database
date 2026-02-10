@@ -1,0 +1,13 @@
+{
+  "id": "pale_pink_elixir",
+  "name": "Pale Pink Elixir",
+  "color_hex": [
+    "#FFCCCD",
+    "#00E3E2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "sunrise_mixer",
+  "name": "Sunrise Mixer",
+  "color_hex": [
+    "#EB0075",
+    "#E8BD00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "sand_beige",
+  "name": "Sand Beige",
+  "color_hex": "#E0DABB",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

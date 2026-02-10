@@ -1,0 +1,8 @@
+{
+  "id": "default",
+  "name": "Default",
+  "color_hex": "#EADAC2",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "blue_green_coral",
+  "name": "Blue Green & Coral",
+  "color_hex": [
+    "#63D6D6",
+    "#FF2C29"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

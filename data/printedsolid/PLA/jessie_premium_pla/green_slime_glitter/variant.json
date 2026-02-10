@@ -1,0 +1,9 @@
+{
+  "id": "green_slime_glitter",
+  "name": "Green Slime Glitter",
+  "color_hex": "#A1AC21",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175650290",
+    "article_number": "80406",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1232-Filament-Spectrum-PET-G-HT100-1-75mm-SILVER-STEEL-0-5kg-RAL-9007.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650221",
+    "article_number": "80407",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1231-Filament-Spectrum-PET-G-HT100-1-75mm-SILVER-STEEL-1kg-RAL-9007.html"
+      }
+    ]
+  }
+]

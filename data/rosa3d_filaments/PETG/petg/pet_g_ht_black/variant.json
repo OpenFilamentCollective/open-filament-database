@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_ht_black",
+  "name": "PET-G HT Black",
+  "color_hex": "#000000",
+  "traits": {
+    "high_temperature": true
+  }
+}

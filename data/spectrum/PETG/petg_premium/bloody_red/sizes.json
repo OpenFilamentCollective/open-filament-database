@@ -1,0 +1,62 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404187",
+    "article_number": "81351",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1848-Filament-Spectrum-ReFill-PET-G-Premium-1-75mm-BLOODY-RED-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175657596",
+    "article_number": "80059",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-567-Filament-Spectrum-PET-G-Premium-1-75mm-BLOODY-RED-1kg-RAL-3020.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175650948",
+    "article_number": "80641",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1473-Filament-Spectrum-Premium-PET-G-1-75mm-BLOODY-RED-2kg-RAL-3020.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175654229",
+    "article_number": "80630",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1348-Filament-Spectrum-PET-G-Premium-1-75mm-BLOODY-RED-4-5kg-RAL-3020.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654601",
+    "article_number": "80682",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1466-Filament-Spectrum-Premium-PET-G-1-75mm-BLOODY-RED-8kg-RAL-3020.html"
+      }
+    ]
+  }
+]

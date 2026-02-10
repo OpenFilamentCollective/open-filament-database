@@ -1,0 +1,11 @@
+{
+  "id": "gloop_purple_ht",
+  "name": "Gloop! Purple HT",
+  "color_hex": "#663D7E",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "blue_yellow",
+  "name": "Blue-Yellow",
+  "color_hex": [
+    "#0099E6",
+    "#EBFF57"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

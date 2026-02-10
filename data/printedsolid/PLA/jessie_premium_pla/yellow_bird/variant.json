@@ -1,0 +1,8 @@
+{
+  "id": "yellow_bird",
+  "name": "Yellow Bird",
+  "color_hex": "#FFD342",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

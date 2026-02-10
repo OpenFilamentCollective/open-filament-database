@@ -1,0 +1,9 @@
+{
+  "id": "electric_blue",
+  "name": "Electric Blue",
+  "color_hex": "#4F7BBB",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

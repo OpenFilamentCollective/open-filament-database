@@ -1,0 +1,14 @@
+{
+  "id": "red_cyan_blue_purple",
+  "name": "(Red-Cyan-Blue-Purple)",
+  "color_hex": [
+    "#DF3303",
+    "#9761B5",
+    "#2E56F1",
+    "#32FFFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

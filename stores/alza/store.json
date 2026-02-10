@@ -1,0 +1,12 @@
+{
+  "id": "alza",
+  "name": "Alza",
+  "storefront_url": "https://alza.cz",
+  "logo": "logo.svg",
+  "ships_from": [
+    "CZ, SK, DE, HU, AT"
+  ],
+  "ships_to": [
+    "CZ, SK, DE, HU, AT"
+  ]
+}

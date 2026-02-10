@@ -1,0 +1,9 @@
+{
+  "id": "polywood",
+  "name": "PolyWood™",
+  "color_hex": "#D2A273",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_wood": true
+  }
+}

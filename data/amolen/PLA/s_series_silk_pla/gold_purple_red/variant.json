@@ -1,0 +1,13 @@
+{
+  "id": "gold_purple_red",
+  "name": "Gold Purple Red",
+  "color_hex": [
+    "#F3C102",
+    "#E31A1F",
+    "#7F068C"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

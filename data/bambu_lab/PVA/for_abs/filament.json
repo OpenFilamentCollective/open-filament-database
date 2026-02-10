@@ -1,0 +1,16 @@
+{
+    "id": "for_abs",
+    "name": "for ABS",
+    "diameter_tolerance": 0.05,
+    "density": 1.16,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambus_Support_for_ABS_Technical_Data_Sheet.pdf?v=1721786140",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Support_for_ABS_MSDS.pdf?v=1721034621",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu Support for ABS"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu Support for ABS"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "id": "pps_cf",
+    "name": "PPS-CF",
+    "diameter_tolerance": 0.05,
+    "density": 1.26,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/Bambu_PPS-CF_Technical_Data_Sheet.pdf?v=1724381950",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/Bambu_PPS-CF_SDS.pdf?v=1724386933",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PPS-CF"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PPS-CF"
+        }
+    }
+}

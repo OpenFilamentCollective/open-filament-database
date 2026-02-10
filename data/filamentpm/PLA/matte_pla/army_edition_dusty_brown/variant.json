@@ -1,0 +1,9 @@
+{
+  "id": "army_edition_dusty_brown",
+  "name": "Army edition - Dusty Brown",
+  "color_hex": "#DAC7A0",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

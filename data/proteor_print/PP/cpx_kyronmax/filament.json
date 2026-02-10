@@ -1,0 +1,9 @@
+{
+  "id": "cpx_kyronmax",
+  "name": "CPX-KyronMax",
+  "diameter_tolerance": 0.15,
+  "density": 0.99,
+  "max_dry_temperature": 65,
+  "data_sheet_url": "https://b751bece-b164-4862-900b-7e8dc06531e5.usrfiles.com/ugd/b751be_2da39c371b7a493eb7ac22c60be4906a.pdf",
+  "safety_sheet_url": "https://6d597582-3ab0-4dac-82c3-457b79d9145a.usrfiles.com/ugd/6d5975_0f263bff46bc45ff85c3b049402e3032.pdf"
+}

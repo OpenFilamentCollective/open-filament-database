@@ -1,0 +1,14 @@
+{
+  "id": "tri_colour_yellow_blue_green",
+  "name": "Tri colour Yellow-Blue-Green",
+  "color_hex": [
+    "#FBF942",
+    "#0099E6",
+    "#26A648"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

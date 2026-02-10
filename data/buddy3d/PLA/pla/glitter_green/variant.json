@@ -1,0 +1,9 @@
+{
+  "id": "glitter_green",
+  "name": "Glitter Green",
+  "color_hex": "#089A45",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

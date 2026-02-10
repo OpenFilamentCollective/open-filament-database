@@ -1,0 +1,13 @@
+{
+  "id": "patina_green_purple_copper",
+  "name": "Patina (Green / Purple / Copper)",
+  "color_hex": [
+    "#26A648",
+    "#6C47B2",
+    "#C25C56"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#C9D0D4",
+  "color_standards": {
+    "ral": "9006"
+  },
+  "traits": {
+    "filtration_recommended": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "burnt_titanium_abyssal_rede",
+  "name": "Burnt Titanium Abyssal Rede",
+  "color_hex": [
+    "#771B6B",
+    "#1E2F5A"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "gradual_color_change": true
+  }
+}

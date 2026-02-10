@@ -1,0 +1,8 @@
+{
+  "id": "silver_metal",
+  "name": "Silver Metal",
+  "color_hex": "#C9D0D4",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

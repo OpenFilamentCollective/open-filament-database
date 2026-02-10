@@ -1,0 +1,9 @@
+{
+  "id": "nebula",
+  "name": "Nebula",
+  "color_hex": "#A36A96",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

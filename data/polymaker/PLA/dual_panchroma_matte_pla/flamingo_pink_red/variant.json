@@ -1,0 +1,13 @@
+{
+  "id": "flamingo_pink_red",
+  "name": "Flamingo Pink Red",
+  "color_hex": [
+    "#FFCCCD",
+    "#E20010"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

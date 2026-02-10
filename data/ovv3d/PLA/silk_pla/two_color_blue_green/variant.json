@@ -1,0 +1,13 @@
+{
+  "id": "two_color_blue_green",
+  "name": "Two-color Blue Green",
+  "color_hex": [
+    "#62E480",
+    "#386DFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

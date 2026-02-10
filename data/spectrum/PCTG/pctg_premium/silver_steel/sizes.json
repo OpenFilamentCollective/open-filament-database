@@ -1,0 +1,38 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175654052",
+    "article_number": "80658",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1471-Filament-Spectrum-Premium-PCTG-1-75mm-SILVER-STEEL-1kg-RAL-9007.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175654762",
+    "article_number": "80696",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1476-Filament-Spectrum-Premium-PCTG-1-75mm-SILVER-STEEL-2kg-RAL-9007.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175654731",
+    "article_number": "80693",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1562-Filament-Spectrum-Premium-PCTG-1-75mm-SILVER-STEEL-4-5kg-RAL-9007.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "id": "tonwei_matt",
+  "name": "Tonweiß matt",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

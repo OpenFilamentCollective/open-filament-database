@@ -1,0 +1,13 @@
+{
+  "id": "black_pink_white",
+  "name": "Black Pink White",
+  "color_hex": [
+    "#F7A7A1",
+    "#000000",
+    "#F5F5F5"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

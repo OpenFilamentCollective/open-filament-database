@@ -1,0 +1,10 @@
+{
+  "id": "x_gf10_gf_asa",
+  "name": "X Gf10 GF ASA",
+  "diameter_tolerance": 0.02,
+  "density": 1.11,
+  "min_print_temperature": 235,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110
+}

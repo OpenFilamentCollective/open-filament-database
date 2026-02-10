@@ -5,10 +5,10 @@ const storageKey = 'editedItems';
 export interface EditedItem {
   type: editType;
   action: editAction;
-  brandName: string;
-  materialName?: string;
-  filamentName?: string;
-  colorName?: string;
+  brandId: string;
+  materialId?: string;
+  filamentId?: string;
+  colorId?: string;
   data: any;
   timestamp: number;
 }
@@ -16,11 +16,11 @@ export interface EditedItem {
 export const pseudoEdit = (
   type: editType,
   action : editAction,
-  brandName: string,
+  brandId: string,
   data: any,
-  materialName?: string,
-  filamentName?: string,
-  colorName?: string,
+  materialId?: string,
+  filamentId?: string,
+  colorId?: string,
 ) => {
   const existingItems = localStorage.getItem(storageKey);
   let editedItems: EditedItem[] = [];
@@ -35,7 +35,7 @@ export const pseudoEdit = (
   }
 
   // Create unique identifier for the item
-  const itemKey = createItemKey(type, action, brandName, materialName, filamentName, colorName);
+  const itemKey = createItemKey(type, action, brandId, materialId, filamentId, colorId);
 
   // Remove existing edit for this item if it exists
   editedItems = editedItems.filter(
@@ -43,10 +43,10 @@ export const pseudoEdit = (
       createItemKey(
         item.type,
         item.action,
-        item.brandName,
-        item.materialName,
-        item.filamentName,
-        item.colorName,
+        item.brandId,
+        item.materialId,
+        item.filamentId,
+        item.colorId,
       ) !== itemKey,
   );
 
@@ -54,10 +54,10 @@ export const pseudoEdit = (
   editedItems.push({
     type,
     action,
-    brandName,
-    materialName,
-    filamentName,
-    colorName,
+    brandId,
+    materialId,
+    filamentId,
+    colorId,
     data,
     timestamp: Date.now(),
   });
@@ -67,10 +67,10 @@ export const pseudoEdit = (
 
 export const getEditItems = (
   type: editType,
-  brandName?: string,
-  materialName?: string,
-  filamentName?: string,
-  colorName?: string,
+  brandId?: string,
+  materialId?: string,
+  filamentId?: string,
+  colorId?: string,
 ) => {
   if (typeof localStorage === 'undefined') return null;
   const existingItems = localStorage.getItem(storageKey);
@@ -94,10 +94,10 @@ export const getEditItems = (
 export const getEditedItem = (
   type: editType,
   action: editAction,
-  brandName: string,
-  materialName?: string,
-  filamentName?: string,
-  colorName?: string,
+  brandId: string,
+  materialId?: string,
+  filamentId?: string,
+  colorId?: string,
 ): any | null => {
   if (typeof localStorage === 'undefined') return null;
 
@@ -107,17 +107,17 @@ export const getEditedItem = (
 
   try {
     const editedItems: EditedItem[] = JSON.parse(existingItems);
-    const itemKey = createItemKey(type, action, brandName, materialName, filamentName, colorName);
+    const itemKey = createItemKey(type, action, brandId, materialId, filamentId, colorId);
 
     const editedItem = editedItems.find(
       (item) =>
         createItemKey(
           item.type,
           item.action,
-          item.brandName,
-          item.materialName,
-          item.filamentName,
-          item.colorName,
+          item.brandId,
+          item.materialId,
+          item.filamentId,
+          item.colorId,
         ) === itemKey,
     );
 
@@ -131,12 +131,12 @@ export const getEditedItem = (
 export const isItemEdited = (
   type: editType,
   action: editAction,
-  brandName: string,
-  materialName?: string,
-  filamentName?: string,
-  colorName?: string,
+  brandId: string,
+  materialId?: string,
+  filamentId?: string,
+  colorId?: string,
 ): boolean => {
-  return getEditedItem(type, action, brandName, materialName, filamentName, colorName) !== null;
+  return getEditedItem(type, action, brandId, materialId, filamentId, colorId) !== null;
 };
 
 export const clearEditedItems = () => {
@@ -164,14 +164,14 @@ export const getAllEditedItems = (): EditedItem[] => {
 function createItemKey(
   type: editType,
   action: editAction,
-  brandName: string,
-  materialName?: string,
-  filamentName?: string,
-  colorName?: string,
+  brandId: string,
+  materialId?: string,
+  filamentId?: string,
+  colorId?: string,
 ): string {
-  const parts = [type, action, brandName];
-  if (materialName) parts.push(materialName);
-  if (filamentName) parts.push(filamentName);
-  if (colorName) parts.push(colorName);
+  const parts = [type, action, brandId];
+  if (materialId) parts.push(materialId);
+  if (filamentId) parts.push(filamentId);
+  if (colorId) parts.push(colorId);
   return parts.join('|');
 }

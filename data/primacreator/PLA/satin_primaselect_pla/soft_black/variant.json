@@ -1,0 +1,8 @@
+{
+  "id": "soft_black",
+  "name": "Soft Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

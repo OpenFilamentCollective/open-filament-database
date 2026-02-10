@@ -1,0 +1,11 @@
+{
+  "id": "heartthrob_metallic_red_ht",
+  "name": "Heartthrob Metallic Red HT",
+  "color_hex": "#8B3A3A",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true,
+    "glitter": true
+  }
+}

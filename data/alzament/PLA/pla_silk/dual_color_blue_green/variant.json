@@ -1,0 +1,12 @@
+{
+  "id": "dual_color_blue_green",
+  "name": "Dual Color Blue-Green",
+  "color_hex": [
+    "#49c189",
+    "#0867d2"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

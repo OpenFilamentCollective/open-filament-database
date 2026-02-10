@@ -1,0 +1,12 @@
+{
+  "id": "mistic_purple",
+  "name": "Mistic Purple",
+  "color_hex": [
+    "#545252",
+    "#F2306E"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

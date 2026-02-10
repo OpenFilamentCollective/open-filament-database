@@ -1,0 +1,9 @@
+{
+  "id": "granite",
+  "name": "Granite",
+  "color_hex": "#ACB1BA",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_stone": true
+  }
+}

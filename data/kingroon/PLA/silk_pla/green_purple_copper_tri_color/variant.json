@@ -1,0 +1,13 @@
+{
+  "id": "green_purple_copper_tri_color",
+  "name": "Green Purple Copper tri-color",
+  "color_hex": [
+    "#008059",
+    "#BE2ED6",
+    "#863938"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

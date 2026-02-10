@@ -1,0 +1,8 @@
+{
+  "id": "neon_green_uv_reactive_opaque",
+  "name": "Neon Green UV Reactive Opaque",
+  "color_hex": "#00CC00",
+  "traits": {
+    "neon": true
+  }
+}

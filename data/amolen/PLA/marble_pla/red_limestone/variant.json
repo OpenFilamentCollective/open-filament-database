@@ -1,0 +1,14 @@
+{
+  "id": "red_limestone",
+  "name": "Red Limestone",
+  "color_hex": [
+    "#DD8131",
+    "#8B3A3A",
+    "#BF9C87"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true,
+    "imitates_marble": true
+  }
+}

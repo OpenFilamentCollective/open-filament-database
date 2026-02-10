@@ -1,0 +1,14 @@
+{
+  "id": "vintage_metal_rainbow",
+  "name": "Vintage Metal Rainbow",
+  "color_hex": [
+    "#CE8D00",
+    "#81BA6D",
+    "#AF784D"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

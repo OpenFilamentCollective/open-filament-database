@@ -1,0 +1,15 @@
+{
+  "id": "gold_green_black",
+  "name": "Gold-Green-Black",
+  "color_hex": [
+    "#000000",
+    "#E3B145",
+    "#3D9441"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

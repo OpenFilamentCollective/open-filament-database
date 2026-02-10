@@ -1,0 +1,14 @@
+{
+  "id": "triple_color_blue_yellow_purple",
+  "name": "Triple Color Blue Yellow Purple",
+  "color_hex": [
+    "#0353BA",
+    "#FBF942",
+    "#AE00FF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

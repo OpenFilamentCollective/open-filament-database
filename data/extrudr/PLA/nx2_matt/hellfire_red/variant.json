@@ -1,0 +1,12 @@
+{
+  "id": "hellfire_red",
+  "name": "Hellfire Red",
+  "color_hex": "#000000",
+  "color_standards": {
+    "ral": "3024"
+  },
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

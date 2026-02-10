@@ -1,0 +1,9 @@
+{
+  "id": "bluish_opaque_purple_ht",
+  "name": "Bluish Opaque Purple HT",
+  "color_hex": "#2C3294",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "pumpkin_orange",
+  "name": "Pumpkin Orange",
+  "color_hex": "#DD8131",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

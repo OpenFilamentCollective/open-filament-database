@@ -1,0 +1,10 @@
+{
+  "id": "starry_sky_color_star_green",
+  "name": "Starry Sky Color-Star Green",
+  "color_hex": "#3D9441",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

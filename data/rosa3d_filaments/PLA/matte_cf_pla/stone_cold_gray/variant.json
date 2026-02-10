@@ -1,0 +1,9 @@
+{
+  "id": "stone_cold_gray",
+  "name": "Stone Cold Gray",
+  "color_hex": "#A2AAAD",
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

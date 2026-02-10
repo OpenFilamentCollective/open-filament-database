@@ -1,0 +1,13 @@
+{
+  "id": "stellar_flare_dual_gradient",
+  "name": "Stellar Flare Dual Gradient",
+  "color_hex": [
+    "#15817B",
+    "#0099E6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

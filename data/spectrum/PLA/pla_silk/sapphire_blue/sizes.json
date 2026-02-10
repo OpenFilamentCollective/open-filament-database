@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403852",
+    "article_number": "81318",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1895-Filament-Spectrum-ReFill-PLA-SILK-1-75mm-SAPPHIRE-BLUE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175652096",
+    "article_number": "80265",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1182-Filament-Spectrum-SILK-PLA-1-75mm-SAPPHIRE-BLUE-1kg.html"
+      }
+    ]
+  }
+]

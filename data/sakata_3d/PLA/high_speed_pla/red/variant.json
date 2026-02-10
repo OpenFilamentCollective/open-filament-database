@@ -1,0 +1,8 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#E0493E",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

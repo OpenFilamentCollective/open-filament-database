@@ -1,0 +1,10 @@
+{
+  "id": "carbon_blue",
+  "name": "Carbon Blue",
+  "color_hex": "#033877",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

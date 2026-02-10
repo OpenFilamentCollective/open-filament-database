@@ -1,0 +1,8 @@
+{
+  "id": "bleu_nuit_alumine",
+  "name": "Bleu nuit alumine",
+  "color_hex": "#09048E",
+  "traits": {
+    "contains_aluminium": true
+  }
+}

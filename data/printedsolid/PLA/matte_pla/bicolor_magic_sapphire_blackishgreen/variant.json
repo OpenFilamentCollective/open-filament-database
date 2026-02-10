@@ -1,0 +1,13 @@
+{
+  "id": "bicolor_magic_sapphire_blackishgreen",
+  "name": "Bicolor Magic-Sapphire-BlackishGreen",
+  "color_hex": [
+    "#0E21AE",
+    "#144F3B"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138402643",
+    "article_number": "TF-24179",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3348-The-Filament-ReFill-HT-PLA-1-75mm-WARM-WHITE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401752",
+    "article_number": "TF-24137",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3304-The-Filament-HT-PLA-1-75mm-WARM-WHITE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "ean": "5907138402025",
+    "article_number": "TF-24197",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3318-The-Filament-HT-PLA-1-75mm-WARM-WHITE-3kg.html"
+      }
+    ]
+  }
+]

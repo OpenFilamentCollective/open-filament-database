@@ -1,0 +1,10 @@
+{
+  "id": "milky_glass_transparent",
+  "name": "Milky Glass (Transparent)",
+  "color_hex": "#F0EBE5",
+  "traits": {
+    "translucent": true,
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

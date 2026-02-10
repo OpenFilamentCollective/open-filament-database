@@ -1,0 +1,9 @@
+{
+  "id": "copper",
+  "name": "Copper",
+  "color_hex": "#8D5D4F",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

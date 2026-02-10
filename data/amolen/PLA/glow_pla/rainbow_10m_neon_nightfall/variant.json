@@ -1,0 +1,18 @@
+{
+  "id": "rainbow_10m_neon_nightfall",
+  "name": "Rainbow 10m -Neon Nightfall",
+  "color_hex": [
+    "#0095FF",
+    "#FF67F5",
+    "#1ADAFB",
+    "#AE00FF",
+    "#70FA00"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "illuminescent_color_change": true,
+    "gradual_color_change": true
+  }
+}

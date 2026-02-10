@@ -1,0 +1,13 @@
+{
+  "id": "pacific",
+  "name": "Pacific",
+  "color_hex": [
+    "#0078BF",
+    "#95B6DE",
+    "#AABCCF"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

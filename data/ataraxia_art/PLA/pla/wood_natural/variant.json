@@ -1,0 +1,10 @@
+{
+  "id": "wood_natural",
+  "name": "Wood Natural",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

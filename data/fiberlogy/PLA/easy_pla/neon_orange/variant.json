@@ -1,0 +1,9 @@
+{
+  "id": "neon_orange",
+  "name": "Neon Orange",
+  "color_hex": "#F67405",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "smaragd_green",
+  "name": "Smaragd Green",
+  "color_hex": "#00A594",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

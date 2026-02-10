@@ -1,0 +1,9 @@
+{
+  "id": "brass",
+  "name": "Brass",
+  "color_hex": "#FFB031",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

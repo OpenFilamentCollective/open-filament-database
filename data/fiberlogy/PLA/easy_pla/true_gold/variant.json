@@ -1,0 +1,8 @@
+{
+    "id": "true_gold",
+    "name": "True Gold",
+    "color_hex": "#E5C100",
+    "traits": {
+        "recyclable": true
+    }
+}

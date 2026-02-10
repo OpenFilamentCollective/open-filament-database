@@ -3,8 +3,6 @@
   import { filamentVariantSchema } from '$lib/validation/filament-variant-schema';
   import { realDelete } from '$lib/realDeleter';
   import { pseudoDelete } from '$lib/pseudoDeleter';
-  import { traitsSchema } from '$lib/validation/filament-variant-schema';
-  import { capitalizeFirstLetter } from '$lib/globalHelpers';
   import { writable } from 'svelte/store';
   import BigCheck from '../components/bigCheck.svelte';
   import Form from '../components/form.svelte';
@@ -13,13 +11,12 @@
   import HexesList from './components/hexesList.svelte';
   import TextField from '../components/textField.svelte';
   import Size from './components/size.svelte';
-  import Trait from './components/trait.svelte';
+  import TraitAdder from './components/traitAdder.svelte';
   import { superForm } from 'sveltekit-superforms';
   import { zodClient } from 'sveltekit-superforms/adapters';
-  import { stripOfIllegalChars } from '$lib/globalHelpers';
 
   type formType = 'edit' | 'create';
-  let { defaultForm, formType, brandName, materialName, filamentName, stores, colorData = null } = $props();
+  let { defaultForm, formType, brandId, materialId, filamentId, stores, colorData = null } = $props();
 
   const {
     form,
@@ -43,10 +40,13 @@
     ) {
       const isLocal = env.PUBLIC_IS_LOCAL === 'true';
 
+      // use the folder `id` when performing filesystem operations
+      const instanceId = colorData.id || colorData.name;
+
       if (isLocal) {
-        await realDelete('instance', colorData.name, stripOfIllegalChars(brandName), materialName, filamentName);
+        await realDelete('instance', instanceId, brandId, materialId, filamentId);
       } else {
-        pseudoDelete('instance', colorData.name, stripOfIllegalChars(brandName), materialName, filamentName);
+        pseudoDelete('instance', instanceId, brandId, materialId, filamentId);
       }
     }
   }
@@ -97,19 +97,10 @@
     form.set(structuredClone(colorData.variant));
     $form.sizes = structuredClone(colorData.sizes);
   }
-  
-  let tempTraits = writable({});
-  
-  if ($form.traits) {
-    tempTraits.set(structuredClone($form.traits));
-  }
 
-  tempTraits.subscribe((value) => {
-    $form.traits = value;
-  });
-
-  if (colorData) {
-    $form.old_name = colorData.name;
+  // Initialize traits as empty object if not present
+  if (!$form.traits) {
+    $form.traits = {};
   }
 </script>
 
@@ -122,12 +113,12 @@
       <h3 class="text-xl font-bold mb-4">{formType === 'edit' ? 'Edit' : 'Create'} Color Variant</h3>
 
       <TextField
-        id="color_name"
+        id="name"
         title="Color name"
         description="Enter the official color name as specified by the manufacturer"
         placeholder="e.g. Galaxy Black"
-        bind:formVar={$form.color_name}
-        errorVar={$errors.color_name}
+        bind:formVar={$form.name}
+        errorVar={$errors.name}
         required={true}
       />
 
@@ -147,20 +138,7 @@
         description="Select if this colour/variant is discontinued"
       />
 
-      <fieldset>
-        <legend class="block font-medium mb-2">Material Traits</legend>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-          Select all special properties that apply to this filament variant
-        </p>
-        <div class="grid grid-cols-2 gap-4">
-          {#each Object.keys(traitsSchema.shape) as trait}
-            <Trait
-              id={trait}
-              title={capitalizeFirstLetter(trait)}
-              bind:formVar={$tempTraits[trait]} />
-          {/each}
-        </div>
-      </fieldset>
+      <TraitAdder bind:formTraits={$form.traits} />
     </div>
 
     <fieldset class="md:w-2/5">
@@ -204,7 +182,7 @@
 
   <SubmitButton>
     {formType === 'edit' ? 'Save' : 'Create'}
-  </SubmitButton>
+  </SubmitButton>  
 
   {#if formType === 'edit'}
     <DeleteButton

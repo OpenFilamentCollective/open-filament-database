@@ -1,0 +1,9 @@
+{
+  "id": "coral_pink",
+  "name": "Coral Pink",
+  "color_hex": "#FC8397",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

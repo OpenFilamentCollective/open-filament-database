@@ -1,0 +1,11 @@
+{
+  "id": "cosmic_plum_galaxy_shimmer",
+  "name": "Cosmic Plum (Galaxy Shimmer)",
+  "color_hex": [
+    "#D5447E",
+    "#DA445A"
+  ],
+  "traits": {
+    "iridescent": true
+  }
+}

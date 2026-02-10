@@ -1,0 +1,8 @@
+{
+  "id": "marble",
+  "name": "Marble",
+  "color_hex": "#D6D7D8",
+  "traits": {
+    "imitates_marble": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "black_shiny_fuchsia",
+  "name": "Black & Shiny Fuchsia",
+  "color_hex": [
+    "#000000",
+    "#D200A5"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

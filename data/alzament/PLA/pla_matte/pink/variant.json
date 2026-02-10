@@ -1,0 +1,10 @@
+{
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": [
+    "#fcc4db"
+  ],
+  "traits": {
+    "matte": true
+  }
+}

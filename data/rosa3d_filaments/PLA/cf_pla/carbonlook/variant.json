@@ -1,0 +1,8 @@
+{
+  "id": "carbonlook",
+  "name": "CarbonLook",
+  "color_hex": "#292824",
+  "traits": {
+    "contains_carbon_fiber": true
+  }
+}

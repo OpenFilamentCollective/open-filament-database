@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403562",
+    "article_number": "81289",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1869-Filament-Spectrum-ReFill-PLA-SILK-Rainbow-1-75mm-ANCIENT-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991400851",
+    "article_number": "81021",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1696-Filament-Spectrum-PLA-SILK-Rainbow-1-75mm-ANCIENT-1kg.html"
+      }
+    ]
+  }
+]

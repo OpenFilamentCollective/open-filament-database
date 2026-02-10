@@ -1,0 +1,13 @@
+{
+  "id": "colormorph_gold_silver",
+  "name": "ColorMorph Gold & Silver",
+  "color_hex": [
+    "#ABACB0",
+    "#CE8D00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

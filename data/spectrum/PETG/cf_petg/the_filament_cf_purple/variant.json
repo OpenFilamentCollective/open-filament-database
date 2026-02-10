@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_cf_purple",
+  "name": "The Filament CF Purple",
+  "color_hex": "#835476",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

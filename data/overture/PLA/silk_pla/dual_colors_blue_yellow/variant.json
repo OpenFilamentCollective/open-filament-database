@@ -1,0 +1,13 @@
+{
+  "id": "dual_colors_blue_yellow",
+  "name": "Dual Colors Blue-Yellow",
+  "color_hex": [
+    "#FFFB00",
+    "#0099E6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

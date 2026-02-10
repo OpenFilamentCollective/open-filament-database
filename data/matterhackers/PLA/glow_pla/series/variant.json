@@ -1,0 +1,10 @@
+{
+  "id": "series",
+  "name": "Series",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "recycled_natural_clear",
+  "name": "Recycled Natural (Clear)",
+  "color_hex": "#D9D8DE",
+  "traits": {
+    "translucent": true,
+    "recycled": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "rainbow_star_series",
+  "name": "Rainbow Star Series",
+  "color_hex": [
+    "#41A840",
+    "#DB3FA9",
+    "#FBE200",
+    "#0099E6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

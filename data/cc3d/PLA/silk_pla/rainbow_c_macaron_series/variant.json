@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_c_macaron_series",
+  "name": "Rainbow C Macaron Series",
+  "color_hex": [
+    "#40E0D0",
+    "#B13566",
+    "#E8BD00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

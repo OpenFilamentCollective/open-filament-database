@@ -1,0 +1,13 @@
+{
+  "id": "storm_shadow",
+  "name": "Storm Shadow",
+  "color_hex": [
+    "#0353BA",
+    "#24292A",
+    "#A8B0BD"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

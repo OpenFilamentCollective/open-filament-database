@@ -1,0 +1,9 @@
+{
+  "id": "flottes_veilchen_purple",
+  "name": "Flottes Veilchen (purple)",
+  "color_hex": "#E8BEDD",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

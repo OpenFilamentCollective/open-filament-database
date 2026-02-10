@@ -1,0 +1,9 @@
+{
+  "id": "polar_blue",
+  "name": "Polar Blue",
+  "color_hex": "#BFDFEF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

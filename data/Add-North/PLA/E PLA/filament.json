@@ -1,8 +1,0 @@
-{
-  "name": "E PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "max_dry_temperature": 50,
-  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/epla_tds_rev21_XTkw2P.pdf",
-  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_EPLA_Gn_Plp.pdf"
-}

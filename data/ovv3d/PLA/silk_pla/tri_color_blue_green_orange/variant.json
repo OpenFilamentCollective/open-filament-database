@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_blue_green_orange",
+  "name": "Tri-color Blue Green Orange",
+  "color_hex": [
+    "#FF8133",
+    "#41A840",
+    "#386DFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

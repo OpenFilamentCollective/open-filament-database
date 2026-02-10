@@ -1,0 +1,12 @@
+{
+  "id": "golden_ember",
+  "name": "Golden Ember",
+  "color_hex": [
+    "#DA445A",
+    "#DDB95D"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

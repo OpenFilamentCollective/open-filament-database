@@ -1,0 +1,12 @@
+{
+  "id": "gray_to_white",
+  "name": "Gray to White",
+  "color_hex": [
+    "#FFFFFF",
+    "#808080"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

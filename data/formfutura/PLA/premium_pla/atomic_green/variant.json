@@ -1,0 +1,8 @@
+{
+  "id": "atomic_green",
+  "name": "Atomic Green",
+  "color_hex": "#4DFF64",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

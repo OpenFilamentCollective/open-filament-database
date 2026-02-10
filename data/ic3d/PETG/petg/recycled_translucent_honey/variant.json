@@ -1,0 +1,9 @@
+{
+  "id": "recycled_translucent_honey",
+  "name": "Recycled Translucent Honey",
+  "color_hex": "#FF9A14",
+  "traits": {
+    "translucent": true,
+    "recycled": true
+  }
+}

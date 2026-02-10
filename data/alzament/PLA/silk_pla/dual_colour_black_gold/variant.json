@@ -1,0 +1,13 @@
+{
+  "id": "dual_colour_black_gold",
+  "name": "Dual colour Black-Gold",
+  "color_hex": [
+    "#000000",
+    "#F6C500"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

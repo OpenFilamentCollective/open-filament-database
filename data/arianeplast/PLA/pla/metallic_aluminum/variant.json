@@ -1,0 +1,8 @@
+{
+  "id": "metallic_aluminum",
+  "name": "Metallic Aluminum",
+  "color_hex": "#AEB8C1",
+  "traits": {
+    "contains_aluminium": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "blue_to_white_color_changing_filament",
+  "name": "(Blue to White) Color Changing Filament",
+  "color_hex": [
+    "#0066D9",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "temperature_color_change": true
+  }
+}

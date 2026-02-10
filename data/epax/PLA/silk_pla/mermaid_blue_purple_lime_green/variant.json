@@ -1,0 +1,13 @@
+{
+  "id": "mermaid_blue_purple_lime_green",
+  "name": "Mermaid (Blue / Purple / Lime Green)",
+  "color_hex": [
+    "#0353BA",
+    "#A000CA",
+    "#70FA00"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

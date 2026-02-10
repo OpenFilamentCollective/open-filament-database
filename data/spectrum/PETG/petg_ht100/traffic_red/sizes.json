@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175650245",
+    "article_number": "80408",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1229-Filament-Spectrum-PET-G-HT100-1-75mm-TRAFFIC-RED-0-50kg-RAL-3020.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650177",
+    "article_number": "80409",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1228-Filament-Spectrum-PET-G-HT100-1-75mm-TRAFFIC-RED-1kg-RAL-3020.html"
+      }
+    ]
+  }
+]

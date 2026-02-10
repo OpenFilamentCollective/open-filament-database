@@ -1,0 +1,25 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403616",
+    "article_number": "81294",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1874-Filament-Spectrum-ReFill-Pastello-PLA-1-75mm-COSMETIC-MAUVE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "80705",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1489-Filament-Pastello-PLA-1-75mm-COSMETIC-MAUVE-1kg.html"
+      }
+    ]
+  }
+]

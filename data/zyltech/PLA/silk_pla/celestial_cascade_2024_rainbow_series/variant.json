@@ -1,0 +1,15 @@
+{
+  "id": "celestial_cascade_2024_rainbow_series",
+  "name": "Celestial Cascade 2024 Rainbow Series",
+  "color_hex": [
+    "#1E5A4F",
+    "#0353BA",
+    "#6C47B2",
+    "#7E472A"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "pastel_berry_rainbow",
+  "name": "Pastel Berry Rainbow",
+  "color_hex": [
+    "#4D99B0",
+    "#F5CF6F",
+    "#F19269",
+    "#93B580",
+    "#BB1173"
+  ],
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404774",
+    "article_number": "81421",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1979-Filament-Spectrum-ReFill-PLA-Magic-SILK-1-75mm-FOREST-FLAME-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404910",
+    "article_number": "81406",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2575-Filament-Spectrum-PLA-Magic-SILK-1-75mm-FOREST-FLAME-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5905991404583",
+    "article_number": "81391",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1951-Filament-Spectrum-PLA-Magic-SILK-1-75mm-FOREST-FLAME-0-25kg.html"
+      }
+    ]
+  }
+]

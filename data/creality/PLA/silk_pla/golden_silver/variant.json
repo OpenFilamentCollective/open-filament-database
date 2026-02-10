@@ -1,0 +1,13 @@
+{
+  "id": "golden_silver",
+  "name": "Golden-Silver",
+  "color_hex": [
+    "#ABACB0",
+    "#F6C500"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

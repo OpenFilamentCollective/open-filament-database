@@ -1,0 +1,8 @@
+{
+  "id": "construction_yellow",
+  "name": "Construction Yellow",
+  "color_hex": "#9C7320",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

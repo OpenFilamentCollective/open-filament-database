@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_lollipop",
+  "name": "Rainbow Lollipop",
+  "color_hex": [
+    "#70A641",
+    "#39B9DB",
+    "#7659B5",
+    "#FD64B3",
+    "#D02F37",
+    "#F5E457"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

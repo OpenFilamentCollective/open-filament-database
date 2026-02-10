@@ -1,0 +1,12 @@
+{
+  "id": "unicorn_95a",
+  "name": "Unicorn 95A",
+  "color_hex": [
+    "#8D65C7",
+    "#FF72B6",
+    "#39B9DB"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

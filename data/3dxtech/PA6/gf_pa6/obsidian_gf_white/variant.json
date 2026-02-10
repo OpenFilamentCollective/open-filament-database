@@ -1,0 +1,9 @@
+{
+  "id": "obsidian_gf_white",
+  "name": "OBSIDIAN GF+ White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

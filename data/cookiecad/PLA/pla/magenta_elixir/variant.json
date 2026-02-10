@@ -1,0 +1,10 @@
+{
+  "id": "magenta_elixir",
+  "name": "Magenta Elixir",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "gradual_color_change": true
+  }
+}

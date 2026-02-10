@@ -1,0 +1,8 @@
+{
+  "id": "coffee",
+  "name": "Coffee",
+  "color_hex": "#AB713E",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

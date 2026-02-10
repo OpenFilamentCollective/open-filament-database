@@ -1,0 +1,9 @@
+{
+  "id": "green",
+  "name": "Green",
+  "color_hex": "#5E6345",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

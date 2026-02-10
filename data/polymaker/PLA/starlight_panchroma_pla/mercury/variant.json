@@ -1,0 +1,12 @@
+{
+  "id": "mercury",
+  "name": "Mercury",
+  "color_hex": [
+    "#94A7B7"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "glitter": true
+  }
+}

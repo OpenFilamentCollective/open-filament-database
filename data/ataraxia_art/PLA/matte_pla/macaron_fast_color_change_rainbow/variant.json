@@ -1,0 +1,15 @@
+{
+  "id": "macaron_fast_color_change_rainbow",
+  "name": "Macaron Fast Color Change Rainbow",
+  "color_hex": [
+    "#F5CF6F",
+    "#FD9191",
+    "#9EF9FF",
+    "#9DBD8B"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "army_green",
+  "name": "Army Green",
+  "color_hex": "#5E6345",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

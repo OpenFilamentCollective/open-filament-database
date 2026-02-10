@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138403206",
+    "article_number": "TF-24180",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3355-The-Filament-ReFill-HT-PLA-1-75mm-COBALT-BLUE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401769",
+    "article_number": "TF-24138",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3311-The-Filament-HT-PLA-1-75mm-COBALT-BLUE-1kg.html"
+      }
+    ]
+  }
+]

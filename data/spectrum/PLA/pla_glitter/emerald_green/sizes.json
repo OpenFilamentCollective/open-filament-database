@@ -1,0 +1,38 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175651556",
+    "article_number": "80183",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1151-Filament-Spectrum-PLA-Glitter-1-75mm-EMERALD-GREEN-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175651563",
+    "article_number": "80184",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1154-Filament-Spectrum-PLA-Glitter-1-75mm-EMERALD-GREEN-0-5kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "ean": "5903175651631",
+    "article_number": "80188",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1156-Filament-PLA-Glitter-2-85mm-EMERALD-GREEN-1kg.html"
+      }
+    ]
+  }
+]

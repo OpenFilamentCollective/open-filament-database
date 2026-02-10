@@ -1,0 +1,13 @@
+{
+  "id": "fire",
+  "name": "Fire",
+  "color_hex": [
+    "#EC0000",
+    "#F8CC00",
+    "#FA8423"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

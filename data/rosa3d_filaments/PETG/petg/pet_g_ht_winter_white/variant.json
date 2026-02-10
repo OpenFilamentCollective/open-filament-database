@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_ht_winter_white",
+  "name": "PET-G HT Winter White",
+  "color_hex": "#F5F5F5",
+  "traits": {
+    "high_temperature": true
+  }
+}

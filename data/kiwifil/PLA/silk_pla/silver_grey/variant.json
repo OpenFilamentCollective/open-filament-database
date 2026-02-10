@@ -1,0 +1,9 @@
+{
+  "id": "silver_grey",
+  "name": "Silver Grey",
+  "color_hex": "#6F727E",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

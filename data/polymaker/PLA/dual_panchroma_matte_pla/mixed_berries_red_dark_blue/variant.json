@@ -1,0 +1,13 @@
+{
+  "id": "mixed_berries_red_dark_blue",
+  "name": "Mixed Berries Red Dark Blue",
+  "color_hex": [
+    "#003287",
+    "#AA0101"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "hs_pla",
+  "name": "HS-PLA",
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
+  "max_dry_temperature": 55
+}

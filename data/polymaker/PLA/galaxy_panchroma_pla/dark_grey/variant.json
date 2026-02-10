@@ -1,0 +1,9 @@
+{
+  "id": "dark_grey",
+  "name": "Dark Grey",
+  "color_hex": "#6A6C6E",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "sunrise_red_yellow",
+  "name": "Sunrise Red Yellow",
+  "color_hex": [
+    "#FBE200",
+    "#E20010"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

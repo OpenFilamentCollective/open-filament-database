@@ -1,0 +1,9 @@
+{
+  "id": "apollox_kevlar",
+  "name": "ApolloX Kevlar",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_kevlar": true
+  }
+}

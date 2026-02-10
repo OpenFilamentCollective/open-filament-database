@@ -1,0 +1,15 @@
+{
+  "id": "blue_red_purple",
+  "name": "Blue Red Purple",
+  "color_hex": [
+    "#0E21AE",
+    "#ED1536",
+    "#8846AE"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

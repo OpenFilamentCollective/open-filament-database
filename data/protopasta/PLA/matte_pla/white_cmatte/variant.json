@@ -1,0 +1,9 @@
+{
+  "id": "white_cmatte",
+  "name": "White cMatte",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

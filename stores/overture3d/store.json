@@ -1,12 +1,12 @@
 {
-  "id": "overture3d",
-  "name": "overture",
-  "storefront_url": "https://overture3d.com/",
-  "logo": "overture.png",
-  "ships_from": [
-    "US"
-  ],
-  "ships_to": [
-    "US"
-  ]
+    "id": "overture3d",
+    "name": "overture",
+    "storefront_url": "https://overture3d.com/",
+    "logo": "logo.png",
+    "ships_from": [
+        "US"
+    ],
+    "ships_to": [
+        "US"
+    ]
 }

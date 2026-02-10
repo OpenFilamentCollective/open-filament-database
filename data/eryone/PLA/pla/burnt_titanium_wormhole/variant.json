@@ -1,0 +1,12 @@
+{
+  "id": "burnt_titanium_wormhole",
+  "name": "Burnt Titanium Wormhole",
+  "color_hex": [
+    "#008059",
+    "#40382D"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

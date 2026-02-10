@@ -1,0 +1,12 @@
+{
+  "id": "electric_indigo",
+  "name": "Electric Indigo",
+  "color_hex": [
+    "#6711F2",
+    "#D6D7D8"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

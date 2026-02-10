@@ -1,0 +1,14 @@
+{
+  "id": "02",
+  "name": "02",
+  "color_hex": [
+    "#F4A0B1",
+    "#A67DFF",
+    "#583061",
+    "#0353BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_meteor",
+  "name": "Rainbow Meteor",
+  "color_hex": [
+    "#292824",
+    "#8E5850",
+    "#5C5B59"
+  ],
+  "traits": {
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

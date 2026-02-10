@@ -1,0 +1,9 @@
+{
+  "id": "royal_blue",
+  "name": "Royal Blue",
+  "color_hex": "#375680",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

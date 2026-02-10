@@ -1,0 +1,8 @@
+{
+  "id": "grey_mouse_transparent",
+  "name": "\"Grey Mouse Transparent\"",
+  "color_hex": "#949597",
+  "traits": {
+    "translucent": true
+  }
+}

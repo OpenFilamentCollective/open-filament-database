@@ -1,0 +1,13 @@
+{
+  "id": "dual_colors_green_silver",
+  "name": "Dual Colors Green-Silver",
+  "color_hex": [
+    "#0CCF81",
+    "#9FA4A8"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

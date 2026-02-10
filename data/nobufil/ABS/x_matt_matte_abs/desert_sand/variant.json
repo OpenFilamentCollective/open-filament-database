@@ -1,0 +1,9 @@
+{
+  "id": "desert_sand",
+  "name": "Desert Sand",
+  "color_hex": "#E2C077",
+  "traits": {
+    "matte": true,
+    "filtration_recommended": true
+  }
+}

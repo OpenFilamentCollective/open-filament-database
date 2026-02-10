@@ -1,0 +1,13 @@
+{
+  "id": "white_to_glow_green",
+  "name": "White to Glow Green",
+  "color_hex": [
+    "#FFFFFF",
+    "#00CC00"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

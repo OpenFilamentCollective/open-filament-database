@@ -1,0 +1,10 @@
+{
+  "id": "luminous_blue",
+  "name": "Luminous Blue",
+  "color_hex": "#40B6E4",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

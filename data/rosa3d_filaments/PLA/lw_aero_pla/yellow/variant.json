@@ -1,0 +1,8 @@
+{
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FBF942",
+  "traits": {
+    "foaming": true
+  }
+}

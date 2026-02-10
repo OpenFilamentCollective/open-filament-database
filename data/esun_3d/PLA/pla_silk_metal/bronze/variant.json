@@ -1,0 +1,10 @@
+{
+  "id": "bronze",
+  "name": "Bronze",
+  "color_hex": "#A79E82",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "imitates_metal": true
+  }
+}

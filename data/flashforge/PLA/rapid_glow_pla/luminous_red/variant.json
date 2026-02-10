@@ -1,0 +1,10 @@
+{
+  "id": "luminous_red",
+  "name": "Luminous Red",
+  "color_hex": "#F7A7A1",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403913",
+    "article_number": "81324",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1841-Filament-Spectrum-ReFill-ASA-275-1-75mm-BLOODY-RED-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650115",
+    "article_number": "80300",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1208-Filament-Spectrum-ASA-275-1-75-mm-Bloody-Red-1kg.html"
+      }
+    ]
+  }
+]

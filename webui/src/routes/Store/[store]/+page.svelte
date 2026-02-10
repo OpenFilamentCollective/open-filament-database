@@ -45,13 +45,6 @@
 
               <div class="grow"></div>
 
-              {#if data?.storeData?.affiliate}
-                <span
-                  class="text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded self-start">
-                  <Fa icon={faCheck} class="inline"/>
-                  Affiliate
-                </span>
-              {/if}
             </div>
           </div>
         </div>
@@ -65,7 +58,10 @@
           >
             <StoreForm
               defaultForm={data.storeForm}
-              formType={'edit'} />
+              formType={'edit'}
+              storeId={data.storeData.id}
+              storeLogo={data.storeData.logo}
+            />
           </EditModal>
         {/key}
       </div>

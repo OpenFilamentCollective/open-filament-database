@@ -1,0 +1,9 @@
+{
+  "id": "r_risotto_pigment",
+  "name": "r Risotto Pigment",
+  "color_hex": "#CCC9C0",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

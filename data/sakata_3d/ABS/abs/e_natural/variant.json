@@ -1,0 +1,9 @@
+{
+  "id": "e_natural",
+  "name": "E Natural",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "filtration_recommended": true,
+    "without_pigments": true
+  }
+}

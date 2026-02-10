@@ -1,0 +1,9 @@
+{
+  "id": "smoke_blue_carbon_fiber_extreme",
+  "name": "Smoke Blue CARBON FIBER Extreme",
+  "color_hex": "#4D6383",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

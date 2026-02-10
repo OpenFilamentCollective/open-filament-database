@@ -12,11 +12,10 @@
   import { superForm } from 'sveltekit-superforms';
   import { zodClient } from 'sveltekit-superforms/adapters';
   import { storeSchema } from '$lib/validation/store-schema';
-  import BigCheck from '../components/bigCheck.svelte';
   import ShippingList from './components/shippingList.svelte';
 
   type formType = 'edit' | 'create';
-  let { defaultForm, formType } = $props();
+  let { defaultForm, formType, storeId = null, storeLogo = null } = $props();
 
   const {
     form,
@@ -43,9 +42,9 @@
       const isLocal = env.PUBLIC_IS_LOCAL === 'true';
 
       if (isLocal) {
-        await realDelete('store', stripOfIllegalChars($form.id));
+        await realDelete('store', $form.id);
       } else {
-        pseudoDelete('store', $form.name);
+        pseudoDelete('store', $form.id);
       }
     }
   }
@@ -55,26 +54,15 @@
   endpoint="store"
   enhance={enhance}
 >
-  <div class="grid grid-cols-2 gap-3">
-    <TextField
-      id="name"
-      title="Store Name"
-      description='Enter the name of the storefront'
-      placeholder="e.g. Bambu Lab Store"
-      bind:formVar={$form.name}
-      errorVar={$errors.name}
-      required={true}
-    />
-    <TextField
-      id="id"
-      title="Store ID"
-      description='Enter an internal ID for usage within the database'
-      placeholder="e.g. BBLStore"
-      bind:formVar={$form.id}
-      errorVar={$errors.id}
-      required={true}
-    />
-  </div>
+  <TextField
+    id="name"
+    title="Store Name"
+    description='Enter the name of the storefront'
+    placeholder="e.g. Bambu Lab Store"
+    bind:formVar={$form.name}
+    errorVar={$errors.name}
+    required={true}
+  />
 
   <TextField
     id="website"
@@ -86,25 +74,15 @@
     required={true}
   />
 
-  <TextField
-    id="website"
-    title="Website"
-    description='Official website URL of the storefront'
-    placeholder="https://www.example.com"
-    bind:formVar={$form.storefront_affiliate_link}
-    errorVar={$errors.storefront_affiliate_link}
-    required={true}
-  />
 
-  {#if formType === 'create'}
-    <LogoUpload
-      id="logo"
-      title="Logo"
-      bind:file={$file}
-      errorVar={$errors.logo}
-      required={true}
-    />
-  {/if}
+  <LogoUpload
+    id="logo"
+    title="Logo"
+    bind:file={$file}
+    errorVar={$errors.logo}
+    required={formType === 'create'}
+    currentLogo={formType === 'edit' && storeId && storeLogo ? `/stores/${storeId}/${storeLogo}` : null}
+  />
 
   <div class="grid grid-cols-2 gap-3">
     <ShippingList

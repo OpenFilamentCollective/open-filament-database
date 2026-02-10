@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_yellow_and_green_2_in_1",
+  "name": "Dual Color Yellow and Green 2 in 1",
+  "color_hex": [
+    "#41A840",
+    "#FBE200"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

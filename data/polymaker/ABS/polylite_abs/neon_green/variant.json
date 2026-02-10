@@ -1,0 +1,13 @@
+{
+  "id": "neon_green",
+  "name": "Neon Green",
+  "color_hex": [
+    "#7CEF83",
+    "#6FEEDB"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "neon": true,
+    "illuminescent_color_change": true
+  }
+}

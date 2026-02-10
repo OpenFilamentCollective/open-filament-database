@@ -1,0 +1,9 @@
+{
+  "id": "dark_blue",
+  "name": "Dark Blue",
+  "color_hex": "#2941BD",
+  "traits": {
+    "ipa_soluble": true,
+    "transparent": true
+  }
+}

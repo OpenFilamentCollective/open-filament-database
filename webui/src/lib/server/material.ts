@@ -78,7 +78,7 @@ export function updateMaterial(brandName: string, currentMaterialName: string, m
   }
 }
 
-function transformGeneric(slicer_settings: any) {
+export function transformGeneric(slicer_settings: any) {
   let genericSettings: any = {};
 
   genericSettings.first_layer_bed_temp = slicer_settings.first_layer_bed_temp || null;
@@ -97,7 +97,7 @@ function transformGeneric(slicer_settings: any) {
   }
 }
 
-function transformSpecific(slicer_settings: any) {
+export function transformSpecific(slicer_settings: any) {
   let genericSettings: any = {};
 
   genericSettings = transformGeneric(slicer_settings);

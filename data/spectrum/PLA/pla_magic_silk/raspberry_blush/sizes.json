@@ -1,0 +1,38 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991405023",
+    "article_number": "81422",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1980-Filament-Spectrum-ReFill-PLA-Magic-SILK-1-75mm-RASPBERRY-BLUSH-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991406334",
+    "article_number": "81407",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1965-Filament-Spectrum-PLA-Magic-SILK-1-75mm-RASPBERRY-BLUSH-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5905991404903",
+    "article_number": "81392",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1952-Filament-Spectrum-PLA-Magic-SILK-1-75mm-RASPBERRY-BLUSH-0-25kg.html"
+      }
+    ]
+  }
+]

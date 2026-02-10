@@ -1,0 +1,13 @@
+{
+  "id": "green_purple",
+  "name": "Green Purple",
+  "color_hex": [
+    "#B894E2",
+    "#9AED51"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

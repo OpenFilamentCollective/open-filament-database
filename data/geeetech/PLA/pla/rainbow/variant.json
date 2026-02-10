@@ -1,0 +1,14 @@
+{
+  "id": "rainbow",
+  "name": "Rainbow",
+  "color_hex": [
+    "#FD9106",
+    "#6299DF",
+    "#7AB352",
+    "#FCE575"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

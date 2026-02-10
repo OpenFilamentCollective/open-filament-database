@@ -1,0 +1,13 @@
+{
+  "id": "red_cedar",
+  "name": "Red Cedar",
+  "color_hex": [
+    "#F6A25C",
+    "#FF9100"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true,
+    "contains_wood": true
+  }
+}

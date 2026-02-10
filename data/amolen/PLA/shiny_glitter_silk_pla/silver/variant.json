@@ -1,0 +1,10 @@
+{
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#C5C7C4",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true
+  }
+}

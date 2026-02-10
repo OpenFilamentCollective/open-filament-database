@@ -1,0 +1,8 @@
+{
+  "id": "yellow_transparent",
+  "name": "\"Yellow Transparent\"",
+  "color_hex": "#FBE200",
+  "traits": {
+    "translucent": true
+  }
+}

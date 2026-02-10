@@ -1,0 +1,9 @@
+{
+  "id": "christmas_red",
+  "name": "Christmas Red",
+  "color_hex": "#D33D3D",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

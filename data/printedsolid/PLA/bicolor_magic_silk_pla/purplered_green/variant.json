@@ -1,0 +1,13 @@
+{
+  "id": "purplered_green",
+  "name": "Purplered-Green",
+  "color_hex": [
+    "#B645A9",
+    "#41A840"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

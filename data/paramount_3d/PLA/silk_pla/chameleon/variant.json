@@ -1,0 +1,12 @@
+{
+  "id": "chameleon",
+  "name": "(Chameleon)",
+  "color_hex": [
+    "#00CC00",
+    "#0099E6"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

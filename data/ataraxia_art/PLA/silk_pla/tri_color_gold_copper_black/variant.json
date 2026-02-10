@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_gold_copper_black",
+  "name": "Tri-Color Gold-Copper-Black",
+  "color_hex": [
+    "#E3B145",
+    "#000000",
+    "#904029"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

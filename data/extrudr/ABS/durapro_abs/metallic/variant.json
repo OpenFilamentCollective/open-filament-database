@@ -1,0 +1,11 @@
+{
+  "id": "metallic",
+  "name": "Metallic",
+  "color_hex": "#63646B",
+  "color_standards": {
+    "ral": "9023"
+  },
+  "traits": {
+    "filtration_recommended": true
+  }
+}

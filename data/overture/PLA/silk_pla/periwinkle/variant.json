@@ -1,0 +1,13 @@
+{
+  "id": "periwinkle",
+  "name": "Periwinkle",
+  "color_hex": [
+    "#C7BCF8",
+    "#6C47B2",
+    "#A000CA"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

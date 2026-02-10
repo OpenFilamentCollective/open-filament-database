@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_5m",
+  "name": "Rainbow 5m",
+  "color_hex": [
+    "#FF67F5",
+    "#AE00FF",
+    "#1ADAFB",
+    "#0095FF"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "gradual_color_change": true
+  }
+}

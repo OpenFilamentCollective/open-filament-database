@@ -1,0 +1,9 @@
+{
+  "id": "brass",
+  "name": "Brass",
+  "color_hex": "#998D58",
+  "traits": {
+    "glitter": true,
+    "imitates_metal": true
+  }
+}

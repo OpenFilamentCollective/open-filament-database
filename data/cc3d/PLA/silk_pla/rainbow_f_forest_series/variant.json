@@ -1,0 +1,15 @@
+{
+  "id": "rainbow_f_forest_series",
+  "name": "Rainbow F Forest Series",
+  "color_hex": [
+    "#7FE200",
+    "#515234",
+    "#15817B",
+    "#00A594"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

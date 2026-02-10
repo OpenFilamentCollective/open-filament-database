@@ -1,0 +1,9 @@
+{
+  "id": "special_series_carbon_fiber",
+  "name": "Special Series-Carbon Fiber",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

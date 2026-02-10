@@ -1,0 +1,12 @@
+{
+  "id": "tri_color_gold_silver_copper",
+  "name": "Tri Color Gold-Silver-Copper",
+  "color_hex": [
+    "#a14c2b",
+    "#e3b96e"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

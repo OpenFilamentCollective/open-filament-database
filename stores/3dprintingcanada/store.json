@@ -1,0 +1,10 @@
+{
+    "id": "3dprintingcanada",
+    "name": "3D Printing Canada",
+    "storefront_url": "https://3dprintingcanada.com/",
+    "logo": "logo.png",
+    "ships_from": [
+        "CA"
+    ],
+    "ships_to": []
+}

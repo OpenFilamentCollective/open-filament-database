@@ -1,0 +1,10 @@
+{
+  "id": "empire_strikes_black_ht",
+  "name": "Empire Strikes Black HT",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

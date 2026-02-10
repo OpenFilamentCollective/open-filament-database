@@ -14,7 +14,7 @@ const formatBytes = (bytes: number, decimals = 2) => {
 };
 
 export const storeSchema = z.object({
-  id: z.string().min(1, 'Id is required'),
+  id: z.string().optional(),
   name: z.string().min(1, 'Name is required'),
   storefront_url: z
     .string()
@@ -23,20 +23,12 @@ export const storeSchema = z.object({
       return url.startsWith('http://') || url.startsWith('https://');
     }, 'URL must use HTTP or HTTPS protocol')
     .default('https://'),
-  storefront_affiliate_link: z
-    .string()
-    .url('Please enter a valid URL')
-    .refine((url) => {
-      return url.startsWith('http://') || url.startsWith('https://');
-    }, 'URL must use HTTP or HTTPS protocol')
-    .optional(),
   logo: z
-    .instanceof(File, {
-      message: 'Please upload a file.'
-    })
-    .refine((f) => f.size <= MAX_FILE_SIZE, {
-      message: `The image is too large. Please choose an image smaller than ${formatBytes(MAX_FILE_SIZE)}.`,
-    })
+    .any()
+    .refine(
+      (f) => !(f instanceof File) || f.size <= MAX_FILE_SIZE,
+      { message: `The image is too large. Please choose an image smaller than ${formatBytes(MAX_FILE_SIZE)}.` }
+    )
     .optional(),
   ships_from: z.array(z.string()).default([]).or(z.string()),
   ships_to: z.array(z.string()).default([]).or(z.string()),

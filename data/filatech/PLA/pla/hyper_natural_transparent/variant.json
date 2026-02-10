@@ -1,0 +1,9 @@
+{
+  "id": "hyper_natural_transparent",
+  "name": "Hyper Natural Transparent",
+  "color_hex": "#DFDFD3",
+  "traits": {
+    "transparent": true,
+    "without_pigments": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "red_to_white",
+  "name": "Red to White",
+  "color_hex": [
+    "#E24749",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

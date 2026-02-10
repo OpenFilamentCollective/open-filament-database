@@ -1,0 +1,13 @@
+{
+  "id": "red_gold",
+  "name": "Red Gold",
+  "color_hex": [
+    "#DD8131",
+    "#ED2602"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

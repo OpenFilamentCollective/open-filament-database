@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138403770",
+    "article_number": "TF-24228",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3384-The-Filament-ReFill-PLA-Lite-1-75mm-YELLOW-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138403701",
+    "article_number": "TF-24221",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3374-The-Filament-PLA-Lite-1-75mm-YELLOW-1kg.html"
+      }
+    ]
+  }
+]

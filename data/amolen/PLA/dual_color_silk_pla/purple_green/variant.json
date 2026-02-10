@@ -1,0 +1,12 @@
+{
+  "id": "purple_green",
+  "name": "Purple & Green",
+  "color_hex": [
+    "#62E480",
+    "#BE2ED6"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

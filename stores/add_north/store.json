@@ -1,0 +1,10 @@
+{
+    "id": "add_north",
+    "name": "ADD-North",
+    "storefront_url": "https://addnorth.com/",
+    "logo": "logo.jpg",
+    "ships_from": [
+        "SE"
+    ],
+    "ships_to": []
+}

@@ -1,0 +1,10 @@
+{
+  "id": "dragon_scale_purple_ht",
+  "name": "Dragon Scale Purple HT",
+  "color_hex": "#8873C7",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true
+  }
+}

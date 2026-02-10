@@ -1,0 +1,13 @@
+{
+  "id": "blue_and_green_2_in_1",
+  "name": "Blue and Green 2 in 1",
+  "color_hex": [
+    "#206233",
+    "#003287"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

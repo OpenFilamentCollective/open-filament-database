@@ -1,0 +1,9 @@
+{
+  "id": "electric_lemonade",
+  "name": "Electric Lemonade",
+  "color_hex": "#C2BD5A",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

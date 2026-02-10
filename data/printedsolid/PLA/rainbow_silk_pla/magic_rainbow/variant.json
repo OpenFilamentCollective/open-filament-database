@@ -1,0 +1,15 @@
+{
+  "id": "magic_rainbow",
+  "name": "Magic Rainbow",
+  "color_hex": [
+    "#77A54B",
+    "#0353BA",
+    "#F4AC23",
+    "#C75072"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

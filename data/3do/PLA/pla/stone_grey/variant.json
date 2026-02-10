@@ -1,0 +1,11 @@
+{
+    "id": "stone_grey",
+    "name": "Stone Grey",
+    "color_hex": "#939388",
+    "color_standards": {
+        "ral": "7030"
+    },
+    "traits": {
+        "recyclable": true
+    }
+}

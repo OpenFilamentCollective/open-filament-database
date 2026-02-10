@@ -1,0 +1,9 @@
+{
+  "id": "fired_brick",
+  "name": "Fired Brick",
+  "color_hex": "#8B3A3A",
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

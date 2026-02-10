@@ -1,0 +1,9 @@
+{
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#EADAC2",
+  "traits": {
+    "water_soluble": true,
+    "without_pigments": true
+  }
+}

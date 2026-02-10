@@ -1,0 +1,10 @@
+{
+  "id": "candy_apple_metallic_red_ht",
+  "name": "Candy Apple Metallic Red HT",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true
+  }
+}

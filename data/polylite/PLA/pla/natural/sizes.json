@@ -1,0 +1,67 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 140,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-pla?"
+      }
+    ]
+  },
+  {
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "empty_spool_weight": 425,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-pla?"
+      }
+    ]
+  },
+  {
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "empty_spool_weight": 819,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-pla?"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "empty_spool_weight": 140,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-pla?"
+      }
+    ]
+  },
+  {
+    "filament_weight": 3000,
+    "diameter": 2.85,
+    "empty_spool_weight": 425,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-pla?"
+      }
+    ]
+  },
+  {
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-pla?"
+      }
+    ]
+  }
+]

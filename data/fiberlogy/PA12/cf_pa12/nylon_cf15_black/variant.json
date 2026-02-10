@@ -1,0 +1,9 @@
+{
+  "id": "nylon_cf15_black",
+  "name": "Nylon + CF15 black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

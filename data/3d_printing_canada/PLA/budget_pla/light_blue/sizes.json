@@ -1,0 +1,16 @@
+[
+    {
+        "filament_weight": 1000,
+        "diameter": 1.75,
+        "empty_spool_weight": 149,
+        "spool_core_diameter": 52,
+        "ean": "8770620000224",
+        "purchase_links": [
+            {
+                "store_id": "3dprintingcanada",
+                "url": "https://3dprintingcanada.com/products/light-blue-budget-pla-filament-1-75mm-1kg",
+                "ships_from": "CA"
+            }
+        ]
+    }
+]

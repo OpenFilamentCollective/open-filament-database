@@ -1,0 +1,14 @@
+{
+  "id": "shiny_triple_color_blue_yellow_fuchsia",
+  "name": "Shiny Triple Color Blue Yellow Fuchsia",
+  "color_hex": [
+    "#0099E6",
+    "#FAD61B",
+    "#CC00E3"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

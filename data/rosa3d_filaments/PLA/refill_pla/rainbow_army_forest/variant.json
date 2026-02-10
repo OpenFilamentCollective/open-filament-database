@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_army_forest",
+  "name": "Rainbow Army Forest",
+  "color_hex": [
+    "#674B42",
+    "#A45B27",
+    "#6E8451"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175659538",
+    "article_number": "80891",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1687-Filament-Spectrum-PA6-Low-Warp-1-75mm-BLACK-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175659521",
+    "article_number": "80890",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1686-Filament-Spectrum-PA6-Low-Warp-1-75mm-BLACK-0-50kg.html"
+      }
+    ]
+  }
+]

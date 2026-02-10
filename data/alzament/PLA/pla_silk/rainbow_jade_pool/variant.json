@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_jade_pool",
+  "name": "Rainbow Jade Pool",
+  "color_hex": [
+    "#eadfaf",
+    "#c9acca",
+    "#a6b7d0",
+    "#f9b5b6"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "green_lime",
+  "name": "Green Lime",
+  "color_hex": [
+    "#83E665",
+    "#DEDE00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "shiny_polarized_purple_blue",
+  "name": "Shiny Polarized Purple Blue",
+  "color_hex": [
+    "#09048E",
+    "#453A72"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "glitter": true,
+    "coextruded": true
+  }
+}

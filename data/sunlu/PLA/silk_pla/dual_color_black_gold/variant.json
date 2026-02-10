@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_black_gold",
+  "name": "Dual Color (Black Gold)",
+  "color_hex": [
+    "#FFCB47",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

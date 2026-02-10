@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175659460",
+    "article_number": "80884",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1566-Filament-PLA-Crystal-1-75mm-NEON-ORANGE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5903175659514",
+    "article_number": "80889",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1694-Filament-Spectrum-5PACK-PLA-Crystal-1-75mm-5x-0-25kg.html"
+      }
+    ]
+  }
+]

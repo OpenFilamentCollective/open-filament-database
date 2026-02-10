@@ -1,0 +1,10 @@
+{
+  "id": "artobot_electric_lemonade_ht",
+  "name": "Artobot Electric Lemonade HT",
+  "color_hex": "#FBE200",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true
+  }
+}

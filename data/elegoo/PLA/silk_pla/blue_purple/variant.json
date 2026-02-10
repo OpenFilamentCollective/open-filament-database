@@ -1,0 +1,13 @@
+{
+  "id": "blue_purple",
+  "name": "Blue Purple",
+  "color_hex": [
+    "#0353BA",
+    "#B645A9"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

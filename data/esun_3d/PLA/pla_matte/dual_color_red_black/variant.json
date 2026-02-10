@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_red_black",
+  "name": "Dual Color Red Black",
+  "color_hex": [
+    "#E20010",
+    "#000000"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

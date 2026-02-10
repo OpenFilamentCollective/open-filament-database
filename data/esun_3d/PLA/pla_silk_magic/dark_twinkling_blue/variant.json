@@ -1,0 +1,11 @@
+{
+  "id": "dark_twinkling_blue",
+  "name": "Dark Twinkling Blue",
+  "color_hex": "#3B3F6B",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "glitter": true
+  }
+}

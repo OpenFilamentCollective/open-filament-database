@@ -1,0 +1,9 @@
+{
+  "id": "blue_mh_build_series",
+  "name": "Blue MH Build Series",
+  "color_hex": "#2E56F1",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

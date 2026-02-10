@@ -1,0 +1,8 @@
+{
+  "id": "prusa_green",
+  "name": "Prusa Green",
+  "color_hex": "#00C389",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

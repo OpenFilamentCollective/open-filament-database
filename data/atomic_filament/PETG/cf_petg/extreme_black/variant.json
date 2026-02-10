@@ -1,0 +1,9 @@
+{
+  "id": "extreme_black",
+  "name": "Extreme Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

@@ -8,7 +8,8 @@ export interface FilamentDatabase {
 }
 
 interface Brand {
-  brand: string;
+  id: string;
+  name: string;
   logo: string;
   website?: string;
   origin?: string;
@@ -19,7 +20,6 @@ interface Store {
   id: string;
   name: string;
   storefront_url: string;
-  affiliate: boolean;
   logo: string;
   ships_from: string[];
   ships_to: string[];
@@ -31,6 +31,7 @@ interface Material {
 }
 
 interface Filament {
+  id: string;
   name: string;
   colors: Record<string, Color>;
 }
@@ -51,7 +52,6 @@ interface Size {
 interface PurchaseLink {
   store_id: string;
   url: string;
-  affiliate: boolean;
 }
 
 interface Variant {
@@ -85,7 +85,7 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
       ]);
 
       const brandData = JSON.parse(brandDataBuffer.toString());
-      const logoFile = files.find((file) => /\.(png|jpg|jpeg|svg|webp)$/i.test(file));
+      const logoFile = files.find((file) => /\.(png|jpg|jpeg|svg)$/i.test(file));
       const logo = logoFile ? logoFile : '';
 
       // Get material folders
@@ -138,7 +138,8 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
             return {
               key: colorFolder.name,
               value: {
-                name: colorFolder.name,
+                id: colorFolder.name,
+                name: variantData.name,
                 sizes: sizesData,
                 variant: variantData,
               },
@@ -156,7 +157,8 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
             key: filamentFolder.name,
             value: {
               ...filamentData,
-              name: filamentFolder.name,
+              id: filamentData.id,
+              name: filamentData.name,
               colors,
             },
           };
@@ -189,7 +191,8 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
       return {
         key: folderName,
         value: {
-          brand: brandData?.brand ?? folderName,
+          id: brandData?.id ?? folderName,
+          name: brandData?.name,
           logo,
           website: brandData.website ?? '',
           origin: brandData.origin ?? '',
@@ -221,7 +224,7 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
       ]);
       
       const storeData = JSON.parse(storeDataBuffer.toString());
-      const logoFile = files.find((file) => /\.(png|jpg|jpeg|svg|webp)$/i.test(file));
+      const logoFile = files.find((file) => /\.(png|jpg|jpeg|svg)$/i.test(file));
       const logo = logoFile ? logoFile : '';
 
       return {
@@ -230,7 +233,6 @@ export async function loadFilamentDatabase(dataPath: string, storesPath: string)
           id: storeData?.id ?? folderName,
           name: storeData?.name ?? folderName,
           storefront_url: storeData?.storefront_url ?? '',
-          storefront_affiliate_link: storeData?.storefront_affiliate_link ?? '',
           logo,
           ships_from: storeData?.ships_from ?? [],
           ships_to: storeData?.ships_to ?? [],

@@ -1,0 +1,10 @@
+{
+  "id": "metallic_silver_prime",
+  "name": "Metallic Silver Prime",
+  "color_hex": "#848484",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "imitates_metal": true
+  }
+}

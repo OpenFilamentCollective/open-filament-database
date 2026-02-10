@@ -1,0 +1,37 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403593",
+    "article_number": "81292",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1872-Filament-Spectrum-ReFill-Pastello-PLA-1-75mm-BONBON-ROSE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "80706",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1490-Filament-Pastello-PLA-1-75mm-BONBON-ROSE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5903175659545",
+    "article_number": "80892",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1695-Filament-Spectrum-5PACK-Pastello-PLA-1-75mm-5x-0-25kg.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "id": "amethyst_purple",
+  "name": "Amethyst Purple",
+  "color_hex": "#8846AE",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

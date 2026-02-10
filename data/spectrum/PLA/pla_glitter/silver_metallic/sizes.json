@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175651471",
+    "article_number": "80176",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-714-Filament-Spectrum-PLA-Glitter-1-75mm-SILVER-METALLIC-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175651488",
+    "article_number": "80175",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-711-Filament-Spectrum-PLA-Glitter-1-75mm-SILVER-METALLIC-0-5kg.html"
+      }
+    ]
+  }
+]

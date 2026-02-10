@@ -1,0 +1,11 @@
+{
+  "id": "90a_frozen",
+  "name": "90A Frozen",
+  "color_hex": [
+    "#FFFFFF",
+    "#40B6E4"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

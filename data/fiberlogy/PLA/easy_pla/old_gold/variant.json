@@ -1,0 +1,8 @@
+{
+    "id": "old_gold",
+    "name": "Old Gold",
+    "color_hex": "#BC983F",
+    "traits": {
+        "recyclable": true
+    }
+}

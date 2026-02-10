@@ -1,0 +1,9 @@
+{
+    "id": "adamant_s1",
+    "name": "Adamant S1",
+    "diameter_tolerance": 0.02,
+    "density": 1.8,
+    "max_dry_temperature": 40,
+    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/AdamantS1_TDS_nH7jU9.pdf",
+    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_AdamantS1_KBl09l.pdf"
+}

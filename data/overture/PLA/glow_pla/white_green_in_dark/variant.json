@@ -1,0 +1,13 @@
+{
+  "id": "white_green_in_dark",
+  "name": "White (Green in Dark)",
+  "color_hex": [
+    "#4DFF64",
+    "#EFEADF"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "illuminescent_color_change": true
+  }
+}

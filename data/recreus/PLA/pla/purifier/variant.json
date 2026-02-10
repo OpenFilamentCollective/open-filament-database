@@ -1,0 +1,8 @@
+{
+  "id": "purifier",
+  "name": "Purifier",
+  "color_hex": "#DBD8D1",
+  "traits": {
+    "air_filtering": true
+  }
+}

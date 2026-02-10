@@ -1,0 +1,10 @@
+{
+  "id": "aztec_gold",
+  "name": "Aztec Gold",
+  "color_hex": "#BCA463",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true
+  }
+}

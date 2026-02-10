@@ -1,0 +1,15 @@
+[
+  {
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "empty_spool_weight": 244,
+    "spool_core_diameter": 55,
+    "gtin": "191314034451",
+    "purchase_links": [
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.co.uk/dp/B09T959467?language=en_US&ie=UTF8"
+      }
+    ]
+  }
+]

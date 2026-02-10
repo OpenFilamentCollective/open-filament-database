@@ -1,0 +1,9 @@
+{
+  "id": "natural_white",
+  "name": "Natural white",
+  "color_hex": "#F5F5F4",
+  "traits": {
+    "limonene_soluble": true,
+    "without_pigments": true
+  }
+}

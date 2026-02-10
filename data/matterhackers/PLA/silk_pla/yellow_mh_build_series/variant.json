@@ -1,0 +1,9 @@
+{
+  "id": "yellow_mh_build_series",
+  "name": "Yellow MH Build Series",
+  "color_hex": "#F3C102",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

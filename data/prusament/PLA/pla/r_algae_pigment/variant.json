@@ -1,0 +1,10 @@
+{
+  "id": "r_algae_pigment",
+  "name": "r Algae Pigment",
+  "color_hex": "#674B42",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true,
+    "contains_algae": true
+  }
+}

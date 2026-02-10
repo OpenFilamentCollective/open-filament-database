@@ -1,0 +1,25 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403630",
+    "article_number": "81296",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1875-Filament-Spectrum-ReFill-Pastello-PLA-1-75mm-HOLLAND-RED-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "80899",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1496-Filament-Pastello-PLA-1-75mm-HOLLAND-RED-1kg.html"
+      }
+    ]
+  }
+]

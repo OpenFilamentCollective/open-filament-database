@@ -1,0 +1,12 @@
+{
+  "id": "yellow_to_pink_gradient",
+  "name": "Yellow To Pink Gradient",
+  "color_hex": [
+    "#E6B535",
+    "#FB6066"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

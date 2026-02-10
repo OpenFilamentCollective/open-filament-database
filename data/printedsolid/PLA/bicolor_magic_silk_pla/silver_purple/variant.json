@@ -1,0 +1,13 @@
+{
+  "id": "silver_purple",
+  "name": "Silver-Purple",
+  "color_hex": [
+    "#A8B0BD",
+    "#5C50E0"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

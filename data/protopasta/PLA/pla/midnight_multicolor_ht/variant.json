@@ -1,0 +1,17 @@
+{
+  "id": "midnight_multicolor_ht",
+  "name": "Midnight Multicolor HT",
+  "color_hex": [
+    "#818FA0",
+    "#005DA4",
+    "#0378D0",
+    "#0099E6",
+    "#003B80"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "jacinth",
+  "name": "Jacinth",
+  "color_hex": "#E03F26",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "filament_weight": 600,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polymaker-wood-pla?variant=39574352691257?"
+      }
+    ]
+  },
+  {
+    "filament_weight": 600,
+    "diameter": 2.85,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polymaker-wood-pla?variant=39574352691257?"
+      }
+    ]
+  }
+]

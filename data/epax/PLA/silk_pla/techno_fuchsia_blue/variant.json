@@ -1,0 +1,12 @@
+{
+  "id": "techno_fuchsia_blue",
+  "name": "Techno (Fuchsia / Blue)",
+  "color_hex": [
+    "#0066D9",
+    "#F300EA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

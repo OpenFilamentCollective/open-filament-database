@@ -1,0 +1,8 @@
+{
+  "id": "aqua_translucent",
+  "name": "Aqua Translucent",
+  "color_hex": "#36DBE7",
+  "traits": {
+    "translucent": true
+  }
+}

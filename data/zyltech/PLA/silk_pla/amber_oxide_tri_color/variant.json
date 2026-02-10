@@ -1,0 +1,14 @@
+{
+  "id": "amber_oxide_tri_color",
+  "name": "Amber Oxide Tri-Color",
+  "color_hex": [
+    "#3B3E3F",
+    "#7E472A",
+    "#FEC8A4"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

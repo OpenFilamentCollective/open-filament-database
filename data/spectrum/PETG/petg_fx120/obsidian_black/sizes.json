@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175650429",
+    "article_number": "80477",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1527-Filament-Spectrum-PET-G-FX120-1-75mm-OBSIDIAN-BLACK-0-5kg-RAL-9017.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650351",
+    "article_number": "80478",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1525-Filament-Spectrum-PET-G-FX120-1-75mm-OBSIDIAN-BLACK-1kg-RAL-9017.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "id": "purple_pink_orange_green_transparent_rainbow",
+  "name": "Purple Pink Orange Green Transparent Rainbow",
+  "color_hex": [
+    "#FCAFC0",
+    "#B894E2",
+    "#FF9A14",
+    "#62E480"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

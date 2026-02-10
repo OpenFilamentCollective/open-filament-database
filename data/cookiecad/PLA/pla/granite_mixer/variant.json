@@ -1,0 +1,12 @@
+{
+  "id": "granite_mixer",
+  "name": "Granite Mixer",
+  "color_hex": [
+    "#EAECF5",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

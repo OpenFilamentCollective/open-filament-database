@@ -1,0 +1,10 @@
+{
+  "id": "lw_gray_silver",
+  "name": "LW- Gray Silver",
+  "color_hex": "#ABACB0",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

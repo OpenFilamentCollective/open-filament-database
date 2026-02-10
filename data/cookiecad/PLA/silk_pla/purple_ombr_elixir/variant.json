@@ -1,0 +1,14 @@
+{
+  "id": "purple_ombr_elixir",
+  "name": "Purple Ombré Elixir",
+  "color_hex": [
+    "#6000B0",
+    "#BE2ED6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "gradual_color_change": true
+  }
+}

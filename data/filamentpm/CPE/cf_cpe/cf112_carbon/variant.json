@@ -1,0 +1,9 @@
+{
+  "id": "cf112_carbon",
+  "name": "CF112 Carbon",
+  "color_hex": "#4C4E56",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

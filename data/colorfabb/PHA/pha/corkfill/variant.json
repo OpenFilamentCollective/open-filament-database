@@ -1,0 +1,10 @@
+{
+  "id": "corkfill",
+  "name": "corkFill",
+  "color_hex": "#774B3F",
+  "traits": {
+    "home_compostable": true,
+    "foaming": true,
+    "contains_cork": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "double_espresso_metallic_brown_ht",
+  "name": "Double Espresso Metallic Brown HT",
+  "color_hex": "#724E3D",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true
+  }
+}

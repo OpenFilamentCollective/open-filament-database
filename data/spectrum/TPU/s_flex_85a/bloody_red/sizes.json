@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175653550",
+    "article_number": "80573",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1384-Filament-Spectrum-S-Flex-85A-1-75mm-BLOODY-RED-0-50kg-RAL-3020.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5903175653475",
+    "article_number": "80566",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1377-Filament-Spectrum-S-Flex-85A-1-75mm-BLOODY-RED-0-25kg-RAL-3020.html"
+      }
+    ]
+  }
+]

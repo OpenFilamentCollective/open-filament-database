@@ -1,0 +1,9 @@
+{
+  "id": "smoky_black",
+  "name": "Smoky Black",
+  "color_hex": "#7B7B7B",
+  "traits": {
+    "ipa_soluble": true,
+    "transparent": true
+  }
+}

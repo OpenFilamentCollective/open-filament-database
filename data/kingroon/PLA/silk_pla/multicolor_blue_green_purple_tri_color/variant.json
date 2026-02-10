@@ -1,0 +1,13 @@
+{
+  "id": "multicolor_blue_green_purple_tri_color",
+  "name": "Multicolor Blue Green Purple tri-color",
+  "color_hex": [
+    "#0353BA",
+    "#7F068C",
+    "#206233"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

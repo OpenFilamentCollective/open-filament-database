@@ -1,0 +1,16 @@
+{
+  "id": "clas_ohlson",
+  "name": "Clas Ohlson",
+  "storefront_url": "https://www.clasohlson.com",
+  "logo": "logo.png",
+  "ships_from": [
+    "FI",
+    "NO",
+    "SE"
+  ],
+  "ships_to": [
+    "FI",
+    "NO",
+    "SE"
+  ]
+}

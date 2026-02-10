@@ -1,0 +1,12 @@
+{
+  "id": "dual_color_black_purple",
+  "name": "Dual Color Black-Purple",
+  "color_hex": [
+    "#000000",
+    "#9a64a4"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

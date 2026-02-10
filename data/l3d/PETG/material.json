@@ -1,0 +1,13 @@
+{
+  "material": "PETG",
+  "default_max_dry_temperature": 50,
+  "default_slicer_settings": {
+    "prusaslicer": {
+      "bed_temp": 70,
+      "first_layer_bed_temp": 75,
+      "first_layer_nozzle_temp": 230,
+      "nozzle_temp": 220,
+      "profile_name": "L3D_PETG.ini"
+    }
+  }
+}

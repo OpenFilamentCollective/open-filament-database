@@ -1,0 +1,15 @@
+{
+  "id": "red_purple_blue",
+  "name": "Red-Purple-Blue",
+  "color_hex": [
+    "#AC1A17",
+    "#7142A3",
+    "#033877"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

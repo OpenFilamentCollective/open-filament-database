@@ -1,17 +1,17 @@
 export interface DeletedItem {
   type: 'brand' | 'material' | 'filament' | 'instance';
-  name: string;
-  brandName?: string;
-  materialName?: string;
-  filamentName?: string;
+  id: string;
+  brandId?: string;
+  materialId?: string;
+  filamentId?: string;
 }
 
 export const pseudoDelete = (
   type: 'brand' | 'material' | 'filament' | 'instance' | 'store',
-  name: string,
-  brandName?: string,
-  materialName?: string,
-  filamentName?: string,
+  id: string,
+  brandId?: string,
+  materialId?: string,
+  filamentId?: string,
 ) => {
   const storageKey = 'deletedItems';
   const existingItems = localStorage.getItem(storageKey);
@@ -29,32 +29,32 @@ export const pseudoDelete = (
   // Create item keys that are brand-specific for materials, filaments, and instances
   const itemKey =
     type === 'brand'
-      ? `${type}|${name}`
+      ? `${type}|${id}`
       : type === 'material'
-      ? `${type}|${brandName}|${name}`
+      ? `${type}|${brandId}|${id}`
       : type === 'filament'
-      ? `${type}|${brandName}|${materialName}|${name}`
-      : `${type}|${brandName}|${materialName}|${filamentName}|${name}`;
+      ? `${type}|${brandId}|${materialId}|${id}`
+      : `${type}|${brandId}|${materialId}|${filamentId}|${id}`;
 
   const itemExists = deletedItems.some((item) => {
     const existingKey =
       item.type === 'brand'
-        ? `${item.type}|${item.name}`
+        ? `${item.type}|${item.id}`
         : item.type === 'material'
-        ? `${item.type}|${item.brandName}|${item.name}`
+        ? `${item.type}|${item.brandId}|${item.id}`
         : item.type === 'filament'
-        ? `${item.type}|${item.brandName}|${item.materialName}|${item.name}`
-        : `${item.type}|${item.brandName}|${item.materialName}|${item.filamentName}|${item.name}`;
+        ? `${item.type}|${item.brandId}|${item.materialId}|${item.id}`
+        : `${item.type}|${item.brandId}|${item.materialId}|${item.filamentId}|${item.id}`;
     return existingKey === itemKey;
   });
 
   if (!itemExists) {
     const newItem: DeletedItem = {
       type,
-      name,
-      brandName: type !== 'brand' ? brandName : undefined,
-      materialName: type === 'filament' || type === 'instance' ? materialName : undefined,
-      filamentName: type === 'instance' ? filamentName : undefined,
+      id,
+      brandId: type !== 'brand' ? brandId : undefined,
+      materialId: type === 'filament' || type === 'instance' ? materialId : undefined,
+      filamentId: type === 'instance' ? filamentId : undefined,
     };
 
     deletedItems.push(newItem);
@@ -72,7 +72,7 @@ export const pseudoDelete = (
 
 export const pseudoUndoDelete = (
   type: 'brand' | 'material' | 'filament' | 'instance',
-  name: string
+  id: string
 ) => {
   if (typeof localStorage === 'undefined') return true;
 
@@ -95,7 +95,7 @@ export const pseudoUndoDelete = (
   deletedItems = deletedItems.filter((item) => {
     return !( // Return false on match
       item.type == type &&
-      item.name == name
+      item.id == id
     )
   });
 
@@ -106,10 +106,10 @@ export const pseudoUndoDelete = (
 
 export const isItemDeleted = (
   type: 'brand' | 'material' | 'filament' | 'instance',
-  name: string,
-  brandName?: string,
-  materialName?: string,
-  filamentName?: string,
+  id: string,
+  brandId?: string,
+  materialId?: string,
+  filamentId?: string,
 ): boolean => {
   if (typeof localStorage === 'undefined') return false;
 
@@ -122,20 +122,20 @@ export const isItemDeleted = (
     const deletedItems: DeletedItem[] = JSON.parse(existingItems);
 
     return deletedItems.some((item) => {
-      if (item.type !== type || item.name !== name) return false;
+      if (item.type !== type || item.id !== id) return false;
 
       switch (type) {
         case 'brand':
           return true;
         case 'material':
-          return item.brandName === brandName;
+          return item.brandId === brandId;
         case 'filament':
-          return item.brandName === brandName && item.materialName === materialName;
+          return item.brandId === brandId && item.materialId === materialId;
         case 'instance':
           return (
-            item.brandName === brandName &&
-            item.materialName === materialName &&
-            item.filamentName === filamentName
+            item.brandId === brandId &&
+            item.materialId === materialId &&
+            item.filamentId === filamentId
           );
         default:
           return false;

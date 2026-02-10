@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_red_blue",
+  "name": "Dual Color Red Blue",
+  "color_hex": [
+    "#C80181",
+    "#0066D9"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

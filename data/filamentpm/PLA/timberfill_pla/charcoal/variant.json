@@ -1,0 +1,10 @@
+{
+  "id": "charcoal",
+  "name": "Charcoal",
+  "color_hex": "#45444A",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

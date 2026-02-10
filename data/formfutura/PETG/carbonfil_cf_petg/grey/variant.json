@@ -1,0 +1,9 @@
+{
+  "id": "grey",
+  "name": "Grey",
+  "color_hex": "#727376",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

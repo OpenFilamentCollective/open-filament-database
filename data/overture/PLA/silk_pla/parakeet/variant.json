@@ -1,0 +1,14 @@
+{
+  "id": "parakeet",
+  "name": "Parakeet",
+  "color_hex": [
+    "#D0FF61",
+    "#F3CEA6",
+    "#6AC4CD",
+    "#00CC00"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

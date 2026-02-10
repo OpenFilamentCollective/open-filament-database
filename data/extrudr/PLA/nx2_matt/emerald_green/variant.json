@@ -1,0 +1,12 @@
+{
+  "id": "emerald_green",
+  "name": "Emerald Green",
+  "color_hex": "#41A840",
+  "color_standards": {
+    "ral": "6001"
+  },
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

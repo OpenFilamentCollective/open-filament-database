@@ -1,0 +1,13 @@
+{
+  "id": "foggy_orange_grey_orange",
+  "name": "Foggy Orange Grey Orange",
+  "color_hex": [
+    "#F67405",
+    "#C3CCD5"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

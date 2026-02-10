@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_sky_blue_pink_yellow",
+  "name": "Tri-color Sky Blue & Pink & Yellow",
+  "color_hex": [
+    "#FFC946",
+    "#5FEFF9",
+    "#F06E92"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

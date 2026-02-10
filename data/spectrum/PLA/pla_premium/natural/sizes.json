@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175657091",
+    "article_number": "80010",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-510-Filament-Spectrum-PLA-Premium-1-75mm-NATURAL-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175658487",
+    "article_number": "80124",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-625-Filament-Spectrum-PLA-Premium-1-75mm-NATURAL-2kg.html"
+      }
+    ]
+  }
+]

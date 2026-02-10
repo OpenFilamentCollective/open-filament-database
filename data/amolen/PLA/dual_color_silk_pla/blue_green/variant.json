@@ -1,0 +1,12 @@
+{
+  "id": "blue_green",
+  "name": "Blue Green",
+  "color_hex": [
+    "#0BD10B",
+    "#0078BF"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

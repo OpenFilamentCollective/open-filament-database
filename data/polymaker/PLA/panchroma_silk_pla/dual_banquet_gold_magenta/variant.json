@@ -1,0 +1,13 @@
+{
+  "id": "dual_banquet_gold_magenta",
+  "name": "Dual Banquet Gold Magenta",
+  "color_hex": [
+    "#FFCB47",
+    "#F2306E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

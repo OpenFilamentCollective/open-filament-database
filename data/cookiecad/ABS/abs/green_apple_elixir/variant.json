@@ -1,0 +1,9 @@
+{
+  "id": "green_apple_elixir",
+  "name": "Green Apple Elixir",
+  "color_hex": "#70FA00",
+  "traits": {
+    "filtration_recommended": true,
+    "iridescent": true
+  }
+}

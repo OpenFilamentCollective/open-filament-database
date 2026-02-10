@@ -1,0 +1,9 @@
+{
+  "id": "see_through_yellow",
+  "name": "See Through Yellow",
+  "color_hex": "#F3B400",
+  "traits": {
+    "translucent": true,
+    "silk": true
+  }
+}

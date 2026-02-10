@@ -1,0 +1,14 @@
+{
+  "id": "satin_rainbow",
+  "name": "Satin Rainbow",
+  "color_hex": [
+    "#F5CF6F",
+    "#F5B797",
+    "#CE92CE",
+    "#9EF9FF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

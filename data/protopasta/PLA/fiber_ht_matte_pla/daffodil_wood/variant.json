@@ -1,0 +1,11 @@
+{
+  "id": "daffodil_wood",
+  "name": "Daffodil Wood",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "imitates_wood": true
+  }
+}

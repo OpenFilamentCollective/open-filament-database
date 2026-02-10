@@ -1,0 +1,13 @@
+{
+  "id": "unicorn_elixir",
+  "name": "Unicorn Elixir",
+  "color_hex": [
+    "#FF72B6",
+    "#8D65C7",
+    "#8ED9F9"
+  ],
+  "traits": {
+    "iridescent": true,
+    "gradual_color_change": true
+  }
+}

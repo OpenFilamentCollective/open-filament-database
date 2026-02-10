@@ -1,0 +1,9 @@
+{
+  "id": "dark_forest_green",
+  "name": "Dark Forest Green",
+  "color_hex": "#34695A",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

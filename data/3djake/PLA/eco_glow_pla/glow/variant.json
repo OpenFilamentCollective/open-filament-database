@@ -1,0 +1,12 @@
+{
+  "id": "glow",
+  "name": "Glow",
+  "color_hex": [
+    "#B3FF94",
+    "#EFEADF"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

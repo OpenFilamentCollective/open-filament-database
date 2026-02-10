@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_stealth_black",
+  "name": "The Filament Stealth Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

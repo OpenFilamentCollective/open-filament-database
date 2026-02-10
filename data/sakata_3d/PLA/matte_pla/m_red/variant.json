@@ -1,0 +1,9 @@
+{
+  "id": "m_red",
+  "name": "M Red",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "aquamarine",
+  "name": "Aquamarine",
+  "color_hex": "#0378D0",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

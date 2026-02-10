@@ -1,0 +1,13 @@
+{
+  "id": "colormorph_silver_purple",
+  "name": "ColorMorph Silver & Purple",
+  "color_hex": [
+    "#ABACB0",
+    "#6C47B2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

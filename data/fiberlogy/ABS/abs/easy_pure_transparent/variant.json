@@ -1,0 +1,9 @@
+{
+  "id": "easy_pure_transparent",
+  "name": "Easy - Pure Transparent",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "translucent": true,
+    "filtration_recommended": true
+  }
+}

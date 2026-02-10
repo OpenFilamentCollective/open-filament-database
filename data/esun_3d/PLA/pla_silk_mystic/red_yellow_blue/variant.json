@@ -1,0 +1,15 @@
+{
+  "id": "red_yellow_blue",
+  "name": "Red Yellow Blue",
+  "color_hex": [
+    "#386DFF",
+    "#C01616",
+    "#FBE200"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "island_fuchsia",
+  "name": "Island Fuchsia",
+  "color_hex": "#CC00E3",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

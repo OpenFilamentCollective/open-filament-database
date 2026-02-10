@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991406303",
+    "article_number": "TF-24080",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2650-The-Filament-ReFill-PLA-HS-1-75mm-MOSS-GREEN-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991405436",
+    "article_number": "TF-24039",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2620-The-Filament-PLA-HS-1-75mm-MOSS-GREEN-1kg.html"
+      }
+    ]
+  }
+]

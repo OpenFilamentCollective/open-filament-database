@@ -1,0 +1,11 @@
+{
+  "id": "temperature_color_change_purple_to_red",
+  "name": "Temperature Color Change Purple to Red",
+  "color_hex": [
+    "#963877"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

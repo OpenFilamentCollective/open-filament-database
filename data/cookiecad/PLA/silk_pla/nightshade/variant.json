@@ -1,0 +1,13 @@
+{
+  "id": "nightshade",
+  "name": "Nightshade",
+  "color_hex": [
+    "#FF00A2",
+    "#39B9DB"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

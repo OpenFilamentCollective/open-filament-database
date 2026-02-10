@@ -1,0 +1,10 @@
+{
+  "id": "champagne",
+  "name": "Champagne",
+  "color_hex": "#DAC7A0",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

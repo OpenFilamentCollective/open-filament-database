@@ -1,0 +1,10 @@
+{
+  "id": "nebula_purple",
+  "name": "Nebula Purple",
+  "color_hex": [
+    "#362a69"
+  ],
+  "traits": {
+    "illuminescent_color_change": true
+  }
+}

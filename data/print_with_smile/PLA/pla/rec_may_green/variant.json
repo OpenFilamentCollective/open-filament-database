@@ -1,0 +1,9 @@
+{
+  "id": "rec_may_green",
+  "name": "REC- May GREEN",
+  "color_hex": "#5AEB90",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

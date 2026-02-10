@@ -1,0 +1,9 @@
+{
+  "id": "liquorice_black",
+  "name": "Liquorice Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_metal": true
+  }
+}

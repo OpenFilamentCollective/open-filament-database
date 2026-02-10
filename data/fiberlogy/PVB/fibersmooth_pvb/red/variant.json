@@ -1,0 +1,8 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#E20010",
+  "traits": {
+    "ipa_soluble": true
+  }
+}

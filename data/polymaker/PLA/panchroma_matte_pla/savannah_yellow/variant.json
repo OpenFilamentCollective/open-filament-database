@@ -1,0 +1,9 @@
+{
+  "id": "savannah_yellow",
+  "name": "Savannah Yellow",
+  "color_hex": "#FFE15B",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

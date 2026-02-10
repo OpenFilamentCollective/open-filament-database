@@ -1,0 +1,13 @@
+{
+  "id": "gold_to_red_gradient",
+  "name": "Gold to Red Gradient",
+  "color_hex": [
+    "#DF3303",
+    "#E3B145"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

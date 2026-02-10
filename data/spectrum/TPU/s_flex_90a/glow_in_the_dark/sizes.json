@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175652430",
+    "article_number": "80470",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1292-Filament-Spectrum-S-Flex-90A-1-75mm-Glow-in-the-Dark-0-50kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5903175652423",
+    "article_number": "80469",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1291-Filament-Spectrum-S-Flex-90A-1-75mm-Glow-in-the-Dark-0-25kg.html"
+      }
+    ]
+  }
+]

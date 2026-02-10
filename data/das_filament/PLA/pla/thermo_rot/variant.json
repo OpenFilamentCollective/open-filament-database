@@ -1,0 +1,12 @@
+{
+  "id": "thermo_rot",
+  "name": "Thermo-Rot",
+  "color_hex": [
+    "#EC0000",
+    "#FF7D7A"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

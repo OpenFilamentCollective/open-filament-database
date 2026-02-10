@@ -1,0 +1,8 @@
+{
+  "id": "clear_translucent_mh_build_series",
+  "name": "Clear Translucent MH Build Series",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "transparent": true
+  }
+}

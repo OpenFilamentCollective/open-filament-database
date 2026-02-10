@@ -1,0 +1,8 @@
+{
+  "id": "vert_nacr_alumine",
+  "name": "Vert Nacré Alumine",
+  "color_hex": "#23668C",
+  "traits": {
+    "contains_aluminium": true
+  }
+}

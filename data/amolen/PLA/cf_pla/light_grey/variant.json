@@ -1,0 +1,10 @@
+{
+  "id": "light_grey",
+  "name": "Light Grey",
+  "color_hex": "#A2AAAD",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

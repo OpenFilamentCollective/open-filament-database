@@ -1,0 +1,13 @@
+{
+  "id": "nebula_purple",
+  "name": "Nebula Purple",
+  "color_hex": [
+    "#663D7E",
+    "#09048E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

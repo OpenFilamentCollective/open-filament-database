@@ -1,0 +1,8 @@
+{
+  "id": "transparent_burgundy",
+  "name": "Transparent Burgundy",
+  "color_hex": "#861D2B",
+  "traits": {
+    "translucent": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "blue_fire",
+  "name": "Blue Fire",
+  "color_hex": "#0353BA",
+  "color_standards": {
+    "ral": "5026"
+  },
+  "traits": {
+    "industrially_compostable": true
+  }
+}

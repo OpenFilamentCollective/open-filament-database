@@ -1,0 +1,9 @@
+{
+  "id": "3dpn_vanilla_bean_ice_cream",
+  "name": "3Dpn Vanilla Bean Ice Cream",
+  "color_hex": "#ACB1BA",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

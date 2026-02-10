@@ -1,0 +1,9 @@
+{
+  "id": "light_gray",
+  "name": "Light Gray",
+  "color_hex": "#BDC8C8",
+  "traits": {
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

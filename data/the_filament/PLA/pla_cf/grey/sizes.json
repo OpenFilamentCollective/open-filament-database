@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401318",
+    "article_number": "TF-24106",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2736-The-Filament-ReFill-PLA-CF-1-75mm-GREY-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401240",
+    "article_number": "TF-24099",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2742-The-Filament-PLA-CF-1-75mm-GREY-1kg.html"
+      }
+    ]
+  }
+]

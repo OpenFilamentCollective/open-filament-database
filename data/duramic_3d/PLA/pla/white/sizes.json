@@ -1,0 +1,15 @@
+[
+    {
+        "filament_weight": 1000,
+        "diameter": 1.75,
+        "empty_spool_weight": 145,
+        "spool_core_diameter": 55,
+        "purchase_links": [
+            {
+                "store_id": "duramic3d",
+                "url": "https://duramic3d.com/products/duramic-3d-pla-filament-1-75mm-bright-yellow-3d-printing-filament-1kg-spool2-2lbs-no-tangling-no-clogging-dimensional-accuracy-0-05-mm-consistent-performance-for-3d-printer?variant=42044012888259",
+                "ships_from": "CN"
+            }
+        ]
+    }
+]

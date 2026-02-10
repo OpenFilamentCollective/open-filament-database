@@ -1,0 +1,12 @@
+{
+  "id": "neon_butterfly_neon_orange_violet",
+  "name": "Neon Butterfly (neon orange + violet)",
+  "color_hex": [
+    "#F55928",
+    "#E80078"
+  ],
+  "traits": {
+    "neon": true,
+    "coextruded": true
+  }
+}

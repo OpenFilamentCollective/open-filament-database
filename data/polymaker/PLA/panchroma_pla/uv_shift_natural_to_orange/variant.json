@@ -1,0 +1,12 @@
+{
+  "id": "uv_shift_natural_to_orange",
+  "name": "Uv Shift Natural To Orange",
+  "color_hex": [
+    "#F6A25C",
+    "#F2EFE9"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "illuminescent_color_change": true
+  }
+}

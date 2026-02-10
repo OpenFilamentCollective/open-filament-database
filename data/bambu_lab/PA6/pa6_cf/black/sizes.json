@@ -1,0 +1,24 @@
+[
+    {
+        "filament_weight": 500,
+        "diameter": 1.75,
+        "ean": "6975337032977",
+        "purchase_links": [
+            {
+                "store_id": "bblstore",
+                "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-cf"
+            }
+        ]
+    },
+    {
+        "filament_weight": 1000,
+        "diameter": 1.75,
+        "gtin": "921082525998",
+        "purchase_links": [
+            {
+                "store_id": "bblstore",
+                "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-cf?variant=41270316630152"
+            }
+        ]
+    }
+]

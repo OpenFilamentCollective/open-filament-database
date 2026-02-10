@@ -1,0 +1,9 @@
+{
+  "id": "kevlar_black",
+  "name": "KEVLAR BLACK",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_kevlar": true
+  }
+}

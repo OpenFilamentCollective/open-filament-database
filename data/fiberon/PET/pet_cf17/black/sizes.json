@@ -1,0 +1,22 @@
+[
+  {
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/fiberon-pet-cf17?"
+      }
+    ]
+  },
+  {
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/fiberon-pet-cf17?"
+      }
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "filament_weight": 100,
+        "diameter": 1.75,
+        "empty_spool_weight": 100,
+        "spool_core_diameter": 41,
+        "purchase_links": [
+            {
+                "store_id": "add_north",
+                "url": "https://addnorth.com/product/Koltron%20G1/Koltron%20G1%20-%201.75mm%20-%20100g%20-%20Black"
+            }
+        ]
+    },
+    {
+        "filament_weight": 250,
+        "diameter": 1.75,
+        "empty_spool_weight": 100,
+        "spool_core_diameter": 41,
+        "purchase_links": [
+            {
+                "store_id": "add_north",
+                "url": "https://addnorth.com/product/Koltron%20G1/Koltron%20G1%20-%201.75mm%20-%20250g%20-%20Black"
+            }
+        ]
+    },
+    {
+        "filament_weight": 100,
+        "diameter": 2.85,
+        "empty_spool_weight": 100,
+        "spool_core_diameter": 41,
+        "purchase_links": [
+            {
+                "store_id": "add_north",
+                "url": "https://addnorth.com/product/Koltron%20G1/Koltron%20G1%20-%202.85mm%20-%20100g%20-%20Black"
+            }
+        ]
+    },
+    {
+        "filament_weight": 250,
+        "diameter": 2.85,
+        "empty_spool_weight": 100,
+        "spool_core_diameter": 41,
+        "purchase_links": [
+            {
+                "store_id": "add_north",
+                "url": "https://addnorth.com/product/Koltron%20G1/Koltron%20G1%20-%202.85mm%20-%20250g%20-%20Black"
+            }
+        ]
+    }
+]

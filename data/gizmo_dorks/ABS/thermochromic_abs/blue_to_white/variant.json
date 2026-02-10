@@ -1,0 +1,12 @@
+{
+  "id": "blue_to_white",
+  "name": "Blue to White",
+  "color_hex": [
+    "#0353BA",
+    "#F5F5F5"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "temperature_color_change": true
+  }
+}

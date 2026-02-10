@@ -1,14 +1,14 @@
 {
-  "id": "lostboyslab",
-  "name": "lostboyslab",
-  "storefront_url": "https://www.lostboyslab.shop/",
-  "logo": "lostboyslab.png",
-  "ships_from": [
-    "EU",
-    "SE",
-    "US"
-  ],
-  "ships_to": [
-    "EU"
-  ]
+    "id": "lostboyslab",
+    "name": "lostboyslab",
+    "storefront_url": "https://www.lostboyslab.shop/",
+    "logo": "logo.png",
+    "ships_from": [
+        "EU",
+        "SE",
+        "US"
+    ],
+    "ships_to": [
+        "EU"
+    ]
 }

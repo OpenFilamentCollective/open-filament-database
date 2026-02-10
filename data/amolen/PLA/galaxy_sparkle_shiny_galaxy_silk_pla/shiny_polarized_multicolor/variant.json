@@ -1,0 +1,16 @@
+{
+  "id": "shiny_polarized_multicolor",
+  "name": "Shiny Polarized Multicolor",
+  "color_hex": [
+    "#F6C500",
+    "#6802BC",
+    "#7F068C",
+    "#02A76B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

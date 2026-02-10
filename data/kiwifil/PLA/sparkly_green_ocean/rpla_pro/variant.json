@@ -1,0 +1,13 @@
+{
+  "id": "rpla_pro",
+  "name": "rPLA pro",
+  "color_hex": [
+    "#2FBABC",
+    "#0078BF"
+  ],
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

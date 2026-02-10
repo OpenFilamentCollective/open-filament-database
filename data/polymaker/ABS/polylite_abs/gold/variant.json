@@ -1,0 +1,8 @@
+{
+  "id": "gold",
+  "name": "Gold",
+  "color_hex": "#AA6500",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

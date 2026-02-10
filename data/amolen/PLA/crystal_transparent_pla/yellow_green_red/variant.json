@@ -1,0 +1,16 @@
+{
+  "id": "yellow_green_red",
+  "name": "Yellow Green Red",
+  "color_hex": [
+    "#00A594",
+    "#00CC00",
+    "#ED2602",
+    "#FFBF00",
+    "#611A1F"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

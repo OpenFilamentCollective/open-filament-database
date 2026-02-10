@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_green_blue",
+  "name": "Dual Color Green Blue",
+  "color_hex": [
+    "#008059",
+    "#005DA4"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

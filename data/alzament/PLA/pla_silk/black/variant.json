@@ -1,0 +1,10 @@
+{
+  "id": "black",
+  "name": "Black",
+  "color_hex": [
+    "#000000"
+  ],
+  "traits": {
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "signal_white",
+  "name": "Signal White",
+  "color_hex": "#E3DFD9",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

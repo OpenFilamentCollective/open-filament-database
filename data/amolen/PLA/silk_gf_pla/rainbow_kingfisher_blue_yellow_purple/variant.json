@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_kingfisher_blue_yellow_purple",
+  "name": "Rainbow Kingfisher Blue Yellow Purple",
+  "color_hex": [
+    "#AD69B2",
+    "#95B6DE",
+    "#F5EC97",
+    "#D2AFB5"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

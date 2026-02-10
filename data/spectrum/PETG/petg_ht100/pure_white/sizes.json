@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650269",
+    "article_number": "80410",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1227-Filament-Spectrum-PET-G-HT100-1-75mm-PURE-WHITE-0-50kg-RAL-9016.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650191",
+    "article_number": "80411",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1226-Filament-Spectrum-PET-G-HT100-1-75mm-PURE-WHITE-1kg-RAL-9016.html"
+      }
+    ]
+  }
+]

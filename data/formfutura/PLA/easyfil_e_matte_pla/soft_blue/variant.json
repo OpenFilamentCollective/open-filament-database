@@ -1,0 +1,9 @@
+{
+  "id": "soft_blue",
+  "name": "Soft Blue",
+  "color_hex": "#B0B8DC",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

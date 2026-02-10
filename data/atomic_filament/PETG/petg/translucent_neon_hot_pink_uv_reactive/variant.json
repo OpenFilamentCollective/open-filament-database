@@ -1,0 +1,9 @@
+{
+  "id": "translucent_neon_hot_pink_uv_reactive",
+  "name": "Translucent Neon Hot Pink - UV REACTIVE",
+  "color_hex": "#ED1536",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

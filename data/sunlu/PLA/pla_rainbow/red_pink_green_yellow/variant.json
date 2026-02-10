@@ -1,0 +1,13 @@
+{
+  "id": "red_pink_green_yellow",
+  "name": "(Red-Pink-Green-Yellow)",
+  "color_hex": [
+    "#84D18B",
+    "#FFBADE",
+    "#D33D3D",
+    "#FFFB00"
+  ],
+  "traits": {
+    "industrially_compostable": true
+  }
+}

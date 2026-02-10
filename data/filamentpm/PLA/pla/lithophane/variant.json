@@ -1,0 +1,9 @@
+{
+  "id": "lithophane",
+  "name": "Lithophane",
+  "color_hex": "#DFDFD3",
+  "traits": {
+    "industrially_compostable": true,
+    "lithophane": true
+  }
+}

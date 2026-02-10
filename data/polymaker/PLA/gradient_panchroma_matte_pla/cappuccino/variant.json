@@ -1,0 +1,14 @@
+{
+  "id": "cappuccino",
+  "name": "Cappuccino",
+  "color_hex": [
+    "#9F563E",
+    "#CCA897",
+    "#C6AD74"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "bottle_green_transparent",
+  "name": "Bottle Green Transparent",
+  "color_hex": "#214327",
+  "traits": {
+    "translucent": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "blend_prusa_green",
+  "name": "Blend Prusa Green",
+  "color_hex": "#00FA9A",
+  "traits": {
+    "blend": true
+  }
+}

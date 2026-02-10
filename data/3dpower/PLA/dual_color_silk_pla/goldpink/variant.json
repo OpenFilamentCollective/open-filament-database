@@ -1,0 +1,12 @@
+{
+  "id": "goldpink",
+  "name": "Gold&Pink",
+  "color_hex": [
+    "#DB3FA9",
+    "#F3B400"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

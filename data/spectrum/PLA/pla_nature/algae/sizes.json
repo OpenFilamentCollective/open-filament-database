@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5905991400493",
+    "article_number": "80986",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1610-Filament-Spectrum-PLA-Nature-1-75mm-ALGAE-0-25kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175659934",
+    "article_number": "80932",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1603-Filament-Spectrum-PLA-Nature-1-75mm-ALGAE-1kg.html"
+      }
+    ]
+  }
+]

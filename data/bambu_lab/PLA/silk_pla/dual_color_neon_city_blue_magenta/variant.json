@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_neon_city_blue_magenta",
+  "name": "Dual Color Neon City (Blue-Magenta)",
+  "color_hex": [
+    "#0E21AE",
+    "#C80181"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

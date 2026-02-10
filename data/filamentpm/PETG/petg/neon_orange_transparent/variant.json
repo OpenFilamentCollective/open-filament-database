@@ -1,0 +1,9 @@
+{
+  "id": "neon_orange_transparent",
+  "name": "\"Neon Orange Transparent\"",
+  "color_hex": "#F97429",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

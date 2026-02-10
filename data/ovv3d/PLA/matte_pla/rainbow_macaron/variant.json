@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_macaron",
+  "name": "Rainbow Macaron",
+  "color_hex": [
+    "#BBDB4B",
+    "#91CB67",
+    "#D3C6FF",
+    "#F6ABD7",
+    "#9BE0E5"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "wood_brick_red",
+  "name": "Wood Brick Red",
+  "color_hex": "#B54230",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

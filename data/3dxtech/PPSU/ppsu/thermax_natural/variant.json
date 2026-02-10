@@ -1,0 +1,9 @@
+{
+  "id": "thermax_natural",
+  "name": "ThermaX Natural",
+  "color_hex": "#FADCA4",
+  "traits": {
+    "low_outgassing": true,
+    "without_pigments": true
+  }
+}

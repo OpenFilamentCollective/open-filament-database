@@ -1,0 +1,11 @@
+{
+  "id": "firefly_blue",
+  "name": "Firefly Blue",
+  "color_hex": "#0095FF",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "glitter": true
+  }
+}

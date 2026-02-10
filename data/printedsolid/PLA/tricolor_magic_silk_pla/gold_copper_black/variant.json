@@ -1,0 +1,14 @@
+{
+  "id": "gold_copper_black",
+  "name": "Gold-Copper-Black",
+  "color_hex": [
+    "#FFCB47",
+    "#000000",
+    "#904029"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

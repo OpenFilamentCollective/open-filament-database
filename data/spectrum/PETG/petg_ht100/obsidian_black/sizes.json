@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "5903175650283",
+    "article_number": "80404",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1235-Filament-Spectrum-PET-G-HT100-1-75mm-OBSIDIAN-BLACK-0-50kg-RAL-9017.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650214",
+    "article_number": "80405",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1234-Filament-Spectrum-PET-G-HT100-1-75mm-OBSIDIAN-BLACK-1kg-RAL-9017.html"
+      }
+    ]
+  }
+]

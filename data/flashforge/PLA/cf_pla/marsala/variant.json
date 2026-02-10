@@ -1,0 +1,10 @@
+{
+  "id": "marsala",
+  "name": "Marsala",
+  "color_hex": "#6E485F",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

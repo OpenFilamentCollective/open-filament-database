@@ -1,0 +1,74 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404019",
+    "article_number": "81334",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1910-Filament-Spectrum-ReFill-ASA-275-1-75mm-POLAR-WHITE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650092",
+    "article_number": "80307",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1215-Filament-Spectrum-ASA-275-1-75mm-POLAR-WHITE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "ean": "5903175653048",
+    "article_number": "80732",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1340-Filament-Spectrum-ASA-275-2-85-mm-POLAR-WHITE-1kg-RAL-9003.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175653062",
+    "article_number": "80651",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1341-Filament-Spectrum-ASA-275-1-75-mm-POLAR-WHITE-2kg-RAL-9003.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175653086",
+    "article_number": "80649",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1344-Filament-Spectrum-ASA-275-1-75-mm-POLAR-WHITE-4-5kg-RAL-9003.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654588",
+    "article_number": "80680",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1448-Filament-Spectrum-ASA-275-1-75-mm-POLAR-WHITE-8kg-RAL-9003.html"
+      }
+    ]
+  }
+]

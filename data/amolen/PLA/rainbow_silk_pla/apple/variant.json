@@ -1,0 +1,13 @@
+{
+  "id": "apple",
+  "name": "Apple",
+  "color_hex": [
+    "#8EF97C",
+    "#F8FF8D",
+    "#FF8778"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

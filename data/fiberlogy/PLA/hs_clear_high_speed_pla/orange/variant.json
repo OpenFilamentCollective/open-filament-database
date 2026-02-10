@@ -1,0 +1,9 @@
+{
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#E03F26",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "red_green_purple_orange_translucent_rainbow",
+  "name": "Red Green Purple Orange Translucent Rainbow",
+  "color_hex": [
+    "#FA7F1B",
+    "#11784F",
+    "#ED2602",
+    "#7F068C"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

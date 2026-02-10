@@ -1,0 +1,17 @@
+[
+    {
+        "filament_weight": 1000,
+        "diameter": 1.75,
+        "empty_spool_weight": 210,
+        "spool_core_diameter": 53.5,
+        "ean": "5744006030290",
+        "article_number": "PLA-Gold-01",
+        "purchase_links": [
+            {
+                "store_id": "lab3d_store",
+                "url": "https://shop.lab3d.dk/products/lab3d-filament-pla-marble-1-75mm-1kg",
+                "ships_to": "EU"
+            }
+        ]
+    }
+]

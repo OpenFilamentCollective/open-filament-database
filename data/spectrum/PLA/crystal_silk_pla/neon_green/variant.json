@@ -1,0 +1,11 @@
+{
+  "id": "neon_green",
+  "name": "Neon Green",
+  "color_hex": "#70FA00",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "silk": true,
+    "neon": true
+  }
+}

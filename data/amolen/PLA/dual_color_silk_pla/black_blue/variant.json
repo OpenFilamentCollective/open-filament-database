@@ -1,0 +1,12 @@
+{
+  "id": "black_blue",
+  "name": "Black Blue",
+  "color_hex": [
+    "#4921C1",
+    "#000000"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

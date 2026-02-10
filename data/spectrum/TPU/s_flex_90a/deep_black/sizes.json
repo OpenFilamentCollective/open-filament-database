@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175651976",
+    "article_number": "80255",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1202-Filament-Spectrum-S-Flex-90A-1-75mm-DEEP-BLACK-0-50kg-RAL-9017.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175651907",
+    "article_number": "80262",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1195-Filament-Spectrum-S-Flex-90A-1-75mm-DEEP-BLACK-0-25kg-RAL-9017.html"
+      }
+    ]
+  }
+]

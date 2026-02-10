@@ -1,0 +1,9 @@
+{
+  "id": "natural_translucent",
+  "name": "Natural Translucent Series (Thermoplastic Polyurethane)",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "transparent": true,
+    "without_pigments": true
+  }
+}

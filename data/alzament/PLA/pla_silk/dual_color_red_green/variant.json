@@ -1,0 +1,12 @@
+{
+  "id": "dual_color_red_green",
+  "name": "Dual Color Red-Green",
+  "color_hex": [
+    "#781e29",
+    "#489245"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

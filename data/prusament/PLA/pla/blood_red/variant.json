@@ -1,0 +1,8 @@
+{
+  "id": "blood_red",
+  "name": "Blood Red",
+  "color_hex": "#990303",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

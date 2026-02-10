@@ -1,0 +1,10 @@
+{
+  "id": "deep_black",
+  "name": "Deep Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "self_extinguishing": true,
+    "silk": true
+  }
+}

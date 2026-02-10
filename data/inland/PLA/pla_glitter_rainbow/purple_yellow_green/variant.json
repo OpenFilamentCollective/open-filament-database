@@ -1,0 +1,15 @@
+{
+  "id": "purple_yellow_green",
+  "name": "Purple, Yellow, Green",
+  "color_hex": [
+    "#00A594",
+    "#EA9E3F",
+    "#583061",
+    "#E72F1D"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

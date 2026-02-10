@@ -1,0 +1,10 @@
+{
+  "id": "marble_sparkly_galaxy_black",
+  "name": "Marble Sparkly Galaxy Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true,
+    "imitates_marble": true
+  }
+}

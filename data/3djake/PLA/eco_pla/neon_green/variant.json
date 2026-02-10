@@ -1,0 +1,9 @@
+{
+  "id": "neon_green",
+  "name": "Neon Green",
+  "color_hex": "#0BD10B",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

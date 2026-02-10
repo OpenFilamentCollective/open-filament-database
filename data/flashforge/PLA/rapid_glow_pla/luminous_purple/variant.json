@@ -1,0 +1,10 @@
+{
+  "id": "luminous_purple",
+  "name": "Luminous Purple",
+  "color_hex": "#AE96D4",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "stone_gray_carbon_fiber_extreme",
+  "name": "Stone Gray CARBON FIBER Extreme",
+  "color_hex": "#9FA4A8",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

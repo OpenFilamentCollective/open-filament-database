@@ -1,0 +1,9 @@
+{
+  "id": "copper_mh_build_series",
+  "name": "Copper MH Build Series",
+  "color_hex": "#C9774B",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

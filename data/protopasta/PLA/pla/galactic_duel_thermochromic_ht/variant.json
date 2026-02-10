@@ -1,0 +1,14 @@
+{
+  "id": "galactic_duel_thermochromic_ht",
+  "name": "Galactic Duel Thermochromic HT",
+  "color_hex": [
+    "#000000",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true,
+    "temperature_color_change": true
+  }
+}

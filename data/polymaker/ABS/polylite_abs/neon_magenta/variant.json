@@ -1,0 +1,13 @@
+{
+  "id": "neon_magenta",
+  "name": "Neon Magenta",
+  "color_hex": [
+    "#F300EA",
+    "#ED1536"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "neon": true,
+    "illuminescent_color_change": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "clearnatural",
+  "name": "Clear/Natural",
+  "color_hex": "#EADAC2",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

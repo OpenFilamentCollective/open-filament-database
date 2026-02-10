@@ -1,0 +1,8 @@
+{
+  "id": "transparent_clear_green",
+  "name": "Transparent Clear Green",
+  "color_hex": "#00CC00",
+  "traits": {
+    "translucent": true
+  }
+}

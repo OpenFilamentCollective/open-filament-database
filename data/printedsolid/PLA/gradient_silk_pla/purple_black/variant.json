@@ -1,0 +1,13 @@
+{
+  "id": "purple_black",
+  "name": "Purple-Black",
+  "color_hex": [
+    "#372B74",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

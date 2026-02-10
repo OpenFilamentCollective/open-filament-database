@@ -1,0 +1,14 @@
+{
+  "id": "blue_green_orange",
+  "name": "Blue-Green-Orange",
+  "color_hex": [
+    "#0353BA",
+    "#41A840",
+    "#FA8423"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

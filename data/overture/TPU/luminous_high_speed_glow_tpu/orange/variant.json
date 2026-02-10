@@ -1,0 +1,12 @@
+{
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": [
+    "#FFAE62",
+    "#E4E7E5"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

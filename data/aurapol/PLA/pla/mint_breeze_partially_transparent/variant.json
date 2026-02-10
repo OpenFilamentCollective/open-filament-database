@@ -1,0 +1,8 @@
+{
+  "id": "mint_breeze_partially_transparent",
+  "name": "Mint breeze partially transparent",
+  "color_hex": "#97D7D0",
+  "traits": {
+    "translucent": true
+  }
+}

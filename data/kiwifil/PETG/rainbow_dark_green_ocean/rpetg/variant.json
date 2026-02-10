@@ -1,0 +1,12 @@
+{
+  "id": "rpetg",
+  "name": "rPETG",
+  "color_hex": [
+    "#67C993",
+    "#0353BA"
+  ],
+  "traits": {
+    "recycled": true,
+    "gradual_color_change": true
+  }
+}

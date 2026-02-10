@@ -1,0 +1,26 @@
+[
+    {
+        "filament_weight": 500,
+        "diameter": 1.75,
+        "empty_spool_weight": 175,
+        "spool_core_diameter": 41,
+        "purchase_links": [
+            {
+                "store_id": "add_north",
+                "url": "https://addnorth.com/product/TPU%20Pro%20Matte%2095A?diameter=1.75&size=500&color=White"
+            }
+        ]
+    },
+    {
+        "filament_weight": 1000,
+        "diameter": 1.75,
+        "empty_spool_weight": 207,
+        "spool_core_diameter": 53,
+        "purchase_links": [
+            {
+                "store_id": "add_north",
+                "url": "https://addnorth.com/product/TPU%20Pro%20Matte%2095A/TPU%20Pro%20Matte%2095A%20-%201.75mm%20-%201000g%20-%20White"
+            }
+        ]
+    }
+]

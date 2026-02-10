@@ -1,0 +1,12 @@
+{
+  "id": "magic_blue_yellow",
+  "name": "Magic Blue-Yellow",
+  "color_hex": [
+    "#0078BF",
+    "#FBF942"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

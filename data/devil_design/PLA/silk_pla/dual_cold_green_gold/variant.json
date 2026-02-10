@@ -1,0 +1,12 @@
+{
+  "id": "dual_cold_green_gold",
+  "name": "DUAL COLD GREEN + GOLD",
+  "color_hex": [
+    "#3292B2",
+    "#F6C500"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

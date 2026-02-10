@@ -1,0 +1,11 @@
+{
+  "id": "neon_yellow",
+  "name": "Neon Yellow",
+  "color_hex": [
+    "#FBE200"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "neon": true
+  }
+}

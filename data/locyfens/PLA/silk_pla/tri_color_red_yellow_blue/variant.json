@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_red_yellow_blue",
+  "name": "Tri Color Red Yellow Blue",
+  "color_hex": [
+    "#C80181",
+    "#FADB24",
+    "#0378D0"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

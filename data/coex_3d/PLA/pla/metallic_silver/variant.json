@@ -1,0 +1,9 @@
+{
+  "id": "metallic_silver",
+  "name": "Metallic Silver",
+  "color_hex": "#818184",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_metal": true
+  }
+}

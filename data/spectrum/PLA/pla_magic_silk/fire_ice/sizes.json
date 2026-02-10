@@ -1,0 +1,38 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404835",
+    "article_number": "81427",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1985-Filament-Spectrum-ReFill-PLA-Magic-SILK-1-75mm-FIRE-ICE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404972",
+    "article_number": "81412",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1970-Filament-Spectrum-PLA-Magic-SILK-1-75mm-FIRE-ICE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5905991404644",
+    "article_number": "81397",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1957-Filament-Spectrum-PLA-Magic-SILK-1-75mm-FIRE-ICE-0-25kg.html"
+      }
+    ]
+  }
+]

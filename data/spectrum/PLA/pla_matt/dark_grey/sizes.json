@@ -1,0 +1,50 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175658340",
+    "article_number": "80109",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-608-Filament-Spectrum-PLA-Pro-1-75mm-DARK-GREY-1kg-RAL-7011.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175654342",
+    "article_number": "80621",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1440-Filament-Spectrum-PLA-Pro-1-75mm-DARK-GREY-2kg-RAL-7011.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175654182",
+    "article_number": "80618",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1434-Filament-Spectrum-PLA-Pro-1-75mm-DARK-GREY-4-5kg-RAL-7011.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654526",
+    "article_number": "80674",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1457-Filament-Spectrum-PLA-Pro-1-75mm-DARK-GREY-8kg-RAL-7011.html"
+      }
+    ]
+  }
+]

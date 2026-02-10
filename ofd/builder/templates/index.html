@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Filament Database</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/OpenFilamentCollective/open-filament-database/blob/main/docs/img/logo.png?raw=true">
+    <link rel="stylesheet" href="adwaita.css">
+    <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+    <div class="toolbar">
+        <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">
+            <span class="theme-icon-light">☀️</span>
+            <span class="theme-icon-dark">🌙</span>
+        </button>
+    </div>
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+
+            function getPreferred() {
+                const saved = localStorage.getItem('theme');
+                if (saved) return saved;
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            function setTheme(theme) {
+                root.classList.remove('light-mode', 'dark-mode');
+                root.classList.add(theme + '-mode');
+                localStorage.setItem('theme', theme);
+            }
+
+            setTheme(getPreferred());
+
+            toggle.addEventListener('click', function() {
+                const current = root.classList.contains('dark-mode') ? 'dark' : 'light';
+                setTheme(current === 'dark' ? 'light' : 'dark');
+            });
+        })();
+    </script>
+
+    <main class="content">
+        <div class="hero">
+            <h1>Open Filament Database</h1>
+            <p>A community-maintained database of 3D printing filaments, available as static JSON, CSV, and SQLite.</p>
+            <div class="hero-links">
+                <a href="https://github.com/OpenFilamentCollective/open-filament-database" class="hero-link">Source Repository</a>
+                <a href="api/v1/index.json" class="hero-link">API Root</a>
+            </div>
+            <span class="hero-version">v<VERSION/></span>
+        </div>
+
+        <section class="view">
+            <header class="view-header">
+                <h2>Dataset Statistics</h2>
+                <small class="dim">Generated: <GENERATED_AT/></small>
+            </header>
+            <div class="view-content">
+                <STATS/>
+            </div>
+        </section>
+
+        <section class="view">
+            <header class="view-header">
+                <h2>API Endpoints</h2>
+            </header>
+            <div class="view-content">
+                <p class="dim">All responses are static JSON files. Base URL: <code>/api/v1/</code></p>
+
+                <h3>Brands</h3>
+                <div class="boxed-list">
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/brands/index.json</code>
+                        <span class="dim">List all brands</span>
+                    </div>
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/brands/{slug}/index.json</code>
+                        <span class="dim">Brand details</span>
+                    </div>
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/brands/logo/index.json</code>
+                        <span class="dim">All brand logos</span>
+                    </div>
+                </div>
+
+                <h3>Materials &amp; Filaments</h3>
+                <div class="boxed-list">
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/brands/{brand}/materials/{material}/index.json</code>
+                        <span class="dim">Material details</span>
+                    </div>
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/.../filaments/{filament}/index.json</code>
+                        <span class="dim">Filament details</span>
+                    </div>
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/.../variants/{variant}.json</code>
+                        <span class="dim">Color variant with sizes</span>
+                    </div>
+                </div>
+
+                <h3>Stores</h3>
+                <div class="boxed-list">
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/stores/index.json</code>
+                        <span class="dim">List all stores</span>
+                    </div>
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/stores/{slug}.json</code>
+                        <span class="dim">Store details</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="view">
+            <header class="view-header">
+                <h2>Examples</h2>
+            </header>
+            <div class="view-content">
+                <h3>curl</h3>
+<pre class="code-block"><code><span class="cmd">curl</span> https://openfilamentcollective.github.io/open-filament-database/api/v1/brands/index.json</code></pre>
+
+                <h3>JavaScript</h3>
+<pre class="code-block"><code><span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/v1/brands/index.json'</span>);
+<span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
+console.<span class="fn">log</span>(<span class="str">`<span class="var">${data.count}</span> brands`</span>);</code></pre>
+
+                <h3>Python</h3>
+<pre class="code-block"><code><span class="kw">import</span> requests
+brands = requests.<span class="fn">get</span>(<span class="str">'/api/v1/brands/index.json'</span>).<span class="fn">json</span>()
+<span class="kw">for</span> b <span class="kw">in</span> brands[<span class="str">'brands'</span>]:
+    <span class="fn">print</span>(<span class="str">f"<span class="var">{b['name']}</span>: <span class="var">{b['material_count']}</span> materials"</span>)</code></pre>
+            </div>
+        </section>
+
+        <section class="view">
+            <header class="view-header">
+                <h2>File Browser</h2>
+            </header>
+            <div class="view-content">
+                <div class="file-tree">
+                    <OUTPUTFILES/>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="https://github.com/OpenFilamentCollective/open-filament-database">GitHub</a>
+        <a href="manifest.json">Manifest</a>
+        <a href="api/v1/index.json">API Root</a>
+    </footer>
+</body>
+</html>

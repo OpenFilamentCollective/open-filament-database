@@ -1,0 +1,10 @@
+{
+  "id": "dragonfruit_smoothie_ht",
+  "name": "Dragonfruit Smoothie HT",
+  "color_hex": "#DA445A",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "imitates_marble": true
+  }
+}

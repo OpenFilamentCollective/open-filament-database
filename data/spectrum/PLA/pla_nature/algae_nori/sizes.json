@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5905991400509",
+    "article_number": "80987",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1611-Filament-Spectrum-PLA-Nature-1-75mm-ALGAE-NORI-0-25kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175659941",
+    "article_number": "80933",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1604-Filament-Spectrum-PLA-Nature-1-75mm-ALGAE-NORI-1kg.html"
+      }
+    ]
+  }
+]

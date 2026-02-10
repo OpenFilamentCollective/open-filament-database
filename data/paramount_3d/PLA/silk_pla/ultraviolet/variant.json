@@ -1,0 +1,12 @@
+{
+  "id": "ultraviolet",
+  "name": "(Ultraviolet)",
+  "color_hex": [
+    "#413A7A",
+    "#E23288"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

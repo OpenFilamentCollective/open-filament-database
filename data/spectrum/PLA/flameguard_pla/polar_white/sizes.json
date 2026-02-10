@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991405481",
+    "article_number": "81450",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2622-Filament-Spectrum-FlameGuard-PLA-1-75mm-POLAR-WHITE-0-25kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5905991405467",
+    "article_number": "81448",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2622-Filament-Spectrum-FlameGuard-PLA-1-75mm-POLAR-WHITE-0-25kg.html"
+      }
+    ]
+  }
+]

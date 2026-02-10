@@ -1,0 +1,32 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "gst3d",
+        "url": "https://gst3d.eu/products/petg-technic-5?variant=52158483857741"
+      }
+    ]
+  },
+  {
+    "filament_weight": 3500,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "gst3d",
+        "url": "https://gst3d.eu/products/petg-5kg-carbon-fiber?variant=52220097560909"
+      }
+    ]
+  },
+  {
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "gst3d",
+        "url": "https://gst3d.eu/products/petg-5kg-carbon-fiber?variant=52220097560909"
+      }
+    ]
+  }
+]

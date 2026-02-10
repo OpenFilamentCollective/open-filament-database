@@ -1,0 +1,62 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404200",
+    "article_number": "81353",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1850-Filament-Spectrum-ReFill-PET-G-Premium-1-75mm-DEEP-BLACK-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175657602",
+    "article_number": "80056",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-564-Filament-Spectrum-PET-G-Premium-1-75mm-DEEP-BLACK-1kg-RAL-9017.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175651303",
+    "article_number": "80160",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-667-Filament-Spectrum-PET-G-Premium-1-75mm-DEEP-BLACK-2kg-RAL-9017.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175653116",
+    "article_number": "80628",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1428-Filament-Spectrum-Premium-PET-G-1-75mm-DEEP-BLACK-4-5kg-RAL-9017.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654625",
+    "article_number": "80684",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1468-Filament-Spectrum-Premium-PET-G-1-75mm-DEEP-BLACK-8kg-RAL-9017.html"
+      }
+    ]
+  }
+]

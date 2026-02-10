@@ -1,0 +1,13 @@
+{
+  "id": "silver_darkblue",
+  "name": "Silver-DarkBlue",
+  "color_hex": [
+    "#A8B0BD",
+    "#0E21AE"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

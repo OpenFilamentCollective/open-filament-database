@@ -1,0 +1,13 @@
+{
+  "id": "blue_red_yellow_green",
+  "name": "Blue Red Yellow Green",
+  "color_hex": [
+    "#0353BA",
+    "#B7293E",
+    "#FFFC6A"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

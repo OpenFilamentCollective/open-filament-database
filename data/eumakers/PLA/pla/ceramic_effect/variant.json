@@ -1,0 +1,8 @@
+{
+  "id": "ceramic_effect",
+  "name": "Ceramic Effect",
+  "color_hex": "#F9F3E5",
+  "traits": {
+    "imitates_stone": true
+  }
+}

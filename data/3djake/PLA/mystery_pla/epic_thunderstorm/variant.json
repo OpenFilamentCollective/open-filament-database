@@ -1,0 +1,13 @@
+{
+  "id": "epic_thunderstorm",
+  "name": "Epic Thunderstorm",
+  "color_hex": [
+    "#F6C500",
+    "#000000",
+    "#7659B5"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

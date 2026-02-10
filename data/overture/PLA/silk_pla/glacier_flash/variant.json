@@ -1,0 +1,13 @@
+{
+  "id": "glacier_flash",
+  "name": "Glacier Flash",
+  "color_hex": [
+    "#0066D9",
+    "#39B9DB",
+    "#99F1FF"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

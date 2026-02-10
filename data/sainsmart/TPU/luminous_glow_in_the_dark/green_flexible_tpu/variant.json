@@ -1,0 +1,13 @@
+{
+  "id": "green_flexible_tpu",
+  "name": "Green, Flexible TPU",
+  "color_hex": [
+    "#DFDFD3",
+    "#62E480"
+  ],
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "peacock_light_maroon_blue_green",
+  "name": "Peacock (Light Maroon / Blue / Green)",
+  "color_hex": [
+    "#B7293E",
+    "#11784F",
+    "#0E21AE"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

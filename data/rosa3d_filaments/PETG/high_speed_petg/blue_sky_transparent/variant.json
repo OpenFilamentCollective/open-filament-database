@@ -1,0 +1,8 @@
+{
+  "id": "blue_sky_transparent",
+  "name": "Blue Sky Transparent",
+  "color_hex": "#0353BA",
+  "traits": {
+    "translucent": true
+  }
+}

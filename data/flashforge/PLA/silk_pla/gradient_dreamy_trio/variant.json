@@ -1,0 +1,14 @@
+{
+  "id": "gradient_dreamy_trio",
+  "name": "Gradient Dreamy Trio",
+  "color_hex": [
+    "#98FBCB",
+    "#9D7185",
+    "#D8BA64"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

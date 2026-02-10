@@ -11,9 +11,10 @@
   import { superForm } from 'sveltekit-superforms';
   import { zodClient } from 'sveltekit-superforms/adapters';
   import { filamentMaterialSchema } from '$lib/validation/filament-material-schema';
+  import { MATERIAL_TYPES } from '$lib/validation/filament-material-schema';
 
   type formType = 'edit' | 'create';
-  let { defaultForm, formType, brandName } = $props();
+  let { defaultForm, formType, brandId } = $props();
   
   const {
     form,
@@ -38,9 +39,9 @@
       const isLocal = env.PUBLIC_IS_LOCAL === 'true';
 
       if (isLocal) {
-        await realDelete('material', $form.material, brandName);
+        await realDelete('material', $form.material, brandId);
       } else {
-        pseudoDelete('material', $form.material, brandName);
+        pseudoDelete('material', $form.material, brandId);
       }
     }
   }
@@ -126,15 +127,28 @@
   endpoint="material"
   enhance={enhance}
 >
-  <TextField
-    id="material"
-    title="Material name"
-    description='Enter the material type or category (e.g., "PLA", "PETG", "ABS", "TPU")'
-    placeholder="e.g. PLA"
-    bind:formVar={$form.material}
-    errorVar={$errors.material}
-    required={true}
-  />
+  <div class="mb-4">
+    <label for="material" class="block font-medium mb-1 text-sm">
+      Material name
+      <span class="text-sm font-normal text-gray-600 dark:text-gray-400"> — Enter the material type or category (e.g., "PLA", "PETG", "ABS", "TPU")</span>
+      <span class="text-red-500">*</span>
+    </label>
+    <select
+      id="material"
+      name="material"
+      bind:value={$form.material}
+      required
+      class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+    >
+      <option value="">-- Select --</option>
+      {#each MATERIAL_TYPES as m}
+        <option value={m}>{m}</option>
+      {/each}
+    </select>
+    {#if $errors.material}
+      <span class="text-red-600 text-xs">{$errors.material}</span>
+    {/if}
+  </div>
 
   <NumberField
     id="default_max_dry_temperature"

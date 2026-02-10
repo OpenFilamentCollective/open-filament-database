@@ -1,0 +1,13 @@
+{
+  "id": "silver_bronze",
+  "name": "Silver-Bronze",
+  "color_hex": [
+    "#A8B0BD",
+    "#99A45F"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

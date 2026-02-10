@@ -1,0 +1,11 @@
+{
+  "id": "90a_blaze",
+  "name": "90A Blaze",
+  "color_hex": [
+    "#F1AAA8",
+    "#F14147"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

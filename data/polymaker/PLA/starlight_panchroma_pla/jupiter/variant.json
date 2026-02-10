@@ -1,0 +1,9 @@
+{
+  "id": "jupiter",
+  "name": "Jupiter",
+  "color_hex": "#C0894D",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

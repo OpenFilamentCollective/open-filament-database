@@ -1,0 +1,16 @@
+{
+  "id": "pastel_rainbow",
+  "name": "Pastel Rainbow",
+  "color_hex": [
+    "#BBA0DA",
+    "#CE92CE",
+    "#FEF49C",
+    "#F2B67A",
+    "#95C5D3"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138413625",
+    "article_number": "TF-24235",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3381-The-Filament-ReFill-PLA-Lite-1-75mm-ORANGE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138413595",
+    "article_number": "TF-24232",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3371-The-Filament-PLA-Lite-1-75mm-ORANGE-1kg.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "id": "witchcraft",
+  "name": "Witchcraft",
+  "color_hex": [
+    "#AE00FF",
+    "#39B9DB"
+  ],
+  "traits": {
+    "iridescent": true
+  }
+}

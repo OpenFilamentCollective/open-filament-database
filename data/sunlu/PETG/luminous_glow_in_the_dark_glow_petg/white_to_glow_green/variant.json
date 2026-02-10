@@ -1,0 +1,13 @@
+{
+  "id": "white_to_glow_green",
+  "name": "White To Glow Green",
+  "color_hex": [
+    "#46DF55",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

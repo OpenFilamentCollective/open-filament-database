@@ -1,0 +1,10 @@
+{
+  "id": "blue_pearl",
+  "name": "Blue Pearl",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "neon": true
+  }
+}

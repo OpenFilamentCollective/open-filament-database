@@ -1,0 +1,8 @@
+{
+  "id": "red_wine_transparent",
+  "name": "Red Wine Transparent",
+  "color_hex": "#D21B3C",
+  "traits": {
+    "translucent": true
+  }
+}

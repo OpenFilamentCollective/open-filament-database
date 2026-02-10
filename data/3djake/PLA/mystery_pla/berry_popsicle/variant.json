@@ -1,0 +1,13 @@
+{
+  "id": "berry_popsicle",
+  "name": "Berry Popsicle",
+  "color_hex": [
+    "#DB3FA9",
+    "#0078BF",
+    "#32A584"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

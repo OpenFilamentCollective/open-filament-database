@@ -1,0 +1,12 @@
+{
+  "id": "orange_to_white",
+  "name": "Orange to White",
+  "color_hex": [
+    "#FFFFFF",
+    "#FF8400"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

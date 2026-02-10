@@ -1,0 +1,8 @@
+{
+  "id": "vert_mai_alumine",
+  "name": "Vert mai alumine",
+  "color_hex": "#509F45",
+  "traits": {
+    "contains_aluminium": true
+  }
+}

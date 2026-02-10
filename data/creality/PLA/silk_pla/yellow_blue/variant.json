@@ -1,0 +1,13 @@
+{
+  "id": "yellow_blue",
+  "name": "Yellow-Blue",
+  "color_hex": [
+    "#FBF942",
+    "#0078BF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

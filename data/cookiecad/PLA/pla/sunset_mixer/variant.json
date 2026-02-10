@@ -1,0 +1,12 @@
+{
+  "id": "sunset_mixer",
+  "name": "Sunset Mixer",
+  "color_hex": [
+    "#D93382",
+    "#567BAC"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

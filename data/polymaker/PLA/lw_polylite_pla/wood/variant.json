@@ -1,0 +1,9 @@
+{
+  "id": "wood",
+  "name": "Wood",
+  "color_hex": "#D2A273",
+  "traits": {
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

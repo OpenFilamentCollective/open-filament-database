@@ -1,0 +1,14 @@
+{
+  "id": "colormorph_magenta_silver",
+  "name": "ColorMorph Magenta & Silver",
+  "color_hex": [
+    "#C80181",
+    "#ABACB0"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

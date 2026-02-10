@@ -1,0 +1,13 @@
+{
+  "id": "purple_blue_green_orange",
+  "name": "Purple Blue Green Orange",
+  "color_hex": [
+    "#00B4BC",
+    "#BA06AE",
+    "#375680"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

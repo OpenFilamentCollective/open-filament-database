@@ -1,0 +1,25 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404033",
+    "article_number": "81336",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1912-Filament-Spectrum-ReFill-ASA-275-1-75mm-TRAFFIC-YELLOW-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "80509",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1296-Filament-Spectrum-ASA-275-1-75mm-TRAFFIC-YELLOW-1kg-RAL-1023.html"
+      }
+    ]
+  }
+]

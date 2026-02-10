@@ -1,0 +1,14 @@
+{
+  "id": "pink_cyan_chartreuse",
+  "name": "Pink Cyan Chartreuse",
+  "color_hex": [
+    "#DBFC00",
+    "#FFBADE",
+    "#9AE0DD"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

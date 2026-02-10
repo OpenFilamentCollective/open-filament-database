@@ -1,0 +1,11 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#E03F26",
+  "color_standards": {
+    "ral": "3001"
+  },
+  "traits": {
+    "filtration_recommended": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "fall",
+  "name": "Fall",
+  "color_hex": [
+    "#F00C00",
+    "#F4AC23"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "willow",
+  "name": "Willow",
+  "color_hex": "#739549",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

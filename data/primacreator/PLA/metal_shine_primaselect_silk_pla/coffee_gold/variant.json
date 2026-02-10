@@ -1,0 +1,10 @@
+{
+  "id": "coffee_gold",
+  "name": "Coffee Gold",
+  "color_hex": "#935C34",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "imitates_metal": true
+  }
+}

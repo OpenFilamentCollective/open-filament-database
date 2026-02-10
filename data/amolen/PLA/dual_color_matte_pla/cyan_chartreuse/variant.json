@@ -1,0 +1,13 @@
+{
+  "id": "cyan_chartreuse",
+  "name": "Cyan Chartreuse",
+  "color_hex": [
+    "#63D6D6",
+    "#DBFC00"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

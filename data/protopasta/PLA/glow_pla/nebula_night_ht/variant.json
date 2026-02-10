@@ -1,0 +1,17 @@
+{
+  "id": "nebula_night_ht",
+  "name": "Nebula Night HT",
+  "color_hex": [
+    "#A38496",
+    "#0353BA",
+    "#B33174"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true,
+    "neon": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "sky_blue_pink",
+  "name": "Sky Blue & Pink",
+  "color_hex": [
+    "#40B6E4",
+    "#D91AC3"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

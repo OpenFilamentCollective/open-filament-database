@@ -1,0 +1,14 @@
+{
+  "id": "candy",
+  "name": "Candy",
+  "color_hex": [
+    "#FCAFC0",
+    "#0066D9",
+    "#8ED9F9",
+    "#8D65C7"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

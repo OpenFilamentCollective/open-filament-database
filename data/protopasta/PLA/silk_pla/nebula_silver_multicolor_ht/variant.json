@@ -1,0 +1,15 @@
+{
+  "id": "nebula_silver_multicolor_ht",
+  "name": "Nebula Silver Multicolor HT",
+  "color_hex": [
+    "#C75072",
+    "#A38496",
+    "#0078BF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

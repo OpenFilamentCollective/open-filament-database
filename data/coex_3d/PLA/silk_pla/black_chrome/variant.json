@@ -1,0 +1,9 @@
+{
+  "id": "black_chrome",
+  "name": "Black Chrome",
+  "color_hex": "#2A3940",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

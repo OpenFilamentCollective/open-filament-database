@@ -1,0 +1,8 @@
+{
+  "id": "transparent_pink",
+  "name": "Transparent Pink",
+  "color_hex": "#F2A3B7",
+  "traits": {
+    "translucent": true
+  }
+}

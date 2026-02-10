@@ -1,0 +1,13 @@
+{
+  "id": "bicolor_metallic_green_brown",
+  "name": "BICOLOR METALLIC GREEN BROWN",
+  "color_hex": [
+    "#BA8960",
+    "#3C5415"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

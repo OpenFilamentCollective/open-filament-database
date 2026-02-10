@@ -1,0 +1,12 @@
+{
+  "id": "peach_orange",
+  "name": "Peach Orange",
+  "color_hex": [
+    "#EB0075",
+    "#F47D59"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

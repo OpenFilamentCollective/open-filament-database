@@ -1,0 +1,13 @@
+{
+  "id": "blue_purple_shiny_red",
+  "name": "Blue Purple & Shiny Red",
+  "color_hex": [
+    "#B7293E",
+    "#1B41A2",
+    "#581D80"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dual_crown_gold_sliver",
+  "name": "Dual Crown Gold Sliver",
+  "color_hex": [
+    "#CACACA",
+    "#F6C500"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

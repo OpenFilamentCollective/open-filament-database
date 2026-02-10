@@ -1,0 +1,18 @@
+{
+  "id": "rainbow_galaxy_glow_in_dark_luminous",
+  "name": "Rainbow Galaxy Glow in Dark Luminous",
+  "color_hex": [
+    "#F0EBE5",
+    "#8873C7",
+    "#39B9DB",
+    "#0353BA",
+    "#FF72B6"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "illuminescent_color_change": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "silver_blue",
+  "name": "Silver Blue",
+  "color_hex": "#8997C4",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

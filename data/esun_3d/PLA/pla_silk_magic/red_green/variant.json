@@ -1,0 +1,14 @@
+{
+  "id": "red_green",
+  "name": "Red Green",
+  "color_hex": [
+    "#4E7642",
+    "#D33D3D"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

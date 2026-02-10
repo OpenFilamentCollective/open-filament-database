@@ -1,0 +1,10 @@
+{
+  "id": "dark_purple",
+  "name": "Dark Purple",
+  "color_hex": "#8A68B5",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

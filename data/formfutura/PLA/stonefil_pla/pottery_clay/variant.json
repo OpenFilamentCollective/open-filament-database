@@ -1,0 +1,10 @@
+{
+  "id": "pottery_clay",
+  "name": "Pottery Clay",
+  "color_hex": "#E6DDDB",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_stone": true,
+    "imitates_stone": true
+  }
+}

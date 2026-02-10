@@ -1,0 +1,7 @@
+{
+    "id": "rpetg_matte",
+    "name": "rPETG Matte",
+    "diameter_tolerance": 0.02,
+    "density": 1.25,
+    "max_dry_temperature": 65
+}

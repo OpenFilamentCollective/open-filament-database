@@ -1,0 +1,12 @@
+{
+  "id": "lettuce_tomato",
+  "name": "Lettuce Tomato",
+  "color_hex": [
+    "#DF3303",
+    "#00935C"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "cctransparent",
+  "name": "C.C.Transparent",
+  "color_hex": "#D9D8DE",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "triple_color_orange_blue_green",
+  "name": "Triple Color (Orange Blue Green)",
+  "color_hex": [
+    "#FF7A33",
+    "#2E56F1",
+    "#98FBCB"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

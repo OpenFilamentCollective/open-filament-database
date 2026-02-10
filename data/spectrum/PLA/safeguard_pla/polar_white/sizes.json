@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5907138400656",
+    "article_number": "81553",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2718-Filament-Spectrum-SafeGuard-PLA-1-75mm-POLAR-WHITE-0-25kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138400670",
+    "article_number": "81555",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2719-Filament-Spectrum-SafeGuard-PLA-1-75mm-POLAR-WHITE-1kg.html"
+      }
+    ]
+  }
+]

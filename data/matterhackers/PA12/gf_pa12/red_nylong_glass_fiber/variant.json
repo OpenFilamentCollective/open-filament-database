@@ -1,0 +1,9 @@
+{
+  "id": "red_nylong_glass_fiber",
+  "name": "Red NylonG Glass Fiber",
+  "color_hex": "#E03F26",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

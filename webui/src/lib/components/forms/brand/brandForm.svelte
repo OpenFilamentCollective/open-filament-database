@@ -15,7 +15,7 @@
   import { pseudoEdit } from '$lib/pseudoEditor';
 
   type formType = 'edit' | 'create';
-  let { defaultForm, formType } = $props();
+  let { defaultForm, formType, brandId = null, brandLogo = null } = $props();
 
   const {
     form,
@@ -33,7 +33,7 @@
       if (result?.type === "success") {
         if (result?.data?.data) {
           let data = JSON.parse(result.data.data);
-          pseudoEdit("brand", "modified", data.brand, data)
+          pseudoEdit("brand", "modified", data.id, data);
         }
       }
     }
@@ -44,15 +44,15 @@
   async function handleDelete() {
     if (
       confirm(
-        `Are you sure you want to delete the brand "${$form.brand}"? This action cannot be undone.`,
+        `Are you sure you want to delete the brand "${$form.name}"? This action cannot be undone.`,
       )
     ) {
       const isLocal = env.PUBLIC_IS_LOCAL === 'true';
 
       if (isLocal) {
-        await realDelete('brand', stripOfIllegalChars($form.brand));
+        await realDelete('brand', $form.id);
       } else {
-        pseudoDelete('brand', $form.brand);
+        pseudoDelete('brand', $form.id);
       }
     }
   }
@@ -67,8 +67,8 @@
     title="Brand Name"
     description='Enter the official name of the filament manufacturer (e.g., "Prusa", "Hatchbox")'
     placeholder="e.g. Prusa"
-    bind:formVar={$form.brand}
-    errorVar={$errors.brand}
+    bind:formVar={$form.name}
+    errorVar={$errors.name}
     required={true}
   />
 
@@ -92,15 +92,14 @@
     required={true} 
   />
 
-  {#if formType === 'create'}
-    <LogoUpload
-      id="logo"
-      title="Logo"
-      bind:file={$file}
-      errorVar={$errors.logo}
-      required={true}
-    />
-  {/if}
+  <LogoUpload
+    id="logo"
+    title="Logo"
+    bind:file={$file}
+    errorVar={$errors.logo}
+    required={formType === 'create'}
+    currentLogo={formType === 'edit' && brandId && brandLogo ? `/data/${brandId}/${brandLogo}` : null}
+  />
 
   <SubmitButton>
     {formType === 'edit' ? 'Save' : 'Create'}

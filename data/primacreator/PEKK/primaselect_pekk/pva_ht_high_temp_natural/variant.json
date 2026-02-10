@@ -1,0 +1,9 @@
+{
+  "id": "pva_ht_high_temp_natural",
+  "name": "Pva Ht High Temp Natural",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "water_soluble": true,
+    "low_outgassing": true
+  }
+}

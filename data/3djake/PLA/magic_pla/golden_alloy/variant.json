@@ -1,0 +1,12 @@
+{
+  "id": "golden_alloy",
+  "name": "Golden Alloy",
+  "color_hex": [
+    "#CE9F2E",
+    "#C9D0D4"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

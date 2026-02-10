@@ -1,0 +1,12 @@
+{
+  "id": "copper_shore",
+  "name": "Copper Shore",
+  "color_hex": [
+    "#AF784D",
+    "#0085CA"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

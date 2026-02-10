@@ -1,0 +1,9 @@
+{
+  "id": "black_nylong_glass_fiber",
+  "name": "Black NylonG Glass Fiber",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

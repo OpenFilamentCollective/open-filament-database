@@ -1,0 +1,13 @@
+{
+  "id": "blue_flexible_tpu",
+  "name": "Blue, Flexible TPU",
+  "color_hex": [
+    "#DFDFD3",
+    "#0099E6"
+  ],
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

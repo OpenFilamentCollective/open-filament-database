@@ -1,0 +1,9 @@
+{
+  "id": "caramel",
+  "name": "Caramel",
+  "color_hex": "#CCA482",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

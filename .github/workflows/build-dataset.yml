@@ -1,0 +1,286 @@
+name: Build Dataset
+
+on:
+  schedule:
+    - cron: "30 0 * * *"  # Run daily at 00:30 UTC (after profile updates)
+  workflow_dispatch:
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.check.outputs.has_changes }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for changes in last 24 hours
+        id: check
+        run: |
+          # For manual dispatch, always build
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Manual dispatch - will build"
+            exit 0
+          fi
+
+          # Check for commits in the last 24 hours affecting relevant paths
+          CHANGES=$(git log --since="24 hours ago" --oneline -- data/ stores/ builder/ schemas/ | wc -l)
+          if [ "$CHANGES" -gt 0 ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Found $CHANGES commits in last 24 hours"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes in last 24 hours - skipping build"
+          fi
+
+  build:
+    needs: check-changes
+    if: needs.check-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate version
+        id: version
+        run: |
+          # Auto-generate version: YYYY.MM.DD
+          echo "version=$(date +%Y.%m.%d)" >> $GITHUB_OUTPUT
+
+      - name: Build dataset
+        run: |
+          # Build the dataset
+          # Output will be deployed to https://api.openfilamentdatabase.org/
+          python -m ofd build \
+            --version "${{ steps.version.outputs.version }}"
+
+      - name: List generated files
+        run: |
+          echo "=== Generated Files ==="
+          find dist -type f | head -100
+          echo ""
+          echo "=== File counts ==="
+          echo "JSON files: $(find dist -name '*.json' | wc -l)"
+          echo "CSV files: $(find dist -name '*.csv' | wc -l)"
+          echo "SQLite files: $(find dist -name '*.db' | wc -l)"
+          echo ""
+          echo "=== Manifest ==="
+          cat dist/manifest.json | head -50
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dataset-${{ steps.version.outputs.version }}
+          path: dist/
+          retention-days: 30
+
+      # Deploy to GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      # Get the last release tag for generating release notes
+      - name: Get last release tag
+        id: last_release
+        run: |
+          LAST_TAG=$(git tag -l 'dataset-v*' --sort=-version:refname | head -n 1)
+          if [ -z "$LAST_TAG" ]; then
+            echo "previous_tag=" >> $GITHUB_OUTPUT
+            echo "No previous dataset release found"
+          else
+            echo "previous_tag=$LAST_TAG" >> $GITHUB_OUTPUT
+            echo "Last release: $LAST_TAG"
+          fi
+
+      # Generate release notes with only changes since last release
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          PREVIOUS_TAG="${{ steps.last_release.outputs.previous_tag }}"
+
+          # Start building release notes
+          cat > release_notes.md << 'EOF'
+          ## Open Filament Database v${{ steps.version.outputs.version }}
+
+          All paths below are relative to the base API URL: **https://api.openfilamentdatabase.org/**
+
+          ### Downloads
+
+          | Format | Description | File |
+          |--------|-------------|------|
+          | **SQLite (Filaments)** | Relational database with full schema | `sqlite/filaments.db` |
+          | **SQLite (Stores)** | Store information database | `sqlite/stores.db` |
+          | **SQLite (compressed)** | XZ compressed SQLite files | `sqlite/*.db.xz` |
+          | **JSON** | Complete dataset in one file | `json/all.json` |
+          | **JSON (compressed)** | Gzipped JSON | `json/all.json.gz` |
+          | **NDJSON** | Newline-delimited JSON for streaming | `json/all.ndjson` |
+          | **CSV** | Multiple CSV files | `csv/` directory |
+
+          ### API Endpoints
+
+          All endpoints are relative to: **https://api.openfilamentdatabase.org/**
+
+          #### Brands & Filaments
+          - `api/v1/index.json` - API root with version and stats
+          - `api/v1/brands/index.json` - List of all brands
+          - `api/v1/brands/{slug}/index.json` - Individual brand with materials
+          - `api/v1/brands/{slug}/materials/{material_slug}/index.json` - Material with filaments
+          - `api/v1/brands/{slug}/materials/{material_slug}/filaments/{filament_slug}/index.json` - Filament with variants
+          - `api/v1/brands/{slug}/materials/{material_slug}/filaments/{filament_slug}/variants/{variant_slug}.json` - Variant details with sizes
+
+          #### Stores
+          - `api/v1/stores/index.json` - List of stores
+          - `api/v1/stores/{slug}.json` - Individual store details
+
+          #### Logos
+          - `api/v1/brands/logo/index.json` - List of all brand logos
+          - `api/v1/brands/logo/{logo_id}.json` - Brand logo metadata
+          - `api/v1/brands/logo/{logo_id}.{ext}` - Brand logo image file
+          - `api/v1/stores/logo/index.json` - List of all store logos
+          - `api/v1/stores/logo/{logo_id}.json` - Store logo metadata
+          - `api/v1/stores/logo/{logo_id}.{ext}` - Store logo image file
+
+          #### Schemas
+          - `api/v1/schemas/index.json` - List of available JSON schemas
+          - `api/v1/schemas/{name}.json` - Individual JSON schema
+
+          ### Direct Downloads
+
+          All paths relative to: **https://api.openfilamentdatabase.org/**
+
+          - `json/all.json` - Complete dataset
+          - `sqlite/filaments.db` - SQLite database (filaments)
+          - `sqlite/stores.db` - SQLite database (stores)
+          - `csv/` - CSV files
+
+          ### Checksums
+
+          See `manifest.json` for SHA256 checksums of all files.
+
+          EOF
+
+          # Add changes section only if there was a previous release
+          if [ -n "$PREVIOUS_TAG" ]; then
+            echo "" >> release_notes.md
+            echo "### Changes Since $PREVIOUS_TAG" >> release_notes.md
+            echo "" >> release_notes.md
+
+            # Verify tag exists before running git log
+            if git rev-parse "$PREVIOUS_TAG" >/dev/null 2>&1; then
+              # Get commit log since last release, using -- to separate paths from revisions
+              if git log "$PREVIOUS_TAG..HEAD" --oneline --no-merges -- data/ stores/ builder/ schemas/ > commits.txt 2>/dev/null; then
+                if [ -s commits.txt ]; then
+                  # Group changes by type
+                  echo "#### Recent Updates" >> release_notes.md
+                  echo "" >> release_notes.md
+                  while read line; do
+                    echo "- $line" >> release_notes.md
+                  done < commits.txt
+                else
+                  echo "- Infrastructure and maintenance updates" >> release_notes.md
+                fi
+              else
+                echo "- Unable to retrieve commit history" >> release_notes.md
+              fi
+            else
+              echo "- First release or previous tag not found" >> release_notes.md
+            fi
+          fi
+
+          # Set output
+          echo "notes_file=release_notes.md" >> $GITHUB_OUTPUT
+
+      # Create Release
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: dataset-v${{ steps.version.outputs.version }}
+          name: Dataset v${{ steps.version.outputs.version }}
+          body_path: release_notes.md
+          files: |
+            dist/json/all.json
+            dist/json/all.json.gz
+            dist/json/all.ndjson
+            dist/sqlite/filaments.db
+            dist/sqlite/filaments.db.xz
+            dist/sqlite/stores.db
+            dist/sqlite/stores.db.xz
+            dist/manifest.json
+          draft: false
+          prerelease: false
+          generate_release_notes: false
+
+  # Validate the build
+  validate:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dataset-${{ needs.build.outputs.version }}
+          path: dist/
+
+      - name: Validate JSON
+        run: |
+          echo "Validating JSON files..."
+          for f in dist/json/*.json; do
+            python -m json.tool "$f" > /dev/null && echo "✓ $f" || echo "✗ $f"
+          done
+
+      - name: Validate SQLite
+        run: |
+          echo "Validating SQLite databases..."
+          echo "Filaments database:"
+          sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM brand;"
+          sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM filament;"
+          sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM variant;"
+          sqlite3 dist/sqlite/filaments.db "SELECT COUNT(*) FROM size;"
+          echo ""
+          echo "Stores database:"
+          sqlite3 dist/sqlite/stores.db "SELECT COUNT(*) FROM store;"
+          echo "✓ SQLite databases are valid"
+
+      - name: Test SQLite queries
+        run: |
+          echo "Testing example queries..."
+          sqlite3 dist/sqlite/filaments.db "
+            SELECT b.name, COUNT(f.id) as filaments
+            FROM brand b
+            LEFT JOIN filament f ON f.brand_id = b.id
+            GROUP BY b.id
+            ORDER BY filaments DESC
+            LIMIT 10;
+          "
+          echo ""
+          sqlite3 dist/sqlite/filaments.db "
+            SELECT * FROM v_full_size LIMIT 5;
+          "

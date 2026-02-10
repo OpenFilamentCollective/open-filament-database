@@ -1,0 +1,15 @@
+{
+  "id": "blue_purple_fuchsia",
+  "name": "Blue Purple Fuchsia",
+  "color_hex": [
+    "#09048E",
+    "#6802BC",
+    "#7F068C"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "vertigo_galaxy",
+  "name": "Vertigo Galaxy",
+  "color_hex": "#515234",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

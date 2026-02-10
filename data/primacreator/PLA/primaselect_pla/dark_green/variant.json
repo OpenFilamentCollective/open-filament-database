@@ -1,0 +1,8 @@
+{
+  "id": "dark_green",
+  "name": "Dark Green",
+  "color_hex": "#006272",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

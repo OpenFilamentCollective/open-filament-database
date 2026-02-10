@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138402735",
+    "article_number": "TF-24158",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3321-The-Filament-ReFill-PLA-Matte-1-75mm-ARMY-GREEN-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5907138401592",
+    "article_number": "TF-24200",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-3243-The-Filament-PLA-Matte-1-75mm-ARMY-GREEN-1kg.html"
+      }
+    ]
+  }
+]

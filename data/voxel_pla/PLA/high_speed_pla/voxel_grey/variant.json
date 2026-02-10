@@ -1,0 +1,8 @@
+{
+  "id": "voxel_grey",
+  "name": "Voxel Grey",
+  "color_hex": "#C3CCD5",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

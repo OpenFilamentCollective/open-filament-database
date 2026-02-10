@@ -1,0 +1,13 @@
+{
+  "id": "bluerose",
+  "name": "Blue/Rose",
+  "color_hex": [
+    "#0066D9",
+    "#F300EA"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

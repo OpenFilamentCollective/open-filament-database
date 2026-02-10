@@ -1,0 +1,8 @@
+{
+  "id": "eggshell",
+  "name": "Eggshell",
+  "color_hex": "#EADAC2",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

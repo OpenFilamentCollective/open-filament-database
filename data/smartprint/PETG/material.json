@@ -1,0 +1,12 @@
+{
+  "material": "PETG",
+  "default_max_dry_temperature": 70,
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 80,
+      "first_layer_bed_temp": 80,
+      "first_layer_nozzle_temp": 230,
+      "nozzle_temp": 230
+    }
+  }
+}

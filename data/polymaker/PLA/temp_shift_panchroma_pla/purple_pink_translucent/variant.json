@@ -1,0 +1,15 @@
+{
+  "id": "purple_pink_translucent",
+  "name": "Purple Pink Translucent",
+  "color_hex": [
+    "#FF5786",
+    "#9761B5",
+    "#F2EFE9"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "temperature_color_change": true,
+    "gradual_color_change": true
+  }
+}

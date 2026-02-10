@@ -1,0 +1,10 @@
+{
+    "id": "sky_blue",
+    "name": "Sky Blue",
+    "color_hex": [
+        "#56B7E6"
+    ],
+    "traits": {
+        "matte": true
+    }
+}

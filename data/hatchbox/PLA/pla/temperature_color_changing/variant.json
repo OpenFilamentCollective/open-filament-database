@@ -1,0 +1,14 @@
+{
+  "id": "temperature_color_changing",
+  "name": "Temperature Color Changing",
+  "color_hex": [
+    "#FF8400",
+    "#906482",
+    "#F2306E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true,
+    "gradual_color_change": true
+  }
+}

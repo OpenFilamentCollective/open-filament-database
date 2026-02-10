@@ -1,0 +1,10 @@
+{
+  "id": "lw_yellow",
+  "name": "LW- Yellow",
+  "color_hex": "#F3C102",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

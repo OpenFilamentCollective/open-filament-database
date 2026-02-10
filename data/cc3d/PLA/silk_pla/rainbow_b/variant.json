@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_b",
+  "name": "Rainbow B",
+  "color_hex": [
+    "#C80181",
+    "#EEEA44",
+    "#3D9441",
+    "#00A594",
+    "#0353BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

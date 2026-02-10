@@ -1,0 +1,9 @@
+{
+  "id": "extrafill_transparent",
+  "name": "Extrafill \"Transparent\"",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "translucent": true,
+    "filtration_recommended": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "two_color_sky_blue_pink",
+  "name": "Two-color Sky Blue+ Pink",
+  "color_hex": [
+    "#F06E92",
+    "#5FEFF9"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

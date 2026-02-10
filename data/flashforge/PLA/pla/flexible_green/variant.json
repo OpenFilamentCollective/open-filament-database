@@ -1,0 +1,8 @@
+{
+  "id": "flexible_green",
+  "name": "Flexible Green",
+  "color_hex": "#7AB352",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

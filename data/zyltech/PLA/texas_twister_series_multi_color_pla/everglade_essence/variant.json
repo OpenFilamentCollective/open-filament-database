@@ -1,0 +1,12 @@
+{
+  "id": "everglade_essence",
+  "name": "Everglade Essence",
+  "color_hex": [
+    "#06B100",
+    "#0099E6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

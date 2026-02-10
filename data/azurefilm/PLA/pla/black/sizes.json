@@ -1,0 +1,24 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 195,
+    "gtin": "3830063540031",
+    "article_number": "FP171-9005"
+  },
+  {
+    "filament_weight": 2100,
+    "diameter": 1.75,
+    "article_number": "FP471-9005"
+  },
+  {
+    "filament_weight": 10000,
+    "diameter": 1.75,
+    "article_number": "FPB71-9005"
+  },
+  {
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "article_number": "FPM71-9005"
+  }
+]

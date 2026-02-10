@@ -1,0 +1,16 @@
+{
+  "id": "stardust_multicolor_ht",
+  "name": "Stardust Multicolor HT",
+  "color_hex": [
+    "#8A68B5",
+    "#0353BA",
+    "#C75072"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "neon_yellow",
+  "name": "Neon Yellow",
+  "color_hex": "#FFFB00",
+  "color_standards": {
+    "ral": "1026"
+  },
+  "traits": {
+    "neon": true
+  }
+}

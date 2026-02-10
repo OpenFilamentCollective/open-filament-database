@@ -21,7 +21,7 @@
 
     tempLinks.update(items => [
       ...items,
-      { id: Math.max(0, ...items.map(i => i.id)) + 1, value: { store_id: undefined, url: undefined, affiliate: false }},
+      { id: Math.max(0, ...items.map(i => i.id)) + 1, value: { store_id: undefined, url: undefined }},
     ]);
   }
 
@@ -60,6 +60,7 @@
 
   <div class="flex space-x-2">
     <NumberField
+      classes="w-1/2"
       id="filament_weight_{sizeIndex}"
       title="Weight (g)"
       description='Net weight of the filament material (including spool)'
@@ -70,6 +71,7 @@
     />
 
     <NumberField
+      classes="w-1/2"
       id="diameter_{sizeIndex}"
       title="Diameter (mm)"
       description='Filament diameter (typically 1.75mm or 2.85mm)'
@@ -82,6 +84,7 @@
 
   <div class="flex space-x-2">
     <NumberField
+      classes="w-1/2"
       id="empty_spool_weight_{sizeIndex}"
       title="Spool weight (g)"
       description='Weight of the empty spool without any filament'
@@ -91,6 +94,7 @@
     />
 
     <NumberField
+      classes="w-1/2"
       id="spool_core_diameter_{sizeIndex}"
       title="Spool core diameter (mm)"
       description='The diameter of the core of the spool'
@@ -99,18 +103,31 @@
       errorVar={$errors?.sizes?.[sizeIndex]?.spool_core_diameter}
     />
   </div>
-  
-  <div class="flex space-x-2">
+ 
+  <!--<div class="flex space-x-2">
     <TextField
       id="ean_{sizeIndex}"
       title="EAN"
-      description="European Article Number - barcode identifier"
+      description="(deprecated) legacy EAN alias for gtin"
       placeholder="1234567890123"
       bind:formVar={size.ean}
       errorVar={$errors?.sizes?.[sizeIndex]?.ean}
     />
+  </div>-->
 
+  <!-- GTIN field row -->
+  <div class="flex space-x-2">
     <TextField
+      classes="w-1/2"
+      id="gtin_{sizeIndex}"
+      title="GTIN"
+      description="Global Trade Item Number (GTIN-12 or GTIN-13)"
+      placeholder="0123456789012"
+      bind:formVar={size.gtin}
+      errorVar={$errors?.sizes?.[sizeIndex]?.gtin}
+    />
+    <TextField
+      classes="w-1/2"
       id="article_number_{sizeIndex}"
       title="Article number"
       description="Article number - manufacturer's internal product code"
@@ -125,6 +142,13 @@
     description="Select if this size is discontinued"
     bind:formVar={size.discontinued}
     errorVar={$errors?.sizes?.[sizeIndex]?.discontinued}
+  />
+
+  <BigCheck
+    idPrefix="size_spool_refill_"
+    description="Indicates if this size is a refill for a reusable spool (applies to all purchase links)"
+    bind:formVar={size.spool_refill}
+    errorVar={$errors?.sizes?.[sizeIndex]?.spool_refill}
   />
 
 

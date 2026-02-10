@@ -1,0 +1,16 @@
+{
+  "id": "candy_skies_2024_rainbow_series",
+  "name": "Candy Skies 2024 Rainbow Series",
+  "color_hex": [
+    "#0099E6",
+    "#FAD61B",
+    "#77A54B",
+    "#FC8397",
+    "#6C47B2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

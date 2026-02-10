@@ -1,0 +1,13 @@
+{
+  "id": "sour_apple_thermochromic_ht",
+  "name": "Sour Apple Thermochromic HT",
+  "color_hex": [
+    "#1E5A4F",
+    "#C4DC00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "temperature_color_change": true
+  }
+}

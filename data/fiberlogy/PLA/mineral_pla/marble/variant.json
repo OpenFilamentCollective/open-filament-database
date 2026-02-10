@@ -1,0 +1,9 @@
+{
+  "id": "marble",
+  "name": "Marble",
+  "color_hex": "#E0E0DC",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "vaporwave",
+  "name": "Vaporwave",
+  "color_hex": [
+    "#D5447E",
+    "#95B6DE"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

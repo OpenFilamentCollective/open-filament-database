@@ -1,0 +1,12 @@
+{
+  "id": "vanilla_blueberry",
+  "name": "Vanilla Blueberry",
+  "color_hex": [
+    "#EAECF5",
+    "#0078BF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

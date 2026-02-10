@@ -1,0 +1,9 @@
+{
+  "id": "velvet_green",
+  "name": "Velvet Green",
+  "color_hex": "#217165",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

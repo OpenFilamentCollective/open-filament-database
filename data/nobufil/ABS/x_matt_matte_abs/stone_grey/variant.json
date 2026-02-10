@@ -1,0 +1,9 @@
+{
+  "id": "stone_grey",
+  "name": "Stone Grey",
+  "color_hex": "#88899D",
+  "traits": {
+    "matte": true,
+    "filtration_recommended": true
+  }
+}

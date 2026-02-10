@@ -1,0 +1,9 @@
+{
+  "id": "walnut",
+  "name": "Walnut",
+  "color_hex": "#5B4C49",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "metallic_grey",
+  "name": "Metallic Grey",
+  "color_hex": "#959FA1",
+  "color_standards": {
+    "ral": "9023"
+  },
+  "traits": {
+    "industrially_compostable": true
+  }
+}

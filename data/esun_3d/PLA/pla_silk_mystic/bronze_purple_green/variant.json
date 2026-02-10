@@ -1,0 +1,15 @@
+{
+  "id": "bronze_purple_green",
+  "name": "Bronze Purple Green",
+  "color_hex": [
+    "#1D7C6A",
+    "#926043",
+    "#6C47B2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

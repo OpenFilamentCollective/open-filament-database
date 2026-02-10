@@ -1,0 +1,9 @@
+{
+  "id": "tropical_sea_iridescent_translucent",
+  "name": "Tropical Sea Iridescent Translucent",
+  "color_hex": "#00B4BC",
+  "traits": {
+    "translucent": true,
+    "iridescent": true
+  }
+}

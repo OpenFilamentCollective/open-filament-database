@@ -1,0 +1,12 @@
+{
+  "id": "gradient_thistle_purple_ethereal_blue",
+  "name": "Gradient Thistle Purple Ethereal Blue",
+  "color_hex": [
+    "#8A68B5",
+    "#6299DF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

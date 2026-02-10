@@ -1,0 +1,12 @@
+{
+  "id": "hd_glow_alien_green",
+  "name": "HD Glow Alien Green",
+  "color_hex": [
+    "#B4E657",
+    "#EFEADF"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

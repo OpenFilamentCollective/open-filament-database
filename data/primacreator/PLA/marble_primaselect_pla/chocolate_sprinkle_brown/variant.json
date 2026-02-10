@@ -1,0 +1,9 @@
+{
+  "id": "chocolate_sprinkle_brown",
+  "name": "Chocolate Sprinkle Brown",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

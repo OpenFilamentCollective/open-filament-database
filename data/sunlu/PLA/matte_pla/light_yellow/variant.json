@@ -1,0 +1,9 @@
+{
+  "id": "light_yellow",
+  "name": "Light Yellow",
+  "color_hex": "#EBFF57",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "signal_green",
+  "name": "Signal Green",
+  "color_hex": "#7CEF83",
+  "color_standards": {
+    "ral": "6037"
+  },
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

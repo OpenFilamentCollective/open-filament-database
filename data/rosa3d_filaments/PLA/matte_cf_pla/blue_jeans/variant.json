@@ -1,0 +1,9 @@
+{
+  "id": "blue_jeans",
+  "name": "Blue Jeans",
+  "color_hex": "#9DB6D4",
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

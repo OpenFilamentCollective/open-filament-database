@@ -1,0 +1,9 @@
+{
+  "id": "mustard_yellow",
+  "name": "Mustard Yellow",
+  "color_hex": "#E6B535",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "lagoon",
+  "name": "Lagoon",
+  "color_hex": [
+    "#0378D0",
+    "#58C91B"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "brown",
+  "name": "Brown",
+  "color_hex": "#503529",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

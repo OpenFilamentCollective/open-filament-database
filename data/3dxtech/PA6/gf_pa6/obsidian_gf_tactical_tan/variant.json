@@ -1,0 +1,9 @@
+{
+  "id": "obsidian_gf_tactical_tan",
+  "name": "OBSIDIAN GF+ Tactical Tan",
+  "color_hex": "#C6AD74",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

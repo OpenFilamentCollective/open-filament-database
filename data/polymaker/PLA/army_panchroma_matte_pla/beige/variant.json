@@ -1,0 +1,9 @@
+{
+  "id": "beige",
+  "name": "Beige",
+  "color_hex": "#CCA897",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

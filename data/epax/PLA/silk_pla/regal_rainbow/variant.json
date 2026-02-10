@@ -1,0 +1,19 @@
+{
+  "id": "regal_rainbow",
+  "name": "Regal Rainbow",
+  "color_hex": [
+    "#15817B",
+    "#EC0000",
+    "#FF00A2",
+    "#6C47B2",
+    "#D5447E",
+    "#26A648",
+    "#C4DC00",
+    "#0E21AE",
+    "#C0894D"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "purple_gold",
+  "name": "Purple Gold",
+  "color_hex": [
+    "#8846AE",
+    "#E3B145"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "amber_yellow",
+  "name": "Amber Yellow",
+  "color_hex": [
+    "#FADB24",
+    "#FFB356"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

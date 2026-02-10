@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403548",
+    "article_number": "81287",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1867-Filament-Spectrum-ReFill-PLA-SILK-Rainbow-1-75mm-FROST-GLOSS-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991400875",
+    "article_number": "81019",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1743-Filament-Spectrum-PLA-SILK-Rainbow-1-75mm-FROST-GLOSS-1kg.html"
+      }
+    ]
+  }
+]

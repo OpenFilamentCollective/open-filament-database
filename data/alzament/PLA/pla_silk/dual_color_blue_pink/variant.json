@@ -1,0 +1,12 @@
+{
+  "id": "dual_color_blue_pink",
+  "name": "Dual Color Blue-Pink",
+  "color_hex": [
+    "#1f4296",
+    "#c8569c"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

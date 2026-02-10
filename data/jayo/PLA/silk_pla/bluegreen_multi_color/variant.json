@@ -1,0 +1,13 @@
+{
+  "id": "bluegreen_multi_color",
+  "name": "Blue+Green Multi-Color",
+  "color_hex": [
+    "#0CCF81",
+    "#5FBCDD"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

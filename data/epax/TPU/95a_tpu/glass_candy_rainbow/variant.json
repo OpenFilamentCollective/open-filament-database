@@ -1,0 +1,15 @@
+{
+  "id": "glass_candy_rainbow",
+  "name": "Glass Candy Rainbow",
+  "color_hex": [
+    "#62E480",
+    "#FF00A2",
+    "#FFB031",
+    "#7659B5",
+    "#00BFB3"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

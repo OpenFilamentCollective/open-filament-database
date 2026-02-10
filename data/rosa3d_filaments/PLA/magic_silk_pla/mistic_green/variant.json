@@ -1,0 +1,12 @@
+{
+  "id": "mistic_green",
+  "name": "Mistic Green",
+  "color_hex": [
+    "#3D9441",
+    "#545252"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

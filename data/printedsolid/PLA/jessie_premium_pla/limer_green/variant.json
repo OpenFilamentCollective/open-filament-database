@@ -1,0 +1,8 @@
+{
+  "id": "limer_green",
+  "name": "Limer Green",
+  "color_hex": "#7FE200",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "steampunk",
+  "name": "(Steampunk)",
+  "color_hex": "#5C5B59",
+  "traits": {
+    "contains_carbon_fiber": true
+  }
+}

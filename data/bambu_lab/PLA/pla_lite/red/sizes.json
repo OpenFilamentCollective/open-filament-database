@@ -1,0 +1,17 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 220,
+    "spool_core_diameter": 55,
+    "ean": "5907138403756",
+    "purchase_links": [
+      {
+        "store_id": "beehive",
+        "url": "https://www.beehive.com.br/produtos/bambu-pla-lite-vermelho-com-carretel-reutilizavel-bambu1/",
+        "ships_from": "BR",
+        "ships_to": "BR"
+      }
+    ]
+  }
+]

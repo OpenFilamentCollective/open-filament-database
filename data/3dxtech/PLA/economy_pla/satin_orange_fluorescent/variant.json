@@ -1,0 +1,9 @@
+{
+  "id": "satin_orange_fluorescent",
+  "name": "Satin orange-fluorescent",
+  "color_hex": "#F47D59",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "grassgreen",
+  "name": "GrassGreen",
+  "color_hex": "#00A594",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

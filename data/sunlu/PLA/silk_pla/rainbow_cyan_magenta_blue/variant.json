@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_cyan_magenta_blue",
+  "name": "Rainbow (Cyan-Magenta-Blue)",
+  "color_hex": [
+    "#08ABFB",
+    "#00CC00",
+    "#F87FB5"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

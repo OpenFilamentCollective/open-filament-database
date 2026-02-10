@@ -1,0 +1,9 @@
+{
+  "id": "translucent_blood_red_prime",
+  "name": "Translucent Blood Red Prime",
+  "color_hex": "#641501",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

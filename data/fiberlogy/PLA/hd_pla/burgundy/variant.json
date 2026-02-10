@@ -1,0 +1,8 @@
+{
+    "id": "burgundy",
+    "name": "Burgundy",
+    "color_hex": "#971B2F",
+    "traits": {
+        "recyclable": true
+    }
+}

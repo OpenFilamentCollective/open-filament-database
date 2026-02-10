@@ -1,0 +1,14 @@
+{
+  "id": "redyellowgreen_multi_color",
+  "name": "Red+Yellow+Green Multi-Color",
+  "color_hex": [
+    "#CF4042",
+    "#E3B145",
+    "#67D8BC"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "sandstone",
+  "name": "Sandstone",
+  "color_hex": "#C4C67D",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "blushing_violet",
+  "name": "Blushing Violet",
+  "color_hex": [
+    "#F87FB5",
+    "#EE8881"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "machinery_grey_r",
+  "name": "Machinery Grey r",
+  "color_hex": "#697272",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

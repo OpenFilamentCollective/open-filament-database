@@ -1,0 +1,9 @@
+{
+  "id": "marble_dark",
+  "name": "Marble Dark",
+  "color_hex": "#C3CCD5",
+  "traits": {
+    "filtration_recommended": true,
+    "imitates_marble": true
+  }
+}

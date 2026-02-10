@@ -1,0 +1,11 @@
+{
+  "material": "PLA",
+  "default_slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Inland PLA Basic"
+    },
+    "orcaslicer": {
+      "profile_name": "Inland PLA Basic"
+    }
+  }
+}

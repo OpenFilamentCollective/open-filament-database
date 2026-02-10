@@ -1,0 +1,12 @@
+{
+  "id": "frozen",
+  "name": "Frozen",
+  "color_hex": [
+    "#0099E6",
+    "#F5F5F5"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

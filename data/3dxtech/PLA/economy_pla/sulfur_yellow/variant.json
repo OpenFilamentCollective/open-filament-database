@@ -1,0 +1,8 @@
+{
+  "id": "sulfur_yellow",
+  "name": "Sulfur-yellow",
+  "color_hex": "#FFFB00",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

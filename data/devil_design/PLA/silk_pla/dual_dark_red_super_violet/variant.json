@@ -1,0 +1,12 @@
+{
+  "id": "dual_dark_red_super_violet",
+  "name": "DUAL DARK RED + SUPER VIOLET",
+  "color_hex": [
+    "#CC393F",
+    "#0353BA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

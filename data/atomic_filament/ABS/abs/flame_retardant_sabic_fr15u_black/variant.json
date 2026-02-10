@@ -1,0 +1,9 @@
+{
+  "id": "flame_retardant_sabic_fr15u_black",
+  "name": "FLAME RETARDANT Sabic FR15U Black",
+  "color_hex": "#000000",
+  "traits": {
+    "filtration_recommended": true,
+    "self_extinguishing": true
+  }
+}

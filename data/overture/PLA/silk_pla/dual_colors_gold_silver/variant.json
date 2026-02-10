@@ -1,0 +1,13 @@
+{
+  "id": "dual_colors_gold_silver",
+  "name": "Dual Colors Gold-Silver",
+  "color_hex": [
+    "#F6C500",
+    "#C9D0D4"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

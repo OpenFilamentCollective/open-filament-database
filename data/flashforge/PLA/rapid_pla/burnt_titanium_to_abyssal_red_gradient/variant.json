@@ -1,0 +1,12 @@
+{
+  "id": "burnt_titanium_to_abyssal_red_gradient",
+  "name": "Burnt Titanium To Abyssal Red Gradient",
+  "color_hex": [
+    "#1E2F5A",
+    "#835476"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

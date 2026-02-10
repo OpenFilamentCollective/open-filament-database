@@ -1,0 +1,9 @@
+{
+  "id": "topaz",
+  "name": "Topaz",
+  "color_hex": "#144F3B",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "red_mh_build_series",
+  "name": "Red MH Build Series",
+  "color_hex": "#E20010",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

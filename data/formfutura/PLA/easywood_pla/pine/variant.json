@@ -1,0 +1,9 @@
+{
+  "id": "pine",
+  "name": "Pine",
+  "color_hex": "#C6AD74",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true
+  }
+}

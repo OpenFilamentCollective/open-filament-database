@@ -1,0 +1,8 @@
+{
+  "id": "ochre",
+  "name": "Ochre",
+  "color_hex": "#EA9E3F",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

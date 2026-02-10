@@ -1,0 +1,9 @@
+{
+  "id": "lw_natural",
+  "name": "LW Natural",
+  "color_hex": "#DFDFD3",
+  "traits": {
+    "foaming": true,
+    "without_pigments": true
+  }
+}

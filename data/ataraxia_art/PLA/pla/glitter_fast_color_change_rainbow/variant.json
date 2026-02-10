@@ -1,0 +1,16 @@
+{
+  "id": "glitter_fast_color_change_rainbow",
+  "name": "Glitter Fast Color Change Rainbow",
+  "color_hex": [
+    "#41A840",
+    "#C6F666",
+    "#E72F1D",
+    "#F300EA",
+    "#0353BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

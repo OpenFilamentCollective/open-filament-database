@@ -1,0 +1,50 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175657015",
+    "article_number": "80002",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-502-Filament-Spectrum-PLA-Premium-1-75mm-DEEP-BLACK-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175658401",
+    "article_number": "80123",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-624-Filament-Spectrum-PLA-Premium-1-75mm-DEEP-BLACK-2kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175653093",
+    "article_number": "80612",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1345-Filament-Spectrum-PLA-Premium-1-75mm-DEEP-BLACK-4-5kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654472",
+    "article_number": "80669",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1452-Filament-Spectrum-PLA-Premium-1-75mm-DEEP-BLACK-8kg.html"
+      }
+    ]
+  }
+]

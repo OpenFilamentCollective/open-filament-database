@@ -1,0 +1,11 @@
+{
+  "id": "green",
+  "name": "Green",
+  "color_hex": [
+    "#206233",
+    "#E5F1EA"
+  ],
+  "traits": {
+    "illuminescent_color_change": true
+  }
+}

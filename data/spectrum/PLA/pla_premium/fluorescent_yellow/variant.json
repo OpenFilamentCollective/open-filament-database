@@ -1,0 +1,9 @@
+{
+  "id": "fluorescent_yellow",
+  "name": "Fluorescent Yellow",
+  "color_hex": "#E4FF33",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

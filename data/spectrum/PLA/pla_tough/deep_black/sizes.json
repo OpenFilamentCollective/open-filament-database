@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175651686",
+    "article_number": "80193",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1160-Filament-Spectrum-PLA-Tough-1-75mm-DEEP-BLACK-1kg-RAL-9017.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "ean": "5903175651723",
+    "article_number": "80197",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1164-Filament-Spectrum-PLA-Tough-2-85mm-DEEP-BLACK-1kg-RAL-9017.html"
+      }
+    ]
+  }
+]

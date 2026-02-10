@@ -1,0 +1,12 @@
+{
+  "id": "cotton_candy",
+  "name": "Cotton Candy",
+  "color_hex": [
+    "#D5447E",
+    "#9C7320"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

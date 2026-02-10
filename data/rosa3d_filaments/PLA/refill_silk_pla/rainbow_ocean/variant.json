@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_ocean",
+  "name": "Rainbow Ocean",
+  "color_hex": [
+    "#39B9DB",
+    "#80E0A7",
+    "#006272"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

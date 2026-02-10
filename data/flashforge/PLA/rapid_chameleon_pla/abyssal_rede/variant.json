@@ -1,0 +1,9 @@
+{
+  "id": "abyssal_rede",
+  "name": "Abyssal Rede",
+  "color_hex": "#771B6B",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

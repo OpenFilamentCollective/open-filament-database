@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_dragon_palace",
+  "name": "Rainbow Dragon Palace",
+  "color_hex": [
+    "#e3ab6e",
+    "#a4d8dd",
+    "#cd6310",
+    "#da7880"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

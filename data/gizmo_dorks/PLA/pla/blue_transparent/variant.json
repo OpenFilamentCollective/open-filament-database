@@ -1,0 +1,9 @@
+{
+  "id": "blue_transparent",
+  "name": "Blue (Transparent)",
+  "color_hex": "#2E56F1",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

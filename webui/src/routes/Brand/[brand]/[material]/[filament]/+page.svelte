@@ -27,8 +27,8 @@
     >
       <FilamentForm
         defaultForm={data.filamentForm}
-        brandName={stripOfIllegalChars(data.brandData.brand)}
-        materialName={data.materialData.material}
+        brandId={data.brandData.id}
+        materialId={data.materialData.material}
         formType={'edit'} />
     </EditModal>
     <EditModal
@@ -37,10 +37,10 @@
       spanText="Add variant"
     >
       <VariantForm
-        defaultForm={data.filamentVariantForm}
-        brandName={stripOfIllegalChars(data.brandData.brand)}
-        materialName={data.materialData.material}
-        filamentName={data.filamentData.name}
+        defaultForm={data.variantForm}
+        brandId={data.brandData.id}
+        materialId={data.materialData.material}
+        filamentId={data.filamentData.id}
         formType={'create'}
         stores={data.stores} />
     </EditModal>
@@ -53,9 +53,9 @@
       {#if data?.filamentData?.colors?.[colorKey]}
         <FilamentItem
           color={data.filamentData.colors[colorKey]}
-          brandName={stripOfIllegalChars(data.brandData.brand)}
-          materialName={data.materialData.material}
-          filamentName={data.filamentData.name} />
+          brandId={data.brandData.id}
+          materialId={data.materialData.material}
+          filamentId={data.filamentData.id} />
       {/if}
     {/each}
   </div>

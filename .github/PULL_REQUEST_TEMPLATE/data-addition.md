@@ -12,9 +12,9 @@
 
 
 ## Validation Checklist
-- [ ] Ran `python data_validator.py --folder-names`
-- [ ] Ran `python data_validator.py --json-files` 
-- [ ] Ran `python data_validator.py --store-ids`
+- [ ] Ran `python -m ofd validate --folder-names`
+- [ ] Ran `python -m ofd validate --json-files`
+- [ ] Ran `python -m ofd validate --store-ids`
 - [ ] All validation checks pass
 - [ ] Used proper folder structure
 - [ ] Used correct JSON schema format

@@ -1,0 +1,9 @@
+{
+  "id": "electric_indigo",
+  "name": "Electric Indigo",
+  "color_hex": "#6C47B2",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

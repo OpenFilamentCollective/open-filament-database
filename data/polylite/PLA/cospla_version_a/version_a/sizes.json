@@ -1,0 +1,22 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-cospla?variant=4106817893176&?"
+      }
+    ]
+  },
+  {
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-cospla?variant=41068179619897&"
+      }
+    ]
+  }
+]

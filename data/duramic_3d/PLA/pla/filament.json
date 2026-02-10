@@ -1,0 +1,8 @@
+{
+    "id": "pla",
+    "name": "PLA",
+    "diameter_tolerance": 0.05,
+    "density": 1.3,
+    "max_dry_temperature": 50,
+    "data_sheet_url": "https://cdn.shopifycdn.net/s/files/1/0279/4933/4599/files/Duramic_PLA_TDS_EN_V1.1.pdf?v=1629881206"
+}

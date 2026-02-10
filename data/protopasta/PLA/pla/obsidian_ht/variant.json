@@ -1,0 +1,10 @@
+{
+  "id": "obsidian_ht",
+  "name": "Obsidian HT",
+  "color_hex": "#55555E",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

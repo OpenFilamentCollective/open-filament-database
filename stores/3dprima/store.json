@@ -1,8 +1,8 @@
 {
-  "id": "3dprima",
-  "name": "3D Prima",
-  "storefront_url": "https://www.3dprima.com/",
-  "logo": "3dprima.png",
-  "ships_from": [],
-  "ships_to": []
+    "id": "3dprima",
+    "name": "3D Prima",
+    "storefront_url": "https://www.3dprima.com/",
+    "logo": "logo.png",
+    "ships_from": [],
+    "ships_to": []
 }

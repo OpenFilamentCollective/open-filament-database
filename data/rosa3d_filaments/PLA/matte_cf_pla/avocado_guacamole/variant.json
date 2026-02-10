@@ -1,0 +1,9 @@
+{
+  "id": "avocado_guacamole",
+  "name": "Avocado Guacamole",
+  "color_hex": "#70A641",
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

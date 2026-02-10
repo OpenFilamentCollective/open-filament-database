@@ -1,0 +1,12 @@
+{
+  "id": "pink_white_gradient",
+  "name": "Pink White Gradient",
+  "color_hex": [
+    "#FF67F5",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "winter",
+  "name": "Winter",
+  "color_hex": [
+    "#9EF9FF",
+    "#D3C6FF"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

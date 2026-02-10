@@ -1,0 +1,9 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "id": "high_speed_matte_pla",
+    "name": "High Speed Matte PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.24,
+    "max_dry_temperature": 55,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0909/3450/9859/files/PLA_TDS.pdf?v=1758968249",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0909/3450/9859/files/57MSDS_SUNLU_LW-PLA_filament_20250927180059.pdf?v=1758968240"
+}

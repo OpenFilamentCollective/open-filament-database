@@ -1,0 +1,9 @@
+{
+  "id": "periwinkle",
+  "name": "Periwinkle",
+  "color_hex": "#7894F2",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

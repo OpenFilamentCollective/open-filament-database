@@ -1,0 +1,8 @@
+{
+  "id": "boun_natural",
+  "name": "BOUN Natural",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

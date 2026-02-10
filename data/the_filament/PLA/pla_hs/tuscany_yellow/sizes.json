@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991406273",
+    "article_number": "TF-24077",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2647-The-Filament-ReFill-PLA-HS-1-75mm-TUSCANY-YELLOW-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991405405",
+    "article_number": "TF-24036",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-2617-The-Filament-PLA-HS-1-75mm-TUSCANY-YELLOW-1kg.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "id": "filament",
+  "name": "Filament",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "water_soluble": true
+  }
+}

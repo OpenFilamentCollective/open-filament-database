@@ -1,0 +1,13 @@
+{
+  "id": "dual_sunset_gold_red",
+  "name": "Dual Sunset Gold Red",
+  "color_hex": [
+    "#F6C500",
+    "#E20010"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "purple_eater",
+  "name": "Purple Eater",
+  "color_hex": "#7659B5",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

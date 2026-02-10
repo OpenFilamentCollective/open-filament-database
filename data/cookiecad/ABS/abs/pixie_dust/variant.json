@@ -1,0 +1,9 @@
+{
+  "id": "pixie_dust",
+  "name": "Pixie Dust",
+  "color_hex": "#FF00A2",
+  "traits": {
+    "filtration_recommended": true,
+    "iridescent": true
+  }
+}

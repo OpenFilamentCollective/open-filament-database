@@ -1,0 +1,8 @@
+{
+  "id": "wood_light_brown",
+  "name": "Wood Light Brown",
+  "color_hex": "#D8C094",
+  "traits": {
+    "contains_wood": true
+  }
+}

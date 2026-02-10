@@ -1,0 +1,9 @@
+{
+  "id": "alexandrite",
+  "name": "Alexandrite",
+  "color_hex": "#6E8451",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "obsidian_gf_orange",
+  "name": "OBSIDIAN GF+ Orange",
+  "color_hex": "#E03F26",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

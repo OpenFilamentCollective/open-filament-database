@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403975",
+    "article_number": "81330",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1906-Filament-Spectrum-ReFill-ASA-275-1-75mm-LION-ORANGE-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650153",
+    "article_number": "80304",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1212-Filament-Spectrum-ASA-275-1-75-mm-Lion-Orange-1kg.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "id": "gold_and_rose_2_in_1",
+  "name": "Gold and Rose 2 in 1",
+  "color_hex": [
+    "#FFCB47",
+    "#C75072"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

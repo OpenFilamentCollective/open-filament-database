@@ -1,0 +1,9 @@
+{
+  "id": "matt_black",
+  "name": "Matt Black",
+  "color_hex": "#26272B",
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

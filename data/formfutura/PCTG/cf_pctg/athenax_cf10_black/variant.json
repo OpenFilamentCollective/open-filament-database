@@ -1,0 +1,9 @@
+{
+  "id": "athenax_cf10_black",
+  "name": "AthenaX CF10 Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

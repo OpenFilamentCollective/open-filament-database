@@ -1,0 +1,9 @@
+{
+  "id": "earth_brown",
+  "name": "Earth Brown",
+  "color_hex": "#7C594A",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

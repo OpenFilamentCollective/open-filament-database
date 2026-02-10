@@ -1,0 +1,8 @@
+{
+  "id": "wood_dark_brown",
+  "name": "Wood Dark Brown",
+  "color_hex": "#CCA482",
+  "traits": {
+    "contains_wood": true
+  }
+}

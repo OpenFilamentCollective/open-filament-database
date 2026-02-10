@@ -1,0 +1,9 @@
+{
+  "id": "red_transparent",
+  "name": "Red Transparent",
+  "color_hex": "#C01616",
+  "traits": {
+    "translucent": true,
+    "home_compostable": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "neon_orange",
+  "name": "Neon Orange",
+  "color_hex": "#F67405",
+  "color_standards": {
+    "ral": "2005"
+  },
+  "traits": {
+    "neon": true
+  }
+}

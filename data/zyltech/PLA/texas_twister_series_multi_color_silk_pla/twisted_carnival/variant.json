@@ -1,0 +1,14 @@
+{
+  "id": "twisted_carnival",
+  "name": "Twisted Carnival",
+  "color_hex": [
+    "#E72F1D",
+    "#0353BA",
+    "#F3C102"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

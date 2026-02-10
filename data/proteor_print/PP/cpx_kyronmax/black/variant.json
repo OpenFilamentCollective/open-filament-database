@@ -1,0 +1,11 @@
+{
+  "id": "black",
+  "name": "Black",
+  "color_hex": [
+    "#1a1a1a"
+  ],
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

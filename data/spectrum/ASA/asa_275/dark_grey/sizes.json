@@ -1,0 +1,26 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403937",
+    "article_number": "81326",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1902-Filament-Spectrum-ReFill-ASA-275-1-75mm-DARK-GREY-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175650108",
+    "article_number": "80301",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1209-Filament-Spectrum-ASA-275-1-75mm-DARK-GREY-1kg-RAL-7011.html"
+      }
+    ]
+  }
+]

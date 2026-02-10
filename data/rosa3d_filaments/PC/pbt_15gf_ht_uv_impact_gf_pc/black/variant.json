@@ -1,0 +1,9 @@
+{
+  "id": "black",
+  "name": "Black",
+  "color_hex": "#292824",
+  "traits": {
+    "high_temperature": true,
+    "contains_glass_fiber": true
+  }
+}

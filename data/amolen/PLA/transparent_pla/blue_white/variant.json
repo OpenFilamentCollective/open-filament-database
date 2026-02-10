@@ -1,0 +1,13 @@
+{
+  "id": "blue_white",
+  "name": "Blue White",
+  "color_hex": [
+    "#FFFFFF",
+    "#1ADAFB"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

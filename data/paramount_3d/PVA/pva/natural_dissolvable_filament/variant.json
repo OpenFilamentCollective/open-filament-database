@@ -1,0 +1,8 @@
+{
+  "id": "natural_dissolvable_filament",
+  "name": "(Natural) Dissolvable Filament",
+  "color_hex": "#DFDFD3",
+  "traits": {
+    "without_pigments": true
+  }
+}

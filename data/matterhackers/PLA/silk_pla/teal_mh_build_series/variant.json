@@ -1,0 +1,9 @@
+{
+  "id": "teal_mh_build_series",
+  "name": "Teal MH Build Series",
+  "color_hex": "#0099E6",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "lake_blue",
+  "name": "Lake Blue",
+  "color_hex": "#2E56F1",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

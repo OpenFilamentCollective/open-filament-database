@@ -1,0 +1,10 @@
+{
+  "id": "dark_green",
+  "name": "Dark Green",
+  "color_hex": "#41A840",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

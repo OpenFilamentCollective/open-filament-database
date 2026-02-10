@@ -1,0 +1,9 @@
+{
+  "id": "wood_brown",
+  "name": "Wood Brown",
+  "color_hex": "#AD7441",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

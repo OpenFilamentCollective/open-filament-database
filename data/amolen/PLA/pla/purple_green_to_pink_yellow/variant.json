@@ -1,0 +1,13 @@
+{
+  "id": "purple_green_to_pink_yellow",
+  "name": "Purple Green to Pink Yellow",
+  "color_hex": [
+    "#DB3FA9",
+    "#9537CB",
+    "#346CE3",
+    "#61C680"
+  ],
+  "traits": {
+    "temperature_color_change": true
+  }
+}

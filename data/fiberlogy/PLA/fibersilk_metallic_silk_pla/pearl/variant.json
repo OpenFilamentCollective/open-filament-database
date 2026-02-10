@@ -1,0 +1,9 @@
+{
+  "id": "pearl",
+  "name": "Pearl",
+  "color_hex": "#F5F5F4",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991405030",
+    "article_number": "81430",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1988-Filament-Spectrum-ReFill-PLA-Magic-SILK-1-75mm-MYSTIC-ORCHID-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991404569",
+    "article_number": "81415",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1973-Filament-Spectrum-PLA-Magic-SILK-1-75mm-MYSTIC-ORCHID-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "ean": "5905991404927",
+    "article_number": "81400",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1960-Filament-Spectrum-PLA-Magic-SILK-1-75mm-MYSTIC-ORCHID-0-25kg.html"
+      }
+    ]
+  }
+]

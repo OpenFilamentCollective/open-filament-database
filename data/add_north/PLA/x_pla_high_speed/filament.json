@@ -1,0 +1,7 @@
+{
+    "id": "x_pla_high_speed",
+    "name": "X-PLA High Speed",
+    "diameter_tolerance": 0.02,
+    "density": 1.26,
+    "max_dry_temperature": 50
+}

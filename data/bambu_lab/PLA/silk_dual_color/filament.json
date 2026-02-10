@@ -1,0 +1,16 @@
+{
+    "id": "silk_dual_color",
+    "name": "Silk Dual Color",
+    "diameter_tolerance": 0.0,
+    "density": 1.32,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Silk_Dual_Color_Technical_Data_Sheet.pdf?v=1709276099",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Silk_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PLA Silk"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PLA Silk"
+        }
+    }
+}

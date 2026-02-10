@@ -1,0 +1,14 @@
+{
+  "id": "tricolor_gold_copper_blue",
+  "name": "Tricolor Gold Copper Blue",
+  "color_hex": [
+    "#E3B145",
+    "#0353BA",
+    "#904029"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

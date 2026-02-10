@@ -1,0 +1,15 @@
+{
+  "id": "rainbow_blue_purple_magenta",
+  "name": "Rainbow (Blue-Purple-Magenta)",
+  "color_hex": [
+    "#82E3EC",
+    "#0095FF",
+    "#C80181",
+    "#A67DFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

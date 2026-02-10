@@ -1,0 +1,8 @@
+{
+  "id": "esd",
+  "name": "ESD",
+  "color_hex": "#000000",
+  "traits": {
+    "conductive": true
+  }
+}

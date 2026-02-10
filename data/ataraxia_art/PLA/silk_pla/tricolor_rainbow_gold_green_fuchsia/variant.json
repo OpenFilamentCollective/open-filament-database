@@ -1,0 +1,14 @@
+{
+  "id": "tricolor_rainbow_gold_green_fuchsia",
+  "name": "Tricolor Rainbow Gold Green Fuchsia",
+  "color_hex": [
+    "#E3B145",
+    "#2D9E59",
+    "#C80181"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "grey",
+  "name": "Grey",
+  "color_hex": "#A2AAAD",
+  "traits": {
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

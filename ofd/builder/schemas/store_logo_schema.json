@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "Store Logo",
+    "description": "Schema for store logo metadata endpoint",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique logo identifier generated from store name, logo filename, and UUID"
+        },
+        "slug": {
+            "type": "string",
+            "description": "URL-friendly identifier (same as id for logo resources)"
+        },
+        "store_id": {
+            "type": "string",
+            "description": "The store ID this logo belongs to"
+        },
+        "store_name": {
+            "type": "string",
+            "description": "The name of the store"
+        },
+        "filename": {
+            "type": "string",
+            "description": "Original logo filename (e.g., logo.png)",
+            "pattern": "^logo\\.(png|jpg|svg)$"
+        },
+        "extension": {
+            "type": "string",
+            "description": "File extension of the logo",
+            "enum": ["png", "jpg", "svg"]
+        },
+        "logo_file": {
+            "type": "string",
+            "description": "The generated logo filename in the API (e.g., {logo_id}.{ext})"
+        }
+    },
+    "required": [
+        "id",
+        "slug",
+        "store_id",
+        "store_name",
+        "filename",
+        "extension",
+        "logo_file"
+    ],
+    "additionalProperties": false
+}

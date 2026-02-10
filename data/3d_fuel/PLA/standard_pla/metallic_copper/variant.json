@@ -1,0 +1,8 @@
+{
+  "id": "metallic_copper",
+  "name": "Metallic Copper",
+  "color_hex": "#C25C56",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

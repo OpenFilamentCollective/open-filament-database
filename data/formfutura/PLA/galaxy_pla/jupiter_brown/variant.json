@@ -1,0 +1,9 @@
+{
+  "id": "jupiter_brown",
+  "name": "Jupiter Brown",
+  "color_hex": "#C38C7B",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

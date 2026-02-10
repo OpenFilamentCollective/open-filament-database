@@ -1,0 +1,50 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5903175658333",
+    "article_number": "80108",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-607-Filament-Spectrum-PLA-Pro-1-75mm-NAVY-BLUE-1kg-RAL-5002.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "ean": "5903175654366",
+    "article_number": "80623",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1442-Filament-Spectrum-PLA-Pro-1-75mm-NAVY-BLUE-2kg-RAL-5002.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "ean": "5903175654199",
+    "article_number": "80627",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1435-Filament-Spectrum-PLA-Pro-1-75mm-NAVY-BLUE-4-5kg-RAL-5002.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "ean": "5903175654540",
+    "article_number": "80676",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1459-Filament-Spectrum-PLA-Pro-1-75mm-NAVY-BLUE-8kg-RAL-5002.html"
+      }
+    ]
+  }
+]

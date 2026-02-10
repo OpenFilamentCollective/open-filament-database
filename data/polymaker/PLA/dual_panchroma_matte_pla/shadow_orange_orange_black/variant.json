@@ -1,0 +1,13 @@
+{
+  "id": "shadow_orange_orange_black",
+  "name": "Shadow Orange Orange Black",
+  "color_hex": [
+    "#F67405",
+    "#000000"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

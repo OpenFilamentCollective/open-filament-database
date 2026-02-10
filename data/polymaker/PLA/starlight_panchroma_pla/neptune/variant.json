@@ -1,0 +1,9 @@
+{
+  "id": "neptune",
+  "name": "Neptune",
+  "color_hex": "#2D889E",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

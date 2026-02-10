@@ -1,0 +1,13 @@
+{
+  "id": "abyssal_purple",
+  "name": "Abyssal Purple",
+  "color_hex": [
+    "#332120",
+    "#663D7E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

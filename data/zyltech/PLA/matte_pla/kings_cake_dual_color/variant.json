@@ -1,0 +1,13 @@
+{
+  "id": "kings_cake_dual_color",
+  "name": "Kings Cake Dual Color",
+  "color_hex": [
+    "#B645A9",
+    "#06B100"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

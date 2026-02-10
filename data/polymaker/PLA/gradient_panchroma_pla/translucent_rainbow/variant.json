@@ -1,0 +1,16 @@
+{
+  "id": "translucent_rainbow",
+  "name": "Translucent Rainbow",
+  "color_hex": [
+    "#0095FF",
+    "#F00C00",
+    "#F3C102",
+    "#60AB61",
+    "#F67405"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

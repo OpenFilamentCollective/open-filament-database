@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_black_purple",
+  "name": "Dual Color (Black Purple)",
+  "color_hex": [
+    "#9761B5",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "crystal_tropical_dream",
+  "name": "Crystal Tropical Dream",
+  "color_hex": [
+    "#F5E457",
+    "#62E480",
+    "#0085CA",
+    "#C63DBA",
+    "#FF5A00"
+  ],
+  "traits": {
+    "translucent": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "low_odor_abs",
+  "name": "Low Odor ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.04,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110
+}

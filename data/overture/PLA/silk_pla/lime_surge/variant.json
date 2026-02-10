@@ -1,0 +1,12 @@
+{
+  "id": "lime_surge",
+  "name": "Lime Surge",
+  "color_hex": [
+    "#D0FF61",
+    "#62E480"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

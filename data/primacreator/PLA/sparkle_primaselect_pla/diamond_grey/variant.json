@@ -1,0 +1,9 @@
+{
+  "id": "diamond_grey",
+  "name": "Diamond Grey",
+  "color_hex": "#45444A",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

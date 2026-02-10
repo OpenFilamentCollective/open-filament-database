@@ -1,0 +1,9 @@
+{
+  "id": "traffic",
+  "name": "Traffic",
+  "color_hex": "#E6B535",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

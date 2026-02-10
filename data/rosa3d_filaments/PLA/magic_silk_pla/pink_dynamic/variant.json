@@ -1,0 +1,12 @@
+{
+  "id": "pink_dynamic",
+  "name": "Pink Dynamic",
+  "color_hex": [
+    "#FD64B3",
+    "#8D65C7"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

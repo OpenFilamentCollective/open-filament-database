@@ -1,0 +1,16 @@
+{
+  "id": "fading_rainbow_multicolor_ht",
+  "name": "Fading Rainbow Multicolor HT",
+  "color_hex": [
+    "#9EF9FF",
+    "#DABCC8",
+    "#ADD8AB",
+    "#8ED9F9"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "gradual_color_change": true
+  }
+}

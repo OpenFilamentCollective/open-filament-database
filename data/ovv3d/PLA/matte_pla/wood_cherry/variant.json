@@ -1,0 +1,10 @@
+{
+  "id": "wood_cherry",
+  "name": "Wood Cherry",
+  "color_hex": "#8E5850",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "contains_wood": true
+  }
+}

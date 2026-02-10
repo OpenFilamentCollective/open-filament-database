@@ -1,0 +1,12 @@
+{
+  "id": "green_to_yellow",
+  "name": "Green to Yellow",
+  "color_hex": [
+    "#FBE200",
+    "#91C500"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "temperature_color_change": true
+  }
+}

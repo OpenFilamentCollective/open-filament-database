@@ -1,0 +1,14 @@
+{
+  "id": "colormorph_yellow_pink",
+  "name": "ColorMorph Yellow & Pink",
+  "color_hex": [
+    "#FCE575",
+    "#F79DBC"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

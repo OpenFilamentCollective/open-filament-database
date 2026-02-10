@@ -1,0 +1,9 @@
+{
+  "id": "easy_transparent_burgundy",
+  "name": "Easy - Transparent Burgundy",
+  "color_hex": "#861D2B",
+  "traits": {
+    "translucent": true,
+    "filtration_recommended": true
+  }
+}

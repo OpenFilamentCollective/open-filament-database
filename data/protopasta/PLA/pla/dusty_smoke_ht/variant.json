@@ -1,0 +1,14 @@
+{
+  "id": "dusty_smoke_ht",
+  "name": "Dusty Smoke HT",
+  "color_hex": [
+    "#9F9F9F",
+    "#727376"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

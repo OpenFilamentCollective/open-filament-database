@@ -1,0 +1,12 @@
+{
+  "id": "red_blue",
+  "name": "Red & Blue",
+  "color_hex": [
+    "#4921C1",
+    "#C80181"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

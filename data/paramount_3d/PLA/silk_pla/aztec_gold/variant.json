@@ -1,0 +1,12 @@
+{
+  "id": "aztec_gold",
+  "name": "(Aztec Gold)",
+  "color_hex": [
+    "#F3B400",
+    "#AB2614"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

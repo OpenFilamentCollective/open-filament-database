@@ -1,0 +1,9 @@
+{
+  "id": "vertigo_chocolate",
+  "name": "Vertigo Chocolate",
+  "color_hex": "#6E4325",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

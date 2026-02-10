@@ -1,0 +1,13 @@
+{
+  "id": "partly_cloudy_blue_multicolor_ht",
+  "name": "Partly Cloudy Blue Multicolor HT",
+  "color_hex": [
+    "#0378D0",
+    "#39B9DB"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "gradual_color_change": true
+  }
+}

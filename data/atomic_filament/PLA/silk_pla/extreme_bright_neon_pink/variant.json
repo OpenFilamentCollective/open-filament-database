@@ -1,0 +1,10 @@
+{
+  "id": "extreme_bright_neon_pink",
+  "name": "Extreme Bright Neon Pink",
+  "color_hex": "#FF72B6",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "neon": true
+  }
+}

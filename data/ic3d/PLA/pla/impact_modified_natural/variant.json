@@ -1,0 +1,9 @@
+{
+  "id": "impact_modified_natural",
+  "name": "Impact Modified Natural",
+  "color_hex": "#FADCA4",
+  "traits": {
+    "industrially_compostable": true,
+    "without_pigments": true
+  }
+}

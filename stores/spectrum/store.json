@@ -1,13 +1,13 @@
 {
-  "id": "spectrum",
-  "name": "Spectrum",
-  "storefront_url": "https://shop.spectrumfilaments.com/",
-  "logo": "spectrum.png",
-  "ships_from": [
-    "PL"
-  ],
-  "ships_to": [
-    "EU",
-    "UK"
-  ]
+    "id": "spectrum",
+    "name": "Spectrum",
+    "storefront_url": "https://shop.spectrumfilaments.com/",
+    "logo": "logo.png",
+    "ships_from": [
+        "PL"
+    ],
+    "ships_to": [
+        "EU",
+        "UK"
+    ]
 }

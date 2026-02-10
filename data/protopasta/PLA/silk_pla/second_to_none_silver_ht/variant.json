@@ -1,0 +1,11 @@
+{
+  "id": "second_to_none_silver_ht",
+  "name": "Second to None Silver HT",
+  "color_hex": "#A8B0BD",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true,
+    "glitter": true
+  }
+}

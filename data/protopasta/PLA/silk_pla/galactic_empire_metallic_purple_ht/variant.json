@@ -1,0 +1,11 @@
+{
+  "id": "galactic_empire_metallic_purple_ht",
+  "name": "Galactic Empire Metallic Purple HT",
+  "color_hex": "#6C47B2",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true,
+    "glitter": true
+  }
+}

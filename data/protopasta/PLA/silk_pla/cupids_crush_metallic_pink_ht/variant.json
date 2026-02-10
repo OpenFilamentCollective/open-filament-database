@@ -1,0 +1,11 @@
+{
+  "id": "cupids_crush_metallic_pink_ht",
+  "name": "Cupid's Crush Metallic Pink HT",
+  "color_hex": "#FF72B6",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true,
+    "glitter": true
+  }
+}

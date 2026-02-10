@@ -1,0 +1,25 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "5905991403777",
+    "article_number": "81310",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1840-Filament-Spectrum-ReFill-PLA-SILK-1-75mm-AMETHYST-VIOLET-1kg.html"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "80512",
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/product-eng-1299-Filament-Spectrum-SILK-PLA-1-75mm-AMETHYST-VIOLET-1kg.html"
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "id": "dark_twinkling_gold",
+  "name": "Dark Twinkling Gold",
+  "color_hex": [
+    "#1C393D",
+    "#AF7D00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "glitter": true
+  }
+}

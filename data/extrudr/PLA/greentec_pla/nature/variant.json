@@ -1,0 +1,11 @@
+{
+  "id": "nature",
+  "name": "Nature",
+  "color_hex": "#F1E6B2",
+  "color_standards": {
+    "ral": "1013"
+  },
+  "traits": {
+    "industrially_compostable": true
+  }
+}

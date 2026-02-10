@@ -1,0 +1,10 @@
+{
+    "id": "isanmate",
+    "name": "iSANMATE",
+    "storefront_url": "https://isanmate.store/",
+    "logo": "logo.jpg",
+    "ships_from": [
+        "HK"
+    ],
+    "ships_to": []
+}

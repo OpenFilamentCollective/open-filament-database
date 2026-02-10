@@ -1,0 +1,9 @@
+{
+  "id": "metal_grey",
+  "name": "Metal Grey",
+  "color_hex": "#4C4E56",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,8 +1,12 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "definitions": {
         "string_limit": {
             "maxLength": 1000
+        },
+        "material_type": {
+            "$ref": "./material_types_schema.json"
         },
         "specific_slicer_settings": {
             "type": "object",
@@ -15,6 +19,18 @@
                 "overrides": {
                     "type": "object",
                     "description": "Key-value pairs for settings that should be overridden for this filament"
+                },
+                "first_layer_bed_temp": {
+                    "type": "integer"
+                },
+                "first_layer_nozzle_temp": {
+                    "type": "integer"
+                },
+                "bed_temp": {
+                    "type": "integer"
+                },
+                "nozzle_temp": {
+                    "type": "integer"
                 }
             },
             "required": [
@@ -38,7 +54,7 @@
                 },
                 "generic": {
                     "type": "object",
-                    "description": "Generic options that will automatically be mapped to the correct config definition for each slicer. Slicer specific settings are applied first, then these are applied on top.",
+                    "description": "Generic options that will automatically be mapped to the correct config definition for each slicer. Slicer specific settings are applied first, then these are applied on top",
                     "properties": {
                         "first_layer_bed_temp": {
                             "type": "integer"
@@ -60,9 +76,14 @@
     },
     "properties": {
         "material": {
-            "type": "string",
             "description": "The material type of the filament",
-            "$ref": "#/definitions/string_limit"
+            "$ref": "#/definitions/material_type"
+        },
+        "material_class": {
+            "type": "string",
+            "enum": ["FFF", "SLA"],
+            "default": "FFF",
+            "description": "The class of the material (FFF for filament, SLA for resin)"
         },
         "default_max_dry_temperature": {
             "type": "integer"

@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_candy",
+  "name": "Rainbow Candy",
+  "color_hex": [
+    "#FCE575",
+    "#FF9C66",
+    "#6299DF",
+    "#6C5BB1",
+    "#41A840"
+  ],
+  "traits": {
+    "industrially_compostable": true
+  }
+}

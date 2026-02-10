@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_melody",
+  "name": "Rainbow Melody",
+  "color_hex": [
+    "#F5B797",
+    "#F4D9DE",
+    "#9DBD8B",
+    "#FCE575",
+    "#8ED9F9"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "tangerine_orange",
+  "name": "Tangerine Orange",
+  "color_hex": "#FFB031",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

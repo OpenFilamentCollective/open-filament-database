@@ -1,0 +1,9 @@
+{
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FFD342",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

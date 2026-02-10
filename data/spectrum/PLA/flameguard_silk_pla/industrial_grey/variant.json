@@ -1,0 +1,10 @@
+{
+  "id": "industrial_grey",
+  "name": "Industrial Grey",
+  "color_hex": "#5A696C",
+  "traits": {
+    "industrially_compostable": true,
+    "self_extinguishing": true,
+    "silk": true
+  }
+}

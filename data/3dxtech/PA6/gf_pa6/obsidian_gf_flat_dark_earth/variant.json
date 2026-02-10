@@ -1,0 +1,9 @@
+{
+  "id": "obsidian_gf_flat_dark_earth",
+  "name": "OBSIDIAN GF+ Flat Dark Earth",
+  "color_hex": "#90785E",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

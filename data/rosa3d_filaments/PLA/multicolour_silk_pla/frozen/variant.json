@@ -1,0 +1,13 @@
+{
+  "id": "frozen",
+  "name": "Frozen",
+  "color_hex": [
+    "#39B9DB",
+    "#C6F3FD",
+    "#0066D9"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

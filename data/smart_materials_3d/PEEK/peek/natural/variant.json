@@ -1,0 +1,9 @@
+{
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#AFA198",
+  "traits": {
+    "low_outgassing": true,
+    "without_pigments": true
+  }
+}

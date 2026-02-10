@@ -1,0 +1,14 @@
+{
+  "id": "blue_purple_yellow",
+  "name": "Blue-Purple-Yellow",
+  "color_hex": [
+    "#0099E6",
+    "#6C47B2",
+    "#FAD61B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

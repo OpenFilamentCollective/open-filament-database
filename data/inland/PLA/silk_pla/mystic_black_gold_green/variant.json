@@ -1,0 +1,14 @@
+{
+  "id": "mystic_black_gold_green",
+  "name": "Mystic Black-gold-green",
+  "color_hex": [
+    "#000000",
+    "#E3B145",
+    "#2D9E59"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

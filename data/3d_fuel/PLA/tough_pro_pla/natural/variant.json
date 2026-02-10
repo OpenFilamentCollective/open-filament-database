@@ -1,0 +1,10 @@
+{
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "without_pigments": true
+  }
+}

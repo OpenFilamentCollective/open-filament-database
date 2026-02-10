@@ -1,0 +1,9 @@
+{
+  "id": "aurora",
+  "name": "Aurora",
+  "color_hex": "#7A9182",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}
