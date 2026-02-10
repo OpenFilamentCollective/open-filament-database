@@ -1,0 +1,15 @@
+{
+    "color_name": "Blue",
+    "color_hex": "#99C1F1",
+    "discontinued": false,
+    "sizes": [
+        {
+            "filament_weight": 1000,
+            "diameter": 1.75,
+            "discontinued": false,
+            "spool_refill": false
+        }
+    ],
+    "id": "blue",
+    "slug": "blue"
+}
