@@ -3,16 +3,25 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import { ChangesMenu } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui';
-	import { isLocalMode } from '$lib/stores/environment';
+	import { isLocalMode, isCloudMode } from '$lib/stores/environment';
+	import { authStore } from '$lib/stores/auth';
 	import { theme } from '$lib/stores/theme';
 	import { db } from '$lib/services/database';
 	import { page } from '$app/stores';
 	import { env } from '$env/dynamic/public';
+	import { onMount } from 'svelte';
+	import { get } from 'svelte/store';
 
 	let { children } = $props();
 
 	let refreshing = $state(false);
 	let themeMenuOpen = $state(false);
+
+	onMount(() => {
+		if (get(isCloudMode)) {
+			authStore.checkStatus();
+		}
+	});
 
 	async function handleRefresh() {
 		refreshing = true;

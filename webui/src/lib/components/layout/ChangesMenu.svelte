@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { changeStore, changeCount, hasChanges, changesList } from '$lib/stores/changes';
 	import { isCloudMode } from '$lib/stores/environment';
+	import { authStore, isAuthenticated } from '$lib/stores/auth';
 	import type { EntityChange } from '$lib/types/changes';
 	import type { Store } from '$lib/types/database';
 	import { Button } from '$lib/components/ui';
@@ -10,6 +11,8 @@
 	let menuOpen = $state(false);
 	let expandedChanges = $state<Set<string>>(new Set());
 	let stores = $state<Store[]>([]);
+	let creatingPr = $state(false);
+	let prResult = $state<{ success: boolean; message: string; prUrl?: string } | null>(null);
 
 	// Load stores on mount for resolving store_id to store names
 	onMount(async () => {
@@ -114,6 +117,59 @@
 			changeStore.clear();
 			closeMenu();
 			window.location.reload();
+		}
+	}
+
+	async function createPR() {
+		creatingPr = true;
+		prResult = null;
+
+		try {
+			const exportData = changeStore.exportChanges();
+
+			const imagesWithPaths: Record<string, any> = {};
+			const cs = $changeStore;
+			for (const [imageId, imageData] of Object.entries(exportData.images)) {
+				const ref = cs.images[imageId];
+				imagesWithPaths[imageId] = {
+					...imageData,
+					entityPath: ref?.entityPath || ''
+				};
+			}
+
+			const response = await fetch('/api/github/create-pr', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					changes: exportData.changes,
+					images: imagesWithPaths,
+					title: `Update filament database (${exportData.changes.length} changes)`,
+					description: ''
+				})
+			});
+
+			const result = await response.json();
+
+			if (result.success) {
+				prResult = {
+					success: true,
+					message: `PR #${result.prNumber} created!`,
+					prUrl: result.prUrl
+				};
+				changeStore.clear();
+			} else {
+				prResult = {
+					success: false,
+					message: result.error || 'Failed to create PR'
+				};
+			}
+		} catch (error: any) {
+			prResult = {
+				success: false,
+				message: error.message || 'Failed to create PR'
+			};
+		} finally {
+			creatingPr = false;
 		}
 	}
 
@@ -294,9 +350,30 @@
 					{/if}
 				</div>
 
+				<!-- PR result message -->
+				{#if prResult}
+					<div class="border-t px-3 py-2 text-sm {prResult.success ? 'bg-green-500/10 text-green-700 dark:text-green-400' : 'bg-destructive/10 text-destructive'}">
+						<p>{prResult.message}</p>
+						{#if prResult.prUrl}
+							<a href={prResult.prUrl} target="_blank" rel="noopener noreferrer" class="mt-1 inline-block text-xs underline">
+								View on GitHub
+							</a>
+						{/if}
+					</div>
+				{/if}
+
 				<!-- Footer actions -->
 				{#if $hasChanges}
 					<div class="flex gap-2 border-t p-3">
+						{#if $isAuthenticated}
+							<Button onclick={createPR} variant="default" size="sm" class="flex-1" disabled={creatingPr}>
+								{creatingPr ? 'Creating PR...' : 'Create PR'}
+							</Button>
+						{:else}
+							<Button onclick={() => authStore.login()} variant="default" size="sm" class="flex-1">
+								Login to GitHub
+							</Button>
+						{/if}
 						<Button onclick={exportChanges} variant="secondary" size="sm" class="flex-1">
 							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 								<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
