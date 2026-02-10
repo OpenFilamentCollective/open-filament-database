@@ -40,7 +40,8 @@
 	let logoError: string | null = $state(null);
 
 	// Track entity changes to reinitialize form data
-	let lastEntity = $state<any>(store);
+	// NOTE: must be a plain variable, NOT $state — proxy identity breaks !== comparisons.
+	let lastEntity: any = store;
 	$effect(() => {
 		if (store !== untrack(() => lastEntity)) {
 			lastEntity = store;

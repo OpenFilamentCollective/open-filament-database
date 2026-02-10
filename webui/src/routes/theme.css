@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
     min-height: 47px;
     background: var(--adw-headerbar-bg);
     border-bottom: 1px solid var(--adw-headerbar-border);
@@ -549,8 +549,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 34px;
+    height: 34px;
+    padding: 0;
     background: var(--adw-btn-bg);
     border: 1px solid var(--adw-btn-border);
     border-radius: var(--adw-border-radius);

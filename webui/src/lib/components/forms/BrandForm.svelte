@@ -41,6 +41,11 @@
 		(brand.origin && brand.origin !== 'Unknown') ? 'code' : 'unknown'
 	);
 
+	// Ensure origin defaults to 'Unknown' when in unknown mode (new brands get '' from schema default)
+	if (originMode === 'unknown' && !formData.origin) {
+		formData.origin = 'Unknown';
+	}
+
 	function handleOriginModeChange(e: Event) {
 		const select = e.target as HTMLSelectElement;
 		originMode = select.value as 'unknown' | 'code';
@@ -58,12 +63,19 @@
 	let logoError: string | null = $state(null);
 
 	// Track entity changes to reinitialize form data
-	let lastEntity = $state<any>(brand);
+	// NOTE: must be a plain variable, NOT $state — $state proxies have different identity
+	// than raw objects, so `!==` comparisons would always return true and cause infinite loops.
+	let lastEntity: any = brand;
 	$effect(() => {
 		if (brand !== untrack(() => lastEntity)) {
 			lastEntity = brand;
 			formData = initializeFormData(preparedSchema, brand, config.hiddenFields);
 			originMode = (brand.origin && brand.origin !== 'Unknown') ? 'code' : 'unknown';
+			untrack(() => {
+				if (originMode === 'unknown' && !formData.origin) {
+					formData.origin = 'Unknown';
+				}
+			});
 			logoError = null;
 		}
 	});
