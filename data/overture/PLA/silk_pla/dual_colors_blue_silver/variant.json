@@ -1,0 +1,12 @@
+{
+  "id": "dual_colors_blue_silver",
+  "name": "Dual Colors Blue-Silver",
+  "color_hex": [
+    "#0095FF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

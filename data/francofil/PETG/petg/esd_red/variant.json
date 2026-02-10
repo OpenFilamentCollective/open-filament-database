@@ -1,0 +1,8 @@
+{
+  "id": "esd_red",
+  "name": "ESD Red",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "esd_safe": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "dancing_flame_orange_transparent",
+  "name": "Dancing Flame (Orange-Transparent)",
+  "color_hex": "#E03F26",
+  "traits": {
+    "translucent": true,
+    "recycled": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "brightest_white",
+  "name": "Brightest White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

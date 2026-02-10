@@ -1,0 +1,10 @@
+{
+  "id": "aquamarine_blue",
+  "name": "Aquamarine Blue",
+  "color_hex": "#2A4552",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

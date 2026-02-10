@@ -1,0 +1,13 @@
+{
+  "id": "dual_chameleon_yellow_blue",
+  "name": "Dual Chameleon Yellow Blue",
+  "color_hex": [
+    "#0095FF",
+    "#FFFB00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

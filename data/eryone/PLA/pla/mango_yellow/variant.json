@@ -1,5 +1,8 @@
 {
-    "id": "mango_yellow",
-    "name": "Mango Yellow",
-    "color_hex": "#dca324"
+  "id": "mango_yellow",
+  "name": "Mango Yellow",
+  "color_hex": "#dca324",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

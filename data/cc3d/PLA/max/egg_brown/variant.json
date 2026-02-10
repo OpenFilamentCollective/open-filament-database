@@ -1,0 +1,8 @@
+{
+  "id": "egg_brown",
+  "name": "Egg Brown",
+  "color_hex": "#F7A7A1",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

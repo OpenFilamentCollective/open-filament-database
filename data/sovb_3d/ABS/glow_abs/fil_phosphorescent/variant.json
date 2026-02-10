@@ -1,0 +1,12 @@
+{
+  "id": "fil_phosphorescent",
+  "name": "Fil Phosphorescent",
+  "color_hex": [
+    "#70FA00",
+    "#EFEADF"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

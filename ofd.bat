@@ -47,6 +47,29 @@ if not defined SKIP_SETUP (
         echo [INFO] First run detected. Setting up Python environment...
         call :run_python_setup
         if errorlevel 1 exit /b 1
+    ) else (
+        call :deps_need_update
+        if not errorlevel 1 (
+            echo [INFO] Dependencies have changed. Updating...
+            call "%VENV_DIR%\Scripts\activate.bat"
+            pip install -q --upgrade pip
+            if errorlevel 1 (
+                echo [ERROR] Failed to upgrade pip
+                exit /b 1
+            )
+            pip install -q -r "%REQUIREMENTS_FILE%"
+            if errorlevel 1 (
+                echo [ERROR] Failed to install requirements
+                exit /b 1
+            )
+            pip install -q -e "%SCRIPT_DIR%"
+            if errorlevel 1 (
+                echo [ERROR] Failed to install package
+                exit /b 1
+            )
+            echo. > "%SETUP_MARKER%"
+            echo [OK] Dependencies updated
+        )
     )
 )
 
@@ -151,8 +174,20 @@ call "%VENV_DIR%\Scripts\activate.bat"
 
 echo [INFO] Installing Python dependencies...
 pip install -q --upgrade pip
+if errorlevel 1 (
+    echo [ERROR] Failed to upgrade pip
+    exit /b 1
+)
 pip install -q -r "%REQUIREMENTS_FILE%"
+if errorlevel 1 (
+    echo [ERROR] Failed to install requirements
+    exit /b 1
+)
 pip install -q -e "%SCRIPT_DIR%"
+if errorlevel 1 (
+    echo [ERROR] Failed to install package
+    exit /b 1
+)
 echo [OK] Python dependencies installed
 
 :: Mark setup complete
@@ -206,8 +241,20 @@ call "%VENV_DIR%\Scripts\activate.bat"
 
 echo [INFO] Installing Python dependencies...
 pip install -q --upgrade pip
+if errorlevel 1 (
+    echo [ERROR] Failed to upgrade pip
+    exit /b 1
+)
 pip install -q -r "%REQUIREMENTS_FILE%"
+if errorlevel 1 (
+    echo [ERROR] Failed to install requirements
+    exit /b 1
+)
 pip install -q -e "%SCRIPT_DIR%"
+if errorlevel 1 (
+    echo [ERROR] Failed to install package
+    exit /b 1
+)
 
 :: Mark setup complete
 echo. > "%SETUP_MARKER%"
@@ -368,6 +415,13 @@ for /f "tokens=1,2 delims=." %%a in ("!PY_VERSION!") do (
 if !PY_MAJOR! LSS 3 exit /b 1
 if !PY_MAJOR! EQU 3 if !PY_MINOR! LSS 10 exit /b 1
 exit /b 0
+
+:deps_need_update
+:: Check if requirements.txt or pyproject.toml are newer than setup marker
+:: Uses PowerShell for reliable file timestamp comparison
+if not exist "%SETUP_MARKER%" exit /b 1
+powershell -NoProfile -Command "$m=(Get-Item '%SETUP_MARKER%').LastWriteTime; if (((Test-Path '%REQUIREMENTS_FILE%') -and (Get-Item '%REQUIREMENTS_FILE%').LastWriteTime -gt $m) -or ((Test-Path '%SCRIPT_DIR%\pyproject.toml') -and (Get-Item '%SCRIPT_DIR%\pyproject.toml').LastWriteTime -gt $m)) { exit 0 } else { exit 1 }"
+exit /b %ERRORLEVEL%
 
 :detect_npm
 where npm >nul 2>&1

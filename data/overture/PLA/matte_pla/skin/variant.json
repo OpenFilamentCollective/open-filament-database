@@ -1,5 +1,9 @@
 {
-    "id": "skin",
-    "name": "Skin",
-    "color_hex": "#F0DDC2"
+  "id": "skin",
+  "name": "Skin",
+  "color_hex": "#F0DDC2",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

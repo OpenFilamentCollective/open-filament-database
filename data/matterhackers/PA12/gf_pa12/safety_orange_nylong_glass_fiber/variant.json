@@ -1,0 +1,9 @@
+{
+  "id": "safety_orange_nylong_glass_fiber",
+  "name": "Safety Orange NylonG Glass Fiber",
+  "color_hex": "#F67405",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

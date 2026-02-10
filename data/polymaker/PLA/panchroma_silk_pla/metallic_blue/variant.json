@@ -1,0 +1,10 @@
+{
+  "id": "metallic_blue",
+  "name": "Metallic Blue",
+  "color_hex": "#1E2F5A",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true
+  }
+}

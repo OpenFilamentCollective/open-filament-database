@@ -1,0 +1,12 @@
+{
+  "id": "magic_red_green",
+  "name": "Magic Red-Green",
+  "color_hex": [
+    "#EC0000",
+    "#1DAF5E"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

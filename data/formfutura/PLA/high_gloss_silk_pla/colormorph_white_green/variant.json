@@ -1,0 +1,13 @@
+{
+  "id": "colormorph_white_green",
+  "name": "ColorMorph White & Green",
+  "color_hex": [
+    "#4E7642",
+    "#F5F5F4"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

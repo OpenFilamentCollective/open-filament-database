@@ -1,0 +1,9 @@
+{
+  "id": "ral_3000_fire_red",
+  "name": "RAL 3000 Fire Red",
+  "color_hex": "#C01616",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

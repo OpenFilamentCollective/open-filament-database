@@ -1,0 +1,8 @@
+{
+  "id": "lithophane_cyan",
+  "name": "Lithophane Cyan",
+  "color_hex": "#0099E6",
+  "traits": {
+    "lithophane": true
+  }
+}

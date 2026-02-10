@@ -1,0 +1,8 @@
+{
+  "id": "wild_sage",
+  "name": "Wild Sage",
+  "color_hex": "#B4C8A2",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

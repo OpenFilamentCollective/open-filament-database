@@ -1,0 +1,13 @@
+{
+  "id": "sterling_wave",
+  "name": "Sterling Wave",
+  "color_hex": [
+    "#4C5051",
+    "#E0E0DC"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

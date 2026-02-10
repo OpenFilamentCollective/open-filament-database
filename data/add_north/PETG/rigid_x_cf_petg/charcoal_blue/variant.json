@@ -1,0 +1,9 @@
+{
+  "id": "charcoal_blue",
+  "name": "Charcoal Blue",
+  "color_hex": "#003B80",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

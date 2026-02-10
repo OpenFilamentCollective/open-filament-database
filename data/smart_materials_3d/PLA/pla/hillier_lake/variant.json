@@ -1,0 +1,8 @@
+{
+  "id": "hillier_lake",
+  "name": "Hillier Lake",
+  "color_hex": "#F300EA",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

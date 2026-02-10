@@ -1,0 +1,9 @@
+{
+  "id": "vertigo_starlight",
+  "name": "Vertigo Starlight",
+  "color_hex": "#2B3B61",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "violet_transparent",
+  "name": "Violet Transparent",
+  "color_hex": "#CE0058",
+  "traits": {
+    "translucent": true,
+    "home_compostable": true
+  }
+}

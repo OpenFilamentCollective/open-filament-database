@@ -1,0 +1,8 @@
+{
+  "id": "coctail_green",
+  "name": "Coctail Green",
+  "color_hex": "#DAECD8",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

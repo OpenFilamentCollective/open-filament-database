@@ -1,0 +1,12 @@
+{
+  "id": "phantom_blue",
+  "name": "Phantom Blue",
+  "color_hex": [
+    "#C1A7E2",
+    "#81A4D5"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

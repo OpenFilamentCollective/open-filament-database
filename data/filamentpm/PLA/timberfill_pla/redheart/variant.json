@@ -1,0 +1,10 @@
+{
+  "id": "redheart",
+  "name": "Redheart",
+  "color_hex": "#983B4E",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

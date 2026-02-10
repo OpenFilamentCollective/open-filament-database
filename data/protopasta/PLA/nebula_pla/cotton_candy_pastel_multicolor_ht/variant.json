@@ -1,0 +1,13 @@
+{
+  "id": "cotton_candy_pastel_multicolor_ht",
+  "name": "Cotton Candy Pastel Multicolor HT",
+  "color_hex": [
+    "#39B9DB",
+    "#F092B3",
+    "#B894E2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true
+  }
+}

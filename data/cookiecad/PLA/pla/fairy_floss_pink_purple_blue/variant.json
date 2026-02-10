@@ -1,0 +1,15 @@
+{
+  "id": "fairy_floss_pink_purple_blue",
+  "name": "Fairy Floss (pink → purple → blue)",
+  "color_hex": [
+    "#FF00A2",
+    "#BE2ED6",
+    "#0099E6"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

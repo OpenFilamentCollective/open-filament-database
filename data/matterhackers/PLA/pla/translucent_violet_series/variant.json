@@ -1,0 +1,9 @@
+{
+  "id": "translucent_violet_series",
+  "name": "Translucent Violet Series",
+  "color_hex": "#F300EA",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

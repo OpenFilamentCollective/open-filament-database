@@ -1,0 +1,12 @@
+{
+  "id": "lemon_grass",
+  "name": "Lemon Grass",
+  "color_hex": [
+    "#B3DF3A",
+    "#39B9DB"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

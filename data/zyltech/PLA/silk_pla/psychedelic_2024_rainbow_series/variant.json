@@ -1,0 +1,15 @@
+{
+  "id": "psychedelic_2024_rainbow_series",
+  "name": "Psychedelic 2024 Rainbow Series",
+  "color_hex": [
+    "#E72F1D",
+    "#375680",
+    "#515234",
+    "#E8BD00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

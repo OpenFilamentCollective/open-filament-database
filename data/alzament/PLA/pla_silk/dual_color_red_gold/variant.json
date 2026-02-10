@@ -1,0 +1,12 @@
+{
+  "id": "dual_color_red_gold",
+  "name": "Dual Color Red-Gold",
+  "color_hex": [
+    "#e6604c",
+    "#f7c987"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

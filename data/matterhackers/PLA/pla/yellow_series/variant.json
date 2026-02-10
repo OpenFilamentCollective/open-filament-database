@@ -1,0 +1,8 @@
+{
+  "id": "yellow_series",
+  "name": "Yellow Series",
+  "color_hex": "#FBE200",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

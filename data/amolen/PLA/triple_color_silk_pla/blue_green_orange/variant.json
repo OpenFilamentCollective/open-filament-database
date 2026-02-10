@@ -1,0 +1,13 @@
+{
+  "id": "blue_green_orange",
+  "name": "Blue Green Orange",
+  "color_hex": [
+    "#4921C1",
+    "#F55928",
+    "#2D9E59"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

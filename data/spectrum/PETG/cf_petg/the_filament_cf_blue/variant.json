@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_cf_blue",
+  "name": "The Filament CF Blue",
+  "color_hex": "#3292B2",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

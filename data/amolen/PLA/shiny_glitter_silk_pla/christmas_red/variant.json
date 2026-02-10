@@ -1,0 +1,9 @@
+{
+  "id": "christmas_red",
+  "name": "Christmas Red",
+  "color_hex": "#D60212",
+  "traits": {
+    "silk": true,
+    "glitter": true
+  }
+}

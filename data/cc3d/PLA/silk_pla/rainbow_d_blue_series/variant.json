@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_d_blue_series",
+  "name": "Rainbow D Blue Series",
+  "color_hex": [
+    "#6C47B2",
+    "#0353BA",
+    "#0CCF81",
+    "#7FE200",
+    "#C80181"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

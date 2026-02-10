@@ -1,0 +1,12 @@
+{
+  "id": "dual_colour_red_gold",
+  "name": "Dual colour Red-Gold",
+  "color_hex": [
+    "#F6C500"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

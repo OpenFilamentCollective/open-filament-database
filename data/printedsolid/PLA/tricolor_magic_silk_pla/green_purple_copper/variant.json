@@ -1,0 +1,14 @@
+{
+  "id": "green_purple_copper",
+  "name": "Green-Purple-Copper",
+  "color_hex": [
+    "#11784F",
+    "#6C47B2",
+    "#641501"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

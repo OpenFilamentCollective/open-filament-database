@@ -1,0 +1,8 @@
+{
+  "id": "lw_ultrafoam_bloody_red",
+  "name": "LW- UltraFoam Bloody Red",
+  "color_hex": "#EC0000",
+  "traits": {
+    "foaming": true
+  }
+}

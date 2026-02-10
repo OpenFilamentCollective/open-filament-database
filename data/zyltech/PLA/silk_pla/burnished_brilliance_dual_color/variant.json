@@ -1,0 +1,13 @@
+{
+  "id": "burnished_brilliance_dual_color",
+  "name": "Burnished Brilliance Dual Color",
+  "color_hex": [
+    "#4C5051",
+    "#EEEA44"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

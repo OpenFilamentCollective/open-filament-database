@@ -1,0 +1,12 @@
+{
+  "id": "economy_green_yellow_glow",
+  "name": "Economy green-yellow-glow",
+  "color_hex": [
+    "#7FE200",
+    "#F2EFE9"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "illuminescent_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dual_jadeite_green_chrome",
+  "name": "Dual Jadeite Green Chrome",
+  "color_hex": [
+    "#00A594",
+    "#545F67"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

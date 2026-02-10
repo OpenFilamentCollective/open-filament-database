@@ -1,0 +1,15 @@
+{
+  "id": "universe_series",
+  "name": "Universe Series",
+  "color_hex": [
+    "#1E5A4F",
+    "#183681",
+    "#6C47B2",
+    "#F092B3"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

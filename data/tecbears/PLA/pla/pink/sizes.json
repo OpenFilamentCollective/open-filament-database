@@ -1,14 +1,14 @@
 [
-    {
-        "filament_weight": 1100,
-        "diameter": 1.75,
-        "empty_spool_weight": 127,
-        "spool_core_diameter": 72,
-        "purchase_links": [
-            {
-                "store_id": "tecbears",
-                "url": "https://www.amazon.co.uk/s/?ie=UTF8&url=search-alias%3Daps&field-keywords=TECBEARS+PLA+3D+Printer+Filament%2C+PLA+Filament+1.75mm%2C+Neatly+Wound+3D+Printing+Filament%2C+Dimensional+Accuracy++%2F-+0.02+mm%2C+1Kg+Spool%282.2+lbs%29%2C+Fits+for+Most+FDM+3D+Printers%2C+PLA+Pink"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1100,
+    "diameter": 1.75,
+    "empty_spool_weight": 127,
+    "spool_core_diameter": 72,
+    "purchase_links": [
+      {
+        "store_id": "tecbears",
+        "url": "https://www.amazon.co.uk/s/?ie=UTF8&url=search-alias%3Daps&field-keywords=TECBEARS+PLA+3D+Printer+Filament%2C+PLA+Filament+1.75mm%2C+Neatly+Wound+3D+Printing+Filament%2C+Dimensional+Accuracy++%2F-+0.02+mm%2C+1Kg+Spool%282.2+lbs%29%2C+Fits+for+Most+FDM+3D+Printers%2C+PLA+Pink"
+      }
+    ]
+  }
 ]

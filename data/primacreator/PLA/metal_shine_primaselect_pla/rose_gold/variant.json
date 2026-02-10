@@ -1,0 +1,9 @@
+{
+  "id": "rose_gold",
+  "name": "Rose Gold",
+  "color_hex": "#983B4E",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_metal": true
+  }
+}

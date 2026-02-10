@@ -1,0 +1,9 @@
+{
+  "id": "plum",
+  "name": "Plum",
+  "color_hex": "#B33174",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

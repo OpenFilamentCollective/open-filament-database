@@ -1,65 +1,70 @@
 """
 OFD Validation Module.
 
-This module provides comprehensive validation for the Open Filament Database.
+Thin wrapper around the ofd_validator Rust package, providing a
+ValidationOrchestrator class that preserves the existing API while
+delegating all validation logic to ofd-validator.
 """
 
-from .types import (
+from pathlib import Path
+from typing import Optional
+
+from ofd_validator import (
     ValidationLevel,
     ValidationError,
     ValidationResult,
-    ValidationTask,
+    validate_all as _validate_all,
+    validate_json_files as _validate_json_files,
+    validate_logo_files as _validate_logo_files,
+    validate_folder_names as _validate_folder_names,
+    validate_store_ids as _validate_store_ids,
+    validate_gtin_ean as _validate_gtin_ean,
 )
 
-from .validators import (
-    SchemaCache,
-    BaseValidator,
-    JsonValidator,
-    LogoValidator,
-    FolderNameValidator,
-    StoreIdValidator,
-    GTINValidator,
-    MissingFileValidator,
-    load_json,
-    cleanse_folder_name,
-    ILLEGAL_CHARACTERS,
-    LOGO_MIN_SIZE,
-    LOGO_MAX_SIZE,
-)
 
-from .orchestrator import (
-    ValidationOrchestrator,
-    collect_json_validation_tasks,
-    collect_logo_validation_tasks,
-    collect_folder_validation_tasks,
-)
+class ValidationOrchestrator:
+    """Orchestrates all validation tasks using the ofd-validator Rust package."""
+
+    def __init__(self, data_dir: Path = Path("./data"),
+                 stores_dir: Path = Path("./stores"),
+                 max_workers: Optional[int] = None,
+                 **_kwargs):
+        self.data_dir = str(data_dir)
+        self.stores_dir = str(stores_dir)
+        self.max_workers = max_workers
+
+    def validate_json_files(self) -> ValidationResult:
+        """Validate all JSON files against schemas."""
+        return _validate_json_files(self.data_dir, self.stores_dir,
+                                    max_workers=self.max_workers)
+
+    def validate_logo_files(self) -> ValidationResult:
+        """Validate all logo files."""
+        return _validate_logo_files(self.data_dir, self.stores_dir,
+                                    max_workers=self.max_workers)
+
+    def validate_folder_names(self) -> ValidationResult:
+        """Validate all folder names."""
+        return _validate_folder_names(self.data_dir, self.stores_dir,
+                                      max_workers=self.max_workers)
+
+    def validate_store_ids(self) -> ValidationResult:
+        """Validate store IDs."""
+        return _validate_store_ids(self.data_dir, self.stores_dir)
+
+    def validate_gtin(self) -> ValidationResult:
+        """Validate GTIN/EAN rules."""
+        return _validate_gtin_ean(self.data_dir)
+
+    def validate_all(self) -> ValidationResult:
+        """Run all validations."""
+        return _validate_all(self.data_dir, self.stores_dir,
+                             max_workers=self.max_workers)
+
 
 __all__ = [
-    # Types
     'ValidationLevel',
     'ValidationError',
     'ValidationResult',
-    'ValidationTask',
-    # Validators
-    'SchemaCache',
-    'BaseValidator',
-    'JsonValidator',
-    'LogoValidator',
-    'FolderNameValidator',
-    'StoreIdValidator',
-    'GTINValidator',
-    'MissingFileValidator',
-    # Orchestrator
     'ValidationOrchestrator',
-    # Utilities
-    'load_json',
-    'cleanse_folder_name',
-    # Task collectors
-    'collect_json_validation_tasks',
-    'collect_logo_validation_tasks',
-    'collect_folder_validation_tasks',
-    # Constants
-    'ILLEGAL_CHARACTERS',
-    'LOGO_MIN_SIZE',
-    'LOGO_MAX_SIZE',
 ]

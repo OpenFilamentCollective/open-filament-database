@@ -1,0 +1,10 @@
+{
+  "id": "wood_rosewood",
+  "name": "Wood Rosewood",
+  "color_hex": "#68453B",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "imitates_wood": true
+  }
+}

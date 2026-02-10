@@ -1,0 +1,9 @@
+{
+  "id": "sky_blue",
+  "name": "Sky Blue",
+  "color_hex": "#5FBCDD",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

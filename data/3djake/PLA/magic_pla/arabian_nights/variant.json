@@ -1,0 +1,12 @@
+{
+  "id": "arabian_nights",
+  "name": "Arabian Nights",
+  "color_hex": [
+    "#6C47B2",
+    "#9C7320"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

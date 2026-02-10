@@ -1,0 +1,9 @@
+{
+  "id": "easy_transparent_orange",
+  "name": "Easy - Transparent Orange",
+  "color_hex": "#E03F26",
+  "traits": {
+    "translucent": true,
+    "filtration_recommended": true
+  }
+}

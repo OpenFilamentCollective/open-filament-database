@@ -1,0 +1,9 @@
+{
+  "id": "ash_grey",
+  "name": "Ash Grey",
+  "color_hex": "#45444A",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

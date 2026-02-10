@@ -1,0 +1,13 @@
+{
+  "id": "caramel",
+  "name": "Caramel",
+  "color_hex": [
+    "#CD563B",
+    "#F6A25C",
+    "#F3CEA6"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

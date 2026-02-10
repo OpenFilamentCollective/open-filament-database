@@ -1,0 +1,9 @@
+{
+  "id": "rec_low_grey",
+  "name": "REC- Low GREY",
+  "color_hex": "#C4BCB3",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_blue_series",
+  "name": "Rainbow-Blue Series",
+  "color_hex": [
+    "#32A584",
+    "#FA8423",
+    "#E72F1D",
+    "#EBFF57",
+    "#A38496"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "copper",
+  "name": "Copper",
+  "color_hex": "#C06341",
+  "traits": {
+    "imitates_metal": true
+  }
+}

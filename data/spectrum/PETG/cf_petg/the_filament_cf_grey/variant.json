@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_cf_grey",
+  "name": "The Filament CF Grey",
+  "color_hex": "#A2AAAD",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

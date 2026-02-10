@@ -1,0 +1,13 @@
+{
+  "id": "gradient_gold_to_red",
+  "name": "Gradient Gold to Red",
+  "color_hex": [
+    "#CE8D00",
+    "#E20010"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

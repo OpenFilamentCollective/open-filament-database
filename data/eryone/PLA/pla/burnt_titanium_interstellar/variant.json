@@ -1,0 +1,12 @@
+{
+  "id": "burnt_titanium_interstellar",
+  "name": "Burnt Titanium Interstellar",
+  "color_hex": [
+    "#09048E",
+    "#373737"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

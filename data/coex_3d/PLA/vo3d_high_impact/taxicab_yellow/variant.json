@@ -1,0 +1,8 @@
+{
+  "id": "taxicab_yellow",
+  "name": "Taxicab Yellow",
+  "color_hex": "#FFD342",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

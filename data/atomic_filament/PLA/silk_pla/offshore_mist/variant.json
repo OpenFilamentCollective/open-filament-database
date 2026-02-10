@@ -1,0 +1,9 @@
+{
+  "id": "offshore_mist",
+  "name": "Offshore Mist",
+  "color_hex": "#5A7D5A",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

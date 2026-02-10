@@ -1,0 +1,9 @@
+{
+  "id": "quartz_pink",
+  "name": "Quartz Pink",
+  "color_hex": "#FFCCCD",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

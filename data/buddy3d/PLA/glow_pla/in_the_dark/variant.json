@@ -1,0 +1,14 @@
+{
+  "id": "in_the_dark",
+  "name": "In the dark",
+  "color_hex": [
+    "#DFDFD3",
+    "#70FA00"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

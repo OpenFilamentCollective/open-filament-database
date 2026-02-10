@@ -1,5 +1,8 @@
 {
-    "id": "orange",
-    "name": "Orange",
-    "color_hex": "#FF6A13"
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#FF6A13",
+  "traits": {
+    "filtration_recommended": true
+  }
 }

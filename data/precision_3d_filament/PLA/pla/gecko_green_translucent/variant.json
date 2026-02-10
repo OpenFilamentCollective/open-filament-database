@@ -1,0 +1,9 @@
+{
+  "id": "gecko_green_translucent",
+  "name": "Gecko Green [Translucent]",
+  "color_hex": "#98FBCB",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

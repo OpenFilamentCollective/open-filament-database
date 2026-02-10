@@ -1,0 +1,14 @@
+{
+  "id": "basic_multicolor_rainbow",
+  "name": "Basic Multicolor Rainbow",
+  "color_hex": [
+    "#00CC00",
+    "#6802BC",
+    "#FFBF00",
+    "#FA7F1B",
+    "#B7293E"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

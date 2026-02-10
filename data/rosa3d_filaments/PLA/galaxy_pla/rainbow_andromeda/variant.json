@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_andromeda",
+  "name": "Rainbow Andromeda",
+  "color_hex": [
+    "#567BAC",
+    "#6000B0",
+    "#6D102E",
+    "#9D00B1"
+  ],
+  "traits": {
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

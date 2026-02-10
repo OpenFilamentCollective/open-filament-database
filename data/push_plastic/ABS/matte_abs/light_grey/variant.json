@@ -1,0 +1,9 @@
+{
+  "id": "light_grey",
+  "name": "Light Grey",
+  "color_hex": "#C5C5BF",
+  "traits": {
+    "matte": true,
+    "filtration_recommended": true
+  }
+}

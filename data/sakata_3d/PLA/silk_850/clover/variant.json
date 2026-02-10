@@ -1,0 +1,9 @@
+{
+  "id": "clover",
+  "name": "Clover",
+  "color_hex": "#4E7642",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

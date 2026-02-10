@@ -1,0 +1,9 @@
+{
+  "id": "shimmer_bronze",
+  "name": "Shimmer Bronze",
+  "color_hex": "#99A45F",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

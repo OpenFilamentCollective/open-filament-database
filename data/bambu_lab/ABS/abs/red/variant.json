@@ -1,5 +1,8 @@
 {
-    "id": "red",
-    "name": "Red",
-    "color_hex": "#D32941"
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#D32941",
+  "traits": {
+    "filtration_recommended": true
+  }
 }

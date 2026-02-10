@@ -1,5 +1,8 @@
 {
-    "id": "olive_green",
-    "name": "Olive Green",
-    "color_hex": "#bab86c"
+  "id": "olive_green",
+  "name": "Olive Green",
+  "color_hex": "#bab86c",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

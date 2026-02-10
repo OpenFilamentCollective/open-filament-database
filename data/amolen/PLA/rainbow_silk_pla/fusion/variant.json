@@ -1,0 +1,14 @@
+{
+  "id": "fusion",
+  "name": "Fusion",
+  "color_hex": [
+    "#FFC946",
+    "#D41754",
+    "#63D6D6",
+    "#0CCF81"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

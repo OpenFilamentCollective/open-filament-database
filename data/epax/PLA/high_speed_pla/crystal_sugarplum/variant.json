@@ -1,0 +1,13 @@
+{
+  "id": "crystal_sugarplum",
+  "name": "Crystal Sugarplum",
+  "color_hex": [
+    "#0353BA",
+    "#A000CA"
+  ],
+  "traits": {
+    "translucent": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

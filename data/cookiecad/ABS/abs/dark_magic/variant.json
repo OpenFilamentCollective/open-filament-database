@@ -1,0 +1,14 @@
+{
+  "id": "dark_magic",
+  "name": "Dark Magic",
+  "color_hex": [
+    "#2A3940",
+    "#00E3E2",
+    "#C63DBA",
+    "#62E480"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "iridescent": true
+  }
+}

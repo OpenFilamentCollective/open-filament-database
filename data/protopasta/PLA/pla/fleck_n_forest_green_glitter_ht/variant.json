@@ -1,0 +1,11 @@
+{
+  "id": "fleck_n_forest_green_glitter_ht",
+  "name": "Fleck 'n Forest Green Glitter HT",
+  "color_hex": "#1E5A4F",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

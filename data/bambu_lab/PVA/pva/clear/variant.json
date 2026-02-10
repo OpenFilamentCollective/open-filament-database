@@ -1,5 +1,9 @@
 {
-    "id": "clear",
-    "name": "Clear",
-    "color_hex": "#F0F1A8"
+  "id": "clear",
+  "name": "Clear",
+  "color_hex": "#F0F1A8",
+  "traits": {
+    "water_soluble": true,
+    "transparent": true
+  }
 }

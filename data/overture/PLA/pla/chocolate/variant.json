@@ -1,5 +1,8 @@
 {
-    "id": "chocolate",
-    "name": "Chocolate",
-    "color_hex": "#57361C"
+  "id": "chocolate",
+  "name": "Chocolate",
+  "color_hex": "#57361C",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

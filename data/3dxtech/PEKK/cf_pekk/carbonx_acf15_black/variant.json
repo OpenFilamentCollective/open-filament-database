@@ -1,0 +1,10 @@
+{
+  "id": "carbonx_acf15_black",
+  "name": "CARBONX -A+CF15 Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "low_outgassing": true,
+    "contains_carbon_fiber": true
+  }
+}

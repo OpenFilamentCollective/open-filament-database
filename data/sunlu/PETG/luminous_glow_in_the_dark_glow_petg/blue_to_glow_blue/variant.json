@@ -1,0 +1,9 @@
+{
+  "id": "blue_to_glow_blue",
+  "name": "Blue To Glow Blue",
+  "color_hex": "#39B9DB",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

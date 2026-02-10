@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_upgrade",
+  "name": "Rainbow Upgrade",
+  "color_hex": [
+    "#36DBE7",
+    "#F7A7A1",
+    "#F297DA",
+    "#8846AE"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

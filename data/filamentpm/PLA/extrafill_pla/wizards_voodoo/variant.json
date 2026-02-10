@@ -1,0 +1,9 @@
+{
+  "id": "wizards_voodoo",
+  "name": "Wizard's Voodoo",
+  "color_hex": "#003287",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

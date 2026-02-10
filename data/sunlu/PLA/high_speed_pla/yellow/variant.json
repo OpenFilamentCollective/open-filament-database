@@ -1,5 +1,8 @@
 {
-    "id": "yellow",
-    "name": "Yellow",
-    "color_hex": "#f7ea48"
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#f7ea48",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

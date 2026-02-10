@@ -1,0 +1,11 @@
+{
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": [
+    "#617FCC",
+    "#E5E0E3"
+  ],
+  "traits": {
+    "illuminescent_color_change": true
+  }
+}

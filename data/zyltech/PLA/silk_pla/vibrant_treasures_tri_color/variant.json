@@ -1,0 +1,14 @@
+{
+  "id": "vibrant_treasures_tri_color",
+  "name": "Vibrant Treasures Tri-Color",
+  "color_hex": [
+    "#FF72B6",
+    "#F3C102",
+    "#519F61"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "shiny_fast_color_gradient_change_rainbow",
+  "name": "Shiny Fast Color Gradient Change Rainbow",
+  "color_hex": [
+    "#E3B145",
+    "#6C47B2",
+    "#F06E92",
+    "#15817B",
+    "#E03F26"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

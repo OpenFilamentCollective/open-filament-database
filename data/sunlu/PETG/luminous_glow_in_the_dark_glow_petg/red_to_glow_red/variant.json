@@ -1,0 +1,9 @@
+{
+  "id": "red_to_glow_red",
+  "name": "Red To Glow Red",
+  "color_hex": "#F00C00",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "burnt_titanium_constellation",
+  "name": "Burnt Titanium Constellation",
+  "color_hex": [
+    "#87366B",
+    "#40382D"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

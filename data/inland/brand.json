@@ -1,7 +1,8 @@
 {
-    "id": "inland",
-    "name": "Inland",
-    "website": "https://www.microcenter.com/search/search_results.aspx?fq=category:Filaments+%26+Resins|754,brand:Inland,Diameter:1.75mm&rpp=96&sortby=pricelow&myStore=true",
-    "logo": "logo.png",
-    "origin": "US"
+  "id": "inland",
+  "name": "Inland",
+  "website": "https://www.microcenter.com/search/search_results.aspx?fq=category:Filaments+%26+Resins|754,brand:Inland,Diameter:1.75mm&rpp=96&sortby=pricelow&myStore=true",
+  "logo": "logo.png",
+  "origin": "US",
+  "source": "openprinttag"
 }

@@ -1,0 +1,13 @@
+{
+  "id": "mermaid",
+  "name": "Mermaid",
+  "color_hex": [
+    "#5AEB90",
+    "#8ED9F9",
+    "#8D65C7"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "gradual_color_change": true
+  }
+}

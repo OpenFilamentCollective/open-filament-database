@@ -1,0 +1,15 @@
+{
+  "id": "estars_luminous_shiny_galaxy_black",
+  "name": "eStars Luminous Shiny Galaxy Black",
+  "color_hex": [
+    "#000000",
+    "#206233"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "glitter": true,
+    "illuminescent_color_change": true
+  }
+}

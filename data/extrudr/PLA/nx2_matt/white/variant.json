@@ -1,0 +1,12 @@
+{
+  "id": "white",
+  "name": "White",
+  "color_hex": "#FFFFFF",
+  "color_standards": {
+    "ral": "9003"
+  },
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

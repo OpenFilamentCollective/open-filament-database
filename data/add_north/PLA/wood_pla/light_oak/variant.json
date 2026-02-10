@@ -1,0 +1,10 @@
+{
+  "id": "light_oak",
+  "name": "Light Oak",
+  "color_hex": "#D4B6A3",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

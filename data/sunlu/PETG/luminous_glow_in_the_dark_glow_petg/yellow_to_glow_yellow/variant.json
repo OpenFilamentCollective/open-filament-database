@@ -1,0 +1,9 @@
+{
+  "id": "yellow_to_glow_yellow",
+  "name": "Yellow To Glow Yellow",
+  "color_hex": "#E4FF33",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

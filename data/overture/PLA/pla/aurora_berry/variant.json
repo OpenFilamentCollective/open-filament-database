@@ -1,5 +1,8 @@
 {
-    "id": "aurora_berry",
-    "name": "Aurora Berry",
-    "color_hex": "#ad396a"
+  "id": "aurora_berry",
+  "name": "Aurora Berry",
+  "color_hex": "#ad396a",
+  "traits": {
+    "gradual_color_change": true
+  }
 }

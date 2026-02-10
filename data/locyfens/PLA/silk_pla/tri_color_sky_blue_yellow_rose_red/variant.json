@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_sky_blue_yellow_rose_red",
+  "name": "Tri Color Sky Blue Yellow Rose Red",
+  "color_hex": [
+    "#5FEFF9",
+    "#EFDC4C",
+    "#FF00A2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

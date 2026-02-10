@@ -1,0 +1,9 @@
+{
+  "id": "rapunzel_silver",
+  "name": "Rapunzel Silver",
+  "color_hex": "#ABACB0",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "gold_shiny_red",
+  "name": "Gold & Shiny Red",
+  "color_hex": [
+    "#C00000",
+    "#F6C500"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

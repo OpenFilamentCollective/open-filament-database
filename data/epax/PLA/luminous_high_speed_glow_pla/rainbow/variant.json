@@ -1,0 +1,14 @@
+{
+  "id": "rainbow",
+  "name": "Rainbow",
+  "color_hex": [
+    "#62E480",
+    "#00BFB3",
+    "#FBE0B1",
+    "#F5EC97"
+  ],
+  "traits": {
+    "glow": true,
+    "gradual_color_change": true
+  }
+}

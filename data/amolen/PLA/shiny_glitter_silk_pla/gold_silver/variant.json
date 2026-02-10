@@ -1,0 +1,10 @@
+{
+  "id": "gold_silver",
+  "name": "Gold Silver",
+  "color_hex": "#F6C500",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true
+  }
+}

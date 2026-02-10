@@ -1,0 +1,9 @@
+{
+  "id": "recycled",
+  "name": "RECYCLED",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

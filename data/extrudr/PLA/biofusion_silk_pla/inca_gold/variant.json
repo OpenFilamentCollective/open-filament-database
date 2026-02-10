@@ -1,0 +1,12 @@
+{
+  "id": "inca_gold",
+  "name": "Inca Gold",
+  "color_hex": "#F6C500",
+  "color_standards": {
+    "ral": "1017"
+  },
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

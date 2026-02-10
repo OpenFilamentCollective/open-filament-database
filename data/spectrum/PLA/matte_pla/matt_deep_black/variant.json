@@ -1,0 +1,9 @@
+{
+  "id": "matt_deep_black",
+  "name": "MATT Deep Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

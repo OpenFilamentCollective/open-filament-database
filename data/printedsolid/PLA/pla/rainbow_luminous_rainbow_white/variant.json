@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_luminous_rainbow_white",
+  "name": "Rainbow Luminous Rainbow-White",
+  "color_hex": [
+    "#EBFF57",
+    "#0CCF81",
+    "#39B9DB",
+    "#F092B3",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

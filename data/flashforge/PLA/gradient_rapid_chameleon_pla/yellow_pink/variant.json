@@ -1,0 +1,12 @@
+{
+  "id": "yellow_pink",
+  "name": "Yellow Pink",
+  "color_hex": [
+    "#FB6066",
+    "#FBE200"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_multicolor_ht",
+  "name": "Rainbow Multicolor HT",
+  "color_hex": [
+    "#4E6A84",
+    "#7C5577",
+    "#7B4D64"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

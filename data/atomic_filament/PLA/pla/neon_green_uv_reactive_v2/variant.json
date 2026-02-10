@@ -1,0 +1,9 @@
+{
+  "id": "neon_green_uv_reactive_v2",
+  "name": "Neon Green UV Reactive v2",
+  "color_hex": "#83E665",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

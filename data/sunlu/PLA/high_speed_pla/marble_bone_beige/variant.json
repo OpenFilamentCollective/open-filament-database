@@ -1,0 +1,9 @@
+{
+  "id": "marble_bone_beige",
+  "name": "Marble Bone Beige",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "bicolor_magic_red_blue",
+  "name": "Bicolor Magic-Red-Blue",
+  "color_hex": [
+    "#C01616",
+    "#0E21AE"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

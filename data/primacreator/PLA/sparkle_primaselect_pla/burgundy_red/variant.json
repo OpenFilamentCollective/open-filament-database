@@ -1,0 +1,9 @@
+{
+  "id": "burgundy_red",
+  "name": "Burgundy Red",
+  "color_hex": "#A54830",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

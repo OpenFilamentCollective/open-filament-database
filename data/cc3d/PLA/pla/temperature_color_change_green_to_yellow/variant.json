@@ -1,0 +1,12 @@
+{
+  "id": "temperature_color_change_green_to_yellow",
+  "name": "Temperature Color Change Green to Yellow",
+  "color_hex": [
+    "#EBFF57",
+    "#0CCF81"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

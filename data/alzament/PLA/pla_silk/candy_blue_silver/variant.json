@@ -1,0 +1,12 @@
+{
+  "id": "candy_blue_silver",
+  "name": "Candy Blue-Silver",
+  "color_hex": [
+    "#2b3b8e",
+    "#969998"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

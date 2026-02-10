@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_pastel",
+  "name": "Rainbow Pastel",
+  "color_hex": [
+    "#FBD1A7",
+    "#FCE575",
+    "#DABCC8",
+    "#9BE0E5"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

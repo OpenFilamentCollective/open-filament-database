@@ -1,0 +1,13 @@
+{
+  "id": "two_color_red_black",
+  "name": "Two-color Red Black",
+  "color_hex": [
+    "#000000",
+    "#C01616"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

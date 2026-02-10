@@ -1,8 +1,5 @@
 {
-    "id": "natural",
-    "name": "Natural",
-    "color_hex": "#e6e9dd",
-    "traits": {
-        "translucent": true
-    }
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#e6e9dd"
 }

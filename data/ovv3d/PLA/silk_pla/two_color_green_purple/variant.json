@@ -1,0 +1,13 @@
+{
+  "id": "two_color_green_purple",
+  "name": "Two-color Green+ Purple",
+  "color_hex": [
+    "#B645A9",
+    "#62E480"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

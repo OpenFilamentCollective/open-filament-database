@@ -1,0 +1,13 @@
+{
+  "id": "flower",
+  "name": "Flower",
+  "color_hex": [
+    "#FF00A2",
+    "#FCAFC0",
+    "#8D65C7"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

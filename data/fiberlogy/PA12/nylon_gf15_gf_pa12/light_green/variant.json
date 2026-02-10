@@ -1,0 +1,9 @@
+{
+  "id": "light_green",
+  "name": "Light Green",
+  "color_hex": "#B3DF3A",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

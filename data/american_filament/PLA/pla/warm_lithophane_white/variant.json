@@ -1,0 +1,9 @@
+{
+  "id": "warm_lithophane_white",
+  "name": "Warm Lithophane White",
+  "color_hex": "#E6DDDB",
+  "traits": {
+    "industrially_compostable": true,
+    "lithophane": true
+  }
+}

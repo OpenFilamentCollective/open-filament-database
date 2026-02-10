@@ -1,0 +1,8 @@
+{
+  "id": "frjet_self_extinguishing_black",
+  "name": "FRJet self-extinguishing - Black",
+  "color_hex": "#000000",
+  "traits": {
+    "self_extinguishing": true
+  }
+}

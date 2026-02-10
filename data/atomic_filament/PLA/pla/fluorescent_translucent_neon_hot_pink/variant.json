@@ -1,0 +1,10 @@
+{
+  "id": "fluorescent_translucent_neon_hot_pink",
+  "name": "Fluorescent Translucent Neon Hot Pink",
+  "color_hex": "#E72F1D",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

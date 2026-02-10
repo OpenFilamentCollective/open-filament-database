@@ -1,0 +1,15 @@
+{
+  "id": "multicolor_fast_color_change_rainbow",
+  "name": "Multicolor Fast Color Change Rainbow",
+  "color_hex": [
+    "#00A594",
+    "#FBF942",
+    "#F00C00",
+    "#41A840",
+    "#0099E6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

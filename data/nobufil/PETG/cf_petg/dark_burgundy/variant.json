@@ -1,0 +1,9 @@
+{
+  "id": "dark_burgundy",
+  "name": "Dark Burgundy",
+  "color_hex": "#4B3140",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

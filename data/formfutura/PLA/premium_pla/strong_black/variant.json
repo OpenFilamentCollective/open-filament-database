@@ -1,0 +1,8 @@
+{
+  "id": "strong_black",
+  "name": "Strong Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

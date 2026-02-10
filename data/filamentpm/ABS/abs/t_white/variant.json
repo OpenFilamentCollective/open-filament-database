@@ -1,0 +1,8 @@
+{
+  "id": "t_white",
+  "name": "T - White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

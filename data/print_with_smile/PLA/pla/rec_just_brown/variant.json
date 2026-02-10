@@ -1,0 +1,9 @@
+{
+  "id": "rec_just_brown",
+  "name": "REC- Just BROWN",
+  "color_hex": "#BE6730",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

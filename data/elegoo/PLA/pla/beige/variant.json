@@ -1,5 +1,8 @@
 {
-    "id": "beige",
-    "name": "Beige",
-    "color_hex": "#f4e0b8"
+  "id": "beige",
+  "name": "Beige",
+  "color_hex": "#f4e0b8",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

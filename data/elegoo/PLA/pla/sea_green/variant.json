@@ -1,5 +1,8 @@
 {
-    "id": "sea_green",
-    "name": "Sea Green",
-    "color_hex": "#08b690"
+  "id": "sea_green",
+  "name": "Sea Green",
+  "color_hex": "#08b690",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

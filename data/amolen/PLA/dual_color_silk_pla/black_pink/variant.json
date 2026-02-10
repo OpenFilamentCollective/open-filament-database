@@ -1,0 +1,12 @@
+{
+  "id": "black_pink",
+  "name": "Black & Pink",
+  "color_hex": [
+    "#FC6D8E",
+    "#000000"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

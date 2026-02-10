@@ -1,0 +1,10 @@
+{
+  "id": "dark_magic",
+  "name": "Dark Magic",
+  "color_hex": "#375680",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

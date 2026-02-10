@@ -1,0 +1,8 @@
+{
+  "id": "raspberry",
+  "name": "Raspberry",
+  "color_hex": "#DB3FA9",
+  "traits": {
+    "silk": true
+  }
+}

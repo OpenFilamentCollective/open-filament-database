@@ -1,5 +1,8 @@
 {
-    "id": "pineapple_yellow",
-    "name": "Pineapple Yellow",
-    "color_hex": "#EFD00B"
+  "id": "pineapple_yellow",
+  "name": "Pineapple Yellow",
+  "color_hex": "#EFD00B",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

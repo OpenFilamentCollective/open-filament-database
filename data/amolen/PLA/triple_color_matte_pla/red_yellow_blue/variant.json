@@ -1,0 +1,14 @@
+{
+  "id": "red_yellow_blue",
+  "name": "Red Yellow Blue",
+  "color_hex": [
+    "#FFFB00",
+    "#ED2602",
+    "#2C3294"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

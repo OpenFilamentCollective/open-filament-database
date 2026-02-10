@@ -1,0 +1,10 @@
+{
+  "id": "juliettes_raspberry_jam_ht",
+  "name": "Juliette's Raspberry Jam HT",
+  "color_hex": "#DA445A",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true
+  }
+}

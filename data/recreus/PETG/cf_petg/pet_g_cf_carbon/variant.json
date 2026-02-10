@@ -1,0 +1,8 @@
+{
+  "id": "pet_g_cf_carbon",
+  "name": "PET-G CF Carbon",
+  "color_hex": "#545252",
+  "traits": {
+    "contains_carbon_fiber": true
+  }
+}

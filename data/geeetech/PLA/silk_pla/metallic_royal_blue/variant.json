@@ -1,0 +1,9 @@
+{
+  "id": "metallic_royal_blue",
+  "name": "Metallic Royal Blue",
+  "color_hex": "#0E21AE",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

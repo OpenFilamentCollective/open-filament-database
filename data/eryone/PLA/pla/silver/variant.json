@@ -1,5 +1,8 @@
 {
-    "id": "silver",
-    "name": "Silver",
-    "color_hex": "#595b5f"
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#595b5f",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

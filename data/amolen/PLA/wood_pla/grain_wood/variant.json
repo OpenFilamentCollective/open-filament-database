@@ -1,0 +1,13 @@
+{
+  "id": "grain_wood",
+  "name": "Grain Wood",
+  "color_hex": [
+    "#C65E0A",
+    "#BD917E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true,
+    "contains_wood": true
+  }
+}

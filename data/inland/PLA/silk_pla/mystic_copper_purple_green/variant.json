@@ -1,0 +1,14 @@
+{
+  "id": "mystic_copper_purple_green",
+  "name": "Mystic Copper-purple-green",
+  "color_hex": [
+    "#1D7C6A",
+    "#6C47B2",
+    "#C9774B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

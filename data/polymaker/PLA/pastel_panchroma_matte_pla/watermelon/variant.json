@@ -1,0 +1,9 @@
+{
+  "id": "watermelon",
+  "name": "Watermelon",
+  "color_hex": "#EE366A",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

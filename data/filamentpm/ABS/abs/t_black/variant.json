@@ -1,0 +1,8 @@
+{
+  "id": "t_black",
+  "name": "T - Black",
+  "color_hex": "#000000",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

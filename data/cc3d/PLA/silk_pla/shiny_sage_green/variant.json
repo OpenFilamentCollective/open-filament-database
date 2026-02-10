@@ -1,0 +1,9 @@
+{
+  "id": "shiny_sage_green",
+  "name": "Shiny Sage Green",
+  "color_hex": "#00A594",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "gradient_rainbow_candy",
+  "name": "Gradient Rainbow Candy",
+  "color_hex": [
+    "#F3B400",
+    "#6C47B2",
+    "#00A594",
+    "#F87FB5"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

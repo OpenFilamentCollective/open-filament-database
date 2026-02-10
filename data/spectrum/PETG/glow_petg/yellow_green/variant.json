@@ -1,0 +1,13 @@
+{
+  "id": "yellow_green",
+  "name": "Yellow Green",
+  "color_hex": [
+    "#4DFF64",
+    "#DFDFD3"
+  ],
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

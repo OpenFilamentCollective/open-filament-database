@@ -1,0 +1,12 @@
+{
+  "id": "black_orange",
+  "name": "Black & Orange",
+  "color_hex": [
+    "#000000",
+    "#CF4042"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

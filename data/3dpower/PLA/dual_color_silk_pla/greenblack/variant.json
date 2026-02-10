@@ -1,0 +1,12 @@
+{
+  "id": "greenblack",
+  "name": "Green&Black",
+  "color_hex": [
+    "#232323",
+    "#26A648"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

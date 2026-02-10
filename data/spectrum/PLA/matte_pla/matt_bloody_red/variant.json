@@ -1,0 +1,9 @@
+{
+  "id": "matt_bloody_red",
+  "name": "MATT Bloody Red",
+  "color_hex": "#CC393F",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "twilight",
+  "name": "Twilight",
+  "color_hex": [
+    "#E20010",
+    "#473FC9",
+    "#CEFF5C"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

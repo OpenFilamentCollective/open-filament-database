@@ -1,0 +1,13 @@
+{
+  "id": "blackgold_multi_color",
+  "name": "Black+Gold Multi-Color",
+  "color_hex": [
+    "#F6C500",
+    "#4D6383"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

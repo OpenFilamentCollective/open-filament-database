@@ -1,0 +1,12 @@
+{
+  "id": "multicolor_galaxy",
+  "name": "Multicolor Galaxy",
+  "color_hex": [
+    "#0066D9",
+    "#C90D6E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

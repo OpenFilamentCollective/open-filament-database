@@ -1,0 +1,9 @@
+{
+  "id": "shiny_shine_copper",
+  "name": "Shiny Shine Copper",
+  "color_hex": "#C9774B",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

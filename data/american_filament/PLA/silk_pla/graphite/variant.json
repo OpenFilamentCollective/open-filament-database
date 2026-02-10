@@ -1,0 +1,9 @@
+{
+  "id": "graphite",
+  "name": "Graphite",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

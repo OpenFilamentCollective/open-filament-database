@@ -1,5 +1,8 @@
 {
-    "id": "baby_pink",
-    "name": "Baby Pink",
-    "color_hex": "#FFE0E0"
+  "id": "baby_pink",
+  "name": "Baby Pink",
+  "color_hex": "#FFE0E0",
+  "traits": {
+    "matte": true
+  }
 }

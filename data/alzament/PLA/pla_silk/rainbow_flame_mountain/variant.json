@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_flame_mountain",
+  "name": "Rainbow Flame Mountain",
+  "color_hex": [
+    "#d2bda1",
+    "#b25c10",
+    "#c65447"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

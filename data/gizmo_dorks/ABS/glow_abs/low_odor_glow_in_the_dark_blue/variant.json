@@ -1,0 +1,13 @@
+{
+  "id": "low_odor_glow_in_the_dark_blue",
+  "name": "Low Odor Glow in the Dark (Blue)",
+  "color_hex": [
+    "#FFFFFF",
+    "#0095FF"
+  ],
+  "traits": {
+    "glow": true,
+    "filtration_recommended": true,
+    "abrasive": true
+  }
+}

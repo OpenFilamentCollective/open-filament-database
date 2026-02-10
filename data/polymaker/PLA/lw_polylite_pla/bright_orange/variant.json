@@ -1,0 +1,9 @@
+{
+  "id": "bright_orange",
+  "name": "Bright Orange",
+  "color_hex": "#FA8423",
+  "traits": {
+    "industrially_compostable": true,
+    "foaming": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "fluor_yellow_stained",
+  "name": "Fluor Yellow Stained",
+  "color_hex": "#C6F666",
+  "traits": {
+    "translucent": true,
+    "silk": true
+  }
+}

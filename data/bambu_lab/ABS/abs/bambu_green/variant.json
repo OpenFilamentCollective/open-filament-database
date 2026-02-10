@@ -1,5 +1,8 @@
 {
-    "id": "bambu_green",
-    "name": "Bambu Green",
-    "color_hex": "#00AE42"
+  "id": "bambu_green",
+  "name": "Bambu Green",
+  "color_hex": "#00AE42",
+  "traits": {
+    "filtration_recommended": true
+  }
 }

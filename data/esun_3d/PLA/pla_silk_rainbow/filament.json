@@ -1,6 +1,10 @@
 {
-    "id": "pla_silk_rainbow",
-    "name": "PLA-Silk Rainbow",
-    "diameter_tolerance": 0.03,
-    "density": 1.21
+  "id": "pla_silk_rainbow",
+  "name": "PLA-Silk Rainbow",
+  "diameter_tolerance": 0.03,
+  "density": 1.21,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70
 }

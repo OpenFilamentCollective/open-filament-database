@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_blue_rose",
+  "name": "Dual Color Blue Rose",
+  "color_hex": [
+    "#C80181",
+    "#0E21AE"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

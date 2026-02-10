@@ -1,5 +1,8 @@
 {
-    "id": "gentlemans_grey",
-    "name": "Gentleman's Grey",
-    "color_hex": "#354047"
+  "id": "gentlemans_grey",
+  "name": "Gentleman's Grey",
+  "color_hex": "#354047",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

@@ -1,5 +1,8 @@
 {
-    "id": "carbon_black",
-    "name": "Carbon Black",
-    "color_hex": "#2c2c2c"
+  "id": "carbon_black",
+  "name": "Carbon Black",
+  "color_hex": "#2c2c2c",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

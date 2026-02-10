@@ -1,0 +1,8 @@
+{
+  "id": "glass_yellow",
+  "name": "Glass Yellow",
+  "color_hex": "#F8CC00",
+  "traits": {
+    "translucent": true
+  }
+}

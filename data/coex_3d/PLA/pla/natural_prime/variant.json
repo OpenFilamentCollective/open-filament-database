@@ -1,0 +1,9 @@
+{
+  "id": "natural_prime",
+  "name": "Natural Prime",
+  "color_hex": "#DFDFD3",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

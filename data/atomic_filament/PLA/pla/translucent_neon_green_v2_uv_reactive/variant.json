@@ -1,0 +1,10 @@
+{
+  "id": "translucent_neon_green_v2_uv_reactive",
+  "name": "Translucent Neon Green v2 - UV REACTIVE",
+  "color_hex": "#0BD10B",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

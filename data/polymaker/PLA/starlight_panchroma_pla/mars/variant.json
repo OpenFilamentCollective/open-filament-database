@@ -1,0 +1,9 @@
+{
+  "id": "mars",
+  "name": "Mars",
+  "color_hex": "#D33D3D",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

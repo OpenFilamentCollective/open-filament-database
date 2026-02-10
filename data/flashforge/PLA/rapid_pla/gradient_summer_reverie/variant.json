@@ -1,0 +1,15 @@
+{
+  "id": "gradient_summer_reverie",
+  "name": "Gradient Summer Reverie",
+  "color_hex": [
+    "#F297DA",
+    "#F67405",
+    "#FBE200",
+    "#9CBF60",
+    "#8ED9F9"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

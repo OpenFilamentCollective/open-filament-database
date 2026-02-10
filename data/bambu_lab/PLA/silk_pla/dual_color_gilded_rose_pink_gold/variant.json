@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_gilded_rose_pink_gold",
+  "name": "Dual Color Gilded Rose (Pink-Gold)",
+  "color_hex": [
+    "#E3B145",
+    "#D55D8C"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

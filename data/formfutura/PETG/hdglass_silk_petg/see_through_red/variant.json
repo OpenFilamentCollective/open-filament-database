@@ -1,0 +1,9 @@
+{
+  "id": "see_through_red",
+  "name": "See Through Red",
+  "color_hex": "#AA0101",
+  "traits": {
+    "translucent": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "luvocom_3f_paht_kk_50056_fr_black",
+  "name": "LUVOCOM 3F PAHT KK 50056 FR Black",
+  "color_hex": "#000000",
+  "traits": {
+    "self_extinguishing": true,
+    "high_temperature": true,
+    "contains_ceramic": true
+  }
+}

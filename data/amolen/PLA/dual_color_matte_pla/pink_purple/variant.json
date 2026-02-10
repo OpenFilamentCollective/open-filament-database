@@ -1,0 +1,13 @@
+{
+  "id": "pink_purple",
+  "name": "Pink Purple",
+  "color_hex": [
+    "#A000CA",
+    "#FD64B3"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

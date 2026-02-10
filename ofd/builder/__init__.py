@@ -46,6 +46,7 @@ from .exporters import (
     export_sqlite,
     export_csv,
     export_api,
+    export_badges,
 )
 
 __all__ = [
@@ -74,4 +75,5 @@ __all__ = [
     'export_sqlite',
     'export_csv',
     'export_api',
+    'export_badges',
 ]

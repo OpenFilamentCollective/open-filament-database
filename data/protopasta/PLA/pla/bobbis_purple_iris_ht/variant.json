@@ -1,0 +1,10 @@
+{
+  "id": "bobbis_purple_iris_ht",
+  "name": "Bobbi's Purple Iris HT",
+  "color_hex": "#7142A3",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "yellow_gold",
+  "name": "Yellow-gold",
+  "color_hex": "#E3B145",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

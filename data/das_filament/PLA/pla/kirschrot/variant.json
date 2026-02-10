@@ -1,0 +1,8 @@
+{
+  "id": "kirschrot",
+  "name": "Kirschrot",
+  "color_hex": "#EC0000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

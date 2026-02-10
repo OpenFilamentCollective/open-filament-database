@@ -1,0 +1,13 @@
+{
+  "id": "blue_green",
+  "name": "Blue-Green",
+  "color_hex": [
+    "#0099E6",
+    "#41A840"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "voxel_phantom_blue",
+  "name": "VOXEL Phantom Blue",
+  "color_hex": "#003287",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

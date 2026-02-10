@@ -1,0 +1,13 @@
+{
+  "id": "dual_aubergine_lime_magenta",
+  "name": "Dual Aubergine Lime Magenta",
+  "color_hex": [
+    "#DEDE00",
+    "#B1407F"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

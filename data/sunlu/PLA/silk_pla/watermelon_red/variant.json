@@ -1,0 +1,9 @@
+{
+  "id": "watermelon_red",
+  "name": "Watermelon Red",
+  "color_hex": "#E24749",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_cf_black",
+  "name": "The Filament CF Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

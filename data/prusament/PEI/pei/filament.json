@@ -1,0 +1,11 @@
+{
+  "id": "pei",
+  "name": "PEI",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "min_print_temperature": 400,
+  "max_print_temperature": 420,
+  "min_bed_temperature": 140,
+  "max_bed_temperature": 160,
+  "chamber_temperature": 90
+}

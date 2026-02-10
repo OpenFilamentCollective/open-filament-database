@@ -1,0 +1,9 @@
+{
+  "id": "green_army",
+  "name": "Green Army",
+  "color_hex": "#008059",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

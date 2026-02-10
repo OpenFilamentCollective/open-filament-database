@@ -1,0 +1,9 @@
+{
+  "id": "conductive_black",
+  "name": "Conductive Black",
+  "color_hex": "#000000",
+  "traits": {
+    "filtration_recommended": true,
+    "conductive": true
+  }
+}

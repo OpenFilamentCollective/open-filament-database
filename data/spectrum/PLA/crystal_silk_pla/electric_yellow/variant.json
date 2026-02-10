@@ -1,0 +1,10 @@
+{
+  "id": "electric_yellow",
+  "name": "Electric Yellow",
+  "color_hex": "#FBF942",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "recycled_translucent_grape",
+  "name": "Recycled Translucent Grape",
+  "color_hex": "#663D7E",
+  "traits": {
+    "translucent": true,
+    "recycled": true
+  }
+}

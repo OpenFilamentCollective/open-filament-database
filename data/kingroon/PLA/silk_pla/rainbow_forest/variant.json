@@ -1,0 +1,15 @@
+{
+  "id": "rainbow_forest",
+  "name": "Rainbow Forest",
+  "color_hex": [
+    "#39B9DB",
+    "#6C47B2",
+    "#EEA061",
+    "#E2FF4D",
+    "#62E480"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

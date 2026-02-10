@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_gold_rose",
+  "name": "Dual Color Gold & Rose",
+  "color_hex": [
+    "#BB264D",
+    "#CE8D00"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "neon_blue_lagoon",
+  "name": "Neon Blue Lagoon",
+  "color_hex": [
+    "#39B9DB",
+    "#62E480"
+  ],
+  "traits": {
+    "neon": true,
+    "coextruded": true
+  }
+}

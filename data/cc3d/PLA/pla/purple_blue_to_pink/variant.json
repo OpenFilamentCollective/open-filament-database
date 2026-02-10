@@ -1,0 +1,12 @@
+{
+  "id": "purple_blue_to_pink",
+  "name": "Purple Blue to Pink",
+  "color_hex": [
+    "#6C47B2",
+    "#F300EA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "therm_blue",
+  "name": "THERM BLUE",
+  "color_hex": [
+    "#DFDFD3",
+    "#6299DF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

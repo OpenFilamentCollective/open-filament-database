@@ -1,0 +1,8 @@
+{
+  "id": "bronze",
+  "name": "Bronze",
+  "color_hex": "#B26E3E",
+  "traits": {
+    "imitates_metal": true
+  }
+}

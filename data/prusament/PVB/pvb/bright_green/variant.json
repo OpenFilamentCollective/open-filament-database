@@ -1,0 +1,9 @@
+{
+  "id": "bright_green",
+  "name": "Bright Green",
+  "color_hex": "#51CC00",
+  "traits": {
+    "ipa_soluble": true,
+    "transparent": true
+  }
+}

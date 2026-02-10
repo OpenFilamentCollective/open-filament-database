@@ -1,0 +1,9 @@
+{
+  "id": "bronze_mh_build_series",
+  "name": "Bronze MH Build Series",
+  "color_hex": "#7F773A",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

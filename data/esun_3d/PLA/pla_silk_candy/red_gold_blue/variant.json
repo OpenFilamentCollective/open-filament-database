@@ -1,0 +1,14 @@
+{
+  "id": "red_gold_blue",
+  "name": "Red Gold Blue",
+  "color_hex": [
+    "#FFCB47",
+    "#F00C00",
+    "#2E56F1"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

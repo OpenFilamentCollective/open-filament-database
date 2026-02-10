@@ -1,0 +1,16 @@
+{
+  "id": "ranbow_candy",
+  "name": "Ranbow Candy",
+  "color_hex": [
+    "#FF72B6",
+    "#EA9E3F",
+    "#00A594",
+    "#7D8EAA",
+    "#F47D59"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_macaron_blue_purple",
+  "name": "Rainbow Macaron Blue Purple",
+  "color_hex": [
+    "#BED9EB",
+    "#D3C6FF",
+    "#9BE0E5"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

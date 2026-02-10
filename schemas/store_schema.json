@@ -69,6 +69,11 @@
                 "$ref": "#/definitions/country_code"
             },
             "$ref": "#/definitions/string_limit"
+        },
+        "source": {
+            "type": "string",
+            "description": "The source of the data, like another DB or company",
+            "$ref": "#/definitions/string_limit"
         }
     },
     "required": [

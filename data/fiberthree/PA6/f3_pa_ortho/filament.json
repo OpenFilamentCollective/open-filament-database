@@ -1,0 +1,10 @@
+{
+  "id": "f3_pa_ortho",
+  "name": "F3 PA Ortho",
+  "diameter_tolerance": 0.02,
+  "density": 1.2,
+  "min_print_temperature": 250,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100
+}

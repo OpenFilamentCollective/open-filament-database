@@ -1,0 +1,9 @@
+{
+  "id": "acacia",
+  "name": "Acacia",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true
+  }
+}

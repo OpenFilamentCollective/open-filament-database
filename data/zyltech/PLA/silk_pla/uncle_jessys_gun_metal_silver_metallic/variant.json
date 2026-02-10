@@ -1,0 +1,10 @@
+{
+  "id": "uncle_jessys_gun_metal_silver_metallic",
+  "name": "Uncle Jessy's Gun Metal Silver Metallic",
+  "color_hex": "#C5C5BF",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "imitates_metal": true
+  }
+}

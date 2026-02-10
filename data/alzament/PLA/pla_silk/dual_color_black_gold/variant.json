@@ -1,0 +1,12 @@
+{
+  "id": "dual_color_black_gold",
+  "name": "Dual Color Black-Gold",
+  "color_hex": [
+    "#000000",
+    "#b89f4c"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

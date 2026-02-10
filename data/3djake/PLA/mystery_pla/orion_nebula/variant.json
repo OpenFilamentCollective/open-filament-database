@@ -1,0 +1,13 @@
+{
+  "id": "orion_nebula",
+  "name": "Orion Nebula",
+  "color_hex": [
+    "#DB3FA9",
+    "#000000",
+    "#7659B5"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

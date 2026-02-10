@@ -1,5 +1,8 @@
 {
-    "id": "avocado",
-    "name": "Avocado",
-    "color_hex": "#959910"
+  "id": "avocado",
+  "name": "Avocado",
+  "color_hex": "#959910",
+  "traits": {
+    "gradual_color_change": true
+  }
 }

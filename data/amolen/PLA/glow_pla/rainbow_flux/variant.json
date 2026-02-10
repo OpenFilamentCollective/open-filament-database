@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_flux",
+  "name": "Rainbow Flux",
+  "color_hex": [
+    "#40B6E4",
+    "#F884E2",
+    "#BE2ED6"
+  ],
+  "traits": {
+    "glow": true,
+    "gradual_color_change": true
+  }
+}

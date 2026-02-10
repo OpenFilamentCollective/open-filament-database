@@ -1,0 +1,15 @@
+{
+  "id": "yellow_green_blue_purple_red_gold",
+  "name": "Yellow Green Blue Purple Red Gold",
+  "color_hex": [
+    "#E3B145",
+    "#77A54B",
+    "#9761B5",
+    "#F06E92",
+    "#C6F3FD"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

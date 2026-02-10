@@ -1,0 +1,8 @@
+{
+  "id": "glass_blue",
+  "name": "Glass Blue",
+  "color_hex": "#4921C1",
+  "traits": {
+    "translucent": true
+  }
+}

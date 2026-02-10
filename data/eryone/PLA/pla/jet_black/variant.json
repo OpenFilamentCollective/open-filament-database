@@ -1,5 +1,8 @@
 {
-    "id": "jet_black",
-    "name": "Jet Black",
-    "color_hex": "#242529"
+  "id": "jet_black",
+  "name": "Jet Black",
+  "color_hex": "#242529",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

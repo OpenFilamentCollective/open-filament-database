@@ -1,0 +1,13 @@
+{
+  "id": "green_shiny_blue",
+  "name": "Green Shiny Blue",
+  "color_hex": [
+    "#0353BA",
+    "#00B4BC"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

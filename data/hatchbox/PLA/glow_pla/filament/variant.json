@@ -1,0 +1,13 @@
+{
+  "id": "filament",
+  "name": "Filament",
+  "color_hex": [
+    "#F5F5F4",
+    "#089A45"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

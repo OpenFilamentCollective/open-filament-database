@@ -1,0 +1,10 @@
+{
+  "id": "carbon_dark_brown",
+  "name": "Carbon Dark Brown",
+  "color_hex": "#6E4325",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "haze_blue",
+  "name": "Haze Blue",
+  "color_hex": [
+    "#B5A7AA",
+    "#B9CAD0",
+    "#CAAAC2"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "star_dust_glitter_black",
+  "name": "Star Dust Glitter Black",
+  "color_hex": "#1D1D1D",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

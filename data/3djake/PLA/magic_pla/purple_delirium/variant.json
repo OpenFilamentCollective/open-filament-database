@@ -1,0 +1,12 @@
+{
+  "id": "purple_delirium",
+  "name": "Purple Delirium",
+  "color_hex": [
+    "#DB3FA9",
+    "#0066D9"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

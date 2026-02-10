@@ -1,0 +1,11 @@
+{
+  "id": "chameleon_bluepurple",
+  "name": "Chameleon Blue/Purple",
+  "color_hex": [
+    "#224C5D",
+    "#583061"
+  ],
+  "traits": {
+    "iridescent": true
+  }
+}

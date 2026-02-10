@@ -1,0 +1,8 @@
+{
+  "id": "violet_alumine",
+  "name": "Violet alumine",
+  "color_hex": "#7F068C",
+  "traits": {
+    "contains_aluminium": true
+  }
+}

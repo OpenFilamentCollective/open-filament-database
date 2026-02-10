@@ -1,0 +1,13 @@
+{
+  "id": "plus_fire_red",
+  "name": "Plus Fire Red",
+  "color_hex": [
+    "#E72F1D",
+    "#FFD342"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

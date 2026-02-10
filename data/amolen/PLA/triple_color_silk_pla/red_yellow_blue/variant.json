@@ -1,0 +1,13 @@
+{
+  "id": "red_yellow_blue",
+  "name": "Red Yellow Blue",
+  "color_hex": [
+    "#4921C1",
+    "#FF0078",
+    "#E4E46D"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

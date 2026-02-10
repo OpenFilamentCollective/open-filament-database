@@ -1,0 +1,13 @@
+{
+  "id": "gradient_aged_brass",
+  "name": "Gradient Aged Brass",
+  "color_hex": [
+    "#606935",
+    "#926043",
+    "#816300"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

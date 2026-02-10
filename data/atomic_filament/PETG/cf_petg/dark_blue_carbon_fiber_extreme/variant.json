@@ -1,0 +1,9 @@
+{
+  "id": "dark_blue_carbon_fiber_extreme",
+  "name": "Dark Blue CARBON FIBER Extreme",
+  "color_hex": "#3B3F6B",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

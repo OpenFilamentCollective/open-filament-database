@@ -1,0 +1,10 @@
+{
+  "id": "classic_copper_natural",
+  "name": "Classic Copper Natural",
+  "color_hex": "#8D5D4F",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_copper": true
+  }
+}

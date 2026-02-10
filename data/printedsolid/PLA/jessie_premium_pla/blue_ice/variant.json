@@ -1,0 +1,9 @@
+{
+  "id": "blue_ice",
+  "name": "Blue Ice",
+  "color_hex": "#033877",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

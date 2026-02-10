@@ -1,0 +1,9 @@
+{
+  "id": "metallic_white",
+  "name": "Metallic White",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

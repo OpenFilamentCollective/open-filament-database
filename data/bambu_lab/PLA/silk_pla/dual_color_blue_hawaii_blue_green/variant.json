@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_blue_hawaii_blue_green",
+  "name": "Dual Color Blue Hawaii (Blue-Green)",
+  "color_hex": [
+    "#39B9DB",
+    "#98FBCB"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

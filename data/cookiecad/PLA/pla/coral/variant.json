@@ -1,0 +1,8 @@
+{
+  "id": "coral",
+  "name": "Coral",
+  "color_hex": "#FF5A00",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

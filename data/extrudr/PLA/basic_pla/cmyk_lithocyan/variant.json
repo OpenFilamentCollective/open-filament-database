@@ -1,0 +1,11 @@
+{
+  "id": "cmyk_lithocyan",
+  "name": "CMYK Lithocyan",
+  "color_hex": "#0099E6",
+  "color_standards": {
+    "ral": "6027"
+  },
+  "traits": {
+    "industrially_compostable": true
+  }
+}

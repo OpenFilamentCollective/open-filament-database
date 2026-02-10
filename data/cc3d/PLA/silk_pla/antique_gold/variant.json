@@ -1,0 +1,9 @@
+{
+  "id": "antique_gold",
+  "name": "Antique Gold",
+  "color_hex": "#ACA078",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

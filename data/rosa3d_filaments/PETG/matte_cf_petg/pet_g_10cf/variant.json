@@ -1,0 +1,9 @@
+{
+  "id": "pet_g_10cf",
+  "name": "PET-G + 10CF",
+  "color_hex": "#292B2B",
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "ultra_black",
+  "name": "Ultra Black",
+  "color_hex": "#000000",
+  "traits": {
+    "filtration_recommended": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

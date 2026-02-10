@@ -1,0 +1,12 @@
+{
+  "id": "grey_to_white",
+  "name": "Grey to White",
+  "color_hex": [
+    "#727376",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "temperature_color_change": true
+  }
+}

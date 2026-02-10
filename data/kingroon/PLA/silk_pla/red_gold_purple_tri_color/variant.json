@@ -1,0 +1,13 @@
+{
+  "id": "red_gold_purple_tri_color",
+  "name": "Red Gold Purple tri-color",
+  "color_hex": [
+    "#B7293E",
+    "#F6C500",
+    "#C63DBA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

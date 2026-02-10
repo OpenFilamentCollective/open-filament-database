@@ -1,13 +1,13 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "article_number": "01150627a",
-        "purchase_links": [
-            {
-                "store_id": "tecbears",
-                "url": "https://www.amazon.co.uk/dp/B0CGKY2XJK?language=en_US"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "01150627a",
+    "purchase_links": [
+      {
+        "store_id": "tecbears",
+        "url": "https://www.amazon.co.uk/dp/B0CGKY2XJK?language=en_US"
+      }
+    ]
+  }
 ]

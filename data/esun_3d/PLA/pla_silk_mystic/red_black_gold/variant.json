@@ -1,0 +1,15 @@
+{
+  "id": "red_black_gold",
+  "name": "Red Black Gold",
+  "color_hex": [
+    "#E3B145",
+    "#000000",
+    "#C01616"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "vivid_fusion_2024_rainbow_series",
+  "name": "Vivid Fusion 2024 Rainbow Series",
+  "color_hex": [
+    "#4F7BBB",
+    "#FC6D8E",
+    "#FF8B47",
+    "#95D05C",
+    "#8873C7"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

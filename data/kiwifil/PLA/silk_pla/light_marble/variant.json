@@ -1,0 +1,10 @@
+{
+  "id": "light_marble",
+  "name": "Light Marble",
+  "color_hex": "#ECEFED",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "imitates_marble": true
+  }
+}

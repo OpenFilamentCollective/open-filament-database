@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_black_green",
+  "name": "Dual Color Black Green",
+  "color_hex": [
+    "#000000",
+    "#15817B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_terra",
+  "name": "Rainbow Terra",
+  "color_hex": [
+    "#6E8451",
+    "#A45B27",
+    "#11784F"
+  ],
+  "traits": {
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

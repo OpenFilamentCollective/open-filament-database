@@ -1,0 +1,8 @@
+{
+  "id": "fjord_blue",
+  "name": "Fjord Blue",
+  "color_hex": "#0095FF",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

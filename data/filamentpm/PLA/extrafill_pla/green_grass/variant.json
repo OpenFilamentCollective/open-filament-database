@@ -1,0 +1,8 @@
+{
+  "id": "green_grass",
+  "name": "Green Grass",
+  "color_hex": "#41A840",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

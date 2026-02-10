@@ -1,0 +1,9 @@
+{
+  "id": "sunny_orange",
+  "name": "Sunny Orange",
+  "color_hex": "#FA7F1B",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "bicolor_magic_blue_rosered",
+  "name": "Bicolor Magic-Blue-RoseRed",
+  "color_hex": [
+    "#0E21AE",
+    "#C80181"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

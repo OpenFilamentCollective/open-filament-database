@@ -1,5 +1,8 @@
 {
-    "id": "pearl_white",
-    "name": "Pearl white",
-    "color_hex": "#dfdbd8"
+  "id": "pearl_white",
+  "name": "Pearl white",
+  "color_hex": "#dfdbd8",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

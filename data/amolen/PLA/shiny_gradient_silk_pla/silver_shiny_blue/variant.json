@@ -1,0 +1,12 @@
+{
+  "id": "silver_shiny_blue",
+  "name": "Silver & Shiny Blue",
+  "color_hex": [
+    "#AEB8C1",
+    "#2C3294"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

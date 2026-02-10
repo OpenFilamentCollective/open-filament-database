@@ -1,0 +1,9 @@
+{
+  "id": "desert_tan",
+  "name": "Desert Tan",
+  "color_hex": "#FBE0B1",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

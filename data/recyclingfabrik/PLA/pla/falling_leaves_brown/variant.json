@@ -1,0 +1,9 @@
+{
+  "id": "falling_leaves_brown",
+  "name": "Falling Leaves (Brown)",
+  "color_hex": "#6E4325",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

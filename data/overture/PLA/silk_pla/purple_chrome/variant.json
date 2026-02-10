@@ -1,0 +1,13 @@
+{
+  "id": "purple_chrome",
+  "name": "Purple Chrome",
+  "color_hex": [
+    "#7701B2",
+    "#E23288",
+    "#6459EB"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

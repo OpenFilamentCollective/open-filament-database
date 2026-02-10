@@ -1,0 +1,13 @@
+{
+  "id": "sapphire_moon",
+  "name": "Sapphire Moon",
+  "color_hex": [
+    "#E0E0DC",
+    "#0353BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

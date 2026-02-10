@@ -1,0 +1,13 @@
+{
+  "id": "dual_colors_purple_gold",
+  "name": "Dual Colors Purple-Gold",
+  "color_hex": [
+    "#7659B5",
+    "#F6C500"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

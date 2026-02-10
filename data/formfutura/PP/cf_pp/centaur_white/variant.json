@@ -1,0 +1,9 @@
+{
+  "id": "centaur_white",
+  "name": "Centaur White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

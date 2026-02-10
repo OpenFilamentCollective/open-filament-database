@@ -1,0 +1,14 @@
+{
+  "id": "blue_and_green_3_in_1",
+  "name": "Blue and Green 3 in 1",
+  "color_hex": [
+    "#67C993",
+    "#D33D3D",
+    "#0078BF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

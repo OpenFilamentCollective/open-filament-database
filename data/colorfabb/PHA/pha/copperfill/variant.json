@@ -1,0 +1,10 @@
+{
+  "id": "copperfill",
+  "name": "copperFill",
+  "color_hex": "#904029",
+  "traits": {
+    "home_compostable": true,
+    "abrasive": true,
+    "contains_copper": true
+  }
+}

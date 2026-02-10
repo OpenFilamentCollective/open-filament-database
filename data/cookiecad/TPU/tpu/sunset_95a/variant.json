@@ -1,0 +1,12 @@
+{
+  "id": "sunset_95a",
+  "name": "Sunset 95A",
+  "color_hex": [
+    "#0099E6",
+    "#8D65C7",
+    "#FF00A2"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

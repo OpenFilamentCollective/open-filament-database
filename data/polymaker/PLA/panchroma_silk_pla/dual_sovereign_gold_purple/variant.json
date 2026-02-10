@@ -1,0 +1,13 @@
+{
+  "id": "dual_sovereign_gold_purple",
+  "name": "Dual Sovereign Gold Purple",
+  "color_hex": [
+    "#9761B5",
+    "#FFCB47"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

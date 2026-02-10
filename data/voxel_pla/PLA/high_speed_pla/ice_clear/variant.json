@@ -1,0 +1,8 @@
+{
+  "id": "ice_clear",
+  "name": "Ice Clear",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

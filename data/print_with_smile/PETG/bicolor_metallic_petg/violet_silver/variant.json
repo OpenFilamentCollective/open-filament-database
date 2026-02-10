@@ -1,0 +1,12 @@
+{
+  "id": "violet_silver",
+  "name": "VIOLET SILVER",
+  "color_hex": [
+    "#4E486A",
+    "#A8B0BD"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

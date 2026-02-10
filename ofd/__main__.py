@@ -22,6 +22,9 @@ Examples:
     uv run -m ofd script style_data --dry-run  # Preview style_data changes
 """
 
+# PYTHON_ARGCOMPLETE_OK
+
+import argcomplete
 import argparse
 import sys
 from pathlib import Path
@@ -113,6 +116,7 @@ def main(argv: list[str] | None = None) -> int:
         Exit code (0 for success, non-zero for failure)
     """
     parser = create_parser()
+    argcomplete.autocomplete(parser)
     args = parser.parse_args(argv)
 
     # Dispatch to the appropriate command handler

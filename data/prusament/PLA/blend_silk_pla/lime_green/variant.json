@@ -1,0 +1,10 @@
+{
+  "id": "lime_green",
+  "name": "Lime Green",
+  "color_hex": "#A7B853",
+  "traits": {
+    "industrially_compostable": true,
+    "blend": true,
+    "silk": true
+  }
+}

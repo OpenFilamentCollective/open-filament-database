@@ -1,0 +1,9 @@
+{
+  "id": "silver_mh_build_series",
+  "name": "Silver MH Build Series",
+  "color_hex": "#C9D0D4",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

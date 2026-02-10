@@ -1,0 +1,10 @@
+{
+  "id": "luminous_orange",
+  "name": "Luminous Orange",
+  "color_hex": "#F67405",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

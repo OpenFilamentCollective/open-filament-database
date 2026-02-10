@@ -1,7 +1,8 @@
 {
-    "id": "sunlu",
-    "name": "SUNLU",
-    "website": "https://sunlu.com/",
-    "logo": "logo.png",
-    "origin": "US"
+  "id": "sunlu",
+  "name": "SUNLU",
+  "website": "https://sunlu.com/",
+  "logo": "logo.png",
+  "origin": "US",
+  "source": "openprinttag"
 }

@@ -1,0 +1,9 @@
+{
+  "id": "esd_black",
+  "name": "ESD Black",
+  "color_hex": "#000000",
+  "traits": {
+    "filtration_recommended": true,
+    "esd_safe": true
+  }
+}

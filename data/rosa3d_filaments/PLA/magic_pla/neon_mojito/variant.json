@@ -1,0 +1,12 @@
+{
+  "id": "neon_mojito",
+  "name": "Neon Mojito",
+  "color_hex": [
+    "#69EE00",
+    "#FFFC25"
+  ],
+  "traits": {
+    "neon": true,
+    "coextruded": true
+  }
+}

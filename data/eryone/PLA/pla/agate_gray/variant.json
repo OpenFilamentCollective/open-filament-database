@@ -1,5 +1,8 @@
 {
-    "id": "agate_gray",
-    "name": "Agate Gray",
-    "color_hex": "#878787"
+  "id": "agate_gray",
+  "name": "Agate Gray",
+  "color_hex": "#878787",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

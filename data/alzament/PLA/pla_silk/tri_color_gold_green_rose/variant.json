@@ -1,0 +1,13 @@
+{
+  "id": "tri_color_gold_green_rose",
+  "name": "Tri Color Gold-Green-Rose",
+  "color_hex": [
+    "#a2546a",
+    "#477531",
+    "#b6b125"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

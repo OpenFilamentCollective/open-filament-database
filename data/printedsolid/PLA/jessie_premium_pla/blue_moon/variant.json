@@ -1,0 +1,8 @@
+{
+  "id": "blue_moon",
+  "name": "Blue Moon",
+  "color_hex": "#0E21AE",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

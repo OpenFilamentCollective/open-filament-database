@@ -1,0 +1,14 @@
+{
+  "id": "triple_white_pink_purple",
+  "name": "Triple White Pink Purple",
+  "color_hex": [
+    "#FFFFFF",
+    "#FFBADE",
+    "#C170FA"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

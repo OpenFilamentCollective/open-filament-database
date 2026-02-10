@@ -1,0 +1,14 @@
+{
+  "id": "multicolor",
+  "name": "Multicolor",
+  "color_hex": [
+    "#CE92CE",
+    "#9DBD8B",
+    "#BBA0DA"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

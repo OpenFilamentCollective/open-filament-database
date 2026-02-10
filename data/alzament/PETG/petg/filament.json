@@ -1,0 +1,11 @@
+{
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://dwn.alza.cz/manual/149498"
+}

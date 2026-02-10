@@ -1,0 +1,14 @@
+{
+  "id": "lemon_mint_rainbow",
+  "name": "Lemon Mint Rainbow",
+  "color_hex": [
+    "#D9D4C6",
+    "#D6EA65",
+    "#63C6A3",
+    "#9EDA7F"
+  ],
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "in_dark",
+  "name": "In Dark",
+  "color_hex": [
+    "#39B9DB",
+    "#EFEADF"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

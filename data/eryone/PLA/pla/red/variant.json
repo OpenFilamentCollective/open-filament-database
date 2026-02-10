@@ -1,5 +1,8 @@
 {
-    "id": "red",
-    "name": "Red",
-    "color_hex": "#f12f23"
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#f12f23",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

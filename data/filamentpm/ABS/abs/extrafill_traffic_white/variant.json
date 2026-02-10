@@ -1,0 +1,8 @@
+{
+  "id": "extrafill_traffic_white",
+  "name": "Extrafill \"Traffic White\"",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

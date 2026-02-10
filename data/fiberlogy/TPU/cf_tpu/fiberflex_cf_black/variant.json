@@ -1,0 +1,9 @@
+{
+  "id": "fiberflex_cf_black",
+  "name": "FiberFlex CF Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

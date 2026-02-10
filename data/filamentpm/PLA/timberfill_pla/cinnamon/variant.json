@@ -1,0 +1,10 @@
+{
+  "id": "cinnamon",
+  "name": "Cinnamon",
+  "color_hex": "#C38C7B",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

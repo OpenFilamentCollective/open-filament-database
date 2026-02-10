@@ -1,5 +1,8 @@
 {
-    "id": "rocket_pop",
-    "name": "Rocket Pop",
-    "color_hex": "#aa68a4"
+  "id": "rocket_pop",
+  "name": "Rocket Pop",
+  "color_hex": "#aa68a4",
+  "traits": {
+    "gradual_color_change": true
+  }
 }

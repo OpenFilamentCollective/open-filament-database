@@ -1,0 +1,12 @@
+{
+  "id": "easy_glow",
+  "name": "easy Glow",
+  "color_hex": [
+    "#62E480",
+    "#EFEADF"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

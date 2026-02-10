@@ -1,0 +1,9 @@
+{
+  "id": "moon_gray",
+  "name": "Moon Gray",
+  "color_hex": "#9F9F9F",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

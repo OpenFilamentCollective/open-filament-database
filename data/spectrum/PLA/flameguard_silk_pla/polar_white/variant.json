@@ -1,0 +1,10 @@
+{
+  "id": "polar_white",
+  "name": "Polar White",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "industrially_compostable": true,
+    "self_extinguishing": true,
+    "silk": true
+  }
+}

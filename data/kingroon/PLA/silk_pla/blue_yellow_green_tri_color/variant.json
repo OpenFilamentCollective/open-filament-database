@@ -1,0 +1,13 @@
+{
+  "id": "blue_yellow_green_tri_color",
+  "name": "Blue Yellow Green tri-color",
+  "color_hex": [
+    "#4921C1",
+    "#E2FF4D",
+    "#008059"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

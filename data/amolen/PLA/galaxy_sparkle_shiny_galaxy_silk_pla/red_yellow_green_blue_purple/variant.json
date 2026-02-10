@@ -1,0 +1,16 @@
+{
+  "id": "red_yellow_green_blue_purple",
+  "name": "Red Yellow Green Blue Purple",
+  "color_hex": [
+    "#11784F",
+    "#FF8400",
+    "#8B3A3A",
+    "#0095FF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

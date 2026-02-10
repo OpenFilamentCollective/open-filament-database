@@ -1,0 +1,14 @@
+{
+  "id": "lime_ripple",
+  "name": "Lime Ripple",
+  "color_hex": [
+    "#06B100",
+    "#0353BA",
+    "#EEEA44"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

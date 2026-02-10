@@ -159,7 +159,7 @@ The repository runs these validations on every PR:
 ## Critical Configuration Files
 
 **Root Level:**
-- `requirements.txt` - Python dependencies (jsonschema, Pillow, iniconfig)
+- `requirements.txt` - Python dependencies (jsonschema, iniconfig)
 - `ofd/` - Unified CLI package with validation, build, serve, script, and webui commands
 - `ofd.sh` - Cross-platform wrapper script for Linux/macOS (auto-setup, dependency detection)
 - `ofd.bat` - Cross-platform wrapper script for Windows (auto-setup, dependency detection)

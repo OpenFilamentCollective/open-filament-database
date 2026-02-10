@@ -1,0 +1,15 @@
+{
+  "id": "gold_bronze",
+  "name": "Gold-Bronze",
+  "color_hex": [
+    "#E3B145",
+    "#8C7354",
+    "#99A45F",
+    "#CAAA99"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

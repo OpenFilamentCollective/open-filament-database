@@ -1,7 +1,9 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.15,
-    "density": 1.25,
-    "max_dry_temperature": 65
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.1,
+  "density": 1.27,
+  "max_dry_temperature": 65,
+  "data_sheet_url": "https://b751bece-b164-4862-900b-7e8dc06531e5.usrfiles.com/ugd/b751be_5e549e5d328946e2bd2cee246af7773d.pdf",
+  "safety_sheet_url": "https://b751bece-b164-4862-900b-7e8dc06531e5.usrfiles.com/ugd/b751be_2567036910614bb9ae1cbabf53699855.pdf"
 }

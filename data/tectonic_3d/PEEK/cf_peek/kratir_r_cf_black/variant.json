@@ -1,0 +1,11 @@
+{
+  "id": "kratir_r_cf_black",
+  "name": "KRATIR r CF Black",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "abrasive": true,
+    "low_outgassing": true,
+    "contains_carbon_fiber": true
+  }
+}

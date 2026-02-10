@@ -1,0 +1,14 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": [
+    "#FF7D7A",
+    "#FFB031"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

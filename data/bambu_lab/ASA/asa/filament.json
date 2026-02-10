@@ -1,8 +1,12 @@
 {
-    "id": "asa",
-    "name": "ASA",
-    "diameter_tolerance": 0.03,
-    "density": 1.05,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_ASA_Technical_Data_Sheet.pdf",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_ASA_MSDS.pdf"
+  "id": "asa",
+  "name": "ASA",
+  "diameter_tolerance": 0.03,
+  "density": 1.05,
+  "min_print_temperature": 235,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_ASA_Technical_Data_Sheet.pdf",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_ASA_MSDS.pdf"
 }

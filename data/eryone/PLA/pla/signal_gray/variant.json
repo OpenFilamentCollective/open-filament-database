@@ -1,5 +1,8 @@
 {
-    "id": "signal_gray",
-    "name": "Signal Gray",
-    "color_hex": "#b9b3ae"
+  "id": "signal_gray",
+  "name": "Signal Gray",
+  "color_hex": "#b9b3ae",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

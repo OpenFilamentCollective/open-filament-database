@@ -1,0 +1,9 @@
+{
+  "id": "gold",
+  "name": "Gold",
+  "color_hex": "#F9E352",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

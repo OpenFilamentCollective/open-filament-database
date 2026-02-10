@@ -1,0 +1,8 @@
+{
+  "id": "aqua",
+  "name": "Aqua",
+  "color_hex": "#BED9EB",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

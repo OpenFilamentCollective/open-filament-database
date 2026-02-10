@@ -1,0 +1,9 @@
+{
+  "id": "blue_chip_marble",
+  "name": "Blue Chip Marble",
+  "color_hex": "#8ED9F9",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

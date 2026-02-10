@@ -1,0 +1,13 @@
+{
+  "id": "black_blue_purple",
+  "name": "Black Blue Purple",
+  "color_hex": [
+    "#000000",
+    "#003287",
+    "#8D078C"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

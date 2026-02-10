@@ -1,0 +1,9 @@
+{
+  "id": "warm_grey",
+  "name": "Warm Grey",
+  "color_hex": "#A49D8E",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

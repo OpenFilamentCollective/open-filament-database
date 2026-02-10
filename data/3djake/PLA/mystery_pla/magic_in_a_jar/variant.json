@@ -1,0 +1,13 @@
+{
+  "id": "magic_in_a_jar",
+  "name": "Magic in a Jar",
+  "color_hex": [
+    "#0066D9",
+    "#70A641",
+    "#F6C500"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

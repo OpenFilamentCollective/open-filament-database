@@ -1,0 +1,10 @@
+{
+  "id": "carbonx_9085_cf_black",
+  "name": "CarbonX™ 9085 + CF Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "low_outgassing": true,
+    "contains_carbon_fiber": true
+  }
+}

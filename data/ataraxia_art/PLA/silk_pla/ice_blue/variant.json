@@ -1,0 +1,13 @@
+{
+  "id": "ice_blue",
+  "name": "Ice Blue",
+  "color_hex": [
+    "#EAECF5",
+    "#2E56F1"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

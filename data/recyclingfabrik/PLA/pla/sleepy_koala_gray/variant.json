@@ -1,0 +1,9 @@
+{
+  "id": "sleepy_koala_gray",
+  "name": "Sleepy Koala (Gray)",
+  "color_hex": "#808080",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

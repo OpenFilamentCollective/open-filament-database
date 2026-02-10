@@ -1,0 +1,12 @@
+{
+  "id": "white",
+  "name": "White",
+  "color_hex": [
+    "#0099E6",
+    "#F2EFE9"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

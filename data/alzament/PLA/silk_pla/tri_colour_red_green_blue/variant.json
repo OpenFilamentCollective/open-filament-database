@@ -1,0 +1,14 @@
+{
+  "id": "tri_colour_red_green_blue",
+  "name": "Tri colour Red-Green-Blue",
+  "color_hex": [
+    "#EB0075",
+    "#008059",
+    "#00E3E2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

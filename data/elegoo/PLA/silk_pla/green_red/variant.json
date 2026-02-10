@@ -1,0 +1,13 @@
+{
+  "id": "green_red",
+  "name": "Green Red",
+  "color_hex": [
+    "#3D9441",
+    "#ED1536"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

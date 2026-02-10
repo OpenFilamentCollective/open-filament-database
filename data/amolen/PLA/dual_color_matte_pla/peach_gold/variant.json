@@ -1,0 +1,13 @@
+{
+  "id": "peach_gold",
+  "name": "Peach Gold",
+  "color_hex": [
+    "#EB5274",
+    "#F7D979"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

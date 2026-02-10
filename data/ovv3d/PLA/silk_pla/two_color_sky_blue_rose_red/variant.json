@@ -1,0 +1,13 @@
+{
+  "id": "two_color_sky_blue_rose_red",
+  "name": "Two-color Sky Blue+ Rose Red",
+  "color_hex": [
+    "#0078BF",
+    "#C63DBA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "fluorescent_yellow",
+  "name": "Fluorescent Yellow",
+  "color_hex": [
+    "#E4E46D",
+    "#0CCF81"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "metal",
+  "name": "Metal",
+  "color_hex": [
+    "#FF8133",
+    "#9CBF60",
+    "#FCE575",
+    "#BB6D48",
+    "#5FBCDD"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

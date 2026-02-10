@@ -1,0 +1,9 @@
+{
+  "id": "fir_green",
+  "name": "Fir Green",
+  "color_hex": "#4D5D4C",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

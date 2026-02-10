@@ -1,0 +1,9 @@
+{
+  "id": "lemon_yellow",
+  "name": "Lemon Yellow",
+  "color_hex": "#EEEA44",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

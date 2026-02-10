@@ -1,0 +1,14 @@
+{
+  "id": "rainbow",
+  "name": "Rainbow",
+  "color_hex": [
+    "#2b836c",
+    "#8d161c",
+    "#b44905",
+    "#83b656"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

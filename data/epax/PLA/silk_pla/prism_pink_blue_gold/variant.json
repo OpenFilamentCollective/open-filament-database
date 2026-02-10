@@ -1,0 +1,13 @@
+{
+  "id": "prism_pink_blue_gold",
+  "name": "Prism (Pink / Blue / Gold)",
+  "color_hex": [
+    "#FF00A2",
+    "#0066D9",
+    "#C3B626"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

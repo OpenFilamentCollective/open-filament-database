@@ -1,0 +1,12 @@
+{
+  "id": "mint_blush",
+  "name": "Mint Blush",
+  "color_hex": [
+    "#DB3FA9",
+    "#509F45"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "golden_winner_glitter",
+  "name": "Golden Winner Glitter",
+  "color_hex": "#816300",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

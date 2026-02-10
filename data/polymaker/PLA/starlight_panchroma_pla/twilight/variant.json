@@ -1,0 +1,9 @@
+{
+  "id": "twilight",
+  "name": "Twilight",
+  "color_hex": "#005DA4",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

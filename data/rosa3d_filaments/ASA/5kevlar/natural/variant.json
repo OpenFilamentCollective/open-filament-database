@@ -1,0 +1,9 @@
+{
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#F9F3E5",
+  "traits": {
+    "without_pigments": true,
+    "contains_kevlar": true
+  }
+}

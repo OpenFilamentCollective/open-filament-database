@@ -1,0 +1,13 @@
+{
+  "id": "white",
+  "name": "White",
+  "color_hex": [
+    "#FFFFFF",
+    "#0CCF81"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

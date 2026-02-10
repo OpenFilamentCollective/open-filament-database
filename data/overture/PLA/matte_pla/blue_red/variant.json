@@ -1,5 +1,10 @@
 {
-    "id": "blue_red",
-    "name": "Blue-Red",
-    "color_hex": "#5162a0"
+  "id": "blue_red",
+  "name": "Blue-Red",
+  "color_hex": "#5162a0",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
 }

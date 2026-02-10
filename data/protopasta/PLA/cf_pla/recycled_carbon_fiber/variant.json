@@ -1,0 +1,11 @@
+{
+  "id": "recycled_carbon_fiber",
+  "name": "Recycled Carbon Fiber",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

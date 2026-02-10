@@ -1,0 +1,13 @@
+{
+  "id": "scarlet_symphony_multicolor_ht",
+  "name": "Scarlet Symphony Multicolor HT",
+  "color_hex": [
+    "#FF5786",
+    "#F09BB5"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "gradual_color_change": true
+  }
+}

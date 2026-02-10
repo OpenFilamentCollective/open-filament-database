@@ -1,0 +1,13 @@
+{
+  "id": "dual_caribbean_blue_green",
+  "name": "Dual Caribbean Blue Green",
+  "color_hex": [
+    "#39B9DB",
+    "#02A76B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

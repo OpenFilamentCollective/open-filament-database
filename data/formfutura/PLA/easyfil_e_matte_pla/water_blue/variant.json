@@ -1,0 +1,9 @@
+{
+  "id": "water_blue",
+  "name": "Water Blue",
+  "color_hex": "#93CFCB",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

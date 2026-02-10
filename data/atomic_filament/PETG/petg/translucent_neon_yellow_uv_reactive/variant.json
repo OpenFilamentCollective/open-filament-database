@@ -1,0 +1,9 @@
+{
+  "id": "translucent_neon_yellow_uv_reactive",
+  "name": "Translucent Neon Yellow - UV Reactive",
+  "color_hex": "#E4FF33",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

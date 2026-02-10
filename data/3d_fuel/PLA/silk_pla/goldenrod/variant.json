@@ -1,0 +1,9 @@
+{
+  "id": "goldenrod",
+  "name": "Goldenrod",
+  "color_hex": "#FFCB47",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

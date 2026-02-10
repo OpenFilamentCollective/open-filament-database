@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_green_red",
+  "name": "Dual Color Green Red",
+  "color_hex": [
+    "#06924D",
+    "#861D2B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

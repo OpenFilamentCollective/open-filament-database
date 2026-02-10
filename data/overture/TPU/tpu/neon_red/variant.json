@@ -1,5 +1,8 @@
 {
-    "id": "neon_red",
-    "name": "Neon Red",
-    "color_hex": "#ff3f28"
+  "id": "neon_red",
+  "name": "Neon Red",
+  "color_hex": "#ff3f28",
+  "traits": {
+    "neon": true
+  }
 }

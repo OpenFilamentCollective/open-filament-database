@@ -1,0 +1,14 @@
+{
+  "id": "yellow_feldspar_rock",
+  "name": "Yellow Feldspar Rock",
+  "color_hex": [
+    "#C65E0A",
+    "#ECCEA7",
+    "#E2C077"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true,
+    "imitates_marble": true
+  }
+}

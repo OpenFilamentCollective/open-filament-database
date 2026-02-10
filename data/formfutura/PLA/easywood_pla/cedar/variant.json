@@ -1,0 +1,10 @@
+{
+  "id": "cedar",
+  "name": "Cedar",
+  "color_hex": "#C37C4F",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true,
+    "imitates_wood": true
+  }
+}

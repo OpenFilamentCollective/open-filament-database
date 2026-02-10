@@ -1,5 +1,8 @@
 {
-    "id": "pearl_mouse",
-    "name": "Pearl Mouse",
-    "color_hex": "#A49D8E"
+  "id": "pearl_mouse",
+  "name": "Pearl Mouse",
+  "color_hex": "#A49D8E",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

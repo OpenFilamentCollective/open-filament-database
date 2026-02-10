@@ -1,0 +1,8 @@
+{
+  "id": "brickred",
+  "name": "BrickRed",
+  "color_hex": "#9F563E",
+  "traits": {
+    "contains_carbon_fiber": true
+  }
+}

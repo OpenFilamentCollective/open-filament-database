@@ -2,10 +2,18 @@ import { json } from '@sveltejs/kit';
 import { spawn } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
-import { activeJobs, type Job } from '$lib/server/jobManager';
+import { activeJobs, type Job, tryAcquireOperationLock, releaseOperationLock } from '$lib/server/jobManager';
 
 export async function POST({ request }) {
 	try {
+		// Atomically try to acquire the operation lock to prevent concurrent operations
+		if (!tryAcquireOperationLock()) {
+			return json(
+				{ error: 'An operation is already running. Please wait for it to complete.' },
+				{ status: 409 }
+			);
+		}
+
 		const { dryRun = false, runValidation = false } = await request.json();
 		const jobId = randomUUID();
 
@@ -64,6 +72,10 @@ export async function POST({ request }) {
 					} else if (parsed.stats !== undefined) {
 						// This is the final result
 						finalResult = parsed;
+					} else if (parsed.errors !== undefined) {
+						// Validation result included with sort
+						if (!finalResult) finalResult = {};
+						finalResult.validation = parsed;
 					}
 				} catch (e) {
 					// Line is not JSON
@@ -75,12 +87,32 @@ export async function POST({ request }) {
 			stderrBuffer += data.toString();
 		});
 
+		// Handle process errors
+		pythonProcess.on('error', (error) => {
+			console.error('Sort process error:', error);
+			job.status = 'error';
+			job.events.push({
+				type: 'error',
+				message: `Failed to spawn sort process: ${error.message}`
+			});
+			job.endTime = Date.now();
+			releaseOperationLock();
+		});
+
 		// Handle process completion
 		pythonProcess.on('close', (code) => {
 			// Try to parse any remaining stdout as the final result
 			if (stdoutBuffer.trim()) {
 				try {
-					finalResult = JSON.parse(stdoutBuffer.trim());
+					const remaining = JSON.parse(stdoutBuffer.trim());
+					if (remaining.stats !== undefined) {
+						finalResult = remaining;
+					} else if (remaining.errors !== undefined) {
+						if (!finalResult) finalResult = {};
+						finalResult.validation = remaining;
+					} else {
+						finalResult = remaining;
+					}
 				} catch (e) {
 					console.error('Failed to parse final sort result:', e);
 				}
@@ -103,6 +135,9 @@ export async function POST({ request }) {
 				});
 			}
 			job.endTime = Date.now();
+
+			// Release the operation lock when job completes
+			releaseOperationLock();
 		});
 
 		return json({
@@ -111,6 +146,8 @@ export async function POST({ request }) {
 		});
 	} catch (error) {
 		console.error('Sort endpoint error:', error);
+		// Release lock on error
+		releaseOperationLock();
 		return json({ error: 'Internal server error' }, { status: 500 });
 	}
 }

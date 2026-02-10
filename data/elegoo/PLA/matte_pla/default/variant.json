@@ -1,0 +1,9 @@
+{
+  "id": "default",
+  "name": "Default",
+  "color_hex": "#D8EEA3",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

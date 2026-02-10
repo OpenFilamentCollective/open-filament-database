@@ -1,0 +1,14 @@
+{
+  "id": "colormorph_green_magenta",
+  "name": "ColorMorph Green & Magenta",
+  "color_hex": [
+    "#008059",
+    "#C80181"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

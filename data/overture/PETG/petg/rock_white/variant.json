@@ -1,0 +1,8 @@
+{
+  "id": "rock_white",
+  "name": "Rock White",
+  "color_hex": "#EDF0F2",
+  "traits": {
+    "imitates_marble": true
+  }
+}

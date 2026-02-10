@@ -1,0 +1,12 @@
+{
+  "id": "dual_cold_green_violet",
+  "name": "DUAL COLD GREEN + VIOLET",
+  "color_hex": [
+    "#02776F",
+    "#E34A94"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

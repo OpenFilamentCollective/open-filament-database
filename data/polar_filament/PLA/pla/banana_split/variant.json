@@ -1,0 +1,8 @@
+{
+  "id": "banana_split",
+  "name": "Banana Split",
+  "color_hex": "#EEEA44",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

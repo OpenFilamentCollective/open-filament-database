@@ -1,0 +1,9 @@
+{
+  "id": "oak",
+  "name": "Oak",
+  "color_hex": "#C69581",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true
+  }
+}

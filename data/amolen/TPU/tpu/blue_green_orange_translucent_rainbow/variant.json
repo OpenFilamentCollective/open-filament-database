@@ -1,0 +1,13 @@
+{
+  "id": "blue_green_orange_translucent_rainbow",
+  "name": "Blue Green Orange Translucent Rainbow",
+  "color_hex": [
+    "#1ADAFB",
+    "#FF8400",
+    "#9AED51"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

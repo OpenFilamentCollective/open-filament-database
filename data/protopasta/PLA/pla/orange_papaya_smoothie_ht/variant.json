@@ -1,0 +1,10 @@
+{
+  "id": "orange_papaya_smoothie_ht",
+  "name": "Orange Papaya Smoothie HT",
+  "color_hex": "#FF8E24",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "imitates_marble": true
+  }
+}

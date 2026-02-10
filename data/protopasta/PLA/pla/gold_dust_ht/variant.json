@@ -1,0 +1,11 @@
+{
+  "id": "gold_dust_ht",
+  "name": "Gold Dust HT",
+  "color_hex": "#DDB95D",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

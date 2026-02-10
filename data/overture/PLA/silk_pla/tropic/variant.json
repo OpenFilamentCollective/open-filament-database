@@ -1,0 +1,13 @@
+{
+  "id": "tropic",
+  "name": "Tropic",
+  "color_hex": [
+    "#26A648",
+    "#69EE00",
+    "#00B4BC"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

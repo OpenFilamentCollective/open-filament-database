@@ -1,0 +1,9 @@
+{
+  "id": "rec_hunter_green",
+  "name": "REC- Hunter GREEN",
+  "color_hex": "#A1AC21",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

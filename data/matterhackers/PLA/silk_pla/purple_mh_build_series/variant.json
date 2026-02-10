@@ -1,0 +1,9 @@
+{
+  "id": "purple_mh_build_series",
+  "name": "Purple MH Build Series",
+  "color_hex": "#B645A9",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

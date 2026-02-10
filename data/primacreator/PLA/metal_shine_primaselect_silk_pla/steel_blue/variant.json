@@ -1,0 +1,9 @@
+{
+  "id": "steel_blue",
+  "name": "Steel Blue",
+  "color_hex": "#40719A",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

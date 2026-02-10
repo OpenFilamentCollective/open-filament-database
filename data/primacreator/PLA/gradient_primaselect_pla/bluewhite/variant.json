@@ -1,0 +1,12 @@
+{
+  "id": "bluewhite",
+  "name": "Bluewhite",
+  "color_hex": [
+    "#FFFFFF",
+    "#9AE0DD"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

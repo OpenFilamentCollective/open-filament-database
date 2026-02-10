@@ -1,0 +1,9 @@
+{
+  "id": "matt_lime_green",
+  "name": "MATT Lime Green",
+  "color_hex": "#BBDB4B",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

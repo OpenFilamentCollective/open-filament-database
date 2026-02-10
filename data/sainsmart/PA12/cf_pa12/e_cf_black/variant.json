@@ -1,0 +1,9 @@
+{
+  "id": "e_cf_black",
+  "name": "e-CF Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

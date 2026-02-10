@@ -1,0 +1,9 @@
+{
+  "id": "purple_ice",
+  "name": "Purple Ice",
+  "color_hex": "#8846AE",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "black_copper",
+  "name": "Black-Copper",
+  "color_hex": [
+    "#000000",
+    "#863938"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

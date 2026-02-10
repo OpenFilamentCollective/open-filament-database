@@ -1,5 +1,9 @@
 {
-    "id": "light_gray",
-    "name": "Light gray",
-    "color_hex": "#BAC4C4"
+  "id": "light_gray",
+  "name": "Light gray",
+  "color_hex": "#BAC4C4",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

@@ -1,0 +1,12 @@
+{
+  "id": "deep_space_galaxy_shimmer",
+  "name": "Deep Space (Galaxy Shimmer)",
+  "color_hex": [
+    "#3B4468",
+    "#7F068C"
+  ],
+  "traits": {
+    "iridescent": true,
+    "glitter": true
+  }
+}

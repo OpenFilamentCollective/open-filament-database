@@ -1,0 +1,9 @@
+{
+  "id": "midnight_black",
+  "name": "Midnight Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "antibacterial": true
+  }
+}

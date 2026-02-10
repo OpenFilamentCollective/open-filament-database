@@ -1,0 +1,12 @@
+{
+  "id": "green_in_the_dark",
+  "name": "Green in the Dark",
+  "color_hex": [
+    "#83E665",
+    "#EFEADF"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "ambar_translucid",
+  "name": "Ambar (translucid)",
+  "color_hex": "#FFBF00",
+  "traits": {
+    "translucent": true
+  }
+}

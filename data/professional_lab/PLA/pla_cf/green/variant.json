@@ -1,0 +1,10 @@
+{
+  "id": "green",
+  "name": "Green",
+  "color_hex": [
+    "#669c35"
+  ],
+  "traits": {
+    "contains_carbon_fiber": true
+  }
+}

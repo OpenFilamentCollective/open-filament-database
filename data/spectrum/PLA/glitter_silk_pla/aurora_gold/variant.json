@@ -1,0 +1,10 @@
+{
+  "id": "aurora_gold",
+  "name": "Aurora Gold",
+  "color_hex": "#686751",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true
+  }
+}

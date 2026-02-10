@@ -1,0 +1,13 @@
+{
+  "id": "blue_pink",
+  "name": "Blue Pink",
+  "color_hex": [
+    "#5FEFF9",
+    "#FD64B3"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

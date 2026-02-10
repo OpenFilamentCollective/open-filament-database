@@ -1,0 +1,9 @@
+{
+  "id": "woodjet_natur",
+  "name": "WOODJet - Natur",
+  "color_hex": "#AC8963",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true
+  }
+}

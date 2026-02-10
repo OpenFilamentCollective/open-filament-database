@@ -1,0 +1,13 @@
+{
+  "id": "blue_pink_white",
+  "name": "Blue Pink White",
+  "color_hex": [
+    "#39B9DB",
+    "#EDD6E9",
+    "#ECEFED"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

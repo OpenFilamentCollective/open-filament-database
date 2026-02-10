@@ -1,5 +1,9 @@
 {
-    "id": "wood_color",
-    "name": "Wood Color",
-    "color_hex": "#b19870"
+  "id": "wood_color",
+  "name": "Wood Color",
+  "color_hex": "#b19870",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_wood": true
+  }
 }

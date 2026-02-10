@@ -1,0 +1,10 @@
+{
+  "id": "kratir_cf",
+  "name": "KRATIR CF",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "esd_safe": true,
+    "contains_carbon_fiber": true
+  }
+}

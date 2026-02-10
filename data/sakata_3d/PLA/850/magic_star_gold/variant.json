@@ -1,0 +1,9 @@
+{
+  "id": "magic_star_gold",
+  "name": "Magic Star Gold",
+  "color_hex": "#54514B",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

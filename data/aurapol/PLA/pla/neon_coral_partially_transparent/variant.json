@@ -1,0 +1,9 @@
+{
+  "id": "neon_coral_partially_transparent",
+  "name": "Neon coral partially transparent",
+  "color_hex": "#F47D59",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

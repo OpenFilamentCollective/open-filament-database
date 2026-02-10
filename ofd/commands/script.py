@@ -16,6 +16,16 @@ sys.path.insert(0, str(project_root))
 from ofd.base import get_script, list_scripts
 
 
+def _script_name_completer(prefix, parsed_args, **kwargs):
+    """Provide tab completion for script names."""
+    try:
+        import ofd.scripts  # noqa: F401
+    except ImportError:
+        return []
+    from ofd.base import _script_registry
+    return [name for name in sorted(_script_registry.keys()) if name.startswith(prefix)]
+
+
 def register_subcommand(subparsers: argparse._SubParsersAction) -> None:
     """Register the script subcommand."""
     parser = subparsers.add_parser(
@@ -38,11 +48,12 @@ Examples:
         action='store_true',
         help='List all available scripts'
     )
-    parser.add_argument(
+    script_name_arg = parser.add_argument(
         'script_name',
         nargs='?',
         help='Name of the script to run'
     )
+    script_name_arg.completer = _script_name_completer
     parser.add_argument(
         'script_args',
         nargs=argparse.REMAINDER,

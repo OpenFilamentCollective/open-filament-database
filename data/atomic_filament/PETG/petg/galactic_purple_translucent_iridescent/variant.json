@@ -1,0 +1,9 @@
+{
+  "id": "galactic_purple_translucent_iridescent",
+  "name": "Galactic Purple Translucent Iridescent",
+  "color_hex": "#A2918D",
+  "traits": {
+    "translucent": true,
+    "iridescent": true
+  }
+}

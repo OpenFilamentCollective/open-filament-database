@@ -1,0 +1,12 @@
+{
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#949597",
+  "color_standards": {
+    "ral": "9006"
+  },
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

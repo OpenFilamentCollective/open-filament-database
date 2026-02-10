@@ -1,0 +1,14 @@
+{
+  "id": "imaginesc",
+  "name": "Imagine S.C.",
+  "storefront_url": "https://print-imagine.com/",
+  "logo": "logo.svg",
+  "ships_from": [
+    "PL"
+  ],
+  "ships_to": [
+    "PL",
+    "EU",
+    "UK"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "inox_steel",
+  "name": "Inox Steel",
+  "color_hex": "#B6B9BD",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

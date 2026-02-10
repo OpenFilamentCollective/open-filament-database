@@ -1,0 +1,13 @@
+{
+  "id": "black_shiny_red_gold",
+  "name": "Black & Shiny Red Gold",
+  "color_hex": [
+    "#000000",
+    "#98282F",
+    "#DDB95D"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "fossil_gradient",
+  "name": "Fossil Gradient",
+  "color_hex": [
+    "#7B6B57",
+    "#A38777",
+    "#7C594A"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true,
+    "imitates_marble": true
+  }
+}

@@ -1,5 +1,8 @@
 {
-    "id": "butter_yellow",
-    "name": "Butter Yellow",
-    "color_hex": "#FCFAA6"
+  "id": "butter_yellow",
+  "name": "Butter Yellow",
+  "color_hex": "#FCFAA6",
+  "traits": {
+    "matte": true
+  }
 }

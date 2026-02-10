@@ -1,5 +1,9 @@
 {
-    "id": "wood_filled",
-    "name": "Wood filled",
-    "color_hex": "#9d8058"
+  "id": "wood_filled",
+  "name": "Wood filled",
+  "color_hex": "#9d8058",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true
+  }
 }

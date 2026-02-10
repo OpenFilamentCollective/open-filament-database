@@ -1,0 +1,12 @@
+{
+  "id": "purple_to_pink",
+  "name": "Purple to Pink",
+  "color_hex": [
+    "#8846AE",
+    "#FF72B6"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "temperature_color_change": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_luminous_rainbow_colorful",
+  "name": "Rainbow Luminous Rainbow-Colorful",
+  "color_hex": [
+    "#40E0D0",
+    "#CF4042",
+    "#FF8E24",
+    "#FCE575",
+    "#6C47B2"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

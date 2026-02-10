@@ -1,0 +1,13 @@
+{
+  "id": "black_green",
+  "name": "Black Green",
+  "color_hex": [
+    "#11784F",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

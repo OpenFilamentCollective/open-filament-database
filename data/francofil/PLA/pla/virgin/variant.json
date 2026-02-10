@@ -1,0 +1,9 @@
+{
+  "id": "virgin",
+  "name": "Virgin",
+  "color_hex": "#FADCA4",
+  "traits": {
+    "transparent": true,
+    "without_pigments": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "aquasolve_natural",
+  "name": "AquaSolve – Natural",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "water_soluble": true,
+    "without_pigments": true
+  }
+}

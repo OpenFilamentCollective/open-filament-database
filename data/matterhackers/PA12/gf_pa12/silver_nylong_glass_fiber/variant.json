@@ -1,0 +1,9 @@
+{
+  "id": "silver_nylong_glass_fiber",
+  "name": "Silver NylonG Glass Fiber",
+  "color_hex": "#CACACA",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

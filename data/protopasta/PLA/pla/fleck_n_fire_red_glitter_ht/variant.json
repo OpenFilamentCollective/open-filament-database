@@ -1,0 +1,10 @@
+{
+  "id": "fleck_n_fire_red_glitter_ht",
+  "name": "Fleck 'n Fire Red Glitter HT",
+  "color_hex": "#D32E1A",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

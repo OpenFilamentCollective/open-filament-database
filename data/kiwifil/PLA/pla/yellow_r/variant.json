@@ -1,0 +1,9 @@
+{
+  "id": "yellow_r",
+  "name": "Yellow r",
+  "color_hex": "#EEEA44",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

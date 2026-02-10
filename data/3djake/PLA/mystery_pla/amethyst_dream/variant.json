@@ -1,0 +1,13 @@
+{
+  "id": "amethyst_dream",
+  "name": "Amethyst Dream",
+  "color_hex": [
+    "#DB3FA9",
+    "#ABACB0",
+    "#7659B5"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

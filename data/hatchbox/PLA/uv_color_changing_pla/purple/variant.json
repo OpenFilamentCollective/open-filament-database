@@ -1,0 +1,12 @@
+{
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": [
+    "#CC52CF",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "illuminescent_color_change": true
+  }
+}

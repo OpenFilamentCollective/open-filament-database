@@ -1,0 +1,9 @@
+{
+  "id": "liquid_asphalt_dark_gray",
+  "name": "Liquid Asphalt (Dark Gray)",
+  "color_hex": "#63646B",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

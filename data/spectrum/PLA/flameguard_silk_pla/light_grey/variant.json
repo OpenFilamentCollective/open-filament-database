@@ -1,0 +1,10 @@
+{
+  "id": "light_grey",
+  "name": "Light Grey",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "self_extinguishing": true,
+    "silk": true
+  }
+}

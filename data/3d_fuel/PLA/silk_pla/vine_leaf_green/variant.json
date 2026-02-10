@@ -1,0 +1,9 @@
+{
+  "id": "vine_leaf_green",
+  "name": "Vine Leaf Green",
+  "color_hex": "#67D8BC",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

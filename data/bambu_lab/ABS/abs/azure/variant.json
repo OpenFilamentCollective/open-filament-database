@@ -1,5 +1,8 @@
 {
-    "id": "azure",
-    "name": "Azure",
-    "color_hex": "#489FDF"
+  "id": "azure",
+  "name": "Azure",
+  "color_hex": "#489FDF",
+  "traits": {
+    "filtration_recommended": true
+  }
 }

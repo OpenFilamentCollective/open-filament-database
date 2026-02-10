@@ -1,5 +1,8 @@
 {
-    "id": "bamboo_green",
-    "name": "Bamboo Green",
-    "color_hex": "#A1D66B"
+  "id": "bamboo_green",
+  "name": "Bamboo Green",
+  "color_hex": "#A1D66B",
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,0 +1,9 @@
+{
+  "id": "matt_gunmetal_grey_camouflage",
+  "name": "Matt Gunmetal Grey Camouflage",
+  "color_hex": "#828E88",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

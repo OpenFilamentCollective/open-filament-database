@@ -1,0 +1,9 @@
+{
+  "id": "bronze",
+  "name": "Bronze",
+  "color_hex": "#CD7F32",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

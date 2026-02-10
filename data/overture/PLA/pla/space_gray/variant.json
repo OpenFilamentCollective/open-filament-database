@@ -1,5 +1,8 @@
 {
-    "id": "space_gray",
-    "name": "Space Gray",
-    "color_hex": "#63646B"
+  "id": "space_gray",
+  "name": "Space Gray",
+  "color_hex": "#63646B",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

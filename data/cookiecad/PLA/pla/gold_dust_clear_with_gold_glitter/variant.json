@@ -1,0 +1,10 @@
+{
+  "id": "gold_dust_clear_with_gold_glitter",
+  "name": "Gold Dust Clear with Gold Glitter",
+  "color_hex": "#DDB95D",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

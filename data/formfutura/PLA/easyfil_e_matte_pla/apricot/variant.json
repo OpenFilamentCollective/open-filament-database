@@ -1,0 +1,9 @@
+{
+  "id": "apricot",
+  "name": "Apricot",
+  "color_hex": "#EAC2B7",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

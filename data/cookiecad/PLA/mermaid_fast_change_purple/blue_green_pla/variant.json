@@ -1,0 +1,13 @@
+{
+  "id": "blue_green_pla",
+  "name": "blue & green) PLA",
+  "color_hex": [
+    "#B894E2",
+    "#39B9DB",
+    "#69EBB6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "lavender_purple",
+  "name": "Lavender Purple",
+  "color_hex": "#8A68B5",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

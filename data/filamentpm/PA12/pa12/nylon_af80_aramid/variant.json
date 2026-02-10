@@ -1,0 +1,9 @@
+{
+  "id": "nylon_af80_aramid",
+  "name": "Nylon AF80 Aramid",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "abrasive": true,
+    "contains_kevlar": true
+  }
+}

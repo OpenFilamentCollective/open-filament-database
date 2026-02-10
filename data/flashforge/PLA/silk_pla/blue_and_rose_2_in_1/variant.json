@@ -1,0 +1,13 @@
+{
+  "id": "blue_and_rose_2_in_1",
+  "name": "Blue and Rose 2 in 1",
+  "color_hex": [
+    "#003287",
+    "#C63DBA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

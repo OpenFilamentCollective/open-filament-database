@@ -1,0 +1,10 @@
+{
+  "id": "lite_gt_3_high_speed_pla",
+  "name": "Lite Gt 3 High Speed PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70
+}

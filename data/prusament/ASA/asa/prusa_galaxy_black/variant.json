@@ -1,5 +1,8 @@
 {
-    "id": "prusa_galaxy_black",
-    "name": "Prusa Galaxy Black",
-    "color_hex": "#2f2f2f"
+  "id": "prusa_galaxy_black",
+  "name": "Prusa Galaxy Black",
+  "color_hex": "#2f2f2f",
+  "traits": {
+    "glitter": true
+  }
 }

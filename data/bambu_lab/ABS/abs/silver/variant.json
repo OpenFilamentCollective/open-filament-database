@@ -1,5 +1,8 @@
 {
-    "id": "silver",
-    "name": "Silver",
-    "color_hex": "#87909A"
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#87909A",
+  "traits": {
+    "filtration_recommended": true
+  }
 }

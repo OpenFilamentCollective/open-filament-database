@@ -1,0 +1,13 @@
+{
+  "id": "tri_color_yellow_blue_green",
+  "name": "Tri Color Yellow-Blue-Green",
+  "color_hex": [
+    "#1e6028",
+    "#e4db66",
+    "#65bd95"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

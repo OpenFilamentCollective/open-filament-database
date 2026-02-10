@@ -1,8 +1,8 @@
 {
-    "id": "onyx",
-    "name": "Onyx",
-    "color_hex": "#262626",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "onyx",
+  "name": "Onyx",
+  "color_hex": "#262626",
+  "traits": {
+    "recyclable": true
+  }
 }

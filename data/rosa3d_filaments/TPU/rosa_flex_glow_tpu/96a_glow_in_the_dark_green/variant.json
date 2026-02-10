@@ -1,0 +1,12 @@
+{
+  "id": "96a_glow_in_the_dark_green",
+  "name": "96A Glow In The Dark Green",
+  "color_hex": [
+    "#62E480",
+    "#F9F3E5"
+  ],
+  "traits": {
+    "glow": true,
+    "illuminescent_color_change": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "jet_1010_ultem_natur",
+  "name": "Jet 1010 Ultem - Natur",
+  "color_hex": "#DC9C43",
+  "traits": {
+    "translucent": true,
+    "low_outgassing": true,
+    "without_pigments": true
+  }
+}

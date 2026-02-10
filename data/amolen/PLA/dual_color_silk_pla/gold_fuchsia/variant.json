@@ -1,0 +1,12 @@
+{
+  "id": "gold_fuchsia",
+  "name": "Gold & Fuchsia",
+  "color_hex": [
+    "#E23288",
+    "#F6C500"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

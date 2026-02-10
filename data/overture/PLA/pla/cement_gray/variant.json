@@ -1,5 +1,8 @@
 {
-    "id": "cement_gray",
-    "name": "Cement Gray",
-    "color_hex": "#697272"
+  "id": "cement_gray",
+  "name": "Cement Gray",
+  "color_hex": "#697272",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

@@ -1,0 +1,13 @@
+{
+  "id": "texas_sky_dual_color",
+  "name": "Texas Sky Dual Color",
+  "color_hex": [
+    "#0099E6",
+    "#FC6D8E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "neon_white",
+  "name": "Neon White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "filtration_recommended": true,
+    "neon": true
+  }
+}

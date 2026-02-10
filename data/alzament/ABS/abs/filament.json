@@ -1,0 +1,7 @@
+{
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.05,
+  "data_sheet_url": "https://dwn.alza.cz/manual/161246"
+}

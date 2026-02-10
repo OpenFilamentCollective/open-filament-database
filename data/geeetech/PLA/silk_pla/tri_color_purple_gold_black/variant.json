@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_purple_gold_black",
+  "name": "Tri Color Purple Gold Black",
+  "color_hex": [
+    "#6C47B2",
+    "#F9E352",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

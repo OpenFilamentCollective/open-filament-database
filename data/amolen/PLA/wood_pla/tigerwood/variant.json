@@ -1,0 +1,14 @@
+{
+  "id": "tigerwood",
+  "name": "Tigerwood",
+  "color_hex": [
+    "#8B3A3A",
+    "#913F1F",
+    "#452F25"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true,
+    "contains_wood": true
+  }
+}

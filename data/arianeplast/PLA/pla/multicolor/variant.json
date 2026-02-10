@@ -1,0 +1,14 @@
+{
+  "id": "multicolor",
+  "name": "Multicolor",
+  "color_hex": [
+    "#CD5A2E",
+    "#F5E457",
+    "#91DB01",
+    "#39B9DB",
+    "#8D65C7"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

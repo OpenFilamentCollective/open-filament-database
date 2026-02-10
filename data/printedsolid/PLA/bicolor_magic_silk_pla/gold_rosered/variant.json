@@ -1,0 +1,13 @@
+{
+  "id": "gold_rosered",
+  "name": "Gold-RoseRed",
+  "color_hex": [
+    "#FFCB47",
+    "#C90D6E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "magic_red_gold",
+  "name": "Magic Red Gold",
+  "color_hex": [
+    "#EC0000",
+    "#F6C500"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

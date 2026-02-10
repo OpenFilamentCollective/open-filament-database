@@ -1,0 +1,13 @@
+{
+  "id": "bicolor_magic_darkblue_yellow",
+  "name": "Bicolor Magic-DarkBlue-Yellow",
+  "color_hex": [
+    "#0E21AE",
+    "#FBE200"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

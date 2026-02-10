@@ -1,0 +1,9 @@
+{
+  "id": "granate",
+  "name": "Granate",
+  "color_hex": "#5D4546",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

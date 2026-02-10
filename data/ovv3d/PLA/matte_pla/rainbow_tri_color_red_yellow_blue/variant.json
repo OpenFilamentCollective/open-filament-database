@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_tri_color_red_yellow_blue",
+  "name": "Rainbow Tri-Color Red Yellow Blue",
+  "color_hex": [
+    "#FBE200",
+    "#FB6066",
+    "#0099E6"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

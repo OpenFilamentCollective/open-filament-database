@@ -1,0 +1,11 @@
+{
+  "id": "pearlescent_translucent_neon_yellow",
+  "name": "Pearlescent Translucent Neon Yellow",
+  "color_hex": "#EBFF57",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "pearlescent": true,
+    "neon": true
+  }
+}

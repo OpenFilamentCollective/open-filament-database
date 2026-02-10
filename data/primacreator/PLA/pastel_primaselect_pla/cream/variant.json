@@ -1,0 +1,8 @@
+{
+  "id": "cream",
+  "name": "Cream",
+  "color_hex": "#E3ECD3",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

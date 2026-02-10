@@ -1,7 +1,8 @@
 {
-    "id": "eryone",
-    "name": "Eryone",
-    "website": "https://fiberlogy.com/",
-    "logo": "logo.png",
-    "origin": "CN"
+  "id": "eryone",
+  "name": "Eryone",
+  "website": "https://fiberlogy.com/",
+  "logo": "logo.png",
+  "origin": "CN",
+  "source": "openprinttag"
 }

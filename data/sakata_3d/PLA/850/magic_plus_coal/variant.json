@@ -1,0 +1,9 @@
+{
+  "id": "magic_plus_coal",
+  "name": "Magic Plus Coal",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "luminous_pink",
+  "name": "Luminous Pink",
+  "color_hex": "#FC8397",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

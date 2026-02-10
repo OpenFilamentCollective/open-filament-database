@@ -1,0 +1,9 @@
+{
+  "id": "blood_red_light_glitter",
+  "name": "Blood Red Light Glitter",
+  "color_hex": "#C01616",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

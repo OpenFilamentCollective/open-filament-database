@@ -1,0 +1,9 @@
+{
+  "id": "shimmer_dark_green",
+  "name": "Shimmer Dark Green",
+  "color_hex": "#008059",
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

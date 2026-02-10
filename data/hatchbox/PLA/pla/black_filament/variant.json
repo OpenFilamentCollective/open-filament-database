@@ -1,0 +1,8 @@
+{
+  "id": "black_filament",
+  "name": "Black Filament",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

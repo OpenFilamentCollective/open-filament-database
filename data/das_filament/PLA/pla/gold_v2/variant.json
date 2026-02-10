@@ -1,0 +1,9 @@
+{
+  "id": "gold_v2",
+  "name": "Gold V2",
+  "color_hex": "#AF7D00",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

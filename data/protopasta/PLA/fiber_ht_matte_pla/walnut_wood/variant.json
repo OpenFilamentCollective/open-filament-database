@@ -1,0 +1,11 @@
+{
+  "id": "walnut_wood",
+  "name": "Walnut Wood",
+  "color_hex": "#6A5346",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "imitates_wood": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "pinkgold_multi_color",
+  "name": "Pink+Gold Multi-Color",
+  "color_hex": [
+    "#F092B3",
+    "#E3B145"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

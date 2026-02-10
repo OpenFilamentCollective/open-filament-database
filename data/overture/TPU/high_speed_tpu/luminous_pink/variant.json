@@ -1,0 +1,11 @@
+{
+  "id": "luminous_pink",
+  "name": "Luminous Pink",
+  "color_hex": [
+    "#E65FE2",
+    "#EAECF5"
+  ],
+  "traits": {
+    "illuminescent_color_change": true
+  }
+}

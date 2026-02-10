@@ -1,13 +1,13 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "ean": "6975337036708",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/support/products/pva"
-            }
-        ]
-    }
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "6975337036708",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/support/products/pva"
+      }
+    ]
+  }
 ]

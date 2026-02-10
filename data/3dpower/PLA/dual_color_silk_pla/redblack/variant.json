@@ -1,0 +1,12 @@
+{
+  "id": "redblack",
+  "name": "Red&Black",
+  "color_hex": [
+    "#232323",
+    "#C01616"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "raspberry_red",
+  "name": "Raspberry Red",
+  "color_hex": "#FF4F4D",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "nebula_purple_galaxy_shimmer",
+  "name": "Nebula Purple (Galaxy Shimmer)",
+  "color_hex": [
+    "#7F068C",
+    "#0E21AE"
+  ],
+  "traits": {
+    "iridescent": true,
+    "glitter": true
+  }
+}

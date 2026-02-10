@@ -1,0 +1,9 @@
+{
+  "id": "fiberon_rcf08_black",
+  "name": "Fiberon™ -rCF08 Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "sunrise_elixir",
+  "name": "Sunrise Elixir",
+  "color_hex": [
+    "#FA8423",
+    "#FADB24",
+    "#EC0000"
+  ],
+  "traits": {
+    "filtration_recommended": true,
+    "iridescent": true,
+    "gradual_color_change": true
+  }
+}

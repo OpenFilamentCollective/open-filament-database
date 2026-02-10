@@ -1,0 +1,9 @@
+{
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#FB6066",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

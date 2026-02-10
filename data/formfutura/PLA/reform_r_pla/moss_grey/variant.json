@@ -1,0 +1,9 @@
+{
+  "id": "moss_grey",
+  "name": "Moss Grey",
+  "color_hex": "#8E8D71",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

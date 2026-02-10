@@ -1,0 +1,13 @@
+{
+  "id": "carnival",
+  "name": "Carnival",
+  "color_hex": [
+    "#FBF942",
+    "#0066D9",
+    "#CE0058"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

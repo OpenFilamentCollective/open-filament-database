@@ -1,0 +1,8 @@
+{
+  "id": "transparent_rose",
+  "name": "Transparent Rose",
+  "color_hex": "#BB264D",
+  "traits": {
+    "translucent": true
+  }
+}

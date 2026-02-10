@@ -1,0 +1,10 @@
+{
+  "id": "sparkly_pink",
+  "name": "Sparkly Pink",
+  "color_hex": "#FF72B6",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

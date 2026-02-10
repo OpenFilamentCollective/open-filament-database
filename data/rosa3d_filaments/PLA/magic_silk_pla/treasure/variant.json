@@ -1,0 +1,13 @@
+{
+  "id": "treasure",
+  "name": "Treasure",
+  "color_hex": [
+    "#F6C500",
+    "#C06341",
+    "#A45B27"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

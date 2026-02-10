@@ -1,0 +1,9 @@
+{
+  "id": "peanut",
+  "name": "Peanut",
+  "color_hex": "#C29572",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

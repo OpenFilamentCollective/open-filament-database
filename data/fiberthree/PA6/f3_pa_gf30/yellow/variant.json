@@ -1,0 +1,9 @@
+{
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#EA9E3F",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

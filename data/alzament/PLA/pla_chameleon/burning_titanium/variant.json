@@ -1,0 +1,10 @@
+{
+  "id": "burning_titanium",
+  "name": "Burning Titanium",
+  "color_hex": [
+    "#303236"
+  ],
+  "traits": {
+    "illuminescent_color_change": true
+  }
+}

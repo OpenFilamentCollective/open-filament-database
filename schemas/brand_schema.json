@@ -48,6 +48,11 @@
             "description": "Two-letter country code (e.g., US, DE, CN) or Unknown",
             "x-placeholder": "e.g., US",
             "$ref": "#/definitions/country_code"
+        },
+        "source": {
+            "type": "string",
+            "description": "The source of the data, like another DB or company",
+            "$ref": "#/definitions/string_limit"
         }
     },
     "required": [

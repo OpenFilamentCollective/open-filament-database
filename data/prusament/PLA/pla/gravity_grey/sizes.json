@@ -8,5 +8,10 @@
         "url": "https://www.prusa3d.com/product/prusament-pla-gravity-grey-1kg/"
       }
     ]
+  },
+  {
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "gtin": "8594173675834"
   }
 ]

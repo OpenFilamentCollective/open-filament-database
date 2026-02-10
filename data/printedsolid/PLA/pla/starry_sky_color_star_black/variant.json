@@ -1,0 +1,10 @@
+{
+  "id": "starry_sky_color_star_black",
+  "name": "Starry Sky Color-Star Black",
+  "color_hex": "#545252",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

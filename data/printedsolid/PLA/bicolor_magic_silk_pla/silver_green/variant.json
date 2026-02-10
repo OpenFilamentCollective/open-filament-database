@@ -1,0 +1,13 @@
+{
+  "id": "silver_green",
+  "name": "Silver-Green",
+  "color_hex": [
+    "#A8B0BD",
+    "#1E5A4F"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

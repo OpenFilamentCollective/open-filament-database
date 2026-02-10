@@ -1,5 +1,8 @@
 {
-    "id": "olive",
-    "name": "Olive",
-    "color_hex": "#789D4A"
+  "id": "olive",
+  "name": "Olive",
+  "color_hex": "#789D4A",
+  "traits": {
+    "filtration_recommended": true
+  }
 }

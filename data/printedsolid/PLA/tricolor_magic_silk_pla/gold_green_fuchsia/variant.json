@@ -1,0 +1,14 @@
+{
+  "id": "gold_green_fuchsia",
+  "name": "Gold-Green-Fuchsia",
+  "color_hex": [
+    "#FFCB47",
+    "#41A840",
+    "#CC00E3"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "gold_series",
+  "name": "Gold Series",
+  "color_hex": "#A78403",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

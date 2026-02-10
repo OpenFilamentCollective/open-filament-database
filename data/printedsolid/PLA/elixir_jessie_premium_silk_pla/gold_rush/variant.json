@@ -1,0 +1,9 @@
+{
+  "id": "gold_rush",
+  "name": "Gold Rush",
+  "color_hex": "#CE8D00",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

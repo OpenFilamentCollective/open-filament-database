@@ -1,0 +1,9 @@
+{
+  "id": "obsidian_gf_od_green",
+  "name": "OBSIDIAN GF+ OD GREEN",
+  "color_hex": "#5D6844",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "pink_ombr_elixir",
+  "name": "Pink Ombré Elixir",
+  "color_hex": [
+    "#FF00A2",
+    "#FFBDD1"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "green_series",
+  "name": "Green Series",
+  "color_hex": "#089A45",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

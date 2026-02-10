@@ -1,5 +1,8 @@
 {
-    "id": "grey",
-    "name": "Grey",
-    "color_hex": "#8f949b"
+  "id": "grey",
+  "name": "Grey",
+  "color_hex": "#8f949b",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

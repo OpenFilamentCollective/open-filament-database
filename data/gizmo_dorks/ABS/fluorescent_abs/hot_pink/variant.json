@@ -1,0 +1,9 @@
+{
+  "id": "hot_pink",
+  "name": "Hot Pink",
+  "color_hex": "#ED1536",
+  "traits": {
+    "filtration_recommended": true,
+    "neon": true
+  }
+}

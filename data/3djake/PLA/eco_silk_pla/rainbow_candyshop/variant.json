@@ -1,0 +1,15 @@
+{
+  "id": "rainbow_candyshop",
+  "name": "Rainbow Candyshop",
+  "color_hex": [
+    "#0099E6",
+    "#70A641",
+    "#FD64B3",
+    "#8D65C7",
+    "#FF9A14"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

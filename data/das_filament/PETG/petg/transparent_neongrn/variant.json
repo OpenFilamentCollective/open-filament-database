@@ -1,0 +1,9 @@
+{
+  "id": "transparent_neongrn",
+  "name": "Transparent Neongrün",
+  "color_hex": "#06B100",
+  "traits": {
+    "translucent": true,
+    "neon": true
+  }
+}

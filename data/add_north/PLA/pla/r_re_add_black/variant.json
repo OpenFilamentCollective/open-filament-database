@@ -1,0 +1,9 @@
+{
+  "id": "r_re_add_black",
+  "name": "r RE-ADD Black",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

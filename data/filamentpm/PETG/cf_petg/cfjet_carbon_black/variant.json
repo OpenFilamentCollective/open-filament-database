@@ -1,0 +1,9 @@
+{
+  "id": "cfjet_carbon_black",
+  "name": "CFJet Carbon - Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

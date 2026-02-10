@@ -1,0 +1,9 @@
+{
+  "id": "fibre_natural",
+  "name": "Fibre Natural",
+  "color_hex": "#DFDFD3",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

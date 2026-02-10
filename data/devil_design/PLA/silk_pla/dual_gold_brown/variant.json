@@ -1,0 +1,12 @@
+{
+  "id": "dual_gold_brown",
+  "name": "DUAL GOLD + BROWN",
+  "color_hex": [
+    "#F3B400",
+    "#875117"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

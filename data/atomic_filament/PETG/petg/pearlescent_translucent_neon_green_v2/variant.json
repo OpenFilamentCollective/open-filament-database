@@ -1,0 +1,10 @@
+{
+  "id": "pearlescent_translucent_neon_green_v2",
+  "name": "Pearlescent Translucent Neon Green V2",
+  "color_hex": "#58C91B",
+  "traits": {
+    "translucent": true,
+    "pearlescent": true,
+    "neon": true
+  }
+}

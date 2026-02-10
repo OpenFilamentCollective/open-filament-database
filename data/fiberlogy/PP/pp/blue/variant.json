@@ -1,8 +1,8 @@
 {
-    "id": "blue",
-    "name": "Blue",
-    "color_hex": "#0092BC",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": "#0092BC",
+  "traits": {
+    "recyclable": true
+  }
 }

@@ -1,0 +1,9 @@
+{
+  "id": "brown",
+  "name": "Brown",
+  "color_hex": "#724E3D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

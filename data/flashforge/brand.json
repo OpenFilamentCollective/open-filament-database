@@ -3,5 +3,6 @@
   "name": "FLASHFORGE",
   "website": "https://www.flashforge.com/",
   "logo": "logo.png",
-  "origin": "Unknown"
+  "origin": "Unknown",
+  "source": "openprinttag"
 }

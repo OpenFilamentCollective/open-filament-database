@@ -1,0 +1,10 @@
+{
+  "id": "silver_smoke_grey_translucent_ht",
+  "name": "Silver Smoke Grey Translucent HT",
+  "color_hex": "#C5C5BF",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true
+  }
+}

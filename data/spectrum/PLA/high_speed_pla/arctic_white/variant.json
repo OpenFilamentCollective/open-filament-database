@@ -1,0 +1,8 @@
+{
+  "id": "arctic_white",
+  "name": "Arctic White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

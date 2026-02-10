@@ -1,0 +1,12 @@
+{
+  "id": "tarnished_copper_gunmetal_gray_copper",
+  "name": "Tarnished Copper (Gunmetal Gray / Copper)",
+  "color_hex": [
+    "#999AA0",
+    "#C06341"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

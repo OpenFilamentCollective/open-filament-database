@@ -26,10 +26,13 @@ classifiers = [
 ]
 
 dependencies = [
+    "argcomplete>=3.1.0",
     "jsonschema>=4.23.0",
-    "Pillow>=11.0.0",
+    "ofd-validator>=0.5.0",
     "iniconfig>=2.0.0",
     "referencing>=0.30.0",
+    "PyYAML>=6.0",
+    "requests>=2.28.0",
 ]
 
 [project.optional-dependencies]

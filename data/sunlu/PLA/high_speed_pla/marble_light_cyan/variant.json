@@ -1,0 +1,9 @@
+{
+  "id": "marble_light_cyan",
+  "name": "Marble Light Cyan",
+  "color_hex": "#D7EDE6",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

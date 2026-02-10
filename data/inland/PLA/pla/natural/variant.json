@@ -1,5 +1,8 @@
 {
-    "id": "natural",
-    "name": "Natural",
-    "color_hex": "#EDEBE6"
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#EDEBE6",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

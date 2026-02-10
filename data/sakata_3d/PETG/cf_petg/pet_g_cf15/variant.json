@@ -1,0 +1,9 @@
+{
+  "id": "pet_g_cf15",
+  "name": "PET-G CF15",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

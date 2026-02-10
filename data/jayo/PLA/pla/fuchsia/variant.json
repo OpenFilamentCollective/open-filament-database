@@ -1,5 +1,8 @@
 {
-    "id": "fuchsia",
-    "name": "Fuchsia",
-    "color_hex": "#ff00ff"
+  "id": "fuchsia",
+  "name": "Fuchsia",
+  "color_hex": "#ff00ff",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

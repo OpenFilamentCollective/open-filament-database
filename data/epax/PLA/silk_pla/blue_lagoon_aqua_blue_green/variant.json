@@ -1,0 +1,12 @@
+{
+  "id": "blue_lagoon_aqua_blue_green",
+  "name": "Blue Lagoon (Aqua Blue / Green)",
+  "color_hex": [
+    "#0353BA",
+    "#00AF66"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

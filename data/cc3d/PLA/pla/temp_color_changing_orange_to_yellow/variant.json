@@ -1,0 +1,12 @@
+{
+  "id": "temp_color_changing_orange_to_yellow",
+  "name": "Temp Color Changing Orange to Yellow",
+  "color_hex": [
+    "#F67405",
+    "#EBFF57"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

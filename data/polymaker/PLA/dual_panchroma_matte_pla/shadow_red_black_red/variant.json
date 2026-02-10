@@ -1,0 +1,13 @@
+{
+  "id": "shadow_red_black_red",
+  "name": "Shadow Red Black Red",
+  "color_hex": [
+    "#E20010",
+    "#000000"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

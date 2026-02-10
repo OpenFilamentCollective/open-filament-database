@@ -1,0 +1,13 @@
+{
+  "id": "two_color_sky_blue_purple",
+  "name": "Two-color Sky Blue+ Purple",
+  "color_hex": [
+    "#1ADAFB",
+    "#9D00B1"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

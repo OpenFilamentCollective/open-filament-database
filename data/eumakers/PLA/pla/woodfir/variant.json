@@ -1,0 +1,8 @@
+{
+  "id": "woodfir",
+  "name": "Woodfir",
+  "color_hex": "#B39374",
+  "traits": {
+    "contains_wood": true
+  }
+}

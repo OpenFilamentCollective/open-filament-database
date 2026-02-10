@@ -1,0 +1,13 @@
+{
+  "id": "royal_harvest_gold_copper_purple",
+  "name": "Royal Harvest (Gold / Copper / Purple)",
+  "color_hex": [
+    "#DDB95D",
+    "#C25C56",
+    "#A000CA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "orange_dawn",
+  "name": "Orange Dawn",
+  "color_hex": [
+    "#C01616",
+    "#F8CC00"
+  ],
+  "traits": {
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

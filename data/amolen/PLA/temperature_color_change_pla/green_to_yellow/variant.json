@@ -1,0 +1,12 @@
+{
+  "id": "green_to_yellow",
+  "name": "Green to Yellow",
+  "color_hex": [
+    "#11784F",
+    "#FBF942"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

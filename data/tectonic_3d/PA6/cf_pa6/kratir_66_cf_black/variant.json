@@ -1,0 +1,9 @@
+{
+  "id": "kratir_66_cf_black",
+  "name": "KRATIR /66 CF Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

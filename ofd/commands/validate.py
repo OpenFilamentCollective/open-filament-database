@@ -22,6 +22,19 @@ from ofd.validation import (
 # Project root for resolving relative paths
 project_root = Path(__file__).parent.parent.parent
 
+# ANSI colors (only when stdout is a terminal)
+_color = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
+
+def _c(code: str, text: str) -> str:
+    return f"\033[{code}m{text}\033[0m" if _color else text
+
+def _red(t: str) -> str: return _c("31", t)
+def _green(t: str) -> str: return _c("32", t)
+def _yellow(t: str) -> str: return _c("33", t)
+def _cyan(t: str) -> str: return _c("36", t)
+def _bold(t: str) -> str: return _c("1", t)
+def _dim(t: str) -> str: return _c("2", t)
+
 
 def register_subcommand(subparsers: argparse._SubParsersAction) -> None:
     """Register the validate subcommand."""
@@ -142,7 +155,7 @@ def run_validate(args: argparse.Namespace) -> int:
     if not specific_validations:
         # Run all validations
         if not args.json and not args.progress:
-            print("Running all validations...")
+            print(_bold("Running all validations..."))
         result = orchestrator.validate_all()
     else:
         # Run specific validations
@@ -166,7 +179,7 @@ def run_validate(args: argparse.Namespace) -> int:
             print(json.dumps(output, indent=2))
         return 0 if result.is_valid else 1
 
-    # Text output mode
+    # Text output mode — print all findings, but only fail on errors
     if result.errors:
         # Group errors by category
         errors_by_category: Dict[str, List[ValidationError]] = {}
@@ -177,13 +190,35 @@ def run_validate(args: argparse.Namespace) -> int:
 
         # Print errors grouped by category
         for category, errors in sorted(errors_by_category.items()):
-            print(f"\n{category} ({len(errors)}):")
-            print("-" * 80)
+            error_count = sum(1 for e in errors if e.level.value == "ERROR")
+            warn_count = len(errors) - error_count
+            counts = []
+            if error_count:
+                counts.append(_red(f"{error_count} errors"))
+            if warn_count:
+                counts.append(_yellow(f"{warn_count} warnings"))
+            print(f"\n{_bold(category)} ({', '.join(counts)}):")
             for error in errors:
-                print(f"  {error}")
+                level = error.level.value
+                if level == "ERROR":
+                    tag = _red("ERROR")
+                else:
+                    tag = _yellow("WARN ")
+                path_str = f" {_dim(str(error.path))}" if error.path else ""
+                print(f"  {tag}  {error.message}{path_str}")
 
-        print(f"\nValidation failed: {result.error_count} errors, {result.warning_count} warnings")
+    if not result.is_valid:
+        # Summary
+        parts = []
+        if result.error_count:
+            parts.append(_red(f"{result.error_count} errors"))
+        if result.warning_count:
+            parts.append(_yellow(f"{result.warning_count} warnings"))
+        print(f"\n{_red('x')} Validation failed: {', '.join(parts)}")
         return 1
     else:
-        print("All validations passed!")
+        if result.warning_count:
+            print(f"\n{_green('+')} All validations passed ({_yellow(f'{result.warning_count} warnings')})")
+        else:
+            print(f"\n{_green('+')} All validations passed!")
         return 0

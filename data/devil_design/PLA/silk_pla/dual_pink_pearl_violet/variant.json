@@ -1,0 +1,12 @@
+{
+  "id": "dual_pink_pearl_violet",
+  "name": "DUAL PINK PEARL + VIOLET",
+  "color_hex": [
+    "#E34A94",
+    "#0353BA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

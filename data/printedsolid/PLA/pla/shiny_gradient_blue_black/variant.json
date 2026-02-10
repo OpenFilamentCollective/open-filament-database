@@ -1,0 +1,13 @@
+{
+  "id": "shiny_gradient_blue_black",
+  "name": "Shiny Gradient-Blue-Black",
+  "color_hex": [
+    "#033877",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

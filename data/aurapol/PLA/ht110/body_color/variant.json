@@ -1,0 +1,8 @@
+{
+  "id": "body_color",
+  "name": "Body Color",
+  "color_hex": "#CEB378",
+  "traits": {
+    "high_temperature": true
+  }
+}

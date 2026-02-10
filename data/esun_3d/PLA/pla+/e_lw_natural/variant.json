@@ -1,0 +1,10 @@
+{
+  "id": "e_lw_natural",
+  "name": "e-LW Natural",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "industrially_compostable": true,
+    "foaming": true,
+    "without_pigments": true
+  }
+}

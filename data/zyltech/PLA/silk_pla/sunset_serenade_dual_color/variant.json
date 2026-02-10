@@ -1,0 +1,13 @@
+{
+  "id": "sunset_serenade_dual_color",
+  "name": "Sunset Serenade Dual Color",
+  "color_hex": [
+    "#E72F1D",
+    "#FF9A14"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

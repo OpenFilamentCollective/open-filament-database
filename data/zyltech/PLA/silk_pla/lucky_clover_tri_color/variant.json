@@ -1,0 +1,14 @@
+{
+  "id": "lucky_clover_tri_color",
+  "name": "Lucky Clover Tri-Color",
+  "color_hex": [
+    "#C3CCD5",
+    "#519F61",
+    "#FBE9B8"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

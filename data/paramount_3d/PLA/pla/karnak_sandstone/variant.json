@@ -1,0 +1,8 @@
+{
+  "id": "karnak_sandstone",
+  "name": "(Karnak Sandstone)",
+  "color_hex": "#C6AD74",
+  "traits": {
+    "imitates_marble": true
+  }
+}

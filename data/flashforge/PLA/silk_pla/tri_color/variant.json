@@ -1,0 +1,14 @@
+{
+  "id": "tri_color",
+  "name": "Tri-Color",
+  "color_hex": [
+    "#C63DBA",
+    "#0078BF",
+    "#41A840"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

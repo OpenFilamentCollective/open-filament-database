@@ -1,0 +1,12 @@
+{
+  "id": "dual_gold_blue",
+  "name": "DUAL GOLD + BLUE",
+  "color_hex": [
+    "#F6C500",
+    "#0078BF"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

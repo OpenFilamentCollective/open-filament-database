@@ -1,0 +1,13 @@
+{
+  "id": "two_color_blue_red",
+  "name": "Two-color Blue Red",
+  "color_hex": [
+    "#ED1536",
+    "#2E56F1"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

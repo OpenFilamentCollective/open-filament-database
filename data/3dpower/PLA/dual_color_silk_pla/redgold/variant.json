@@ -1,0 +1,12 @@
+{
+  "id": "redgold",
+  "name": "Red&Gold",
+  "color_hex": [
+    "#DA445A",
+    "#F3B400"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

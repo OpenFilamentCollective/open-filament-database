@@ -1,0 +1,14 @@
+{
+  "id": "sunset_rainbow",
+  "name": "Sunset Rainbow",
+  "color_hex": [
+    "#FD9191",
+    "#DBFC00",
+    "#BBA0DA"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

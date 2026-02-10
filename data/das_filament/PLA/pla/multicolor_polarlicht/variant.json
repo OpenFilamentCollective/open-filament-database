@@ -1,0 +1,13 @@
+{
+  "id": "multicolor_polarlicht",
+  "name": "Multicolor Polarlicht",
+  "color_hex": [
+    "#97D7D0",
+    "#39B9DB",
+    "#0353BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

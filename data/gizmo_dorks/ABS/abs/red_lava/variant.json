@@ -1,0 +1,8 @@
+{
+  "id": "red_lava",
+  "name": "Red Lava",
+  "color_hex": "#DF3303",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

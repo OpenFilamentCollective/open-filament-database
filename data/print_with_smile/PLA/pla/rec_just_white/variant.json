@@ -1,0 +1,9 @@
+{
+  "id": "rec_just_white",
+  "name": "REC- Just WHITE",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

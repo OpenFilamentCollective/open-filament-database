@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_purple_blue",
+  "name": "Dual Color Purple Blue",
+  "color_hex": [
+    "#9761B5",
+    "#2E56F1"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

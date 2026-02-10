@@ -1,0 +1,13 @@
+{
+  "id": "gold_fuchsia_black",
+  "name": "Gold Fuchsia Black",
+  "color_hex": [
+    "#F6C500",
+    "#F600C7",
+    "#000000"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

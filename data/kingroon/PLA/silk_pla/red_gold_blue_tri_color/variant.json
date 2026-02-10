@@ -1,0 +1,13 @@
+{
+  "id": "red_gold_blue_tri_color",
+  "name": "Red Gold Blue tri-color",
+  "color_hex": [
+    "#AC1A17",
+    "#F6C500",
+    "#4921C1"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "blue_pink_green",
+  "name": "Blue Pink Green",
+  "color_hex": [
+    "#473FC9",
+    "#F6E2F1",
+    "#5AEB90"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

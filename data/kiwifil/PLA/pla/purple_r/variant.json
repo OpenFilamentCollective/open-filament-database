@@ -1,0 +1,9 @@
+{
+  "id": "purple_r",
+  "name": "Purple r",
+  "color_hex": "#9761B5",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

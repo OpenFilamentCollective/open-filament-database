@@ -1,0 +1,9 @@
+{
+  "id": "white_nylong_glass_fiber",
+  "name": "White NylonG Glass Fiber",
+  "color_hex": "#EBE9E4",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

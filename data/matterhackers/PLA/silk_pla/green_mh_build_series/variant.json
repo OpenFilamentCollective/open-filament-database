@@ -1,0 +1,9 @@
+{
+  "id": "green_mh_build_series",
+  "name": "Green MH Build Series",
+  "color_hex": "#7FE200",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

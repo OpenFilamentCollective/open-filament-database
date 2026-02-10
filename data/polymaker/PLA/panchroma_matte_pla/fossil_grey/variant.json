@@ -1,0 +1,9 @@
+{
+  "id": "fossil_grey",
+  "name": "Fossil Grey",
+  "color_hex": "#6F727E",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

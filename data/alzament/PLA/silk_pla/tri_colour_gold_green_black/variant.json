@@ -1,0 +1,14 @@
+{
+  "id": "tri_colour_gold_green_black",
+  "name": "Tri colour Gold-Green-Black",
+  "color_hex": [
+    "#F3B400",
+    "#26A648",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

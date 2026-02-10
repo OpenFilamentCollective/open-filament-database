@@ -1,0 +1,8 @@
+{
+  "id": "honey_partially_transparent",
+  "name": "Honey partially transparent",
+  "color_hex": "#C5A900",
+  "traits": {
+    "translucent": true
+  }
+}

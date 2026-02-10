@@ -1,0 +1,9 @@
+{
+  "id": "mint_green",
+  "name": "Mint Green",
+  "color_hex": "#98FBCB",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

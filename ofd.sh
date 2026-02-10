@@ -210,6 +210,18 @@ is_setup_complete() {
     [ -f "$SETUP_MARKER" ] && [ -d "$VENV_DIR/bin" ]
 }
 
+# Check if dependencies need updating (requirements.txt or pyproject.toml changed since last install)
+deps_need_update() {
+    [ -f "$SETUP_MARKER" ] || return 1
+    if [ -f "$REQUIREMENTS_FILE" ] && [ "$REQUIREMENTS_FILE" -nt "$SETUP_MARKER" ]; then
+        return 0
+    fi
+    if [ -f "$SCRIPT_DIR/pyproject.toml" ] && [ "$SCRIPT_DIR/pyproject.toml" -nt "$SETUP_MARKER" ]; then
+        return 0
+    fi
+    return 1
+}
+
 # Check if WebUI setup is complete
 is_webui_setup_complete() {
     [ -f "$WEBUI_SETUP_MARKER" ] && [ -d "$WEBUI_DIR/node_modules" ]
@@ -256,6 +268,7 @@ run_python_setup() {
     install_python_deps
     mark_setup_complete
     success "Python environment ready"
+    info "To enable tab completion: eval \"\$(./ofd.sh _completion)\""
 }
 
 # Setup WebUI (Node.js) - called only when webui command is used
@@ -339,6 +352,7 @@ run_setup() {
 
     echo
     success "Setup complete! You can now use: ./ofd.sh <command>"
+    info "To enable tab completion: eval \"\$(./ofd.sh _completion)\""
     echo
 }
 
@@ -349,8 +363,9 @@ show_help() {
     echo "Usage: ./ofd.sh <command> [options]"
     echo
     echo "Wrapper Commands:"
-    echo "  setup       Run first-time setup (install Python dependencies)"
-    echo "  --no-setup  Skip auto-setup check"
+    echo "  setup        Run first-time setup (install Python dependencies)"
+    echo "  _completion  Output bash completion script (use with eval)"
+    echo "  --no-setup   Skip auto-setup check"
     echo
     echo "OFD Commands (passed to Python CLI):"
     echo "  validate    Validate data files against schemas"
@@ -388,6 +403,12 @@ main() {
                 run_setup
                 exit 0
                 ;;
+            _completion)
+                # Output bash completion function for sourcing
+                # Usage: eval "$(./ofd.sh _completion)"
+                sed -n '/^# BEGIN_COMPLETION$/,/^# END_COMPLETION$/p' "$0" | grep -v '^# \(BEGIN\|END\)_COMPLETION$'
+                exit 0
+                ;;
             -h|--help)
                 if [ ${#args[@]} -eq 0 ]; then
                     show_help
@@ -410,6 +431,12 @@ main() {
     if [ "$skip_setup" = false ] && ! is_setup_complete; then
         info "First run detected. Setting up Python environment..."
         run_python_setup
+    elif [ "$skip_setup" = false ] && deps_need_update; then
+        info "Dependencies have changed. Updating..."
+        activate_venv
+        install_python_deps
+        mark_setup_complete
+        success "Dependencies updated"
     fi
 
     # Setup WebUI if webui command is used and not yet setup
@@ -444,3 +471,49 @@ main() {
 }
 
 main "$@"
+exit $?
+
+# BEGIN_COMPLETION
+_ofd_sh_completions() {
+    local cur="${COMP_WORDS[COMP_CWORD]}"
+    local prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    # Top-level commands
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "validate build serve script webui setup -h --help -V --version" -- "$cur"))
+        return
+    fi
+
+    local cmd="${COMP_WORDS[1]}"
+
+    case "$cmd" in
+        validate)
+            COMPREPLY=($(compgen -W "--json-files --logos --folder-names --store-ids --gtin --json --progress --data-dir --stores-dir -h --help" -- "$cur"))
+            ;;
+        build)
+            COMPREPLY=($(compgen -W "-o --output-dir -d --data-dir -s --stores-dir -v --version --skip-json --skip-sqlite --skip-csv --skip-api --skip-html -h --help" -- "$cur"))
+            ;;
+        serve)
+            COMPREPLY=($(compgen -W "-d --directory -p --port --host -h --help" -- "$cur"))
+            ;;
+        script)
+            if [ "$COMP_CWORD" -eq 2 ]; then
+                local script_names
+                script_names=$("${VENV_DIR:-$(dirname "${BASH_SOURCE[0]}")/.venv}/bin/python" -c "
+import ofd.scripts
+from ofd.base import _script_registry
+print(' '.join(sorted(_script_registry.keys())))
+" 2>/dev/null)
+                COMPREPLY=($(compgen -W "$script_names --list -l -h --help" -- "$cur"))
+            else
+                COMPREPLY=($(compgen -W "--dry-run --json --progress -h --help" -- "$cur"))
+            fi
+            ;;
+        webui)
+            COMPREPLY=($(compgen -W "-p --port --host --open --install -h --help" -- "$cur"))
+            ;;
+    esac
+}
+complete -F _ofd_sh_completions ./ofd.sh
+complete -F _ofd_sh_completions ofd.sh
+# END_COMPLETION

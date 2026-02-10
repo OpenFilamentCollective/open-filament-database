@@ -1,0 +1,13 @@
+{
+  "id": "black_to_red_to_yellow",
+  "name": "Black to Red to Yellow",
+  "color_hex": [
+    "#000000",
+    "#FFE15B",
+    "#CB4726"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

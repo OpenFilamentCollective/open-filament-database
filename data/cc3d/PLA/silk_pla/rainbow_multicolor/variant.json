@@ -1,0 +1,15 @@
+{
+  "id": "rainbow_multicolor",
+  "name": "Rainbow Multicolor",
+  "color_hex": [
+    "#0099E6",
+    "#492972",
+    "#F6C500",
+    "#4E7642"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

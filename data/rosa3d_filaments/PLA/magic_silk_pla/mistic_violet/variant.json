@@ -1,0 +1,12 @@
+{
+  "id": "mistic_violet",
+  "name": "Mistic Violet",
+  "color_hex": [
+    "#292824",
+    "#7142A3"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

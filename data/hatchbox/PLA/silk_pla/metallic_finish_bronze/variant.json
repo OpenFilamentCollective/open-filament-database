@@ -1,0 +1,10 @@
+{
+  "id": "metallic_finish_bronze",
+  "name": "Metallic Finish Bronze",
+  "color_hex": "#95846F",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "imitates_metal": true
+  }
+}

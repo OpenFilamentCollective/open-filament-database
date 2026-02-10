@@ -14,10 +14,19 @@ export interface Job {
 // In-memory job storage
 export const activeJobs = new Map<string, Job>();
 
-// Lock for atomic validation job acquisition
-let validationLock = false;
+// Global operations lock - prevents any concurrent sort/validation operations
+let operationLock = false;
 
-// Helper functions for validation job management
+// Helper functions for job management
+export function getActiveJob(): Job | null {
+	for (const job of activeJobs.values()) {
+		if (job.status === 'running') {
+			return job;
+		}
+	}
+	return null;
+}
+
 export function getActiveValidationJob(): Job | null {
 	for (const job of activeJobs.values()) {
 		if (job.type === 'validation' && job.status === 'running') {
@@ -32,23 +41,34 @@ export function hasActiveValidationJob(): boolean {
 }
 
 /**
- * Atomically try to acquire the validation lock.
+ * Atomically try to acquire the global operation lock.
  * Returns true if lock was acquired, false if already locked.
  */
-export function tryAcquireValidationLock(): boolean {
-	if (validationLock) {
+export function tryAcquireOperationLock(): boolean {
+	if (operationLock) {
 		return false;
 	}
-	validationLock = true;
+	operationLock = true;
 	return true;
 }
 
 /**
- * Release the validation lock.
+ * Release the global operation lock.
  */
-export function releaseValidationLock(): void {
-	validationLock = false;
+export function releaseOperationLock(): void {
+	operationLock = false;
 }
+
+/**
+ * Check if an operation is currently running.
+ */
+export function isOperationRunning(): boolean {
+	return operationLock;
+}
+
+// Keep backward-compatible aliases
+export const tryAcquireValidationLock = tryAcquireOperationLock;
+export const releaseValidationLock = releaseOperationLock;
 
 // Cleanup old jobs (older than 5 minutes) and timeout stuck jobs
 // Store interval ID to allow cleanup on module reload
@@ -96,10 +116,8 @@ function startCleanupInterval(): void {
 					job.process.kill('SIGTERM');
 				}
 
-				// Release validation lock if this was a validation job
-				if (job.type === 'validation') {
-					releaseValidationLock();
-				}
+				// Release operation lock
+				releaseOperationLock();
 			}
 		}
 	}, 60 * 1000); // Run every minute

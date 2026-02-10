@@ -1,0 +1,11 @@
+{
+  "id": "heat_discoloration",
+  "name": "Heat Discoloration",
+  "color_hex": [
+    "#F5EC97",
+    "#FF854D"
+  ],
+  "traits": {
+    "temperature_color_change": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "golden_red",
+  "name": "Golden-Red",
+  "color_hex": [
+    "#F6C500",
+    "#E03F26"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

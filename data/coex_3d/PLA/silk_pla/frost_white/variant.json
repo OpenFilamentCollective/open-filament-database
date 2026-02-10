@@ -1,0 +1,9 @@
+{
+  "id": "frost_white",
+  "name": "Frost White",
+  "color_hex": "#F0EBE5",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

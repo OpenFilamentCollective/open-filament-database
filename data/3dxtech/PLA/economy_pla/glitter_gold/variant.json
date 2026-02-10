@@ -1,0 +1,9 @@
+{
+  "id": "glitter_gold",
+  "name": "Glitter gold",
+  "color_hex": "#BAB3A1",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "pink_purple",
+  "name": "Pink-Purple",
+  "color_hex": [
+    "#8846AE",
+    "#FF72B6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

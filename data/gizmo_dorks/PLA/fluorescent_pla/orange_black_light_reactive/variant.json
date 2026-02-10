@@ -1,0 +1,9 @@
+{
+  "id": "orange_black_light_reactive",
+  "name": "Orange (Black Light Reactive)",
+  "color_hex": "#FF5F2E",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "pink_translucent",
+  "name": "Pink (Translucent)",
+  "color_hex": "#FF72B6",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

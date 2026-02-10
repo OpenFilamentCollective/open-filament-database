@@ -1,0 +1,9 @@
+{
+  "id": "forest_green_translucent",
+  "name": "Forest Green [Translucent]",
+  "color_hex": "#34695A",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

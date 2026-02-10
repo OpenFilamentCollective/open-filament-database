@@ -1,0 +1,14 @@
+{
+  "id": "03",
+  "name": "03",
+  "color_hex": [
+    "#6C47B2",
+    "#F4D9DE",
+    "#F4A0B1",
+    "#AE96D4"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

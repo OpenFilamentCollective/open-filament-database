@@ -1,0 +1,8 @@
+{
+  "id": "almond",
+  "name": "Almond",
+  "color_hex": "#E6D1BD",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

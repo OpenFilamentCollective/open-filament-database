@@ -1,0 +1,14 @@
+{
+  "id": "dark_twinkling_green",
+  "name": "Dark Twinkling Green",
+  "color_hex": [
+    "#663D7E",
+    "#1C393D"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "glitter": true
+  }
+}

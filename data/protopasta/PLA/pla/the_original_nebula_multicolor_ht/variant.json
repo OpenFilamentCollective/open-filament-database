@@ -1,0 +1,16 @@
+{
+  "id": "the_original_nebula_multicolor_ht",
+  "name": "The Original Nebula Multicolor HT",
+  "color_hex": [
+    "#0353BA",
+    "#0099E6",
+    "#6C47B2",
+    "#C80181"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

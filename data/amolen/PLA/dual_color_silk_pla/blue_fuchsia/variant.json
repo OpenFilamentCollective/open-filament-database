@@ -1,0 +1,12 @@
+{
+  "id": "blue_fuchsia",
+  "name": "Blue & Fuchsia",
+  "color_hex": [
+    "#2941BD",
+    "#E23288"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

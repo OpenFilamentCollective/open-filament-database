@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_trooper_grey",
+  "name": "The Filament Trooper Grey",
+  "color_hex": "#D6D7D8",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_paddy_field",
+  "name": "Rainbow Paddy Field",
+  "color_hex": [
+    "#FCE575",
+    "#62E480"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

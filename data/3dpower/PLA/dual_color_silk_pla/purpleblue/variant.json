@@ -1,0 +1,12 @@
+{
+  "id": "purpleblue",
+  "name": "Purple&Blue",
+  "color_hex": [
+    "#C63DBA",
+    "#2941BD"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

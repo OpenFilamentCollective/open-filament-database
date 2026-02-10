@@ -1,0 +1,9 @@
+{
+  "id": "clearly_natural",
+  "name": "Clearly Natural",
+  "color_hex": "#DFDFD3",
+  "traits": {
+    "translucent": true,
+    "without_pigments": true
+  }
+}

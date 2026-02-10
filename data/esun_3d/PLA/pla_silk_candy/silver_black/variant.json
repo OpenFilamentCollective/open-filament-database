@@ -1,0 +1,13 @@
+{
+  "id": "silver_black",
+  "name": "Silver Black",
+  "color_hex": [
+    "#C9D0D4",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

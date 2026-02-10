@@ -1,0 +1,8 @@
+{
+  "id": "3d_print_general",
+  "name": "3D Print General",
+  "color_hex": "#C3C199",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

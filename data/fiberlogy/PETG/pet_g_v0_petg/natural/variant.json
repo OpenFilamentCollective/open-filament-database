@@ -1,0 +1,8 @@
+{
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "self_extinguishing": true
+  }
+}

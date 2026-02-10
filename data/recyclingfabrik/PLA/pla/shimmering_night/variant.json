@@ -1,0 +1,9 @@
+{
+  "id": "shimmering_night",
+  "name": "Shimmering Night",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

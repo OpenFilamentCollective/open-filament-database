@@ -1,0 +1,14 @@
+{
+  "id": "gold_blue_green",
+  "name": "Gold Blue Green",
+  "color_hex": [
+    "#F6C500",
+    "#06B100",
+    "#0078BF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

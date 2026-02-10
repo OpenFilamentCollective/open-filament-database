@@ -1,0 +1,13 @@
+{
+  "id": "foggy_purple_grey_purple",
+  "name": "Foggy Purple Grey Purple",
+  "color_hex": [
+    "#C3CCD5",
+    "#9761B5"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

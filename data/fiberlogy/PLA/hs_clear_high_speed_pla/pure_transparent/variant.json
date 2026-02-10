@@ -1,0 +1,9 @@
+{
+  "id": "pure_transparent",
+  "name": "Pure Transparent",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

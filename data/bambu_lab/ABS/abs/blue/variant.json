@@ -1,5 +1,8 @@
 {
-    "id": "blue",
-    "name": "Blue",
-    "color_hex": "#0A2CA5"
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": "#0A2CA5",
+  "traits": {
+    "filtration_recommended": true
+  }
 }

@@ -1,0 +1,9 @@
+{
+  "id": "deep_space_black",
+  "name": "Deep Space Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

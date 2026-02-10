@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_forest_series",
+  "name": "Rainbow Forest Series",
+  "color_hex": [
+    "#95D05C",
+    "#40E0D0",
+    "#EBFF57",
+    "#A38496"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

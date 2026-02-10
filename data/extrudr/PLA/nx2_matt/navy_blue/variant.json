@@ -1,0 +1,12 @@
+{
+  "id": "navy_blue",
+  "name": "Navy Blue",
+  "color_hex": "#2E56F1",
+  "color_standards": {
+    "ral": "5003"
+  },
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

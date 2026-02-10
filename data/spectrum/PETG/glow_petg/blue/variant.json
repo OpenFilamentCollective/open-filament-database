@@ -1,0 +1,13 @@
+{
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": [
+    "#00E3E2",
+    "#DFDFD3"
+  ],
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

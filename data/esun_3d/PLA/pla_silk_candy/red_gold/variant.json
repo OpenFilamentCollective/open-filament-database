@@ -1,0 +1,13 @@
+{
+  "id": "red_gold",
+  "name": "Red Gold",
+  "color_hex": [
+    "#ED1536",
+    "#F6C500"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

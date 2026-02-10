@@ -1,0 +1,14 @@
+{
+  "id": "teal_yellow",
+  "name": "Teal, Yellow",
+  "color_hex": [
+    "#00B4BC",
+    "#D8BA64",
+    "#875117"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

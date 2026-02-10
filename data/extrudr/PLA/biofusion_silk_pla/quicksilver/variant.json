@@ -1,0 +1,12 @@
+{
+  "id": "quicksilver",
+  "name": "Quicksilver",
+  "color_hex": "#A8B0BD",
+  "color_standards": {
+    "ral": "9023"
+  },
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

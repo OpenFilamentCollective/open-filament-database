@@ -1,0 +1,10 @@
+{
+  "id": "night_before_blue_ht_with_silver_glitter",
+  "name": "Night Before Blue HT with Silver Glitter",
+  "color_hex": "#1E2F5A",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "glitter": true
+  }
+}

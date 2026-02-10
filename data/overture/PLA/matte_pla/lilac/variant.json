@@ -1,5 +1,8 @@
 {
-    "id": "lilac",
-    "name": "Lilac",
-    "color_hex": "#ECD1FF"
+  "id": "lilac",
+  "name": "Lilac",
+  "color_hex": "#ECD1FF",
+  "traits": {
+    "matte": true
+  }
 }

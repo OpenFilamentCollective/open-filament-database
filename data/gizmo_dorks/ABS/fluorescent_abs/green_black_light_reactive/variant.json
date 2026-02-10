@@ -1,0 +1,9 @@
+{
+  "id": "green_black_light_reactive",
+  "name": "Green (Black Light Reactive)",
+  "color_hex": "#9FEC41",
+  "traits": {
+    "filtration_recommended": true,
+    "neon": true
+  }
+}

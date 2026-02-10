@@ -1,0 +1,9 @@
+{
+  "id": "emerald_green",
+  "name": "Emerald Green",
+  "color_hex": "#0CCF81",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

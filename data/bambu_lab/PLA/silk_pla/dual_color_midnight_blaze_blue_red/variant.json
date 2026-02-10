@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_midnight_blaze_blue_red",
+  "name": "Dual Color Midnight Blaze (Blue-Red)",
+  "color_hex": [
+    "#0E21AE",
+    "#98282F"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

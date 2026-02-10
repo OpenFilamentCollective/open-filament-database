@@ -1,0 +1,10 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#F00C00",
+  "traits": {
+    "filtration_recommended": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

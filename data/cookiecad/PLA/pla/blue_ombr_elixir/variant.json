@@ -1,0 +1,12 @@
+{
+  "id": "blue_ombr_elixir",
+  "name": "Blue Ombré Elixir",
+  "color_hex": [
+    "#0099E6",
+    "#8ED9F9"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true
+  }
+}

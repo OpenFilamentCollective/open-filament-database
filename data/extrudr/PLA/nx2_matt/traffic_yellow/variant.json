@@ -1,0 +1,12 @@
+{
+  "id": "traffic_yellow",
+  "name": "Traffic Yellow",
+  "color_hex": "#FBE200",
+  "color_standards": {
+    "ral": "1023"
+  },
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

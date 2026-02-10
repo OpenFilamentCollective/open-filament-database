@@ -1,0 +1,9 @@
+{
+  "id": "mystical_emerald_green_transparent",
+  "name": "Mystical Emerald (Green-Transparent)",
+  "color_hex": "#217165",
+  "traits": {
+    "translucent": true,
+    "recycled": true
+  }
+}

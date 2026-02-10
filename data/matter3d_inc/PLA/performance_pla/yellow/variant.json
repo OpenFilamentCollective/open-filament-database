@@ -1,0 +1,8 @@
+{
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FFFC25",
+  "traits": {
+    "high_temperature": true
+  }
+}

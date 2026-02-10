@@ -1,0 +1,14 @@
+{
+  "id": "red_green_blue",
+  "name": "Red-Green-Blue",
+  "color_hex": [
+    "#C80181",
+    "#018E63",
+    "#0353BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "purple_peony_galaxy_shimmer",
+  "name": "Purple Peony (Galaxy Shimmer)",
+  "color_hex": [
+    "#DB3FA9",
+    "#7659B5"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

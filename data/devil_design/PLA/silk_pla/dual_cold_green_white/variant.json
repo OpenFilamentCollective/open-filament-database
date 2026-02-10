@@ -1,0 +1,12 @@
+{
+  "id": "dual_cold_green_white",
+  "name": "DUAL COLD GREEN + WHITE",
+  "color_hex": [
+    "#F5F5F5",
+    "#00B4BC"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

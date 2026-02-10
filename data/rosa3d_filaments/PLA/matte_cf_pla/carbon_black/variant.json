@@ -1,0 +1,9 @@
+{
+  "id": "carbon_black",
+  "name": "Carbon Black",
+  "color_hex": "#3E413F",
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

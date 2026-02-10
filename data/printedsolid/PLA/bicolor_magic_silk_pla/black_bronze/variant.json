@@ -1,0 +1,13 @@
+{
+  "id": "black_bronze",
+  "name": "Black-Bronze",
+  "color_hex": [
+    "#000000",
+    "#99A45F"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "forest_palette_2024_rainbow_series",
+  "name": "Forest Palette 2024 Rainbow Series",
+  "color_hex": [
+    "#67B357",
+    "#39B9DB",
+    "#E8BD00",
+    "#BBA0DA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

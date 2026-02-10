@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_radiance_2024_rainbow_series",
+  "name": "Rainbow Radiance 2024 Rainbow Series",
+  "color_hex": [
+    "#6C47B2",
+    "#EEEA44",
+    "#26A648",
+    "#E23288",
+    "#4C5051"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

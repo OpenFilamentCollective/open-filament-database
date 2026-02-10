@@ -1,0 +1,13 @@
+{
+  "id": "red_green_blue_tri_color",
+  "name": "Red Green Blue tri-color",
+  "color_hex": [
+    "#C4376D",
+    "#11784F",
+    "#0353BA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

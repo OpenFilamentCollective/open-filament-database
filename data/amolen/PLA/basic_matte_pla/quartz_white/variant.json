@@ -1,0 +1,9 @@
+{
+  "id": "quartz_white",
+  "name": "Quartz White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

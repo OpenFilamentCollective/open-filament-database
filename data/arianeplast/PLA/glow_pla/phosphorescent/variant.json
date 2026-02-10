@@ -1,0 +1,8 @@
+{
+  "id": "phosphorescent",
+  "name": "Phosphorescent",
+  "color_hex": "#62E480",
+  "traits": {
+    "glow": true
+  }
+}

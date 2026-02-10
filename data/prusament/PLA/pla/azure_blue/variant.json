@@ -1,5 +1,8 @@
 {
-    "id": "azure_blue",
-    "name": "Azure Blue",
-    "color_hex": "#0082AD"
+  "id": "azure_blue",
+  "name": "Azure Blue",
+  "color_hex": "#0082AD",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

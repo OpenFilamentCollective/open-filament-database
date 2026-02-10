@@ -1,5 +1,8 @@
 {
-    "id": "light_gray",
-    "name": "Light Gray",
-    "color_hex": "#C7D4D6"
+  "id": "light_gray",
+  "name": "Light Gray",
+  "color_hex": "#C7D4D6",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

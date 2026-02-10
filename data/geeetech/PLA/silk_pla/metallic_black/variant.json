@@ -1,0 +1,9 @@
+{
+  "id": "metallic_black",
+  "name": "Metallic Black",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "bois_co_produced",
+  "name": "Bois - Co-produced",
+  "color_hex": "#DC9C43",
+  "traits": {
+    "contains_wood": true
+  }
+}

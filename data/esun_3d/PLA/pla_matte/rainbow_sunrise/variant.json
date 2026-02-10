@@ -1,0 +1,14 @@
+{
+  "id": "rainbow_sunrise",
+  "name": "Rainbow Sunrise",
+  "color_hex": [
+    "#FCE575",
+    "#F67405",
+    "#E03F26"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_waltz",
+  "name": "Rainbow Waltz",
+  "color_hex": [
+    "#4E486A",
+    "#D33D3D"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

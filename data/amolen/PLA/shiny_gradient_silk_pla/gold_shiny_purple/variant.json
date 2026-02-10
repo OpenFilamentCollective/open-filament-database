@@ -1,0 +1,12 @@
+{
+  "id": "gold_shiny_purple",
+  "name": "Gold & Shiny Purple",
+  "color_hex": [
+    "#F6C500",
+    "#804996"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

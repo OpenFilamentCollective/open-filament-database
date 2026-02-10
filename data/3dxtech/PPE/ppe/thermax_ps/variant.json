@@ -1,0 +1,8 @@
+{
+  "id": "thermax_ps",
+  "name": "ThermaX +PS",
+  "color_hex": "#000000",
+  "traits": {
+    "self_extinguishing": true
+  }
+}

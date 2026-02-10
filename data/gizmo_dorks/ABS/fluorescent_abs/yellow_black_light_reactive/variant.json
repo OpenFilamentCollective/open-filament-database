@@ -1,0 +1,9 @@
+{
+  "id": "yellow_black_light_reactive",
+  "name": "Yellow (Black Light Reactive)",
+  "color_hex": "#FFFB00",
+  "traits": {
+    "filtration_recommended": true,
+    "neon": true
+  }
+}

@@ -1,7 +1,8 @@
 {
-    "id": "elegoo",
-    "name": "ELEGOO",
-    "website": "https://elegoo.com/",
-    "logo": "logo.png",
-    "origin": "CN"
+  "id": "elegoo",
+  "name": "ELEGOO",
+  "website": "https://elegoo.com/",
+  "logo": "logo.png",
+  "origin": "CN",
+  "source": "openprinttag"
 }

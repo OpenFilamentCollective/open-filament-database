@@ -1,0 +1,11 @@
+{
+  "id": "color_changing_blue",
+  "name": "Color Changing Blue",
+  "color_hex": [
+    "#0353BA",
+    "#F0EBE5"
+  ],
+  "traits": {
+    "industrially_compostable": true
+  }
+}

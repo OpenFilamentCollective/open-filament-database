@@ -1,0 +1,13 @@
+{
+  "id": "two_color_red_gold",
+  "name": "Two-color Red Gold",
+  "color_hex": [
+    "#E03F26",
+    "#FFCB47"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

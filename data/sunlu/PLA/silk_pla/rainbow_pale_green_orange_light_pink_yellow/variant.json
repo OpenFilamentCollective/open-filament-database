@@ -1,0 +1,15 @@
+{
+  "id": "rainbow_pale_green_orange_light_pink_yellow",
+  "name": "Rainbow (Pale Green-Orange-Light Pink-Yellow)",
+  "color_hex": [
+    "#FF9C66",
+    "#84D18B",
+    "#F4A0B1",
+    "#FCE575"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

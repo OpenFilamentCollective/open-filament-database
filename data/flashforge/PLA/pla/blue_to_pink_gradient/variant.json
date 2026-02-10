@@ -1,0 +1,12 @@
+{
+  "id": "blue_to_pink_gradient",
+  "name": "Blue to Pink Gradient",
+  "color_hex": [
+    "#4F7BBB",
+    "#BB5152"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "fluor_orange_stained",
+  "name": "Fluor Orange Stained",
+  "color_hex": "#F17231",
+  "traits": {
+    "translucent": true,
+    "silk": true
+  }
+}

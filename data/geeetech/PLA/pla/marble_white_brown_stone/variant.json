@@ -1,0 +1,9 @@
+{
+  "id": "marble_white_brown_stone",
+  "name": "Marble White-Brown Stone",
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "coral_dream_dual_gradient",
+  "name": "Coral Dream Dual Gradient",
+  "color_hex": [
+    "#E72F1D",
+    "#FF7A33"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "cement_grey",
+  "name": "Cement Grey",
+  "color_hex": "#5C5B59",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

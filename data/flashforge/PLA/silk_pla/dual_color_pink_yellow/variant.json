@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_pink_yellow",
+  "name": "Dual Color Pink & Yellow",
+  "color_hex": [
+    "#EA9E3F",
+    "#FF72B6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

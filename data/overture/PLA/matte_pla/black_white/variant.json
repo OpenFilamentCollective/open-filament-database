@@ -1,5 +1,10 @@
 {
-    "id": "black_white",
-    "name": "Black & White",
-    "color_hex": "#a6a9a8"
+  "id": "black_white",
+  "name": "Black & White",
+  "color_hex": "#a6a9a8",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
 }

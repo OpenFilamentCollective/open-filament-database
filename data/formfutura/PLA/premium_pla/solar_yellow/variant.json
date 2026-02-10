@@ -1,0 +1,8 @@
+{
+  "id": "solar_yellow",
+  "name": "Solar Yellow",
+  "color_hex": "#EBFF57",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

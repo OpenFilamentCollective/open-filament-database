@@ -1,5 +1,8 @@
 {
-    "id": "army_green",
-    "name": "Army Green",
-    "color_hex": "#5E6345"
+  "id": "army_green",
+  "name": "Army Green",
+  "color_hex": "#5E6345",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

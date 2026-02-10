@@ -1,8 +1,8 @@
 {
-    "id": "marble",
-    "name": "Marble",
-    "color_hex": "#d0d0d0",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "marble",
+  "name": "Marble",
+  "color_hex": "#d0d0d0",
+  "traits": {
+    "recyclable": true
+  }
 }

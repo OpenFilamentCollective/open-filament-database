@@ -1,5 +1,8 @@
 {
-    "id": "royal_gold",
-    "name": "Royal Gold",
-    "color_hex": "#FFCB47"
+  "id": "royal_gold",
+  "name": "Royal Gold",
+  "color_hex": "#FFCB47",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

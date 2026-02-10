@@ -1,0 +1,9 @@
+{
+  "id": "grape_violet",
+  "name": "Grape Violet",
+  "color_hex": "#8D5984",
+  "traits": {
+    "matte": true,
+    "contains_carbon_fiber": true
+  }
+}

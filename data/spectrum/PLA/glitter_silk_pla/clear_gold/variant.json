@@ -1,0 +1,10 @@
+{
+  "id": "clear_gold",
+  "name": "Clear Gold",
+  "color_hex": "#D0BD93",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true
+  }
+}

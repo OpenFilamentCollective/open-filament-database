@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_black_white",
+  "name": "Dual Color Black White",
+  "color_hex": [
+    "#FFFFFF",
+    "#000000"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "pirate_black",
+  "name": "Pirate Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

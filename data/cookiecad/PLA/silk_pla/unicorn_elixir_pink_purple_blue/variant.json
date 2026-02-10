@@ -1,0 +1,15 @@
+{
+  "id": "unicorn_elixir_pink_purple_blue",
+  "name": "Unicorn Elixir (pink → purple → blue)",
+  "color_hex": [
+    "#FD64B3",
+    "#BE2ED6",
+    "#6299DF"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "gradual_color_change": true
+  }
+}

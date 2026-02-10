@@ -1,0 +1,17 @@
+{
+  "id": "luminous_rainbow",
+  "name": "Luminous Rainbow",
+  "color_hex": [
+    "#FF67F5",
+    "#7659B5",
+    "#0095FF",
+    "#BBDB4B",
+    "#FBE200"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "turkey_egg",
+  "name": "Turkey Egg",
+  "color_hex": "#C3CCD5",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

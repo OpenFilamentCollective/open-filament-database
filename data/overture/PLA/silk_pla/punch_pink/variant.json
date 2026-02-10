@@ -1,0 +1,12 @@
+{
+  "id": "punch_pink",
+  "name": "Punch Pink",
+  "color_hex": [
+    "#FF5786",
+    "#F7A4BD"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

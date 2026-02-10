@@ -1,0 +1,14 @@
+{
+  "id": "orange_pink_yellow_green",
+  "name": "(Orange-Pink-Yellow-Green)",
+  "color_hex": [
+    "#CAFBE6",
+    "#F5B797",
+    "#FEF49C",
+    "#FFE6FD"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

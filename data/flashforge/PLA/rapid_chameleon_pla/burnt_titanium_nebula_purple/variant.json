@@ -1,0 +1,13 @@
+{
+  "id": "burnt_titanium_nebula_purple",
+  "name": "Burnt Titanium Nebula Purple",
+  "color_hex": [
+    "#663D7E",
+    "#003287"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

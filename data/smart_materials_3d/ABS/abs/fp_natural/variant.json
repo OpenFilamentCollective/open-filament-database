@@ -1,0 +1,9 @@
+{
+  "id": "fp_natural",
+  "name": "Fp Natural",
+  "color_hex": "#EADAC2",
+  "traits": {
+    "filtration_recommended": true,
+    "self_extinguishing": true
+  }
+}

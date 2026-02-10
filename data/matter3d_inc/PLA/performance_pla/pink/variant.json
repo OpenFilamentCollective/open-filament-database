@@ -1,0 +1,8 @@
+{
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#FC6D8E",
+  "traits": {
+    "high_temperature": true
+  }
+}

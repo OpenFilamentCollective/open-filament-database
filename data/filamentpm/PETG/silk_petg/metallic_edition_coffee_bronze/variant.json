@@ -1,0 +1,9 @@
+{
+  "id": "metallic_edition_coffee_bronze",
+  "name": "metallic edition - Coffee Bronze",
+  "color_hex": "#675F4F",
+  "traits": {
+    "silk": true,
+    "imitates_metal": true
+  }
+}

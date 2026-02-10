@@ -1,0 +1,8 @@
+{
+  "id": "neo_red",
+  "name": "Neo Red",
+  "color_hex": "#FF4F4D",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

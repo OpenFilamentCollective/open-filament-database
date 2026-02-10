@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_sky_blue_rose_red_green",
+  "name": "Tri-color Sky Blue & Rose Red & Green",
+  "color_hex": [
+    "#5FEFF9",
+    "#62E480",
+    "#E23288"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

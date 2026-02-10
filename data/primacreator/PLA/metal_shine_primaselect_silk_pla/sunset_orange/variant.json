@@ -1,0 +1,9 @@
+{
+  "id": "sunset_orange",
+  "name": "Sunset Orange",
+  "color_hex": "#DE6300",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "firewire_fr_black",
+  "name": "Firewire FR- Black",
+  "color_hex": "#000000",
+  "traits": {
+    "filtration_recommended": true,
+    "self_extinguishing": true
+  }
+}

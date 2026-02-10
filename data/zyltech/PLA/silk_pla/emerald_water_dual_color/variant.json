@@ -1,0 +1,13 @@
+{
+  "id": "emerald_water_dual_color",
+  "name": "Emerald Water Dual Color",
+  "color_hex": [
+    "#06B100",
+    "#40B6E4"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

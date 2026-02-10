@@ -1,0 +1,15 @@
+{
+  "id": "rainbow_green_red_pink_yellow",
+  "name": "Rainbow (Green-Red-Pink-Yellow)",
+  "color_hex": [
+    "#F47D59",
+    "#FBE200",
+    "#FFBADE",
+    "#91C500"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

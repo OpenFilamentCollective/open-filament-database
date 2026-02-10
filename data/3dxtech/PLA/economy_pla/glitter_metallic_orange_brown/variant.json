@@ -1,0 +1,9 @@
+{
+  "id": "glitter_metallic_orange_brown",
+  "name": "Glitter metallic-orange-brown",
+  "color_hex": "#BE6730",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

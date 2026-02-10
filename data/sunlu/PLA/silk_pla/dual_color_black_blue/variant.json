@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_black_blue",
+  "name": "Dual Color (Black Blue)",
+  "color_hex": [
+    "#2E56F1",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

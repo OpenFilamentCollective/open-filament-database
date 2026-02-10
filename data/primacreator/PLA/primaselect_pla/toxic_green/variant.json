@@ -1,0 +1,8 @@
+{
+  "id": "toxic_green",
+  "name": "Toxic Green",
+  "color_hex": "#7CEF83",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

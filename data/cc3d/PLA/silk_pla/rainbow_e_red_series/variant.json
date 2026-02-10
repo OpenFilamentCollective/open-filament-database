@@ -1,0 +1,16 @@
+{
+  "id": "rainbow_e_red_series",
+  "name": "Rainbow E Red Series",
+  "color_hex": [
+    "#AA0101",
+    "#6802BC",
+    "#C80181",
+    "#0378D0",
+    "#3D9441"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

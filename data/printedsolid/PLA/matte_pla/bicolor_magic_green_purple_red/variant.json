@@ -1,0 +1,13 @@
+{
+  "id": "bicolor_magic_green_purple_red",
+  "name": "Bicolor Magic-Green-Purple Red",
+  "color_hex": [
+    "#3D9441",
+    "#C80181"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

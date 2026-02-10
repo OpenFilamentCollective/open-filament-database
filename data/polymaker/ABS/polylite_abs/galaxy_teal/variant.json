@@ -1,0 +1,9 @@
+{
+  "id": "galaxy_teal",
+  "name": "Galaxy Teal",
+  "color_hex": "#00B4BC",
+  "traits": {
+    "filtration_recommended": true,
+    "glitter": true
+  }
+}

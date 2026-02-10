@@ -1,0 +1,8 @@
+{
+  "id": "rapid_transparent",
+  "name": "RAPID Transparent",
+  "color_hex": "#E4E7E5",
+  "traits": {
+    "transparent": true
+  }
+}

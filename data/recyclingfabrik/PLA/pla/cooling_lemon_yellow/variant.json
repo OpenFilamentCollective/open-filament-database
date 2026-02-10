@@ -1,0 +1,9 @@
+{
+  "id": "cooling_lemon_yellow",
+  "name": "Cooling Lemon (Yellow)",
+  "color_hex": "#F5E457",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

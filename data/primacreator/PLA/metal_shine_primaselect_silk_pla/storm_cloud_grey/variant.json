@@ -1,0 +1,10 @@
+{
+  "id": "storm_cloud_grey",
+  "name": "Storm Cloud Grey",
+  "color_hex": "#436176",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "imitates_metal": true
+  }
+}

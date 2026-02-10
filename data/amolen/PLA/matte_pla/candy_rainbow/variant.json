@@ -1,0 +1,16 @@
+{
+  "id": "candy_rainbow",
+  "name": "Candy Rainbow",
+  "color_hex": [
+    "#FEF49C",
+    "#FFE6FD",
+    "#F5B797",
+    "#D8EEA3",
+    "#9CD0DB"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

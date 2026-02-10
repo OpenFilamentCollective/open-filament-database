@@ -1,0 +1,13 @@
+{
+  "id": "midnight_marble",
+  "name": "Midnight Marble",
+  "color_hex": [
+    "#000000",
+    "#FFFFFF"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

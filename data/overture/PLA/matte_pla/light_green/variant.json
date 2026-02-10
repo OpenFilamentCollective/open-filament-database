@@ -1,5 +1,9 @@
 {
-    "id": "light_green",
-    "name": "Light Green",
-    "color_hex": "#AFDEB9"
+  "id": "light_green",
+  "name": "Light Green",
+  "color_hex": "#AFDEB9",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

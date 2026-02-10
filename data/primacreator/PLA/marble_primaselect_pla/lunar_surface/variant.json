@@ -1,0 +1,9 @@
+{
+  "id": "lunar_surface",
+  "name": "Lunar Surface",
+  "color_hex": "#CCD6E2",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

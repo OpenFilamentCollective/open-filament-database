@@ -1,0 +1,9 @@
+{
+  "id": "in_the_dark",
+  "name": "In the Dark",
+  "color_hex": "#F1E6B2",
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

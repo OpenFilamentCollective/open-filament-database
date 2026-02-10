@@ -1,0 +1,12 @@
+{
+  "id": "sunrise_95a",
+  "name": "Sunrise 95A",
+  "color_hex": [
+    "#FADB24",
+    "#FA8423",
+    "#D85165"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

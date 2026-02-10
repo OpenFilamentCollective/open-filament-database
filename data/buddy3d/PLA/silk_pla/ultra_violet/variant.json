@@ -1,0 +1,9 @@
+{
+  "id": "ultra_violet",
+  "name": "Ultra Violet",
+  "color_hex": "#7769BC",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "glowex",
+  "name": "Glowex",
+  "color_hex": [
+    "#06B100",
+    "#E4E7E5"
+  ],
+  "color_standards": {
+    "ral": "6038"
+  },
+  "traits": {
+    "glow": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

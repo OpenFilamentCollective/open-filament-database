@@ -1,0 +1,11 @@
+{
+  "id": "good_as_gold_ht",
+  "name": "Good as Gold HT",
+  "color_hex": "#E3B145",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true,
+    "glitter": true
+  }
+}

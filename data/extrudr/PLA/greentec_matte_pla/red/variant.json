@@ -1,0 +1,12 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#000000",
+  "color_standards": {
+    "ral": "3001"
+  },
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

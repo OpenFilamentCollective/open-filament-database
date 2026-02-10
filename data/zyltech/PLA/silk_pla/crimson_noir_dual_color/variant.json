@@ -1,0 +1,13 @@
+{
+  "id": "crimson_noir_dual_color",
+  "name": "Crimson Noir Dual Color",
+  "color_hex": [
+    "#C00000",
+    "#4C5051"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

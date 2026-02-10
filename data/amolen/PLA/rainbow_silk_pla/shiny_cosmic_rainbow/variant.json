@@ -1,0 +1,14 @@
+{
+  "id": "shiny_cosmic_rainbow",
+  "name": "Shiny Cosmic Rainbow",
+  "color_hex": [
+    "#9D00B1",
+    "#B53E59",
+    "#0E21AE",
+    "#7F9C85"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

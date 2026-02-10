@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_10m",
+  "name": "Rainbow 10M",
+  "color_hex": [
+    "#BE2ED6",
+    "#6459EB"
+  ],
+  "traits": {
+    "glow": true,
+    "gradual_color_change": true
+  }
+}

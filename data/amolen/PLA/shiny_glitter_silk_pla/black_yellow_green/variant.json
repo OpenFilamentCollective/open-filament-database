@@ -1,0 +1,15 @@
+{
+  "id": "black_yellow_green",
+  "name": "Black Yellow Green",
+  "color_hex": [
+    "#FFBF00",
+    "#11784F",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true,
+    "coextruded": true
+  }
+}

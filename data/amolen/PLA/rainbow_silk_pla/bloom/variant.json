@@ -1,0 +1,15 @@
+{
+  "id": "bloom",
+  "name": "Bloom",
+  "color_hex": [
+    "#F1EB9C",
+    "#FF72B6",
+    "#6C93B5",
+    "#EE8881",
+    "#FF0039"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

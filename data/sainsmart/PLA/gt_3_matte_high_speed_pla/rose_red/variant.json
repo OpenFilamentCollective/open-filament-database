@@ -1,0 +1,9 @@
+{
+  "id": "rose_red",
+  "name": "Rose Red",
+  "color_hex": "#FF2C29",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

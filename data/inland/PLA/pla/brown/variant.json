@@ -1,5 +1,8 @@
 {
-    "id": "brown",
-    "name": "Brown",
-    "color_hex": "#7A4A2E"
+  "id": "brown",
+  "name": "Brown",
+  "color_hex": "#7A4A2E",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

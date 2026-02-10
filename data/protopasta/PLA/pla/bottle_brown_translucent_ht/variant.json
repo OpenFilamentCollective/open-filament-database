@@ -1,0 +1,10 @@
+{
+  "id": "bottle_brown_translucent_ht",
+  "name": "Bottle Brown Translucent HT",
+  "color_hex": "#AB713E",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true
+  }
+}

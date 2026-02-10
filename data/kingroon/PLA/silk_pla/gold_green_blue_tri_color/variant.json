@@ -1,0 +1,13 @@
+{
+  "id": "gold_green_blue_tri_color",
+  "name": "Gold Green Blue tri-color",
+  "color_hex": [
+    "#4921C1",
+    "#F4AC23",
+    "#11784F"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

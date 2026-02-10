@@ -1,0 +1,9 @@
+{
+  "id": "the_filament_snow_white",
+  "name": "The Filament Snow White",
+  "color_hex": "#EFEFEF",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,5 +1,8 @@
 {
-    "id": "pink",
-    "name": "Pink",
-    "color_hex": "#ff00cb"
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#ff00cb",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

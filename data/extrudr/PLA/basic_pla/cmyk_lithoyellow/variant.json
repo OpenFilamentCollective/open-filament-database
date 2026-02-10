@@ -1,0 +1,11 @@
+{
+  "id": "cmyk_lithoyellow",
+  "name": "CMYK Lithoyellow",
+  "color_hex": "#FAD61B",
+  "color_standards": {
+    "ral": "1026"
+  },
+  "traits": {
+    "industrially_compostable": true
+  }
+}

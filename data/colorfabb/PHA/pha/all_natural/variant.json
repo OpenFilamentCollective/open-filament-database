@@ -1,0 +1,9 @@
+{
+  "id": "all_natural",
+  "name": "all Natural",
+  "color_hex": "#F2EFE9",
+  "traits": {
+    "home_compostable": true,
+    "without_pigments": true
+  }
+}

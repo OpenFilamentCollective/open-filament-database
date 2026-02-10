@@ -1,5 +1,10 @@
 {
-    "id": "light_blue_yellow",
-    "name": "Light Blue-Yellow",
-    "color_hex": "#afc592"
+  "id": "light_blue_yellow",
+  "name": "Light Blue-Yellow",
+  "color_hex": "#afc592",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
 }

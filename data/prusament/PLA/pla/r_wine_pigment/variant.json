@@ -1,0 +1,9 @@
+{
+  "id": "r_wine_pigment",
+  "name": "r Wine Pigment",
+  "color_hex": "#5E4940",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

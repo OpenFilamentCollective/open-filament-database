@@ -1,0 +1,9 @@
+{
+  "id": "starry_night_translucent_v3",
+  "name": "Starry Night Translucent v3",
+  "color_hex": "#5E1490",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

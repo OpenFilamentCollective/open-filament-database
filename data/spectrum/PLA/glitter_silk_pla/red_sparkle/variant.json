@@ -1,0 +1,10 @@
+{
+  "id": "red_sparkle",
+  "name": "Red Sparkle",
+  "color_hex": "#AC1A17",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "glitter": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "blue_horizon",
+  "name": "Blue Horizon",
+  "color_hex": "#0099E6",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

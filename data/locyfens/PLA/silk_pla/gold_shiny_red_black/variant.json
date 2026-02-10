@@ -1,0 +1,14 @@
+{
+  "id": "gold_shiny_red_black",
+  "name": "Gold Shiny Red Black",
+  "color_hex": [
+    "#CE8D00",
+    "#2C2C2C",
+    "#751A39"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

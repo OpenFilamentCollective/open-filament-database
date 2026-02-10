@@ -1,7 +1,8 @@
 {
-    "id": "tecbears",
-    "name": "TECBEARS",
-    "website": "https://www.facebook.com/tecbears/",
-    "logo": "logo.png",
-    "origin": "CN"
+  "id": "tecbears",
+  "name": "TECBEARS",
+  "website": "https://www.facebook.com/tecbears/",
+  "logo": "logo.png",
+  "origin": "CN",
+  "source": "openprinttag"
 }

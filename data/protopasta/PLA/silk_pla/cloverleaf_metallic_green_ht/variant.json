@@ -1,0 +1,10 @@
+{
+  "id": "cloverleaf_metallic_green_ht",
+  "name": "Cloverleaf Metallic Green HT",
+  "color_hex": "#1E5A4F",
+  "traits": {
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "silk": true
+  }
+}

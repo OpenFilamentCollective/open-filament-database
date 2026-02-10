@@ -1,0 +1,14 @@
+{
+  "id": "shiny_color_change_rainbow",
+  "name": "Shiny Color Change Rainbow",
+  "color_hex": [
+    "#0E21AE",
+    "#AE00FF",
+    "#15817B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

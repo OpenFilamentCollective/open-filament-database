@@ -1,5 +1,8 @@
 {
-    "id": "pristine_white",
-    "name": "Pristine White",
-    "color_hex": "#E6EAEF"
+  "id": "pristine_white",
+  "name": "Pristine White",
+  "color_hex": "#E6EAEF",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

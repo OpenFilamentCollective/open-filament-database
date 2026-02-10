@@ -1,0 +1,10 @@
+{
+  "id": "carbon_dark_green",
+  "name": "Carbon Dark Green",
+  "color_hex": "#165158",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

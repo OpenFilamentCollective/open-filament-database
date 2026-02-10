@@ -1,0 +1,9 @@
+{
+  "id": "arctic_teal",
+  "name": "Arctic Teal",
+  "color_hex": "#75C8CE",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

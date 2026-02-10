@@ -1,5 +1,8 @@
 {
-    "id": "tangerine_yellow",
-    "name": "Tangerine Yellow",
-    "color_hex": "#FFC72C"
+  "id": "tangerine_yellow",
+  "name": "Tangerine Yellow",
+  "color_hex": "#FFC72C",
+  "traits": {
+    "filtration_recommended": true
+  }
 }

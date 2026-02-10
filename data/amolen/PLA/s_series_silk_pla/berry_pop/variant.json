@@ -1,0 +1,13 @@
+{
+  "id": "berry_pop",
+  "name": "Berry Pop",
+  "color_hex": [
+    "#0353BA",
+    "#FF00A2",
+    "#FFFC6A"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "drifting_fog",
+  "name": "Drifting Fog",
+  "color_hex": "#B4BAB0",
+  "traits": {
+    "matte": true,
+    "recycled": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "translucent",
+  "name": "In The Dark [Translucent]",
+  "color_hex": [
+    "#06B100",
+    "#DFDFD3"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "transparent": true,
+    "illuminescent_color_change": true
+  }
+}

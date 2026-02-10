@@ -1,0 +1,13 @@
+{
+  "id": "lemonade_breeze_dual_color",
+  "name": "Lemonade Breeze Dual Color",
+  "color_hex": [
+    "#E4FF33",
+    "#0099E6"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

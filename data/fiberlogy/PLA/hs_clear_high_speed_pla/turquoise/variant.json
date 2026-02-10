@@ -1,0 +1,9 @@
+{
+  "id": "turquoise",
+  "name": "Turquoise",
+  "color_hex": "#005DA4",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

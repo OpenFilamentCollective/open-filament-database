@@ -1,0 +1,12 @@
+{
+  "id": "red_3",
+  "name": "Red -3",
+  "color_hex": [
+    "#E72F1D",
+    "#FF7D7A"
+  ],
+  "traits": {
+    "glow": true,
+    "abrasive": true
+  }
+}

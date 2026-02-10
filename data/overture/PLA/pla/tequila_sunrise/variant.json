@@ -1,5 +1,8 @@
 {
-    "id": "tequila_sunrise",
-    "name": "Tequila Sunrise",
-    "color_hex": "#db5b2a"
+  "id": "tequila_sunrise",
+  "name": "Tequila Sunrise",
+  "color_hex": "#db5b2a",
+  "traits": {
+    "gradual_color_change": true
+  }
 }

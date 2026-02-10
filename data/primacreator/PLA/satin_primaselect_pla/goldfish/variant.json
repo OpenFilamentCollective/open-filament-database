@@ -1,0 +1,8 @@
+{
+  "id": "goldfish",
+  "name": "Goldfish",
+  "color_hex": "#DE6300",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

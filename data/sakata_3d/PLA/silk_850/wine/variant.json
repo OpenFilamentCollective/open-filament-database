@@ -1,0 +1,9 @@
+{
+  "id": "wine",
+  "name": "Wine",
+  "color_hex": "#751A39",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

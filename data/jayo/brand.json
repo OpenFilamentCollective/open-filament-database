@@ -1,7 +1,8 @@
 {
-    "id": "jayo",
-    "name": "JAYO",
-    "website": "https://jayo3d.com/",
-    "logo": "logo.jpg",
-    "origin": "HK"
+  "id": "jayo",
+  "name": "JAYO",
+  "website": "https://jayo3d.com/",
+  "logo": "logo.jpg",
+  "origin": "HK",
+  "source": "openprinttag"
 }

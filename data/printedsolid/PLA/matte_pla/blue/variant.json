@@ -1,0 +1,9 @@
+{
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": "#0353BA",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

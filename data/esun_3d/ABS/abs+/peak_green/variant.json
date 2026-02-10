@@ -1,0 +1,8 @@
+{
+  "id": "peak_green",
+  "name": "Peak Green",
+  "color_hex": "#00CC00",
+  "traits": {
+    "filtration_recommended": true
+  }
+}

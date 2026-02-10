@@ -1,0 +1,9 @@
+{
+  "id": "iceland_blue",
+  "name": "Iceland Blue",
+  "color_hex": "#6AC4CD",
+  "traits": {
+    "industrially_compostable": true,
+    "transparent": true
+  }
+}

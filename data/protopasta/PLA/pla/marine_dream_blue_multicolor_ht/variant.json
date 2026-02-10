@@ -1,0 +1,15 @@
+{
+  "id": "marine_dream_blue_multicolor_ht",
+  "name": "Marine Dream Blue Multicolor HT",
+  "color_hex": [
+    "#00A594",
+    "#0099E6",
+    "#0378D0"
+  ],
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true,
+    "high_temperature": true,
+    "gradual_color_change": true
+  }
+}

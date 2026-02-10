@@ -1,0 +1,14 @@
+{
+  "id": "gold_copper_purple",
+  "name": "Gold-Copper-Purple",
+  "color_hex": [
+    "#FFCB47",
+    "#863938",
+    "#6C47B2"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

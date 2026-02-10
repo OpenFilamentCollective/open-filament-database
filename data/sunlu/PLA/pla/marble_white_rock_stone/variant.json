@@ -1,0 +1,9 @@
+{
+  "id": "marble_white_rock_stone",
+  "name": "Marble White Rock Stone",
+  "color_hex": "#F5F5F4",
+  "traits": {
+    "industrially_compostable": true,
+    "imitates_marble": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "crystal_spring",
+  "name": "Crystal Spring",
+  "color_hex": [
+    "#F5E457",
+    "#0099E6"
+  ],
+  "traits": {
+    "translucent": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,7 +1,9 @@
 {
-    "id": "cpx_pp",
-    "name": "CPX-PP",
-    "diameter_tolerance": 0.15,
-    "density": 0.9,
-    "max_dry_temperature": 55
+  "id": "cpx_pp",
+  "name": "CPX-PP",
+  "diameter_tolerance": 0.1,
+  "density": 0.89,
+  "max_dry_temperature": 55,
+  "data_sheet_url": "https://b751bece-b164-4862-900b-7e8dc06531e5.usrfiles.com/ugd/b751be_e1235f4b66674048a9133871e2a3456c.pdf",
+  "safety_sheet_url": "https://b751bece-b164-4862-900b-7e8dc06531e5.usrfiles.com/ugd/b751be_33f4e344492c460dafed0c4cbd6a8cc8.pdf"
 }

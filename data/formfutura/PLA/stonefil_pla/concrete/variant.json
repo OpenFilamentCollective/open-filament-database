@@ -1,0 +1,9 @@
+{
+  "id": "concrete",
+  "name": "Concrete",
+  "color_hex": "#B6B9BD",
+  "traits": {
+    "industrially_compostable": true,
+    "contains_stone": true
+  }
+}

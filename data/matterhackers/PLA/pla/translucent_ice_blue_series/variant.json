@@ -1,0 +1,9 @@
+{
+  "id": "translucent_ice_blue_series",
+  "name": "Translucent Ice Blue Series",
+  "color_hex": "#6299DF",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

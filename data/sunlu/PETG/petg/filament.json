@@ -1,6 +1,10 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.05,
-    "density": 1.24
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90
 }

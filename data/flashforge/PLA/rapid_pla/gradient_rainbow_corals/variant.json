@@ -1,0 +1,13 @@
+{
+  "id": "gradient_rainbow_corals",
+  "name": "Gradient Rainbow Corals",
+  "color_hex": [
+    "#C6F666",
+    "#FCE575",
+    "#F67405"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

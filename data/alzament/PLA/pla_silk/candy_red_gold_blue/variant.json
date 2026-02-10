@@ -1,0 +1,13 @@
+{
+  "id": "candy_red_gold_blue",
+  "name": "Candy Red-Gold-Blue",
+  "color_hex": [
+    "#91303d",
+    "#e4cd5e",
+    "#5650c3"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

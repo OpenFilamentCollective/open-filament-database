@@ -1,5 +1,8 @@
 {
-    "id": "vanilla_white",
-    "name": "Vanilla White",
-    "color_hex": "#D9D4C6"
+  "id": "vanilla_white",
+  "name": "Vanilla White",
+  "color_hex": "#D9D4C6",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

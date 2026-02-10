@@ -1,0 +1,13 @@
+{
+  "id": "gold_green_rose_red_tri_color",
+  "name": "Gold Green Rose Red tri-color",
+  "color_hex": [
+    "#DDB95D",
+    "#3D9441",
+    "#BF7473"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

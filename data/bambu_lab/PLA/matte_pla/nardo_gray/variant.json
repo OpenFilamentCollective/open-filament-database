@@ -1,0 +1,9 @@
+{
+  "id": "nardo_gray",
+  "name": "Nardo Gray",
+  "color_hex": "#888B8D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

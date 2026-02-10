@@ -1,0 +1,10 @@
+{
+  "id": "burgundy",
+  "name": "Burgundy",
+  "color_hex": "#833F4D",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

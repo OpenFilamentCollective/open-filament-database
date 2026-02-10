@@ -1,0 +1,9 @@
+{
+  "id": "pet_g_carbon",
+  "name": "PET-G Carbon",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

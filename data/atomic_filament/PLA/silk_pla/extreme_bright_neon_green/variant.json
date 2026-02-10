@@ -1,0 +1,10 @@
+{
+  "id": "extreme_bright_neon_green",
+  "name": "Extreme Bright Neon Green",
+  "color_hex": "#9FEC41",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "neon": true
+  }
+}

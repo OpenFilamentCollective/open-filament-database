@@ -1,0 +1,8 @@
+{
+  "id": "red_filament",
+  "name": "Red Filament",
+  "color_hex": "#ED1536",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

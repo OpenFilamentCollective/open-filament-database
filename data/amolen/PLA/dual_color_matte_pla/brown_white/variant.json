@@ -1,0 +1,13 @@
+{
+  "id": "brown_white",
+  "name": "Brown White",
+  "color_hex": [
+    "#FFFFFF",
+    "#C37C4F"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true,
+    "coextruded": true
+  }
+}

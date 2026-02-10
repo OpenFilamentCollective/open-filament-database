@@ -1,5 +1,8 @@
 {
-    "id": "simply_green",
-    "name": "Simply Green",
-    "color_hex": "#70A641"
+  "id": "simply_green",
+  "name": "Simply Green",
+  "color_hex": "#70A641",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

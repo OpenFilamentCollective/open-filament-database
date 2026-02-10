@@ -1,0 +1,10 @@
+{
+  "id": "translucent",
+  "name": "Translucent",
+  "color_hex": [
+    "#dbdbdb"
+  ],
+  "traits": {
+    "translucent": true
+  }
+}

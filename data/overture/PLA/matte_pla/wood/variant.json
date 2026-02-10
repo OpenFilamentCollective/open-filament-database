@@ -1,5 +1,9 @@
 {
-    "id": "wood",
-    "name": "Wood",
-    "color_hex": "#CAAC78"
+  "id": "wood",
+  "name": "Wood",
+  "color_hex": "#CAAC78",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

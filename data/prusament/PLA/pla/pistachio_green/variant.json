@@ -1,5 +1,8 @@
 {
-    "id": "pistachio_green",
-    "name": "Pistachio Green",
-    "color_hex": "#93A683"
+  "id": "pistachio_green",
+  "name": "Pistachio Green",
+  "color_hex": "#93A683",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

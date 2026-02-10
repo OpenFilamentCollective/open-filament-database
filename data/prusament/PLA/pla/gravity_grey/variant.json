@@ -1,5 +1,8 @@
 {
-    "id": "gravity_grey",
-    "name": "Gravity Grey",
-    "color_hex": "#9FA4A8"
+  "id": "gravity_grey",
+  "name": "Gravity Grey",
+  "color_hex": "#9FA4A8",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

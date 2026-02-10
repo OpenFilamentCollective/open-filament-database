@@ -1,0 +1,14 @@
+{
+  "id": "dark_twinkling_purple",
+  "name": "Dark Twinkling Purple",
+  "color_hex": [
+    "#771B6B",
+    "#4C5E46"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true,
+    "glitter": true
+  }
+}

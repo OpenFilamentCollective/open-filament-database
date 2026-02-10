@@ -1,0 +1,10 @@
+{
+  "id": "luminous_yellow",
+  "name": "Luminous Yellow",
+  "color_hex": "#FFFB00",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}

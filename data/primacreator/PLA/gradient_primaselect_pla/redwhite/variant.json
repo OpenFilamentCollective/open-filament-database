@@ -1,0 +1,12 @@
+{
+  "id": "redwhite",
+  "name": "Redwhite",
+  "color_hex": [
+    "#FFFFFF",
+    "#FF5F2E"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

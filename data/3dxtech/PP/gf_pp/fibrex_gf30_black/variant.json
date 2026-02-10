@@ -1,0 +1,9 @@
+{
+  "id": "fibrex_gf30_black",
+  "name": "FibreX +GF30 Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

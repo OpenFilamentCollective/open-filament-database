@@ -1,0 +1,14 @@
+{
+  "id": "glowjet_glowing_in_the_dark",
+  "name": "GlowJet - glowing in the dark",
+  "color_hex": [
+    "#F1E6B2",
+    "#95D05C"
+  ],
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true,
+    "illuminescent_color_change": true
+  }
+}

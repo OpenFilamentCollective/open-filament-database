@@ -1,0 +1,11 @@
+{
+  "id": "static_dissipative_carbon_fiber",
+  "name": "Static Dissipative Carbon Fiber",
+  "color_hex": "#000000",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "esd_safe": true,
+    "contains_carbon_fiber": true
+  }
+}

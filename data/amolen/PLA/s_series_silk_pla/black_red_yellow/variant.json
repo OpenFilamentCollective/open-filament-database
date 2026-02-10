@@ -1,0 +1,13 @@
+{
+  "id": "black_red_yellow",
+  "name": "Black Red Yellow",
+  "color_hex": [
+    "#2A3940",
+    "#B7293E",
+    "#FFFC6A"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

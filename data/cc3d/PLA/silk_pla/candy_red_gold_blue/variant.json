@@ -1,0 +1,14 @@
+{
+  "id": "candy_red_gold_blue",
+  "name": "Candy Red Gold Blue",
+  "color_hex": [
+    "#C01616",
+    "#F6C500",
+    "#0353BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

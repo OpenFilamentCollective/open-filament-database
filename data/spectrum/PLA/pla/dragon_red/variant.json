@@ -1,0 +1,8 @@
+{
+  "id": "dragon_red",
+  "name": "Dragon Red",
+  "color_hex": "#AD4E38",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

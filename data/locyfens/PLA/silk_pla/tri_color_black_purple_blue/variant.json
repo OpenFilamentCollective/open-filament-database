@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_black_purple_blue",
+  "name": "Tri Color Black Purple Blue",
+  "color_hex": [
+    "#000000",
+    "#AE00FF",
+    "#0353BA"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "deep_space",
+  "name": "Deep Space",
+  "color_hex": "#253F56",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

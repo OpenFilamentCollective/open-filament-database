@@ -1,0 +1,9 @@
+{
+  "id": "brads_orange_glitter",
+  "name": "Brads Orange Glitter",
+  "color_hex": "#F67405",
+  "traits": {
+    "industrially_compostable": true,
+    "glitter": true
+  }
+}

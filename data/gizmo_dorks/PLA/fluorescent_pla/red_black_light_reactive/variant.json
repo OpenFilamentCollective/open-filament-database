@@ -1,0 +1,9 @@
+{
+  "id": "red_black_light_reactive",
+  "name": "Red (Black Light Reactive)",
+  "color_hex": "#ED1536",
+  "traits": {
+    "industrially_compostable": true,
+    "neon": true
+  }
+}

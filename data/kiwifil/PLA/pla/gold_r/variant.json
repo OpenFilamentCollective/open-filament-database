@@ -1,0 +1,9 @@
+{
+  "id": "gold_r",
+  "name": "Gold r",
+  "color_hex": "#E3B145",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

@@ -1,8 +1,8 @@
 {
-    "id": "transparent_yellow",
-    "name": "Transparent Yellow",
-    "color_hex": "#ffff00",
-    "traits": {
-        "translucent": true
-    }
+  "id": "transparent_yellow",
+  "name": "Transparent Yellow",
+  "color_hex": "#ffff00",
+  "traits": {
+    "translucent": true
+  }
 }

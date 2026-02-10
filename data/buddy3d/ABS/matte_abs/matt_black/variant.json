@@ -1,0 +1,9 @@
+{
+  "id": "matt_black",
+  "name": "Matt BLACK",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true,
+    "filtration_recommended": true
+  }
+}

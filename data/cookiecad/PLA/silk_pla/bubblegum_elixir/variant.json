@@ -1,0 +1,10 @@
+{
+  "id": "bubblegum_elixir",
+  "name": "Bubblegum Elixir",
+  "color_hex": "#F19DCD",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "iridescent": true
+  }
+}

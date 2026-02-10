@@ -1,0 +1,13 @@
+{
+  "id": "tiger_eye",
+  "name": "Tiger Eye",
+  "color_hex": [
+    "#545252",
+    "#A78403",
+    "#C25C56"
+  ],
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

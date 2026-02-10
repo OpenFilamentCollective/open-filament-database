@@ -1,0 +1,11 @@
+{
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": [
+    "#BA009E",
+    "#E5E0E3"
+  ],
+  "traits": {
+    "illuminescent_color_change": true
+  }
+}

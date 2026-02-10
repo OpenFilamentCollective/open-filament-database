@@ -1,0 +1,12 @@
+{
+  "id": "blue_to_yellow_gradient",
+  "name": "Blue to Yellow Gradient",
+  "color_hex": [
+    "#C6F666",
+    "#5FBCDD"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "neon_green",
+  "name": "Neon Green",
+  "color_hex": "#69EE00",
+  "color_standards": {
+    "ral": "6038"
+  },
+  "traits": {
+    "neon": true
+  }
+}

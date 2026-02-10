@@ -1,0 +1,9 @@
+{
+  "id": "ral_3001_signal_red",
+  "name": "RAL 3001 Signal Red",
+  "color_hex": "#AC1A17",
+  "traits": {
+    "recycled": true,
+    "industrially_compostable": true
+  }
+}

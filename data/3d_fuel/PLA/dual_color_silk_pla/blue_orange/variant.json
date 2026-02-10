@@ -1,0 +1,13 @@
+{
+  "id": "blue_orange",
+  "name": "Blue Orange",
+  "color_hex": [
+    "#F4AC23",
+    "#2E56F1"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

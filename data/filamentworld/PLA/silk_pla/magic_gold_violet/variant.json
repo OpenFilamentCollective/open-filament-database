@@ -1,0 +1,12 @@
+{
+  "id": "magic_gold_violet",
+  "name": "Magic ​​Gold-Violet",
+  "color_hex": [
+    "#F6C500",
+    "#9D00B1"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

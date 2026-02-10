@@ -1,0 +1,8 @@
+{
+  "id": "pumpkin_spice",
+  "name": "Pumpkin Spice",
+  "color_hex": "#FF7A33",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "frozen_raspberry",
+  "name": "Frozen Raspberry",
+  "color_hex": [
+    "#D5447E",
+    "#C9D0D4"
+  ],
+  "traits": {
+    "iridescent": true,
+    "coextruded": true
+  }
+}

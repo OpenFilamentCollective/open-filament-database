@@ -1,0 +1,13 @@
+{
+  "id": "bayou_blue_green_rose_gold",
+  "name": "Bayou (Blue / Green / Rose Gold)",
+  "color_hex": [
+    "#2941BD",
+    "#62E480",
+    "#E69E7A"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

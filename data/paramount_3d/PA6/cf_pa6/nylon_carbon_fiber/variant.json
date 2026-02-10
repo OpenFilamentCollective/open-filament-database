@@ -1,0 +1,8 @@
+{
+  "id": "nylon_carbon_fiber",
+  "name": "Nylon Carbon Fiber",
+  "color_hex": "#6A6C6E",
+  "traits": {
+    "contains_carbon_fiber": true
+  }
+}

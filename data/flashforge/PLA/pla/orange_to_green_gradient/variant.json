@@ -1,0 +1,12 @@
+{
+  "id": "orange_to_green_gradient",
+  "name": "Orange to Green Gradient",
+  "color_hex": [
+    "#FD9106",
+    "#BBDB4B"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

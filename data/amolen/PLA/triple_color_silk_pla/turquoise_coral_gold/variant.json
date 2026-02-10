@@ -1,0 +1,13 @@
+{
+  "id": "turquoise_coral_gold",
+  "name": "Turquoise Coral Gold",
+  "color_hex": [
+    "#DA8093",
+    "#36DBE7",
+    "#F1BB51"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

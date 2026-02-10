@@ -1,0 +1,8 @@
+{
+  "id": "flaming_red",
+  "name": "Flaming Red",
+  "color_hex": "#D33D3D",
+  "traits": {
+    "industrially_compostable": true
+  }
+}

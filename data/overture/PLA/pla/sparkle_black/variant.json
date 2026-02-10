@@ -1,5 +1,8 @@
 {
-    "id": "sparkle_black",
-    "name": "Sparkle Black",
-    "color_hex": "#000000"
+  "id": "sparkle_black",
+  "name": "Sparkle Black",
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true
+  }
 }

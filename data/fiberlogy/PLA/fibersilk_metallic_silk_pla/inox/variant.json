@@ -1,0 +1,9 @@
+{
+  "id": "inox",
+  "name": "Inox",
+  "color_hex": "#BCBFC2",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

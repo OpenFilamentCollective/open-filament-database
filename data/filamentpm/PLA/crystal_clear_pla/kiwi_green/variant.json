@@ -1,0 +1,9 @@
+{
+  "id": "kiwi_green",
+  "name": "Kiwi Green",
+  "color_hex": "#BBDB4B",
+  "traits": {
+    "translucent": true,
+    "industrially_compostable": true
+  }
+}

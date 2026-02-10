@@ -1,0 +1,13 @@
+{
+  "id": "sunrise_pink_orange_yellow",
+  "name": "Sunrise (pink → orange → yellow)",
+  "color_hex": [
+    "#D85165",
+    "#FF7A33",
+    "#FADB24"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,5 +1,8 @@
 {
-    "id": "northern_lights",
-    "name": "Northern Lights",
-    "color_hex": "#a494eb"
+  "id": "northern_lights",
+  "name": "Northern Lights",
+  "color_hex": "#a494eb",
+  "traits": {
+    "gradual_color_change": true
+  }
 }

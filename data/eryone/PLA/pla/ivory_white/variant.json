@@ -1,5 +1,8 @@
 {
-    "id": "ivory_white",
-    "name": "Ivory White",
-    "color_hex": "#DCDCD5"
+  "id": "ivory_white",
+  "name": "Ivory White",
+  "color_hex": "#DCDCD5",
+  "traits": {
+    "industrially_compostable": true
+  }
 }

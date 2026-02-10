@@ -1,0 +1,13 @@
+{
+  "id": "rosy_rainbow",
+  "name": "Rosy Rainbow",
+  "color_hex": [
+    "#FE0193",
+    "#F7A7A1",
+    "#FC76A5"
+  ],
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

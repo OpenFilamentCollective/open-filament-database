@@ -1,0 +1,12 @@
+{
+  "id": "thermoactive_red",
+  "name": "Thermoactive Red",
+  "color_hex": [
+    "#EFEFEF",
+    "#FF4F4D"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "temperature_color_change": true
+  }
+}

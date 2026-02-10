@@ -1,0 +1,9 @@
+{
+  "id": "r_black",
+  "name": "r Black",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "filtration_recommended": true
+  }
+}
