@@ -1,0 +1,14 @@
+{
+    "name": "BOOM STORE",
+    "storefront_url": "https://example.com",
+    "ships_from": [
+        "DK"
+    ],
+    "ships_to": [
+        "UN"
+    ],
+    "source": "SPACE",
+    "id": "boom-store",
+    "slug": "boom-store",
+    "logo": "store_boom-store_logo_1770744360360"
+}
