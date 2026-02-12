@@ -1,0 +1,14 @@
+{
+  "id": "hwite",
+  "name": " HWITE",
+  "color_hex": "#FFFFFF",
+  "discontinued": false,
+  "sizes": [
+    {
+      "diameter": 1.75,
+      "discontinued": false,
+      "filament_weight": 143253647568,
+      "spool_refill": false
+    }
+  ]
+}

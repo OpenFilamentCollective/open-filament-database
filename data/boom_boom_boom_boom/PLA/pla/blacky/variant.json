@@ -1,0 +1,28 @@
+{
+  "id": "blacky",
+  "name": "BLACKY",
+  "color_hex": "#000000",
+  "discontinued": false,
+  "traits": {
+    "transparent": true,
+    "neon": true
+  },
+  "sizes": [
+    {
+      "article_number": "634",
+      "diameter": 1.75,
+      "discontinued": true,
+      "empty_spool_weight": 543,
+      "filament_weight": 432,
+      "gtin": "634634",
+      "purchase_links": [
+        {
+          "store_id": "c2147f93-fd18-51e5-9eb3-8ba14ae7c040",
+          "url": "https://example.com/hello"
+        }
+      ],
+      "spool_core_diameter": 634,
+      "spool_refill": true
+    }
+  ]
+}

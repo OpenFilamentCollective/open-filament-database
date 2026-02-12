@@ -1,0 +1,19 @@
+{
+  "material": "PLA",
+  "material_class": "FFF",
+  "default_max_dry_temperature": 76543,
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 3425,
+      "first_layer_bed_temp": 5435,
+      "first_layer_nozzle_temp": 45,
+      "nozzle_temp": 543
+    },
+    "prusaslicer": {
+      "first_layer_bed_temp": 43243,
+      "first_layer_nozzle_temp": 432,
+      "nozzle_temp": 765,
+      "profile_name": "5342frefre"
+    }
+  }
+}

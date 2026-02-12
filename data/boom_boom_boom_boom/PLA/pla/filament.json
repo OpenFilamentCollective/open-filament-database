@@ -1,0 +1,40 @@
+{
+  "id": "pla",
+  "name": "PLA-",
+  "diameter_tolerance": 0.069,
+  "density": 1.24,
+  "shore_hardness_a": 765567,
+  "shore_hardness_d": 76567,
+  "certifications": [
+    "AAAAAAAAAAAAA"
+  ],
+  "max_dry_temperature": 576567,
+  "min_print_temperature": 6453,
+  "max_print_temperature": 654,
+  "preheat_temperature": 756756,
+  "min_bed_temperature": 876,
+  "max_bed_temperature": 7576,
+  "min_chamber_temperature": 76567,
+  "max_chamber_temperature": 756567,
+  "chamber_temperature": 576567,
+  "min_nozzle_diameter": 65432,
+  "data_sheet_url": "https://example.com/AAAA",
+  "safety_sheet_url": "https://example.com/AAAA",
+  "discontinued": false,
+  "slicer_settings": {
+    "prusaslicer": {
+      "bed_temp": 746,
+      "first_layer_bed_temp": 5342,
+      "first_layer_nozzle_temp": 1654,
+      "nozzle_temp": 345,
+      "profile_name": "fref43"
+    },
+    "orcaslicer": {
+      "bed_temp": 4324,
+      "first_layer_bed_temp": 543,
+      "first_layer_nozzle_temp": 523,
+      "nozzle_temp": 23,
+      "profile_name": "gre"
+    }
+  }
+}
