@@ -1,0 +1,15 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "spool_core_diameter": 51,
+    "gtin": "618996769100",
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/670190/inland-175mm-pla-silky-3d-printer-filament-triple-color-10-kg-(22-lbs)-spool-mystic-(black-gold-green)"
+      }
+    ]
+  }
+]

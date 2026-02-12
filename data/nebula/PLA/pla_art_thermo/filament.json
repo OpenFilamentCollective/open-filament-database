@@ -1,0 +1,8 @@
+{
+  "name": "PLA Art Thermo",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/TDS-PLA-THERMOACTIVE.pdf",
+  "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/Karta-charakterystyki-msds-PLA-THERMOAKTIV-Nebula.pdf",
+  "id": "pla_art_thermo"
+}

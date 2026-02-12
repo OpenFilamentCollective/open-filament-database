@@ -1,0 +1,15 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 144,
+    "spool_core_diameter": 55,
+    "gtin": "618996754434",
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/660570/inland-shimmer-175mm-gray-pla-3d-printer-filament-1kg-spool-(22-lbs)?sp=82"
+      }
+    ]
+  }
+]

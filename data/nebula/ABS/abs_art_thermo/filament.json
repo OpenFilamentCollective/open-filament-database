@@ -1,0 +1,8 @@
+{
+  "name": "ABS Art Thermo",
+  "diameter_tolerance": 0.03,
+  "density": 1.04,
+  "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/TDS-ABS-THERMO.pdf",
+  "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/Karta-charakterystyki-msds-ABS-THERMO-Nebula.pdf",
+  "id": "abs_art_thermo"
+}
