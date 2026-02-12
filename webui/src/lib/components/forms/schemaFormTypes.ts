@@ -48,9 +48,9 @@ export interface SchemaFormConfig {
 
 	// Field name mappings for data transformation
 	// Maps schema field names to different names for initialization/submission
-	// e.g., { 'name': 'color_name' } means:
-	//   - When initializing, read from entity.color_name into formData.name
-	//   - When submitting, write formData.name to submitData.color_name
+	// e.g., { 'schema_field': 'entity_field' } means:
+	//   - When initializing, read from entity.entity_field into formData.schema_field
+	//   - When submitting, write formData.schema_field to submitData.entity_field
 	fieldMappings?: Record<string, string>;
 
 	// Value transforms applied during submission

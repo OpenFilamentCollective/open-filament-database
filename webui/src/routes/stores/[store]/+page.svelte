@@ -79,10 +79,10 @@
 				logoFilename = savedPath;
 			}
 
-			const updatedStore = mergeEntityData(store, { ...data, logo: logoFilename }, [
+			const updatedStore = mergeEntityData(store as unknown as Record<string, unknown>, { ...data, logo: logoFilename }, [
 				'id',
 				'slug'
-			]) as Store;
+			]) as unknown as Store;
 
 			const success = await db.saveStore(updatedStore, originalStore ?? store);
 

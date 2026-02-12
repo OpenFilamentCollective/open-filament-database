@@ -19,6 +19,7 @@ export interface Brand {
 
 export interface Material {
 	id: string; // Same as materialType, used for change tracking
+	slug?: string;
 	material: string;
 	material_class?: 'FFF' | 'SLA';
 	default_max_dry_temperature?: number;
@@ -29,6 +30,7 @@ export interface Material {
 
 export interface Filament {
 	id: string;
+	slug?: string;
 	name: string;
 	diameter_tolerance: number;
 	density: number;
@@ -153,7 +155,7 @@ export interface Variant {
 	id: string;
 	filament_id: string;
 	slug: string;
-	color_name: string;
+	name: string;
 	color_hex: string;
 	discontinued: boolean;
 	traits?: VariantTraits;

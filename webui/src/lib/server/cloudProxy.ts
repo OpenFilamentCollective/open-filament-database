@@ -12,24 +12,24 @@ const API_BASE = PUBLIC_API_BASE_URL
 
 /**
  * Build the dataset API URL from a local API path.
- * Maps local paths like /api/brands to cloud paths like /api/v1/brands/index.json
+ * Maps local paths like /api/brands to cloud paths like /api/brands/index.json
  */
 function buildCloudUrl(localPath: string): string {
 	// Stores
 	if (localPath.startsWith('/api/stores')) {
 		const match = localPath.match(/^\/api\/stores\/([^/]+)$/);
 		if (match) {
-			return `${API_BASE}/api/v1/stores/${match[1]}.json`;
+			return `${API_BASE}/api/stores/${match[1]}.json`;
 		}
 		if (localPath === '/api/stores') {
-			return `${API_BASE}/api/v1/stores/index.json`;
+			return `${API_BASE}/api/stores/index.json`;
 		}
 	}
 
 	// Brands
 	if (localPath.startsWith('/api/brands')) {
 		if (localPath === '/api/brands') {
-			return `${API_BASE}/api/v1/brands/index.json`;
+			return `${API_BASE}/api/brands/index.json`;
 		}
 
 		const match = localPath.match(/^\/api\/brands\/([^/]+)(?:\/(.+))?$/);
@@ -38,12 +38,12 @@ function buildCloudUrl(localPath: string): string {
 			const subPath = match[2];
 
 			if (!subPath) {
-				return `${API_BASE}/api/v1/brands/${brandId}/index.json`;
+				return `${API_BASE}/api/brands/${brandId}/index.json`;
 			}
 
 			if (subPath === 'materials') {
 				// Materials are included in the brand response
-				return `${API_BASE}/api/v1/brands/${brandId}/index.json`;
+				return `${API_BASE}/api/brands/${brandId}/index.json`;
 			}
 
 			const materialMatch = subPath.match(
@@ -57,13 +57,13 @@ function buildCloudUrl(localPath: string): string {
 				const isVariantsList = subPath.includes('/variants') && !variantId;
 
 				if (variantId) {
-					return `${API_BASE}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/variants/${variantId}.json`;
+					return `${API_BASE}/api/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/variants/${variantId}.json`;
 				} else if (isVariantsList && filamentName) {
-					return `${API_BASE}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
+					return `${API_BASE}/api/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
 				} else if (filamentName) {
-					return `${API_BASE}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
+					return `${API_BASE}/api/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
 				} else {
-					return `${API_BASE}/api/v1/brands/${brandId}/materials/${materialType}/index.json`;
+					return `${API_BASE}/api/brands/${brandId}/materials/${materialType}/index.json`;
 				}
 			}
 		}
@@ -73,9 +73,9 @@ function buildCloudUrl(localPath: string): string {
 	if (localPath.startsWith('/api/schemas')) {
 		const match = localPath.match(/^\/api\/schemas\/([^/]+)$/);
 		if (match) {
-			return `${API_BASE}/api/v1/schemas/${match[1]}_schema.json`;
+			return `${API_BASE}/api/schemas/${match[1]}_schema.json`;
 		}
-		return `${API_BASE}/api/v1/schemas/index.json`;
+		return `${API_BASE}/api/schemas/index.json`;
 	}
 
 	// Fallback
@@ -175,7 +175,7 @@ export async function proxyLogoToCloud(
 	entityId: string,
 	filename: string
 ): Promise<Response> {
-	const cloudUrl = `${API_BASE}/api/v1/${entityType}s/logo/${filename}`;
+	const cloudUrl = `${API_BASE}/api/${entityType}s/logo/${filename}`;
 
 	try {
 		const response = await fetch(cloudUrl);

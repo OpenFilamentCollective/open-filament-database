@@ -62,8 +62,8 @@
 
 			// In cloud mode, logos are served from the cloud API
 			// The src contains the logo_slug (e.g., "3d_prima_basic_logo_png_b73af01c.png")
-			// Format: /api/v1/brands/logo/{logo_slug} or /api/v1/stores/logo/{logo_slug}
-			return `${$apiBaseUrl}/api/v1/${type}s/logo/${src}`;
+			// Format: /api/brands/logo/{logo_slug} or /api/stores/logo/{logo_slug}
+			return `${$apiBaseUrl}/api/${type}s/logo/${src}`;
 		} else {
 			// In local mode, use local API endpoint
 			// ID should be the slug/directory name

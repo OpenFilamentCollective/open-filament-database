@@ -6,6 +6,7 @@ import {
 	forkRepo,
 	getLatestCommitSha,
 	getCommitTreeSha,
+	getRecursiveTree,
 	createBranch,
 	createBlob,
 	createTree,
@@ -27,21 +28,35 @@ function entityPathToRepoPath(entityPath: string): string | null {
 	const parts = entityPath.split('/');
 
 	if (parts[0] === 'stores' && parts.length === 2) {
-		return `stores/${parts[1]}/store.json`;
+		// Store IDs: hyphens removed in repo dirs
+		const storeDir = parts[1].replace(/-/g, '');
+		return `stores/${storeDir}/store.json`;
 	}
 
 	if (parts[0] === 'brands') {
+		// Brand IDs: hyphens → underscores in repo dirs
+		const brandDir = parts[1].replace(/-/g, '_');
 		if (parts.length === 2) {
-			return `data/${parts[1]}/brand.json`;
+			return `data/${brandDir}/brand.json`;
 		}
-		if (parts.length === 4 && parts[2] === 'materials') {
-			return `data/${parts[1]}/${parts[3]}/material.json`;
-		}
-		if (parts.length === 6 && parts[2] === 'materials' && parts[4] === 'filaments') {
-			return `data/${parts[1]}/${parts[3]}/${parts[5]}/filament.json`;
-		}
-		if (parts.length === 8 && parts[2] === 'materials' && parts[4] === 'filaments' && parts[6] === 'variants') {
-			return `data/${parts[1]}/${parts[3]}/${parts[5]}/${parts[7]}/variant.json`;
+		if (parts.length >= 4 && parts[2] === 'materials') {
+			// Material types: UPPERCASE in repo dirs
+			const materialDir = parts[3].toUpperCase();
+			if (parts.length === 4) {
+				return `data/${brandDir}/${materialDir}/material.json`;
+			}
+			if (parts.length >= 6 && parts[4] === 'filaments') {
+				// Filament slugs: hyphens → underscores in repo dirs
+				const filamentDir = parts[5].replace(/-/g, '_');
+				if (parts.length === 6) {
+					return `data/${brandDir}/${materialDir}/${filamentDir}/filament.json`;
+				}
+				if (parts.length === 8 && parts[6] === 'variants') {
+					// Variant slugs: hyphens → underscores in repo dirs
+					const variantDir = parts[7].replace(/-/g, '_');
+					return `data/${brandDir}/${materialDir}/${filamentDir}/${variantDir}/variant.json`;
+				}
+			}
 		}
 	}
 
@@ -49,11 +64,17 @@ function entityPathToRepoPath(entityPath: string): string | null {
 }
 
 /**
- * Fields to strip from entity data before committing
+ * Fields to strip from entity data before committing, per entity type.
+ * These are fields augmented by the API read layer that don't exist in the repo JSON.
  */
-const STRIP_FIELDS = new Set([
-	'brandId', 'brand_id', 'materialType', 'filamentDir', 'filament_id', 'slug'
-]);
+const STRIP_FIELDS_BY_TYPE: Record<string, Set<string>> = {
+	brand: new Set(['slug']),
+	store: new Set(['slug']),
+	material: new Set(['id', 'brandId', 'materialType', 'slug']),
+	filament: new Set(['slug', 'brandId', 'materialType', 'filamentDir']),
+	variant: new Set(['slug', 'brandId', 'materialType', 'filamentId', 'filament_id', 'variantDir'])
+};
+const DEFAULT_STRIP_FIELDS = new Set(['brandId', 'materialType', 'filamentDir', 'filament_id', 'filamentId', 'variantDir', 'slug']);
 
 /**
  * Build a lookup from image IDs to their actual filenames
@@ -70,10 +91,11 @@ function buildImageFilenameMap(images: Record<string, any> | undefined): Map<str
 	return map;
 }
 
-function cleanEntityData(data: any, imageFilenames: Map<string, string>): any {
+function cleanEntityData(data: any, imageFilenames: Map<string, string>, schemaType: string | null): any {
+	const stripFields = (schemaType && STRIP_FIELDS_BY_TYPE[schemaType]) || DEFAULT_STRIP_FIELDS;
 	const clean: Record<string, any> = {};
 	for (const [key, value] of Object.entries(data)) {
-		if (STRIP_FIELDS.has(key)) continue;
+		if (stripFields.has(key)) continue;
 
 		// Resolve image reference IDs to actual filenames (e.g. logo field)
 		if (key === 'logo' && typeof value === 'string' && imageFilenames.has(value)) {
@@ -261,22 +283,17 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		// Fork the repo (idempotent)
 		const fork = await forkRepo(token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO);
 
-		// Get latest SHA directly from upstream main.
-		// GitHub forks share the underlying object store, so upstream SHAs are
-		// accessible on the fork — no need to sync the fork first.
-		const upstreamSha = await getLatestCommitSha(
-			token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO, 'main'
-		);
-		const baseTreeSha = await getCommitTreeSha(
-			token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO, upstreamSha
-		);
+		// Get latest commit SHA from UPSTREAM (not fork) so the PR branch
+		// is based on a clean upstream commit without fork merge noise.
+		const latestSha = await getLatestCommitSha(token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO, 'main');
+		const baseTreeSha = await getCommitTreeSha(token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO, latestSha);
 
-		// Create branch on fork from upstream SHA (retry for newly-created forks)
+		// Create branch on fork
 		const branchName = `ofd-changes-${Date.now()}`;
 		let branchCreated = false;
 		for (let attempt = 0; attempt < 5; attempt++) {
 			try {
-				await createBranch(token, fork.owner, fork.repo, branchName, upstreamSha);
+				await createBranch(token, fork.owner, fork.repo, branchName, latestSha);
 				branchCreated = true;
 				break;
 			} catch {
@@ -294,28 +311,46 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		// Load schema key orderings for styling output JSON
 		const schemas = loadSchemaKeyOrders();
 
-		// Create blobs for each change
-		const treeItems: Array<{ path: string; sha: string | null; mode?: string }> = [];
+		// Collect incremental tree items (only changes, not the full tree).
+		// Using base_tree with only changed entries avoids the 502 from sending
+		// the entire repo tree, while being small enough for GitHub's API.
+		const treeItems: Array<{ path: string; sha: string | null; mode?: string; type?: string }> = [];
+
+		// Check if any changes are deletes — we need the recursive tree listing
+		// to discover all files under a deleted entity's directory for cascade delete.
+		const hasDeletes = changes.some((c: any) => c.operation === 'delete');
+		let existingTree: Map<string, { sha: string; mode: string; type: string }> | null = null;
+		if (hasDeletes) {
+			existingTree = await getRecursiveTree(
+				token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO, baseTreeSha
+			);
+		}
 
 		for (const change of changes) {
 			const repoPath = entityPathToRepoPath(change.entity.path);
 			if (!repoPath) continue;
 
 			if (change.operation === 'delete') {
-				// Mark for deletion by setting sha to null
-				treeItems.push({ path: repoPath, sha: null });
+				// Cascade delete: find all files under this entity's directory
+				const dirPrefix = repoPath.replace(/\/[^/]+$/, '/');
+				if (existingTree) {
+					for (const existingPath of existingTree.keys()) {
+						if (existingPath.startsWith(dirPrefix)) {
+							treeItems.push({ path: existingPath, sha: null });
+						}
+					}
+				}
 			} else if (change.data) {
-				// Create/update: clean, sort keys per schema, then create blob
-				let cleanData = cleanEntityData(change.data, imageFilenames);
-
 				const schemaType = getSchemaType(repoPath);
+				// Create/update: clean, sort keys per schema, then create blob
+				let cleanData = cleanEntityData(change.data, imageFilenames, schemaType);
 				if (schemaType && schemas[schemaType]) {
 					cleanData = sortJsonKeys(cleanData, schemas[schemaType]);
 				}
 
 				const content = JSON.stringify(cleanData, null, 2) + '\n';
 				const blobSha = await createBlob(token, fork.owner, fork.repo, content);
-				treeItems.push({ path: repoPath, sha: blobSha });
+				treeItems.push({ path: repoPath, sha: blobSha, mode: '100644', type: 'blob' });
 			}
 		}
 
@@ -329,7 +364,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
 				const imageRepoPath = entityDir.replace(/\/[^/]+\.json$/, `/${imageData.filename}`);
 				const blobSha = await createBlob(token, fork.owner, fork.repo, imageData.data, 'base64');
-				treeItems.push({ path: imageRepoPath, sha: blobSha });
+				treeItems.push({ path: imageRepoPath, sha: blobSha, mode: '100644', type: 'blob' });
 			}
 		}
 
@@ -337,7 +372,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			return json({ error: 'No valid changes to commit' }, { status: 400 });
 		}
 
-		// Create tree
+		// Create tree with base_tree — only includes changed/deleted entries.
+		// This is much smaller than sending the full repo tree (which causes 502).
 		const treeSha = await createTree(token, fork.owner, fork.repo, baseTreeSha, treeItems);
 
 		// Create commit
@@ -349,7 +385,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			fork.repo,
 			commitMessage,
 			treeSha,
-			upstreamSha
+			latestSha
 		);
 
 		// Update branch to point to new commit

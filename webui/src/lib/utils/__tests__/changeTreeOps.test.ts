@@ -228,7 +228,7 @@ describe('Child / Subtree Operations', () => {
 				variantSlug: 'red'
 			},
 			makeChange('brands/b/materials/PLA/filaments/basic/variants/red', 'create', {
-				color_name: 'Red'
+				name: 'Red'
 			})
 		);
 	});

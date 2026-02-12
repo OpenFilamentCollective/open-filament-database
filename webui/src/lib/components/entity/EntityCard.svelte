@@ -47,6 +47,8 @@
 		localChangeType?: 'create' | 'update' | 'delete';
 		/** Whether any descendant entity has local changes */
 		hasDescendantChanges?: boolean;
+		/** Hover color variant */
+		hoverColor?: string;
 	}
 
 	let {
@@ -65,7 +67,8 @@
 		secondaryInfo,
 		hasLocalChanges = false,
 		localChangeType,
-		hasDescendantChanges = false
+		hasDescendantChanges = false,
+		hoverColor
 	}: Props = $props();
 
 	const displayName = $derived(name ?? entity.name);

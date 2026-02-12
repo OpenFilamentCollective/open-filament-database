@@ -79,7 +79,7 @@ describe('Change Store', () => {
 
 	describe('trackCreate', () => {
 		it('should add create change entry', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const data = { id: 'test', name: 'Test Brand' };
 
 			changeStore.trackCreate(entity, data);
@@ -91,7 +91,7 @@ describe('Change Store', () => {
 		});
 
 		it('should generate description', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const data = { id: 'test', name: 'Test Brand' };
 
 			changeStore.trackCreate(entity, data);
@@ -101,7 +101,7 @@ describe('Change Store', () => {
 		});
 
 		it('should persist to localStorage', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const data = { id: 'test', name: 'Test Brand' };
 
 			changeStore.trackCreate(entity, data);
@@ -112,7 +112,7 @@ describe('Change Store', () => {
 		it('should do nothing in local mode', () => {
 			mocks.mockIsCloudMode.set(false);
 
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const data = { id: 'test', name: 'Test Brand' };
 
 			changeStore.trackCreate(entity, data);
@@ -123,7 +123,7 @@ describe('Change Store', () => {
 
 	describe('trackUpdate', () => {
 		it('should add update change entry', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const oldData = { id: 'test', name: 'Old Name' };
 			const newData = { id: 'test', name: 'New Name' };
 
@@ -136,7 +136,7 @@ describe('Change Store', () => {
 		});
 
 		it('should preserve original data', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const oldData = { id: 'test', name: 'Original' };
 
 			changeStore.trackUpdate(entity, oldData, { id: 'test', name: 'First Edit' });
@@ -147,7 +147,7 @@ describe('Change Store', () => {
 		});
 
 		it('should detect property changes', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const oldData = { id: 'test', name: 'Old', website: 'old.com' };
 			const newData = { id: 'test', name: 'New', website: 'new.com' };
 
@@ -159,7 +159,7 @@ describe('Change Store', () => {
 		});
 
 		it('should remove change if reverted to original', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const original = { id: 'test', name: 'Original' };
 
 			changeStore.trackUpdate(entity, original, { id: 'test', name: 'Changed' });
@@ -170,7 +170,7 @@ describe('Change Store', () => {
 		});
 
 		it('should update create entry data if entity was created in session', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const createData = { id: 'test', name: 'Initial' };
 
 			changeStore.trackCreate(entity, createData);
@@ -184,7 +184,7 @@ describe('Change Store', () => {
 
 	describe('trackDelete', () => {
 		it('should add delete change entry', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 
 			changeStore.trackDelete(entity, { name: 'Test Brand' });
 
@@ -194,7 +194,7 @@ describe('Change Store', () => {
 		});
 
 		it('should remove create entry if entity was created in session', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 
 			changeStore.trackCreate(entity, { id: 'test', name: 'Test' });
 			expect(getChangeAt('brands/test')).toBeDefined();
@@ -204,7 +204,7 @@ describe('Change Store', () => {
 		});
 
 		it('should preserve for existing entities', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 
 			// First track an update (not create)
 			changeStore.trackUpdate(entity, { id: 'test', name: 'Old' }, { id: 'test', name: 'New' });
@@ -250,8 +250,8 @@ describe('Change Store', () => {
 
 	describe('removeChange', () => {
 		it('should remove specific change', () => {
-			const entity1 = { type: 'brand', id: 'test1', path: 'brands/test1' };
-			const entity2 = { type: 'brand', id: 'test2', path: 'brands/test2' };
+			const entity1 = { type: 'brand' as const, id: 'test1', path: 'brands/test1' };
+			const entity2 = { type: 'brand' as const, id: 'test2', path: 'brands/test2' };
 
 			changeStore.trackCreate(entity1, { id: 'test1', name: 'Brand 1' });
 			changeStore.trackCreate(entity2, { id: 'test2', name: 'Brand 2' });
@@ -263,7 +263,7 @@ describe('Change Store', () => {
 		});
 
 		it('should persist after removal', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			changeStore.trackCreate(entity, { id: 'test', name: 'Test' });
 
 			localStorageMock.setItem.mockClear();
@@ -275,7 +275,7 @@ describe('Change Store', () => {
 
 	describe('clear', () => {
 		it('should remove all changes', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			changeStore.trackCreate(entity, { id: 'test', name: 'Test' });
 
 			changeStore.clear();
@@ -293,7 +293,7 @@ describe('Change Store', () => {
 		});
 
 		it('should clear localStorage', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			changeStore.trackCreate(entity, { id: 'test', name: 'Test' });
 
 			changeStore.clear();
@@ -312,7 +312,7 @@ describe('Change Store', () => {
 		});
 
 		it('should include all changes', () => {
-			const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			changeStore.trackCreate(entity, { id: 'test', name: 'Test' });
 
 			const result = changeStore.exportChanges();
@@ -364,7 +364,7 @@ describe('Change Store', () => {
 		it('changeCount should reflect number of changes', () => {
 			expect(get(changeCount)).toBe(0);
 
-			changeStore.trackCreate({ type: 'brand', id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
+			changeStore.trackCreate({ type: 'brand' as const, id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
 
 			expect(get(changeCount)).toBe(1);
 		});
@@ -372,7 +372,7 @@ describe('Change Store', () => {
 		it('hasChanges should be true when changes exist', () => {
 			expect(get(hasChanges)).toBe(false);
 
-			changeStore.trackCreate({ type: 'brand', id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
+			changeStore.trackCreate({ type: 'brand' as const, id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
 
 			expect(get(hasChanges)).toBe(true);
 		});
@@ -395,7 +395,7 @@ describe('Change Store', () => {
 
 	describe('changes derived store', () => {
 		it('should provide get() for path lookup', () => {
-			changeStore.trackCreate({ type: 'brand', id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
+			changeStore.trackCreate({ type: 'brand' as const, id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
 
 			const $changes = get(changes);
 			expect($changes.get('brands/test')).toBeDefined();
@@ -404,7 +404,7 @@ describe('Change Store', () => {
 		});
 
 		it('should provide has() for existence check', () => {
-			changeStore.trackCreate({ type: 'brand', id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
+			changeStore.trackCreate({ type: 'brand' as const, id: 'test', path: 'brands/test' }, { id: 'test', name: 'Test' });
 
 			const $changes = get(changes);
 			expect($changes.has('brands/test')).toBe(true);
@@ -414,12 +414,12 @@ describe('Change Store', () => {
 
 	describe('moveChange', () => {
 		it('should move change and children to new path', () => {
-			const oldEntity = { type: 'brand', id: 'old', path: 'brands/old' };
-			const newEntity = { type: 'brand', id: 'new', path: 'brands/new' };
+			const oldEntity = { type: 'brand' as const, id: 'old', path: 'brands/old' };
+			const newEntity = { type: 'brand' as const, id: 'new', path: 'brands/new' };
 
 			changeStore.trackCreate(oldEntity, { id: 'old', name: 'Old' });
 			changeStore.trackCreate(
-				{ type: 'material', id: 'PLA', path: 'brands/old/materials/PLA' },
+				{ type: 'material' as const, id: 'PLA', path: 'brands/old/materials/PLA' },
 				{ material: 'PLA' }
 			);
 
@@ -442,7 +442,7 @@ describe('findChangedProperties (via trackUpdate)', () => {
 	});
 
 	it('should detect added properties', () => {
-		const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+		const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 		const oldData = { name: 'Test' };
 		const newData = { name: 'Test', website: 'test.com' };
 
@@ -453,7 +453,7 @@ describe('findChangedProperties (via trackUpdate)', () => {
 	});
 
 	it('should detect removed properties', () => {
-		const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+		const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 		const oldData = { name: 'Test', website: 'test.com' };
 		const newData = { name: 'Test' };
 
@@ -464,7 +464,7 @@ describe('findChangedProperties (via trackUpdate)', () => {
 	});
 
 	it('should detect modified properties', () => {
-		const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+		const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 		const oldData = { name: 'Old Name' };
 		const newData = { name: 'New Name' };
 
@@ -478,7 +478,7 @@ describe('findChangedProperties (via trackUpdate)', () => {
 	});
 
 	it('should recurse into nested objects', () => {
-		const entity = { type: 'filament', id: 'test', path: 'brands/b/materials/PLA/filaments/test' };
+		const entity = { type: 'filament' as const, id: 'test', path: 'brands/b/materials/PLA/filaments/test' };
 		const oldData = { name: 'Test', settings: { temp: 200 } };
 		const newData = { name: 'Test', settings: { temp: 210 } };
 
@@ -489,7 +489,7 @@ describe('findChangedProperties (via trackUpdate)', () => {
 	});
 
 	it('should skip internal fields (id, slug, logo)', () => {
-		const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+		const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 		const oldData = { id: 'test', slug: 'test', logo: 'old.png', name: 'Old' };
 		const newData = { id: 'test2', slug: 'test2', logo: 'new.png', name: 'New' };
 
@@ -503,7 +503,7 @@ describe('findChangedProperties (via trackUpdate)', () => {
 	});
 
 	it('should handle null/undefined/empty equivalence', () => {
-		const entity = { type: 'brand', id: 'test', path: 'brands/test' };
+		const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 		const oldData = { name: 'Test', field: null };
 		const newData = { name: 'Test', field: undefined };
 

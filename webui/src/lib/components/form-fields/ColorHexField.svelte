@@ -14,7 +14,7 @@
 
 	// Normalize value to string (handles array values from schema with type ["string", "array"])
 	let normalizedValue = $derived(
-		typeof value === 'string' ? value : (Array.isArray(value) && value.length > 0 ? String(value[0]) : '')
+		typeof value === 'string' ? value : (Array.isArray(value as any) && (value as any).length > 0 ? String((value as any)[0]) : '')
 	);
 
 	// Strip # prefix for display, always store with #

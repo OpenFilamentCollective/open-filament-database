@@ -104,9 +104,9 @@
 
 				const externalRef = resolveExternalRef(propSchema);
 				if (externalRef) {
-					// Convert ./filename.json to /api/v1/schemas/filename.json
+					// Convert ./filename.json to /api/schemas/filename.json
 					const schemaFile = externalRef.replace('./', '');
-					loadEnum(key, `/api/v1/schemas/${schemaFile}`, 'enum');
+					loadEnum(key, `/api/schemas/${schemaFile}`, 'enum');
 				}
 			}
 		}
@@ -304,7 +304,7 @@
 
 {#snippet renderItem(item: RenderItem)}
 	{#if item.isGroup}
-		<FormFieldRow columns={item.fields.length > 3 ? 3 : item.fields.length}>
+		<FormFieldRow columns={(item.fields.length > 3 ? 3 : item.fields.length) as 2 | 3}>
 			{#each item.fields as field (field.key)}
 				{@render renderField(field)}
 			{/each}

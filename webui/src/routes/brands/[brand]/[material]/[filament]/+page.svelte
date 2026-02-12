@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import type { Filament, Variant } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons, Button } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { EntityDetails, EntityCard } from '$lib/components/entity';
+	import { EntityDetails, EntityCard, SlicerSettingsDisplay, CertificationsDisplay, ChildListPanel } from '$lib/components/entity';
 	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
@@ -30,11 +30,11 @@
 		namespace: 'variants',
 		items: variants,
 		getKeys: (v) => [v.id, v.slug],
-		buildStub: (id, name) => ({
+		buildStub: (id, stubName) => ({
 			id,
 			slug: id,
 			filament_id: filamentId,
-			color_name: name,
+			name: stubName,
 			color_hex: '#808080',
 			discontinued: false
 		} as unknown as Variant)
@@ -49,14 +49,6 @@
 				: null,
 		getEntity: () => filament
 	});
-
-	const SLICER_LABELS: Record<string, string> = {
-		prusaslicer: 'PrusaSlicer',
-		bambustudio: 'Bambu Studio',
-		orcaslicer: 'Orca Slicer',
-		cura: 'Cura',
-		generic: 'Generic'
-	};
 
 	// Load data when route parameters change
 	$effect(() => {
@@ -195,28 +187,11 @@
 </script>
 
 {#snippet certificationsRender(certifications: string[])}
-	<div class="flex flex-wrap gap-2">
-		{#each certifications as cert}
-			<span class="px-2 py-1 bg-primary/10 text-primary rounded text-sm">{cert}</span>
-		{/each}
-	</div>
+	<CertificationsDisplay {certifications} />
 {/snippet}
 
 {#snippet slicerSettingsRender(settings: Record<string, any>)}
-	<div class="space-y-2">
-		{#each Object.entries(settings) as [slicerKey, slicerSettings]}
-			<div class="bg-muted/50 rounded p-2">
-				<div class="font-medium text-sm">{SLICER_LABELS[slicerKey] || slicerKey}</div>
-				<div class="text-xs text-muted-foreground mt-1 space-y-0.5">
-					{#each Object.entries(slicerSettings as Record<string, any>) as [key, value]}
-						{#if value !== undefined && value !== null && value !== ''}
-							<div><span class="font-medium">{key}:</span> {typeof value === 'object' ? JSON.stringify(value) : value}</div>
-						{/if}
-					{/each}
-				</div>
-			</div>
-		{/each}
-	</div>
+	<SlicerSettingsDisplay {settings} />
 {/snippet}
 
 <svelte:head>
@@ -247,8 +222,6 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
-			{:else if entityState.hasDescendantChanges}
-				<MessageBanner type="info" message="Contains items with local changes" />
 			{/if}
 
 			{#if messageHandler.message}
@@ -329,44 +302,33 @@
 					{/snippet}
 				</EntityDetails>
 
-				<div class="bg-card border border-border rounded-lg p-6">
-					<div class="flex justify-between items-center mb-4">
-						<h2 class="text-xl font-semibold">Variants</h2>
-						<Button onclick={entityState.openCreate} variant="secondary" size="sm">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-							</svg>
-							Add Variant
-						</Button>
-					</div>
-
-					{#if displayVariants.length === 0}
-						<p class="text-muted-foreground">No variants found for this filament.</p>
-					{:else}
-						<div class="space-y-2">
-							{#each displayVariants as variant}
-								{@const variantPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`}
-								{@const changeProps = getChildChangeProps($changes, $isCloudMode, variantPath)}
-								{@const sizesCount = variant.sizes?.length ?? 0}
-								{@const sizesInfo = sizesCount > 0 ? `${sizesCount} size${sizesCount !== 1 ? 's' : ''}` : undefined}
-								<EntityCard
-									entity={variant}
-									name={variant.color_name}
-									id={variant.slug}
-									href="/brands/{brandId}/{materialType}/{filamentId}/{variant.slug}"
-									colorHex={variant.color_hex}
-									hoverColor="orange"
-									showLogo={false}
-									badge={variant.discontinued ? { text: 'Discontinued', color: 'red' } : undefined}
-									secondaryInfo={sizesInfo}
-									hasLocalChanges={changeProps.hasLocalChanges}
-									localChangeType={changeProps.localChangeType}
-									hasDescendantChanges={changeProps.hasDescendantChanges}
-								/>
-							{/each}
-						</div>
-					{/if}
-				</div>
+				<ChildListPanel
+					title="Variants"
+					addLabel="Add Variant"
+					onAdd={entityState.openCreate}
+					itemCount={displayVariants.length}
+					emptyMessage="No variants found for this filament."
+				>
+					{#each displayVariants as variant}
+						{@const variantPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`}
+						{@const changeProps = getChildChangeProps($changes, $isCloudMode, variantPath)}
+						{@const sizesCount = variant.sizes?.length ?? 0}
+						{@const sizesInfo = sizesCount > 0 ? `${sizesCount} size${sizesCount !== 1 ? 's' : ''}` : undefined}
+						<EntityCard
+							entity={variant}
+							name={variant.name}
+							id={variant.slug}
+							href="/brands/{brandId}/{materialType}/{filamentId}/{variant.slug}"
+							colorHex={variant.color_hex}
+							hoverColor="orange"
+							showLogo={false}
+							badge={variant.discontinued ? { text: 'Discontinued', color: 'red' } : undefined}
+							secondaryInfo={sizesInfo}
+							hasLocalChanges={changeProps.hasLocalChanges}
+							localChangeType={changeProps.localChangeType}
+						/>
+					{/each}
+				</ChildListPanel>
 			</div>
 		{/snippet}
 	</DataDisplay>

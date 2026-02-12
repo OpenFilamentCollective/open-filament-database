@@ -48,9 +48,11 @@ export function getMimeType(dataUrl: string): string {
  * @returns Base64 string without the data URL prefix
  */
 export function extractBase64(dataUrl: string): string {
-	const match = dataUrl.match(/^data:image\/[\w+]+;base64,(.+)$/);
-	if (match) {
-		return match[1];
+	// Use indexOf for reliable splitting (regex .+ can't span newlines)
+	const marker = ';base64,';
+	const idx = dataUrl.indexOf(marker);
+	if (idx !== -1 && dataUrl.startsWith('data:')) {
+		return dataUrl.slice(idx + marker.length);
 	}
 	return dataUrl; // Return as-is if no match
 }

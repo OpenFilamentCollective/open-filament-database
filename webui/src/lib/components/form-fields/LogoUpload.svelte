@@ -88,12 +88,12 @@
 						previewUrl = `data:${imageRef.mimeType};base64,${imageData}`;
 					} else {
 						// Fallback to API if image reference not found
-						previewUrl = `${$apiBaseUrl}/api/v1/${entityType}s/logo/${currentLogo}`;
+						previewUrl = `${$apiBaseUrl}/api/${entityType}s/logo/${currentLogo}`;
 					}
 				} else {
 					// In cloud mode, currentLogo contains the logo_slug
-					// Format: /api/v1/brands/logo/{logo_slug} or /api/v1/stores/logo/{logo_slug}
-					previewUrl = `${$apiBaseUrl}/api/v1/${entityType}s/logo/${currentLogo}`;
+					// Format: /api/brands/logo/{logo_slug} or /api/stores/logo/{logo_slug}
+					previewUrl = `${$apiBaseUrl}/api/${entityType}s/logo/${currentLogo}`;
 				}
 			} else {
 				// In local mode, use local API endpoint
@@ -257,6 +257,7 @@
 
 		// Helper to draw rounded rect handle
 		function drawHandle(x: number, y: number, w: number, h: number) {
+			if (!ctx) return;
 			const radius = 3;
 			ctx.beginPath();
 			ctx.roundRect(x, y, w, h, radius);

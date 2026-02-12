@@ -2,11 +2,11 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import type { Brand, Material } from '$lib/types/database';
-	import { Modal, MessageBanner, Button, ActionButtons, DeleteConfirmationModal } from '$lib/components/ui';
+	import { Modal, MessageBanner, ActionButtons, DeleteConfirmationModal } from '$lib/components/ui';
 	import { BrandForm, MaterialForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { Logo, EntityDetails, EntityCard } from '$lib/components/entity';
+	import { Logo, EntityDetails, EntityCard, ChildListPanel } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
@@ -178,7 +178,7 @@
 				showCreateMaterialModal = false;
 
 				setTimeout(() => {
-					window.location.href = `/brands/${brandId}/${result.materialType.toLowerCase()}`;
+					window.location.href = `/brands/${brandId}/${result.materialType!}`;
 				}, 500);
 			} else {
 				createMaterialError = 'Failed to create material';
@@ -244,8 +244,6 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
-			{:else if entityState.hasDescendantChanges}
-				<MessageBanner type="info" message="Contains items with local changes" />
 			{/if}
 
 			{#if messageHandler.message}
@@ -268,40 +266,29 @@
 					{/snippet}
 				</EntityDetails>
 
-				<div class="bg-card border border-border rounded-lg p-6">
-					<div class="flex justify-between items-center mb-4">
-						<h2 class="text-xl font-semibold">Materials</h2>
-						<Button onclick={openCreateMaterialModal} variant="secondary" size="sm">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-							</svg>
-							Add Material
-						</Button>
-					</div>
-
-					{#if displayMaterials.length === 0}
-						<p class="text-muted-foreground">No materials found for this brand.</p>
-					{:else}
-						<div class="space-y-2">
-							{#each displayMaterials as material}
-								{@const materialHref = `/brands/${brandData.slug ?? brandData.id}/${material.materialType ?? material.material.toLowerCase()}`}
-								{@const materialPath = `brands/${brandId}/materials/${material.materialType ?? material.material.toLowerCase()}`}
-								{@const changeProps = getChildChangeProps($changes, $isCloudMode, materialPath)}
-								<EntityCard
-									entity={material}
-									href={materialHref}
-									name={material.material}
-									id={material.materialType ?? material.material}
-									hoverColor="purple"
-									showLogo={false}
-									hasLocalChanges={changeProps.hasLocalChanges}
-									localChangeType={changeProps.localChangeType}
-									hasDescendantChanges={changeProps.hasDescendantChanges}
-								/>
-							{/each}
-						</div>
-					{/if}
-				</div>
+				<ChildListPanel
+					title="Materials"
+					addLabel="Add Material"
+					onAdd={openCreateMaterialModal}
+					itemCount={displayMaterials.length}
+					emptyMessage="No materials found for this brand."
+				>
+					{#each displayMaterials as material}
+						{@const materialHref = `/brands/${brandData.slug ?? brandData.id}/${material.materialType ?? material.material.toLowerCase()}`}
+						{@const materialPath = `brands/${brandId}/materials/${material.materialType ?? material.material.toLowerCase()}`}
+						{@const changeProps = getChildChangeProps($changes, $isCloudMode, materialPath)}
+						<EntityCard
+							entity={material}
+							href={materialHref}
+							name={material.material}
+							id={material.materialType ?? material.material}
+							hoverColor="purple"
+							showLogo={false}
+							hasLocalChanges={changeProps.hasLocalChanges}
+							localChangeType={changeProps.localChangeType}
+						/>
+					{/each}
+				</ChildListPanel>
 			</div>
 		{/snippet}
 	</DataDisplay>

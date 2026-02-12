@@ -2,12 +2,12 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import type { Material, Filament } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons, Button } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { MaterialForm, FilamentForm } from '$lib/components/forms';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { EntityDetails, EntityCard } from '$lib/components/entity';
+	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity, generateMaterialType } from '$lib/services/entityService';
@@ -116,9 +116,9 @@
 				entityState.closeEdit();
 
 				// If material type changed, redirect to new URL
-				if (newMaterialType.toLowerCase() !== materialType.toLowerCase()) {
+				if (newMaterialType !== materialType) {
 					setTimeout(() => {
-						window.location.href = `/brands/${brandId}/${newMaterialType.toLowerCase()}`;
+						window.location.href = `/brands/${brandId}/${newMaterialType}`;
 					}, 500);
 				}
 			} else {
@@ -182,34 +182,10 @@
 			entityState.creating = false;
 		}
 	}
-
-	const SLICER_LABELS: Record<string, string> = {
-		prusaslicer: 'PrusaSlicer',
-		bambustudio: 'Bambu Studio',
-		orcaslicer: 'Orca Slicer',
-		cura: 'Cura',
-		generic: 'Generic'
-	};
 </script>
 
 {#snippet slicerSettingsRender(settings: Record<string, any>)}
-	<div class="space-y-2">
-		{#each Object.entries(settings) as [slicerKey, slicerSettings]}
-			<div class="bg-muted/50 rounded p-2">
-				<div class="font-medium text-sm">{SLICER_LABELS[slicerKey] || slicerKey}</div>
-				<div class="text-xs text-muted-foreground mt-1 space-y-0.5">
-					{#each Object.entries(slicerSettings as Record<string, any>) as [key, value]}
-						{#if value !== undefined && value !== null && value !== ''}
-							<div>
-								<span class="font-medium">{key}:</span>
-								{typeof value === 'object' ? JSON.stringify(value) : value}
-							</div>
-						{/if}
-					{/each}
-				</div>
-			</div>
-		{/each}
-	</div>
+	<SlicerSettingsDisplay {settings} />
 {/snippet}
 
 <svelte:head>
@@ -230,8 +206,6 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
-			{:else if entityState.hasDescendantChanges}
-				<MessageBanner type="info" message="Contains items with local changes" />
 			{/if}
 
 			{#if messageHandler.message}
@@ -264,43 +238,32 @@
 					{/snippet}
 				</EntityDetails>
 
-				<div class="bg-card border border-border rounded-lg p-6">
-					<div class="flex justify-between items-center mb-4">
-						<h2 class="text-xl font-semibold">Filaments</h2>
-						<Button onclick={entityState.openCreate} size="sm">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-							</svg>
-							Add Filament
-						</Button>
-					</div>
-
-					{#if displayFilaments.length === 0}
-						<p class="text-muted-foreground">No filaments found for this material.</p>
-					{:else}
-						<div class="space-y-2">
-							{#each displayFilaments as filament}
-								{@const filamentHref = `/brands/${brandId}/${materialType}/${filament.slug ?? filament.id}`}
-								{@const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.slug ?? filament.id}`}
-								{@const changeProps = getChildChangeProps($changes, $isCloudMode, filamentPath)}
-								<EntityCard
-									entity={filament}
-									href={filamentHref}
-									name={filament.name}
-									id={filament.slug ?? filament.id}
-									hoverColor="blue"
-									showLogo={false}
-									badge={filament.discontinued
-										? { text: 'Discontinued', color: 'red' }
-										: undefined}
-									hasLocalChanges={changeProps.hasLocalChanges}
-									localChangeType={changeProps.localChangeType}
-									hasDescendantChanges={changeProps.hasDescendantChanges}
-								/>
-							{/each}
-						</div>
-					{/if}
-				</div>
+				<ChildListPanel
+					title="Filaments"
+					addLabel="Add Filament"
+					onAdd={entityState.openCreate}
+					itemCount={displayFilaments.length}
+					emptyMessage="No filaments found for this material."
+				>
+					{#each displayFilaments as filament}
+						{@const filamentHref = `/brands/${brandId}/${materialType}/${filament.slug ?? filament.id}`}
+						{@const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.slug ?? filament.id}`}
+						{@const changeProps = getChildChangeProps($changes, $isCloudMode, filamentPath)}
+						<EntityCard
+							entity={filament}
+							href={filamentHref}
+							name={filament.name}
+							id={filament.slug ?? filament.id}
+							hoverColor="blue"
+							showLogo={false}
+							badge={filament.discontinued
+								? { text: 'Discontinued', color: 'red' }
+								: undefined}
+							hasLocalChanges={changeProps.hasLocalChanges}
+							localChangeType={changeProps.localChangeType}
+						/>
+					{/each}
+				</ChildListPanel>
 			</div>
 		{/snippet}
 	</DataDisplay>

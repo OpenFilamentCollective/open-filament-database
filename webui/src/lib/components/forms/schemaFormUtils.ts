@@ -386,7 +386,7 @@ export function getDefaultValue(propSchema: any, typeOverride?: string): any {
  * @param entity - Existing entity data to populate the form
  * @param hiddenFields - Fields to exclude from form data
  * @param fieldMappings - Maps schema field names to entity field names
- *                        e.g., { 'name': 'color_name' } reads entity.color_name into formData.name
+ *                        e.g., { 'schema_field': 'entity_field' } reads entity.entity_field into formData.schema_field
  * @param typeOverrides - Maps field names to override types (affects default values)
  */
 export function initializeFormData(
@@ -426,7 +426,7 @@ export function initializeFormData(
  * @param formData - Current form data
  * @param hiddenFields - Fields to exclude from submission
  * @param fieldMappings - Maps schema field names to API field names
- *                        e.g., { 'name': 'color_name' } writes formData.name to submitData.color_name
+ *                        e.g., { 'schema_field': 'api_field' } writes formData.schema_field to submitData.api_field
  * @param fieldTransforms - Maps field keys to transform functions applied before submission
  */
 export function buildSubmitData(

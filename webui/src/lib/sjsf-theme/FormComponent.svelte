@@ -17,7 +17,7 @@
 	} = $props();
 
 	const ctx = getFormContext();
-	const formHandlers = handlers(ctx);
+	const formHandlers = handlers(ctx) as any;
 </script>
 
 <form bind:this={ref} use:formHandlers {...attributes} class="space-y-4">

@@ -34,11 +34,11 @@ async function fetchSchemaFromUrl(url: string): Promise<any | null> {
 
 /**
  * Fetch a schema from the external API with caching
- * Uses /api/v1/schemas/{schemaName} path for external API
+ * Uses /api/schemas/{schemaName} path for external API
  */
 export async function fetchSchema(schemaName: string): Promise<any | null> {
 	const baseUrl = get(apiBaseUrl);
-	const url = `${baseUrl}/api/v1/schemas/${schemaName}`;
+	const url = `${baseUrl}/api/schemas/${schemaName}`;
 	return fetchSchemaFromUrl(url);
 }
 

@@ -2,7 +2,7 @@ import type { RequestHandler } from './$types';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { PUBLIC_APP_MODE } from '$env/static/public';
-import { normalizeBrandId } from '../../../utils';
+import { normalizeBrandId } from '$lib/server/entityConfig';
 
 const DATA_DIR = path.join(process.cwd(), '../data');
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Tooltip from './Tooltip.svelte';
-	import { INPUT_CLASSES, LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
+	import { LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
 
 	interface Props {
 		value: string;
@@ -75,14 +75,6 @@
 	function handleProtocolChange() {
 		updateValue();
 	}
-
-	let selectClasses = $derived(compact
-		? 'h-7 rounded-l-md border border-r-0 border-input bg-muted pl-1.5 pr-6 text-xs text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring flex-shrink-0'
-		: 'h-10 rounded-l-md border border-r-0 border-input bg-muted pl-2 pr-6 py-2 text-sm text-muted-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 flex-shrink-0');
-
-	let inputClasses = $derived(compact
-		? 'flex h-7 w-full rounded-r-md border border-input bg-background px-2 py-1 text-xs ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
-		: 'flex h-10 w-full rounded-r-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50');
 </script>
 
 <div class="flex flex-col">
@@ -93,11 +85,11 @@
 			{#if tooltip}<Tooltip text={tooltip} />{/if}
 		</label>
 	{/if}
-	<div class="flex">
+	<div class="flex items-center bg-background border border-border rounded-lg focus-within:ring-2 focus-within:ring-ring focus-within:border-ring transition-colors">
 		<select
 			bind:value={protocol}
 			onchange={handleProtocolChange}
-			class={selectClasses}
+			class="bg-transparent border-0 {compact ? 'pl-1.5 pr-1 text-xs' : 'pl-3 pr-1 py-2 text-sm'} text-muted-foreground outline-none cursor-pointer"
 			aria-label="URL protocol"
 		>
 			<option value="https://">https://</option>
@@ -109,7 +101,7 @@
 			bind:value={urlBody}
 			oninput={handleInput}
 			onpaste={handlePaste}
-			class={inputClasses}
+			class="flex-1 {compact ? 'pr-2 py-1 text-xs' : 'pr-3 py-2 text-sm'} bg-transparent border-0 border-l border-border text-foreground outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
 			{required}
 			placeholder={placeholder.replace(/^https?:\/\//i, '')}
 		/>

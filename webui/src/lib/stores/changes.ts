@@ -34,9 +34,9 @@ const STORAGE_KEY_IMAGES_PREFIX = 'ofd_image_';
  * Calculate a user-friendly description for a change
  */
 function describeChange(entity: EntityIdentifier, operation: ChangeOperation, data?: any): string {
-	// For materials, use the 'material' field (e.g., "PLA"); for variants use 'color_name'
-	// Fall back to 'name', then 'id', then entity.id
-	const entityName = data?.name || data?.material || data?.color_name || data?.id || entity.id;
+	// For materials, use the 'material' field (e.g., "PLA"); for variants/brands/filaments use 'name'
+	// Fall back to 'id', then entity.id
+	const entityName = data?.name || data?.material || data?.id || entity.id;
 
 	switch (operation) {
 		case 'create':

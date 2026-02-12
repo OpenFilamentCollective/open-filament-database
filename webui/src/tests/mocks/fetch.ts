@@ -78,25 +78,27 @@ export function createMockFetch(responses: Record<string, unknown | MockResponse
 export function setupApiMocks(mockFetch: ReturnType<typeof vi.fn>) {
 	const responses: Record<string, unknown> = {};
 
-	return {
-		onGet: (url: string, data: unknown, init?: MockResponseInit) => {
+	const builder = {
+		onGet(url: string, data: unknown, init?: MockResponseInit) {
 			responses[`GET:${url}`] = init ? { data, ...init } : data;
-			return this;
+			return builder;
 		},
-		onPost: (url: string, data: unknown, init?: MockResponseInit) => {
+		onPost(url: string, data: unknown, init?: MockResponseInit) {
 			responses[`POST:${url}`] = init ? { data, ...init } : data;
-			return this;
+			return builder;
 		},
-		onPut: (url: string, data: unknown, init?: MockResponseInit) => {
+		onPut(url: string, data: unknown, init?: MockResponseInit) {
 			responses[`PUT:${url}`] = init ? { data, ...init } : data;
-			return this;
+			return builder;
 		},
-		onDelete: (url: string, data: unknown, init?: MockResponseInit) => {
+		onDelete(url: string, data: unknown, init?: MockResponseInit) {
 			responses[`DELETE:${url}`] = init ? { data, ...init } : data;
-			return this;
+			return builder;
 		},
-		apply: () => {
+		apply() {
 			mockFetch.mockImplementation(createMockFetch(responses));
 		}
 	};
+
+	return builder;
 }

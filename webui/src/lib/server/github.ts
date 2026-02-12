@@ -21,6 +21,17 @@ async function ghFetch(token: string, path: string, options?: RequestInit) {
 	return response;
 }
 
+async function ghError(response: Response, prefix: string): Promise<Error> {
+	try {
+		const body = await response.json();
+		const msg = body.message || JSON.stringify(body);
+		const errors = body.errors ? ` [${JSON.stringify(body.errors)}]` : '';
+		return new Error(`${prefix}: ${response.status} - ${msg}${errors}`);
+	} catch {
+		return new Error(`${prefix}: ${response.status}`);
+	}
+}
+
 /**
  * Fork a repository. Idempotent - returns existing fork if already forked.
  */
@@ -80,7 +91,7 @@ export async function getLatestCommitSha(
 	const response = await ghFetch(token, `/repos/${owner}/${repo}/git/ref/heads/${branch}`);
 
 	if (!response.ok) {
-		throw new Error(`Failed to get branch ref: ${response.status}`);
+		throw await ghError(response, 'Failed to get branch ref');
 	}
 
 	const ref = await response.json();
@@ -131,7 +142,7 @@ export async function createBlob(
 	});
 
 	if (!response.ok) {
-		throw new Error(`Failed to create blob: ${response.status}`);
+		throw await ghError(response, 'Failed to create blob');
 	}
 
 	const blob = await response.json();
@@ -139,29 +150,76 @@ export async function createBlob(
 }
 
 /**
- * Create a tree (directory listing) in the repository
+ * Get the full recursive tree for a given tree SHA.
+ * Returns a map of path → { sha, mode, type }.
+ */
+export async function getRecursiveTree(
+	token: string,
+	owner: string,
+	repo: string,
+	treeSha: string
+): Promise<Map<string, { sha: string; mode: string; type: string }>> {
+	const response = await ghFetch(token, `/repos/${owner}/${repo}/git/trees/${treeSha}?recursive=1`);
+
+	if (!response.ok) {
+		throw await ghError(response, 'Failed to get recursive tree');
+	}
+
+	const data = await response.json();
+	const map = new Map<string, { sha: string; mode: string; type: string }>();
+	for (const entry of data.tree) {
+		if (entry.type === 'blob') {
+			map.set(entry.path, { sha: entry.sha, mode: entry.mode, type: entry.type });
+		}
+	}
+	return map;
+}
+
+/**
+ * Create a tree (directory listing) in the repository.
+ * If baseTreeSha is provided, creates an incremental tree.
+ * If null, creates a full tree from scratch (all entries must be provided).
  */
 export async function createTree(
 	token: string,
 	owner: string,
 	repo: string,
-	baseTreeSha: string,
+	baseTreeSha: string | null,
 	items: Array<{ path: string; sha: string | null; mode?: string; type?: string }>
 ): Promise<string> {
-	const tree = items.map((item) => ({
-		path: item.path,
-		mode: item.mode || '100644',
-		type: item.type || 'blob',
-		sha: item.sha
-	}));
+	let tree;
+	if (baseTreeSha) {
+		// Incremental mode: include null SHAs to delete files from base_tree
+		tree = items.map((item) => ({
+			path: item.path,
+			mode: item.mode || '100644',
+			type: item.type || 'blob',
+			sha: item.sha
+		}));
+	} else {
+		// Full tree mode: exclude null SHAs (no base to delete from)
+		tree = items
+			.filter((item) => item.sha !== null)
+			.map((item) => ({
+				path: item.path,
+				mode: item.mode || '100644',
+				type: item.type || 'blob',
+				sha: item.sha
+			}));
+	}
+
+	const body: any = { tree };
+	if (baseTreeSha) {
+		body.base_tree = baseTreeSha;
+	}
 
 	const response = await ghFetch(token, `/repos/${owner}/${repo}/git/trees`, {
 		method: 'POST',
-		body: JSON.stringify({ base_tree: baseTreeSha, tree })
+		body: JSON.stringify(body)
 	});
 
 	if (!response.ok) {
-		throw new Error(`Failed to create tree: ${response.status}`);
+		throw await ghError(response, 'Failed to create tree');
 	}
 
 	const result = await response.json();
@@ -189,7 +247,7 @@ export async function createCommit(
 	});
 
 	if (!response.ok) {
-		throw new Error(`Failed to create commit: ${response.status}`);
+		throw await ghError(response, 'Failed to create commit');
 	}
 
 	const commit = await response.json();
@@ -212,7 +270,7 @@ export async function updateRef(
 	});
 
 	if (!response.ok) {
-		throw new Error(`Failed to update ref: ${response.status}`);
+		throw await ghError(response, 'Failed to update ref');
 	}
 }
 
@@ -254,7 +312,7 @@ export async function getCommitTreeSha(
 	const response = await ghFetch(token, `/repos/${owner}/${repo}/git/commits/${commitSha}`);
 
 	if (!response.ok) {
-		throw new Error(`Failed to get commit: ${response.status}`);
+		throw await ghError(response, 'Failed to get commit');
 	}
 
 	const commit = await response.json();

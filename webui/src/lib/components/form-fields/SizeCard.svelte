@@ -150,8 +150,8 @@
 
 	<!-- Checkboxes: Discontinued and Spool Refill -->
 	<div class="flex gap-4 mb-3 mt-2">
-		<CheckboxField bind:checked={value.discontinued} id="size-{id}-discontinued" label="Discontinued" />
-		<CheckboxField bind:checked={value.spool_refill} id="size-{id}-spool-refill" label="Spool Refill" />
+		<CheckboxField bind:checked={value.discontinued as boolean} id="size-{id}-discontinued" label="Discontinued" />
+		<CheckboxField bind:checked={value.spool_refill as boolean} id="size-{id}-spool-refill" label="Spool Refill" />
 	</div>
 
 	<!-- Purchase Links Section -->

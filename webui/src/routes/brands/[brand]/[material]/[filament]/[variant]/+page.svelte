@@ -84,8 +84,8 @@
 		messageHandler.clear();
 
 		try {
-			// For locally created variants, regenerate id/slug from color_name
-			const newSlug = entityState.isLocalCreate ? generateSlug(data.color_name) : (variant.slug || variant.id);
+			// For locally created variants, regenerate id/slug from name
+			const newSlug = entityState.isLocalCreate ? generateSlug(data.name) : (variant.slug || variant.id);
 			const updatedVariant = {
 				...variant,
 				...data,
@@ -161,7 +161,7 @@
 </script>
 
 <svelte:head>
-	<title>{variant ? `${variant.color_name}` : 'Variant Not Found'}</title>
+	<title>{variant ? `${variant.name}` : 'Variant Not Found'}</title>
 </svelte:head>
 
 <div class="container mx-auto px-4 py-8 max-w-4xl">
@@ -179,7 +179,7 @@
 						title={variantData.color_hex}
 					></div>
 					<div>
-						<h1 class="text-3xl font-bold">{variantData.color_name}</h1>
+						<h1 class="text-3xl font-bold">{variantData.name}</h1>
 						{#if variantData.discontinued}
 							<span class="px-3 py-1 text-sm bg-destructive/10 text-destructive rounded-full"
 								>Discontinued</span
@@ -210,7 +210,7 @@
 				<dl class="space-y-4">
 					<div>
 						<dt class="text-sm font-medium text-muted-foreground">Color Name</dt>
-						<dd class="mt-1 text-lg">{variantData.color_name}</dd>
+						<dd class="mt-1 text-lg">{variantData.name}</dd>
 					</div>
 					<div>
 						<dt class="text-sm font-medium text-muted-foreground">Slug</dt>
@@ -311,7 +311,7 @@
 <DeleteConfirmationModal
 	show={entityState.showDeleteModal}
 	title="Delete Variant"
-	entityName={variant?.color_name ?? ''}
+	entityName={variant?.name ?? ''}
 	isLocalCreate={entityState.isLocalCreate}
 	deleting={entityState.deleting}
 	onClose={entityState.closeDelete}

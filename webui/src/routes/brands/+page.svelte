@@ -180,7 +180,6 @@
 						]}
 						hasLocalChanges={changeProps.hasLocalChanges}
 						localChangeType={changeProps.localChangeType}
-						hasDescendantChanges={changeProps.hasDescendantChanges}
 					/>
 				{/each}
 			</div>

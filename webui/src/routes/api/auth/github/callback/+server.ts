@@ -15,12 +15,14 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 		throw redirect(302, '/?auth_error=not_configured');
 	}
 
+	let token: string;
 	try {
-		const token = await exchangeCodeForToken(code, PUBLIC_GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET);
-		setGitHubToken(cookies, token);
-		throw redirect(302, '/?auth_success=true');
+		token = await exchangeCodeForToken(code, PUBLIC_GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET);
 	} catch (error) {
 		console.error('GitHub OAuth callback error:', error);
 		throw redirect(302, '/?auth_error=exchange_failed');
 	}
+
+	setGitHubToken(cookies, token);
+	throw redirect(302, '/?auth_success=true');
 };

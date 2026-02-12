@@ -45,16 +45,11 @@
 	});
 
 	// Config for variant form - labels, tooltips, and placeholders come from schema
-	// Note: Schema uses 'name' but API expects 'color_name', so we use fieldMappings
 	const config: SchemaFormConfig = {
 		hiddenFields: ['id', 'traits', 'sizes', 'hex_variants', 'color_standards'],
 		fieldOrder: ['name', 'color_hex', 'discontinued'],
 		typeOverrides: {
 			color_hex: 'color'
-		},
-		// Map schema 'name' field to API 'color_name' field
-		fieldMappings: {
-			name: 'color_name'
 		}
 	};
 

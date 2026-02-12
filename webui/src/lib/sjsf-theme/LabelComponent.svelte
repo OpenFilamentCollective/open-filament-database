@@ -14,4 +14,4 @@
 	} = $props();
 </script>
 
-<label class="text-sm font-medium text-foreground" for={config.path.id}>{title}</label>
+<label class="text-sm font-medium text-foreground" for={(config.path as any).id}>{title}</label>

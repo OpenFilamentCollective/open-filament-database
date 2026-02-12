@@ -84,7 +84,7 @@ export function initializeSlicerForm(key: SlicerKey, initialValue: any = {}) {
 		translation: customTranslation,
 		initialValue,
 		onSubmit: () => {} // Submission is handled by parent form
-	});
+	} as any);
 }
 
 /**
