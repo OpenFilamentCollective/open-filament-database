@@ -1,21 +1,16 @@
 """
 SQLite exporter that creates a relational database with proper schema.
 
-Uses dataclass introspection for INSERT statements, making it resilient to
-field additions/removals in the models.
+Uses PRAGMA table_info for INSERT statements, making it resilient to
+dict-based entities with varying fields.
 """
 
-import json
 import lzma
 import sqlite3
-from dataclasses import fields
 from pathlib import Path
-from typing import Type
 
-from ..models import (
-    Database, Brand, Material, Filament, Variant, Size, Store, PurchaseLink
-)
-from ..serialization import entity_to_dict, serialize_for_sqlite
+from ..models import Database
+from ..serialization import insert_entities
 
 
 # =============================================================================
@@ -37,8 +32,9 @@ CREATE TABLE IF NOT EXISTS brand (
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
     website TEXT NOT NULL,
-    logo TEXT NOT NULL,
-    origin TEXT NOT NULL
+    logo_name TEXT NOT NULL,
+    origin TEXT NOT NULL,
+    source TEXT
 );
 CREATE INDEX IF NOT EXISTS ix_brand_name ON brand(name);
 
@@ -48,6 +44,7 @@ CREATE TABLE IF NOT EXISTS material (
     brand_id TEXT NOT NULL REFERENCES brand(id) ON DELETE CASCADE,
     material TEXT NOT NULL,
     slug TEXT,
+    material_class TEXT NOT NULL DEFAULT 'FFF',
     default_max_dry_temperature INTEGER,
     default_slicer_settings TEXT  -- JSON
 );
@@ -64,7 +61,19 @@ CREATE TABLE IF NOT EXISTS filament (
     material TEXT NOT NULL,
     density REAL NOT NULL,
     diameter_tolerance REAL NOT NULL,
+    shore_hardness_a INTEGER,
+    shore_hardness_d INTEGER,
+    certifications TEXT,  -- JSON array
     max_dry_temperature INTEGER,
+    min_print_temperature INTEGER,
+    max_print_temperature INTEGER,
+    preheat_temperature INTEGER,
+    min_bed_temperature INTEGER,
+    max_bed_temperature INTEGER,
+    min_chamber_temperature INTEGER,
+    max_chamber_temperature INTEGER,
+    chamber_temperature INTEGER,
+    min_nozzle_diameter REAL,
     data_sheet_url TEXT,
     safety_sheet_url TEXT,
     discontinued INTEGER NOT NULL DEFAULT 0,
@@ -80,7 +89,7 @@ CREATE TABLE IF NOT EXISTS variant (
     id TEXT PRIMARY KEY,
     filament_id TEXT NOT NULL REFERENCES filament(id) ON DELETE CASCADE,
     slug TEXT NOT NULL,
-    color_name TEXT NOT NULL,
+    name TEXT NOT NULL,
     color_hex TEXT NOT NULL,
     hex_variants TEXT,  -- JSON array
     color_standards TEXT,  -- JSON
@@ -89,7 +98,7 @@ CREATE TABLE IF NOT EXISTS variant (
 );
 CREATE INDEX IF NOT EXISTS ix_variant_filament ON variant(filament_id);
 CREATE INDEX IF NOT EXISTS ix_variant_slug ON variant(slug);
-CREATE INDEX IF NOT EXISTS ix_variant_color ON variant(color_name);
+CREATE INDEX IF NOT EXISTS ix_variant_name ON variant(name);
 
 -- Size table (spool size/SKU)
 CREATE TABLE IF NOT EXISTS size (
@@ -116,7 +125,7 @@ CREATE TABLE IF NOT EXISTS store (
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
     storefront_url TEXT NOT NULL,
-    logo TEXT NOT NULL,
+    logo_name TEXT NOT NULL,
     ships_from TEXT NOT NULL,  -- JSON array
     ships_to TEXT NOT NULL  -- JSON array
 );
@@ -139,7 +148,7 @@ CREATE INDEX IF NOT EXISTS ix_purchase_link_store ON purchase_link(store_id);
 CREATE VIEW IF NOT EXISTS v_full_variant AS
 SELECT
     v.id AS variant_id,
-    v.color_name,
+    v.name,
     v.color_hex,
     v.slug AS variant_slug,
     f.id AS filament_id,
@@ -162,7 +171,7 @@ SELECT
     s.diameter,
     s.gtin,
     v.id AS variant_id,
-    v.color_name,
+    v.name,
     v.color_hex,
     f.id AS filament_id,
     f.name AS filament_name,
@@ -188,7 +197,7 @@ SELECT
     s.filament_weight,
     s.diameter,
     s.gtin,
-    v.color_name,
+    v.name,
     v.color_hex,
     f.name AS filament_name,
     f.material,
@@ -200,48 +209,6 @@ JOIN variant v ON s.variant_id = v.id
 JOIN filament f ON v.filament_id = f.id
 JOIN brand b ON f.brand_id = b.id;
 """
-
-
-# =============================================================================
-# Dynamic Insert Generation
-# =============================================================================
-
-def insert_entities(
-    cursor: sqlite3.Cursor,
-    entities: list,
-    entity_class: Type,
-    table_name: str
-):
-    """
-    Insert entities into SQLite using dataclass introspection.
-
-    Args:
-        cursor: SQLite cursor
-        entities: List of dataclass instances
-        entity_class: The dataclass type
-        table_name: Target table name
-    """
-    if not entities:
-        return
-
-    from ..models import Brand, Store
-
-    # Get field names, excluding directory_name for Brand and Store
-    field_names = [
-        f.name for f in fields(entity_class)
-        if not (entity_class in (Brand, Store) and f.name == "directory_name")
-    ]
-    placeholders = ", ".join(["?"] * len(field_names))
-    columns = ", ".join(field_names)
-
-    sql = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})"
-
-    for entity in entities:
-        values = tuple(
-            serialize_for_sqlite(getattr(entity, name))
-            for name in field_names
-        )
-        cursor.execute(sql, values)
 
 
 # =============================================================================
@@ -270,14 +237,14 @@ def export_sqlite(db: Database, output_dir: str, version: str, generated_at: str
     cursor.execute("INSERT INTO meta (key, value) VALUES (?, ?)", ("version", version))
     cursor.execute("INSERT INTO meta (key, value) VALUES (?, ?)", ("generated_at", generated_at))
 
-    # Insert all entities using introspection
-    insert_entities(cursor, db.brands, Brand, "brand")
-    insert_entities(cursor, db.materials, Material, "material")
-    insert_entities(cursor, db.filaments, Filament, "filament")
-    insert_entities(cursor, db.variants, Variant, "variant")
-    insert_entities(cursor, db.sizes, Size, "size")
-    insert_entities(cursor, db.stores, Store, "store")
-    insert_entities(cursor, db.purchase_links, PurchaseLink, "purchase_link")
+    # Insert all entities using PRAGMA-driven column matching
+    insert_entities(cursor, db.brands, "brand")
+    insert_entities(cursor, db.materials, "material")
+    insert_entities(cursor, db.filaments, "filament")
+    insert_entities(cursor, db.variants, "variant")
+    insert_entities(cursor, db.sizes, "size")
+    insert_entities(cursor, db.stores, "store")
+    insert_entities(cursor, db.purchase_links, "purchase_link")
 
     conn.commit()
     conn.close()

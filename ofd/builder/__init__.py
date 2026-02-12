@@ -20,24 +20,9 @@ Or programmatically:
     export_json(db, "dist", "2025.1.0", "2025-01-01T00:00:00Z")
 """
 
-__version__ = "2.0.0"
+__version__ = "3.0.0"
 
-from .models import (
-    Brand,
-    Material,
-    Filament,
-    Variant,
-    Size,
-    Store,
-    PurchaseLink,
-    Database,
-    SlicerSettings,
-    GenericSlicerSettings,
-    AllSlicerSettings,
-    SlicerIds,
-    ColorStandards,
-    VariantTraits,
-)
+from .models import Database, DocumentType, ENTITY_TYPES
 
 from .crawler import crawl_data, DataCrawler
 
@@ -53,20 +38,9 @@ __all__ = [
     # Version
     '__version__',
     # Models
-    'Brand',
-    'Material',
-    'Filament',
-    'Variant',
-    'Size',
-    'Store',
-    'PurchaseLink',
     'Database',
-    'SlicerSettings',
-    'GenericSlicerSettings',
-    'AllSlicerSettings',
-    'SlicerIds',
-    'ColorStandards',
-    'VariantTraits',
+    'DocumentType',
+    'ENTITY_TYPES',
     # Crawler
     'crawl_data',
     'DataCrawler',

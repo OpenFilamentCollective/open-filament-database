@@ -1,56 +1,81 @@
 """
 CSV exporter that creates normalized CSV files.
 
-Uses dataclass introspection to automatically derive CSV headers from model definitions,
-making the exporter resilient to schema changes.
+Derives headers from dict keys, making the exporter resilient to schema changes.
 """
 
 import csv
-from dataclasses import fields
 from pathlib import Path
-from typing import Type
 
-from ..models import (
-    Database, Brand, Material, Filament, Variant, Size, Store, PurchaseLink
-)
+from ..models import Database
 from ..serialization import entity_to_dict, serialize_for_csv
 
 
-def export_entity_csv(
-    entities: list,
-    entity_class: Type,
+# Preferred key ordering per entity type for stable CSV columns.
+# Keys not listed here are appended alphabetically after these.
+_KEY_ORDER = {
+    "brand": ["id", "name", "slug", "website", "logo_name", "origin", "source"],
+    "material": ["id", "brand_id", "material", "slug", "material_class",
+                  "default_max_dry_temperature", "default_slicer_settings"],
+    "filament": ["id", "brand_id", "material_id", "name", "slug", "material",
+                  "density", "diameter_tolerance", "discontinued"],
+    "variant": ["id", "filament_id", "slug", "name", "color_hex",
+                 "hex_variants", "color_standards", "traits", "discontinued"],
+    "size": ["id", "variant_id", "filament_weight", "diameter", "empty_spool_weight",
+             "spool_core_diameter", "gtin", "article_number", "discontinued"],
+    "store": ["id", "name", "slug", "storefront_url", "logo_name", "ships_from", "ships_to"],
+    "purchase_link": ["id", "size_id", "store_id", "url", "spool_refill",
+                       "ships_from", "ships_to"],
+}
+
+# Keys that are internal and should never appear in CSV
+_INTERNAL_KEYS = {"directory_name"}
+
+
+def _derive_headers(entities: list[dict], entity_type: str) -> list[str]:
+    """Derive CSV headers from dict keys with stable ordering."""
+    # Collect all keys across all entities
+    all_keys: set[str] = set()
+    for entity in entities:
+        all_keys.update(entity.keys())
+
+    all_keys -= _INTERNAL_KEYS
+
+    # Handle logo -> logo_name rename for brands/stores
+    if "logo" in all_keys:
+        all_keys.discard("logo")
+        all_keys.add("logo_name")
+
+    # Start with preferred order, then append remaining keys alphabetically
+    preferred = _KEY_ORDER.get(entity_type, [])
+    ordered = [k for k in preferred if k in all_keys]
+    remaining = sorted(all_keys - set(ordered))
+    return ordered + remaining
+
+
+def _export_entity_csv(
+    entities: list[dict],
+    entity_type: str,
     output_path: Path,
-    filename: str
+    filename: str,
 ) -> Path:
-    """
-    Export a list of entities to a CSV file using dataclass introspection.
-
-    Headers are automatically derived from the dataclass field names.
-
-    Args:
-        entities: List of dataclass instances to export
-        entity_class: The dataclass type (used for field introspection)
-        output_path: Directory to write the CSV file
-        filename: Name of the CSV file
-
-    Returns:
-        Path to the written CSV file
-    """
-    from ..models import Brand, Store
-
-    # Get field names, excluding directory_name for Brand and Store
-    field_names = [
-        f.name for f in fields(entity_class)
-        if not (entity_class in (Brand, Store) and f.name == "directory_name")
-    ]
-
+    """Export a list of dict entities to a CSV file."""
     csv_path = output_path / filename
+
+    if not entities:
+        with open(csv_path, 'w', newline='', encoding='utf-8') as f:
+            pass
+        return csv_path
+
+    headers = _derive_headers(entities, entity_type)
+
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(field_names)
+        writer.writerow(headers)
 
         for entity in entities:
-            row = [serialize_for_csv(getattr(entity, name)) for name in field_names]
+            exported = entity_to_dict(entity)
+            row = [serialize_for_csv(exported.get(h)) for h in headers]
             writer.writerow(row)
 
     return csv_path
@@ -61,17 +86,16 @@ def export_csv(db: Database, output_dir: str, version: str, generated_at: str):
     output_path = Path(output_dir) / "csv"
     output_path.mkdir(parents=True, exist_ok=True)
 
-    # Export each entity type using introspection
     exports = [
-        (db.brands, Brand, "brands.csv"),
-        (db.materials, Material, "materials.csv"),
-        (db.filaments, Filament, "filaments.csv"),
-        (db.variants, Variant, "variants.csv"),
-        (db.sizes, Size, "sizes.csv"),
-        (db.stores, Store, "stores.csv"),
-        (db.purchase_links, PurchaseLink, "purchase_links.csv"),
+        (db.brands, "brand", "brands.csv"),
+        (db.materials, "material", "materials.csv"),
+        (db.filaments, "filament", "filaments.csv"),
+        (db.variants, "variant", "variants.csv"),
+        (db.sizes, "size", "sizes.csv"),
+        (db.stores, "store", "stores.csv"),
+        (db.purchase_links, "purchase_link", "purchase_links.csv"),
     ]
 
-    for entities, entity_class, filename in exports:
-        csv_path = export_entity_csv(entities, entity_class, output_path, filename)
+    for entities, entity_type, filename in exports:
+        csv_path = _export_entity_csv(entities, entity_type, output_path, filename)
         print(f"  Written: {csv_path}")
