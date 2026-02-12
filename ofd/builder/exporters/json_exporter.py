@@ -102,14 +102,14 @@ def export_per_brand_json(db: Database, output_dir: str, version: str, generated
 
     for brand in db.brands:
         # Get all data for this brand
-        brand_materials = [m for m in db.materials if m.brand_id == brand.id]
-        brand_filaments = [f for f in db.filaments if f.brand_id == brand.id]
-        brand_filament_ids = {f.id for f in brand_filaments}
-        brand_variants = [v for v in db.variants if v.filament_id in brand_filament_ids]
-        brand_variant_ids = {v.id for v in brand_variants}
-        brand_sizes = [s for s in db.sizes if s.variant_id in brand_variant_ids]
-        brand_size_ids = {s.id for s in brand_sizes}
-        brand_purchase_links = [pl for pl in db.purchase_links if pl.size_id in brand_size_ids]
+        brand_materials = [m for m in db.materials if m["brand_id"] == brand["id"]]
+        brand_filaments = [f for f in db.filaments if f["brand_id"] == brand["id"]]
+        brand_filament_ids = {f["id"] for f in brand_filaments}
+        brand_variants = [v for v in db.variants if v["filament_id"] in brand_filament_ids]
+        brand_variant_ids = {v["id"] for v in brand_variants}
+        brand_sizes = [s for s in db.sizes if s["variant_id"] in brand_variant_ids]
+        brand_size_ids = {s["id"] for s in brand_sizes}
+        brand_purchase_links = [pl for pl in db.purchase_links if pl["size_id"] in brand_size_ids]
 
         brand_data = {
             "version": version,
@@ -123,16 +123,16 @@ def export_per_brand_json(db: Database, output_dir: str, version: str, generated
         }
 
         # Write brand JSON
-        brand_json_path = output_path / f"{brand.slug}.json"
+        brand_json_path = output_path / f"{brand['slug']}.json"
         with open(brand_json_path, 'w', encoding='utf-8') as f:
             json.dump(brand_data, f, indent=2, ensure_ascii=False)
 
         # Add to index
         index["brands"].append({
-            "id": brand.id,
-            "name": brand.name,
-            "slug": brand.slug,
-            "path": f"brands/{brand.slug}.json"
+            "id": brand["id"],
+            "name": brand["name"],
+            "slug": brand["slug"],
+            "path": f"brands/{brand['slug']}.json"
         })
 
     # Write index

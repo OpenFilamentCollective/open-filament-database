@@ -69,7 +69,7 @@ Navigate to your filament folder and create a new folder named after the variant
 #### variant.json
 Create a `variant.json` file with:
 - Required fields:
-  - `color_name` - The variant name (usually a color like "Red" or "Black")
+  - `name` - The variant name (usually a color like "Red" or "Black")
   - `color_hex` - Hex color code representing the variant (e.g., `"#FF0000"`)
 - Optional fields (see `schemas/variant_schema.json` for details):
   - `discontinued` - Whether the variant is discontinued (boolean)
