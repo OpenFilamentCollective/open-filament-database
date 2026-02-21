@@ -16,6 +16,7 @@
 		"test:unit": "vitest run",
 		"test:unit:watch": "vitest",
 		"test:unit:coverage": "vitest run --coverage",
+		"test:install": "playwright install --with-deps",
 		"test:e2e": "playwright test",
 		"generate:types": "node scripts/generate-types.js"
 	},
