@@ -36,7 +36,7 @@ test.describe('Home Page', () => {
 	});
 
 	test('should navigate to FAQ', async ({ page }) => {
-		const faqLink = page.getByRole('link', { name: /faq/i });
+		const faqLink = page.getByRole('link', { name: /faq/i }).first();
 		if (await faqLink.isVisible()) {
 			await faqLink.click();
 			await expect(page).toHaveURL(/\/faq/);
