@@ -9,13 +9,13 @@
 	import { Logo, EntityDetails, EntityCard, ChildListPanel } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
+	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { db } from '$lib/services/database';
 	import { deleteEntity, generateMaterialType, generateSlug } from '$lib/services/entityService';
 	import { apiFetch } from '$lib/utils/api';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { changes } from '$lib/stores/changes';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { useChangeTracking } from '$lib/stores/environment';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 
 	let brandId: string = $derived($page.params.brand!);
@@ -40,7 +40,7 @@
 
 	let displayMaterials = $derived.by(() => withDeletedStubs({
 		changes: $changes,
-		isCloudMode: $isCloudMode,
+		useChangeTracking: $useChangeTracking,
 		parentPath: `brands/${brandId}`,
 		namespace: 'materials',
 		items: materials,
@@ -61,7 +61,7 @@
 			if (!brandData) {
 				const brandPath = `brands/${brandId}`;
 				const change = $changes.get(brandPath);
-				if ($isCloudMode && change?.operation === 'delete') {
+				if ($useChangeTracking && change?.operation === 'delete') {
 					error = 'This brand has been deleted in your local changes. Export your changes to finalize the deletion.';
 				} else {
 					error = 'Brand not found';
@@ -90,15 +90,9 @@
 		messageHandler.clear();
 
 		try {
-			// If logo was changed, save the new logo and delete the old one
+			// If logo was changed, store the new logo in the change store
 			let logoFilename = brand.logo;
 			if (entityState.logoChanged && entityState.logoDataUrl) {
-				// Delete old logo first
-				if (brand.logo) {
-					await deleteLogoImage(brand.id, brand.logo, 'brand');
-				}
-
-				// Upload new logo
 				const savedPath = await saveLogoImage(brand.id, entityState.logoDataUrl, 'brand');
 				if (!savedPath) {
 					messageHandler.showError('Failed to save logo');
@@ -236,7 +230,7 @@
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{brandData.name}</h1>
 					<p class="text-muted-foreground">ID: {brandData.slug || brandData.id}</p>
-					{#if $isCloudMode && !entityState.isLocalCreate && brandData.slug && brandData.slug !== brandData.id}
+					{#if $useChangeTracking && !entityState.isLocalCreate && brandData.slug && brandData.slug !== brandData.id}
 						<p class="text-muted-foreground">UUID: {brandData.id}</p>
 					{/if}
 				</div>
@@ -276,7 +270,7 @@
 					{#each displayMaterials as material}
 						{@const materialHref = `/brands/${brandData.slug ?? brandData.id}/${material.materialType ?? material.material.toLowerCase()}`}
 						{@const materialPath = `brands/${brandId}/materials/${material.materialType ?? material.material.toLowerCase()}`}
-						{@const changeProps = getChildChangeProps($changes, $isCloudMode, materialPath)}
+						{@const changeProps = getChildChangeProps($changes, $useChangeTracking, materialPath)}
 						<EntityCard
 							entity={material}
 							href={materialHref}

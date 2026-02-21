@@ -2,7 +2,7 @@ import type { Store, Brand, DatabaseIndex, Material, Filament, Variant } from '$
 import type { EntityChange, EntityIdentifier, EntityType } from '$lib/types/changes';
 import type { TreeChangeSet } from '$lib/types/changeTree';
 import { get } from 'svelte/store';
-import { isCloudMode } from '$lib/stores/environment';
+import { useChangeTracking } from '$lib/stores/environment';
 import { changeStore } from '$lib/stores/changes';
 import { apiFetch } from '$lib/utils/api';
 import { parsePath } from '$lib/utils/changePaths';
@@ -70,32 +70,36 @@ export class DatabaseService {
 		entityPathPrefix: string,
 		idKey: keyof T = 'id' as keyof T
 	): T[] {
-		if (!get(isCloudMode)) {
+		if (!get(useChangeTracking)) {
 			return baseData;
 		}
 
 		const changeSet = get(changeStore);
 		const result = new Map<string, T>();
 
+		// Helper: get the identifier from an item, falling back to 'id' if the
+		// preferred key is missing (e.g. local API may not include 'slug').
+		const getId = (item: any): string =>
+			String(item[idKey] ?? item['id'] ?? '');
+
 		for (const item of baseData) {
-			result.set(String(item[idKey]), item);
+			result.set(getId(item), item);
 		}
 
 		for (const { entityId, change } of this.getDirectChildChanges(changeSet, entityPathPrefix)) {
 			switch (change.operation) {
 				case 'create':
 					if (change.data) {
-						const dataId = String(change.data[idKey]);
-						result.set(dataId, change.data);
+						result.set(getId(change.data), change.data);
 					}
 					break;
 
 				case 'update':
 					if (change.data) {
-						const dataId = String(change.data[idKey]);
+						const dataId = getId(change.data);
 						let oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
 						if (!oldKey && change.originalData) {
-							const origId = String(change.originalData[idKey]);
+							const origId = getId(change.originalData);
 							oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === origId.toLowerCase());
 						}
 						if (oldKey && oldKey !== dataId) {
@@ -122,7 +126,7 @@ export class DatabaseService {
 	 * Get a single entity with changes applied
 	 */
 	private getEntityWithChanges<T>(baseData: T | null, entityPath: string): T | null {
-		if (!get(isCloudMode)) {
+		if (!get(useChangeTracking)) {
 			return baseData;
 		}
 
@@ -148,7 +152,7 @@ export class DatabaseService {
 	 * Check if an entity or any of its ancestors is a local create.
 	 */
 	private isLocalCreate(entityPath: string): boolean {
-		if (!get(isCloudMode)) {
+		if (!get(useChangeTracking)) {
 			return false;
 		}
 
@@ -175,7 +179,7 @@ export class DatabaseService {
 	 * Get the original material type for API calls when a material has been renamed.
 	 */
 	private getApiMaterialType(brandId: string, materialType: string): string {
-		if (!get(isCloudMode)) return materialType;
+		if (!get(useChangeTracking)) return materialType;
 
 		const original = this.getOriginalMaterial(brandId, materialType);
 		if (original) {
@@ -224,7 +228,7 @@ export class DatabaseService {
 		apiUrl: string,
 		resolveChangePath?: (data: T) => string
 	): Promise<T | null> {
-		if (get(isCloudMode)) {
+		if (get(useChangeTracking)) {
 			const changeSet = get(changeStore);
 			const change = changeSet._index.get(entityPath)?.change;
 
@@ -260,7 +264,7 @@ export class DatabaseService {
 		try {
 			const entity: EntityIdentifier = { type: entityType, path: newPath, id };
 
-			if (get(isCloudMode)) {
+			if (get(useChangeTracking)) {
 				// Handle renames
 				if (oldData && buildOldPath) {
 					const oldPath = buildOldPath(oldData);
@@ -307,7 +311,7 @@ export class DatabaseService {
 		try {
 			const entity: EntityIdentifier = { type: entityType, path: entityPath, id: slug };
 
-			if (get(isCloudMode)) {
+			if (get(useChangeTracking)) {
 				changeStore.trackCreate(entity, data);
 				return { success: true, [resultKey]: slug };
 			}
@@ -341,7 +345,7 @@ export class DatabaseService {
 		try {
 			let resolvedPath = entityPath;
 
-			if (get(isCloudMode)) {
+			if (get(useChangeTracking)) {
 				// Find the actual path in case entity was renamed
 				const changeSet = get(changeStore);
 				for (const { change } of this.getDirectChildChanges(changeSet, collectionPrefix)) {
@@ -470,7 +474,7 @@ export class DatabaseService {
 	 * Materials use a different key strategy (slug/materialType/material name).
 	 */
 	private layerMaterialChanges(baseData: Material[], brandId: string): Material[] {
-		if (!get(isCloudMode)) {
+		if (!get(useChangeTracking)) {
 			return baseData;
 		}
 
@@ -536,7 +540,7 @@ export class DatabaseService {
 	 * Get the original (pre-change) material data for a brand/materialType.
 	 */
 	getOriginalMaterial(brandId: string, materialType: string): Material | null {
-		if (!get(isCloudMode)) return null;
+		if (!get(useChangeTracking)) return null;
 
 		const changeSet = get(changeStore);
 		const materialPrefix = `brands/${brandId}/materials/`;
@@ -557,7 +561,7 @@ export class DatabaseService {
 		const entityPath = `brands/${brandId}/materials/${materialType}`;
 		const materialPrefix = `brands/${brandId}/materials/`;
 
-		if (get(isCloudMode)) {
+		if (get(useChangeTracking)) {
 			const changeSet = get(changeStore);
 
 			// First check exact path match
@@ -597,7 +601,7 @@ export class DatabaseService {
 			const newMaterialType = material.materialType || materialType;
 			const newPath = `brands/${brandId}/materials/${newMaterialType}`;
 
-			if (get(isCloudMode)) {
+			if (get(useChangeTracking)) {
 				const changeSet = get(changeStore);
 				const materialPrefix = `brands/${brandId}/materials/`;
 

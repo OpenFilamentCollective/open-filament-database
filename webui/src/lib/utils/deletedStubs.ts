@@ -32,7 +32,7 @@ type DeletedChanges = Array<{ id: string; change: EntityChange }>;
  */
 export function withDeletedStubs<T>(config: {
 	changes: ChangesStore;
-	isCloudMode: boolean;
+	useChangeTracking: boolean;
 	items: T[];
 	getKeys: (item: T) => (string | null | undefined)[];
 	buildStub: (id: string, name: string) => T;
@@ -40,9 +40,9 @@ export function withDeletedStubs<T>(config: {
 	| { parentPath: string; namespace: string; rootNamespace?: never }
 	| { rootNamespace: 'brands' | 'stores'; parentPath?: never; namespace?: never }
 )): T[] {
-	const { changes, isCloudMode, items, getKeys, buildStub } = config;
+	const { changes, useChangeTracking, items, getKeys, buildStub } = config;
 
-	if (!isCloudMode) return items;
+	if (!useChangeTracking) return items;
 
 	let deletedChanges: DeletedChanges;
 	if (config.rootNamespace) {
@@ -95,10 +95,10 @@ const NO_CHANGES: ChangeProps = {
  */
 export function getChildChangeProps(
 	changes: ChangesStore,
-	isCloudMode: boolean,
+	useChangeTracking: boolean,
 	entityPath: string
 ): ChangeProps {
-	if (!isCloudMode) return NO_CHANGES;
+	if (!useChangeTracking) return NO_CHANGES;
 
 	const change = changes.get(entityPath);
 	return {

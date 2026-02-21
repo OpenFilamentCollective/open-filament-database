@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { changeStore, changeCount, hasChanges, changesList } from '$lib/stores/changes';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { isCloudMode, isLocalMode } from '$lib/stores/environment';
 	import { authStore, isAuthenticated, currentUser } from '$lib/stores/auth';
 	import type { EntityChange } from '$lib/types/changes';
 	import type { Store } from '$lib/types/database';
@@ -18,6 +18,10 @@
 	let prResult = $state<{ success: boolean; message: string; prUrl?: string } | null>(null);
 	let prTitle = $state('');
 	let prDescription = $state('');
+
+	// Save to disk state
+	let savingToDisk = $state(false);
+	let saveResult = $state<{ success: boolean; message: string } | null>(null);
 
 	// Load stores on mount for resolving store_id to store names
 	onMount(async () => {
@@ -128,6 +132,52 @@
 		prTitle = `Update filament database (${$changeCount} changes)`;
 		prDescription = '';
 		prResult = null;
+		saveResult = null;
+	}
+
+	async function saveToDisk() {
+		savingToDisk = true;
+		saveResult = null;
+
+		try {
+			const exportData = changeStore.exportChanges();
+
+			const imagesWithPaths: Record<string, any> = {};
+			const cs = $changeStore;
+			for (const [imageId, imageData] of Object.entries(exportData.images)) {
+				const ref = cs.images[imageId];
+				imagesWithPaths[imageId] = {
+					...imageData,
+					entityPath: ref?.entityPath || ''
+				};
+			}
+
+			const response = await fetch('/api/save', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					changes: exportData.changes,
+					images: imagesWithPaths
+				})
+			});
+
+			const result = await response.json();
+
+			if (result.success) {
+				saveResult = { success: true, message: result.message || 'Changes saved successfully' };
+				changeStore.clear();
+				window.location.reload();
+			} else {
+				saveResult = {
+					success: false,
+					message: result.message || result.error || 'Some changes failed to save'
+				};
+			}
+		} catch (error: any) {
+			saveResult = { success: false, message: error.message || 'Failed to save' };
+		} finally {
+			savingToDisk = false;
+		}
 	}
 
 	async function createPR() {
@@ -227,250 +277,298 @@
 
 <svelte:window onkeydown={(e) => { if (e.key === 'Escape' && menuOpen) closeMenu(); }} />
 
-{#if $isCloudMode}
-	<div class="relative">
-		<Button
-			onclick={toggleMenu}
-			variant="ghost"
-			size="icon"
-			title={$hasChanges ? `${$changeCount} pending changes` : 'No pending changes'}
-			class={$hasChanges ? 'relative' : ''}
-		>
-			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-				<path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-				<path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-			</svg>
-			{#if $hasChanges}
-				<span class="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-destructive px-1 text-xs font-medium text-white">
-					{$changeCount}
-				</span>
-			{/if}
-		</Button>
+<div class="relative">
+	<Button
+		onclick={toggleMenu}
+		variant="ghost"
+		size="icon"
+		title={$hasChanges ? `${$changeCount} pending changes` : 'No pending changes'}
+		class={$hasChanges ? 'relative' : ''}
+	>
+		<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+			<path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+			<path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+		</svg>
+		{#if $hasChanges}
+			<span class="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-destructive px-1 text-xs font-medium text-white">
+				{$changeCount}
+			</span>
+		{/if}
+	</Button>
 
-		{#if menuOpen}
-			<!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
-			<div class="fixed inset-0 z-50" onclick={closeMenu} role="presentation" aria-hidden="true"></div>
+	{#if menuOpen}
+		<!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
+		<div class="fixed inset-0 z-50" onclick={closeMenu} role="presentation" aria-hidden="true"></div>
 
-			<div class="absolute right-0 top-full z-50 mt-2 w-96 max-w-[calc(100vw-2rem)] rounded-lg border bg-popover shadow-md">
-				<!-- Header -->
-				<div class="flex items-center justify-between border-b px-4 py-3">
-					<div>
-						<h3 class="font-semibold">Pending Changes</h3>
-						{#if $hasChanges}
-							<p class="text-xs text-muted-foreground">{$changeCount} unsaved {$changeCount === 1 ? 'change' : 'changes'}</p>
-						{/if}
-					</div>
-					<Button onclick={closeMenu} variant="ghost" size="icon" class="h-8 w-8">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-							<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-						</svg>
-					</Button>
-				</div>
-
-				<!-- Content -->
-				<div class="max-h-96 overflow-y-auto">
+		<div class="absolute right-0 top-full z-50 mt-2 w-96 max-w-[calc(100vw-2rem)] rounded-lg border bg-popover shadow-md">
+			<!-- Header -->
+			<div class="flex items-center justify-between border-b px-4 py-3">
+				<div>
+					<h3 class="font-semibold">Pending Changes</h3>
 					{#if $hasChanges}
-						<div class="divide-y">
-							{#each $changesList as change}
-								{@const badge = getOperationBadge(change.operation)}
-								{@const isExpanded = expandedChanges.has(change.entity.path)}
-								<div class="p-3">
-									<!-- Change header -->
-									<div class="flex items-start justify-between gap-2">
-										<div class="min-w-0 flex-1">
-											<div class="flex items-center gap-2">
-												<span class="rounded px-1.5 py-0.5 text-xs font-medium {badge.bg} {badge.text}">
-													{badge.label}
-												</span>
-												<span class="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
-													{change.entity.type}
-												</span>
-												<span class="text-xs text-muted-foreground">
-													{formatTimestamp(change.timestamp)}
-												</span>
-											</div>
-											<p class="mt-1 truncate text-sm font-medium">{change.description}</p>
-											<p class="truncate text-xs text-muted-foreground">{change.entity.path}</p>
-										</div>
-										<Button
-											onclick={() => undoChange(change)}
-											variant="ghost"
-											size="sm"
-											class="h-7 shrink-0 text-xs hover:bg-destructive/10 hover:text-destructive"
-										>
-											Undo
-										</Button>
-									</div>
-
-									<!-- Property changes -->
-									{#if change.propertyChanges && change.propertyChanges.length > 0}
-										<Button
-											onclick={() => toggleExpanded(change.entity.path)}
-											variant="ghost"
-											size="sm"
-											class="mt-2 h-auto w-full justify-start px-0 py-1 text-xs text-muted-foreground hover:text-foreground"
-										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												class="h-3 w-3 transition-transform {isExpanded ? 'rotate-90' : ''}"
-												viewBox="0 0 20 20"
-												fill="currentColor"
-											>
-												<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-											</svg>
-											{change.propertyChanges.length} {change.propertyChanges.length === 1 ? 'field' : 'fields'} changed
-										</Button>
-
-										{#if isExpanded}
-											<div class="mt-2 space-y-2 rounded border bg-muted/50 p-2 text-xs">
-												{#each change.propertyChanges as propChange}
-													<div>
-														<span class="font-medium">{propChange.property}</span>
-														{#if propChange.oldValue === undefined}
-															<span class="ml-1 text-green-600 dark:text-green-400">added</span>
-															<pre class="mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
-														{:else if propChange.newValue === undefined}
-															<span class="ml-1 text-destructive">removed</span>
-															<pre class="mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
-														{:else}
-															<div class="mt-1 grid gap-1">
-																<pre class="overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
-																<pre class="overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
-															</div>
-														{/if}
-													</div>
-												{/each}
-											</div>
-										{/if}
-									{/if}
-								</div>
-							{/each}
-						</div>
-					{:else}
-						<div class="flex flex-col items-center justify-center px-4 py-8 text-center">
-							<svg xmlns="http://www.w3.org/2000/svg" class="mb-2 h-8 w-8 text-muted-foreground/50" viewBox="0 0 20 20" fill="currentColor">
-								<path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-								<path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-							</svg>
-							<p class="font-medium text-muted-foreground">No pending changes</p>
-							<p class="mt-1 text-xs text-muted-foreground">
-								Changes you make will appear here
-							</p>
-						</div>
+						<p class="text-xs text-muted-foreground">{$changeCount} unsaved {$changeCount === 1 ? 'change' : 'changes'}</p>
 					{/if}
 				</div>
+				<Button onclick={closeMenu} variant="ghost" size="icon" class="h-8 w-8">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+					</svg>
+				</Button>
+			</div>
 
-				<!-- Footer actions -->
+			<!-- Content -->
+			<div class="max-h-96 overflow-y-auto">
 				{#if $hasChanges}
-					<div class="flex gap-2 border-t p-3">
-						<Button onclick={clearAllChanges} variant="ghost" size="sm" class="hover:bg-destructive/10 hover:text-destructive">
-							Clear All
-						</Button>
-						<div class="flex-1"></div>
-						<Button onclick={openExportModal} variant="primary" size="sm">
-							<svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-								<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-							</svg>
-							Export
-						</Button>
+					<div class="divide-y">
+						{#each $changesList as change}
+							{@const badge = getOperationBadge(change.operation)}
+							{@const isExpanded = expandedChanges.has(change.entity.path)}
+							<div class="p-3">
+								<!-- Change header -->
+								<div class="flex items-start justify-between gap-2">
+									<div class="min-w-0 flex-1">
+										<div class="flex items-center gap-2">
+											<span class="rounded px-1.5 py-0.5 text-xs font-medium {badge.bg} {badge.text}">
+												{badge.label}
+											</span>
+											<span class="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
+												{change.entity.type}
+											</span>
+											<span class="text-xs text-muted-foreground">
+												{formatTimestamp(change.timestamp)}
+											</span>
+										</div>
+										<p class="mt-1 truncate text-sm font-medium">{change.description}</p>
+										<p class="truncate text-xs text-muted-foreground">{change.entity.path}</p>
+									</div>
+									<Button
+										onclick={() => undoChange(change)}
+										variant="ghost"
+										size="sm"
+										class="h-7 shrink-0 text-xs hover:bg-destructive/10 hover:text-destructive"
+									>
+										Undo
+									</Button>
+								</div>
+
+								<!-- Property changes -->
+								{#if change.propertyChanges && change.propertyChanges.length > 0}
+									<Button
+										onclick={() => toggleExpanded(change.entity.path)}
+										variant="ghost"
+										size="sm"
+										class="mt-2 h-auto w-full justify-start px-0 py-1 text-xs text-muted-foreground hover:text-foreground"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-3 w-3 transition-transform {isExpanded ? 'rotate-90' : ''}"
+											viewBox="0 0 20 20"
+											fill="currentColor"
+										>
+											<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+										</svg>
+										{change.propertyChanges.length} {change.propertyChanges.length === 1 ? 'field' : 'fields'} changed
+									</Button>
+
+									{#if isExpanded}
+										<div class="mt-2 space-y-2 rounded border bg-muted/50 p-2 text-xs">
+											{#each change.propertyChanges as propChange}
+												<div>
+													<span class="font-medium">{propChange.property}</span>
+													{#if propChange.oldValue === undefined}
+														<span class="ml-1 text-green-600 dark:text-green-400">added</span>
+														<pre class="mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
+													{:else if propChange.newValue === undefined}
+														<span class="ml-1 text-destructive">removed</span>
+														<pre class="mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
+													{:else}
+														<div class="mt-1 grid gap-1">
+															<pre class="overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
+															<pre class="overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
+														</div>
+													{/if}
+												</div>
+											{/each}
+										</div>
+									{/if}
+								{/if}
+							</div>
+						{/each}
+					</div>
+				{:else}
+					<div class="flex flex-col items-center justify-center px-4 py-8 text-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="mb-2 h-8 w-8 text-muted-foreground/50" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+							<path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+						</svg>
+						<p class="font-medium text-muted-foreground">No pending changes</p>
+						<p class="mt-1 text-xs text-muted-foreground">
+							Changes you make will appear here
+						</p>
 					</div>
 				{/if}
 			</div>
+
+			<!-- Footer actions -->
+			{#if $hasChanges}
+				<div class="flex gap-2 border-t p-3">
+					<Button onclick={clearAllChanges} variant="ghost" size="sm" class="hover:bg-destructive/10 hover:text-destructive">
+						Clear All
+					</Button>
+					<div class="flex-1"></div>
+					{#if $isLocalMode}
+						<Button onclick={saveToDisk} variant="primary" size="sm" disabled={savingToDisk}>
+							{#if savingToDisk}
+								<svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+									<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+									<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+								</svg>
+								Saving...
+							{:else}
+								<svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+									<path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+								</svg>
+								Save to Disk
+							{/if}
+						</Button>
+					{/if}
+					<Button onclick={openExportModal} variant={$isLocalMode ? 'secondary' : 'primary'} size="sm">
+						<svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+						</svg>
+						Export
+					</Button>
+				</div>
+			{/if}
+		</div>
+	{/if}
+</div>
+
+<!-- Export Modal -->
+<Modal show={exportModalOpen} title={$isLocalMode ? 'Save Changes' : 'Export Changes'} onClose={() => { exportModalOpen = false; }} maxWidth="4xl" height="3/4">
+	{@const summary = changeStore.getSummary()}
+
+	{#if !prResult?.success && !saveResult?.success}
+	<!-- Summary stats -->
+	<div class="mb-4 flex flex-wrap gap-3 text-sm">
+		{#if summary.creates > 0}
+			<span class="rounded-full bg-green-500/10 px-3 py-1 font-medium text-green-700 dark:text-green-400">
+				{summary.creates} {summary.creates === 1 ? 'creation' : 'creations'}
+			</span>
+		{/if}
+		{#if summary.updates > 0}
+			<span class="rounded-full bg-blue-500/10 px-3 py-1 font-medium text-blue-700 dark:text-blue-400">
+				{summary.updates} {summary.updates === 1 ? 'update' : 'updates'}
+			</span>
+		{/if}
+		{#if summary.deletes > 0}
+			<span class="rounded-full bg-destructive/10 px-3 py-1 font-medium text-destructive">
+				{summary.deletes} {summary.deletes === 1 ? 'deletion' : 'deletions'}
+			</span>
+		{/if}
+		{#if summary.images > 0}
+			<span class="rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
+				{summary.images} {summary.images === 1 ? 'image' : 'images'}
+			</span>
 		{/if}
 	</div>
 
-	<!-- Export Modal -->
-	<Modal show={exportModalOpen} title="Export Changes" onClose={() => { exportModalOpen = false; }} maxWidth="4xl" height="3/4">
-		{@const summary = changeStore.getSummary()}
-
-		{#if !prResult?.success}
-		<!-- Summary stats -->
-		<div class="mb-4 flex flex-wrap gap-3 text-sm">
-			{#if summary.creates > 0}
-				<span class="rounded-full bg-green-500/10 px-3 py-1 font-medium text-green-700 dark:text-green-400">
-					{summary.creates} {summary.creates === 1 ? 'creation' : 'creations'}
-				</span>
-			{/if}
-			{#if summary.updates > 0}
-				<span class="rounded-full bg-blue-500/10 px-3 py-1 font-medium text-blue-700 dark:text-blue-400">
-					{summary.updates} {summary.updates === 1 ? 'update' : 'updates'}
-				</span>
-			{/if}
-			{#if summary.deletes > 0}
-				<span class="rounded-full bg-destructive/10 px-3 py-1 font-medium text-destructive">
-					{summary.deletes} {summary.deletes === 1 ? 'deletion' : 'deletions'}
-				</span>
-			{/if}
-			{#if summary.images > 0}
-				<span class="rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
-					{summary.images} {summary.images === 1 ? 'image' : 'images'}
-				</span>
-			{/if}
-		</div>
-
-		<!-- Full change list -->
-		<div class="space-y-3">
-			{#each $changesList as change}
-				{@const badge = getOperationBadge(change.operation)}
-				<div class="rounded-lg border p-4">
-					<!-- Change header -->
-					<div class="flex items-start justify-between gap-2">
-						<div class="min-w-0 flex-1">
-							<div class="flex items-center gap-2">
-								<span class="rounded px-1.5 py-0.5 text-xs font-medium {badge.bg} {badge.text}">
-									{badge.label}
-								</span>
-								<span class="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
-									{change.entity.type}
-								</span>
-								<span class="text-xs text-muted-foreground">
-									{formatTimestamp(change.timestamp)}
-								</span>
-							</div>
-							<p class="mt-1 text-sm font-medium">{change.description}</p>
-							<p class="text-xs text-muted-foreground">{change.entity.path}</p>
+	<!-- Full change list -->
+	<div class="space-y-3">
+		{#each $changesList as change}
+			{@const badge = getOperationBadge(change.operation)}
+			<div class="rounded-lg border p-4">
+				<!-- Change header -->
+				<div class="flex items-start justify-between gap-2">
+					<div class="min-w-0 flex-1">
+						<div class="flex items-center gap-2">
+							<span class="rounded px-1.5 py-0.5 text-xs font-medium {badge.bg} {badge.text}">
+								{badge.label}
+							</span>
+							<span class="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
+								{change.entity.type}
+							</span>
+							<span class="text-xs text-muted-foreground">
+								{formatTimestamp(change.timestamp)}
+							</span>
 						</div>
+						<p class="mt-1 text-sm font-medium">{change.description}</p>
+						<p class="text-xs text-muted-foreground">{change.entity.path}</p>
 					</div>
-
-					<!-- Property changes (always visible in modal) -->
-					{#if change.propertyChanges && change.propertyChanges.length > 0}
-						<div class="mt-3 space-y-2 rounded border bg-muted/50 p-3 text-xs">
-							{#each change.propertyChanges as propChange}
-								<div>
-									<span class="font-medium">{propChange.property}</span>
-									{#if propChange.oldValue === undefined}
-										<span class="ml-1 text-green-600 dark:text-green-400">added</span>
-										<pre class="mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
-									{:else if propChange.newValue === undefined}
-										<span class="ml-1 text-destructive">removed</span>
-										<pre class="mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
-									{:else}
-										<div class="mt-1 grid gap-1">
-											<pre class="overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
-											<pre class="overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
-										</div>
-									{/if}
-								</div>
-							{/each}
-						</div>
-					{/if}
 				</div>
-			{/each}
-		</div>
-		{/if}
 
-		<!-- Export section -->
+				<!-- Property changes (always visible in modal) -->
+				{#if change.propertyChanges && change.propertyChanges.length > 0}
+					<div class="mt-3 space-y-2 rounded border bg-muted/50 p-3 text-xs">
+						{#each change.propertyChanges as propChange}
+							<div>
+								<span class="font-medium">{propChange.property}</span>
+								{#if propChange.oldValue === undefined}
+									<span class="ml-1 text-green-600 dark:text-green-400">added</span>
+									<pre class="mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
+								{:else if propChange.newValue === undefined}
+									<span class="ml-1 text-destructive">removed</span>
+									<pre class="mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
+								{:else}
+									<div class="mt-1 grid gap-1">
+										<pre class="overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
+										<pre class="overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
+									</div>
+								{/if}
+							</div>
+						{/each}
+					</div>
+				{/if}
+			</div>
+		{/each}
+	</div>
+	{/if}
+
+	<!-- Save to Disk section (local mode) -->
+	{#if $isLocalMode}
 		<div class="mt-6 border-t pt-4">
-			<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Export</h4>
-			<Button onclick={exportChanges} variant="secondary" size="sm">
-				<svg xmlns="http://www.w3.org/2000/svg" class="mr-1.5 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-					<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-				</svg>
-				Download JSON
-			</Button>
+			<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Save to Disk</h4>
+			{#if saveResult?.success}
+				<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
+					<p>{saveResult.message}</p>
+				</div>
+			{:else}
+				<p class="mb-3 text-sm text-muted-foreground">
+					Write all pending changes to the local data files. This will run validation and formatting automatically.
+				</p>
+				<Button onclick={saveToDisk} variant="primary" size="md" class="w-full" disabled={savingToDisk}>
+					{#if savingToDisk}
+						<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+							<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+							<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+						</svg>
+						Saving to Disk...
+					{:else}
+						Save to Disk
+					{/if}
+				</Button>
+				{#if saveResult && !saveResult.success}
+					<div class="mt-3 rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+						<p>{saveResult.message}</p>
+					</div>
+				{/if}
+			{/if}
 		</div>
+	{/if}
 
-		<!-- GitHub section -->
+	<!-- Export section -->
+	<div class="mt-6 border-t pt-4">
+		<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Export</h4>
+		<Button onclick={exportChanges} variant="secondary" size="sm">
+			<svg xmlns="http://www.w3.org/2000/svg" class="mr-1.5 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+				<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+			</svg>
+			Download JSON
+		</Button>
+	</div>
+
+	<!-- GitHub section (cloud mode only) -->
+	{#if $isCloudMode}
 		<div class="mt-6 border-t pt-4">
 			<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">GitHub</h4>
 
@@ -558,5 +656,5 @@
 				</Button>
 			{/if}
 		</div>
-	</Modal>
-{/if}
+	{/if}
+</Modal>

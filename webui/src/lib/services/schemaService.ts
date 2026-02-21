@@ -194,7 +194,7 @@ export const ENTITY_ROUTES = {
 	filament: 'filament',
 	variant: 'variant',
 	store: 'store',
-	materialTypes: 'material_types_schema.json'
+	materialTypes: 'material_types'
 } as const;
 
 export type SchemaName = keyof typeof SCHEMA_NAMES;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { isCloudMode, apiBaseUrl } from '$lib/stores/environment';
+	import { useChangeTracking, isCloudMode, apiBaseUrl } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
 
 	interface Props {
@@ -28,7 +28,8 @@
 			return src;
 		}
 
-		if ($isCloudMode) {
+		// Check localStorage for staged image changes (both modes)
+		if ($useChangeTracking) {
 			// First, check if src is an image ID referencing stored base64 in change store
 			// Subscribe to changeStore to make this reactive
 			const imageRef = $changeStore.images[src];
@@ -59,20 +60,26 @@
 					}
 				}
 			}
+		}
 
-			// In cloud mode, logos are served from the cloud API
-			// The src contains the logo_slug (e.g., "3d_prima_basic_logo_png_b73af01c.png")
-			// Format: /api/brands/logo/{logo_slug} or /api/stores/logo/{logo_slug}
+		// URL format depends on the data source, not change tracking
+		if ($isCloudMode) {
+			// Cloud: logos served via logo_slug
 			return `${$apiBaseUrl}/api/${type}s/logo/${src}`;
 		} else {
-			// In local mode, use local API endpoint
-			// ID should be the slug/directory name
+			// Local: logos served from entity directory
 			return `/api/${type}s/${id}/logo/${src}`;
 		}
 	});
 
 	// Handle image load errors (logo not available in cloud mode)
 	let imageError = $state(false);
+
+	// Reset error state when logoUrl changes (e.g., change store hydrates with correct data URL)
+	$effect(() => {
+		logoUrl; // track
+		imageError = false;
+	});
 
 	function handleError() {
 		imageError = true;

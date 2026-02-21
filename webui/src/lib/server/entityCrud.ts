@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 import { promises as fs } from 'fs';
 import path from 'path';
 import type { EntityConfig } from './entityConfig';
-import { ENTITY_CONFIGS, normalizeBrandId } from './entityConfig';
+import { ENTITY_CONFIGS, normalizeBrandId, normalizeMaterialType } from './entityConfig';
 
 // === Shared utilities ===
 
@@ -62,6 +62,8 @@ async function resolveParentDir(
 		let segment = params[paramName];
 		if (paramName === 'brandId') {
 			segment = await normalizeBrandId(config.baseDir, segment);
+		} else if (paramName === 'materialType') {
+			segment = await normalizeMaterialType(dir, segment);
 		}
 		dir = path.join(dir, segment);
 	}
@@ -91,6 +93,28 @@ function capitalize(s: string): string {
 	return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+/**
+ * Read supplementary JSON files and merge them into entity data.
+ */
+async function mergeSupplementaryFiles(
+	data: Record<string, unknown>,
+	entityDir: string,
+	config: EntityConfig
+): Promise<Record<string, unknown>> {
+	if (!config.supplementaryFiles) return data;
+
+	const result = { ...data };
+	for (const [field, filename] of Object.entries(config.supplementaryFiles)) {
+		try {
+			const content = await fs.readFile(path.join(entityDir, filename), 'utf-8');
+			result[field] = JSON.parse(content);
+		} catch {
+			// File doesn't exist or is invalid — skip silently
+		}
+	}
+	return result;
+}
+
 // === Handler factories ===
 
 /**
@@ -106,10 +130,12 @@ export function createListHandler(config: EntityConfig) {
 				entries
 					.filter((entry) => entry.isDirectory())
 					.map(async (entry) => {
-						const filePath = path.join(parentDir, entry.name, config.jsonFilename);
+						const entityDir = path.join(parentDir, entry.name);
+						const filePath = path.join(entityDir, config.jsonFilename);
 						try {
 							const content = await fs.readFile(filePath, 'utf-8');
-							const data = JSON.parse(content);
+							let data = JSON.parse(content);
+							data = await mergeSupplementaryFiles(data, entityDir, config);
 							return augmentData(data, config, entry.name, params);
 						} catch {
 							return null;
@@ -134,7 +160,8 @@ export function createGetHandler(config: EntityConfig) {
 			const entityDir = await resolveEntityDir(config, params);
 			const filePath = path.join(entityDir, config.jsonFilename);
 			const content = await fs.readFile(filePath, 'utf-8');
-			const data = JSON.parse(content);
+			let data = JSON.parse(content);
+			data = await mergeSupplementaryFiles(data, entityDir, config);
 			const dirName = path.basename(entityDir);
 			return json(augmentData(data, config, dirName, params));
 		} catch (error) {

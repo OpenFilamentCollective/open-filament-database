@@ -25,7 +25,7 @@ import {
 	hasDescendantChanges as treeHasDescendantChanges,
 	getDirectChildren
 } from '$lib/utils/changeTreeOps';
-import { isCloudMode } from './environment';
+import { useChangeTracking } from './environment';
 
 const STORAGE_KEY_CHANGES = 'ofd_pending_changes';
 const STORAGE_KEY_IMAGES_PREFIX = 'ofd_image_';
@@ -199,7 +199,7 @@ function createChangeStore() {
 		 * Track a new entity creation
 		 */
 		trackCreate(entity: EntityIdentifier, data: any) {
-			if (!get(isCloudMode)) return;
+			if (!get(useChangeTracking)) return;
 
 			const ep = parsePath(entity.path);
 			if (!ep) return;
@@ -222,7 +222,7 @@ function createChangeStore() {
 		 * Track an entity update
 		 */
 		trackUpdate(entity: EntityIdentifier, oldData: any, newData: any) {
-			if (!get(isCloudMode)) return;
+			if (!get(useChangeTracking)) return;
 
 			const ep = parsePath(entity.path);
 			if (!ep) return;
@@ -278,7 +278,7 @@ function createChangeStore() {
 		 * Track an entity deletion
 		 */
 		trackDelete(entity: EntityIdentifier, data?: any) {
-			if (!get(isCloudMode)) return;
+			if (!get(useChangeTracking)) return;
 
 			const ep = parsePath(entity.path);
 			if (!ep) return;
@@ -326,7 +326,7 @@ function createChangeStore() {
 			mimeType: string,
 			base64Data: string
 		) {
-			if (!get(isCloudMode)) return;
+			if (!get(useChangeTracking)) return;
 
 			const storageKey = `${STORAGE_KEY_IMAGES_PREFIX}${imageId}`;
 
@@ -403,7 +403,7 @@ function createChangeStore() {
 		 * Returns the new path
 		 */
 		moveChange(oldPath: string, newPath: string, newEntity: EntityIdentifier): string {
-			if (!get(isCloudMode)) return newPath;
+			if (!get(useChangeTracking)) return newPath;
 			if (oldPath === newPath) return newPath;
 
 			const oldEp = parsePath(oldPath);

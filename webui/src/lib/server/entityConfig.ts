@@ -55,6 +55,12 @@ export interface EntityConfig {
 
 	/** Optional validation for PUT requests */
 	validatePut?: (params: Record<string, string>, data: Record<string, unknown>) => { error: string; status: number } | null;
+
+	/**
+	 * Extra JSON files to merge into the entity data when reading.
+	 * Maps a field name to the filename (e.g., { sizes: 'sizes.json' }).
+	 */
+	supplementaryFiles?: Record<string, string>;
 }
 
 // === Shared constants ===
@@ -73,6 +79,18 @@ export async function normalizeBrandId(baseDir: string, brandId: string): Promis
 		const normalized = brandId.replace(/-/g, '_');
 		await fs.access(path.join(baseDir, normalized));
 		return normalized;
+	}
+}
+
+export async function normalizeMaterialType(parentDir: string, materialType: string): Promise<string> {
+	try {
+		await fs.access(path.join(parentDir, materialType));
+		return materialType;
+	} catch {
+		// Material directories are typically uppercase (ABS, PLA, PETG)
+		const upper = materialType.toUpperCase();
+		await fs.access(path.join(parentDir, upper));
+		return upper;
 	}
 }
 
@@ -139,7 +157,8 @@ export const ENTITY_CONFIGS: Record<string, EntityConfig> = {
 		slugOverrideField: 'materialType',
 		writeSlugToFile: false,
 		createExtraFields: {},
-		readDefaults: {}
+		readDefaults: {},
+		normalizeId: normalizeMaterialType
 	},
 
 	filament: {
@@ -167,6 +186,7 @@ export const ENTITY_CONFIGS: Record<string, EntityConfig> = {
 		slugTransform: 'lowercase',
 		slugSourceField: 'name',
 		createExtraFields: { filament_id: 'filamentId' },
-		readDefaults: { discontinued: false }
+		readDefaults: { discontinued: false },
+		supplementaryFiles: { sizes: 'sizes.json' }
 	}
 };

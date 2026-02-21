@@ -5,8 +5,6 @@
  * Supports both 'brand' and 'store' entity types.
  */
 
-import { get } from 'svelte/store';
-import { isCloudMode } from '$lib/stores/environment';
 import { changeStore } from '$lib/stores/changes';
 
 /**
@@ -58,99 +56,33 @@ export function extractBase64(dataUrl: string): string {
 }
 
 /**
- * Save a logo image to the server or change store
+ * Store a logo image in the change store (written to disk on save)
  * @param entityId - ID of the entity (brand or store)
  * @param dataUrl - Base64 encoded image data URL
  * @param type - Entity type ('brand' or 'store')
- * @returns The path to the saved logo, or null if failed
+ * @returns The image ID for referencing in entity data, or null if failed
  */
 export async function saveLogoImage(
 	entityId: string,
 	dataUrl: string,
 	type: 'store' | 'brand'
 ): Promise<string | null> {
-	// In cloud mode, store the image in the change store
-	if (get(isCloudMode)) {
-		try {
-			const filename = getLogoFilename(dataUrl);
-			const mimeType = getMimeType(dataUrl);
-			const base64Data = extractBase64(dataUrl);
-			const entityPath = `${type}s/${entityId}`;
-
-			// Create a unique image ID
-			const imageId = `${type}_${entityId}_logo_${Date.now()}`;
-
-			// Store the image in the change store
-			changeStore.storeImage(imageId, entityPath, 'logo', filename, mimeType, base64Data);
-
-			// Return the image ID so it can be referenced
-			return imageId;
-		} catch (e) {
-			console.error('Error storing logo in change store:', e);
-			return null;
-		}
-	}
-
-	// In local mode, save to the server
 	try {
-		const endpoint = type === 'brand' ? '/api/brands/logo' : '/api/stores/logo';
-		const idField = type === 'brand' ? 'brandId' : 'storeId';
+		const filename = getLogoFilename(dataUrl);
+		const mimeType = getMimeType(dataUrl);
+		const base64Data = extractBase64(dataUrl);
+		const entityPath = `${type}s/${entityId}`;
 
-		const response = await fetch(endpoint, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				[idField]: entityId,
-				imageData: dataUrl,
-				type
-			})
-		});
+		// Create a unique image ID
+		const imageId = `${type}_${entityId}_logo_${Date.now()}`;
 
-		if (!response.ok) {
-			throw new Error('Failed to save logo');
-		}
+		// Store the image in the change store (written to disk on save)
+		changeStore.storeImage(imageId, entityPath, 'logo', filename, mimeType, base64Data);
 
-		const result = await response.json();
-		return result.path;
+		// Return the image ID so it can be referenced
+		return imageId;
 	} catch (e) {
-		console.error('Error saving logo:', e);
+		console.error('Error storing logo in change store:', e);
 		return null;
-	}
-}
-
-/**
- * Delete a logo image from the server
- * @param entityId - ID of the entity (brand or store)
- * @param logoFilename - Filename of the logo to delete
- * @param type - Entity type ('brand' or 'store')
- */
-export async function deleteLogoImage(
-	entityId: string,
-	logoFilename: string,
-	type: 'store' | 'brand'
-): Promise<void> {
-	try {
-		const endpoint = type === 'brand' ? '/api/brands/logo' : '/api/stores/logo';
-		const idField = type === 'brand' ? 'brandId' : 'storeId';
-
-		const response = await fetch(endpoint, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				[idField]: entityId,
-				logoFilename,
-				type
-			})
-		});
-
-		if (!response.ok) {
-			console.warn('Failed to delete old logo:', logoFilename);
-		}
-	} catch (e) {
-		console.warn('Error deleting old logo:', e);
 	}
 }

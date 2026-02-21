@@ -140,6 +140,16 @@ export const POST: RequestHandler = async ({ request }) => {
 			}
 		}
 
+		// Build image ID → filename map so we can resolve image IDs in entity data
+		const imageIdToFilename: Record<string, string> = {};
+		if (images && typeof images === 'object') {
+			for (const [imageId, imageData] of Object.entries(images) as [string, any][]) {
+				if (imageData.filename) {
+					imageIdToFilename[imageId] = imageData.filename;
+				}
+			}
+		}
+
 		// Handle creates and updates
 		for (const change of writesAndCreates) {
 			const fsPath = entityPathToFsPath(change.entity.path);
@@ -151,6 +161,12 @@ export const POST: RequestHandler = async ({ request }) => {
 			try {
 				// Ensure parent directory exists
 				await fs.mkdir(path.dirname(fsPath), { recursive: true });
+
+				// Replace image IDs with actual filenames in the entity data
+				// (e.g., logo field may contain an image ID like "brand_foo_logo_123")
+				if (change.data.logo && imageIdToFilename[change.data.logo]) {
+					change.data.logo = imageIdToFilename[change.data.logo];
+				}
 
 				// Clean and write the data
 				const cleanData = cleanEntityData(change.data);

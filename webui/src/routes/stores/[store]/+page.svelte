@@ -11,8 +11,8 @@
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
-	import { saveLogoImage, deleteLogoImage } from '$lib/utils/logoManagement';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { saveLogoImage } from '$lib/utils/logoManagement';
+	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 
 	let storeId: string = $derived($page.params.store!);
@@ -39,7 +39,7 @@
 			if (!storeData) {
 				const storePath = `stores/${storeId}`;
 				const change = $changes.get(storePath);
-				if ($isCloudMode && change?.operation === 'delete') {
+				if ($useChangeTracking && change?.operation === 'delete') {
 					error = 'This store has been deleted in your local changes. Export your changes to finalize the deletion.';
 				} else {
 					error = 'Store not found';
@@ -67,9 +67,6 @@
 		try {
 			let logoFilename = store.logo;
 			if (entityState.logoChanged && entityState.logoDataUrl) {
-				if (store.logo) {
-					await deleteLogoImage(store.id, store.logo, 'store');
-				}
 				const savedPath = await saveLogoImage(store.id, entityState.logoDataUrl, 'store');
 				if (!savedPath) {
 					messageHandler.showError('Failed to save logo');
@@ -148,7 +145,7 @@
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{storeData.name}</h1>
 					<p class="text-muted-foreground">ID: {storeData.slug || storeData.id}</p>
-					{#if $isCloudMode && !entityState.isLocalCreate && storeData.slug && storeData.slug !== storeData.id}
+					{#if $useChangeTracking && !entityState.isLocalCreate && storeData.slug && storeData.slug !== storeData.id}
 						<p class="text-muted-foreground">UUID: {storeData.id}</p>
 					{/if}
 				</div>

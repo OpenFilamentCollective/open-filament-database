@@ -173,9 +173,8 @@
 							/>
 						</svg>
 					</Button>
-				{:else}
-					<ChangesMenu />
 				{/if}
+				<ChangesMenu />
 			</div>
 		</div>
 	</header>

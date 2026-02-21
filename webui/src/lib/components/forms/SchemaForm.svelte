@@ -118,7 +118,16 @@
 		enumLoading[key] = true;
 		try {
 			const baseUrl = get(apiBaseUrl);
-			const fullUrl = url.startsWith('http') ? url : `${baseUrl}${url}`;
+			let fullUrl: string;
+			if (url.startsWith('http')) {
+				fullUrl = url;
+			} else if (baseUrl) {
+				// Cloud mode: use full schema filename
+				fullUrl = `${baseUrl}${url}`;
+			} else {
+				// Local mode: strip _schema.json suffix to match local API routes
+				fullUrl = url.replace(/_schema\.json$/, '');
+			}
 			const values = await fetchEnumValues(fullUrl, path);
 			dynamicEnums[key] = values;
 		} finally {

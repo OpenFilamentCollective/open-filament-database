@@ -10,7 +10,7 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { generateSlug } from '$lib/services/entityService';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { BackButton } from '$lib/components';
@@ -22,7 +22,7 @@
 
 	let displayBrands = $derived.by(() => withDeletedStubs({
 		changes: $changes,
-		isCloudMode: $isCloudMode,
+		useChangeTracking: $useChangeTracking,
 		rootNamespace: 'brands',
 		items: brands,
 		getKeys: (b) => [b.id, b.slug],
@@ -166,7 +166,7 @@
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each brandsList as brand}
 					{@const brandPath = `brands/${brand.id}`}
-					{@const changeProps = getChildChangeProps($changes, $isCloudMode, brandPath)}
+					{@const changeProps = getChildChangeProps($changes, $useChangeTracking, brandPath)}
 					<EntityCard
 						entity={brand}
 						href="/brands/{brand.slug ?? brand.id}"

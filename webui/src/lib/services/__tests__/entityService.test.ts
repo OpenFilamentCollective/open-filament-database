@@ -9,13 +9,24 @@ import {
 	mergeEntityData
 } from '../entityService';
 
-// Mock the stores
+// Mock the stores - helper to build _index Map from changes object
+function buildIndex(changes: Record<string, { operation: string; data?: any }>) {
+	const map = new Map<string, { change: { operation: string; data?: any } }>();
+	for (const [path, change] of Object.entries(changes)) {
+		map.set(path, { change });
+	}
+	return map;
+}
+
 const mockChangeStore = {
 	changes: {} as Record<string, { operation: string; data?: any }>,
+	get _index() {
+		return buildIndex(this.changes);
+	},
 	removeChange: vi.fn()
 };
 
-const mockIsCloudMode = writable(false);
+const mockUseChangeTracking = writable(false);
 
 vi.mock('$lib/stores/changes', () => ({
 	changeStore: {
@@ -28,14 +39,14 @@ vi.mock('$lib/stores/changes', () => ({
 }));
 
 vi.mock('$lib/stores/environment', () => ({
-	isCloudMode: {
+	useChangeTracking: {
 		subscribe: (fn: (value: boolean) => void) => {
 			let value = false;
-			mockIsCloudMode.subscribe((v) => {
+			mockUseChangeTracking.subscribe((v) => {
 				value = v;
 			});
 			fn(value);
-			return mockIsCloudMode.subscribe(fn);
+			return mockUseChangeTracking.subscribe(fn);
 		}
 	}
 }));
@@ -44,7 +55,7 @@ describe('Entity Service', () => {
 	beforeEach(() => {
 		mockChangeStore.changes = {};
 		mockChangeStore.removeChange.mockClear();
-		mockIsCloudMode.set(false);
+		mockUseChangeTracking.set(false);
 	});
 
 	describe('generateSlug', () => {
@@ -101,35 +112,35 @@ describe('Entity Service', () => {
 
 	describe('hasLocalChanges', () => {
 		it('should return false in local mode', () => {
-			mockIsCloudMode.set(false);
+			mockUseChangeTracking.set(false);
 			mockChangeStore.changes = { 'brands/test': { operation: 'update' } };
 
 			expect(hasLocalChanges('brands/test')).toBe(false);
 		});
 
 		it('should return true for create operation in cloud mode', () => {
-			mockIsCloudMode.set(true);
+			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
 
 			expect(hasLocalChanges('brands/test')).toBe(true);
 		});
 
 		it('should return true for update operation in cloud mode', () => {
-			mockIsCloudMode.set(true);
+			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = { 'brands/test': { operation: 'update' } };
 
 			expect(hasLocalChanges('brands/test')).toBe(true);
 		});
 
 		it('should return false for delete operation', () => {
-			mockIsCloudMode.set(true);
+			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = { 'brands/test': { operation: 'delete' } };
 
 			expect(hasLocalChanges('brands/test')).toBe(false);
 		});
 
 		it('should return false for no changes', () => {
-			mockIsCloudMode.set(true);
+			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = {};
 
 			expect(hasLocalChanges('brands/test')).toBe(false);
@@ -138,21 +149,21 @@ describe('Entity Service', () => {
 
 	describe('isLocallyCreated', () => {
 		it('should return true only for create operation in cloud mode', () => {
-			mockIsCloudMode.set(true);
+			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
 
 			expect(isLocallyCreated('brands/test')).toBe(true);
 		});
 
 		it('should return false for updates', () => {
-			mockIsCloudMode.set(true);
+			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = { 'brands/test': { operation: 'update' } };
 
 			expect(isLocallyCreated('brands/test')).toBe(false);
 		});
 
 		it('should return false in local mode', () => {
-			mockIsCloudMode.set(false);
+			mockUseChangeTracking.set(false);
 			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
 
 			expect(isLocallyCreated('brands/test')).toBe(false);
@@ -162,7 +173,7 @@ describe('Entity Service', () => {
 	describe('deleteEntity', () => {
 		describe('Cloud mode', () => {
 			beforeEach(() => {
-				mockIsCloudMode.set(true);
+				mockUseChangeTracking.set(true);
 			});
 
 			it('should remove local create without API call', async () => {
@@ -200,7 +211,7 @@ describe('Entity Service', () => {
 
 		describe('Local mode', () => {
 			beforeEach(() => {
-				mockIsCloudMode.set(false);
+				mockUseChangeTracking.set(false);
 			});
 
 			it('should call delete function', async () => {

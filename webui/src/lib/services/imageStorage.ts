@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import { isCloudMode } from '$lib/stores/environment';
+import { useChangeTracking } from '$lib/stores/environment';
 import { changeStore } from '$lib/stores/changes';
 
 /**
@@ -50,7 +50,7 @@ export class ImageStorageService {
 	 * @returns The image ID to reference in the entity data
 	 */
 	async storeImage(entityPath: string, property: string, file: File): Promise<string> {
-		if (!get(isCloudMode)) {
+		if (!get(useChangeTracking)) {
 			throw new Error('Image storage is only available in cloud mode');
 		}
 
@@ -108,7 +108,7 @@ export class ImageStorageService {
 		dataUrl: string,
 		filename: string = 'image.png'
 	): string {
-		if (!get(isCloudMode)) {
+		if (!get(useChangeTracking)) {
 			throw new Error('Image storage is only available in cloud mode');
 		}
 

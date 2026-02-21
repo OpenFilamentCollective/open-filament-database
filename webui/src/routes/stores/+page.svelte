@@ -10,7 +10,7 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { generateSlug } from '$lib/services/entityService';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { BackButton } from '$lib/components';
@@ -22,7 +22,7 @@
 
 	let displayStores = $derived.by(() => withDeletedStubs({
 		changes: $changes,
-		isCloudMode: $isCloudMode,
+		useChangeTracking: $useChangeTracking,
 		rootNamespace: 'stores',
 		items: stores,
 		getKeys: (s) => [s.id, s.slug],
@@ -88,6 +88,14 @@
 
 		try {
 			const slug = generateSlug(data.name);
+
+			// Check for duplicate store
+			const duplicate = stores.find((s) => (s.slug ?? s.id).toLowerCase() === slug.toLowerCase());
+			if (duplicate) {
+				messageHandler.showError(`Store "${data.name}" already exists`);
+				entityState.creating = false;
+				return;
+			}
 
 			let logoFilename = '';
 			if (entityState.logoChanged && entityState.logoDataUrl) {
@@ -156,7 +164,7 @@
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each storesList as store}
 					{@const storePath = `stores/${store.id}`}
-					{@const changeProps = getChildChangeProps($changes, $isCloudMode, storePath)}
+					{@const changeProps = getChildChangeProps($changes, $useChangeTracking, storePath)}
 					<EntityCard
 						entity={store}
 						href="/stores/{store.slug ?? store.id}"

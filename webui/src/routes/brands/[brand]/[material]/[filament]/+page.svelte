@@ -10,7 +10,7 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 
@@ -25,7 +25,7 @@
 
 	let displayVariants = $derived.by(() => withDeletedStubs({
 		changes: $changes,
-		isCloudMode: $isCloudMode,
+		useChangeTracking: $useChangeTracking,
 		parentPath: `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`,
 		namespace: 'variants',
 		items: variants,
@@ -68,7 +68,7 @@
 				if (!filamentData) {
 					const filamentPath = `brands/${params.brandId}/materials/${params.materialType}/filaments/${params.filamentId}`;
 					const change = $changes.get(filamentPath);
-					if ($isCloudMode && change?.operation === 'delete') {
+					if ($useChangeTracking && change?.operation === 'delete') {
 						error = 'This filament has been deleted in your local changes. Export your changes to finalize the deletion.';
 					} else {
 						error = 'Filament not found';
@@ -167,6 +167,15 @@
 		messageHandler.clear();
 
 		try {
+			// Check for duplicate variant
+			const variantSlug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+			const duplicate = variants.find((v) => (v.slug ?? v.id).toLowerCase() === variantSlug);
+			if (duplicate) {
+				messageHandler.showError(`Variant "${data.name}" already exists in this filament`);
+				entityState.creating = false;
+				return;
+			}
+
 			const result = await db.createVariant(brandId, materialType, filamentId, data);
 
 			if (result.success && result.variantSlug) {
@@ -215,7 +224,7 @@
 					{/if}
 				</div>
 				<p class="text-muted-foreground">ID: {filamentData.slug || filamentData.id}</p>
-				{#if $isCloudMode && !entityState.isLocalCreate && filamentData.slug && filamentData.slug !== filamentData.id}
+				{#if $useChangeTracking && !entityState.isLocalCreate && filamentData.slug && filamentData.slug !== filamentData.id}
 					<p class="text-muted-foreground">UUID: {filamentData.id}</p>
 				{/if}
 			</header>
@@ -311,7 +320,7 @@
 				>
 					{#each displayVariants as variant}
 						{@const variantPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`}
-						{@const changeProps = getChildChangeProps($changes, $isCloudMode, variantPath)}
+						{@const changeProps = getChildChangeProps($changes, $useChangeTracking, variantPath)}
 						{@const sizesCount = variant.sizes?.length ?? 0}
 						{@const sizesInfo = sizesCount > 0 ? `${sizesCount} size${sizesCount !== 1 ? 's' : ''}` : undefined}
 						<EntityCard

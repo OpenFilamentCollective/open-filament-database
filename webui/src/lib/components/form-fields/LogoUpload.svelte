@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isCloudMode, apiBaseUrl } from '$lib/stores/environment';
+	import { useChangeTracking, isCloudMode, apiBaseUrl } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
 	import { Button } from '$lib/components/ui';
 	import {
@@ -78,26 +78,25 @@
 			// Check if currentLogo is already a data URL (base64)
 			if (currentLogo.startsWith('data:')) {
 				previewUrl = currentLogo;
-			} else if ($isCloudMode) {
-				// Check if it's an image ID referencing stored base64 in change store
-				const imageData = changeStore.getImage(currentLogo);
-				if (imageData) {
-					// Get the image reference to access mimeType
-					const imageRef = $changeStore.images[currentLogo];
-					if (imageRef) {
-						previewUrl = `data:${imageRef.mimeType};base64,${imageData}`;
-					} else {
-						// Fallback to API if image reference not found
-						previewUrl = `${$apiBaseUrl}/api/${entityType}s/logo/${currentLogo}`;
-					}
-				} else {
-					// In cloud mode, currentLogo contains the logo_slug
-					// Format: /api/brands/logo/{logo_slug} or /api/stores/logo/{logo_slug}
-					previewUrl = `${$apiBaseUrl}/api/${entityType}s/logo/${currentLogo}`;
-				}
 			} else {
-				// In local mode, use local API endpoint
-				previewUrl = `/api/${entityType}s/${entityId}/logo/${currentLogo}`;
+				// Check localStorage for staged image changes (both modes)
+				if ($useChangeTracking) {
+					const imageData = changeStore.getImage(currentLogo);
+					if (imageData) {
+						const imageRef = $changeStore.images[currentLogo];
+						if (imageRef) {
+							previewUrl = `data:${imageRef.mimeType};base64,${imageData}`;
+							return;
+						}
+					}
+				}
+
+				// URL format depends on the data source, not change tracking
+				if ($isCloudMode) {
+					previewUrl = `${$apiBaseUrl}/api/${entityType}s/logo/${currentLogo}`;
+				} else {
+					previewUrl = `/api/${entityType}s/${entityId}/logo/${currentLogo}`;
+				}
 			}
 		} else {
 			previewUrl = '';

@@ -51,6 +51,12 @@ export const isCloudMode = derived(environment, ($env) => $env === 'cloud');
 export const apiBaseUrl = writable<string>(getApiBaseUrl());
 
 /**
+ * Whether change tracking (localStorage staging) is enabled.
+ * True in both local and cloud modes — decoupled from data source.
+ */
+export const useChangeTracking = derived(environment, () => true);
+
+/**
  * Store for managing pending changes in cloud mode
  */
 interface PendingChanges {

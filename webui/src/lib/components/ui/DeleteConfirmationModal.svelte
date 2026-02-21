@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Modal from './Modal.svelte';
 	import Button from './Button.svelte';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { useChangeTracking } from '$lib/stores/environment';
 
 	interface Props {
 		show: boolean;
@@ -37,7 +37,7 @@
 			<p class="text-muted-foreground text-sm">{cascadeWarning}</p>
 		{/if}
 
-		{#if $isCloudMode}
+		{#if $useChangeTracking}
 			<div class="bg-primary/10 border border-primary/20 rounded p-3">
 				<p class="text-sm text-primary">
 					{#if isLocalCreate}

@@ -12,7 +12,7 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity, generateMaterialType } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 
@@ -21,13 +21,14 @@
 	let material: Material | null = $state(null);
 	let originalMaterial: Material | null = $state(null);
 	let filaments: Filament[] = $state([]);
+	let siblingMaterials: Material[] = $state([]);
 	let materialSchema: any = $state(null);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
 
 	let displayFilaments = $derived.by(() => withDeletedStubs({
 		changes: $changes,
-		isCloudMode: $isCloudMode,
+		useChangeTracking: $useChangeTracking,
 		parentPath: `brands/${brandId}/materials/${materialType}`,
 		namespace: 'filaments',
 		items: filaments,
@@ -47,16 +48,17 @@
 
 	onMount(async () => {
 		try {
-			const [materialData, filamentsData, schema] = await Promise.all([
+			const [materialData, filamentsData, schema, allMaterials] = await Promise.all([
 				db.getMaterial(brandId, materialType),
 				db.loadFilaments(brandId, materialType),
-				fetchEntitySchema('material')
+				fetchEntitySchema('material'),
+				db.loadMaterials(brandId)
 			]);
 
 			if (!materialData) {
 				const materialPath = `brands/${brandId}/materials/${materialType}`;
 				const change = $changes.get(materialPath);
-				if ($isCloudMode && change?.operation === 'delete') {
+				if ($useChangeTracking && change?.operation === 'delete') {
 					error = 'This material has been deleted in your local changes. Export your changes to finalize the deletion.';
 				} else {
 					error = 'Material not found';
@@ -67,6 +69,7 @@
 
 			material = materialData;
 			materialSchema = schema;
+			siblingMaterials = allMaterials;
 			const trueOriginal = db.getOriginalMaterial(brandId, materialType);
 			originalMaterial = trueOriginal ? structuredClone(trueOriginal) : structuredClone(materialData);
 			filaments = filamentsData;
@@ -165,6 +168,15 @@
 		messageHandler.clear();
 
 		try {
+			// Check for duplicate filament
+			const filamentSlug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+			const duplicate = filaments.find((f) => (f.slug ?? f.id).toLowerCase() === filamentSlug);
+			if (duplicate) {
+				messageHandler.showError(`Filament "${data.name}" already exists in this material`);
+				entityState.creating = false;
+				return;
+			}
+
 			const result = await db.createFilament(brandId, materialType, data);
 
 			if (result.success && result.filamentId) {
@@ -248,7 +260,7 @@
 					{#each displayFilaments as filament}
 						{@const filamentHref = `/brands/${brandId}/${materialType}/${filament.slug ?? filament.id}`}
 						{@const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.slug ?? filament.id}`}
-						{@const changeProps = getChildChangeProps($changes, $isCloudMode, filamentPath)}
+						{@const changeProps = getChildChangeProps($changes, $useChangeTracking, filamentPath)}
 						<EntityCard
 							entity={filament}
 							href={filamentHref}
@@ -277,7 +289,13 @@
 	height="3/4"
 >
 	{#if material && materialSchema}
-		<MaterialForm entity={material} schema={materialSchema} onSubmit={handleSubmit} saving={entityState.saving} />
+		<MaterialForm
+			entity={material}
+			schema={materialSchema}
+			config={{ excludeEnumValues: { material: siblingMaterials.filter(m => m.material !== material?.material).map(m => m.material) } }}
+			onSubmit={handleSubmit}
+			saving={entityState.saving}
+		/>
 	{/if}
 </Modal>
 

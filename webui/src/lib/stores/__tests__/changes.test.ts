@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => {
 	let value = true;
 	const subs = new Set<(v: boolean) => void>();
 	return {
-		mockIsCloudMode: {
+		mockUseChangeTracking: {
 			subscribe(fn: (v: boolean) => void) {
 				fn(value);
 				subs.add(fn);
@@ -28,7 +28,7 @@ vi.mock('$app/environment', () => ({
 }));
 
 vi.mock('$lib/stores/environment', () => ({
-	isCloudMode: mocks.mockIsCloudMode
+	useChangeTracking: mocks.mockUseChangeTracking
 }));
 
 // Mock localStorage
@@ -73,7 +73,7 @@ describe('Change Store', () => {
 		localStorageMock.getItem.mockClear();
 		localStorageMock.setItem.mockClear();
 		localStorageMock.removeItem.mockClear();
-		mocks.mockIsCloudMode.set(true);
+		mocks.mockUseChangeTracking.set(true);
 		changeStore.clear();
 	});
 
@@ -110,7 +110,7 @@ describe('Change Store', () => {
 		});
 
 		it('should do nothing in local mode', () => {
-			mocks.mockIsCloudMode.set(false);
+			mocks.mockUseChangeTracking.set(false);
 
 			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const data = { id: 'test', name: 'Test Brand' };
@@ -437,7 +437,7 @@ describe('findChangedProperties (via trackUpdate)', () => {
 	beforeEach(() => {
 		localStorageMock.clear();
 		localStorageMock._setStore({});
-		mocks.mockIsCloudMode.set(true);
+		mocks.mockUseChangeTracking.set(true);
 		changeStore.clear();
 	});
 

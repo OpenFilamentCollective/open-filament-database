@@ -9,7 +9,7 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
-	import { isCloudMode } from '$lib/stores/environment';
+	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { getTraitLabel } from '$lib/config/traitConfig';
 
@@ -57,7 +57,7 @@
 					// Check if this was locally deleted
 					const variantPath = `brands/${params.brandId}/materials/${params.materialType}/filaments/${params.filamentId}/variants/${params.variantSlug}`;
 					const change = $changes.get(variantPath);
-					if ($isCloudMode && change?.operation === 'delete') {
+					if ($useChangeTracking && change?.operation === 'delete') {
 						error = 'This variant has been deleted in your local changes. Export your changes to finalize the deletion.';
 					} else {
 						error = 'Variant not found';
@@ -188,7 +188,7 @@
 					</div>
 				</div>
 				<p class="text-muted-foreground">ID: {variantData.slug || variantData.id}</p>
-				{#if $isCloudMode && !entityState.isLocalCreate && variantData.slug && variantData.slug !== variantData.id}
+				{#if $useChangeTracking && !entityState.isLocalCreate && variantData.slug && variantData.slug !== variantData.id}
 					<p class="text-muted-foreground">UUID: {variantData.id}</p>
 				{/if}
 			</header>
