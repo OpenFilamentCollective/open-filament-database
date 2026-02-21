@@ -1,0 +1,14 @@
+{
+  "id": "refre",
+  "name": "refre",
+  "color_hex": "#FEF435",
+  "discontinued": false,
+  "sizes": [
+    {
+      "diameter": 1.75,
+      "discontinued": false,
+      "filament_weight": 10000,
+      "spool_refill": false
+    }
+  ]
+}
