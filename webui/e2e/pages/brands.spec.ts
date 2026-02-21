@@ -13,12 +13,12 @@ test.describe('Brands Page', () => {
 		// Wait for content to load
 		await page.waitForLoadState('networkidle');
 
-		// Check for brand cards or empty state
-		const brandCards = page.locator('[data-testid="brand-card"], .brand-card, article, .card');
+		// Brand cards are <a> links to individual brand pages
+		const brandCards = page.locator('a[href^="/brands/"]');
 		const emptyState = page.getByText(/no brands|empty/i);
 
 		const hasBrands = (await brandCards.count()) > 0;
-		const hasEmptyState = await emptyState.isVisible();
+		const hasEmptyState = await emptyState.isVisible().catch(() => false);
 
 		expect(hasBrands || hasEmptyState).toBe(true);
 	});

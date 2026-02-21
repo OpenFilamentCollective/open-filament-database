@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import type { Variant, Store } from '$lib/types/database';
 	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { VariantForm } from '$lib/components/forms';
@@ -7,7 +8,7 @@
 	import { DataDisplay } from '$lib/components/layout';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
+	import { deleteEntity } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
@@ -84,20 +85,19 @@
 		messageHandler.clear();
 
 		try {
-			// For locally created variants, regenerate id/slug from name
-			const newSlug = entityState.isLocalCreate ? generateSlug(data.name) : (variant.slug || variant.id);
+			const existingSlug = variant.slug || variant.id;
 			const updatedVariant = {
 				...variant,
 				...data,
-				id: newSlug,
-				slug: newSlug
+				id: existingSlug,
+				slug: existingSlug
 			} as Variant;
 
 			const success = await db.saveVariant(
 				brandId,
 				materialType,
 				filamentId,
-				newSlug,
+				existingSlug,
 				updatedVariant,
 				originalVariant ?? variant
 			);
@@ -106,13 +106,6 @@
 				variant = updatedVariant;
 				messageHandler.showSuccess('Variant saved successfully!');
 				entityState.closeEdit();
-
-				// If variant slug changed, redirect to new URL
-				if (newSlug !== variantSlug) {
-					setTimeout(() => {
-						window.location.href = `/brands/${brandId}/${materialType}/${filamentId}/${newSlug}`;
-					}, 500);
-				}
 			} else {
 				messageHandler.showError('Failed to save variant');
 			}
@@ -140,7 +133,7 @@
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
 				setTimeout(() => {
-					window.location.href = `/brands/${brandId}/${materialType}/${filamentId}`;
+					goto(`/brands/${brandId}/${materialType}/${filamentId}`);
 				}, 1500);
 			} else {
 				messageHandler.showError(result.message);

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import type { Brand } from '$lib/types/database';
 	import { db } from '$lib/services/database';
 	import { Modal, MessageBanner, Button, LoadingSpinner } from '$lib/components/ui';
@@ -123,9 +124,7 @@
 				messageHandler.showSuccess('Brand created successfully!');
 				entityState.closeCreate();
 				entityState.resetLogo();
-				setTimeout(() => {
-					window.location.href = `/brands/${slug}`;
-				}, 500);
+				goto(`/brands/${slug}`);
 			} else {
 				createError = 'Failed to create brand';
 			}

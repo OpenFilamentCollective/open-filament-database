@@ -5,6 +5,7 @@
  * that create child entities (brand→material, material→filament, filament→variant).
  */
 
+import { goto } from '$app/navigation';
 import type { createEntityState } from '$lib/utils/entityState.svelte';
 import type { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 
@@ -64,9 +65,7 @@ export function createChildCreateHandler(config: ChildCreateConfig): (data: any)
 			if (result.success && result[config.resultIdKey]) {
 				config.messageHandler.showSuccess(`${config.childLabel} created successfully!`);
 				config.entityState.closeCreate();
-				setTimeout(() => {
-					window.location.href = config.getRedirectPath(result[config.resultIdKey]);
-				}, redirectDelay);
+				goto(config.getRedirectPath(result[config.resultIdKey]));
 			} else {
 				config.messageHandler.showError(`Failed to create ${config.childLabel.toLowerCase()}`);
 			}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import type { Store } from '$lib/types/database';
 	import { db } from '$lib/services/database';
 	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
@@ -29,33 +29,41 @@
 		getEntity: () => store
 	});
 
-	onMount(async () => {
-		try {
-			const [storeData, schemaData] = await Promise.all([
-				db.getStore(storeId),
-				fetch('/api/schemas/store').then((r) => r.json())
-			]);
+	$effect(() => {
+		const id = storeId;
 
-			if (!storeData) {
-				const storePath = `stores/${storeId}`;
-				const change = $changes.get(storePath);
-				if ($useChangeTracking && change?.operation === 'delete') {
-					error = 'This store has been deleted in your local changes. Export your changes to finalize the deletion.';
-				} else {
-					error = 'Store not found';
+		loading = true;
+		error = null;
+		entityState.showEditModal = false;
+
+		(async () => {
+			try {
+				const [storeData, schemaData] = await Promise.all([
+					db.getStore(id),
+					fetch('/api/schemas/store').then((r) => r.json())
+				]);
+
+				if (!storeData) {
+					const storePath = `stores/${id}`;
+					const change = $changes.get(storePath);
+					if ($useChangeTracking && change?.operation === 'delete') {
+						error = 'This store has been deleted in your local changes. Export your changes to finalize the deletion.';
+					} else {
+						error = 'Store not found';
+					}
+					loading = false;
+					return;
 				}
-				loading = false;
-				return;
-			}
 
-			store = storeData;
-			originalStore = structuredClone(storeData);
-			schema = schemaData;
-		} catch (e) {
-			error = e instanceof Error ? e.message : 'Failed to load store';
-		} finally {
-			loading = false;
-		}
+				store = storeData;
+				originalStore = structuredClone(storeData);
+				schema = schemaData;
+			} catch (e) {
+				error = e instanceof Error ? e.message : 'Failed to load store';
+			} finally {
+				loading = false;
+			}
+		})();
 	});
 
 	async function handleSubmit(data: any) {
@@ -88,9 +96,6 @@
 				entityState.resetLogo();
 				messageHandler.showSuccess('Store saved successfully!');
 				entityState.closeEdit();
-				setTimeout(() => {
-					window.location.reload();
-				}, 500);
 			} else {
 				messageHandler.showError('Failed to save store');
 			}
@@ -116,7 +121,7 @@
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
 				setTimeout(() => {
-					window.location.href = '/stores';
+					goto('/stores');
 				}, 1500);
 			} else {
 				messageHandler.showError(result.message);

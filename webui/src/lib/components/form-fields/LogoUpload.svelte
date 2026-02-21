@@ -135,30 +135,10 @@
 				return;
 			}
 
-			// If square and in range, process immediately
-			if (validation.isSquare && !validation.needsResize) {
-				previewUrl = dataUrl;
-				onLogoChange(dataUrl);
-				processing = false;
-				return;
-			}
-
-			// If square but needs resizing
-			if (validation.isSquare && validation.needsResize) {
-				const processed = await resizeImage(dataUrl);
-				previewUrl = processed.dataUrl;
-				onLogoChange(processed.dataUrl);
-				processing = false;
-				return;
-			}
-
-			// If not square, show crop modal
-			if (validation.needsCrop) {
-				showCropModal = true;
-				processing = false;
-				// Initialize crop area
-				setTimeout(() => initializeCrop(), 100);
-			}
+			// Always show crop modal for raster images
+			showCropModal = true;
+			processing = false;
+			setTimeout(() => initializeCrop(), 100);
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to process image';
 			processing = false;
@@ -661,7 +641,7 @@
 			</Button>
 
 			<p class="text-xs text-muted-foreground mt-2">
-				Image must be square, between 100x100 and 400x400 pixels. Non-square images will be cropped.
+				Square image, 100x100 to 400x400 pixels. You can crop and resize any uploaded image.
 			</p>
 
 			{#if error}

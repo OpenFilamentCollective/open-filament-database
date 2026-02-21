@@ -4,7 +4,8 @@
 	import { authStore, isAuthenticated, currentUser } from '$lib/stores/auth';
 	import type { EntityChange } from '$lib/types/changes';
 	import type { Store } from '$lib/types/database';
-	import { Button, Modal } from '$lib/components/ui';
+	import { Button, Modal, LoadingSpinner } from '$lib/components/ui';
+	import { TwoColumnLayout } from '$lib/components/form-fields';
 	import { db } from '$lib/services/database';
 	import { onMount } from 'svelte';
 
@@ -22,6 +23,16 @@
 	// Save to disk state
 	let savingToDisk = $state(false);
 	let saveResult = $state<{ success: boolean; message: string } | null>(null);
+
+	// Validation state
+	let validationStatus = $state<'idle' | 'running' | 'complete' | 'error'>('idle');
+	let validationErrors = $state<Array<{ category: string; level: string; message: string; path?: string }>>([]);
+	let validationErrorCount = $state(0);
+	let validationWarningCount = $state(0);
+	let validationIsValid = $state<boolean | null>(null);
+	let validationProgress = $state('');
+	let validationHasRun = $state(false);
+	let validationEventSource = $state<EventSource | null>(null);
 
 	// Load stores on mount for resolving store_id to store names
 	onMount(async () => {
@@ -133,6 +144,115 @@
 		prDescription = '';
 		prResult = null;
 		saveResult = null;
+
+		if (!validationHasRun) {
+			startValidation();
+		}
+	}
+
+	function cleanupValidationStream() {
+		if (validationEventSource) {
+			validationEventSource.close();
+			validationEventSource = null;
+		}
+	}
+
+	function connectToValidationStream(sseUrl: string) {
+		const es = new EventSource(sseUrl);
+		validationEventSource = es;
+
+		es.onmessage = (event) => {
+			try {
+				const data = JSON.parse(event.data);
+
+				if (data.type === 'progress') {
+					validationProgress = data.message || data.category || 'Validating...';
+				} else if (data.type === 'complete') {
+					const result = data.result;
+					validationStatus = 'complete';
+					validationErrors = result?.errors || [];
+					validationErrorCount = result?.error_count || 0;
+					validationWarningCount = result?.warning_count || 0;
+					validationIsValid = result?.is_valid ?? false;
+					validationProgress = '';
+					es.close();
+					validationEventSource = null;
+				} else if (data.type === 'error') {
+					validationStatus = 'error';
+					validationProgress = '';
+					validationErrors = [{ category: 'System', level: 'ERROR', message: data.message || 'Validation failed' }];
+					validationErrorCount = 1;
+					es.close();
+					validationEventSource = null;
+				}
+			} catch {
+				// Ignore parse errors on individual events
+			}
+		};
+
+		es.onerror = () => {
+			if (validationStatus === 'running') {
+				validationStatus = 'error';
+				validationProgress = '';
+				validationErrors = [{ category: 'System', level: 'ERROR', message: 'Lost connection to validation stream' }];
+				validationErrorCount = 1;
+			}
+			es.close();
+			validationEventSource = null;
+		};
+	}
+
+	async function startValidation() {
+		cleanupValidationStream();
+
+		validationStatus = 'running';
+		validationErrors = [];
+		validationErrorCount = 0;
+		validationWarningCount = 0;
+		validationIsValid = null;
+		validationProgress = 'Starting validation...';
+		validationHasRun = true;
+
+		try {
+			const statusResponse = await fetch('/api/validate/status');
+			const statusData = await statusResponse.json();
+
+			if (statusData.running) {
+				connectToValidationStream('/api/validate/stream/current');
+				return;
+			}
+
+			// Include pending changes so validation runs with them applied
+			const exportData = $hasChanges ? changeStore.exportChanges() : null;
+			const body: Record<string, any> = { type: 'full' };
+			if (exportData && exportData.changes.length > 0) {
+				body.changes = exportData.changes;
+				body.images = exportData.images;
+			}
+
+			const response = await fetch('/api/validate', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+
+			if (response.status === 409) {
+				connectToValidationStream('/api/validate/stream/current');
+				return;
+			}
+
+			if (!response.ok) {
+				throw new Error('Failed to start validation');
+			}
+
+			const data = await response.json();
+			connectToValidationStream(data.sseUrl);
+		} catch (error: any) {
+			validationStatus = 'error';
+			validationProgress = '';
+			validationErrors = [{ category: 'System', level: 'ERROR', message: error.message || 'Failed to start validation' }];
+			validationErrorCount = 1;
+		}
 	}
 
 	async function saveToDisk() {
@@ -416,27 +536,11 @@
 						Clear All
 					</Button>
 					<div class="flex-1"></div>
-					{#if $isLocalMode}
-						<Button onclick={saveToDisk} variant="primary" size="sm" disabled={savingToDisk}>
-							{#if savingToDisk}
-								<svg class="mr-1 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-									<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-									<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-								</svg>
-								Saving...
-							{:else}
-								<svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-									<path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
-								</svg>
-								Save to Disk
-							{/if}
-						</Button>
-					{/if}
-					<Button onclick={openExportModal} variant={$isLocalMode ? 'secondary' : 'primary'} size="sm">
+					<Button onclick={openExportModal} variant="primary" size="sm">
 						<svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 							<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
 						</svg>
-						Export
+						{$isLocalMode ? 'Save Changes' : 'Export'}
 					</Button>
 				</div>
 			{/if}
@@ -445,216 +549,281 @@
 </div>
 
 <!-- Export Modal -->
-<Modal show={exportModalOpen} title={$isLocalMode ? 'Save Changes' : 'Export Changes'} onClose={() => { exportModalOpen = false; }} maxWidth="4xl" height="3/4">
+<Modal show={exportModalOpen} title={$isLocalMode ? 'Save Changes' : 'Export Changes'} onClose={() => { exportModalOpen = false; cleanupValidationStream(); }} maxWidth="6xl" height="3/4">
 	{@const summary = changeStore.getSummary()}
 
-	{#if !prResult?.success && !saveResult?.success}
-	<!-- Summary stats -->
-	<div class="mb-4 flex flex-wrap gap-3 text-sm">
-		{#if summary.creates > 0}
-			<span class="rounded-full bg-green-500/10 px-3 py-1 font-medium text-green-700 dark:text-green-400">
-				{summary.creates} {summary.creates === 1 ? 'creation' : 'creations'}
-			</span>
-		{/if}
-		{#if summary.updates > 0}
-			<span class="rounded-full bg-blue-500/10 px-3 py-1 font-medium text-blue-700 dark:text-blue-400">
-				{summary.updates} {summary.updates === 1 ? 'update' : 'updates'}
-			</span>
-		{/if}
-		{#if summary.deletes > 0}
-			<span class="rounded-full bg-destructive/10 px-3 py-1 font-medium text-destructive">
-				{summary.deletes} {summary.deletes === 1 ? 'deletion' : 'deletions'}
-			</span>
-		{/if}
-		{#if summary.images > 0}
-			<span class="rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
-				{summary.images} {summary.images === 1 ? 'image' : 'images'}
-			</span>
-		{/if}
-	</div>
-
-	<!-- Full change list -->
-	<div class="space-y-3">
-		{#each $changesList as change}
-			{@const badge = getOperationBadge(change.operation)}
-			<div class="rounded-lg border p-4">
-				<!-- Change header -->
-				<div class="flex items-start justify-between gap-2">
-					<div class="min-w-0 flex-1">
-						<div class="flex items-center gap-2">
-							<span class="rounded px-1.5 py-0.5 text-xs font-medium {badge.bg} {badge.text}">
-								{badge.label}
-							</span>
-							<span class="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
-								{change.entity.type}
-							</span>
-							<span class="text-xs text-muted-foreground">
-								{formatTimestamp(change.timestamp)}
-							</span>
-						</div>
-						<p class="mt-1 text-sm font-medium">{change.description}</p>
-						<p class="text-xs text-muted-foreground">{change.entity.path}</p>
-					</div>
-				</div>
-
-				<!-- Property changes (always visible in modal) -->
-				{#if change.propertyChanges && change.propertyChanges.length > 0}
-					<div class="mt-3 space-y-2 rounded border bg-muted/50 p-3 text-xs">
-						{#each change.propertyChanges as propChange}
-							<div>
-								<span class="font-medium">{propChange.property}</span>
-								{#if propChange.oldValue === undefined}
-									<span class="ml-1 text-green-600 dark:text-green-400">added</span>
-									<pre class="mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
-								{:else if propChange.newValue === undefined}
-									<span class="ml-1 text-destructive">removed</span>
-									<pre class="mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
-								{:else}
-									<div class="mt-1 grid gap-1">
-										<pre class="overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
-										<pre class="overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
-									</div>
-								{/if}
-							</div>
-						{/each}
-					</div>
-				{/if}
-			</div>
-		{/each}
-	</div>
-	{/if}
-
-	<!-- Save to Disk section (local mode) -->
-	{#if $isLocalMode}
-		<div class="mt-6 border-t pt-4">
-			<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Save to Disk</h4>
-			{#if saveResult?.success}
-				<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
-					<p>{saveResult.message}</p>
-				</div>
-			{:else}
-				<p class="mb-3 text-sm text-muted-foreground">
-					Write all pending changes to the local data files. This will run validation and formatting automatically.
-				</p>
-				<Button onclick={saveToDisk} variant="primary" size="md" class="w-full" disabled={savingToDisk}>
-					{#if savingToDisk}
-						<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-							<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-							<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+	<div class="h-full overflow-hidden">
+	<TwoColumnLayout leftWidth="1/2" leftSpacing="md">
+		{#snippet leftContent()}
+			<!-- Validation Section -->
+			<div class="flex min-h-0 flex-1 flex-col rounded-lg border bg-muted/30 p-4">
+				<div class="mb-2 flex shrink-0 items-center justify-between">
+					<h4 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Validation</h4>
+					<Button
+						onclick={() => startValidation()}
+						variant="ghost"
+						size="icon"
+						class="h-7 w-7"
+						title="Re-run validation"
+						disabled={validationStatus === 'running'}
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 {validationStatus === 'running' ? 'animate-spin' : ''}" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
 						</svg>
-						Saving to Disk...
-					{:else}
-						Save to Disk
-					{/if}
-				</Button>
-				{#if saveResult && !saveResult.success}
-					<div class="mt-3 rounded-md bg-destructive/10 p-3 text-sm text-destructive">
-						<p>{saveResult.message}</p>
-					</div>
-				{/if}
-			{/if}
-		</div>
-	{/if}
-
-	<!-- Export section -->
-	<div class="mt-6 border-t pt-4">
-		<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Export</h4>
-		<Button onclick={exportChanges} variant="secondary" size="sm">
-			<svg xmlns="http://www.w3.org/2000/svg" class="mr-1.5 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-				<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-			</svg>
-			Download JSON
-		</Button>
-	</div>
-
-	<!-- GitHub section (cloud mode only) -->
-	{#if $isCloudMode}
-		<div class="mt-6 border-t pt-4">
-			<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">GitHub</h4>
-
-			{#if $isAuthenticated}
-				<!-- Authenticated: user info + PR form -->
-				<div class="mb-4 flex items-center gap-3">
-					{#if $currentUser?.avatar_url}
-						<img src={$currentUser.avatar_url} alt={$currentUser.login} class="h-8 w-8 rounded-full" />
-					{/if}
-					<div class="flex-1">
-						<p class="text-sm font-medium">{$currentUser?.name || $currentUser?.login}</p>
-						{#if $currentUser?.name}
-							<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
-						{/if}
-					</div>
-					<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
-						Logout
 					</Button>
 				</div>
 
-				{#if prResult?.success}
-					<!-- PR created successfully -->
-					<div class="space-y-3">
-						<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
-							<p>{prResult.message}</p>
+				{#if validationStatus === 'idle'}
+					<p class="text-sm text-muted-foreground">Validation has not been run yet.</p>
+				{:else if validationStatus === 'running'}
+					<div class="flex items-center gap-2 text-sm text-muted-foreground">
+						<LoadingSpinner />
+						<span>{validationProgress || 'Running validation...'}</span>
+					</div>
+				{:else if validationStatus === 'complete'}
+					<div class="mb-2 flex shrink-0 items-center gap-2">
+						{#if validationIsValid}
+							<span class="rounded-full bg-green-500/10 px-2.5 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">
+								Valid
+							</span>
+						{:else}
+							{#if validationErrorCount > 0}
+								<span class="rounded-full bg-destructive/10 px-2.5 py-0.5 text-xs font-medium text-destructive">
+									{validationErrorCount} {validationErrorCount === 1 ? 'error' : 'errors'}
+								</span>
+							{/if}
+							{#if validationWarningCount > 0}
+								<span class="rounded-full bg-yellow-500/10 px-2.5 py-0.5 text-xs font-medium text-yellow-700 dark:text-yellow-400">
+									{validationWarningCount} {validationWarningCount === 1 ? 'warning' : 'warnings'}
+								</span>
+							{/if}
+						{/if}
+					</div>
+
+					{#if validationErrors.length > 0}
+						<div class="min-h-0 flex-1 space-y-1.5 overflow-y-auto">
+							{#each validationErrors as error}
+								<div class="rounded border px-2.5 py-1.5 text-xs {error.level === 'ERROR' ? 'border-destructive/30 bg-destructive/5 text-destructive' : 'border-yellow-500/30 bg-yellow-500/5 text-yellow-700 dark:text-yellow-400'}">
+									<span class="font-medium">[{error.category}]</span>
+									{error.message}
+									{#if error.path}
+										<span class="block text-[10px] opacity-70">{error.path}</span>
+									{/if}
+								</div>
+							{/each}
 						</div>
-						<a href={prResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-								<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-							</svg>
-							Open Pull Request
-						</a>
+					{:else}
+						<p class="text-sm text-green-700 dark:text-green-400">No validation issues found.</p>
+					{/if}
+				{:else if validationStatus === 'error'}
+					<div class="rounded-md bg-destructive/10 p-2.5 text-sm text-destructive">
+						{validationErrors[0]?.message || 'Validation failed'}
+					</div>
+				{/if}
+			</div>
+
+			<!-- Save/Export Section -->
+			<div class="shrink-0">
+				{#if $isLocalMode}
+					<!-- Local mode: Save to Disk -->
+					<div>
+						<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Save to Disk</h4>
+						{#if saveResult?.success}
+							<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
+								<p>{saveResult.message}</p>
+							</div>
+						{:else}
+							<p class="mb-3 text-sm text-muted-foreground">
+								Write all pending changes to the local data files. This will run validation and formatting automatically.
+							</p>
+							<Button onclick={saveToDisk} variant="primary" size="md" class="w-full" disabled={savingToDisk}>
+								{#if savingToDisk}
+									<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+										<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+										<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+									</svg>
+									Saving to Disk...
+								{:else}
+									Save to Disk
+								{/if}
+							</Button>
+							{#if saveResult && !saveResult.success}
+								<div class="mt-3 rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+									<p>{saveResult.message}</p>
+								</div>
+							{/if}
+						{/if}
 					</div>
 				{:else}
-					<!-- PR form -->
-					<div class="space-y-3">
-						<div>
-							<label for="pr-title" class="mb-1 block text-sm font-medium">PR Title</label>
-							<input
-								id="pr-title"
-								type="text"
-								bind:value={prTitle}
-								class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-								placeholder="Update filament database..."
-							/>
-						</div>
-						<div>
-							<label for="pr-description" class="mb-1 block text-sm font-medium">Description <span class="font-normal text-muted-foreground">(optional)</span></label>
-							<textarea
-								id="pr-description"
-								bind:value={prDescription}
-								rows="3"
-								class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-								placeholder="Describe your changes..."
-							></textarea>
-						</div>
-						<Button onclick={createPR} variant="primary" size="md" class="w-full" disabled={creatingPr}>
-							{#if creatingPr}
-								<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-									<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-									<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-								</svg>
-								Creating Pull Request...
-							{:else}
-								Create Pull Request
-							{/if}
-						</Button>
-						{#if prResult && !prResult.success}
-							<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
-								<p>{prResult.message}</p>
+					<!-- Cloud mode: GitHub PR flow -->
+					<div>
+						<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">GitHub</h4>
+
+						{#if $isAuthenticated}
+							<div class="mb-4 flex items-center gap-3">
+								{#if $currentUser?.avatar_url}
+									<img src={$currentUser.avatar_url} alt={$currentUser.login} class="h-8 w-8 rounded-full" />
+								{/if}
+								<div class="flex-1">
+									<p class="text-sm font-medium">{$currentUser?.name || $currentUser?.login}</p>
+									{#if $currentUser?.name}
+										<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
+									{/if}
+								</div>
+								<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
+									Logout
+								</Button>
 							</div>
+
+							{#if prResult?.success}
+								<div class="space-y-3">
+									<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
+										<p>{prResult.message}</p>
+									</div>
+									<a href={prResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+											<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+										</svg>
+										Open Pull Request
+									</a>
+								</div>
+							{:else}
+								<div class="space-y-3">
+									<div>
+										<label for="pr-title" class="mb-1 block text-sm font-medium">PR Title</label>
+										<input
+											id="pr-title"
+											type="text"
+											bind:value={prTitle}
+											class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+											placeholder="Update filament database..."
+										/>
+									</div>
+									<div>
+										<label for="pr-description" class="mb-1 block text-sm font-medium">Description <span class="font-normal text-muted-foreground">(optional)</span></label>
+										<textarea
+											id="pr-description"
+											bind:value={prDescription}
+											rows="3"
+											class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+											placeholder="Describe your changes..."
+										></textarea>
+									</div>
+									<Button onclick={createPR} variant="primary" size="md" class="w-full" disabled={creatingPr}>
+										{#if creatingPr}
+											<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+												<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+												<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+											</svg>
+											Creating Pull Request...
+										{:else}
+											Create Pull Request
+										{/if}
+									</Button>
+									{#if prResult && !prResult.success}
+										<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+											<p>{prResult.message}</p>
+										</div>
+									{/if}
+								</div>
+							{/if}
+						{:else}
+							<p class="mb-3 text-sm text-muted-foreground">
+								Sign in with GitHub to submit your changes as a pull request to the upstream repository.
+							</p>
+							<Button onclick={() => authStore.login()} variant="primary" size="md">
+								<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+									<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+								</svg>
+								Login to GitHub
+							</Button>
 						{/if}
 					</div>
 				{/if}
-			{:else}
-				<!-- Not authenticated -->
-				<p class="mb-3 text-sm text-muted-foreground">
-					Sign in with GitHub to submit your changes as a pull request to the upstream repository.
-				</p>
-				<Button onclick={() => authStore.login()} variant="primary" size="md">
-					<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-						<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+			</div>
+		{/snippet}
+
+		{#snippet rightContent()}
+			<!-- Header: summary stats + download JSON -->
+			<div class="mb-4 flex items-center gap-3 text-sm">
+				<div class="flex flex-1 flex-wrap gap-3">
+				{#if summary.creates > 0}
+					<span class="rounded-full bg-green-500/10 px-3 py-1 font-medium text-green-700 dark:text-green-400">
+						{summary.creates} {summary.creates === 1 ? 'creation' : 'creations'}
+					</span>
+				{/if}
+				{#if summary.updates > 0}
+					<span class="rounded-full bg-blue-500/10 px-3 py-1 font-medium text-blue-700 dark:text-blue-400">
+						{summary.updates} {summary.updates === 1 ? 'update' : 'updates'}
+					</span>
+				{/if}
+				{#if summary.deletes > 0}
+					<span class="rounded-full bg-destructive/10 px-3 py-1 font-medium text-destructive">
+						{summary.deletes} {summary.deletes === 1 ? 'deletion' : 'deletions'}
+					</span>
+				{/if}
+				{#if summary.images > 0}
+					<span class="rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
+						{summary.images} {summary.images === 1 ? 'image' : 'images'}
+					</span>
+				{/if}
+				</div>
+				<Button onclick={exportChanges} variant="ghost" size="sm" class="shrink-0 text-muted-foreground">
+					<svg xmlns="http://www.w3.org/2000/svg" class="mr-1.5 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
 					</svg>
-					Login to GitHub
+					Download JSON
 				</Button>
-			{/if}
-		</div>
-	{/if}
+			</div>
+
+			<!-- Change list -->
+			<div class="flex-1 overflow-y-auto space-y-3">
+				{#each $changesList as change}
+					{@const badge = getOperationBadge(change.operation)}
+					<div class="rounded-lg border p-4">
+						<div class="flex items-start justify-between gap-2">
+							<div class="min-w-0 flex-1">
+								<div class="flex items-center gap-2">
+									<span class="rounded px-1.5 py-0.5 text-xs font-medium {badge.bg} {badge.text}">
+										{badge.label}
+									</span>
+									<span class="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
+										{change.entity.type}
+									</span>
+									<span class="text-xs text-muted-foreground">
+										{formatTimestamp(change.timestamp)}
+									</span>
+								</div>
+								<p class="mt-1 text-sm font-medium">{change.description}</p>
+								<p class="text-xs text-muted-foreground">{change.entity.path}</p>
+							</div>
+						</div>
+
+						{#if change.propertyChanges && change.propertyChanges.length > 0}
+							<div class="mt-3 space-y-2 rounded border bg-muted/50 p-3 text-xs">
+								{#each change.propertyChanges as propChange}
+									<div>
+										<span class="font-medium">{propChange.property}</span>
+										{#if propChange.oldValue === undefined}
+											<span class="ml-1 text-green-600 dark:text-green-400">added</span>
+											<pre class="mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
+										{:else if propChange.newValue === undefined}
+											<span class="ml-1 text-destructive">removed</span>
+											<pre class="mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
+										{:else}
+											<div class="mt-1 grid gap-1">
+												<pre class="overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(propChange.oldValue)}</pre>
+												<pre class="overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(propChange.newValue)}</pre>
+											</div>
+										{/if}
+									</div>
+								{/each}
+							</div>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		{/snippet}
+	</TwoColumnLayout>
+	</div>
 </Modal>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import type { Store } from '$lib/types/database';
 	import { db } from '$lib/services/database';
 	import { Modal, MessageBanner, Button, LoadingSpinner } from '$lib/components/ui';
@@ -121,9 +122,7 @@
 				messageHandler.showSuccess('Store created successfully!');
 				entityState.closeCreate();
 				entityState.resetLogo();
-				setTimeout(() => {
-					window.location.href = `/stores/${slug}`;
-				}, 500);
+				goto(`/stores/${slug}`);
 			} else {
 				messageHandler.showError('Failed to create store');
 			}

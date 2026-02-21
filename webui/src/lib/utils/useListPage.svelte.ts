@@ -7,6 +7,7 @@
  */
 
 import { onMount } from 'svelte';
+import { goto } from '$app/navigation';
 import { db } from '$lib/services/database';
 import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 import { createEntityState } from '$lib/utils/entityState.svelte';
@@ -140,9 +141,7 @@ export function createListPage<T>(config: ListPageConfig<T>): ListPageState<T> {
 				messageHandler.showSuccess(`${config.entityLabel} created successfully!`);
 				entityState.closeCreate();
 				entityState.resetLogo();
-				setTimeout(() => {
-					window.location.href = `${config.urlPrefix}/${slug}`;
-				}, 500);
+				goto(`${config.urlPrefix}/${slug}`);
 			} else {
 				messageHandler.showError(`Failed to create ${config.entityLabel.toLowerCase()}`);
 			}

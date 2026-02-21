@@ -4,6 +4,7 @@
  * Extracts the handleDelete() pattern shared across all detail pages.
  */
 
+import { goto } from '$app/navigation';
 import { deleteEntity } from '$lib/services/entityService';
 import type { createEntityState } from '$lib/utils/entityState.svelte';
 import type { createMessageHandler } from '$lib/utils/messageHandler.svelte';
@@ -63,7 +64,7 @@ export function createDeleteHandler(config: DeleteHandlerConfig): () => Promise<
 				config.messageHandler.showSuccess(result.message);
 				config.entityState.closeDelete();
 				setTimeout(() => {
-					window.location.href = config.getRedirectPath();
+					goto(config.getRedirectPath());
 				}, redirectDelay);
 			} else {
 				config.messageHandler.showError(result.message);

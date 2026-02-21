@@ -12,12 +12,12 @@ test.describe('Stores Page', () => {
 	test('should list stores', async ({ page }) => {
 		await page.waitForLoadState('networkidle');
 
-		// Check for store cards or empty state
-		const storeCards = page.locator('[data-testid="store-card"], .store-card, article, .card');
+		// Store cards are <a> links to individual store pages
+		const storeCards = page.locator('a[href^="/stores/"]');
 		const emptyState = page.getByText(/no stores|empty/i);
 
 		const hasStores = (await storeCards.count()) > 0;
-		const hasEmptyState = await emptyState.isVisible();
+		const hasEmptyState = await emptyState.isVisible().catch(() => false);
 
 		expect(hasStores || hasEmptyState).toBe(true);
 	});

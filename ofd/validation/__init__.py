@@ -21,6 +21,11 @@ from ofd_validator import (
     validate_gtin_ean as _validate_gtin_ean,
 )
 
+try:
+    from ofd_validator import validate_all_with_changes as _validate_all_with_changes
+except ImportError:
+    _validate_all_with_changes = None
+
 
 class ValidationOrchestrator:
     """Orchestrates all validation tasks using the ofd-validator Rust package."""
@@ -56,8 +61,12 @@ class ValidationOrchestrator:
         """Validate GTIN/EAN rules."""
         return _validate_gtin_ean(self.data_dir)
 
-    def validate_all(self) -> ValidationResult:
-        """Run all validations."""
+    def validate_all(self, changes_json: Optional[str] = None) -> ValidationResult:
+        """Run all validations, optionally with pending changes applied."""
+        if changes_json and _validate_all_with_changes is not None:
+            return _validate_all_with_changes(
+                self.data_dir, self.stores_dir, changes_json,
+                max_workers=self.max_workers)
         return _validate_all(self.data_dir, self.stores_dir,
                              max_workers=self.max_workers)
 

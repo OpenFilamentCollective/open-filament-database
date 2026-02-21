@@ -10,11 +10,11 @@ test.describe('Home Page', () => {
 	});
 
 	test('should display brands section', async ({ page }) => {
-		await expect(page.getByText(/brands/i)).toBeVisible();
+		await expect(page.getByRole('heading', { name: /brands/i })).toBeVisible();
 	});
 
 	test('should display stores section', async ({ page }) => {
-		await expect(page.getByText(/stores/i)).toBeVisible();
+		await expect(page.getByRole('heading', { name: /stores/i })).toBeVisible();
 	});
 
 	test('should navigate to brands list', async ({ page }) => {
@@ -53,19 +53,18 @@ test.describe('Home Page', () => {
 	});
 
 	test('should have working theme toggle', async ({ page }) => {
-		// Look for theme toggle button
-		const themeToggle = page.getByRole('button', { name: /theme|dark|light/i });
+		// Theme toggle is a dropdown menu button
+		const themeToggle = page.locator('button[title="Change theme"]');
 
 		if (await themeToggle.isVisible()) {
-			// Get initial theme state
-			const htmlElement = page.locator('html');
-			const initialClass = await htmlElement.getAttribute('class');
-
-			// Click theme toggle
+			// Open theme dropdown
 			await themeToggle.click();
 
-			// Theme class should have changed
-			await expect(htmlElement).not.toHaveAttribute('class', initialClass);
+			// Select dark theme from the dropdown
+			await page.getByRole('button', { name: 'Dark' }).click();
+
+			// HTML should have dark class
+			await expect(page.locator('html')).toHaveClass(/dark/);
 		}
 	});
 });

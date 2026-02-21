@@ -1,9 +1,13 @@
 import { json } from '@sveltejs/kit';
 import { spawn } from 'node:child_process';
 import path from 'node:path';
+import { promises as fs } from 'node:fs';
+import os from 'node:os';
 import { activeJobs, type Job, tryAcquireValidationLock, releaseValidationLock } from '$lib/server/jobManager';
 
 export async function POST({ request }) {
+	let changesFile: string | null = null;
+
 	try {
 		// Atomically try to acquire the validation lock to prevent race conditions
 		if (!tryAcquireValidationLock()) {
@@ -13,7 +17,7 @@ export async function POST({ request }) {
 			);
 		}
 
-		const { type = 'full' } = await request.json();
+		const { type = 'full', changes, images } = await request.json();
 		const jobId = 'validation-current';
 
 		// Clean up old validation-current job if it exists and is complete
@@ -34,6 +38,13 @@ export async function POST({ request }) {
 			args.push('--folder-names');
 		} else if (type === 'store_ids') {
 			args.push('--store-ids');
+		}
+
+		// If changes are provided, write them to a temp file and pass to CLI
+		if (changes && Array.isArray(changes) && changes.length > 0) {
+			changesFile = path.join(os.tmpdir(), `ofd-validate-changes-${Date.now()}.json`);
+			await fs.writeFile(changesFile, JSON.stringify({ changes, images: images || {} }), 'utf-8');
+			args.push('--apply-changes', changesFile);
 		}
 
 		// Determine the repo root (one level up from webui)
@@ -104,6 +115,12 @@ export async function POST({ request }) {
 
 		// Handle process completion
 		pythonProcess.on('close', (code) => {
+			// Clean up temp changes file
+			if (changesFile) {
+				fs.unlink(changesFile).catch(() => {});
+				changesFile = null;
+			}
+
 			// Try to parse any remaining stdout as the final result
 			if (stdoutBuffer.trim()) {
 				try {

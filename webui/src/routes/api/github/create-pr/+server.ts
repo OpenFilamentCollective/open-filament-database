@@ -344,6 +344,14 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 				const schemaType = getSchemaType(repoPath);
 				// Create/update: clean, sort keys per schema, then create blob
 				let cleanData = cleanEntityData(change.data, imageFilenames, schemaType);
+
+				// For variant entities, extract sizes into a separate file
+				let sizesData = null;
+				if (schemaType === 'variant' && cleanData.sizes) {
+					sizesData = cleanData.sizes;
+					delete cleanData.sizes;
+				}
+
 				if (schemaType && schemas[schemaType]) {
 					cleanData = sortJsonKeys(cleanData, schemas[schemaType]);
 				}
@@ -351,6 +359,18 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 				const content = JSON.stringify(cleanData, null, 2) + '\n';
 				const blobSha = await createBlob(token, fork.owner, fork.repo, content);
 				treeItems.push({ path: repoPath, sha: blobSha, mode: '100644', type: 'blob' });
+
+				// Write sizes.json alongside variant.json
+				if (sizesData && Array.isArray(sizesData) && sizesData.length > 0) {
+					const sizesRepoPath = repoPath.replace(/variant\.json$/, 'sizes.json');
+					let sortedSizes: any = sizesData;
+					if (schemas['sizes']) {
+						sortedSizes = sortJsonKeys(sizesData, schemas['sizes']);
+					}
+					const sizesContent = JSON.stringify(sortedSizes, null, 2) + '\n';
+					const sizesBlobSha = await createBlob(token, fork.owner, fork.repo, sizesContent);
+					treeItems.push({ path: sizesRepoPath, sha: sizesBlobSha, mode: '100644', type: 'blob' });
+				}
 			}
 		}
 

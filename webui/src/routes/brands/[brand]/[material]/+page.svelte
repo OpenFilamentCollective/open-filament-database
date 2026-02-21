@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import type { Material, Filament } from '$lib/types/database';
 	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { MaterialForm, FilamentForm } from '$lib/components/forms';
@@ -10,7 +10,7 @@
 	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, generateMaterialType } from '$lib/services/entityService';
+	import { deleteEntity } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
@@ -25,6 +25,7 @@
 	let materialSchema: any = $state(null);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
+	let createError: string | null = $state(null);
 
 	let displayFilaments = $derived.by(() => withDeletedStubs({
 		changes: $changes,
@@ -46,38 +47,47 @@
 		getEntity: () => material
 	});
 
-	onMount(async () => {
-		try {
-			const [materialData, filamentsData, schema, allMaterials] = await Promise.all([
-				db.getMaterial(brandId, materialType),
-				db.loadFilaments(brandId, materialType),
-				fetchEntitySchema('material'),
-				db.loadMaterials(brandId)
-			]);
+	$effect(() => {
+		const brand = brandId;
+		const matType = materialType;
 
-			if (!materialData) {
-				const materialPath = `brands/${brandId}/materials/${materialType}`;
-				const change = $changes.get(materialPath);
-				if ($useChangeTracking && change?.operation === 'delete') {
-					error = 'This material has been deleted in your local changes. Export your changes to finalize the deletion.';
-				} else {
-					error = 'Material not found';
+		loading = true;
+		error = null;
+		entityState.showEditModal = false;
+
+		(async () => {
+			try {
+				const [materialData, filamentsData, schema, allMaterials] = await Promise.all([
+					db.getMaterial(brand, matType),
+					db.loadFilaments(brand, matType),
+					fetchEntitySchema('material'),
+					db.loadMaterials(brand)
+				]);
+
+				if (!materialData) {
+					const materialPath = `brands/${brand}/materials/${matType}`;
+					const change = $changes.get(materialPath);
+					if ($useChangeTracking && change?.operation === 'delete') {
+						error = 'This material has been deleted in your local changes. Export your changes to finalize the deletion.';
+					} else {
+						error = 'Material not found';
+					}
+					loading = false;
+					return;
 				}
-				loading = false;
-				return;
-			}
 
-			material = materialData;
-			materialSchema = schema;
-			siblingMaterials = allMaterials;
-			const trueOriginal = db.getOriginalMaterial(brandId, materialType);
-			originalMaterial = trueOriginal ? structuredClone(trueOriginal) : structuredClone(materialData);
-			filaments = filamentsData;
-		} catch (e) {
-			error = e instanceof Error ? e.message : 'Failed to load material';
-		} finally {
-			loading = false;
-		}
+				material = materialData;
+				materialSchema = schema;
+				siblingMaterials = allMaterials;
+				const trueOriginal = db.getOriginalMaterial(brand, matType);
+				originalMaterial = trueOriginal ? structuredClone(trueOriginal) : structuredClone(materialData);
+				filaments = filamentsData;
+			} catch (e) {
+				error = e instanceof Error ? e.message : 'Failed to load material';
+			} finally {
+				loading = false;
+			}
+		})();
 	});
 
 	async function handleSubmit(data: any) {
@@ -87,13 +97,13 @@
 		messageHandler.clear();
 
 		try {
-			const newMaterialType = generateMaterialType(data.material);
+			const existingType = material.materialType ?? materialType;
 
 			const updatedMaterial: Material = {
 				...(originalMaterial ?? material),
 				...data,
-				id: newMaterialType,
-				materialType: newMaterialType
+				id: existingType,
+				materialType: existingType
 			};
 
 			// Handle material_class: strip if not in form data, or if the original
@@ -117,13 +127,6 @@
 				material = updatedMaterial;
 				messageHandler.showSuccess('Material saved successfully!');
 				entityState.closeEdit();
-
-				// If material type changed, redirect to new URL
-				if (newMaterialType !== materialType) {
-					setTimeout(() => {
-						window.location.href = `/brands/${brandId}/${newMaterialType}`;
-					}, 500);
-				}
 			} else {
 				messageHandler.showError('Failed to save material');
 			}
@@ -151,7 +154,7 @@
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
 				setTimeout(() => {
-					window.location.href = `/brands/${brandId}`;
+					goto(`/brands/${brandId}`);
 				}, 1500);
 			} else {
 				messageHandler.showError(result.message);
@@ -163,16 +166,21 @@
 		}
 	}
 
+	function openCreateFilamentModal() {
+		createError = null;
+		entityState.openCreate();
+	}
+
 	async function handleCreateFilament(data: any) {
 		entityState.creating = true;
-		messageHandler.clear();
+		createError = null;
 
 		try {
 			// Check for duplicate filament
 			const filamentSlug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 			const duplicate = filaments.find((f) => (f.slug ?? f.id).toLowerCase() === filamentSlug);
 			if (duplicate) {
-				messageHandler.showError(`Filament "${data.name}" already exists in this material`);
+				createError = `Filament "${data.name}" already exists in this material`;
 				entityState.creating = false;
 				return;
 			}
@@ -182,14 +190,12 @@
 			if (result.success && result.filamentId) {
 				messageHandler.showSuccess('Filament created successfully!');
 				entityState.closeCreate();
-				setTimeout(() => {
-					window.location.href = `/brands/${brandId}/${materialType}/${result.filamentId}`;
-				}, 500);
+				goto(`/brands/${brandId}/${materialType}/${result.filamentId}`);
 			} else {
-				messageHandler.showError('Failed to create filament');
+				createError = 'Failed to create filament';
 			}
 		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create filament');
+			createError = e instanceof Error ? e.message : 'Failed to create filament';
 		} finally {
 			entityState.creating = false;
 		}
@@ -253,7 +259,7 @@
 				<ChildListPanel
 					title="Filaments"
 					addLabel="Add Filament"
-					onAdd={entityState.openCreate}
+					onAdd={openCreateFilamentModal}
 					itemCount={displayFilaments.length}
 					emptyMessage="No filaments found for this material."
 				>
@@ -313,9 +319,12 @@
 <Modal
 	show={entityState.showCreateModal}
 	title="Create New Filament"
-	onClose={entityState.closeCreate}
+	onClose={() => { createError = null; entityState.closeCreate(); }}
 	maxWidth="5xl"
 >
+	{#if createError}
+		<MessageBanner type="error" message={createError} />
+	{/if}
 	<div class="h-[70vh]">
 		<FilamentForm onSubmit={handleCreateFilament} saving={entityState.creating} />
 	</div>

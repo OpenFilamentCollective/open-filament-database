@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import type { Filament, Variant } from '$lib/types/database';
 	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
 	import { BackButton } from '$lib/components/actions';
@@ -8,7 +9,7 @@
 	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
+	import { deleteEntity } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
@@ -22,6 +23,7 @@
 	let variants: Variant[] = $state([]);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
+	let createError: string | null = $state(null);
 
 	let displayVariants = $derived.by(() => withDeletedStubs({
 		changes: $changes,
@@ -95,19 +97,18 @@
 		messageHandler.clear();
 
 		try {
-			// For locally created filaments, regenerate id/slug from name
-			const newId = entityState.isLocalCreate ? generateSlug(data.name) : (filament.slug || filament.id);
+			const existingId = filament.slug || filament.id;
 			const updatedFilament = {
 				...filament,
 				...data,
-				id: newId,
-				slug: newId
+				id: existingId,
+				slug: existingId
 			} as Filament;
 
 			const success = await db.saveFilament(
 				brandId,
 				materialType,
-				newId,
+				existingId,
 				updatedFilament,
 				originalFilament ?? filament
 			);
@@ -116,13 +117,6 @@
 				filament = updatedFilament;
 				messageHandler.showSuccess('Filament saved successfully!');
 				entityState.closeEdit();
-
-				// If filament ID changed, redirect to new URL
-				if (newId !== filamentId) {
-					setTimeout(() => {
-						window.location.href = `/brands/${brandId}/${materialType}/${newId}`;
-					}, 500);
-				}
 			} else {
 				messageHandler.showError('Failed to save filament');
 			}
@@ -150,7 +144,7 @@
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
 				setTimeout(() => {
-					window.location.href = `/brands/${brandId}/${materialType}`;
+					goto(`/brands/${brandId}/${materialType}`);
 				}, 1500);
 			} else {
 				messageHandler.showError(result.message);
@@ -162,16 +156,21 @@
 		}
 	}
 
+	function openCreateVariantModal() {
+		createError = null;
+		entityState.openCreate();
+	}
+
 	async function handleCreateVariant(data: any) {
 		entityState.creating = true;
-		messageHandler.clear();
+		createError = null;
 
 		try {
 			// Check for duplicate variant
 			const variantSlug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 			const duplicate = variants.find((v) => (v.slug ?? v.id).toLowerCase() === variantSlug);
 			if (duplicate) {
-				messageHandler.showError(`Variant "${data.name}" already exists in this filament`);
+				createError = `Variant "${data.name}" already exists in this filament`;
 				entityState.creating = false;
 				return;
 			}
@@ -181,14 +180,12 @@
 			if (result.success && result.variantSlug) {
 				messageHandler.showSuccess('Variant created successfully!');
 				entityState.closeCreate();
-				setTimeout(() => {
-					window.location.href = `/brands/${brandId}/${materialType}/${filamentId}/${result.variantSlug}`;
-				}, 500);
+				goto(`/brands/${brandId}/${materialType}/${filamentId}/${result.variantSlug}`);
 			} else {
-				messageHandler.showError('Failed to create variant');
+				createError = 'Failed to create variant';
 			}
 		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to create variant');
+			createError = e instanceof Error ? e.message : 'Failed to create variant';
 		} finally {
 			entityState.creating = false;
 		}
@@ -314,7 +311,7 @@
 				<ChildListPanel
 					title="Variants"
 					addLabel="Add Variant"
-					onAdd={entityState.openCreate}
+					onAdd={openCreateVariantModal}
 					itemCount={displayVariants.length}
 					emptyMessage="No variants found for this filament."
 				>
@@ -362,6 +359,9 @@
 	cascadeWarning="This will also delete all variants within this filament."
 />
 
-<Modal show={entityState.showCreateModal} title="Create New Variant" onClose={entityState.closeCreate} maxWidth="5xl" height="3/4">
+<Modal show={entityState.showCreateModal} title="Create New Variant" onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="5xl" height="3/4">
+	{#if createError}
+		<MessageBanner type="error" message={createError} />
+	{/if}
 	<VariantForm onSubmit={handleCreateVariant} saving={entityState.creating} />
 </Modal>

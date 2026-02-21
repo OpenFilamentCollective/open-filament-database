@@ -89,7 +89,7 @@
 		<select
 			bind:value={protocol}
 			onchange={handleProtocolChange}
-			class="bg-transparent border-0 {compact ? 'pl-1.5 pr-1 text-xs' : 'pl-3 pr-1 py-2 text-sm'} text-muted-foreground outline-none cursor-pointer"
+			class="bg-transparent border-0 {compact ? 'pl-1.5 pr-6 text-xs' : 'pl-3 pr-6 py-2 text-sm'} text-muted-foreground outline-none cursor-pointer"
 			aria-label="URL protocol"
 		>
 			<option value="https://">https://</option>

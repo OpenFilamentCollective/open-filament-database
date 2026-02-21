@@ -170,8 +170,22 @@ export const POST: RequestHandler = async ({ request }) => {
 
 				// Clean and write the data
 				const cleanData = cleanEntityData(change.data);
+
+				// For variant entities, extract sizes into a separate file
+				let sizesData = null;
+				if (fsPath.endsWith('variant.json') && cleanData.sizes) {
+					sizesData = cleanData.sizes;
+					delete cleanData.sizes;
+				}
+
 				const content = JSON.stringify(cleanData, null, 4) + '\n';
 				await fs.writeFile(fsPath, content, 'utf-8');
+
+				// Write sizes.json alongside variant.json if sizes data exists
+				if (sizesData && Array.isArray(sizesData) && sizesData.length > 0) {
+					const sizesPath = path.join(path.dirname(fsPath), 'sizes.json');
+					await fs.writeFile(sizesPath, JSON.stringify(sizesData, null, 4) + '\n', 'utf-8');
+				}
 
 				results.push({ path: change.entity.path, operation: change.operation, success: true });
 			} catch (error: any) {

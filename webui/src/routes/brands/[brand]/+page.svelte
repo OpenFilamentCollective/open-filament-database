@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import type { Brand, Material } from '$lib/types/database';
 	import { Modal, MessageBanner, ActionButtons, DeleteConfirmationModal } from '$lib/components/ui';
 	import { BrandForm, MaterialForm } from '$lib/components/forms';
@@ -11,7 +11,7 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { db } from '$lib/services/database';
-	import { deleteEntity, generateMaterialType, generateSlug } from '$lib/services/entityService';
+	import { deleteEntity, generateMaterialType } from '$lib/services/entityService';
 	import { apiFetch } from '$lib/utils/api';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { changes } from '$lib/stores/changes';
@@ -48,39 +48,46 @@
 		buildStub: (id, name) => ({ id, materialType: id, material: name } as unknown as Material)
 	}));
 
-	onMount(async () => {
-		try {
-			// Use DatabaseService for brand and materials to apply pending changes
-			const [brandData, materialsData, schemaData, matSchemaData] = await Promise.all([
-				db.getBrand(brandId),
-				db.loadMaterials(brandId),
-				apiFetch('/api/schemas/brand').then((r) => r.json()),
-				fetchEntitySchema('material')
-			]);
+	$effect(() => {
+		const id = brandId;
 
-			if (!brandData) {
-				const brandPath = `brands/${brandId}`;
-				const change = $changes.get(brandPath);
-				if ($useChangeTracking && change?.operation === 'delete') {
-					error = 'This brand has been deleted in your local changes. Export your changes to finalize the deletion.';
-				} else {
-					error = 'Brand not found';
+		loading = true;
+		error = null;
+		entityState.showEditModal = false;
+
+		(async () => {
+			try {
+				const [brandData, materialsData, schemaData, matSchemaData] = await Promise.all([
+					db.getBrand(id),
+					db.loadMaterials(id),
+					apiFetch('/api/schemas/brand').then((r) => r.json()),
+					fetchEntitySchema('material')
+				]);
+
+				if (!brandData) {
+					const brandPath = `brands/${id}`;
+					const change = $changes.get(brandPath);
+					if ($useChangeTracking && change?.operation === 'delete') {
+						error = 'This brand has been deleted in your local changes. Export your changes to finalize the deletion.';
+					} else {
+						error = 'Brand not found';
+					}
+					loading = false;
+					return;
 				}
+
+				brand = brandData;
+				originalBrand = structuredClone(brandData);
+				materials = materialsData;
+				schema = schemaData;
+				materialSchema = matSchemaData;
+
+			} catch (e) {
+				error = e instanceof Error ? e.message : 'Failed to load brand';
+			} finally {
 				loading = false;
-				return;
 			}
-
-			brand = brandData;
-			originalBrand = structuredClone(brandData); // Deep clone for revert detection
-			materials = materialsData;
-			schema = schemaData;
-			materialSchema = matSchemaData;
-
-		} catch (e) {
-			error = e instanceof Error ? e.message : 'Failed to load brand';
-		} finally {
-			loading = false;
-		}
+		})();
 	});
 
 	async function handleSubmit(data: any) {
@@ -102,14 +109,10 @@
 				logoFilename = savedPath;
 			}
 
-			// For locally created brands, regenerate id/slug from name so it stays in sync
-			// For existing brands, preserve both id (UUID) and slug
-			const newSlug = entityState.isLocalCreate ? generateSlug(data.name) : (brand.slug || brandId);
-			const newId = entityState.isLocalCreate ? newSlug : brand.id;
 			const updatedBrand = {
 				...data,
-				id: newId,
-				slug: newSlug,
+				id: brand.id,
+				slug: brand.slug || brandId,
 				logo: logoFilename
 			};
 
@@ -120,13 +123,6 @@
 				entityState.resetLogo();
 				messageHandler.showSuccess('Brand saved successfully!');
 				entityState.closeEdit();
-
-				// If slug changed (only for local creates when name changes), redirect
-				if (newSlug !== brandId) {
-					setTimeout(() => {
-						window.location.href = `/brands/${newSlug}`;
-					}, 500);
-				}
 			} else {
 				messageHandler.showError('Failed to save brand');
 			}
@@ -170,10 +166,7 @@
 			if (result.success && result.materialType) {
 				messageHandler.showSuccess('Material created successfully!');
 				showCreateMaterialModal = false;
-
-				setTimeout(() => {
-					window.location.href = `/brands/${brandId}/${result.materialType!}`;
-				}, 500);
+				goto(`/brands/${brandId}/${result.materialType!}`);
 			} else {
 				createMaterialError = 'Failed to create material';
 			}
@@ -201,7 +194,7 @@
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
 				setTimeout(() => {
-					window.location.href = '/brands';
+					goto('/brands');
 				}, 1500);
 			} else {
 				messageHandler.showError(result.message);

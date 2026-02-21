@@ -25,6 +25,10 @@ export default defineConfig({
 	webServer: {
 		command: 'npm run build && npm run preview',
 		port: 4173,
-		reuseExistingServer: !process.env.CI
+		reuseExistingServer: !process.env.CI,
+		env: {
+			PUBLIC_APP_MODE: 'local',
+			PUBLIC_API_BASE_URL: ''
+		}
 	}
 });

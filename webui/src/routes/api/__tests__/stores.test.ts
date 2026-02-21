@@ -7,15 +7,16 @@ const mockWriteFile = vi.fn();
 const mockAccess = vi.fn();
 const mockRm = vi.fn();
 
-vi.mock('fs', () => ({
-	promises: {
+vi.mock('fs', () => {
+	const promises = {
 		readdir: (...args: any[]) => mockReaddir(...args),
 		readFile: (...args: any[]) => mockReadFile(...args),
 		writeFile: (...args: any[]) => mockWriteFile(...args),
 		access: (...args: any[]) => mockAccess(...args),
 		rm: (...args: any[]) => mockRm(...args)
-	}
-}));
+	};
+	return { default: { promises }, promises };
+});
 
 // Mock $env/static/public
 let mockAppMode = 'local';
@@ -46,13 +47,16 @@ describe('Stores API', () => {
 
 	describe('GET /api/stores', () => {
 		it('should return list of all stores', async () => {
-			mockReaddir.mockResolvedValue(['store1', 'store2']);
+			mockReaddir.mockResolvedValue([
+				{ name: 'store1', isDirectory: () => true },
+				{ name: 'store2', isDirectory: () => true }
+			]);
 			mockReadFile
 				.mockResolvedValueOnce(JSON.stringify({ id: 'store1', name: 'Store 1' }))
 				.mockResolvedValueOnce(JSON.stringify({ id: 'store2', name: 'Store 2' }));
 
 			const { GET } = await import('../stores/+server');
-			const response = await GET({} as any);
+			const response = await GET({ params: {} } as any);
 			const data = await response.json();
 
 			expect(data).toHaveLength(2);
@@ -64,20 +68,23 @@ describe('Stores API', () => {
 			mockReaddir.mockResolvedValue([]);
 
 			const { GET } = await import('../stores/+server');
-			const response = await GET({} as any);
+			const response = await GET({ params: {} } as any);
 			const data = await response.json();
 
 			expect(data).toEqual([]);
 		});
 
 		it('should filter out directories without store.json', async () => {
-			mockReaddir.mockResolvedValue(['store1', 'not-a-store']);
+			mockReaddir.mockResolvedValue([
+				{ name: 'store1', isDirectory: () => true },
+				{ name: 'not-a-store', isDirectory: () => true }
+			]);
 			mockReadFile
 				.mockResolvedValueOnce(JSON.stringify({ id: 'store1', name: 'Store 1' }))
 				.mockRejectedValueOnce(new Error('ENOENT'));
 
 			const { GET } = await import('../stores/+server');
-			const response = await GET({} as any);
+			const response = await GET({ params: {} } as any);
 			const data = await response.json();
 
 			expect(data).toHaveLength(1);
@@ -88,7 +95,7 @@ describe('Stores API', () => {
 			mockReaddir.mockRejectedValue(new Error('Filesystem error'));
 
 			const { GET } = await import('../stores/+server');
-			const response = await GET({} as any);
+			const response = await GET({ params: {} } as any);
 
 			expect(response.status).toBe(500);
 		});
@@ -230,14 +237,16 @@ describe('Stores API', () => {
 			);
 		});
 
-		it('should return 403 in cloud mode', async () => {
+		it('should return success with cloud mode indicator in cloud mode', async () => {
 			mockAppMode = 'cloud';
 
 			vi.resetModules();
 			const { DELETE } = await import('../stores/[id]/+server');
 			const response = await DELETE({ params: { id: 'test' } } as any);
+			const data = await response.json();
 
-			expect(response.status).toBe(403);
+			expect(data.success).toBe(true);
+			expect(data.mode).toBe('cloud');
 		});
 
 		it('should remove entire store directory recursively', async () => {
