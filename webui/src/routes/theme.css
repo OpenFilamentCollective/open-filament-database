@@ -1,0 +1,600 @@
+/*
+ * Open Filament Database - GTK/Adwaita Application Theme
+ * Styled to match GNOME/GTK application patterns
+ */
+
+/* ============================================
+   Toolbar (minimal top bar)
+   ============================================ */
+.toolbar {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+}
+
+/* ============================================
+   Header Bar (GTK-style) - for directory listings
+   ============================================ */
+.headerbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+    min-height: 47px;
+    background: var(--adw-headerbar-bg);
+    border-bottom: 1px solid var(--adw-headerbar-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.headerbar h1 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.headerbar-subtitle {
+    color: var(--adw-fg-secondary);
+    font-size: 0.875rem;
+}
+
+.headerbar-spacer {
+    flex: 1;
+}
+
+.headerbar-back {
+    padding: 0.375rem 0.75rem;
+    background: var(--adw-btn-bg);
+    border: 1px solid var(--adw-btn-border);
+    border-radius: var(--adw-border-radius);
+    color: var(--adw-fg);
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.headerbar-back:hover {
+    background: var(--adw-btn-bg-hover);
+    text-decoration: none;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero {
+    background: var(--adw-card-bg);
+    border: 1px solid var(--adw-card-border);
+    border-radius: var(--adw-border-radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--adw-fg);
+}
+
+.hero > p {
+    color: var(--adw-fg-secondary);
+    margin: 0 0 1.25rem 0;
+    font-size: 1rem;
+}
+
+.hero-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.hero-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    padding: 0.5rem 1rem;
+    background: var(--adw-btn-bg);
+    border: 1px solid var(--adw-btn-border);
+    border-radius: var(--adw-border-radius);
+    color: var(--adw-fg);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: background var(--adw-transition);
+}
+
+.hero-link:hover {
+    background: var(--adw-btn-bg-hover);
+    text-decoration: none;
+}
+
+.hero-version {
+    color: var(--adw-fg-tertiary);
+    font-size: 0.8125rem;
+}
+
+/* ============================================
+   Main Content Area
+   ============================================ */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ============================================
+   View Sections (GTK AdwPreferencesGroup style)
+   ============================================ */
+.view {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+}
+
+.view-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 0 0.75rem 0;
+    background: transparent;
+    border: none;
+    min-height: auto;
+}
+
+.view-header h2 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--adw-fg-secondary);
+    margin: 0;
+}
+
+.view-content {
+    background: var(--adw-card-bg);
+    border: 1px solid var(--adw-card-border);
+    border-radius: var(--adw-border-radius-lg);
+    padding: 1rem;
+}
+
+.view-content h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--adw-fg-secondary);
+    margin: 1.25rem 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.view-content h3:first-child {
+    margin-top: 0;
+}
+
+/* ============================================
+   Banner (GTK AdwBanner style)
+   ============================================ */
+.banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--adw-border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.banner.warning {
+    background: color-mix(in srgb, var(--adw-warning) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--adw-warning) 40%, transparent);
+}
+
+.banner.info {
+    background: color-mix(in srgb, var(--adw-accent) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--adw-accent) 30%, transparent);
+}
+
+.banner.info .banner-icon {
+    background: var(--adw-accent);
+    color: var(--adw-accent-fg);
+}
+
+.banner-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--adw-warning);
+    color: #000;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.banner-content {
+    flex: 1;
+}
+
+.banner-content strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.banner-content p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--adw-fg-secondary);
+}
+
+/* ============================================
+   Boxed List (GTK AdwPreferencesRow style)
+   ============================================ */
+.boxed-list {
+    background: var(--adw-card-bg);
+    border: 1px solid var(--adw-card-border);
+    border-radius: var(--adw-border-radius);
+    overflow: hidden;
+}
+
+.view-content .boxed-list {
+    border: none;
+    background: transparent;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--adw-card-border);
+    transition: background var(--adw-transition);
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.row:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.light-mode) .row:hover {
+        background: rgba(255, 255, 255, 0.03);
+    }
+}
+
+.dark-mode .row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.row-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--adw-accent);
+    color: var(--adw-accent-fg);
+    border-radius: var(--adw-border-radius);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.row-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.row-title {
+    font-weight: 500;
+    color: var(--adw-fg);
+}
+
+.row-subtitle {
+    font-size: 0.8125rem;
+    color: var(--adw-fg-secondary);
+}
+
+.row-action {
+    padding: 0.375rem 0.75rem;
+    background: var(--adw-btn-bg);
+    border: 1px solid var(--adw-btn-border);
+    border-radius: var(--adw-border-radius);
+    color: var(--adw-fg);
+    font-size: 0.8125rem;
+    text-decoration: none;
+}
+
+.row-action:hover {
+    background: var(--adw-btn-bg-hover);
+    text-decoration: none;
+}
+
+/* ============================================
+   Endpoint Rows (API documentation)
+   ============================================ */
+.endpoint-row {
+    font-family: var(--adw-font);
+}
+
+.method-badge {
+    padding: 0.125rem 0.5rem;
+    background: var(--adw-success);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.endpoint-path {
+    font-family: 'Source Code Pro', 'JetBrains Mono', monospace;
+    font-size: 0.8125rem;
+    background: transparent;
+    padding: 0;
+    flex: 1;
+}
+
+/* ============================================
+   Stats Grid
+   ============================================ */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+}
+
+.stat {
+    background: transparent;
+    border-radius: var(--adw-border-radius);
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--adw-accent);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--adw-fg-secondary);
+    margin-top: 0.25rem;
+}
+
+/* ============================================
+   File Tree
+   ============================================ */
+.file-tree {
+    font-family: 'Source Code Pro', 'JetBrains Mono', monospace;
+    font-size: 0.8125rem;
+}
+
+.file-tree ul {
+    list-style: none;
+    padding-left: 1.25rem;
+    margin: 0;
+}
+
+.file-tree > ul {
+    padding-left: 0;
+}
+
+.file-tree li {
+    padding: 0.125rem 0;
+    margin: 0;
+}
+
+.file-tree a {
+    color: var(--adw-accent);
+}
+
+.file-tree .dir {
+    color: var(--adw-fg);
+    font-weight: 500;
+}
+
+.file-tree .dir::before {
+    content: "📁 ";
+}
+
+.file-tree .file::before {
+    content: "📄 ";
+}
+
+.file-tree .placeholder {
+    color: var(--adw-fg-tertiary);
+    font-style: italic;
+}
+
+.file-tree .placeholder::before {
+    content: "📄 ";
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--adw-card-border);
+    margin-top: 2rem;
+}
+
+footer a {
+    color: var(--adw-fg-secondary);
+    font-size: 0.8125rem;
+}
+
+footer a:hover {
+    color: var(--adw-accent);
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+.dim {
+    color: var(--adw-fg-secondary);
+}
+
+/* Override default section styling from adwaita */
+section {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* Override default header styling from adwaita */
+header {
+    background: transparent;
+    border: none;
+    padding: 0;
+    min-height: auto;
+}
+
+/* ============================================
+   Code Syntax Highlighting
+   ============================================ */
+.code-block {
+    background: var(--adw-bg-secondary);
+    border: 1px solid var(--adw-card-border);
+    border-radius: var(--adw-border-radius);
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.code-block code {
+    background: transparent;
+    padding: 0;
+    color: var(--adw-fg);
+}
+
+/* Keywords: const, await, import, for, in */
+.code-block .kw {
+    color: #8839ef;
+}
+
+/* Functions: fetch, json, get, print, log */
+.code-block .fn {
+    color: #1e66f5;
+}
+
+/* Strings */
+.code-block .str {
+    color: #40a02b;
+}
+
+/* Variables/interpolation */
+.code-block .var {
+    color: #df8e1d;
+}
+
+/* Commands */
+.code-block .cmd {
+    color: #d20f39;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.light-mode) .code-block .kw {
+        color: #cba6f7;
+    }
+    :root:not(.light-mode) .code-block .fn {
+        color: #89b4fa;
+    }
+    :root:not(.light-mode) .code-block .str {
+        color: #a6e3a1;
+    }
+    :root:not(.light-mode) .code-block .var {
+        color: #f9e2af;
+    }
+    :root:not(.light-mode) .code-block .cmd {
+        color: #f38ba8;
+    }
+}
+
+/* Dark mode class overrides for code */
+.dark-mode .code-block .kw {
+    color: #cba6f7;
+}
+.dark-mode .code-block .fn {
+    color: #89b4fa;
+}
+.dark-mode .code-block .str {
+    color: #a6e3a1;
+}
+.dark-mode .code-block .var {
+    color: #f9e2af;
+}
+.dark-mode .code-block .cmd {
+    color: #f38ba8;
+}
+
+/* ============================================
+   Theme Toggle Button
+   ============================================ */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    background: var(--adw-btn-bg);
+    border: 1px solid var(--adw-btn-border);
+    border-radius: var(--adw-border-radius);
+    cursor: pointer;
+    transition: background var(--adw-transition);
+}
+
+.theme-toggle:hover {
+    background: var(--adw-btn-bg-hover);
+}
+
+.theme-icon-light,
+.theme-icon-dark {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* Show sun in dark mode, moon in light mode */
+.theme-icon-dark {
+    display: none;
+}
+
+.dark-mode .theme-icon-light {
+    display: none;
+}
+
+.dark-mode .theme-icon-dark {
+    display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.light-mode) .theme-icon-light {
+        display: none;
+    }
+    :root:not(.light-mode) .theme-icon-dark {
+        display: block;
+    }
+}
+
+.light-mode .theme-icon-light {
+    display: block;
+}
+
+.light-mode .theme-icon-dark {
+    display: none;
+}

@@ -5,6 +5,9 @@
         "string_limit": {
             "maxLength": 1000
         },
+        "country_code": {
+            "pattern": "^[A-Z]{2}$"
+        },
         "id": {
             "maxLength": 1000,
             "pattern": "^[a-z0-9+]+(_[a-z0-9+]+)*$"
@@ -16,21 +19,26 @@
     "properties": {
         "id": {
             "type": "string",
-            "description": "The ID for this store",
+            "title": "ID",
+            "description": "The unique identifier for this store",
             "$ref": "#/definitions/id"
         },
         "name": {
             "type": "string",
+            "title": "Name",
             "description": "The name of this store",
             "$ref": "#/definitions/string_limit"
         },
         "storefront_url": {
             "type": "string",
+            "title": "Storefront URL",
             "description": "A link to the storefront of this store",
+            "x-placeholder": "https://example.com/...",
             "$ref": "#/definitions/string_limit"
         },
         "logo": {
             "type": "string",
+            "title": "Logo",
             "description": "The name of the logo file",
             "$ref": "#/definitions/logo"
         },
@@ -39,10 +47,12 @@
                 "array",
                 "string"
             ],
-            "description": "A list of locations the shop linked ships from",
+            "title": "Ships From",
+            "description": "Countries/regions the store ships from",
+            "x-placeholder": "e.g., US",
             "items": {
                 "type": "string",
-                "$ref": "#/definitions/string_limit"
+                "$ref": "#/definitions/country_code"
             },
             "$ref": "#/definitions/string_limit"
         },
@@ -51,10 +61,12 @@
                 "array",
                 "string"
             ],
-            "description": "A list of locations the shop linked ships to",
+            "title": "Ships To",
+            "description": "Countries/regions the store ships to",
+            "x-placeholder": "e.g., US",
             "items": {
                 "type": "string",
-                "$ref": "#/definitions/string_limit"
+                "$ref": "#/definitions/country_code"
             },
             "$ref": "#/definitions/string_limit"
         },

@@ -7,12 +7,10 @@ making it easier to work with store data independently.
 
 import lzma
 import sqlite3
-from dataclasses import fields
 from pathlib import Path
-from typing import Type
 
-from ..models import Database, Store
-from ..serialization import serialize_for_sqlite
+from ..models import Database
+from ..serialization import insert_entities
 
 
 # =============================================================================
@@ -34,7 +32,7 @@ CREATE TABLE IF NOT EXISTS store (
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
     storefront_url TEXT NOT NULL,
-    logo TEXT NOT NULL,
+    logo_name TEXT NOT NULL,
     ships_from TEXT NOT NULL,  -- JSON array
     ships_to TEXT NOT NULL  -- JSON array
 );
@@ -52,48 +50,6 @@ SELECT
     ships_to
 FROM store;
 """
-
-
-# =============================================================================
-# Dynamic Insert Generation
-# =============================================================================
-
-def insert_entities(
-    cursor: sqlite3.Cursor,
-    entities: list,
-    entity_class: Type,
-    table_name: str
-):
-    """
-    Insert entities into SQLite using dataclass introspection.
-
-    Args:
-        cursor: SQLite cursor
-        entities: List of dataclass instances
-        entity_class: The dataclass type
-        table_name: Target table name
-    """
-    if not entities:
-        return
-
-    from ..models import Brand, Store
-
-    # Get field names, excluding directory_name for Brand and Store
-    field_names = [
-        f.name for f in fields(entity_class)
-        if not (entity_class in (Brand, Store) and f.name == "directory_name")
-    ]
-    placeholders = ", ".join(["?"] * len(field_names))
-    columns = ", ".join(field_names)
-
-    sql = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})"
-
-    for entity in entities:
-        values = tuple(
-            serialize_for_sqlite(getattr(entity, name))
-            for name in field_names
-        )
-        cursor.execute(sql, values)
 
 
 # =============================================================================
@@ -123,8 +79,8 @@ def export_sqlite_stores(db: Database, output_dir: str, version: str, generated_
     cursor.execute("INSERT INTO meta (key, value) VALUES (?, ?)", ("generated_at", generated_at))
     cursor.execute("INSERT INTO meta (key, value) VALUES (?, ?)", ("store_count", str(len(db.stores))))
 
-    # Insert stores
-    insert_entities(cursor, db.stores, Store, "store")
+    # Insert stores using PRAGMA-driven column matching
+    insert_entities(cursor, db.stores, "store")
 
     conn.commit()
     conn.close()

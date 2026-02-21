@@ -1,17 +1,15 @@
 """
 Data crawler that scans the canonical data structure and builds normalized entities.
+
+Entities are plain dicts — source JSON fields pass through as-is, with only
+computed fields (UUIDs, slugs, foreign keys) overlaid on top.
 """
 
 import json
 from pathlib import Path
-from typing import Optional
 
 from .errors import BuildResult
-from .models import (
-    Brand, Material, Filament, Variant, Size, Store, PurchaseLink, Database,
-    SlicerSettings, GenericSlicerSettings, AllSlicerSettings, SlicerIds,
-    ColorStandards, VariantTraits
-)
+from .models import Database
 from .utils import (
     generate_brand_id, generate_material_id, generate_filament_id,
     generate_variant_id, generate_size_id, generate_store_id,
@@ -90,20 +88,18 @@ class DataCrawler:
 
         store_id = generate_store_id(original_id)
 
-        # Handle ships_from/ships_to which can be string or array
-        ships_from = ensure_list(data.get("ships_from", []))
-        ships_to = ensure_list(data.get("ships_to", []))
-
-        store = Store(
-            id=store_id,
-            name=data.get("name", store_dir.name),
-            slug=slugify(data.get("name", store_dir.name)),
-            directory_name=store_dir.name,
-            storefront_url=data.get("storefront_url", ""),
-            logo=data.get("logo", ""),
-            ships_from=ships_from,
-            ships_to=ships_to
-        )
+        # Start with all source data, overlay computed fields
+        store = {
+            **data,
+            "id": store_id,
+            "name": data.get("name", store_dir.name),
+            "slug": slugify(data.get("name", store_dir.name)),
+            "directory_name": store_dir.name,  # internal, stripped on export
+            "storefront_url": data.get("storefront_url", ""),
+            "logo": data.get("logo", ""),
+            "ships_from": ensure_list(data.get("ships_from", [])),
+            "ships_to": ensure_list(data.get("ships_to", [])),
+        }
 
         self.db.stores.append(store)
         self._store_cache[original_id] = store_id
@@ -143,15 +139,16 @@ class DataCrawler:
         # Create brand
         brand_id = generate_brand_id(brand_name)
 
-        brand = Brand(
-            id=brand_id,
-            name=brand_data.get("name", brand_name),
-            slug=slugify(brand_name),
-            directory_name=brand_name,
-            website=brand_data.get("website", ""),
-            logo=brand_data.get("logo", ""),
-            origin=brand_data.get("origin", "Unknown")
-        )
+        brand = {
+            **brand_data,
+            "id": brand_id,
+            "name": brand_data.get("name", brand_name),
+            "slug": slugify(brand_name),
+            "directory_name": brand_name,  # internal, stripped on export
+            "website": brand_data.get("website", ""),
+            "logo": brand_data.get("logo", ""),
+            "origin": brand_data.get("origin", "Unknown"),
+        }
 
         self.db.brands.append(brand)
         self._brand_cache[brand_name] = brand_id
@@ -184,19 +181,15 @@ class DataCrawler:
         cache_key = f"{brand_id}:{material_name}"
 
         if cache_key not in self._material_cache:
-            # Parse default slicer settings if present
-            default_slicer_settings = self._parse_slicer_settings(
-                material_data.get("default_slicer_settings")
-            )
-
-            material = Material(
-                id=material_id,
-                brand_id=brand_id,
-                material=material_data.get("material", material_name),
-                slug=slugify(material_name),
-                default_max_dry_temperature=material_data.get("default_max_dry_temperature"),
-                default_slicer_settings=default_slicer_settings
-            )
+            # Pass through all source data, overlay computed fields
+            material = {
+                **material_data,
+                "id": material_id,
+                "brand_id": brand_id,
+                "material": material_data.get("material", material_name),
+                "slug": slugify(material_name),
+                "material_class": material_data.get("material_class", "FFF"),
+            }
 
             self.db.materials.append(material)
             self._material_cache[cache_key] = material_id
@@ -231,26 +224,19 @@ class DataCrawler:
         filament_name = filament_data.get("name", filament_dir.name)
         filament_id = generate_filament_id(brand_id, material_id, filament_name)
 
-        # Parse slicer IDs and settings
-        slicer_ids = self._parse_slicer_ids(filament_data.get("slicer_ids"))
-        slicer_settings = self._parse_slicer_settings(filament_data.get("slicer_settings"))
-
-        filament = Filament(
-            id=filament_id,
-            brand_id=brand_id,
-            material_id=material_id,
-            name=filament_name,
-            slug=slugify(filament_name),
-            material=material_name,
-            density=filament_data.get("density", 1.24),
-            diameter_tolerance=filament_data.get("diameter_tolerance", 0.02),
-            max_dry_temperature=filament_data.get("max_dry_temperature"),
-            data_sheet_url=filament_data.get("data_sheet_url"),
-            safety_sheet_url=filament_data.get("safety_sheet_url"),
-            discontinued=filament_data.get("discontinued", False),
-            slicer_ids=slicer_ids,
-            slicer_settings=slicer_settings
-        )
+        # All source fields pass through via **filament_data
+        filament = {
+            **filament_data,
+            "id": filament_id,
+            "brand_id": brand_id,
+            "material_id": material_id,
+            "name": filament_name,
+            "slug": slugify(filament_name),
+            "material": material_name,
+            "density": filament_data.get("density", 1.24),
+            "diameter_tolerance": filament_data.get("diameter_tolerance", 0.02),
+            "discontinued": filament_data.get("discontinued", False),
+        }
 
         self.db.filaments.append(filament)
 
@@ -278,11 +264,12 @@ class DataCrawler:
             self._result.add_warning("JSON Parse", f"Failed to parse: {e}", variant_json)
             return
 
-        # Get color name first (needed for ID generation)
-        color_name = variant_data.get("color_name", variant_dir.name)
+        # Use source "id" for UUID generation (matches directory name, preserves UUIDs)
+        variant_source_id = variant_data.get("id", variant_dir.name)
+        color_name = variant_data.get("name", variant_dir.name)
 
         # Generate variant ID using OFD standard algorithm
-        variant_id = generate_variant_id(filament_id, color_name)
+        variant_id = generate_variant_id(filament_id, variant_source_id)
 
         # Parse color hex (can be string or array)
         color_hex_raw = variant_data.get("color_hex", "#000000")
@@ -291,28 +278,23 @@ class DataCrawler:
         else:
             color_hex = normalize_color_hex(color_hex_raw) or "#000000"
 
-        # Parse hex variants
+        # Normalize hex variants if present
         hex_variants = variant_data.get("hex_variants")
         if hex_variants:
             hex_variants = [normalize_color_hex(h) for h in hex_variants if h]
 
-        # Parse color standards
-        color_standards = self._parse_color_standards(variant_data.get("color_standards"))
-
-        # Parse traits
-        traits = self._parse_traits(variant_data.get("traits"))
-
-        variant = Variant(
-            id=variant_id,
-            filament_id=filament_id,
-            slug=slugify(color_name),
-            color_name=color_name,
-            color_hex=color_hex,
-            hex_variants=hex_variants,
-            color_standards=color_standards,
-            traits=traits,
-            discontinued=variant_data.get("discontinued", False)
-        )
+        # All source fields pass through via **variant_data (traits, color_standards, etc.)
+        variant = {
+            **variant_data,
+            "id": variant_id,
+            "filament_id": filament_id,
+            "slug": slugify(variant_source_id),
+            "name": color_name,
+            "color_hex": color_hex,
+            "discontinued": variant_data.get("discontinued", False),
+        }
+        if hex_variants:
+            variant["hex_variants"] = hex_variants
 
         self.db.variants.append(variant)
 
@@ -350,26 +332,32 @@ class DataCrawler:
 
         size_id = generate_size_id(variant_id, size_entry, index)
 
-        size = Size(
-            id=size_id,
-            variant_id=variant_id,
-            filament_weight=int(weight),
-            diameter=float(diameter),
-            empty_spool_weight=size_entry.get("empty_spool_weight"),
-            spool_core_diameter=size_entry.get("spool_core_diameter"),
-            gtin=size_entry.get("gtin") or size_entry.get("ean"),
-            article_number=size_entry.get("article_number"),
-            barcode_identifier=size_entry.get("barcode_identifier"),
-            nfc_identifier=size_entry.get("nfc_identifier"),
-            qr_identifier=size_entry.get("qr_identifier"),
-            discontinued=size_entry.get("discontinued", False)
-        )
+        # Handle gtin/ean normalization
+        gtin = size_entry.get("gtin") or size_entry.get("ean")
+
+        # Pop purchase_links before storing (they become separate entities)
+        purchase_links_data = size_entry.get("purchase_links", [])
+
+        # All source fields pass through, overlay computed fields
+        size = {
+            **size_entry,
+            "id": size_id,
+            "variant_id": variant_id,
+            "filament_weight": int(weight),
+            "diameter": float(diameter),
+            "discontinued": size_entry.get("discontinued", False),
+        }
+        if gtin:
+            size["gtin"] = gtin
+        # Remove ean if we normalized it to gtin
+        size.pop("ean", None)
+        # Remove purchase_links from size dict (they are separate entities)
+        size.pop("purchase_links", None)
 
         self.db.sizes.append(size)
 
         # Process purchase links
-        purchase_links = size_entry.get("purchase_links", [])
-        for pl_idx, pl_entry in enumerate(purchase_links):
+        for pl_idx, pl_entry in enumerate(purchase_links_data):
             self._create_purchase_link(pl_entry, size_id, index, pl_idx, sizes_json)
 
     def _create_purchase_link(self, pl_entry: dict, size_id: str, size_index: int, link_index: int, sizes_json: Path):
@@ -397,99 +385,22 @@ class DataCrawler:
 
         pl_id = generate_purchase_link_id(size_id, store_uuid, url)
 
-        # Handle ships_from/ships_to overrides
-        ships_from = pl_entry.get("ships_from")
-        if ships_from:
-            ships_from = ensure_list(ships_from)
-
-        ships_to = pl_entry.get("ships_to")
-        if ships_to:
-            ships_to = ensure_list(ships_to)
-
-        purchase_link = PurchaseLink(
-            id=pl_id,
-            size_id=size_id,
-            store_id=store_uuid,
-            url=url,
-            spool_refill=pl_entry.get("spool_refill", False),
-            ships_from=ships_from,
-            ships_to=ships_to
-        )
+        # All source fields pass through, overlay computed fields
+        purchase_link = {
+            **pl_entry,
+            "id": pl_id,
+            "size_id": size_id,
+            "store_id": store_uuid,
+            "url": url,
+            "spool_refill": pl_entry.get("spool_refill", False),
+        }
+        # Normalize ships_from/ships_to if present
+        if purchase_link.get("ships_from"):
+            purchase_link["ships_from"] = ensure_list(purchase_link["ships_from"])
+        if purchase_link.get("ships_to"):
+            purchase_link["ships_to"] = ensure_list(purchase_link["ships_to"])
 
         self.db.purchase_links.append(purchase_link)
-
-    def _parse_slicer_ids(self, data: Optional[dict]) -> Optional[SlicerIds]:
-        """Parse slicer IDs from JSON data."""
-        if not data:
-            return None
-
-        return SlicerIds(
-            prusaslicer=data.get("prusaslicer"),
-            bambustudio=data.get("bambustudio"),
-            orcaslicer=data.get("orcaslicer"),
-            cura=data.get("cura")
-        )
-
-    def _parse_slicer_settings(self, data: Optional[dict]) -> Optional[AllSlicerSettings]:
-        """Parse slicer settings from JSON data."""
-        if not data:
-            return None
-
-        def parse_specific(d: Optional[dict]) -> Optional[SlicerSettings]:
-            if not d:
-                return None
-            profile_name = d.get("profile_name")
-            if not profile_name:
-                return None
-            return SlicerSettings(
-                profile_name=profile_name,
-                overrides=d.get("overrides")
-            )
-
-        generic_data = data.get("generic")
-        generic = None
-        if generic_data:
-            generic = GenericSlicerSettings(
-                first_layer_bed_temp=generic_data.get("first_layer_bed_temp"),
-                first_layer_nozzle_temp=generic_data.get("first_layer_nozzle_temp"),
-                bed_temp=generic_data.get("bed_temp"),
-                nozzle_temp=generic_data.get("nozzle_temp")
-            )
-
-        return AllSlicerSettings(
-            prusaslicer=parse_specific(data.get("prusaslicer")),
-            bambustudio=parse_specific(data.get("bambustudio")),
-            orcaslicer=parse_specific(data.get("orcaslicer")),
-            cura=parse_specific(data.get("cura")),
-            generic=generic
-        )
-
-    def _parse_color_standards(self, data: Optional[dict]) -> Optional[ColorStandards]:
-        """Parse color standards from JSON data."""
-        if not data:
-            return None
-
-        return ColorStandards(
-            ral=data.get("ral"),
-            ncs=data.get("ncs"),
-            pantone=data.get("pantone"),
-            bs=data.get("bs"),
-            munsell=data.get("munsell")
-        )
-
-    def _parse_traits(self, data: Optional[dict]) -> Optional[VariantTraits]:
-        """Parse variant traits from JSON data."""
-        if not data:
-            return None
-
-        return VariantTraits(
-            translucent=data.get("translucent", False),
-            glow=data.get("glow", False),
-            matte=data.get("matte", False),
-            recycled=data.get("recycled", False),
-            recyclable=data.get("recyclable", False),
-            biodegradable=data.get("biodegradable", False)
-        )
 
 
 def crawl_data(data_dir: str, stores_dir: str) -> tuple[Database, BuildResult]:
