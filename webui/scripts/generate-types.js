@@ -18,14 +18,14 @@ const outputFile = join(__dirname, '../src/lib/types/database.ts');
 /**
  * Convert a JSON schema property to a TypeScript type
  */
-function schemaTypeToTS(prop, required = false) {
-	if (!prop) return 'any';
+function schemaTypeToTS(prop, depth = 0) {
+	if (!prop || depth > 20) return 'any';
 
 	// Handle union types (e.g., ["array", "string"])
 	if (Array.isArray(prop.type)) {
 		const types = prop.type.map((t) => {
 			if (t === 'array' && prop.items) {
-				return `${schemaTypeToTS(prop.items)}[]`;
+				return `${schemaTypeToTS(prop.items, depth + 1)}[]`;
 			}
 			return basicTypeToTS(t);
 		});
@@ -34,7 +34,7 @@ function schemaTypeToTS(prop, required = false) {
 
 	// Handle single types
 	if (prop.type === 'array' && prop.items) {
-		return `${schemaTypeToTS(prop.items)}[]`;
+		return `${schemaTypeToTS(prop.items, depth + 1)}[]`;
 	}
 
 	if (prop.type === 'object') {
@@ -43,7 +43,7 @@ function schemaTypeToTS(prop, required = false) {
 				.map(([key, value]) => {
 					const isRequired = prop.required && prop.required.includes(key);
 					const optional = isRequired ? '' : '?';
-					return `${key}${optional}: ${schemaTypeToTS(value, isRequired)}`;
+					return `${key}${optional}: ${schemaTypeToTS(value, depth + 1)}`;
 				})
 				.join(';\n\t');
 			return `{\n\t${props}\n}`;
@@ -83,7 +83,7 @@ function generateInterface(schemaName, schema) {
 			const isRequired = schema.required && schema.required.includes(key);
 			const optional = isRequired ? '' : '?';
 			const description = value.description ? `\n\t/** ${value.description} */` : '';
-			return `${description}\n\t${key}${optional}: ${schemaTypeToTS(value, isRequired)};`;
+			return `${description}\n\t${key}${optional}: ${schemaTypeToTS(value)};`;
 		})
 		.join('\n');
 
