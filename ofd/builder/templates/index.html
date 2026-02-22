@@ -47,7 +47,7 @@
             <p>A community-maintained database of 3D printing filaments, available as static JSON, CSV, and SQLite.</p>
             <div class="hero-links">
                 <a href="https://github.com/OpenFilamentCollective/open-filament-database" class="hero-link">Source Repository</a>
-                <a href="api/index.json" class="hero-link">API Root</a>
+                <a href="api/v1/index.json" class="hero-link">API Root</a>
             </div>
             <span class="hero-version">v<VERSION/></span>
         </div>
@@ -67,7 +67,7 @@
                 <h2>API Endpoints</h2>
             </header>
             <div class="view-content">
-                <p class="dim">All responses are static JSON files. Base URL: <code>/api/</code></p>
+                <p class="dim">All responses are static JSON files. Base URL: <code>/api/v1/</code></p>
 
                 <h3>Brands</h3>
                 <div class="boxed-list">
@@ -129,16 +129,16 @@
             </header>
             <div class="view-content">
                 <h3>curl</h3>
-<pre class="code-block"><code><span class="cmd">curl</span> https://openfilamentcollective.github.io/open-filament-database/api/brands/index.json</code></pre>
+<pre class="code-block"><code><span class="cmd">curl</span> https://openfilamentcollective.github.io/open-filament-database/api/v1/brands/index.json</code></pre>
 
                 <h3>JavaScript</h3>
-<pre class="code-block"><code><span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/brands/index.json'</span>);
+<pre class="code-block"><code><span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/v1/brands/index.json'</span>);
 <span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
 console.<span class="fn">log</span>(<span class="str">`<span class="var">${data.count}</span> brands`</span>);</code></pre>
 
                 <h3>Python</h3>
 <pre class="code-block"><code><span class="kw">import</span> requests
-brands = requests.<span class="fn">get</span>(<span class="str">'/api/brands/index.json'</span>).<span class="fn">json</span>()
+brands = requests.<span class="fn">get</span>(<span class="str">'/api/v1/brands/index.json'</span>).<span class="fn">json</span>()
 <span class="kw">for</span> b <span class="kw">in</span> brands[<span class="str">'brands'</span>]:
     <span class="fn">print</span>(<span class="str">f"<span class="var">{b['name']}</span>: <span class="var">{b['material_count']}</span> materials"</span>)</code></pre>
             </div>
@@ -159,7 +159,7 @@ brands = requests.<span class="fn">get</span>(<span class="str">'/api/brands/ind
     <footer>
         <a href="https://github.com/OpenFilamentCollective/open-filament-database">GitHub</a>
         <a href="manifest.json">Manifest</a>
-        <a href="api/index.json">API Root</a>
+        <a href="api/v1/index.json">API Root</a>
     </footer>
 </body>
 </html>

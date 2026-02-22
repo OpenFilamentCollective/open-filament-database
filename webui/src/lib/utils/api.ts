@@ -28,10 +28,10 @@ export function buildApiUrl(path: string): string {
 		const match = path.match(/^\/api\/stores\/([^/]+)$/);
 		if (match) {
 			const storeId = match[1];
-			return `${baseUrl}/api/stores/${storeId}.json`;
+			return `${baseUrl}/api/v1/stores/${storeId}.json`;
 		}
 		if (path === '/api/stores') {
-			return `${baseUrl}/api/stores/index.json`;
+			return `${baseUrl}/api/v1/stores/index.json`;
 		}
 		// Handle logo endpoints (not available in cloud API - return as-is for local handling)
 		if (path.includes('/logo')) {
@@ -62,13 +62,13 @@ export function buildApiUrl(path: string): string {
 
 			if (!subPath) {
 				// /api/brands/[id]
-				return `${baseUrl}/api/brands/${brandId}/index.json`;
+				return `${baseUrl}/api/v1/brands/${brandId}/index.json`;
 			}
 
 			if (subPath === 'materials') {
 				// In cloud API, materials are included in the brand response
 				// /api/brands/[id]/materials -> /api/brands/[id]/index.json
-				return `${baseUrl}/api/brands/${brandId}/index.json`;
+				return `${baseUrl}/api/v1/brands/${brandId}/index.json`;
 			}
 
 			// Handle materials, filaments, and variants paths
@@ -85,24 +85,24 @@ export function buildApiUrl(path: string): string {
 
 				if (variantId) {
 					// /api/brands/[id]/materials/[type]/filaments/[filament]/variants/[variant]
-					return `${baseUrl}/api/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/variants/${variantId}.json`;
+					return `${baseUrl}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/variants/${variantId}.json`;
 				} else if (isVariantsList && filamentName) {
 					// /api/brands/[id]/materials/[type]/filaments/[filament]/variants
 					// Maps to filament endpoint which includes variants
-					return `${baseUrl}/api/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
+					return `${baseUrl}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
 				} else if (filamentName) {
 					// /api/brands/[id]/materials/[type]/filaments/[filament]
-					return `${baseUrl}/api/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
+					return `${baseUrl}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
 				} else {
 					// /api/brands/[id]/materials/[type] or /api/brands/[id]/materials/[type]/filaments
 					// Both map to the material endpoint which includes filaments
-					return `${baseUrl}/api/brands/${brandId}/materials/${materialType}/index.json`;
+					return `${baseUrl}/api/v1/brands/${brandId}/materials/${materialType}/index.json`;
 				}
 			}
 		}
 
 		if (path === '/api/brands') {
-			return `${baseUrl}/api/brands/index.json`;
+			return `${baseUrl}/api/v1/brands/index.json`;
 		}
 	}
 
@@ -112,10 +112,10 @@ export function buildApiUrl(path: string): string {
 		const match = path.match(/^\/api\/schemas\/([^/]+)$/);
 		if (match) {
 			const schemaType = match[1];
-			return `${baseUrl}/api/schemas/${schemaType}_schema.json`;
+			return `${baseUrl}/api/v1/schemas/${schemaType}_schema.json`;
 		}
 		// /api/schemas -> /api/schemas/index.json
-		return `${baseUrl}/api/schemas/index.json`;
+		return `${baseUrl}/api/v1/schemas/index.json`;
 	}
 
 	// Default: append path to base URL (for any custom endpoints)

@@ -38,7 +38,7 @@ async function fetchSchemaFromUrl(url: string): Promise<any | null> {
  */
 export async function fetchSchema(schemaName: string): Promise<any | null> {
 	const baseUrl = get(apiBaseUrl);
-	const url = `${baseUrl}/api/schemas/${schemaName}`;
+	const url = `${baseUrl}/api/v1/schemas/${schemaName}`;
 	return fetchSchemaFromUrl(url);
 }
 

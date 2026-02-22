@@ -65,8 +65,8 @@ def _render_badge(label: str, value: str, color: str) -> str:
 
 
 def export_badges(db: Database, output_dir: str, **kwargs):
-    """Export SVG badge images to dist/api/badges/."""
-    badges_path = Path(output_dir) / "api" / "badges"
+    """Export SVG badge images to dist/api/v1/badges/."""
+    badges_path = Path(output_dir) / "api" / "v1" / "badges"
     badges_path.mkdir(parents=True, exist_ok=True)
 
     badges = {

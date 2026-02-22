@@ -4,12 +4,13 @@
  */
 
 import type { Cookies } from '@sveltejs/kit';
+import { dev } from '$app/environment';
 
 const COOKIE_NAME = 'ofd_gh_token';
 const COOKIE_OPTIONS = {
 	path: '/',
 	httpOnly: true,
-	secure: false, // Set to true in production with HTTPS
+	secure: !dev,
 	sameSite: 'lax' as const,
 	maxAge: 60 * 60 * 24 * 30 // 30 days
 };

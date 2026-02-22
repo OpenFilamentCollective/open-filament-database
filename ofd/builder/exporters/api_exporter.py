@@ -300,7 +300,7 @@ def export_store_logos(db: Database, api_path: Path, stores_dir: Path) -> tuple[
 
 def export_api(db: Database, output_dir: str, version: str, generated_at: str, schemas_dir: str = None, builder_schemas_dir: str = None, base_url: str = "", data_dir: str = "data", stores_dir: str = "stores", **kwargs):
     """Export static API structure following native directory hierarchy."""
-    api_path = Path(output_dir) / "api"
+    api_path = Path(output_dir) / "api" / "v1"
     api_path.mkdir(parents=True, exist_ok=True)
 
     # Export schemas if directory provided
