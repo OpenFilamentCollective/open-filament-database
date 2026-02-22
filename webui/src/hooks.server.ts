@@ -1,22 +1,25 @@
-import { existsSync } from 'fs';
+import { copyFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { env } from '$env/dynamic/public';
 
-// Check for .env file on server startup
+// Check for .env file on server startup — auto-create from .env.example if missing
 const envPath = join(process.cwd(), '.env');
+const envExamplePath = join(process.cwd(), '.env.example');
 
 if (!existsSync(envPath)) {
-	console.error('\n' + '='.repeat(60));
-	console.error('ERROR: Missing .env file');
-	console.error('='.repeat(60));
-	console.error('\nPlease create a .env file in the webui directory.');
-	console.error('You can copy the example file:');
-	console.error('\n  cp .env.example .env\n');
-	console.error('Required environment variables:');
-	console.error('  - PUBLIC_APP_MODE (local or cloud)');
-	console.error('  - PUBLIC_API_BASE_URL (for cloud mode)');
-	console.error('\n' + '='.repeat(60) + '\n');
-	throw new Error('Missing .env file. Please create one from .env.example');
+	if (existsSync(envExamplePath)) {
+		copyFileSync(envExamplePath, envPath);
+		console.log('\n' + '='.repeat(60));
+		console.log('[env] .env file was missing — copied from .env.example');
+		console.log('[env] Restarting server to load new environment variables...');
+		console.log('='.repeat(60) + '\n');
+		process.exit(0);
+	} else {
+		console.error('\n' + '='.repeat(60));
+		console.error('ERROR: Missing .env file and no .env.example found');
+		console.error('='.repeat(60) + '\n');
+		throw new Error('Missing .env file and no .env.example to copy from');
+	}
 }
 
 // Validate required environment variables
