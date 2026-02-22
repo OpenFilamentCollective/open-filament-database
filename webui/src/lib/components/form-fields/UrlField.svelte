@@ -2,6 +2,8 @@
 	import Tooltip from './Tooltip.svelte';
 	import { LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
 
+	const DEFAULT_PROTOCOL: string = "https://";
+
 	interface Props {
 		value: string;
 		id?: string;
@@ -23,7 +25,7 @@
 		compact = false
 	}: Props = $props();
 
-	let protocol = $state('https://');
+	let protocol = $state(DEFAULT_PROTOCOL);
 	let urlBody = $state('');
 
 	// Parse the initial value when it changes externally
@@ -36,13 +38,13 @@
 	});
 
 	function splitUrl(url: string): { protocol: string; body: string } {
-		if (!url) return { protocol: 'https://', body: '' };
+		if (!url) return { protocol: DEFAULT_PROTOCOL, body: '' };
 		const match = url.match(/^(https?:\/\/)(.*)/i);
 		if (match) {
 			return { protocol: match[1].toLowerCase(), body: match[2] };
 		}
 		// No protocol present - treat as body only
-		return { protocol: 'https://', body: url };
+		return { protocol: DEFAULT_PROTOCOL, body: url };
 	}
 
 	function updateValue() {
