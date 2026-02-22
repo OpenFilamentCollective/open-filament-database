@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { getDetailLinks } from '../helpers';
 
 test.describe('Stores Page', () => {
 	test.beforeEach(async ({ page }) => {
@@ -36,7 +37,7 @@ test.describe('Stores Page', () => {
 	test('should navigate to store detail on click', async ({ page }) => {
 		await page.waitForLoadState('networkidle');
 
-		const storeLinks = page.locator('a[href^="/stores/"]').filter({ hasNot: page.locator('[href="/stores"]') });
+		const storeLinks = getDetailLinks(page, 'stores');
 
 		if ((await storeLinks.count()) > 0) {
 			await storeLinks.first().click();
@@ -50,7 +51,7 @@ test.describe('Store Detail Page', () => {
 		await page.goto('/stores');
 		await page.waitForLoadState('networkidle');
 
-		const storeLinks = page.locator('a[href^="/stores/"]').filter({ hasNot: page.locator('[href="/stores"]') });
+		const storeLinks = getDetailLinks(page, 'stores');
 
 		if ((await storeLinks.count()) > 0) {
 			await storeLinks.first().click();
@@ -65,7 +66,7 @@ test.describe('Store Detail Page', () => {
 		await page.goto('/stores');
 		await page.waitForLoadState('networkidle');
 
-		const storeLinks = page.locator('a[href^="/stores/"]').filter({ hasNot: page.locator('[href="/stores"]') });
+		const storeLinks = getDetailLinks(page, 'stores');
 
 		if ((await storeLinks.count()) > 0) {
 			await storeLinks.first().click();
@@ -81,7 +82,7 @@ test.describe('Store Detail Page', () => {
 		await page.goto('/stores');
 		await page.waitForLoadState('networkidle');
 
-		const storeLinks = page.locator('a[href^="/stores/"]').filter({ hasNot: page.locator('[href="/stores"]') });
+		const storeLinks = getDetailLinks(page, 'stores');
 
 		if ((await storeLinks.count()) > 0) {
 			await storeLinks.first().click();

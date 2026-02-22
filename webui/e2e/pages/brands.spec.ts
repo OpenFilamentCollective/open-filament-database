@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { getDetailLinks } from '../helpers';
 
 test.describe('Brands Page', () => {
 	test.beforeEach(async ({ page }) => {
@@ -40,7 +41,7 @@ test.describe('Brands Page', () => {
 		await page.waitForLoadState('networkidle');
 
 		// Find a brand card/link and click it
-		const brandLinks = page.locator('a[href^="/brands/"]').filter({ hasNot: page.locator('[href="/brands"]') });
+		const brandLinks = getDetailLinks(page, 'brands');
 
 		if ((await brandLinks.count()) > 0) {
 			await brandLinks.first().click();
@@ -52,7 +53,7 @@ test.describe('Brands Page', () => {
 
 	test('should have back navigation', async ({ page }) => {
 		// Go to a brand detail page first
-		const brandLinks = page.locator('a[href^="/brands/"]').filter({ hasNot: page.locator('[href="/brands"]') });
+		const brandLinks = getDetailLinks(page, 'brands');
 
 		if ((await brandLinks.count()) > 0) {
 			await brandLinks.first().click();
@@ -75,7 +76,7 @@ test.describe('Brand Detail Page', () => {
 		await page.goto('/brands');
 		await page.waitForLoadState('networkidle');
 
-		const brandLinks = page.locator('a[href^="/brands/"]').filter({ hasNot: page.locator('[href="/brands"]') });
+		const brandLinks = getDetailLinks(page, 'brands');
 
 		if ((await brandLinks.count()) > 0) {
 			await brandLinks.first().click();
@@ -90,7 +91,7 @@ test.describe('Brand Detail Page', () => {
 		await page.goto('/brands');
 		await page.waitForLoadState('networkidle');
 
-		const brandLinks = page.locator('a[href^="/brands/"]').filter({ hasNot: page.locator('[href="/brands"]') });
+		const brandLinks = getDetailLinks(page, 'brands');
 
 		if ((await brandLinks.count()) > 0) {
 			await brandLinks.first().click();
@@ -106,7 +107,7 @@ test.describe('Brand Detail Page', () => {
 		await page.goto('/brands');
 		await page.waitForLoadState('networkidle');
 
-		const brandLinks = page.locator('a[href^="/brands/"]').filter({ hasNot: page.locator('[href="/brands"]') });
+		const brandLinks = getDetailLinks(page, 'brands');
 
 		if ((await brandLinks.count()) > 0) {
 			await brandLinks.first().click();

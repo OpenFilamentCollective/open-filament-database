@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { getDetailLinks } from '../helpers';
 
 test.describe('Navigation Flow', () => {
 	test('should navigate through brand hierarchy', async ({ page }) => {
@@ -12,7 +13,7 @@ test.describe('Navigation Flow', () => {
 		await page.waitForLoadState('networkidle');
 
 		// Click on first brand
-		const brandLinks = page.locator('a[href^="/brands/"]').filter({ hasNot: page.locator('[href="/brands"]') });
+		const brandLinks = getDetailLinks(page, 'brands');
 		if ((await brandLinks.count()) === 0) {
 			test.skip();
 			return;
@@ -52,7 +53,7 @@ test.describe('Navigation Flow', () => {
 		await page.waitForLoadState('networkidle');
 
 		// Count brands
-		const brandLinks = page.locator('a[href^="/brands/"]').filter({ hasNot: page.locator('[href="/brands"]') });
+		const brandLinks = getDetailLinks(page, 'brands');
 		const initialCount = await brandLinks.count();
 
 		// Navigate away and back
@@ -70,7 +71,7 @@ test.describe('Navigation Flow', () => {
 		await page.goto('/brands');
 		await page.waitForLoadState('networkidle');
 
-		const brandLinks = page.locator('a[href^="/brands/"]').filter({ hasNot: page.locator('[href="/brands"]') });
+		const brandLinks = getDetailLinks(page, 'brands');
 
 		if ((await brandLinks.count()) > 0) {
 			const href = await brandLinks.first().getAttribute('href');
