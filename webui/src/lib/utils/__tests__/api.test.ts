@@ -93,59 +93,59 @@ describe('API Utils', () => {
 				envMocks.mockApiBaseUrl.set('https://api.example.com');
 			});
 
-			it('should transform /api/stores to /api/stores/index.json', () => {
-				expect(buildApiUrl('/api/stores')).toBe('https://api.example.com/api/stores/index.json');
+			it('should transform /api/stores to /api/v1/stores/index.json', () => {
+				expect(buildApiUrl('/api/stores')).toBe('https://api.example.com/api/v1/stores/index.json');
 			});
 
-			it('should transform /api/stores/[id] to /api/stores/[id].json', () => {
+			it('should transform /api/stores/[id] to /api/v1/stores/[id].json', () => {
 				expect(buildApiUrl('/api/stores/test-store')).toBe(
-					'https://api.example.com/api/stores/test-store.json'
+					'https://api.example.com/api/v1/stores/test-store.json'
 				);
 			});
 
-			it('should transform /api/brands to /api/brands/index.json', () => {
-				expect(buildApiUrl('/api/brands')).toBe('https://api.example.com/api/brands/index.json');
+			it('should transform /api/brands to /api/v1/brands/index.json', () => {
+				expect(buildApiUrl('/api/brands')).toBe('https://api.example.com/api/v1/brands/index.json');
 			});
 
-			it('should transform /api/brands/[id] to /api/brands/[id]/index.json', () => {
+			it('should transform /api/brands/[id] to /api/v1/brands/[id]/index.json', () => {
 				expect(buildApiUrl('/api/brands/acme')).toBe(
-					'https://api.example.com/api/brands/acme/index.json'
+					'https://api.example.com/api/v1/brands/acme/index.json'
 				);
 			});
 
 			it('should transform materials endpoint correctly', () => {
 				// /api/brands/[id]/materials -> same as brand endpoint (materials included)
 				expect(buildApiUrl('/api/brands/acme/materials')).toBe(
-					'https://api.example.com/api/brands/acme/index.json'
+					'https://api.example.com/api/v1/brands/acme/index.json'
 				);
 
 				// /api/brands/[id]/materials/[type]
 				expect(buildApiUrl('/api/brands/acme/materials/PLA')).toBe(
-					'https://api.example.com/api/brands/acme/materials/PLA/index.json'
+					'https://api.example.com/api/v1/brands/acme/materials/PLA/index.json'
 				);
 			});
 
 			it('should transform filaments endpoint correctly', () => {
 				// /api/brands/[id]/materials/[type]/filaments -> material index (includes filaments)
 				expect(buildApiUrl('/api/brands/acme/materials/PLA/filaments')).toBe(
-					'https://api.example.com/api/brands/acme/materials/PLA/index.json'
+					'https://api.example.com/api/v1/brands/acme/materials/PLA/index.json'
 				);
 
 				// /api/brands/[id]/materials/[type]/filaments/[filament]
 				expect(buildApiUrl('/api/brands/acme/materials/PLA/filaments/basic')).toBe(
-					'https://api.example.com/api/brands/acme/materials/PLA/filaments/basic/index.json'
+					'https://api.example.com/api/v1/brands/acme/materials/PLA/filaments/basic/index.json'
 				);
 			});
 
 			it('should transform variants endpoint correctly', () => {
 				// /api/brands/[id]/materials/[type]/filaments/[filament]/variants -> filament index
 				expect(buildApiUrl('/api/brands/acme/materials/PLA/filaments/basic/variants')).toBe(
-					'https://api.example.com/api/brands/acme/materials/PLA/filaments/basic/index.json'
+					'https://api.example.com/api/v1/brands/acme/materials/PLA/filaments/basic/index.json'
 				);
 
 				// /api/brands/[id]/materials/[type]/filaments/[filament]/variants/[variant]
 				expect(buildApiUrl('/api/brands/acme/materials/PLA/filaments/basic/variants/red')).toBe(
-					'https://api.example.com/api/brands/acme/materials/PLA/filaments/basic/variants/red.json'
+					'https://api.example.com/api/v1/brands/acme/materials/PLA/filaments/basic/variants/red.json'
 				);
 			});
 
@@ -156,10 +156,10 @@ describe('API Utils', () => {
 
 			it('should transform schemas endpoints', () => {
 				expect(buildApiUrl('/api/schemas/brand')).toBe(
-					'https://api.example.com/api/schemas/brand_schema.json'
+					'https://api.example.com/api/v1/schemas/brand_schema.json'
 				);
 				expect(buildApiUrl('/api/schemas/store')).toBe(
-					'https://api.example.com/api/schemas/store_schema.json'
+					'https://api.example.com/api/v1/schemas/store_schema.json'
 				);
 			});
 		});
