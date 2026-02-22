@@ -3,12 +3,29 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import type { EntityConfig } from './entityConfig';
 import { ENTITY_CONFIGS, normalizeBrandId, normalizeMaterialType } from './entityConfig';
+import { IS_CLOUD, proxyGetToCloud } from './cloudProxy';
 
 // === Shared utilities ===
 
 async function getAppMode(): Promise<boolean> {
 	const { PUBLIC_APP_MODE } = await import('$env/static/public');
 	return PUBLIC_APP_MODE !== 'cloud';
+}
+
+/**
+ * Resolve a cloud proxy path from a config's template and route params.
+ * E.g., '/api/brands/:brandId/materials' with { brandId: 'foo' } → '/api/brands/foo/materials'
+ */
+function resolveCloudPath(
+	template: string,
+	params: Record<string, string>,
+	idParam?: string | null
+): string {
+	let result = template.replace(/:(\w+)/g, (_, name) => params[name] || name);
+	if (idParam && params[idParam]) {
+		result += `/${params[idParam]}`;
+	}
+	return result;
 }
 
 function formatJson(data: unknown): string {
@@ -119,9 +136,14 @@ async function mergeSupplementaryFiles(
 
 /**
  * GET handler for listing entities (collection endpoint).
+ * In cloud mode, proxies to the cloud API instead of reading from the local filesystem.
  */
 export function createListHandler(config: EntityConfig) {
 	return async ({ params }: { params: Record<string, string> }) => {
+		if (IS_CLOUD) {
+			return proxyGetToCloud(resolveCloudPath(config.cloudPathTemplate, params));
+		}
+
 		try {
 			const parentDir = await resolveParentDir(config, params);
 			const entries = await fs.readdir(parentDir, { withFileTypes: true });
@@ -153,9 +175,14 @@ export function createListHandler(config: EntityConfig) {
 
 /**
  * GET handler for a single entity (detail endpoint).
+ * In cloud mode, proxies to the cloud API instead of reading from the local filesystem.
  */
 export function createGetHandler(config: EntityConfig) {
 	return async ({ params }: { params: Record<string, string> }) => {
+		if (IS_CLOUD) {
+			return proxyGetToCloud(resolveCloudPath(config.cloudPathTemplate, params, config.idParam));
+		}
+
 		try {
 			const entityDir = await resolveEntityDir(config, params);
 			const filePath = path.join(entityDir, config.jsonFilename);

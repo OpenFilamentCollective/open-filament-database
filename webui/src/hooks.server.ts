@@ -2,23 +2,27 @@ import { copyFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { env } from '$env/dynamic/public';
 
-// Check for .env file on server startup — auto-create from .env.example if missing
-const envPath = join(process.cwd(), '.env');
-const envExamplePath = join(process.cwd(), '.env.example');
+// In cloud mode, env vars come from the platform — skip .env file management.
+// Use process.env directly since it's available before SvelteKit processes .env files.
+if (process.env.PUBLIC_APP_MODE !== 'cloud') {
+	// Check for .env file on server startup — auto-create from .env.example if missing
+	const envPath = join(process.cwd(), '.env');
+	const envExamplePath = join(process.cwd(), '.env.example');
 
-if (!existsSync(envPath)) {
-	if (existsSync(envExamplePath)) {
-		copyFileSync(envExamplePath, envPath);
-		console.log('\n' + '='.repeat(60));
-		console.log('[env] .env file was missing — copied from .env.example');
-		console.log('[env] Restarting server to load new environment variables...');
-		console.log('='.repeat(60) + '\n');
-		process.exit(0);
-	} else {
-		console.error('\n' + '='.repeat(60));
-		console.error('ERROR: Missing .env file and no .env.example found');
-		console.error('='.repeat(60) + '\n');
-		throw new Error('Missing .env file and no .env.example to copy from');
+	if (!existsSync(envPath)) {
+		if (existsSync(envExamplePath)) {
+			copyFileSync(envExamplePath, envPath);
+			console.log('\n' + '='.repeat(60));
+			console.log('[env] .env file was missing — copied from .env.example');
+			console.log('[env] Restarting server to load new environment variables...');
+			console.log('='.repeat(60) + '\n');
+			process.exit(0);
+		} else {
+			console.error('\n' + '='.repeat(60));
+			console.error('ERROR: Missing .env file and no .env.example found');
+			console.error('='.repeat(60) + '\n');
+			throw new Error('Missing .env file and no .env.example to copy from');
+		}
 	}
 }
 

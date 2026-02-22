@@ -1,12 +1,13 @@
 import { json } from '@sveltejs/kit';
 import { spawn } from 'node:child_process';
 import path from 'node:path';
-import { promises as fs } from 'node:fs';
-import os from 'node:os';
 import { activeJobs, type Job, tryAcquireValidationLock, releaseValidationLock } from '$lib/server/jobManager';
+import { IS_CLOUD } from '$lib/server/cloudProxy';
 
 export async function POST({ request }) {
-	let changesFile: string | null = null;
+	if (IS_CLOUD) {
+		return json({ error: 'Validation is only available in local mode' }, { status: 403 });
+	}
 
 	try {
 		// Atomically try to acquire the validation lock to prevent race conditions
@@ -40,11 +41,12 @@ export async function POST({ request }) {
 			args.push('--store-ids');
 		}
 
-		// If changes are provided, write them to a temp file and pass to CLI
-		if (changes && Array.isArray(changes) && changes.length > 0) {
-			changesFile = path.join(os.tmpdir(), `ofd-validate-changes-${Date.now()}.json`);
-			await fs.writeFile(changesFile, JSON.stringify({ changes, images: images || {} }), 'utf-8');
-			args.push('--apply-changes', changesFile);
+		// If changes are provided, pipe them via stdin instead of writing a temp file
+		const hasChanges = changes && Array.isArray(changes) && changes.length > 0;
+		let changesPayload: string | null = null;
+		if (hasChanges) {
+			changesPayload = JSON.stringify({ changes, images: images || {} });
+			args.push('--apply-changes', '-');
 		}
 
 		// Determine the repo root (one level up from webui)
@@ -60,20 +62,26 @@ export async function POST({ request }) {
 		};
 		activeJobs.set(jobId, job);
 
-		// Spawn Python process
+		// Spawn Python process — use 'pipe' for stdin when we have changes to send
 		const pythonProcess = spawn('python3', args, {
 			cwd: repoRoot,
-			stdio: ['ignore', 'pipe', 'pipe']
+			stdio: [changesPayload ? 'pipe' : 'ignore', 'pipe', 'pipe']
 		});
 
 		job.process = pythonProcess;
+
+		// Write changes to stdin if available, then close it
+		if (changesPayload && pythonProcess.stdin) {
+			pythonProcess.stdin.write(changesPayload);
+			pythonProcess.stdin.end();
+		}
 
 		let stdoutBuffer = '';
 		let stderrBuffer = '';
 		let finalResult: any = null;
 
 		// Parse stdout for progress events and final JSON result
-		pythonProcess.stdout.on('data', (data) => {
+		pythonProcess.stdout!.on('data', (data) => {
 			stdoutBuffer += data.toString();
 			const lines = stdoutBuffer.split('\n');
 
@@ -97,7 +105,7 @@ export async function POST({ request }) {
 			}
 		});
 
-		pythonProcess.stderr.on('data', (data) => {
+		pythonProcess.stderr!.on('data', (data) => {
 			stderrBuffer += data.toString();
 		});
 
@@ -115,12 +123,6 @@ export async function POST({ request }) {
 
 		// Handle process completion
 		pythonProcess.on('close', (code) => {
-			// Clean up temp changes file
-			if (changesFile) {
-				fs.unlink(changesFile).catch(() => {});
-				changesFile = null;
-			}
-
 			// Try to parse any remaining stdout as the final result
 			if (stdoutBuffer.trim()) {
 				try {
@@ -158,10 +160,6 @@ export async function POST({ request }) {
 		});
 	} catch (error) {
 		console.error('Validation endpoint error:', error);
-		// Clean up temp file on error
-		if (changesFile) {
-			await fs.unlink(changesFile).catch(() => {});
-		}
 		// Release lock on error
 		releaseValidationLock();
 		return json({ error: 'Internal server error' }, { status: 500 });

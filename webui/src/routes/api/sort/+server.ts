@@ -3,8 +3,13 @@ import { spawn } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { activeJobs, type Job, tryAcquireOperationLock, releaseOperationLock } from '$lib/server/jobManager';
+import { IS_CLOUD } from '$lib/server/cloudProxy';
 
 export async function POST({ request }) {
+	if (IS_CLOUD) {
+		return json({ error: 'Sort is only available in local mode' }, { status: 403 });
+	}
+
 	try {
 		// Atomically try to acquire the operation lock to prevent concurrent operations
 		if (!tryAcquireOperationLock()) {

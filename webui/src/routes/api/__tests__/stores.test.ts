@@ -23,7 +23,8 @@ let mockAppMode = 'local';
 vi.mock('$env/static/public', () => ({
 	get PUBLIC_APP_MODE() {
 		return mockAppMode;
-	}
+	},
+	PUBLIC_API_BASE_URL: ''
 }));
 
 // Mock @sveltejs/kit

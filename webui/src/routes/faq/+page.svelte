@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isCloudMode, isLocalMode } from '$lib/stores/environment';
+	import { isLocalMode } from '$lib/stores/environment';
 	import { Button } from '$lib/components/ui';
 
 	interface FAQItem {
@@ -183,7 +183,7 @@
 	</div>
 
 	<!-- Current mode indicator -->
-	<div class="mb-8 p-4 rounded-lg border-2 {$isLocalMode ? 'bg-green-50 border-green-300' : 'bg-primary/10 border-primary/30'}">
+	<div class="mb-8 p-4 rounded-lg border bg-primary/10 border-primary/30">
 		<div class="flex items-center gap-3">
 			<span class="text-3xl">{$isLocalMode ? '💻' : '☁️'}</span>
 			<div>
@@ -275,12 +275,12 @@
 			</li>
 			<li>
 				<a
-					href="/CHANGE_TRACKING_SYSTEM.md"
+					href="https://github.com/OpenFilamentCollective/open-filament-database/issues"
 					target="_blank"
 					class="text-primary hover:underline flex items-center gap-2"
 				>
 					<span>📖</span>
-					<span>Change Tracking System Documentation</span>
+					<span>GitHub Issues</span>
 				</a>
 			</li>
 			<li>
@@ -296,21 +296,6 @@
 		</ul>
 	</div>
 
-	<!-- Still have questions -->
-	<div class="mt-8 text-center p-6">
-		<h3 class="text-lg font-semibold mb-2">Still have questions?</h3>
-		<p class="text-muted-foreground mb-4">
-			Open an issue on GitHub or join our community discussions.
-		</p>
-		<Button
-			onclick={() => window.open('https://github.com/OpenPrintTag/open-filament-database/issues', '_blank')}
-			variant="primary"
-			class="inline-flex items-center gap-2"
-		>
-			<span>💬</span>
-			<span>Ask a Question on GitHub</span>
-		</Button>
-	</div>
 </div>
 
 <style>

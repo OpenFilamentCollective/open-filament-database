@@ -1,7 +1,6 @@
 /*
- * Adwaita-derived shadcn theme
- * Maps GNOME/Libadwaita design tokens to shadcn/Tailwind color system.
- * Also defines --adw-* CSS variables for direct use in webui.css and components.
+ * Theme - shadcn/Tailwind color system with --adw-* CSS variables
+ * used by webui.css and components.
  */
 
 @theme {
@@ -29,31 +28,29 @@
 }
 
 /* ============================================
-   Adwaita Light Theme
+   Light Theme
    ============================================ */
 :root {
-	/* shadcn tokens (HSL values derived from Adwaita palette) */
-	--background: 0 0% 98%;           /* #fafafa - adw-bg */
-	--foreground: 0 0% 12%;           /* #1e1e1e - adw-fg */
-	--card: 0 0% 100%;                /* #ffffff - adw-card-bg */
-	--card-foreground: 0 0% 12%;      /* #1e1e1e - adw-fg */
-	--popover: 0 0% 100%;             /* #ffffff - adw-card-bg */
-	--popover-foreground: 0 0% 12%;   /* #1e1e1e - adw-fg */
-	--primary: 213 74% 55%;           /* #3584e4 - adw-accent */
-	--primary-foreground: 0 0% 100%;  /* #ffffff - adw-accent-fg */
-	--secondary: 0 0% 91%;            /* #e8e8e8 - adw-btn-bg */
-	--secondary-foreground: 0 0% 12%; /* #1e1e1e - adw-fg */
-	--muted: 30 8% 95%;               /* #f6f5f4 - adw-sidebar-bg */
-	--muted-foreground: 0 0% 37%;     /* #5e5e5e - adw-fg-secondary */
-	--accent: 0 0% 92%;               /* #ebebeb - adw-headerbar-bg */
-	--accent-foreground: 0 0% 12%;    /* #1e1e1e - adw-fg */
-	--destructive: 357 80% 49%;       /* #e01b24 - adw-destructive */
-	--destructive-foreground: 0 0% 100%; /* #ffffff */
-	--border: 0 0% 92%;               /* ~#ebebeb - adw-card-border approx */
-	--input: 0 0% 85%;                /* ~#d9d9d9 - adw-input-border approx */
-	--ring: 213 74% 55%;              /* #3584e4 - adw-accent */
+	--background: 0 0% 98%;
+	--foreground: 0 0% 12%;
+	--card: 0 0% 100%;
+	--card-foreground: 0 0% 12%;
+	--popover: 0 0% 100%;
+	--popover-foreground: 0 0% 12%;
+	--primary: 213 74% 55%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 0 0% 91%;
+	--secondary-foreground: 0 0% 12%;
+	--muted: 30 8% 95%;
+	--muted-foreground: 0 0% 37%;
+	--accent: 0 0% 92%;
+	--accent-foreground: 0 0% 12%;
+	--destructive: 357 80% 49%;
+	--destructive-foreground: 0 0% 100%;
+	--border: 0 0% 92%;
+	--input: 0 0% 85%;
+	--ring: 213 74% 55%;
 
-	/* Adwaita CSS variables (for webui.css and direct use) */
 	--adw-bg: #fafafa;
 	--adw-bg-secondary: #ffffff;
 	--adw-fg: #1e1e1e;
@@ -104,32 +101,30 @@
 }
 
 /* ============================================
-   Adwaita Dark Theme
+   Dark Theme
    ============================================ */
 .dark,
 .dark-mode {
-	/* shadcn tokens (HSL values derived from Adwaita dark palette) */
-	--background: 0 0% 14%;           /* #242424 - adw-bg */
-	--foreground: 0 0% 100%;          /* #ffffff - adw-fg */
-	--card: 0 0% 19%;                 /* #303030 - adw-card-bg */
-	--card-foreground: 0 0% 100%;     /* #ffffff - adw-fg */
-	--popover: 0 0% 19%;              /* #303030 - adw-card-bg */
-	--popover-foreground: 0 0% 100%;  /* #ffffff - adw-fg */
-	--primary: 212 76% 70%;           /* #78aeed - adw-accent */
-	--primary-foreground: 0 0% 100%;  /* #ffffff - adw-accent-fg */
-	--secondary: 0 0% 23%;            /* #3a3a3a - adw-btn-bg */
-	--secondary-foreground: 0 0% 100%; /* #ffffff - adw-fg */
-	--muted: 0 0% 17%;                /* #2a2a2a - adw-sidebar-bg */
-	--muted-foreground: 0 0% 69%;     /* #b0b0b0 - adw-fg-secondary */
-	--accent: 0 0% 19%;               /* #303030 - adw-headerbar-bg */
-	--accent-foreground: 0 0% 100%;   /* #ffffff - adw-fg */
-	--destructive: 9 100% 69%;        /* #ff7b63 - adw-destructive */
-	--destructive-foreground: 0 0% 100%; /* #ffffff */
-	--border: 0 0% 23%;               /* ~#3a3a3a - adw-card-border approx */
-	--input: 0 0% 20%;                /* ~#333333 - adw-input-border approx */
-	--ring: 212 76% 70%;              /* #78aeed - adw-accent */
+	--background: 0 0% 14%;
+	--foreground: 0 0% 100%;
+	--card: 0 0% 19%;
+	--card-foreground: 0 0% 100%;
+	--popover: 0 0% 19%;
+	--popover-foreground: 0 0% 100%;
+	--primary: 212 76% 70%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 0 0% 23%;
+	--secondary-foreground: 0 0% 100%;
+	--muted: 0 0% 17%;
+	--muted-foreground: 0 0% 69%;
+	--accent: 0 0% 19%;
+	--accent-foreground: 0 0% 100%;
+	--destructive: 9 100% 69%;
+	--destructive-foreground: 0 0% 100%;
+	--border: 0 0% 23%;
+	--input: 0 0% 20%;
+	--ring: 212 76% 70%;
 
-	/* Adwaita CSS variables (dark overrides) */
 	--adw-bg: #242424;
 	--adw-bg-secondary: #1e1e1e;
 	--adw-fg: #ffffff;
@@ -176,7 +171,7 @@
 		font-family: var(--adw-font);
 	}
 
-	/* Adwaita-style form inputs (replaces @tailwindcss/forms) */
+	/* Base form input styles */
 	input[type="text"],
 	input[type="email"],
 	input[type="password"],

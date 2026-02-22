@@ -16,6 +16,7 @@ import {
 } from '$lib/server/github';
 import { readFileSync } from 'fs';
 import path from 'path';
+import { IS_CLOUD, API_BASE } from '$lib/server/cloudProxy';
 
 const REPO_ROOT = path.resolve(process.cwd(), '..');
 const SCHEMAS_DIR = path.join(REPO_ROOT, 'schemas');
@@ -158,7 +159,7 @@ function extractNestedSchemas(schema: any): Record<string, string[]> {
 	return nested;
 }
 
-function loadSchemaKeyOrders(): Record<string, SchemaInfo> {
+async function loadSchemaKeyOrders(): Promise<Record<string, SchemaInfo>> {
 	if (schemaKeyOrders) return schemaKeyOrders;
 
 	const schemaFiles: Record<string, string> = {
@@ -173,8 +174,16 @@ function loadSchemaKeyOrders(): Record<string, SchemaInfo> {
 	schemaKeyOrders = {};
 	for (const [name, filename] of Object.entries(schemaFiles)) {
 		try {
-			const content = readFileSync(path.join(SCHEMAS_DIR, filename), 'utf-8');
-			const schema = JSON.parse(content);
+			let schema: any;
+
+			if (IS_CLOUD) {
+				const response = await fetch(`${API_BASE}/api/v1/schemas/${filename}`);
+				if (!response.ok) continue;
+				schema = await response.json();
+			} else {
+				const content = readFileSync(path.join(SCHEMAS_DIR, filename), 'utf-8');
+				schema = JSON.parse(content);
+			}
 
 			// Handle array-type schemas (sizes)
 			const effectiveSchema = schema.type === 'array' && schema.items ? schema.items : schema;
@@ -309,7 +318,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		const imageFilenames = buildImageFilenameMap(images);
 
 		// Load schema key orderings for styling output JSON
-		const schemas = loadSchemaKeyOrders();
+		const schemas = await loadSchemaKeyOrders();
 
 		// Collect incremental tree items (only changes, not the full tree).
 		// Using base_tree with only changed entries avoids the 502 from sending

@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { saveLogo, deleteLogo } from '$lib/server/logoHandler';
+import { IS_CLOUD } from '$lib/server/cloudProxy';
 import type { RequestHandler } from './$types';
 
 /**
@@ -12,6 +13,10 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	if (!storeId || !imageData) {
 		return json({ error: 'Missing required fields' }, { status: 400 });
+	}
+
+	if (IS_CLOUD) {
+		return json({ success: true, mode: 'cloud' });
 	}
 
 	const result = await saveLogo(storeId, imageData, 'store');
@@ -33,6 +38,10 @@ export const DELETE: RequestHandler = async ({ request }) => {
 
 	if (!storeId) {
 		return json({ error: 'Missing storeId' }, { status: 400 });
+	}
+
+	if (IS_CLOUD) {
+		return json({ success: true, mode: 'cloud' });
 	}
 
 	const result = await deleteLogo(storeId, 'store');

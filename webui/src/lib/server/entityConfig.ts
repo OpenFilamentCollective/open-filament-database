@@ -61,6 +61,13 @@ export interface EntityConfig {
 	 * Maps a field name to the filename (e.g., { sizes: 'sizes.json' }).
 	 */
 	supplementaryFiles?: Record<string, string>;
+
+	/**
+	 * API path template for cloud proxy routing.
+	 * Uses :paramName placeholders for route params.
+	 * E.g., '/api/brands' or '/api/brands/:brandId/materials'
+	 */
+	cloudPathTemplate: string;
 }
 
 // === Shared constants ===
@@ -120,7 +127,8 @@ export const ENTITY_CONFIGS: Record<string, EntityConfig> = {
 		slugSourceField: 'name',
 		createExtraFields: {},
 		readDefaults: {},
-		normalizeId: normalizeBrandId
+		normalizeId: normalizeBrandId,
+		cloudPathTemplate: '/api/brands'
 	},
 
 	store: {
@@ -136,6 +144,7 @@ export const ENTITY_CONFIGS: Record<string, EntityConfig> = {
 		createExtraFields: {},
 		readDefaults: {},
 		normalizeId: normalizeStoreId,
+		cloudPathTemplate: '/api/stores',
 		validatePut: (params, data) => {
 			if (data.id !== params.id) {
 				return { error: 'Store ID mismatch', status: 400 };
@@ -158,7 +167,8 @@ export const ENTITY_CONFIGS: Record<string, EntityConfig> = {
 		writeSlugToFile: false,
 		createExtraFields: {},
 		readDefaults: {},
-		normalizeId: normalizeMaterialType
+		normalizeId: normalizeMaterialType,
+		cloudPathTemplate: '/api/brands/:brandId/materials'
 	},
 
 	filament: {
@@ -172,7 +182,8 @@ export const ENTITY_CONFIGS: Record<string, EntityConfig> = {
 		slugTransform: 'lowercase',
 		slugSourceField: 'name',
 		createExtraFields: {},
-		readDefaults: {}
+		readDefaults: {},
+		cloudPathTemplate: '/api/brands/:brandId/materials/:materialType/filaments'
 	},
 
 	variant: {
@@ -187,6 +198,7 @@ export const ENTITY_CONFIGS: Record<string, EntityConfig> = {
 		slugSourceField: 'name',
 		createExtraFields: { filament_id: 'filamentId' },
 		readDefaults: { discontinued: false },
-		supplementaryFiles: { sizes: 'sizes.json' }
+		supplementaryFiles: { sizes: 'sizes.json' },
+		cloudPathTemplate: '/api/brands/:brandId/materials/:materialType/filaments/:filamentId/variants'
 	}
 };

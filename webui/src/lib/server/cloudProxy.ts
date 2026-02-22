@@ -4,7 +4,7 @@ import { PUBLIC_APP_MODE, PUBLIC_API_BASE_URL } from '$env/static/public';
 export const IS_CLOUD = PUBLIC_APP_MODE === 'cloud';
 export const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
 
-const API_BASE = PUBLIC_API_BASE_URL
+export const API_BASE = PUBLIC_API_BASE_URL
 	? PUBLIC_API_BASE_URL.endsWith('/')
 		? PUBLIC_API_BASE_URL.slice(0, -1)
 		: PUBLIC_API_BASE_URL
