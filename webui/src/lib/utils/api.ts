@@ -141,7 +141,7 @@ function transformCloudResponse(data: any, path: string): any {
 
 	// Cloud mode transformations
 	// 1. Transform stores index response
-	if (path === '/api/stores' || path.match(/^\/api\/stores$/)) {
+	if (path === '/api/stores') {
 		if (data && typeof data === 'object' && 'stores' in data) {
 			// Map logo_slug to logo for consistency with local API
 			return data.stores.map((store: any) => ({
@@ -152,7 +152,7 @@ function transformCloudResponse(data: any, path: string): any {
 	}
 
 	// 2. Transform brands index response
-	if (path === '/api/brands' || path.match(/^\/api\/brands$/)) {
+	if (path === '/api/brands') {
 		if (data && typeof data === 'object' && 'brands' in data) {
 			// Map logo_slug to logo for consistency with local API
 			return data.brands.map((brand: any) => ({
@@ -280,18 +280,25 @@ export async function apiFetch(path: string, options?: RequestInit): Promise<Res
  * Called after PUT, POST, DELETE operations
  */
 function invalidateCacheForPath(path: string): void {
-	// Extract the base entity path and invalidate related entries
-	// e.g., /api/brands/acme -> invalidate /api/brands and /api/brands/acme*
+	// Invalidate the exact path, all children, and all parent paths up the hierarchy
+	// e.g., mutating /api/brands/acme/materials/PLA/filaments/foo invalidates:
+	//   - /api/brands (index)
+	//   - /api/brands/acme (parent brand, may include child counts)
+	//   - /api/brands/acme/materials/PLA (parent material)
+	//   - /api/brands/acme/materials/PLA/filaments/foo* (the entity and children)
 
 	if (path.startsWith('/api/stores')) {
 		apiCache.delete('/api/stores');
 		apiCache.deleteByPrefix('/api/stores/');
 	} else if (path.startsWith('/api/brands')) {
 		apiCache.delete('/api/brands');
-		// Extract brand ID and invalidate all related entries
-		const match = path.match(/^\/api\/brands\/([^/]+)/);
-		if (match) {
-			apiCache.deleteByPrefix(`/api/brands/${match[1]}`);
+		// Walk up the path hierarchy and invalidate each ancestor
+		const segments = path.replace(/^\/api\/brands\//, '').split('/');
+		let current = '/api/brands';
+		for (const segment of segments) {
+			current += `/${segment}`;
+			apiCache.delete(current);
+			apiCache.deleteByPrefix(`${current}/`);
 		}
 	}
 }

@@ -86,33 +86,44 @@ export class DatabaseService {
 			result.set(getId(item), item);
 		}
 
+		// Build lowercase key index for O(1) case-insensitive lookups
+		const lowerKeyIndex = new Map<string, string>();
+		for (const key of result.keys()) {
+			lowerKeyIndex.set(key.toLowerCase(), key);
+		}
+
 		for (const { entityId, change } of this.getDirectChildChanges(changeSet, entityPathPrefix)) {
 			switch (change.operation) {
 				case 'create':
 					if (change.data) {
-						result.set(getId(change.data), change.data);
+						const newKey = getId(change.data);
+						result.set(newKey, change.data);
+						lowerKeyIndex.set(newKey.toLowerCase(), newKey);
 					}
 					break;
 
 				case 'update':
 					if (change.data) {
 						const dataId = getId(change.data);
-						let oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+						let oldKey = lowerKeyIndex.get(entityId.toLowerCase());
 						if (!oldKey && change.originalData) {
 							const origId = getId(change.originalData);
-							oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === origId.toLowerCase());
+							oldKey = lowerKeyIndex.get(origId.toLowerCase());
 						}
 						if (oldKey && oldKey !== dataId) {
 							result.delete(oldKey);
+							lowerKeyIndex.delete(oldKey.toLowerCase());
 						}
 						result.set(dataId, change.data);
+						lowerKeyIndex.set(dataId.toLowerCase(), dataId);
 					}
 					break;
 
 				case 'delete': {
-					const keyToDelete = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+					const keyToDelete = lowerKeyIndex.get(entityId.toLowerCase());
 					if (keyToDelete) {
 						result.delete(keyToDelete);
+						lowerKeyIndex.delete(entityId.toLowerCase());
 					}
 					break;
 				}
@@ -482,9 +493,12 @@ export class DatabaseService {
 		const entityPathPrefix = `brands/${brandId}/materials/`;
 
 		const result = new Map<string, Material>();
+		// Build lowercase key index for O(1) case-insensitive lookups
+		const lowerKeyIndex = new Map<string, string>();
 		for (const item of baseData) {
 			const key = (item.slug || item.materialType || item.material || item.id).toLowerCase();
 			result.set(key, item);
+			lowerKeyIndex.set(key.toLowerCase(), key);
 		}
 
 		for (const { entityId, change } of this.getDirectChildChanges(changeSet, entityPathPrefix)) {
@@ -492,26 +506,38 @@ export class DatabaseService {
 				case 'create':
 					if (change.data) {
 						const newKey = (change.data.materialType || change.data.material || '').toLowerCase();
-						if (newKey) result.set(newKey, change.data);
+						if (newKey) {
+							result.set(newKey, change.data);
+							lowerKeyIndex.set(newKey.toLowerCase(), newKey);
+						}
 					}
 					break;
 
 				case 'update':
 					if (change.data) {
 						const newKey = (change.data.materialType || change.data.material || '').toLowerCase();
-						let oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
+						let oldKey = lowerKeyIndex.get(entityId.toLowerCase());
 						if (!oldKey && change.originalData) {
 							const origKey = ((change.originalData as any).slug || change.originalData.materialType || change.originalData.material || '').toLowerCase();
-							oldKey = Array.from(result.keys()).find((k) => k.toLowerCase() === origKey);
+							oldKey = lowerKeyIndex.get(origKey);
 						}
-						if (oldKey && oldKey !== newKey) result.delete(oldKey);
-						if (newKey) result.set(newKey, change.data);
+						if (oldKey && oldKey !== newKey) {
+							result.delete(oldKey);
+							lowerKeyIndex.delete(oldKey.toLowerCase());
+						}
+						if (newKey) {
+							result.set(newKey, change.data);
+							lowerKeyIndex.set(newKey.toLowerCase(), newKey);
+						}
 					}
 					break;
 
 				case 'delete': {
-					const keyToDelete = Array.from(result.keys()).find((k) => k.toLowerCase() === entityId.toLowerCase());
-					if (keyToDelete) result.delete(keyToDelete);
+					const keyToDelete = lowerKeyIndex.get(entityId.toLowerCase());
+					if (keyToDelete) {
+						result.delete(keyToDelete);
+						lowerKeyIndex.delete(entityId.toLowerCase());
+					}
 					break;
 				}
 			}

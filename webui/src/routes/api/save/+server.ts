@@ -8,6 +8,8 @@ import { IS_LOCAL } from '$lib/server/cloudProxy';
 const REPO_ROOT = path.resolve(process.cwd(), '..');
 const DATA_DIR = path.join(REPO_ROOT, 'data');
 const STORES_DIR = path.join(REPO_ROOT, 'stores');
+const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
+const ALLOWED_IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp']);
 
 /**
  * Map an entity path (e.g., "brands/prusament/materials/PLA") to a filesystem path.
@@ -132,6 +134,13 @@ export const POST: RequestHandler = async ({ request }) => {
 				continue;
 			}
 
+			// Verify resolved path stays within expected directories
+			const resolvedDir = path.resolve(entityDir);
+			if (!resolvedDir.startsWith(DATA_DIR) && !resolvedDir.startsWith(STORES_DIR)) {
+				results.push({ path: change.entity.path, operation: 'delete', success: false, error: 'Invalid entity path' });
+				continue;
+			}
+
 			try {
 				await fs.rm(entityDir, { recursive: true, force: true });
 				results.push({ path: change.entity.path, operation: 'delete', success: true });
@@ -155,6 +164,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			const fsPath = entityPathToFsPath(change.entity.path);
 			if (!fsPath) {
 				results.push({ path: change.entity.path, operation: change.operation, success: false, error: 'Unknown entity path' });
+				continue;
+			}
+
+			// Verify resolved path stays within expected directories
+			const resolvedFsPath = path.resolve(fsPath);
+			if (!resolvedFsPath.startsWith(DATA_DIR) && !resolvedFsPath.startsWith(STORES_DIR)) {
+				results.push({ path: change.entity.path, operation: change.operation, success: false, error: 'Invalid entity path' });
 				continue;
 			}
 
@@ -205,10 +221,38 @@ export const POST: RequestHandler = async ({ request }) => {
 					continue;
 				}
 
+				// Validate filename is a safe basename (prevent path traversal)
+				const safeFilename = path.basename(imageData.filename);
+				if (safeFilename !== imageData.filename) {
+					imageResults.push({ entityPath: imageData.entityPath || imageId, success: false, error: 'Invalid filename' });
+					continue;
+				}
+
+				// Validate file extension is an allowed image type
+				const ext = path.extname(safeFilename).toLowerCase();
+				if (!ALLOWED_IMAGE_EXTENSIONS.has(ext)) {
+					imageResults.push({ entityPath: imageData.entityPath || imageId, success: false, error: `Disallowed image extension: ${ext}` });
+					continue;
+				}
+
+				// Verify resolved path stays within expected directories
+				const resolvedImageDir = path.resolve(entityDir);
+				if (!resolvedImageDir.startsWith(DATA_DIR) && !resolvedImageDir.startsWith(STORES_DIR)) {
+					imageResults.push({ entityPath: imageData.entityPath || imageId, success: false, error: 'Invalid entity path' });
+					continue;
+				}
+
 				try {
-					await fs.mkdir(entityDir, { recursive: true });
 					const imageBuffer = Buffer.from(imageData.data, 'base64');
-					await fs.writeFile(path.join(entityDir, imageData.filename), imageBuffer);
+
+					// Enforce file size limit
+					if (imageBuffer.length > MAX_IMAGE_SIZE_BYTES) {
+						imageResults.push({ entityPath: imageData.entityPath || imageId, success: false, error: `Image exceeds ${MAX_IMAGE_SIZE_BYTES / 1024 / 1024}MB limit` });
+						continue;
+					}
+
+					await fs.mkdir(entityDir, { recursive: true });
+					await fs.writeFile(path.join(entityDir, safeFilename), imageBuffer);
 					imageResults.push({ entityPath: imageData.entityPath, success: true });
 				} catch (error: any) {
 					imageResults.push({ entityPath: imageData.entityPath || imageId, success: false, error: error.message });

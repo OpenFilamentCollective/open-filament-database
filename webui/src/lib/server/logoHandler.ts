@@ -1,6 +1,8 @@
-import { writeFile, mkdir, unlink } from 'fs/promises';
-import { join } from 'path';
+import { writeFile, readFile, mkdir, unlink } from 'fs/promises';
+import { join, basename, extname } from 'path';
 import { existsSync } from 'fs';
+
+const MAX_LOGO_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
 
 export type EntityType = 'brand' | 'store';
 
@@ -58,6 +60,10 @@ export async function saveLogo(
 		const { extension, base64Data } = parsed;
 		const buffer = Buffer.from(base64Data, 'base64');
 
+		if (buffer.length > MAX_LOGO_SIZE_BYTES) {
+			return { success: false, error: `Logo exceeds ${MAX_LOGO_SIZE_BYTES / 1024 / 1024}MB size limit` };
+		}
+
 		const logoDir = getLogoDirectory(entityId, entityType);
 
 		// Create directory if it doesn't exist
@@ -79,6 +85,47 @@ export async function saveLogo(
 			success: false,
 			error: error instanceof Error ? error.message : 'Failed to save logo'
 		};
+	}
+}
+
+const CONTENT_TYPE_MAP: Record<string, string> = {
+	'.png': 'image/png',
+	'.jpg': 'image/jpeg',
+	'.jpeg': 'image/jpeg',
+	'.svg': 'image/svg+xml'
+};
+
+/**
+ * Read a logo file for an entity, returning a Response.
+ * Validates filename to prevent path traversal.
+ */
+export async function readLogo(
+	entityId: string,
+	filename: string,
+	entityType: EntityType
+): Promise<Response> {
+	// Prevent path traversal
+	const safeFilename = basename(filename);
+	if (safeFilename !== filename) {
+		return new Response('Invalid filename', { status: 400 });
+	}
+
+	try {
+		const logoDir = getLogoDirectory(entityId, entityType);
+		const filepath = join(logoDir, safeFilename);
+		const fileBuffer = await readFile(filepath);
+
+		const ext = extname(safeFilename).toLowerCase();
+		const contentType = CONTENT_TYPE_MAP[ext] || 'application/octet-stream';
+
+		return new Response(fileBuffer, {
+			headers: {
+				'Content-Type': contentType,
+				'Cache-Control': 'public, max-age=31536000'
+			}
+		});
+	} catch {
+		return new Response('Not found', { status: 404 });
 	}
 }
 

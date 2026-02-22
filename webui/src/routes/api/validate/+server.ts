@@ -158,6 +158,10 @@ export async function POST({ request }) {
 		});
 	} catch (error) {
 		console.error('Validation endpoint error:', error);
+		// Clean up temp file on error
+		if (changesFile) {
+			await fs.unlink(changesFile).catch(() => {});
+		}
 		// Release lock on error
 		releaseValidationLock();
 		return json({ error: 'Internal server error' }, { status: 500 });
