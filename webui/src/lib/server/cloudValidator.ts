@@ -65,6 +65,37 @@ async function prefetchSchemas(): Promise<void> {
 	await Promise.all(SCHEMA_NAMES.map((name) => fetchSchema(name)));
 }
 
+// --- Store ID cache (for cross-reference validation) ---
+
+let storeIdsCache: { ids: Set<string>; fetchedAt: number } | null = null;
+const STORE_IDS_TTL_MS = 30 * 60 * 1000; // 30 minutes
+
+async function fetchKnownStoreIds(): Promise<Set<string>> {
+	if (storeIdsCache && Date.now() - storeIdsCache.fetchedAt < STORE_IDS_TTL_MS) {
+		return storeIdsCache.ids;
+	}
+
+	const url = `${API_BASE}/api/v1/stores/index.json`;
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error(`Failed to fetch stores: HTTP ${response.status}`);
+	}
+	const data = await response.json();
+
+	const ids = new Set<string>();
+	const stores = Array.isArray(data) ? data : data?.stores;
+	if (Array.isArray(stores)) {
+		for (const store of stores) {
+			if (store && typeof store.id === 'string') {
+				ids.add(store.id);
+			}
+		}
+	}
+
+	storeIdsCache = { ids, fetchedAt: Date.now() };
+	return ids;
+}
+
 // --- Ajv setup ---
 
 function createAjvInstance(): Ajv {
@@ -198,6 +229,86 @@ function validateImages(images: Record<string, unknown>): ValidationError[] {
 	return errors;
 }
 
+// --- GTIN checksum validation ---
+
+/**
+ * Validate a GTIN (Global Trade Item Number) checksum.
+ * Supports GTIN-8, GTIN-12, GTIN-13, and GTIN-14.
+ * Returns true if valid, false if invalid.
+ */
+function isValidGtin(gtin: string): boolean {
+	// Must be all digits, 8/12/13/14 characters
+	if (!/^\d{8}$|^\d{12,14}$/.test(gtin)) return false;
+
+	const digits = gtin.split('').map(Number);
+	const checkDigit = digits.pop()!;
+
+	// Multiply alternating digits by 1 and 3 (from right, excluding check digit)
+	let sum = 0;
+	for (let i = digits.length - 1; i >= 0; i--) {
+		const multiplier = (digits.length - i) % 2 === 0 ? 1 : 3;
+		sum += digits[i] * multiplier;
+	}
+
+	const expected = (10 - (sum % 10)) % 10;
+	return checkDigit === expected;
+}
+
+/**
+ * Validate store ID cross-references and GTIN checksums in sizes data.
+ */
+function validateSizesData(
+	sizesData: unknown,
+	entityPath: string,
+	knownStoreIds: Set<string>,
+	newStoreIds: Set<string>
+): ValidationError[] {
+	const errors: ValidationError[] = [];
+	if (!Array.isArray(sizesData)) return errors;
+
+	for (let si = 0; si < sizesData.length; si++) {
+		const size = sizesData[si];
+		if (typeof size !== 'object' || size === null) continue;
+		const sizeObj = size as Record<string, unknown>;
+
+		// GTIN checksum validation
+		if (typeof sizeObj.gtin === 'string' && sizeObj.gtin.length > 0) {
+			if (!isValidGtin(sizeObj.gtin)) {
+				errors.push({
+					category: 'GTIN',
+					level: 'ERROR',
+					message: `Invalid GTIN checksum: '${sizeObj.gtin}' (size #${si + 1})`,
+					path: entityPath
+				});
+			}
+		}
+
+		// Store ID cross-reference validation in purchase_links
+		const links = sizeObj.purchase_links;
+		if (Array.isArray(links)) {
+			for (let li = 0; li < links.length; li++) {
+				const link = links[li];
+				if (typeof link !== 'object' || link === null) continue;
+				const linkObj = link as Record<string, unknown>;
+				const storeId = linkObj.store_id;
+
+				if (typeof storeId === 'string' && storeId.length > 0) {
+					if (!knownStoreIds.has(storeId) && !newStoreIds.has(storeId)) {
+						errors.push({
+							category: 'Store IDs',
+							level: 'ERROR',
+							message: `Unknown store_id '${storeId}' in purchase_links (size #${si + 1}, link #${li + 1})`,
+							path: entityPath
+						});
+					}
+				}
+			}
+		}
+	}
+
+	return errors;
+}
+
 // --- Ajv error formatting ---
 
 function formatAjvError(error: ErrorObject, entityPath: string): ValidationError {
@@ -267,7 +378,7 @@ export async function runCloudValidation(
 			return;
 		}
 
-		// --- Fetch schemas ---
+		// --- Fetch schemas and store list ---
 		emitProgress(job, 'Fetching validation schemas...');
 		try {
 			await prefetchSchemas();
@@ -276,9 +387,19 @@ export async function runCloudValidation(
 			return;
 		}
 
+		let knownStoreIds = new Set<string>();
+		try {
+			knownStoreIds = await fetchKnownStoreIds();
+		} catch {
+			// Non-fatal: store ID cross-referencing will be skipped
+		}
+
 		// --- Validate entity paths and operations ---
 		emitProgress(job, 'Validating entity paths...');
 		const validChanges: Array<{ entity: any; operation: string; data: any }> = [];
+
+		// Collect new store IDs from this changeset so they can be referenced
+		const newStoreIds = new Set<string>();
 
 		for (const raw of changes) {
 			const change = sanitizeObject(raw);
@@ -325,6 +446,14 @@ export async function runCloudValidation(
 					path: entityPath
 				});
 				continue;
+			}
+
+			// Track new stores being created in this changeset
+			if (entityType === 'store' && operation === 'create') {
+				const storeData = sanitizeObject(change.data);
+				if (storeData && typeof storeData.id === 'string') {
+					newStoreIds.add(String(storeData.id));
+				}
 			}
 
 			validChanges.push({
@@ -394,7 +523,7 @@ export async function runCloudValidation(
 				});
 			}
 
-			// Validate sizes separately
+			// Validate sizes: schema + GTIN checksums + store ID cross-references
 			if (sizesData !== undefined) {
 				try {
 					const validateSizes = await compileValidator('sizes');
@@ -411,6 +540,8 @@ export async function runCloudValidation(
 						path: `${entity.path}/sizes`
 					});
 				}
+
+				errors.push(...validateSizesData(sizesData, entity.path, knownStoreIds, newStoreIds));
 			}
 		}
 
@@ -425,9 +556,8 @@ export async function runCloudValidation(
 			category: 'Cloud Mode',
 			level: 'WARNING',
 			message:
-				'Cloud validation checks JSON schema conformance only. ' +
-				'Logo files, folder names, store ID cross-references, and GTIN checksums ' +
-				'will be fully validated when your pull request is processed.'
+				'Cloud validation cannot check logo file dimensions or folder naming conventions. ' +
+				'These will be checked by the repository CI when your pull request is submitted.'
 		});
 
 		// --- Build result ---

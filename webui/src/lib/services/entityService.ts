@@ -21,8 +21,8 @@ import { changeStore } from '$lib/stores/changes';
 export function generateSlug(name: string): string {
 	return name
 		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, '-')
-		.replace(/^-|-$/g, '');
+		.replace(/[^a-z0-9]+/g, '_')
+		.replace(/^_|_$/g, '');
 }
 
 /**
@@ -32,8 +32,8 @@ export function generateSlug(name: string): string {
 export function generateMaterialType(material: string): string {
 	return material
 		.toUpperCase()
-		.replace(/[^A-Z0-9]+/g, '-')
-		.replace(/^-|-$/g, '');
+		.replace(/[^A-Z0-9]+/g, '_')
+		.replace(/^_|_$/g, '');
 }
 
 // ============ Change Detection ============

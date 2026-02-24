@@ -34,9 +34,9 @@ function formatJson(data: unknown): string {
 
 export function generateSlug(name: string, transform: 'lowercase' | 'uppercase'): string {
 	if (transform === 'uppercase') {
-		return name.toUpperCase().replace(/[^A-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+		return name.toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/^_|_$/g, '');
 	}
-	return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+	return name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 }
 
 function stripFields(data: Record<string, unknown>, fields: string[]): Record<string, unknown> {
