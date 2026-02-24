@@ -301,6 +301,24 @@ export async function createPullRequest(
 }
 
 /**
+ * Delete a branch reference
+ */
+export async function deleteBranch(
+	token: string,
+	owner: string,
+	repo: string,
+	branch: string
+): Promise<void> {
+	const response = await ghFetch(token, `/repos/${owner}/${repo}/git/refs/heads/${branch}`, {
+		method: 'DELETE'
+	});
+	// 422 = already deleted, 404 = doesn't exist — both are fine
+	if (!response.ok && response.status !== 422 && response.status !== 404) {
+		throw await ghError(response, 'Failed to delete branch');
+	}
+}
+
+/**
  * Get the base tree SHA for a commit
  */
 export async function getCommitTreeSha(

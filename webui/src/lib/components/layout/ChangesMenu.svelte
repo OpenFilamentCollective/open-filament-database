@@ -8,6 +8,7 @@
 	import { TwoColumnLayout } from '$lib/components/form-fields';
 	import { db } from '$lib/services/database';
 	import { onMount, onDestroy } from 'svelte';
+	import { env } from '$env/dynamic/public';
 
 	let menuOpen = $state(false);
 	let expandedChanges = $state<Set<string>>(new Set());
@@ -23,6 +24,13 @@
 	// Save to disk state
 	let savingToDisk = $state(false);
 	let saveResult = $state<{ success: boolean; message: string } | null>(null);
+
+	// Anonymous submission state
+	const anonBotEnabled = env.PUBLIC_ANON_BOT_ENABLED === 'true';
+	let anonEmail = $state('');
+	let anonSubmitting = $state(false);
+	let anonResult = $state<{ success: boolean; message: string; uuid?: string; prUrl?: string } | null>(null);
+	let wantCredit = $state(false);
 
 	// Validation state
 	let validationStatus = $state<'idle' | 'running' | 'complete' | 'error'>('idle');
@@ -412,6 +420,62 @@
 		}
 	}
 
+	async function submitAnonymously() {
+		anonSubmitting = true;
+		anonResult = null;
+
+		try {
+			const exportData = changeStore.exportChanges();
+
+			const imagesWithPaths: Record<string, any> = {};
+			const cs = $changeStore;
+			for (const [imageId, imageData] of Object.entries(exportData.images)) {
+				const ref = cs.images[imageId];
+				imagesWithPaths[imageId] = {
+					...imageData,
+					entityPath: ref?.entityPath || ''
+				};
+			}
+
+			const response = await fetch('/api/anon/submit', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					changes: exportData.changes,
+					images: imagesWithPaths,
+					email: anonEmail || undefined
+				})
+			});
+
+			const result = await response.json();
+
+			if (result.success) {
+				anonResult = {
+					success: true,
+					message: `Submission ${result.uuid} created successfully!`,
+					uuid: result.uuid,
+					prUrl: result.prUrl
+				};
+				changeStore.clear();
+				if (result.prUrl) {
+					window.open(result.prUrl, '_blank');
+				}
+			} else {
+				anonResult = {
+					success: false,
+					message: result.error || 'Failed to submit changes'
+				};
+			}
+		} catch (error: any) {
+			anonResult = {
+				success: false,
+				message: error.message || 'Failed to submit changes'
+			};
+		} finally {
+			anonSubmitting = false;
+		}
+	}
+
 	function getStoreName(storeId: string): string {
 		const store = stores.find((s) => s.id === storeId);
 		return store?.name || storeId;
@@ -711,88 +775,240 @@
 						{/if}
 					</div>
 				{:else}
-					<!-- Cloud mode: GitHub PR flow -->
+					<!-- Cloud mode: Submit flow -->
 					<div>
-						<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">GitHub</h4>
+						{#if anonBotEnabled}
+							<!-- Anonymous submission (default) + credited mode toggle -->
+							<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Submit Changes</h4>
 
-						{#if $isAuthenticated}
-							<div class="mb-4 flex items-center gap-3">
-								{#if $currentUser?.avatar_url}
-									<img src={$currentUser.avatar_url} alt={$currentUser.login} class="h-8 w-8 rounded-full" />
+							{#if !wantCredit}
+								<!-- Anonymous submission form -->
+								{#if anonResult?.success}
+									<div class="space-y-3">
+										<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
+											<p>{anonResult.message}</p>
+										</div>
+										<a href={anonResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
+											<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+												<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+											</svg>
+											View Pull Request
+										</a>
+									</div>
+								{:else}
+									<div class="space-y-3">
+										<div>
+											<label for="anon-email" class="mb-1 block text-sm font-medium">Email <span class="font-normal text-muted-foreground">(optional)</span></label>
+											<input
+												id="anon-email"
+												type="email"
+												bind:value={anonEmail}
+												class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+												placeholder="your@email.com"
+											/>
+											<p class="mt-1 text-xs text-muted-foreground">Optional. Used only for notification. Never stored.</p>
+										</div>
+										<Button
+											onclick={submitAnonymously}
+											variant="primary"
+											size="md"
+											class="w-full"
+											disabled={anonSubmitting || (validationStatus === 'complete' && !validationIsValid)}
+										>
+											{#if anonSubmitting}
+												<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+													<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+													<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+												</svg>
+												Submitting...
+											{:else}
+												Submit Changes
+											{/if}
+										</Button>
+										{#if anonResult && !anonResult.success}
+											<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+												<p>{anonResult.message}</p>
+											</div>
+										{/if}
+									</div>
 								{/if}
-								<div class="flex-1">
-									<p class="text-sm font-medium">{$currentUser?.name || $currentUser?.login}</p>
-									{#if $currentUser?.name}
-										<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
-									{/if}
-								</div>
-								<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
-									Logout
-								</Button>
+							{/if}
+
+							<!-- Credited mode checkbox -->
+							<div class="mt-4 border-t pt-4">
+								<label class="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground">
+									<input type="checkbox" bind:checked={wantCredit} class="rounded border-muted-foreground" />
+									I want credit on the PR
+								</label>
 							</div>
 
-							{#if prResult?.success}
-								<div class="space-y-3">
-									<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
-										<p>{prResult.message}</p>
-									</div>
-									<a href={prResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-											<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-										</svg>
-										Open Pull Request
-									</a>
-								</div>
-							{:else}
-								<div class="space-y-3">
-									<div>
-										<label for="pr-title" class="mb-1 block text-sm font-medium">PR Title</label>
-										<input
-											id="pr-title"
-											type="text"
-											bind:value={prTitle}
-											class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-											placeholder="Update filament database..."
-										/>
-									</div>
-									<div>
-										<label for="pr-description" class="mb-1 block text-sm font-medium">Description <span class="font-normal text-muted-foreground">(optional)</span></label>
-										<textarea
-											id="pr-description"
-											bind:value={prDescription}
-											rows="3"
-											class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-											placeholder="Describe your changes..."
-										></textarea>
-									</div>
-									<Button onclick={createPR} variant="primary" size="md" class="w-full" disabled={creatingPr}>
-										{#if creatingPr}
-											<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-												<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-												<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-											</svg>
-											Creating Pull Request...
-										{:else}
-											Create Pull Request
-										{/if}
-									</Button>
-									{#if prResult && !prResult.success}
-										<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
-											<p>{prResult.message}</p>
+							{#if wantCredit}
+								<!-- Credited mode: full GitHub OAuth flow -->
+								<div class="mt-3">
+									{#if $isAuthenticated}
+										<div class="mb-4 flex items-center gap-3">
+											{#if $currentUser?.avatar_url}
+												<img src={$currentUser.avatar_url} alt={$currentUser.login} class="h-8 w-8 rounded-full" />
+											{/if}
+											<div class="flex-1">
+												<p class="text-sm font-medium">{$currentUser?.name || $currentUser?.login}</p>
+												{#if $currentUser?.name}
+													<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
+												{/if}
+											</div>
+											<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
+												Logout
+											</Button>
 										</div>
+
+										{#if prResult?.success}
+											<div class="space-y-3">
+												<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
+													<p>{prResult.message}</p>
+												</div>
+												<a href={prResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
+													<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+														<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+													</svg>
+													Open Pull Request
+												</a>
+											</div>
+										{:else}
+											<div class="space-y-3">
+												<div>
+													<label for="pr-title" class="mb-1 block text-sm font-medium">PR Title</label>
+													<input
+														id="pr-title"
+														type="text"
+														bind:value={prTitle}
+														class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+														placeholder="Update filament database..."
+													/>
+												</div>
+												<div>
+													<label for="pr-description" class="mb-1 block text-sm font-medium">Description <span class="font-normal text-muted-foreground">(optional)</span></label>
+													<textarea
+														id="pr-description"
+														bind:value={prDescription}
+														rows="3"
+														class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+														placeholder="Describe your changes..."
+													></textarea>
+												</div>
+												<Button onclick={createPR} variant="primary" size="md" class="w-full" disabled={creatingPr}>
+													{#if creatingPr}
+														<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+															<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+															<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+														</svg>
+														Creating Pull Request...
+													{:else}
+														Create Pull Request
+													{/if}
+												</Button>
+												{#if prResult && !prResult.success}
+													<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+														<p>{prResult.message}</p>
+													</div>
+												{/if}
+											</div>
+										{/if}
+									{:else}
+										<p class="mb-3 text-sm text-muted-foreground">
+											Sign in with GitHub to be credited as the PR author.
+										</p>
+										<Button onclick={() => authStore.login()} variant="primary" size="md">
+											<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+												<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+											</svg>
+											Login to GitHub
+										</Button>
 									{/if}
 								</div>
 							{/if}
 						{:else}
-							<p class="mb-3 text-sm text-muted-foreground">
-								Sign in with GitHub to submit your changes as a pull request to the upstream repository.
-							</p>
-							<Button onclick={() => authStore.login()} variant="primary" size="md">
-								<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-									<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-								</svg>
-								Login to GitHub
-							</Button>
+							<!-- Anonymous bot not enabled: original GitHub-only flow -->
+							<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">GitHub</h4>
+
+							{#if $isAuthenticated}
+								<div class="mb-4 flex items-center gap-3">
+									{#if $currentUser?.avatar_url}
+										<img src={$currentUser.avatar_url} alt={$currentUser.login} class="h-8 w-8 rounded-full" />
+									{/if}
+									<div class="flex-1">
+										<p class="text-sm font-medium">{$currentUser?.name || $currentUser?.login}</p>
+										{#if $currentUser?.name}
+											<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
+										{/if}
+									</div>
+									<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
+										Logout
+									</Button>
+								</div>
+
+								{#if prResult?.success}
+									<div class="space-y-3">
+										<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
+											<p>{prResult.message}</p>
+										</div>
+										<a href={prResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
+											<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+												<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+											</svg>
+											Open Pull Request
+										</a>
+									</div>
+								{:else}
+									<div class="space-y-3">
+										<div>
+											<label for="pr-title" class="mb-1 block text-sm font-medium">PR Title</label>
+											<input
+												id="pr-title"
+												type="text"
+												bind:value={prTitle}
+												class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+												placeholder="Update filament database..."
+											/>
+										</div>
+										<div>
+											<label for="pr-description" class="mb-1 block text-sm font-medium">Description <span class="font-normal text-muted-foreground">(optional)</span></label>
+											<textarea
+												id="pr-description"
+												bind:value={prDescription}
+												rows="3"
+												class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+												placeholder="Describe your changes..."
+											></textarea>
+										</div>
+										<Button onclick={createPR} variant="primary" size="md" class="w-full" disabled={creatingPr}>
+											{#if creatingPr}
+												<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+													<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+													<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+												</svg>
+												Creating Pull Request...
+											{:else}
+												Create Pull Request
+											{/if}
+										</Button>
+										{#if prResult && !prResult.success}
+											<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+												<p>{prResult.message}</p>
+											</div>
+										{/if}
+									</div>
+								{/if}
+							{:else}
+								<p class="mb-3 text-sm text-muted-foreground">
+									Sign in with GitHub to submit your changes as a pull request to the upstream repository.
+								</p>
+								<Button onclick={() => authStore.login()} variant="primary" size="md">
+									<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+										<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+									</svg>
+									Login to GitHub
+								</Button>
+							{/if}
 						{/if}
 					</div>
 				{/if}

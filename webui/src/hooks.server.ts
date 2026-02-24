@@ -56,7 +56,47 @@ if (env.PUBLIC_APP_MODE === 'cloud' && !env.PUBLIC_API_BASE_URL) {
 	throw new Error('Missing required environment variable: PUBLIC_API_BASE_URL (required for cloud mode)');
 }
 
+// Validate anonymous bot env vars when enabled
+if (env.PUBLIC_ANON_BOT_ENABLED === 'true') {
+	// Use process.env for server-side vars (no PUBLIC_ prefix)
+	if (!process.env.ANON_BOT_ENABLED || process.env.ANON_BOT_ENABLED !== 'true') {
+		console.error('\n' + '='.repeat(60));
+		console.error('ERROR: PUBLIC_ANON_BOT_ENABLED is true but ANON_BOT_ENABLED is not');
+		console.error('='.repeat(60));
+		console.error('\nBoth PUBLIC_ANON_BOT_ENABLED and ANON_BOT_ENABLED must be set to "true"');
+		console.error('\n' + '='.repeat(60) + '\n');
+		throw new Error('ANON_BOT_ENABLED must be "true" when PUBLIC_ANON_BOT_ENABLED is "true"');
+	}
+	if (!process.env.GITHUB_APP_ID) {
+		console.error('\n' + '='.repeat(60));
+		console.error('ERROR: Missing GITHUB_APP_ID (required when anonymous bot is enabled)');
+		console.error('='.repeat(60) + '\n');
+		throw new Error('Missing required environment variable: GITHUB_APP_ID');
+	}
+	if (!process.env.GITHUB_APP_PRIVATE_KEY) {
+		console.error('\n' + '='.repeat(60));
+		console.error('ERROR: Missing GITHUB_APP_PRIVATE_KEY (required when anonymous bot is enabled)');
+		console.error('='.repeat(60) + '\n');
+		throw new Error('Missing required environment variable: GITHUB_APP_PRIVATE_KEY');
+	}
+	if (!process.env.GITHUB_APP_INSTALLATION_ID) {
+		console.error('\n' + '='.repeat(60));
+		console.error('ERROR: Missing GITHUB_APP_INSTALLATION_ID (required when anonymous bot is enabled)');
+		console.error('='.repeat(60) + '\n');
+		throw new Error('Missing required environment variable: GITHUB_APP_INSTALLATION_ID');
+	}
+	if (!process.env.GITHUB_WEBHOOK_SECRET) {
+		console.error('\n' + '='.repeat(60));
+		console.error('ERROR: Missing GITHUB_WEBHOOK_SECRET (required when anonymous bot is enabled)');
+		console.error('='.repeat(60) + '\n');
+		throw new Error('Missing required environment variable: GITHUB_WEBHOOK_SECRET');
+	}
+}
+
 console.log(`[env] App mode: ${env.PUBLIC_APP_MODE}`);
 if (env.PUBLIC_API_BASE_URL) {
 	console.log(`[env] API base URL: ${env.PUBLIC_API_BASE_URL}`);
+}
+if (env.PUBLIC_ANON_BOT_ENABLED === 'true') {
+	console.log(`[env] Anonymous bot: enabled`);
 }
