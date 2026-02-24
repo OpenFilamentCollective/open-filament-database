@@ -86,10 +86,7 @@ if (env.PUBLIC_ANON_BOT_ENABLED === 'true') {
 		throw new Error('Missing required environment variable: GITHUB_APP_INSTALLATION_ID');
 	}
 	if (!process.env.GITHUB_WEBHOOK_SECRET) {
-		console.error('\n' + '='.repeat(60));
-		console.error('ERROR: Missing GITHUB_WEBHOOK_SECRET (required when anonymous bot is enabled)');
-		console.error('='.repeat(60) + '\n');
-		throw new Error('Missing required environment variable: GITHUB_WEBHOOK_SECRET');
+		console.warn('[env] GITHUB_WEBHOOK_SECRET is not set — incoming GitHub webhooks (PR merge/close tracking) will be rejected');
 	}
 }
 
