@@ -34,6 +34,17 @@
 	let validationHasRun = $state(false);
 	let validationEventSource = $state<EventSource | null>(null);
 
+	// Session ID for cloud-mode validation (allows multiple users to validate concurrently)
+	function getValidationSessionId(): string {
+		const STORAGE_KEY = 'ofd_validation_session_id';
+		let id = localStorage.getItem(STORAGE_KEY);
+		if (!id) {
+			id = crypto.randomUUID();
+			localStorage.setItem(STORAGE_KEY, id);
+		}
+		return id;
+	}
+
 	// Load stores on mount for resolving store_id to store names
 	onMount(async () => {
 		stores = await db.loadStores();
@@ -161,9 +172,22 @@
 		}
 	}
 
+	function applyValidationResult(result: any) {
+		validationStatus = 'complete';
+		validationErrors = result?.errors || [];
+		validationErrorCount = result?.error_count || 0;
+		validationWarningCount = result?.warning_count || 0;
+		validationIsValid = result?.is_valid ?? false;
+		validationProgress = '';
+	}
+
 	function connectToValidationStream(sseUrl: string) {
 		const es = new EventSource(sseUrl);
 		validationEventSource = es;
+
+		// Extract jobId from the SSE URL for fallback polling
+		const jobIdMatch = sseUrl.match(/\/stream\/(.+)$/);
+		const jobId = jobIdMatch?.[1] ?? null;
 
 		es.onmessage = (event) => {
 			try {
@@ -172,13 +196,7 @@
 				if (data.type === 'progress') {
 					validationProgress = data.message || data.category || 'Validating...';
 				} else if (data.type === 'complete') {
-					const result = data.result;
-					validationStatus = 'complete';
-					validationErrors = result?.errors || [];
-					validationErrorCount = result?.error_count || 0;
-					validationWarningCount = result?.warning_count || 0;
-					validationIsValid = result?.is_valid ?? false;
-					validationProgress = '';
+					applyValidationResult(data.result);
 					es.close();
 					validationEventSource = null;
 				} else if (data.type === 'error') {
@@ -194,15 +212,34 @@
 			}
 		};
 
-		es.onerror = () => {
-			if (validationStatus === 'running') {
-				validationStatus = 'error';
-				validationProgress = '';
-				validationErrors = [{ category: 'System', level: 'ERROR', message: 'Lost connection to validation stream' }];
-				validationErrorCount = 1;
-			}
+		es.onerror = async () => {
 			es.close();
 			validationEventSource = null;
+
+			if (validationStatus !== 'running') return;
+
+			// The stream closed while we still think validation is running.
+			// This can happen if cloud validation finished before we connected.
+			// Check the job result directly before reporting an error.
+			if (jobId) {
+				try {
+					const res = await fetch(`/api/validate/result/${jobId}`);
+					if (res.ok) {
+						const data = await res.json();
+						if (data.status === 'complete' && data.result) {
+							applyValidationResult(data.result);
+							return;
+						}
+					}
+				} catch {
+					// Fallback fetch failed, report original error below
+				}
+			}
+
+			validationStatus = 'error';
+			validationProgress = '';
+			validationErrors = [{ category: 'System', level: 'ERROR', message: 'Lost connection to validation stream' }];
+			validationErrorCount = 1;
 		};
 	}
 
@@ -218,11 +255,20 @@
 		validationHasRun = true;
 
 		try {
-			const statusResponse = await fetch('/api/validate/status');
+			// In cloud mode, use a per-session UUID so multiple users can validate concurrently
+			const sessionId = $isCloudMode ? getValidationSessionId() : undefined;
+			const statusUrl = sessionId
+				? `/api/validate/status?sessionId=${sessionId}`
+				: '/api/validate/status';
+
+			const statusResponse = await fetch(statusUrl);
 			const statusData = await statusResponse.json();
 
 			if (statusData.running) {
-				connectToValidationStream('/api/validate/stream/current');
+				const streamUrl = sessionId
+					? `/api/validate/stream/${statusData.jobId}`
+					: '/api/validate/stream/current';
+				connectToValidationStream(streamUrl);
 				return;
 			}
 
@@ -233,6 +279,9 @@
 				body.changes = exportData.changes;
 				body.images = exportData.images;
 			}
+			if (sessionId) {
+				body.sessionId = sessionId;
+			}
 
 			const response = await fetch('/api/validate', {
 				method: 'POST',
@@ -241,7 +290,10 @@
 			});
 
 			if (response.status === 409) {
-				connectToValidationStream('/api/validate/stream/current');
+				const streamUrl = sessionId
+					? `/api/validate/stream/validation-${sessionId}`
+					: '/api/validate/stream/current';
+				connectToValidationStream(streamUrl);
 				return;
 			}
 

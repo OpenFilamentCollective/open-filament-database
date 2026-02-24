@@ -3,12 +3,12 @@ import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { activeJobs, type Job, tryAcquireValidationLock, releaseValidationLock } from '$lib/server/jobManager';
 import { IS_CLOUD } from '$lib/server/cloudProxy';
+import { runCloudValidation } from '$lib/server/cloudValidator';
+
+const ALLOWED_TYPES = new Set(['full', 'json_files', 'logo_files', 'folder_names', 'store_ids']);
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export async function POST({ request }) {
-	if (IS_CLOUD) {
-		return json({ error: 'Validation is only available in local mode' }, { status: 403 });
-	}
-
 	// Parse JSON before acquiring lock to avoid holding lock on bad input
 	let body: any;
 	try {
@@ -16,8 +16,76 @@ export async function POST({ request }) {
 	} catch {
 		return json({ error: 'Invalid JSON in request body' }, { status: 400 });
 	}
-	const { type = 'full', changes, images } = body;
+	const { type = 'full', changes, images, sessionId } = body;
 
+	// Validate type parameter
+	if (!ALLOWED_TYPES.has(type)) {
+		return json({ error: `Invalid validation type: '${type}'` }, { status: 400 });
+	}
+
+	if (IS_CLOUD) {
+		return handleCloudValidation(changes, images, sessionId);
+	} else {
+		return handleLocalValidation(type, changes, images);
+	}
+}
+
+// --- Cloud mode: in-process ajv validation with per-session jobs ---
+
+function handleCloudValidation(
+	changes: any,
+	images: any,
+	sessionId: string | undefined
+): Response {
+	// Validate sessionId format (must be a UUID from the client)
+	if (!sessionId || typeof sessionId !== 'string' || !UUID_REGEX.test(sessionId)) {
+		return json({ error: 'Missing or invalid sessionId (expected UUID)' }, { status: 400 });
+	}
+
+	const jobId = `validation-${sessionId}`;
+
+	// If this session already has a running job, return conflict
+	const existingJob = activeJobs.get(jobId);
+	if (existingJob && existingJob.status === 'running') {
+		return json(
+			{ error: 'A validation job is already running for this session.' },
+			{ status: 409 }
+		);
+	}
+
+	// Clean up old job for this session
+	if (existingJob) {
+		activeJobs.delete(jobId);
+	}
+
+	const job: Job = {
+		id: jobId,
+		type: 'validation',
+		startTime: Date.now(),
+		status: 'running',
+		events: []
+	};
+	activeJobs.set(jobId, job);
+
+	// Run validation asynchronously (not awaited — events stream via SSE)
+	runCloudValidation(job, changes || [], images || {}).catch((err) => {
+		console.error('Cloud validation unexpected error:', err);
+		if (job.status === 'running') {
+			job.status = 'error';
+			job.events.push({ type: 'error', message: 'Unexpected validation error' });
+			job.endTime = Date.now();
+		}
+	});
+
+	return json({
+		jobId,
+		sseUrl: `/api/validate/stream/${jobId}`
+	});
+}
+
+// --- Local mode: Python subprocess with global lock ---
+
+function handleLocalValidation(type: string, changes: any, images: any): Response {
 	try {
 		// Atomically try to acquire the validation lock to prevent race conditions
 		if (!tryAcquireValidationLock('validation-current')) {
