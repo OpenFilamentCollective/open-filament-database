@@ -163,7 +163,15 @@ function validateFolderNaming(
 	const dataId = typeof data.id === 'string' ? data.id : undefined;
 	if (!dataId) return null; // Missing id will be caught by schema validation
 
-	if (dataId !== pathSegment) {
+	// Convert path segment to repo-format id for comparison (slug→id conversion)
+	let expectedId = pathSegment;
+	if (entityType === 'store') {
+		expectedId = pathSegment.replace(/-/g, '');
+	} else if (entityType === 'brand') {
+		expectedId = pathSegment.replace(/-/g, '_');
+	}
+
+	if (dataId !== expectedId) {
 		return {
 			category: 'Folder Names',
 			level: 'ERROR',

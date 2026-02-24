@@ -26,8 +26,8 @@ export const STRIP_FIELDS = new Set([
  * has different conventions per entity type.
  */
 export const STRIP_FIELDS_BY_TYPE: Record<string, Set<string>> = {
-	brand: new Set(['slug']),
-	store: new Set(['slug']),
+	brand: new Set(['slug', 'logo_name', 'logo_slug', 'path']),
+	store: new Set(['slug', 'logo_name', 'logo_slug', 'path']),
 	material: new Set(['id', 'brandId', 'materialType', 'slug']),
 	filament: new Set(['slug', 'brandId', 'materialType', 'filamentDir']),
 	variant: new Set(['slug', 'brandId', 'materialType', 'filamentId', 'filament_id', 'variantDir'])
@@ -96,13 +96,43 @@ export function cleanEntityData(
 		: STRIP_FIELDS;
 	const imageFilenames = options?.imageFilenames;
 
+	// For stores/brands: the cloud API uses UUIDs as id and slug-based folder names.
+	// Restore repo-format id from slug, and repo-format logo from logo_name.
+	let repoId: string | null = null;
+	let repoLogo: string | null = null;
+
+	if (options?.schemaType && typeof data.slug === 'string' && data.slug) {
+		if (options.schemaType === 'store') {
+			repoId = data.slug.replace(/-/g, '');
+		} else if (options.schemaType === 'brand') {
+			repoId = data.slug.replace(/-/g, '_');
+		}
+	}
+
+	if ((options?.schemaType === 'store' || options?.schemaType === 'brand') &&
+		typeof data.logo_name === 'string' && data.logo_name) {
+		repoLogo = data.logo_name;
+	}
+
 	const clean: Record<string, unknown> = {};
 	for (const [key, value] of Object.entries(data)) {
 		if (stripFields.has(key)) continue;
 
+		// Restore repo-format id from slug
+		if (repoId && key === 'id') {
+			clean[key] = repoId;
+			continue;
+		}
+
 		// Resolve image reference IDs to actual filenames (PR writes only)
 		if (imageFilenames && key === 'logo' && typeof value === 'string' && imageFilenames.has(value)) {
 			clean[key] = imageFilenames.get(value);
+			continue;
+		}
+
+		// Restore repo-format logo from logo_name
+		if (repoLogo && key === 'logo') {
+			clean[key] = repoLogo;
 			continue;
 		}
 
