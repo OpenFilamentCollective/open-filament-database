@@ -4,83 +4,11 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { spawn } from 'node:child_process';
 import { IS_LOCAL } from '$lib/server/cloudProxy';
+import { entityPathToFsPath, entityPathToDir, cleanEntityData, DATA_DIR, STORES_DIR } from '$lib/server/saveUtils';
 
 const REPO_ROOT = path.resolve(process.cwd(), '..');
-const DATA_DIR = path.join(REPO_ROOT, 'data');
-const STORES_DIR = path.join(REPO_ROOT, 'stores');
 const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
 const ALLOWED_IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp']);
-
-/**
- * Map an entity path (e.g., "brands/prusament/materials/PLA") to a filesystem path.
- *
- * Path mapping:
- * - stores/{slug}                                     → ../stores/{slug}/store.json
- * - brands/{slug}                                     → ../data/{slug}/brand.json
- * - brands/{slug}/materials/{type}                    → ../data/{slug}/{type}/material.json
- * - brands/{slug}/materials/{type}/filaments/{name}   → ../data/{slug}/{type}/{name}/filament.json
- * - brands/{slug}/materials/{type}/filaments/{name}/variants/{variant} → ../data/{slug}/{type}/{name}/{variant}/variant.json
- */
-function entityPathToFsPath(entityPath: string): string | null {
-	const parts = entityPath.split('/');
-
-	if (parts[0] === 'stores' && parts.length === 2) {
-		return path.join(STORES_DIR, parts[1], 'store.json');
-	}
-
-	if (parts[0] === 'brands') {
-		if (parts.length === 2) {
-			return path.join(DATA_DIR, parts[1], 'brand.json');
-		}
-		if (parts.length === 4 && parts[2] === 'materials') {
-			return path.join(DATA_DIR, parts[1], parts[3], 'material.json');
-		}
-		if (parts.length === 6 && parts[2] === 'materials' && parts[4] === 'filaments') {
-			return path.join(DATA_DIR, parts[1], parts[3], parts[5], 'filament.json');
-		}
-		if (parts.length === 8 && parts[2] === 'materials' && parts[4] === 'filaments' && parts[6] === 'variants') {
-			return path.join(DATA_DIR, parts[1], parts[3], parts[5], parts[7], 'variant.json');
-		}
-	}
-
-	return null;
-}
-
-/**
- * Map an entity path to its directory (for deletion and logo writing).
- */
-function entityPathToDir(entityPath: string): string | null {
-	const fsPath = entityPathToFsPath(entityPath);
-	return fsPath ? path.dirname(fsPath) : null;
-}
-
-/**
- * Fields to strip from entity data before writing to disk.
- * These are internal tracking fields added by the webui.
- */
-const STRIP_FIELDS = new Set([
-	'brandId', 'brand_id', 'materialType', 'filamentDir', 'filament_id', 'slug'
-]);
-
-/**
- * Remove internal tracking fields and empty strings from entity data.
- */
-function cleanEntityData(data: any): any {
-	const clean: Record<string, any> = {};
-	for (const [key, value] of Object.entries(data)) {
-		if (STRIP_FIELDS.has(key)) continue;
-
-		// Default required fields that would fail validation if empty
-		if (key === 'origin' && (value === '' || value === undefined)) {
-			clean[key] = 'Unknown';
-			continue;
-		}
-
-		if (value === '') continue;
-		clean[key] = value;
-	}
-	return clean;
-}
 
 /**
  * Run a Python command and return its output.
