@@ -136,42 +136,4 @@ describe('Environment Store', () => {
 		});
 	});
 
-	describe('pendingChanges store', () => {
-		it('should add change and persist', async () => {
-			mockAppMode = 'local';
-
-			const { pendingChanges } = await import('../environment');
-
-			pendingChanges.addChange('test-key', { data: 'value' });
-
-			expect(localStorageMock.setItem).toHaveBeenCalledWith(
-				'pending_changes',
-				expect.stringContaining('test-key')
-			);
-		});
-
-		it('should clear all changes', async () => {
-			mockAppMode = 'local';
-
-			const { pendingChanges } = await import('../environment');
-
-			pendingChanges.addChange('test-key', { data: 'value' });
-			pendingChanges.clear();
-
-			expect(localStorageMock.removeItem).toHaveBeenCalledWith('pending_changes');
-		});
-
-		it('should load from localStorage', async () => {
-			mockAppMode = 'local';
-			localStorageMock._setStore({
-				pending_changes: JSON.stringify({ 'loaded-key': 'loaded-value' })
-			});
-
-			const { pendingChanges } = await import('../environment');
-			pendingChanges.load();
-
-			// The store should have loaded the data
-			expect(localStorageMock.getItem).toHaveBeenCalledWith('pending_changes');
-		});
-	});
 });

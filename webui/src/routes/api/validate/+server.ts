@@ -9,16 +9,23 @@ export async function POST({ request }) {
 		return json({ error: 'Validation is only available in local mode' }, { status: 403 });
 	}
 
+	// Parse JSON before acquiring lock to avoid holding lock on bad input
+	let body: any;
+	try {
+		body = await request.json();
+	} catch {
+		return json({ error: 'Invalid JSON in request body' }, { status: 400 });
+	}
+	const { type = 'full', changes, images } = body;
+
 	try {
 		// Atomically try to acquire the validation lock to prevent race conditions
-		if (!tryAcquireValidationLock()) {
+		if (!tryAcquireValidationLock('validation-current')) {
 			return json(
 				{ error: 'A validation job is already running. Please wait for it to complete.' },
 				{ status: 409 }
 			);
 		}
-
-		const { type = 'full', changes, images } = await request.json();
 		const jobId = 'validation-current';
 
 		// Clean up old validation-current job if it exists and is complete
@@ -118,7 +125,7 @@ export async function POST({ request }) {
 				message: `Failed to spawn validation process: ${error.message}`
 			});
 			job.endTime = Date.now();
-			releaseValidationLock();
+			releaseValidationLock('validation-current');
 		});
 
 		// Handle process completion
@@ -151,7 +158,7 @@ export async function POST({ request }) {
 			job.endTime = Date.now();
 
 			// Release the validation lock when job completes
-			releaseValidationLock();
+			releaseValidationLock('validation-current');
 		});
 
 		return json({
@@ -161,7 +168,7 @@ export async function POST({ request }) {
 	} catch (error) {
 		console.error('Validation endpoint error:', error);
 		// Release lock on error
-		releaseValidationLock();
+		releaseValidationLock('validation-current');
 		return json({ error: 'Internal server error' }, { status: 500 });
 	}
 }

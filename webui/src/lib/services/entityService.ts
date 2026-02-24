@@ -11,7 +11,6 @@
 
 import { get } from 'svelte/store';
 import { changeStore } from '$lib/stores/changes';
-import { useChangeTracking } from '$lib/stores/environment';
 
 // ============ ID Generation ============
 
@@ -44,7 +43,6 @@ export function generateMaterialType(material: string): string {
  * @param entityPath - The entity path in changeStore (e.g., "brands/prusament")
  */
 export function hasLocalChanges(entityPath: string): boolean {
-	if (!get(useChangeTracking)) return false;
 	const change = get(changeStore)._index.get(entityPath)?.change;
 	return change !== undefined && (change.operation === 'create' || change.operation === 'update');
 }
@@ -54,7 +52,6 @@ export function hasLocalChanges(entityPath: string): boolean {
  * @param entityPath - The entity path in changeStore
  */
 export function isLocallyCreated(entityPath: string): boolean {
-	if (!get(useChangeTracking)) return false;
 	return get(changeStore)._index.get(entityPath)?.change?.operation === 'create';
 }
 
@@ -85,33 +82,22 @@ export async function deleteEntity(
 	entityLabel: string,
 	deleteFunction: () => Promise<boolean>
 ): Promise<DeleteResult> {
-	if (get(useChangeTracking)) {
-		const change = get(changeStore)._index.get(entityPath)?.change;
+	const change = get(changeStore)._index.get(entityPath)?.change;
 
-		if (change?.operation === 'create') {
-			// Entity was created locally but not synced - just remove the change
-			changeStore.removeChange(entityPath);
-			return {
-				success: true,
-				message: `Local ${entityLabel.toLowerCase()} creation removed`,
-				isLocalRemoval: true
-			};
-		} else {
-			// Mark existing entity for deletion
-			await deleteFunction();
-			return {
-				success: true,
-				message: `${entityLabel} marked for deletion - export to save`
-			};
-		}
-	} else {
-		// Local mode - actually delete from filesystem
-		const success = await deleteFunction();
+	if (change?.operation === 'create') {
+		// Entity was created locally but not synced - just remove the change
+		changeStore.removeChange(entityPath);
 		return {
-			success,
-			message: success
-				? `${entityLabel} deleted successfully`
-				: `Failed to delete ${entityLabel.toLowerCase()}`
+			success: true,
+			message: `Local ${entityLabel.toLowerCase()} creation removed`,
+			isLocalRemoval: true
+		};
+	} else {
+		// Mark existing entity for deletion
+		await deleteFunction();
+		return {
+			success: true,
+			message: `${entityLabel} marked for deletion - export to save`
 		};
 	}
 }

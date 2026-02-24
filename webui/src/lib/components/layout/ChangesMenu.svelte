@@ -7,7 +7,7 @@
 	import { Button, Modal, LoadingSpinner } from '$lib/components/ui';
 	import { TwoColumnLayout } from '$lib/components/form-fields';
 	import { db } from '$lib/services/database';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 
 	let menuOpen = $state(false);
 	let expandedChanges = $state<Set<string>>(new Set());
@@ -37,6 +37,10 @@
 	// Load stores on mount for resolving store_id to store names
 	onMount(async () => {
 		stores = await db.loadStores();
+	});
+
+	onDestroy(() => {
+		cleanupValidationStream();
 	});
 
 	function toggleMenu() {

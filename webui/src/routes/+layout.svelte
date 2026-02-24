@@ -23,16 +23,12 @@
 		}
 	});
 
-	async function handleRefresh() {
+	function handleRefresh() {
 		refreshing = true;
-		try {
-			// Clear the database cache
-			db.clearCache();
-			// Reload the current page
-			window.location.reload();
-		} finally {
-			refreshing = false;
-		}
+		// Clear the database cache
+		db.clearCache();
+		// Reload the current page
+		window.location.reload();
 	}
 
 	function setTheme(newTheme: 'light' | 'dark' | 'system') {
@@ -80,12 +76,14 @@
 					>
 						FAQ
 					</a>
+					{#if env.PUBLIC_API_BASE_URL}
 					<a
 						href={env.PUBLIC_API_BASE_URL}
 						class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
 					>
 						API
 					</a>
+					{/if}
 				</nav>
 			</div>
 			<!-- Right: Action buttons -->

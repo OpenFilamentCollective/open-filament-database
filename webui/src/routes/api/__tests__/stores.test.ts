@@ -40,6 +40,7 @@ vi.mock('@sveltejs/kit', () => ({
 
 describe('Stores API', () => {
 	beforeEach(() => {
+		vi.resetModules();
 		mockReaddir.mockReset();
 		mockReadFile.mockReset();
 		mockWriteFile.mockReset();

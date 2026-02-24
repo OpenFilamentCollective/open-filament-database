@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import Tooltip from './Tooltip.svelte';
 	import { LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
 
@@ -31,10 +32,12 @@
 	// Parse the initial value when it changes externally
 	$effect(() => {
 		const parsed = splitUrl(value);
+		const currentProtocol = untrack(() => protocol);
+		const currentBody = untrack(() => urlBody);
 		// Only sync protocol from external value when it actually contains one;
 		// otherwise an empty value would reset the user's dropdown selection
-		if (value && parsed.protocol !== protocol) protocol = parsed.protocol;
-		if (parsed.body !== urlBody) urlBody = parsed.body;
+		if (value && parsed.protocol !== currentProtocol) protocol = parsed.protocol;
+		if (parsed.body !== currentBody) urlBody = parsed.body;
 	});
 
 	function splitUrl(url: string): { protocol: string; body: string } {

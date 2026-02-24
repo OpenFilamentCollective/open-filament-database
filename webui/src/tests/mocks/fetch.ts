@@ -74,31 +74,3 @@ export function createMockFetch(responses: Record<string, unknown | MockResponse
 	});
 }
 
-// Helper to set up common API responses
-export function setupApiMocks(mockFetch: ReturnType<typeof vi.fn>) {
-	const responses: Record<string, unknown> = {};
-
-	const builder = {
-		onGet(url: string, data: unknown, init?: MockResponseInit) {
-			responses[`GET:${url}`] = init ? { data, ...init } : data;
-			return builder;
-		},
-		onPost(url: string, data: unknown, init?: MockResponseInit) {
-			responses[`POST:${url}`] = init ? { data, ...init } : data;
-			return builder;
-		},
-		onPut(url: string, data: unknown, init?: MockResponseInit) {
-			responses[`PUT:${url}`] = init ? { data, ...init } : data;
-			return builder;
-		},
-		onDelete(url: string, data: unknown, init?: MockResponseInit) {
-			responses[`DELETE:${url}`] = init ? { data, ...init } : data;
-			return builder;
-		},
-		apply() {
-			mockFetch.mockImplementation(createMockFetch(responses));
-		}
-	};
-
-	return builder;
-}

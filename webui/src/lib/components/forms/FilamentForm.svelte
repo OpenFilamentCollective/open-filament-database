@@ -3,7 +3,6 @@
 	import { SchemaForm, SlicerConfigPanel } from '$lib/components/forms';
 	import { FormSection } from '$lib/components/form-fields';
 	import {
-		SLICER_KEYS,
 		initializeSlicerForm,
 		buildSlicerSettings,
 		initializeSlicerEnabled,
@@ -129,7 +128,7 @@
 	// Handle form submission
 	function handleSubmit(data: any) {
 		// Build submit data using generic utility
-		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields);
+		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, undefined, config.transforms);
 
 		// Handle slicer settings separately (complex nested object)
 		const slicer_settings = buildSlicerSettings(slicerEnabled, slicerForms);
@@ -139,16 +138,6 @@
 
 		onSubmit(submitData);
 	}
-
-	// Initialize slicer forms for enabled slicers
-	$effect(() => {
-		for (const key of SLICER_KEYS) {
-			if (slicerEnabled[key] && !slicerForms[key]) {
-				const initialValue = filament?.slicer_settings?.[key] || {};
-				slicerForms[key] = initializeSlicerForm(key, initialValue);
-			}
-		}
-	});
 
 	// Check if form can be submitted (name, density, diameter_tolerance are required)
 	let canSubmit = $derived(

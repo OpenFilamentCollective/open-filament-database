@@ -42,9 +42,17 @@
 			onClose();
 		}
 	}
-</script>
 
-<svelte:window onkeydown={(e) => { if (show && e.key === 'Escape') onClose(); }} />
+	// Only listen for Escape when this modal is shown
+	$effect(() => {
+		if (!show) return;
+		function handleKeydown(e: KeyboardEvent) {
+			if (e.key === 'Escape') onClose();
+		}
+		window.addEventListener('keydown', handleKeydown);
+		return () => window.removeEventListener('keydown', handleKeydown);
+	});
+</script>
 
 {#if show}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->

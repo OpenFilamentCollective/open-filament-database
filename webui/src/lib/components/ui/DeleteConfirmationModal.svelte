@@ -1,8 +1,6 @@
 <script lang="ts">
 	import Modal from './Modal.svelte';
 	import Button from './Button.svelte';
-	import { useChangeTracking } from '$lib/stores/environment';
-
 	interface Props {
 		show: boolean;
 		title: string;
@@ -37,23 +35,15 @@
 			<p class="text-muted-foreground text-sm">{cascadeWarning}</p>
 		{/if}
 
-		{#if $useChangeTracking}
-			<div class="bg-primary/10 border border-primary/20 rounded p-3">
-				<p class="text-sm text-primary">
-					{#if isLocalCreate}
-						This will remove the locally created item. The change will be discarded.
-					{:else}
-						This will mark the item for deletion. Remember to export your changes.
-					{/if}
-				</p>
-			</div>
-		{:else}
-			<div class="bg-destructive/10 border border-destructive/20 rounded p-3">
-				<p class="text-sm text-destructive">
-					This action cannot be undone. The item will be permanently deleted.
-				</p>
-			</div>
-		{/if}
+		<div class="bg-primary/10 border border-primary/20 rounded p-3">
+			<p class="text-sm text-primary">
+				{#if isLocalCreate}
+					This will remove the locally created item. The change will be discarded.
+				{:else}
+					This will mark the item for deletion. Remember to export your changes.
+				{/if}
+			</p>
+		</div>
 
 		<div class="flex justify-end gap-2 pt-4">
 			<Button onclick={onClose} disabled={deleting} variant="secondary">

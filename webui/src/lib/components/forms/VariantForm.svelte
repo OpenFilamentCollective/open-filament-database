@@ -25,6 +25,9 @@
 	// Stores list for purchase link dropdowns
 	let stores: Store[] = $state([]);
 
+	// Validation error message for form submission
+	let validationError = $state<string | null>(null);
+
 	// Internal schema state (loaded if not provided externally)
 	let internalSchema: any = $state(null);
 	let schema = $derived(externalSchema || internalSchema);
@@ -78,6 +81,14 @@
 			lastEntity = variant;
 			lastSchema = preparedSchema;
 			formData = initializeFormData(preparedSchema, variant, config.hiddenFields, config.fieldMappings, config.typeOverrides);
+			initializeSizes();
+			selectedTraits = new Set(
+				variant?.traits
+					? Object.entries(variant.traits)
+							.filter(([_, v]) => v === true)
+							.map(([k]) => k)
+					: []
+			);
 		}
 	});
 
@@ -268,12 +279,16 @@
 	// ==================== FORM SUBMISSION ====================
 
 	function handleSubmit(data: any) {
+		validationError = null;
+
 		// Validate required fields
 		if (!data.name || !data.color_hex) {
+			validationError = 'Name and color are required fields.';
 			return;
 		}
 
 		if (sizes.length === 0) {
+			validationError = 'At least one size must be added.';
 			return;
 		}
 
@@ -281,6 +296,7 @@
 		const validSizes = sizes.filter((s) => s.value.filament_weight !== undefined && s.value.diameter !== undefined);
 
 		if (validSizes.length === 0) {
+			validationError = 'At least one size must have filament weight and diameter filled in.';
 			return;
 		}
 
@@ -291,8 +307,8 @@
 				diameter: s.value.diameter
 			};
 
-			if (s.value.empty_spool_weight) sizeValue.empty_spool_weight = s.value.empty_spool_weight;
-			if (s.value.spool_core_diameter) sizeValue.spool_core_diameter = s.value.spool_core_diameter;
+			if (s.value.empty_spool_weight != null) sizeValue.empty_spool_weight = s.value.empty_spool_weight;
+			if (s.value.spool_core_diameter != null) sizeValue.spool_core_diameter = s.value.spool_core_diameter;
 			if (s.value.gtin) sizeValue.gtin = s.value.gtin;
 			if (s.value.article_number) sizeValue.article_number = s.value.article_number;
 			sizeValue.discontinued = s.value.discontinued ?? false;
@@ -316,7 +332,7 @@
 		}
 
 		// Build submit data using utility (handles field mappings automatically)
-		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, config.fieldMappings);
+		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, config.fieldMappings, config.transforms);
 
 		// Add custom fields not handled by schema
 		submitData.sizes = sizesData;
@@ -340,6 +356,7 @@
 		<p class="text-muted-foreground">Loading form...</p>
 	</div>
 {:else}
+{#if validationError}<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive mb-4">{validationError}</div>{/if}
 <SchemaForm
 	schema={preparedSchema}
 	bind:data={formData}

@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
+import { validatePathSegment } from './pathValidation';
 
 export interface EntityConfig {
 	/** Entity type name */
@@ -79,34 +80,37 @@ export const SCHEMA_DIR = path.join(process.cwd(), '../schemas');
 // === ID normalizers ===
 
 export async function normalizeBrandId(baseDir: string, brandId: string): Promise<string> {
+	const safeId = validatePathSegment(brandId, 'brandId');
 	try {
-		await fs.access(path.join(baseDir, brandId));
-		return brandId;
+		await fs.access(path.join(baseDir, safeId));
+		return safeId;
 	} catch {
-		const normalized = brandId.replace(/-/g, '_');
+		const normalized = safeId.replace(/-/g, '_');
 		await fs.access(path.join(baseDir, normalized));
 		return normalized;
 	}
 }
 
 export async function normalizeMaterialType(parentDir: string, materialType: string): Promise<string> {
+	const safeType = validatePathSegment(materialType, 'materialType');
 	try {
-		await fs.access(path.join(parentDir, materialType));
-		return materialType;
+		await fs.access(path.join(parentDir, safeType));
+		return safeType;
 	} catch {
 		// Material directories are typically uppercase (ABS, PLA, PETG)
-		const upper = materialType.toUpperCase();
+		const upper = safeType.toUpperCase();
 		await fs.access(path.join(parentDir, upper));
 		return upper;
 	}
 }
 
-async function normalizeStoreId(baseDir: string, storeId: string): Promise<string> {
+export async function normalizeStoreId(baseDir: string, storeId: string): Promise<string> {
+	const safeId = validatePathSegment(storeId, 'storeId');
 	try {
-		await fs.access(path.join(baseDir, storeId));
-		return storeId;
+		await fs.access(path.join(baseDir, safeId));
+		return safeId;
 	} catch {
-		const normalized = storeId.replace(/-/g, '');
+		const normalized = safeId.replace(/-/g, '');
 		await fs.access(path.join(baseDir, normalized));
 		return normalized;
 	}

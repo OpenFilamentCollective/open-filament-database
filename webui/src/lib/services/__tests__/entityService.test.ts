@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { writable } from 'svelte/store';
 import {
 	generateSlug,
 	generateMaterialType,
@@ -9,11 +8,12 @@ import {
 	mergeEntityData
 } from '../entityService';
 
-// Mock the stores - helper to build _index Map from changes object
+// Mock the stores - helper to build _index Map matching ChangeTreeNode shape
 function buildIndex(changes: Record<string, { operation: string; data?: any }>) {
-	const map = new Map<string, { change: { operation: string; data?: any } }>();
+	const map = new Map<string, { key: string; path: string; change: { operation: string; data?: any }; children: Record<string, any> }>();
 	for (const [path, change] of Object.entries(changes)) {
-		map.set(path, { change });
+		const key = path.split('/').pop() || path;
+		map.set(path, { key, path, change, children: {} });
 	}
 	return map;
 }
@@ -26,8 +26,6 @@ const mockChangeStore = {
 	removeChange: vi.fn()
 };
 
-const mockUseChangeTracking = writable(false);
-
 vi.mock('$lib/stores/changes', () => ({
 	changeStore: {
 		subscribe: (fn: (value: any) => void) => {
@@ -38,24 +36,10 @@ vi.mock('$lib/stores/changes', () => ({
 	}
 }));
 
-vi.mock('$lib/stores/environment', () => ({
-	useChangeTracking: {
-		subscribe: (fn: (value: boolean) => void) => {
-			let value = false;
-			mockUseChangeTracking.subscribe((v) => {
-				value = v;
-			});
-			fn(value);
-			return mockUseChangeTracking.subscribe(fn);
-		}
-	}
-}));
-
 describe('Entity Service', () => {
 	beforeEach(() => {
 		mockChangeStore.changes = {};
 		mockChangeStore.removeChange.mockClear();
-		mockUseChangeTracking.set(false);
 	});
 
 	describe('generateSlug', () => {
@@ -111,36 +95,25 @@ describe('Entity Service', () => {
 	});
 
 	describe('hasLocalChanges', () => {
-		it('should return false in local mode', () => {
-			mockUseChangeTracking.set(false);
-			mockChangeStore.changes = { 'brands/test': { operation: 'update' } };
-
-			expect(hasLocalChanges('brands/test')).toBe(false);
-		});
-
-		it('should return true for create operation in cloud mode', () => {
-			mockUseChangeTracking.set(true);
+		it('should return true for create operation', () => {
 			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
 
 			expect(hasLocalChanges('brands/test')).toBe(true);
 		});
 
-		it('should return true for update operation in cloud mode', () => {
-			mockUseChangeTracking.set(true);
+		it('should return true for update operation', () => {
 			mockChangeStore.changes = { 'brands/test': { operation: 'update' } };
 
 			expect(hasLocalChanges('brands/test')).toBe(true);
 		});
 
 		it('should return false for delete operation', () => {
-			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = { 'brands/test': { operation: 'delete' } };
 
 			expect(hasLocalChanges('brands/test')).toBe(false);
 		});
 
 		it('should return false for no changes', () => {
-			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = {};
 
 			expect(hasLocalChanges('brands/test')).toBe(false);
@@ -148,97 +121,50 @@ describe('Entity Service', () => {
 	});
 
 	describe('isLocallyCreated', () => {
-		it('should return true only for create operation in cloud mode', () => {
-			mockUseChangeTracking.set(true);
+		it('should return true only for create operation', () => {
 			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
 
 			expect(isLocallyCreated('brands/test')).toBe(true);
 		});
 
 		it('should return false for updates', () => {
-			mockUseChangeTracking.set(true);
 			mockChangeStore.changes = { 'brands/test': { operation: 'update' } };
-
-			expect(isLocallyCreated('brands/test')).toBe(false);
-		});
-
-		it('should return false in local mode', () => {
-			mockUseChangeTracking.set(false);
-			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
 
 			expect(isLocallyCreated('brands/test')).toBe(false);
 		});
 	});
 
 	describe('deleteEntity', () => {
-		describe('Cloud mode', () => {
-			beforeEach(() => {
-				mockUseChangeTracking.set(true);
-			});
+		it('should remove local create without API call', async () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
+			const deleteFn = vi.fn().mockResolvedValue(true);
 
-			it('should remove local create without API call', async () => {
-				mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
-				const deleteFn = vi.fn().mockResolvedValue(true);
+			const result = await deleteEntity('brands/test', 'Brand', deleteFn);
 
-				const result = await deleteEntity('brands/test', 'Brand', deleteFn);
-
-				expect(result.success).toBe(true);
-				expect(result.isLocalRemoval).toBe(true);
-				expect(mockChangeStore.removeChange).toHaveBeenCalledWith('brands/test');
-				expect(deleteFn).not.toHaveBeenCalled();
-			});
-
-			it('should mark existing entity for deletion', async () => {
-				mockChangeStore.changes = {};
-				const deleteFn = vi.fn().mockResolvedValue(true);
-
-				const result = await deleteEntity('brands/test', 'Brand', deleteFn);
-
-				expect(result.success).toBe(true);
-				expect(result.message).toContain('marked for deletion');
-				expect(deleteFn).toHaveBeenCalled();
-			});
-
-			it('should return isLocalRemoval flag for created entities', async () => {
-				mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
-				const deleteFn = vi.fn();
-
-				const result = await deleteEntity('brands/test', 'Brand', deleteFn);
-
-				expect(result.isLocalRemoval).toBe(true);
-			});
+			expect(result.success).toBe(true);
+			expect(result.isLocalRemoval).toBe(true);
+			expect(mockChangeStore.removeChange).toHaveBeenCalledWith('brands/test');
+			expect(deleteFn).not.toHaveBeenCalled();
 		});
 
-		describe('Local mode', () => {
-			beforeEach(() => {
-				mockUseChangeTracking.set(false);
-			});
+		it('should mark existing entity for deletion', async () => {
+			mockChangeStore.changes = {};
+			const deleteFn = vi.fn().mockResolvedValue(true);
 
-			it('should call delete function', async () => {
-				const deleteFn = vi.fn().mockResolvedValue(true);
+			const result = await deleteEntity('brands/test', 'Brand', deleteFn);
 
-				await deleteEntity('brands/test', 'Brand', deleteFn);
+			expect(result.success).toBe(true);
+			expect(result.message).toContain('marked for deletion');
+			expect(deleteFn).toHaveBeenCalled();
+		});
 
-				expect(deleteFn).toHaveBeenCalled();
-			});
+		it('should return isLocalRemoval flag for created entities', async () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
+			const deleteFn = vi.fn();
 
-			it('should return success status on successful deletion', async () => {
-				const deleteFn = vi.fn().mockResolvedValue(true);
+			const result = await deleteEntity('brands/test', 'Brand', deleteFn);
 
-				const result = await deleteEntity('brands/test', 'Brand', deleteFn);
-
-				expect(result.success).toBe(true);
-				expect(result.message).toContain('deleted successfully');
-			});
-
-			it('should return failure status on failed deletion', async () => {
-				const deleteFn = vi.fn().mockResolvedValue(false);
-
-				const result = await deleteEntity('brands/test', 'Brand', deleteFn);
-
-				expect(result.success).toBe(false);
-				expect(result.message).toContain('Failed to delete');
-			});
+			expect(result.isLocalRemoval).toBe(true);
 		});
 	});
 

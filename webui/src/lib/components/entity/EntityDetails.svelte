@@ -32,6 +32,16 @@
 
 	let { entity, fields, title, actions, class: className = '', grid = false }: Props = $props();
 
+	function isSafeUrl(url: unknown): boolean {
+		if (typeof url !== 'string') return false;
+		try {
+			const parsed = new URL(url);
+			return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+		} catch {
+			return false;
+		}
+	}
+
 	function shouldHideField(field: Field): boolean {
 		if (field.hide === undefined) return false;
 		if (typeof field.hide === 'boolean') return field.hide;
@@ -84,13 +94,20 @@
 								<span class="text-sm text-muted-foreground">No logo</span>
 							{/if}
 						{:else if field.type === 'link'}
-							<a
-								href={entity[field.key]}
-								target="_blank"
-								class="text-primary hover:underline truncate block"
-							>
-								{field.format ? field.format(entity[field.key]) : entity[field.key]}
-							</a>
+							{#if isSafeUrl(entity[field.key])}
+								<a
+									href={entity[field.key]}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-primary hover:underline truncate block"
+								>
+									{field.format ? field.format(entity[field.key]) : entity[field.key]}
+								</a>
+							{:else}
+								<span class="text-muted-foreground truncate block">
+									{entity[field.key] || 'No URL'}
+								</span>
+							{/if}
 						{:else if field.type === 'color'}
 							<div class="flex items-center gap-2">
 								<div

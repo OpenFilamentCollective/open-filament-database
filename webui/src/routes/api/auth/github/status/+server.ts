@@ -20,7 +20,8 @@ export const GET: RequestHandler = async ({ cookies }) => {
 			}
 		});
 	} catch (error) {
-		// Token might be expired or revoked
+		// Token might be expired or revoked — clear the invalid cookie
+		cookies.delete('ofd_gh_token', { path: '/' });
 		return json({ authenticated: false });
 	}
 };

@@ -14,9 +14,9 @@ if (process.env.PUBLIC_APP_MODE !== 'cloud') {
 			copyFileSync(envExamplePath, envPath);
 			console.log('\n' + '='.repeat(60));
 			console.log('[env] .env file was missing — copied from .env.example');
-			console.log('[env] Restarting server to load new environment variables...');
+			console.log('[env] Please restart the server to load new environment variables.');
 			console.log('='.repeat(60) + '\n');
-			process.exit(0);
+			throw new Error('.env file was missing and has been copied from .env.example. Please restart the server.');
 		} else {
 			console.error('\n' + '='.repeat(60));
 			console.error('ERROR: Missing .env file and no .env.example found');

@@ -22,7 +22,7 @@
 		onclick={toggle}
 		onkeydown={(e) => e.key === 'Enter' && toggle()}
 		role="button"
-		tabindex="-1"
+		tabindex="0"
 		class="flex items-center text-sm font-medium text-foreground cursor-pointer select-none"
 	>
 		{label}

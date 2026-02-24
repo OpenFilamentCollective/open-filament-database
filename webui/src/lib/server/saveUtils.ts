@@ -4,8 +4,13 @@ const REPO_ROOT = path.resolve(process.cwd(), '..');
 export const DATA_DIR = path.join(REPO_ROOT, 'data');
 export const STORES_DIR = path.join(REPO_ROOT, 'stores');
 
+/** JSON indentation for local filesystem writes */
+export const JSON_INDENT_LOCAL = 4;
+/** JSON indentation for repo/PR writes (matches repo convention) */
+export const JSON_INDENT_REPO = 2;
+
 /** Validates that a path segment contains only safe filesystem characters. */
-export const SAFE_SEGMENT = /^[a-zA-Z0-9][a-zA-Z0-9_\-. ]*$/;
+export const SAFE_SEGMENT = /^[a-zA-Z0-9][a-zA-Z0-9_\-.]*$/;
 
 /**
  * Fields to strip from entity data before writing to disk.
@@ -14,6 +19,20 @@ export const SAFE_SEGMENT = /^[a-zA-Z0-9][a-zA-Z0-9_\-. ]*$/;
 export const STRIP_FIELDS = new Set([
 	'brandId', 'brand_id', 'materialType', 'filamentDir', 'filament_id', 'slug'
 ]);
+
+/**
+ * Per-entity-type strip fields for PR/repo writes.
+ * These are more granular than STRIP_FIELDS since repo JSON
+ * has different conventions per entity type.
+ */
+export const STRIP_FIELDS_BY_TYPE: Record<string, Set<string>> = {
+	brand: new Set(['slug']),
+	store: new Set(['slug']),
+	material: new Set(['id', 'brandId', 'materialType', 'slug']),
+	filament: new Set(['slug', 'brandId', 'materialType', 'filamentDir']),
+	variant: new Set(['slug', 'brandId', 'materialType', 'filamentId', 'filament_id', 'variantDir'])
+};
+const DEFAULT_STRIP_FIELDS = new Set(['brandId', 'materialType', 'filamentDir', 'filament_id', 'filamentId', 'variantDir', 'slug']);
 
 /**
  * Map an entity path (e.g., "brands/prusament/materials/PLA") to a filesystem path.
@@ -65,11 +84,34 @@ export function entityPathToDir(entityPath: string): string | null {
 
 /**
  * Remove internal tracking fields and empty strings from entity data.
+ * When `options.schemaType` is provided, uses per-type strip fields and
+ * applies additional logic for PR/repo writes (image resolution, origin defaults).
  */
-export function cleanEntityData(data: Record<string, unknown>): Record<string, unknown> {
+export function cleanEntityData(
+	data: Record<string, unknown>,
+	options?: { imageFilenames?: Map<string, string>; schemaType?: string | null }
+): Record<string, unknown> {
+	const stripFields = options?.schemaType
+		? (STRIP_FIELDS_BY_TYPE[options.schemaType] ?? DEFAULT_STRIP_FIELDS)
+		: STRIP_FIELDS;
+	const imageFilenames = options?.imageFilenames;
+
 	const clean: Record<string, unknown> = {};
 	for (const [key, value] of Object.entries(data)) {
-		if (STRIP_FIELDS.has(key)) continue;
+		if (stripFields.has(key)) continue;
+
+		// Resolve image reference IDs to actual filenames (PR writes only)
+		if (imageFilenames && key === 'logo' && typeof value === 'string' && imageFilenames.has(value)) {
+			clean[key] = imageFilenames.get(value);
+			continue;
+		}
+
+		// Default required fields that would fail validation if empty (PR writes only)
+		if (options?.schemaType && key === 'origin' && (value === '' || value === undefined)) {
+			clean[key] = 'Unknown';
+			continue;
+		}
+
 		if (value === '') continue;
 		clean[key] = value;
 	}

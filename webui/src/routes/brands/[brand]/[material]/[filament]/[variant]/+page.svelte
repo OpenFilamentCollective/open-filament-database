@@ -10,6 +10,7 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
+	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { getTraitLabel } from '$lib/config/traitConfig';
@@ -18,6 +19,7 @@
 	let materialType: string = $derived($page.params.material!);
 	let filamentId: string = $derived($page.params.filament!);
 	let variantSlug: string = $derived($page.params.variant!);
+	let loadGeneration = 0;
 	let variant: Variant | null = $state(null);
 	let originalVariant: Variant | null = $state(null);
 	let stores: Store[] = $state([]);
@@ -42,6 +44,7 @@
 	// Load data when route parameters change
 	$effect(() => {
 		const params = { brandId, materialType, filamentId, variantSlug };
+		const gen = ++loadGeneration;
 
 		loading = true;
 		error = null;
@@ -54,11 +57,13 @@
 					db.loadStores()
 				]);
 
+				if (gen !== loadGeneration) return;
+
 				if (!variantData) {
 					// Check if this was locally deleted
 					const variantPath = `brands/${params.brandId}/materials/${params.materialType}/filaments/${params.filamentId}/variants/${params.variantSlug}`;
-					const change = $changes.get(variantPath);
-					if ($useChangeTracking && change?.operation === 'delete') {
+					const change = untrack(() => $changes.get(variantPath));
+					if (untrack(() => $useChangeTracking) && change?.operation === 'delete') {
 						error = 'This variant has been deleted in your local changes. Export your changes to finalize the deletion.';
 					} else {
 						error = 'Variant not found';
@@ -71,9 +76,12 @@
 				originalVariant = structuredClone(variantData);
 				stores = storesData;
 			} catch (e) {
+				if (gen !== loadGeneration) return;
 				error = e instanceof Error ? e.message : 'Failed to load variant';
 			} finally {
-				loading = false;
+				if (gen === loadGeneration) {
+					loading = false;
+				}
 			}
 		})();
 	});
@@ -132,6 +140,7 @@
 			if (result.success) {
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
+				entityState.deleting = false;
 				setTimeout(() => {
 					goto(`/brands/${brandId}/${materialType}/${filamentId}`);
 				}, 1500);

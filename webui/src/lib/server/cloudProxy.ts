@@ -54,12 +54,8 @@ function buildCloudUrl(localPath: string): string {
 				const filamentName = materialMatch[2];
 				const variantId = materialMatch[3];
 
-				const isVariantsList = subPath.includes('/variants') && !variantId;
-
 				if (variantId) {
 					return `${API_BASE}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/variants/${variantId}.json`;
-				} else if (isVariantsList && filamentName) {
-					return `${API_BASE}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
 				} else if (filamentName) {
 					return `${API_BASE}/api/v1/brands/${brandId}/materials/${materialType}/filaments/${filamentName}/index.json`;
 				} else {
@@ -172,7 +168,6 @@ export async function proxyGetToCloud(localPath: string): Promise<Response> {
  */
 export async function proxyLogoToCloud(
 	entityType: 'brand' | 'store',
-	entityId: string,
 	filename: string
 ): Promise<Response> {
 	const cloudUrl = `${API_BASE}/api/v1/${entityType}s/logo/${filename}`;
@@ -191,7 +186,7 @@ export async function proxyLogoToCloud(
 			headers: { 'Content-Type': contentType }
 		});
 	} catch (error) {
-		console.error(`Cloud logo proxy error for ${entityType}/${entityId}/${filename}:`, error);
+		console.error(`Cloud logo proxy error for ${entityType}s/logo/${filename}:`, error);
 		return new Response('Failed to fetch logo', { status: 502 });
 	}
 }

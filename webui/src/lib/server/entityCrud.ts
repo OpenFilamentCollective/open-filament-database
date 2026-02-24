@@ -7,10 +7,6 @@ import { IS_CLOUD, proxyGetToCloud } from './cloudProxy';
 
 // === Shared utilities ===
 
-async function getAppMode(): Promise<boolean> {
-	return !IS_CLOUD;
-}
-
 /**
  * Resolve a cloud proxy path from a config's template and route params.
  * E.g., '/api/brands/:brandId/materials' with { brandId: 'foo' } → '/api/brands/foo/materials'
@@ -100,7 +96,10 @@ async function resolveEntityDir(
 	params: Record<string, string>
 ): Promise<string> {
 	const parentDir = await resolveParentDir(config, params);
-	const idParam = config.idParam!;
+	if (!config.idParam) {
+		throw new Error(`Entity config for '${config.entityType}' is missing idParam`);
+	}
+	const idParam = config.idParam;
 	let entityId = params[idParam];
 
 	if (config.normalizeId) {
@@ -196,7 +195,7 @@ export function createGetHandler(config: EntityConfig) {
 			const dirName = path.basename(entityDir);
 			return json(augmentData(data, config, dirName, params));
 		} catch (error) {
-			console.error(`Error reading ${config.entityType} ${params[config.idParam!]}:`, error);
+			console.error(`Error reading ${config.entityType} ${params[config.idParam ?? 'id']}:`, error);
 			return json({ error: `${capitalize(config.entityType)} not found` }, { status: 404 });
 		}
 	};
@@ -208,14 +207,17 @@ export function createGetHandler(config: EntityConfig) {
 export function createPostHandler(config: EntityConfig) {
 	return async ({ params, request }: { params: Record<string, string>; request: Request }) => {
 		try {
-			const isLocal = await getAppMode();
+			const isLocal = !IS_CLOUD;
 			const requestData = await request.json();
 
 			// Generate slug: check override field, then slug/id, then generate from source field
+			if (!config.slugTransform && !requestData.slug && !requestData.id && !(config.slugOverrideField && requestData[config.slugOverrideField])) {
+				throw new Error(`Entity config for '${config.entityType}' is missing slugTransform and no slug/id was provided`);
+			}
 			const slug = (config.slugOverrideField && requestData[config.slugOverrideField])
 				|| requestData.slug
 				|| requestData.id
-				|| generateSlug(requestData[config.slugSourceField], config.slugTransform!);
+				|| generateSlug(requestData[config.slugSourceField], config.slugTransform as 'lowercase' | 'uppercase');
 
 			if (isLocal) {
 				const parentDir = await resolveParentDir(config, params);
@@ -264,7 +266,7 @@ export function createPostHandler(config: EntityConfig) {
 export function createPutHandler(config: EntityConfig) {
 	return async ({ params, request }: { params: Record<string, string>; request: Request }) => {
 		try {
-			const isLocal = await getAppMode();
+			const isLocal = !IS_CLOUD;
 			const data = await request.json();
 
 			if (config.validatePut) {
@@ -284,7 +286,7 @@ export function createPutHandler(config: EntityConfig) {
 				return json({ success: true, mode: 'cloud' });
 			}
 		} catch (error) {
-			console.error(`Error saving ${config.entityType} ${params[config.idParam!]}:`, error);
+			console.error(`Error saving ${config.entityType} ${params[config.idParam ?? 'id']}:`, error);
 			return json({ error: `Failed to save ${config.entityType}` }, { status: 500 });
 		}
 	};
@@ -296,7 +298,7 @@ export function createPutHandler(config: EntityConfig) {
 export function createDeleteHandler(config: EntityConfig) {
 	return async ({ params }: { params: Record<string, string> }) => {
 		try {
-			const isLocal = await getAppMode();
+			const isLocal = !IS_CLOUD;
 
 			if (!isLocal) {
 				return json({ success: true, mode: 'cloud' });
@@ -306,7 +308,7 @@ export function createDeleteHandler(config: EntityConfig) {
 			await fs.rm(entityDir, { recursive: true, force: true });
 			return json({ success: true });
 		} catch (error) {
-			console.error(`Error deleting ${config.entityType} ${params[config.idParam!]}:`, error);
+			console.error(`Error deleting ${config.entityType} ${params[config.idParam ?? 'id']}:`, error);
 			return json({ error: `Failed to delete ${config.entityType}` }, { status: 500 });
 		}
 	};

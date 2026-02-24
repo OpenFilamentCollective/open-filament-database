@@ -256,7 +256,9 @@ export async function processSvg(svgDataUrl: string): Promise<ProcessedImage> {
 		try {
 			// Parse SVG from data URL
 			const base64 = svgDataUrl.split(',')[1];
-			const svgText = atob(base64);
+			const binaryString = atob(base64);
+			const bytes = Uint8Array.from(binaryString, (c) => c.charCodeAt(0));
+			const svgText = new TextDecoder('utf-8').decode(bytes);
 
 			// Create DOM parser
 			const parser = new DOMParser();
@@ -339,7 +341,8 @@ export async function processSvg(svgDataUrl: string): Promise<ProcessedImage> {
 			const processedSvg = serializer.serializeToString(svgElement);
 
 			// Convert back to data URL
-			const processedBase64 = btoa(processedSvg);
+			const encodedBytes = new TextEncoder().encode(processedSvg);
+			const processedBase64 = btoa(Array.from(encodedBytes, (b) => String.fromCharCode(b)).join(''));
 			const dataUrl = `data:image/svg+xml;base64,${processedBase64}`;
 
 			resolve({

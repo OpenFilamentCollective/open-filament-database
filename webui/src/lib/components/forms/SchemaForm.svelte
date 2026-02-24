@@ -113,7 +113,7 @@
 	});
 
 	async function loadEnum(key: string, url: string, path?: string) {
-		if (enumLoading[key] || dynamicEnums[key]?.length) return;
+		if (enumLoading[key] || dynamicEnums[key] !== undefined) return;
 
 		enumLoading[key] = true;
 		try {
@@ -129,6 +129,7 @@
 				fullUrl = url.replace(/_schema\.json$/, '');
 			}
 			const values = await fetchEnumValues(fullUrl, path);
+			// Always store the result (even if empty) to prevent re-fetching
 			dynamicEnums[key] = values;
 		} finally {
 			enumLoading[key] = false;

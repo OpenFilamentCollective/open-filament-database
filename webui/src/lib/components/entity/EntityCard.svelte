@@ -71,6 +71,15 @@
 		hoverColor
 	}: Props = $props();
 
+	const badgeColorMap: Record<string, string> = {
+		red: 'bg-red-100 text-red-800',
+		yellow: 'bg-yellow-100 text-yellow-800',
+		green: 'bg-green-100 text-green-800',
+		blue: 'bg-blue-100 text-blue-800',
+		orange: 'bg-orange-100 text-orange-800',
+		gray: 'bg-gray-100 text-gray-800'
+	};
+
 	const displayName = $derived(name ?? entity.name);
 	const displayId = $derived(id ?? entity.slug ?? entity.id);
 
@@ -138,7 +147,7 @@
 			{/if}
 			{#if badge}
 				<span
-					class="inline-block mt-1 px-2 py-1 text-xs bg-{badge.color}-100 text-{badge.color}-800 rounded"
+					class="inline-block mt-1 px-2 py-1 text-xs {badgeColorMap[badge.color] ?? 'bg-gray-100 text-gray-800'} rounded"
 				>
 					{badge.text}
 				</span>
@@ -154,7 +163,7 @@
 					{#if field.label}
 						{field.label}:
 					{/if}
-					{field.format ? field.format(entity[field.key]) : entity[field.key]}
+					{field.format ? field.format(entity[field.key]) : (entity[field.key] ?? '')}
 				</p>
 			{/each}
 		</div>

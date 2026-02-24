@@ -33,7 +33,7 @@
 
 	// Form data state
 	let formData = $state<Record<string, any>>(
-		initializeFormData(removeIdFromSchema(schema), brand, config.hiddenFields)
+		initializeFormData(preparedSchema, brand, config.hiddenFields)
 	);
 
 	// Origin mode: separate state so switching to 'code' doesn't flip back when origin is empty
@@ -96,7 +96,7 @@
 		}
 
 		logoError = null;
-		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields);
+		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, undefined, config.transforms);
 		onSubmit(submitData);
 	}
 

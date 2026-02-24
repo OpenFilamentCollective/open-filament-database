@@ -15,6 +15,7 @@
 	import { changes } from '$lib/stores/changes';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { BackButton } from '$lib/components';
+	import { fetchEntitySchema } from '$lib/services/schemaService';
 
 	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
@@ -37,14 +38,18 @@
 		getEntity: () => null
 	});
 
-	const newStore: Store = {
-		id: '',
-		name: '',
-		logo: '',
-		storefront_url: '',
-		ships_from: [],
-		ships_to: []
-	};
+	let schemaError: string | null = $state(null);
+
+	function newStore(): Store {
+		return {
+			id: '',
+			name: '',
+			logo: '',
+			storefront_url: '',
+			ships_from: [],
+			ships_to: []
+		};
+	}
 
 	async function loadData() {
 		loading = true;
@@ -61,24 +66,21 @@
 
 	onMount(loadData);
 
-	// Reload when navigating back to this page
-	$effect(() => {
-		// This effect will run whenever the component is shown
-		if (typeof window !== 'undefined') {
-			loadData();
-		}
-	});
-
 	function openCreateModal() {
+		schemaError = null;
 		entityState.openCreate();
 		if (!schema) {
-			fetch('/api/schemas/store')
-				.then((r) => r.json())
+			fetchEntitySchema('store')
 				.then((data) => {
+					if (!data) {
+						schemaError = 'Failed to load schema';
+						return;
+					}
 					schema = data;
 				})
 				.catch((e) => {
 					console.error('Failed to load schema:', e);
+					schemaError = e instanceof Error ? e.message : 'Failed to load schema';
 				});
 		}
 	}
@@ -191,13 +193,15 @@
 <Modal show={entityState.showCreateModal} title="Create New Store" onClose={entityState.closeCreate} maxWidth="3xl">
 	{#if schema}
 		<StoreForm
-			store={newStore}
+			store={newStore()}
 			{schema}
 			onSubmit={handleSubmit}
 			onLogoChange={entityState.handleLogoChange}
 			logoChanged={entityState.logoChanged}
 			saving={entityState.creating}
 		/>
+	{:else if schemaError}
+		<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">{schemaError}</div>
 	{:else}
 		<div class="flex justify-center items-center py-12">
 			<LoadingSpinner size="xl" class="text-primary" />

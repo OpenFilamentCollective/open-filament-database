@@ -92,6 +92,7 @@
 				</a>
 			</section>
 
+			{#if env.PUBLIC_API_BASE_URL}
 			<section class="rounded-lg border bg-card p-6 shadow-sm">
 				<div class="mb-5 flex items-start justify-between">
 					<div>
@@ -107,6 +108,7 @@
 					<span class="ml-2">-></span>
 				</a>
 			</section>
+			{/if}
 		</div>
 	{/if}
 </div>

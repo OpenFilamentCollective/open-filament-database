@@ -14,9 +14,10 @@ import {
 	updateRef,
 	createPullRequest
 } from '$lib/server/github';
-import { readFileSync } from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
 import { IS_CLOUD, API_BASE } from '$lib/server/cloudProxy';
+import { SAFE_SEGMENT, cleanEntityData, JSON_INDENT_REPO } from '$lib/server/saveUtils';
 
 const REPO_ROOT = path.resolve(process.cwd(), '..');
 const SCHEMAS_DIR = path.join(REPO_ROOT, 'schemas');
@@ -27,6 +28,11 @@ const SCHEMAS_DIR = path.join(REPO_ROOT, 'schemas');
  */
 function entityPathToRepoPath(entityPath: string): string | null {
 	const parts = entityPath.split('/');
+
+	// Reject segments with unsafe characters
+	for (const part of parts) {
+		if (!SAFE_SEGMENT.test(part)) return null;
+	}
 
 	if (parts[0] === 'stores' && parts.length === 2) {
 		// Store IDs: hyphens removed in repo dirs
@@ -65,19 +71,6 @@ function entityPathToRepoPath(entityPath: string): string | null {
 }
 
 /**
- * Fields to strip from entity data before committing, per entity type.
- * These are fields augmented by the API read layer that don't exist in the repo JSON.
- */
-const STRIP_FIELDS_BY_TYPE: Record<string, Set<string>> = {
-	brand: new Set(['slug']),
-	store: new Set(['slug']),
-	material: new Set(['id', 'brandId', 'materialType', 'slug']),
-	filament: new Set(['slug', 'brandId', 'materialType', 'filamentDir']),
-	variant: new Set(['slug', 'brandId', 'materialType', 'filamentId', 'filament_id', 'variantDir'])
-};
-const DEFAULT_STRIP_FIELDS = new Set(['brandId', 'materialType', 'filamentDir', 'filament_id', 'filamentId', 'variantDir', 'slug']);
-
-/**
  * Build a lookup from image IDs to their actual filenames
  */
 function buildImageFilenameMap(images: Record<string, any> | undefined): Map<string, string> {
@@ -90,32 +83,6 @@ function buildImageFilenameMap(images: Record<string, any> | undefined): Map<str
 		}
 	}
 	return map;
-}
-
-function cleanEntityData(data: any, imageFilenames: Map<string, string>, schemaType: string | null): any {
-	const stripFields = (schemaType && STRIP_FIELDS_BY_TYPE[schemaType]) || DEFAULT_STRIP_FIELDS;
-	const clean: Record<string, any> = {};
-	for (const [key, value] of Object.entries(data)) {
-		if (stripFields.has(key)) continue;
-
-		// Resolve image reference IDs to actual filenames (e.g. logo field)
-		if (key === 'logo' && typeof value === 'string' && imageFilenames.has(value)) {
-			clean[key] = imageFilenames.get(value);
-			continue;
-		}
-
-		// Default required fields that would fail validation if empty
-		if (key === 'origin' && (value === '' || value === undefined)) {
-			clean[key] = 'Unknown';
-			continue;
-		}
-
-		// Strip empty strings for pattern-validated fields
-		if (value === '') continue;
-
-		clean[key] = value;
-	}
-	return clean;
 }
 
 /**
@@ -181,7 +148,7 @@ async function loadSchemaKeyOrders(): Promise<Record<string, SchemaInfo>> {
 				if (!response.ok) continue;
 				schema = await response.json();
 			} else {
-				const content = readFileSync(path.join(SCHEMAS_DIR, filename), 'utf-8');
+				const content = await fs.readFile(path.join(SCHEMAS_DIR, filename), 'utf-8');
 				schema = JSON.parse(content);
 			}
 
@@ -335,9 +302,14 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			);
 		}
 
+		const skippedPaths: string[] = [];
+
 		for (const change of changes) {
 			const repoPath = entityPathToRepoPath(change.entity.path);
-			if (!repoPath) continue;
+			if (!repoPath) {
+				skippedPaths.push(change.entity.path);
+				continue;
+			}
 
 			if (change.operation === 'delete') {
 				// Cascade delete: find all files under this entity's directory
@@ -352,7 +324,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			} else if (change.data) {
 				const schemaType = getSchemaType(repoPath);
 				// Create/update: clean, sort keys per schema, then create blob
-				let cleanData = cleanEntityData(change.data, imageFilenames, schemaType);
+				let cleanData = cleanEntityData(change.data, { imageFilenames, schemaType });
 
 				// For variant entities, extract sizes into a separate file
 				let sizesData = null;
@@ -365,7 +337,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 					cleanData = sortJsonKeys(cleanData, schemas[schemaType]);
 				}
 
-				const content = JSON.stringify(cleanData, null, 2) + '\n';
+				const content = JSON.stringify(cleanData, null, JSON_INDENT_REPO) + '\n';
 				const blobSha = await createBlob(token, fork.owner, fork.repo, content);
 				treeItems.push({ path: repoPath, sha: blobSha, mode: '100644', type: 'blob' });
 
@@ -376,7 +348,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 					if (schemas['sizes']) {
 						sortedSizes = sortJsonKeys(sizesData, schemas['sizes']);
 					}
-					const sizesContent = JSON.stringify(sortedSizes, null, 2) + '\n';
+					const sizesContent = JSON.stringify(sortedSizes, null, JSON_INDENT_REPO) + '\n';
 					const sizesBlobSha = await createBlob(token, fork.owner, fork.repo, sizesContent);
 					treeItems.push({ path: sizesRepoPath, sha: sizesBlobSha, mode: '100644', type: 'blob' });
 				}
@@ -449,7 +421,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		return json({
 			success: true,
 			prUrl: pr.html_url,
-			prNumber: pr.number
+			prNumber: pr.number,
+			skippedPaths: skippedPaths.length > 0 ? skippedPaths : undefined
 		});
 	} catch (error: any) {
 		console.error('PR creation error:', error);

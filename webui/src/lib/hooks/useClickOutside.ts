@@ -28,8 +28,9 @@ export function useClickOutside(
 	callback: () => void
 ): (event: MouseEvent) => void {
 	return (event: MouseEvent) => {
+		const target = event.target;
+		if (!(target instanceof Node)) return;
 		const refs = getRefs();
-		const target = event.target as Node;
 		const clickedInside = refs.some((ref) => ref?.contains(target));
 		if (!clickedInside) {
 			callback();

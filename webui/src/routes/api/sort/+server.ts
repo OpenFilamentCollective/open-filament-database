@@ -10,9 +10,11 @@ export async function POST({ request }) {
 		return json({ error: 'Sort is only available in local mode' }, { status: 403 });
 	}
 
+	const jobId = randomUUID();
+
 	try {
 		// Atomically try to acquire the operation lock to prevent concurrent operations
-		if (!tryAcquireOperationLock()) {
+		if (!tryAcquireOperationLock(jobId)) {
 			return json(
 				{ error: 'An operation is already running. Please wait for it to complete.' },
 				{ status: 409 }
@@ -20,7 +22,6 @@ export async function POST({ request }) {
 		}
 
 		const { dryRun = false, runValidation = false } = await request.json();
-		const jobId = randomUUID();
 
 		// Build Python command arguments
 		const args = ['-m', 'ofd', 'script', 'style_data', '--json', '--progress'];
@@ -101,7 +102,7 @@ export async function POST({ request }) {
 				message: `Failed to spawn sort process: ${error.message}`
 			});
 			job.endTime = Date.now();
-			releaseOperationLock();
+			releaseOperationLock(jobId);
 		});
 
 		// Handle process completion
@@ -142,7 +143,7 @@ export async function POST({ request }) {
 			job.endTime = Date.now();
 
 			// Release the operation lock when job completes
-			releaseOperationLock();
+			releaseOperationLock(jobId);
 		});
 
 		return json({
@@ -152,7 +153,7 @@ export async function POST({ request }) {
 	} catch (error) {
 		console.error('Sort endpoint error:', error);
 		// Release lock on error
-		releaseOperationLock();
+		releaseOperationLock(jobId);
 		return json({ error: 'Internal server error' }, { status: 500 });
 	}
 }

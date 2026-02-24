@@ -8,6 +8,7 @@ import { changeStore } from '$lib/stores/changes';
  */
 export class ImageStorageService {
 	private static instance: ImageStorageService;
+	private blobUrls: Map<string, string> = new Map();
 
 	private constructor() {}
 
@@ -148,6 +149,13 @@ export class ImageStorageService {
 
 		if (!dataUrl) return null;
 
+		// Revoke any previous blob URL for this image to prevent memory leaks
+		const existingBlobUrl = this.blobUrls.get(imageId);
+		if (existingBlobUrl) {
+			URL.revokeObjectURL(existingBlobUrl);
+			this.blobUrls.delete(imageId);
+		}
+
 		// Convert data URL to blob
 		const match = dataUrl.match(/^data:([^;]+);base64,(.+)$/);
 		if (!match) return null;
@@ -166,11 +174,35 @@ export class ImageStorageService {
 			const byteArray = new Uint8Array(byteNumbers);
 			const blob = new Blob([byteArray], { type: mimeType });
 
-			return URL.createObjectURL(blob);
+			const blobUrl = URL.createObjectURL(blob);
+			this.blobUrls.set(imageId, blobUrl);
+			return blobUrl;
 		} catch (e) {
 			console.error('Failed to create blob URL:', e);
 			return null;
 		}
+	}
+
+	/**
+	 * Revoke a blob URL for an image, freeing memory
+	 * @param imageId - The image ID whose blob URL should be revoked
+	 */
+	revokeBlobUrl(imageId: string): void {
+		const blobUrl = this.blobUrls.get(imageId);
+		if (blobUrl) {
+			URL.revokeObjectURL(blobUrl);
+			this.blobUrls.delete(imageId);
+		}
+	}
+
+	/**
+	 * Revoke all tracked blob URLs, freeing memory
+	 */
+	revokeAllBlobUrls(): void {
+		for (const blobUrl of this.blobUrls.values()) {
+			URL.revokeObjectURL(blobUrl);
+		}
+		this.blobUrls.clear();
 	}
 
 	/**

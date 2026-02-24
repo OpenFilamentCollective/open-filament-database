@@ -12,12 +12,14 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
+	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
+	let loadGeneration = 0;
 	let material: Material | null = $state(null);
 	let originalMaterial: Material | null = $state(null);
 	let filaments: Filament[] = $state([]);
@@ -50,6 +52,7 @@
 	$effect(() => {
 		const brand = brandId;
 		const matType = materialType;
+		const gen = ++loadGeneration;
 
 		loading = true;
 		error = null;
@@ -64,10 +67,12 @@
 					db.loadMaterials(brand)
 				]);
 
+				if (gen !== loadGeneration) return;
+
 				if (!materialData) {
 					const materialPath = `brands/${brand}/materials/${matType}`;
-					const change = $changes.get(materialPath);
-					if ($useChangeTracking && change?.operation === 'delete') {
+					const change = untrack(() => $changes.get(materialPath));
+					if (untrack(() => $useChangeTracking) && change?.operation === 'delete') {
 						error = 'This material has been deleted in your local changes. Export your changes to finalize the deletion.';
 					} else {
 						error = 'Material not found';
@@ -83,9 +88,12 @@
 				originalMaterial = trueOriginal ? structuredClone(trueOriginal) : structuredClone(materialData);
 				filaments = filamentsData;
 			} catch (e) {
+				if (gen !== loadGeneration) return;
 				error = e instanceof Error ? e.message : 'Failed to load material';
 			} finally {
-				loading = false;
+				if (gen === loadGeneration) {
+					loading = false;
+				}
 			}
 		})();
 	});
@@ -153,6 +161,7 @@
 			if (result.success) {
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
+				entityState.deleting = false;
 				setTimeout(() => {
 					goto(`/brands/${brandId}`);
 				}, 1500);

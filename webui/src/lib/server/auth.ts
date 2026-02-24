@@ -48,6 +48,10 @@ export async function exchangeCodeForToken(
 		})
 	});
 
+	if (!response.ok) {
+		throw new Error('GitHub OAuth request failed: ' + response.status);
+	}
+
 	const data = await response.json();
 
 	if (data.error) {

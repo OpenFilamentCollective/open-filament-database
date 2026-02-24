@@ -4,7 +4,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { spawn } from 'node:child_process';
 import { IS_LOCAL } from '$lib/server/cloudProxy';
-import { entityPathToFsPath, entityPathToDir, cleanEntityData, DATA_DIR, STORES_DIR } from '$lib/server/saveUtils';
+import { entityPathToFsPath, entityPathToDir, cleanEntityData, DATA_DIR, STORES_DIR, JSON_INDENT_LOCAL } from '$lib/server/saveUtils';
 
 const REPO_ROOT = path.resolve(process.cwd(), '..');
 const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
@@ -108,7 +108,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 				// Replace image IDs with actual filenames in the entity data
 				// (e.g., logo field may contain an image ID like "brand_foo_logo_123")
-				if (change.data.logo && imageIdToFilename[change.data.logo]) {
+				if (change.data?.logo && imageIdToFilename[change.data.logo]) {
 					change.data.logo = imageIdToFilename[change.data.logo];
 				}
 
@@ -122,13 +122,13 @@ export const POST: RequestHandler = async ({ request }) => {
 					delete cleanData.sizes;
 				}
 
-				const content = JSON.stringify(cleanData, null, 4) + '\n';
+				const content = JSON.stringify(cleanData, null, JSON_INDENT_LOCAL) + '\n';
 				await fs.writeFile(fsPath, content, 'utf-8');
 
 				// Write sizes.json alongside variant.json if sizes data exists
 				if (sizesData && Array.isArray(sizesData) && sizesData.length > 0) {
 					const sizesPath = path.join(path.dirname(fsPath), 'sizes.json');
-					await fs.writeFile(sizesPath, JSON.stringify(sizesData, null, 4) + '\n', 'utf-8');
+					await fs.writeFile(sizesPath, JSON.stringify(sizesData, null, JSON_INDENT_LOCAL) + '\n', 'utf-8');
 				}
 
 				results.push({ path: change.entity.path, operation: change.operation, success: true });

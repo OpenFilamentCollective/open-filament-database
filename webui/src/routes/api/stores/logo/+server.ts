@@ -9,7 +9,13 @@ import type { RequestHandler } from './$types';
  * Body: { storeId: string, imageData: string (data URL) }
  */
 export const POST: RequestHandler = async ({ request }) => {
-	const { storeId, imageData } = await request.json();
+	let body: any;
+	try {
+		body = await request.json();
+	} catch {
+		return json({ error: 'Invalid JSON in request body' }, { status: 400 });
+	}
+	const { storeId, imageData } = body;
 
 	if (!storeId || !imageData) {
 		return json({ error: 'Missing required fields' }, { status: 400 });
@@ -34,7 +40,13 @@ export const POST: RequestHandler = async ({ request }) => {
  * Body: { storeId: string }
  */
 export const DELETE: RequestHandler = async ({ request }) => {
-	const { storeId } = await request.json();
+	let body: any;
+	try {
+		body = await request.json();
+	} catch {
+		return json({ error: 'Invalid JSON in request body' }, { status: 400 });
+	}
+	const { storeId } = body;
 
 	if (!storeId) {
 		return json({ error: 'Missing storeId' }, { status: 400 });

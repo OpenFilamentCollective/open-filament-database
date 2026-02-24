@@ -5,13 +5,13 @@
 
 	interface Props {
 		src: string;
-		alt: string;
+		alt?: string;
 		type: 'store' | 'brand';
 		id: string;
 		size?: 'sm' | 'md' | 'lg';
 	}
 
-	let { src, alt, type, id, size = 'md' }: Props = $props();
+	let { src, alt = '', type, id, size = 'md' }: Props = $props();
 
 	const sizeClasses = {
 		sm: 'h-8 w-8',

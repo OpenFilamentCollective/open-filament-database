@@ -1,6 +1,7 @@
 import { writeFile, readFile, mkdir, unlink } from 'fs/promises';
 import { join, basename, extname } from 'path';
 import { existsSync } from 'fs';
+import { validatePathSegment } from './pathValidation';
 
 const MAX_LOGO_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
 
@@ -21,8 +22,9 @@ export interface DeleteLogoResult {
  * Get the directory path for an entity's logo
  */
 export function getLogoDirectory(entityId: string, entityType: EntityType): string {
+	const safeId = validatePathSegment(entityId, 'entityId');
 	const baseDir = entityType === 'store' ? 'stores' : 'data';
-	return join(process.cwd(), '..', baseDir, entityId);
+	return join(process.cwd(), '..', baseDir, safeId);
 }
 
 /**
@@ -66,10 +68,11 @@ export async function saveLogo(
 
 		const logoDir = getLogoDirectory(entityId, entityType);
 
+		// Delete any existing logo files first (handles extension changes)
+		await deleteLogo(entityId, entityType);
+
 		// Create directory if it doesn't exist
-		if (!existsSync(logoDir)) {
-			await mkdir(logoDir, { recursive: true });
-		}
+		await mkdir(logoDir, { recursive: true });
 
 		// Save the image file
 		const filename = `logo.${extension}`;

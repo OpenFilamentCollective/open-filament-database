@@ -50,39 +50,57 @@ export function createEntityState(config: EntityStateConfig) {
 	let logoDataUrl = $state('');
 	let logoChanged = $state(false);
 
+	// Bridge Svelte 4 stores into Svelte 5 reactivity
+	let changeSet = $state(get(changeStore));
+	let trackingEnabled = $state(get(useChangeTracking));
+
+	$effect(() => {
+		const unsub = changeStore.subscribe((v) => {
+			changeSet = v;
+		});
+		return unsub;
+	});
+
+	$effect(() => {
+		const unsub = useChangeTracking.subscribe((v) => {
+			trackingEnabled = v;
+		});
+		return unsub;
+	});
+
 	// Change detection - check if entity has local changes
 	const hasLocalChanges = $derived.by(() => {
-		if (!get(useChangeTracking)) return false;
+		if (!trackingEnabled) return false;
 		const entity = config.getEntity();
 		if (!entity) return false;
 
 		const path = config.getEntityPath();
 		if (!path) return false;
 
-		const change = get(changeStore)._index.get(path)?.change;
+		const change = changeSet._index.get(path)?.change;
 		return change !== undefined && (change.operation === 'create' || change.operation === 'update');
 	});
 
 	// Check if any descendant entity has local changes
 	const hasDescendantChanges = $derived.by(() => {
-		if (!get(useChangeTracking)) return false;
+		if (!trackingEnabled) return false;
 		const entity = config.getEntity();
 		if (!entity) return false;
 
 		const path = config.getEntityPath();
 		if (!path) return false;
 
-		const node = get(changeStore)._index.get(path);
+		const node = changeSet._index.get(path);
 		if (!node) return false;
 		return treeHasDescendantChanges(node);
 	});
 
 	// Check if entity was locally created (for delete modal messaging)
 	const isLocalCreate = $derived.by(() => {
-		if (!get(useChangeTracking)) return false;
+		if (!trackingEnabled) return false;
 		const path = config.getEntityPath();
 		if (!path) return false;
-		return get(changeStore)._index.get(path)?.change?.operation === 'create';
+		return changeSet._index.get(path)?.change?.operation === 'create';
 	});
 
 	return {

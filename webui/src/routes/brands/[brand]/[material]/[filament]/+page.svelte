@@ -11,6 +11,7 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
+	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
@@ -18,6 +19,7 @@
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
 	let filamentId: string = $derived($page.params.filament!);
+	let loadGeneration = 0;
 	let filament: Filament | null = $state(null);
 	let originalFilament: Filament | null = $state(null);
 	let variants: Variant[] = $state([]);
@@ -55,6 +57,7 @@
 	// Load data when route parameters change
 	$effect(() => {
 		const params = { brandId, materialType, filamentId };
+		const gen = ++loadGeneration;
 
 		loading = true;
 		error = null;
@@ -67,10 +70,12 @@
 					db.loadVariants(params.brandId, params.materialType, params.filamentId)
 				]);
 
+				if (gen !== loadGeneration) return;
+
 				if (!filamentData) {
 					const filamentPath = `brands/${params.brandId}/materials/${params.materialType}/filaments/${params.filamentId}`;
-					const change = $changes.get(filamentPath);
-					if ($useChangeTracking && change?.operation === 'delete') {
+					const change = untrack(() => $changes.get(filamentPath));
+					if (untrack(() => $useChangeTracking) && change?.operation === 'delete') {
 						error = 'This filament has been deleted in your local changes. Export your changes to finalize the deletion.';
 					} else {
 						error = 'Filament not found';
@@ -83,9 +88,12 @@
 				originalFilament = structuredClone(filamentData);
 				variants = variantsData || [];
 			} catch (e) {
+				if (gen !== loadGeneration) return;
 				error = e instanceof Error ? e.message : 'Failed to load filament';
 			} finally {
-				loading = false;
+				if (gen === loadGeneration) {
+					loading = false;
+				}
 			}
 		})();
 	});
@@ -143,6 +151,7 @@
 			if (result.success) {
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
+				entityState.deleting = false;
 				setTimeout(() => {
 					goto(`/brands/${brandId}/${materialType}`);
 				}, 1500);
@@ -316,7 +325,7 @@
 					emptyMessage="No variants found for this filament."
 				>
 					{#each displayVariants as variant}
-						{@const variantPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`}
+						{@const variantPath = `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug ?? variant.id}`}
 						{@const changeProps = getChildChangeProps($changes, $useChangeTracking, variantPath)}
 						{@const sizesCount = variant.sizes?.length ?? 0}
 						{@const sizesInfo = sizesCount > 0 ? `${sizesCount} size${sizesCount !== 1 ? 's' : ''}` : undefined}

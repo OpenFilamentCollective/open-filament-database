@@ -12,10 +12,13 @@
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
+	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
+	import { fetchEntitySchema } from '$lib/services/schemaService';
 
 	let storeId: string = $derived($page.params.store!);
+	let loadGeneration = 0;
 	let store: Store | null = $state(null);
 	let originalStore: Store | null = $state(null);
 	let schema: any = $state(null);
@@ -31,6 +34,7 @@
 
 	$effect(() => {
 		const id = storeId;
+		const gen = ++loadGeneration;
 
 		loading = true;
 		error = null;
@@ -40,13 +44,15 @@
 			try {
 				const [storeData, schemaData] = await Promise.all([
 					db.getStore(id),
-					fetch('/api/schemas/store').then((r) => r.json())
+					fetchEntitySchema('store')
 				]);
+
+				if (gen !== loadGeneration) return;
 
 				if (!storeData) {
 					const storePath = `stores/${id}`;
-					const change = $changes.get(storePath);
-					if ($useChangeTracking && change?.operation === 'delete') {
+					const change = untrack(() => $changes.get(storePath));
+					if (untrack(() => $useChangeTracking) && change?.operation === 'delete') {
 						error = 'This store has been deleted in your local changes. Export your changes to finalize the deletion.';
 					} else {
 						error = 'Store not found';
@@ -59,9 +65,12 @@
 				originalStore = structuredClone(storeData);
 				schema = schemaData;
 			} catch (e) {
+				if (gen !== loadGeneration) return;
 				error = e instanceof Error ? e.message : 'Failed to load store';
 			} finally {
-				loading = false;
+				if (gen === loadGeneration) {
+					loading = false;
+				}
 			}
 		})();
 	});
@@ -120,6 +129,7 @@
 			if (result.success) {
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
+				entityState.deleting = false;
 				setTimeout(() => {
 					goto('/stores');
 				}, 1500);

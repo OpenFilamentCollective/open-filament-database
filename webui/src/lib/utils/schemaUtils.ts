@@ -61,10 +61,9 @@ export function removeIdFromSchema(schema: any): any {
 
 /**
  * Create UI schema configuration with Tailwind classes for SJSF components
- * Optionally hide array item labels (like "ships_from-1")
  */
-export function createUiSchema(hideArrayItemLabels = true) {
-	const baseUiSchema: any = {
+export function createUiSchema() {
+	return {
 		'ui:options': {
 			// Submit button - Primary
 			submitButton: {
@@ -113,14 +112,6 @@ export function createUiSchema(hideArrayItemLabels = true) {
 			}
 		}
 	};
-
-	// Add CSS to hide array item labels if requested
-	if (hideArrayItemLabels) {
-		// We'll add a custom CSS class to hide the labels
-		// This will be applied via the styles file
-	}
-
-	return baseUiSchema;
 }
 
 /**

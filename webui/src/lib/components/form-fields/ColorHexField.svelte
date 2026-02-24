@@ -27,7 +27,7 @@
 		const input = e.target as HTMLInputElement;
 		// Remove any non-hex characters and limit to 6
 		let cleaned = input.value.replace(/[^0-9a-fA-F]/g, '').slice(0, 6).toUpperCase();
-		value = `#${cleaned}`;
+		value = cleaned ? `#${cleaned}` : '';
 	}
 
 	function handleColorPicker(e: Event) {

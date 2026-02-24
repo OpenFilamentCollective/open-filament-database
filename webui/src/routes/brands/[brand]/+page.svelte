@@ -12,13 +12,14 @@
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { db } from '$lib/services/database';
 	import { deleteEntity, generateMaterialType } from '$lib/services/entityService';
-	import { apiFetch } from '$lib/utils/api';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
+	import { untrack } from 'svelte';
 	import { changes } from '$lib/stores/changes';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 
 	let brandId: string = $derived($page.params.brand!);
+	let loadGeneration = 0;
 	let brand: Brand | null = $state(null);
 	let originalBrand: Brand | null = $state(null); // Keep original for revert detection
 	let materials: Material[] = $state([]);
@@ -50,6 +51,7 @@
 
 	$effect(() => {
 		const id = brandId;
+		const gen = ++loadGeneration;
 
 		loading = true;
 		error = null;
@@ -60,14 +62,16 @@
 				const [brandData, materialsData, schemaData, matSchemaData] = await Promise.all([
 					db.getBrand(id),
 					db.loadMaterials(id),
-					apiFetch('/api/schemas/brand').then((r) => r.json()),
+					fetchEntitySchema('brand'),
 					fetchEntitySchema('material')
 				]);
 
+				if (gen !== loadGeneration) return;
+
 				if (!brandData) {
 					const brandPath = `brands/${id}`;
-					const change = $changes.get(brandPath);
-					if ($useChangeTracking && change?.operation === 'delete') {
+					const change = untrack(() => $changes.get(brandPath));
+					if (untrack(() => $useChangeTracking) && change?.operation === 'delete') {
 						error = 'This brand has been deleted in your local changes. Export your changes to finalize the deletion.';
 					} else {
 						error = 'Brand not found';
@@ -83,9 +87,12 @@
 				materialSchema = matSchemaData;
 
 			} catch (e) {
+				if (gen !== loadGeneration) return;
 				error = e instanceof Error ? e.message : 'Failed to load brand';
 			} finally {
-				loading = false;
+				if (gen === loadGeneration) {
+					loading = false;
+				}
 			}
 		})();
 	});
@@ -193,6 +200,7 @@
 			if (result.success) {
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
+				entityState.deleting = false;
 				setTimeout(() => {
 					goto('/brands');
 				}, 1500);

@@ -33,7 +33,6 @@
 
 	// Crop state
 	let cropCanvas: HTMLCanvasElement | undefined = $state(undefined);
-	let cropCtx: CanvasRenderingContext2D | null = null;
 	let cropImage: HTMLImageElement | null = null;
 	let cropX: number = $state(0);
 	let cropY: number = $state(0);
@@ -192,8 +191,6 @@
 
 		const ctx = cropCanvas.getContext('2d');
 		if (!ctx) return;
-
-		cropCtx = ctx;
 
 		// Clear canvas
 		ctx.clearRect(0, 0, cropCanvas.width, cropCanvas.height);

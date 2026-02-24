@@ -13,12 +13,13 @@ import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 import { createEntityState } from '$lib/utils/entityState.svelte';
 import { generateSlug } from '$lib/services/entityService';
 import { saveLogoImage } from '$lib/utils/logoManagement';
+import { fetchEntitySchema, type SchemaName } from '$lib/services/schemaService';
 
 export interface ListPageConfig<T> {
 	/** Which key to extract from db.loadIndex() result */
 	indexKey: 'brands' | 'stores';
-	/** Schema endpoint for lazy-loading, e.g. '/api/schemas/brand' */
-	schemaEndpoint: string;
+	/** Schema type for lazy-loading via fetchEntitySchema */
+	schemaType: SchemaName;
 	/** Logo type passed to saveLogoImage */
 	logoType: 'brand' | 'store';
 	/** Human-readable entity label for messages */
@@ -52,7 +53,7 @@ export interface ListPageState<T> {
  * ```typescript
  * const listPage = createListPage<Brand>({
  *   indexKey: 'brands',
- *   schemaEndpoint: '/api/schemas/brand',
+ *   schemaType: 'brand',
  *   logoType: 'brand',
  *   entityLabel: 'Brand',
  *   buildEntity: (data, slug, logo) => ({ ...data, id: slug, slug, logo }),
@@ -96,10 +97,13 @@ export function createListPage<T>(config: ListPageConfig<T>): ListPageState<T> {
 		messageHandler.clear();
 		entityState.openCreate();
 		if (!schema) {
-			fetch(config.schemaEndpoint)
-				.then((r) => r.json())
+			fetchEntitySchema(config.schemaType)
 				.then((data) => {
-					schema = data;
+					if (data) {
+						schema = data;
+					} else {
+						console.error('Failed to load schema: received null');
+					}
 				})
 				.catch((e) => {
 					console.error('Failed to load schema:', e);

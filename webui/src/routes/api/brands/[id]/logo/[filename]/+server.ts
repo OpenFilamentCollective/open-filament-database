@@ -9,7 +9,7 @@ const DATA_DIR = path.join(process.cwd(), '../data');
 
 export const GET: RequestHandler = async ({ params }) => {
 	if (env.PUBLIC_APP_MODE === 'cloud') {
-		return proxyLogoToCloud('brand', params.id, params.filename);
+		return proxyLogoToCloud('brand', params.filename);
 	}
 
 	try {

@@ -18,7 +18,7 @@
 </script>
 
 <div class="inline-flex items-center cursor-pointer gap-2">
-	<Switch bind:checked {onchange} />
+	<Switch checked={checked} onchange={toggle} />
 	<span
 		onclick={toggle}
 		onkeydown={(e) => e.key === 'Enter' && toggle()}

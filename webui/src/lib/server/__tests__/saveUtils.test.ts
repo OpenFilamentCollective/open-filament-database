@@ -18,11 +18,14 @@ describe('saveUtils', () => {
 			expect(SAFE_SEGMENT.test('brand1')).toBe(true);
 		});
 
-		it('should accept slugs with hyphens, underscores, dots, and spaces', () => {
+		it('should accept slugs with hyphens, underscores, and dots', () => {
 			expect(SAFE_SEGMENT.test('my-brand')).toBe(true);
 			expect(SAFE_SEGMENT.test('my_brand')).toBe(true);
 			expect(SAFE_SEGMENT.test('my.brand')).toBe(true);
-			expect(SAFE_SEGMENT.test('my brand')).toBe(true);
+		});
+
+		it('should reject segments with spaces', () => {
+			expect(SAFE_SEGMENT.test('my brand')).toBe(false);
 		});
 
 		it('should reject segments starting with non-alphanumeric characters', () => {

@@ -3,7 +3,6 @@
 	import { SchemaForm, SlicerConfigPanel } from '$lib/components/forms';
 	import { FormSection } from '$lib/components/form-fields';
 	import {
-		SLICER_KEYS,
 		initializeSlicerForm,
 		buildSlicerSettings,
 		initializeSlicerEnabled,
@@ -78,7 +77,7 @@
 	// Handle form submission
 	function handleSubmit(data: any) {
 		// Build submit data using generic utility
-		const submitData = buildSubmitData(preparedSchema, data, mergedConfig.hiddenFields);
+		const submitData = buildSubmitData(preparedSchema, data, mergedConfig.hiddenFields, undefined, mergedConfig.transforms);
 
 		// Handle slicer settings separately (complex nested object)
 		const default_slicer_settings = buildSlicerSettings(slicerEnabled, slicerForms);
@@ -88,16 +87,6 @@
 
 		onSubmit(submitData);
 	}
-
-	// Initialize slicer forms for enabled slicers
-	$effect(() => {
-		for (const key of SLICER_KEYS) {
-			if (slicerEnabled[key] && !slicerForms[key]) {
-				const initialValue = entity?.default_slicer_settings?.[key] || {};
-				slicerForms[key] = initializeSlicerForm(key, initialValue);
-			}
-		}
-	});
 
 	// Get the first required field for submit validation
 	let firstRequiredField = $derived.by(() => {

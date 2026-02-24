@@ -33,7 +33,7 @@
 
 	// Form data state
 	let formData = $state<Record<string, any>>(
-		initializeFormData(removeIdFromSchema(schema), store, config.hiddenFields)
+		initializeFormData(preparedSchema, store, config.hiddenFields)
 	);
 
 	// Logo validation error
@@ -66,7 +66,7 @@
 		}
 
 		logoError = null;
-		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields);
+		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, undefined, config.transforms);
 		// Filter empty strings from country code arrays
 		if (Array.isArray(submitData.ships_from)) {
 			submitData.ships_from = submitData.ships_from.filter((v: string) => v.trim());
