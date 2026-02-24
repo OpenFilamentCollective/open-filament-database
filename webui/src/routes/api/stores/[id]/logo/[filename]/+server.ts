@@ -1,19 +1,21 @@
 import type { RequestHandler } from './$types';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { PUBLIC_APP_MODE } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 import { readLogo } from '$lib/server/logoHandler';
+import { validatePathSegment } from '$lib/server/pathValidation';
 
 const STORES_DIR = path.join(process.cwd(), '../stores');
 
 async function normalizeStoreId(storeId: string): Promise<string> {
+	const safeId = validatePathSegment(storeId, 'storeId');
 	try {
-		const storeDir = path.join(STORES_DIR, storeId);
+		const storeDir = path.join(STORES_DIR, safeId);
 		await fs.access(storeDir);
-		return storeId;
+		return safeId;
 	} catch {
 		// Try removing hyphens
-		const normalizedId = storeId.replace(/-/g, '');
+		const normalizedId = safeId.replace(/-/g, '');
 		const storeDir = path.join(STORES_DIR, normalizedId);
 		await fs.access(storeDir);
 		return normalizedId;
@@ -21,7 +23,7 @@ async function normalizeStoreId(storeId: string): Promise<string> {
 }
 
 export const GET: RequestHandler = async ({ params }) => {
-	if (PUBLIC_APP_MODE === 'cloud') {
+	if (env.PUBLIC_APP_MODE === 'cloud') {
 		return new Response('Logos are not available in cloud mode - use cloud API instead', {
 			status: 404
 		});

@@ -1,13 +1,13 @@
 import { json } from '@sveltejs/kit';
-import { PUBLIC_APP_MODE, PUBLIC_API_BASE_URL } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
-export const IS_CLOUD = PUBLIC_APP_MODE === 'cloud';
-export const IS_LOCAL = PUBLIC_APP_MODE !== 'cloud';
+export const IS_CLOUD = env.PUBLIC_APP_MODE === 'cloud';
+export const IS_LOCAL = env.PUBLIC_APP_MODE !== 'cloud';
 
-export const API_BASE = PUBLIC_API_BASE_URL
-	? PUBLIC_API_BASE_URL.endsWith('/')
-		? PUBLIC_API_BASE_URL.slice(0, -1)
-		: PUBLIC_API_BASE_URL
+export const API_BASE = env.PUBLIC_API_BASE_URL
+	? env.PUBLIC_API_BASE_URL.endsWith('/')
+		? env.PUBLIC_API_BASE_URL.slice(0, -1)
+		: env.PUBLIC_API_BASE_URL
 	: 'https://api.openfilamentdatabase.org';
 
 /**

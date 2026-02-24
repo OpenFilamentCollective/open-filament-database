@@ -34,12 +34,14 @@ vi.mock('$app/environment', () => ({
 	browser: true
 }));
 
-vi.mock('$env/static/public', () => ({
-	get PUBLIC_APP_MODE() {
-		return mockAppMode;
-	},
-	get PUBLIC_API_BASE_URL() {
-		return mockApiBaseUrl;
+vi.mock('$env/dynamic/public', () => ({
+	env: {
+		get PUBLIC_APP_MODE() {
+			return mockAppMode;
+		},
+		get PUBLIC_API_BASE_URL() {
+			return mockApiBaseUrl;
+		}
 	}
 }));
 

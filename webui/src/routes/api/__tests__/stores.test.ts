@@ -18,13 +18,15 @@ vi.mock('fs', () => {
 	return { default: { promises }, promises };
 });
 
-// Mock $env/static/public
+// Mock $env/dynamic/public
 let mockAppMode = 'local';
-vi.mock('$env/static/public', () => ({
-	get PUBLIC_APP_MODE() {
-		return mockAppMode;
-	},
-	PUBLIC_API_BASE_URL: ''
+vi.mock('$env/dynamic/public', () => ({
+	env: {
+		get PUBLIC_APP_MODE() {
+			return mockAppMode;
+		},
+		PUBLIC_API_BASE_URL: ''
+	}
 }));
 
 // Mock @sveltejs/kit

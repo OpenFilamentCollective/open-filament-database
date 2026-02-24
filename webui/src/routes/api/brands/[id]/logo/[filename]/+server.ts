@@ -1,13 +1,13 @@
 import type { RequestHandler } from './$types';
 import path from 'path';
-import { PUBLIC_APP_MODE } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 import { normalizeBrandId } from '$lib/server/entityConfig';
 import { readLogo } from '$lib/server/logoHandler';
 
 const DATA_DIR = path.join(process.cwd(), '../data');
 
 export const GET: RequestHandler = async ({ params }) => {
-	if (PUBLIC_APP_MODE === 'cloud') {
+	if (env.PUBLIC_APP_MODE === 'cloud') {
 		return new Response('Logos are not available in cloud mode - use cloud API instead', {
 			status: 404
 		});

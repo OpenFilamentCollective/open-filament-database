@@ -1,6 +1,6 @@
 import { writable, derived } from 'svelte/store';
 import { browser } from '$app/environment';
-import { PUBLIC_APP_MODE, PUBLIC_API_BASE_URL } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
 /**
  * Detect if we're running in local mode or cloud mode
@@ -10,7 +10,7 @@ import { PUBLIC_APP_MODE, PUBLIC_API_BASE_URL } from '$env/static/public';
 function detectEnvironment(): 'local' | 'cloud' {
 	// Use the PUBLIC_APP_MODE environment variable
 	// Valid values are 'local' or 'cloud'
-	const mode = PUBLIC_APP_MODE?.toLowerCase();
+	const mode = env.PUBLIC_APP_MODE?.toLowerCase();
 
 	// In browser, allow localStorage override for testing
 	if (browser) {
@@ -30,16 +30,16 @@ function detectEnvironment(): 'local' | 'cloud' {
  * In cloud mode: use the configured external API URL
  */
 function getApiBaseUrl(): string {
-	const env = detectEnvironment();
+	const appEnv = detectEnvironment();
 
-	if (env === 'local') {
+	if (appEnv === 'local') {
 		// Local mode uses relative paths to local API endpoints
 		return '';
 	}
 
 	// Cloud mode uses the configured external API URL
 	// Default to the official API if not configured
-	const apiUrl = PUBLIC_API_BASE_URL || 'https://api.openfilamentdatabase.org';
+	const apiUrl = env.PUBLIC_API_BASE_URL || 'https://api.openfilamentdatabase.org';
 
 	// Remove trailing slash for consistency
 	return apiUrl.endsWith('/') ? apiUrl.slice(0, -1) : apiUrl;

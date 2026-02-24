@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { getGitHubToken, getGitHubUser } from '$lib/server/auth';
-import { GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO } from '$env/static/private';
+import { env as privateEnv } from '$env/dynamic/private';
 import {
 	forkRepo,
 	getLatestCommitSha,
@@ -275,7 +275,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		return json({ error: 'Not authenticated. Please login to GitHub first.' }, { status: 401 });
 	}
 
-	if (!GITHUB_UPSTREAM_OWNER || !GITHUB_UPSTREAM_REPO) {
+	if (!privateEnv.GITHUB_UPSTREAM_OWNER || !privateEnv.GITHUB_UPSTREAM_REPO) {
 		return json({ error: 'GitHub upstream repository not configured' }, { status: 500 });
 	}
 
@@ -290,12 +290,12 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		const user = await getGitHubUser(token);
 
 		// Fork the repo (idempotent)
-		const fork = await forkRepo(token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO);
+		const fork = await forkRepo(token, privateEnv.GITHUB_UPSTREAM_OWNER, privateEnv.GITHUB_UPSTREAM_REPO);
 
 		// Get latest commit SHA from UPSTREAM (not fork) so the PR branch
 		// is based on a clean upstream commit without fork merge noise.
-		const latestSha = await getLatestCommitSha(token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO, 'main');
-		const baseTreeSha = await getCommitTreeSha(token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO, latestSha);
+		const latestSha = await getLatestCommitSha(token, privateEnv.GITHUB_UPSTREAM_OWNER, privateEnv.GITHUB_UPSTREAM_REPO, 'main');
+		const baseTreeSha = await getCommitTreeSha(token, privateEnv.GITHUB_UPSTREAM_OWNER, privateEnv.GITHUB_UPSTREAM_REPO, latestSha);
 
 		// Create branch on fork
 		const branchName = `ofd-changes-${Date.now()}`;
@@ -331,7 +331,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		let existingTree: Map<string, { sha: string; mode: string; type: string }> | null = null;
 		if (hasDeletes) {
 			existingTree = await getRecursiveTree(
-				token, GITHUB_UPSTREAM_OWNER, GITHUB_UPSTREAM_REPO, baseTreeSha
+				token, privateEnv.GITHUB_UPSTREAM_OWNER, privateEnv.GITHUB_UPSTREAM_REPO, baseTreeSha
 			);
 		}
 
@@ -438,8 +438,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		// Create PR
 		const pr = await createPullRequest(
 			token,
-			GITHUB_UPSTREAM_OWNER,
-			GITHUB_UPSTREAM_REPO,
+			privateEnv.GITHUB_UPSTREAM_OWNER,
+			privateEnv.GITHUB_UPSTREAM_REPO,
 			`${fork.owner}:${branchName}`,
 			'main',
 			prTitle,

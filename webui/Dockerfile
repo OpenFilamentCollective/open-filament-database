@@ -9,9 +9,6 @@ RUN npm ci
 COPY . .
 
 ENV DOCKER_BUILD=true
-ENV PUBLIC_APP_MODE=cloud
-ENV PUBLIC_API_BASE_URL=https://api.openfilamentdatabase.org
-ENV PUBLIC_CACHE_ENABLED=true
 
 RUN npm run build
 
@@ -27,13 +24,15 @@ COPY --from=builder /app/node_modules ./node_modules
 ENV NODE_ENV=production
 ENV PORT=80
 ENV HOST=0.0.0.0
-ENV ORIGIN=http://localhost
 
-# Cloud mode settings baked in at build time via PUBLIC_ env vars above.
-# These runtime env vars are for the server-side only:
+# Default runtime env vars (all overridable via docker run -e)
+ENV ORIGIN=http://localhost
+ENV PUBLIC_APP_MODE=cloud
+ENV PUBLIC_API_BASE_URL=https://api.openfilamentdatabase.org
+ENV PUBLIC_CACHE_ENABLED=true
 ENV GITHUB_UPSTREAM_OWNER=OpenFilamentCollective
 ENV GITHUB_UPSTREAM_REPO=open-filament-database
 
 EXPOSE 80
 
-CMD ["node", "build"]
+CMD ["node", "-r", "dotenv/config", "build"]
