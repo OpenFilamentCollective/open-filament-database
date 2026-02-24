@@ -4,6 +4,7 @@
  * Pushes directly to the upstream repo (no forking needed).
  */
 import { env as privateEnv } from '$env/dynamic/private';
+import { env as publicEnv } from '$env/dynamic/public';
 import {
 	getLatestCommitSha,
 	getCommitTreeSha,
@@ -112,7 +113,9 @@ export async function createAnonPR(submission: AnonSubmission): Promise<AnonSubm
 		'## Changes',
 		changesSummary,
 		'',
-		'*Submitted anonymously via the OFD web editor*'
+		publicEnv.PUBLIC_WRAPPER_NAME
+			? `*Submitted anonymously via ${publicEnv.PUBLIC_WRAPPER_NAME}*`
+			: '*Submitted anonymously via the OFD web editor*'
 	].join('\n');
 
 	// 7. Create PR (head is just branch name — no fork prefix needed)

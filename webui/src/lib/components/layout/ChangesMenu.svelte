@@ -27,6 +27,8 @@
 
 	// Anonymous submission state
 	const anonBotEnabled = env.PUBLIC_ANON_BOT_ENABLED === 'true';
+	const wrapperName = env.PUBLIC_WRAPPER_NAME || '';
+	const showEmail = env.PUBLIC_ANON_SHOW_EMAIL === 'true';
 	let anonEmail = $state('');
 	let anonSubmitting = $state(false);
 	let anonResult = $state<{ success: boolean; message: string; uuid?: string; prUrl?: string } | null>(null);
@@ -797,17 +799,19 @@
 									</div>
 								{:else}
 									<div class="space-y-3">
-										<div>
-											<label for="anon-email" class="mb-1 block text-sm font-medium">Email <span class="font-normal text-muted-foreground">(optional)</span></label>
-											<input
-												id="anon-email"
-												type="email"
-												bind:value={anonEmail}
-												class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-												placeholder="your@email.com"
-											/>
-											<p class="mt-1 text-xs text-muted-foreground">Optional. Used only for notification. Never stored.</p>
-										</div>
+										{#if showEmail}
+											<div>
+												<label for="anon-email" class="mb-1 block text-sm font-medium">Email <span class="font-normal text-muted-foreground">(optional)</span></label>
+												<input
+													id="anon-email"
+													type="email"
+													bind:value={anonEmail}
+													class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+													placeholder="your@email.com"
+												/>
+												<p class="mt-1 text-xs text-muted-foreground">Optional. Used for crediting. Never stored.</p>
+											</div>
+										{/if}
 										<Button
 											onclick={submitAnonymously}
 											variant="primary"
@@ -838,7 +842,7 @@
 							<div class="mt-4 border-t pt-4">
 								<label class="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground">
 									<input type="checkbox" bind:checked={wantCredit} class="rounded border-muted-foreground" />
-									I want credit on the PR
+									I want credit for the contribution/Advanced mode
 								</label>
 							</div>
 
