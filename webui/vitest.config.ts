@@ -13,9 +13,9 @@ export default defineConfig({
 			'$app/environment': new URL('./src/tests/mocks/app/environment.ts', import.meta.url)
 				.pathname,
 			'$app/navigation': new URL('./src/tests/mocks/app/navigation.ts', import.meta.url).pathname,
-			'$env/static/public': new URL('./src/tests/mocks/env/static-public.ts', import.meta.url)
-				.pathname,
 			'$env/dynamic/public': new URL('./src/tests/mocks/env/dynamic-public.ts', import.meta.url)
+				.pathname,
+			'$env/dynamic/private': new URL('./src/tests/mocks/env/dynamic-private.ts', import.meta.url)
 				.pathname
 		},
 		coverage: {

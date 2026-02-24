@@ -8,8 +8,7 @@ import { IS_CLOUD, proxyGetToCloud } from './cloudProxy';
 // === Shared utilities ===
 
 async function getAppMode(): Promise<boolean> {
-	const { PUBLIC_APP_MODE } = await import('$env/static/public');
-	return PUBLIC_APP_MODE !== 'cloud';
+	return !IS_CLOUD;
 }
 
 /**
@@ -21,7 +20,12 @@ function resolveCloudPath(
 	params: Record<string, string>,
 	idParam?: string | null
 ): string {
-	let result = template.replace(/:(\w+)/g, (_, name) => params[name] || name);
+	let result = template.replace(/:(\w+)/g, (_, name) => {
+		if (!params[name]) {
+			throw new Error(`Missing required route parameter: ${name}`);
+		}
+		return params[name];
+	});
 	if (idParam && params[idParam]) {
 		result += `/${params[idParam]}`;
 	}

@@ -31,7 +31,7 @@ if (!env.PUBLIC_APP_MODE) {
 	console.error('\n' + '='.repeat(60));
 	console.error('ERROR: Missing required environment variable');
 	console.error('='.repeat(60));
-	console.error('\nPUBLIC_APP_MODE is not set in your .env file.');
+	console.error('\nPUBLIC_APP_MODE is not set. Set it in your .env file or via environment variable.');
 	console.error('Valid values: "local" or "cloud"');
 	console.error('\n' + '='.repeat(60) + '\n');
 	throw new Error('Missing required environment variable: PUBLIC_APP_MODE');
