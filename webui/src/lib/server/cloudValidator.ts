@@ -6,6 +6,7 @@ import Ajv, { type ErrorObject } from 'ajv';
 import { API_BASE } from './cloudProxy';
 import { SAFE_SEGMENT, cleanEntityData } from './saveUtils';
 import type { Job } from './jobManager';
+import { validateLogoDimensions } from './imageValidation';
 
 // --- Types ---
 
@@ -134,6 +135,46 @@ function sanitizeObject(data: unknown): Record<string, unknown> | null {
 
 // --- Path validation ---
 
+/** Map from entity type to the index of the id segment within the entity path. */
+const ENTITY_ID_SEGMENT_INDEX: Record<string, number> = {
+	store: 1, // stores/{storeId}
+	brand: 1, // brands/{brandId}
+	material: 3, // brands/{brandId}/materials/{materialId}
+	filament: 5, // brands/{brandId}/materials/{materialType}/filaments/{filamentId}
+	variant: 7 // brands/{brandId}/materials/{materialType}/filaments/{filamentId}/variants/{variantSlug}
+};
+
+/**
+ * Validate that the entity's id in its data matches the corresponding path segment.
+ * This is the cloud-mode equivalent of the Rust "folder naming conventions" check.
+ */
+function validateFolderNaming(
+	entityPath: string,
+	entityType: string,
+	data: Record<string, unknown>
+): ValidationError | null {
+	const segmentIdx = ENTITY_ID_SEGMENT_INDEX[entityType];
+	if (segmentIdx === undefined) return null;
+
+	const parts = entityPath.split('/');
+	const pathSegment = parts[segmentIdx];
+	if (!pathSegment) return null;
+
+	const dataId = typeof data.id === 'string' ? data.id : undefined;
+	if (!dataId) return null; // Missing id will be caught by schema validation
+
+	if (dataId !== pathSegment) {
+		return {
+			category: 'Folder Names',
+			level: 'ERROR',
+			message: `Entity id '${dataId}' does not match path segment '${pathSegment}' in '${entityPath}'`,
+			path: entityPath
+		};
+	}
+
+	return null;
+}
+
 /** Validate an entity path matches expected structure for its type. */
 function validateEntityPath(entityPath: string, entityType: string): boolean {
 	if (typeof entityPath !== 'string') return false;
@@ -222,6 +263,17 @@ function validateImages(images: Record<string, unknown>): ValidationError[] {
 			const approxSize = (imageData.data.length * 3) / 4;
 			if (approxSize > MAX_IMAGE_SIZE_BYTES) {
 				errors.push({ category: 'Images', level: 'ERROR', message: `Image ${imageId} exceeds 5MB size limit` });
+			}
+
+			// Logo dimension/structure validation
+			if (
+				typeof imageData.mimeType === 'string' &&
+				ALLOWED_MIME_TYPES.has(imageData.mimeType) &&
+				/^logo\.(png|jpg|jpeg|svg)$/i.test(imageData.filename)
+			) {
+				errors.push(
+					...validateLogoDimensions(imageData.mimeType as string, imageData.data, imageId)
+				);
 			}
 		}
 	}
@@ -523,6 +575,12 @@ export async function runCloudValidation(
 				});
 			}
 
+			// Validate folder naming: entity id must match path segment
+			const folderError = validateFolderNaming(entity.path, entity.type, cleaned);
+			if (folderError) {
+				errors.push(folderError);
+			}
+
 			// Validate sizes: schema + GTIN checksums + store ID cross-references
 			if (sizesData !== undefined) {
 				try {
@@ -550,15 +608,6 @@ export async function runCloudValidation(
 			emitProgress(job, 'Validating images...');
 			errors.push(...validateImages(images));
 		}
-
-		// --- Cloud mode limitation warning ---
-		errors.push({
-			category: 'Cloud Mode',
-			level: 'WARNING',
-			message:
-				'Cloud validation cannot check logo file dimensions or folder naming conventions. ' +
-				'These will be checked by the repository CI when your pull request is submitted.'
-		});
 
 		// --- Build result ---
 		const errorCount = errors.filter((e) => e.level === 'ERROR').length;
