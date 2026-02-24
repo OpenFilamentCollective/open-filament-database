@@ -3,6 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { env } from '$env/dynamic/public';
 import { readLogo } from '$lib/server/logoHandler';
+import { proxyLogoToCloud } from '$lib/server/cloudProxy';
 import { validatePathSegment } from '$lib/server/pathValidation';
 
 const STORES_DIR = path.join(process.cwd(), '../stores');
@@ -24,9 +25,7 @@ async function normalizeStoreId(storeId: string): Promise<string> {
 
 export const GET: RequestHandler = async ({ params }) => {
 	if (env.PUBLIC_APP_MODE === 'cloud') {
-		return new Response('Logos are not available in cloud mode - use cloud API instead', {
-			status: 404
-		});
+		return proxyLogoToCloud('store', params.id, params.filename);
 	}
 
 	try {

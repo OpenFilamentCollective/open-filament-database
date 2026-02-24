@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { useChangeTracking, isCloudMode, apiBaseUrl } from '$lib/stores/environment';
+	import { useChangeTracking } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
 
 	interface Props {
@@ -62,14 +62,9 @@
 			}
 		}
 
-		// URL format depends on the data source, not change tracking
-		if ($isCloudMode) {
-			// Cloud: logos served via logo_slug
-			return `${$apiBaseUrl}/api/${type}s/logo/${src}`;
-		} else {
-			// Local: logos served from entity directory
-			return `/api/${type}s/${id}/logo/${src}`;
-		}
+		// Always use the local endpoint — in cloud mode it proxies to the external API,
+		// keeping requests same-origin to avoid OpaqueResponseBlocking.
+		return `/api/${type}s/${id}/logo/${src}`;
 	});
 
 	// Handle image load errors (logo not available in cloud mode)

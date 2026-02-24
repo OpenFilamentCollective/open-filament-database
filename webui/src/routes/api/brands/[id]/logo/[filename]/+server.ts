@@ -3,14 +3,13 @@ import path from 'path';
 import { env } from '$env/dynamic/public';
 import { normalizeBrandId } from '$lib/server/entityConfig';
 import { readLogo } from '$lib/server/logoHandler';
+import { proxyLogoToCloud } from '$lib/server/cloudProxy';
 
 const DATA_DIR = path.join(process.cwd(), '../data');
 
 export const GET: RequestHandler = async ({ params }) => {
 	if (env.PUBLIC_APP_MODE === 'cloud') {
-		return new Response('Logos are not available in cloud mode - use cloud API instead', {
-			status: 404
-		});
+		return proxyLogoToCloud('brand', params.id, params.filename);
 	}
 
 	try {
