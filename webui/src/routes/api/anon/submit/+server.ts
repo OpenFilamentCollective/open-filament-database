@@ -99,7 +99,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		trackSubmission(uuid, result.prNumber!, result.prUrl!);
 
 		// 8. Fire "submitted" webhook (includes email if provided, fire-and-forget)
-		// Email is transient: only sent to webhook, never stored
+		// Email is transient: only sent to webhook, never stored by us
 		sendWebhook({
 			event: 'submitted',
 			uuid,

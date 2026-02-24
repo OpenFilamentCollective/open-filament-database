@@ -809,7 +809,7 @@
 													class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
 													placeholder="your@email.com"
 												/>
-												<p class="mt-1 text-xs text-muted-foreground">Optional. Used for crediting. Never stored.</p>
+												<p class="mt-1 text-xs text-muted-foreground">Optional. Used for crediting. {"Only stored by " + wrapperName || 'Never stored'}.</p>
 											</div>
 										{/if}
 										<Button

@@ -628,7 +628,7 @@ Submit changes anonymously via a bot account.  Only available when the anonymous
     "images": { ... },
     "title": "Optional",
     "description": "Optional",
-    "email": "Optional, never stored"
+    "email": "Optional, never stored by webui"
   }
   ```
 
