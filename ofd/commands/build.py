@@ -14,7 +14,7 @@ from typing import Dict
 
 from ofd.builder.crawler import crawl_data
 from ofd.builder.errors import BuildResult
-from ofd.builder.exporters import export_json, export_sqlite, export_sqlite_stores, export_csv, export_api, export_html, export_directory_listings, export_badges
+from ofd.builder.exporters import export_json, export_sqlite, export_sqlite_stores, export_csv, export_api, export_html, export_directory_listings, export_badges, export_docs
 from ofd.builder.utils import get_current_timestamp
 
 project_root = Path(__file__).parent.parent.parent
@@ -138,6 +138,11 @@ Examples:
         action='store_true',
         help='Skip HTML landing page export'
     )
+    skip_group.add_argument(
+        '--skip-docs',
+        action='store_true',
+        help='Skip editor documentation export'
+    )
 
     parser.set_defaults(func=run_build)
 
@@ -188,41 +193,41 @@ def run_build(args: argparse.Namespace) -> int:
     build_result = BuildResult()
 
     # Step 1: Crawl data
-    print("\n[1/9] Crawling data...")
+    print("\n[1/10] Crawling data...")
     db, crawl_result = crawl_data(str(data_dir), str(stores_dir))
     build_result.merge(crawl_result)
 
     # Step 2: Export JSON
     if not args.skip_json:
-        print("\n[2/9] Exporting JSON...")
+        print("\n[2/10] Exporting JSON...")
         export_json(db, str(output_dir), version, generated_at)
     else:
-        print("\n[2/9] Skipping JSON export")
+        print("\n[2/10] Skipping JSON export")
 
     # Step 3: Export SQLite (filaments)
     if not args.skip_sqlite:
-        print("\n[3/9] Exporting SQLite (filaments)...")
+        print("\n[3/10] Exporting SQLite (filaments)...")
         export_sqlite(db, str(output_dir), version, generated_at)
     else:
-        print("\n[3/9] Skipping SQLite export")
+        print("\n[3/10] Skipping SQLite export")
 
     # Step 4: Export SQLite (stores)
     if not args.skip_sqlite:
-        print("\n[4/9] Exporting SQLite (stores)...")
+        print("\n[4/10] Exporting SQLite (stores)...")
         export_sqlite_stores(db, str(output_dir), version, generated_at)
     else:
-        print("\n[4/9] Skipping SQLite stores export")
+        print("\n[4/10] Skipping SQLite stores export")
 
     # Step 5: Export CSV
     if not args.skip_csv:
-        print("\n[5/9] Exporting CSV...")
+        print("\n[5/10] Exporting CSV...")
         export_csv(db, str(output_dir), version, generated_at)
     else:
-        print("\n[5/9] Skipping CSV export")
+        print("\n[5/10] Skipping CSV export")
 
     # Step 6: Export Static API
     if not args.skip_api:
-        print("\n[6/9] Exporting Static API...")
+        print("\n[6/10] Exporting Static API...")
         export_api(
             db, str(output_dir), version, generated_at,
             schemas_dir=str(schemas_dir),
@@ -231,28 +236,37 @@ def run_build(args: argparse.Namespace) -> int:
             stores_dir=str(stores_dir)
         )
     else:
-        print("\n[6/9] Skipping Static API export")
+        print("\n[6/10] Skipping Static API export")
 
     # Step 7: Export HTML landing page
     if not args.skip_html:
-        print("\n[7/9] Exporting HTML landing page...")
+        print("\n[7/10] Exporting HTML landing page...")
         templates_dir = Path(__file__).parent.parent / "builder" / "templates"
         config_dir = project_root / "config"
         export_html(db, str(output_dir), version, generated_at, str(templates_dir), str(config_dir))
     else:
-        print("\n[7/9] Skipping HTML export")
+        print("\n[7/10] Skipping HTML export")
 
     # Step 8: Export badges
-    print("\n[8/9] Exporting badges...")
+    print("\n[8/10] Exporting badges...")
     export_badges(db, str(output_dir))
 
-    # Step 9: Generate directory listings (must run last so all dirs are covered)
+    # Step 9: Export editor documentation
+    if not args.skip_docs:
+        print("\n[9/10] Exporting editor documentation...")
+        docs_dir = project_root / "docs"
+        templates_dir = Path(__file__).parent.parent / "builder" / "templates"
+        export_docs(str(output_dir), docs_dir=str(docs_dir), templates_dir=str(templates_dir))
+    else:
+        print("\n[9/10] Skipping docs export")
+
+    # Step 10: Generate directory listings (must run last so all dirs are covered)
     if not args.skip_html:
-        print("\n[9/9] Generating directory listings...")
+        print("\n[10/10] Generating directory listings...")
         templates_dir = Path(__file__).parent.parent / "builder" / "templates"
         export_directory_listings(str(output_dir), str(templates_dir))
     else:
-        print("\n[9/9] Skipping directory listings")
+        print("\n[10/10] Skipping directory listings")
 
     # Calculate checksums and write manifest
     print("\nGenerating checksums and manifest...")

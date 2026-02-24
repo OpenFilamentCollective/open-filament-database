@@ -47,7 +47,8 @@ def build_abstract_file_tree(db: Database) -> str:
         li_file("variants.svg", "api/v1/badges/variants.svg"),
         li_file("stores.svg", "api/v1/badges/stores.svg"),
     ]))
-    api_v1 = li_dir("v1", api_badges + "\n" + api_brands + "\n" + api_stores + "\n" + api_schemas + "\n" + li_file("index.json", "api/v1/index.json"))
+    api_editor = li_dir("editor", li_placeholder("*.html") + "\n" + li_file("index.html", "api/v1/editor/index.html") + "\n" + li_file("index.json", "api/v1/editor/index.json"))
+    api_v1 = li_dir("v1", api_badges + "\n" + api_brands + "\n" + api_editor + "\n" + api_stores + "\n" + api_schemas + "\n" + li_file("index.json", "api/v1/index.json"))
     lines.append(li_dir("api", api_v1))
 
     # CSV structure

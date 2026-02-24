@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><TITLE/> - Open Filament Database</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/OpenFilamentCollective/open-filament-database/blob/main/docs/img/logo.png?raw=true">
+    <link rel="stylesheet" href="../../../adwaita.css">
+    <link rel="stylesheet" href="../../../theme.css">
+    <style>
+        .doc-content {
+            max-width: 52rem;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+            color: var(--adw-fg);
+        }
+        .doc-content h1 { font-size: 1.75rem; font-weight: 700; margin: 0 0 1.5rem 0; border-bottom: 1px solid var(--adw-card-border); padding-bottom: 0.5rem; }
+        .doc-content h2 { font-size: 1.35rem; font-weight: 700; margin: 2rem 0 0.75rem 0; border-bottom: 1px solid var(--adw-card-border); padding-bottom: 0.35rem; }
+        .doc-content h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; }
+        .doc-content h4 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem 0; color: var(--adw-fg-secondary); }
+        .doc-content p { margin: 0.75rem 0; }
+        .doc-content a { color: var(--adw-accent); text-decoration: none; }
+        .doc-content a:hover { text-decoration: underline; }
+        .doc-content ul, .doc-content ol { margin: 0.5rem 0; padding-left: 1.5rem; }
+        .doc-content li { margin: 0.25rem 0; }
+        .doc-content code {
+            background: var(--adw-card-bg);
+            border: 1px solid var(--adw-card-border);
+            border-radius: 4px;
+            padding: 0.15rem 0.35rem;
+            font-size: 0.875rem;
+            font-family: monospace;
+        }
+        .doc-content pre {
+            background: var(--adw-card-bg);
+            border: 1px solid var(--adw-card-border);
+            border-radius: var(--adw-border-radius);
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .doc-content pre code {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 0.85rem;
+        }
+        .doc-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        .doc-content th, .doc-content td {
+            border: 1px solid var(--adw-card-border);
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+        }
+        .doc-content th {
+            background: var(--adw-card-bg);
+            font-weight: 600;
+        }
+        .doc-content blockquote {
+            border-left: 3px solid var(--adw-accent);
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            color: var(--adw-fg-secondary);
+        }
+        .doc-content hr {
+            border: none;
+            border-top: 1px solid var(--adw-card-border);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="headerbar">
+        <a href="./" class="headerbar-back">Docs</a>
+        <h1><TITLE/></h1>
+        <div class="headerbar-spacer"></div>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">
+            <span class="theme-icon-light">☀️</span>
+            <span class="theme-icon-dark">🌙</span>
+        </button>
+    </header>
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+
+            function getPreferred() {
+                const saved = localStorage.getItem('theme');
+                if (saved) return saved;
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            function setTheme(theme) {
+                root.classList.remove('light-mode', 'dark-mode');
+                root.classList.add(theme + '-mode');
+                localStorage.setItem('theme', theme);
+            }
+
+            setTheme(getPreferred());
+
+            toggle.addEventListener('click', function() {
+                const current = root.classList.contains('dark-mode') ? 'dark' : 'light';
+                setTheme(current === 'dark' ? 'light' : 'dark');
+            });
+        })();
+    </script>
+
+    <main class="content">
+        <div class="doc-content">
+            <CONTENT/>
+        </div>
+    </main>
+
+    <footer>
+        <a href="../../../">Home</a>
+        <a href="./">Editor Docs</a>
+        <a href="https://github.com/OpenFilamentCollective/open-filament-database">GitHub</a>
+    </footer>
+</body>
+</html>

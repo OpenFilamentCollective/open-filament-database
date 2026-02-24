@@ -346,6 +346,7 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
         "brand_logos": "brands/logo/index.json",
         "store_logos": "stores/logo/index.json",
         "badges": "badges/",
+        "editor": "editor/",
         "all": "../json/all.json"
     }
     if schemas_count > 0:

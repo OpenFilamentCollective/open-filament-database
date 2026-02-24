@@ -10,6 +10,7 @@ from .api_exporter import export_api
 from .html_exporter import export_html
 from .directory_listing_exporter import export_directory_listings
 from .badge_exporter import export_badges
+from .docs_exporter import export_docs
 
 __all__ = [
     'export_json',
@@ -23,4 +24,5 @@ __all__ = [
     'export_html',
     'export_directory_listings',
     'export_badges',
+    'export_docs',
 ]
