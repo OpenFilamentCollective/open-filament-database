@@ -1,10 +1,22 @@
 {
-  "id": "silk_pla",
-  "name": "Silk PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+    "id": "silk_pla",
+    "name": "Silk PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.24,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Creality Silk PLA",
+            "id": "05001",
+            "generic_id": "GFL96"
+        },
+        "elegooslicer": {
+            "profile_name": "Creality Silk PLA",
+            "id": "05001",
+            "generic_id": "GFL96"
+        }
+    }
 }

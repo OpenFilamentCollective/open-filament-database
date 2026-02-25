@@ -12,6 +12,8 @@ const genericSlicerSchema = z.object({
 const specificSlicerSettingsSchema = z.object({
   profile_path: z.string(),
   overrides: z.object({}).optional(),
+  id: z.string().optional(),
+  generic_id: z.string().optional(),
 });
 
 export const slicerSettingsSchema = z.object({
@@ -20,4 +22,6 @@ export const slicerSettingsSchema = z.object({
   orcaslicer: specificSlicerSettingsSchema.optional(),
   bambustudio: specificSlicerSettingsSchema.optional(),
   cura: specificSlicerSettingsSchema.optional(),
+  superslicer: specificSlicerSettingsSchema.optional(),
+  elegooslicer: specificSlicerSettingsSchema.optional(),
 });

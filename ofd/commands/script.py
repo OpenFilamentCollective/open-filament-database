@@ -39,7 +39,6 @@ Examples:
   ofd script style_data                 Run style_data script
   ofd script style_data --dry-run       Run style_data in dry-run mode
   ofd script style_data --help          Show help for style_data script
-  ofd script load_profiles             Run load_profiles script
         """
     )
 

@@ -4,5 +4,22 @@
     "diameter_tolerance": 0.03,
     "density": 1.24,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Basic_Technical_Data_Sheet_bf3411ce-be39-4db7-9669-1b4671d2196b.pdf?v=1734060943",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Basic_MSDS.pdf"
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Basic_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PLA Basic",
+            "id": "GFA00",
+            "generic_id": "GFL99"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PLA Basic",
+            "id": "GFA00",
+            "generic_id": "GFL99"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Basic",
+            "id": "GFA00",
+            "generic_id": "GFL99"
+        }
+    }
 }

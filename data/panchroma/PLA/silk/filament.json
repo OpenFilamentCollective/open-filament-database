@@ -2,5 +2,17 @@
     "id": "silk",
     "name": "Silk",
     "diameter_tolerance": 0.02,
-    "density": 1.2
+    "density": 1.2,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Panchroma PLA Silk",
+            "id": "GFPM004",
+            "generic_id": "GFL96"
+        },
+        "elegooslicer": {
+            "profile_name": "Panchroma PLA Silk",
+            "id": "GFPM004",
+            "generic_id": "GFL96"
+        }
+    }
 }

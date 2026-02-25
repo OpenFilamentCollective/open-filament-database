@@ -2,5 +2,17 @@
     "id": "hyper_pla_cf",
     "name": "Hyper PLA-CF",
     "diameter_tolerance": 0.03,
-    "density": 1.25
+    "density": 1.25,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Creality Hyper PLA-CF",
+            "id": "02001",
+            "generic_id": "GFL99"
+        },
+        "elegooslicer": {
+            "profile_name": "Creality Hyper PLA-CF",
+            "id": "02001",
+            "generic_id": "GFL99"
+        }
+    }
 }

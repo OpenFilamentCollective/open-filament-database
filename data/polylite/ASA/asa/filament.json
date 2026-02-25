@@ -2,5 +2,22 @@
     "id": "asa",
     "name": "ASA",
     "diameter_tolerance": 0.02,
-    "density": 1.13
+    "density": 1.13,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "PolyLite ASA",
+            "id": "GFB61",
+            "generic_id": "GFB98"
+        },
+        "orcaslicer": {
+            "profile_name": "PolyLite ASA",
+            "id": "GFB61",
+            "generic_id": "GFB98"
+        },
+        "elegooslicer": {
+            "profile_name": "PolyLite ASA",
+            "id": "GFB61",
+            "generic_id": "GFB98"
+        }
+    }
 }

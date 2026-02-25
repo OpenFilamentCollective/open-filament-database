@@ -1,11 +1,27 @@
 {
-  "id": "pvb",
-  "name": "PVB",
-  "diameter_tolerance": 0.03,
-  "density": 1.1,
-  "min_print_temperature": 205,
-  "max_print_temperature": 225,
-  "preheat_temperature": 170,
-  "min_bed_temperature": 60,
-  "max_bed_temperature": 80
+    "id": "pvb",
+    "name": "PVB",
+    "diameter_tolerance": 0.03,
+    "density": 1.1,
+    "min_print_temperature": 205,
+    "max_print_temperature": 225,
+    "preheat_temperature": 170,
+    "min_bed_temperature": 60,
+    "max_bed_temperature": 80,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament PVB"
+        },
+        "orcaslicer": {
+            "profile_name": "Prusament PVB",
+            "id": "GFS98"
+        },
+        "elegooslicer": {
+            "profile_name": "Prusament PVB",
+            "id": "GFS98"
+        },
+        "superslicer": {
+            "profile_name": "Prusament PVB"
+        }
+    }
 }

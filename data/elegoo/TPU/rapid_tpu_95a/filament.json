@@ -2,5 +2,12 @@
     "id": "rapid_tpu_95a",
     "name": "Rapid TPU 95A",
     "diameter_tolerance": 0.02,
-    "density": 1.16
+    "density": 1.16,
+    "slicer_settings": {
+        "elegooslicer": {
+            "profile_name": "Elegoo RAPID TPU 95A",
+            "id": "ETPUB00",
+            "generic_id": "GFU99"
+        }
+    }
 }

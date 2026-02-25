@@ -3,5 +3,17 @@
     "name": "rPETG Matte",
     "diameter_tolerance": 0.02,
     "density": 1.25,
-    "max_dry_temperature": 65
+    "max_dry_temperature": 65,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "addnorth PETG rPETG Matte",
+            "id": "GF_ANRM",
+            "generic_id": "GFG99"
+        },
+        "orcaslicer": {
+            "profile_name": "addnorth PETG rPETG Matte",
+            "id": "GF_ANRM",
+            "generic_id": "GFG99"
+        }
+    }
 }

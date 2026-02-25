@@ -2,5 +2,17 @@
     "id": "pp_cf",
     "name": "PP-CF",
     "diameter_tolerance": 0.03,
-    "density": 0.95
+    "density": 0.95,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Eryone PP-CF",
+            "id": "EFL33",
+            "generic_id": "GFP97"
+        },
+        "elegooslicer": {
+            "profile_name": "Eryone PP-CF",
+            "id": "EFL33",
+            "generic_id": "GFP97"
+        }
+    }
 }

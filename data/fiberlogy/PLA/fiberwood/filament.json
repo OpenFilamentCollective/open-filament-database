@@ -2,5 +2,13 @@
     "id": "fiberwood",
     "name": "FiberWood",
     "diameter_tolerance": 0.02,
-    "density": 1.23
+    "density": 1.23,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy FiberWood"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy FiberWood"
+        }
+    }
 }

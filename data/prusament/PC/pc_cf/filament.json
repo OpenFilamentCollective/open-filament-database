@@ -2,5 +2,17 @@
     "id": "pc_cf",
     "name": "PC-CF",
     "diameter_tolerance": 0.04,
-    "density": 1.22
+    "density": 1.22,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Prusament PC-CF",
+            "id": "GFC98",
+            "generic_id": "GFC99"
+        },
+        "elegooslicer": {
+            "profile_name": "Prusament PC-CF",
+            "id": "GFC98",
+            "generic_id": "GFC99"
+        }
+    }
 }

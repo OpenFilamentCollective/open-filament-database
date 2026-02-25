@@ -2,5 +2,12 @@
     "id": "pc",
     "name": "PC",
     "diameter_tolerance": 0.02,
-    "density": 1.2
+    "density": 1.2,
+    "slicer_settings": {
+        "elegooslicer": {
+            "profile_name": "Elegoo PC",
+            "id": "EPCB00",
+            "generic_id": "GFC99"
+        }
+    }
 }

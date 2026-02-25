@@ -2,5 +2,13 @@
     "id": "easy_abs",
     "name": "EASY ABS",
     "diameter_tolerance": 0.02,
-    "density": 1.09
+    "density": 1.09,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy Easy ABS"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy Easy ABS"
+        }
+    }
 }

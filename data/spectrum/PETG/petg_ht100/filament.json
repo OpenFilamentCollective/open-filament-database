@@ -2,5 +2,10 @@
     "id": "petg_ht100",
     "name": "PETG HT100",
     "diameter_tolerance": 0.02,
-    "density": 1.18
+    "density": 1.18,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Spectrum PETG HT100"
+        }
+    }
 }

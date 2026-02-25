@@ -2,5 +2,10 @@
     "id": "polydissolve_s1",
     "name": "PolyDissolve S1",
     "diameter_tolerance": 0.02,
-    "density": 1.13
+    "density": 1.13,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Polymaker PolyDissolve S1"
+        }
+    }
 }

@@ -2,5 +2,10 @@
     "id": "woodfill",
     "name": "Woodfill",
     "diameter_tolerance": 0.04,
-    "density": 1.25
+    "density": 1.25,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament Woodfill"
+        }
+    }
 }

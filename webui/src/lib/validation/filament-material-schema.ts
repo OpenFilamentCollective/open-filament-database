@@ -22,7 +22,9 @@ export const genericSlicerSchema = z.object({
 });
 
 export const specificSlicerSchema = z.object({
-  profile_name: z.string().optional()
+  profile_name: z.string().optional(),
+  id: z.string().optional(),
+  generic_id: z.string().optional(),
 }).merge(genericSlicerSchema);
 
 export const slicerSettingsSchema = z.object({
@@ -31,6 +33,8 @@ export const slicerSettingsSchema = z.object({
   orcaslicer: specificSlicerSchema.optional(),
   bambustudio: specificSlicerSchema.optional(),
   cura: specificSlicerSchema.optional(),
+  superslicer: specificSlicerSchema.optional(),
+  elegooslicer: specificSlicerSchema.optional(),
 });
 
 export const materialClassSchema = z.enum(["FFF", "SLA"]).default("FFF");

@@ -3,5 +3,17 @@
     "name": "TPU Pro Matte 95A",
     "diameter_tolerance": 0.02,
     "density": 1.1,
-    "max_dry_temperature": 55
+    "max_dry_temperature": 55,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "addnorth TPU Pro Matte 95A",
+            "id": "GF_ANTM",
+            "generic_id": "GFU99"
+        },
+        "orcaslicer": {
+            "profile_name": "addnorth TPU Pro Matte 95A",
+            "id": "GF_ANTM",
+            "generic_id": "GFU99"
+        }
+    }
 }

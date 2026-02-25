@@ -3,5 +3,17 @@
     "name": "X-PLA High Speed",
     "diameter_tolerance": 0.02,
     "density": 1.26,
-    "max_dry_temperature": 50
+    "max_dry_temperature": 50,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "addnorth PLA X-PLA High Speed",
+            "id": "GF_ANXPH",
+            "generic_id": "GFL99"
+        },
+        "orcaslicer": {
+            "profile_name": "addnorth PLA X-PLA High Speed",
+            "id": "GF_ANXPH",
+            "generic_id": "GFL99"
+        }
+    }
 }

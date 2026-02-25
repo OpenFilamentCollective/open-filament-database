@@ -2,5 +2,13 @@
     "id": "nylon_pa12+cf15",
     "name": "Nylon PA12+CF15",
     "diameter_tolerance": 0.02,
-    "density": 1.07
+    "density": 1.07,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy Nylon PA12+CF15"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy Nylon PA12+CF15"
+        }
+    }
 }

@@ -22,8 +22,13 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The unique identifier for this slicer profile",
-                    "$ref": "#/definitions/id"
+                    "description": "The slicer-native identifier for this filament profile (e.g. GFB00, FFF02)",
+                    "$ref": "#/definitions/slicer_id"
+                },
+                "generic_id": {
+                    "type": "string",
+                    "description": "Fallback generic slicer profile ID for this material type (e.g. GFL99 for Generic PLA). Used when no brand-specific profile exists.",
+                    "$ref": "#/definitions/slicer_id"
                 }
             },
             "required": [
@@ -43,6 +48,12 @@
                     "$ref": "#/definitions/specific_slicer_settings"
                 },
                 "cura": {
+                    "$ref": "#/definitions/specific_slicer_settings"
+                },
+                "superslicer": {
+                    "$ref": "#/definitions/specific_slicer_settings"
+                },
+                "elegooslicer": {
                     "$ref": "#/definitions/specific_slicer_settings"
                 },
                 "generic": {
@@ -175,6 +186,12 @@
                     "$ref": "#/definitions/slicer_id"
                 },
                 "cura": {
+                    "$ref": "#/definitions/slicer_id"
+                },
+                "superslicer": {
+                    "$ref": "#/definitions/slicer_id"
+                },
+                "elegooslicer": {
                     "$ref": "#/definitions/slicer_id"
                 }
             }

@@ -16,6 +16,16 @@
                 "overrides": {
                     "type": "object",
                     "description": "Key-value pairs for settings that should be overridden for this filament"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The slicer-native identifier for this filament profile (e.g. GFB00, FFF02)",
+                    "$ref": "#/definitions/string_limit"
+                },
+                "generic_id": {
+                    "type": "string",
+                    "description": "Fallback generic slicer profile ID for this material type (e.g. GFL99 for Generic PLA)",
+                    "$ref": "#/definitions/string_limit"
                 }
             },
             "required": [
@@ -53,6 +63,12 @@
                     "$ref": "#/definitions/specific_slicer_settings"
                 },
                 "cura": {
+                    "$ref": "#/definitions/specific_slicer_settings"
+                },
+                "superslicer": {
+                    "$ref": "#/definitions/specific_slicer_settings"
+                },
+                "elegooslicer": {
                     "$ref": "#/definitions/specific_slicer_settings"
                 }
             },

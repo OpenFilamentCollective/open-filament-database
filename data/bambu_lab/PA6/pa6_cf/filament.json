@@ -4,5 +4,19 @@
     "diameter_tolerance": 0.03,
     "density": 1.09,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0651/1555/4032/files/Bambu_PA6-CF_Technical_Data_Sheet-v2.pdf",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0651/1555/4032/files/Bambu_PA6-CF_MSDS.pdf"
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0651/1555/4032/files/Bambu_PA6-CF_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PA6-CF",
+            "id": "GFN05"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PA6-CF",
+            "id": "GFN05"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PA6-CF",
+            "id": "GFN05"
+        }
+    }
 }

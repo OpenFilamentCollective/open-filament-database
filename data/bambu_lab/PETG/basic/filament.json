@@ -3,5 +3,22 @@
     "name": "Basic",
     "diameter_tolerance": 0.03,
     "density": 1.25,
-    "discontinued": true
+    "discontinued": true,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PETG Basic",
+            "id": "GFG00",
+            "generic_id": "GFG99"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PETG Basic",
+            "id": "GFG00",
+            "generic_id": "GFG99"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PETG Basic",
+            "id": "GFG00",
+            "generic_id": "GFG99"
+        }
+    }
 }

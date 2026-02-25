@@ -2,5 +2,17 @@
     "id": "pp",
     "name": "PP",
     "diameter_tolerance": 0.03,
-    "density": 0.95
+    "density": 0.95,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Eryone PP",
+            "id": "EFL43",
+            "generic_id": "GFP97"
+        },
+        "elegooslicer": {
+            "profile_name": "Eryone PP",
+            "id": "EFL43",
+            "generic_id": "GFP97"
+        }
+    }
 }

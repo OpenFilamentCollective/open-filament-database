@@ -2,5 +2,22 @@
     "id": "abs",
     "name": "ABS",
     "diameter_tolerance": 0.02,
-    "density": 1.12
+    "density": 1.12,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "PolyLite ABS",
+            "id": "GFB60",
+            "generic_id": "GFB99"
+        },
+        "orcaslicer": {
+            "profile_name": "PolyLite ABS",
+            "id": "GFB60",
+            "generic_id": "GFB99"
+        },
+        "elegooslicer": {
+            "profile_name": "PolyLite ABS",
+            "id": "GFB60",
+            "generic_id": "GFB99"
+        }
+    }
 }

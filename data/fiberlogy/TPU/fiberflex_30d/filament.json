@@ -2,5 +2,13 @@
     "id": "fiberflex_30d",
     "name": "FiberFlex 30D",
     "diameter_tolerance": 0.05,
-    "density": 1.07
+    "density": 1.07,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy FiberFlex 30D"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy FiberFlex 30D"
+        }
+    }
 }

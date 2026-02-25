@@ -2,5 +2,10 @@
     "id": "petg_matt",
     "name": "PETG MATT",
     "diameter_tolerance": 0.02,
-    "density": 1.35
+    "density": 1.35,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Spectrum PETG Matt"
+        }
+    }
 }

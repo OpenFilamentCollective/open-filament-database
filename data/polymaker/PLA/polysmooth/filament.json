@@ -2,5 +2,13 @@
     "id": "polysmooth",
     "name": "PolySmooth",
     "diameter_tolerance": 0.02,
-    "density": 1.1
+    "density": 1.1,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "PolyMaker PolySmooth"
+        },
+        "superslicer": {
+            "profile_name": "PolyMaker PolySmooth"
+        }
+    }
 }

@@ -2,5 +2,10 @@
     "id": "asa",
     "name": "ASA",
     "diameter_tolerance": 0.05,
-    "density": 1.18
+    "density": 1.18,
+    "slicer_settings": {
+        "superslicer": {
+            "profile_name": "3DO ASA"
+        }
+    }
 }

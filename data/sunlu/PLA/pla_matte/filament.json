@@ -5,5 +5,22 @@
     "density": 1.24,
     "max_dry_temperature": 55,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0909/3450/9859/files/PLA_TDS.pdf?v=1758968249",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0909/3450/9859/files/57MSDS_SUNLU_LW-PLA_filament_20250927180059.pdf?v=1758968240"
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0909/3450/9859/files/57MSDS_SUNLU_LW-PLA_filament_20250927180059.pdf?v=1758968240",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "SUNLU PLA Matte",
+            "id": "GFSNL02",
+            "generic_id": "GFL99"
+        },
+        "orcaslicer": {
+            "profile_name": "SUNLU PLA Matte",
+            "id": "GFSNL02",
+            "generic_id": "GFL99"
+        },
+        "elegooslicer": {
+            "profile_name": "SUNLU PLA Matte",
+            "id": "GFSNL02",
+            "generic_id": "GFL99"
+        }
+    }
 }

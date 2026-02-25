@@ -1,13 +1,21 @@
 {
-  "id": "petg",
-  "name": "PETG",
-  "diameter_tolerance": 0.02,
-  "density": 1.27,
-  "max_dry_temperature": 65,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90,
-  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/petg_tds_rev11_ulRIZ3.pdf",
-  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_PETG_PZSc1Z.pdf"
+    "id": "petg",
+    "name": "PETG",
+    "diameter_tolerance": 0.02,
+    "density": 1.27,
+    "max_dry_temperature": 65,
+    "min_print_temperature": 220,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 90,
+    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/petg_tds_rev11_ulRIZ3.pdf",
+    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_PETG_PZSc1Z.pdf",
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "addnorth PETG"
+        },
+        "superslicer": {
+            "profile_name": "addnorth PETG"
+        }
+    }
 }

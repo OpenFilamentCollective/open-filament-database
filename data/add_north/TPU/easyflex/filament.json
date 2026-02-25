@@ -4,5 +4,17 @@
     "diameter_tolerance": 0.02,
     "density": 1.25,
     "max_dry_temperature": 55,
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_EasyFlex_TPU_SRFA4k.pdf"
+    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_EasyFlex_TPU_SRFA4k.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "addnorth TPU EasyFlex",
+            "id": "GF_ANEF",
+            "generic_id": "GFU99"
+        },
+        "orcaslicer": {
+            "profile_name": "addnorth TPU EasyFlex",
+            "id": "GF_ANEF",
+            "generic_id": "GFU99"
+        }
+    }
 }
