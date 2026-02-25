@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu ASA-Aero"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu ASA-Aero"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFB02",
+        "orcaslicer": "GFB02",
+        "elegooslicer": "GFB02"
     }
 }

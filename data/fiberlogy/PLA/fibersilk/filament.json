@@ -2,5 +2,13 @@
     "id": "fibersilk",
     "name": "FiberSilk",
     "diameter_tolerance": 0.02,
-    "density": 1.22
+    "density": 1.22,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy FiberSilk"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy FiberSilk"
+        }
+    }
 }

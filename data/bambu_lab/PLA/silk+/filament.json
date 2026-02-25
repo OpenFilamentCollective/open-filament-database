@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA Silk+"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Silk+"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA06",
+        "orcaslicer": "GFA06",
+        "elegooslicer": "GFA06"
     }
 }

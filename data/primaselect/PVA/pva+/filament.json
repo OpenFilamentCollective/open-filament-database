@@ -2,5 +2,13 @@
     "id": "pva+",
     "name": "PVA+",
     "diameter_tolerance": 0.05,
-    "density": 1.19
+    "density": 1.19,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "PrimaSelect PVA+"
+        },
+        "superslicer": {
+            "profile_name": "PrimaSelect PVA+"
+        }
+    }
 }

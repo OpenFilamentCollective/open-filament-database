@@ -2,5 +2,13 @@
     "id": "abs",
     "name": "ABS",
     "diameter_tolerance": 0.02,
-    "density": 1.05
+    "density": 1.05,
+    "slicer_settings": {
+        "elegooslicer": {
+            "profile_name": "Elegoo ABS"
+        }
+    },
+    "slicer_ids": {
+        "elegooslicer": "EABSB00"
+    }
 }

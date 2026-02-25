@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu TPU 95A HF"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu TPU 95A HF"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFU00",
+        "orcaslicer": "GFU00",
+        "elegooslicer": "GFU00"
     }
 }

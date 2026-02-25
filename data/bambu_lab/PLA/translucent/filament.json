@@ -12,5 +12,8 @@
         "orcaslicer": {
             "profile_name": "Bambu PLA Translucent"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA17"
     }
 }

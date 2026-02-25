@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu TPU for AMS"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu TPU for AMS"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFU02",
+        "orcaslicer": "GFU02",
+        "elegooslicer": "GFU02"
     }
 }

@@ -1,12 +1,28 @@
 {
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.03,
-  "density": 1.05,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_ABS_Technical_Data_Sheet_V3.pdf",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_ABS_MSDS.pdf"
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.03,
+    "density": 1.05,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_ABS_Technical_Data_Sheet_V3.pdf",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_ABS_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu ABS"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu ABS"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu ABS"
+        }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFB00",
+        "orcaslicer": "GFB00",
+        "elegooslicer": "GFB00"
+    }
 }

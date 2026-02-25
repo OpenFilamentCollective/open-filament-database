@@ -2,5 +2,21 @@
     "id": "petg",
     "name": "PETG",
     "diameter_tolerance": 0.02,
-    "density": 1.25
+    "density": 1.25,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "PolyLite PETG"
+        },
+        "orcaslicer": {
+            "profile_name": "PolyLite PETG"
+        },
+        "elegooslicer": {
+            "profile_name": "PolyLite PETG"
+        }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFG60",
+        "orcaslicer": "GFG60",
+        "elegooslicer": "GFG60"
+    }
 }

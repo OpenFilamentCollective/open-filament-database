@@ -2,5 +2,17 @@
     "id": "asa",
     "name": "ASA",
     "diameter_tolerance": 0.03,
-    "density": 1.17
+    "density": 1.17,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Eryone ASA"
+        },
+        "elegooslicer": {
+            "profile_name": "Eryone ASA"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "EFL92",
+        "elegooslicer": "EFL92"
+    }
 }

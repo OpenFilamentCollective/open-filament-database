@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PET-CF"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PET-CF"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFT01",
+        "orcaslicer": "GFT01",
+        "elegooslicer": "GFT01"
     }
 }

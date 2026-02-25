@@ -1,7 +1,19 @@
 {
-  "id": "asa_basic",
-  "name": "ASA Basic",
-  "diameter_tolerance": 0.02,
-  "density": 1.08,
-  "max_dry_temperature": 80
+    "id": "asa_basic",
+    "name": "ASA Basic",
+    "diameter_tolerance": 0.02,
+    "density": 1.08,
+    "max_dry_temperature": 80,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Flashforge ASA Basic"
+        },
+        "elegooslicer": {
+            "profile_name": "Flashforge ASA Basic"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "GFL99",
+        "elegooslicer": "GFL99"
+    }
 }

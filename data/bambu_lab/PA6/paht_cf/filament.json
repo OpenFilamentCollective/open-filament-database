@@ -4,5 +4,21 @@
     "diameter_tolerance": 0.03,
     "density": 1.06,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PAHT-CF_Technical_Data_Sheet_V2.pdf",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PAHT-CF_MSDS.pdf"
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PAHT-CF_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PAHT-CF"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PAHT-CF"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PAHT-CF"
+        }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFN04",
+        "orcaslicer": "GFN04",
+        "elegooslicer": "GFN04"
+    }
 }

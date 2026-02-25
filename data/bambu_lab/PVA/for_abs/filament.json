@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu Support for ABS"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu Support for ABS"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFS06",
+        "orcaslicer": "GFS06",
+        "elegooslicer": "GFS06"
     }
 }

@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA Aero"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Aero"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA11",
+        "orcaslicer": "GFA11",
+        "elegooslicer": "GFA11"
     }
 }

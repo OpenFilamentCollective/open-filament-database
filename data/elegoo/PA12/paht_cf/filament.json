@@ -2,5 +2,13 @@
     "id": "paht_cf",
     "name": "PAHT-CF",
     "diameter_tolerance": 0.02,
-    "density": 1.06
+    "density": 1.06,
+    "slicer_settings": {
+        "elegooslicer": {
+            "profile_name": "Elegoo PAHT-CF"
+        }
+    },
+    "slicer_ids": {
+        "elegooslicer": "EPAHTB00"
+    }
 }

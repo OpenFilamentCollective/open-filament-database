@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA Matte"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Matte"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA01",
+        "orcaslicer": "GFA01",
+        "elegooslicer": "GFA01"
     }
 }

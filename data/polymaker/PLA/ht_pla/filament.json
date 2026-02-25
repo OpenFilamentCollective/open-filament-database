@@ -2,5 +2,17 @@
     "id": "ht_pla",
     "name": "HT-PLA",
     "diameter_tolerance": 0.02,
-    "density": 1.29
+    "density": 1.29,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Polymaker HT-PLA"
+        },
+        "elegooslicer": {
+            "profile_name": "Polymaker HT-PLA"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "GFPM017",
+        "elegooslicer": "GFPM017"
+    }
 }

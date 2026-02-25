@@ -2,5 +2,17 @@
     "id": "pla_cf",
     "name": "PLA-CF",
     "diameter_tolerance": 0.02,
-    "density": 1.24
+    "density": 1.24,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Elegoo PLA-CF"
+        },
+        "elegooslicer": {
+            "profile_name": "Elegoo PLA-CF"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "EPLACFB00",
+        "elegooslicer": "EPLACFB00"
+    }
 }

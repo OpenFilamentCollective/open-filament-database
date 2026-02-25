@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA Galaxy"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Galaxy"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA15",
+        "orcaslicer": "GFA15",
+        "elegooslicer": "GFA15"
     }
 }

@@ -2,5 +2,17 @@
     "id": "pla_pro",
     "name": "PLA PRO",
     "diameter_tolerance": 0.02,
-    "density": 1.24
+    "density": 1.24,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Elegoo PLA PRO"
+        },
+        "elegooslicer": {
+            "profile_name": "Elegoo PLA PRO"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "EPLAB00",
+        "elegooslicer": "EPLAB00"
+    }
 }

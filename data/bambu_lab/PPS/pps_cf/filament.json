@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PPS-CF"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PPS-CF"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFT02",
+        "orcaslicer": "GFT02",
+        "elegooslicer": "GFT02"
     }
 }

@@ -2,5 +2,17 @@
     "id": "hyper_abs",
     "name": "Hyper ABS",
     "diameter_tolerance": 0.05,
-    "density": 1.05
+    "density": 1.05,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Creality Hyper ABS"
+        },
+        "elegooslicer": {
+            "profile_name": "Creality Hyper ABS"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "03001",
+        "elegooslicer": "03001"
+    }
 }

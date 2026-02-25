@@ -2,5 +2,21 @@
     "id": "pla",
     "name": "PLA",
     "diameter_tolerance": 0.02,
-    "density": 1.19
+    "density": 1.19,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "PolyLite PLA"
+        },
+        "orcaslicer": {
+            "profile_name": "PolyLite PLA"
+        },
+        "elegooslicer": {
+            "profile_name": "PolyLite PLA"
+        }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFL00",
+        "orcaslicer": "GFL00",
+        "elegooslicer": "GFL00"
+    }
 }

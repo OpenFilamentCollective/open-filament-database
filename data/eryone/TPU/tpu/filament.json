@@ -2,5 +2,17 @@
     "id": "tpu",
     "name": "TPU",
     "diameter_tolerance": 0.03,
-    "density": 1.21
+    "density": 1.21,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Eryone TPU"
+        },
+        "elegooslicer": {
+            "profile_name": "Eryone TPU"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "EFL95",
+        "elegooslicer": "EFL95"
+    }
 }

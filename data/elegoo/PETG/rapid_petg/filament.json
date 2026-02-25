@@ -2,5 +2,20 @@
     "id": "rapid_petg",
     "name": "RAPID PETG",
     "diameter_tolerance": 0.02,
-    "density": 1.29
+    "density": 1.29,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Elegoo RAPID PETG"
+        },
+        "elegooslicer": {
+            "profile_name": "Elegoo RAPID PETG"
+        },
+        "prusaslicer": {
+            "profile_name": "Elegoo Rapid PETG"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "ERPETGB00",
+        "elegooslicer": "ERPETGB00"
+    }
 }

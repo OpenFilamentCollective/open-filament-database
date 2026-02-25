@@ -7,10 +7,18 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/PLA_Wood_MSDS.pdf?v=1731406729",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Sparkle"
+            "profile_name": "Bambu PLA Wood"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PLA Sparkle"
+            "profile_name": "Bambu PLA Wood"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Wood"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA16",
+        "orcaslicer": "GFA16",
+        "elegooslicer": "GFA16"
     }
 }

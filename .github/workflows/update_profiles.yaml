@@ -24,14 +24,18 @@ jobs:
                     git config --global user.name "github-actions[bot]"
                     git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-            -   name: Run update script
+            -   name: Clone slicer profiles
+                run: git clone --depth 1 https://github.com/SimplyPrint/slicer-profiles-db.git slicer-profiles-db
+
+            -   name: Install dependencies
                 run: |
+                    pip install ./slicer-profiles-db
                     pip install -r requirements.txt
-                    python -m ofd script load_profiles
+
+            -   name: Map filaments to slicer profiles
+                run: python -m ofd slicer-mapper map --store slicer-profiles-db/profiles
 
             -   name: Commit changes
                 run: |
-                    git add .
-                    if git commit -m "Update profiles"; then
-                        git push origin
-                    fi
+                    git add data/
+                    git diff --cached --quiet || (git commit -m "Update slicer mappings" && git push)

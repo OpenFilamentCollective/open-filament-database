@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA-CF"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA-CF"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA50",
+        "orcaslicer": "GFA50",
+        "elegooslicer": "GFA50"
     }
 }

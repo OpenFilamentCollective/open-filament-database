@@ -1,10 +1,32 @@
 {
-  "id": "pla",
-  "name": "PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.16,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+    "id": "pla",
+    "name": "PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.16,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Overture PLA"
+        },
+        "orcaslicer": {
+            "profile_name": "Overture PLA"
+        },
+        "prusaslicer": {
+            "profile_name": "Overture PLA"
+        },
+        "elegooslicer": {
+            "profile_name": "Overture PLA"
+        },
+        "superslicer": {
+            "profile_name": "Overture PLA"
+        }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFL04",
+        "orcaslicer": "GFL04",
+        "elegooslicer": "GFL04"
+    }
 }

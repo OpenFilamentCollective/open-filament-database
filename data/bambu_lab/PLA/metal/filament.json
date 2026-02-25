@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA Metal"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Metal"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA02",
+        "orcaslicer": "GFA02",
+        "elegooslicer": "GFA02"
     }
 }

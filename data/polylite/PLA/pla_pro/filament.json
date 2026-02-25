@@ -2,5 +2,17 @@
     "id": "pla_pro",
     "name": "PLA Pro",
     "diameter_tolerance": 0.02,
-    "density": 1.22
+    "density": 1.22,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "PolyLite PLA Pro"
+        },
+        "elegooslicer": {
+            "profile_name": "PolyLite PLA Pro"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "GFPM019",
+        "elegooslicer": "GFPM019"
+    }
 }

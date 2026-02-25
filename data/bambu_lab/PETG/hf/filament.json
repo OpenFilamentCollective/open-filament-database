@@ -4,5 +4,21 @@
     "diameter_tolerance": 0.03,
     "density": 1.28,
     "data_sheet_url": "https://store.bblcdn.com/ce12d65176a94f1086e6aefa238e62e2.pdf",
-    "safety_sheet_url": "https://store.bblcdn.com/84de0227cd6c44389be1dfccb5280dcb.pdf"
+    "safety_sheet_url": "https://store.bblcdn.com/84de0227cd6c44389be1dfccb5280dcb.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Bambu PETG HF"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PETG HF"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PETG HF"
+        }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFG02",
+        "orcaslicer": "GFG02",
+        "elegooslicer": "GFG02"
+    }
 }

@@ -1,10 +1,26 @@
 {
-  "id": "matte_pla",
-  "name": "Matte PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.32,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+    "id": "matte_pla",
+    "name": "Matte PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.32,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Overture Matte PLA"
+        },
+        "orcaslicer": {
+            "profile_name": "Overture Matte PLA"
+        },
+        "elegooslicer": {
+            "profile_name": "Overture Matte PLA"
+        }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFL05",
+        "orcaslicer": "GFL05",
+        "elegooslicer": "GFL05"
+    }
 }

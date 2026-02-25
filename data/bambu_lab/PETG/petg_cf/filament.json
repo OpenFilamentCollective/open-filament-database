@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PETG-CF"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PETG-CF"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFG50",
+        "orcaslicer": "GFG50",
+        "elegooslicer": "GFG50"
     }
 }

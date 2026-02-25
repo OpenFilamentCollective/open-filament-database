@@ -7,10 +7,13 @@
     "safety_sheet_url": "https://store.bblcdn.eu/s8/default/fa69ce6fe3a9411988e30bd8d44b29c0/Bambu_PLA_Tough_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Translucent"
+            "profile_name": "Bambu PLA Tough+"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PLA Translucent"
+            "profile_name": "Bambu PLA Tough+"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA10"
     }
 }

@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA Sparkle"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Sparkle"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA08",
+        "orcaslicer": "GFA08",
+        "elegooslicer": "GFA08"
     }
 }

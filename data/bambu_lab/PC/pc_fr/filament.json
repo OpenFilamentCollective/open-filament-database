@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PC FR"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PC FR"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFC01",
+        "orcaslicer": "GFC01",
+        "elegooslicer": "GFC01"
     }
 }

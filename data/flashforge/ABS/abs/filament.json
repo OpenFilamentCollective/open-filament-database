@@ -1,10 +1,22 @@
 {
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.04,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Flashforge ABS"
+        },
+        "elegooslicer": {
+            "profile_name": "Flashforge ABS"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "GFB99",
+        "elegooslicer": "GFB99"
+    }
 }

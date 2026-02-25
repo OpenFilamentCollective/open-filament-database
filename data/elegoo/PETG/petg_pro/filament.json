@@ -2,5 +2,17 @@
     "id": "petg_pro",
     "name": "PETG PRO",
     "diameter_tolerance": 0.02,
-    "density": 1.27
+    "density": 1.27,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Elegoo PETG PRO"
+        },
+        "elegooslicer": {
+            "profile_name": "Elegoo PETG PRO"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "GFG99",
+        "elegooslicer": "EPETGPROB00"
+    }
 }

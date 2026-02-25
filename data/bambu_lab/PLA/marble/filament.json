@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA Marble"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PLA Marble"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFA07",
+        "orcaslicer": "GFA07",
+        "elegooslicer": "GFA07"
     }
 }

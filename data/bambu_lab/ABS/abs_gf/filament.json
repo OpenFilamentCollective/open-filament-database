@@ -11,6 +11,14 @@
         },
         "orcaslicer": {
             "profile_name": "Bambu ABS-GF"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu ABS-GF"
         }
+    },
+    "slicer_ids": {
+        "bambustudio": "GFB50",
+        "orcaslicer": "GFB50",
+        "elegooslicer": "GFB50"
     }
 }

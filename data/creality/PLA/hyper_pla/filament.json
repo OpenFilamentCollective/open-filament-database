@@ -2,5 +2,17 @@
     "id": "hyper_pla",
     "name": "Hyper PLA",
     "diameter_tolerance": 0.03,
-    "density": 1.25
+    "density": 1.25,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Creality Hyper PLA"
+        },
+        "elegooslicer": {
+            "profile_name": "Creality Hyper PLA"
+        }
+    },
+    "slicer_ids": {
+        "orcaslicer": "01001",
+        "elegooslicer": "01001"
+    }
 }
