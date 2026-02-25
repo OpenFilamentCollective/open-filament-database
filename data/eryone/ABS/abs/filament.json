@@ -5,14 +5,14 @@
     "density": 1.04,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Eryone ABS"
+            "profile_name": "Eryone ABS",
+            "id": "EFL91",
+            "generic_id": "GFB99"
         },
         "elegooslicer": {
-            "profile_name": "Eryone ABS"
+            "profile_name": "Eryone ABS",
+            "id": "EFL91",
+            "generic_id": "GFB99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "EFL91",
-        "elegooslicer": "EFL91"
     }
 }

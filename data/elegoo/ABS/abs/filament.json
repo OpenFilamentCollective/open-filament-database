@@ -5,10 +5,9 @@
     "density": 1.05,
     "slicer_settings": {
         "elegooslicer": {
-            "profile_name": "Elegoo ABS"
+            "profile_name": "Elegoo ABS",
+            "id": "EABSB00",
+            "generic_id": "GFB99"
         }
-    },
-    "slicer_ids": {
-        "elegooslicer": "EABSB00"
     }
 }

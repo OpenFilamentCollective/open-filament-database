@@ -10,6 +10,9 @@
     "slicer_settings": {
         "superslicer": {
             "profile_name": "Fiberlogy PLA"
+        },
+        "prusaslicer": {
+            "profile_name": "Fiberlogy PLA"
         }
     }
 }

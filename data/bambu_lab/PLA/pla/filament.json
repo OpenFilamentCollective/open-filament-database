@@ -9,14 +9,14 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Bambu PLA"
+            "profile_name": "Bambu PLA",
+            "id": "GFL99",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PLA"
+            "profile_name": "Bambu PLA",
+            "id": "GFL99",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFL99",
-        "elegooslicer": "GFL99"
     }
 }

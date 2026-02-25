@@ -7,18 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/Bambu_Support_for_PLA_PETG_MSDS.pdf?v=1718272039",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu Support For PLA/PETG"
+            "profile_name": "Bambu Support For PLA/PETG",
+            "id": "GFS05",
+            "generic_id": "GFS99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu Support For PLA/PETG"
+            "profile_name": "Bambu Support For PLA/PETG",
+            "id": "GFS05",
+            "generic_id": "GFS99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu Support For PLA/PETG"
+            "profile_name": "Bambu Support For PLA/PETG",
+            "id": "GFS05",
+            "generic_id": "GFS99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFS05",
-        "orcaslicer": "GFS05",
-        "elegooslicer": "GFS05"
     }
 }

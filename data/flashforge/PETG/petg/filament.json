@@ -9,14 +9,14 @@
     "max_bed_temperature": 90,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Flashforge PETG"
+            "profile_name": "Flashforge PETG",
+            "id": "FFF03",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "Flashforge PETG"
+            "profile_name": "Flashforge PETG",
+            "id": "FFF03",
+            "generic_id": "GFG99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFG99",
-        "elegooslicer": "GFG99"
     }
 }

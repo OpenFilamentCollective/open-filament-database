@@ -7,18 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Aero_MSDS.pdf?v=1691044402",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Aero"
+            "profile_name": "Bambu PLA Aero",
+            "id": "GFA11",
+            "generic_id": "GFL99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PLA Aero"
+            "profile_name": "Bambu PLA Aero",
+            "id": "GFA11",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PLA Aero"
+            "profile_name": "Bambu PLA Aero",
+            "id": "GFA11",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFA11",
-        "orcaslicer": "GFA11",
-        "elegooslicer": "GFA11"
     }
 }

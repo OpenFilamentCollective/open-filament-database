@@ -5,17 +5,17 @@
     "density": 1.29,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Elegoo RAPID PETG"
+            "profile_name": "Elegoo RAPID PETG",
+            "id": "ERPETGB00",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "Elegoo RAPID PETG"
+            "profile_name": "Elegoo RAPID PETG",
+            "id": "EPETGB00",
+            "generic_id": "GFG99"
         },
         "prusaslicer": {
             "profile_name": "Elegoo Rapid PETG"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "ERPETGB00",
-        "elegooslicer": "ERPETGB00"
     }
 }

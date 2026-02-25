@@ -6,6 +6,9 @@
     "slicer_settings": {
         "superslicer": {
             "profile_name": "AzureFilm PLA"
+        },
+        "prusaslicer": {
+            "profile_name": "AzureFilm PLA"
         }
     }
 }

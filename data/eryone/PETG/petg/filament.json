@@ -5,17 +5,20 @@
     "density": 1.25,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Eryone PETG"
+            "profile_name": "Eryone PETG",
+            "id": "EFL93",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "Eryone PETG"
+            "profile_name": "Eryone PETG",
+            "id": "EFL93",
+            "generic_id": "GFG99"
         },
         "superslicer": {
             "profile_name": "ERYONE PETG"
+        },
+        "prusaslicer": {
+            "profile_name": "ERYONE PETG"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "EFL93",
-        "elegooslicer": "EFL93"
     }
 }

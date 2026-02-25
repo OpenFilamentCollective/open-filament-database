@@ -5,18 +5,19 @@
     "density": 1.26,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "SUNLU Silk PLA+"
+            "profile_name": "SUNLU Silk PLA+",
+            "id": "GFSNL05",
+            "generic_id": "GFL96"
         },
         "orcaslicer": {
-            "profile_name": "SUNLU Silk PLA+"
+            "profile_name": "SUNLU Silk PLA+",
+            "id": "GFSNL05",
+            "generic_id": "GFL96"
         },
         "elegooslicer": {
-            "profile_name": "SUNLU Silk PLA+"
+            "profile_name": "SUNLU Silk PLA+",
+            "id": "GFSNL05",
+            "generic_id": "GFL96"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFSNL05",
-        "orcaslicer": "GFSNL05",
-        "elegooslicer": "GFSNL05"
     }
 }

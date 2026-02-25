@@ -10,6 +10,9 @@
     "slicer_settings": {
         "superslicer": {
             "profile_name": "AMOLEN wood PLA"
+        },
+        "prusaslicer": {
+            "profile_name": "AMOLEN wood PLA"
         }
     }
 }

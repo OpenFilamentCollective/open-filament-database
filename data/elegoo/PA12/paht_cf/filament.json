@@ -5,10 +5,8 @@
     "density": 1.06,
     "slicer_settings": {
         "elegooslicer": {
-            "profile_name": "Elegoo PAHT-CF"
+            "profile_name": "Elegoo PAHT-CF",
+            "id": "EPAHTB00"
         }
-    },
-    "slicer_ids": {
-        "elegooslicer": "EPAHTB00"
     }
 }

@@ -15,14 +15,14 @@
             "profile_name": "Hatchbox ABS"
         },
         "orcaslicer": {
-            "profile_name": "HATCHBOX ABS"
+            "profile_name": "HATCHBOX ABS",
+            "id": "GFB99",
+            "generic_id": "GFB99"
         },
         "elegooslicer": {
-            "profile_name": "HATCHBOX ABS"
+            "profile_name": "HATCHBOX ABS",
+            "id": "GFB99",
+            "generic_id": "GFB99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFB99",
-        "elegooslicer": "GFB99"
     }
 }

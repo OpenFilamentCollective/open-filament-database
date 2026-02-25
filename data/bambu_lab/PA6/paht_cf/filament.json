@@ -7,18 +7,16 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PAHT-CF_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PAHT-CF"
+            "profile_name": "Bambu PAHT-CF",
+            "id": "GFN04"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PAHT-CF"
+            "profile_name": "Bambu PAHT-CF",
+            "id": "GFN04"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PAHT-CF"
+            "profile_name": "Bambu PAHT-CF",
+            "id": "GFN04"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFN04",
-        "orcaslicer": "GFN04",
-        "elegooslicer": "GFN04"
     }
 }

@@ -10,6 +10,9 @@
     "slicer_settings": {
         "superslicer": {
             "profile_name": "Creality PETG"
+        },
+        "prusaslicer": {
+            "profile_name": "Creality PETG"
         }
     }
 }

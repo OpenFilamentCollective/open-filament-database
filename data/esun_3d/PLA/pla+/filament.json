@@ -9,18 +9,19 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "eSUN PLA+"
+            "profile_name": "eSUN PLA+",
+            "id": "GFL03",
+            "generic_id": "GFL99"
         },
         "orcaslicer": {
-            "profile_name": "eSUN PLA+"
+            "profile_name": "eSUN PLA+",
+            "id": "GFL03",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "eSUN PLA+"
+            "profile_name": "eSUN PLA+",
+            "id": "GFL03",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFL03",
-        "orcaslicer": "GFL03",
-        "elegooslicer": "GFL03"
     }
 }

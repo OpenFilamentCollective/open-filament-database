@@ -7,13 +7,12 @@
     "safety_sheet_url": "https://store.bblcdn.com/s7/default/09499afaaa25439cb4e00b729f5e9bf8/Bambu_PLA_Translucent_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Translucent"
+            "profile_name": "Bambu PLA Translucent",
+            "id": "GFA17",
+            "generic_id": "GFL99"
         },
         "orcaslicer": {
             "profile_name": "Bambu PLA Translucent"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFA17"
     }
 }

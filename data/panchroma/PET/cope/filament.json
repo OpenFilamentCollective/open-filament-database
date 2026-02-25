@@ -5,14 +5,12 @@
     "density": 1.3,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Panchroma CoPE"
+            "profile_name": "Panchroma CoPE",
+            "id": "GFPM016"
         },
         "elegooslicer": {
-            "profile_name": "Panchroma CoPE"
+            "profile_name": "Panchroma CoPE",
+            "id": "GFPM016"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFPM016",
-        "elegooslicer": "GFPM016"
     }
 }

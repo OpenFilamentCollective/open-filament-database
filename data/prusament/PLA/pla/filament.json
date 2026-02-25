@@ -16,17 +16,17 @@
             "profile_name": "Prusament PLA"
         },
         "orcaslicer": {
-            "profile_name": "Prusament PLA"
+            "profile_name": "Prusament PLA",
+            "id": "GFL99",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "Prusament PLA"
+            "profile_name": "Prusament PLA",
+            "id": "GFL99",
+            "generic_id": "GFL99"
         },
         "superslicer": {
             "profile_name": "Prusament PLA"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFL99",
-        "elegooslicer": "GFL99"
     }
 }

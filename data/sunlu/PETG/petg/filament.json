@@ -9,21 +9,22 @@
     "max_bed_temperature": 90,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "SUNLU PETG"
+            "profile_name": "SUNLU PETG",
+            "id": "GFSNL08",
+            "generic_id": "GFG99"
         },
         "orcaslicer": {
-            "profile_name": "SUNLU PETG"
+            "profile_name": "SUNLU PETG",
+            "id": "GFSNL08",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "SUNLU PETG"
+            "profile_name": "SUNLU PETG",
+            "id": "GFSNL08",
+            "generic_id": "GFG99"
         },
         "prusaslicer": {
             "profile_name": "Sunlu PETG"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFSNL08",
-        "orcaslicer": "GFSNL08",
-        "elegooslicer": "GFSNL08"
     }
 }

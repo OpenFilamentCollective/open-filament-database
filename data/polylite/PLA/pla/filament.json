@@ -5,18 +5,22 @@
     "density": 1.19,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "PolyLite PLA"
+            "profile_name": "PolyLite PLA",
+            "id": "GFL00",
+            "generic_id": "GFL99"
         },
         "orcaslicer": {
-            "profile_name": "PolyLite PLA"
+            "profile_name": "PolyLite PLA",
+            "id": "GFL00",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
+            "profile_name": "PolyLite PLA",
+            "id": "GFL00",
+            "generic_id": "GFL99"
+        },
+        "prusaslicer": {
             "profile_name": "PolyLite PLA"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFL00",
-        "orcaslicer": "GFL00",
-        "elegooslicer": "GFL00"
     }
 }

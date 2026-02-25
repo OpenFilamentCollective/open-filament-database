@@ -10,6 +10,9 @@
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Overture PETG"
+        },
+        "superslicer": {
+            "profile_name": "Overture PETG"
         }
     }
 }

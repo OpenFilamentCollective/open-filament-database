@@ -15,17 +15,17 @@
             "profile_name": "Prusament ASA"
         },
         "orcaslicer": {
-            "profile_name": "Prusament ASA"
+            "profile_name": "Prusament ASA",
+            "id": "GFB98",
+            "generic_id": "GFB98"
         },
         "elegooslicer": {
-            "profile_name": "Prusament ASA"
+            "profile_name": "Prusament ASA",
+            "id": "GFB98",
+            "generic_id": "GFB98"
         },
         "superslicer": {
             "profile_name": "Prusament ASA"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFB98",
-        "elegooslicer": "GFB98"
     }
 }

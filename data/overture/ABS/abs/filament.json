@@ -9,14 +9,14 @@
     "max_bed_temperature": 110,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Overture ABS"
+            "profile_name": "Overture ABS",
+            "id": "GFB99",
+            "generic_id": "GFB99"
         },
         "elegooslicer": {
-            "profile_name": "Overture ABS"
+            "profile_name": "Overture ABS",
+            "id": "GFB99",
+            "generic_id": "GFB99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFB99",
-        "elegooslicer": "GFB99"
     }
 }

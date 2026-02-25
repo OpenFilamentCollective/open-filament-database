@@ -18,17 +18,17 @@
             "profile_name": "Prusament PETG"
         },
         "orcaslicer": {
-            "profile_name": "Prusament PETG"
+            "profile_name": "Prusament PETG",
+            "id": "GFT02",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "Prusament PETG"
+            "profile_name": "Prusament PETG",
+            "id": "GFT02",
+            "generic_id": "GFG99"
         },
         "superslicer": {
             "profile_name": "Prusament PETG"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFT02",
-        "elegooslicer": "GFT02"
     }
 }

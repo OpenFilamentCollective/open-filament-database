@@ -11,18 +11,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_ABS_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu ABS"
+            "profile_name": "Bambu ABS",
+            "id": "GFB00",
+            "generic_id": "GFB99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu ABS"
+            "profile_name": "Bambu ABS",
+            "id": "GFB00",
+            "generic_id": "GFB99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu ABS"
+            "profile_name": "Bambu ABS",
+            "id": "GFB00",
+            "generic_id": "GFB99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFB00",
-        "orcaslicer": "GFB00",
-        "elegooslicer": "GFB00"
     }
 }

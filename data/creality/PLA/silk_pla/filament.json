@@ -9,14 +9,14 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Creality Silk PLA"
+            "profile_name": "Creality Silk PLA",
+            "id": "05001",
+            "generic_id": "GFL96"
         },
         "elegooslicer": {
-            "profile_name": "Creality Silk PLA"
+            "profile_name": "Creality Silk PLA",
+            "id": "05001",
+            "generic_id": "GFL96"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "05001",
-        "elegooslicer": "05001"
     }
 }

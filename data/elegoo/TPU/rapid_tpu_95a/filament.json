@@ -5,10 +5,9 @@
     "density": 1.16,
     "slicer_settings": {
         "elegooslicer": {
-            "profile_name": "Elegoo RAPID TPU 95A"
+            "profile_name": "Elegoo RAPID TPU 95A",
+            "id": "ETPUB00",
+            "generic_id": "GFU99"
         }
-    },
-    "slicer_ids": {
-        "elegooslicer": "ETPUB00"
     }
 }

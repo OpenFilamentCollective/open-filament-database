@@ -7,18 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0611/4036/9460/files/MSDS_Bambu_PETG_Translucent.pdf?v=1704250140",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PETG Translucent"
+            "profile_name": "Bambu PETG Translucent",
+            "id": "GFG01",
+            "generic_id": "GFG99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PETG Translucent"
+            "profile_name": "Bambu PETG Translucent",
+            "id": "GFG01",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PETG Translucent"
+            "profile_name": "Bambu PETG Translucent",
+            "id": "GFG01",
+            "generic_id": "GFG99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFG01",
-        "orcaslicer": "GFG01",
-        "elegooslicer": "GFG01"
     }
 }

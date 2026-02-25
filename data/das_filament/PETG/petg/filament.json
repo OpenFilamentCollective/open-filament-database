@@ -10,6 +10,9 @@
     "slicer_settings": {
         "superslicer": {
             "profile_name": "DAS FILAMENT PETG"
+        },
+        "prusaslicer": {
+            "profile_name": "DAS FILAMENT PETG"
         }
     }
 }

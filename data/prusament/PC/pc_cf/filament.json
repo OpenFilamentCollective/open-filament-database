@@ -5,14 +5,14 @@
     "density": 1.22,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Prusament PC-CF"
+            "profile_name": "Prusament PC-CF",
+            "id": "GFC98",
+            "generic_id": "GFC99"
         },
         "elegooslicer": {
-            "profile_name": "Prusament PC-CF"
+            "profile_name": "Prusament PC-CF",
+            "id": "GFC98",
+            "generic_id": "GFC99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFC98",
-        "elegooslicer": "GFC98"
     }
 }

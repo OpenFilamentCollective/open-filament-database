@@ -10,6 +10,9 @@
     "slicer_settings": {
         "superslicer": {
             "profile_name": "FormFutura EasyFil PLA"
+        },
+        "prusaslicer": {
+            "profile_name": "FormFutura EasyFil PLA"
         }
     }
 }

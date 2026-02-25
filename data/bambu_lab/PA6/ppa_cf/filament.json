@@ -7,18 +7,16 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PPA-CF_MSDS.pdf?v=1724207445",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PPA-CF"
+            "profile_name": "Bambu PPA-CF",
+            "id": "GFN06"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PPA-CF"
+            "profile_name": "Bambu PPA-CF",
+            "id": "GFN06"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PPA-CF"
+            "profile_name": "Bambu PPA-CF",
+            "id": "GFN06"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFN06",
-        "orcaslicer": "GFN06",
-        "elegooslicer": "GFN06"
     }
 }

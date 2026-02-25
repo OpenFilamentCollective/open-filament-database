@@ -15,14 +15,14 @@
             "profile_name": "Hatchbox PLA"
         },
         "orcaslicer": {
-            "profile_name": "HATCHBOX PLA"
+            "profile_name": "HATCHBOX PLA",
+            "id": "GFL99",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "HATCHBOX PLA"
+            "profile_name": "HATCHBOX PLA",
+            "id": "GFL99",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFL99",
-        "elegooslicer": "GFL99"
     }
 }

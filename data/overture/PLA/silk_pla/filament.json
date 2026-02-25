@@ -9,13 +9,14 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Overture Silk PLA"
+            "profile_name": "Overture Silk PLA",
+            "id": "GFOT002",
+            "generic_id": "GFL96"
         },
         "elegooslicer": {
-            "profile_name": "Overture Silk PLA"
+            "profile_name": "Overture Silk PLA",
+            "id": "GFOT002_01",
+            "generic_id": "GFL96"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFOT002"
     }
 }

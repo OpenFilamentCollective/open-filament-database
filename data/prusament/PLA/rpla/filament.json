@@ -8,14 +8,14 @@
             "profile_name": "Prusament rPLA"
         },
         "orcaslicer": {
-            "profile_name": "Prusament rPLA"
+            "profile_name": "Prusament rPLA",
+            "id": "GFL99",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "Prusament rPLA"
+            "profile_name": "Prusament rPLA",
+            "id": "GFL99",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFL99",
-        "elegooslicer": "GFL99"
     }
 }

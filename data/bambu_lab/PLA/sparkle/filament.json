@@ -7,18 +7,19 @@
     "safety_sheet_url": "https://cdn.shopifycdn.net/s/files/1/0617/5798/0835/files/Bambu_PLA_Sparkle_MSDS.pdf?v=1696924498",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Sparkle"
+            "profile_name": "Bambu PLA Sparkle",
+            "id": "GFA08",
+            "generic_id": "GFL99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PLA Sparkle"
+            "profile_name": "Bambu PLA Sparkle",
+            "id": "GFA08",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PLA Sparkle"
+            "profile_name": "Bambu PLA Sparkle",
+            "id": "GFA08",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFA08",
-        "orcaslicer": "GFA08",
-        "elegooslicer": "GFA08"
     }
 }

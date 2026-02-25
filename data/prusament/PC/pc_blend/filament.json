@@ -8,17 +8,17 @@
             "profile_name": "Prusament PC Blend"
         },
         "orcaslicer": {
-            "profile_name": "Prusament PC Blend"
+            "profile_name": "Prusament PC Blend",
+            "id": "GFC99",
+            "generic_id": "GFC99"
         },
         "elegooslicer": {
-            "profile_name": "Prusament PC Blend"
+            "profile_name": "Prusament PC Blend",
+            "id": "GFC99",
+            "generic_id": "GFC99"
         },
         "superslicer": {
             "profile_name": "Prusament PC Blend"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFC99",
-        "elegooslicer": "GFC99"
     }
 }

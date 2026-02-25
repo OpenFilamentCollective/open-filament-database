@@ -7,18 +7,19 @@
     "safety_sheet_url": "https://store.bblcdn.com/84de0227cd6c44389be1dfccb5280dcb.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PETG HF"
+            "profile_name": "Bambu PETG HF",
+            "id": "GFG02",
+            "generic_id": "GFG99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PETG HF"
+            "profile_name": "Bambu PETG HF",
+            "id": "GFG02",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PETG HF"
+            "profile_name": "Bambu PETG HF",
+            "id": "GFG02",
+            "generic_id": "GFG99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFG02",
-        "orcaslicer": "GFG02",
-        "elegooslicer": "GFG02"
     }
 }

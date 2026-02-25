@@ -5,10 +5,9 @@
     "density": 1.23,
     "slicer_settings": {
         "elegooslicer": {
-            "profile_name": "Elegoo PLA Sparkle"
+            "profile_name": "Elegoo PLA Sparkle",
+            "id": "EPLAB00",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "elegooslicer": "EPLAB00"
     }
 }

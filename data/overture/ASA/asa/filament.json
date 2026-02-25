@@ -9,13 +9,14 @@
     "max_bed_temperature": 110,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Overture ASA"
+            "profile_name": "Overture ASA",
+            "id": "GFOT009",
+            "generic_id": "GFB98"
         },
         "elegooslicer": {
-            "profile_name": "Overture ASA"
+            "profile_name": "Overture ASA",
+            "id": "GFOT009_07",
+            "generic_id": "GFB98"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFOT009"
     }
 }

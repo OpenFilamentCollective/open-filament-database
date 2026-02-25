@@ -5,14 +5,14 @@
     "density": 1.22,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "PolyLite PLA Pro"
+            "profile_name": "PolyLite PLA Pro",
+            "id": "GFPM019",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "PolyLite PLA Pro"
+            "profile_name": "PolyLite PLA Pro",
+            "id": "GFPM019",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFPM019",
-        "elegooslicer": "GFPM019"
     }
 }

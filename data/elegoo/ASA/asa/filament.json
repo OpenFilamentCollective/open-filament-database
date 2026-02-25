@@ -9,14 +9,14 @@
     "max_bed_temperature": 110,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Elegoo ASA"
+            "profile_name": "Elegoo ASA",
+            "id": "EASAB00",
+            "generic_id": "GFB98"
         },
         "elegooslicer": {
-            "profile_name": "Elegoo ASA"
+            "profile_name": "Elegoo ASA",
+            "id": "EASAB00",
+            "generic_id": "GFB98"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFB98",
-        "elegooslicer": "EASAB00"
     }
 }

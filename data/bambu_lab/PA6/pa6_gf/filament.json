@@ -7,18 +7,16 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/MSDS_Bambu_PA6-GF.pdf?v=1710923934",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PA6-GF"
+            "profile_name": "Bambu PA6-GF",
+            "id": "GFN08"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PA6-GF"
+            "profile_name": "Bambu PA6-GF",
+            "id": "GFN08"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PA6-GF"
+            "profile_name": "Bambu PA6-GF",
+            "id": "GFN08"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFN08",
-        "orcaslicer": "GFN08",
-        "elegooslicer": "GFN08"
     }
 }

@@ -7,18 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PETG-CF_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PETG-CF"
+            "profile_name": "Bambu PETG-CF",
+            "id": "GFG50",
+            "generic_id": "GFG99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PETG-CF"
+            "profile_name": "Bambu PETG-CF",
+            "id": "GFG50",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PETG-CF"
+            "profile_name": "Bambu PETG-CF",
+            "id": "GFG50",
+            "generic_id": "GFG99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFG50",
-        "orcaslicer": "GFG50",
-        "elegooslicer": "GFG50"
     }
 }

@@ -7,18 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Basic_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Basic"
+            "profile_name": "Bambu PLA Basic",
+            "id": "GFA00",
+            "generic_id": "GFL99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PLA Basic"
+            "profile_name": "Bambu PLA Basic",
+            "id": "GFA00",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PLA Basic"
+            "profile_name": "Bambu PLA Basic",
+            "id": "GFA00",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "bambustudio": "GFA00",
-        "orcaslicer": "GFA00",
-        "elegooslicer": "GFA00"
     }
 }

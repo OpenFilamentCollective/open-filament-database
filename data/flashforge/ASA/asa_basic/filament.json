@@ -6,14 +6,14 @@
     "max_dry_temperature": 80,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Flashforge ASA Basic"
+            "profile_name": "Flashforge ASA Basic",
+            "id": "GFL99",
+            "generic_id": "GFB98"
         },
         "elegooslicer": {
-            "profile_name": "Flashforge ASA Basic"
+            "profile_name": "Flashforge ASA Basic",
+            "id": "GFL99",
+            "generic_id": "GFB98"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFL99",
-        "elegooslicer": "GFL99"
     }
 }

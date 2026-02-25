@@ -5,14 +5,14 @@
     "density": 1.27,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Elegoo PETG PRO"
+            "profile_name": "Elegoo PETG PRO",
+            "id": "EPETGPROB00",
+            "generic_id": "GFG99"
         },
         "elegooslicer": {
-            "profile_name": "Elegoo PETG PRO"
+            "profile_name": "Elegoo PETG PRO",
+            "id": "EPETGB00",
+            "generic_id": "GFG99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFG99",
-        "elegooslicer": "EPETGPROB00"
     }
 }

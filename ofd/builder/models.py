@@ -21,6 +21,8 @@ class SlicerSettings:
     """Slicer-specific settings."""
     profile_name: str
     overrides: Optional[dict[str, Any]] = None
+    id: Optional[str] = None
+    generic_id: Optional[str] = None
 
 
 @dataclass
@@ -39,6 +41,8 @@ class AllSlicerSettings:
     bambustudio: Optional[SlicerSettings] = None
     orcaslicer: Optional[SlicerSettings] = None
     cura: Optional[SlicerSettings] = None
+    superslicer: Optional[SlicerSettings] = None
+    elegooslicer: Optional[SlicerSettings] = None
     generic: Optional[GenericSlicerSettings] = None
 
 
@@ -49,6 +53,8 @@ class SlicerIds:
     bambustudio: Optional[str] = None
     orcaslicer: Optional[str] = None
     cura: Optional[str] = None
+    superslicer: Optional[str] = None
+    elegooslicer: Optional[str] = None
 
 
 @dataclass

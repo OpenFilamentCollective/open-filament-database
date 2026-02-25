@@ -5,14 +5,14 @@
     "density": 1.29,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Polymaker HT-PLA"
+            "profile_name": "Polymaker HT-PLA",
+            "id": "GFPM017",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "Polymaker HT-PLA"
+            "profile_name": "Polymaker HT-PLA",
+            "id": "GFPM017",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "GFPM017",
-        "elegooslicer": "GFPM017"
     }
 }

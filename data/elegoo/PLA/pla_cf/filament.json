@@ -5,14 +5,14 @@
     "density": 1.24,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Elegoo PLA-CF"
+            "profile_name": "Elegoo PLA-CF",
+            "id": "EPLACFB00",
+            "generic_id": "GFL99"
         },
         "elegooslicer": {
-            "profile_name": "Elegoo PLA-CF"
+            "profile_name": "Elegoo PLA-CF",
+            "id": "EPLAB00",
+            "generic_id": "GFL99"
         }
-    },
-    "slicer_ids": {
-        "orcaslicer": "EPLACFB00",
-        "elegooslicer": "EPLACFB00"
     }
 }
