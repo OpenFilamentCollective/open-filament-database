@@ -24,7 +24,7 @@
     "filament_soluble": "0",
     "min_print_speed": "15",
     "slowdown_below_layer_time": "12",
-    "start_filament_gcode": "\"M572 S{if nozzle_diameter[0]==0.6}0.17{elsif nozzle_diameter[0]==0.8}0.12{elsif nozzle_diameter[0]==0.4}0.27{elsif nozzle_diameter[0]==0.25}0.85{else}0{endif}\"",
+    "start_filament_gcode": "\"M572 S{if nozzle_diameter[0]==0.6}0.15{elsif nozzle_diameter[0]==0.8}0.1{elsif nozzle_diameter[0]==0.4}0.24{elsif nozzle_diameter[0]==0.25}0.75{else}0{endif}\\n\"",
     "bed_temperature": "60",
     "bridge_fan_speed": "100",
     "disable_fan_first_layers": "1",

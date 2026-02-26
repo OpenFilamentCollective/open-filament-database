@@ -38,7 +38,7 @@
     "max_fan_speed": "100",
     "min_fan_speed": "100",
     "temperature": "240",
-    "filament_vendor": "BASF",
+    "filament_vendor": "Forward AM",
     "filament_retract_before_travel": "2",
     "filament_wipe": "nil",
     "filament_retract_layer_change": "0",

@@ -1,7 +1,7 @@
 {
     "cooling": "1",
     "compatible_printers": "",
-    "compatible_printers_condition": "printer_model=~/(MK4S|MK4SMMU3|MK3.9S|MK3.9SMMU3)/ and nozzle_diameter[0]!=0.8 and nozzle_diameter[0]!=0.6 and printer_notes!~/.*HF_NOZZLE.*/",
+    "compatible_printers_condition": "printer_model=~/(MK4S|MK4SMMU3|MK3.9S|MK3.9SMMU3)/ and nozzle_diameter[0]!=0.8 and nozzle_diameter[0]!=0.6 and ! nozzle_high_flow[0]",
     "end_filament_gcode": "\"; Filament-specific end gcode\"",
     "extrusion_multiplier": "0.95",
     "filament_loading_speed": "10",
@@ -24,7 +24,7 @@
     "filament_soluble": "0",
     "min_print_speed": "20",
     "slowdown_below_layer_time": "6",
-    "start_filament_gcode": "\"M900 K{if nozzle_diameter[filament_extruder_id]==0.4}0.05{elsif nozzle_diameter[filament_extruder_id]==0.25}0.14{elsif nozzle_diameter[filament_extruder_id]==0.3}0.07{elsif nozzle_diameter[filament_extruder_id]==0.35}0.06{elsif nozzle_diameter[filament_extruder_id]==0.6}0.03{elsif nozzle_diameter[filament_extruder_id]==0.5}0.035{elsif nozzle_diameter[filament_extruder_id]==0.8}0.015{else}0{endif} ; Filament gcode\\n\\n{if printer_notes=~/.*(MK4IS|XLIS|MK4S|MK3.9S).*/}\\nM572 S{if nozzle_diameter[filament_extruder_id]==0.4}0.036{elsif nozzle_diameter[filament_extruder_id]==0.5}0.025{elsif nozzle_diameter[filament_extruder_id]==0.6}0.02{elsif nozzle_diameter[filament_extruder_id]==0.8}0.014{elsif nozzle_diameter[filament_extruder_id]==0.25}0.12{elsif nozzle_diameter[filament_extruder_id]==0.3}0.08{else}0{endif} ; Filament gcode\\n{endif}\\n\\nM142 S36 ; set heatbreak target temp\"",
+    "start_filament_gcode": "\"{if printer_notes!~/.*(MK4IS|XLIS|MK4S|MK3.9S|COREONE).*/}\\nM900 K{if nozzle_diameter[filament_extruder_id]==0.4}0.05{elsif nozzle_diameter[filament_extruder_id]==0.25}0.14{elsif nozzle_diameter[filament_extruder_id]==0.3}0.07{elsif nozzle_diameter[filament_extruder_id]==0.35}0.06{elsif nozzle_diameter[filament_extruder_id]==0.6}0.03{elsif nozzle_diameter[filament_extruder_id]==0.5}0.035{elsif nozzle_diameter[filament_extruder_id]==0.8}0.015{else}0{endif} ; Legacy LA\\n{else}\\nM572 S{if nozzle_diameter[filament_extruder_id]==0.4}0.036{elsif nozzle_diameter[filament_extruder_id]==0.5}0.025{elsif nozzle_diameter[filament_extruder_id]==0.6}0.022{elsif nozzle_diameter[filament_extruder_id]==0.8}0.014{elsif nozzle_diameter[filament_extruder_id]==0.25}0.12{elsif nozzle_diameter[filament_extruder_id]==0.3}0.08{else}0{endif} ; Pressure advance\\n{endif}\\n\\nM142 S36 ; set heatbreak target temp\"",
     "bed_temperature": "45",
     "bridge_fan_speed": "100",
     "disable_fan_first_layers": "1",

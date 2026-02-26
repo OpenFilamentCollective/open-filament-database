@@ -46,6 +46,7 @@
     "filament_spool_weight": "230",
     "filament_retract_speed": "60",
     "filament_retract_before_travel": "2",
+    "filament_retract_layer_change": "0",
     "idle_temperature": "70",
     "filament_travel_max_lift": "0.6"
 }

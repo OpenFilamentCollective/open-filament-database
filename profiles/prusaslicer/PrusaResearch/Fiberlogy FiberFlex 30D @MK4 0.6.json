@@ -47,6 +47,7 @@
     "filament_retract_speed": "60",
     "full_fan_speed_layer": "5",
     "filament_spool_weight": "330",
+    "filament_retract_layer_change": "0",
     "idle_temperature": "70",
     "filament_travel_max_lift": "0.6"
 }

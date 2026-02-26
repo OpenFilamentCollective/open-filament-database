@@ -3,7 +3,7 @@
     "compatible_printers": "",
     "compatible_printers_condition": "printer_model!=\"MK2SMM\" and printer_notes!~/.*MINI.*/ and printer_notes!~/.*PG.*/ and ! (printer_notes=~/.*PRINTER_VENDOR_PRUSA3D.*/ and printer_notes=~/.*PRINTER_MODEL_MK(2.5|3).*/ and single_extruder_multi_material)",
     "end_filament_gcode": "\"; Filament-specific end gcode\"",
-    "extrusion_multiplier": "0.95",
+    "extrusion_multiplier": "1",
     "filament_loading_speed": "28",
     "filament_loading_speed_start": "3",
     "filament_unloading_speed": "90",

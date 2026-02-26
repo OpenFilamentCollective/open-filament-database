@@ -1,7 +1,7 @@
 {
     "cooling": "1",
     "compatible_printers": "",
-    "compatible_printers_condition": "nozzle_diameter[0]==0.8 and printer_model==\"MK3.5\" and ! single_extruder_multi_material",
+    "compatible_printers_condition": "nozzle_diameter[0]==0.8 and printer_model=~/(MK3.5|MINIIS)/ and ! single_extruder_multi_material",
     "end_filament_gcode": "\"; Filament-specific end gcode\"",
     "extrusion_multiplier": "1",
     "filament_loading_speed": "28",
