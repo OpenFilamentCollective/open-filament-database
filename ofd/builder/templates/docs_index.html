@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Documentation - Open Filament Database</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/OpenFilamentCollective/open-filament-database/blob/main/docs/img/logo.png?raw=true">
+    <link rel="stylesheet" href="../../../adwaita.css">
+    <link rel="stylesheet" href="../../../theme.css">
+    <style>
+        .docs-list {
+            max-width: 44rem;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .docs-list h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.25rem 0;
+        }
+        .docs-list .subtitle {
+            color: var(--adw-fg-secondary);
+            margin: 0 0 1.5rem 0;
+        }
+        .docs-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .docs-list li {
+            border: 1px solid var(--adw-card-border);
+            border-radius: var(--adw-border-radius);
+            margin-bottom: 0.5rem;
+        }
+        .docs-list li a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--adw-fg);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .docs-list li a:hover {
+            background: var(--adw-card-bg);
+        }
+    </style>
+</head>
+<body>
+    <header class="headerbar">
+        <a href="../../../" class="headerbar-back">Home</a>
+        <h1>Editor Documentation</h1>
+        <div class="headerbar-spacer"></div>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">
+            <span class="theme-icon-light">☀️</span>
+            <span class="theme-icon-dark">🌙</span>
+        </button>
+    </header>
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+
+            function getPreferred() {
+                const saved = localStorage.getItem('theme');
+                if (saved) return saved;
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            function setTheme(theme) {
+                root.classList.remove('light-mode', 'dark-mode');
+                root.classList.add(theme + '-mode');
+                localStorage.setItem('theme', theme);
+            }
+
+            setTheme(getPreferred());
+
+            toggle.addEventListener('click', function() {
+                const current = root.classList.contains('dark-mode') ? 'dark' : 'light';
+                setTheme(current === 'dark' ? 'light' : 'dark');
+            });
+        })();
+    </script>
+
+    <main class="content">
+        <div class="docs-list">
+            <h2>Editor Documentation</h2>
+            <p class="subtitle"><COUNT/> documents available</p>
+            <LISTING/>
+        </div>
+    </main>
+
+    <footer>
+        <a href="../../../">Home</a>
+        <a href="https://github.com/OpenFilamentCollective/open-filament-database">GitHub</a>
+    </footer>
+</body>
+</html>

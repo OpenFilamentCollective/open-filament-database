@@ -1,0 +1,234 @@
+/*
+ * Theme - shadcn/Tailwind color system with --adw-* CSS variables
+ * used by webui.css and components.
+ */
+
+@theme {
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
+	--color-card: hsl(var(--card));
+	--color-card-foreground: hsl(var(--card-foreground));
+	--color-popover: hsl(var(--popover));
+	--color-popover-foreground: hsl(var(--popover-foreground));
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+	--color-accent: hsl(var(--accent));
+	--color-accent-foreground: hsl(var(--accent-foreground));
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
+	--color-border: hsl(var(--border));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+
+	--radius: 0.5rem;
+}
+
+/* ============================================
+   Light Theme
+   ============================================ */
+:root {
+	--background: 0 0% 98%;
+	--foreground: 0 0% 12%;
+	--card: 0 0% 100%;
+	--card-foreground: 0 0% 12%;
+	--popover: 0 0% 100%;
+	--popover-foreground: 0 0% 12%;
+	--primary: 213 74% 55%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 0 0% 91%;
+	--secondary-foreground: 0 0% 12%;
+	--muted: 30 8% 95%;
+	--muted-foreground: 0 0% 37%;
+	--accent: 0 0% 92%;
+	--accent-foreground: 0 0% 12%;
+	--destructive: 357 80% 49%;
+	--destructive-foreground: 0 0% 100%;
+	--border: 0 0% 92%;
+	--input: 0 0% 85%;
+	--ring: 213 74% 55%;
+
+	--adw-bg: #fafafa;
+	--adw-bg-secondary: #ffffff;
+	--adw-fg: #1e1e1e;
+	--adw-fg-secondary: #5e5e5e;
+	--adw-fg-tertiary: #8a8a8a;
+
+	--adw-accent: #3584e4;
+	--adw-accent-hover: #2d74cc;
+	--adw-accent-active: #2563a8;
+	--adw-accent-fg: #ffffff;
+
+	--adw-destructive: #e01b24;
+	--adw-destructive-hover: #c6171f;
+	--adw-destructive-active: #a3141a;
+
+	--adw-success: #2ec27e;
+	--adw-success-hover: #26a269;
+	--adw-success-active: #1f8555;
+
+	--adw-warning: #e5a50a;
+	--adw-warning-hover: #cd9309;
+	--adw-warning-active: #b58208;
+
+	--adw-card-bg: #ffffff;
+	--adw-card-border: rgba(0, 0, 0, 0.08);
+	--adw-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+	--adw-input-bg: #ffffff;
+	--adw-input-border: rgba(0, 0, 0, 0.15);
+	--adw-input-border-focus: var(--adw-accent);
+
+	--adw-btn-bg: #e8e8e8;
+	--adw-btn-bg-hover: #dbdbdb;
+	--adw-btn-bg-active: #cdcdcd;
+	--adw-btn-border: rgba(0, 0, 0, 0.1);
+
+	--adw-headerbar-bg: #ebebeb;
+	--adw-headerbar-border: rgba(0, 0, 0, 0.1);
+
+	--adw-sidebar-bg: #f6f5f4;
+
+	--adw-border-radius: 8px;
+	--adw-border-radius-sm: 6px;
+	--adw-border-radius-lg: 12px;
+	--adw-transition: 150ms ease;
+	--adw-focus-ring: 0 0 0 2px var(--adw-accent);
+	--adw-font: system-ui, 'Cantarell', 'Segoe UI', sans-serif;
+}
+
+/* ============================================
+   Dark Theme
+   ============================================ */
+.dark,
+.dark-mode {
+	--background: 0 0% 14%;
+	--foreground: 0 0% 100%;
+	--card: 0 0% 19%;
+	--card-foreground: 0 0% 100%;
+	--popover: 0 0% 19%;
+	--popover-foreground: 0 0% 100%;
+	--primary: 212 76% 70%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 0 0% 23%;
+	--secondary-foreground: 0 0% 100%;
+	--muted: 0 0% 17%;
+	--muted-foreground: 0 0% 69%;
+	--accent: 0 0% 19%;
+	--accent-foreground: 0 0% 100%;
+	--destructive: 9 100% 69%;
+	--destructive-foreground: 0 0% 100%;
+	--border: 0 0% 23%;
+	--input: 0 0% 20%;
+	--ring: 212 76% 70%;
+
+	--adw-bg: #242424;
+	--adw-bg-secondary: #1e1e1e;
+	--adw-fg: #ffffff;
+	--adw-fg-secondary: #b0b0b0;
+	--adw-fg-tertiary: #787878;
+
+	--adw-accent: #78aeed;
+	--adw-accent-hover: #8cbaef;
+	--adw-accent-active: #5a9bea;
+
+	--adw-destructive: #ff7b63;
+	--adw-destructive-hover: #ff9580;
+	--adw-destructive-active: #ff6147;
+
+	--adw-success: #57e389;
+	--adw-success-hover: #70e89a;
+	--adw-success-active: #3dda78;
+
+	--adw-warning: #f8e45c;
+	--adw-warning-hover: #f9e97d;
+	--adw-warning-active: #f7df3b;
+
+	--adw-card-bg: #303030;
+	--adw-card-border: rgba(255, 255, 255, 0.06);
+	--adw-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.2);
+
+	--adw-input-bg: #1e1e1e;
+	--adw-input-border: rgba(255, 255, 255, 0.1);
+
+	--adw-btn-bg: #3a3a3a;
+	--adw-btn-bg-hover: #444444;
+	--adw-btn-bg-active: #4e4e4e;
+	--adw-btn-border: rgba(255, 255, 255, 0.06);
+
+	--adw-headerbar-bg: #303030;
+	--adw-headerbar-border: rgba(255, 255, 255, 0.06);
+
+	--adw-sidebar-bg: #2a2a2a;
+}
+
+@layer base {
+	body {
+		@apply bg-background text-foreground;
+		font-family: var(--adw-font);
+	}
+
+	/* Base form input styles */
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="number"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="date"],
+	input[type="time"],
+	input[type="datetime-local"],
+	input[type="month"],
+	input[type="week"],
+	textarea,
+	select {
+		background-color: var(--adw-input-bg);
+		border: 1px solid var(--adw-input-border);
+		border-radius: var(--adw-border-radius);
+		color: var(--adw-fg);
+		font-size: 0.875rem;
+		padding: 0.5rem 0.75rem;
+		transition: border-color var(--adw-transition), box-shadow var(--adw-transition);
+	}
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="password"]:focus,
+	input[type="number"]:focus,
+	input[type="search"]:focus,
+	input[type="tel"]:focus,
+	input[type="url"]:focus,
+	input[type="date"]:focus,
+	input[type="time"]:focus,
+	input[type="datetime-local"]:focus,
+	input[type="month"]:focus,
+	input[type="week"]:focus,
+	textarea:focus,
+	select:focus {
+		border-color: var(--adw-accent);
+		box-shadow: var(--adw-focus-ring);
+		outline: none;
+	}
+
+	select {
+		cursor: pointer;
+		appearance: none;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235e5e5e' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 0.75rem center;
+		padding-right: 2rem;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		accent-color: var(--adw-accent);
+	}
+
+	::placeholder {
+		color: var(--adw-fg-tertiary);
+	}
+}

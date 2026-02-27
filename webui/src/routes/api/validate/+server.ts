@@ -2,18 +2,98 @@ import { json } from '@sveltejs/kit';
 import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { activeJobs, type Job, tryAcquireValidationLock, releaseValidationLock } from '$lib/server/jobManager';
+import { IS_CLOUD } from '$lib/server/cloudProxy';
+import { runCloudValidation } from '$lib/server/cloudValidator';
+
+const ALLOWED_TYPES = new Set(['full', 'json_files', 'logo_files', 'folder_names', 'store_ids']);
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export async function POST({ request }) {
+	// Parse JSON before acquiring lock to avoid holding lock on bad input
+	let body: any;
+	try {
+		body = await request.json();
+	} catch {
+		return json({ error: 'Invalid JSON in request body' }, { status: 400 });
+	}
+	const { type = 'full', changes, images, sessionId } = body;
+
+	// Validate type parameter
+	if (!ALLOWED_TYPES.has(type)) {
+		return json({ error: `Invalid validation type: '${type}'` }, { status: 400 });
+	}
+
+	if (IS_CLOUD) {
+		return handleCloudValidation(changes, images, sessionId);
+	} else {
+		return handleLocalValidation(type, changes, images);
+	}
+}
+
+// --- Cloud mode: in-process ajv validation with per-session jobs ---
+
+function handleCloudValidation(
+	changes: any,
+	images: any,
+	sessionId: string | undefined
+): Response {
+	// Validate sessionId format (must be a UUID from the client)
+	if (!sessionId || typeof sessionId !== 'string' || !UUID_REGEX.test(sessionId)) {
+		return json({ error: 'Missing or invalid sessionId (expected UUID)' }, { status: 400 });
+	}
+
+	const jobId = `validation-${sessionId}`;
+
+	// If this session already has a running job, return conflict
+	const existingJob = activeJobs.get(jobId);
+	if (existingJob && existingJob.status === 'running') {
+		return json(
+			{ error: 'A validation job is already running for this session.' },
+			{ status: 409 }
+		);
+	}
+
+	// Clean up old job for this session
+	if (existingJob) {
+		activeJobs.delete(jobId);
+	}
+
+	const job: Job = {
+		id: jobId,
+		type: 'validation',
+		startTime: Date.now(),
+		status: 'running',
+		events: []
+	};
+	activeJobs.set(jobId, job);
+
+	// Run validation asynchronously (not awaited — events stream via SSE)
+	runCloudValidation(job, changes || [], images || {}).catch((err) => {
+		console.error('Cloud validation unexpected error:', err);
+		if (job.status === 'running') {
+			job.status = 'error';
+			job.events.push({ type: 'error', message: 'Unexpected validation error' });
+			job.endTime = Date.now();
+		}
+	});
+
+	return json({
+		jobId,
+		sseUrl: `/api/validate/stream/${jobId}`
+	});
+}
+
+// --- Local mode: Python subprocess with global lock ---
+
+function handleLocalValidation(type: string, changes: any, images: any): Response {
 	try {
 		// Atomically try to acquire the validation lock to prevent race conditions
-		if (!tryAcquireValidationLock()) {
+		if (!tryAcquireValidationLock('validation-current')) {
 			return json(
 				{ error: 'A validation job is already running. Please wait for it to complete.' },
 				{ status: 409 }
 			);
 		}
-
-		const { type = 'full' } = await request.json();
 		const jobId = 'validation-current';
 
 		// Clean up old validation-current job if it exists and is complete
@@ -36,6 +116,14 @@ export async function POST({ request }) {
 			args.push('--store-ids');
 		}
 
+		// If changes are provided, pipe them via stdin instead of writing a temp file
+		const hasChanges = changes && Array.isArray(changes) && changes.length > 0;
+		let changesPayload: string | null = null;
+		if (hasChanges) {
+			changesPayload = JSON.stringify({ changes, images: images || {} });
+			args.push('--apply-changes', '-');
+		}
+
 		// Determine the repo root (one level up from webui)
 		const repoRoot = path.resolve(process.cwd(), '..');
 
@@ -49,20 +137,26 @@ export async function POST({ request }) {
 		};
 		activeJobs.set(jobId, job);
 
-		// Spawn Python process
+		// Spawn Python process — use 'pipe' for stdin when we have changes to send
 		const pythonProcess = spawn('python3', args, {
 			cwd: repoRoot,
-			stdio: ['ignore', 'pipe', 'pipe']
+			stdio: [changesPayload ? 'pipe' : 'ignore', 'pipe', 'pipe']
 		});
 
 		job.process = pythonProcess;
+
+		// Write changes to stdin if available, then close it
+		if (changesPayload && pythonProcess.stdin) {
+			pythonProcess.stdin.write(changesPayload);
+			pythonProcess.stdin.end();
+		}
 
 		let stdoutBuffer = '';
 		let stderrBuffer = '';
 		let finalResult: any = null;
 
 		// Parse stdout for progress events and final JSON result
-		pythonProcess.stdout.on('data', (data) => {
+		pythonProcess.stdout!.on('data', (data) => {
 			stdoutBuffer += data.toString();
 			const lines = stdoutBuffer.split('\n');
 
@@ -86,7 +180,7 @@ export async function POST({ request }) {
 			}
 		});
 
-		pythonProcess.stderr.on('data', (data) => {
+		pythonProcess.stderr!.on('data', (data) => {
 			stderrBuffer += data.toString();
 		});
 
@@ -99,7 +193,7 @@ export async function POST({ request }) {
 				message: `Failed to spawn validation process: ${error.message}`
 			});
 			job.endTime = Date.now();
-			releaseValidationLock();
+			releaseValidationLock('validation-current');
 		});
 
 		// Handle process completion
@@ -132,7 +226,7 @@ export async function POST({ request }) {
 			job.endTime = Date.now();
 
 			// Release the validation lock when job completes
-			releaseValidationLock();
+			releaseValidationLock('validation-current');
 		});
 
 		return json({
@@ -142,7 +236,7 @@ export async function POST({ request }) {
 	} catch (error) {
 		console.error('Validation endpoint error:', error);
 		// Release lock on error
-		releaseValidationLock();
+		releaseValidationLock('validation-current');
 		return json({ error: 'Internal server error' }, { status: 500 });
 	}
 }

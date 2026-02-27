@@ -1,67 +1,114 @@
 <script lang="ts">
-  import SectionsItem from "$lib/components/items/sectionsItem.svelte";
-  const { data } = $props();
+	import { onMount } from 'svelte';
+	import type { Store, Brand } from '$lib/types/database';
+	import { db } from '$lib/services/database';
+	import { env } from '$env/dynamic/public';
 
-  let filamentData = data.filamentData;
+	let stores: Store[] = $state([]);
+	let brands: Brand[] = $state([]);
+	let loading: boolean = $state(true);
+	let error: string | null = $state(null);
 
-  let brandImages = [], storeImages = [];
-
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-
-  type imageSourceType = "brand" | "store";
-
-  function getRandomImage(dict, arr, sourceType: imageSourceType) {
-    let index = getRandomInt(Object.keys(dict).length - 1);
-    let sourceKey = Object.keys(dict)[index];
-    let source = dict[sourceKey];
-    
-    if (!arr.includes(source.logo)) {
-      if (sourceType == "brand") {
-        return `/data/${source.id}/${source.logo}`;
-      } else {
-        return `/stores/${source.id}/${source.logo}`
-      }
-    } else {
-      sourceKey = Object.keys(dict)[index + 1];
-      let source = dict[sourceKey];
-
-      if (sourceType == "brand") {
-        return `/data/${source.id}/${source.logo}`;
-      } else {
-        return `/stores/${source.id}/${source.logo}`
-      }
-    }
-  }
-
-  for(let i = 0; i < 3; i++){
-    brandImages[i] = getRandomImage(filamentData.brands, brandImages, "brand");
-    storeImages[i] = getRandomImage(filamentData.stores, storeImages, "store");
-  }
+	onMount(async () => {
+		try {
+			const index = await db.loadIndex();
+			stores = index.stores;
+			brands = index.brands;
+		} catch (e) {
+			error = e instanceof Error ? e.message : 'Failed to load database';
+		} finally {
+			loading = false;
+		}
+	});
 </script>
 
 <svelte:head>
-	<title>WebUI Landing</title>
-	<meta name="description" content="This is a overview of the sections of the webui"/>
+	<title>Filament Database Editor</title>
 </svelte:head>
 
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex h-screen flex-col">
-  <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 text-center">Open Filament Database WebUI</h1>
-  <p class="mb-8 text-center">Hello and welcome to our WebUI, below you can select whether you'd like to edit our brands or stores.</p>
+<div class="container mx-auto px-6 py-10">
+	<header class="mb-10">
+		<h1 class="mb-2 text-3xl font-bold tracking-tight">Filament Database</h1>
+		<p class="text-lg text-muted-foreground">Browse and edit filament stores, brands, materials, and filaments</p>
+	</header>
 
-  <div class="flex w-full aspect-3/1 space-x-4">
-    <SectionsItem
-      link="/Brand/"
-      title="Filament Brands"
-      images={brandImages}
-    />
+	{#if loading}
+		<div class="flex items-center justify-center py-16">
+			<div class="h-8 w-8 animate-spin rounded-full border-4 border-border border-t-primary"></div>
+		</div>
+	{:else if error}
+		<div class="rounded-lg border-l-4 border-destructive bg-destructive/10 p-4">
+			<p class="text-destructive">Error: {error}</p>
+		</div>
+	{:else}
+		<div class="grid grid-cols-2 gap-6">
+			<section class="rounded-lg border bg-card p-6 shadow-sm">
+				<div class="mb-5 flex items-center justify-between">
+					<div>
+						<h2 class="mb-1 text-xl font-semibold">Brands</h2>
+						<p class="text-sm text-muted-foreground">Browse and edit filament brands</p>
+					</div>
+					<span class="flex h-10 min-w-10 items-center justify-center rounded-md bg-secondary px-3 text-xl font-semibold">{brands.length}</span>
+				</div>
+				<a
+					href="/brands"
+					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+				>
+					View All Brands
+					<span class="ml-2">-></span>
+				</a>
+			</section>
 
-    <SectionsItem
-      link="/Store/"
-      title="Filament Storefronts"
-      images={storeImages}
-    />
-  </div>
+			<section class="rounded-lg border bg-card p-6 shadow-sm">
+				<div class="mb-5 flex items-center justify-between">
+					<div>
+						<h2 class="mb-1 text-xl font-semibold">Stores</h2>
+						<p class="text-sm text-muted-foreground">Browse and edit filament stores</p>
+					</div>
+					<span class="flex h-10 min-w-10 items-center justify-center rounded-md bg-secondary px-3 text-xl font-semibold">{stores.length}</span>
+				</div>
+				<a
+					href="/stores"
+					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+				>
+					View All Stores
+					<span class="ml-2">-></span>
+				</a>
+			</section>
 
-</section>
+			<section class="rounded-lg border bg-card p-6 shadow-sm">
+				<div class="mb-5 flex items-start justify-between">
+					<div>
+						<h2 class="mb-1 text-xl font-semibold">FAQ</h2>
+						<p class="text-sm text-muted-foreground">If you've got any questions, we've got answers.</p>
+					</div>
+				</div>
+				<a
+					href="/faq"
+					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+				>
+					View Our FAQ
+					<span class="ml-2">-></span>
+				</a>
+			</section>
+
+			{#if env.PUBLIC_API_BASE_URL}
+			<section class="rounded-lg border bg-card p-6 shadow-sm">
+				<div class="mb-5 flex items-start justify-between">
+					<div>
+						<h2 class="mb-1 text-xl font-semibold">API</h2>
+						<p class="text-sm text-muted-foreground">Want to use our data? Take a look at our API documentation.</p>
+					</div>
+				</div>
+				<a
+					href={env.PUBLIC_API_BASE_URL}
+					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+				>
+					View Our API
+					<span class="ml-2">-></span>
+				</a>
+			</section>
+			{/if}
+		</div>
+	{/if}
+</div>

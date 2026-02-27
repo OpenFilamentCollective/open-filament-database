@@ -1,5 +1,6 @@
 argcomplete~=3.5.0
 iniconfig~=2.0.0
 jsonschema~=4.23.0
-ofd-validator>=0.5.0
+markdown~=3.7
+ofd-validator>=0.5.1
 referencing~=0.35.0

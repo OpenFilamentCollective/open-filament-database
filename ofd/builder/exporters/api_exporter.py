@@ -178,19 +178,19 @@ def export_brand_logos(db: Database, api_path: Path, data_dir: Path) -> tuple[in
 
     for brand in db.brands:
         # Skip brands with no logo field (empty string)
-        if not brand.logo:
+        if not brand.get("logo"):
             continue
 
-        logo_id, ext = generate_logo_id(brand.name, brand.logo)
+        logo_id, ext = generate_logo_id(brand["name"], brand["logo"])
 
         # Source logo path - use directory_name instead of slug
-        brand_dir = data_dir / brand.directory_name
-        logo_source = brand_dir / brand.logo
+        brand_dir = data_dir / brand["directory_name"]
+        logo_source = brand_dir / brand["logo"]
 
         if not logo_source.exists():
             raise FileNotFoundError(
-                f"Logo file not found for brand '{brand.name}': {logo_source}\n"
-                f"Expected logo '{brand.logo}' in directory '{brand.directory_name}'"
+                f"Logo file not found for brand '{brand['name']}': {logo_source}\n"
+                f"Expected logo '{brand['logo']}' in directory '{brand['directory_name']}'"
             )
 
         # Copy logo file
@@ -201,9 +201,9 @@ def export_brand_logos(db: Database, api_path: Path, data_dir: Path) -> tuple[in
         logo_json = {
             "id": logo_id,
             "slug": logo_id,
-            "brand_id": brand.id,
-            "brand_name": brand.name,
-            "filename": brand.logo,
+            "brand_id": brand["id"],
+            "brand_name": brand["name"],
+            "filename": brand["logo"],
             "extension": ext,
             "logo_file": f"{logo_id}.{ext}"
         }
@@ -212,13 +212,13 @@ def export_brand_logos(db: Database, api_path: Path, data_dir: Path) -> tuple[in
         logo_index.append({
             "id": logo_id,
             "slug": logo_id,
-            "brand_id": brand.id,
-            "brand_name": brand.name,
+            "brand_id": brand["id"],
+            "brand_name": brand["name"],
             "path": f"{logo_id}.json"
         })
 
         # Add to mapping (with file extension)
-        logo_id_mapping[brand.id] = f"{logo_id}.{ext}"
+        logo_id_mapping[brand["id"]] = f"{logo_id}.{ext}"
         copied_count += 1
 
     # Write index
@@ -246,19 +246,19 @@ def export_store_logos(db: Database, api_path: Path, stores_dir: Path) -> tuple[
 
     for store in db.stores:
         # Skip stores with no logo field (empty string)
-        if not store.logo:
+        if not store.get("logo"):
             continue
 
-        logo_id, ext = generate_logo_id(store.name, store.logo)
+        logo_id, ext = generate_logo_id(store["name"], store["logo"])
 
         # Source logo path - use directory_name instead of slug
-        store_dir = stores_dir / store.directory_name
-        logo_source = store_dir / store.logo
+        store_dir = stores_dir / store["directory_name"]
+        logo_source = store_dir / store["logo"]
 
         if not logo_source.exists():
             raise FileNotFoundError(
-                f"Logo file not found for store '{store.name}': {logo_source}\n"
-                f"Expected logo '{store.logo}' in directory '{store.directory_name}'"
+                f"Logo file not found for store '{store['name']}': {logo_source}\n"
+                f"Expected logo '{store['logo']}' in directory '{store['directory_name']}'"
             )
 
         # Copy logo file
@@ -269,9 +269,9 @@ def export_store_logos(db: Database, api_path: Path, stores_dir: Path) -> tuple[
         logo_json = {
             "id": logo_id,
             "slug": logo_id,
-            "store_id": store.id,
-            "store_name": store.name,
-            "filename": store.logo,
+            "store_id": store["id"],
+            "store_name": store["name"],
+            "filename": store["logo"],
             "extension": ext,
             "logo_file": f"{logo_id}.{ext}"
         }
@@ -280,13 +280,13 @@ def export_store_logos(db: Database, api_path: Path, stores_dir: Path) -> tuple[
         logo_index.append({
             "id": logo_id,
             "slug": logo_id,
-            "store_id": store.id,
-            "store_name": store.name,
+            "store_id": store["id"],
+            "store_name": store["name"],
             "path": f"{logo_id}.json"
         })
 
         # Add to mapping (with file extension)
-        logo_id_mapping[store.id] = f"{logo_id}.{ext}"
+        logo_id_mapping[store["id"]] = f"{logo_id}.{ext}"
         copied_count += 1
 
     # Write index
@@ -321,23 +321,23 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
     # Build lookup maps for efficient access
     materials_by_brand = {}
     for m in db.materials:
-        materials_by_brand.setdefault(m.brand_id, []).append(m)
+        materials_by_brand.setdefault(m["brand_id"], []).append(m)
 
     filaments_by_material = {}
     for f in db.filaments:
-        filaments_by_material.setdefault(f.material_id, []).append(f)
+        filaments_by_material.setdefault(f["material_id"], []).append(f)
 
     variants_by_filament = {}
     for v in db.variants:
-        variants_by_filament.setdefault(v.filament_id, []).append(v)
+        variants_by_filament.setdefault(v["filament_id"], []).append(v)
 
     sizes_by_variant = {}
     for s in db.sizes:
-        sizes_by_variant.setdefault(s.variant_id, []).append(s)
+        sizes_by_variant.setdefault(s["variant_id"], []).append(s)
 
     purchase_links_by_size = {}
     for pl in db.purchase_links:
-        purchase_links_by_size.setdefault(pl.size_id, []).append(pl)
+        purchase_links_by_size.setdefault(pl["size_id"], []).append(pl)
 
     # Root index
     endpoints = {
@@ -345,6 +345,8 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
         "stores": "stores/index.json",
         "brand_logos": "brands/logo/index.json",
         "store_logos": "stores/logo/index.json",
+        "badges": "badges/",
+        "editor": "editor/",
         "all": "../json/all.json"
     }
     if schemas_count > 0:
@@ -372,18 +374,18 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
     brands_index = []
 
     for brand in db.brands:
-        brand_materials = materials_by_brand.get(brand.id, [])
+        brand_materials = materials_by_brand.get(brand["id"], [])
         brand_entry = {
-            "id": brand.id,
-            "name": brand.name,
-            "slug": brand.slug,
-            "origin": brand.origin,
+            "id": brand["id"],
+            "name": brand["name"],
+            "slug": brand["slug"],
+            "origin": brand["origin"],
             "material_count": len(brand_materials),
-            "path": f"{brand.slug}/index.json"
+            "path": f"{brand['slug']}/index.json"
         }
         # Add logo_slug if brand has a logo
-        if brand.id in brand_logo_id_mapping:
-            brand_entry["logo_slug"] = brand_logo_id_mapping[brand.id]
+        if brand["id"] in brand_logo_id_mapping:
+            brand_entry["logo_slug"] = brand_logo_id_mapping[brand["id"]]
         brands_index.append(brand_entry)
 
     write_json(brands_path / "index.json", {
@@ -400,44 +402,44 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
     variant_count = 0
 
     for brand in db.brands:
-        brand_path = brands_path / brand.slug
-        brand_materials = materials_by_brand.get(brand.id, [])
+        brand_path = brands_path / brand["slug"]
+        brand_materials = materials_by_brand.get(brand["id"], [])
 
         # Brand index with materials list
         materials_list = []
         for mat in brand_materials:
-            mat_filaments = filaments_by_material.get(mat.id, [])
+            mat_filaments = filaments_by_material.get(mat["id"], [])
             materials_list.append({
-                "id": mat.id,
-                "material": mat.material,
-                "slug": mat.slug,
+                "id": mat["id"],
+                "material": mat["material"],
+                "slug": mat["slug"],
                 "filament_count": len(mat_filaments),
-                "path": f"materials/{mat.slug}/index.json"
+                "path": f"materials/{mat['slug']}/index.json"
             })
 
         brand_data = entity_to_dict(brand)
         brand_data["materials"] = materials_list
         # Add logo_slug if brand has a logo
-        if brand.id in brand_logo_id_mapping:
-            brand_data["logo_slug"] = brand_logo_id_mapping[brand.id]
+        if brand["id"] in brand_logo_id_mapping:
+            brand_data["logo_slug"] = brand_logo_id_mapping[brand["id"]]
         write_json(brand_path / "index.json", brand_data)
         brand_count += 1
 
         # Per-material structure
         for mat in brand_materials:
-            mat_path = brand_path / "materials" / mat.slug
-            mat_filaments = filaments_by_material.get(mat.id, [])
+            mat_path = brand_path / "materials" / mat["slug"]
+            mat_filaments = filaments_by_material.get(mat["id"], [])
 
             # Material index with filaments list
             filaments_list = []
             for fil in mat_filaments:
-                fil_variants = variants_by_filament.get(fil.id, [])
+                fil_variants = variants_by_filament.get(fil["id"], [])
                 filaments_list.append({
-                    "id": fil.id,
-                    "name": fil.name,
-                    "slug": fil.slug,
+                    "id": fil["id"],
+                    "name": fil["name"],
+                    "slug": fil["slug"],
                     "variant_count": len(fil_variants),
-                    "path": f"filaments/{fil.slug}/index.json"
+                    "path": f"filaments/{fil['slug']}/index.json"
                 })
 
             mat_data = entity_to_dict(mat)
@@ -447,20 +449,20 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
 
             # Per-filament structure
             for fil in mat_filaments:
-                fil_path = mat_path / "filaments" / fil.slug
-                fil_variants = variants_by_filament.get(fil.id, [])
+                fil_path = mat_path / "filaments" / fil["slug"]
+                fil_variants = variants_by_filament.get(fil["id"], [])
 
                 # Filament index with variants list
                 variants_list = []
                 for var in fil_variants:
-                    var_sizes = sizes_by_variant.get(var.id, [])
+                    var_sizes = sizes_by_variant.get(var["id"], [])
                     variants_list.append({
-                        "id": var.id,
-                        "color_name": var.color_name,
-                        "color_hex": var.color_hex,
-                        "slug": var.slug,
+                        "id": var["id"],
+                        "name": var["name"],
+                        "color_hex": var["color_hex"],
+                        "slug": var["slug"],
                         "size_count": len(var_sizes),
-                        "path": f"variants/{var.slug}.json"
+                        "path": f"variants/{var['slug']}.json"
                     })
 
                 fil_data = entity_to_dict(fil)
@@ -471,20 +473,20 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
                 # Per-variant files (leaf level - includes sizes and purchase links)
                 variants_path = fil_path / "variants"
                 for var in fil_variants:
-                    var_sizes = sizes_by_variant.get(var.id, [])
+                    var_sizes = sizes_by_variant.get(var["id"], [])
 
                     # Build sizes with their purchase links
                     sizes_data = []
                     for size in var_sizes:
                         size_dict = entity_to_dict(size)
-                        size_plinks = purchase_links_by_size.get(size.id, [])
+                        size_plinks = purchase_links_by_size.get(size["id"], [])
                         if size_plinks:
                             size_dict["purchase_links"] = [entity_to_dict(pl) for pl in size_plinks]
                         sizes_data.append(size_dict)
 
                     var_data = entity_to_dict(var)
                     var_data["sizes"] = sizes_data
-                    write_json(variants_path / f"{var.slug}.json", var_data)
+                    write_json(variants_path / f"{var['slug']}.json", var_data)
                     variant_count += 1
 
     print(f"  Written: {brand_count} brands, {material_count} materials, {filament_count} filaments, {variant_count} variants")
@@ -495,15 +497,15 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
 
     for store in db.stores:
         store_entry = {
-            "id": store.id,
-            "name": store.name,
-            "slug": store.slug,
-            "storefront_url": store.storefront_url,
-            "path": f"{store.slug}.json"
+            "id": store["id"],
+            "name": store["name"],
+            "slug": store["slug"],
+            "storefront_url": store["storefront_url"],
+            "path": f"{store['slug']}.json"
         }
         # Add logo_slug if store has a logo
-        if store.id in store_logo_id_mapping:
-            store_entry["logo_slug"] = store_logo_id_mapping[store.id]
+        if store["id"] in store_logo_id_mapping:
+            store_entry["logo_slug"] = store_logo_id_mapping[store["id"]]
         stores_index.append(store_entry)
 
     write_json(stores_path / "index.json", {
@@ -517,8 +519,8 @@ def export_api(db: Database, output_dir: str, version: str, generated_at: str, s
     for store in db.stores:
         store_data = entity_to_dict(store)
         # Add logo_slug if store has a logo
-        if store.id in store_logo_id_mapping:
-            store_data["logo_slug"] = store_logo_id_mapping[store.id]
-        write_json(stores_path / f"{store.slug}.json", store_data)
+        if store["id"] in store_logo_id_mapping:
+            store_data["logo_slug"] = store_logo_id_mapping[store["id"]]
+        write_json(stores_path / f"{store['slug']}.json", store_data)
 
     print(f"  Written: {len(db.stores)} stores")
