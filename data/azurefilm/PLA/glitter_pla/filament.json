@@ -1,0 +1,10 @@
+{
+  "id": "glitter_pla",
+  "name": "Glitter PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 225,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 55
+}
