@@ -1,0 +1,12 @@
+{
+    "id": "extrafill",
+    "name": "Extrafill",
+    "density": 1.24,
+    "diameter_tolerance": 0.05,
+    "min_print_temperature": 190,
+    "max_print_temperature": 210,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 60,
+    "data_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_PLA-Extrafill_03012019.pdf",
+    "safety_sheet_url": "http://www.fillamentum.com/wp-content/uploads/2020/10/MSDS_PLA-Extrafill_EN_07012019.pdf"
+}
