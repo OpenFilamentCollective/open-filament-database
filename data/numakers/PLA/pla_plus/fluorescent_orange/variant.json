@@ -1,0 +1,8 @@
+{
+  "id": "fluorescent_orange",
+  "name": "Fluorescent Orange",
+  "color_hex": "#FF5F1F",
+  "traits": {
+    "glow": true
+  }
+}
