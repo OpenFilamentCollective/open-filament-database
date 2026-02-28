@@ -1,0 +1,9 @@
+{
+  "id": "matte_magic_rainbow",
+  "name": "Matte Magic Rainbow",
+  "color_hex": "#9400D3",
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

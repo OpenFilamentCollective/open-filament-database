@@ -1,0 +1,9 @@
+{
+  "id": "dual_purple_gold",
+  "name": "Dual Purple Gold",
+  "color_hex": "#800080",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}
