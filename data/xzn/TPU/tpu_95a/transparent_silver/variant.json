@@ -1,0 +1,8 @@
+{
+  "id": "transparent_silver",
+  "name": "Transparent Silver",
+  "color_hex": "#D8D8D8",
+  "traits": {
+    "translucent": true
+  }
+}

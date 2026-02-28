@@ -1,0 +1,9 @@
+{
+  "id": "tri_orange_blue_green",
+  "name": "Tri Orange Blue Green",
+  "color_hex": "#E38A0D",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}
