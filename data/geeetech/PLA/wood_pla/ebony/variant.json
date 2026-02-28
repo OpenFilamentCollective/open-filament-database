@@ -1,0 +1,8 @@
+{
+  "id": "ebony",
+  "name": "Ebony",
+  "color_hex": "#3B2F2F",
+  "traits": {
+    "contains_wood": true
+  }
+}

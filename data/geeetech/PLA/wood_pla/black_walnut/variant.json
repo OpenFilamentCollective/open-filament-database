@@ -1,0 +1,8 @@
+{
+  "id": "black_walnut",
+  "name": "Black Walnut",
+  "color_hex": "#5C4033",
+  "traits": {
+    "contains_wood": true
+  }
+}

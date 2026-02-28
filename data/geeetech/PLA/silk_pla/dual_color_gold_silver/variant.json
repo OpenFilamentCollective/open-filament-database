@@ -1,0 +1,9 @@
+{
+  "id": "dual_color_gold_silver",
+  "name": "Dual Color Gold Silver",
+  "color_hex": "#D4A017",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

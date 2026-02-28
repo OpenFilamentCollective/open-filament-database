@@ -1,0 +1,8 @@
+{
+  "id": "water_blue",
+  "name": "Water Blue",
+  "color_hex": "#00BFFF",
+  "traits": {
+    "filtration_recommended": true
+  }
+}
