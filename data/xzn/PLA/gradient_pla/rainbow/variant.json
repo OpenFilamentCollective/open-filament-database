@@ -1,0 +1,8 @@
+{
+  "id": "rainbow",
+  "name": "Rainbow",
+  "color_hex": "#FF0000",
+  "traits": {
+    "gradual_color_change": true
+  }
+}
