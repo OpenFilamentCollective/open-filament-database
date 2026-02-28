@@ -1,0 +1,12 @@
+{
+    "id": "extrafill",
+    "name": "Extrafill",
+    "density": 1.07,
+    "diameter_tolerance": 0.05,
+    "min_print_temperature": 240,
+    "max_print_temperature": 255,
+    "min_bed_temperature": 80,
+    "max_bed_temperature": 105,
+    "data_sheet_url": "https://www.fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_ASA-Extrafill_03012019.pdf",
+    "safety_sheet_url": "https://www.fillamentum.com/wp-content/uploads/2020/10/MSDS_ASA_EN_29072019.pdf"
+}
