@@ -1,0 +1,9 @@
+{
+  "id": "blue_green",
+  "name": "Blue Green",
+  "color_hex": "#0000FF",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}
