@@ -1,0 +1,9 @@
+{
+  "id": "dual_gold_silver",
+  "name": "dual_gold_silver",
+  "color_hex": "#FFD700",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

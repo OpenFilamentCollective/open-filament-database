@@ -1,0 +1,9 @@
+{
+  "id": "tri_red_blue_green",
+  "name": "tri_red_blue_green",
+  "color_hex": "#CC0000",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}
