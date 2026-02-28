@@ -1,0 +1,11 @@
+{
+  "id": "gold_rose_red",
+  "name": "Gold Rose Red",
+  "color_hex": [
+    "#D4AF37",
+    "#E8537A"
+  ],
+  "traits": {
+    "silk": true
+  }
+}

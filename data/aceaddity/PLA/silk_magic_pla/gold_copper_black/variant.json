@@ -1,0 +1,11 @@
+{
+  "id": "gold_copper_black",
+  "name": "Gold Copper Black",
+  "color_hex": [
+    "#D4AF37",
+    "#B87333"
+  ],
+  "traits": {
+    "silk": true
+  }
+}
