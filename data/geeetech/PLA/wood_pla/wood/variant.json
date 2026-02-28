@@ -1,0 +1,8 @@
+{
+  "id": "wood",
+  "name": "Wood",
+  "color_hex": "#C4A882",
+  "traits": {
+    "contains_wood": true
+  }
+}

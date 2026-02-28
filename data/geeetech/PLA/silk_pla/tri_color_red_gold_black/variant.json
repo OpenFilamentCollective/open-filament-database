@@ -1,0 +1,9 @@
+{
+  "id": "tri_color_red_gold_black",
+  "name": "Tri Color Red Gold Black",
+  "color_hex": "#CC0000",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

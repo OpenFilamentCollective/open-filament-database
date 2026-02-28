@@ -1,6 +1,6 @@
 {
-  "id": "pla",
-  "name": "PLA",
+  "id": "marble_pla",
+  "name": "PLA Marble",
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "min_print_temperature": 185,
