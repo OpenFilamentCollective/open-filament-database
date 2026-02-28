@@ -1,0 +1,10 @@
+{
+  "id": "cf_abs",
+  "name": "CF-ABS",
+  "diameter_tolerance": 0.05,
+  "density": 1.10,
+  "min_print_temperature": 220,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 110
+}

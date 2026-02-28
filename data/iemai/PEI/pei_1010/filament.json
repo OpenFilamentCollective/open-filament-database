@@ -1,0 +1,10 @@
+{
+  "id": "pei_1010",
+  "name": "PEI 1010",
+  "diameter_tolerance": 0.05,
+  "density": 1.27,
+  "min_print_temperature": 330,
+  "max_print_temperature": 370,
+  "min_bed_temperature": 120,
+  "max_bed_temperature": 160
+}
