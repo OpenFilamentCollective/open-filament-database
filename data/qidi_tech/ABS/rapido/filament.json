@@ -1,0 +1,10 @@
+{
+    "id": "rapido",
+    "name": "ABS Rapido",
+    "density": 1.04,
+    "diameter_tolerance": 0.02,
+    "min_print_temperature": 240,
+    "max_print_temperature": 280,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 110
+}

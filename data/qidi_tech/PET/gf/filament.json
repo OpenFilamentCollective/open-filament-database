@@ -1,0 +1,10 @@
+{
+    "id": "gf",
+    "name": "PET-GF",
+    "density": 1.38,
+    "diameter_tolerance": 0.02,
+    "min_print_temperature": 260,
+    "max_print_temperature": 320,
+    "min_bed_temperature": 80,
+    "max_bed_temperature": 80
+}
