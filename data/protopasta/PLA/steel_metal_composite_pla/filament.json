@@ -1,0 +1,10 @@
+{
+  "id": "steel_metal_composite_pla",
+  "name": "Steel Metal Composite PLA",
+  "diameter_tolerance": 0.02,
+  "density": 2.3,
+  "min_print_temperature": 195,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70
+}
