@@ -46,6 +46,11 @@
             "type": "string",
             "description": "The source of the data, like another DB or company",
             "$ref": "#/definitions/string_limit"
+        },
+        "manufacturer": {
+            "type": "string",
+            "description": "The brand id of the parent manufacturer, for product lines sold under a different name",
+            "$ref": "#/definitions/id"
         }
     },
     "required": [
