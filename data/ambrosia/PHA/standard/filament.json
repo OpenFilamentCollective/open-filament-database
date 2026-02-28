@@ -1,0 +1,10 @@
+{
+  "id": "standard",
+  "name": "PHA",
+  "diameter_tolerance": 0.03,
+  "density": 1.21,
+  "min_print_temperature": 185,
+  "max_print_temperature": 205,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 0
+}
