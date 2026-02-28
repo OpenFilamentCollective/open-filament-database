@@ -1,0 +1,10 @@
+{
+    "id": "ultrapa",
+    "name": "UltraPA",
+    "density": 1.21,
+    "diameter_tolerance": 0.02,
+    "min_print_temperature": 260,
+    "max_print_temperature": 280,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 80
+}

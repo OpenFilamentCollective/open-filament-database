@@ -1,0 +1,10 @@
+{
+    "id": "cf25",
+    "name": "UltraPA-CF25",
+    "density": 1.23,
+    "diameter_tolerance": 0.02,
+    "min_print_temperature": 300,
+    "max_print_temperature": 340,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 80
+}
