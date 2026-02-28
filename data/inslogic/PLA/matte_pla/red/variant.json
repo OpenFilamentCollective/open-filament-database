@@ -1,0 +1,8 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#CD001A",
+  "traits": {
+    "matte": true
+  }
+}

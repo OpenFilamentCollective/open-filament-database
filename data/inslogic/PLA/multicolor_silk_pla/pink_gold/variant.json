@@ -1,0 +1,9 @@
+{
+  "id": "pink_gold",
+  "name": "Pink Gold",
+  "color_hex": "#FF69B4",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}
