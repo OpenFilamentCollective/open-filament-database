@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_red_gold_purple",
+  "name": "Tri Color Red Gold Purple",
+  "color_hex": [
+    "#CC0000",
+    "#D4A017",
+    "#800080"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "dual_color_gold_red",
+  "name": "Dual Color Gold Red",
+  "color_hex": [
+    "#D4A017",
+    "#CC0000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}

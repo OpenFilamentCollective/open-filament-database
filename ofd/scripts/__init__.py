@@ -21,11 +21,20 @@ Example:
 """
 
 import importlib
+import logging
 import pkgutil
 
-# Automatically import all modules in this package to register scripts
+logger = logging.getLogger(__name__)
+
+# Automatically import all modules in this package to register scripts.
+# Individual scripts that fail to import (e.g. missing optional deps)
+# are skipped so they don't break the rest of the package.
 __all__ = []
 for _importer, modname, ispkg in pkgutil.iter_modules(__path__):
     if not ispkg:
-        importlib.import_module(f".{modname}", __package__)
+        try:
+            importlib.import_module(f".{modname}", __package__)
+        except ImportError as exc:
+            logger.debug("Skipping script %s: %s", modname, exc)
+            continue
         __all__.append(modname)

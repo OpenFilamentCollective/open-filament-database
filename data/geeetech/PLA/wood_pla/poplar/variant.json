@@ -1,0 +1,8 @@
+{
+  "id": "poplar",
+  "name": "Poplar",
+  "color_hex": "#E8D5B7",
+  "traits": {
+    "contains_wood": true
+  }
+}

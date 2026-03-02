@@ -1,0 +1,14 @@
+{
+  "id": "tri_color_red_gold_black",
+  "name": "Tri Color Red Gold Black",
+  "color_hex": [
+    "#CC0000",
+    "#D4A017",
+    "#000000"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true,
+    "coextruded": true
+  }
+}
