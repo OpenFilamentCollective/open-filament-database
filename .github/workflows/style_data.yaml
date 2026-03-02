@@ -1,0 +1,37 @@
+name: Style data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'stores/**'
+      - 'schemas/**'
+
+permissions:
+  contents: write
+
+jobs:
+  style_data:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run style_data
+        run: python -m ofd script style_data
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ stores/
+          git diff --cached --quiet || (git commit -m "Style data" && git push)
