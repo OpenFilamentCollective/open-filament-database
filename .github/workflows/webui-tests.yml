@@ -9,6 +9,9 @@ on:
     paths:
       - 'webui/**'
 
+permissions:
+  contents: read
+
 jobs:
   test-webui:
     runs-on: ubuntu-latest

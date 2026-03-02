@@ -13,7 +13,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from ofd.base import get_script, list_scripts
+from ofd.base import get_script, list_scripts  # noqa: E402
 
 
 def _script_name_completer(prefix, parsed_args, **kwargs):
@@ -23,15 +23,16 @@ def _script_name_completer(prefix, parsed_args, **kwargs):
     except ImportError:
         return []
     from ofd.base import _script_registry
+
     return [name for name in sorted(_script_registry.keys()) if name.startswith(prefix)]
 
 
 def register_subcommand(subparsers: argparse._SubParsersAction) -> None:
     """Register the script subcommand."""
     parser = subparsers.add_parser(
-        'script',
-        help='Run utility scripts',
-        description='Run utility scripts for data management and maintenance.',
+        "script",
+        help="Run utility scripts",
+        description="Run utility scripts for data management and maintenance.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -39,25 +40,16 @@ Examples:
   ofd script style_data                 Run style_data script
   ofd script style_data --dry-run       Run style_data in dry-run mode
   ofd script style_data --help          Show help for style_data script
-  ofd script load_profiles             Run load_profiles script
-        """
+        """,
     )
 
-    parser.add_argument(
-        '--list', '-l',
-        action='store_true',
-        help='List all available scripts'
-    )
+    parser.add_argument("--list", "-l", action="store_true", help="List all available scripts")
     script_name_arg = parser.add_argument(
-        'script_name',
-        nargs='?',
-        help='Name of the script to run'
+        "script_name", nargs="?", help="Name of the script to run"
     )
     script_name_arg.completer = _script_name_completer
     parser.add_argument(
-        'script_args',
-        nargs=argparse.REMAINDER,
-        help='Arguments to pass to the script'
+        "script_args", nargs=argparse.REMAINDER, help="Arguments to pass to the script"
     )
 
     parser.set_defaults(func=run_script)
@@ -91,9 +83,9 @@ def run_script(args: argparse.Namespace) -> int:
 
         print("Available scripts:\n")
         for name, description, key_args in scripts:
-            args_str = ' '.join(f'[{a}]' for a in key_args[:3])  # Show up to 3 key args
+            args_str = " ".join(f"[{a}]" for a in key_args[:3])  # Show up to 3 key args
             if len(key_args) > 3:
-                args_str += ' ...'
+                args_str += " ..."
             print(f"  {name}")
             print(f"      {description}")
             if args_str:

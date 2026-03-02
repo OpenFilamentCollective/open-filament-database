@@ -2,5 +2,23 @@
     "id": "pc_blend",
     "name": "PC Blend",
     "diameter_tolerance": 0.03,
-    "density": 1.22
+    "density": 1.22,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament PC Blend"
+        },
+        "orcaslicer": {
+            "profile_name": "Prusament PC Blend",
+            "id": "GFC99",
+            "generic_id": "GFC99"
+        },
+        "elegooslicer": {
+            "profile_name": "Prusament PC Blend",
+            "id": "GFC99",
+            "generic_id": "GFC99"
+        },
+        "superslicer": {
+            "profile_name": "Prusament PC Blend"
+        }
+    }
 }

@@ -15,19 +15,30 @@ import urllib.parse
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import requests
 import yaml
 
 from ofd.base import BaseScript, ScriptResult, register_script
 from ofd.scripts.opt_naming_rules import (
-    KNOWN_COLORS, MATERIAL_KEYWORDS, PREFIX_RULES,
-    PRODUCT_LINE_PREFIXES, PRODUCT_LINE_SKU_PATTERNS,
-    PRODUCT_LINE_SUFFIXES, SUFFIX_STRIP_RULES, TECH_SPEC_PATTERNS,
-    MAX_VARIANT_LENGTH, MOVE_RULES, GENERIC_RENAME_RULES,
-    slugify, clean_display_name, is_color_like, has_material_keyword,
-    id_to_display_name, compute_common_prefix, prefix_implied_by_filament,
+    GENERIC_RENAME_RULES,
+    KNOWN_COLORS,
+    MAX_VARIANT_LENGTH,
+    MOVE_RULES,
+    PREFIX_RULES,
+    PRODUCT_LINE_PREFIXES,
+    PRODUCT_LINE_SKU_PATTERNS,
+    PRODUCT_LINE_SUFFIXES,
+    SUFFIX_STRIP_RULES,
+    TECH_SPEC_PATTERNS,
+    clean_display_name,
+    compute_common_prefix,
+    has_material_keyword,
+    id_to_display_name,
+    is_color_like,
+    prefix_implied_by_filament,
+    slugify,
     strip_name_prefix,
 )
 
@@ -407,7 +418,7 @@ class ImportReport:
         return "\n".join(lines)
 
 
-def convert_rgba_to_rgb(rgba: Optional[str]) -> str:
+def convert_rgba_to_rgb(rgba: str | None) -> str:
     """Convert RGBA hex to RGB hex (strip alpha channel)."""
     if not rgba:
         return "#000000"
@@ -435,10 +446,10 @@ class ImportOpenPrintTagScript(BaseScript):
     name = "import_openprinttag"
     description = "Import data from OpenPrintTag database"
 
-    def __init__(self, project_root: Optional[Path] = None):
+    def __init__(self, project_root: Path | None = None):
         super().__init__(project_root)
         self.report = ImportReport()
-        self.brandfetch_client_id: Optional[str] = None
+        self.brandfetch_client_id: str | None = None
         self.output_dir: Path = self.data_dir
         self.merge_mode: bool = True
 
@@ -528,7 +539,9 @@ class ImportOpenPrintTagScript(BaseScript):
         brands = self._load_brands(cache_path)
         materials = self._load_materials(cache_path)
         packages = self._load_packages(cache_path)
-        self.log(f"Loaded {len(brands)} brands, {len(materials)} materials, {len(packages)} packages")
+        self.log(
+            f"Loaded {len(brands)} brands, {len(materials)} materials, {len(packages)} packages"
+        )
         self.emit_progress("loading", 100, "Data loaded")
 
         # Step 3: Group data by brand
@@ -600,7 +613,7 @@ class ImportOpenPrintTagScript(BaseScript):
             if result.returncode != 0:
                 raise RuntimeError(f"git clone failed: {result.stderr}")
 
-    def _load_yaml(self, path: Path) -> Optional[dict[str, Any]]:
+    def _load_yaml(self, path: Path) -> dict[str, Any] | None:
         """Load a YAML file."""
         try:
             with open(path, encoding="utf-8") as f:
@@ -703,9 +716,7 @@ class ImportOpenPrintTagScript(BaseScript):
         # Apply brand aliases (always, regardless of merge mode)
         if brand_id in BRAND_ALIASES:
             alias_target = BRAND_ALIASES[brand_id]
-            self.report.fuzzy_matches.append(
-                f"'{brand_id}' -> '{alias_target}' (alias)"
-            )
+            self.report.fuzzy_matches.append(f"'{brand_id}' -> '{alias_target}' (alias)")
             brand_id = alias_target
 
         # Try to find existing folder using fuzzy matching (only in merge mode)
@@ -721,7 +732,7 @@ class ImportOpenPrintTagScript(BaseScript):
             brand_dir = self.output_dir / brand_id
 
         # Check for existing brand data
-        existing_brand: Optional[dict] = None
+        existing_brand: dict | None = None
         brand_json_path = brand_dir / "brand.json"
         if brand_json_path.exists():
             try:
@@ -792,9 +803,7 @@ class ImportOpenPrintTagScript(BaseScript):
             dry_run,
         )
 
-    def _find_existing_brand_folder(
-        self, brand_id: str, brand_name: str
-    ) -> Optional[Path]:
+    def _find_existing_brand_folder(self, brand_id: str, brand_name: str) -> Path | None:
         """
         Find an existing brand folder using aliases and fuzzy matching.
 
@@ -827,9 +836,9 @@ class ImportOpenPrintTagScript(BaseScript):
         normalized_id = normalize(brand_id)
         normalized_name = normalize(brand_name)
 
-        best_prefix_match: Optional[Path] = None
+        best_prefix_match: Path | None = None
         best_prefix_score: float = 0.0
-        best_fuzzy_match: Optional[Path] = None
+        best_fuzzy_match: Path | None = None
         best_fuzzy_score: float = 0.0
 
         for folder in sorted(self.data_dir.iterdir()):
@@ -840,9 +849,7 @@ class ImportOpenPrintTagScript(BaseScript):
 
             # Check for prefix match: existing folder is prefix of incoming
             # e.g., "prusament" is prefix of "prusamentresin" -> match prusament
-            if normalized_id.startswith(folder_normalized) and len(
-                folder_normalized
-            ) >= 4:
+            if normalized_id.startswith(folder_normalized) and len(folder_normalized) >= 4:
                 prefix_score = len(folder_normalized) / len(normalized_id)
                 if prefix_score > best_prefix_score:
                     best_prefix_score = prefix_score
@@ -851,9 +858,7 @@ class ImportOpenPrintTagScript(BaseScript):
 
             # Compare against both ID and name using sequence matcher
             score_id = SequenceMatcher(None, normalized_id, folder_normalized).ratio()
-            score_name = SequenceMatcher(
-                None, normalized_name, folder_normalized
-            ).ratio()
+            score_name = SequenceMatcher(None, normalized_name, folder_normalized).ratio()
             score = max(score_id, score_name)
 
             if score > best_fuzzy_score:
@@ -868,8 +873,7 @@ class ImportOpenPrintTagScript(BaseScript):
         # Prefer prefix match if good enough
         if best_prefix_match and best_prefix_score >= prefix_threshold:
             match_info = (
-                f"'{brand_id}' -> '{best_prefix_match.name}' "
-                f"(prefix: {best_prefix_score:.2f})"
+                f"'{brand_id}' -> '{best_prefix_match.name}' (prefix: {best_prefix_score:.2f})"
             )
             self.report.fuzzy_matches.append(match_info)
             return best_prefix_match
@@ -877,8 +881,7 @@ class ImportOpenPrintTagScript(BaseScript):
         # Fall back to fuzzy match
         if best_fuzzy_match and best_fuzzy_score >= fuzzy_threshold:
             match_info = (
-                f"'{brand_id}' -> '{best_fuzzy_match.name}' "
-                f"(fuzzy: {best_fuzzy_score:.2f})"
+                f"'{brand_id}' -> '{best_fuzzy_match.name}' (fuzzy: {best_fuzzy_score:.2f})"
             )
             self.report.fuzzy_matches.append(match_info)
             return best_fuzzy_match
@@ -897,7 +900,7 @@ class ImportOpenPrintTagScript(BaseScript):
 
         return result
 
-    def _discover_domain(self, brand_name: str) -> Optional[str]:
+    def _discover_domain(self, brand_name: str) -> str | None:
         """Try to find brand domain using Brandfetch CDN, then search API."""
         if not self.brandfetch_client_id:
             return None
@@ -927,7 +930,7 @@ class ImportOpenPrintTagScript(BaseScript):
         # Fallback: try Brandfetch Search API
         return self._search_brandfetch(brand_name)
 
-    def _search_brandfetch(self, brand_name: str) -> Optional[str]:
+    def _search_brandfetch(self, brand_name: str) -> str | None:
         """
         Search Brandfetch API for brand domain as fallback.
 
@@ -957,7 +960,7 @@ class ImportOpenPrintTagScript(BaseScript):
 
         return None
 
-    def _download_logo(self, domain: str, brand_dir: Path) -> Optional[str]:
+    def _download_logo(self, domain: str, brand_dir: Path) -> str | None:
         """Download logo from Brandfetch CDN."""
         if not self.brandfetch_client_id:
             return None
@@ -972,7 +975,13 @@ class ImportOpenPrintTagScript(BaseScript):
                 content_type = response.headers.get("content-type", "").lower()
 
                 # Validate content-type is actually an image
-                valid_image_types = ["image/png", "image/jpeg", "image/jpg", "image/svg+xml", "image/svg"]
+                valid_image_types = [
+                    "image/png",
+                    "image/jpeg",
+                    "image/jpg",
+                    "image/svg+xml",
+                    "image/svg",
+                ]
                 is_image = any(img_type in content_type for img_type in valid_image_types)
                 if not is_image:
                     # Not an image (likely HTML error page)
@@ -1098,7 +1107,9 @@ class ImportOpenPrintTagScript(BaseScript):
                             filament_data[field] = value
                     else:
                         # No defaults available - track as missing
-                        self.report.missing_temperatures.append(f"{brand_id}/{material_type}/{filament_id}")
+                        self.report.missing_temperatures.append(
+                            f"{brand_id}/{material_type}/{filament_id}"
+                        )
 
                 hierarchy[material_type][filament_id][color_id] = {
                     "filament": filament_data,
@@ -1337,16 +1348,26 @@ class ImportOpenPrintTagScript(BaseScript):
                 for color_id in sorted(colors.keys()):
                     for id_prefix, target_filament, target_display, name_prefixes in rules:
                         if color_id.startswith(id_prefix):
-                            new_color_id = color_id[len(id_prefix):]
+                            new_color_id = color_id[len(id_prefix) :]
                             if new_color_id:
-                                to_move.append((
-                                    color_id, new_color_id,
-                                    target_filament, target_display,
-                                    name_prefixes,
-                                ))
+                                to_move.append(
+                                    (
+                                        color_id,
+                                        new_color_id,
+                                        target_filament,
+                                        target_display,
+                                        name_prefixes,
+                                    )
+                                )
                             break
 
-                for color_id, new_color_id, target_filament, target_display, name_prefixes in to_move:
+                for (
+                    color_id,
+                    new_color_id,
+                    target_filament,
+                    target_display,
+                    name_prefixes,
+                ) in to_move:
                     entry = colors.pop(color_id)
                     entry["variant"]["id"] = new_color_id
                     old_name = entry["variant"].get("name", "")
@@ -1379,7 +1400,7 @@ class ImportOpenPrintTagScript(BaseScript):
         hierarchy: dict[str, dict[str, dict[str, dict]]],
     ) -> dict[str, dict[str, dict[str, dict]]]:
         """Strip redundant cf_/gf_/silk_/glow_ prefixes from variant IDs."""
-        for material_type, filaments in hierarchy.items():
+        for _material_type, filaments in hierarchy.items():
             for filament_id, colors in filaments.items():
                 for rule in GENERIC_RENAME_RULES:
                     if rule["subtype_contains"] not in filament_id:
@@ -1389,21 +1410,22 @@ class ImportOpenPrintTagScript(BaseScript):
                     for color_id in sorted(colors.keys()):
                         for id_prefix in rule["id_prefixes"]:
                             if color_id.startswith(id_prefix):
-                                new_id = color_id[len(id_prefix):]
+                                new_id = color_id[len(id_prefix) :]
                                 if new_id and new_id not in colors:
-                                    to_rename.append((
-                                        color_id, new_id,
-                                        rule["name_prefixes"],
-                                    ))
+                                    to_rename.append(
+                                        (
+                                            color_id,
+                                            new_id,
+                                            rule["name_prefixes"],
+                                        )
+                                    )
                                 break
 
                     for old_id, new_id, name_prefixes in to_rename:
                         entry = colors.pop(old_id)
                         entry["variant"]["id"] = new_id
                         old_name = entry["variant"].get("name", "")
-                        entry["variant"]["name"] = strip_name_prefix(
-                            old_name, name_prefixes
-                        )
+                        entry["variant"]["name"] = strip_name_prefix(old_name, name_prefixes)
                         colors[new_id] = entry
 
         return hierarchy
@@ -1413,15 +1435,13 @@ class ImportOpenPrintTagScript(BaseScript):
         hierarchy: dict[str, dict[str, dict[str, dict]]],
     ) -> dict[str, dict[str, dict[str, dict]]]:
         """Fix swapped filament/variant layers (colors at filament level)."""
-        for material_type, filaments in hierarchy.items():
+        for _material_type, filaments in hierarchy.items():
             to_swap: list[tuple[str, str]] = []
             for filament_id in sorted(filaments.keys()):
                 if not is_color_like(filament_id):
                     continue
                 colors = filaments[filament_id]
-                product_colors = [
-                    cid for cid in colors if has_material_keyword(cid)
-                ]
+                product_colors = [cid for cid in colors if has_material_keyword(cid)]
                 if not product_colors:
                     continue
                 for product_id in product_colors:
@@ -1464,8 +1484,8 @@ class ImportOpenPrintTagScript(BaseScript):
 
         rules = PREFIX_RULES[brand_id]
 
-        for material_type, filaments in hierarchy.items():
-            for filament_id, colors in filaments.items():
+        for _material_type, filaments in hierarchy.items():
+            for _filament_id, colors in filaments.items():
                 to_rename: list[tuple[str, str, dict]] = []
                 existing = set(colors.keys())
 
@@ -1473,7 +1493,7 @@ class ImportOpenPrintTagScript(BaseScript):
                     for prefix, rule in rules.items():
                         if not color_id.startswith(prefix):
                             continue
-                        new_id = color_id[len(prefix):]
+                        new_id = color_id[len(prefix) :]
                         if not new_id:
                             continue
                         if new_id in existing and new_id != color_id:
@@ -1490,9 +1510,7 @@ class ImportOpenPrintTagScript(BaseScript):
                     name_pattern = rule.get("name_pattern", "")
                     if name_pattern and old_name:
                         new_name = re.sub(name_pattern, "", old_name).strip()
-                        new_name = re.sub(
-                            r"^\s*[-\u2013\u2014]\s*", "", new_name
-                        ).strip()
+                        new_name = re.sub(r"^\s*[-\u2013\u2014]\s*", "", new_name).strip()
                         if new_name:
                             entry["variant"]["name"] = new_name
                         else:
@@ -1516,7 +1534,7 @@ class ImportOpenPrintTagScript(BaseScript):
         sku_pattern = PRODUCT_LINE_SKU_PATTERNS.get(brand_id)
         sku_re = re.compile(sku_pattern) if sku_pattern else None
 
-        for material_type, filaments in hierarchy.items():
+        for _material_type, filaments in hierarchy.items():
             for filament_id in list(filaments.keys()):
                 colors = filaments[filament_id]
                 to_move: list[tuple[str, str, str, str]] = []
@@ -1525,19 +1543,23 @@ class ImportOpenPrintTagScript(BaseScript):
                     for prefix in prefixes:
                         if not color_id.startswith(prefix):
                             continue
-                        remainder = color_id[len(prefix):]
+                        remainder = color_id[len(prefix) :]
                         if sku_re:
                             m = sku_re.match(remainder)
                             if m:
-                                remainder = remainder[m.end():]
+                                remainder = remainder[m.end() :]
                         if not remainder:
                             break
                         product_line = prefix.rstrip("_") or prefix
                         new_filament_id = f"{product_line}_{filament_id}"
-                        to_move.append((
-                            color_id, remainder,
-                            new_filament_id, product_line,
-                        ))
+                        to_move.append(
+                            (
+                                color_id,
+                                remainder,
+                                new_filament_id,
+                                product_line,
+                            )
+                        )
                         break
 
                 for old_id, new_id, new_filament_id, product_line in to_move:
@@ -1545,13 +1567,9 @@ class ImportOpenPrintTagScript(BaseScript):
 
                     # Update filament data
                     new_filament_data = entry["filament"].copy()
-                    source_name = new_filament_data.get(
-                        "name", clean_display_name(filament_id)
-                    )
+                    source_name = new_filament_data.get("name", clean_display_name(filament_id))
                     new_filament_data["id"] = new_filament_id
-                    new_filament_data["name"] = (
-                        f"{clean_display_name(product_line)} {source_name}"
-                    )
+                    new_filament_data["name"] = f"{clean_display_name(product_line)} {source_name}"
                     entry["filament"] = new_filament_data
                     entry["variant"]["id"] = new_id
                     entry["variant"]["name"] = clean_display_name(new_id)
@@ -1577,7 +1595,7 @@ class ImportOpenPrintTagScript(BaseScript):
 
         suffixes = PRODUCT_LINE_SUFFIXES[brand_id]
 
-        for material_type, filaments in hierarchy.items():
+        for _material_type, filaments in hierarchy.items():
             for filament_id in list(filaments.keys()):
                 colors = filaments[filament_id]
                 to_move: list[tuple[str, str, str, str]] = []
@@ -1591,23 +1609,23 @@ class ImportOpenPrintTagScript(BaseScript):
                             break
                         product_line = suffix.lstrip("_") or suffix
                         new_filament_id = f"{product_line}_{filament_id}"
-                        to_move.append((
-                            color_id, remainder,
-                            new_filament_id, product_line,
-                        ))
+                        to_move.append(
+                            (
+                                color_id,
+                                remainder,
+                                new_filament_id,
+                                product_line,
+                            )
+                        )
                         break
 
                 for old_id, new_id, new_filament_id, product_line in to_move:
                     entry = colors.pop(old_id)
 
                     new_filament_data = entry["filament"].copy()
-                    source_name = new_filament_data.get(
-                        "name", clean_display_name(filament_id)
-                    )
+                    source_name = new_filament_data.get("name", clean_display_name(filament_id))
                     new_filament_data["id"] = new_filament_id
-                    new_filament_data["name"] = (
-                        f"{clean_display_name(product_line)} {source_name}"
-                    )
+                    new_filament_data["name"] = f"{clean_display_name(product_line)} {source_name}"
                     entry["filament"] = new_filament_data
                     entry["variant"]["id"] = new_id
                     entry["variant"]["name"] = clean_display_name(new_id)
@@ -1632,8 +1650,8 @@ class ImportOpenPrintTagScript(BaseScript):
 
         rules = SUFFIX_STRIP_RULES[brand_id]
 
-        for material_type, filaments in hierarchy.items():
-            for filament_id, colors in filaments.items():
+        for _material_type, filaments in hierarchy.items():
+            for _filament_id, colors in filaments.items():
                 to_rename: list[tuple[str, str, dict]] = []
                 existing = set(colors.keys())
 
@@ -1676,7 +1694,7 @@ class ImportOpenPrintTagScript(BaseScript):
 
         E.g. hierarchy[PLA][silk_pla_red][default] -> hierarchy[PLA][silk_pla][red]
         """
-        for material_type, filaments in hierarchy.items():
+        for _material_type, filaments in hierarchy.items():
             to_split: list[tuple[str, str, str]] = []
 
             for filament_id in sorted(filaments.keys()):
@@ -1684,11 +1702,7 @@ class ImportOpenPrintTagScript(BaseScript):
                 for i in range(1, min(3, len(parts))):
                     tail = "_".join(parts[-i:])
                     head = "_".join(parts[:-i])
-                    if (
-                        tail in KNOWN_COLORS
-                        and head
-                        and has_material_keyword(head)
-                    ):
+                    if tail in KNOWN_COLORS and head and has_material_keyword(head):
                         to_split.append((filament_id, head, tail))
                         break
 
@@ -1705,9 +1719,7 @@ class ImportOpenPrintTagScript(BaseScript):
                     # Update filament data
                     new_filament_data = entry["filament"].copy()
                     new_filament_data["id"] = new_filament_id
-                    new_filament_data["name"] = id_to_display_name(
-                        new_filament_id
-                    )
+                    new_filament_data["name"] = id_to_display_name(new_filament_id)
                     entry["filament"] = new_filament_data
 
                     # Use the split-off color as the variant ID if current
@@ -1718,9 +1730,7 @@ class ImportOpenPrintTagScript(BaseScript):
                         new_variant_id = color_id
 
                     entry["variant"]["id"] = new_variant_id
-                    entry["variant"]["name"] = clean_display_name(
-                        new_variant_id
-                    )
+                    entry["variant"]["name"] = clean_display_name(new_variant_id)
 
                     if new_variant_id not in target:
                         target[new_variant_id] = entry
@@ -1733,7 +1743,7 @@ class ImportOpenPrintTagScript(BaseScript):
         hierarchy: dict[str, dict[str, dict[str, dict]]],
     ) -> dict[str, dict[str, dict[str, dict]]]:
         """Detect and fix common prefixes across all variants in a filament (Cat 8)."""
-        for material_type, filaments in hierarchy.items():
+        for _material_type, filaments in hierarchy.items():
             for filament_id in list(filaments.keys()):
                 colors = filaments[filament_id]
                 if len(colors) < 2:
@@ -1754,7 +1764,7 @@ class ImportOpenPrintTagScript(BaseScript):
                     to_rename: list[tuple[str, str]] = []
                     existing = set(colors.keys())
                     for old_id in sorted(colors.keys()):
-                        new_id = old_id[len(cp):]
+                        new_id = old_id[len(cp) :]
                         if not new_id:
                             continue
                         if new_id in existing and new_id != old_id:
@@ -1777,7 +1787,7 @@ class ImportOpenPrintTagScript(BaseScript):
 
                     to_move: list[tuple[str, str]] = []
                     for old_id in sorted(colors.keys()):
-                        new_id = old_id[len(cp):]
+                        new_id = old_id[len(cp) :]
                         if not new_id:
                             continue
                         to_move.append((old_id, new_id))
@@ -1789,9 +1799,7 @@ class ImportOpenPrintTagScript(BaseScript):
                         entry = colors.pop(old_id)
                         new_filament_data = entry["filament"].copy()
                         new_filament_data["id"] = new_filament_id
-                        new_filament_data["name"] = id_to_display_name(
-                            new_filament_id
-                        )
+                        new_filament_data["name"] = id_to_display_name(new_filament_id)
                         entry["filament"] = new_filament_data
                         entry["variant"]["id"] = new_id
                         entry["variant"]["name"] = self._clean_variant_name(
@@ -1826,8 +1834,8 @@ class ImportOpenPrintTagScript(BaseScript):
         hierarchy: dict[str, dict[str, dict[str, dict]]],
     ) -> dict[str, dict[str, dict[str, dict]]]:
         """Fix broken display names: empty parens, double spaces, etc. (Cat 9)."""
-        for material_type, filaments in hierarchy.items():
-            for filament_id, colors in filaments.items():
+        for _material_type, filaments in hierarchy.items():
+            for _filament_id, colors in filaments.items():
                 for color_id, entry in colors.items():
                     variant = entry.get("variant", {})
                     name = variant.get("name", "")
@@ -1970,13 +1978,20 @@ class ImportOpenPrintTagScript(BaseScript):
                         remainder = "_".join(parts[i:])
                         candidate_filament = f"{filament_id}_{prefix}"
 
-                        if candidate_filament in combined and remainder in combined[candidate_filament]:
+                        if (
+                            candidate_filament in combined
+                            and remainder in combined[candidate_filament]
+                        ):
                             if candidate_filament != filament_id or remainder != color_id:
-                                duplicates.append((
-                                    material_type,
-                                    filament_id, color_id,
-                                    candidate_filament, remainder,
-                                ))
+                                duplicates.append(
+                                    (
+                                        material_type,
+                                        filament_id,
+                                        color_id,
+                                        candidate_filament,
+                                        remainder,
+                                    )
+                                )
                                 seen.add(key)
                                 found = True
                                 break
@@ -1994,14 +2009,18 @@ class ImportOpenPrintTagScript(BaseScript):
                                 continue
                             if not filament_id.startswith(base_filament + "_"):
                                 continue
-                            suffix = filament_id[len(base_filament) + 1:]
+                            suffix = filament_id[len(base_filament) + 1 :]
                             reconstructed_color = f"{suffix}_{color_id}"
                             if reconstructed_color in existing_index[material_type][base_filament]:
-                                duplicates.append((
-                                    material_type,
-                                    filament_id, color_id,
-                                    base_filament, reconstructed_color,
-                                ))
+                                duplicates.append(
+                                    (
+                                        material_type,
+                                        filament_id,
+                                        color_id,
+                                        base_filament,
+                                        reconstructed_color,
+                                    )
+                                )
                                 seen.add(key)
                                 break
 

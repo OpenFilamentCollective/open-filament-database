@@ -25,7 +25,7 @@ import pkgutil
 
 # Automatically import all modules in this package to register scripts
 __all__ = []
-for importer, modname, ispkg in pkgutil.iter_modules(__path__):
+for _importer, modname, ispkg in pkgutil.iter_modules(__path__):
     if not ispkg:
-        importlib.import_module(f'.{modname}', __package__)
+        importlib.import_module(f".{modname}", __package__)
         __all__.append(modname)

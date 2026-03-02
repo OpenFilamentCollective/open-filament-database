@@ -79,7 +79,7 @@ def export_badges(db: Database, output_dir: str, **kwargs):
     for name, (label, value, color) in badges.items():
         svg = _render_badge(label, value, color)
         badge_file = badges_path / f"{name}.svg"
-        with open(badge_file, 'w', encoding='utf-8') as f:
+        with open(badge_file, "w", encoding="utf-8") as f:
             f.write(svg)
 
     print(f"  Written: {len(badges)} badge SVGs to {badges_path}")

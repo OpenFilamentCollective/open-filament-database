@@ -22,19 +22,19 @@ def generate_listing_html(directory: Path, output_root: Path) -> str:
             continue
 
         if item.is_dir():
-            lines.append(f'<li><span class="dir"><a href="{item.name}/">{item.name}/</a></span></li>')
+            lines.append(
+                f'<li><span class="dir"><a href="{item.name}/">{item.name}/</a></span></li>'
+            )
         else:
-            lines.append(f'<li><span class="file"><a href="{item.name}">{item.name}</a></span></li>')
+            lines.append(
+                f'<li><span class="file"><a href="{item.name}">{item.name}</a></span></li>'
+            )
 
     lines.append("</ul>")
     return "\n".join(lines)
 
 
-def export_directory_listings(
-    output_dir: str,
-    templates_dir: str = None,
-    **kwargs
-):
+def export_directory_listings(output_dir: str, templates_dir: str = None, **kwargs):
     """Generate index.html directory listings for all directories."""
     output_path = Path(output_dir)
 
@@ -48,7 +48,7 @@ def export_directory_listings(
         print(f"  Warning: Directory listing template not found at {template_path}")
         return
 
-    with open(template_path, 'r', encoding='utf-8') as f:
+    with open(template_path, encoding="utf-8") as f:
         template = f.read()
 
     count = 0
@@ -84,7 +84,7 @@ def export_directory_listings(
         html = html.replace("<LISTING/>", listing_html)
 
         # Write file
-        with open(index_file, 'w', encoding='utf-8') as f:
+        with open(index_file, "w", encoding="utf-8") as f:
             f.write(html)
 
         count += 1

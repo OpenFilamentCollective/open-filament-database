@@ -2,5 +2,10 @@
     "id": "tpu_95a",
     "name": "TPU 95A",
     "diameter_tolerance": 0.06,
-    "density": 1.22
+    "density": 1.22,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament TPU 95A"
+        }
+    }
 }

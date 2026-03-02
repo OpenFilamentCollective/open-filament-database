@@ -3,5 +3,17 @@
     "name": "rPLA RE-ADD",
     "diameter_tolerance": 0.02,
     "density": 1.25,
-    "max_dry_temperature": 50
+    "max_dry_temperature": 50,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "addnorth PLA rPLA RE-ADD",
+            "id": "GF_ANRPL",
+            "generic_id": "GFL99"
+        },
+        "orcaslicer": {
+            "profile_name": "addnorth PLA rPLA RE-ADD",
+            "id": "GF_ANRPL",
+            "generic_id": "GFL99"
+        }
+    }
 }

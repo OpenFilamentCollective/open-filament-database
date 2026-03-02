@@ -2,5 +2,10 @@
     "id": "petg_v0",
     "name": "PETG V0",
     "diameter_tolerance": 0.02,
-    "density": 1.27
+    "density": 1.27,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament PETG V0"
+        }
+    }
 }

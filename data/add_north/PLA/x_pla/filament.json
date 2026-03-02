@@ -5,5 +5,17 @@
     "density": 1.24,
     "max_dry_temperature": 50,
     "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/XPLA_TDS_kdctbP.pdf",
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_XPLA_5chi81.pdf"
+    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_XPLA_5chi81.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "addnorth PLA X-PLA",
+            "id": "GF_ANXP",
+            "generic_id": "GFL99"
+        },
+        "orcaslicer": {
+            "profile_name": "addnorth PLA X-PLA",
+            "id": "GF_ANXP",
+            "generic_id": "GFL99"
+        }
+    }
 }

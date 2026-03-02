@@ -1,0 +1,10 @@
+{
+  "id": "pc_abs",
+  "name": "PC-ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.1,
+  "min_print_temperature": 240,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110
+}

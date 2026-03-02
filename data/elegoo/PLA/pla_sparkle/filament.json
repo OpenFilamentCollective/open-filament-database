@@ -2,5 +2,12 @@
     "id": "pla_sparkle",
     "name": "PLA Sparkle",
     "diameter_tolerance": 0.02,
-    "density": 1.23
+    "density": 1.23,
+    "slicer_settings": {
+        "elegooslicer": {
+            "profile_name": "Elegoo PLA Sparkle",
+            "id": "EPLAB00",
+            "generic_id": "GFL99"
+        }
+    }
 }

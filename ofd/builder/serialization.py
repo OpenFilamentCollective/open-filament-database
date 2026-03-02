@@ -9,7 +9,7 @@ import sqlite3
 from typing import Any, Optional
 
 
-def entity_to_dict(entity: Any, exclude_none: bool = True) -> Optional[dict]:
+def entity_to_dict(entity: Any, exclude_none: bool = True) -> dict | None:
     """
     Prepare a dict entity for export.
 

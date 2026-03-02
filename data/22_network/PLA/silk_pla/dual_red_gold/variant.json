@@ -1,0 +1,9 @@
+{
+  "id": "dual_red_gold",
+  "name": "Dual Red Gold",
+  "color_hex": "#CC0000",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

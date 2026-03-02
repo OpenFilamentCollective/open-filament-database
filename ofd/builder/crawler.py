@@ -11,9 +11,16 @@ from pathlib import Path
 from .errors import BuildResult
 from .models import Database
 from .utils import (
-    generate_brand_id, generate_material_id, generate_filament_id,
-    generate_variant_id, generate_size_id, generate_store_id,
-    generate_purchase_link_id, normalize_color_hex, slugify, ensure_list
+    ensure_list,
+    generate_brand_id,
+    generate_filament_id,
+    generate_material_id,
+    generate_purchase_link_id,
+    generate_size_id,
+    generate_store_id,
+    generate_variant_id,
+    normalize_color_hex,
+    slugify,
 )
 
 
@@ -42,7 +49,7 @@ class DataCrawler:
         self._crawl_data_directory()
 
         # Print summary
-        print(f"\nCrawl complete!")
+        print("\nCrawl complete!")
         print(f"  Brands: {len(self.db.brands)}")
         print(f"  Materials: {len(self.db.materials)}")
         print(f"  Filaments: {len(self.db.filaments)}")
@@ -56,13 +63,15 @@ class DataCrawler:
     def _crawl_stores_directory(self):
         """Crawl the stores/ directory."""
         if not self.stores_dir.exists():
-            self._result.add_warning("Directory", "Stores directory does not exist", self.stores_dir)
+            self._result.add_warning(
+                "Directory", "Stores directory does not exist", self.stores_dir
+            )
             return
 
         for store_dir in sorted(self.stores_dir.iterdir()):
             if not store_dir.is_dir():
                 continue
-            if store_dir.name.startswith('.'):
+            if store_dir.name.startswith("."):
                 continue
 
             self._process_store_directory(store_dir)
@@ -74,9 +83,9 @@ class DataCrawler:
             return
 
         try:
-            with open(store_json, 'r', encoding='utf-8') as f:
+            with open(store_json, encoding="utf-8") as f:
                 data = json.load(f)
-        except (json.JSONDecodeError, IOError) as e:
+        except (OSError, json.JSONDecodeError) as e:
             self._result.add_warning("JSON Parse", f"Failed to parse: {e}", store_json)
             return
 
@@ -114,7 +123,7 @@ class DataCrawler:
         for brand_dir in sorted(self.data_dir.iterdir()):
             if not brand_dir.is_dir():
                 continue
-            if brand_dir.name.startswith('.'):
+            if brand_dir.name.startswith("."):
                 continue
 
             self._process_brand_directory(brand_dir)
@@ -130,9 +139,9 @@ class DataCrawler:
             return
 
         try:
-            with open(brand_json, 'r', encoding='utf-8') as f:
+            with open(brand_json, encoding="utf-8") as f:
                 brand_data = json.load(f)
-        except (json.JSONDecodeError, IOError) as e:
+        except (OSError, json.JSONDecodeError) as e:
             self._result.add_warning("JSON Parse", f"Failed to parse: {e}", brand_json)
             return
 
@@ -157,7 +166,7 @@ class DataCrawler:
         for material_dir in sorted(brand_dir.iterdir()):
             if not material_dir.is_dir():
                 continue
-            if material_dir.name.startswith('.'):
+            if material_dir.name.startswith("."):
                 continue
 
             self._process_material_directory(material_dir, brand_id)
@@ -171,9 +180,9 @@ class DataCrawler:
         material_data = {}
         if material_json.exists():
             try:
-                with open(material_json, 'r', encoding='utf-8') as f:
+                with open(material_json, encoding="utf-8") as f:
                     material_data = json.load(f)
-            except (json.JSONDecodeError, IOError) as e:
+            except (OSError, json.JSONDecodeError) as e:
                 self._result.add_warning("JSON Parse", f"Failed to parse: {e}", material_json)
 
         # Create material
@@ -198,7 +207,7 @@ class DataCrawler:
         for filament_dir in sorted(material_dir.iterdir()):
             if not filament_dir.is_dir():
                 continue
-            if filament_dir.name.startswith('.'):
+            if filament_dir.name.startswith("."):
                 continue
 
             self._process_filament_directory(filament_dir, brand_id, material_id, material_name)
@@ -214,9 +223,9 @@ class DataCrawler:
             return
 
         try:
-            with open(filament_json, 'r', encoding='utf-8') as f:
+            with open(filament_json, encoding="utf-8") as f:
                 filament_data = json.load(f)
-        except (json.JSONDecodeError, IOError) as e:
+        except (OSError, json.JSONDecodeError) as e:
             self._result.add_warning("JSON Parse", f"Failed to parse: {e}", filament_json)
             return
 
@@ -244,7 +253,7 @@ class DataCrawler:
         for variant_dir in sorted(filament_dir.iterdir()):
             if not variant_dir.is_dir():
                 continue
-            if variant_dir.name.startswith('.'):
+            if variant_dir.name.startswith("."):
                 continue
 
             self._process_variant_directory(variant_dir, filament_id)
@@ -258,9 +267,9 @@ class DataCrawler:
             return
 
         try:
-            with open(variant_json, 'r', encoding='utf-8') as f:
+            with open(variant_json, encoding="utf-8") as f:
                 variant_data = json.load(f)
-        except (json.JSONDecodeError, IOError) as e:
+        except (OSError, json.JSONDecodeError) as e:
             self._result.add_warning("JSON Parse", f"Failed to parse: {e}", variant_json)
             return
 
@@ -306,9 +315,9 @@ class DataCrawler:
     def _process_sizes_file(self, sizes_json: Path, variant_id: str):
         """Process sizes.json file to create sizes and purchase links."""
         try:
-            with open(sizes_json, 'r', encoding='utf-8') as f:
+            with open(sizes_json, encoding="utf-8") as f:
                 sizes_data = json.load(f)
-        except (json.JSONDecodeError, IOError) as e:
+        except (OSError, json.JSONDecodeError) as e:
             self._result.add_warning("JSON Parse", f"Failed to parse: {e}", sizes_json)
             return
 
@@ -327,7 +336,9 @@ class DataCrawler:
             diameter = 1.75
 
         if weight is None:
-            self._result.add_warning("Missing Field", f"Size entry [{index}] missing filament_weight", sizes_json)
+            self._result.add_warning(
+                "Missing Field", f"Size entry [{index}] missing filament_weight", sizes_json
+            )
             return
 
         size_id = generate_size_id(variant_id, size_entry, index)
@@ -360,7 +371,9 @@ class DataCrawler:
         for pl_idx, pl_entry in enumerate(purchase_links_data):
             self._create_purchase_link(pl_entry, size_id, index, pl_idx, sizes_json)
 
-    def _create_purchase_link(self, pl_entry: dict, size_id: str, size_index: int, link_index: int, sizes_json: Path):
+    def _create_purchase_link(
+        self, pl_entry: dict, size_id: str, size_index: int, link_index: int, sizes_json: Path
+    ):
         """Create a purchase link entity."""
         original_store_id = pl_entry.get("store_id")
         url = pl_entry.get("url")
@@ -369,7 +382,7 @@ class DataCrawler:
             self._result.add_warning(
                 "Missing Field",
                 f"Purchase link [{size_index}].purchase_links[{link_index}] missing store_id or url",
-                sizes_json
+                sizes_json,
             )
             return
 
@@ -379,7 +392,7 @@ class DataCrawler:
             self._result.add_warning(
                 "Invalid Reference",
                 f"Unknown store_id '{original_store_id}' at [{size_index}].purchase_links[{link_index}]",
-                sizes_json
+                sizes_json,
             )
             return
 

@@ -9,7 +9,6 @@ collected and displayed at the end.
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Optional
 
 
 class BuildErrorLevel(Enum):
@@ -20,10 +19,11 @@ class BuildErrorLevel(Enum):
 @dataclass
 class BuildError:
     """Represents a single build error or warning."""
+
     level: BuildErrorLevel
     category: str
     message: str
-    path: Optional[Path] = None
+    path: Path | None = None
 
     def __str__(self) -> str:
         path_str = f" [{self.path}]" if self.path else ""
@@ -33,28 +33,23 @@ class BuildError:
 @dataclass
 class BuildResult:
     """Aggregates build errors and warnings across all stages."""
+
     errors: list[BuildError] = field(default_factory=list)
 
     def add_error(self, error: BuildError) -> None:
         self.errors.append(error)
 
-    def add_warning(self, category: str, message: str, path: Optional[Path] = None) -> None:
-        self.errors.append(BuildError(
-            level=BuildErrorLevel.WARNING,
-            category=category,
-            message=message,
-            path=path
-        ))
+    def add_warning(self, category: str, message: str, path: Path | None = None) -> None:
+        self.errors.append(
+            BuildError(level=BuildErrorLevel.WARNING, category=category, message=message, path=path)
+        )
 
-    def add_err(self, category: str, message: str, path: Optional[Path] = None) -> None:
-        self.errors.append(BuildError(
-            level=BuildErrorLevel.ERROR,
-            category=category,
-            message=message,
-            path=path
-        ))
+    def add_err(self, category: str, message: str, path: Path | None = None) -> None:
+        self.errors.append(
+            BuildError(level=BuildErrorLevel.ERROR, category=category, message=message, path=path)
+        )
 
-    def merge(self, other: 'BuildResult') -> None:
+    def merge(self, other: "BuildResult") -> None:
         """Merge errors from another BuildResult into this one."""
         self.errors.extend(other.errors)
 

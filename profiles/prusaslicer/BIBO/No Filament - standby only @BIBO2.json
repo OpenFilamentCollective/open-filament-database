@@ -1,6 +1,0 @@
-{
-    "first_layer_temperature": "170",
-    "temperature": "170",
-    "compatible_printers_condition": "printer_notes=~/.*PRINTER_VENDOR_BIBO.*/ and num_extruders==2",
-    "filament_settings_id": "No Filament - standby only @BIBO2"
-}

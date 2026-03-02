@@ -1,0 +1,10 @@
+{
+  "id": "printed_solid",
+  "name": "Printed Solid",
+  "storefront_url": "https://www.printedsolid.com",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": []
+}

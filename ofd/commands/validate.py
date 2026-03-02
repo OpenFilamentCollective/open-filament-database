@@ -10,38 +10,54 @@ import json
 import os
 import sys
 from pathlib import Path
-from typing import Dict, List
 
 from ofd.validation import (
+    ValidationError,
     ValidationOrchestrator,
     ValidationResult,
-    ValidationError,
 )
-
 
 # Project root for resolving relative paths
 project_root = Path(__file__).parent.parent.parent
 
 # ANSI colors (only when stdout is a terminal)
-_color = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
+_color = hasattr(sys.stdout, "isatty") and sys.stdout.isatty()
+
 
 def _c(code: str, text: str) -> str:
     return f"\033[{code}m{text}\033[0m" if _color else text
 
-def _red(t: str) -> str: return _c("31", t)
-def _green(t: str) -> str: return _c("32", t)
-def _yellow(t: str) -> str: return _c("33", t)
-def _cyan(t: str) -> str: return _c("36", t)
-def _bold(t: str) -> str: return _c("1", t)
-def _dim(t: str) -> str: return _c("2", t)
+
+def _red(t: str) -> str:
+    return _c("31", t)
+
+
+def _green(t: str) -> str:
+    return _c("32", t)
+
+
+def _yellow(t: str) -> str:
+    return _c("33", t)
+
+
+def _cyan(t: str) -> str:
+    return _c("36", t)
+
+
+def _bold(t: str) -> str:
+    return _c("1", t)
+
+
+def _dim(t: str) -> str:
+    return _c("2", t)
 
 
 def register_subcommand(subparsers: argparse._SubParsersAction) -> None:
     """Register the validate subcommand."""
     parser = subparsers.add_parser(
-        'validate',
-        help='Validate data files against schemas',
-        description='Validate all data files (brands, materials, filaments, variants, sizes, stores) against their JSON schemas.',
+        "validate",
+        help="Validate data files against schemas",
+        description="Validate all data files (brands, materials, filaments, variants, sizes, stores) against their JSON schemas.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -50,62 +66,41 @@ Examples:
   ofd validate --json-files    Only validate JSON schema compliance
   ofd validate --json          Output results as JSON
   ofd validate --progress      Emit progress events for SSE
-        """
+        """,
     )
 
     # Validation scope options
-    scope_group = parser.add_argument_group('validation scope')
+    scope_group = parser.add_argument_group("validation scope")
     scope_group.add_argument(
-        '--json-files',
-        action='store_true',
-        help='Validate JSON files against schemas'
+        "--json-files", action="store_true", help="Validate JSON files against schemas"
     )
     scope_group.add_argument(
-        '--logos', '--logo-files',
-        action='store_true',
-        dest='logos',
-        help='Validate logo files (dimensions, naming, format)'
+        "--logos",
+        "--logo-files",
+        action="store_true",
+        dest="logos",
+        help="Validate logo files (dimensions, naming, format)",
     )
     scope_group.add_argument(
-        '--folder-names',
-        action='store_true',
-        help='Validate folder names match JSON content'
+        "--folder-names", action="store_true", help="Validate folder names match JSON content"
     )
     scope_group.add_argument(
-        '--store-ids',
-        action='store_true',
-        help='Validate store IDs in purchase links'
+        "--store-ids", action="store_true", help="Validate store IDs in purchase links"
     )
-    scope_group.add_argument(
-        '--gtin',
-        action='store_true',
-        help='Validate GTIN/EAN fields'
-    )
+    scope_group.add_argument("--gtin", action="store_true", help="Validate GTIN/EAN fields")
 
     # Output options
-    output_group = parser.add_argument_group('output options')
+    output_group = parser.add_argument_group("output options")
+    output_group.add_argument("--json", action="store_true", help="Output results as JSON")
     output_group.add_argument(
-        '--json',
-        action='store_true',
-        help='Output results as JSON'
-    )
-    output_group.add_argument(
-        '--progress',
-        action='store_true',
-        help='Emit progress events (for SSE streaming)'
+        "--progress", action="store_true", help="Emit progress events (for SSE streaming)"
     )
 
     # Directory options
-    dir_group = parser.add_argument_group('directory options')
+    dir_group = parser.add_argument_group("directory options")
+    dir_group.add_argument("--data-dir", default="data", help="Data directory (default: data)")
     dir_group.add_argument(
-        '--data-dir',
-        default='data',
-        help='Data directory (default: data)'
-    )
-    dir_group.add_argument(
-        '--stores-dir',
-        default='stores',
-        help='Stores directory (default: stores)'
+        "--stores-dir", default="stores", help="Stores directory (default: stores)"
     )
 
     # Changes overlay options
@@ -146,7 +141,7 @@ def run_validate(args: argparse.Namespace) -> int:
         data_dir=data_dir,
         stores_dir=stores_dir,
         max_workers=os.cpu_count(),
-        progress_mode=args.progress
+        progress_mode=args.progress,
     )
 
     # Load changes if provided (from file or stdin)
@@ -164,13 +159,15 @@ def run_validate(args: argparse.Namespace) -> int:
     result = ValidationResult()
 
     # Determine what to validate
-    specific_validations = any([
-        args.json_files,
-        args.logos,
-        args.folder_names,
-        args.store_ids,
-        args.gtin,
-    ])
+    specific_validations = any(
+        [
+            args.json_files,
+            args.logos,
+            args.folder_names,
+            args.store_ids,
+            args.gtin,
+        ]
+    )
 
     if not specific_validations:
         # Run all validations
@@ -202,7 +199,7 @@ def run_validate(args: argparse.Namespace) -> int:
     # Text output mode — print all findings, but only fail on errors
     if result.errors:
         # Group errors by category
-        errors_by_category: Dict[str, List[ValidationError]] = {}
+        errors_by_category: dict[str, list[ValidationError]] = {}
         for error in result.errors:
             if error.category not in errors_by_category:
                 errors_by_category[error.category] = []
@@ -238,7 +235,9 @@ def run_validate(args: argparse.Namespace) -> int:
         return 1
     else:
         if result.warning_count:
-            print(f"\n{_green('+')} All validations passed ({_yellow(f'{result.warning_count} warnings')})")
+            print(
+                f"\n{_green('+')} All validations passed ({_yellow(f'{result.warning_count} warnings')})"
+            )
         else:
             print(f"\n{_green('+')} All validations passed!")
         return 0

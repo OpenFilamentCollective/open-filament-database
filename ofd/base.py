@@ -11,23 +11,20 @@ import sys
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 
 @dataclass
 class ScriptResult:
     """Result from running a script."""
+
     success: bool = True
     message: str = ""
     data: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary for JSON serialization."""
-        return {
-            'success': self.success,
-            'message': self.message,
-            **self.data
-        }
+        return {"success": self.success, "message": self.message, **self.data}
 
 
 class BaseScript(ABC):
@@ -57,7 +54,7 @@ class BaseScript(ABC):
     name: str = "base"
     description: str = "Base script class"
 
-    def __init__(self, project_root: Optional[Path] = None):
+    def __init__(self, project_root: Path | None = None):
         """
         Initialize the script.
 
@@ -81,20 +78,13 @@ class BaseScript(ABC):
     def get_parser(self) -> argparse.ArgumentParser:
         """Create and configure the argument parser."""
         parser = argparse.ArgumentParser(
-            prog=f"ofd script {self.name}",
-            description=self.description
+            prog=f"ofd script {self.name}", description=self.description
         )
 
         # Add common arguments
+        parser.add_argument("--json", action="store_true", help="Output results as JSON")
         parser.add_argument(
-            '--json',
-            action='store_true',
-            help='Output results as JSON'
-        )
-        parser.add_argument(
-            '--progress',
-            action='store_true',
-            help='Emit progress events for SSE streaming'
+            "--progress", action="store_true", help="Emit progress events for SSE streaming"
         )
 
         # Let subclass add its own arguments
@@ -125,7 +115,7 @@ class BaseScript(ABC):
         """
         pass
 
-    def emit_progress(self, stage: str, percent: int, message: str = '') -> None:
+    def emit_progress(self, stage: str, percent: int, message: str = "") -> None:
         """
         Emit a progress event for SSE streaming.
 
@@ -134,13 +124,13 @@ class BaseScript(ABC):
             percent: Progress percentage (0-100)
             message: Optional status message
         """
-        if self.progress_mode and hasattr(sys.stdout, 'isatty') and not sys.stdout.isatty():
-            print(json.dumps({
-                'type': 'progress',
-                'stage': stage,
-                'percent': percent,
-                'message': message
-            }), flush=True)
+        if self.progress_mode and hasattr(sys.stdout, "isatty") and not sys.stdout.isatty():
+            print(
+                json.dumps(
+                    {"type": "progress", "stage": stage, "percent": percent, "message": message}
+                ),
+                flush=True,
+            )
 
     def log(self, message: str) -> None:
         """
@@ -152,7 +142,7 @@ class BaseScript(ABC):
         if not self.json_mode:
             print(message)
 
-    def main(self, argv: Optional[list[str]] = None) -> int:
+    def main(self, argv: list[str] | None = None) -> int:
         """
         Main entry point for the script.
 
@@ -166,16 +156,13 @@ class BaseScript(ABC):
         args = parser.parse_args(argv)
 
         # Set output modes
-        self.json_mode = getattr(args, 'json', False)
-        self.progress_mode = getattr(args, 'progress', False)
+        self.json_mode = getattr(args, "json", False)
+        self.progress_mode = getattr(args, "progress", False)
 
         try:
             result = self.run(args)
         except Exception as e:
-            result = ScriptResult(
-                success=False,
-                message=f"Script failed with error: {str(e)}"
-            )
+            result = ScriptResult(success=False, message=f"Script failed with error: {str(e)}")
 
         # Output result
         if self.json_mode:
@@ -208,7 +195,7 @@ def register_script(script_class: type[BaseScript]) -> type[BaseScript]:
     return script_class
 
 
-def get_script(name: str) -> Optional[type[BaseScript]]:
+def get_script(name: str) -> type[BaseScript] | None:
     """Get a registered script class by name."""
     return _script_registry.get(name)
 
@@ -229,7 +216,7 @@ def list_scripts() -> list[tuple[str, str, list[str]]]:
         # Extract non-common arguments (skip --json, --progress, -h)
         key_args = []
         for action in parser._actions:
-            if action.dest in ('help', 'json', 'progress'):
+            if action.dest in ("help", "json", "progress"):
                 continue
             if action.option_strings:
                 # Use the long form if available

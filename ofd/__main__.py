@@ -24,16 +24,17 @@ Examples:
 
 # PYTHON_ARGCOMPLETE_OK
 
-import argcomplete
 import argparse
 import sys
 from pathlib import Path
+
+import argcomplete
 
 # Ensure project root is in path for imports
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from ofd.commands import validate, build, serve, script, webui
+from ofd.commands import build, script, serve, validate, webui  # noqa: E402
 
 
 class CommandHelpFormatter(argparse.RawDescriptionHelpFormatter):
@@ -43,14 +44,16 @@ class CommandHelpFormatter(argparse.RawDescriptionHelpFormatter):
         if action.metavar is not None:
             result = action.metavar
         elif action.choices is not None:
-            result = '{' + ','.join(action.choices) + '}'
+            result = "{" + ",".join(action.choices) + "}"
         else:
             result = default_metavar
+
         def format(tuple_size):
             if isinstance(result, tuple):
                 return result
             else:
                 return (result,) * tuple_size
+
         return format
 
 
@@ -79,20 +82,13 @@ Examples:
   ofd script style_data --dry-run  Preview sorting changes
   ofd webui                        Start the WebUI on port 5173
   ofd webui --open                 Start WebUI and open browser
-        """
+        """,
     )
 
-    parser.add_argument(
-        '--version', '-V',
-        action='version',
-        version='%(prog)s 1.0.0'
-    )
+    parser.add_argument("--version", "-V", action="version", version="%(prog)s 1.0.0")
 
     subparsers = parser.add_subparsers(
-        title='commands',
-        dest='command',
-        required=True,
-        metavar='<command>'
+        title="commands", dest="command", required=True, metavar="<command>"
     )
 
     # Register all subcommands
@@ -120,12 +116,12 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     # Dispatch to the appropriate command handler
-    if hasattr(args, 'func'):
+    if hasattr(args, "func"):
         return args.func(args)
     else:
         parser.print_help()
         return 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sys.exit(main())

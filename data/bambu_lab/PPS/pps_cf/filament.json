@@ -7,10 +7,18 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/Bambu_PPS-CF_SDS.pdf?v=1724386933",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PPS-CF"
+            "profile_name": "Bambu PPS-CF",
+            "id": "GFT02"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PPS-CF"
+            "profile_name": "Bambu PPS-CF",
+            "id": "GFT02",
+            "generic_id": "GFT97"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu PPS-CF",
+            "id": "GFT02",
+            "generic_id": "GFT97"
         }
     }
 }

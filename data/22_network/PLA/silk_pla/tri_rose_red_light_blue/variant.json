@@ -1,0 +1,9 @@
+{
+  "id": "tri_rose_red_light_blue",
+  "name": "Tri Rose Red Light Blue",
+  "color_hex": "#FF007F",
+  "traits": {
+    "silk": true,
+    "gradual_color_change": true
+  }
+}

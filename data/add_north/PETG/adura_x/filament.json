@@ -3,5 +3,13 @@
     "name": "Adura X",
     "diameter_tolerance": 0.02,
     "density": 1.3,
-    "max_dry_temperature": 60
+    "max_dry_temperature": 60,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "addnorth Adura X"
+        },
+        "superslicer": {
+            "profile_name": "addnorth Adura X"
+        }
+    }
 }

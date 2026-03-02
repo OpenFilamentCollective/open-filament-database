@@ -2,5 +2,22 @@
     "id": "silk_pla+",
     "name": "Silk PLA+",
     "diameter_tolerance": 0.02,
-    "density": 1.26
+    "density": 1.26,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "SUNLU Silk PLA+",
+            "id": "GFSNL05",
+            "generic_id": "GFL96"
+        },
+        "orcaslicer": {
+            "profile_name": "SUNLU Silk PLA+",
+            "id": "GFSNL05",
+            "generic_id": "GFL96"
+        },
+        "elegooslicer": {
+            "profile_name": "SUNLU Silk PLA+",
+            "id": "GFSNL05",
+            "generic_id": "GFL96"
+        }
+    }
 }

@@ -12,7 +12,6 @@ from pathlib import Path
 from ..models import Database
 from ..serialization import insert_entities
 
-
 # =============================================================================
 # Schema DDL - Stores database schema
 # =============================================================================
@@ -56,6 +55,7 @@ FROM store;
 # Main Export Function
 # =============================================================================
 
+
 def export_sqlite_stores(db: Database, output_dir: str, version: str, generated_at: str):
     """Export stores to a separate SQLite database."""
     output_path = Path(output_dir) / "sqlite"
@@ -77,7 +77,9 @@ def export_sqlite_stores(db: Database, output_dir: str, version: str, generated_
     # Insert metadata
     cursor.execute("INSERT INTO meta (key, value) VALUES (?, ?)", ("version", version))
     cursor.execute("INSERT INTO meta (key, value) VALUES (?, ?)", ("generated_at", generated_at))
-    cursor.execute("INSERT INTO meta (key, value) VALUES (?, ?)", ("store_count", str(len(db.stores))))
+    cursor.execute(
+        "INSERT INTO meta (key, value) VALUES (?, ?)", ("store_count", str(len(db.stores)))
+    )
 
     # Insert stores using PRAGMA-driven column matching
     insert_entities(cursor, db.stores, "store")
@@ -88,7 +90,7 @@ def export_sqlite_stores(db: Database, output_dir: str, version: str, generated_
 
     # Create compressed version
     db_xz_path = output_path / "stores.db.xz"
-    with open(db_path, 'rb') as f_in:
-        with lzma.open(db_xz_path, 'wb') as f_out:
+    with open(db_path, "rb") as f_in:
+        with lzma.open(db_xz_path, "wb") as f_out:
             f_out.write(f_in.read())
     print(f"  Written: {db_xz_path}")

@@ -12,6 +12,8 @@ from pathlib import Path
 from ..models import Database
 from ..serialization import insert_entities
 
+from ..models import Brand, Database, Filament, Material, PurchaseLink, Size, Store, Variant
+from ..serialization import serialize_for_sqlite
 
 # =============================================================================
 # Schema DDL - Defines table structure, indexes, and views
@@ -77,7 +79,6 @@ CREATE TABLE IF NOT EXISTS filament (
     data_sheet_url TEXT,
     safety_sheet_url TEXT,
     discontinued INTEGER NOT NULL DEFAULT 0,
-    slicer_ids TEXT,  -- JSON
     slicer_settings TEXT  -- JSON
 );
 CREATE INDEX IF NOT EXISTS ix_filament_brand ON filament(brand_id);
@@ -215,6 +216,7 @@ JOIN brand b ON f.brand_id = b.id;
 # Main Export Function
 # =============================================================================
 
+
 def export_sqlite(db: Database, output_dir: str, version: str, generated_at: str):
     """Export database to SQLite format."""
     output_path = Path(output_dir) / "sqlite"
@@ -252,7 +254,7 @@ def export_sqlite(db: Database, output_dir: str, version: str, generated_at: str
 
     # Create compressed version
     db_xz_path = output_path / "filaments.db.xz"
-    with open(db_path, 'rb') as f_in:
-        with lzma.open(db_xz_path, 'wb') as f_out:
+    with open(db_path, "rb") as f_in:
+        with lzma.open(db_xz_path, "wb") as f_out:
             f_out.write(f_in.read())
     print(f"  Written: {db_xz_path}")

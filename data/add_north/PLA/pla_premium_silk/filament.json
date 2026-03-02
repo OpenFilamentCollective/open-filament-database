@@ -3,5 +3,17 @@
     "name": "PLA Premium Silk",
     "diameter_tolerance": 0.02,
     "density": 1.27,
-    "max_dry_temperature": 50
+    "max_dry_temperature": 50,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "addnorth PLA Premium Silk",
+            "id": "GF_ANPS",
+            "generic_id": "GFL96"
+        },
+        "orcaslicer": {
+            "profile_name": "addnorth PLA Premium Silk",
+            "id": "GF_ANPS",
+            "generic_id": "GFL96"
+        }
+    }
 }

@@ -1,13 +1,31 @@
 {
-  "id": "asa",
-  "name": "ASA",
-  "diameter_tolerance": 0.04,
-  "density": 1.07,
-  "min_print_temperature": 250,
-  "max_print_temperature": 270,
-  "preheat_temperature": 170,
-  "min_bed_temperature": 100,
-  "max_bed_temperature": 120,
-  "min_chamber_temperature": 55,
-  "chamber_temperature": 90
+    "id": "asa",
+    "name": "ASA",
+    "diameter_tolerance": 0.04,
+    "density": 1.07,
+    "min_print_temperature": 250,
+    "max_print_temperature": 270,
+    "preheat_temperature": 170,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 120,
+    "min_chamber_temperature": 55,
+    "chamber_temperature": 90,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament ASA"
+        },
+        "orcaslicer": {
+            "profile_name": "Prusament ASA",
+            "id": "GFB98",
+            "generic_id": "GFB98"
+        },
+        "elegooslicer": {
+            "profile_name": "Prusament ASA",
+            "id": "GFB98",
+            "generic_id": "GFB98"
+        },
+        "superslicer": {
+            "profile_name": "Prusament ASA"
+        }
+    }
 }

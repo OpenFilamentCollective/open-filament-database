@@ -1,10 +1,15 @@
 {
-  "id": "high_speed_tpu",
-  "name": "High Speed TPU",
-  "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+    "id": "high_speed_tpu",
+    "name": "High Speed TPU",
+    "diameter_tolerance": 0.02,
+    "density": 1.21,
+    "min_print_temperature": 210,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 30,
+    "max_bed_temperature": 60,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Overture High Speed TPU"
+        }
+    }
 }

@@ -2,5 +2,13 @@
     "id": "fibersatin",
     "name": "FiberSatin",
     "diameter_tolerance": 0.02,
-    "density": 1.2
+    "density": 1.2,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy FiberSatin"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy FiberSatin"
+        }
+    }
 }

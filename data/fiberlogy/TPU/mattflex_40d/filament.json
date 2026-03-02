@@ -2,5 +2,13 @@
     "id": "mattflex_40d",
     "name": "MattFlex 40D",
     "diameter_tolerance": 0.05,
-    "density": 1.16
+    "density": 1.16,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy MattFlex 40D"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy MattFlex 40D"
+        }
+    }
 }

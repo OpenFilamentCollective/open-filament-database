@@ -12,22 +12,22 @@ import os
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Optional, Union
+from typing import Any
 
-from jsonschema.validators import Draft7Validator
 from jsonschema.exceptions import ValidationError as JsonSchemaValidationError
+from jsonschema.validators import Draft7Validator
 from referencing import Registry, Resource
 
 from ofd.base import BaseScript, ScriptResult, register_script
 
-
-PathLike = Union[str, os.PathLike[str]]
+PathLike = str | os.PathLike[str]
 COLOR_HEX_PATTERN = re.compile(r"#?([a-fA-F0-9]{6})")
 
 
 # ---------------------------------
 # Utility Functions
 # ---------------------------------
+
 
 def shallow_remove_empty(input_dict: dict) -> dict:
     """Remove elements that are 'None' or have an empty list/dict."""
@@ -55,10 +55,10 @@ def cleanse_folder_name(name: str) -> str:
     return name.replace("/", " ").strip()
 
 
-def load_json(json_path: PathLike) -> Optional[Dict[str, Any]]:
+def load_json(json_path: PathLike) -> dict[str, Any] | None:
     """Load JSON from file with error handling."""
     try:
-        with open(json_path, mode="r", encoding="utf8") as file:
+        with open(json_path, encoding="utf8") as file:
             return json.load(file)
     except json.JSONDecodeError:
         print(f"Failed to parse JSON from file: {json_path}")
@@ -69,24 +69,25 @@ def load_json(json_path: PathLike) -> Optional[Dict[str, Any]]:
 
 def save_json(path: Path, data: Any) -> None:
     """Save JSON to file with consistent formatting."""
-    with open(path, 'w', encoding='utf-8') as f:
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
-        f.write('\n')
+        f.write("\n")
 
 
 # ---------------------------------
 # Schema Loading
 # ---------------------------------
 
+
 class SchemaLoader:
     """Loads and caches JSON schemas."""
 
     def __init__(self, schemas_dir: Path):
         self.schemas_dir = schemas_dir
-        self._schemas: Dict[str, Dict] = {}
-        self._registry: Optional[Registry] = None
+        self._schemas: dict[str, dict] = {}
+        self._registry: Registry | None = None
 
-    def get(self, name: str) -> Optional[Dict]:
+    def get(self, name: str) -> dict | None:
         """Get schema by name."""
         if name not in self._schemas:
             path = self.schemas_dir / f"{name}_schema.json"
@@ -98,10 +99,12 @@ class SchemaLoader:
     def registry(self) -> Registry:
         """Get schema registry for $ref resolution."""
         if self._registry is None:
-            material_types = self.get('material_types')
+            material_types = self.get("material_types")
             resources = []
             if material_types:
-                resources.append(("./material_types_schema.json", Resource.from_contents(material_types)))
+                resources.append(
+                    ("./material_types_schema.json", Resource.from_contents(material_types))
+                )
             self._registry = Registry().with_resources(resources)
         return self._registry
 
@@ -124,9 +127,11 @@ class SchemaLoader:
 # Data Statistics
 # ---------------------------------
 
+
 @dataclass
 class ExportStats:
     """Statistics for data export."""
+
     brands: int = 0
     materials: int = 0
     filaments: int = 0
@@ -136,16 +141,16 @@ class ExportStats:
     purchase_links: int = 0
     errors: int = 0
 
-    def to_dict(self) -> Dict[str, int]:
+    def to_dict(self) -> dict[str, int]:
         return {
-            'brands': self.brands,
-            'materials': self.materials,
-            'filaments': self.filaments,
-            'variants': self.variants,
-            'sizes': self.sizes,
-            'stores': self.stores,
-            'purchase_links': self.purchase_links,
-            'errors': self.errors,
+            "brands": self.brands,
+            "materials": self.materials,
+            "filaments": self.filaments,
+            "variants": self.variants,
+            "sizes": self.sizes,
+            "stores": self.stores,
+            "purchase_links": self.purchase_links,
+            "errors": self.errors,
         }
 
 
@@ -159,31 +164,23 @@ class ExportDataScript(BaseScript):
     def configure_parser(self, parser: argparse.ArgumentParser) -> None:
         """Add script-specific arguments."""
         parser.add_argument(
-            '-o', '--output',
-            required=True,
-            help='Output directory for exported data'
+            "-o", "--output", required=True, help="Output directory for exported data"
         )
         parser.add_argument(
-            '--dry-run',
-            action='store_true',
-            help='Preview export without writing files'
+            "--dry-run", action="store_true", help="Preview export without writing files"
         )
         parser.add_argument(
-            '--include-stores',
-            action='store_true',
+            "--include-stores",
+            action="store_true",
             default=True,
-            help='Include stores in export (default: true)'
+            help="Include stores in export (default: true)",
         )
-        parser.add_argument(
-            '--validate',
-            action='store_true',
-            help='Validate data before export'
-        )
+        parser.add_argument("--validate", action="store_true", help="Validate data before export")
 
     def run(self, args: argparse.Namespace) -> ScriptResult:
         """Execute the export_data script."""
-        dry_run = getattr(args, 'dry_run', False)
-        do_validate = getattr(args, 'validate', False)
+        dry_run = getattr(args, "dry_run", False)
+        do_validate = getattr(args, "validate", False)
         output_dir = Path(args.output)
 
         if dry_run:
@@ -200,21 +197,23 @@ class ExportDataScript(BaseScript):
             (output_dir / "stores").mkdir(exist_ok=True)
 
         # Export stores first (needed for purchase link references)
-        self.emit_progress('stores', 0, 'Exporting stores...')
+        self.emit_progress("stores", 0, "Exporting stores...")
         self.log("Exporting stores...")
-        stores = self._export_stores(output_dir / "stores", schema_loader, stats, dry_run, do_validate)
-        self.emit_progress('stores', 100, f'Exported {stats.stores} stores')
+        stores = self._export_stores(
+            output_dir / "stores", schema_loader, stats, dry_run, do_validate
+        )
+        self.emit_progress("stores", 100, f"Exported {stats.stores} stores")
 
         # Export data
-        self.emit_progress('data', 0, 'Exporting data...')
+        self.emit_progress("data", 0, "Exporting data...")
         self.log("\nExporting data...")
         self._export_data(output_dir / "data", schema_loader, stats, stores, dry_run, do_validate)
-        self.emit_progress('data', 100, 'Data export complete')
+        self.emit_progress("data", 100, "Data export complete")
 
         # Summary
         self.log(f"\n{'=' * 60}")
         self.log("DRY RUN SUMMARY" if dry_run else "EXPORT SUMMARY")
-        self.log('=' * 60)
+        self.log("=" * 60)
         self.log(f"Brands:         {stats.brands}")
         self.log(f"Materials:      {stats.materials}")
         self.log(f"Filaments:      {stats.filaments}")
@@ -231,12 +230,10 @@ class ExportDataScript(BaseScript):
         success = stats.errors == 0
         return ScriptResult(
             success=success,
-            message="Export complete" if success else f"Export completed with {stats.errors} errors",
-            data={
-                'dry_run': dry_run,
-                'output_dir': str(output_dir),
-                'stats': stats.to_dict()
-            }
+            message="Export complete"
+            if success
+            else f"Export completed with {stats.errors} errors",
+            data={"dry_run": dry_run, "output_dir": str(output_dir), "stats": stats.to_dict()},
         )
 
     def _export_stores(
@@ -245,8 +242,8 @@ class ExportDataScript(BaseScript):
         schema_loader: SchemaLoader,
         stats: ExportStats,
         dry_run: bool,
-        do_validate: bool
-    ) -> Dict[str, Dict]:
+        do_validate: bool,
+    ) -> dict[str, dict]:
         """Export stores and return a mapping of store_id -> store_data."""
         stores = {}
 
@@ -263,11 +260,11 @@ class ExportDataScript(BaseScript):
                 stats.errors += 1
                 continue
 
-            if do_validate and not schema_loader.validate(data, 'store'):
+            if do_validate and not schema_loader.validate(data, "store"):
                 stats.errors += 1
                 continue
 
-            store_id = data.get('id', store_dir.name)
+            store_id = data.get("id", store_dir.name)
             stores[store_id] = data
             stats.stores += 1
 
@@ -279,10 +276,11 @@ class ExportDataScript(BaseScript):
                 save_json(store_output / "store.json", data)
 
                 # Copy logo if exists
-                for logo_name in ['logo.png', 'logo.jpg', 'logo.svg']:
+                for logo_name in ["logo.png", "logo.jpg", "logo.svg"]:
                     logo_src = store_dir / logo_name
                     if logo_src.exists():
                         import shutil
+
                         shutil.copy2(logo_src, store_output / logo_name)
                         break
 
@@ -293,9 +291,9 @@ class ExportDataScript(BaseScript):
         output_dir: Path,
         schema_loader: SchemaLoader,
         stats: ExportStats,
-        stores: Dict[str, Dict],
+        stores: dict[str, dict],
         dry_run: bool,
-        do_validate: bool
+        do_validate: bool,
     ) -> None:
         """Export data directory structure."""
         import shutil
@@ -313,11 +311,11 @@ class ExportDataScript(BaseScript):
                 stats.errors += 1
                 continue
 
-            if do_validate and not schema_loader.validate(brand_data, 'brand'):
+            if do_validate and not schema_loader.validate(brand_data, "brand"):
                 stats.errors += 1
                 continue
 
-            brand_name = brand_data.get('name', brand_dir.name)
+            brand_name = brand_data.get("name", brand_dir.name)
             stats.brands += 1
 
             if dry_run:
@@ -328,7 +326,7 @@ class ExportDataScript(BaseScript):
                 save_json(brand_output / "brand.json", brand_data)
 
                 # Copy logo
-                for logo_name in ['logo.png', 'logo.jpg', 'logo.svg']:
+                for logo_name in ["logo.png", "logo.jpg", "logo.svg"]:
                     logo_src = brand_dir / logo_name
                     if logo_src.exists():
                         shutil.copy2(logo_src, brand_output / logo_name)
@@ -348,7 +346,7 @@ class ExportDataScript(BaseScript):
                     stats.errors += 1
                     continue
 
-                material_name = material_data.get('material', material_dir.name)
+                material_name = material_data.get("material", material_dir.name)
                 stats.materials += 1
 
                 if not dry_run:
@@ -370,7 +368,7 @@ class ExportDataScript(BaseScript):
                         stats.errors += 1
                         continue
 
-                    filament_name = filament_data.get('name', filament_dir.name)
+                    filament_name = filament_data.get("name", filament_dir.name)
                     stats.filaments += 1
 
                     if not dry_run:
@@ -394,7 +392,7 @@ class ExportDataScript(BaseScript):
                             stats.errors += 1
                             continue
 
-                        variant_name = variant_data.get('name', variant_dir.name)
+                        variant_name = variant_data.get("name", variant_dir.name)
                         stats.variants += 1
 
                         # Count sizes and purchase links
@@ -402,7 +400,7 @@ class ExportDataScript(BaseScript):
                         if sizes_data:
                             stats.sizes += len(sizes_data)
                             for size in sizes_data:
-                                stats.purchase_links += len(size.get('purchase_links', []))
+                                stats.purchase_links += len(size.get("purchase_links", []))
 
                         if not dry_run:
                             variant_output = filament_output / cleanse_folder_name(variant_name)

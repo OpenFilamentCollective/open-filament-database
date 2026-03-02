@@ -1,0 +1,10 @@
+{
+  "id": "transparent_emerald",
+  "name": "Transparent Emerald",
+  "color_hex": [
+    "#006036"
+  ],
+  "traits": {
+    "transparent": true
+  }
+}

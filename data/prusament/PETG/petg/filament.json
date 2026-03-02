@@ -1,16 +1,34 @@
 {
-  "id": "petg",
-  "name": "PETG",
-  "diameter_tolerance": 0.02,
-  "density": 1.27,
-  "min_print_temperature": 240,
-  "max_print_temperature": 260,
-  "preheat_temperature": 170,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90,
-  "min_chamber_temperature": 18,
-  "max_chamber_temperature": 60,
-  "chamber_temperature": 35,
-  "data_sheet_url": "https://www.prusa3d.com/file/3464616/prusament-petg-technical-data-sheet.pdf",
-  "safety_sheet_url": "https://www.prusa3d.com/file/3464624/prusament-petg-safety-data-sheet.pdf"
+    "id": "petg",
+    "name": "PETG",
+    "diameter_tolerance": 0.02,
+    "density": 1.27,
+    "min_print_temperature": 240,
+    "max_print_temperature": 260,
+    "preheat_temperature": 170,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 90,
+    "min_chamber_temperature": 18,
+    "max_chamber_temperature": 60,
+    "chamber_temperature": 35,
+    "data_sheet_url": "https://www.prusa3d.com/file/3464616/prusament-petg-technical-data-sheet.pdf",
+    "safety_sheet_url": "https://www.prusa3d.com/file/3464624/prusament-petg-safety-data-sheet.pdf",
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament PETG"
+        },
+        "orcaslicer": {
+            "profile_name": "Prusament PETG",
+            "id": "GFT02",
+            "generic_id": "GFG99"
+        },
+        "elegooslicer": {
+            "profile_name": "Prusament PETG",
+            "id": "GFT02",
+            "generic_id": "GFG99"
+        },
+        "superslicer": {
+            "profile_name": "Prusament PETG"
+        }
+    }
 }

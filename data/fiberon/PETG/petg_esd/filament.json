@@ -2,5 +2,22 @@
     "id": "petg_esd",
     "name": "PETG-ESD",
     "diameter_tolerance": 0.02,
-    "density": 1.3
+    "density": 1.3,
+    "slicer_settings": {
+        "bambustudio": {
+            "profile_name": "Fiberon PETG-ESD",
+            "id": "GFL06",
+            "generic_id": "GFG99"
+        },
+        "orcaslicer": {
+            "profile_name": "Fiberon PETG-ESD",
+            "id": "GFL06",
+            "generic_id": "GFG99"
+        },
+        "elegooslicer": {
+            "profile_name": "Fiberon PETG-ESD",
+            "id": "GFL06",
+            "generic_id": "GFG99"
+        }
+    }
 }

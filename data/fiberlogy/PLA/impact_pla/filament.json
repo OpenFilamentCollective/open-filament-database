@@ -2,5 +2,13 @@
     "id": "impact_pla",
     "name": "Impact PLA",
     "diameter_tolerance": 0.02,
-    "density": 1.22
+    "density": 1.22,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy Impact PLA"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy Impact PLA"
+        }
+    }
 }

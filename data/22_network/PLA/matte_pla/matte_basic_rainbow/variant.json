@@ -1,0 +1,9 @@
+{
+  "id": "matte_basic_rainbow",
+  "name": "Matte Basic Rainbow",
+  "color_hex": "#FF0000",
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

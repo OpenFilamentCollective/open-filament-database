@@ -1,0 +1,15 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "spool_core_diameter": 55,
+    "gtin": "618996738618",
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/626658/inland-175mm-tpu-3d-printer-filament-10-kg-(22-lbs)-spool-translucent-yellow"
+      }
+    ]
+  }
+]

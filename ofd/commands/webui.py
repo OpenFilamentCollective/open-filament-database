@@ -17,9 +17,9 @@ project_root = Path(__file__).parent.parent.parent
 def register_subcommand(subparsers: argparse._SubParsersAction) -> None:
     """Register the webui subcommand."""
     parser = subparsers.add_parser(
-        'webui',
-        help='Start the WebUI development server',
-        description='Start the SvelteKit development server for the WebUI.',
+        "webui",
+        help="Start the WebUI development server",
+        description="Start the SvelteKit development server for the WebUI.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -28,29 +28,16 @@ Examples:
   ofd webui --host 0.0.0.0  Bind to all interfaces
   ofd webui --open          Open browser automatically
   ofd webui --install       Run npm ci before starting
-        """
+        """,
     )
 
     parser.add_argument(
-        '-p', '--port',
-        type=int,
-        default=5173,
-        help='Port to serve on (default: 5173)'
+        "-p", "--port", type=int, default=5173, help="Port to serve on (default: 5173)"
     )
+    parser.add_argument("--host", default="localhost", help="Host to bind to (default: localhost)")
+    parser.add_argument("--open", action="store_true", help="Open browser automatically")
     parser.add_argument(
-        '--host',
-        default='localhost',
-        help='Host to bind to (default: localhost)'
-    )
-    parser.add_argument(
-        '--open',
-        action='store_true',
-        help='Open browser automatically'
-    )
-    parser.add_argument(
-        '--install',
-        action='store_true',
-        help='Run npm ci before starting the server'
+        "--install", action="store_true", help="Run npm ci before starting the server"
     )
 
     parser.set_defaults(func=run_webui)
@@ -66,28 +53,28 @@ def get_npm_cmd() -> list[str]:
     Returns:
         List containing the npm command (may be path to npm.cmd on Windows)
     """
-    npm_path = shutil.which('npm')
+    npm_path = shutil.which("npm")
     if npm_path:
         return [npm_path]
-    return ['npm']  # Fallback, will fail if npm not found
+    return ["npm"]  # Fallback, will fail if npm not found
 
 
 def check_npm() -> bool:
     """Check if npm is available."""
-    return shutil.which('npm') is not None
+    return shutil.which("npm") is not None
 
 
 def check_node_modules() -> bool:
     """Check if node_modules exists in webui directory."""
-    webui_dir = project_root / 'webui'
-    return (webui_dir / 'node_modules').exists()
+    webui_dir = project_root / "webui"
+    return (webui_dir / "node_modules").exists()
 
 
 def run_npm_ci(webui_dir: Path) -> int:
     """Run npm ci in the webui directory."""
     print("Installing Node.js dependencies...")
     result = subprocess.run(
-        get_npm_cmd() + ['ci'],
+        get_npm_cmd() + ["ci"],
         cwd=webui_dir,
     )
     return result.returncode
@@ -103,7 +90,7 @@ def run_webui(args: argparse.Namespace) -> int:
     Returns:
         Exit code (0 for success, 1 for errors)
     """
-    webui_dir = project_root / 'webui'
+    webui_dir = project_root / "webui"
 
     # Check webui directory exists
     if not webui_dir.exists():
@@ -129,18 +116,18 @@ def run_webui(args: argparse.Namespace) -> int:
 
     # Build the vite dev command
     # The '--' tells npm to pass subsequent arguments to the underlying script
-    cmd = get_npm_cmd() + ['run', 'dev', '--']
+    cmd = get_npm_cmd() + ["run", "dev", "--"]
 
     # Add port if not default
     if args.port != 5173:
-        cmd.extend(['--port', str(args.port)])
+        cmd.extend(["--port", str(args.port)])
 
     # Add host
-    cmd.extend(['--host', args.host])
+    cmd.extend(["--host", args.host])
 
     # Add open flag
     if args.open:
-        cmd.append('--open')
+        cmd.append("--open")
 
     print("=" * 60)
     print("Open Filament Database - WebUI Development Server")

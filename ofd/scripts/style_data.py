@@ -19,7 +19,7 @@ import argparse
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any
 
 from ofd.base import BaseScript, ScriptResult, register_script
 from ofd.validation import ValidationOrchestrator
@@ -28,32 +28,34 @@ from ofd.validation import ValidationOrchestrator
 @dataclass
 class SchemaInfo:
     """Holds key ordering information for a schema."""
-    keys: List[str] = field(default_factory=list)
-    nested: Dict[str, List[str]] = field(default_factory=dict)
+
+    keys: list[str] = field(default_factory=list)
+    nested: dict[str, list[str]] = field(default_factory=dict)
 
 
 @dataclass
 class ProcessingStats:
     """Statistics for file processing."""
+
     files_processed: int = 0
     files_modified: int = 0
     files_skipped: int = 0
     extra_keys_found: int = 0
 
-    def to_dict(self) -> Dict[str, int]:
+    def to_dict(self) -> dict[str, int]:
         """Convert to dictionary for JSON serialization."""
         return {
-            'files_processed': self.files_processed,
-            'files_modified': self.files_modified,
-            'files_skipped': self.files_skipped,
-            'extra_keys_found': self.extra_keys_found
+            "files_processed": self.files_processed,
+            "files_modified": self.files_modified,
+            "files_skipped": self.files_skipped,
+            "extra_keys_found": self.extra_keys_found,
         }
 
 
-def load_json(path: Path) -> Optional[Dict[str, Any]]:
+def load_json(path: Path) -> dict[str, Any] | None:
     """Load JSON from file with error handling."""
     try:
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, encoding="utf-8") as f:
             return json.load(f)
     except (json.JSONDecodeError, OSError) as e:
         print(f"Error loading {path}: {e}")
@@ -64,12 +66,12 @@ def save_json(path: Path, data: Any, dry_run: bool) -> None:
     """Save JSON to file with consistent formatting."""
     if dry_run:
         return
-    with open(path, 'w', encoding='utf-8') as f:
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write('\n')
+        f.write("\n")
 
 
-def load_schemas(schemas_dir: Path) -> Dict[str, Dict[str, Any]]:
+def load_schemas(schemas_dir: Path) -> dict[str, dict[str, Any]]:
     """Load all JSON schemas from the schemas directory."""
     schemas = {}
 
@@ -79,7 +81,7 @@ def load_schemas(schemas_dir: Path) -> Dict[str, Dict[str, Any]]:
 
     for schema_file in schemas_dir.glob("*.json"):
         try:
-            with open(schema_file, 'r', encoding='utf-8') as f:
+            with open(schema_file, encoding="utf-8") as f:
                 schemas[schema_file.stem] = json.load(f)
         except json.JSONDecodeError as e:
             print(f"Error parsing {schema_file.name}: {e}")
@@ -87,14 +89,14 @@ def load_schemas(schemas_dir: Path) -> Dict[str, Dict[str, Any]]:
     return schemas
 
 
-def get_property_order(schema: Dict[str, Any]) -> List[str]:
+def get_property_order(schema: dict[str, Any]) -> list[str]:
     """Extract the order of properties from a JSON schema."""
     if "properties" in schema:
         return list(schema["properties"].keys())
     return []
 
 
-def extract_nested_schemas(schema: Dict[str, Any]) -> Dict[str, List[str]]:
+def extract_nested_schemas(schema: dict[str, Any]) -> dict[str, list[str]]:
     """Recursively extract nested object schemas and their key orderings."""
     nested = {}
 
@@ -118,16 +120,16 @@ def extract_nested_schemas(schema: Dict[str, Any]) -> Dict[str, List[str]]:
     return nested
 
 
-def build_key_order_map(schemas_dir: Path) -> Dict[str, SchemaInfo]:
+def build_key_order_map(schemas_dir: Path) -> dict[str, SchemaInfo]:
     """Build a mapping of schema names to their key orderings."""
     schemas = load_schemas(schemas_dir)
     key_order_map = {}
 
     for schema_name, schema_content in schemas.items():
-        clean_name = schema_name.replace('_schema', '')
+        clean_name = schema_name.replace("_schema", "")
 
-        if schema_content.get('type') == 'array' and 'items' in schema_content:
-            items_schema = schema_content['items']
+        if schema_content.get("type") == "array" and "items" in schema_content:
+            items_schema = schema_content["items"]
             keys = get_property_order(items_schema)
             nested = extract_nested_schemas(items_schema)
         else:
@@ -139,11 +141,7 @@ def build_key_order_map(schemas_dir: Path) -> Dict[str, SchemaInfo]:
     return key_order_map
 
 
-def sort_json_keys(
-    data: Any,
-    schema_info: SchemaInfo,
-    extra_keys: Set[str]
-) -> Any:
+def sort_json_keys(data: Any, schema_info: SchemaInfo, extra_keys: set[str]) -> Any:
     """Recursively sort JSON keys according to schema ordering."""
     if isinstance(data, dict):
         ordered = {}
@@ -154,18 +152,28 @@ def sort_json_keys(
                 value = data[key]
 
                 if key in schema_info.nested:
-                    nested_info = SchemaInfo(keys=schema_info.nested[key], nested=schema_info.nested)
+                    nested_info = SchemaInfo(
+                        keys=schema_info.nested[key], nested=schema_info.nested
+                    )
 
                     if isinstance(value, list):
-                        value = [sort_json_keys(item, nested_info, extra_keys) if isinstance(item, dict)
-                                else item for item in value]
+                        value = [
+                            sort_json_keys(item, nested_info, extra_keys)
+                            if isinstance(item, dict)
+                            else item
+                            for item in value
+                        ]
                     else:
                         value = sort_json_keys(value, nested_info, extra_keys)
                 elif isinstance(value, dict):
                     value = sort_json_keys(value, SchemaInfo(), extra_keys)
                 elif isinstance(value, list):
-                    value = [sort_json_keys(item, schema_info, extra_keys) if isinstance(item, dict)
-                            else item for item in value]
+                    value = [
+                        sort_json_keys(item, schema_info, extra_keys)
+                        if isinstance(item, dict)
+                        else item
+                        for item in value
+                    ]
 
                 ordered[key] = value
                 remaining_keys.remove(key)
@@ -177,8 +185,12 @@ def sort_json_keys(
                 if isinstance(value, dict):
                     value = sort_json_keys(value, SchemaInfo(), extra_keys)
                 elif isinstance(value, list):
-                    value = [sort_json_keys(item, SchemaInfo(), extra_keys) if isinstance(item, dict)
-                            else item for item in value]
+                    value = [
+                        sort_json_keys(item, SchemaInfo(), extra_keys)
+                        if isinstance(item, dict)
+                        else item
+                        for item in value
+                    ]
                 ordered[key] = value
 
         return ordered
@@ -208,19 +220,13 @@ class StyleDataScript(BaseScript):
     def configure_parser(self, parser: argparse.ArgumentParser) -> None:
         """Add script-specific arguments."""
         parser.add_argument(
-            '--dry-run',
-            action='store_true',
-            help='Preview changes without modifying files'
+            "--dry-run", action="store_true", help="Preview changes without modifying files"
         )
+        parser.add_argument("--validate", action="store_true", help="Run validation after sorting")
         parser.add_argument(
-            '--validate',
-            action='store_true',
-            help='Run validation after sorting'
-        )
-        parser.add_argument(
-            '--fix-indent-only',
-            action='store_true',
-            help='Only fix indentation to 2 spaces across all JSON files (skip sorting)'
+            "--fix-indent-only",
+            action="store_true",
+            help="Only fix indentation to 2 spaces across all JSON files (skip sorting)",
         )
         parser.add_argument(
             '--format-stdin',
@@ -234,12 +240,7 @@ class StyleDataScript(BaseScript):
             help='Schema type to use when formatting stdin (required with --format-stdin)'
         )
 
-    def _fix_json_indentation(
-        self,
-        file_path: Path,
-        dry_run: bool,
-        stats: ProcessingStats
-    ) -> bool:
+    def _fix_json_indentation(self, file_path: Path, dry_run: bool, stats: ProcessingStats) -> bool:
         """Fix indentation of a JSON file to use 2 spaces."""
         data = load_json(file_path)
         if data is None:
@@ -247,14 +248,14 @@ class StyleDataScript(BaseScript):
             return False
 
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, encoding="utf-8") as f:
                 original_content = f.read()
         except OSError as e:
             self.log(f"Error reading {file_path}: {e}")
             stats.files_skipped += 1
             return False
 
-        new_content = json.dumps(data, indent=2, ensure_ascii=False) + '\n'
+        new_content = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
 
         stats.files_processed += 1
 
@@ -270,7 +271,7 @@ class StyleDataScript(BaseScript):
 
             if not dry_run:
                 try:
-                    with open(file_path, 'w', encoding='utf-8') as f:
+                    with open(file_path, "w", encoding="utf-8") as f:
                         f.write(new_content)
                 except OSError as e:
                     self.log(f"Error writing {file_path}: {e}")
@@ -288,13 +289,10 @@ class StyleDataScript(BaseScript):
 
         self.log("Fixing indentation for all JSON files...")
 
-        json_files = list(self.project_root.rglob('*.json'))
+        json_files = list(self.project_root.rglob("*.json"))
 
-        excluded_dirs = {'node_modules', '.git', 'dist', 'build', '.venv', 'venv'}
-        json_files = [
-            f for f in json_files
-            if not any(part in excluded_dirs for part in f.parts)
-        ]
+        excluded_dirs = {"node_modules", ".git", "dist", "build", ".venv", "venv"}
+        json_files = [f for f in json_files if not any(part in excluded_dirs for part in f.parts)]
 
         for json_file in sorted(json_files):
             self._fix_json_indentation(json_file, dry_run, stats)
@@ -349,13 +347,13 @@ class StyleDataScript(BaseScript):
 
         # Handle --fix-indent-only mode
         if fix_indent_only:
-            self.emit_progress('fixing_indentation', 0, 'Fixing indentation for all JSON files...')
+            self.emit_progress("fixing_indentation", 0, "Fixing indentation for all JSON files...")
             total_stats = self._fix_all_json_indentation(dry_run)
-            self.emit_progress('fixing_indentation', 100, 'Indentation fixes complete')
+            self.emit_progress("fixing_indentation", 100, "Indentation fixes complete")
 
             self.log(f"\n{'=' * 60}")
             self.log("DRY RUN SUMMARY - INDENTATION FIX" if dry_run else "INDENTATION FIX SUMMARY")
-            self.log('=' * 60)
+            self.log("=" * 60)
             self.log(f"Files processed: {total_stats.files_processed}")
             self.log(f"Files modified: {total_stats.files_modified}")
             self.log(f"Files skipped: {total_stats.files_skipped}")
@@ -365,34 +363,34 @@ class StyleDataScript(BaseScript):
                 success=True,
                 message="Indentation fix complete",
                 data={
-                    'dry_run': dry_run,
-                    'mode': 'fix_indent_only',
-                    'stats': total_stats.to_dict()
-                }
+                    "dry_run": dry_run,
+                    "mode": "fix_indent_only",
+                    "stats": total_stats.to_dict(),
+                },
             )
 
         # Build key order mapping from schemas
-        self.emit_progress('loading_schemas', 0, 'Loading schemas...')
+        self.emit_progress("loading_schemas", 0, "Loading schemas...")
         self.log("Loading schemas...")
         key_order_map = build_key_order_map(self.schemas_dir)
-        self.emit_progress('loading_schemas', 100, f'Loaded {len(key_order_map)} schemas')
+        self.emit_progress("loading_schemas", 100, f"Loaded {len(key_order_map)} schemas")
         self.log(f"Loaded {len(key_order_map)} schemas\n")
 
         # Process data directory
         data_stats = ProcessingStats()
         if self.data_dir.exists():
-            self.emit_progress('sorting_data', 0, 'Processing data directory...')
+            self.emit_progress("sorting_data", 0, "Processing data directory...")
             data_stats = self._process_data_directory(key_order_map, dry_run)
-            self.emit_progress('sorting_data', 100, 'Data directory processing complete')
+            self.emit_progress("sorting_data", 100, "Data directory processing complete")
         else:
             self.log(f"Data directory not found: {self.data_dir}")
 
         # Process stores directory
         stores_stats = ProcessingStats()
         if self.stores_dir.exists():
-            self.emit_progress('sorting_stores', 0, 'Processing stores directory...')
+            self.emit_progress("sorting_stores", 0, "Processing stores directory...")
             stores_stats = self._process_stores_directory(key_order_map, dry_run)
-            self.emit_progress('sorting_stores', 100, 'Stores directory processing complete')
+            self.emit_progress("sorting_stores", 100, "Stores directory processing complete")
         else:
             self.log(f"Stores directory not found: {self.stores_dir}")
 
@@ -401,23 +399,22 @@ class StyleDataScript(BaseScript):
             files_processed=data_stats.files_processed + stores_stats.files_processed,
             files_modified=data_stats.files_modified + stores_stats.files_modified,
             files_skipped=data_stats.files_skipped + stores_stats.files_skipped,
-            extra_keys_found=data_stats.extra_keys_found + stores_stats.extra_keys_found
+            extra_keys_found=data_stats.extra_keys_found + stores_stats.extra_keys_found,
         )
 
         # Run validation if requested
         validation_data = None
         if do_validate and not dry_run and total_stats.files_modified > 0:
-            self.emit_progress('validation', 0, 'Running validation...')
+            self.emit_progress("validation", 0, "Running validation...")
             self.log(f"\n{'=' * 60}")
             self.log("VALIDATING SORTED FILES")
-            self.log('=' * 60)
+            self.log("=" * 60)
 
             orchestrator = ValidationOrchestrator(
-                self.data_dir, self.stores_dir,
-                progress_mode=self.progress_mode
+                self.data_dir, self.stores_dir, progress_mode=self.progress_mode
             )
             validation_result = orchestrator.validate_all()
-            self.emit_progress('validation', 100, 'Validation complete')
+            self.emit_progress("validation", 100, "Validation complete")
             validation_data = validation_result.to_dict()
 
             if not validation_result.is_valid:
@@ -425,16 +422,16 @@ class StyleDataScript(BaseScript):
                     success=False,
                     message=f"Validation failed: {validation_result.error_count} errors",
                     data={
-                        'dry_run': dry_run,
-                        'stats': total_stats.to_dict(),
-                        'validation': validation_data
-                    }
+                        "dry_run": dry_run,
+                        "stats": total_stats.to_dict(),
+                        "validation": validation_data,
+                    },
                 )
 
         # Summary
         self.log(f"\n{'=' * 60}")
         self.log("DRY RUN SUMMARY" if dry_run else "SORTING SUMMARY")
-        self.log('=' * 60)
+        self.log("=" * 60)
         self.log(f"Files processed: {total_stats.files_processed}")
         self.log(f"Files modified: {total_stats.files_modified}")
         self.log(f"Files skipped: {total_stats.files_skipped}")
@@ -442,12 +439,9 @@ class StyleDataScript(BaseScript):
             self.log(f"Extra keys found: {total_stats.extra_keys_found}")
         self.log("\nDone!")
 
-        result_data = {
-            'dry_run': dry_run,
-            'stats': total_stats.to_dict()
-        }
+        result_data = {"dry_run": dry_run, "stats": total_stats.to_dict()}
         if validation_data:
-            result_data['validation'] = validation_data
+            result_data["validation"] = validation_data
 
         return ScriptResult(success=True, message="Sorting complete", data=result_data)
 
@@ -455,9 +449,9 @@ class StyleDataScript(BaseScript):
         self,
         file_path: Path,
         schema_name: str,
-        key_order_map: Dict[str, SchemaInfo],
+        key_order_map: dict[str, SchemaInfo],
         dry_run: bool,
-        stats: ProcessingStats
+        stats: ProcessingStats,
     ) -> bool:
         """Process a single JSON file and sort its keys."""
         data = load_json(file_path)
@@ -471,7 +465,7 @@ class StyleDataScript(BaseScript):
             return False
 
         schema_info = key_order_map[schema_name]
-        extra_keys: Set[str] = set()
+        extra_keys: set[str] = set()
 
         sorted_data = sort_json_keys(data, schema_info, extra_keys)
 
@@ -496,9 +490,7 @@ class StyleDataScript(BaseScript):
         return False
 
     def _process_data_directory(
-        self,
-        key_order_map: Dict[str, SchemaInfo],
-        dry_run: bool
+        self, key_order_map: dict[str, SchemaInfo], dry_run: bool
     ) -> ProcessingStats:
         """Process all JSON files in the data directory hierarchy."""
         stats = ProcessingStats()
@@ -520,7 +512,9 @@ class StyleDataScript(BaseScript):
 
                 material_file = material_dir / "material.json"
                 if material_file.exists():
-                    self._process_json_file(material_file, "material", key_order_map, dry_run, stats)
+                    self._process_json_file(
+                        material_file, "material", key_order_map, dry_run, stats
+                    )
 
                 for filament_dir in sorted(material_dir.iterdir()):
                     if not filament_dir.is_dir():
@@ -528,7 +522,9 @@ class StyleDataScript(BaseScript):
 
                     filament_file = filament_dir / "filament.json"
                     if filament_file.exists():
-                        self._process_json_file(filament_file, "filament", key_order_map, dry_run, stats)
+                        self._process_json_file(
+                            filament_file, "filament", key_order_map, dry_run, stats
+                        )
 
                     for variant_dir in sorted(filament_dir.iterdir()):
                         if not variant_dir.is_dir():
@@ -536,18 +532,20 @@ class StyleDataScript(BaseScript):
 
                         variant_file = variant_dir / "variant.json"
                         if variant_file.exists():
-                            self._process_json_file(variant_file, "variant", key_order_map, dry_run, stats)
+                            self._process_json_file(
+                                variant_file, "variant", key_order_map, dry_run, stats
+                            )
 
                         sizes_file = variant_dir / "sizes.json"
                         if sizes_file.exists():
-                            self._process_json_file(sizes_file, "sizes", key_order_map, dry_run, stats)
+                            self._process_json_file(
+                                sizes_file, "sizes", key_order_map, dry_run, stats
+                            )
 
         return stats
 
     def _process_stores_directory(
-        self,
-        key_order_map: Dict[str, SchemaInfo],
-        dry_run: bool
+        self, key_order_map: dict[str, SchemaInfo], dry_run: bool
     ) -> ProcessingStats:
         """Process all JSON files in the stores directory."""
         stats = ProcessingStats()

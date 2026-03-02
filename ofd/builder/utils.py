@@ -11,8 +11,6 @@ import hashlib
 import re
 import uuid
 from datetime import datetime, timezone
-from typing import Optional, Union
-
 
 # =============================================================================
 # UUID Namespaces (from OPT specification)
@@ -39,7 +37,8 @@ NAMESPACE_PURCHASE_LINK = uuid.UUID("e5f6a7b8-c9d0-8e9f-2a3b-4c5d6e7f8a9b")
 # Core UUID Generation (OFD Standard)
 # =============================================================================
 
-def _derive_uuid(namespace: uuid.UUID, *args: Union[bytes, str, uuid.UUID]) -> uuid.UUID:
+
+def _derive_uuid(namespace: uuid.UUID, *args: bytes | str | uuid.UUID) -> uuid.UUID:
     """
     Derive a UUID using the OFD standard algorithm.
 
@@ -88,7 +87,7 @@ def generate_brand_uuid(brand_name: str) -> str:
     return str(_derive_uuid(NAMESPACE_BRAND, brand_name))
 
 
-def generate_material_uuid(brand_uuid: Union[str, uuid.UUID], material_name: str) -> str:
+def generate_material_uuid(brand_uuid: str | uuid.UUID, material_name: str) -> str:
     """
     Generate a material UUID according to OFD standard.
 
@@ -104,7 +103,7 @@ def generate_material_uuid(brand_uuid: Union[str, uuid.UUID], material_name: str
     return str(_derive_uuid(NAMESPACE_MATERIAL, brand_uuid, material_name))
 
 
-def generate_package_uuid(brand_uuid: Union[str, uuid.UUID], gtin: str) -> str:
+def generate_package_uuid(brand_uuid: str | uuid.UUID, gtin: str) -> str:
     """
     Generate a package UUID according to OFD standard.
 
@@ -140,6 +139,7 @@ def generate_instance_uuid(nfc_tag_uid: bytes) -> str:
 # =============================================================================
 # Extended UUID Generation (for database entities)
 # =============================================================================
+
 
 def generate_brand_id(name: str) -> str:
     """Generate a stable ID for a brand using the OFD standard algorithm."""
@@ -244,22 +244,23 @@ def generate_purchase_link_id(size_id: str, store_id: str, url: str) -> str:
 # String Utilities
 # =============================================================================
 
+
 def slugify(text: str) -> str:
     """Convert text to a URL-friendly slug."""
     # Convert to lowercase
     text = text.lower()
     # Replace spaces and underscores with hyphens
-    text = re.sub(r'[\s_]+', '-', text)
+    text = re.sub(r"[\s_]+", "-", text)
     # Remove non-alphanumeric characters except hyphens
-    text = re.sub(r'[^a-z0-9-]', '', text)
+    text = re.sub(r"[^a-z0-9-]", "", text)
     # Remove consecutive hyphens
-    text = re.sub(r'-+', '-', text)
+    text = re.sub(r"-+", "-", text)
     # Strip leading/trailing hyphens
-    text = text.strip('-')
+    text = text.strip("-")
     return text
 
 
-def normalize_color_hex(color: str) -> Optional[str]:
+def normalize_color_hex(color: str) -> str | None:
     """Normalize a color value to #RRGGBB format."""
     if not color:
         return None
@@ -274,21 +275,21 @@ def normalize_color_hex(color: str) -> Optional[str]:
     color = str(color).strip()
 
     # If already in correct format, return as-is
-    if re.match(r'^#[0-9A-Fa-f]{6}$', color):
+    if re.match(r"^#[0-9A-Fa-f]{6}$", color):
         return color.upper()
 
     # Handle 3-digit hex
-    if re.match(r'^#[0-9A-Fa-f]{3}$', color):
+    if re.match(r"^#[0-9A-Fa-f]{3}$", color):
         r, g, b = color[1], color[2], color[3]
-        return f'#{r}{r}{g}{g}{b}{b}'.upper()
+        return f"#{r}{r}{g}{g}{b}{b}".upper()
 
     # Handle hex without #
-    if re.match(r'^[0-9A-Fa-f]{6}$', color):
-        return f'#{color}'.upper()
+    if re.match(r"^[0-9A-Fa-f]{6}$", color):
+        return f"#{color}".upper()
 
-    if re.match(r'^[0-9A-Fa-f]{3}$', color):
+    if re.match(r"^[0-9A-Fa-f]{3}$", color):
         r, g, b = color[0], color[1], color[2]
-        return f'#{r}{r}{g}{g}{b}{b}'.upper()
+        return f"#{r}{r}{g}{g}{b}{b}".upper()
 
     # Return as-is if we can't parse it
     return color
@@ -298,14 +299,16 @@ def normalize_color_hex(color: str) -> Optional[str]:
 # Time Utilities
 # =============================================================================
 
+
 def get_current_timestamp() -> str:
     """Get the current UTC timestamp in ISO 8601 format."""
-    return datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 # =============================================================================
 # Hash Utilities
 # =============================================================================
+
 
 def calculate_sha256(data: bytes) -> str:
     """Calculate SHA256 hash of data."""
@@ -314,13 +317,14 @@ def calculate_sha256(data: bytes) -> str:
 
 def calculate_file_sha256(filepath: str) -> str:
     """Calculate SHA256 hash of a file."""
-    with open(filepath, 'rb') as f:
+    with open(filepath, "rb") as f:
         return hashlib.sha256(f.read()).hexdigest()
 
 
 # =============================================================================
 # Collection Utilities
 # =============================================================================
+
 
 def ensure_list(value) -> list:
     """Ensure a value is a list."""

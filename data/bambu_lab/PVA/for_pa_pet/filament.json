@@ -7,10 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_Support_for_PA_PET_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu Support for PA PET"
+            "profile_name": "Bambu Support For PA/PET",
+            "id": "GFS03",
+            "generic_id": "GFS99"
         },
         "orcaslicer": {
-            "profile_name": "Bambu Support for PA PET"
+            "profile_name": "Bambu Support For PA/PET",
+            "id": "GFS03",
+            "generic_id": "GFS99"
+        },
+        "elegooslicer": {
+            "profile_name": "Bambu Support For PA/PET",
+            "id": "GFS03",
+            "generic_id": "GFS99"
         }
     }
 }

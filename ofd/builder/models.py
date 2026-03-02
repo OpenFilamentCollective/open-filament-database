@@ -9,10 +9,12 @@ JSON schemas in schemas/ are the single source of truth for field definitions.
 from dataclasses import dataclass, field
 from typing import Optional
 from enum import Enum
+from typing import Any
 
 
 class DocumentType(str, Enum):
     """Document types."""
+
     TDS = "tds"  # Technical Data Sheet
     SDS = "sds"  # Safety Data Sheet
 

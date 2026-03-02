@@ -2,5 +2,13 @@
     "id": "hd_pla",
     "name": "HD PLA",
     "diameter_tolerance": 0.02,
-    "density": 1.24
+    "density": 1.24,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy HD PLA"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy HD PLA"
+        }
+    }
 }

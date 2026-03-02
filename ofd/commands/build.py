@@ -8,9 +8,9 @@ JSON, SQLite, CSV, API, and HTML exports.
 import argparse
 import hashlib
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict
 
 from ofd.builder.crawler import crawl_data
 from ofd.builder.errors import BuildResult
@@ -26,43 +26,39 @@ def generate_version() -> str:
     return now.strftime("%Y.%m.%d")
 
 
-def calculate_checksums(output_dir: str) -> Dict[str, str]:
+def calculate_checksums(output_dir: str) -> dict[str, str]:
     """Calculate SHA256 checksums for all generated files."""
     checksums = {}
     output_path = Path(output_dir)
 
-    for file_path in output_path.rglob('*'):
-        if file_path.is_file() and not file_path.name.endswith('.sha256'):
+    for file_path in output_path.rglob("*"):
+        if file_path.is_file() and not file_path.name.endswith(".sha256"):
             rel_path = str(file_path.relative_to(output_path))
-            with open(file_path, 'rb') as f:
+            with open(file_path, "rb") as f:
                 sha256 = hashlib.sha256(f.read()).hexdigest()
             checksums[rel_path] = sha256
 
     return checksums
 
 
-def write_manifest(output_dir: str, version: str, generated_at: str, checksums: Dict[str, str]):
+def write_manifest(output_dir: str, version: str, generated_at: str, checksums: dict[str, str]):
     """Write the manifest file with all artifacts."""
     output_path = Path(output_dir)
 
     artifacts = []
     for rel_path, sha256 in sorted(checksums.items()):
         file_path = output_path / rel_path
-        artifacts.append({
-            "path": rel_path,
-            "sha256": sha256,
-            "size": file_path.stat().st_size
-        })
+        artifacts.append({"path": rel_path, "sha256": sha256, "size": file_path.stat().st_size})
 
     manifest = {
         "dataset_version": version,
         "generated_at": generated_at,
         "artifact_count": len(artifacts),
-        "artifacts": artifacts
+        "artifacts": artifacts,
     }
 
     manifest_file = output_path / "manifest.json"
-    with open(manifest_file, 'w', encoding='utf-8') as f:
+    with open(manifest_file, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2)
 
     print(f"Written: {manifest_file}")
@@ -72,9 +68,9 @@ def write_manifest(output_dir: str, version: str, generated_at: str, checksums: 
 def register_subcommand(subparsers: argparse._SubParsersAction) -> None:
     """Register the build subcommand."""
     parser = subparsers.add_parser(
-        'build',
-        help='Build database exports (JSON, SQLite, CSV, API, HTML)',
-        description='Build all database exports from the data and stores directories.',
+        "build",
+        help="Build database exports (JSON, SQLite, CSV, API, HTML)",
+        description="Build all database exports from the data and stores directories.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -82,61 +78,33 @@ Examples:
   ofd build -o output              Build to custom output directory
   ofd build --skip-sqlite          Skip SQLite export
   ofd build --skip-json --skip-csv Only build API and HTML
-        """
+        """,
     )
 
     # Output options
     parser.add_argument(
-        '--output-dir', '-o',
-        default='dist',
-        help='Output directory (default: dist)'
+        "--output-dir", "-o", default="dist", help="Output directory (default: dist)"
     )
 
     # Input options
+    parser.add_argument("--data-dir", "-d", default="data", help="Data directory (default: data)")
     parser.add_argument(
-        '--data-dir', '-d',
-        default='data',
-        help='Data directory (default: data)'
-    )
-    parser.add_argument(
-        '--stores-dir', '-s',
-        default='stores',
-        help='Stores directory (default: stores)'
+        "--stores-dir", "-s", default="stores", help="Stores directory (default: stores)"
     )
 
     # Version
     parser.add_argument(
-        '--version', '-v',
-        default=None,
-        help='Dataset version (default: auto-generated from date)'
+        "--version", "-v", default=None, help="Dataset version (default: auto-generated from date)"
     )
 
     # Skip options
-    skip_group = parser.add_argument_group('skip options')
+    skip_group = parser.add_argument_group("skip options")
+    skip_group.add_argument("--skip-json", action="store_true", help="Skip JSON export")
+    skip_group.add_argument("--skip-sqlite", action="store_true", help="Skip SQLite export")
+    skip_group.add_argument("--skip-csv", action="store_true", help="Skip CSV export")
+    skip_group.add_argument("--skip-api", action="store_true", help="Skip static API export")
     skip_group.add_argument(
-        '--skip-json',
-        action='store_true',
-        help='Skip JSON export'
-    )
-    skip_group.add_argument(
-        '--skip-sqlite',
-        action='store_true',
-        help='Skip SQLite export'
-    )
-    skip_group.add_argument(
-        '--skip-csv',
-        action='store_true',
-        help='Skip CSV export'
-    )
-    skip_group.add_argument(
-        '--skip-api',
-        action='store_true',
-        help='Skip static API export'
-    )
-    skip_group.add_argument(
-        '--skip-html',
-        action='store_true',
-        help='Skip HTML landing page export'
+        "--skip-html", action="store_true", help="Skip HTML landing page export"
     )
     skip_group.add_argument(
         '--skip-docs',
@@ -229,11 +197,14 @@ def run_build(args: argparse.Namespace) -> int:
     if not args.skip_api:
         print("\n[6/10] Exporting Static API...")
         export_api(
-            db, str(output_dir), version, generated_at,
+            db,
+            str(output_dir),
+            version,
+            generated_at,
             schemas_dir=str(schemas_dir),
             builder_schemas_dir=str(builder_schemas_dir),
             data_dir=str(data_dir),
-            stores_dir=str(stores_dir)
+            stores_dir=str(stores_dir),
         )
     else:
         print("\n[6/10] Skipping Static API export")
@@ -283,7 +254,9 @@ def run_build(args: argparse.Namespace) -> int:
     print(f"Total artifacts: {len(checksums)}")
 
     if build_result.errors:
-        print(f"\nBuild issues: {build_result.error_count} errors, {build_result.warning_count} warnings")
+        print(
+            f"\nBuild issues: {build_result.error_count} errors, {build_result.warning_count} warnings"
+        )
 
     # Return non-zero exit code if there were errors
     return 1 if build_result.has_errors else 0
