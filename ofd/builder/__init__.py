@@ -33,29 +33,14 @@ from .exporters import (
     export_json,
     export_sqlite,
 )
-from .models import (
-    AllSlicerSettings,
-    Brand,
-    ColorStandards,
-    Database,
-    Filament,
-    GenericSlicerSettings,
-    Material,
-    PurchaseLink,
-    Size,
-    SlicerSettings,
-    Store,
-    Variant,
-    VariantTraits,
-)
 
 __all__ = [
     # Version
     "__version__",
     # Models
-    'Database',
-    'DocumentType',
-    'ENTITY_TYPES',
+    "Database",
+    "DocumentType",
+    "ENTITY_TYPES",
     # Crawler
     "crawl_data",
     "DataCrawler",

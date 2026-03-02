@@ -7,6 +7,7 @@ delegating all validation logic to ofd-validator.
 """
 
 from pathlib import Path
+from typing import Optional
 
 from ofd_validator import (
     ValidationError,

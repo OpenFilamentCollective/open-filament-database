@@ -331,7 +331,7 @@ class StyleDataScript(BaseScript):
                     message=f"Unknown schema type: {schema_type}"
                 )
 
-            extra_keys: Set[str] = set()
+            extra_keys: set[str] = set()
             styled = sort_json_keys(input_data, key_order_map[schema_type], extra_keys)
             # Output styled JSON with 2-space indent (matching repo convention) + trailing newline
             print(json.dumps(styled, indent=2, ensure_ascii=False))

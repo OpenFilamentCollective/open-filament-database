@@ -12,9 +12,6 @@ from pathlib import Path
 from ..models import Database
 from ..serialization import insert_entities
 
-from ..models import Brand, Database, Filament, Material, PurchaseLink, Size, Store, Variant
-from ..serialization import serialize_for_sqlite
-
 # =============================================================================
 # Schema DDL - Defines table structure, indexes, and views
 # =============================================================================
