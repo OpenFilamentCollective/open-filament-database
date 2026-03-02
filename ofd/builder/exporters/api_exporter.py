@@ -205,13 +205,15 @@ def export_brand_logos(db: Database, api_path: Path, data_dir: Path) -> tuple[in
         }
         write_json(logos_path / f"{logo_id}.json", logo_json)
 
-        logo_index.append({
-            "id": logo_id,
-            "slug": logo_id,
-            "brand_id": brand["id"],
-            "brand_name": brand["name"],
-            "path": f"{logo_id}.json"
-        })
+        logo_index.append(
+            {
+                "id": logo_id,
+                "slug": logo_id,
+                "brand_id": brand["id"],
+                "brand_name": brand["name"],
+                "path": f"{logo_id}.json",
+            }
+        )
 
         # Add to mapping (with file extension)
         logo_id_mapping[brand["id"]] = f"{logo_id}.{ext}"
@@ -272,13 +274,15 @@ def export_store_logos(
         }
         write_json(logos_path / f"{logo_id}.json", logo_json)
 
-        logo_index.append({
-            "id": logo_id,
-            "slug": logo_id,
-            "store_id": store["id"],
-            "store_name": store["name"],
-            "path": f"{logo_id}.json"
-        })
+        logo_index.append(
+            {
+                "id": logo_id,
+                "slug": logo_id,
+                "store_id": store["id"],
+                "store_name": store["name"],
+                "path": f"{logo_id}.json",
+            }
+        )
 
         # Add to mapping (with file extension)
         logo_id_mapping[store["id"]] = f"{logo_id}.{ext}"
@@ -352,7 +356,7 @@ def export_api(
         "store_logos": "stores/logo/index.json",
         "badges": "badges/",
         "editor": "editor/",
-        "all": "../json/all.json"
+        "all": "../json/all.json",
     }
     if schemas_count > 0:
         endpoints["schemas"] = "schemas/index.json"
@@ -386,7 +390,7 @@ def export_api(
             "slug": brand["slug"],
             "origin": brand["origin"],
             "material_count": len(brand_materials),
-            "path": f"{brand['slug']}/index.json"
+            "path": f"{brand['slug']}/index.json",
         }
         # Add logo_slug if brand has a logo
         if brand["id"] in brand_logo_id_mapping:
@@ -417,13 +421,15 @@ def export_api(
         materials_list = []
         for mat in brand_materials:
             mat_filaments = filaments_by_material.get(mat["id"], [])
-            materials_list.append({
-                "id": mat["id"],
-                "material": mat["material"],
-                "slug": mat["slug"],
-                "filament_count": len(mat_filaments),
-                "path": f"materials/{mat['slug']}/index.json"
-            })
+            materials_list.append(
+                {
+                    "id": mat["id"],
+                    "material": mat["material"],
+                    "slug": mat["slug"],
+                    "filament_count": len(mat_filaments),
+                    "path": f"materials/{mat['slug']}/index.json",
+                }
+            )
 
         brand_data = entity_to_dict(brand)
         brand_data["materials"] = materials_list
@@ -442,13 +448,15 @@ def export_api(
             filaments_list = []
             for fil in mat_filaments:
                 fil_variants = variants_by_filament.get(fil["id"], [])
-                filaments_list.append({
-                    "id": fil["id"],
-                    "name": fil["name"],
-                    "slug": fil["slug"],
-                    "variant_count": len(fil_variants),
-                    "path": f"filaments/{fil['slug']}/index.json"
-                })
+                filaments_list.append(
+                    {
+                        "id": fil["id"],
+                        "name": fil["name"],
+                        "slug": fil["slug"],
+                        "variant_count": len(fil_variants),
+                        "path": f"filaments/{fil['slug']}/index.json",
+                    }
+                )
 
             mat_data = entity_to_dict(mat)
             mat_data["filaments"] = filaments_list
@@ -464,14 +472,16 @@ def export_api(
                 variants_list = []
                 for var in fil_variants:
                     var_sizes = sizes_by_variant.get(var["id"], [])
-                    variants_list.append({
-                        "id": var["id"],
-                        "name": var["name"],
-                        "color_hex": var["color_hex"],
-                        "slug": var["slug"],
-                        "size_count": len(var_sizes),
-                        "path": f"variants/{var['slug']}.json"
-                    })
+                    variants_list.append(
+                        {
+                            "id": var["id"],
+                            "name": var["name"],
+                            "color_hex": var["color_hex"],
+                            "slug": var["slug"],
+                            "size_count": len(var_sizes),
+                            "path": f"variants/{var['slug']}.json",
+                        }
+                    )
 
                 fil_data = entity_to_dict(fil)
                 fil_data["variants"] = variants_list
@@ -511,7 +521,7 @@ def export_api(
             "name": store["name"],
             "slug": store["slug"],
             "storefront_url": store["storefront_url"],
-            "path": f"{store['slug']}.json"
+            "path": f"{store['slug']}.json",
         }
         # Add logo_slug if store has a logo
         if store["id"] in store_logo_id_mapping:

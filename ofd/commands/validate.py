@@ -104,11 +104,11 @@ Examples:
     )
 
     # Changes overlay options
-    changes_group = parser.add_argument_group('changes overlay')
+    changes_group = parser.add_argument_group("changes overlay")
     changes_group.add_argument(
-        '--apply-changes',
-        metavar='FILE',
-        help='Apply pending changes from a JSON file (or "-" for stdin) before validating'
+        "--apply-changes",
+        metavar="FILE",
+        help='Apply pending changes from a JSON file (or "-" for stdin) before validating',
     )
 
     parser.set_defaults(func=run_validate)
@@ -146,15 +146,15 @@ def run_validate(args: argparse.Namespace) -> int:
 
     # Load changes if provided (from file or stdin)
     changes_json = None
-    if hasattr(args, 'apply_changes') and args.apply_changes:
-        if args.apply_changes == '-':
+    if hasattr(args, "apply_changes") and args.apply_changes:
+        if args.apply_changes == "-":
             changes_json = sys.stdin.read()
         else:
             changes_path = Path(args.apply_changes)
             if not changes_path.exists():
                 print(f"Error: Changes file '{changes_path}' does not exist", file=sys.stderr)
                 return 1
-            changes_json = changes_path.read_text(encoding='utf-8')
+            changes_json = changes_path.read_text(encoding="utf-8")
 
     result = ValidationResult()
 

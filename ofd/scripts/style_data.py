@@ -229,15 +229,15 @@ class StyleDataScript(BaseScript):
             help="Only fix indentation to 2 spaces across all JSON files (skip sorting)",
         )
         parser.add_argument(
-            '--format-stdin',
-            action='store_true',
-            help='Read JSON from stdin, sort keys per schema, output styled JSON to stdout'
+            "--format-stdin",
+            action="store_true",
+            help="Read JSON from stdin, sort keys per schema, output styled JSON to stdout",
         )
         parser.add_argument(
-            '--schema-type',
+            "--schema-type",
             type=str,
-            choices=['brand', 'material', 'filament', 'variant', 'store', 'sizes'],
-            help='Schema type to use when formatting stdin (required with --format-stdin)'
+            choices=["brand", "material", "filament", "variant", "store", "sizes"],
+            help="Schema type to use when formatting stdin (required with --format-stdin)",
         )
 
     def _fix_json_indentation(self, file_path: Path, dry_run: bool, stats: ProcessingStats) -> bool:
@@ -301,11 +301,11 @@ class StyleDataScript(BaseScript):
 
     def run(self, args: argparse.Namespace) -> ScriptResult:
         """Execute the style_data script."""
-        dry_run = getattr(args, 'dry_run', False)
-        do_validate = getattr(args, 'validate', False)
-        fix_indent_only = getattr(args, 'fix_indent_only', False)
-        format_stdin = getattr(args, 'format_stdin', False)
-        schema_type = getattr(args, 'schema_type', None)
+        dry_run = getattr(args, "dry_run", False)
+        do_validate = getattr(args, "validate", False)
+        fix_indent_only = getattr(args, "fix_indent_only", False)
+        format_stdin = getattr(args, "format_stdin", False)
+        schema_type = getattr(args, "schema_type", None)
 
         # Handle --format-stdin mode: read JSON from stdin, sort keys, output to stdout
         if format_stdin:
@@ -314,11 +314,11 @@ class StyleDataScript(BaseScript):
 
             if not schema_type:
                 return ScriptResult(
-                    success=False,
-                    message="--schema-type is required with --format-stdin"
+                    success=False, message="--schema-type is required with --format-stdin"
                 )
 
             import sys
+
             try:
                 input_data = json.loads(sys.stdin.read())
             except json.JSONDecodeError as e:
@@ -326,10 +326,7 @@ class StyleDataScript(BaseScript):
 
             key_order_map = build_key_order_map(self.schemas_dir)
             if schema_type not in key_order_map:
-                return ScriptResult(
-                    success=False,
-                    message=f"Unknown schema type: {schema_type}"
-                )
+                return ScriptResult(success=False, message=f"Unknown schema type: {schema_type}")
 
             extra_keys: set[str] = set()
             styled = sort_json_keys(input_data, key_order_map[schema_type], extra_keys)
@@ -339,7 +336,7 @@ class StyleDataScript(BaseScript):
             return ScriptResult(
                 success=True,
                 message="Formatted successfully",
-                data={'extra_keys': sorted(extra_keys)} if extra_keys else {}
+                data={"extra_keys": sorted(extra_keys)} if extra_keys else {},
             )
 
         if dry_run:

@@ -6,7 +6,9 @@ Works with plain dict entities — no dataclass introspection needed.
 
 import json
 import sqlite3
-from typing import Any, Optional
+from typing import Any
+
+from ofd.builder.models import ENTITY_TYPES
 
 
 def entity_to_dict(entity: Any, exclude_none: bool = True) -> dict | None:
@@ -66,6 +68,8 @@ def serialize_for_sqlite(value: Any) -> Any:
 
 def get_table_columns(cursor: sqlite3.Cursor, table_name: str) -> list[str]:
     """Get column names for a table from the SQLite schema."""
+    if table_name not in ENTITY_TYPES:
+        raise ValueError(f"Unknown table name: {table_name}")
     cursor.execute(f"PRAGMA table_info({table_name})")
     return [row[1] for row in cursor.fetchall()]
 
@@ -85,6 +89,9 @@ def insert_entities(
     if not entities:
         return
 
+    if table_name not in ENTITY_TYPES:
+        raise ValueError(f"Unknown table name: {table_name}")
+
     columns = get_table_columns(cursor, table_name)
     placeholders = ", ".join(["?"] * len(columns))
     col_names = ", ".join(columns)
@@ -92,8 +99,5 @@ def insert_entities(
 
     for entity in entities:
         exported = entity_to_dict(entity)
-        values = tuple(
-            serialize_for_sqlite(exported.get(col))
-            for col in columns
-        )
+        values = tuple(serialize_for_sqlite(exported.get(col)) for col in columns)
         cursor.execute(sql, values)

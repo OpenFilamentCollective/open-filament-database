@@ -1,0 +1,9 @@
+{
+  "id": "matte_black",
+  "name": "Matte Black",
+  "color_hex": "#1A1A1A",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

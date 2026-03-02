@@ -34,22 +34,84 @@ def build_abstract_file_tree(db: Database) -> str:
 
     # API structure
     api_variants = li_placeholder("{variant}.json")
-    api_filaments = li_dir("{filament-slug}", li_dir("variants", api_variants) + "\n" + li_file("index.json"))
-    api_materials = li_dir("{material-slug}", li_dir("filaments", api_filaments) + "\n" + li_file("index.json"))
-    api_brands_inner = li_dir("{brand-slug}", li_dir("materials", api_materials) + "\n" + li_file("index.json"))
-    api_brand_logos = li_dir("logo", li_placeholder("{logo-id}.json") + "\n" + li_placeholder("{logo-id}.{ext}") + "\n" + li_file("index.json", "api/v1/brands/logo/index.json"))
-    api_brands = li_dir("brands", api_brands_inner + "\n" + api_brand_logos + "\n" + li_file("index.json", "api/v1/brands/index.json"))
-    api_store_logos = li_dir("logo", li_placeholder("{logo-id}.json") + "\n" + li_placeholder("{logo-id}.{ext}") + "\n" + li_file("index.json", "api/v1/stores/logo/index.json"))
-    api_stores = li_dir("stores", li_placeholder("{store-slug}.json") + "\n" + api_store_logos + "\n" + li_file("index.json", "api/v1/stores/index.json"))
-    api_schemas = li_dir("schemas", li_placeholder("*.json") + "\n" + li_file("index.json", "api/v1/schemas/index.json"))
-    api_badges = li_dir("badges", "\n".join([
-        li_file("brands.svg", "api/v1/badges/brands.svg"),
-        li_file("filaments.svg", "api/v1/badges/filaments.svg"),
-        li_file("variants.svg", "api/v1/badges/variants.svg"),
-        li_file("stores.svg", "api/v1/badges/stores.svg"),
-    ]))
-    api_editor = li_dir("editor", li_placeholder("*.html") + "\n" + li_file("index.html", "api/v1/editor/index.html") + "\n" + li_file("index.json", "api/v1/editor/index.json"))
-    api_v1 = li_dir("v1", api_badges + "\n" + api_brands + "\n" + api_editor + "\n" + api_stores + "\n" + api_schemas + "\n" + li_file("index.json", "api/v1/index.json"))
+    api_filaments = li_dir(
+        "{filament-slug}", li_dir("variants", api_variants) + "\n" + li_file("index.json")
+    )
+    api_materials = li_dir(
+        "{material-slug}", li_dir("filaments", api_filaments) + "\n" + li_file("index.json")
+    )
+    api_brands_inner = li_dir(
+        "{brand-slug}", li_dir("materials", api_materials) + "\n" + li_file("index.json")
+    )
+    api_brand_logos = li_dir(
+        "logo",
+        li_placeholder("{logo-id}.json")
+        + "\n"
+        + li_placeholder("{logo-id}.{ext}")
+        + "\n"
+        + li_file("index.json", "api/v1/brands/logo/index.json"),
+    )
+    api_brands = li_dir(
+        "brands",
+        api_brands_inner
+        + "\n"
+        + api_brand_logos
+        + "\n"
+        + li_file("index.json", "api/v1/brands/index.json"),
+    )
+    api_store_logos = li_dir(
+        "logo",
+        li_placeholder("{logo-id}.json")
+        + "\n"
+        + li_placeholder("{logo-id}.{ext}")
+        + "\n"
+        + li_file("index.json", "api/v1/stores/logo/index.json"),
+    )
+    api_stores = li_dir(
+        "stores",
+        li_placeholder("{store-slug}.json")
+        + "\n"
+        + api_store_logos
+        + "\n"
+        + li_file("index.json", "api/v1/stores/index.json"),
+    )
+    api_schemas = li_dir(
+        "schemas",
+        li_placeholder("*.json") + "\n" + li_file("index.json", "api/v1/schemas/index.json"),
+    )
+    api_badges = li_dir(
+        "badges",
+        "\n".join(
+            [
+                li_file("brands.svg", "api/v1/badges/brands.svg"),
+                li_file("filaments.svg", "api/v1/badges/filaments.svg"),
+                li_file("variants.svg", "api/v1/badges/variants.svg"),
+                li_file("stores.svg", "api/v1/badges/stores.svg"),
+            ]
+        ),
+    )
+    api_editor = li_dir(
+        "editor",
+        li_placeholder("*.html")
+        + "\n"
+        + li_file("index.html", "api/v1/editor/index.html")
+        + "\n"
+        + li_file("index.json", "api/v1/editor/index.json"),
+    )
+    api_v1 = li_dir(
+        "v1",
+        api_badges
+        + "\n"
+        + api_brands
+        + "\n"
+        + api_editor
+        + "\n"
+        + api_stores
+        + "\n"
+        + api_schemas
+        + "\n"
+        + li_file("index.json", "api/v1/index.json"),
+    )
     lines.append(li_dir("api", api_v1))
 
     # CSV structure

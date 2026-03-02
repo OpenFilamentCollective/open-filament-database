@@ -1,0 +1,10 @@
+{
+  "id": "pei_9085",
+  "name": "PEI 9085",
+  "diameter_tolerance": 0.05,
+  "density": 1.34,
+  "min_print_temperature": 330,
+  "max_print_temperature": 370,
+  "min_bed_temperature": 120,
+  "max_bed_temperature": 160
+}

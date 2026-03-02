@@ -1,0 +1,10 @@
+{
+  "id": "peek",
+  "name": "PEEK",
+  "diameter_tolerance": 0.05,
+  "density": 1.30,
+  "min_print_temperature": 360,
+  "max_print_temperature": 410,
+  "min_bed_temperature": 120,
+  "max_bed_temperature": 160
+}

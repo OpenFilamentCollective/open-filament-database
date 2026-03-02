@@ -1,0 +1,10 @@
+{
+  "id": "ppsu",
+  "name": "PPSU",
+  "diameter_tolerance": 0.05,
+  "density": 1.29,
+  "min_print_temperature": 320,
+  "max_print_temperature": 370,
+  "min_bed_temperature": 120,
+  "max_bed_temperature": 160
+}

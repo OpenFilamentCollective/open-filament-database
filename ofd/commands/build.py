@@ -14,7 +14,17 @@ from pathlib import Path
 
 from ofd.builder.crawler import crawl_data
 from ofd.builder.errors import BuildResult
-from ofd.builder.exporters import export_json, export_sqlite, export_sqlite_stores, export_csv, export_api, export_html, export_directory_listings, export_badges, export_docs
+from ofd.builder.exporters import (
+    export_api,
+    export_badges,
+    export_csv,
+    export_directory_listings,
+    export_docs,
+    export_html,
+    export_json,
+    export_sqlite,
+    export_sqlite_stores,
+)
 from ofd.builder.utils import get_current_timestamp
 
 project_root = Path(__file__).parent.parent.parent
@@ -107,9 +117,7 @@ Examples:
         "--skip-html", action="store_true", help="Skip HTML landing page export"
     )
     skip_group.add_argument(
-        '--skip-docs',
-        action='store_true',
-        help='Skip editor documentation export'
+        "--skip-docs", action="store_true", help="Skip editor documentation export"
     )
 
     parser.set_defaults(func=run_build)

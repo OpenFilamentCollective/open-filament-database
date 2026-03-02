@@ -10,22 +10,54 @@ from pathlib import Path
 from ..models import Database
 from ..serialization import entity_to_dict, serialize_for_csv
 
-
 # Preferred key ordering per entity type for stable CSV columns.
 # Keys not listed here are appended alphabetically after these.
 _KEY_ORDER = {
     "brand": ["id", "name", "slug", "website", "logo_name", "origin", "source"],
-    "material": ["id", "brand_id", "material", "slug", "material_class",
-                  "default_max_dry_temperature", "default_slicer_settings"],
-    "filament": ["id", "brand_id", "material_id", "name", "slug", "material",
-                  "density", "diameter_tolerance", "discontinued"],
-    "variant": ["id", "filament_id", "slug", "name", "color_hex",
-                 "hex_variants", "color_standards", "traits", "discontinued"],
-    "size": ["id", "variant_id", "filament_weight", "diameter", "empty_spool_weight",
-             "spool_core_diameter", "gtin", "article_number", "discontinued"],
+    "material": [
+        "id",
+        "brand_id",
+        "material",
+        "slug",
+        "material_class",
+        "default_max_dry_temperature",
+        "default_slicer_settings",
+    ],
+    "filament": [
+        "id",
+        "brand_id",
+        "material_id",
+        "name",
+        "slug",
+        "material",
+        "density",
+        "diameter_tolerance",
+        "discontinued",
+    ],
+    "variant": [
+        "id",
+        "filament_id",
+        "slug",
+        "name",
+        "color_hex",
+        "hex_variants",
+        "color_standards",
+        "traits",
+        "discontinued",
+    ],
+    "size": [
+        "id",
+        "variant_id",
+        "filament_weight",
+        "diameter",
+        "empty_spool_weight",
+        "spool_core_diameter",
+        "gtin",
+        "article_number",
+        "discontinued",
+    ],
     "store": ["id", "name", "slug", "storefront_url", "logo_name", "ships_from", "ships_to"],
-    "purchase_link": ["id", "size_id", "store_id", "url", "spool_refill",
-                       "ships_from", "ships_to"],
+    "purchase_link": ["id", "size_id", "store_id", "url", "spool_refill", "ships_from", "ships_to"],
 }
 
 # Keys that are internal and should never appear in CSV
@@ -63,13 +95,13 @@ def _export_entity_csv(
     csv_path = output_path / filename
 
     if not entities:
-        with open(csv_path, 'w', newline='', encoding='utf-8') as f:
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
             pass
         return csv_path
 
     headers = _derive_headers(entities, entity_type)
 
-    with open(csv_path, 'w', newline='', encoding='utf-8') as f:
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(headers)
 

@@ -1,0 +1,10 @@
+{
+  "id": "cf_asa",
+  "name": "CF-ASA",
+  "diameter_tolerance": 0.05,
+  "density": 1.12,
+  "min_print_temperature": 250,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 110
+}

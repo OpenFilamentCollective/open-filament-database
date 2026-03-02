@@ -120,16 +120,18 @@ def export_per_brand_json(db: Database, output_dir: str, version: str, generated
 
         # Write brand JSON
         brand_json_path = output_path / f"{brand['slug']}.json"
-        with open(brand_json_path, 'w', encoding='utf-8') as f:
+        with open(brand_json_path, "w", encoding="utf-8") as f:
             json.dump(brand_data, f, indent=2, ensure_ascii=False)
 
         # Add to index
-        index["brands"].append({
-            "id": brand["id"],
-            "name": brand["name"],
-            "slug": brand["slug"],
-            "path": f"brands/{brand['slug']}.json"
-        })
+        index["brands"].append(
+            {
+                "id": brand["id"],
+                "name": brand["name"],
+                "slug": brand["slug"],
+                "path": f"brands/{brand['slug']}.json",
+            }
+        )
 
     # Write index
     index_path = output_path / "index.json"

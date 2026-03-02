@@ -1,0 +1,10 @@
+{
+    "id": "cf",
+    "name": "PAHT-CF",
+    "density": 1.2,
+    "diameter_tolerance": 0.02,
+    "min_print_temperature": 300,
+    "max_print_temperature": 320,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 90
+}

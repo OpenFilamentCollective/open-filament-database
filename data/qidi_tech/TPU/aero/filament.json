@@ -1,0 +1,10 @@
+{
+    "id": "aero",
+    "name": "TPU-Aero",
+    "density": 0.74,
+    "diameter_tolerance": 0.02,
+    "min_print_temperature": 230,
+    "max_print_temperature": 270,
+    "min_bed_temperature": 30,
+    "max_bed_temperature": 45
+}

@@ -22,10 +22,7 @@ Or programmatically:
 
 __version__ = "3.0.0"
 
-from .models import Database, DocumentType, ENTITY_TYPES
-
-from .crawler import crawl_data, DataCrawler
-
+from .crawler import DataCrawler, crawl_data
 from .exporters import (
     export_api,
     export_badges,
@@ -33,6 +30,7 @@ from .exporters import (
     export_json,
     export_sqlite,
 )
+from .models import ENTITY_TYPES, Database, DocumentType
 
 __all__ = [
     # Version

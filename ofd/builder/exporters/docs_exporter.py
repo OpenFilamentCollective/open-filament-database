@@ -6,6 +6,7 @@ Python markdown library, wraps them in Adwaita-themed templates, and writes
 them to dist/api/v1/editor/.
 """
 
+import html
 import json
 import re
 from pathlib import Path
@@ -20,24 +21,26 @@ def _slug_from_path(md_path: Path) -> str:
 
 def _title_from_markdown(text: str, fallback: str) -> str:
     """Extract the first H1 heading from markdown text, or use the fallback."""
-    match = re.match(r'^#\s+(.+)', text, re.MULTILINE)
+    match = re.match(r"^#\s+(.+)", text, re.MULTILINE)
     if match:
         return match.group(1).strip()
-    return fallback.replace('-', ' ').replace('_', ' ').title()
+    return fallback.replace("-", " ").replace("_", " ").title()
 
 
 def _render_doc(md_text: str) -> str:
     """Convert markdown text to HTML with common extensions."""
     return markdown.markdown(
         md_text,
-        extensions=['fenced_code', 'tables', 'toc', 'attr_list'],
+        extensions=["fenced_code", "tables", "toc", "attr_list"],
         extension_configs={
-            'toc': {'permalink': False},
+            "toc": {"permalink": False},
         },
     )
 
 
-def export_docs(output_dir: str, docs_dir: str = "docs", templates_dir: str = None, **kwargs):
+def export_docs(
+    output_dir: str, docs_dir: str = "docs", templates_dir: str | None = None, **kwargs
+):
     """Export documentation markdown files as styled HTML to dist/api/v1/editor/."""
     docs_path = Path(docs_dir)
     if not docs_path.exists():
@@ -57,8 +60,10 @@ def export_docs(output_dir: str, docs_dir: str = "docs", templates_dir: str = No
         print(f"  Warning: Template not found at {doc_template_path}, skipping docs export")
         return
 
-    doc_template = doc_template_path.read_text(encoding='utf-8')
-    index_template = index_template_path.read_text(encoding='utf-8') if index_template_path.exists() else None
+    doc_template = doc_template_path.read_text(encoding="utf-8")
+    index_template = (
+        index_template_path.read_text(encoding="utf-8") if index_template_path.exists() else None
+    )
 
     editor_path = Path(output_dir) / "api" / "v1" / "editor"
     editor_path.mkdir(parents=True, exist_ok=True)
@@ -73,7 +78,7 @@ def export_docs(output_dir: str, docs_dir: str = "docs", templates_dir: str = No
 
     for md_file in md_files:
         slug = _slug_from_path(md_file)
-        md_text = md_file.read_text(encoding='utf-8')
+        md_text = md_file.read_text(encoding="utf-8")
         title = _title_from_markdown(md_text, md_file.stem)
         html_content = _render_doc(md_text)
 
@@ -81,17 +86,18 @@ def export_docs(output_dir: str, docs_dir: str = "docs", templates_dir: str = No
         page_html = doc_template
         page_html = page_html.replace("<TITLE/>", title)
         page_html = page_html.replace("<CONTENT/>", html_content)
-        page_html = page_html.replace("<SLUG/>", slug)
 
         out_file = editor_path / f"{slug}.html"
-        out_file.write_text(page_html, encoding='utf-8')
+        out_file.write_text(page_html, encoding="utf-8")
 
-        doc_entries.append({
-            "slug": slug,
-            "title": title,
-            "file": f"{slug}.html",
-            "source": md_file.name,
-        })
+        doc_entries.append(
+            {
+                "slug": slug,
+                "title": title,
+                "file": f"{slug}.html",
+                "source": md_file.name,
+            }
+        )
 
     # Write index.json
     index_json = {
@@ -99,16 +105,15 @@ def export_docs(output_dir: str, docs_dir: str = "docs", templates_dir: str = No
         "docs": doc_entries,
     }
     index_json_path = editor_path / "index.json"
-    with open(index_json_path, 'w', encoding='utf-8') as f:
+    with open(index_json_path, "w", encoding="utf-8") as f:
         json.dump(index_json, f, indent=2, ensure_ascii=False)
 
     # Write index.html (doc listing page)
     if index_template:
         listing_items = []
         for entry in doc_entries:
-            listing_items.append(
-                f'<li><a href="{entry["file"]}">{entry["title"]}</a></li>'
-            )
+            safe_title = html.escape(entry["title"])
+            listing_items.append(f'<li><a href="{entry["file"]}">{safe_title}</a></li>')
         listing_html = "<ul>\n" + "\n".join(listing_items) + "\n</ul>"
 
         index_page = index_template
@@ -116,6 +121,6 @@ def export_docs(output_dir: str, docs_dir: str = "docs", templates_dir: str = No
         index_page = index_page.replace("<COUNT/>", str(len(doc_entries)))
 
         index_html_path = editor_path / "index.html"
-        index_html_path.write_text(index_page, encoding='utf-8')
+        index_html_path.write_text(index_page, encoding="utf-8")
 
     print(f"  Written: {len(doc_entries)} docs to {editor_path}")

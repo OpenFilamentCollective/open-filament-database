@@ -1,0 +1,10 @@
+{
+    "id": "cf",
+    "name": "PPS-CF",
+    "density": 1.3,
+    "diameter_tolerance": 0.02,
+    "min_print_temperature": 310,
+    "max_print_temperature": 350,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 100
+}
