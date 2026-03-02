@@ -173,29 +173,6 @@
         "discontinued": {
             "type": "boolean"
         },
-        "slicer_ids": {
-            "type": "object",
-            "properties": {
-                "prusaslicer": {
-                    "$ref": "#/definitions/slicer_id"
-                },
-                "bambustudio": {
-                    "$ref": "#/definitions/slicer_id"
-                },
-                "orcaslicer": {
-                    "$ref": "#/definitions/slicer_id"
-                },
-                "cura": {
-                    "$ref": "#/definitions/slicer_id"
-                },
-                "superslicer": {
-                    "$ref": "#/definitions/slicer_id"
-                },
-                "elegooslicer": {
-                    "$ref": "#/definitions/slicer_id"
-                }
-            }
-        },
         "slicer_settings": {
             "$ref": "#/definitions/slicer_settings",
             "description": "The slicer settings that should be used for this filament. This will override what is set in \"default_slicer_settings\""

@@ -34,7 +34,6 @@ from .models import (
     SlicerSettings,
     GenericSlicerSettings,
     AllSlicerSettings,
-    SlicerIds,
     ColorStandards,
     VariantTraits,
 )
@@ -64,7 +63,6 @@ __all__ = [
     'SlicerSettings',
     'GenericSlicerSettings',
     'AllSlicerSettings',
-    'SlicerIds',
     'ColorStandards',
     'VariantTraits',
     # Crawler

@@ -47,17 +47,6 @@ class AllSlicerSettings:
 
 
 @dataclass
-class SlicerIds:
-    """Slicer identifiers for this filament."""
-    prusaslicer: Optional[str] = None
-    bambustudio: Optional[str] = None
-    orcaslicer: Optional[str] = None
-    cura: Optional[str] = None
-    superslicer: Optional[str] = None
-    elegooslicer: Optional[str] = None
-
-
-@dataclass
 class ColorStandards:
     """Color standard references."""
     ral: Optional[str] = None
@@ -120,7 +109,6 @@ class Filament:
     data_sheet_url: Optional[str] = None
     safety_sheet_url: Optional[str] = None
     discontinued: bool = False
-    slicer_ids: Optional[SlicerIds] = None
     slicer_settings: Optional[AllSlicerSettings] = None
 
 

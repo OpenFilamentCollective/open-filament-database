@@ -9,7 +9,7 @@ from typing import Optional
 from .errors import BuildResult
 from .models import (
     Brand, Material, Filament, Variant, Size, Store, PurchaseLink, Database,
-    SlicerSettings, GenericSlicerSettings, AllSlicerSettings, SlicerIds,
+    SlicerSettings, GenericSlicerSettings, AllSlicerSettings,
     ColorStandards, VariantTraits
 )
 from .utils import (
@@ -231,8 +231,7 @@ class DataCrawler:
         filament_name = filament_data.get("name", filament_dir.name)
         filament_id = generate_filament_id(brand_id, material_id, filament_name)
 
-        # Parse slicer IDs and settings
-        slicer_ids = self._parse_slicer_ids(filament_data.get("slicer_ids"))
+        # Parse slicer settings
         slicer_settings = self._parse_slicer_settings(filament_data.get("slicer_settings"))
 
         filament = Filament(
@@ -248,7 +247,6 @@ class DataCrawler:
             data_sheet_url=filament_data.get("data_sheet_url"),
             safety_sheet_url=filament_data.get("safety_sheet_url"),
             discontinued=filament_data.get("discontinued", False),
-            slicer_ids=slicer_ids,
             slicer_settings=slicer_settings
         )
 
@@ -418,18 +416,6 @@ class DataCrawler:
 
         self.db.purchase_links.append(purchase_link)
 
-    def _parse_slicer_ids(self, data: Optional[dict]) -> Optional[SlicerIds]:
-        """Parse slicer IDs from JSON data."""
-        if not data:
-            return None
-
-        return SlicerIds(
-            prusaslicer=data.get("prusaslicer"),
-            bambustudio=data.get("bambustudio"),
-            orcaslicer=data.get("orcaslicer"),
-            cura=data.get("cura")
-        )
-
     def _parse_slicer_settings(self, data: Optional[dict]) -> Optional[AllSlicerSettings]:
         """Parse slicer settings from JSON data."""
         if not data:
@@ -443,7 +429,9 @@ class DataCrawler:
                 return None
             return SlicerSettings(
                 profile_name=profile_name,
-                overrides=d.get("overrides")
+                overrides=d.get("overrides"),
+                id=d.get("id"),
+                generic_id=d.get("generic_id")
             )
 
         generic_data = data.get("generic")
@@ -461,6 +449,8 @@ class DataCrawler:
             bambustudio=parse_specific(data.get("bambustudio")),
             orcaslicer=parse_specific(data.get("orcaslicer")),
             cura=parse_specific(data.get("cura")),
+            superslicer=parse_specific(data.get("superslicer")),
+            elegooslicer=parse_specific(data.get("elegooslicer")),
             generic=generic
         )
 

@@ -68,7 +68,6 @@ CREATE TABLE IF NOT EXISTS filament (
     data_sheet_url TEXT,
     safety_sheet_url TEXT,
     discontinued INTEGER NOT NULL DEFAULT 0,
-    slicer_ids TEXT,  -- JSON
     slicer_settings TEXT  -- JSON
 );
 CREATE INDEX IF NOT EXISTS ix_filament_brand ON filament(brand_id);
