@@ -1,9 +1,9 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { ChangesMenu } from '$lib/components/layout';
+	import { ChangesMenu, Footer, WelcomeModal } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui';
-	import { isLocalMode, isCloudMode } from '$lib/stores/environment';
+	import { isCloudMode } from '$lib/stores/environment';
 	import { authStore } from '$lib/stores/auth';
 	import { theme } from '$lib/stores/theme';
 	import { db } from '$lib/services/database';
@@ -69,12 +69,6 @@
 						class="rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname.startsWith('/stores') ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
 					>
 						Stores
-					</a>
-					<a
-						href="/faq"
-						class="rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname === '/faq' ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
-					>
-						FAQ
 					</a>
 					{#if env.PUBLIC_API_BASE_URL}
 					<a
@@ -150,28 +144,26 @@
 					{/if}
 				</div>
 
-				{#if $isLocalMode}
-					<Button
-						onclick={handleRefresh}
-						disabled={refreshing}
-						variant="ghost"
-						size="icon"
-						title="Refresh data from filesystem"
+				<Button
+					onclick={handleRefresh}
+					disabled={refreshing}
+					variant="ghost"
+					size="icon"
+					title="Refresh data"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-5 w-5 {refreshing ? 'animate-spin' : ''}"
+						viewBox="0 0 20 20"
+						fill="currentColor"
 					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-5 w-5 {refreshing ? 'animate-spin' : ''}"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-					</Button>
-				{/if}
+						<path
+							fill-rule="evenodd"
+							d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</Button>
 				<ChangesMenu />
 			</div>
 		</div>
@@ -180,4 +172,8 @@
 	<main class="flex-1">
 		{@render children()}
 	</main>
+
+	<Footer />
 </div>
+
+<WelcomeModal />

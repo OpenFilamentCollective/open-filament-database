@@ -1,0 +1,430 @@
+<script lang="ts">
+	import { Button, LoadingSpinner } from '$lib/components/ui';
+	import { isAuthenticated, currentUser, authStore } from '$lib/stores/auth';
+	import { userPrefs } from '$lib/stores/userPrefs';
+	import { changeStore } from '$lib/stores/changes';
+	import { env } from '$env/dynamic/public';
+	import { get } from 'svelte/store';
+	import { onMount } from 'svelte';
+
+	type Step = 'method' | 'details' | 'success';
+	type SubmitMethod = 'anonymous' | 'github';
+
+	interface Props {
+		validationStatus: 'idle' | 'running' | 'complete' | 'error';
+		validationIsValid: boolean | null;
+		validationErrorCount: number;
+		validationWarningCount: number;
+		onSubmitAnonymous: (email?: string) => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
+		onSubmitGitHub: (title: string, description: string) => Promise<{ success: boolean; message: string; prUrl?: string }>;
+		onClose: () => void;
+	}
+
+	let {
+		validationStatus,
+		validationIsValid,
+		validationErrorCount,
+		validationWarningCount,
+		onSubmitAnonymous,
+		onSubmitGitHub,
+		onClose
+	}: Props = $props();
+
+	const anonBotEnabled = env.PUBLIC_ANON_BOT_ENABLED === 'true';
+	const showEmailField = env.PUBLIC_ANON_SHOW_EMAIL === 'true';
+	const wrapperName = env.PUBLIC_WRAPPER_NAME || '';
+
+	let step = $state<Step>('method');
+	let method = $state<SubmitMethod>(anonBotEnabled ? 'anonymous' : 'github');
+	let submitting = $state(false);
+	let result = $state<{ success: boolean; message: string; uuid?: string; prUrl?: string } | null>(null);
+
+	// Form fields
+	let prefs = get(userPrefs);
+	let email = $state(prefs.email);
+	let prTitle = $state('');
+	let prDescription = $state('');
+
+	// Deflation: check for previous submissions needing changes
+	let changesRequestedSubmission = $state<{ uuid: string; prUrl: string } | null>(null);
+	let deflating = $state(false);
+	let deflateError = $state<string | null>(null);
+
+	onMount(async () => {
+		const submissions = userPrefs.getSubmissions();
+		// Check the most recent submissions for changes_requested status
+		for (const sub of submissions.slice(0, 5)) {
+			try {
+				const res = await fetch(`/api/anon/status/${sub.uuid}`);
+				if (res.ok) {
+					const data = await res.json();
+					if (data.status === 'changes_requested') {
+						changesRequestedSubmission = { uuid: data.uuid, prUrl: data.prUrl };
+						break;
+					}
+				}
+			} catch {
+				// Ignore network errors for status checks
+			}
+		}
+	});
+
+	async function loadChangesForEditing() {
+		if (!changesRequestedSubmission) return;
+		deflating = true;
+		deflateError = null;
+
+		try {
+			const res = await fetch(`/api/anon/deflate/${changesRequestedSubmission.uuid}`);
+			if (!res.ok) {
+				const data = await res.json();
+				deflateError = data.error || 'Failed to load changes';
+				return;
+			}
+
+			const data = await res.json();
+			changeStore.importChanges({
+				metadata: {
+					exportedAt: Date.now(),
+					version: '1.0.0',
+					changeCount: data.changes.length,
+					imageCount: Object.keys(data.images || {}).length
+				},
+				changes: data.changes,
+				images: data.images || {}
+			});
+
+			changesRequestedSubmission = null;
+			onClose();
+		} catch (err: any) {
+			deflateError = err.message || 'Failed to load changes';
+		} finally {
+			deflating = false;
+		}
+	}
+
+	function selectMethod(m: SubmitMethod) {
+		method = m;
+		step = 'details';
+	}
+
+	function goBack() {
+		if (step === 'details') {
+			step = 'method';
+			result = null;
+		}
+	}
+
+	async function handleSubmit() {
+		submitting = true;
+		result = null;
+
+		try {
+			if (method === 'anonymous') {
+				const submitEmail = email.trim() || undefined;
+				if (submitEmail) {
+					userPrefs.setEmail(submitEmail);
+				}
+				const res = await onSubmitAnonymous(submitEmail);
+				result = res;
+				if (res.success && res.uuid) {
+					userPrefs.addSubmission(res.uuid, res.prUrl || '', 0);
+				}
+			} else {
+				const res = await onSubmitGitHub(prTitle, prDescription);
+				result = res;
+			}
+
+			if (result?.success) {
+				step = 'success';
+			}
+		} catch (err: any) {
+			result = { success: false, message: err.message || 'Submission failed' };
+		} finally {
+			submitting = false;
+		}
+	}
+
+	function copyUuid() {
+		if (result?.uuid) {
+			navigator.clipboard.writeText(result.uuid);
+		}
+	}
+
+	let hasValidationErrors = $derived(validationStatus === 'complete' && !validationIsValid);
+</script>
+
+<div class="flex h-full flex-col">
+	{#if step === 'method'}
+		<!-- Step 1: Choose submission method -->
+		<div class="flex flex-1 flex-col">
+			{#if changesRequestedSubmission}
+				<div class="mb-4 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-3">
+					<p class="text-sm font-medium text-yellow-700 dark:text-yellow-400">A previous submission needs changes</p>
+					<p class="mt-1 text-xs text-muted-foreground">
+						A reviewer requested changes on your submission. You can load your original changes back for editing.
+					</p>
+					{#if deflateError}
+						<p class="mt-1 text-xs text-destructive">{deflateError}</p>
+					{/if}
+					<Button
+						onclick={loadChangesForEditing}
+						variant="ghost"
+						size="sm"
+						class="mt-2 text-yellow-700 hover:bg-yellow-500/10 dark:text-yellow-400"
+						disabled={deflating}
+					>
+						{#if deflating}
+							<LoadingSpinner />
+							Loading changes...
+						{:else}
+							Load changes for editing
+						{/if}
+					</Button>
+				</div>
+			{/if}
+
+			<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">How would you like to submit?</h4>
+
+			{#if hasValidationErrors}
+				<div class="mb-4 rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+					Please fix validation errors before submitting.
+				</div>
+			{/if}
+
+			<div class="flex-1 space-y-3">
+				{#if anonBotEnabled}
+					<button
+						onclick={() => selectMethod('anonymous')}
+						disabled={hasValidationErrors}
+						class="w-full cursor-pointer rounded-lg border-2 p-4 text-left transition-colors hover:border-primary/50 hover:bg-primary/5 disabled:cursor-not-allowed disabled:opacity-50"
+					>
+						<div class="flex items-start gap-3">
+							<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+									<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+								</svg>
+							</div>
+							<div>
+								<p class="font-medium">Submit Anonymously</p>
+								<p class="mt-0.5 text-sm text-muted-foreground">No account needed. Quick and simple.</p>
+							</div>
+						</div>
+					</button>
+				{/if}
+
+				<button
+					onclick={() => selectMethod('github')}
+					disabled={hasValidationErrors}
+					class="w-full cursor-pointer rounded-lg border-2 p-4 text-left transition-colors hover:border-primary/50 hover:bg-primary/5 disabled:cursor-not-allowed disabled:opacity-50"
+				>
+					<div class="flex items-start gap-3">
+						<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor">
+								<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+							</svg>
+						</div>
+						<div>
+							<p class="font-medium">Submit with GitHub</p>
+							<p class="mt-0.5 text-sm text-muted-foreground">Get credit for your contribution on the pull request.</p>
+						</div>
+					</div>
+				</button>
+			</div>
+		</div>
+
+	{:else if step === 'details'}
+		<!-- Step 2: Details -->
+		<div class="flex flex-1 flex-col">
+			<button
+				onclick={goBack}
+				class="mb-4 flex cursor-pointer items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+					<path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+				</svg>
+				Back
+			</button>
+
+			{#if method === 'anonymous'}
+				<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Anonymous Submission</h4>
+
+				<div class="flex-1 space-y-4">
+					{#if showEmailField}
+						<div>
+							<label for="wizard-email" class="mb-1 block text-sm font-medium">
+								Email <span class="font-normal text-muted-foreground">(optional)</span>
+							</label>
+							<input
+								id="wizard-email"
+								type="email"
+								bind:value={email}
+								class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+								placeholder="your@email.com"
+							/>
+							<p class="mt-1 text-xs text-muted-foreground">
+								{wrapperName ? `Only stored by ${wrapperName}` : 'Used for update notifications only. Never stored by this app'}.
+							</p>
+						</div>
+					{/if}
+
+					<div class="rounded-lg border bg-muted/30 p-3 text-sm text-muted-foreground">
+						<p>Your changes will be submitted as a pull request to the database. A maintainer will review and merge them.</p>
+					</div>
+				</div>
+
+				<div class="mt-4 shrink-0 space-y-3">
+					{#if result && !result.success}
+						<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+							{result.message}
+						</div>
+					{/if}
+					<Button onclick={handleSubmit} variant="primary" size="md" class="w-full" disabled={submitting}>
+						{#if submitting}
+							<LoadingSpinner />
+							Submitting...
+						{:else}
+							Submit Changes
+						{/if}
+					</Button>
+				</div>
+
+			{:else}
+				<!-- GitHub submission -->
+				<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">GitHub Submission</h4>
+
+				{#if $isAuthenticated}
+					<div class="mb-4 flex items-center gap-3">
+						{#if $currentUser?.avatar_url}
+							<img src={$currentUser.avatar_url} alt={$currentUser.login} class="h-8 w-8 rounded-full" />
+						{/if}
+						<div class="flex-1">
+							<p class="text-sm font-medium">{$currentUser?.name || $currentUser?.login}</p>
+							{#if $currentUser?.name}
+								<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
+							{/if}
+						</div>
+						<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
+							Logout
+						</Button>
+					</div>
+
+					<div class="flex-1 space-y-3">
+						<div>
+							<label for="wizard-pr-title" class="mb-1 block text-sm font-medium">PR Title</label>
+							<input
+								id="wizard-pr-title"
+								type="text"
+								bind:value={prTitle}
+								class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+								placeholder="Update filament database..."
+							/>
+						</div>
+						<div>
+							<label for="wizard-pr-desc" class="mb-1 block text-sm font-medium">
+								Description <span class="font-normal text-muted-foreground">(optional)</span>
+							</label>
+							<textarea
+								id="wizard-pr-desc"
+								bind:value={prDescription}
+								rows="3"
+								class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+								placeholder="Describe your changes..."
+							></textarea>
+						</div>
+					</div>
+
+					<div class="mt-4 shrink-0 space-y-3">
+						{#if result && !result.success}
+							<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+								{result.message}
+							</div>
+						{/if}
+						<Button onclick={handleSubmit} variant="primary" size="md" class="w-full" disabled={submitting}>
+							{#if submitting}
+								<LoadingSpinner />
+								Creating Pull Request...
+							{:else}
+								Create Pull Request
+							{/if}
+						</Button>
+					</div>
+				{:else}
+					<p class="mb-4 text-sm text-muted-foreground">
+						Sign in with GitHub to be credited as the PR author.
+					</p>
+					<Button onclick={() => authStore.login()} variant="primary" size="md">
+						<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
+							<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+						</svg>
+						Sign in with GitHub
+					</Button>
+				{/if}
+			{/if}
+		</div>
+
+	{:else if step === 'success'}
+		<!-- Step 3: Success -->
+		<div class="flex flex-1 flex-col items-center justify-center text-center">
+			<div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 dark:text-green-400" viewBox="0 0 20 20" fill="currentColor">
+					<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+				</svg>
+			</div>
+
+			<h3 class="mb-2 text-lg font-semibold">Your changes have been submitted!</h3>
+			<p class="mb-6 text-sm text-muted-foreground">{result?.message}</p>
+
+			<!-- Flow diagram -->
+			<div class="mb-6 flex items-center gap-2 text-sm">
+				<div class="flex items-center gap-1.5 rounded-full bg-green-500/10 px-3 py-1 text-green-700 dark:text-green-400">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+					</svg>
+					Submitted
+				</div>
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground" viewBox="0 0 20 20" fill="currentColor">
+					<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+				</svg>
+				<div class="rounded-full bg-muted px-3 py-1 text-muted-foreground">Under Review</div>
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground" viewBox="0 0 20 20" fill="currentColor">
+					<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+				</svg>
+				<div class="rounded-full bg-muted px-3 py-1 text-muted-foreground">Live</div>
+			</div>
+
+			{#if result?.uuid}
+				<div class="mb-4 flex items-center gap-2 rounded-md bg-muted px-3 py-2 text-xs">
+					<span class="text-muted-foreground">Reference:</span>
+					<code class="font-mono">{result.uuid}</code>
+					<button onclick={copyUuid} class="cursor-pointer text-primary hover:underline" title="Copy UUID">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+							<path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+						</svg>
+					</button>
+				</div>
+			{/if}
+
+			<div class="flex gap-3">
+				{#if result?.prUrl}
+					<a
+						href={result.prUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
+					>
+						View on GitHub
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+							<path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+						</svg>
+					</a>
+				{/if}
+				<Button onclick={onClose} variant="primary" size="md">
+					Done
+				</Button>
+			</div>
+		</div>
+	{/if}
+</div>

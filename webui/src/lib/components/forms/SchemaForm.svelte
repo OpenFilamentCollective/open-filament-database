@@ -10,6 +10,7 @@
 		CheckboxField,
 		TagInput,
 		CountryCodeList,
+		CountryCodeListSelect,
 		ColorHexField,
 		FormFieldRow,
 		TwoColumnLayout
@@ -284,14 +285,12 @@
 			{placeholder}
 		/>
 	{:else if field.type === 'countryList'}
-		<CountryCodeList
+		<CountryCodeListSelect
 			bind:values={data[field.key]}
 			{label}
 			{required}
 			{tooltip}
-			{placeholder}
-			maxLength={2}
-			uppercase
+			placeholder="Search country..."
 		/>
 	{:else if field.type === 'stringList'}
 		<CountryCodeList

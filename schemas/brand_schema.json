@@ -6,7 +6,7 @@
             "maxLength": 1000
         },
         "country_code": {
-            "pattern": "^(([A-Z]{2})|Unknown)$"
+            "pattern": "^(([A-Z]{2}(-[A-Z0-9]{1,3})?)|Unknown)$"
         },
         "id": {
             "maxLength": 1000,

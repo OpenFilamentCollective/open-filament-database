@@ -9,7 +9,7 @@ import crypto from 'crypto';
 
 // --- Outgoing webhook types ---
 
-export type WebhookEvent = 'submitted' | 'merged' | 'closed';
+export type WebhookEvent = 'submitted' | 'merged' | 'closed' | 'changes_requested';
 
 interface WebhookPayloadSubmitted {
 	event: 'submitted';
@@ -34,13 +34,22 @@ interface WebhookPayloadClosed {
 	timestamp: string;
 }
 
-export type WebhookPayload = WebhookPayloadSubmitted | WebhookPayloadMerged | WebhookPayloadClosed;
+interface WebhookPayloadChangesRequested {
+	event: 'changes_requested';
+	uuid: string;
+	prNumber: number;
+	timestamp: string;
+	reviewComments?: string;
+}
+
+export type WebhookPayload = WebhookPayloadSubmitted | WebhookPayloadMerged | WebhookPayloadClosed | WebhookPayloadChangesRequested;
 
 function getWebhookUrl(event: WebhookEvent): string | undefined {
 	switch (event) {
 		case 'submitted': return privateEnv.WEBHOOK_URL_SUBMITTED || undefined;
 		case 'merged': return privateEnv.WEBHOOK_URL_MERGED || undefined;
 		case 'closed': return privateEnv.WEBHOOK_URL_CLOSED || undefined;
+		case 'changes_requested': return privateEnv.WEBHOOK_URL_CHANGES_REQUESTED || undefined;
 	}
 }
 

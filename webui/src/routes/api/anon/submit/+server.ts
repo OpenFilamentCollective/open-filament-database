@@ -95,8 +95,9 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			return json({ error: result.error || 'Failed to create PR' }, { status: 500 });
 		}
 
-		// 7. Track submission (UUID + PR number only, NO email)
-		trackSubmission(uuid, result.prNumber!, result.prUrl!);
+		// 7. Track submission (UUID + PR number + change data for deflation, NO email)
+		const changeData = JSON.stringify({ changes, images: images || {} });
+		trackSubmission(uuid, result.prNumber!, result.prUrl!, changeData);
 
 		// 8. Fire "submitted" webhook (includes email if provided, fire-and-forget)
 		// Email is transient: only sent to webhook, never stored by us

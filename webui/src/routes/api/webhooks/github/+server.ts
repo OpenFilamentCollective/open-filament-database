@@ -6,7 +6,7 @@
  * - URL: https://your-domain.com/api/webhooks/github
  * - Content type: application/json
  * - Secret: (matches GITHUB_WEBHOOK_SECRET)
- * - Events: Pull requests
+ * - Events: Pull requests, Pull request reviews
  */
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
@@ -29,8 +29,8 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	// 3. Parse event
 	const event = request.headers.get('x-github-event');
-	if (event !== 'pull_request') {
-		return json({ ok: true }); // Ignore non-PR events
+	if (event !== 'pull_request' && event !== 'pull_request_review') {
+		return json({ ok: true }); // Ignore events we don't handle
 	}
 
 	let payload: any;
@@ -40,6 +40,37 @@ export const POST: RequestHandler = async ({ request }) => {
 		return json({ error: 'Invalid JSON' }, { status: 400 });
 	}
 
+	// Handle pull_request_review events (changes requested)
+	if (event === 'pull_request_review') {
+		const review = payload.review;
+		const pr = payload.pull_request;
+
+		if (!review || !pr || review.state !== 'changes_requested') {
+			return json({ ok: true });
+		}
+
+		let uuid = extractUuidFromBody(pr.body || '');
+		if (!uuid) {
+			uuid = getUuidByPrNumber(pr.number) ?? null;
+		}
+		if (!uuid) {
+			return json({ ok: true });
+		}
+
+		updateStatus(uuid, 'changes_requested');
+
+		sendWebhook({
+			event: 'changes_requested' as const,
+			uuid,
+			prNumber: pr.number,
+			timestamp: new Date().toISOString(),
+			reviewComments: review.body || undefined
+		});
+
+		return json({ ok: true, uuid, event: 'changes_requested' });
+	}
+
+	// Handle pull_request events (closed/merged)
 	const action = payload.action;
 	const pr = payload.pull_request;
 

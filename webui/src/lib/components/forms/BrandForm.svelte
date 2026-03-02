@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import { SchemaForm } from '$lib/components/forms';
-	import { LogoUpload } from '$lib/components/form-fields';
+	import { LogoUpload, CountryCodeSelect } from '$lib/components/form-fields';
 	import { Tooltip } from '$lib/components/form-fields';
-	import { INPUT_CLASSES, LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
+	import { LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
@@ -46,18 +46,6 @@
 		formData.origin = 'Unknown';
 	}
 
-	function handleOriginModeChange(e: Event) {
-		const select = e.target as HTMLSelectElement;
-		originMode = select.value as 'unknown' | 'code';
-		formData.origin = originMode === 'unknown' ? 'Unknown' : '';
-	}
-
-	function handleOriginInput(e: Event) {
-		const input = e.target as HTMLInputElement;
-		const upper = input.value.toUpperCase();
-		input.value = upper;
-		formData.origin = upper;
-	}
 
 	// Logo validation error
 	let logoError: string | null = $state(null);
@@ -116,33 +104,42 @@
 	{#snippet customFields(key, fieldSchema, field)}
 		{#if key === 'origin'}
 			<div class="flex flex-col">
-				<label for="origin" class={LABEL_CLASSES}>
+				<label class={LABEL_CLASSES}>
 					{fieldSchema.title || 'Country of Origin'}
 					<span class={REQUIRED_INDICATOR}>*</span>
 					{#if fieldSchema.description}<Tooltip text={fieldSchema.description} />{/if}
 				</label>
-				<div class="flex">
-					<select
-						value={originMode}
-						onchange={handleOriginModeChange}
-						class="{INPUT_CLASSES} w-auto {originMode === 'code' ? 'rounded-r-none border-r-0' : ''}"
-					>
-						<option value="unknown">Unknown</option>
-						<option value="code">Country Code</option>
-					</select>
-					{#if originMode === 'code'}
+				<div class="flex items-start gap-2">
+					<label class="flex items-center gap-1.5 text-sm">
 						<input
-							id="origin"
-							type="text"
-							value={formData.origin}
-							oninput={handleOriginInput}
-							class="{INPUT_CLASSES} w-16 rounded-l-none uppercase"
-							placeholder="US"
-							maxlength="2"
+							type="radio"
+							name="origin-mode"
+							value="unknown"
+							checked={originMode === 'unknown'}
+							onchange={() => { originMode = 'unknown'; formData.origin = 'Unknown'; }}
+						/>
+						Unknown
+					</label>
+					<label class="flex items-center gap-1.5 text-sm">
+						<input
+							type="radio"
+							name="origin-mode"
+							value="code"
+							checked={originMode === 'code'}
+							onchange={() => { originMode = 'code'; formData.origin = ''; }}
+						/>
+						Country Code
+					</label>
+				</div>
+				{#if originMode === 'code'}
+					<div class="mt-2">
+						<CountryCodeSelect
+							bind:value={formData.origin}
+							placeholder="Search country..."
 							required
 						/>
-					{/if}
-				</div>
+					</div>
+				{/if}
 			</div>
 		{/if}
 	{/snippet}

@@ -481,6 +481,68 @@ function createChangeStore() {
 		},
 
 		/**
+		 * Import changes from a ChangeExport (e.g. deflated from a previous submission).
+		 * Replaces the current change set entirely.
+		 */
+		importChanges(exportData: ChangeExport) {
+			if (!browser) return;
+
+			// Clear existing changes first
+			const currentSet = get({ subscribe });
+			for (const imageRef of Object.values(currentSet.images)) {
+				try {
+					localStorage.removeItem(imageRef.storageKey);
+				} catch {
+					// ignore
+				}
+			}
+
+			// Build a new change set from the imported data
+			const newChangeSet = createEmptyChangeSet();
+
+			for (const change of exportData.changes) {
+				const ep = parsePath(change.entity.path);
+				if (!ep) continue;
+				treeSetChange(newChangeSet, ep, change);
+			}
+
+			// Store imported images
+			for (const [imageId, imageData] of Object.entries(exportData.images)) {
+				const storageKey = `${STORAGE_KEY_IMAGES_PREFIX}${imageId}`;
+				try {
+					localStorage.setItem(storageKey, imageData.data);
+				} catch (e) {
+					console.error('Failed to store imported image:', e);
+					continue;
+				}
+
+				// Reconstruct the image ref — entityPath and property come from
+				// the imageId convention (entityPath:property:filename), but we
+				// can also infer from the change data
+				newChangeSet.images[imageId] = {
+					id: imageId,
+					entityPath: '', // Will be filled from imageId if possible
+					property: '',
+					filename: imageData.filename,
+					mimeType: imageData.mimeType,
+					storageKey
+				};
+
+				// Try to parse imageId to extract entityPath and property
+				// Convention: "entityPath:property:filename"
+				const parts = imageId.split(':');
+				if (parts.length >= 2) {
+					newChangeSet.images[imageId].entityPath = parts[0];
+					newChangeSet.images[imageId].property = parts[1];
+				}
+			}
+
+			newChangeSet.lastModified = Date.now();
+			set(newChangeSet);
+			persistChangeSet(newChangeSet);
+		},
+
+		/**
 		 * Get a summary of changes by operation type
 		 */
 		getSummary() {

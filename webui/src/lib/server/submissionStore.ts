@@ -14,7 +14,8 @@ export interface SubmissionRecord {
 	prNumber: number;
 	prUrl: string;
 	createdAt: string; // ISO 8601
-	status: 'open' | 'merged' | 'closed';
+	status: 'open' | 'merged' | 'closed' | 'changes_requested';
+	changeData?: string; // Serialized ChangeExport JSON for deflation
 }
 
 // In-memory indexes
@@ -23,13 +24,14 @@ const prNumberIndex = new Map<number, string>(); // prNumber → uuid
 
 const STORE_PATH = path.join(process.cwd(), '.data', 'submissions.json');
 
-export function trackSubmission(uuid: string, prNumber: number, prUrl: string): void {
+export function trackSubmission(uuid: string, prNumber: number, prUrl: string, changeData?: string): void {
 	const record: SubmissionRecord = {
 		uuid,
 		prNumber,
 		prUrl,
 		createdAt: new Date().toISOString(),
-		status: 'open'
+		status: 'open',
+		changeData
 	};
 	submissions.set(uuid, record);
 	prNumberIndex.set(prNumber, uuid);
@@ -44,7 +46,7 @@ export function getUuidByPrNumber(prNumber: number): string | undefined {
 	return prNumberIndex.get(prNumber);
 }
 
-export function updateStatus(uuid: string, status: 'merged' | 'closed'): void {
+export function updateStatus(uuid: string, status: 'merged' | 'closed' | 'changes_requested'): void {
 	const record = submissions.get(uuid);
 	if (record) {
 		record.status = status;

@@ -1,38 +1,24 @@
 <script lang="ts">
 	import { changeStore, changeCount, hasChanges, changesList } from '$lib/stores/changes';
 	import { isCloudMode, isLocalMode } from '$lib/stores/environment';
-	import { authStore, isAuthenticated, currentUser } from '$lib/stores/auth';
 	import type { EntityChange } from '$lib/types/changes';
 	import type { Store } from '$lib/types/database';
 	import { Button, Modal, LoadingSpinner } from '$lib/components/ui';
 	import { TwoColumnLayout } from '$lib/components/form-fields';
+	import SubmissionWizard from './SubmissionWizard.svelte';
 	import { db } from '$lib/services/database';
 	import { onMount, onDestroy } from 'svelte';
-	import { env } from '$env/dynamic/public';
 
 	let menuOpen = $state(false);
 	let expandedChanges = $state<Set<string>>(new Set());
 	let stores = $state<Store[]>([]);
 
-	// Export modal state
-	let exportModalOpen = $state(false);
-	let creatingPr = $state(false);
-	let prResult = $state<{ success: boolean; message: string; prUrl?: string } | null>(null);
-	let prTitle = $state('');
-	let prDescription = $state('');
+	// Submit modal state
+	let submitModalOpen = $state(false);
 
-	// Save to disk state
+	// Save to disk state (local mode only)
 	let savingToDisk = $state(false);
 	let saveResult = $state<{ success: boolean; message: string } | null>(null);
-
-	// Anonymous submission state
-	const anonBotEnabled = env.PUBLIC_ANON_BOT_ENABLED === 'true';
-	const wrapperName = env.PUBLIC_WRAPPER_NAME || '';
-	const showEmail = env.PUBLIC_ANON_SHOW_EMAIL === 'true';
-	let anonEmail = $state('');
-	let anonSubmitting = $state(false);
-	let anonResult = $state<{ success: boolean; message: string; uuid?: string; prUrl?: string } | null>(null);
-	let wantCredit = $state(false);
 
 	// Validation state
 	let validationStatus = $state<'idle' | 'running' | 'complete' | 'error'>('idle');
@@ -163,11 +149,8 @@
 		}
 	}
 
-	function openExportModal() {
-		exportModalOpen = true;
-		prTitle = `Update filament database (${$changeCount} changes)`;
-		prDescription = '';
-		prResult = null;
+	function openSubmitModal() {
+		submitModalOpen = true;
 		saveResult = null;
 
 		if (!validationHasRun) {
@@ -366,115 +349,86 @@
 		}
 	}
 
-	async function createPR() {
-		creatingPr = true;
-		prResult = null;
+	// Wizard callbacks: return results instead of managing state directly
+	async function submitAnonymousForWizard(email?: string): Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }> {
+		const exportData = changeStore.exportChanges();
 
-		try {
-			const exportData = changeStore.exportChanges();
-
-			const imagesWithPaths: Record<string, any> = {};
-			const cs = $changeStore;
-			for (const [imageId, imageData] of Object.entries(exportData.images)) {
-				const ref = cs.images[imageId];
-				imagesWithPaths[imageId] = {
-					...imageData,
-					entityPath: ref?.entityPath || ''
-				};
-			}
-
-			const response = await fetch('/api/github/create-pr', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					changes: exportData.changes,
-					images: imagesWithPaths,
-					title: prTitle || `Update filament database (${exportData.changes.length} changes)`,
-					description: prDescription
-				})
-			});
-
-			const result = await response.json();
-
-			if (result.success) {
-				prResult = {
-					success: true,
-					message: `PR #${result.prNumber} created successfully!`,
-					prUrl: result.prUrl
-				};
-				changeStore.clear();
-				if (result.prUrl) {
-					window.open(result.prUrl, '_blank');
-				}
-			} else {
-				prResult = {
-					success: false,
-					message: result.error || 'Failed to create PR'
-				};
-			}
-		} catch (error: any) {
-			prResult = {
-				success: false,
-				message: error.message || 'Failed to create PR'
+		const imagesWithPaths: Record<string, any> = {};
+		const cs = $changeStore;
+		for (const [imageId, imageData] of Object.entries(exportData.images)) {
+			const ref = cs.images[imageId];
+			imagesWithPaths[imageId] = {
+				...imageData,
+				entityPath: ref?.entityPath || ''
 			};
-		} finally {
-			creatingPr = false;
+		}
+
+		const response = await fetch('/api/anon/submit', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				changes: exportData.changes,
+				images: imagesWithPaths,
+				email: email || undefined
+			})
+		});
+
+		const result = await response.json();
+
+		if (result.success) {
+			changeStore.clear();
+			return {
+				success: true,
+				message: `Submission ${result.uuid} created successfully!`,
+				uuid: result.uuid,
+				prUrl: result.prUrl
+			};
+		} else {
+			return {
+				success: false,
+				message: result.error || 'Failed to submit changes'
+			};
 		}
 	}
 
-	async function submitAnonymously() {
-		anonSubmitting = true;
-		anonResult = null;
+	async function createPRForWizard(title: string, description: string): Promise<{ success: boolean; message: string; prUrl?: string }> {
+		const exportData = changeStore.exportChanges();
 
-		try {
-			const exportData = changeStore.exportChanges();
-
-			const imagesWithPaths: Record<string, any> = {};
-			const cs = $changeStore;
-			for (const [imageId, imageData] of Object.entries(exportData.images)) {
-				const ref = cs.images[imageId];
-				imagesWithPaths[imageId] = {
-					...imageData,
-					entityPath: ref?.entityPath || ''
-				};
-			}
-
-			const response = await fetch('/api/anon/submit', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					changes: exportData.changes,
-					images: imagesWithPaths,
-					email: anonEmail || undefined
-				})
-			});
-
-			const result = await response.json();
-
-			if (result.success) {
-				anonResult = {
-					success: true,
-					message: `Submission ${result.uuid} created successfully!`,
-					uuid: result.uuid,
-					prUrl: result.prUrl
-				};
-				changeStore.clear();
-				if (result.prUrl) {
-					window.open(result.prUrl, '_blank');
-				}
-			} else {
-				anonResult = {
-					success: false,
-					message: result.error || 'Failed to submit changes'
-				};
-			}
-		} catch (error: any) {
-			anonResult = {
-				success: false,
-				message: error.message || 'Failed to submit changes'
+		const imagesWithPaths: Record<string, any> = {};
+		const cs = $changeStore;
+		for (const [imageId, imageData] of Object.entries(exportData.images)) {
+			const ref = cs.images[imageId];
+			imagesWithPaths[imageId] = {
+				...imageData,
+				entityPath: ref?.entityPath || ''
 			};
-		} finally {
-			anonSubmitting = false;
+		}
+
+		const response = await fetch('/api/github/create-pr', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				changes: exportData.changes,
+				images: imagesWithPaths,
+				title: title || `Update filament database (${exportData.changes.length} changes)`,
+				description
+			})
+		});
+
+		const result = await response.json();
+
+		if (result.success) {
+			changeStore.clear();
+			return {
+				success: true,
+				message: `PR #${result.prNumber} created successfully!`,
+				prUrl: result.prUrl
+			};
+		} else {
+			return {
+				success: false,
+				message: result.error || 'Failed to create PR'
+			};
 		}
 	}
 
@@ -523,16 +477,16 @@
 	<Button
 		onclick={toggleMenu}
 		variant="ghost"
-		size="icon"
+		size="sm"
 		title={$hasChanges ? `${$changeCount} pending changes` : 'No pending changes'}
-		class={$hasChanges ? 'relative' : ''}
 	>
 		<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 			<path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
 			<path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
 		</svg>
+		Changes
 		{#if $hasChanges}
-			<span class="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-destructive px-1 text-xs font-medium text-white">
+			<span class="flex h-5 min-w-5 items-center justify-center rounded-full bg-destructive px-1 text-xs font-medium text-white">
 				{$changeCount}
 			</span>
 		{/if}
@@ -658,11 +612,11 @@
 						Clear All
 					</Button>
 					<div class="flex-1"></div>
-					<Button onclick={openExportModal} variant="primary" size="sm">
+					<Button onclick={openSubmitModal} variant="primary" size="sm">
 						<svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 							<path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
 						</svg>
-						{$isLocalMode ? 'Save Changes' : 'Export'}
+						{$isLocalMode ? 'Save Changes' : 'Submit Changes'}
 					</Button>
 				</div>
 			{/if}
@@ -670,8 +624,8 @@
 	{/if}
 </div>
 
-<!-- Export Modal -->
-<Modal show={exportModalOpen} title={$isLocalMode ? 'Save Changes' : 'Export Changes'} onClose={() => { exportModalOpen = false; cleanupValidationStream(); }} maxWidth="6xl" height="3/4">
+<!-- Submit Modal -->
+<Modal show={submitModalOpen} title={$isLocalMode ? 'Save Changes' : 'Submit Changes'} onClose={() => { submitModalOpen = false; cleanupValidationStream(); }} maxWidth="6xl" height="3/4">
 	{@const summary = changeStore.getSummary()}
 
 	<div class="h-full overflow-hidden">
@@ -744,7 +698,7 @@
 				{/if}
 			</div>
 
-			<!-- Save/Export Section -->
+			<!-- Save/Submit Section -->
 			<div class="shrink-0">
 				{#if $isLocalMode}
 					<!-- Local mode: Save to Disk -->
@@ -777,272 +731,45 @@
 						{/if}
 					</div>
 				{:else}
-					<!-- Cloud mode: Submit flow -->
-					<div>
-						{#if anonBotEnabled}
-							<!-- Anonymous submission (default) + credited mode toggle -->
-							<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Submit Changes</h4>
-
-							{#if !wantCredit}
-								<!-- Anonymous submission form -->
-								{#if anonResult?.success}
-									<div class="space-y-3">
-										<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
-											<p>{anonResult.message}</p>
-										</div>
-										<a href={anonResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
-											<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-												<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-											</svg>
-											View Pull Request
-										</a>
-									</div>
-								{:else}
-									<div class="space-y-3">
-										{#if showEmail}
-											<div>
-												<label for="anon-email" class="mb-1 block text-sm font-medium">Email <span class="font-normal text-muted-foreground">(optional)</span></label>
-												<input
-													id="anon-email"
-													type="email"
-													bind:value={anonEmail}
-													class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-													placeholder="your@email.com"
-												/>
-												<p class="mt-1 text-xs text-muted-foreground">Optional. Used for crediting. {"Only stored by " + wrapperName || 'Never stored'}.</p>
-											</div>
-										{/if}
-										<Button
-											onclick={submitAnonymously}
-											variant="primary"
-											size="md"
-											class="w-full"
-											disabled={anonSubmitting || (validationStatus === 'complete' && !validationIsValid)}
-										>
-											{#if anonSubmitting}
-												<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-													<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-													<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-												</svg>
-												Submitting...
-											{:else}
-												Submit Changes
-											{/if}
-										</Button>
-										{#if anonResult && !anonResult.success}
-											<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
-												<p>{anonResult.message}</p>
-											</div>
-										{/if}
-									</div>
-								{/if}
-							{/if}
-
-							<!-- Credited mode checkbox -->
-							<div class="mt-4 border-t pt-4">
-								<label class="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground">
-									<input type="checkbox" bind:checked={wantCredit} class="rounded border-muted-foreground" />
-									I want credit for the contribution/Advanced mode
-								</label>
-							</div>
-
-							{#if wantCredit}
-								<!-- Credited mode: full GitHub OAuth flow -->
-								<div class="mt-3">
-									{#if $isAuthenticated}
-										<div class="mb-4 flex items-center gap-3">
-											{#if $currentUser?.avatar_url}
-												<img src={$currentUser.avatar_url} alt={$currentUser.login} class="h-8 w-8 rounded-full" />
-											{/if}
-											<div class="flex-1">
-												<p class="text-sm font-medium">{$currentUser?.name || $currentUser?.login}</p>
-												{#if $currentUser?.name}
-													<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
-												{/if}
-											</div>
-											<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
-												Logout
-											</Button>
-										</div>
-
-										{#if prResult?.success}
-											<div class="space-y-3">
-												<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
-													<p>{prResult.message}</p>
-												</div>
-												<a href={prResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
-													<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-														<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-													</svg>
-													Open Pull Request
-												</a>
-											</div>
-										{:else}
-											<div class="space-y-3">
-												<div>
-													<label for="pr-title" class="mb-1 block text-sm font-medium">PR Title</label>
-													<input
-														id="pr-title"
-														type="text"
-														bind:value={prTitle}
-														class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-														placeholder="Update filament database..."
-													/>
-												</div>
-												<div>
-													<label for="pr-description" class="mb-1 block text-sm font-medium">Description <span class="font-normal text-muted-foreground">(optional)</span></label>
-													<textarea
-														id="pr-description"
-														bind:value={prDescription}
-														rows="3"
-														class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-														placeholder="Describe your changes..."
-													></textarea>
-												</div>
-												<Button onclick={createPR} variant="primary" size="md" class="w-full" disabled={creatingPr}>
-													{#if creatingPr}
-														<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-															<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-															<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-														</svg>
-														Creating Pull Request...
-													{:else}
-														Create Pull Request
-													{/if}
-												</Button>
-												{#if prResult && !prResult.success}
-													<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
-														<p>{prResult.message}</p>
-													</div>
-												{/if}
-											</div>
-										{/if}
-									{:else}
-										<p class="mb-3 text-sm text-muted-foreground">
-											Sign in with GitHub to be credited as the PR author.
-										</p>
-										<Button onclick={() => authStore.login()} variant="primary" size="md">
-											<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-												<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-											</svg>
-											Login to GitHub
-										</Button>
-									{/if}
-								</div>
-							{/if}
-						{:else}
-							<!-- Anonymous bot not enabled: original GitHub-only flow -->
-							<h4 class="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">GitHub</h4>
-
-							{#if $isAuthenticated}
-								<div class="mb-4 flex items-center gap-3">
-									{#if $currentUser?.avatar_url}
-										<img src={$currentUser.avatar_url} alt={$currentUser.login} class="h-8 w-8 rounded-full" />
-									{/if}
-									<div class="flex-1">
-										<p class="text-sm font-medium">{$currentUser?.name || $currentUser?.login}</p>
-										{#if $currentUser?.name}
-											<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
-										{/if}
-									</div>
-									<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
-										Logout
-									</Button>
-								</div>
-
-								{#if prResult?.success}
-									<div class="space-y-3">
-										<div class="rounded-md bg-green-500/10 p-3 text-sm text-green-700 dark:text-green-400">
-											<p>{prResult.message}</p>
-										</div>
-										<a href={prResult.prUrl} target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
-											<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-												<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-											</svg>
-											Open Pull Request
-										</a>
-									</div>
-								{:else}
-									<div class="space-y-3">
-										<div>
-											<label for="pr-title" class="mb-1 block text-sm font-medium">PR Title</label>
-											<input
-												id="pr-title"
-												type="text"
-												bind:value={prTitle}
-												class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-												placeholder="Update filament database..."
-											/>
-										</div>
-										<div>
-											<label for="pr-description" class="mb-1 block text-sm font-medium">Description <span class="font-normal text-muted-foreground">(optional)</span></label>
-											<textarea
-												id="pr-description"
-												bind:value={prDescription}
-												rows="3"
-												class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-												placeholder="Describe your changes..."
-											></textarea>
-										</div>
-										<Button onclick={createPR} variant="primary" size="md" class="w-full" disabled={creatingPr}>
-											{#if creatingPr}
-												<svg class="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-													<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-													<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-												</svg>
-												Creating Pull Request...
-											{:else}
-												Create Pull Request
-											{/if}
-										</Button>
-										{#if prResult && !prResult.success}
-											<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
-												<p>{prResult.message}</p>
-											</div>
-										{/if}
-									</div>
-								{/if}
-							{:else}
-								<p class="mb-3 text-sm text-muted-foreground">
-									Sign in with GitHub to submit your changes as a pull request to the upstream repository.
-								</p>
-								<Button onclick={() => authStore.login()} variant="primary" size="md">
-									<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
-										<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-									</svg>
-									Login to GitHub
-								</Button>
-							{/if}
-						{/if}
-					</div>
+					<!-- Cloud mode: Submission Wizard -->
+					<SubmissionWizard
+						{validationStatus}
+						{validationIsValid}
+						{validationErrorCount}
+						{validationWarningCount}
+						onSubmitAnonymous={submitAnonymousForWizard}
+						onSubmitGitHub={createPRForWizard}
+						onClose={() => { submitModalOpen = false; cleanupValidationStream(); }}
+					/>
 				{/if}
 			</div>
 		{/snippet}
 
 		{#snippet rightContent()}
-			<!-- Header: summary stats + download JSON -->
-			<div class="mb-4 flex items-center gap-3 text-sm">
-				<div class="flex flex-1 flex-wrap gap-3">
-				{#if summary.creates > 0}
-					<span class="rounded-full bg-green-500/10 px-3 py-1 font-medium text-green-700 dark:text-green-400">
-						{summary.creates} {summary.creates === 1 ? 'creation' : 'creations'}
+			<!-- Header: validation status + stats + download JSON -->
+			<div class="mb-4 flex flex-wrap items-center gap-2 text-sm">
+				<div class="flex flex-1 flex-wrap items-center gap-2">
+					{#if validationStatus === 'running'}
+						<span class="flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">
+							<LoadingSpinner />
+							Validating...
+						</span>
+					{:else if validationStatus === 'complete'}
+						{#if validationIsValid}
+							<span class="rounded-full bg-green-500/10 px-2.5 py-1 text-xs font-medium text-green-700 dark:text-green-400">Valid</span>
+						{:else}
+							<span class="rounded-full bg-destructive/10 px-2.5 py-1 text-xs font-medium text-destructive">
+								{validationErrorCount} {validationErrorCount === 1 ? 'error' : 'errors'}{#if validationWarningCount > 0}, {validationWarningCount} {validationWarningCount === 1 ? 'warning' : 'warnings'}{/if}
+							</span>
+						{/if}
+					{:else if validationStatus === 'error'}
+						<span class="rounded-full bg-destructive/10 px-2.5 py-1 text-xs font-medium text-destructive">Validation failed</span>
+					{:else}
+						<span class="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">Not validated</span>
+					{/if}
+					<span class="text-xs text-muted-foreground">
+						{summary.total} {summary.total === 1 ? 'change' : 'changes'} ({summary.creates} new, {summary.updates} modified{#if summary.deletes > 0}, {summary.deletes} deleted{/if})
 					</span>
-				{/if}
-				{#if summary.updates > 0}
-					<span class="rounded-full bg-blue-500/10 px-3 py-1 font-medium text-blue-700 dark:text-blue-400">
-						{summary.updates} {summary.updates === 1 ? 'update' : 'updates'}
-					</span>
-				{/if}
-				{#if summary.deletes > 0}
-					<span class="rounded-full bg-destructive/10 px-3 py-1 font-medium text-destructive">
-						{summary.deletes} {summary.deletes === 1 ? 'deletion' : 'deletions'}
-					</span>
-				{/if}
-				{#if summary.images > 0}
-					<span class="rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
-						{summary.images} {summary.images === 1 ? 'image' : 'images'}
-					</span>
-				{/if}
 				</div>
 				<Button onclick={exportChanges} variant="ghost" size="sm" class="shrink-0 text-muted-foreground">
 					<svg xmlns="http://www.w3.org/2000/svg" class="mr-1.5 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
