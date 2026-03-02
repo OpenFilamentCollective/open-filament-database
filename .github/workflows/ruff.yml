@@ -2,6 +2,7 @@ name: Ruff
 
 on:
   push:
+    branches: [main]
     paths:
       - "ofd/**/*.py"
   pull_request:
@@ -13,9 +14,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: astral-sh/ruff-action@v3
+        id: format
+        continue-on-error: true
         with:
-          args: "format --check ofd/"
+          args: "format --check --diff ofd/"
+
       - uses: astral-sh/ruff-action@v3
+        id: lint
+        continue-on-error: true
         with:
           args: "check ofd/"
+
+      - name: Suggest fix command
+        if: steps.format.outcome == 'failure' || steps.lint.outcome == 'failure'
+        run: |
+          echo ""
+          echo "========================================="
+          echo " Ruff found issues. Run this to fix them:"
+          echo "========================================="
+          echo ""
+          if [ "${{ steps.format.outcome }}" = "failure" ]; then
+            echo "  ruff format ofd/"
+          fi
+          if [ "${{ steps.lint.outcome }}" = "failure" ]; then
+            echo "  ruff check --fix ofd/"
+          fi
+          echo ""
+          exit 1
