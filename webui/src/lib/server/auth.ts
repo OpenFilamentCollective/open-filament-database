@@ -79,9 +79,9 @@ export async function getGitHubUser(token: string): Promise<{ login: string; nam
 
 // --- SimplyPrint ---
 
-/** Base domain for SimplyPrint APIs, configurable for test environments */
+/** Base URLs for SimplyPrint, configurable for test environments */
 const SP_DOMAIN = process.env.SIMPLYPRINT_BASE_URL || 'simplyprint.io';
-const SP_API_BASE = `https://api.${SP_DOMAIN}`;
+const SP_API_BASE = process.env.SIMPLYPRINT_API_URL || `https://api.${SP_DOMAIN}`;
 export const SP_AUTHORIZE_URL = `https://${SP_DOMAIN}/panel/oauth2/authorize`;
 
 export function getSimplyPrintToken(cookies: Cookies): string | undefined {
