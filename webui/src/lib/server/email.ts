@@ -1,46 +1,53 @@
 /**
- * SMTP email notifications for PR lifecycle events.
+ * ZeptoMail email notifications for PR lifecycle events.
  * Sends notifications to submitters when their PRs are merged, closed, or need changes.
  */
-import nodemailer from 'nodemailer';
+import { SendMailClient } from 'zeptomail';
 import { env as privateEnv } from '$env/dynamic/private';
 
-let transporter: nodemailer.Transporter | null = null;
+let client: any | null = null;
 
-function getTransporter(): nodemailer.Transporter | null {
-	if (transporter) return transporter;
-	if (!privateEnv.SMTP_HOST || !privateEnv.SMTP_USER || !privateEnv.SMTP_PASS) {
-		console.warn('[Email] SMTP not configured — missing SMTP_HOST, SMTP_USER, or SMTP_PASS');
+function getClient(): any | null {
+	if (client) return client;
+	if (!privateEnv.ZEPTOMAIL_TOKEN) {
+		console.warn('[Email] ZeptoMail not configured — missing ZEPTOMAIL_TOKEN');
 		return null;
 	}
 
-	transporter = nodemailer.createTransport({
-		host: privateEnv.SMTP_HOST,
-		port: Number(privateEnv.SMTP_PORT) || 587,
-		secure: privateEnv.SMTP_SECURE === 'true',
-		auth: {
-			user: privateEnv.SMTP_USER,
-			pass: privateEnv.SMTP_PASS
-		}
-	});
-
-	return transporter;
+	const url = privateEnv.ZEPTOMAIL_API_URL || 'api.zeptomail.com/';
+	client = new SendMailClient({ url, token: privateEnv.ZEPTOMAIL_TOKEN });
+	return client;
 }
 
-function getFromAddress(): string {
-	return privateEnv.SMTP_FROM || `OFD Notifications <${privateEnv.SMTP_USER}>`;
+function getFrom(): { address: string; name: string } {
+	return {
+		address: privateEnv.ZEPTOMAIL_FROM_ADDRESS || 'noreply@openfilamentdatabase.org',
+		name: privateEnv.ZEPTOMAIL_FROM_NAME || 'Open Filament Database'
+	};
+}
+
+async function sendEmail(to: string, subject: string, textBody: string, htmlBody: string): Promise<void> {
+	const c = getClient();
+	if (!c) return;
+
+	const from = getFrom();
+	console.log(`[Email] Sending to ${to}: ${subject}`);
+
+	await c.sendMail({
+		from: { address: from.address, name: from.name },
+		to: [{ email_address: { address: to } }],
+		subject,
+		textbody: textBody,
+		htmlbody: htmlBody
+	});
 }
 
 export async function sendMergedEmail(to: string, prNumber: number, prUrl: string): Promise<void> {
-	const t = getTransporter();
-	if (!t) return;
-
-	await t.sendMail({
-		from: getFromAddress(),
+	await sendEmail(
 		to,
-		subject: `Your filament submission (PR #${prNumber}) has been merged!`,
-		text: `Great news! Your filament database submission has been reviewed and merged.\n\nPull Request: ${prUrl}\n\nYour changes are now part of the Open Filament Database. Thank you for contributing!\n\nYou received this email because you submitted changes via SimplyPrint and consented to email notifications.\n`,
-		html: `
+		`Your filament submission (PR #${prNumber}) has been merged!`,
+		`Great news! Your filament database submission has been reviewed and merged.\n\nPull Request: ${prUrl}\n\nYour changes are now part of the Open Filament Database. Thank you for contributing!\n\nYou received this email because you submitted changes via SimplyPrint and consented to email notifications.\n`,
+		`
 			<h2>Your submission has been merged!</h2>
 			<p>Great news! Your filament database submission has been reviewed and merged.</p>
 			<p><a href="${prUrl}">View Pull Request #${prNumber}</a></p>
@@ -48,19 +55,15 @@ export async function sendMergedEmail(to: string, prNumber: number, prUrl: strin
 			<hr>
 			<p style="color: #666; font-size: 12px;">You received this email because you submitted changes via SimplyPrint and consented to email notifications.</p>
 		`
-	});
+	);
 }
 
 export async function sendClosedEmail(to: string, prNumber: number, prUrl: string): Promise<void> {
-	const t = getTransporter();
-	if (!t) return;
-
-	await t.sendMail({
-		from: getFromAddress(),
+	await sendEmail(
 		to,
-		subject: `Your filament submission (PR #${prNumber}) was closed`,
-		text: `Your filament database submission was closed without being merged.\n\nPull Request: ${prUrl}\n\nThis may happen if the submission was a duplicate or didn't meet the database requirements. Feel free to submit again with corrections.\n\nYou received this email because you submitted changes via SimplyPrint and consented to email notifications.\n`,
-		html: `
+		`Your filament submission (PR #${prNumber}) was closed`,
+		`Your filament database submission was closed without being merged.\n\nPull Request: ${prUrl}\n\nThis may happen if the submission was a duplicate or didn't meet the database requirements. Feel free to submit again with corrections.\n\nYou received this email because you submitted changes via SimplyPrint and consented to email notifications.\n`,
+		`
 			<h2>Your submission was closed</h2>
 			<p>Your filament database submission was closed without being merged.</p>
 			<p><a href="${prUrl}">View Pull Request #${prNumber}</a></p>
@@ -68,7 +71,7 @@ export async function sendClosedEmail(to: string, prNumber: number, prUrl: strin
 			<hr>
 			<p style="color: #666; font-size: 12px;">You received this email because you submitted changes via SimplyPrint and consented to email notifications.</p>
 		`
-	});
+	);
 }
 
 export async function sendChangesRequestedEmail(
@@ -77,9 +80,6 @@ export async function sendChangesRequestedEmail(
 	prUrl: string,
 	reviewComments?: string
 ): Promise<void> {
-	const t = getTransporter();
-	if (!t) return;
-
 	const commentsSection = reviewComments
 		? `\n\nReviewer comments:\n${reviewComments}\n`
 		: '';
@@ -87,12 +87,11 @@ export async function sendChangesRequestedEmail(
 		? `<h3>Reviewer comments:</h3><blockquote>${reviewComments.replace(/\n/g, '<br>')}</blockquote>`
 		: '';
 
-	await t.sendMail({
-		from: getFromAddress(),
+	await sendEmail(
 		to,
-		subject: `Changes requested on your filament submission (PR #${prNumber})`,
-		text: `A reviewer has requested changes on your filament database submission.\n\nPull Request: ${prUrl}${commentsSection}\nPlease review the feedback and consider resubmitting with the suggested changes.\n\nYou received this email because you submitted changes via SimplyPrint and consented to email notifications.\n`,
-		html: `
+		`Changes requested on your filament submission (PR #${prNumber})`,
+		`A reviewer has requested changes on your filament database submission.\n\nPull Request: ${prUrl}${commentsSection}\nPlease review the feedback and consider resubmitting with the suggested changes.\n\nYou received this email because you submitted changes via SimplyPrint and consented to email notifications.\n`,
+		`
 			<h2>Changes requested on your submission</h2>
 			<p>A reviewer has requested changes on your filament database submission.</p>
 			<p><a href="${prUrl}">View Pull Request #${prNumber}</a></p>
@@ -101,5 +100,5 @@ export async function sendChangesRequestedEmail(
 			<hr>
 			<p style="color: #666; font-size: 12px;">You received this email because you submitted changes via SimplyPrint and consented to email notifications.</p>
 		`
-	});
+	);
 }
