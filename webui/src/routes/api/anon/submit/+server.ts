@@ -13,8 +13,6 @@ import { checkRateLimit } from '$lib/server/rateLimit';
 import type { Job } from '$lib/server/jobManager';
 import crypto from 'crypto';
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 	// 1. Check feature flag
 	if (!isAnonBotEnabled()) {
@@ -42,17 +40,10 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		return json({ error: 'Invalid JSON' }, { status: 400 });
 	}
 
-	const { changes, images, title, description, email } = body;
+	const { changes, images, title, description } = body;
 
 	if (!changes || !Array.isArray(changes) || changes.length === 0) {
 		return json({ error: 'No changes to submit' }, { status: 400 });
-	}
-
-	// Validate email format if provided (but NEVER store it)
-	if (email !== undefined && email !== null && email !== '') {
-		if (typeof email !== 'string' || !EMAIL_REGEX.test(email)) {
-			return json({ error: 'Invalid email format' }, { status: 400 });
-		}
 	}
 
 	// 4. Generate UUID
@@ -99,12 +90,10 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		const changeData = JSON.stringify({ changes, images: images || {} });
 		trackSubmission(uuid, result.prNumber!, result.prUrl!, changeData);
 
-		// 8. Fire "submitted" webhook (includes email if provided, fire-and-forget)
-		// Email is transient: only sent to webhook, never stored by us
+		// 8. Fire "submitted" webhook (fire-and-forget)
 		sendWebhook({
 			event: 'submitted',
 			uuid,
-			email: email || undefined,
 			prNumber: result.prNumber!,
 			prUrl: result.prUrl!,
 			timestamp: new Date().toISOString()

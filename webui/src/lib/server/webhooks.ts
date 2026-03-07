@@ -14,7 +14,6 @@ export type WebhookEvent = 'submitted' | 'merged' | 'closed' | 'changes_requeste
 interface WebhookPayloadSubmitted {
 	event: 'submitted';
 	uuid: string;
-	email?: string;
 	prNumber: number;
 	prUrl: string;
 	timestamp: string;

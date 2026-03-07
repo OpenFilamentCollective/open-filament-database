@@ -9,7 +9,6 @@ export interface SubmissionRecord {
 }
 
 export interface UserPrefs {
-	email: string;
 	submissionUuids: SubmissionRecord[];
 	wantCredit: boolean;
 	preferGitHub: boolean;
@@ -20,7 +19,6 @@ const MAX_SUBMISSIONS = 50;
 
 function loadPrefs(): UserPrefs {
 	const defaults: UserPrefs = {
-		email: '',
 		submissionUuids: [],
 		wantCredit: false,
 		preferGitHub: false
@@ -62,10 +60,6 @@ function createUserPrefsStore() {
 		subscribe,
 		set,
 		update,
-
-		setEmail(email: string) {
-			update((p) => ({ ...p, email }));
-		},
 
 		setWantCredit(wantCredit: boolean) {
 			update((p) => ({ ...p, wantCredit }));

@@ -350,7 +350,7 @@
 	}
 
 	// Wizard callbacks: return results instead of managing state directly
-	async function submitAnonymousForWizard(email?: string): Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }> {
+	async function submitAnonymousForWizard(): Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }> {
 		const exportData = await changeStore.exportChanges();
 
 		const imagesWithPaths: Record<string, any> = {};
@@ -368,8 +368,7 @@
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				changes: exportData.changes,
-				images: imagesWithPaths,
-				email: email || undefined
+				images: imagesWithPaths
 			})
 		});
 

@@ -4,7 +4,6 @@
 	import { userPrefs } from '$lib/stores/userPrefs';
 	import { changeStore } from '$lib/stores/changes';
 	import { env } from '$env/dynamic/public';
-	import { get } from 'svelte/store';
 	import { onMount } from 'svelte';
 
 	type Step = 'method' | 'details' | 'success';
@@ -15,7 +14,7 @@
 		validationIsValid: boolean | null;
 		validationErrorCount: number;
 		validationWarningCount: number;
-		onSubmitAnonymous: (email?: string) => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
+		onSubmitAnonymous: () => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
 		onSubmitGitHub: (title: string, description: string) => Promise<{ success: boolean; message: string; prUrl?: string }>;
 		onClose: () => void;
 	}
@@ -31,8 +30,6 @@
 	}: Props = $props();
 
 	const anonBotEnabled = env.PUBLIC_ANON_BOT_ENABLED === 'true';
-	const showEmailField = env.PUBLIC_ANON_SHOW_EMAIL === 'true';
-	const wrapperName = env.PUBLIC_WRAPPER_NAME || '';
 
 	let step = $state<Step>('method');
 	let method = $state<SubmitMethod>(anonBotEnabled ? 'anonymous' : 'github');
@@ -40,8 +37,6 @@
 	let result = $state<{ success: boolean; message: string; uuid?: string; prUrl?: string } | null>(null);
 
 	// Form fields
-	let prefs = get(userPrefs);
-	let email = $state(prefs.email);
 	let prTitle = $state('');
 	let prDescription = $state('');
 
@@ -121,11 +116,7 @@
 
 		try {
 			if (method === 'anonymous') {
-				const submitEmail = email.trim() || undefined;
-				if (submitEmail) {
-					userPrefs.setEmail(submitEmail);
-				}
-				const res = await onSubmitAnonymous(submitEmail);
+				const res = await onSubmitAnonymous();
 				result = res;
 				if (res.success && res.uuid) {
 					userPrefs.addSubmission(res.uuid, res.prUrl || '', 0);
@@ -250,27 +241,7 @@
 				<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Anonymous Submission</h4>
 
 				<div class="flex-1 space-y-4">
-					{#if showEmailField}
-						<div>
-							<label for="wizard-email" class="mb-1 block text-sm font-medium">
-								Email <span class="font-normal text-muted-foreground">(optional)</span>
-							</label>
-							<input
-								id="wizard-email"
-								type="email"
-								bind:value={email}
-								class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-								placeholder="your@email.com"
-							/>
-							<p class="mt-1 text-xs text-muted-foreground">
-								{wrapperName ? `Only stored by ${wrapperName}` : 'Used for update notifications only. Never stored by this app'}.
-							</p>
-						</div>
-					{/if}
-
-					<div class="rounded-lg border bg-muted/30 p-3 text-sm text-muted-foreground">
-						<p>Your changes will be submitted as a pull request to the database. A maintainer will review and merge them.</p>
-					</div>
+					<p class="text-sm text-muted-foreground">Your changes will be submitted as a pull request to the database. A maintainer will review and merge them.</p>
 				</div>
 
 				<div class="mt-4 shrink-0 space-y-3">
