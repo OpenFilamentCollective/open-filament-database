@@ -16,8 +16,6 @@ import { getUuidByPrNumber, updateStatus } from '$lib/server/submissionStore';
 import { getInstallationToken } from '$lib/server/githubApp';
 import { deleteBranch } from '$lib/server/github';
 import { env as privateEnv } from '$env/dynamic/private';
-import { getEmail } from '$lib/server/emailStore';
-import { sendMergedEmail, sendChangesRequestedEmail, sendClosedEmail } from '$lib/server/email';
 
 export const POST: RequestHandler = async ({ request }) => {
 	// 1. Read raw body for signature verification
@@ -32,7 +30,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	// 3. Parse event
 	const event = request.headers.get('x-github-event');
 	if (event !== 'pull_request' && event !== 'pull_request_review') {
-		return json({ ok: true }); // Ignore events we don't handle
+		return json({ ok: true });
 	}
 
 	let payload: any;
@@ -69,11 +67,6 @@ export const POST: RequestHandler = async ({ request }) => {
 			reviewComments: review.body || undefined
 		});
 
-		const changesEmail = getEmail(uuid);
-		if (changesEmail) {
-			sendChangesRequestedEmail(changesEmail, uuid, review.body || undefined);
-		}
-
 		return json({ ok: true, uuid, event: 'changes_requested' });
 	}
 
@@ -83,28 +76,23 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	if (!pr) return json({ ok: true });
 
-	// Only care about PR close events
 	if (action !== 'closed') {
 		return json({ ok: true });
 	}
 
 	// 4. Look up UUID
-	// Primary: extract from PR body HTML comment (stateless)
 	let uuid = extractUuidFromBody(pr.body || '');
-
-	// Fallback: look up in submission store by PR number
 	if (!uuid) {
 		uuid = getUuidByPrNumber(pr.number) ?? null;
 	}
 
 	if (!uuid) {
-		// Not a bot-created PR, ignore
 		return json({ ok: true });
 	}
 
 	// 5. Determine if merged or just closed
 	const isMerged = pr.merged === true;
-	const webhookEvent = isMerged ? 'merged' as const : 'closed' as const;
+	const webhookEvent = isMerged ? ('merged' as const) : ('closed' as const);
 
 	// 6. Update status in store
 	updateStatus(uuid, isMerged ? 'merged' : 'closed');
@@ -117,24 +105,21 @@ export const POST: RequestHandler = async ({ request }) => {
 		timestamp: new Date().toISOString()
 	});
 
-	// 8. Send email notification (fire-and-forget)
-	const email = getEmail(uuid);
-	if (email) {
-		if (isMerged) {
-			sendMergedEmail(email, uuid);
-		} else {
-			sendClosedEmail(email, uuid);
-		}
-	}
-
-	// 9. Clean up the head branch (best-effort, fire-and-forget)
+	// 8. Clean up the head branch (best-effort, fire-and-forget)
 	const headRef = pr.head?.ref;
 	if (headRef?.startsWith('ofd-anon-')) {
 		getInstallationToken()
 			.then((token) =>
-				deleteBranch(token, privateEnv.GITHUB_UPSTREAM_OWNER!, privateEnv.GITHUB_UPSTREAM_REPO!, headRef)
+				deleteBranch(
+					token,
+					privateEnv.GITHUB_UPSTREAM_OWNER!,
+					privateEnv.GITHUB_UPSTREAM_REPO!,
+					headRef
+				)
 			)
-			.catch((err: any) => console.warn(`Branch cleanup failed for ${headRef}:`, err.message));
+			.catch((err: any) =>
+				console.warn(`Branch cleanup failed for ${headRef}:`, err.message)
+			);
 	}
 
 	return json({ ok: true, uuid, event: webhookEvent });

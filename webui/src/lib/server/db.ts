@@ -1,6 +1,6 @@
 /**
  * Postgres connection pool for persistent storage.
- * Used by submissionStore and emailStore.
+ * Used by submissionStore.
  *
  * Requires DATABASE_URL env var. If not set, returns null
  * and stores fall back to in-memory only (no persistence).
@@ -45,8 +45,7 @@ export async function ensureTables(): Promise<void> {
 			pr_url TEXT NOT NULL,
 			created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 			status TEXT NOT NULL DEFAULT 'open',
-			change_data TEXT,
-			email TEXT
+			change_data TEXT
 		)
 	`);
 }

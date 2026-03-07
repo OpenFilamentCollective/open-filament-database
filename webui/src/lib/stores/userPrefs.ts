@@ -10,8 +10,6 @@ export interface SubmissionRecord {
 
 export interface UserPrefs {
 	submissionUuids: SubmissionRecord[];
-	wantCredit: boolean;
-	preferGitHub: boolean;
 }
 
 const STORAGE_KEY = 'ofd_user_prefs';
@@ -19,9 +17,7 @@ const MAX_SUBMISSIONS = 50;
 
 function loadPrefs(): UserPrefs {
 	const defaults: UserPrefs = {
-		submissionUuids: [],
-		wantCredit: false,
-		preferGitHub: false
+		submissionUuids: []
 	};
 
 	if (!browser) return defaults;
@@ -60,14 +56,6 @@ function createUserPrefsStore() {
 		subscribe,
 		set,
 		update,
-
-		setWantCredit(wantCredit: boolean) {
-			update((p) => ({ ...p, wantCredit }));
-		},
-
-		setPreferGitHub(preferGitHub: boolean) {
-			update((p) => ({ ...p, preferGitHub }));
-		},
 
 		addSubmission(uuid: string, prUrl: string, prNumber: number) {
 			update((p) => {

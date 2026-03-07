@@ -47,13 +47,14 @@
 	onMount(async () => {
 		stores = await db.loadStores();
 
-		// Reopen submission wizard after GitHub OAuth redirect
+		// Reopen submission wizard after OAuth redirect (GitHub or SimplyPrint)
 		if (localStorage.getItem('ofd_reopen_wizard')) {
 			localStorage.removeItem('ofd_reopen_wizard');
 			const params = new URLSearchParams(window.location.search);
-			if (params.has('auth_success')) {
-				// Clean up the query param
+			if (params.has('auth_success') || params.has('sp_auth_success')) {
+				// Clean up the query params
 				params.delete('auth_success');
+				params.delete('sp_auth_success');
 				const newUrl = params.toString()
 					? `${window.location.pathname}?${params}`
 					: window.location.pathname;
@@ -368,7 +369,7 @@
 	}
 
 	// Wizard callbacks: return results instead of managing state directly
-	async function submitAnonymousForWizard(email?: string): Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }> {
+	async function submitSimplyPrintForWizard(): Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }> {
 		const exportData = await changeStore.exportChanges();
 
 		const imagesWithPaths: Record<string, any> = {};
@@ -387,8 +388,7 @@
 			body: JSON.stringify({
 				changes: exportData.changes,
 				images: imagesWithPaths,
-				title: generateChangeTitle(exportData.changes),
-				...(email && { email })
+				title: generateChangeTitle(exportData.changes)
 			})
 		});
 
@@ -746,7 +746,7 @@
 						{validationIsValid}
 						{validationErrorCount}
 						{validationWarningCount}
-						onSubmitAnonymous={submitAnonymousForWizard}
+						onSubmitSimplyPrint={submitSimplyPrintForWizard}
 						onSubmitGitHub={createPRForWizard}
 						onClose={() => { submitModalOpen = false; reopenedAfterAuth = false; cleanupValidationStream(); }}
 						initialMethod={reopenedAfterAuth ? 'github' : undefined}

@@ -1,20 +1,16 @@
 <script lang="ts">
 	import { Button, LoadingSpinner } from '$lib/components/ui';
-	import { isAuthenticated, currentUser, authStore } from '$lib/stores/auth';
-	import { userPrefs } from '$lib/stores/userPrefs';
-	import { changeStore } from '$lib/stores/changes';
-	import { env } from '$env/dynamic/public';
-	import { onMount } from 'svelte';
+	import { isAuthenticated, currentUser, isSpAuthenticated, currentSpUser, authStore } from '$lib/stores/auth';
 
 	type Step = 'method' | 'details' | 'success';
-	type SubmitMethod = 'anonymous' | 'github';
+	type SubmitMethod = 'simplyprint' | 'github';
 
 	interface Props {
 		validationStatus: 'idle' | 'running' | 'complete' | 'error';
 		validationIsValid: boolean | null;
 		validationErrorCount: number;
 		validationWarningCount: number;
-		onSubmitAnonymous: (email?: string) => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
+		onSubmitSimplyPrint: () => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
 		onSubmitGitHub: (title: string, description: string) => Promise<{ success: boolean; message: string; prUrl?: string }>;
 		onClose: () => void;
 		initialMethod?: SubmitMethod;
@@ -25,81 +21,20 @@
 		validationIsValid,
 		validationErrorCount,
 		validationWarningCount,
-		onSubmitAnonymous,
+		onSubmitSimplyPrint,
 		onSubmitGitHub,
 		onClose,
 		initialMethod
 	}: Props = $props();
 
-	const anonBotEnabled = env.PUBLIC_ANON_BOT_ENABLED === 'true';
-
 	let step = $state<Step>(initialMethod ? 'details' : 'method');
-	let method = $state<SubmitMethod>(initialMethod ?? (anonBotEnabled ? 'anonymous' : 'github'));
+	let method = $state<SubmitMethod>(initialMethod ?? 'simplyprint');
 	let submitting = $state(false);
 	let result = $state<{ success: boolean; message: string; uuid?: string; prUrl?: string } | null>(null);
 
-	// Form fields
+	// Form fields (GitHub only)
 	let prTitle = $state('');
 	let prDescription = $state('');
-	let submitterEmail = $state('');
-
-	// Deflation: check for previous submissions needing changes
-	let changesRequestedSubmission = $state<{ uuid: string; prUrl: string } | null>(null);
-	let deflating = $state(false);
-	let deflateError = $state<string | null>(null);
-
-	onMount(async () => {
-		const submissions = userPrefs.getSubmissions();
-		// Check the most recent submissions for changes_requested status
-		for (const sub of submissions.slice(0, 5)) {
-			try {
-				const res = await fetch(`/api/anon/status/${sub.uuid}`);
-				if (res.ok) {
-					const data = await res.json();
-					if (data.status === 'changes_requested') {
-						changesRequestedSubmission = { uuid: data.uuid, prUrl: data.prUrl };
-						break;
-					}
-				}
-			} catch {
-				// Ignore network errors for status checks
-			}
-		}
-	});
-
-	async function loadChangesForEditing() {
-		if (!changesRequestedSubmission) return;
-		deflating = true;
-		deflateError = null;
-
-		try {
-			const res = await fetch(`/api/anon/deflate/${changesRequestedSubmission.uuid}`);
-			if (!res.ok) {
-				const data = await res.json();
-				deflateError = data.error || 'Failed to load changes';
-				return;
-			}
-
-			const data = await res.json();
-			await changeStore.importChanges({
-				metadata: {
-					exportedAt: Date.now(),
-					version: '1.0.0',
-					changeCount: data.changes.length,
-					imageCount: Object.keys(data.images || {}).length
-				},
-				changes: data.changes,
-				images: data.images || {}
-			});
-
-			changesRequestedSubmission = null;
-			onClose();
-		} catch (err: any) {
-			deflateError = err.message || 'Failed to load changes';
-		} finally {
-			deflating = false;
-		}
-	}
 
 	function selectMethod(m: SubmitMethod) {
 		method = m;
@@ -118,15 +53,10 @@
 		result = null;
 
 		try {
-			if (method === 'anonymous') {
-				const res = await onSubmitAnonymous(submitterEmail || undefined);
-				result = res;
-				if (res.success && res.uuid) {
-					userPrefs.addSubmission(res.uuid, res.prUrl || '', 0);
-				}
+			if (method === 'simplyprint') {
+				result = await onSubmitSimplyPrint();
 			} else {
-				const res = await onSubmitGitHub(prTitle, prDescription);
-				result = res;
+				result = await onSubmitGitHub(prTitle, prDescription);
 			}
 
 			if (result?.success) {
@@ -152,32 +82,6 @@
 	{#if step === 'method'}
 		<!-- Step 1: Choose submission method -->
 		<div class="flex flex-1 flex-col">
-			{#if changesRequestedSubmission}
-				<div class="mb-4 rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-3">
-					<p class="text-sm font-medium text-yellow-700 dark:text-yellow-400">A previous submission needs changes</p>
-					<p class="mt-1 text-xs text-muted-foreground">
-						A reviewer requested changes on your submission. You can load your original changes back for editing.
-					</p>
-					{#if deflateError}
-						<p class="mt-1 text-xs text-destructive">{deflateError}</p>
-					{/if}
-					<Button
-						onclick={loadChangesForEditing}
-						variant="ghost"
-						size="sm"
-						class="mt-2 text-yellow-700 hover:bg-yellow-500/10 dark:text-yellow-400"
-						disabled={deflating}
-					>
-						{#if deflating}
-							<LoadingSpinner />
-							Loading changes...
-						{:else}
-							Load changes for editing
-						{/if}
-					</Button>
-				</div>
-			{/if}
-
 			<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">How would you like to submit?</h4>
 
 			{#if hasValidationErrors}
@@ -187,25 +91,23 @@
 			{/if}
 
 			<div class="flex-1 space-y-3">
-				{#if anonBotEnabled}
-					<button
-						onclick={() => selectMethod('anonymous')}
-						disabled={hasValidationErrors}
-						class="w-full cursor-pointer rounded-lg border-2 p-4 text-left transition-colors hover:border-primary/50 hover:bg-primary/5 disabled:cursor-not-allowed disabled:opacity-50"
-					>
-						<div class="flex items-start gap-3">
-							<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-									<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-								</svg>
-							</div>
-							<div>
-								<p class="font-medium">Submit Anonymously</p>
-								<p class="mt-0.5 text-sm text-muted-foreground">No account needed. Quick and simple.</p>
-							</div>
+				<button
+					onclick={() => selectMethod('simplyprint')}
+					disabled={hasValidationErrors}
+					class="w-full cursor-pointer rounded-lg border-2 p-4 text-left transition-colors hover:border-primary/50 hover:bg-primary/5 disabled:cursor-not-allowed disabled:opacity-50"
+				>
+					<div class="flex items-start gap-3">
+						<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+							</svg>
 						</div>
-					</button>
-				{/if}
+						<div>
+							<p class="font-medium">Submit with SimplyPrint</p>
+							<p class="mt-0.5 text-sm text-muted-foreground">Sign in with your SimplyPrint account. No GitHub needed.</p>
+						</div>
+					</div>
+				</button>
 
 				<button
 					onclick={() => selectMethod('github')}
@@ -240,44 +142,55 @@
 				Back
 			</button>
 
-			{#if method === 'anonymous'}
-				<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Anonymous Submission</h4>
+			{#if method === 'simplyprint'}
+				<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">SimplyPrint Submission</h4>
 
-				<div class="flex-1 space-y-4">
-					<p class="text-sm text-muted-foreground">Your changes will be submitted as a pull request to the database. A maintainer will review and merge them.</p>
-
-					<div>
-						<label for="wizard-email" class="mb-1 block text-sm font-medium">
-							Email <span class="font-normal text-muted-foreground">(optional)</span>
-						</label>
-						<input
-							id="wizard-email"
-							type="email"
-							bind:value={submitterEmail}
-							class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-							placeholder="your@email.com"
-						/>
-						<p class="mt-1 text-xs text-muted-foreground">
-							Get notified when your submission is reviewed. Your email is stored securely and never shared.
-						</p>
-					</div>
-				</div>
-
-				<div class="mt-4 shrink-0 space-y-3">
-					{#if result && !result.success}
-						<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
-							{result.message}
+				{#if $isSpAuthenticated}
+					<div class="mb-4 flex items-center gap-3">
+						<div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">
+							{$currentSpUser?.name?.charAt(0)?.toUpperCase() || '?'}
 						</div>
-					{/if}
-					<Button onclick={handleSubmit} variant="primary" size="md" class="w-full" disabled={submitting}>
-						{#if submitting}
-							<LoadingSpinner />
-							Submitting...
-						{:else}
-							Submit Changes
+						<div class="flex-1">
+							<p class="text-sm font-medium">{$currentSpUser?.name}</p>
+							{#if $currentSpUser?.company_name}
+								<p class="text-xs text-muted-foreground">{$currentSpUser.company_name}</p>
+							{/if}
+						</div>
+						<Button onclick={() => authStore.spLogout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
+							Logout
+						</Button>
+					</div>
+
+					<div class="flex-1">
+						<p class="text-sm text-muted-foreground">Your changes will be submitted as a pull request to the database, attributed to your SimplyPrint account. A maintainer will review and merge them.</p>
+					</div>
+
+					<div class="mt-4 shrink-0 space-y-3">
+						{#if result && !result.success}
+							<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+								{result.message}
+							</div>
 						{/if}
+						<Button onclick={handleSubmit} variant="primary" size="md" class="w-full" disabled={submitting}>
+							{#if submitting}
+								<LoadingSpinner />
+								Submitting...
+							{:else}
+								Submit Changes
+							{/if}
+						</Button>
+					</div>
+				{:else}
+					<p class="mb-4 text-sm text-muted-foreground">
+						Sign in with your SimplyPrint account to submit changes.
+					</p>
+					<Button onclick={() => authStore.spLogin()} variant="primary" size="md">
+						<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+						</svg>
+						Sign in with SimplyPrint
 					</Button>
-				</div>
+				{/if}
 
 			{:else}
 				<!-- GitHub submission -->
@@ -294,7 +207,7 @@
 								<p class="text-xs text-muted-foreground">@{$currentUser.login}</p>
 							{/if}
 						</div>
-						<Button onclick={() => authStore.logout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
+						<Button onclick={() => authStore.ghLogout()} variant="ghost" size="sm" class="text-xs text-muted-foreground">
 							Logout
 						</Button>
 					</div>
@@ -343,7 +256,7 @@
 					<p class="mb-4 text-sm text-muted-foreground">
 						Sign in with GitHub to be credited as the PR author.
 					</p>
-					<Button onclick={() => authStore.login()} variant="primary" size="md">
+					<Button onclick={() => authStore.ghLogin()} variant="primary" size="md">
 						<svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
 							<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
 						</svg>
@@ -364,11 +277,7 @@
 
 			<h3 class="mb-2 text-lg font-semibold">Your changes have been submitted!</h3>
 			<p class="mb-6 text-sm text-muted-foreground">
-				{#if submitterEmail}
-					We'll notify you at <span class="font-medium text-foreground">{submitterEmail}</span> when your submission is reviewed.
-				{:else}
-					A maintainer will review and merge your changes.
-				{/if}
+				A maintainer will review and merge your changes.
 			</p>
 
 			<!-- Flow diagram -->
