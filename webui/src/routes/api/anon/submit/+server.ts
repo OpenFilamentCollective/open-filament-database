@@ -9,6 +9,7 @@ import { isAnonBotEnabled, createAnonPR } from '$lib/server/anonBot';
 import { runCloudValidation } from '$lib/server/cloudValidator';
 import { sendWebhook } from '$lib/server/webhooks';
 import { trackSubmission } from '$lib/server/submissionStore';
+import { storeEmail } from '$lib/server/emailStore';
 import { checkRateLimit } from '$lib/server/rateLimit';
 import type { Job } from '$lib/server/jobManager';
 import crypto from 'crypto';
@@ -40,7 +41,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		return json({ error: 'Invalid JSON' }, { status: 400 });
 	}
 
-	const { changes, images, title, description } = body;
+	const { changes, images, title, description, email } = body;
 
 	if (!changes || !Array.isArray(changes) || changes.length === 0) {
 		return json({ error: 'No changes to submit' }, { status: 400 });
@@ -86,11 +87,16 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			return json({ error: result.error || 'Failed to create PR' }, { status: 500 });
 		}
 
-		// 7. Track submission (UUID + PR number + change data for deflation, NO email)
+		// 7. Track submission (UUID + PR number + change data for deflation)
 		const changeData = JSON.stringify({ changes, images: images || {} });
 		trackSubmission(uuid, result.prNumber!, result.prUrl!, changeData);
 
-		// 8. Fire "submitted" webhook (fire-and-forget)
+		// 8. Store email separately if provided (never in submission store or response)
+		if (email && typeof email === 'string' && email.includes('@')) {
+			storeEmail(uuid, email.trim());
+		}
+
+		// 9. Fire "submitted" webhook (fire-and-forget)
 		sendWebhook({
 			event: 'submitted',
 			uuid,
@@ -99,7 +105,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			timestamp: new Date().toISOString()
 		});
 
-		// 9. Return UUID to caller (no email in response)
+		// 10. Return UUID to caller (no email in response)
 		return json({
 			success: true,
 			uuid,

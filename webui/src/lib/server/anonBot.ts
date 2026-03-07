@@ -96,7 +96,7 @@ export async function createAnonPR(submission: AnonSubmission): Promise<AnonSubm
 	// 4. Create tree, commit
 	const treeSha = await createTree(token, upstreamOwner, upstreamRepo, baseTreeSha, treeItems);
 
-	const prTitle = submission.title || `Update filament database (${submission.changes.length} changes)`;
+	const prTitle = submission.title || `Update filament database (${submission.changes.length} change${submission.changes.length === 1 ? '' : 's'})`;
 	const commitSha = await createCommit(token, upstreamOwner, upstreamRepo, prTitle, treeSha, latestSha);
 
 	// 5. Update branch ref

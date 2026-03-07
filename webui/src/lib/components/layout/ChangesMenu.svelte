@@ -7,6 +7,7 @@
 	import { TwoColumnLayout } from '$lib/components/form-fields';
 	import SubmissionWizard from './SubmissionWizard.svelte';
 	import { db } from '$lib/services/database';
+	import { generateChangeTitle } from '$lib/utils/changeTitleGenerator';
 	import { onMount, onDestroy } from 'svelte';
 
 	let menuOpen = $state(false);
@@ -367,7 +368,7 @@
 	}
 
 	// Wizard callbacks: return results instead of managing state directly
-	async function submitAnonymousForWizard(): Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }> {
+	async function submitAnonymousForWizard(email?: string): Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }> {
 		const exportData = await changeStore.exportChanges();
 
 		const imagesWithPaths: Record<string, any> = {};
@@ -385,7 +386,9 @@
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				changes: exportData.changes,
-				images: imagesWithPaths
+				images: imagesWithPaths,
+				title: generateChangeTitle(exportData.changes),
+				...(email && { email })
 			})
 		});
 
@@ -426,7 +429,7 @@
 			body: JSON.stringify({
 				changes: exportData.changes,
 				images: imagesWithPaths,
-				title: title || `Update filament database (${exportData.changes.length} changes)`,
+				title: title || generateChangeTitle(exportData.changes),
 				description
 			})
 		});

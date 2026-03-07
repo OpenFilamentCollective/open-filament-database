@@ -14,7 +14,7 @@
 		validationIsValid: boolean | null;
 		validationErrorCount: number;
 		validationWarningCount: number;
-		onSubmitAnonymous: () => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
+		onSubmitAnonymous: (email?: string) => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
 		onSubmitGitHub: (title: string, description: string) => Promise<{ success: boolean; message: string; prUrl?: string }>;
 		onClose: () => void;
 		initialMethod?: SubmitMethod;
@@ -41,6 +41,7 @@
 	// Form fields
 	let prTitle = $state('');
 	let prDescription = $state('');
+	let submitterEmail = $state('');
 
 	// Deflation: check for previous submissions needing changes
 	let changesRequestedSubmission = $state<{ uuid: string; prUrl: string } | null>(null);
@@ -118,7 +119,7 @@
 
 		try {
 			if (method === 'anonymous') {
-				const res = await onSubmitAnonymous();
+				const res = await onSubmitAnonymous(submitterEmail || undefined);
 				result = res;
 				if (res.success && res.uuid) {
 					userPrefs.addSubmission(res.uuid, res.prUrl || '', 0);
@@ -244,6 +245,22 @@
 
 				<div class="flex-1 space-y-4">
 					<p class="text-sm text-muted-foreground">Your changes will be submitted as a pull request to the database. A maintainer will review and merge them.</p>
+
+					<div>
+						<label for="wizard-email" class="mb-1 block text-sm font-medium">
+							Email <span class="font-normal text-muted-foreground">(optional)</span>
+						</label>
+						<input
+							id="wizard-email"
+							type="email"
+							bind:value={submitterEmail}
+							class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+							placeholder="your@email.com"
+						/>
+						<p class="mt-1 text-xs text-muted-foreground">
+							Get notified when your submission is reviewed. Your email is stored securely and never shared.
+						</p>
+					</div>
 				</div>
 
 				<div class="mt-4 shrink-0 space-y-3">
