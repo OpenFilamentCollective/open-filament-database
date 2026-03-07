@@ -100,11 +100,7 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 			changes,
 			images: images || {},
 			title,
-			description,
-			submitter: {
-				name: spUser.name,
-				company: spUser.company_name || undefined
-			}
+			description
 		});
 
 		if (!result.success) {

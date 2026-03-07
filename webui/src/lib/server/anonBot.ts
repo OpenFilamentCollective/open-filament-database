@@ -25,7 +25,6 @@ export interface AnonSubmission {
 	images: Record<string, any>;
 	title?: string;
 	description?: string;
-	submitter?: { name: string; company?: string };
 }
 
 export interface AnonSubmissionResult {
@@ -107,17 +106,8 @@ export async function createAnonPR(submission: AnonSubmission): Promise<AnonSubm
 	const uuidComment = buildUuidComment(submission.uuid);
 	const changesSummary = buildChangesSummary(submission.changes);
 
-	let attribution: string;
-	if (submission.submitter) {
-		const parts = [submission.submitter.name];
-		if (submission.submitter.company) parts.push(`(${submission.submitter.company})`);
-		const via = publicEnv.PUBLIC_WRAPPER_NAME || 'the OFD web editor';
-		attribution = `*Submitted by ${parts.join(' ')} via ${via}*`;
-	} else {
-		attribution = publicEnv.PUBLIC_WRAPPER_NAME
-			? `*Submitted via ${publicEnv.PUBLIC_WRAPPER_NAME}*`
-			: '*Submitted via the OFD web editor*';
-	}
+	const via = publicEnv.PUBLIC_WRAPPER_NAME || 'the OFD web editor';
+	const attribution = `*Submitted via ${via}*`;
 
 	const prBody = [
 		uuidComment,

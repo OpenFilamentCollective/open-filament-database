@@ -147,15 +147,21 @@
 
 				{#if $isSpAuthenticated}
 					<div class="mb-4 flex items-center gap-3">
-						<img
-							src={$currentSpUser?.avatar_url}
-							alt=""
-							class="h-8 w-8 shrink-0 rounded-full bg-primary/10"
-							onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex'; }}
-						/>
-						<div class="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">
-							{$currentSpUser?.name?.charAt(0)?.toUpperCase() || '?'}
-						</div>
+						{#if $currentSpUser?.avatar_url}
+							<img
+								src={$currentSpUser.avatar_url}
+								alt=""
+								class="h-8 w-8 shrink-0 rounded-full bg-primary/10"
+								onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex'; }}
+							/>
+							<div class="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">
+								{$currentSpUser?.name?.charAt(0)?.toUpperCase() || '?'}
+							</div>
+						{:else}
+							<div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">
+								{$currentSpUser?.name?.charAt(0)?.toUpperCase() || '?'}
+							</div>
+						{/if}
 						<div class="flex-1">
 							<p class="text-sm font-medium">{$currentSpUser?.name}</p>
 							{#if $currentSpUser?.company_name}
@@ -168,7 +174,7 @@
 					</div>
 
 					<div class="flex-1 space-y-3">
-						<p class="text-sm text-muted-foreground">Your changes will be submitted as a pull request to the database, attributed to your SimplyPrint account. A maintainer will review and merge them.</p>
+						<p class="text-sm text-muted-foreground">Your changes will be submitted anonymously as a pull request to the database. A maintainer will review and merge them.</p>
 
 						<div class="rounded-md border border-muted bg-muted/30 p-3 text-xs text-muted-foreground">
 							<p>By submitting, you agree that the email address associated with your SimplyPrint account will be used solely to notify you about the status of this submission (e.g. merged, closed, or changes requested). Your email is stored securely and is not shared with third parties.</p>
