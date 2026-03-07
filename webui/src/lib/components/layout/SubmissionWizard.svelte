@@ -17,6 +17,7 @@
 		onSubmitAnonymous: () => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
 		onSubmitGitHub: (title: string, description: string) => Promise<{ success: boolean; message: string; prUrl?: string }>;
 		onClose: () => void;
+		initialMethod?: SubmitMethod;
 	}
 
 	let {
@@ -26,13 +27,14 @@
 		validationWarningCount,
 		onSubmitAnonymous,
 		onSubmitGitHub,
-		onClose
+		onClose,
+		initialMethod
 	}: Props = $props();
 
 	const anonBotEnabled = env.PUBLIC_ANON_BOT_ENABLED === 'true';
 
-	let step = $state<Step>('method');
-	let method = $state<SubmitMethod>(anonBotEnabled ? 'anonymous' : 'github');
+	let step = $state<Step>(initialMethod ? 'details' : 'method');
+	let method = $state<SubmitMethod>(initialMethod ?? (anonBotEnabled ? 'anonymous' : 'github'));
 	let submitting = $state(false);
 	let result = $state<{ success: boolean; message: string; uuid?: string; prUrl?: string } | null>(null);
 

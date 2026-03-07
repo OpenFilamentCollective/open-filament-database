@@ -15,6 +15,7 @@
 
 	// Submit modal state
 	let submitModalOpen = $state(false);
+	let reopenedAfterAuth = $state(false);
 
 	// Save to disk state (local mode only)
 	let savingToDisk = $state(false);
@@ -44,6 +45,22 @@
 	// Load stores on mount for resolving store_id to store names
 	onMount(async () => {
 		stores = await db.loadStores();
+
+		// Reopen submission wizard after GitHub OAuth redirect
+		if (localStorage.getItem('ofd_reopen_wizard')) {
+			localStorage.removeItem('ofd_reopen_wizard');
+			const params = new URLSearchParams(window.location.search);
+			if (params.has('auth_success')) {
+				// Clean up the query param
+				params.delete('auth_success');
+				const newUrl = params.toString()
+					? `${window.location.pathname}?${params}`
+					: window.location.pathname;
+				history.replaceState({}, '', newUrl);
+				reopenedAfterAuth = true;
+				submitModalOpen = true;
+			}
+		}
 	});
 
 	onDestroy(() => {
@@ -728,7 +745,8 @@
 						{validationWarningCount}
 						onSubmitAnonymous={submitAnonymousForWizard}
 						onSubmitGitHub={createPRForWizard}
-						onClose={() => { submitModalOpen = false; cleanupValidationStream(); }}
+						onClose={() => { submitModalOpen = false; reopenedAfterAuth = false; cleanupValidationStream(); }}
+						initialMethod={reopenedAfterAuth ? 'github' : undefined}
 					/>
 				{/if}
 			</div>

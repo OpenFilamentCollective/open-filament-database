@@ -36,6 +36,7 @@ function createAuthStore() {
 		},
 
 		login() {
+			localStorage.setItem('ofd_reopen_wizard', 'true');
 			window.location.href = '/api/auth/github/login';
 		},
 
