@@ -15,7 +15,10 @@ function getClient(): any | null {
 	}
 
 	const url = privateEnv.ZEPTOMAIL_API_URL || 'api.zeptomail.eu/';
-	client = new SendMailClient({ url, token: privateEnv.ZEPTOMAIL_TOKEN });
+	const token = privateEnv.ZEPTOMAIL_TOKEN!.startsWith('Zoho-enczapikey ')
+		? privateEnv.ZEPTOMAIL_TOKEN!
+		: `Zoho-enczapikey ${privateEnv.ZEPTOMAIL_TOKEN}`;
+	client = new SendMailClient({ url, token });
 	return client;
 }
 
