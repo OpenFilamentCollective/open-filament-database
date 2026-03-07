@@ -10,7 +10,8 @@
         },
         "id": {
             "maxLength": 1000,
-            "pattern": "^[a-z0-9+]+(_[a-z0-9+]+)*$"
+            "pattern": "^[a-z0-9+]+(_[a-z0-9+]+)*$",
+            "type": "string"
         },
         "logo": {
             "pattern": "^logo\\.(png|jpg|svg)$"
@@ -53,6 +54,11 @@
             "type": "string",
             "description": "The source of the data, like another DB or company",
             "$ref": "#/definitions/string_limit"
+        },
+        "manufacturer": {
+            "type": "string",
+            "description": "The brand id of the parent manufacturer, for product lines sold under a different name",
+            "$ref": "#/definitions/id"
         }
     },
     "required": [
