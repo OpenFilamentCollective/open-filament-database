@@ -8,6 +8,7 @@
 	import SubmissionWizard from './SubmissionWizard.svelte';
 	import { db } from '$lib/services/database';
 	import { generateChangeTitle } from '$lib/utils/changeTitleGenerator';
+	import { authStore } from '$lib/stores/auth';
 	import { onMount, onDestroy } from 'svelte';
 
 	let menuOpen = $state(false);
@@ -16,7 +17,7 @@
 
 	// Submit modal state
 	let submitModalOpen = $state(false);
-	let reopenedAfterAuth = $state(false);
+	let reopenedAfterAuth = $state<'github' | 'simplyprint' | false>(false);
 
 	// Save to disk state (local mode only)
 	let savingToDisk = $state(false);
@@ -48,7 +49,8 @@
 		stores = await db.loadStores();
 
 		// Reopen submission wizard after OAuth redirect (GitHub or SimplyPrint)
-		if (localStorage.getItem('ofd_reopen_wizard')) {
+		const savedMethod = localStorage.getItem('ofd_reopen_wizard');
+		if (savedMethod) {
 			localStorage.removeItem('ofd_reopen_wizard');
 			const params = new URLSearchParams(window.location.search);
 			if (params.has('auth_success') || params.has('sp_auth_success')) {
@@ -59,7 +61,11 @@
 					? `${window.location.pathname}?${params}`
 					: window.location.pathname;
 				history.replaceState({}, '', newUrl);
-				reopenedAfterAuth = true;
+
+				// Wait for auth status to be fetched before opening wizard
+				await authStore.checkStatus();
+
+				reopenedAfterAuth = savedMethod === 'simplyprint' ? 'simplyprint' : 'github';
 				submitModalOpen = true;
 			}
 		}
@@ -749,7 +755,7 @@
 						onSubmitSimplyPrint={submitSimplyPrintForWizard}
 						onSubmitGitHub={createPRForWizard}
 						onClose={() => { submitModalOpen = false; reopenedAfterAuth = false; cleanupValidationStream(); }}
-						initialMethod={reopenedAfterAuth ? 'github' : undefined}
+						initialMethod={reopenedAfterAuth || undefined}
 					/>
 				{/if}
 			</div>

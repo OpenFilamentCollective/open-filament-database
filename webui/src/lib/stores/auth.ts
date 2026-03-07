@@ -56,7 +56,7 @@ function createAuthStore() {
 		},
 
 		ghLogin() {
-			localStorage.setItem('ofd_reopen_wizard', 'true');
+			localStorage.setItem('ofd_reopen_wizard', 'github');
 			window.location.href = '/api/auth/github/login';
 		},
 
@@ -82,7 +82,7 @@ function createAuthStore() {
 		},
 
 		spLogin() {
-			localStorage.setItem('ofd_reopen_wizard', 'true');
+			localStorage.setItem('ofd_reopen_wizard', 'simplyprint');
 			window.location.href = '/api/auth/simplyprint/login';
 		},
 
