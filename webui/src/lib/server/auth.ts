@@ -79,6 +79,11 @@ export async function getGitHubUser(token: string): Promise<{ login: string; nam
 
 // --- SimplyPrint ---
 
+/** Base domain for SimplyPrint APIs, configurable for test environments */
+const SP_DOMAIN = process.env.SIMPLYPRINT_BASE_URL || 'simplyprint.io';
+const SP_API_BASE = `https://api.${SP_DOMAIN}`;
+export const SP_AUTHORIZE_URL = `https://${SP_DOMAIN}/panel/oauth2/authorize`;
+
 export function getSimplyPrintToken(cookies: Cookies): string | undefined {
 	return cookies.get(SP_COOKIE);
 }
@@ -97,7 +102,7 @@ export async function exchangeSimplyPrintCode(
 	clientSecret: string,
 	redirectUri: string
 ): Promise<{ access_token: string; refresh_token: string }> {
-	const response = await fetch('https://api.simplyprint.io/oauth2/Token', {
+	const response = await fetch(`${SP_API_BASE}/oauth2/Token`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
@@ -131,7 +136,7 @@ export interface SimplyPrintUser {
 }
 
 export async function getSimplyPrintUser(token: string): Promise<SimplyPrintUser> {
-	const response = await fetch('https://api.simplyprint.io/oauth2/TokenInfo', {
+	const response = await fetch(`${SP_API_BASE}/oauth2/TokenInfo`, {
 		headers: { Authorization: `Bearer ${token}` }
 	});
 

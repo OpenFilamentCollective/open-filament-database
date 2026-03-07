@@ -3,6 +3,7 @@ import type { RequestHandler } from './$types';
 import { env } from '$env/dynamic/public';
 import { env as privateEnv } from '$env/dynamic/private';
 import { dev } from '$app/environment';
+import { SP_AUTHORIZE_URL } from '$lib/server/auth';
 import crypto from 'crypto';
 
 const STATE_COOKIE = 'ofd_sp_oauth_state';
@@ -32,5 +33,5 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 		state
 	});
 
-	throw redirect(302, `https://simplyprint.io/panel/oauth2/authorize?${params}`);
+	throw redirect(302, `${SP_AUTHORIZE_URL}?${params}`);
 };
