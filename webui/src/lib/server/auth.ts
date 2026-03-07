@@ -147,5 +147,7 @@ export async function getSimplyPrintUser(token: string): Promise<SimplyPrintUser
 		throw new Error(`SimplyPrint API error: ${response.status}`);
 	}
 
-	return response.json();
+	const data = await response.json();
+	console.log('[SP OAuth] TokenInfo response:', JSON.stringify(data));
+	return data;
 }
