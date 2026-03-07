@@ -3,11 +3,10 @@
  * Primary lookup is stateless (UUID embedded in PR body as HTML comment).
  * This store is a backup index for fast lookup without GitHub API calls.
  *
- * In-memory with periodic flush to JSON file for persistence across restarts.
- * Never stores email or any user-identifying information.
+ * Uses Postgres for persistence (via DATABASE_URL) with in-memory cache.
+ * Falls back to in-memory only if DATABASE_URL is not set.
  */
-import { promises as fs } from 'fs';
-import path from 'path';
+import { getPool, ensureTablesOnce } from './db';
 
 export interface SubmissionRecord {
 	uuid: string;
@@ -18,11 +17,9 @@ export interface SubmissionRecord {
 	changeData?: string; // Serialized ChangeExport JSON for deflation
 }
 
-// In-memory indexes
+// In-memory cache
 const submissions = new Map<string, SubmissionRecord>();
 const prNumberIndex = new Map<number, string>(); // prNumber → uuid
-
-const STORE_PATH = path.join(process.cwd(), '.data', 'submissions.json');
 
 export function trackSubmission(uuid: string, prNumber: number, prUrl: string, changeData?: string): void {
 	const record: SubmissionRecord = {
@@ -35,7 +32,7 @@ export function trackSubmission(uuid: string, prNumber: number, prUrl: string, c
 	};
 	submissions.set(uuid, record);
 	prNumberIndex.set(prNumber, uuid);
-	flushToDisk().catch(err => console.warn('Failed to flush submissions:', err));
+	persistSubmission(record).catch((err) => console.warn('Failed to persist submission:', err));
 }
 
 export function getSubmission(uuid: string): SubmissionRecord | undefined {
@@ -50,29 +47,49 @@ export function updateStatus(uuid: string, status: 'merged' | 'closed' | 'change
 	const record = submissions.get(uuid);
 	if (record) {
 		record.status = status;
-		flushToDisk().catch(err => console.warn('Failed to flush submissions:', err));
+		persistStatus(uuid, status).catch((err) => console.warn('Failed to persist status:', err));
 	}
 }
 
-async function flushToDisk(): Promise<void> {
-	const dir = path.dirname(STORE_PATH);
-	await fs.mkdir(dir, { recursive: true });
-	const data = Object.fromEntries(submissions);
-	await fs.writeFile(STORE_PATH, JSON.stringify(data, null, 2));
+// --- Postgres persistence ---
+
+async function persistSubmission(record: SubmissionRecord): Promise<void> {
+	const pool = getPool();
+	if (!pool) return;
+	await ensureTablesOnce();
+	await pool.query(
+		`INSERT INTO submissions (uuid, pr_number, pr_url, created_at, status, change_data)
+		 VALUES ($1, $2, $3, $4, $5, $6)
+		 ON CONFLICT (uuid) DO UPDATE SET pr_number = $2, pr_url = $3, status = $5, change_data = $6`,
+		[record.uuid, record.prNumber, record.prUrl, record.createdAt, record.status, record.changeData || null]
+	);
 }
 
-export async function loadFromDisk(): Promise<void> {
-	try {
-		const content = await fs.readFile(STORE_PATH, 'utf-8');
-		const data = JSON.parse(content);
-		for (const [uuid, record] of Object.entries(data) as [string, SubmissionRecord][]) {
-			submissions.set(uuid, record);
-			prNumberIndex.set(record.prNumber, uuid);
-		}
-	} catch {
-		// File doesn't exist yet, that's fine
+async function persistStatus(uuid: string, status: string): Promise<void> {
+	const pool = getPool();
+	if (!pool) return;
+	await ensureTablesOnce();
+	await pool.query('UPDATE submissions SET status = $1 WHERE uuid = $2', [status, uuid]);
+}
+
+export async function loadFromDatabase(): Promise<void> {
+	const pool = getPool();
+	if (!pool) return;
+	await ensureTablesOnce();
+	const result = await pool.query('SELECT uuid, pr_number, pr_url, created_at, status, change_data FROM submissions');
+	for (const row of result.rows) {
+		const record: SubmissionRecord = {
+			uuid: row.uuid,
+			prNumber: row.pr_number,
+			prUrl: row.pr_url,
+			createdAt: row.created_at instanceof Date ? row.created_at.toISOString() : row.created_at,
+			status: row.status,
+			changeData: row.change_data || undefined
+		};
+		submissions.set(record.uuid, record);
+		prNumberIndex.set(record.prNumber, record.uuid);
 	}
 }
 
 // Load persisted data on module init
-loadFromDisk().catch(() => {});
+loadFromDatabase().catch(() => {});

@@ -398,7 +398,7 @@
 			changeStore.clear();
 			return {
 				success: true,
-				message: `Submission ${result.uuid} created successfully!`,
+				message: 'Your changes have been submitted for review by a maintainer.',
 				uuid: result.uuid,
 				prUrl: result.prUrl
 			};

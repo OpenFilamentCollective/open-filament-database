@@ -363,7 +363,13 @@
 			</div>
 
 			<h3 class="mb-2 text-lg font-semibold">Your changes have been submitted!</h3>
-			<p class="mb-6 text-sm text-muted-foreground">{result?.message}</p>
+			<p class="mb-6 text-sm text-muted-foreground">
+				{#if submitterEmail}
+					We'll notify you at <span class="font-medium text-foreground">{submitterEmail}</span> when your submission is reviewed.
+				{:else}
+					A maintainer will review and merge your changes.
+				{/if}
+			</p>
 
 			<!-- Flow diagram -->
 			<div class="mb-6 flex items-center gap-2 text-sm">

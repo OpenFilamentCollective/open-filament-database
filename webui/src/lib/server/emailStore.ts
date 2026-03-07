@@ -1,21 +1,19 @@
 /**
  * Separate store for submission email addresses.
- * Kept isolated from submissionStore to ensure PII is never
- * accidentally exposed via status API responses or submissions.json.
+ * Kept as a separate module from submissionStore to ensure PII is never
+ * accidentally exposed via status API responses.
  *
- * In-memory with periodic flush to JSON file for persistence across restarts.
+ * Uses the `email` column on the shared `submissions` Postgres table.
+ * Falls back to in-memory only if DATABASE_URL is not set.
  */
-import { promises as fs } from 'fs';
-import path from 'path';
+import { getPool, ensureTablesOnce } from './db';
 
-// uuid → email
+// In-memory cache: uuid → email
 const emails = new Map<string, string>();
-
-const STORE_PATH = path.join(process.cwd(), '.data', 'submission-emails.json');
 
 export function storeEmail(uuid: string, email: string): void {
 	emails.set(uuid, email);
-	flushToDisk().catch((err) => console.warn('Failed to flush emails:', err));
+	persistEmail(uuid, email).catch((err) => console.warn('Failed to persist email:', err));
 }
 
 export function getEmail(uuid: string): string | undefined {
@@ -24,27 +22,34 @@ export function getEmail(uuid: string): string | undefined {
 
 export function removeEmail(uuid: string): void {
 	emails.delete(uuid);
-	flushToDisk().catch((err) => console.warn('Failed to flush emails:', err));
+	clearPersistedEmail(uuid).catch((err) => console.warn('Failed to clear email:', err));
 }
 
-async function flushToDisk(): Promise<void> {
-	const dir = path.dirname(STORE_PATH);
-	await fs.mkdir(dir, { recursive: true });
-	const data = Object.fromEntries(emails);
-	await fs.writeFile(STORE_PATH, JSON.stringify(data, null, 2));
+// --- Postgres persistence ---
+
+async function persistEmail(uuid: string, email: string): Promise<void> {
+	const pool = getPool();
+	if (!pool) return;
+	await ensureTablesOnce();
+	await pool.query('UPDATE submissions SET email = $1 WHERE uuid = $2', [email, uuid]);
 }
 
-export async function loadFromDisk(): Promise<void> {
-	try {
-		const content = await fs.readFile(STORE_PATH, 'utf-8');
-		const data = JSON.parse(content);
-		for (const [uuid, email] of Object.entries(data) as [string, string][]) {
-			emails.set(uuid, email);
-		}
-	} catch {
-		// File doesn't exist yet, that's fine
+async function clearPersistedEmail(uuid: string): Promise<void> {
+	const pool = getPool();
+	if (!pool) return;
+	await ensureTablesOnce();
+	await pool.query('UPDATE submissions SET email = NULL WHERE uuid = $1', [uuid]);
+}
+
+export async function loadFromDatabase(): Promise<void> {
+	const pool = getPool();
+	if (!pool) return;
+	await ensureTablesOnce();
+	const result = await pool.query('SELECT uuid, email FROM submissions WHERE email IS NOT NULL');
+	for (const row of result.rows) {
+		emails.set(row.uuid, row.email);
 	}
 }
 
 // Load persisted data on module init
-loadFromDisk().catch(() => {});
+loadFromDatabase().catch(() => {});
