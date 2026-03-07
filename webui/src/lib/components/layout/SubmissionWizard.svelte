@@ -167,8 +167,12 @@
 						</Button>
 					</div>
 
-					<div class="flex-1">
+					<div class="flex-1 space-y-3">
 						<p class="text-sm text-muted-foreground">Your changes will be submitted as a pull request to the database, attributed to your SimplyPrint account. A maintainer will review and merge them.</p>
+
+						<div class="rounded-md border border-muted bg-muted/30 p-3 text-xs text-muted-foreground">
+							<p>By submitting, you agree that the email address associated with your SimplyPrint account will be used solely to notify you about the status of this submission (e.g. merged, closed, or changes requested). Your email is stored securely and is not shared with third parties.</p>
+						</div>
 					</div>
 
 					<div class="mt-4 shrink-0 space-y-3">

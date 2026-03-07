@@ -45,8 +45,14 @@ export async function ensureTables(): Promise<void> {
 			pr_url TEXT NOT NULL,
 			created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 			status TEXT NOT NULL DEFAULT 'open',
-			change_data TEXT
+			change_data TEXT,
+			email TEXT
 		)
+	`);
+
+	// Migration: add email column if table already existed without it
+	await p.query(`
+		ALTER TABLE submissions ADD COLUMN IF NOT EXISTS email TEXT
 	`);
 }
 

@@ -12,7 +12,8 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { verifyGitHubSignature, sendWebhook } from '$lib/server/webhooks';
 import { extractUuidFromBody } from '$lib/server/anonBot';
-import { getUuidByPrNumber, updateStatus } from '$lib/server/submissionStore';
+import { getUuidByPrNumber, getEmailByUuid, updateStatus } from '$lib/server/submissionStore';
+import { sendMergedEmail, sendClosedEmail, sendChangesRequestedEmail } from '$lib/server/email';
 import { getInstallationToken } from '$lib/server/githubApp';
 import { deleteBranch } from '$lib/server/github';
 import { env as privateEnv } from '$env/dynamic/private';
@@ -67,6 +68,13 @@ export const POST: RequestHandler = async ({ request }) => {
 			reviewComments: review.body || undefined
 		});
 
+		// Send email notification (fire-and-forget)
+		const crEmail = getEmailByUuid(uuid);
+		if (crEmail) {
+			sendChangesRequestedEmail(crEmail, pr.number, pr.html_url || pr._links?.html?.href || '', review.body || undefined)
+				.catch((err: any) => console.warn('Failed to send changes_requested email:', err.message));
+		}
+
 		return json({ ok: true, uuid, event: 'changes_requested' });
 	}
 
@@ -105,7 +113,16 @@ export const POST: RequestHandler = async ({ request }) => {
 		timestamp: new Date().toISOString()
 	});
 
-	// 8. Clean up the head branch (best-effort, fire-and-forget)
+	// 8. Send email notification (fire-and-forget)
+	const email = getEmailByUuid(uuid);
+	if (email) {
+		const prUrl = pr.html_url || pr._links?.html?.href || '';
+		const sendFn = isMerged ? sendMergedEmail : sendClosedEmail;
+		sendFn(email, pr.number, prUrl)
+			.catch((err: any) => console.warn(`Failed to send ${webhookEvent} email:`, err.message));
+	}
+
+	// 9. Clean up the head branch (best-effort, fire-and-forget)
 	const headRef = pr.head?.ref;
 	if (headRef?.startsWith('ofd-anon-')) {
 		getInstallationToken()

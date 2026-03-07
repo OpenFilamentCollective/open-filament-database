@@ -111,9 +111,9 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 			return json({ error: result.error || 'Failed to create PR' }, { status: 500 });
 		}
 
-		// 8. Track submission
+		// 8. Track submission (store email for lifecycle notifications)
 		const changeData = JSON.stringify({ changes, images: images || {} });
-		trackSubmission(uuid, result.prNumber!, result.prUrl!, changeData);
+		trackSubmission(uuid, result.prNumber!, result.prUrl!, changeData, spUser.email || undefined);
 
 		// 9. Fire "submitted" webhook (fire-and-forget)
 		sendWebhook({
