@@ -12,7 +12,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { verifyGitHubSignature, sendWebhook } from '$lib/server/webhooks';
 import { extractUuidFromBody } from '$lib/server/anonBot';
-import { getUuidByPrNumber, getEmailByUuid, updateStatus } from '$lib/server/submissionStore';
+import { getUuidByPrNumber, getEmailByUuidFromDb, updateStatus } from '$lib/server/submissionStore';
 import { sendMergedEmail, sendClosedEmail, sendChangesRequestedEmail } from '$lib/server/email';
 import { getInstallationToken } from '$lib/server/githubApp';
 import { deleteBranch } from '$lib/server/github';
@@ -68,12 +68,16 @@ export const POST: RequestHandler = async ({ request }) => {
 			reviewComments: review.body || undefined
 		});
 
-		// Send email notification (fire-and-forget)
-		const crEmail = getEmailByUuid(uuid);
-		if (crEmail) {
+		// Send email notification
+		getEmailByUuidFromDb(uuid).then((crEmail) => {
+			if (!crEmail) {
+				console.log(`[Webhook] No email stored for uuid ${uuid}, skipping notification`);
+				return;
+			}
+			console.log(`[Webhook] Sending changes_requested email to ${crEmail} for PR #${pr.number}`);
 			sendChangesRequestedEmail(crEmail, pr.number, pr.html_url || pr._links?.html?.href || '', review.body || undefined)
 				.catch((err: any) => console.warn('Failed to send changes_requested email:', err.message));
-		}
+		}).catch((err: any) => console.warn('Failed to look up email:', err.message));
 
 		return json({ ok: true, uuid, event: 'changes_requested' });
 	}
@@ -113,14 +117,18 @@ export const POST: RequestHandler = async ({ request }) => {
 		timestamp: new Date().toISOString()
 	});
 
-	// 8. Send email notification (fire-and-forget)
-	const email = getEmailByUuid(uuid);
-	if (email) {
+	// 8. Send email notification
+	getEmailByUuidFromDb(uuid).then((email) => {
+		if (!email) {
+			console.log(`[Webhook] No email stored for uuid ${uuid}, skipping notification`);
+			return;
+		}
 		const prUrl = pr.html_url || pr._links?.html?.href || '';
+		console.log(`[Webhook] Sending ${webhookEvent} email to ${email} for PR #${pr.number}`);
 		const sendFn = isMerged ? sendMergedEmail : sendClosedEmail;
 		sendFn(email, pr.number, prUrl)
 			.catch((err: any) => console.warn(`Failed to send ${webhookEvent} email:`, err.message));
-	}
+	}).catch((err: any) => console.warn('Failed to look up email:', err.message));
 
 	// 9. Clean up the head branch (best-effort, fire-and-forget)
 	const headRef = pr.head?.ref;

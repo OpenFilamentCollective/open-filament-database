@@ -49,6 +49,20 @@ export function getEmailByUuid(uuid: string): string | undefined {
 	return submissions.get(uuid)?.email;
 }
 
+/** DB fallback for email lookup — used by webhook handler when in-memory cache may be stale */
+export async function getEmailByUuidFromDb(uuid: string): Promise<string | undefined> {
+	// Try memory first
+	const cached = submissions.get(uuid)?.email;
+	if (cached) return cached;
+
+	// Fall back to DB
+	const pool = getPool();
+	if (!pool) return undefined;
+	await ensureTablesOnce();
+	const result = await pool.query('SELECT email FROM submissions WHERE uuid = $1', [uuid]);
+	return result.rows[0]?.email || undefined;
+}
+
 export function updateStatus(uuid: string, status: 'merged' | 'closed' | 'changes_requested'): void {
 	const record = submissions.get(uuid);
 	if (record) {

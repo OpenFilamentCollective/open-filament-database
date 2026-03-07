@@ -9,7 +9,10 @@ let transporter: nodemailer.Transporter | null = null;
 
 function getTransporter(): nodemailer.Transporter | null {
 	if (transporter) return transporter;
-	if (!privateEnv.SMTP_HOST || !privateEnv.SMTP_USER || !privateEnv.SMTP_PASS) return null;
+	if (!privateEnv.SMTP_HOST || !privateEnv.SMTP_USER || !privateEnv.SMTP_PASS) {
+		console.warn('[Email] SMTP not configured — missing SMTP_HOST, SMTP_USER, or SMTP_PASS');
+		return null;
+	}
 
 	transporter = nodemailer.createTransport({
 		host: privateEnv.SMTP_HOST,
