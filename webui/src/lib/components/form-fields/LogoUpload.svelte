@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { useChangeTracking, isCloudMode, apiBaseUrl } from '$lib/stores/environment';
 	import { changeStore } from '$lib/stores/changes';
-	import { Button } from '$lib/components/ui';
+	import { Button, Checkbox } from '$lib/components/ui';
 	import {
 		validateImage,
 		resizeImage,
@@ -45,6 +45,14 @@
 	let resizeStartX: number = 0;
 	let resizeStartY: number = 0;
 	let resizeStartSize: number = 0;
+
+	// Pad-to-square state
+	let padEnabled: boolean = $state(false);
+	let padColor: string = $state('#ffffff');
+	// Offset of image within the padded square canvas (in original image pixels)
+	let padOffsetX: number = $state(0);
+	let padOffsetY: number = $state(0);
+	let paddedSize: number = $state(0); // The square dimension in original pixels
 
 	// Canvas dimensions (constrained to viewport)
 	let canvasWidth: number = $state(400);
@@ -159,29 +167,58 @@
 		const img = new Image();
 		img.onload = () => {
 			cropImage = img;
-			const minDimension = Math.min(validation!.width, validation!.height);
-			cropSize = Math.round(minDimension);
-			cropX = Math.round((validation!.width - minDimension) / 2);
-			cropY = Math.round((validation!.height - minDimension) / 2);
 
-			// Calculate canvas size constrained to viewport
-			// Use 3/4 of viewport with padding for modal chrome
-			const maxWidth = Math.min(window.innerWidth * 0.75 - 48, 700);
-			const maxHeight = Math.min(window.innerHeight * 0.7 - 120, 600);
+			const isNonSquare = validation!.width !== validation!.height;
+			padEnabled = isNonSquare;
 
-			const aspectRatio = validation!.width / validation!.height;
+			setupCropForMode();
+
+			// Signal that canvas needs redraw (effect will handle timing)
+			needsRedraw = true;
+		};
+		img.src = originalImageUrl;
+	}
+
+	function setupCropForMode() {
+		if (!validation || !cropImage) return;
+
+		// Calculate canvas size constrained to viewport
+		const maxWidth = Math.min(window.innerWidth * 0.75 - 48, 700);
+		const maxHeight = Math.min(window.innerHeight * 0.7 - 120, 600);
+
+		if (padEnabled) {
+			// Padded mode: canvas is square, image centered within it
+			const maxDim = Math.max(validation.width, validation.height);
+			paddedSize = maxDim;
+			padOffsetX = Math.round((maxDim - validation.width) / 2);
+			padOffsetY = Math.round((maxDim - validation.height) / 2);
+
+			// Canvas is square, fit to viewport
+			const canvasDim = Math.min(maxWidth, maxHeight, maxDim);
+			canvasWidth = canvasDim;
+			canvasHeight = canvasDim;
+
+			// Crop covers the full padded square
+			cropX = 0;
+			cropY = 0;
+			cropSize = paddedSize;
+		} else {
+			// Normal mode: canvas matches image aspect ratio
+			padOffsetX = 0;
+			padOffsetY = 0;
+			paddedSize = 0;
+
+			const aspectRatio = validation.width / validation.height;
 
 			if (aspectRatio > 1) {
-				// Wider than tall
-				canvasWidth = Math.min(maxWidth, validation!.width);
+				canvasWidth = Math.min(maxWidth, validation.width);
 				canvasHeight = canvasWidth / aspectRatio;
 				if (canvasHeight > maxHeight) {
 					canvasHeight = maxHeight;
 					canvasWidth = canvasHeight * aspectRatio;
 				}
 			} else {
-				// Taller than wide
-				canvasHeight = Math.min(maxHeight, validation!.height);
+				canvasHeight = Math.min(maxHeight, validation.height);
 				canvasWidth = canvasHeight * aspectRatio;
 				if (canvasWidth > maxWidth) {
 					canvasWidth = maxWidth;
@@ -189,10 +226,17 @@
 				}
 			}
 
-			// Signal that canvas needs redraw (effect will handle timing)
-			needsRedraw = true;
-		};
-		img.src = originalImageUrl;
+			const minDimension = Math.min(validation.width, validation.height);
+			cropSize = Math.round(minDimension);
+			cropX = Math.round((validation.width - minDimension) / 2);
+			cropY = Math.round((validation.height - minDimension) / 2);
+		}
+	}
+
+	function togglePad() {
+		padEnabled = !padEnabled;
+		setupCropForMode();
+		needsRedraw = true;
 	}
 
 	function drawCropPreview() {
@@ -204,36 +248,83 @@
 		// Clear canvas
 		ctx.clearRect(0, 0, cropCanvas.width, cropCanvas.height);
 
-		// Draw the full image
-		ctx.drawImage(cropImage, 0, 0, cropCanvas.width, cropCanvas.height);
+		let canvasCropX: number;
+		let canvasCropY: number;
+		let canvasCropSize: number;
 
-		// Draw dimmed overlay
-		ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-		ctx.fillRect(0, 0, cropCanvas.width, cropCanvas.height);
+		if (padEnabled) {
+			// Padded mode: square canvas with image centered
+			const scale = cropCanvas.width / paddedSize;
+			const imgX = padOffsetX * scale;
+			const imgY = padOffsetY * scale;
+			const imgW = cropImage.width * scale;
+			const imgH = cropImage.height * scale;
 
-		// Calculate scale factor
-		const scaleX = cropCanvas.width / cropImage.width;
-		const scaleY = cropCanvas.height / cropImage.height;
+			// Fill entire canvas with pad color
+			ctx.fillStyle = padColor;
+			ctx.fillRect(0, 0, cropCanvas.width, cropCanvas.height);
 
-		const canvasCropX = cropX * scaleX;
-		const canvasCropY = cropY * scaleY;
-		const canvasCropSize = cropSize * scaleX;
+			// Draw the image centered
+			ctx.drawImage(cropImage, imgX, imgY, imgW, imgH);
 
-		// Clear the crop area (show original image)
-		ctx.clearRect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
+			// Draw dimmed overlay over everything
+			ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+			ctx.fillRect(0, 0, cropCanvas.width, cropCanvas.height);
 
-		// Redraw image in crop area only
-		ctx.save();
-		ctx.beginPath();
-		ctx.rect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
-		ctx.clip();
-		ctx.drawImage(cropImage, 0, 0, cropCanvas.width, cropCanvas.height);
-		ctx.restore();
+			// Calculate crop position on canvas
+			canvasCropX = cropX * scale;
+			canvasCropY = cropY * scale;
+			canvasCropSize = cropSize * scale;
 
-		// Draw crop border with primary color
-		ctx.strokeStyle = 'hsl(var(--primary))';
-		ctx.lineWidth = 2;
-		ctx.strokeRect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
+			// Clear crop area and redraw content
+			ctx.clearRect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
+
+			ctx.save();
+			ctx.beginPath();
+			ctx.rect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
+			ctx.clip();
+			ctx.fillStyle = padColor;
+			ctx.fillRect(0, 0, cropCanvas.width, cropCanvas.height);
+			ctx.drawImage(cropImage, imgX, imgY, imgW, imgH);
+			ctx.restore();
+
+			// Draw crop border
+			ctx.strokeStyle = 'hsl(var(--primary))';
+			ctx.lineWidth = 2;
+			ctx.strokeRect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
+		} else {
+			// Normal mode: canvas matches image
+			// Draw the full image
+			ctx.drawImage(cropImage, 0, 0, cropCanvas.width, cropCanvas.height);
+
+			// Draw dimmed overlay
+			ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+			ctx.fillRect(0, 0, cropCanvas.width, cropCanvas.height);
+
+			// Calculate scale factor
+			const scaleX = cropCanvas.width / cropImage.width;
+			const scaleY = cropCanvas.height / cropImage.height;
+
+			canvasCropX = cropX * scaleX;
+			canvasCropY = cropY * scaleY;
+			canvasCropSize = cropSize * scaleX;
+
+			// Clear the crop area (show original image)
+			ctx.clearRect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
+
+			// Redraw image in crop area only
+			ctx.save();
+			ctx.beginPath();
+			ctx.rect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
+			ctx.clip();
+			ctx.drawImage(cropImage, 0, 0, cropCanvas.width, cropCanvas.height);
+			ctx.restore();
+
+			// Draw crop border with primary color
+			ctx.strokeStyle = 'hsl(var(--primary))';
+			ctx.lineWidth = 2;
+			ctx.strokeRect(canvasCropX, canvasCropY, canvasCropSize, canvasCropSize);
+		}
 
 		// Handle styling - larger, rounded, with border
 		const cornerSize = 14;
@@ -274,15 +365,27 @@
 		drawHandle(canvasCropX + canvasCropSize - sideSize / 2, canvasCropY + canvasCropSize / 2 - sideLength / 2, sideSize, sideLength);
 	}
 
+	function canvasToCoords(event: MouseEvent): { mouseX: number; mouseY: number } {
+		if (!cropCanvas || !cropImage) return { mouseX: 0, mouseY: 0 };
+		const rect = cropCanvas.getBoundingClientRect();
+		if (padEnabled) {
+			const scale = paddedSize / cropCanvas.width;
+			return {
+				mouseX: (event.clientX - rect.left) * scale,
+				mouseY: (event.clientY - rect.top) * scale
+			};
+		} else {
+			return {
+				mouseX: (event.clientX - rect.left) * (cropImage.width / cropCanvas.width),
+				mouseY: (event.clientY - rect.top) * (cropImage.height / cropCanvas.height)
+			};
+		}
+	}
+
 	function handleMouseDown(event: MouseEvent) {
 		if (!cropCanvas || !cropImage) return;
 
-		const rect = cropCanvas.getBoundingClientRect();
-		const scaleX = cropImage.width / cropCanvas.width;
-		const scaleY = cropImage.height / cropCanvas.height;
-
-		const mouseX = (event.clientX - rect.left) * scaleX;
-		const mouseY = (event.clientY - rect.top) * scaleY;
+		const { mouseX, mouseY } = canvasToCoords(event);
 
 		// Handle tolerance for hit detection
 		const cornerTolerance = 18;
@@ -396,12 +499,7 @@
 	function handleMouseMove(event: MouseEvent) {
 		if ((!isDragging && !isResizing) || !cropCanvas || !cropImage) return;
 
-		const rect = cropCanvas.getBoundingClientRect();
-		const scaleX = cropImage.width / cropCanvas.width;
-		const scaleY = cropImage.height / cropCanvas.height;
-
-		const mouseX = (event.clientX - rect.left) * scaleX;
-		const mouseY = (event.clientY - rect.top) * scaleY;
+		const { mouseX, mouseY } = canvasToCoords(event);
 
 		if (isResizing && resizeHandle) {
 			// Handle resizing from corners and sides
@@ -477,8 +575,10 @@
 				return;
 			}
 
-			// Constrain to image bounds
-			if (newX < 0 || newY < 0 || newX + newSize > cropImage.width || newY + newSize > cropImage.height) {
+			// Constrain to bounds (padded square or image)
+			const boundsW = padEnabled ? paddedSize : cropImage.width;
+			const boundsH = padEnabled ? paddedSize : cropImage.height;
+			if (newX < 0 || newY < 0 || newX + newSize > boundsW || newY + newSize > boundsH) {
 				return;
 			}
 
@@ -490,9 +590,11 @@
 			let newX = mouseX - dragStartX;
 			let newY = mouseY - dragStartY;
 
-			// Constrain to image bounds
-			newX = Math.max(0, Math.min(newX, cropImage.width - cropSize));
-			newY = Math.max(0, Math.min(newY, cropImage.height - cropSize));
+			// Constrain to bounds
+			const boundsW = padEnabled ? paddedSize : cropImage.width;
+			const boundsH = padEnabled ? paddedSize : cropImage.height;
+			newX = Math.max(0, Math.min(newX, boundsW - cropSize));
+			newY = Math.max(0, Math.min(newY, boundsH - cropSize));
 
 			// Snap to pixel
 			newX = Math.round(newX);
@@ -514,12 +616,7 @@
 	function getCursorStyle(event: MouseEvent): string {
 		if (!cropCanvas || !cropImage || isDragging || isResizing) return 'default';
 
-		const rect = cropCanvas.getBoundingClientRect();
-		const scaleX = cropImage.width / cropCanvas.width;
-		const scaleY = cropImage.height / cropCanvas.height;
-
-		const mouseX = (event.clientX - rect.left) * scaleX;
-		const mouseY = (event.clientY - rect.top) * scaleY;
+		const { mouseX, mouseY } = canvasToCoords(event);
 
 		const cornerTolerance = 18;
 		const sideTolerance = 16;
@@ -581,16 +678,45 @@
 	}
 
 	async function applyCrop() {
-		if (!originalImageUrl) return;
+		if (!originalImageUrl || !cropImage) return;
 
 		processing = true;
 		error = null;
 
 		try {
-			const processed = await cropImageUtil(originalImageUrl, cropX, cropY, cropSize);
-			previewUrl = processed.dataUrl;
-			onLogoChange(processed.dataUrl);
-			showCropModal = false;
+			if (padEnabled) {
+				// Custom padded crop: draw on a canvas with pad color background
+				const finalSize = Math.min(Math.max(cropSize, 100), 400);
+				const canvas = document.createElement('canvas');
+				canvas.width = finalSize;
+				canvas.height = finalSize;
+				const ctx = canvas.getContext('2d');
+				if (!ctx) throw new Error('Failed to get canvas context');
+
+				// Fill with pad color
+				ctx.fillStyle = padColor;
+				ctx.fillRect(0, 0, finalSize, finalSize);
+
+				// Calculate where to draw the image within the crop
+				const scale = finalSize / cropSize;
+				const imgDrawX = (padOffsetX - cropX) * scale;
+				const imgDrawY = (padOffsetY - cropY) * scale;
+				const imgDrawW = cropImage.width * scale;
+				const imgDrawH = cropImage.height * scale;
+
+				ctx.drawImage(cropImage, imgDrawX, imgDrawY, imgDrawW, imgDrawH);
+
+				const dataUrl = canvas.toDataURL('image/png');
+				const processed = { dataUrl, width: finalSize, height: finalSize };
+				previewUrl = processed.dataUrl;
+				onLogoChange(processed.dataUrl);
+				showCropModal = false;
+			} else {
+				const processed = await cropImageUtil(originalImageUrl, cropX, cropY, cropSize);
+				previewUrl = processed.dataUrl;
+				onLogoChange(processed.dataUrl);
+				showCropModal = false;
+			}
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Failed to crop image';
 		} finally {
@@ -667,6 +793,26 @@
 				<p class="text-sm text-muted-foreground mb-4">
 					Drag to move. Use corner or side handles to resize. The crop must be square.
 				</p>
+
+				<div class="flex items-center gap-4 mb-4 flex-wrap">
+					<label class="flex items-center gap-2 cursor-pointer select-none">
+						<Checkbox checked={padEnabled} onchange={togglePad} />
+						<span class="text-sm text-foreground">Pad to Square</span>
+					</label>
+					{#if padEnabled}
+						<label class="flex items-center gap-2 select-none">
+							<span class="text-sm text-muted-foreground">Pad Color:</span>
+							<input
+								type="color"
+								bind:value={padColor}
+								onchange={() => { needsRedraw = true; }}
+								oninput={() => { drawCropPreview(); }}
+								class="w-8 h-8 rounded border border-border cursor-pointer p-0"
+							/>
+							<span class="text-xs text-muted-foreground font-mono">{padColor}</span>
+						</label>
+					{/if}
+				</div>
 
 				{#if validation}
 					<div class="mb-4 bg-muted/50 p-3 rounded-lg flex items-center justify-center">
