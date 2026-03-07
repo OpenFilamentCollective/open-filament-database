@@ -668,7 +668,7 @@
 	<TwoColumnLayout leftWidth="1/2" leftSpacing="md">
 		{#snippet leftContent()}
 			<!-- Validation Section (only shown when running or has issues) -->
-			{#if validationStatus === 'running' || (validationStatus === 'complete' && !validationIsValid) || validationStatus === 'error'}
+			{#if (validationStatus === 'complete' && !validationIsValid) || validationStatus === 'error'}
 				<div class="flex min-h-0 flex-1 flex-col rounded-lg border bg-muted/30 p-4">
 					<div class="mb-2 flex shrink-0 items-center justify-between">
 						<h4 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Validation</h4>
@@ -686,12 +686,7 @@
 						</Button>
 					</div>
 
-					{#if validationStatus === 'running'}
-						<div class="flex items-center gap-2 text-sm text-muted-foreground">
-							<LoadingSpinner />
-							<span>{validationProgress || 'Running validation...'}</span>
-						</div>
-					{:else if validationStatus === 'complete'}
+					{#if validationStatus === 'complete'}
 						<div class="mb-2 flex shrink-0 items-center gap-2">
 							{#if validationErrorCount > 0}
 								<span class="rounded-full bg-destructive/10 px-2.5 py-0.5 text-xs font-medium text-destructive">
