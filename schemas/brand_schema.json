@@ -6,7 +6,7 @@
             "maxLength": 1000
         },
         "country_code": {
-            "pattern": "^(([A-Z]{2})|Unknown)$"
+            "pattern": "^[A-Z]{2}(-[A-Z0-9]{1,3})?$"
         },
         "id": {
             "maxLength": 1000,
@@ -47,7 +47,10 @@
             "title": "Country of Origin",
             "description": "Two-letter country code (e.g., US, DE, CN) or Unknown",
             "x-placeholder": "e.g., US",
-            "$ref": "#/definitions/country_code"
+            "anyOf": [
+                { "$ref": "#/definitions/country_code" },
+                { "const": "Unknown" }
+            ]
         },
         "source": {
             "type": "string",
