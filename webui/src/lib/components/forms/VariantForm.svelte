@@ -345,7 +345,7 @@
 
 	// Check if form can be submitted
 	let canSubmit = $derived(
-		!!formData.name && !!formData.color_hex && sizes.length > 0
+		!!formData.name && /^#[a-fA-F0-9]{6}$/.test(formData.color_hex) && sizes.length > 0
 	);
 </script>
 

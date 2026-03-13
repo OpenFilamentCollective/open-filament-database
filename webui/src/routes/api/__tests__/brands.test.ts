@@ -117,16 +117,13 @@ describe('Brands API', () => {
 			expect(data.name).toBe('Test Brand');
 		});
 
-		it('should normalize brand ID (hyphen to underscore)', async () => {
-			mockAccess
-				.mockRejectedValueOnce(new Error('ENOENT')) // First try with hyphens fails
-				.mockResolvedValueOnce(undefined); // Second try with underscores succeeds
+		it('should use underscore brand ID directly', async () => {
+			mockAccess.mockResolvedValueOnce(undefined);
 			mockReadFile.mockResolvedValue(JSON.stringify({ id: 'test_brand', name: 'Test' }));
 
 			const { GET } = await import('../brands/[id]/+server');
-			await GET({ params: { id: 'test-brand' } } as any);
+			await GET({ params: { id: 'test_brand' } } as any);
 
-			// Should have tried to read with normalized ID
 			expect(mockReadFile).toHaveBeenCalled();
 		});
 

@@ -10,7 +10,7 @@
 	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity } from '$lib/services/entityService';
+	import { deleteEntity, generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
@@ -185,10 +185,15 @@
 		createError = null;
 
 		try {
-			// Check for duplicate filament
-			const filamentSlug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-			const duplicate = filaments.find((f) => (f.slug ?? f.id).toLowerCase() === filamentSlug);
-			if (duplicate) {
+			// Check for duplicate filament by slug/path and by name
+			const filamentSlug = generateSlug(data.name);
+			const duplicateBySlug = filaments.find((f) =>
+				(f.slug ?? f.id).toLowerCase() === filamentSlug
+			);
+			const duplicateByName = filaments.find((f) =>
+				f.name.toLowerCase() === data.name.trim().toLowerCase()
+			);
+			if (duplicateBySlug || duplicateByName) {
 				createError = `Filament "${data.name}" already exists in this material`;
 				entityState.creating = false;
 				return;

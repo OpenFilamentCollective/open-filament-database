@@ -710,7 +710,9 @@
 									{/if}
 								</div>
 							{/each}
+
 						</div>
+						<p class="mt-3 text-xs text-muted-foreground">Ideally you should never face issues like these, please <a href="https://github.com/OpenFilamentCollective/open-filament-database/issues" class="underline hover:text-foreground">submit an issue</a> with the above errors in the message body.</p>
 					{:else if validationStatus === 'error'}
 						<div class="rounded-md bg-destructive/10 p-2.5 text-sm text-destructive">
 							{validationErrors[0]?.message || 'Validation failed'}

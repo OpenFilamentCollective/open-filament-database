@@ -108,15 +108,45 @@ function createAjvInstance(): Ajv {
 	});
 }
 
+/**
+ * Recursively resolve external `$ref`s (e.g. `./material_types_schema.json`) by
+ * inlining the referenced schema content. This avoids AJV's relative-URI
+ * resolution issues when the referring schema has no `$id`.
+ */
+function resolveExternalRefs(schema: unknown, refMap: Record<string, object>): unknown {
+	if (typeof schema !== 'object' || schema === null) return schema;
+	if (Array.isArray(schema)) return schema.map((item) => resolveExternalRefs(item, refMap));
+
+	const obj = schema as Record<string, unknown>;
+
+	// If this node is a $ref pointing to an external schema we know about, inline it
+	if (typeof obj.$ref === 'string' && obj.$ref in refMap) {
+		const resolved = { ...refMap[obj.$ref] } as Record<string, unknown>;
+		// Strip meta fields that shouldn't appear inside a definition
+		delete resolved.$id;
+		delete resolved.$schema;
+		return resolved;
+	}
+
+	const result: Record<string, unknown> = {};
+	for (const [key, value] of Object.entries(obj)) {
+		result[key] = resolveExternalRefs(value, refMap);
+	}
+	return result;
+}
+
 async function compileValidator(entityType: SchemaName) {
 	const ajv = createAjvInstance();
 
-	// Register material_types schema so $ref resolves for material_schema
+	// Inline external $refs so AJV never needs to resolve relative URIs
 	const materialTypesSchema = await fetchSchema('material_types');
-	ajv.addSchema(materialTypesSchema, './material_types_schema.json');
+	const refMap: Record<string, object> = {
+		'./material_types_schema.json': materialTypesSchema
+	};
 
-	const schema = await fetchSchema(entityType);
-	return ajv.compile(schema);
+	const rawSchema = await fetchSchema(entityType);
+	const schema = resolveExternalRefs(rawSchema, refMap);
+	return ajv.compile(schema as object);
 }
 
 // --- Sanitization ---
@@ -163,13 +193,7 @@ function validateFolderNaming(
 	const dataId = typeof data.id === 'string' ? data.id : undefined;
 	if (!dataId) return null; // Missing id will be caught by schema validation
 
-	// Convert path segment to repo-format id for comparison (slug→id conversion)
-	let expectedId = pathSegment;
-	if (entityType === 'store') {
-		expectedId = pathSegment.replace(/-/g, '_');
-	} else if (entityType === 'brand') {
-		expectedId = pathSegment.replace(/-/g, '_');
-	}
+	const expectedId = pathSegment;
 
 	if (dataId !== expectedId) {
 		return {

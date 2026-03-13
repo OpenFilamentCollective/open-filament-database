@@ -27,33 +27,26 @@ export function entityPathToRepoPath(entityPath: string): string | null {
 	}
 
 	if (parts[0] === 'stores' && parts.length === 2) {
-		// Store IDs: hyphens → underscores in repo dirs
-		const storeDir = parts[1].replace(/-/g, '_');
-		return `stores/${storeDir}/store.json`;
+		return `stores/${parts[1]}/store.json`;
 	}
 
 	if (parts[0] === 'brands') {
-		// Brand IDs: hyphens → underscores in repo dirs
-		const brandDir = parts[1].replace(/-/g, '_');
+		const brandDir = parts[1];
 		if (parts.length === 2) {
 			return `data/${brandDir}/brand.json`;
 		}
 		if (parts.length >= 4 && parts[2] === 'materials') {
-			// Material types: UPPERCASE in repo dirs
 			const materialDir = parts[3].toUpperCase();
 			if (parts.length === 4) {
 				return `data/${brandDir}/${materialDir}/material.json`;
 			}
 			if (parts.length >= 6 && parts[4] === 'filaments') {
-				// Filament slugs: hyphens → underscores in repo dirs
-				const filamentDir = parts[5].replace(/-/g, '_');
+				const filamentDir = parts[5];
 				if (parts.length === 6) {
 					return `data/${brandDir}/${materialDir}/${filamentDir}/filament.json`;
 				}
 				if (parts.length === 8 && parts[6] === 'variants') {
-					// Variant slugs: hyphens → underscores in repo dirs
-					const variantDir = parts[7].replace(/-/g, '_');
-					return `data/${brandDir}/${materialDir}/${filamentDir}/${variantDir}/variant.json`;
+					return `data/${brandDir}/${materialDir}/${filamentDir}/${parts[7]}/variant.json`;
 				}
 			}
 		}

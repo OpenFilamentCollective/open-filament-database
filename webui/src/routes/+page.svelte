@@ -48,61 +48,6 @@
 			<p class="text-destructive">Error: {error}</p>
 		</div>
 	{:else}
-		<!-- Data cards -->
-		<div class="mb-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-			<section class="rounded-lg border bg-card p-6 shadow-sm">
-				<div class="mb-5 flex items-center justify-between">
-					<div>
-						<h2 class="mb-1 text-xl font-semibold">Brands</h2>
-						<p class="text-sm text-muted-foreground">Browse and edit filament brands</p>
-					</div>
-					<span class="flex h-10 min-w-10 items-center justify-center rounded-md bg-secondary px-3 text-xl font-semibold">{brands.length}</span>
-				</div>
-				<a
-					href="/brands"
-					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-				>
-					View All Brands
-					<span class="ml-2">&rarr;</span>
-				</a>
-			</section>
-
-			<section class="rounded-lg border bg-card p-6 shadow-sm">
-				<div class="mb-5 flex items-center justify-between">
-					<div>
-						<h2 class="mb-1 text-xl font-semibold">Stores</h2>
-						<p class="text-sm text-muted-foreground">Browse and edit filament stores</p>
-					</div>
-					<span class="flex h-10 min-w-10 items-center justify-center rounded-md bg-secondary px-3 text-xl font-semibold">{stores.length}</span>
-				</div>
-				<a
-					href="/stores"
-					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-				>
-					View All Stores
-					<span class="ml-2">&rarr;</span>
-				</a>
-			</section>
-
-			{#if env.PUBLIC_API_BASE_URL}
-			<section class="rounded-lg border bg-card p-6 shadow-sm">
-				<div class="mb-5 flex items-start justify-between">
-					<div>
-						<h2 class="mb-1 text-xl font-semibold">API</h2>
-						<p class="text-sm text-muted-foreground">Want to use our data? Take a look at our API documentation.</p>
-					</div>
-				</div>
-				<a
-					href={env.PUBLIC_API_BASE_URL}
-					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-				>
-					View Our API
-					<span class="ml-2">&rarr;</span>
-				</a>
-			</section>
-			{/if}
-		</div>
-
 		<!-- How it works flow -->
 		<section class="mb-10 rounded-lg border bg-card p-6 shadow-sm">
 			<h2 class="mb-6 text-xl font-semibold">How Contributing Works</h2>
@@ -166,9 +111,64 @@
 				</div>
 			</div>
 			<p class="mt-4 text-center text-sm text-muted-foreground">
-				Make your edits in the browser, submit your changes, and they'll be reviewed by a maintainer before going live.
+				Make your edits in the browser, submit your changes, and they'll be reviewed by a maintainer as soon as possible (usually within 2 days).
 			</p>
 		</section>
+
+		<!-- Data cards -->
+		<div class="mb-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			<section class="rounded-lg border bg-card p-6 shadow-sm">
+				<div class="mb-5 flex items-center justify-between">
+					<div>
+						<h2 class="mb-1 text-xl font-semibold">Brands</h2>
+						<p class="text-sm text-muted-foreground">Browse and edit filament brands</p>
+					</div>
+					<span class="flex h-10 min-w-10 items-center justify-center rounded-md bg-secondary px-3 text-xl font-semibold">{brands.length}</span>
+				</div>
+				<a
+					href="/brands"
+					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+				>
+					View All Brands
+					<span class="ml-2">&rarr;</span>
+				</a>
+			</section>
+
+			<section class="rounded-lg border bg-card p-6 shadow-sm">
+				<div class="mb-5 flex items-center justify-between">
+					<div>
+						<h2 class="mb-1 text-xl font-semibold">Stores</h2>
+						<p class="text-sm text-muted-foreground">Browse and edit filament stores</p>
+					</div>
+					<span class="flex h-10 min-w-10 items-center justify-center rounded-md bg-secondary px-3 text-xl font-semibold">{stores.length}</span>
+				</div>
+				<a
+					href="/stores"
+					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+				>
+					View All Stores
+					<span class="ml-2">&rarr;</span>
+				</a>
+			</section>
+
+			{#if env.PUBLIC_API_BASE_URL}
+			<section class="rounded-lg border bg-card p-6 shadow-sm">
+				<div class="mb-5 flex items-start justify-between">
+					<div>
+						<h2 class="mb-1 text-xl font-semibold">API</h2>
+						<p class="text-sm text-muted-foreground">Want to use our data? Take a look at our API documentation.</p>
+					</div>
+				</div>
+				<a
+					href={env.PUBLIC_API_BASE_URL}
+					class="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+				>
+					View Our API
+					<span class="ml-2">&rarr;</span>
+				</a>
+			</section>
+			{/if}
+		</div>
 
 		<!-- Good to know -->
 		<section class="rounded-lg border bg-card shadow-sm">

@@ -246,17 +246,15 @@ def generate_purchase_link_id(size_id: str, store_id: str, url: str) -> str:
 
 
 def slugify(text: str) -> str:
-    """Convert text to a URL-friendly slug."""
+    """Convert text to a URL-friendly slug using underscores."""
     # Convert to lowercase
     text = text.lower()
-    # Replace spaces and underscores with hyphens
-    text = re.sub(r"[\s_]+", "-", text)
-    # Remove non-alphanumeric characters except hyphens
-    text = re.sub(r"[^a-z0-9-]", "", text)
-    # Remove consecutive hyphens
-    text = re.sub(r"-+", "-", text)
-    # Strip leading/trailing hyphens
-    text = text.strip("-")
+    # Replace any non-alphanumeric characters with underscores
+    text = re.sub(r"[^a-z0-9]+", "_", text)
+    # Remove consecutive underscores
+    text = re.sub(r"_+", "_", text)
+    # Strip leading/trailing underscores
+    text = text.strip("_")
     return text
 
 

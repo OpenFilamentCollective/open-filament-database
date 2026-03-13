@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
 	formatLabel,
 	applyFormattedTitles,
@@ -268,6 +268,14 @@ describe('Schema Utils', () => {
 	});
 
 	describe('resolveExternalReferences', () => {
+		const materialTypesSchema = {
+			$id: './material_types_schema.json',
+			$schema: 'http://json-schema.org/draft-07/schema',
+			type: 'string',
+			enum: ['PLA', 'PETG', 'ABS']
+		};
+		const externalSchemas = { './material_types_schema.json': materialTypesSchema };
+
 		it('should inline material_types_schema.json reference', () => {
 			const schema = {
 				properties: {
@@ -277,12 +285,15 @@ describe('Schema Utils', () => {
 				}
 			};
 
-			const result = resolveExternalReferences(schema);
+			const result = resolveExternalReferences(schema, externalSchemas);
 
 			expect(result.properties.material.type).toBe('string');
 			expect(result.properties.material.enum).toContain('PLA');
 			expect(result.properties.material.enum).toContain('PETG');
 			expect(result.properties.material.enum).toContain('ABS');
+			// Meta fields should be stripped
+			expect(result.properties.material.$id).toBeUndefined();
+			expect(result.properties.material.$schema).toBeUndefined();
 		});
 
 		it('should recursively process objects', () => {
@@ -299,13 +310,13 @@ describe('Schema Utils', () => {
 				}
 			};
 
-			const result = resolveExternalReferences(schema);
+			const result = resolveExternalReferences(schema, externalSchemas);
 
 			expect(result.properties.nested.properties.material.type).toBe('string');
 			expect(result.properties.nested.properties.material.enum).toContain('PLA');
 		});
 
-		it('should keep other external references', () => {
+		it('should keep unresolved external references', () => {
 			const schema = {
 				properties: {
 					other: {
@@ -314,7 +325,7 @@ describe('Schema Utils', () => {
 				}
 			};
 
-			const result = resolveExternalReferences(schema);
+			const result = resolveExternalReferences(schema, externalSchemas);
 
 			expect(result.properties.other.$ref).toBe('./other_schema.json');
 		});
@@ -326,7 +337,7 @@ describe('Schema Utils', () => {
 				}
 			};
 
-			const result = resolveExternalReferences(schema);
+			const result = resolveExternalReferences(schema, externalSchemas);
 
 			expect(result.properties.ref_field.$ref).toBe('#/$defs/SomeType');
 		});
@@ -356,7 +367,24 @@ describe('Schema Utils', () => {
 	});
 
 	describe('prepareSchemaForEdit', () => {
-		it('should combine all transformations', () => {
+		const materialTypesResponse = {
+			$id: './material_types_schema.json',
+			type: 'string',
+			enum: ['PLA', 'PETG', 'ABS']
+		};
+
+		beforeEach(() => {
+			globalThis.fetch = vi.fn().mockResolvedValue({
+				ok: true,
+				json: () => Promise.resolve(materialTypesResponse)
+			});
+		});
+
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('should combine all transformations', async () => {
 			const schema = {
 				properties: {
 					id: { type: 'string' },
@@ -367,7 +395,7 @@ describe('Schema Utils', () => {
 				required: ['id', 'store_name']
 			};
 
-			const result = prepareSchemaForEdit(schema);
+			const result = await prepareSchemaForEdit(schema);
 
 			// Should remove id
 			expect(result.schema.properties).not.toHaveProperty('id');
@@ -383,10 +411,10 @@ describe('Schema Utils', () => {
 			expect(result.schema.properties.material.enum).toContain('PLA');
 		});
 
-		it('should return schema and uiSchema', () => {
+		it('should return schema and uiSchema', async () => {
 			const schema = { properties: { name: { type: 'string' } } };
 
-			const result = prepareSchemaForEdit(schema);
+			const result = await prepareSchemaForEdit(schema);
 
 			expect(result).toHaveProperty('schema');
 			expect(result).toHaveProperty('uiSchema');

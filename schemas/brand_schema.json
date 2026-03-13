@@ -45,7 +45,7 @@
         "origin": {
             "type": "string",
             "title": "Country of Origin",
-            "description": "Two-letter country code (e.g., US, DE, CN) or Unknown",
+            "description": "ISO 3166 country code, optionally with subdivision (e.g., US, DE, GB-NIR) or Unknown",
             "x-placeholder": "e.g., US",
             "anyOf": [
                 { "$ref": "#/definitions/country_code" },

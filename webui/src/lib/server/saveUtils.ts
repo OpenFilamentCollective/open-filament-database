@@ -53,12 +53,11 @@ export function entityPathToFsPath(entityPath: string): string | null {
 	}
 
 	if (parts[0] === 'stores' && parts.length === 2) {
-		const storeDir = parts[1].replace(/-/g, '_');
-		return path.join(STORES_DIR, storeDir, 'store.json');
+		return path.join(STORES_DIR, parts[1], 'store.json');
 	}
 
 	if (parts[0] === 'brands' && parts.length >= 2) {
-		const brandDir = parts[1].replace(/-/g, '_');
+		const brandDir = parts[1];
 		if (parts.length === 2) {
 			return path.join(DATA_DIR, brandDir, 'brand.json');
 		}
@@ -68,14 +67,11 @@ export function entityPathToFsPath(entityPath: string): string | null {
 		}
 		if (parts.length === 6 && parts[2] === 'materials' && parts[4] === 'filaments') {
 			const materialDir = parts[3].toUpperCase();
-			const filamentDir = parts[5].replace(/-/g, '_');
-			return path.join(DATA_DIR, brandDir, materialDir, filamentDir, 'filament.json');
+			return path.join(DATA_DIR, brandDir, materialDir, parts[5], 'filament.json');
 		}
 		if (parts.length === 8 && parts[2] === 'materials' && parts[4] === 'filaments' && parts[6] === 'variants') {
 			const materialDir = parts[3].toUpperCase();
-			const filamentDir = parts[5].replace(/-/g, '_');
-			const variantDir = parts[7].replace(/-/g, '_');
-			return path.join(DATA_DIR, brandDir, materialDir, filamentDir, variantDir, 'variant.json');
+			return path.join(DATA_DIR, brandDir, materialDir, parts[5], parts[7], 'variant.json');
 		}
 	}
 
@@ -110,10 +106,8 @@ export function cleanEntityData(
 	let repoLogo: string | null = null;
 
 	if (options?.schemaType && typeof data.slug === 'string' && data.slug) {
-		if (options.schemaType === 'store') {
-			repoId = data.slug.replace(/-/g, '_');
-		} else if (options.schemaType === 'brand') {
-			repoId = data.slug.replace(/-/g, '_');
+		if (options.schemaType === 'store' || options.schemaType === 'brand') {
+			repoId = data.slug as string;
 		}
 	}
 

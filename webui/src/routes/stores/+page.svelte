@@ -92,9 +92,14 @@
 		try {
 			const slug = generateSlug(data.name);
 
-			// Check for duplicate store
-			const duplicate = stores.find((s) => (s.slug ?? s.id).toLowerCase() === slug.toLowerCase());
-			if (duplicate) {
+			// Check for duplicate store by slug/path and by name
+			const duplicateBySlug = stores.find((s) =>
+				(s.slug ?? s.id).toLowerCase() === slug.toLowerCase()
+			);
+			const duplicateByName = stores.find((s) =>
+				s.name.toLowerCase() === data.name.trim().toLowerCase()
+			);
+			if (duplicateBySlug || duplicateByName) {
 				messageHandler.showError(`Store "${data.name}" already exists`);
 				entityState.creating = false;
 				return;
@@ -144,10 +149,6 @@
 	<div class="mb-6">
 		<BackButton href="/" label="Home" />
 
-		{#if messageHandler.message}
-			<MessageBanner type={messageHandler.type} message={messageHandler.message} />
-		{/if}
-
 		<div class="flex items-center justify-between mb-2">
 			<h1 class="text-3xl font-bold">Stores</h1>
 			<Button onclick={openCreateModal}>
@@ -191,6 +192,9 @@
 </div>
 
 <Modal show={entityState.showCreateModal} title="Create New Store" onClose={entityState.closeCreate} maxWidth="3xl">
+	{#if messageHandler.message}
+		<MessageBanner type={messageHandler.type} message={messageHandler.message} />
+	{/if}
 	{#if schema}
 		<StoreForm
 			store={newStore()}

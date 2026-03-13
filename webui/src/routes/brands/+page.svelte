@@ -93,9 +93,14 @@
 		try {
 			const slug = generateSlug(data.name);
 
-			// Check for duplicate brand
-			const duplicate = brands.find((b) => (b.slug ?? b.id).toLowerCase() === slug.toLowerCase());
-			if (duplicate) {
+			// Check for duplicate brand by slug/path and by name
+			const duplicateBySlug = brands.find((b) =>
+				(b.slug ?? b.id).toLowerCase() === slug.toLowerCase()
+			);
+			const duplicateByName = brands.find((b) =>
+				b.name.toLowerCase() === data.name.trim().toLowerCase()
+			);
+			if (duplicateBySlug || duplicateByName) {
 				createError = `Brand "${data.name}" already exists`;
 				entityState.creating = false;
 				return;

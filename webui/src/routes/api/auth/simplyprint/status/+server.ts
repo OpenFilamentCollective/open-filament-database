@@ -1,10 +1,11 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { getSimplyPrintToken, getSimplyPrintUser } from '$lib/server/auth';
+import { env } from '$env/dynamic/private';
 
 const SP_API_BASE =
-	process.env.SIMPLYPRINT_API_URL ||
-	`https://api.${process.env.SIMPLYPRINT_BASE_URL || 'simplyprint.io'}`;
+	env.SIMPLYPRINT_API_URL ||
+	`https://api.${(env.SIMPLYPRINT_BASE_URL || 'simplyprint.io').replace(/^https?:\/\//, '')}`;
 
 /** Resolve the profile picture redirect to get the final CDN URL */
 async function resolveAvatarUrl(userId: number): Promise<string | null> {

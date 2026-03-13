@@ -81,14 +81,8 @@ export const SCHEMA_DIR = path.join(process.cwd(), '../schemas');
 
 export async function normalizeBrandId(baseDir: string, brandId: string): Promise<string> {
 	const safeId = validatePathSegment(brandId, 'brandId');
-	try {
-		await fs.access(path.join(baseDir, safeId));
-		return safeId;
-	} catch {
-		const normalized = safeId.replace(/-/g, '_');
-		await fs.access(path.join(baseDir, normalized));
-		return normalized;
-	}
+	await fs.access(path.join(baseDir, safeId));
+	return safeId;
 }
 
 export async function normalizeMaterialType(parentDir: string, materialType: string): Promise<string> {
@@ -106,14 +100,8 @@ export async function normalizeMaterialType(parentDir: string, materialType: str
 
 export async function normalizeStoreId(baseDir: string, storeId: string): Promise<string> {
 	const safeId = validatePathSegment(storeId, 'storeId');
-	try {
-		await fs.access(path.join(baseDir, safeId));
-		return safeId;
-	} catch {
-		const normalized = safeId.replace(/-/g, '_');
-		await fs.access(path.join(baseDir, normalized));
-		return normalized;
-	}
+	await fs.access(path.join(baseDir, safeId));
+	return safeId;
 }
 
 // === Entity configurations ===

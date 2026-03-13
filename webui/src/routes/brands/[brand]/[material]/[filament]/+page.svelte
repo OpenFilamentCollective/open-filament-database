@@ -9,7 +9,7 @@
 	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity } from '$lib/services/entityService';
+	import { deleteEntity, generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
@@ -175,10 +175,15 @@
 		createError = null;
 
 		try {
-			// Check for duplicate variant
-			const variantSlug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-			const duplicate = variants.find((v) => (v.slug ?? v.id).toLowerCase() === variantSlug);
-			if (duplicate) {
+			// Check for duplicate variant by slug/path and by name
+			const variantSlug = generateSlug(data.name);
+			const duplicateBySlug = variants.find((v) =>
+				(v.slug ?? v.id).toLowerCase() === variantSlug
+			);
+			const duplicateByName = variants.find((v) =>
+				v.name.toLowerCase() === data.name.trim().toLowerCase()
+			);
+			if (duplicateBySlug || duplicateByName) {
 				createError = `Variant "${data.name}" already exists in this filament`;
 				entityState.creating = false;
 				return;

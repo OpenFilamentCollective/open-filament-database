@@ -12,8 +12,8 @@ import { IS_CLOUD, proxyGetToCloud } from './cloudProxy';
  * E.g., '/api/brands/:brandId/materials' with { brandId: 'foo' } → '/api/brands/foo/materials'
  */
 function normalizeParam(name: string, value: string): string {
-	if (name === 'materialType') return value.replace(/-/g, '_').toUpperCase();
-	return value.replace(/-/g, '_');
+	if (name === 'materialType') return value.toUpperCase();
+	return value;
 }
 
 function resolveCloudPath(

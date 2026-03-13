@@ -117,14 +117,12 @@ describe('Stores API', () => {
 			expect(data.name).toBe('Test Store');
 		});
 
-		it('should normalize store ID (remove hyphens)', async () => {
-			mockAccess
-				.mockRejectedValueOnce(new Error('ENOENT')) // First try with hyphens fails
-				.mockResolvedValueOnce(undefined); // Second try without hyphens succeeds
-			mockReadFile.mockResolvedValue(JSON.stringify({ id: 'teststore', name: 'Test' }));
+		it('should use underscore store ID directly', async () => {
+			mockAccess.mockResolvedValueOnce(undefined);
+			mockReadFile.mockResolvedValue(JSON.stringify({ id: 'test_store', name: 'Test' }));
 
 			const { GET } = await import('../stores/[id]/+server');
-			await GET({ params: { id: 'test-store' } } as any);
+			await GET({ params: { id: 'test_store' } } as any);
 
 			expect(mockReadFile).toHaveBeenCalled();
 		});

@@ -1,7 +1,5 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { apiBaseUrl } from '$lib/stores/environment';
-	import { get } from 'svelte/store';
 	import {
 		TextField,
 		UrlField,
@@ -118,15 +116,12 @@
 
 		enumLoading[key] = true;
 		try {
-			const baseUrl = get(apiBaseUrl);
 			let fullUrl: string;
 			if (url.startsWith('http')) {
 				fullUrl = url;
-			} else if (baseUrl) {
-				// Cloud mode: use full schema filename
-				fullUrl = `${baseUrl}${url}`;
 			} else {
-				// Local mode: strip _schema.json suffix to match local API routes
+				// Always use local SvelteKit route — it handles cloud proxy internally.
+				// Strip _schema.json suffix to match local API route naming.
 				fullUrl = url.replace(/_schema\.json$/, '');
 			}
 			const values = await fetchEnumValues(fullUrl, path);
@@ -143,7 +138,8 @@
 
 	function handleFormSubmit(e: SubmitEvent) {
 		e.preventDefault();
-		if (!saving && !submitDisabled) {
+		const form = e.target as HTMLFormElement;
+		if (!saving && !submitDisabled && form.reportValidity()) {
 			handleSubmit();
 		}
 	}

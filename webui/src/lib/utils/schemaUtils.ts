@@ -163,13 +163,13 @@ export function normalizeDataForForm(data: any, schema: any): any {
 }
 
 /**
- * Resolve external schema references by inlining them
+ * Resolve external schema references by inlining them.
  * Converts references like "./material_types_schema.json" to inline definitions
+ * using a pre-fetched map of external schemas.
  */
-export function resolveExternalReferences(schema: any): any {
+export function resolveExternalReferences(schema: any, externalSchemas: Record<string, any> = {}): any {
 	const schemaCopy = JSON.parse(JSON.stringify(schema));
 
-	// Helper function to recursively process schema objects
 	function processObject(obj: any): any {
 		if (!obj || typeof obj !== 'object') {
 			return obj;
@@ -177,57 +177,13 @@ export function resolveExternalReferences(schema: any): any {
 
 		// Check if this object has a $ref to an external file
 		if (obj.$ref && typeof obj.$ref === 'string' && obj.$ref.startsWith('./')) {
-			// For material_types_schema.json, inline the enum directly
-			if (obj.$ref === './material_types_schema.json') {
-				return {
-					type: 'string',
-					enum: [
-						'PLA',
-						'PETG',
-						'TPU',
-						'ABS',
-						'ASA',
-						'PC',
-						'PCTG',
-						'PP',
-						'PA6',
-						'PA11',
-						'PA12',
-						'PA66',
-						'CPE',
-						'TPE',
-						'HIPS',
-						'PHA',
-						'PET',
-						'PEI',
-						'PBT',
-						'PVB',
-						'PVA',
-						'PEKK',
-						'PEEK',
-						'BVOH',
-						'TPC',
-						'PPS',
-						'PPSU',
-						'PVC',
-						'PEBA',
-						'PVDF',
-						'PPA',
-						'PCL',
-						'PES',
-						'PMMA',
-						'POM',
-						'PPE',
-						'PS',
-						'PSU',
-						'TPI',
-						'SBS',
-						'OBC',
-						'EVA'
-					]
-				};
+			const resolved = externalSchemas[obj.$ref];
+			if (resolved) {
+				// Inline the resolved schema, stripping meta fields
+				const { $id, $schema, ...content } = resolved;
+				return content;
 			}
-			// If we encounter other external references, keep them as-is
+			// If we don't have a resolved version, keep as-is
 			return obj;
 		}
 
@@ -245,10 +201,49 @@ export function resolveExternalReferences(schema: any): any {
 }
 
 /**
+ * Fetch all external schemas referenced by `$ref` in the given schema,
+ * then resolve them inline. External schemas are fetched from /api/schemas/.
+ */
+export async function fetchAndResolveExternalReferences(schema: any): Promise<any> {
+	const refs = collectExternalRefs(schema);
+	if (refs.length === 0) return JSON.parse(JSON.stringify(schema));
+
+	const externalSchemas: Record<string, any> = {};
+	await Promise.all(
+		refs.map(async (ref) => {
+			// Convert ./filename_schema.json to /api/schemas/filename
+			const route = ref.replace('./', '').replace(/_schema\.json$/, '');
+			try {
+				const response = await fetch(`/api/schemas/${route}`);
+				if (response.ok) {
+					externalSchemas[ref] = await response.json();
+				}
+			} catch {
+				// leave unresolved — the form's dynamic enum loader will handle it
+			}
+		})
+	);
+
+	return resolveExternalReferences(schema, externalSchemas);
+}
+
+/** Collect all unique external `$ref` values (starting with `./`) from a schema. */
+function collectExternalRefs(obj: any, refs = new Set<string>()): string[] {
+	if (!obj || typeof obj !== 'object') return [...refs];
+	if (obj.$ref && typeof obj.$ref === 'string' && obj.$ref.startsWith('./')) {
+		refs.add(obj.$ref);
+	}
+	for (const value of Object.values(obj)) {
+		collectExternalRefs(value, refs);
+	}
+	return [...refs];
+}
+
+/**
  * Process schema for editing: normalize types, format titles, and remove ID field
  */
-export function prepareSchemaForEdit(schema: any) {
-	let schemaCopy = resolveExternalReferences(schema);
+export async function prepareSchemaForEdit(schema: any) {
+	let schemaCopy = await fetchAndResolveExternalReferences(schema);
 	schemaCopy = normalizeSchema(schemaCopy);
 	schemaCopy = removeIdFromSchema(schemaCopy);
 	schemaCopy = applyFormattedTitles(schemaCopy);

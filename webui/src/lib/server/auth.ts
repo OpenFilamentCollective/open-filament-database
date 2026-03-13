@@ -5,6 +5,7 @@
 
 import type { Cookies } from '@sveltejs/kit';
 import { dev } from '$app/environment';
+import { env } from '$env/dynamic/private';
 
 const GH_COOKIE = 'ofd_gh_token';
 const SP_COOKIE = 'ofd_sp_token';
@@ -80,8 +81,8 @@ export async function getGitHubUser(token: string): Promise<{ login: string; nam
 // --- SimplyPrint ---
 
 /** Base URLs for SimplyPrint, configurable for test environments */
-const SP_DOMAIN = process.env.SIMPLYPRINT_BASE_URL || 'simplyprint.io';
-const SP_API_BASE = process.env.SIMPLYPRINT_API_URL || `https://api.${SP_DOMAIN}`;
+const SP_DOMAIN = (env.SIMPLYPRINT_BASE_URL || 'simplyprint.io').replace(/^https?:\/\//, '');
+const SP_API_BASE = env.SIMPLYPRINT_API_URL || `https://api.${SP_DOMAIN}`;
 export const SP_AUTHORIZE_URL = `https://${SP_DOMAIN}/panel/oauth2/authorize`;
 
 export function getSimplyPrintToken(cookies: Cookies): string | undefined {

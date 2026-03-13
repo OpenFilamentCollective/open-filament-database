@@ -10,9 +10,9 @@ export const API_BASE = env.PUBLIC_API_BASE_URL
 		: env.PUBLIC_API_BASE_URL
 	: 'https://api.openfilamentdatabase.org';
 
-/** Normalize a path segment: hyphens → underscores */
+/** Return a path segment as-is (slugs already use underscores). */
 function norm(segment: string): string {
-	return segment.replace(/-/g, '_');
+	return segment;
 }
 
 /**

@@ -23,10 +23,21 @@
 	// Full color value for the color picker (needs #)
 	let colorPickerValue = $derived(normalizedValue.startsWith('#') ? normalizedValue : `#${normalizedValue}`);
 
+	// True when the user has started typing but hasn't entered all 6 hex digits yet
+	let isIncomplete = $derived(hexValue.length > 0 && hexValue.length < 6);
+
 	function handleTextInput(e: Event) {
 		const input = e.target as HTMLInputElement;
-		// Remove any non-hex characters and limit to 6
+		// Strip # prefix and non-hex characters, then limit to 6 digits
 		let cleaned = input.value.replace(/[^0-9a-fA-F]/g, '').slice(0, 6).toUpperCase();
+		value = cleaned ? `#${cleaned}` : '';
+	}
+
+	function handlePaste(e: ClipboardEvent) {
+		e.preventDefault();
+		const pasted = e.clipboardData?.getData('text') ?? '';
+		// Strip # and non-hex, limit to 6 digits, then set directly
+		let cleaned = pasted.replace(/[^0-9a-fA-F]/g, '').slice(0, 6).toUpperCase();
 		value = cleaned ? `#${cleaned}` : '';
 	}
 
@@ -45,17 +56,17 @@
 		</label>
 	{/if}
 	<div class="flex">
-		<div class="flex flex-1 mr-2 items-center bg-background border border-border rounded-lg focus-within:ring-2 focus-within:ring-ring focus-within:border-ring transition-colors">
+		<div class="flex flex-1 mr-2 items-center bg-background border rounded-lg transition-colors {isIncomplete ? 'border-destructive ring-1 ring-destructive' : 'border-border'} focus-within:ring-2 focus-within:ring-ring focus-within:border-ring">
 			<span class="pl-3 pr-3 text-muted-foreground font-mono select-none">#</span>
 			<input
 				{id}
 				type="text"
 				value={hexValue}
 				oninput={handleTextInput}
+				onpaste={handlePaste}
 				class="flex-1 pr-3 py-2 bg-transparent border-0 border-l border-border text-foreground font-mono outline-none uppercase"
 				placeholder="FF5733"
 				maxlength="6"
-				{required}
 			/>
 		</div>
 		<input
@@ -65,4 +76,7 @@
 			class="w-10 h-10 cursor-pointer shrink-0 rounded-md border border-border bg-background [&::-webkit-color-swatch-wrapper]:p-1 [&::-webkit-color-swatch]:rounded [&::-webkit-color-swatch]:border-none [&::-moz-color-swatch]:rounded [&::-moz-color-swatch]:border-none"
 		/>
 	</div>
+	{#if isIncomplete}
+		<p class="text-sm text-destructive mt-1">Color hex must be exactly 6 characters (currently {hexValue.length})</p>
+	{/if}
 </div>
