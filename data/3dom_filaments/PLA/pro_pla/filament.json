@@ -1,0 +1,9 @@
+{
+  "id": "pro_pla",
+  "name": "Pro PLA+",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "data_sheet_url": "https://3domfilaments.com/wp-content/uploads/2023/05/TDS-3Dom-Filaments-Limited-Standard-PLA.pdf",
+  "safety_sheet_url": "https://3domfilaments.com/wp-content/uploads/2023/05/SDS-3Dom-Filaments_ProPLA.pdf",
+  "discontinued": false
+}

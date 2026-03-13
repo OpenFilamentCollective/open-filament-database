@@ -1,0 +1,14 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3dom_filaments",
+        "url": "https://3domfilaments.com/product/pro-pla-clearly-natural/"
+      }
+    ]
+  }
+]
