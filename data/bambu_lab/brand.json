@@ -1,8 +1,7 @@
 {
   "id": "bambu_lab",
   "name": "Bambu Lab",
-  "website": "bambulab.com",
+  "website": "https://example.com",
   "logo": "logo.png",
-  "origin": "CN",
-  "source": "openprinttag"
+  "origin": "Unknown"
 }
