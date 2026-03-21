@@ -33,6 +33,16 @@
 	let createMaterialError: string | null = $state(null);
 	let materialSearch: string = $state('');
 
+	let displayMaterials = $derived.by(() => withDeletedStubs({
+		changes: $changes,
+		useChangeTracking: $useChangeTracking,
+		parentPath: `brands/${brandId}`,
+		namespace: 'materials',
+		items: materials,
+		getKeys: (m) => [m.id, m.materialType, m.material?.toLowerCase()],
+		buildStub: (id, name) => ({ id, materialType: id, material: name } as unknown as Material)
+	}));
+
 	let filteredMaterials = $derived.by(() => {
 		const q = materialSearch.toLowerCase().trim();
 		if (!q) return displayMaterials;
@@ -48,16 +58,6 @@
 		getEntityPath: () => brand ? `brands/${brandId}` : null,
 		getEntity: () => brand
 	});
-
-	let displayMaterials = $derived.by(() => withDeletedStubs({
-		changes: $changes,
-		useChangeTracking: $useChangeTracking,
-		parentPath: `brands/${brandId}`,
-		namespace: 'materials',
-		items: materials,
-		getKeys: (m) => [m.id, m.materialType, m.material?.toLowerCase()],
-		buildStub: (id, name) => ({ id, materialType: id, material: name } as unknown as Material)
-	}));
 
 	$effect(() => {
 		const id = brandId;

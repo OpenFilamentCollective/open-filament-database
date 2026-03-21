@@ -28,6 +28,23 @@
 	let createError: string | null = $state(null);
 	let variantSearch: string = $state('');
 
+	let displayVariants = $derived.by(() => withDeletedStubs({
+		changes: $changes,
+		useChangeTracking: $useChangeTracking,
+		parentPath: `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`,
+		namespace: 'variants',
+		items: variants,
+		getKeys: (v) => [v.id, v.slug],
+		buildStub: (id, stubName) => ({
+			id,
+			slug: id,
+			filament_id: filamentId,
+			name: stubName,
+			color_hex: '#808080',
+			discontinued: false
+		} as unknown as Variant)
+	}));
+
 	let filteredVariants = $derived.by(() => {
 		const q = variantSearch.toLowerCase().trim();
 		if (!q) return displayVariants;
@@ -47,23 +64,6 @@
 			return false;
 		});
 	});
-
-	let displayVariants = $derived.by(() => withDeletedStubs({
-		changes: $changes,
-		useChangeTracking: $useChangeTracking,
-		parentPath: `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`,
-		namespace: 'variants',
-		items: variants,
-		getKeys: (v) => [v.id, v.slug],
-		buildStub: (id, stubName) => ({
-			id,
-			slug: id,
-			filament_id: filamentId,
-			name: stubName,
-			color_hex: '#808080',
-			discontinued: false
-		} as unknown as Variant)
-	}));
 
 	const messageHandler = createMessageHandler();
 

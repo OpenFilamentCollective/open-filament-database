@@ -30,6 +30,16 @@
 	let createError: string | null = $state(null);
 	let filamentSearch: string = $state('');
 
+	let displayFilaments = $derived.by(() => withDeletedStubs({
+		changes: $changes,
+		useChangeTracking: $useChangeTracking,
+		parentPath: `brands/${brandId}/materials/${materialType}`,
+		namespace: 'filaments',
+		items: filaments,
+		getKeys: (f) => [f.id, (f as any).slug],
+		buildStub: (id, name) => ({ id, slug: id, name } as unknown as Filament)
+	}));
+
 	let filteredFilaments = $derived.by(() => {
 		const q = filamentSearch.toLowerCase().trim();
 		if (!q) return displayFilaments;
@@ -40,16 +50,6 @@
 			return fields.some((v) => String(v).toLowerCase().includes(q));
 		});
 	});
-
-	let displayFilaments = $derived.by(() => withDeletedStubs({
-		changes: $changes,
-		useChangeTracking: $useChangeTracking,
-		parentPath: `brands/${brandId}/materials/${materialType}`,
-		namespace: 'filaments',
-		items: filaments,
-		getKeys: (f) => [f.id, (f as any).slug],
-		buildStub: (id, name) => ({ id, slug: id, name } as unknown as Filament)
-	}));
 
 	const messageHandler = createMessageHandler();
 
