@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { ChangesMenu, Footer, WelcomeModal } from '$lib/components/layout';
+	import { ChangesMenu, Footer, WelcomeModal, DebugOverlay } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { authStore } from '$lib/stores/auth';
@@ -179,3 +179,4 @@
 </div>
 
 <WelcomeModal />
+<DebugOverlay />
