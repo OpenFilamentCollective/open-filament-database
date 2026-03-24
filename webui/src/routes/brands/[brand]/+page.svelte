@@ -17,6 +17,7 @@
 	import { changes } from '$lib/stores/changes';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
+	import { getCountryName } from '$lib/data/countryCodes';
 
 	let brandId: string = $derived($page.params.brand!);
 	let loadGeneration = 0;
@@ -241,9 +242,6 @@
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{brandData.name}</h1>
 					<p class="text-muted-foreground">ID: {brandData.slug || brandData.id}</p>
-					{#if $useChangeTracking && !entityState.isLocalCreate && brandData.slug && brandData.slug !== brandData.id}
-						<p class="text-muted-foreground">UUID: {brandData.id}</p>
-					{/if}
 				</div>
 			</header>
 
@@ -262,7 +260,7 @@
 					fields={[
 						{ key: 'name' },
 						{ key: 'website', type: 'link' },
-						{ key: 'origin' },
+						{ key: 'origin', format: (v: string) => getCountryName(v) },
 						{ key: 'logo', type: 'logo', logoType: 'brand', logoEntityId: brandData.slug ?? brandData.id }
 					]}
 				>

@@ -116,7 +116,8 @@
         "diameter_tolerance": {
             "type": "number",
             "title": "Diameter Tolerance (mm)",
-            "description": "The diameter tolerance of the filament in mm (e.g., ±0.02)"
+            "description": "The diameter tolerance of the filament in mm (e.g., ±0.02)",
+            "default": 0.02
         },
         "density": {
             "type": "number",

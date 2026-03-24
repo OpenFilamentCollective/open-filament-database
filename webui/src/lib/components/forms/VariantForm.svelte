@@ -220,10 +220,10 @@
 				{
 					id: 1,
 					value: {
-						filament_weight: undefined,
+						filament_weight: 1000,
 						diameter: 1.75,
-						empty_spool_weight: undefined,
-						spool_core_diameter: undefined,
+						empty_spool_weight: 250,
+						spool_core_diameter: 100,
 						gtin: '',
 						article_number: '',
 						discontinued: false,
@@ -243,7 +243,7 @@
 			{
 				id: nextSizeId++,
 				value: {
-					filament_weight: undefined,
+					filament_weight: 1000,
 					diameter: 1.75,
 					empty_spool_weight: undefined,
 					spool_core_diameter: undefined,

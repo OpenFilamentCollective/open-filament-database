@@ -16,6 +16,7 @@
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { BackButton } from '$lib/components';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
+	import { getCountryName } from '$lib/data/countryCodes';
 
 	let brands: Brand[] = $state([]);
 	let loading: boolean = $state(true);
@@ -205,7 +206,7 @@
 						logoEntityId={brand.slug ?? brand.id}
 						hoverColor="green"
 						fields={[
-							{ key: 'origin', label: 'Origin', class: 'text-muted-foreground' },
+							{ key: 'origin', label: 'Origin', class: 'text-muted-foreground', format: (v: string) => getCountryName(v) },
 							{ key: 'website', class: 'text-primary truncate' }
 						]}
 						hasLocalChanges={changeProps.hasLocalChanges}

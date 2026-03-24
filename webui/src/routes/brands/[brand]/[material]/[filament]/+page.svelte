@@ -256,9 +256,6 @@
 					{/if}
 				</div>
 				<p class="text-muted-foreground">ID: {filamentData.slug || filamentData.id}</p>
-				{#if $useChangeTracking && !entityState.isLocalCreate && filamentData.slug && filamentData.slug !== filamentData.id}
-					<p class="text-muted-foreground">UUID: {filamentData.id}</p>
-				{/if}
 			</header>
 
 			{#if entityState.hasLocalChanges}

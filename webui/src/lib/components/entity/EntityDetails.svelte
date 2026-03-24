@@ -56,6 +56,19 @@
 			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 			.join(' ');
 	}
+
+	function getLogoDisplayName(value: string): string {
+		if (!value) return '';
+		// Already a proper filename like logo.png
+		if (/^logo\.\w+$/i.test(value)) return value;
+		// Data URL - extract extension from mime type
+		if (value.startsWith('data:image/')) {
+			const mime = value.match(/data:image\/(\w+)/);
+			if (mime) return `logo.${mime[1] === 'svg+xml' ? 'svg' : mime[1]}`;
+		}
+		// UUID or other ID - try to guess extension, default to showing "logo"
+		return 'logo';
+	}
 </script>
 
 <div class="bg-card border border-border rounded-lg p-6 {className}">
@@ -88,7 +101,7 @@
 										id={field.logoEntityId || entity.slug || entity.id}
 										size="md"
 									/>
-									<span class="text-sm text-muted-foreground">{entity[field.key]}</span>
+									<span class="text-sm text-muted-foreground">{getLogoDisplayName(entity[field.key])}</span>
 								</div>
 							{:else}
 								<span class="text-sm text-muted-foreground">No logo</span>

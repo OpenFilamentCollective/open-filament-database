@@ -16,6 +16,7 @@
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
+	import { getCountryName } from '$lib/data/countryCodes';
 
 	let storeId: string = $derived($page.params.store!);
 	let loadGeneration = 0;
@@ -160,9 +161,6 @@
 				<div>
 					<h1 class="text-3xl font-bold mb-2">{storeData.name}</h1>
 					<p class="text-muted-foreground">ID: {storeData.slug || storeData.id}</p>
-					{#if $useChangeTracking && !entityState.isLocalCreate && storeData.slug && storeData.slug !== storeData.id}
-						<p class="text-muted-foreground">UUID: {storeData.id}</p>
-					{/if}
 				</div>
 			</header>
 
@@ -189,12 +187,12 @@
 					{
 						key: 'ships_from',
 						label: 'Ships From',
-						format: (v) => (Array.isArray(v) ? v.join(', ') : v)
+						format: (v) => (Array.isArray(v) ? v.map((c: string) => getCountryName(c)).join(', ') : getCountryName(v))
 					},
 					{
 						key: 'ships_to',
 						label: 'Ships To',
-						format: (v) => (Array.isArray(v) ? v.join(', ') : v)
+						format: (v) => (Array.isArray(v) ? v.map((c: string) => getCountryName(c)).join(', ') : getCountryName(v))
 					}
 				]}
 			>

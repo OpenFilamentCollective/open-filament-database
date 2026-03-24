@@ -190,9 +190,6 @@
 					</div>
 				</div>
 				<p class="text-muted-foreground">ID: {variantData.slug || variantData.id}</p>
-				{#if $useChangeTracking && !entityState.isLocalCreate && variantData.slug && variantData.slug !== variantData.id}
-					<p class="text-muted-foreground">UUID: {variantData.id}</p>
-				{/if}
 			</header>
 
 			{#if entityState.hasLocalChanges}
