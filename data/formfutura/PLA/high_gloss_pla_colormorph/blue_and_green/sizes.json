@@ -1,0 +1,46 @@
+[
+    {
+      "filament_weight": 250,
+      "diameter": 2.85,
+       "ean": "8720629061139",
+       "purchase_links": [
+      {
+        "store_id": "FormFutura",
+        "url": "https://www.formfutura.com/high-gloss-pla-colormorph"
+      }
+    ]
+    },
+    {
+      "filament_weight": 750,
+      "diameter": 1.75,
+       "ean": "8720629060231",
+       "purchase_links": [
+      {
+        "store_id": "FormFutura",
+        "url": "https://www.formfutura.com/high-gloss-pla-colormorph"
+      }
+    ]
+    },
+    {
+      "filament_weight": 750,
+      "diameter": 1.75,
+       "ean": "8720629066196",
+       "purchase_links": [
+      {
+        "store_id": "FormFutura",
+        "url": "https://www.formfutura.com/high-gloss-pla-colormorph"
+      }
+    ]
+    },
+    {
+      "filament_weight": 2000,
+      "diameter": 1.75,
+       "ean": "8720629066288",
+       "purchase_links": [
+      {
+        "store_id": "FormFutura",
+        "url": "https://www.formfutura.com/high-gloss-pla-colormorph"
+      }
+    ]
+    }
+]

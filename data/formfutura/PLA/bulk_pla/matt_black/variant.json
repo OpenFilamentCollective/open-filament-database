@@ -3,6 +3,7 @@
   "name": "Matt Black",
   "color_hex": "#2C2C2C",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "matte": true
   }
 }

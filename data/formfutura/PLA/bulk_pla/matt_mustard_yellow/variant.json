@@ -3,6 +3,7 @@
   "name": "Matt Mustard Yellow",
   "color_hex": "#D4AF37",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "matte": true
   }
 }
