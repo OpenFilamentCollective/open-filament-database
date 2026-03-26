@@ -1,18 +1,18 @@
 {
-    "id": "petg_cf",
-    "name": "PETG-CF",
-    "diameter_tolerance": 0.02,
-    "density": 1.29,
-    "slicer_settings": {
-        "elegooslicer": {
-            "generic_id": "GFG99",
-            "id": "EPETGB00",
-            "profile_name": "Elegoo PETG-CF"
-        },
-        "orcaslicer": {
-            "profile_name": "Elegoo PETG-CF",
-            "id": "EPETGB00",
-            "generic_id": "GFG99"
-        }
+  "id": "petg_cf",
+  "name": "PETG-CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.29,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFG99",
+      "id": "EPETGB00",
+      "profile_name": "Elegoo PETG-CF"
+    },
+    "elegooslicer": {
+      "generic_id": "GFG99",
+      "id": "EPETGB00",
+      "profile_name": "Elegoo PETG-CF"
     }
+  }
 }

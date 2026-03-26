@@ -1,18 +1,18 @@
 {
-    "id": "pc",
-    "name": "PC",
-    "diameter_tolerance": 0.02,
-    "density": 1.2,
-    "slicer_settings": {
-        "elegooslicer": {
-            "generic_id": "GFC99",
-            "id": "EPCB00",
-            "profile_name": "Elegoo PC"
-        },
-        "orcaslicer": {
-            "profile_name": "Elegoo PC",
-            "id": "EPCB00",
-            "generic_id": "GFC99"
-        }
+  "id": "pc",
+  "name": "PC",
+  "diameter_tolerance": 0.02,
+  "density": 1.2,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFC99",
+      "id": "EPCB00",
+      "profile_name": "Elegoo PC"
+    },
+    "elegooslicer": {
+      "generic_id": "GFC99",
+      "id": "EPCB00",
+      "profile_name": "Elegoo PC"
     }
+  }
 }
