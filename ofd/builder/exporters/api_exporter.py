@@ -304,6 +304,7 @@ def export_api(
     base_url: str = "",
     data_dir: str = "data",
     stores_dir: str = "stores",
+    commit: str | None = None,
     **kwargs,
 ):
     """Export static API structure following native directory hierarchy."""
@@ -355,7 +356,6 @@ def export_api(
         "brand_logos": "brands/logo/index.json",
         "store_logos": "stores/logo/index.json",
         "badges": "badges/",
-        "editor": "editor/",
         "all": "../json/all.json",
     }
     if schemas_count > 0:
@@ -364,6 +364,7 @@ def export_api(
     index = {
         "version": version,
         "generated_at": generated_at,
+        **({"commit": commit} if commit else {}),
         "stats": {
             "brands": len(db.brands),
             "materials": len(db.materials),

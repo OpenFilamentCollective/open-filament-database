@@ -12,9 +12,11 @@ export async function GET() {
 	const stream = new ReadableStream({
 		start(controller) {
 			let eventIndex = 0;
+			let closed = false;
 			const encoder = new TextEncoder();
 
 			const sendEvent = (data: any) => {
+				if (closed) return;
 				const message = `data: ${JSON.stringify(data)}\n\n`;
 				controller.enqueue(encoder.encode(message));
 			};
@@ -27,12 +29,21 @@ export async function GET() {
 
 			// Check if already complete
 			if (job.status === 'complete' || job.status === 'error') {
+				closed = true;
 				controller.close();
 				return;
 			}
 
 			// Poll for new events
 			intervalHandle = setInterval(() => {
+				if (closed) {
+					if (intervalHandle) {
+						clearInterval(intervalHandle);
+						intervalHandle = null;
+					}
+					return;
+				}
+
 				// Send new events
 				for (let i = eventIndex; i < job.events.length; i++) {
 					sendEvent(job.events[i]);
@@ -45,6 +56,7 @@ export async function GET() {
 						clearInterval(intervalHandle);
 						intervalHandle = null;
 					}
+					closed = true;
 					controller.close();
 				}
 			}, 100);

@@ -39,25 +39,39 @@
             "type": "object",
             "properties": {
                 "prusaslicer": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "PrusaSlicer",
+                    "x-description": "Settings for PrusaSlicer and derivatives. Profile name references built-in or custom profiles."
                 },
                 "bambustudio": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Bambu Studio",
+                    "x-description": "Settings for Bambu Studio. Compatible with Bambu Lab printers and X1/P1 series."
                 },
                 "orcaslicer": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Orca Slicer",
+                    "x-description": "Settings for Orca Slicer. Fork of Bambu Studio with extended features."
                 },
                 "cura": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Cura",
+                    "x-description": "Settings for Ultimaker Cura. Uses Cura profile naming conventions."
                 },
                 "superslicer": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "SuperSlicer",
+                    "x-description": "Settings for SuperSlicer. Fork of PrusaSlicer with additional features."
                 },
                 "elegooslicer": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Elegoo Slicer",
+                    "x-description": "Settings for Elegoo Slicer. Compatible with Elegoo FDM printers."
                 },
                 "generic": {
                     "type": "object",
+                    "x-label": "Generic",
+                    "x-description": "Generic temperature settings that apply across all slicers without profile references.",
                     "description": "Generic options that will automatically be mapped to the correct config definition for each slicer. Slicer specific settings are applied first, then these are applied on top.",
                     "properties": {
                         "first_layer_bed_temp": {
@@ -102,7 +116,8 @@
         "diameter_tolerance": {
             "type": "number",
             "title": "Diameter Tolerance (mm)",
-            "description": "The diameter tolerance of the filament in mm (e.g., ±0.02)"
+            "description": "The diameter tolerance of the filament in mm (e.g., ±0.02)",
+            "default": 0.02
         },
         "density": {
             "type": "number",
