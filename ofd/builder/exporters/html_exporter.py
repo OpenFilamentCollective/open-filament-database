@@ -90,21 +90,11 @@ def build_abstract_file_tree(db: Database) -> str:
             ]
         ),
     )
-    api_editor = li_dir(
-        "editor",
-        li_placeholder("*.html")
-        + "\n"
-        + li_file("index.html", "api/v1/editor/index.html")
-        + "\n"
-        + li_file("index.json", "api/v1/editor/index.json"),
-    )
     api_v1 = li_dir(
         "v1",
         api_badges
         + "\n"
         + api_brands
-        + "\n"
-        + api_editor
         + "\n"
         + api_stores
         + "\n"

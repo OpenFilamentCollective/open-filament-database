@@ -9,6 +9,7 @@ UUID Generation follows the OFD standard specification:
 
 import hashlib
 import re
+import subprocess
 import uuid
 from datetime import datetime, timezone
 
@@ -246,17 +247,15 @@ def generate_purchase_link_id(size_id: str, store_id: str, url: str) -> str:
 
 
 def slugify(text: str) -> str:
-    """Convert text to a URL-friendly slug."""
+    """Convert text to a URL-friendly slug using underscores."""
     # Convert to lowercase
     text = text.lower()
-    # Replace spaces and underscores with hyphens
-    text = re.sub(r"[\s_]+", "-", text)
-    # Remove non-alphanumeric characters except hyphens
-    text = re.sub(r"[^a-z0-9-]", "", text)
-    # Remove consecutive hyphens
-    text = re.sub(r"-+", "-", text)
-    # Strip leading/trailing hyphens
-    text = text.strip("-")
+    # Replace any non-alphanumeric characters with underscores
+    text = re.sub(r"[^a-z0-9]+", "_", text)
+    # Remove consecutive underscores
+    text = re.sub(r"_+", "_", text)
+    # Strip leading/trailing underscores
+    text = text.strip("_")
     return text
 
 
@@ -303,6 +302,16 @@ def normalize_color_hex(color: str) -> str | None:
 def get_current_timestamp() -> str:
     """Get the current UTC timestamp in ISO 8601 format."""
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def get_git_commit() -> str | None:
+    """Get the current git commit hash, or None if not in a git repo."""
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL, text=True
+        ).strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
 
 
 # =============================================================================

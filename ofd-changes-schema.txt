@@ -1,0 +1,278 @@
+# Pending Changes Export Schema & Database File Mapping
+
+This document describes how pending changes are exported from the webui and how they map to the database files.
+
+---
+
+## 1. Export Format (`ChangeExport`)
+
+When a user clicks "Export as JSON" in the Changes Menu, the following structure is generated:
+
+```typescript
+interface ChangeExport {
+  metadata: {
+    exportedAt: number;      // Unix timestamp (ms)
+    version: string;         // "1.0.0"
+    changeCount: number;     // Number of entity changes
+    imageCount: number;      // Number of images
+  };
+  changes: EntityChange[];   // Array of all pending changes
+  images: {
+    [imageId: string]: {
+      filename: string;      // e.g., "logo.png"
+      mimeType: string;      // e.g., "image/png"
+      data: string;          // Base64-encoded image data
+    };
+  };
+}
+```
+
+---
+
+## 2. Entity Change Structure
+
+Each change in the `changes` array:
+
+```typescript
+interface EntityChange {
+  entity: {
+    type: 'store' | 'brand' | 'material' | 'filament' | 'variant';
+    path: string;            // Unique path identifier (see mapping below)
+    id: string;              // Entity ID
+  };
+  operation: 'create' | 'update' | 'delete';
+  data?: any;                // Full entity for create, updated data for update
+  propertyChanges?: PropertyChange[];  // For updates: detailed property diffs
+  timestamp: number;         // Unix timestamp (ms)
+  description: string;       // Human-readable description
+}
+
+interface PropertyChange {
+  property: string;          // Dot notation (e.g., "ships_from.0", "name")
+  oldValue?: any;
+  newValue?: any;
+  timestamp: number;
+}
+```
+
+---
+
+## 3. Entity Path to Database File Mapping
+
+### Path Format
+
+| Entity Type | Path Format | Example |
+|-------------|------------|---------|
+| Store | `stores/{store_id}` | `stores/prusa3d` |
+| Brand | `brands/{brand_id}` | `brands/prusament` |
+| Material | `brands/{brand_id}/materials/{material_type}` | `brands/prusament/materials/PLA` |
+| Filament | `brands/{brand_id}/materials/{material_type}/filaments/{filament_id}` | `brands/prusament/materials/PLA/filaments/pla` |
+| Variant | `brands/{brand_id}/materials/{material_type}/filaments/{filament_id}/variants/{variant_id}` | `brands/prusament/materials/PLA/filaments/pla/variants/jet_black` |
+
+### Mapping to Database Files
+
+| Entity Path | Database File Path |
+|-------------|-------------------|
+| `stores/{store_id}` | `stores/{store_id}/store.json` |
+| `brands/{brand_id}` | `data/{brand_id}/brand.json` |
+| `brands/{brand_id}/materials/{material_type}` | `data/{brand_id}/{MATERIAL_TYPE}/material.json` |
+| `brands/{brand_id}/materials/{material_type}/filaments/{filament_id}` | `data/{brand_id}/{MATERIAL_TYPE}/{filament_id}/filament.json` |
+| `brands/{brand_id}/materials/{material_type}/filaments/{filament_id}/variants/{variant_id}` | `data/{brand_id}/{MATERIAL_TYPE}/{filament_id}/{variant_id}/variant.json` + `sizes.json` |
+
+**Note:** Material types in file paths use UPPERCASE (e.g., `PLA`, `PETG`, `ASA`) matching the material type value.
+
+### Logo/Image Files
+
+| Entity | Image Path |
+|--------|-----------|
+| Store | `stores/{store_id}/logo.{png|jpg|svg}` |
+| Brand | `data/{brand_id}/logo.{png|jpg|svg}` |
+
+---
+
+## 4. Example Export
+
+```json
+{
+  "metadata": {
+    "exportedAt": 1705420800000,
+    "version": "1.0.0",
+    "changeCount": 3,
+    "imageCount": 1
+  },
+  "changes": [
+    {
+      "entity": {
+        "type": "brand",
+        "path": "brands/my_brand",
+        "id": "my_brand"
+      },
+      "operation": "create",
+      "data": {
+        "id": "my_brand",
+        "name": "My Brand",
+        "website": "https://mybrand.com",
+        "logo": "logo.png",
+        "origin": "US"
+      },
+      "timestamp": 1705420700000,
+      "description": "Created brand \"My Brand\""
+    },
+    {
+      "entity": {
+        "type": "store",
+        "path": "stores/amazon",
+        "id": "amazon"
+      },
+      "operation": "update",
+      "data": {
+        "id": "amazon",
+        "name": "Amazon",
+        "storefront_url": "https://amazon.com",
+        "logo": "logo.png",
+        "ships_from": ["US", "UK"],
+        "ships_to": []
+      },
+      "propertyChanges": [
+        {
+          "property": "ships_from",
+          "oldValue": ["US"],
+          "newValue": ["US", "UK"],
+          "timestamp": 1705420750000
+        }
+      ],
+      "timestamp": 1705420750000,
+      "description": "Updated store \"Amazon\""
+    },
+    {
+      "entity": {
+        "type": "variant",
+        "path": "brands/prusament/materials/PLA/filaments/pla/variants/custom_red",
+        "id": "custom_red"
+      },
+      "operation": "create",
+      "data": {
+        "id": "custom_red",
+        "name": "Custom Red",
+        "color_hex": "#FF0000"
+      },
+      "timestamp": 1705420780000,
+      "description": "Created variant \"Custom Red\""
+    }
+  ],
+  "images": {
+    "img_abc123": {
+      "filename": "logo.png",
+      "mimeType": "image/png",
+      "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+    }
+  }
+}
+```
+
+---
+
+## 5. Database File Structures
+
+### Store (`stores/{id}/store.json`)
+```json
+{
+  "id": "prusa3d",
+  "name": "Prusa3D",
+  "storefront_url": "https://www.prusa3d.com/",
+  "logo": "logo.png",
+  "ships_from": "CZ",
+  "ships_to": []
+}
+```
+
+### Brand (`data/{id}/brand.json`)
+```json
+{
+  "id": "prusament",
+  "name": "Prusament",
+  "website": "https://prusament.com/",
+  "logo": "logo.png",
+  "origin": "CZ"
+}
+```
+
+### Material (`data/{brand}/{MATERIAL}/material.json`)
+```json
+{
+  "material": "PLA"
+}
+```
+
+### Filament (`data/{brand}/{MATERIAL}/{filament}/filament.json`)
+```json
+{
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.24
+}
+```
+
+### Variant (`data/{brand}/{MATERIAL}/{filament}/{variant}/variant.json`)
+```json
+{
+  "id": "jet_black",
+  "name": "Jet Black",
+  "color_hex": "#393C3C"
+}
+```
+
+### Sizes (`data/{brand}/{MATERIAL}/{filament}/{variant}/sizes.json`)
+```json
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pla-jet-black-1kg/"
+      }
+    ]
+  }
+]
+```
+
+---
+
+## 6. Applying Exported Changes to Database
+
+To convert an exported change to database file operations:
+
+| Operation | Action |
+|-----------|--------|
+| `create` | Create directory structure, write JSON file(s), copy image if referenced |
+| `update` | Read existing file, merge with `data` field, write back |
+| `delete` | Remove the JSON file (and potentially entire directory if empty) |
+
+### Path Conversion Algorithm
+
+```
+entityPath → filePath:
+
+1. If path starts with "stores/":
+   - stores/{id} → stores/{id}/store.json
+
+2. If path starts with "brands/":
+   - brands/{brand} → data/{brand}/brand.json
+   - brands/{brand}/materials/{mat} → data/{brand}/{MAT}/material.json
+   - brands/{brand}/materials/{mat}/filaments/{fil} → data/{brand}/{MAT}/{fil}/filament.json
+   - brands/{brand}/materials/{mat}/filaments/{fil}/variants/{var} → data/{brand}/{MAT}/{fil}/{var}/variant.json
+```
+
+---
+
+## 7. Key Source Files
+
+| File | Description |
+|------|-------------|
+| webui/src/lib/types/changes.ts | TypeScript type definitions |
+| webui/src/lib/stores/changes.ts | Change store implementation |
+| webui/src/lib/components/layout/ChangesMenu.svelte | UI for managing changes |
+| schemas/ | JSON Schema validation files |

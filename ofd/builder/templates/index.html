@@ -44,11 +44,11 @@
     <main class="content">
         <div class="hero">
             <h1>Open Filament Database</h1>
-            <p>A community-maintained database of 3D printing filaments, available as static JSON, CSV, and SQLite.</p>
+            <p>A community-maintained database of 3D printing filaments, available as static JSON, CSV, and SQLite. Contribute via the web editor or use the API directly.</p>
             <div class="hero-links">
                 <a href="https://github.com/OpenFilamentCollective/open-filament-database" class="hero-link">Source Repository</a>
                 <a href="api/v1/index.json" class="hero-link">API Root</a>
-                <a href="api/v1/editor/" class="hero-link">Editor Docs</a>
+                <a href="https://editor.openfilamentdatabase.org" class="hero-link">Web Editor</a>
             </div>
             <span class="hero-version">v<VERSION/></span>
         </div>
@@ -68,24 +68,19 @@
                 <h2>API Endpoints</h2>
             </header>
             <div class="view-content">
-                <p class="dim">All responses are static JSON files. Base URL: <code>/api/v1/</code></p>
+                <p class="dim">All responses are static JSON files rebuilt daily. Base URL: <code>/api/v1/</code></p>
 
                 <h3>Brands</h3>
                 <div class="boxed-list">
                     <div class="row endpoint-row">
                         <span class="method-badge">GET</span>
                         <code class="endpoint-path">/brands/index.json</code>
-                        <span class="dim">List all brands</span>
+                        <span class="dim">List all brands with material counts</span>
                     </div>
                     <div class="row endpoint-row">
                         <span class="method-badge">GET</span>
                         <code class="endpoint-path">/brands/{slug}/index.json</code>
-                        <span class="dim">Brand details</span>
-                    </div>
-                    <div class="row endpoint-row">
-                        <span class="method-badge">GET</span>
-                        <code class="endpoint-path">/brands/logo/index.json</code>
-                        <span class="dim">All brand logos</span>
+                        <span class="dim">Brand details with nested materials, filaments, and variants</span>
                     </div>
                 </div>
 
@@ -119,6 +114,34 @@
                         <span class="method-badge">GET</span>
                         <code class="endpoint-path">/stores/{slug}.json</code>
                         <span class="dim">Store details</span>
+                    </div>
+                </div>
+
+                <h3>Logos</h3>
+                <div class="boxed-list">
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/brands/logo/index.json</code>
+                        <span class="dim">All brand logos</span>
+                    </div>
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/stores/logo/index.json</code>
+                        <span class="dim">All store logos</span>
+                    </div>
+                </div>
+
+                <h3>Schemas</h3>
+                <div class="boxed-list">
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/schemas/index.json</code>
+                        <span class="dim">All JSON schemas</span>
+                    </div>
+                    <div class="row endpoint-row">
+                        <span class="method-badge">GET</span>
+                        <code class="endpoint-path">/schemas/{name}.json</code>
+                        <span class="dim">Individual entity schema (JSON Schema Draft-07)</span>
                     </div>
                 </div>
             </div>

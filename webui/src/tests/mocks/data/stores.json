@@ -1,0 +1,18 @@
+[
+	{
+		"id": "test-store",
+		"name": "Test Store",
+		"storefront_url": "https://teststore.com",
+		"logo": "test-store-logo.svg",
+		"ships_from": ["US"],
+		"ships_to": ["US", "CA"]
+	},
+	{
+		"id": "another-store",
+		"name": "Another Store",
+		"storefront_url": "https://anotherstore.com",
+		"logo": "another-store-logo.png",
+		"ships_from": ["DE"],
+		"ships_to": ["EU"]
+	}
+]
