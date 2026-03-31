@@ -1,6 +1,8 @@
 [
   {
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "BPLA-175DBLU-01000"
   }
 ]

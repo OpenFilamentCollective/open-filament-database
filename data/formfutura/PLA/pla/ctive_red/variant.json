@@ -1,11 +1,9 @@
 {
   "id": "ctive_red",
-  "name": "ctive Red",
+  "name": "Matt Autumn Red",
   "color_hex": "#98282F",
   "traits": {
-    "industrially_compostable": true,
-    "antibacterial": true,
-    "abrasive": true,
-    "contains_copper": true
+    "matte": true,
+    "industrially_compostable": true
   }
 }
