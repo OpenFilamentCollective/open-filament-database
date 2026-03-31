@@ -1,28 +1,47 @@
 """
-Style Data Script - Sort JSON file keys according to schema definitions.
+Style Data Script - Sort, sanitize, and validate JSON data files.
 
 This script recursively processes all JSON files in the data/ and stores/
-directories and reorders their keys to match the order defined in the
-corresponding JSON schemas. This ensures consistent formatting across all
-data files.
+directories to ensure consistent formatting, valid data, and correct naming.
 
 The script:
-1. Loads all schemas and extracts property key orderings
-2. Processes each JSON file and sorts keys according to schema
-3. Handles nested objects with their own key orderings
-4. Warns about keys found in data but not in schema
-5. Validates all files after sorting using the validation module
-6. Enforces 2-space indentation across all JSON files
+1. Fixes folder names (hyphens → underscores) to match slug conventions
+2. Loads all schemas and extracts property key orderings
+3. Processes each JSON file and sorts keys according to schema
+4. Sanitizes data: fixes IDs, removes empty strings, defaults missing values
+5. Handles nested objects with their own key orderings
+6. Warns about keys found in data but not in schema
+7. Validates all files after processing using the ofd-validator
+8. Enforces 2-space indentation across all JSON files
 """
 
 import argparse
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
 from ofd.base import BaseScript, ScriptResult, register_script
 from ofd.validation import ValidationOrchestrator
+
+# The canonical ID pattern from the schemas
+ID_PATTERN = re.compile(r"^[a-z0-9+]+(_[a-z0-9+]+)*$")
+
+# Fields where an empty string should be removed entirely
+OPTIONAL_STRING_FIELDS = {
+    "data_sheet_url",
+    "safety_sheet_url",
+    "website",
+    "storefront_url",
+    "source",
+    "article_number",
+    "barcode_identifier",
+    "nfc_identifier",
+    "qr_identifier",
+    "gtin",
+    "ean",
+}
 
 
 @dataclass
@@ -69,6 +88,109 @@ def save_json(path: Path, data: Any, dry_run: bool) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
+
+
+def fix_slug(name: str) -> str:
+    """Fix a slug by replacing hyphens with underscores and lowercasing."""
+    return name.replace("-", "_").lower().strip()
+
+
+def sanitize_data(data: Any, schema_name: str) -> tuple[Any, list[str]]:
+    """Sanitize a JSON data structure, returning (cleaned_data, list_of_changes).
+
+    Fixes applied:
+    - Strip whitespace from string values
+    - Remove empty-string optional fields
+    - Fix IDs containing hyphens (replace with underscores)
+    - Default sizes[].diameter to 1.75 when 0
+    """
+    changes: list[str] = []
+
+    if schema_name == "sizes" and isinstance(data, list):
+        for i, size in enumerate(data):
+            if not isinstance(size, dict):
+                continue
+            if size.get("diameter") == 0:
+                size["diameter"] = 1.75
+                changes.append(f"sizes[{i}].diameter: 0 -> 1.75")
+            _sanitize_dict(size, changes, f"sizes[{i}]")
+            # Sanitize nested purchase_links
+            for j, link in enumerate(size.get("purchase_links", [])):
+                if isinstance(link, dict):
+                    _sanitize_dict(link, changes, f"sizes[{i}].purchase_links[{j}]")
+        return data, changes
+
+    if isinstance(data, dict):
+        # Fix ID field
+        raw_id = data.get("id")
+        if isinstance(raw_id, str) and not ID_PATTERN.match(raw_id):
+            fixed = fix_slug(raw_id)
+            if ID_PATTERN.match(fixed):
+                data["id"] = fixed
+                changes.append(f"id: '{raw_id}' -> '{fixed}'")
+
+        _sanitize_dict(data, changes)
+        return data, changes
+
+    return data, changes
+
+
+def _sanitize_dict(data: dict[str, Any], changes: list[str], prefix: str = "") -> None:
+    """Sanitize string fields in a dict in-place."""
+    dot = f"{prefix}." if prefix else ""
+    keys_to_remove = []
+
+    for key, value in data.items():
+        if not isinstance(value, str):
+            continue
+
+        # Strip whitespace
+        stripped = value.strip()
+        if stripped != value:
+            data[key] = stripped
+            changes.append(f"{dot}{key}: stripped whitespace")
+            value = stripped
+
+        # Remove empty optional strings
+        if value == "" and key in OPTIONAL_STRING_FIELDS:
+            keys_to_remove.append(key)
+            changes.append(f"{dot}{key}: removed empty string")
+
+    for key in keys_to_remove:
+        del data[key]
+
+
+def fix_folder_names(root_dir: Path, dry_run: bool) -> list[str]:
+    """Rename folders containing hyphens to use underscores.
+
+    Walks bottom-up so child renames happen before parent renames.
+    Returns list of rename descriptions.
+    """
+    renames: list[str] = []
+    if not root_dir.exists():
+        return renames
+
+    # Collect all dirs with hyphens, deepest first
+    hyphenated: list[Path] = []
+    for dirpath in sorted(root_dir.rglob("*"), reverse=True):
+        if dirpath.is_dir() and "-" in dirpath.name:
+            hyphenated.append(dirpath)
+
+    for folder in hyphenated:
+        fixed_name = fix_slug(folder.name)
+        if not ID_PATTERN.match(fixed_name):
+            continue
+        new_path = folder.parent / fixed_name
+        if new_path.exists():
+            renames.append(f"SKIP {folder} -> {fixed_name} (target exists)")
+            continue
+        if dry_run:
+            renames.append(f"Would rename: {folder} -> {fixed_name}")
+        else:
+            folder.rename(new_path)
+            renames.append(f"Renamed: {folder} -> {fixed_name}")
+
+    return renames
 
 
 def load_schemas(schemas_dir: Path) -> dict[str, dict[str, Any]]:
@@ -222,7 +344,6 @@ class StyleDataScript(BaseScript):
         parser.add_argument(
             "--dry-run", action="store_true", help="Preview changes without modifying files"
         )
-        parser.add_argument("--validate", action="store_true", help="Run validation after sorting")
         parser.add_argument(
             "--fix-indent-only",
             action="store_true",
@@ -302,7 +423,6 @@ class StyleDataScript(BaseScript):
     def run(self, args: argparse.Namespace) -> ScriptResult:
         """Execute the style_data script."""
         dry_run = getattr(args, "dry_run", False)
-        do_validate = getattr(args, "validate", False)
         fix_indent_only = getattr(args, "fix_indent_only", False)
         format_stdin = getattr(args, "format_stdin", False)
         schema_type = getattr(args, "schema_type", None)
@@ -366,14 +486,26 @@ class StyleDataScript(BaseScript):
                 },
             )
 
-        # Build key order mapping from schemas
+        # Step 1: Fix folder names (hyphens → underscores)
+        self.emit_progress("fixing_folders", 0, "Fixing folder names...")
+        self.log("Fixing folder names...")
+        folder_renames: list[str] = []
+        for directory in [self.data_dir, self.stores_dir]:
+            folder_renames.extend(fix_folder_names(directory, dry_run))
+        for rename in folder_renames:
+            self.log(f"  {rename}")
+        if not folder_renames:
+            self.log("  No folder renames needed")
+        self.emit_progress("fixing_folders", 100, "Folder names fixed")
+
+        # Step 2: Build key order mapping from schemas
         self.emit_progress("loading_schemas", 0, "Loading schemas...")
-        self.log("Loading schemas...")
+        self.log("\nLoading schemas...")
         key_order_map = build_key_order_map(self.schemas_dir)
         self.emit_progress("loading_schemas", 100, f"Loaded {len(key_order_map)} schemas")
         self.log(f"Loaded {len(key_order_map)} schemas\n")
 
-        # Process data directory
+        # Step 3: Process (sanitize + sort) data directory
         data_stats = ProcessingStats()
         if self.data_dir.exists():
             self.emit_progress("sorting_data", 0, "Processing data directory...")
@@ -382,7 +514,7 @@ class StyleDataScript(BaseScript):
         else:
             self.log(f"Data directory not found: {self.data_dir}")
 
-        # Process stores directory
+        # Step 4: Process (sanitize + sort) stores directory
         stores_stats = ProcessingStats()
         if self.stores_dir.exists():
             self.emit_progress("sorting_stores", 0, "Processing stores directory...")
@@ -399,12 +531,12 @@ class StyleDataScript(BaseScript):
             extra_keys_found=data_stats.extra_keys_found + stores_stats.extra_keys_found,
         )
 
-        # Run validation if requested
+        # Step 5: Always validate after styling (unless dry-run)
         validation_data = None
-        if do_validate and not dry_run and total_stats.files_modified > 0:
+        if not dry_run:
             self.emit_progress("validation", 0, "Running validation...")
             self.log(f"\n{'=' * 60}")
-            self.log("VALIDATING SORTED FILES")
+            self.log("VALIDATING FILES")
             self.log("=" * 60)
 
             orchestrator = ValidationOrchestrator(
@@ -415,20 +547,29 @@ class StyleDataScript(BaseScript):
             validation_data = validation_result.to_dict()
 
             if not validation_result.is_valid:
+                self.log(f"\nValidation failed: {validation_result.error_count} error(s)")
+                for error in validation_result.errors:
+                    self.log(f"  {error}")
+
                 return ScriptResult(
                     success=False,
                     message=f"Validation failed: {validation_result.error_count} errors",
                     data={
                         "dry_run": dry_run,
                         "stats": total_stats.to_dict(),
+                        "folder_renames": folder_renames,
                         "validation": validation_data,
                     },
                 )
+            else:
+                self.log("Validation passed!")
 
         # Summary
         self.log(f"\n{'=' * 60}")
-        self.log("DRY RUN SUMMARY" if dry_run else "SORTING SUMMARY")
+        self.log("DRY RUN SUMMARY" if dry_run else "STYLING SUMMARY")
         self.log("=" * 60)
+        if folder_renames:
+            self.log(f"Folders renamed: {len([r for r in folder_renames if not r.startswith('SKIP')])}")
         self.log(f"Files processed: {total_stats.files_processed}")
         self.log(f"Files modified: {total_stats.files_modified}")
         self.log(f"Files skipped: {total_stats.files_skipped}")
@@ -436,11 +577,13 @@ class StyleDataScript(BaseScript):
             self.log(f"Extra keys found: {total_stats.extra_keys_found}")
         self.log("\nDone!")
 
-        result_data = {"dry_run": dry_run, "stats": total_stats.to_dict()}
+        result_data: dict[str, Any] = {"dry_run": dry_run, "stats": total_stats.to_dict()}
+        if folder_renames:
+            result_data["folder_renames"] = folder_renames
         if validation_data:
             result_data["validation"] = validation_data
 
-        return ScriptResult(success=True, message="Sorting complete", data=result_data)
+        return ScriptResult(success=True, message="Styling complete", data=result_data)
 
     def _process_json_file(
         self,
@@ -450,7 +593,7 @@ class StyleDataScript(BaseScript):
         dry_run: bool,
         stats: ProcessingStats,
     ) -> bool:
-        """Process a single JSON file and sort its keys."""
+        """Process a single JSON file: sanitize data, then sort keys."""
         data = load_json(file_path)
         if data is None:
             stats.files_skipped += 1
@@ -461,6 +604,19 @@ class StyleDataScript(BaseScript):
             stats.files_skipped += 1
             return False
 
+        # Sanitize data (fix IDs, empty strings, defaults)
+        data, sanitize_changes = sanitize_data(data, schema_name)
+        for change in sanitize_changes:
+            try:
+                rel_path = file_path.relative_to(self.project_root)
+            except ValueError:
+                rel_path = file_path
+            if dry_run:
+                self.log(f"  Would fix {rel_path}: {change}")
+            else:
+                self.log(f"  Fixed {rel_path}: {change}")
+
+        # Sort keys according to schema
         schema_info = key_order_map[schema_name]
         extra_keys: set[str] = set()
 
@@ -475,7 +631,8 @@ class StyleDataScript(BaseScript):
 
         stats.files_processed += 1
 
-        if original_json != sorted_json:
+        modified = bool(sanitize_changes) or (original_json != sorted_json)
+        if modified:
             if dry_run:
                 self.log(f"  Would sort: {file_path.name}")
             else:

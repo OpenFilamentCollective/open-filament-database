@@ -21,6 +21,7 @@ import requests
 import yaml
 
 from ofd.base import BaseScript, ScriptResult, register_script
+from ofd.merge import merge_dicts, merge_sizes, save_json as merge_save_json
 from ofd.scripts.opt_naming_rules import (
     GENERIC_RENAME_RULES,
     KNOWN_COLORS,
@@ -890,15 +891,7 @@ class ImportOpenPrintTagScript(BaseScript):
 
     def _merge_data(self, existing: dict, new: dict) -> dict:
         """Merge new data into existing, only filling gaps."""
-        result = existing.copy()
-
-        for key, value in new.items():
-            existing_value = result.get(key)
-            # Only add if missing or empty
-            if existing_value is None or existing_value == "" or existing_value == []:
-                result[key] = value
-
-        return result
+        return merge_dicts(existing, new)
 
     def _discover_domain(self, brand_name: str) -> str | None:
         """Try to find brand domain using Brandfetch CDN, then search API."""
@@ -2109,19 +2102,7 @@ class ImportOpenPrintTagScript(BaseScript):
                             try:
                                 with open(sizes_json, encoding="utf-8") as f:
                                     existing_sizes = json.load(f)
-                                if sizes_data:
-                                    existing_keys = {
-                                        (s.get("filament_weight"), s.get("diameter"))
-                                        for s in existing_sizes
-                                    }
-                                    for size in sizes_data:
-                                        key = (
-                                            size.get("filament_weight"),
-                                            size.get("diameter"),
-                                        )
-                                        if key not in existing_keys:
-                                            existing_sizes.append(size)
-                                sizes_data = existing_sizes
+                                sizes_data = merge_sizes(existing_sizes, sizes_data)
                             except Exception:
                                 pass
 
