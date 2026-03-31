@@ -1,9 +1,7 @@
 {
   "id": "matt_white",
   "name": "Matt White",
-  "color_hex": [
-    "#ffffff"
-  ],
+  "color_hex": "#FFFFFF",
   "traits": {
     "matte": true,
     "industrially_compostable": true
