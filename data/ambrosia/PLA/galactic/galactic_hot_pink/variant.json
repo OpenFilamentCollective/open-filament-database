@@ -1,5 +1,8 @@
 {
   "id": "galactic_hot_pink",
   "name": "Galactic Hot Pink",
-  "color_hex": "#FA008A"
+  "color_hex": "#FA008A",
+  "traits": {
+    "glitter": true
+  }
 }

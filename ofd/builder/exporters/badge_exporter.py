@@ -36,12 +36,12 @@ def _render_badge(label: str, value: str, color: str) -> str:
     """Render a flat-style SVG badge matching GitHub/shields.io style."""
     hex_color = COLORS.get(color, color)
 
-    label_w = _text_width(label) + _PADDING * 2
-    value_w = _text_width(value) + _PADDING * 2
-    total_w = label_w + value_w
+    label_w = round(_text_width(label) + _PADDING * 2, 1)
+    value_w = round(_text_width(value) + _PADDING * 2, 1)
+    total_w = round(label_w + value_w, 1)
 
-    label_x = label_w / 2
-    value_x = label_w + value_w / 2
+    label_x = round(label_w / 2, 1)
+    value_x = round(label_w + value_w / 2, 1)
     text_y = 14  # baseline for 20px height badge
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{total_w}" height="{_HEIGHT}">

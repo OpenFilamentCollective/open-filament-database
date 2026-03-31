@@ -5,9 +5,9 @@
     "density": 1.25,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "OVERTURE PETG Basic",
+            "generic_id": "GFG99",
             "id": "Pc44e319",
-            "generic_id": "GFG99"
+            "profile_name": "OVERTURE PETG Basic"
         }
     }
 }

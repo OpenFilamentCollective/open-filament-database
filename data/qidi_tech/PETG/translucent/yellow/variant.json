@@ -1,5 +1,8 @@
 {
-    "id": "yellow",
-    "name": "Yellow",
-    "color_hex": "#FFFF33"
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FFFF33",
+  "traits": {
+    "translucent": true
+  }
 }

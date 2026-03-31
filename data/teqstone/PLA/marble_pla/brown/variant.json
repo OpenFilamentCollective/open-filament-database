@@ -3,6 +3,7 @@
   "name": "Brown",
   "color_hex": "#D2B48C",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

@@ -1,5 +1,8 @@
 {
   "id": "rainbow_tropicana",
   "name": "Rainbow Tropicana",
-  "color_hex": "#D0A6A9"
+  "color_hex": "#D0A6A9",
+  "traits": {
+    "silk": true
+  }
 }

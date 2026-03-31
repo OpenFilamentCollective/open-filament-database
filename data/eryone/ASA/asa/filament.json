@@ -5,14 +5,14 @@
     "density": 1.17,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Eryone ASA",
+            "generic_id": "GFB98",
             "id": "EFL92",
-            "generic_id": "GFB98"
+            "profile_name": "Eryone ASA"
         },
         "elegooslicer": {
-            "profile_name": "Eryone ASA",
+            "generic_id": "GFB98",
             "id": "EFL92",
-            "generic_id": "GFB98"
+            "profile_name": "Eryone ASA"
         }
     }
 }

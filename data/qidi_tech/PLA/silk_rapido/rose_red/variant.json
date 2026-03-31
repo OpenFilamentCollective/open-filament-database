@@ -1,5 +1,8 @@
 {
-    "id": "rose_red",
-    "name": "Rose Red",
-    "color_hex": "#D6A2A1"
+  "id": "rose_red",
+  "name": "Rose Red",
+  "color_hex": "#D6A2A1",
+  "traits": {
+    "silk": true
+  }
 }

@@ -1,5 +1,8 @@
 {
   "id": "95a_clear_gold",
   "name": "95A Clear Gold",
-  "color_hex": "#CE8D00"
+  "color_hex": "#CE8D00",
+  "traits": {
+    "translucent": true
+  }
 }

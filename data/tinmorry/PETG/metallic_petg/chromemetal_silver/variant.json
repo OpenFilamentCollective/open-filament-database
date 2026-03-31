@@ -1,5 +1,8 @@
 {
   "id": "chromemetal_silver",
   "name": "Chrome/Metal Silver",
-  "color_hex": "#C9D0D4"
+  "color_hex": "#C9D0D4",
+  "traits": {
+    "imitates_metal": true
+  }
 }

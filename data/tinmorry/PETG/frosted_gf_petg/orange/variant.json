@@ -3,6 +3,7 @@
   "name": "Orange",
   "color_hex": "#F78E0E",
   "traits": {
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

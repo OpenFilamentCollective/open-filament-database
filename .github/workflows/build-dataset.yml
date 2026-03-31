@@ -237,6 +237,21 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: false
+      
+      # Commit updated badge SVGs back to the repository
+      - name: Commit badge SVGs
+        run: |
+          mkdir -p docs/img/badges/
+          cp dist/api/v1/badges/*.svg docs/img/badges/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/img/badges/
+          if git diff --cached --quiet; then
+            echo "No badge changes to commit"
+          else
+            git commit -m "Update badge SVGs [skip ci]"
+            git push
+          fi
 
   # Validate the build
   validate:

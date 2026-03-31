@@ -1,8 +1,9 @@
 {
-    "id": "akvamarin",
-    "name": "Akvamarin",
-    "color_hex": "#c5eece",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "akvamarin",
+  "name": "Akvamarin",
+  "color_hex": "#c5eece",
+  "traits": {
+    "recyclable": true,
+    "silk": true
+  }
 }

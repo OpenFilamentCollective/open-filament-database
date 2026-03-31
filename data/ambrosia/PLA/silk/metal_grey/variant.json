@@ -1,5 +1,8 @@
 {
   "id": "metal_grey",
   "name": "Metal Grey",
-  "color_hex": "#5B585A"
+  "color_hex": "#5B585A",
+  "traits": {
+    "silk": true
+  }
 }

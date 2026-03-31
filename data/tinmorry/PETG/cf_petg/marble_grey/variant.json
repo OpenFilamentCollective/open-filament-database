@@ -3,6 +3,7 @@
   "name": "Marble Grey",
   "color_hex": "#8C9099",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

@@ -1,5 +1,8 @@
 {
-    "id": "malt_clay",
-    "name": "Malt Clay",
-    "color_hex": "#876E59"
+  "id": "malt_clay",
+  "name": "Malt Clay",
+  "color_hex": "#876E59",
+  "traits": {
+    "matte": true
+  }
 }

@@ -3,6 +3,7 @@
   "name": "Magic Blue",
   "color_hex": "#DEDDEA",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

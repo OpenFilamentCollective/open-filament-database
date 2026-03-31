@@ -3,5 +3,8 @@
   "name": "Bordeaux",
   "color_hex": [
     "#844C54"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,8 +1,9 @@
 {
-    "id": "gold",
-    "name": "Gold",
-    "color_hex": "#fbe422",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "gold",
+  "name": "Gold",
+  "color_hex": "#fbe422",
+  "traits": {
+    "recyclable": true,
+    "silk": true
+  }
 }

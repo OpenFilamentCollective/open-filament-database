@@ -1,5 +1,8 @@
 {
   "id": "galactic_yellow",
   "name": "Galactic Yellow",
-  "color_hex": "#D2DC22"
+  "color_hex": "#D2DC22",
+  "traits": {
+    "glitter": true
+  }
 }

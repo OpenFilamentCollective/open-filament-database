@@ -1,5 +1,8 @@
 {
-    "id": "cork",
-    "name": "Cork",
-    "color_hex": "#6a4f3e"
+  "id": "cork",
+  "name": "Cork",
+  "color_hex": "#6a4f3e",
+  "traits": {
+    "contains_wood": true
+  }
 }

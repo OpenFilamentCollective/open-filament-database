@@ -1,5 +1,8 @@
 {
-    "id": "milky_green",
-    "name": "Milky Green",
-    "color_hex": "#D8E9DB"
+  "id": "milky_green",
+  "name": "Milky Green",
+  "color_hex": "#D8E9DB",
+  "traits": {
+    "matte": true
+  }
 }

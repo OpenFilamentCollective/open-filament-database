@@ -1,0 +1,8 @@
+{
+  "id": "iridescent_ice",
+  "name": "Iridescent Ice",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "translucent": true
+  }
+}

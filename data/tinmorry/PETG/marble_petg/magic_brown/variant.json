@@ -3,6 +3,7 @@
   "name": "Magic Brown",
   "color_hex": "#E6DEDE",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

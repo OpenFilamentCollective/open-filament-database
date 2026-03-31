@@ -1,8 +1,9 @@
 {
-    "id": "ocean_blue",
-    "name": "Ocean blue",
-    "color_hex": "#5b95e6",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "ocean_blue",
+  "name": "Ocean blue",
+  "color_hex": "#5b95e6",
+  "traits": {
+    "recyclable": true,
+    "silk": true
+  }
 }

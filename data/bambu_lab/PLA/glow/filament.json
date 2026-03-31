@@ -7,19 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_PLA_Glow.pdf?v=1705372913",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Glow",
+            "generic_id": "GFL99",
             "id": "GFA12",
-            "generic_id": "GFL99"
+            "profile_name": "Bambu PLA Glow"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PLA Glow",
+            "generic_id": "GFL99",
             "id": "GFA12",
-            "generic_id": "GFL99"
+            "profile_name": "Bambu PLA Glow"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PLA Glow",
-            "id": "GFA12",
-            "generic_id": "GFL99"
+            "generic_id": "GFL99",
+            "id": "OGFA12",
+            "profile_name": "Bambu PLA Glow"
         }
     }
 }

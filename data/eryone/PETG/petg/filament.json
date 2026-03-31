@@ -4,21 +4,21 @@
     "diameter_tolerance": 0.03,
     "density": 1.25,
     "slicer_settings": {
-        "orcaslicer": {
-            "profile_name": "Eryone PETG",
-            "id": "EFL93",
-            "generic_id": "GFG99"
+        "prusaslicer": {
+            "profile_name": "ERYONE PETG"
         },
-        "elegooslicer": {
-            "profile_name": "Eryone PETG",
+        "orcaslicer": {
+            "generic_id": "GFG99",
             "id": "EFL93",
-            "generic_id": "GFG99"
+            "profile_name": "Eryone PETG"
         },
         "superslicer": {
             "profile_name": "ERYONE PETG"
         },
-        "prusaslicer": {
-            "profile_name": "ERYONE PETG"
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "EFL93",
+            "profile_name": "Eryone PETG"
         }
     }
 }

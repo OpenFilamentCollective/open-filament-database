@@ -5,14 +5,14 @@
     "density": 1.21,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Eryone TPU",
+            "generic_id": "GFU99",
             "id": "EFL95",
-            "generic_id": "GFU99"
+            "profile_name": "Eryone TPU"
         },
         "elegooslicer": {
-            "profile_name": "Eryone TPU",
+            "generic_id": "GFU99",
             "id": "EFL95",
-            "generic_id": "GFU99"
+            "profile_name": "Eryone TPU"
         }
     }
 }

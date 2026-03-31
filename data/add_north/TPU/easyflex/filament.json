@@ -7,14 +7,14 @@
     "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_EasyFlex_TPU_SRFA4k.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth TPU EasyFlex",
+            "generic_id": "GFU99",
             "id": "GF_ANEF",
-            "generic_id": "GFU99"
+            "profile_name": "addnorth TPU EasyFlex"
         },
         "orcaslicer": {
-            "profile_name": "addnorth TPU EasyFlex",
+            "generic_id": "GFU99",
             "id": "GF_ANEF",
-            "generic_id": "GFU99"
+            "profile_name": "addnorth TPU EasyFlex"
         }
     }
 }

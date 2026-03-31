@@ -1,5 +1,8 @@
 {
   "id": "blue",
   "name": "Blue",
-  "color_hex": "#40468E"
+  "color_hex": "#40468E",
+  "traits": {
+    "glitter": true
+  }
 }

@@ -7,14 +7,14 @@
     "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_pcblendhtlcf_utXzD2.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth PC BLend HT LCF",
+            "generic_id": "GFC99",
             "id": "GF_ANPBX",
-            "generic_id": "GFC99"
+            "profile_name": "addnorth PC BLend HT LCF"
         },
         "orcaslicer": {
-            "profile_name": "addnorth PC BLend HT LCF",
+            "generic_id": "GFC99",
             "id": "GF_ANPBX",
-            "generic_id": "GFC99"
+            "profile_name": "addnorth PC BLend HT LCF"
         }
     }
 }

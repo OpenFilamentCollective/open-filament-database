@@ -6,14 +6,14 @@
     "max_dry_temperature": 50,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth PLA Economy",
+            "generic_id": "GFL99",
             "id": "GF_ANPL",
-            "generic_id": "GFL99"
+            "profile_name": "addnorth PLA Economy"
         },
         "orcaslicer": {
-            "profile_name": "addnorth PLA Economy",
+            "generic_id": "GFL99",
             "id": "GF_ANPL",
-            "generic_id": "GFL99"
+            "profile_name": "addnorth PLA Economy"
         }
     }
 }

@@ -3,5 +3,8 @@
   "name": "Galaxy Black",
   "color_hex": [
     "#000000"
-  ]
+  ],
+  "traits": {
+    "glitter": true
+  }
 }

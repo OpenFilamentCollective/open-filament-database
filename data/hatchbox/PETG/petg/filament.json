@@ -8,21 +8,21 @@
     "min_bed_temperature": 70,
     "max_bed_temperature": 90,
     "slicer_settings": {
-        "orcaslicer": {
-            "profile_name": "HATCHBOX PETG",
-            "id": "GFG99",
-            "generic_id": "GFG99"
-        },
-        "elegooslicer": {
-            "profile_name": "HATCHBOX PETG",
-            "id": "GFG99",
-            "generic_id": "GFG99"
-        },
         "prusaslicer": {
             "profile_name": "Hatchbox PETG"
         },
+        "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "GFB99",
+            "profile_name": "HATCHBOX PETG"
+        },
         "superslicer": {
             "profile_name": "Hatchbox PETG"
+        },
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "GFB99",
+            "profile_name": "HATCHBOX PETG"
         }
     }
 }

@@ -7,14 +7,14 @@
     "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_rABS_Aw6GuW.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth ABS rABS",
+            "generic_id": "GFB99",
             "id": "GF_ANRA",
-            "generic_id": "GFB99"
+            "profile_name": "addnorth ABS rABS"
         },
         "orcaslicer": {
-            "profile_name": "addnorth ABS rABS",
+            "generic_id": "GFB99",
             "id": "GF_ANRA",
-            "generic_id": "GFB99"
+            "profile_name": "addnorth ABS rABS"
         }
     }
 }

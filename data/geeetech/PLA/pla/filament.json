@@ -1,15 +1,15 @@
 {
-  "id": "pla",
-  "name": "PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 185,
-  "max_print_temperature": 215,
-  "min_bed_temperature": 25,
-  "max_bed_temperature": 60,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Geeetech PLA"
+    "id": "pla",
+    "name": "PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.24,
+    "min_print_temperature": 185,
+    "max_print_temperature": 215,
+    "min_bed_temperature": 25,
+    "max_bed_temperature": 60,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Geeetech PLA"
+        }
     }
-  }
 }

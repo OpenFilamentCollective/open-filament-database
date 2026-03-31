@@ -1,5 +1,8 @@
 {
   "id": "fluorescent_neon_green",
   "name": "Fluorescent Neon Green",
-  "color_hex": "#53D132"
+  "color_hex": "#53D132",
+  "traits": {
+    "neon": true
+  }
 }

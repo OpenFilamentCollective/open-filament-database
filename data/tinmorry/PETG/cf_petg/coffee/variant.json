@@ -3,6 +3,7 @@
   "name": "Coffee",
   "color_hex": "#613919",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

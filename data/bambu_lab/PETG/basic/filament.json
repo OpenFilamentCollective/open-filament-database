@@ -6,19 +6,19 @@
     "discontinued": true,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PETG Basic",
+            "generic_id": "GFG99",
             "id": "GFG00",
-            "generic_id": "GFG99"
+            "profile_name": "Bambu PETG Basic"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PETG Basic",
+            "generic_id": "GFG99",
             "id": "GFG00",
-            "generic_id": "GFG99"
+            "profile_name": "Bambu PETG Basic"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PETG Basic",
-            "id": "GFG00",
-            "generic_id": "GFG99"
+            "generic_id": "GFG99",
+            "id": "OGFG00",
+            "profile_name": "Bambu PETG Basic"
         }
     }
 }

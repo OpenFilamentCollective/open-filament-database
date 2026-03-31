@@ -1,5 +1,9 @@
 {
-    "id": "red",
-    "name": "Red",
-    "color_hex": "#C03023"
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#C03023",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
 }

@@ -5,14 +5,14 @@
     "density": 1.24,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Eryone PLA-CF",
+            "generic_id": "GFL99",
             "id": "EFL40",
-            "generic_id": "GFL99"
+            "profile_name": "Eryone PLA-CF"
         },
         "elegooslicer": {
-            "profile_name": "Eryone PLA-CF",
+            "generic_id": "GFL99",
             "id": "EFL40",
-            "generic_id": "GFL99"
+            "profile_name": "Eryone PLA-CF"
         }
     }
 }

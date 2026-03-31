@@ -1,8 +1,9 @@
 {
-    "id": "pink",
-    "name": "Pink",
-    "color_hex": "#f088e5",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#f088e5",
+  "traits": {
+    "recyclable": true,
+    "silk": true
+  }
 }

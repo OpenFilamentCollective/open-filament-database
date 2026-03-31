@@ -4,6 +4,7 @@
   "color_hex": "#EFE8D8",
   "traits": {
     "industrially_compostable": true,
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

@@ -3,6 +3,7 @@
   "name": "Green",
   "color_hex": "#58C91B",
   "traits": {
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

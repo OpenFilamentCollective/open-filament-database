@@ -5,19 +5,19 @@
     "density": 1.3,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Fiberon PETG-ESD",
+            "generic_id": "GFG99",
             "id": "GFL06",
-            "generic_id": "GFG99"
+            "profile_name": "Fiberon PETG-ESD"
         },
         "orcaslicer": {
-            "profile_name": "Fiberon PETG-ESD",
+            "generic_id": "GFG99",
             "id": "GFL06",
-            "generic_id": "GFG99"
+            "profile_name": "Fiberon PETG-ESD"
         },
         "elegooslicer": {
-            "profile_name": "Fiberon PETG-ESD",
-            "id": "GFL06",
-            "generic_id": "GFG99"
+            "generic_id": "GFG99",
+            "id": "OGFL06",
+            "profile_name": "Fiberon PETG-ESD"
         }
     }
 }

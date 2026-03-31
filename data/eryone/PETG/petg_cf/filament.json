@@ -5,14 +5,14 @@
     "density": 1.25,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Eryone PETG-CF",
+            "generic_id": "GFG99",
             "id": "EFL43",
-            "generic_id": "GFG99"
+            "profile_name": "Eryone PETG-CF"
         },
         "elegooslicer": {
-            "profile_name": "Eryone PETG-CF",
+            "generic_id": "GFG99",
             "id": "EFL43",
-            "generic_id": "GFG99"
+            "profile_name": "Eryone PETG-CF"
         }
     }
 }

@@ -3,6 +3,7 @@
   "name": "Red",
   "color_hex": "#D33D3D",
   "traits": {
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

@@ -3,5 +3,8 @@
   "name": "Mist Grey",
   "color_hex": [
     "#8C9798"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

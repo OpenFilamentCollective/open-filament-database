@@ -1,5 +1,8 @@
 {
-    "id": "yellow",
-    "name": "Yellow",
-    "color_hex": "#B7916C"
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#B7916C",
+  "traits": {
+    "contains_wood": true
+  }
 }

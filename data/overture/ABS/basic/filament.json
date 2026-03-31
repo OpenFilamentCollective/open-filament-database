@@ -5,9 +5,9 @@
     "density": 1.05,
     "slicer_settings": {
         "elegooslicer": {
-            "profile_name": "Overture ABS Basic",
+            "generic_id": "GFB99",
             "id": "OVTABS08",
-            "generic_id": "GFB99"
+            "profile_name": "Overture ABS Basic"
         }
     }
 }

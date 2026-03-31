@@ -9,19 +9,19 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Overture Matte PLA",
+            "generic_id": "GFL99",
             "id": "GFL05",
-            "generic_id": "GFL99"
+            "profile_name": "Overture Matte PLA"
         },
         "orcaslicer": {
-            "profile_name": "Overture Matte PLA",
+            "generic_id": "GFL99",
             "id": "GFL05",
-            "generic_id": "GFL99"
+            "profile_name": "Overture Matte PLA"
         },
         "elegooslicer": {
-            "profile_name": "Overture Matte PLA",
-            "id": "GFL05",
-            "generic_id": "GFL99"
+            "generic_id": "GFL99",
+            "id": "OGFL05",
+            "profile_name": "Overture Matte PLA"
         }
     }
 }

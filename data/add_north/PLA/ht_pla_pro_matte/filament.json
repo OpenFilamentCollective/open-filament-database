@@ -8,14 +8,14 @@
     "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_HTPLA_W-_Rjk.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth PLA HT-PLA PRO Matte",
+            "generic_id": "GFL99",
             "id": "GF_ANHTP",
-            "generic_id": "GFL99"
+            "profile_name": "addnorth PLA HT-PLA PRO Matte"
         },
         "orcaslicer": {
-            "profile_name": "addnorth PLA HT-PLA PRO Matte",
+            "generic_id": "GFL99",
             "id": "GF_ANHTP",
-            "generic_id": "GFL99"
+            "profile_name": "addnorth PLA HT-PLA PRO Matte"
         }
     }
 }

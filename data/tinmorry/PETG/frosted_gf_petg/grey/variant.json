@@ -3,6 +3,7 @@
   "name": "Grey",
   "color_hex": "#7A838E",
   "traits": {
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

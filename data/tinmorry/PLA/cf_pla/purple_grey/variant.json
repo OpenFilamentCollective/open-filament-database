@@ -3,6 +3,7 @@
   "name": "Purple Grey",
   "color_hex": "#4C5051",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

@@ -1,5 +1,8 @@
 {
-    "id": "skin",
-    "name": "Skin",
-    "color_hex": "#F2DCC2"
+  "id": "skin",
+  "name": "Skin",
+  "color_hex": "#F2DCC2",
+  "traits": {
+    "silk": true
+  }
 }

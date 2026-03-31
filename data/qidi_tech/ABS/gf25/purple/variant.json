@@ -1,5 +1,9 @@
 {
-    "id": "purple",
-    "name": "Purple",
-    "color_hex": "#7F347C"
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": "#7F347C",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
 }

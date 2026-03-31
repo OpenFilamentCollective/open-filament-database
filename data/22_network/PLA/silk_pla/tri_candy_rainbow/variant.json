@@ -4,6 +4,7 @@
   "color_hex": "#FF69B4",
   "traits": {
     "silk": true,
+    "iridescent": true,
     "gradual_color_change": true
   }
 }

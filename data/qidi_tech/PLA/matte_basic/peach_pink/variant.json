@@ -1,5 +1,8 @@
 {
-    "id": "peach_pink",
-    "name": "Peach Pink",
-    "color_hex": "#F5D3D6"
+  "id": "peach_pink",
+  "name": "Peach Pink",
+  "color_hex": "#F5D3D6",
+  "traits": {
+    "matte": true
+  }
 }

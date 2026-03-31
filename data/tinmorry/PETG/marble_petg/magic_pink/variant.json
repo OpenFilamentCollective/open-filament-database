@@ -3,6 +3,7 @@
   "name": "Magic Pink",
   "color_hex": "#ECE0EA",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

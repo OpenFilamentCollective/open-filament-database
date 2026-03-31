@@ -1,5 +1,8 @@
 {
   "id": "supernova_black",
   "name": "Supernova Black",
-  "color_hex": "#2A292E"
+  "color_hex": "#2A292E",
+  "traits": {
+    "glitter": true
+  }
 }

@@ -3,6 +3,7 @@
   "name": "95A Transparent",
   "color_hex": "#E4E7E5",
   "traits": {
+    "translucent": true,
     "transparent": true
   }
 }

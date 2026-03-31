@@ -3,6 +3,7 @@
   "name": "Light Grey",
   "color_hex": "#C3CCD5",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

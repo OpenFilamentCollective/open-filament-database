@@ -1,5 +1,8 @@
 {
   "id": "galactic_santa_s_robe",
   "name": "Galactic Santa's Robe",
-  "color_hex": "#FC3629"
+  "color_hex": "#FC3629",
+  "traits": {
+    "glitter": true
+  }
 }

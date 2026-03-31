@@ -1,0 +1,10 @@
+{
+  "id": "static_dissipative_cf_pla",
+  "name": "Static Dissipative Carbon Fiber PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 195,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70
+}

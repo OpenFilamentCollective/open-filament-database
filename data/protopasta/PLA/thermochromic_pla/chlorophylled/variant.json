@@ -1,0 +1,8 @@
+{
+  "id": "chlorophylled",
+  "name": "Chlorophylled",
+  "color_hex": "#375B4E",
+  "traits": {
+    "temperature_color_change": true
+  }
+}

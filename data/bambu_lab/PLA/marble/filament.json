@@ -7,19 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Marble_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Marble",
+            "generic_id": "GFL99",
             "id": "GFA07",
-            "generic_id": "GFL99"
+            "profile_name": "Bambu PLA Marble"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PLA Marble",
+            "generic_id": "GFL99",
             "id": "GFA07",
-            "generic_id": "GFL99"
+            "profile_name": "Bambu PLA Marble"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PLA Marble",
-            "id": "GFA07",
-            "generic_id": "GFL99"
+            "generic_id": "GFL99",
+            "id": "OGFA07",
+            "profile_name": "Bambu PLA Marble"
         }
     }
 }

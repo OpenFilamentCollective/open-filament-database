@@ -3,6 +3,7 @@
   "name": "Light Brown",
   "color_hex": "#E8DFD4",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

@@ -1,5 +1,8 @@
 {
-    "id": "malt_green",
-    "name": "Malt Green",
-    "color_hex": "#9AD24B"
+  "id": "malt_green",
+  "name": "Malt Green",
+  "color_hex": "#9AD24B",
+  "traits": {
+    "matte": true
+  }
 }

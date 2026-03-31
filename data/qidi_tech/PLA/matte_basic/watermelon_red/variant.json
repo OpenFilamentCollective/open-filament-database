@@ -1,5 +1,8 @@
 {
-    "id": "watermelon_red",
-    "name": "Watermelon Red",
-    "color_hex": "#F45D6D"
+  "id": "watermelon_red",
+  "name": "Watermelon Red",
+  "color_hex": "#F45D6D",
+  "traits": {
+    "matte": true
+  }
 }

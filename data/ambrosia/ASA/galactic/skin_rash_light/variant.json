@@ -1,5 +1,8 @@
 {
   "id": "skin_rash_light",
   "name": "Skin Rash (Light)",
-  "color_hex": "#CE9E7E"
+  "color_hex": "#CE9E7E",
+  "traits": {
+    "glitter": true
+  }
 }

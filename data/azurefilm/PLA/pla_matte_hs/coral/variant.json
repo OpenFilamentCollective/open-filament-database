@@ -3,5 +3,8 @@
   "name": "Coral",
   "color_hex": [
     "#C02A29"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

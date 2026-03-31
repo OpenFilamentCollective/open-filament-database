@@ -3,5 +3,8 @@
   "name": "Army Green",
   "color_hex": [
     "#656545"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

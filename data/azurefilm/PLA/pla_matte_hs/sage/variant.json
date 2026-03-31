@@ -3,5 +3,8 @@
   "name": "Sage",
   "color_hex": [
     "#A1A397"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

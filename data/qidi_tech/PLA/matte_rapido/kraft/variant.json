@@ -1,5 +1,8 @@
 {
-    "id": "kraft",
-    "name": "Kraft",
-    "color_hex": "#C6AA76"
+  "id": "kraft",
+  "name": "Kraft",
+  "color_hex": "#C6AA76",
+  "traits": {
+    "matte": true
+  }
 }

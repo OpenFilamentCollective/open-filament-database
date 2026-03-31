@@ -3,6 +3,7 @@
   "name": "Carter Yellow",
   "color_hex": "#F8CC00",
   "traits": {
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

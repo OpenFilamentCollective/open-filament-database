@@ -5,14 +5,14 @@
     "density": 0.95,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Eryone PP-CF",
+            "generic_id": "GFP97",
             "id": "EFL33",
-            "generic_id": "GFP97"
+            "profile_name": "Eryone PP-CF"
         },
         "elegooslicer": {
-            "profile_name": "Eryone PP-CF",
+            "generic_id": "GFP97",
             "id": "EFL33",
-            "generic_id": "GFP97"
+            "profile_name": "Eryone PP-CF"
         }
     }
 }

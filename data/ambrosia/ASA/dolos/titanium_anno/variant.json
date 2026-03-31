@@ -1,5 +1,8 @@
 {
   "id": "titanium_anno",
   "name": "Titanium Anno",
-  "color_hex": "#2B3E63"
+  "color_hex": "#2B3E63",
+  "traits": {
+    "coextruded": true
+  }
 }

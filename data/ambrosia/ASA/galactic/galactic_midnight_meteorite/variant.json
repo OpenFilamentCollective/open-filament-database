@@ -1,5 +1,8 @@
 {
   "id": "galactic_midnight_meteorite",
   "name": "Galactic Midnight Meteorite",
-  "color_hex": "#40298E"
+  "color_hex": "#40298E",
+  "traits": {
+    "glitter": true
+  }
 }

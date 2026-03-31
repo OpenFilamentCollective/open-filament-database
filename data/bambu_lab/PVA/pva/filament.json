@@ -11,19 +11,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_PVA.pdf?v=1710243141",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PVA",
+            "generic_id": "GFS99",
             "id": "GFS04",
-            "generic_id": "GFS99"
+            "profile_name": "Bambu PVA"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PVA",
+            "generic_id": "GFS99",
             "id": "GFS04",
-            "generic_id": "GFS99"
+            "profile_name": "Bambu PVA"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PVA",
-            "id": "GFS04",
-            "generic_id": "GFS99"
+            "generic_id": "GFS99",
+            "id": "OGFS04",
+            "profile_name": "Bambu PVA"
         }
     }
 }

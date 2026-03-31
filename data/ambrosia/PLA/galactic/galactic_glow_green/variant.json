@@ -1,5 +1,9 @@
 {
   "id": "galactic_glow_green",
   "name": "Galactic Glow Green",
-  "color_hex": "#00ED60"
+  "color_hex": "#00ED60",
+  "traits": {
+    "glow": true,
+    "glitter": true
+  }
 }

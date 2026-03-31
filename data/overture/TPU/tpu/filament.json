@@ -8,20 +8,20 @@
     "min_bed_temperature": 30,
     "max_bed_temperature": 60,
     "slicer_settings": {
-        "orcaslicer": {
-            "profile_name": "Overture TPU",
-            "id": "GFOT008",
-            "generic_id": "GFU99"
+        "prusaslicer": {
+            "profile_name": "Overture TPU"
         },
-        "elegooslicer": {
-            "profile_name": "Overture TPU",
-            "id": "GFOT008_04",
-            "generic_id": "GFU99"
+        "orcaslicer": {
+            "generic_id": "GFU99",
+            "id": "GFOT008",
+            "profile_name": "Overture TPU"
         },
         "superslicer": {
             "profile_name": "Overture TPU"
         },
-        "prusaslicer": {
+        "elegooslicer": {
+            "generic_id": "GFU99",
+            "id": "GFOT008",
             "profile_name": "Overture TPU"
         }
     }

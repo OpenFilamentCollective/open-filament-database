@@ -6,14 +6,14 @@
     "max_dry_temperature": 55,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth TPU Pro Matte 95A",
+            "generic_id": "GFU99",
             "id": "GF_ANTM",
-            "generic_id": "GFU99"
+            "profile_name": "addnorth TPU Pro Matte 95A"
         },
         "orcaslicer": {
-            "profile_name": "addnorth TPU Pro Matte 95A",
+            "generic_id": "GFU99",
             "id": "GF_ANTM",
-            "generic_id": "GFU99"
+            "profile_name": "addnorth TPU Pro Matte 95A"
         }
     }
 }

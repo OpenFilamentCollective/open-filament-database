@@ -1,5 +1,8 @@
 {
   "id": "black_multi_color_glitter",
   "name": "Black Multi Color Glitter",
-  "color_hex": "#000000"
+  "color_hex": "#000000",
+  "traits": {
+    "glitter": true
+  }
 }

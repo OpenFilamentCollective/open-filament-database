@@ -3,6 +3,7 @@
   "name": "Peacock Green",
   "color_hex": "#2B5D66",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

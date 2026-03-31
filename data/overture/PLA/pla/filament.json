@@ -8,25 +8,25 @@
     "min_bed_temperature": 50,
     "max_bed_temperature": 70,
     "slicer_settings": {
-        "bambustudio": {
-            "profile_name": "Overture PLA",
-            "id": "GFL04",
-            "generic_id": "GFL99"
-        },
-        "orcaslicer": {
-            "profile_name": "Overture PLA",
-            "id": "GFL99",
-            "generic_id": "GFL99"
-        },
         "prusaslicer": {
             "profile_name": "Overture PLA"
         },
-        "elegooslicer": {
-            "profile_name": "Overture PLA",
+        "bambustudio": {
+            "generic_id": "GFL99",
+            "id": "GFL04",
+            "profile_name": "Overture PLA"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
             "id": "GFL99",
-            "generic_id": "GFL99"
+            "profile_name": "Overture PLA"
         },
         "superslicer": {
+            "profile_name": "Overture PLA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "OGFL04",
             "profile_name": "Overture PLA"
         }
     }

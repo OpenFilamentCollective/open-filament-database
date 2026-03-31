@@ -5,14 +5,14 @@
     "density": 1.25,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Creality Hyper PLA-CF",
+            "generic_id": "GFL99",
             "id": "02001",
-            "generic_id": "GFL99"
+            "profile_name": "Creality Hyper PLA-CF"
         },
         "elegooslicer": {
-            "profile_name": "Creality Hyper PLA-CF",
+            "generic_id": "GFL99",
             "id": "02001",
-            "generic_id": "GFL99"
+            "profile_name": "Creality Hyper PLA-CF"
         }
     }
 }

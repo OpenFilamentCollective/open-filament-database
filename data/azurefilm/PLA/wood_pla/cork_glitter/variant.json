@@ -1,5 +1,9 @@
 {
-    "id": "cork_glitter",
-    "name": "Cork glitter",
-    "color_hex": "#8e7d61"
+  "id": "cork_glitter",
+  "name": "Cork glitter",
+  "color_hex": "#8e7d61",
+  "traits": {
+    "glitter": true,
+    "contains_wood": true
+  }
 }

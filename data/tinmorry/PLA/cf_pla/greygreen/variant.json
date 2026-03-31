@@ -3,6 +3,7 @@
   "name": "GreyGreen",
   "color_hex": "#656D60",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

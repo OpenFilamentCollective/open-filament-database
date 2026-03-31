@@ -1,5 +1,8 @@
 {
   "id": "black",
   "name": "Black",
-  "color_hex": "#25282A"
+  "color_hex": "#25282A",
+  "traits": {
+    "matte": true
+  }
 }

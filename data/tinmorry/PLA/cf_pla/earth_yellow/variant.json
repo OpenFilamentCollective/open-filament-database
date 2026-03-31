@@ -3,6 +3,7 @@
   "name": "Earth Yellow",
   "color_hex": "#73755E",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

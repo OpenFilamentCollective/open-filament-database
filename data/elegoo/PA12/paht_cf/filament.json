@@ -4,9 +4,13 @@
     "diameter_tolerance": 0.02,
     "density": 1.06,
     "slicer_settings": {
+        "orcaslicer": {
+            "id": "EPAHTB00",
+            "profile_name": "Elegoo PAHT-CF"
+        },
         "elegooslicer": {
-            "profile_name": "Elegoo PAHT-CF",
-            "id": "EPAHTB00"
+            "id": "EPAHTB00",
+            "profile_name": "Elegoo PAHT-CF"
         }
     }
 }

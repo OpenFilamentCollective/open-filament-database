@@ -13,14 +13,14 @@
             "profile_name": "Prusament PVB"
         },
         "orcaslicer": {
-            "profile_name": "Prusament PVB",
-            "id": "GFS98"
-        },
-        "elegooslicer": {
-            "profile_name": "Prusament PVB",
-            "id": "GFS98"
+            "id": "GFS98",
+            "profile_name": "Prusament PVB"
         },
         "superslicer": {
+            "profile_name": "Prusament PVB"
+        },
+        "elegooslicer": {
+            "id": "GFS98",
             "profile_name": "Prusament PVB"
         }
     }

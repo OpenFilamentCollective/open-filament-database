@@ -3,6 +3,7 @@
   "name": "Reddish Brown",
   "color_hex": "#4F3240",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

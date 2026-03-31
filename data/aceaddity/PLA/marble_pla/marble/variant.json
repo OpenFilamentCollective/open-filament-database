@@ -3,6 +3,7 @@
   "name": "Marble",
   "color_hex": "#ADB4B9",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

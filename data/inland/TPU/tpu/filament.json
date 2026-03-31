@@ -1,6 +1,6 @@
 {
+  "id": "tpu",
   "name": "TPU",
   "diameter_tolerance": 0.02,
-  "density": 1.19,
-  "id": "tpu"
+  "density": 1.19
 }

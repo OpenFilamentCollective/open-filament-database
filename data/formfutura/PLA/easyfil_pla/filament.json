@@ -8,10 +8,10 @@
     "min_bed_temperature": 50,
     "max_bed_temperature": 70,
     "slicer_settings": {
-        "superslicer": {
+        "prusaslicer": {
             "profile_name": "FormFutura EasyFil PLA"
         },
-        "prusaslicer": {
+        "superslicer": {
             "profile_name": "FormFutura EasyFil PLA"
         }
     }

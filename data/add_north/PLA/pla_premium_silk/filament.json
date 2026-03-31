@@ -6,14 +6,14 @@
     "max_dry_temperature": 50,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth PLA Premium Silk",
+            "generic_id": "GFL96",
             "id": "GF_ANPS",
-            "generic_id": "GFL96"
+            "profile_name": "addnorth PLA Premium Silk"
         },
         "orcaslicer": {
-            "profile_name": "addnorth PLA Premium Silk",
+            "generic_id": "GFL96",
             "id": "GF_ANPS",
-            "generic_id": "GFL96"
+            "profile_name": "addnorth PLA Premium Silk"
         }
     }
 }

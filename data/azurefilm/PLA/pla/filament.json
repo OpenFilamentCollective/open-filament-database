@@ -4,10 +4,10 @@
     "diameter_tolerance": 0.02,
     "density": 1.24,
     "slicer_settings": {
-        "superslicer": {
+        "prusaslicer": {
             "profile_name": "AzureFilm PLA"
         },
-        "prusaslicer": {
+        "superslicer": {
             "profile_name": "AzureFilm PLA"
         }
     }

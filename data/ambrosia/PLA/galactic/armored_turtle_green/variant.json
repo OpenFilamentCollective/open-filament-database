@@ -1,5 +1,8 @@
 {
   "id": "armored_turtle_green",
   "name": "Armored Turtle Green",
-  "color_hex": "#0E945B"
+  "color_hex": "#0E945B",
+  "traits": {
+    "glitter": true
+  }
 }

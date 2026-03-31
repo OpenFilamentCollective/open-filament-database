@@ -5,19 +5,19 @@
     "density": 1.12,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "PolyLite ABS",
+            "generic_id": "GFB99",
             "id": "GFB60",
-            "generic_id": "GFB99"
+            "profile_name": "PolyLite ABS"
         },
         "orcaslicer": {
-            "profile_name": "PolyLite ABS",
+            "generic_id": "GFB99",
             "id": "GFB99",
-            "generic_id": "GFB99"
+            "profile_name": "PolyLite ABS"
         },
         "elegooslicer": {
-            "profile_name": "PolyLite ABS",
-            "id": "GFB99",
-            "generic_id": "GFB99"
+            "generic_id": "GFB99",
+            "id": "OGFB60",
+            "profile_name": "PolyLite ABS"
         }
     }
 }

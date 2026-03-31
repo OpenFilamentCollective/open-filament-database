@@ -3,6 +3,7 @@
   "name": "BrickRed",
   "color_hex": "#9F563E",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

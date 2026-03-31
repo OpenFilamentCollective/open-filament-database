@@ -4,18 +4,18 @@
     "diameter_tolerance": 0.02,
     "density": 1.29,
     "slicer_settings": {
-        "orcaslicer": {
-            "profile_name": "Elegoo RAPID PETG",
-            "id": "ERPETGB00",
-            "generic_id": "GFG99"
-        },
-        "elegooslicer": {
-            "profile_name": "Elegoo RAPID PETG",
-            "id": "EPETGB00",
-            "generic_id": "GFG99"
-        },
         "prusaslicer": {
             "profile_name": "Elegoo Rapid PETG"
+        },
+        "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "ERPETGB00",
+            "profile_name": "Elegoo RAPID PETG"
+        },
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "EPETGB00",
+            "profile_name": "Elegoo RAPID PETG"
         }
     }
 }

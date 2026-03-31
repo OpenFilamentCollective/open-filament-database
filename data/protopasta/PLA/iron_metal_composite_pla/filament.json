@@ -1,0 +1,10 @@
+{
+  "id": "iron_metal_composite_pla",
+  "name": "Iron Metal Composite PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.85,
+  "min_print_temperature": 185,
+  "max_print_temperature": 215,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70
+}

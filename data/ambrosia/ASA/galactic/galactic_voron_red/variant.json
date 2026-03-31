@@ -1,5 +1,8 @@
 {
   "id": "galactic_voron_red",
   "name": "Galactic Voron Red",
-  "color_hex": "#BC2421"
+  "color_hex": "#BC2421",
+  "traits": {
+    "glitter": true
+  }
 }

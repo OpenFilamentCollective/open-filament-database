@@ -5,14 +5,14 @@
     "density": 1.16,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Elegoo TPU 95A",
+            "generic_id": "GFU99",
             "id": "ETPU95AB00",
-            "generic_id": "GFU99"
+            "profile_name": "Elegoo TPU 95A"
         },
         "elegooslicer": {
-            "profile_name": "Elegoo TPU 95A",
+            "generic_id": "GFU99",
             "id": "ETPUB00",
-            "generic_id": "GFU99"
+            "profile_name": "Elegoo TPU 95A"
         }
     }
 }

@@ -7,19 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_TPU_95A_HF.pdf?v=1705372919",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu TPU 95A HF",
+            "generic_id": "GFU99",
             "id": "GFU00",
-            "generic_id": "GFU99"
+            "profile_name": "Bambu TPU 95A HF"
         },
         "orcaslicer": {
-            "profile_name": "Bambu TPU 95A HF",
+            "generic_id": "GFU99",
             "id": "GFU00",
-            "generic_id": "GFU99"
+            "profile_name": "Bambu TPU 95A HF"
         },
         "elegooslicer": {
-            "profile_name": "Bambu TPU 95A HF",
-            "id": "GFU00",
-            "generic_id": "GFU99"
+            "generic_id": "GFU99",
+            "id": "OGFU00",
+            "profile_name": "Bambu TPU 95A HF"
         }
     }
 }

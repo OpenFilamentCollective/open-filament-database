@@ -1,0 +1,9 @@
+{
+  "id": "gray",
+  "name": "Gray",
+  "color_hex": "#64676C",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

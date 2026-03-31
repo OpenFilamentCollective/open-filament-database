@@ -1,5 +1,8 @@
 {
   "id": "green",
   "name": "Green",
-  "color_hex": "#90903B"
+  "color_hex": "#90903B",
+  "traits": {
+    "imitates_metal": true
+  }
 }

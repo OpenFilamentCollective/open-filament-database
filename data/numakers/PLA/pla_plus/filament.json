@@ -10,6 +10,11 @@
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Numakers PLA+"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GFNMK00",
+            "profile_name": "Numakers PLA+"
         }
     }
 }

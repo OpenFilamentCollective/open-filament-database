@@ -1,0 +1,26 @@
+{
+    "id": "for_pla",
+    "name": "for PLA",
+    "diameter_tolerance": 0.05,
+    "density": 1.33,
+    "max_dry_temperature": 55,
+    "data_sheet_url": "https://store.bblcdn.com/s2/default/200ef29f5cd04b20ba6c2c86f0cc3ec0/Bambus_Support_for_PLA_Technical_Data_Sheet.pdf",
+    "safety_sheet_url": "https://store.bblcdn.com/s7/default/b7f580064c0142be919de0225299a008/SDS20250928S02_Bambu_Support_for_PLA.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFS99",
+            "id": "GFS02",
+            "profile_name": "Bambu Support For PLA"
+        },
+        "orcaslicer": {
+            "generic_id": "GFS99",
+            "id": "GFS02",
+            "profile_name": "Bambu Support For PLA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFS99",
+            "id": "OGFS02",
+            "profile_name": "Bambu Support For PLA"
+        }
+    }
+}

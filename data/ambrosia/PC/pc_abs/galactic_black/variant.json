@@ -1,5 +1,8 @@
 {
   "id": "galactic_black",
   "name": "Galactic Black",
-  "color_hex": "#000002"
+  "color_hex": "#000002",
+  "traits": {
+    "glitter": true
+  }
 }

@@ -1,5 +1,8 @@
 {
   "id": "british_racing_green",
   "name": "British Racing Green",
-  "color_hex": "#2D6467"
+  "color_hex": "#2D6467",
+  "traits": {
+    "matte": true
+  }
 }

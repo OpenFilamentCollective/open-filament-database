@@ -3,6 +3,7 @@
   "name": "Gemstone Green",
   "color_hex": "#1E5A4F",
   "traits": {
-    "iridescent": true
+    "iridescent": true,
+    "glitter": true
   }
 }

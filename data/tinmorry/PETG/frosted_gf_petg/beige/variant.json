@@ -3,6 +3,7 @@
   "name": "Beige",
   "color_hex": "#D8CF8C",
   "traits": {
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

@@ -1,5 +1,9 @@
 {
-    "id": "midnight_blue",
-    "name": "Midnight Blue",
-    "color_hex": "#566B8F"
+  "id": "midnight_blue",
+  "name": "Midnight Blue",
+  "color_hex": "#566B8F",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

@@ -1,5 +1,8 @@
 {
-    "id": "bamboo",
-    "name": "Bamboo",
-    "color_hex": "#b59073"
+  "id": "bamboo",
+  "name": "Bamboo",
+  "color_hex": "#b59073",
+  "traits": {
+    "contains_wood": true
+  }
 }

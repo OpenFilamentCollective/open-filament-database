@@ -5,14 +5,14 @@
     "density": 1.2,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Panchroma PLA Silk",
+            "generic_id": "GFL96",
             "id": "GFPM004",
-            "generic_id": "GFL96"
+            "profile_name": "Panchroma PLA Silk"
         },
         "elegooslicer": {
-            "profile_name": "Panchroma PLA Silk",
-            "id": "GFPM004",
-            "generic_id": "GFL96"
+            "generic_id": "GFL96",
+            "id": "OGFPM004",
+            "profile_name": "Panchroma PLA Silk"
         }
     }
 }

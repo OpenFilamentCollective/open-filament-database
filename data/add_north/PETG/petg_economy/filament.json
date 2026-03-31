@@ -7,14 +7,14 @@
     "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_PETGv0_oY3Rem.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth PETG Economy",
+            "generic_id": "GFG99",
             "id": "GF_ANGE",
-            "generic_id": "GFG99"
+            "profile_name": "addnorth PETG Economy"
         },
         "orcaslicer": {
-            "profile_name": "addnorth PETG Economy",
+            "generic_id": "GFG99",
             "id": "GF_ANGE",
-            "generic_id": "GFG99"
+            "profile_name": "addnorth PETG Economy"
         }
     }
 }

@@ -7,14 +7,14 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_PETG_Filament_CANEC25014244301_SZP25-029821_-Final.pdf?v=1757556999",
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Anycubic PLA Silk",
+            "generic_id": "GFL96",
             "id": "GFL99",
-            "generic_id": "GFL96"
+            "profile_name": "Anycubic PLA Silk"
         },
         "elegooslicer": {
-            "profile_name": "Anycubic PLA Silk",
+            "generic_id": "GFL96",
             "id": "GFL99",
-            "generic_id": "GFL96"
+            "profile_name": "Anycubic PLA Silk"
         }
     }
 }

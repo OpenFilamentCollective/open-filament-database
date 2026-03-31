@@ -1,5 +1,8 @@
 {
   "id": "holiday_red",
   "name": "Holiday Red",
-  "color_hex": "#EF2D1D"
+  "color_hex": "#EF2D1D",
+  "traits": {
+    "glitter": true
+  }
 }

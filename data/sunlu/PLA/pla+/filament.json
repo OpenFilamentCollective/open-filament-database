@@ -5,19 +5,19 @@
     "density": 1.26,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "SUNLU PLA+",
+            "generic_id": "GFL99",
             "id": "GFSNL03",
-            "generic_id": "GFL99"
+            "profile_name": "SUNLU PLA+"
         },
         "orcaslicer": {
-            "profile_name": "SUNLU PLA+",
+            "generic_id": "GFL99",
             "id": "GFSNL03",
-            "generic_id": "GFL99"
+            "profile_name": "SUNLU PLA+"
         },
         "elegooslicer": {
-            "profile_name": "SUNLU PLA+",
-            "id": "GFSNL03",
-            "generic_id": "GFL99"
+            "generic_id": "GFL99",
+            "id": "OGFSNL03",
+            "profile_name": "SUNLU PLA+"
         }
     }
 }

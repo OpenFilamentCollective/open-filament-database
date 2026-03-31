@@ -11,18 +11,18 @@
         "prusaslicer": {
             "profile_name": "Hatchbox ABS"
         },
+        "orcaslicer": {
+            "generic_id": "GFB99",
+            "id": "GFB99",
+            "profile_name": "HATCHBOX ABS"
+        },
         "superslicer": {
             "profile_name": "Hatchbox ABS"
         },
-        "orcaslicer": {
-            "profile_name": "HATCHBOX ABS",
-            "id": "GFB99",
-            "generic_id": "GFB99"
-        },
         "elegooslicer": {
-            "profile_name": "HATCHBOX ABS",
+            "generic_id": "GFB99",
             "id": "GFB99",
-            "generic_id": "GFB99"
+            "profile_name": "HATCHBOX ABS"
         }
     }
 }

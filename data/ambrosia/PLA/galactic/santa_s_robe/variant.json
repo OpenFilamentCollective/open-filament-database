@@ -1,5 +1,8 @@
 {
   "id": "santa_s_robe",
   "name": "Santa's Robe",
-  "color_hex": "#FC3629"
+  "color_hex": "#FC3629",
+  "traits": {
+    "glitter": true
+  }
 }

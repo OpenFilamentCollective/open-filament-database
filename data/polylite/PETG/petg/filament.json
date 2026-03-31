@@ -5,19 +5,19 @@
     "density": 1.25,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "PolyLite PETG",
+            "generic_id": "GFG99",
             "id": "GFG60",
-            "generic_id": "GFG99"
+            "profile_name": "PolyLite PETG"
         },
         "orcaslicer": {
-            "profile_name": "PolyLite PETG",
-            "id": "GFG60",
-            "generic_id": "GFG99"
+            "generic_id": "GFG99",
+            "id": "PMPE04",
+            "profile_name": "PolyLite PETG"
         },
         "elegooslicer": {
-            "profile_name": "PolyLite PETG",
-            "id": "GFG60",
-            "generic_id": "GFG99"
+            "generic_id": "GFG99",
+            "id": "OGFG60",
+            "profile_name": "PolyLite PETG"
         }
     }
 }

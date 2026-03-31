@@ -1,5 +1,8 @@
 {
   "id": "galactic_holiday_green",
   "name": "Galactic Holiday Green",
-  "color_hex": "#C8D639"
+  "color_hex": "#C8D639",
+  "traits": {
+    "glitter": true
+  }
 }

@@ -11,6 +11,7 @@
   "traits": {
     "industrially_compostable": true,
     "silk": true,
+    "iridescent": true,
     "gradual_color_change": true
   }
 }

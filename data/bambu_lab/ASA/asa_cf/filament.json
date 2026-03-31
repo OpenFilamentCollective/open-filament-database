@@ -7,19 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_ASA-CF_MSDS.pdf?v=1726741602",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu ASA-CF",
+            "generic_id": "GFB98",
             "id": "GFB51",
-            "generic_id": "GFB98"
+            "profile_name": "Bambu ASA-CF"
         },
         "orcaslicer": {
-            "profile_name": "Bambu ASA-CF",
+            "generic_id": "GFB98",
             "id": "GFB51",
-            "generic_id": "GFB98"
+            "profile_name": "Bambu ASA-CF"
         },
         "elegooslicer": {
-            "profile_name": "Bambu ASA-CF",
-            "id": "GFB51",
-            "generic_id": "GFB98"
+            "generic_id": "GFB98",
+            "id": "OGFB51",
+            "profile_name": "Bambu ASA-CF"
         }
     }
 }

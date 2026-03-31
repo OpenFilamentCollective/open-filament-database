@@ -7,19 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Matte_MSDS.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu PLA Matte",
+            "generic_id": "GFL99",
             "id": "GFA01",
-            "generic_id": "GFL99"
+            "profile_name": "Bambu PLA Matte"
         },
         "orcaslicer": {
-            "profile_name": "Bambu PLA Matte",
+            "generic_id": "GFL99",
             "id": "GFA01",
-            "generic_id": "GFL99"
+            "profile_name": "Bambu PLA Matte"
         },
         "elegooslicer": {
-            "profile_name": "Bambu PLA Matte",
-            "id": "GFA01",
-            "generic_id": "GFL99"
+            "generic_id": "GFL99",
+            "id": "OGFA01",
+            "profile_name": "Bambu PLA Matte"
         }
     }
 }

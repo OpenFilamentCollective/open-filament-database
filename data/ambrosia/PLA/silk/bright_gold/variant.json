@@ -1,5 +1,8 @@
 {
   "id": "bright_gold",
   "name": "Bright Gold",
-  "color_hex": "#FAC33A"
+  "color_hex": "#FAC33A",
+  "traits": {
+    "silk": true
+  }
 }

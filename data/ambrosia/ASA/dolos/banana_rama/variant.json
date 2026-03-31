@@ -1,5 +1,8 @@
 {
   "id": "banana_rama",
   "name": "Banana Rama",
-  "color_hex": "#F2C987"
+  "color_hex": "#F2C987",
+  "traits": {
+    "coextruded": true
+  }
 }

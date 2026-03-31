@@ -3,6 +3,7 @@
   "name": "Magic Green",
   "color_hex": "#C8D8C4",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

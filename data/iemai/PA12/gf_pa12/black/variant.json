@@ -3,7 +3,7 @@
   "name": "Black",
   "color_hex": "#000000",
   "traits": {
-    "contains_glass_fiber": true,
-    "abrasive": true
+    "abrasive": true,
+    "contains_glass_fiber": true
   }
 }

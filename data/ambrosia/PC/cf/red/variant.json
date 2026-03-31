@@ -1,5 +1,9 @@
 {
   "id": "red",
   "name": "Red",
-  "color_hex": "#F12D43"
+  "color_hex": "#F12D43",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

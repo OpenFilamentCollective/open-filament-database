@@ -3,5 +3,8 @@
   "name": "Black",
   "color_hex": [
     "#000000"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

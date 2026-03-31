@@ -5,14 +5,14 @@
     "density": 1.31,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Elegoo PLA Matte",
-            "id": "GFL99",
-            "generic_id": "GFL99"
+            "generic_id": "GFL99",
+            "id": "EPLAB00",
+            "profile_name": "Elegoo PLA Matte"
         },
         "elegooslicer": {
-            "profile_name": "Elegoo PLA Matte",
+            "generic_id": "GFL99",
             "id": "EPLAB00",
-            "generic_id": "GFL99"
+            "profile_name": "Elegoo PLA Matte"
         }
     }
 }

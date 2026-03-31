@@ -3,5 +3,8 @@
   "name": "Off-White",
   "color_hex": [
     "#CFC6BB"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

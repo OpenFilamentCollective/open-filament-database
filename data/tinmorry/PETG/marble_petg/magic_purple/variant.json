@@ -3,6 +3,7 @@
   "name": "Magic Purple",
   "color_hex": "#DAD4DC",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "imitates_stone": true
   }
 }

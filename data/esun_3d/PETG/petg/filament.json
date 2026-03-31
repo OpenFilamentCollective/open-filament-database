@@ -8,16 +8,16 @@
     "min_bed_temperature": 70,
     "max_bed_temperature": 90,
     "slicer_settings": {
-        "elegooslicer": {
-            "profile_name": "eSUN PETG",
-            "id": "ESN03",
-            "generic_id": "GFG99"
-        },
         "prusaslicer": {
             "profile_name": "Esun PETG"
         },
         "superslicer": {
             "profile_name": "Esun PETG"
+        },
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "ESN03",
+            "profile_name": "eSUN PETG"
         }
     }
 }

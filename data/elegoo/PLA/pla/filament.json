@@ -8,17 +8,17 @@
     "min_bed_temperature": 50,
     "max_bed_temperature": 70,
     "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Elegoo PLA"
+        },
         "orcaslicer": {
-            "profile_name": "Elegoo PLA",
+            "generic_id": "GFL99",
             "id": "EPLAB00",
-            "generic_id": "GFL99"
+            "profile_name": "Elegoo PLA"
         },
         "elegooslicer": {
-            "profile_name": "Elegoo PLA",
+            "generic_id": "GFL99",
             "id": "EPLAB00",
-            "generic_id": "GFL99"
-        },
-        "prusaslicer": {
             "profile_name": "Elegoo PLA"
         }
     }

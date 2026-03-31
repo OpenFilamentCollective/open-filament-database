@@ -3,5 +3,8 @@
   "name": "Rosy",
   "color_hex": [
     "#D9BEC0"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

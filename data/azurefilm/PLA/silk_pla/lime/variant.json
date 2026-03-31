@@ -1,8 +1,9 @@
 {
-    "id": "lime",
-    "name": "Lime",
-    "color_hex": "#cef157",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "lime",
+  "name": "Lime",
+  "color_hex": "#cef157",
+  "traits": {
+    "recyclable": true,
+    "silk": true
+  }
 }

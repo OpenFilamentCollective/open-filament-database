@@ -1,8 +1,9 @@
 {
-    "id": "black_glitter",
-    "name": "Black glitter",
-    "color_hex": "#121212",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "black_glitter",
+  "name": "Black glitter",
+  "color_hex": "#121212",
+  "traits": {
+    "recyclable": true,
+    "glitter": true
+  }
 }

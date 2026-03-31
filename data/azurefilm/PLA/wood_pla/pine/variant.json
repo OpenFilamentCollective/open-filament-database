@@ -1,5 +1,8 @@
 {
-    "id": "pine",
-    "name": "Pine",
-    "color_hex": "#c2a085"
+  "id": "pine",
+  "name": "Pine",
+  "color_hex": "#c2a085",
+  "traits": {
+    "contains_wood": true
+  }
 }

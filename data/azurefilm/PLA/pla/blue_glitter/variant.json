@@ -1,8 +1,9 @@
 {
-    "id": "blue_glitter",
-    "name": "Blue glitter",
-    "color_hex": "#1a3095",
-    "traits": {
-        "recyclable": true
-    }
+  "id": "blue_glitter",
+  "name": "Blue glitter",
+  "color_hex": "#1a3095",
+  "traits": {
+    "recyclable": true,
+    "glitter": true
+  }
 }

@@ -5,19 +5,19 @@
     "density": 1.13,
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "PolyLite ASA",
+            "generic_id": "GFB98",
             "id": "GFB61",
-            "generic_id": "GFB98"
+            "profile_name": "PolyLite ASA"
         },
         "orcaslicer": {
-            "profile_name": "PolyLite ASA",
+            "generic_id": "GFB98",
             "id": "GFB61",
-            "generic_id": "GFB98"
+            "profile_name": "PolyLite ASA"
         },
         "elegooslicer": {
-            "profile_name": "PolyLite ASA",
-            "id": "GFB61",
-            "generic_id": "GFB98"
+            "generic_id": "GFB98",
+            "id": "OGFB61",
+            "profile_name": "PolyLite ASA"
         }
     }
 }

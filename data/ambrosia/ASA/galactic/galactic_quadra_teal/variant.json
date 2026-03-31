@@ -1,5 +1,8 @@
 {
   "id": "galactic_quadra_teal",
   "name": "Galactic Quadra Teal",
-  "color_hex": "#22AAC9"
+  "color_hex": "#22AAC9",
+  "traits": {
+    "glitter": true
+  }
 }

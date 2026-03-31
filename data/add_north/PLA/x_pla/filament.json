@@ -8,14 +8,14 @@
     "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_XPLA_5chi81.pdf",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "addnorth PLA X-PLA",
+            "generic_id": "GFL99",
             "id": "GF_ANXP",
-            "generic_id": "GFL99"
+            "profile_name": "addnorth PLA X-PLA"
         },
         "orcaslicer": {
-            "profile_name": "addnorth PLA X-PLA",
+            "generic_id": "GFL99",
             "id": "GF_ANXP",
-            "generic_id": "GFL99"
+            "profile_name": "addnorth PLA X-PLA"
         }
     }
 }

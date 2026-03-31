@@ -3,5 +3,8 @@
   "name": "Creamstone",
   "color_hex": [
     "#D2CAAE"
-  ]
+  ],
+  "traits": {
+    "matte": true
+  }
 }

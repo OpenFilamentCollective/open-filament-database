@@ -1,0 +1,9 @@
+{
+  "id": "light",
+  "name": "Light",
+  "color_hex": "#AFBDC6",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

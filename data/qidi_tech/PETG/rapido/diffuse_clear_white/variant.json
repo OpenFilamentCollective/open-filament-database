@@ -1,5 +1,8 @@
 {
-    "id": "diffuse_clear_white",
-    "name": "Diffuse Clear White",
-    "color_hex": "#FFFFFF"
+  "id": "diffuse_clear_white",
+  "name": "Diffuse Clear White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "translucent": true
+  }
 }

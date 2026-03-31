@@ -1,0 +1,19 @@
+{
+  "id": "pla_pastel",
+  "name": "PLA Pastel",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "min_print_temperature": 185,
+  "max_print_temperature": 215,
+  "min_bed_temperature": 20,
+  "max_bed_temperature": 60,
+  "discontinued": false,
+  "slicer_settings": {
+    "generic": {
+      "bed_temp": 55,
+      "first_layer_bed_temp": 60,
+      "first_layer_nozzle_temp": 210,
+      "nozzle_temp": 210
+    }
+  }
+}

@@ -4,10 +4,15 @@
     "diameter_tolerance": 0.02,
     "density": 1.16,
     "slicer_settings": {
-        "elegooslicer": {
-            "profile_name": "Elegoo RAPID TPU 95A",
+        "orcaslicer": {
+            "generic_id": "GFU99",
             "id": "ETPUB00",
-            "generic_id": "GFU99"
+            "profile_name": "Elegoo RAPID TPU 95A"
+        },
+        "elegooslicer": {
+            "generic_id": "GFU99",
+            "id": "ETPUB00",
+            "profile_name": "Elegoo RAPID TPU 95A"
         }
     }
 }

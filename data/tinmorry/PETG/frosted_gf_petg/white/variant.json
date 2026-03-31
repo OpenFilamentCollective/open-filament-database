@@ -3,6 +3,7 @@
   "name": "White",
   "color_hex": "#EFEFEF",
   "traits": {
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

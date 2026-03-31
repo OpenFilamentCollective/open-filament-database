@@ -7,19 +7,19 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Support_for_ABS_MSDS.pdf?v=1721034621",
     "slicer_settings": {
         "bambustudio": {
-            "profile_name": "Bambu Support for ABS",
+            "generic_id": "GFS99",
             "id": "GFS06",
-            "generic_id": "GFS99"
+            "profile_name": "Bambu Support for ABS"
         },
         "orcaslicer": {
-            "profile_name": "Bambu Support for ABS",
+            "generic_id": "GFS99",
             "id": "GFS06",
-            "generic_id": "GFS99"
+            "profile_name": "Bambu Support for ABS"
         },
         "elegooslicer": {
-            "profile_name": "Bambu Support for ABS",
-            "id": "GFS06",
-            "generic_id": "GFS99"
+            "generic_id": "GFS99",
+            "id": "OGFS06",
+            "profile_name": "Bambu Support for ABS"
         }
     }
 }

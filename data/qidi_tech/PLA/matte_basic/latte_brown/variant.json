@@ -1,5 +1,8 @@
 {
-    "id": "latte_brown",
-    "name": "Latte Brown",
-    "color_hex": "#8C6952"
+  "id": "latte_brown",
+  "name": "Latte Brown",
+  "color_hex": "#8C6952",
+  "traits": {
+    "matte": true
+  }
 }

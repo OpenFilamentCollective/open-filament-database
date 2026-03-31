@@ -3,6 +3,7 @@
   "name": "LightBrown",
   "color_hex": "#8C7547",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

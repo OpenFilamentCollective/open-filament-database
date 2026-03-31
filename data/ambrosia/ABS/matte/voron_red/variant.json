@@ -1,5 +1,8 @@
 {
   "id": "voron_red",
   "name": "Voron Red",
-  "color_hex": "#A12336"
+  "color_hex": "#A12336",
+  "traits": {
+    "matte": true
+  }
 }

@@ -7,14 +7,14 @@
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_ABS_Filament_CANEC25014249401_SZP25-029821_-Final.pdf?v=1757562195",
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Anycubic ABS",
+            "generic_id": "GFB99",
             "id": "GFB99",
-            "generic_id": "GFB99"
+            "profile_name": "Anycubic ABS"
         },
         "elegooslicer": {
-            "profile_name": "Anycubic ABS",
+            "generic_id": "GFB99",
             "id": "GFB99",
-            "generic_id": "GFB99"
+            "profile_name": "Anycubic ABS"
         }
     }
 }

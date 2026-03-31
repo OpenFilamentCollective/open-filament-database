@@ -1,5 +1,9 @@
 {
-    "id": "olive_green",
-    "name": "Olive Green",
-    "color_hex": "#67785A"
+  "id": "olive_green",
+  "name": "Olive Green",
+  "color_hex": "#67785A",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

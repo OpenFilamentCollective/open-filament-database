@@ -1,5 +1,9 @@
 {
   "id": "natural",
   "name": "Natural",
-  "color_hex": "#E0D9CD"
+  "color_hex": "#E0D9CD",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
 }

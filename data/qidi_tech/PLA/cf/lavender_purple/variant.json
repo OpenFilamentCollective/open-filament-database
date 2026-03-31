@@ -1,5 +1,9 @@
 {
-    "id": "lavender_purple",
-    "name": "Lavender Purple",
-    "color_hex": "#660066"
+  "id": "lavender_purple",
+  "name": "Lavender Purple",
+  "color_hex": "#660066",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

@@ -5,14 +5,14 @@
     "density": 1.05,
     "slicer_settings": {
         "orcaslicer": {
-            "profile_name": "Creality Hyper ABS",
+            "generic_id": "GFB99",
             "id": "03001",
-            "generic_id": "GFB99"
+            "profile_name": "Creality Hyper ABS"
         },
         "elegooslicer": {
-            "profile_name": "Creality Hyper ABS",
+            "generic_id": "GFB99",
             "id": "03001",
-            "generic_id": "GFB99"
+            "profile_name": "Creality Hyper ABS"
         }
     }
 }

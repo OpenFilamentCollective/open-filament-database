@@ -3,6 +3,7 @@
   "name": "Violet",
   "color_hex": "#583061",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

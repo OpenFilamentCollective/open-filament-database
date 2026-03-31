@@ -3,6 +3,7 @@
   "name": "Olive Green",
   "color_hex": "#4D5D4C",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }
