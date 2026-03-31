@@ -28,6 +28,7 @@ classifiers = [
 dependencies = [
     "argcomplete>=3.1.0",
     "jsonschema>=4.23.0",
+    "markdown>=3.0",
     "ofd-validator>=0.5.1",
     "iniconfig>=2.0.0",
     "referencing>=0.30.0",
