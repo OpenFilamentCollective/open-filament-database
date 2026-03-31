@@ -30,6 +30,90 @@ import * as imageDb from '$lib/services/imageDb';
 import { STORAGE_KEY_CHANGES, STORAGE_KEY_IMAGES_PREFIX } from '$lib/config/storageKeys';
 
 /**
+ * Schema-driven data filtering.
+ *
+ * Each entity schema defines its allowed properties (with additionalProperties: false).
+ * We cache the set of allowed keys per entity type so we can strip any fields that
+ * don't belong in the schema — cloud API relational fields, routing params, embedded
+ * child collections, etc. — without maintaining a hardcoded deny-list.
+ *
+ * Supplementary file fields (e.g. "sizes" for variants) are stored alongside the
+ * entity in the change tree but live in their own schema/file on disk, so they're
+ * added as extra allowed keys per entity type.
+ */
+import { fetchEntitySchema, type SchemaName } from '$lib/services/schemaService';
+import type { EntityType } from '$lib/types/changes';
+
+/** Extra keys that aren't in the entity schema but are tracked in the change tree.
+ *  These map to supplementary files that are stored separately on disk. */
+const SUPPLEMENTARY_KEYS: Partial<Record<EntityType, string[]>> = {
+	variant: ['sizes']
+};
+
+/** Cached sets of allowed property keys per entity type */
+const allowedKeysCache = new Map<EntityType, Set<string>>();
+
+/** Extract allowed property keys from a JSON schema object */
+function extractSchemaKeys(schema: any): Set<string> | null {
+	if (!schema?.properties || typeof schema.properties !== 'object') return null;
+	return new Set(Object.keys(schema.properties));
+}
+
+/** Pre-warm the allowed-keys cache for all entity types.
+ *  Called once on store init (browser only). */
+async function warmSchemaCache(): Promise<void> {
+	const types: EntityType[] = ['brand', 'store', 'material', 'filament', 'variant'];
+	await Promise.all(
+		types.map(async (type) => {
+			try {
+				const schema = await fetchEntitySchema(type as SchemaName);
+				const keys = extractSchemaKeys(schema);
+				if (keys) {
+					const extras = SUPPLEMENTARY_KEYS[type];
+					if (extras) extras.forEach((k) => keys.add(k));
+					allowedKeysCache.set(type, keys);
+				}
+			} catch {
+				// Schema not available yet — filtering will be skipped for this type
+			}
+		})
+	);
+}
+
+/** Load allowed keys for a single entity type (async, for use in export). */
+async function getAllowedKeys(entityType: EntityType): Promise<Set<string> | undefined> {
+	if (allowedKeysCache.has(entityType)) return allowedKeysCache.get(entityType);
+	try {
+		const schema = await fetchEntitySchema(entityType as SchemaName);
+		const keys = extractSchemaKeys(schema);
+		if (keys) {
+			const extras = SUPPLEMENTARY_KEYS[entityType];
+			if (extras) extras.forEach((k) => keys.add(k));
+			allowedKeysCache.set(entityType, keys);
+			return keys;
+		}
+	} catch { /* schema unavailable */ }
+	return undefined;
+}
+
+/**
+ * Strip fields not present in the entity's schema.
+ * If the schema hasn't been loaded yet, returns data as-is (best-effort).
+ */
+function filterToSchema(data: any, entityType: EntityType): any {
+	if (!data || typeof data !== 'object' || Array.isArray(data)) return data;
+	const allowed = allowedKeysCache.get(entityType);
+	if (!allowed) return data;
+	const result: Record<string, any> = {};
+	for (const key of Object.keys(data)) {
+		if (allowed.has(key)) {
+			result[key] = data[key];
+		}
+	}
+	return result;
+}
+
+/**
  * Calculate a user-friendly description for a change
  */
 function describeChange(entity: EntityIdentifier, operation: ChangeOperation, data?: any): string {
@@ -156,6 +240,9 @@ function createChangeStore() {
 		} catch (e) {
 			console.error('Failed to load changes from localStorage:', e);
 		}
+
+		// Pre-warm the schema cache so synchronous track* calls can filter data
+		warmSchemaCache();
 	}
 
 	/**
@@ -209,13 +296,15 @@ function createChangeStore() {
 			const ep = parsePath(entity.path);
 			if (!ep) return;
 
+			const cleanData = filterToSchema(data, entity.type);
+
 			update((changeSet) => {
 				treeSetChange(changeSet, ep, {
 					entity,
 					operation: 'create',
-					data,
+					data: cleanData,
 					timestamp: Date.now(),
-					description: describeChange(entity, 'create', data)
+					description: describeChange(entity, 'create', cleanData)
 				});
 				changeSet.lastModified = Date.now();
 				persistChangeSet(changeSet);
@@ -232,6 +321,8 @@ function createChangeStore() {
 			const ep = parsePath(entity.path);
 			if (!ep) return;
 
+			const cleanNewData = filterToSchema(newData, entity.type);
+
 			update((changeSet) => {
 				const existingChange = treeGetChange(changeSet, entity.path);
 
@@ -239,9 +330,9 @@ function createChangeStore() {
 					// If this entity was created in this session, just update the creation data
 					treeSetChange(changeSet, ep, {
 						...existingChange,
-						data: newData,
+						data: cleanNewData,
 						timestamp: Date.now(),
-						description: describeChange(entity, 'create', newData)
+						description: describeChange(entity, 'create', cleanNewData)
 					});
 					changeSet.lastModified = Date.now();
 					persistChangeSet(changeSet);
@@ -249,10 +340,10 @@ function createChangeStore() {
 				}
 
 				// For updates, use the original data from existing change or the provided oldData
-				const originalData = existingChange?.originalData ?? oldData;
+				const originalData = existingChange?.originalData ?? filterToSchema(oldData, entity.type);
 
 				// Compare against the original data to see if there are still changes
-				const propertyChanges = findChangedProperties(originalData, newData);
+				const propertyChanges = findChangedProperties(originalData, cleanNewData);
 
 				if (propertyChanges.length === 0) {
 					// All changes have been reverted - remove the change entry
@@ -266,11 +357,11 @@ function createChangeStore() {
 				treeSetChange(changeSet, ep, {
 					entity,
 					operation: 'update',
-					data: newData,
+					data: cleanNewData,
 					originalData,
 					propertyChanges,
 					timestamp: Date.now(),
-					description: describeChange(entity, 'update', newData)
+					description: describeChange(entity, 'update', cleanNewData)
 				});
 
 				changeSet.lastModified = Date.now();
@@ -445,7 +536,17 @@ function createChangeStore() {
 		 */
 		async exportChanges(): Promise<ChangeExport> {
 			const changeSet = get({ subscribe });
-			const changes = getAllChanges(changeSet.tree);
+			const rawChanges = getAllChanges(changeSet.tree);
+
+			// Ensure schemas are loaded so we can filter data to schema-valid keys
+			const entityTypes = new Set(rawChanges.map((c) => c.entity.type));
+			await Promise.all([...entityTypes].map((t) => getAllowedKeys(t)));
+
+			const changes = rawChanges.map((change) => ({
+				...change,
+				data: change.data ? filterToSchema(change.data, change.entity.type) : change.data,
+				originalData: change.originalData ? filterToSchema(change.originalData, change.entity.type) : change.originalData
+			}));
 
 			// Build image export with embedded base64 data
 			const images: ChangeExport['images'] = {};
