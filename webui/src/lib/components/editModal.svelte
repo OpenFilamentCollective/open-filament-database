@@ -34,7 +34,7 @@
   class="w-full h-full bg-transparent p-4 backdrop:bg-black/40 backdrop:backdrop-blur-sm"
   style="scroll-behaviour: none;">
   <div
-    class="w-full mx-auto relative bg-white dark:bg-gray-900 p-6 rounded-xl shadow-2xl text-gray-900 dark:text-gray-100">
+    class="w-full mx-auto relative bg-white dark:bg-gray-900 p-6 rounded-xl shadow-2xl text-gray-900 dark:text-gray-100 overflow-y-auto max-h-[calc(100vh-2rem)]">
     <button
       type="button"
       class="absolute top-0 right-0 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
