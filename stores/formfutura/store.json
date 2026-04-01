@@ -1,0 +1,10 @@
+{
+  "id": "formfutura",
+  "name": "FormFutura",
+  "storefront_url": "https://www.formfutura.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "NL"
+  ],
+  "ships_to": []
+}
