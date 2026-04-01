@@ -1,0 +1,10 @@
+{
+  "id": "ebony",
+  "name": "Ebony",
+  "color_hex": "#50483D",
+  "discontinued": false,
+  "traits": {
+    "industrially_compostable": true,
+    "contains_wood": true
+  }
+}

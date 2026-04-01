@@ -1,0 +1,34 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "article_number": "EWOD-175OLVE-00500",
+    "discontinued": false
+  },
+  {
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 625,
+    "article_number": "EWOD-175OLVE-02300",
+    "discontinued": false
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "article_number": "EWOD-285OLVE-00500",
+    "discontinued": false
+  },
+  {
+    "filament_weight": 2300,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 625,
+    "article_number": "EWOD-285OLVE-02300",
+    "discontinued": false
+  }
+]
