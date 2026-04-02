@@ -49,7 +49,7 @@
 			<select id="size-{sizeId}-link-{linkId}-store" bind:value={storeId} class={INPUT_XS_CLASSES}>
 				<option value="">Select store...</option>
 				{#each stores as store}
-					<option value={store.id}>{store.name}</option>
+					<option value={store.slug ?? store.id}>{store.name}</option>
 				{/each}
 			</select>
 		</div>
