@@ -2,6 +2,7 @@
   "id": "fluor_clear_stained",
   "name": "Fluor Clear Stained",
   "color_hex": "#E4E7E5",
+  "discontinued": false,
   "traits": {
     "translucent": true,
     "silk": true

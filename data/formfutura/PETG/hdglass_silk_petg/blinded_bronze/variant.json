@@ -2,6 +2,7 @@
   "id": "blinded_bronze",
   "name": "Blinded Bronze",
   "color_hex": "#C2B56A",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

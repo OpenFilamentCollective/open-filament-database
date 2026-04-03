@@ -2,6 +2,7 @@
   "id": "blinded_black",
   "name": "Blinded Black",
   "color_hex": "#000000",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

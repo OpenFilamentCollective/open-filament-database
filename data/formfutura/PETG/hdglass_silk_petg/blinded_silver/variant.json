@@ -2,6 +2,7 @@
   "id": "blinded_silver",
   "name": "Blinded Silver",
   "color_hex": "#949597",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

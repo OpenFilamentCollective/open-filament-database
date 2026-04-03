@@ -2,6 +2,7 @@
   "id": "blinded_pearl_green",
   "name": "Blinded Pearl Green",
   "color_hex": "#5F7967",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

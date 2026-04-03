@@ -2,6 +2,7 @@
   "id": "see_through_green",
   "name": "See Through Green",
   "color_hex": "#26A648",
+  "discontinued": false,
   "traits": {
     "translucent": true,
     "silk": true

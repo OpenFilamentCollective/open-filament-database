@@ -2,6 +2,7 @@
   "id": "blinded_light_grey",
   "name": "Blinded Light Grey",
   "color_hex": "#C3CCD5",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

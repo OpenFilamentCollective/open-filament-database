@@ -2,6 +2,7 @@
   "id": "see_through_blue",
   "name": "See Through Blue",
   "color_hex": "#0E21AE",
+  "discontinued": false,
   "traits": {
     "translucent": true,
     "silk": true

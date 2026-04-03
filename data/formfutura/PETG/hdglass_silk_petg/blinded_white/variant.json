@@ -2,6 +2,7 @@
   "id": "blinded_white",
   "name": "Blinded White",
   "color_hex": "#FFFFFF",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

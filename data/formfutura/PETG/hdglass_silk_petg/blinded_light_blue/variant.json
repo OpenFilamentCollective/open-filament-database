@@ -2,6 +2,7 @@
   "id": "blinded_light_blue",
   "name": "Blinded Light Blue",
   "color_hex": "#39B9DB",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

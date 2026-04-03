@@ -2,6 +2,7 @@
   "id": "see_through_black",
   "name": "See Through Black",
   "color_hex": "#000000",
+  "discontinued": false,
   "traits": {
     "translucent": true,
     "silk": true

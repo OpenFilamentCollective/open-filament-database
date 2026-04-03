@@ -2,6 +2,7 @@
   "id": "pastel_purple_stained",
   "name": "Pastel Purple Stained",
   "color_hex": "#7D3C55",
+  "discontinued": false,
   "traits": {
     "translucent": true,
     "silk": true

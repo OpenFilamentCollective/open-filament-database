@@ -2,6 +2,7 @@
   "id": "blinded_sapphire_grey",
   "name": "Blinded Sapphire Grey",
   "color_hex": "#9DB6D4",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

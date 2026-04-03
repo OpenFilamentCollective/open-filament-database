@@ -2,6 +2,7 @@
   "id": "blinded_orange",
   "name": "Blinded Orange",
   "color_hex": "#F67405",
+  "discontinued": false,
   "traits": {
     "silk": true
   }
