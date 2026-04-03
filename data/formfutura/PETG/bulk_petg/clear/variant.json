@@ -1,0 +1,10 @@
+{
+  "id": "clear",
+  "name": "Clear",
+  "color_hex": "#C2C2C2",
+  "discontinued": false,
+  "traits": {
+    "translucent": true,
+    "without_pigments": true
+  }
+}
