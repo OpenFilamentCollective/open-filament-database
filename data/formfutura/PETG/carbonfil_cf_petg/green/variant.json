@@ -2,6 +2,7 @@
   "id": "green",
   "name": "Green",
   "color_hex": "#5E6345",
+  "discontinued": false,
   "traits": {
     "abrasive": true,
     "contains_carbon_fiber": true
