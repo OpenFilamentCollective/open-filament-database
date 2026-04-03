@@ -1,5 +1,6 @@
 {
   "id": "bottle_green",
   "name": "Bottle Green",
-  "color_hex": "#364429"
+  "color_hex": "#364429",
+  "discontinued": false
 }

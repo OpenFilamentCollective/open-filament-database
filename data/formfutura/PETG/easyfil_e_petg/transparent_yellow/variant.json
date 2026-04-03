@@ -2,6 +2,7 @@
   "id": "transparent_yellow",
   "name": "Transparent Yellow",
   "color_hex": "#EA9E3F",
+  "discontinued": false,
   "traits": {
     "translucent": true
   }

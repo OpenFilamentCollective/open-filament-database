@@ -1,5 +1,6 @@
 {
   "id": "sky_blue",
   "name": "Sky Blue",
-  "color_hex": "#0378D0"
+  "color_hex": "#0378D0",
+  "discontinued": false
 }

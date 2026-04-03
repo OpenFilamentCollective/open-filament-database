@@ -1,5 +1,6 @@
 {
   "id": "signal_yellow",
   "name": "Signal Yellow",
-  "color_hex": "#FBE200"
+  "color_hex": "#FBE200",
+  "discontinued": false
 }

@@ -2,6 +2,7 @@
   "id": "transparent",
   "name": "Transparent",
   "color_hex": "#D9D8DE",
+  "discontinued": false,
   "traits": {
     "transparent": true
   }

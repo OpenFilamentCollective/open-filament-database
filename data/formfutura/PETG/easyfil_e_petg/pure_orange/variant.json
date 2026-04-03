@@ -1,5 +1,6 @@
 {
   "id": "pure_orange",
   "name": "Pure Orange",
-  "color_hex": "#FF5F2E"
+  "color_hex": "#FF5F2E",
+  "discontinued": false
 }

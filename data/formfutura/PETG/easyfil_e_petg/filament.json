@@ -1,10 +1,13 @@
 {
   "id": "easyfil_e_petg",
-  "name": "Easyfil E PETG",
+  "name": "EasyFil ePETG",
   "diameter_tolerance": 0.02,
-  "density": 1.27,
+  "density": 1.29,
   "min_print_temperature": 220,
   "max_print_temperature": 250,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://www.formfutura.com/web/content/281456?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256516?download=true",
+  "discontinued": false
 }

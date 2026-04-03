@@ -2,6 +2,7 @@
   "id": "transparent_orange",
   "name": "Transparent Orange",
   "color_hex": "#E03F26",
+  "discontinued": false,
   "traits": {
     "translucent": true
   }
