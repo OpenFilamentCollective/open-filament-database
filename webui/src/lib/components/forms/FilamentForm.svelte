@@ -3,6 +3,7 @@
 	import { SchemaForm, SlicerConfigPanel } from '$lib/components/forms';
 	import { FormSection } from '$lib/components/form-fields';
 	import {
+		SLICER_KEYS,
 		initializeSlicerForm,
 		buildSlicerSettings,
 		initializeSlicerEnabled,

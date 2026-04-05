@@ -9,7 +9,8 @@
 		type ClipboardEntityType
 	} from '$lib/services/clipboardService';
 	import { get } from 'svelte/store';
-	import { apiBaseUrl, isLocalMode } from '$lib/stores/environment';
+	import { isLocalMode } from '$lib/stores/environment';
+	import { buildApiUrl } from '$lib/utils/api';
 
 	const GITHUB_REPO_BASE = 'https://github.com/OpenFilamentCollective/open-filament-database';
 
@@ -45,8 +46,7 @@
 	const isLocal = $derived(get(isLocalMode));
 
 	function buildApiViewUrl(): string {
-		const base = get(apiBaseUrl);
-		return `${base || ''}/api/${entityPath.replace(/\//g, '/')}`;
+		return buildApiUrl(`/api/${entityPath}`);
 	}
 
 	function buildGithubUrl(): string | null {
