@@ -1,6 +1,12 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import Logo from './Logo.svelte';
+	import { ContextMenu } from '$lib/components/ui';
+	import type { ContextMenuItem } from '$lib/components/ui/ContextMenu.svelte';
+	import DropdownMenu from '$lib/components/ui/DropdownMenu.svelte';
+	import type { DropdownItem } from '$lib/components/ui/DropdownMenu.svelte';
+	import { hasCompatibleClipboard, type ClipboardEntityType } from '$lib/services/clipboardService';
+	import { goto } from '$app/navigation';
 
 	interface Field {
 		key: string;
@@ -49,6 +55,13 @@
 		hasDescendantChanges?: boolean;
 		/** Hover color variant */
 		hoverColor?: string;
+		/** Callbacks for context menu / dropdown actions */
+		onCopy?: () => void;
+		onDuplicate?: () => void;
+		onPaste?: () => void;
+		onDelete?: () => void;
+		/** Entity type for clipboard compatibility check */
+		entityType?: ClipboardEntityType;
 	}
 
 	let {
@@ -68,8 +81,68 @@
 		hasLocalChanges = false,
 		localChangeType,
 		hasDescendantChanges = false,
-		hoverColor
+		hoverColor,
+		onCopy,
+		onDuplicate,
+		onPaste,
+		onDelete,
+		entityType
 	}: Props = $props();
+
+	// Context menu state
+	let ctxShow = $state(false);
+	let ctxX = $state(0);
+	let ctxY = $state(0);
+
+	const hasActions = $derived(!!(onCopy || onDuplicate || onPaste || onDelete));
+
+	function handleContextMenu(e: MouseEvent) {
+		if (!hasActions) return;
+		e.preventDefault();
+		ctxX = e.clientX;
+		ctxY = e.clientY;
+		ctxShow = true;
+	}
+
+	// Prevent the dropdown click from navigating via the <a> tag
+	function handleDropdownClick(e: MouseEvent) {
+		e.preventDefault();
+		e.stopPropagation();
+	}
+
+	const contextMenuItems = $derived.by((): (ContextMenuItem | 'separator')[] => {
+		const items: (ContextMenuItem | 'separator')[] = [];
+		items.push({ label: 'Open', onClick: () => goto(href) });
+		if (onCopy || onDuplicate || onPaste) items.push('separator');
+		if (onCopy) items.push({ label: 'Copy', onClick: onCopy });
+		if (onDuplicate) items.push({ label: 'Duplicate', onClick: onDuplicate });
+		if (onPaste) {
+			const canPaste = entityType ? hasCompatibleClipboard(entityType) : false;
+			items.push({ label: 'Paste', onClick: onPaste, disabled: !canPaste });
+		}
+		if (onDelete) {
+			items.push('separator');
+			items.push({ label: 'Delete', onClick: onDelete, destructive: true });
+		}
+		return items;
+	});
+
+	const dropdownItems = $derived.by((): (DropdownItem | 'separator')[] => {
+		const items: (DropdownItem | 'separator')[] = [];
+		items.push({ label: 'Open', onClick: () => goto(href) });
+		items.push('separator');
+		if (onCopy) items.push({ label: 'Copy', onClick: onCopy });
+		if (onDuplicate) items.push({ label: 'Duplicate', onClick: onDuplicate });
+		if (onPaste) {
+			const canPaste = entityType ? hasCompatibleClipboard(entityType) : false;
+			items.push({ label: 'Paste', onClick: onPaste, disabled: !canPaste });
+		}
+		if (onDelete) {
+			items.push('separator');
+			items.push({ label: 'Delete', onClick: onDelete, destructive: true });
+		}
+		return items;
+	});
 
 	const badgeColorMap: Record<string, string> = {
 		red: 'bg-red-100 text-red-800',
@@ -107,8 +180,9 @@
 <a
 	{href}
 	class="block rounded-lg border bg-card p-6 shadow-sm transition-colors hover:bg-accent {localChangeClass}"
+	oncontextmenu={handleContextMenu}
 >
-	<div class="flex items-center gap-4 mb-4">
+	<div class="flex items-center gap-4">
 		{#if colorHex}
 			<!-- Color swatch for variants -->
 			<div
@@ -153,11 +227,18 @@
 				</span>
 			{/if}
 		</div>
-		<span class="text-muted-foreground shrink-0">→</span>
+		{#if hasActions}
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div class="shrink-0" onclick={handleDropdownClick} onkeydown={() => {}}>
+				<DropdownMenu items={dropdownItems} align="right" />
+			</div>
+		{:else}
+			<span class="text-muted-foreground shrink-0">&rarr;</span>
+		{/if}
 	</div>
 
 	{#if fields.length > 0}
-		<div class="space-y-1 text-sm">
+		<div class="space-y-1 text-sm mt-4">
 			{#each fields as field}
 				<p class={field.class ?? 'text-muted-foreground'}>
 					{#if field.label}
@@ -173,3 +254,7 @@
 		{@render children()}
 	{/if}
 </a>
+
+{#if hasActions}
+	<ContextMenu items={contextMenuItems} x={ctxX} y={ctxY} show={ctxShow} onClose={() => ctxShow = false} />
+{/if}

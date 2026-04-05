@@ -362,7 +362,7 @@
 	bind:data={formData}
 	{config}
 	{saving}
-	submitLabel={variant ? 'Update Variant' : 'Create Variant'}
+	submitLabel={variant?.id ? 'Update Variant' : 'Create Variant'}
 	submitDisabled={!canSubmit}
 	onSubmit={handleSubmit}
 >

@@ -17,6 +17,10 @@
 	import { BackButton } from '$lib/components';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { getCountryName } from '$lib/data/countryCodes';
+	import { hasCompatibleClipboard } from '$lib/services/clipboardService';
+	import { createCopyAction, createDuplicateAction, createPasteHandler } from '$lib/utils/useEntityActions.svelte';
+	import { loadBrandChildren } from '$lib/services/duplicateService';
+	import { DuplicateOptionsModal } from '$lib/components/ui';
 
 	let brands: Brand[] = $state([]);
 	let loading: boolean = $state(true);
@@ -52,8 +56,10 @@
 	let createError: string | null = $state(null);
 	let schemaError: string | null = $state(null);
 
+	let prefillBrandData: Brand | null = $state(null);
+
 	function newBrand(): Brand {
-		return {
+		return prefillBrandData ?? {
 			id: '',
 			name: '',
 			logo: '',
@@ -61,6 +67,29 @@
 			origin: ''
 		};
 	}
+
+	// Shared actions for brand cards
+	const brandCopy = createCopyAction('brand', async (data) => {
+		return await loadBrandChildren(data.slug ?? data.id);
+	});
+	const brandDuplicate = createDuplicateAction('brand', true, (data) => {
+		prefillBrandData = data as Brand;
+		openCreateModal();
+	});
+	const brandPaste = createPasteHandler('brand', (data) => {
+		prefillBrandData = data as Brand;
+		openCreateModal();
+	}, (data) => {
+		const slug = generateSlug(data.name);
+		return !!(brands.find((b) => (b.slug ?? b.id).toLowerCase() === slug.toLowerCase()) ||
+			brands.find((b) => b.name.toLowerCase() === data.name.trim().toLowerCase()));
+	});
+
+	$effect(() => {
+		if (!entityState.showCreateModal) {
+			prefillBrandData = null;
+		}
+	});
 
 	async function loadData() {
 		loading = true;
@@ -167,12 +196,23 @@
 
 		<div class="flex items-center justify-between mb-2">
 			<h1 class="text-3xl font-bold">Brands</h1>
-			<Button onclick={openCreateModal}>
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-					<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-				</svg>
-				Add Brand
-			</Button>
+			<div class="flex gap-2">
+				{#if hasCompatibleClipboard('brand')}
+					<Button onclick={brandPaste} variant="outline">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+							<path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+						</svg>
+						Paste Brand
+					</Button>
+				{/if}
+				<Button onclick={openCreateModal}>
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+					</svg>
+					Add Brand
+				</Button>
+			</div>
 		</div>
 		<p class="text-muted-foreground">Browse and edit filament brands and their materials</p>
 	</div>
@@ -196,7 +236,7 @@
 			{:else}
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each filteredBrands as brand}
-					{@const brandPath = `brands/${brand.id}`}
+					{@const brandPath = `brands/${brand.slug ?? brand.id}`}
 					{@const changeProps = getChildChangeProps($changes, $useChangeTracking, brandPath)}
 					<EntityCard
 						entity={brand}
@@ -211,6 +251,10 @@
 						]}
 						hasLocalChanges={changeProps.hasLocalChanges}
 						localChangeType={changeProps.localChangeType}
+						entityType="brand"
+						onCopy={() => brandCopy.request(brand, `brands/${brand.slug ?? brand.id}`)}
+						onDuplicate={() => brandDuplicate.request(brand)}
+						onPaste={brandPaste}
 					/>
 				{/each}
 			</div>
@@ -218,6 +262,12 @@
 		{/snippet}
 	</DataDisplay>
 </div>
+
+<!-- Copy/Duplicate options modals for brand cards -->
+<DuplicateOptionsModal show={brandCopy.showOptions} onClose={brandCopy.close} onSelect={brandCopy.select} title="Copy Brand"
+	childrenDescription="Copies all materials, filaments, and variants into the clipboard along with the brand." />
+<DuplicateOptionsModal show={brandDuplicate.showOptions} onClose={brandDuplicate.close} onSelect={brandDuplicate.select} title="Duplicate Brand"
+	childrenDescription="Copies all materials, filaments, and variants under this brand into the new duplicate." />
 
 <Modal show={entityState.showCreateModal} title="Create New Brand" onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="3xl">
 	{#if createError}

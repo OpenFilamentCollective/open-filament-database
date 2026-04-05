@@ -3,20 +3,21 @@
 	import { goto } from '$app/navigation';
 	import type { Store } from '$lib/types/database';
 	import { db } from '$lib/services/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
 	import { StoreForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityDetails, Logo } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, mergeEntityData } from '$lib/services/entityService';
+	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { getCountryName } from '$lib/data/countryCodes';
+	import { prepareDuplicateData } from '$lib/services/clipboardService';
 
 	let storeId: string = $derived($page.params.store!);
 	let loadGeneration = 0;
@@ -25,6 +26,9 @@
 	let schema: any = $state(null);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
+
+	// Duplicate store state
+	let duplicateStoreError: string | null = $state(null);
 
 	const messageHandler = createMessageHandler();
 
@@ -143,6 +147,49 @@
 			entityState.deleting = false;
 		}
 	}
+
+	// Duplicate store handler
+	async function handleDuplicateStoreSubmit(data: any) {
+		entityState.creating = true;
+		duplicateStoreError = null;
+
+		try {
+			const slug = generateSlug(data.name);
+			const existingStores = await db.loadStores();
+			const dup = existingStores.find((s) => (s.slug ?? s.id).toLowerCase() === slug.toLowerCase());
+			if (dup) {
+				duplicateStoreError = `Store "${data.name}" already exists`;
+				entityState.creating = false;
+				return;
+			}
+
+			let logoFilename = '';
+			if (entityState.logoChanged && entityState.logoDataUrl) {
+				const savedPath = await saveLogoImage(slug, entityState.logoDataUrl, 'store');
+				if (!savedPath) {
+					duplicateStoreError = 'Failed to save logo';
+					entityState.creating = false;
+					return;
+				}
+				logoFilename = savedPath;
+			}
+
+			const newStoreData = { ...data, id: slug, slug, logo: logoFilename };
+			const success = await db.saveStore(newStoreData);
+
+			if (success) {
+				messageHandler.showSuccess('Store duplicated successfully!');
+				entityState.closeDuplicate();
+				goto(`/stores/${slug}`);
+			} else {
+				duplicateStoreError = 'Failed to create store';
+			}
+		} catch (e) {
+			duplicateStoreError = e instanceof Error ? e.message : 'Failed to duplicate store';
+		} finally {
+			entityState.creating = false;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -197,7 +244,19 @@
 				]}
 			>
 				{#snippet actions()}
-					<ActionButtons onEdit={entityState.openEdit} onDelete={entityState.openDelete} editVariant="primary" />
+					<div class="flex gap-2">
+						<Button onclick={entityState.openEdit} variant="primary">Edit</Button>
+						<EntityActionDropdown
+							entityType="store"
+							entityData={storeData}
+							entityPath="stores/{storeId}"
+							isLocalCreate={entityState.isLocalCreate}
+							onDuplicate={(data) => entityState.openDuplicate(data)}
+							onPaste={(data) => entityState.openPaste(data)}
+							onDelete={entityState.openDelete}
+							onViewDiff={entityState.openCloudCompare}
+						/>
+					</div>
 				{/snippet}
 			</EntityDetails>
 		{/snippet}
@@ -225,4 +284,47 @@
 	deleting={entityState.deleting}
 	onClose={entityState.closeDelete}
 	onDelete={handleDelete}
+/>
+
+<!-- Duplicate Store Modal -->
+<Modal show={entityState.showDuplicateModal} title="Duplicate Store" onClose={entityState.closeDuplicate} maxWidth="3xl">
+	{#if duplicateStoreError}
+		<MessageBanner type="error" message={duplicateStoreError} />
+	{/if}
+	{#if entityState.duplicateData && schema}
+		<StoreForm
+			store={entityState.duplicateData}
+			{schema}
+			onSubmit={handleDuplicateStoreSubmit}
+			onLogoChange={entityState.handleLogoChange}
+			logoChanged={entityState.logoChanged}
+			saving={entityState.creating}
+		/>
+	{/if}
+</Modal>
+
+<!-- Paste Store Modal -->
+<Modal show={entityState.showPasteModal} title="Paste Store" onClose={entityState.closePaste} maxWidth="3xl">
+	{#if duplicateStoreError}
+		<MessageBanner type="error" message={duplicateStoreError} />
+	{/if}
+	{#if entityState.pasteData && schema}
+		<StoreForm
+			store={entityState.pasteData}
+			{schema}
+			onSubmit={handleDuplicateStoreSubmit}
+			onLogoChange={entityState.handleLogoChange}
+			logoChanged={entityState.logoChanged}
+			saving={entityState.creating}
+		/>
+	{/if}
+</Modal>
+
+<!-- Cloud Compare Modal -->
+<CloudCompareModal
+	show={entityState.showCloudCompareModal}
+	onClose={entityState.closeCloudCompare}
+	title="Compare Store with Cloud"
+	currentData={store}
+	apiPath="/api/stores/{storeId}"
 />

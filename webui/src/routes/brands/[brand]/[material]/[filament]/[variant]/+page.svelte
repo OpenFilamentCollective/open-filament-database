@@ -2,18 +2,19 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { Variant, Store } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
 	import { VariantForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity } from '$lib/services/entityService';
+	import { deleteEntity, generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { getTraitLabel } from '$lib/config/traitConfig';
+	import { prepareDuplicateData } from '$lib/services/clipboardService';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -25,6 +26,9 @@
 	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
+
+	// Duplicate variant state
+	let duplicateVariantError: string | null = $state(null);
 
 	function getStoreName(storeId: string): string {
 		const store = stores.find((s) => s.id === storeId);
@@ -154,6 +158,37 @@
 		}
 	}
 
+	// Duplicate variant handler
+	async function handleDuplicateVariantSubmit(data: any) {
+		entityState.creating = true;
+		duplicateVariantError = null;
+
+		try {
+			const newSlug = generateSlug(data.name);
+			const siblingVariants = await db.loadVariants(brandId, materialType, filamentId);
+			const dup = siblingVariants.find((v) => (v.slug ?? v.id).toLowerCase() === newSlug);
+			if (dup) {
+				duplicateVariantError = `Variant "${data.name}" already exists`;
+				entityState.creating = false;
+				return;
+			}
+
+			const result = await db.createVariant(brandId, materialType, filamentId, data);
+
+			if (result.success && result.variantSlug) {
+				messageHandler.showSuccess('Variant duplicated successfully!');
+				entityState.closeDuplicate();
+				goto(`/brands/${brandId}/${materialType}/${filamentId}/${result.variantSlug}`);
+			} else {
+				duplicateVariantError = 'Failed to create variant';
+			}
+		} catch (e) {
+			duplicateVariantError = e instanceof Error ? e.message : 'Failed to duplicate variant';
+		} finally {
+			entityState.creating = false;
+		}
+	}
+
 	function getActiveTraits(traits: Record<string, boolean> | undefined): string[] {
 		if (!traits) return [];
 		return Object.entries(traits)
@@ -203,7 +238,20 @@
 			<div class="bg-card border border-border rounded-lg p-6">
 				<div class="flex justify-between items-center mb-4">
 					<h2 class="text-xl font-semibold">Variant Details</h2>
-					<ActionButtons onEdit={entityState.openEdit} onDelete={entityState.openDelete} />
+					<div class="flex gap-2">
+						<Button onclick={entityState.openEdit} variant="primary">Edit</Button>
+						<EntityActionDropdown
+							entityType="variant"
+							entityData={variantData}
+							entityPath="brands/{brandId}/materials/{materialType}/filaments/{filamentId}/variants/{variantSlug}"
+							isLocalCreate={entityState.isLocalCreate}
+							onDuplicate={(data) => entityState.openDuplicate(data)}
+							onPaste={(data) => entityState.openPaste(data)}
+							onDelete={entityState.openDelete}
+							onViewDiff={entityState.openCloudCompare}
+							parentNames={{ brand: '', material: '', filament: '' }}
+						/>
+					</div>
 				</div>
 
 				<dl class="space-y-4">
@@ -315,4 +363,37 @@
 	deleting={entityState.deleting}
 	onClose={entityState.closeDelete}
 	onDelete={handleDelete}
+/>
+
+<!-- Duplicate Variant Modal -->
+<Modal show={entityState.showDuplicateModal} title="Duplicate Variant" onClose={entityState.closeDuplicate} maxWidth="5xl">
+	{#if duplicateVariantError}
+		<MessageBanner type="error" message={duplicateVariantError} />
+	{/if}
+	{#if entityState.duplicateData}
+		<div class="h-[70vh]">
+			<VariantForm variant={entityState.duplicateData} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+		</div>
+	{/if}
+</Modal>
+
+<!-- Paste Variant Modal -->
+<Modal show={entityState.showPasteModal} title="Paste Variant" onClose={entityState.closePaste} maxWidth="5xl">
+	{#if duplicateVariantError}
+		<MessageBanner type="error" message={duplicateVariantError} />
+	{/if}
+	{#if entityState.pasteData}
+		<div class="h-[70vh]">
+			<VariantForm variant={entityState.pasteData} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+		</div>
+	{/if}
+</Modal>
+
+<!-- Cloud Compare Modal -->
+<CloudCompareModal
+	show={entityState.showCloudCompareModal}
+	onClose={entityState.closeCloudCompare}
+	title="Compare Variant with Cloud"
+	currentData={variant}
+	apiPath="/api/brands/{brandId}/materials/{materialType}/filaments/{filamentId}/variants/{variantSlug}"
 />

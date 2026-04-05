@@ -40,6 +40,13 @@ export function createEntityState(config: EntityStateConfig) {
 	let showEditModal = $state(false);
 	let showDeleteModal = $state(false);
 	let showCreateModal = $state(false);
+	let showDuplicateModal = $state(false);
+	let showPasteModal = $state(false);
+	let showCloudCompareModal = $state(false);
+
+	// Pre-filled data for duplicate/paste modals
+	let duplicateData: Record<string, any> | null = $state(null);
+	let pasteData: Record<string, any> | null = $state(null);
 
 	// Operation states
 	let saving = $state(false);
@@ -171,6 +178,32 @@ export function createEntityState(config: EntityStateConfig) {
 			return hasDescendantChanges;
 		},
 
+		// Duplicate/Paste/Compare modal states
+		get showDuplicateModal() {
+			return showDuplicateModal;
+		},
+		set showDuplicateModal(v: boolean) {
+			showDuplicateModal = v;
+		},
+		get showPasteModal() {
+			return showPasteModal;
+		},
+		set showPasteModal(v: boolean) {
+			showPasteModal = v;
+		},
+		get showCloudCompareModal() {
+			return showCloudCompareModal;
+		},
+		set showCloudCompareModal(v: boolean) {
+			showCloudCompareModal = v;
+		},
+		get duplicateData() {
+			return duplicateData;
+		},
+		get pasteData() {
+			return pasteData;
+		},
+
 		// Modal helpers
 		openEdit() {
 			showEditModal = true;
@@ -191,6 +224,32 @@ export function createEntityState(config: EntityStateConfig) {
 		},
 		closeCreate() {
 			showCreateModal = false;
+		},
+		openDuplicate(data: Record<string, any>) {
+			duplicateData = data;
+			showDuplicateModal = true;
+		},
+		closeDuplicate() {
+			showDuplicateModal = false;
+			duplicateData = null;
+			logoDataUrl = '';
+			logoChanged = false;
+		},
+		openPaste(data: Record<string, any>) {
+			pasteData = data;
+			showPasteModal = true;
+		},
+		closePaste() {
+			showPasteModal = false;
+			pasteData = null;
+			logoDataUrl = '';
+			logoChanged = false;
+		},
+		openCloudCompare() {
+			showCloudCompareModal = true;
+		},
+		closeCloudCompare() {
+			showCloudCompareModal = false;
 		}
 	};
 }

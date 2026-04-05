@@ -2,7 +2,8 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { Material, Filament } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, ActionButtons } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteConfirmationModal, Button, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
+	import { duplicateMaterialChildren, loadMaterialChildren, pasteMaterialChildren, loadFilamentChildren, pasteFilamentChildren } from '$lib/services/duplicateService';
 	import { MaterialForm, FilamentForm } from '$lib/components/forms';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { BackButton } from '$lib/components/actions';
@@ -10,12 +11,14 @@
 	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, generateSlug } from '$lib/services/entityService';
+	import { createCopyAction, createDuplicateAction, createPasteHandler } from '$lib/utils/useEntityActions.svelte';
+	import { deleteEntity, generateSlug, generateMaterialType } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
 	import { changes } from '$lib/stores/changes';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
+	import { getClipboard } from '$lib/services/clipboardService';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -29,6 +32,8 @@
 	let error: string | null = $state(null);
 	let createError: string | null = $state(null);
 	let filamentSearch: string = $state('');
+	let duplicateMaterialError: string | null = $state(null);
+	let prefillFilamentData: Filament | null = $state(null);
 
 	let displayFilaments = $derived.by(() => withDeletedStubs({
 		changes: $changes,
@@ -61,6 +66,41 @@
 		getEntity: () => material
 	});
 
+	// --- Shared actions for THIS material (detail-level) ---
+	const materialCopy = createCopyAction('material', async () => {
+		return await loadMaterialChildren(brandId, materialType);
+	});
+	const materialDuplicate = createDuplicateAction('material', true, (data) => {
+		entityState.openDuplicate(data);
+	});
+
+	// --- Shared actions for FILAMENT cards in the list ---
+	const filamentCopy = createCopyAction('filament', async (data) => {
+		const filId = data.slug ?? data.id;
+		return await loadFilamentChildren(brandId, materialType, filId);
+	});
+	const filamentDuplicate = createDuplicateAction('filament', true, (data) => {
+		createError = null;
+		prefillFilamentData = data as Filament;
+		entityState.openCreate();
+	});
+	const filamentPaste = createPasteHandler('filament', (data) => {
+		createError = null;
+		prefillFilamentData = data as Filament;
+		entityState.openCreate();
+	}, (data) => {
+		const filamentSlug = generateSlug(data.name);
+		return !!(filaments.find((f) => (f.slug ?? f.id).toLowerCase() === filamentSlug) ||
+			filaments.find((f) => f.name.toLowerCase() === data.name.trim().toLowerCase()));
+	});
+
+	$effect(() => {
+		if (!entityState.showCreateModal) {
+			prefillFilamentData = null;
+		}
+	});
+
+	// --- Data loading ---
 	$effect(() => {
 		const brand = brandId;
 		const matType = materialType;
@@ -112,37 +152,18 @@
 
 	async function handleSubmit(data: any) {
 		if (!material) return;
-
 		entityState.saving = true;
 		messageHandler.clear();
-
 		try {
 			const existingType = material.materialType ?? materialType;
-
-			const updatedMaterial: Material = {
-				...(originalMaterial ?? material),
-				...data,
-				id: existingType,
-				materialType: existingType
-			};
-
-			// Handle material_class: strip if not in form data, or if the original
-			// didn't have it and the value is just the schema default ("FFF").
-			// This prevents phantom changes when the form injects schema defaults.
+			const updatedMaterial: Material = { ...(originalMaterial ?? material), ...data, id: existingType, materialType: existingType };
 			const orig = originalMaterial ?? material;
 			if (!('material_class' in data)) {
 				delete (updatedMaterial as any).material_class;
 			} else if (orig && !('material_class' in (orig as Record<string, any>)) && data.material_class === 'FFF') {
 				delete (updatedMaterial as any).material_class;
 			}
-
-			const success = await db.saveMaterial(
-				brandId,
-				materialType,
-				updatedMaterial,
-				originalMaterial ?? material
-			);
-
+			const success = await db.saveMaterial(brandId, materialType, updatedMaterial, originalMaterial ?? material);
 			if (success) {
 				material = updatedMaterial;
 				messageHandler.showSuccess('Material saved successfully!');
@@ -159,24 +180,16 @@
 
 	async function handleDelete() {
 		if (!material) return;
-
 		entityState.deleting = true;
 		messageHandler.clear();
-
 		try {
-			const result = await deleteEntity(
-				`brands/${brandId}/materials/${materialType}`,
-				'Material',
-				() => db.deleteMaterial(brandId, materialType, material!)
-			);
-
+			const result = await deleteEntity(`brands/${brandId}/materials/${materialType}`, 'Material',
+				() => db.deleteMaterial(brandId, materialType, material!));
 			if (result.success) {
 				messageHandler.showSuccess(result.message);
 				entityState.closeDelete();
 				entityState.deleting = false;
-				setTimeout(() => {
-					goto(`/brands/${brandId}`);
-				}, 1500);
+				setTimeout(() => goto(`/brands/${brandId}`), 1500);
 			} else {
 				messageHandler.showError(result.message);
 				entityState.deleting = false;
@@ -187,33 +200,28 @@
 		}
 	}
 
-	function openCreateFilamentModal() {
-		createError = null;
-		entityState.openCreate();
-	}
-
 	async function handleCreateFilament(data: any) {
 		entityState.creating = true;
 		createError = null;
-
 		try {
-			// Check for duplicate filament by slug/path and by name
 			const filamentSlug = generateSlug(data.name);
-			const duplicateBySlug = filaments.find((f) =>
-				(f.slug ?? f.id).toLowerCase() === filamentSlug
-			);
-			const duplicateByName = filaments.find((f) =>
-				f.name.toLowerCase() === data.name.trim().toLowerCase()
-			);
-			if (duplicateBySlug || duplicateByName) {
+			if (filaments.find((f) => (f.slug ?? f.id).toLowerCase() === filamentSlug) ||
+				filaments.find((f) => f.name.toLowerCase() === data.name.trim().toLowerCase())) {
 				createError = `Filament "${data.name}" already exists in this material`;
 				entityState.creating = false;
 				return;
 			}
-
 			const result = await db.createFilament(brandId, materialType, data);
-
 			if (result.success && result.filamentId) {
+				// Paste children from clipboard if this was a paste action
+				const clip = getClipboard();
+				if (clip?.entityType === 'filament' && clip.children && prefillFilamentData) {
+					try {
+						await pasteFilamentChildren(brandId, materialType, result.filamentId, clip.children);
+					} catch (e) {
+						console.error('Failed to paste children:', e);
+					}
+				}
 				messageHandler.showSuccess('Filament created successfully!');
 				entityState.closeCreate();
 				goto(`/brands/${brandId}/${materialType}/${result.filamentId}`);
@@ -224,6 +232,60 @@
 			createError = e instanceof Error ? e.message : 'Failed to create filament';
 		} finally {
 			entityState.creating = false;
+		}
+	}
+
+	// --- Duplicate material submit ---
+	async function handleDuplicateMaterialSubmit(data: any) {
+		entityState.creating = true;
+		duplicateMaterialError = null;
+		try {
+			const newMaterialType = generateMaterialType(data.material);
+			if (siblingMaterials.find((m) => (m.materialType || m.material || '').toLowerCase() === newMaterialType.toLowerCase())) {
+				duplicateMaterialError = `Material "${data.material}" already exists in this brand`;
+				entityState.creating = false;
+				return;
+			}
+			const result = await db.createMaterial(brandId, data);
+			if (result.success && result.materialType) {
+				if (materialDuplicate.withChildren && material) {
+					try {
+						await duplicateMaterialChildren(brandId, material.materialType ?? materialType, brandId, result.materialType, true);
+					} catch (e) { console.error('Failed to duplicate children:', e); }
+				}
+				const clip = getClipboard();
+				if (clip?.children && entityState.showPasteModal) {
+					try {
+						await pasteMaterialChildren(brandId, result.materialType, clip.children);
+					} catch (e) { console.error('Failed to paste children:', e); }
+				}
+				messageHandler.showSuccess('Material created successfully!');
+				entityState.closeDuplicate();
+				entityState.closePaste();
+				goto(`/brands/${brandId}/${result.materialType}`);
+			} else {
+				duplicateMaterialError = 'Failed to create material';
+			}
+		} catch (e) {
+			duplicateMaterialError = e instanceof Error ? e.message : 'Failed to duplicate material';
+		} finally {
+			entityState.creating = false;
+		}
+	}
+
+	async function handleDeleteFilament(filament: Filament) {
+		const fId = filament.slug ?? filament.id;
+		try {
+			const result = await deleteEntity(`brands/${brandId}/materials/${materialType}/filaments/${fId}`, 'Filament',
+				() => db.deleteFilament(brandId, materialType, fId, filament));
+			if (result.success) {
+				messageHandler.showSuccess(result.message);
+				filaments = filaments.filter((f) => (f.slug ?? f.id) !== fId);
+			} else {
+				messageHandler.showError(result.message);
+			}
+		} catch (e) {
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete filament');
 		}
 	}
 </script>
@@ -243,72 +305,61 @@
 		{#snippet children(materialData)}
 			<header class="mb-6">
 				<h1 class="text-3xl font-bold mb-2">{materialData.material}</h1>
-				<p class="text-muted-foreground">
-					ID: {String(materialData.materialType ?? materialType).toUpperCase()}
-				</p>
+				<p class="text-muted-foreground">ID: {String(materialData.materialType ?? materialType).toUpperCase()}</p>
 			</header>
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
 			{/if}
-
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
 			{/if}
 
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-				<EntityDetails
-					entity={materialData}
-					title="Material Details"
+				<EntityDetails entity={materialData} title="Material Details"
 					fields={[
 						{ key: 'material', label: 'Material Type' },
 						{ key: 'material_class', label: 'Material Class', hide: (v) => !v },
-						{
-							key: 'default_max_dry_temperature',
-							label: 'Max Dry Temperature',
-							format: (v) => `${v}°C`,
-							hide: (v) => !v
-						},
-						{
-							key: 'default_slicer_settings',
-							label: 'Default Slicer Settings',
-							hide: (v) => !v || Object.keys(v).length === 0,
-							customRender: slicerSettingsRender
-						}
-					]}
-				>
+						{ key: 'default_max_dry_temperature', label: 'Max Dry Temperature', format: (v) => `${v}°C`, hide: (v) => !v },
+						{ key: 'default_slicer_settings', label: 'Default Slicer Settings', hide: (v) => !v || Object.keys(v).length === 0, customRender: slicerSettingsRender }
+					]}>
 					{#snippet actions()}
-						<ActionButtons onEdit={entityState.openEdit} onDelete={entityState.openDelete} />
+						<div class="flex gap-2">
+							<Button onclick={entityState.openEdit} variant="primary">Edit</Button>
+							<EntityActionDropdown
+								entityType="material" entityData={materialData}
+								entityPath="brands/{brandId}/materials/{materialType}"
+								isLocalCreate={entityState.isLocalCreate}
+								onDuplicate={() => materialDuplicate.request(materialData)}
+								onCopyRequest={() => materialCopy.request(materialData, `brands/${brandId}/materials/${materialType}`)}
+								onPaste={(data) => entityState.openPaste(data)}
+								onDelete={entityState.openDelete}
+								onViewDiff={entityState.openCloudCompare}
+								parentNames={{ brand: '' }}
+							/>
+						</div>
 					{/snippet}
 				</EntityDetails>
 
-				<ChildListPanel
-					title="Filaments"
-					addLabel="Add Filament"
-					onAdd={openCreateFilamentModal}
-					itemCount={displayFilaments.length}
-					emptyMessage="No filaments found for this material."
-					searchQuery={filamentSearch}
-					onSearch={(v) => filamentSearch = v}
-					searchPlaceholder="Search filaments..."
-					filteredCount={filteredFilaments.length}
-				>
+				<ChildListPanel title="Filaments" addLabel="Add Filament"
+					onAdd={() => { createError = null; entityState.openCreate(); }}
+					itemCount={displayFilaments.length} emptyMessage="No filaments found for this material."
+					searchQuery={filamentSearch} onSearch={(v) => filamentSearch = v}
+					searchPlaceholder="Search filaments..." filteredCount={filteredFilaments.length}
+					childEntityType="filament" onPaste={filamentPaste}>
 					{#each filteredFilaments as filament}
 						{@const filamentHref = `/brands/${brandId}/${materialType}/${filament.slug ?? filament.id}`}
 						{@const filamentPath = `brands/${brandId}/materials/${materialType}/filaments/${filament.slug ?? filament.id}`}
 						{@const changeProps = getChildChangeProps($changes, $useChangeTracking, filamentPath)}
-						<EntityCard
-							entity={filament}
-							href={filamentHref}
-							name={filament.name}
-							id={filament.slug ?? filament.id}
-							hoverColor="blue"
-							showLogo={false}
-							badge={filament.discontinued
-								? { text: 'Discontinued', color: 'red' }
-								: undefined}
-							hasLocalChanges={changeProps.hasLocalChanges}
-							localChangeType={changeProps.localChangeType}
+						<EntityCard entity={filament} href={filamentHref} name={filament.name}
+							id={filament.slug ?? filament.id} hoverColor="blue" showLogo={false}
+							badge={filament.discontinued ? { text: 'Discontinued', color: 'red' } : undefined}
+							hasLocalChanges={changeProps.hasLocalChanges} localChangeType={changeProps.localChangeType}
+							entityType="filament"
+							onCopy={() => filamentCopy.request(filament, filamentPath)}
+							onDuplicate={() => filamentDuplicate.request(filament)}
+							onPaste={filamentPaste}
+							onDelete={() => handleDeleteFilament(filament)}
 						/>
 					{/each}
 				</ChildListPanel>
@@ -317,45 +368,55 @@
 	</DataDisplay>
 </div>
 
-<Modal
-	show={entityState.showEditModal}
-	title="Edit Material"
-	onClose={entityState.closeEdit}
-	maxWidth="5xl"
-	height="3/4"
->
+<Modal show={entityState.showEditModal} title="Edit Material" onClose={entityState.closeEdit} maxWidth="5xl" height="3/4">
 	{#if material && materialSchema}
-		<MaterialForm
-			entity={material}
-			schema={materialSchema}
+		<MaterialForm entity={material} schema={materialSchema}
 			config={{ excludeEnumValues: { material: siblingMaterials.filter(m => m.material !== material?.material).map(m => m.material) } }}
-			onSubmit={handleSubmit}
-			saving={entityState.saving}
-		/>
+			onSubmit={handleSubmit} saving={entityState.saving} />
 	{/if}
 </Modal>
 
-<DeleteConfirmationModal
-	show={entityState.showDeleteModal}
-	title="Delete Material"
-	entityName={material?.material ?? ''}
-	isLocalCreate={entityState.isLocalCreate}
-	deleting={entityState.deleting}
-	onClose={entityState.closeDelete}
-	onDelete={handleDelete}
-	cascadeWarning="This will also delete all filaments and variants within this material."
-/>
+<DeleteConfirmationModal show={entityState.showDeleteModal} title="Delete Material" entityName={material?.material ?? ''}
+	isLocalCreate={entityState.isLocalCreate} deleting={entityState.deleting} onClose={entityState.closeDelete} onDelete={handleDelete}
+	cascadeWarning="This will also delete all filaments and variants within this material." />
 
-<Modal
-	show={entityState.showCreateModal}
-	title="Create New Filament"
-	onClose={() => { createError = null; entityState.closeCreate(); }}
-	maxWidth="5xl"
->
-	{#if createError}
-		<MessageBanner type="error" message={createError} />
+<!-- Copy/Duplicate options modals (material-level) -->
+<DuplicateOptionsModal show={materialCopy.showOptions} onClose={materialCopy.close} onSelect={materialCopy.select} title="Copy Material"
+	childrenDescription="Copies all filaments and variants into the clipboard along with the material." />
+<DuplicateOptionsModal show={materialDuplicate.showOptions} onClose={materialDuplicate.close} onSelect={materialDuplicate.select} title="Duplicate Material"
+	childrenDescription="Copies all filaments and variants under this material into the new duplicate." />
+
+<!-- Copy/Duplicate options modals (filament cards) -->
+<DuplicateOptionsModal show={filamentCopy.showOptions} onClose={filamentCopy.close} onSelect={filamentCopy.select} title="Copy Filament"
+	childrenDescription="Copies all variants into the clipboard along with the filament." />
+<DuplicateOptionsModal show={filamentDuplicate.showOptions} onClose={filamentDuplicate.close} onSelect={filamentDuplicate.select} title="Duplicate Filament"
+	childrenDescription="Copies all variants under this filament into the new duplicate." />
+
+<!-- Duplicate/Paste Material Modals -->
+<Modal show={entityState.showDuplicateModal} title="Duplicate Material" onClose={entityState.closeDuplicate} maxWidth="5xl" height="3/4">
+	{#if duplicateMaterialError}<MessageBanner type="error" message={duplicateMaterialError} />{/if}
+	{#if entityState.duplicateData && materialSchema}
+		<MaterialForm entity={entityState.duplicateData} schema={materialSchema}
+			config={{ excludeEnumValues: { material: siblingMaterials.map(m => m.material) } }}
+			onSubmit={handleDuplicateMaterialSubmit} saving={entityState.creating} />
 	{/if}
+</Modal>
+<Modal show={entityState.showPasteModal} title="Paste Material" onClose={entityState.closePaste} maxWidth="5xl" height="3/4">
+	{#if duplicateMaterialError}<MessageBanner type="error" message={duplicateMaterialError} />{/if}
+	{#if entityState.pasteData && materialSchema}
+		<MaterialForm entity={entityState.pasteData} schema={materialSchema}
+			config={{ excludeEnumValues: { material: siblingMaterials.map(m => m.material) } }}
+			onSubmit={handleDuplicateMaterialSubmit} saving={entityState.creating} />
+	{/if}
+</Modal>
+
+<CloudCompareModal show={entityState.showCloudCompareModal} onClose={entityState.closeCloudCompare}
+	title="Compare Material with Cloud" currentData={material} apiPath="/api/brands/{brandId}/materials/{materialType}" />
+
+<Modal show={entityState.showCreateModal} title="Create New Filament"
+	onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="5xl">
+	{#if createError}<MessageBanner type="error" message={createError} />{/if}
 	<div class="h-[70vh]">
-		<FilamentForm onSubmit={handleCreateFilament} saving={entityState.creating} />
+		<FilamentForm filament={prefillFilamentData ?? undefined} onSubmit={handleCreateFilament} saving={entityState.creating} />
 	</div>
 </Modal>

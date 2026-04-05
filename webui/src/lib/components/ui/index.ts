@@ -8,3 +8,8 @@ export { default as DeleteConfirmationModal } from './DeleteConfirmationModal.sv
 export { default as ActionButtons } from './ActionButtons.svelte';
 export { default as EmptyState } from './EmptyState.svelte';
 export { default as SearchBar } from './SearchBar.svelte';
+export { default as DropdownMenu } from './DropdownMenu.svelte';
+export { default as ContextMenu } from './ContextMenu.svelte';
+export { default as EntityActionDropdown } from './EntityActionDropdown.svelte';
+export { default as CloudCompareModal } from './CloudCompareModal.svelte';
+export { default as DuplicateOptionsModal } from './DuplicateOptionsModal.svelte';

@@ -3,6 +3,7 @@
 	import { SchemaForm, SlicerConfigPanel } from '$lib/components/forms';
 	import { FormSection } from '$lib/components/form-fields';
 	import {
+		SLICER_KEYS,
 		initializeSlicerForm,
 		buildSlicerSettings,
 		initializeSlicerEnabled,
@@ -62,6 +63,13 @@
 			formData = initializeFormData(preparedSchema, entity, mergedConfig.hiddenFields);
 			slicerEnabled = initializeSlicerEnabled(entity?.default_slicer_settings);
 			slicerForms = initializeSlicerForms();
+			// Pre-create forms for already-enabled slicers
+			for (const key of SLICER_KEYS) {
+				if (slicerEnabled[key]) {
+					const initialValue = entity?.default_slicer_settings?.[key] || {};
+					slicerForms[key] = initializeSlicerForm(key, initialValue);
+				}
+			}
 		}
 	});
 
@@ -103,7 +111,7 @@
 	bind:data={formData}
 	config={mergedConfig}
 	{saving}
-	submitLabel={entity ? 'Update Material' : 'Create Material'}
+	submitLabel={entity?.id ? 'Update Material' : 'Create Material'}
 	submitDisabled={!canSubmit}
 	onSubmit={handleSubmit}
 >

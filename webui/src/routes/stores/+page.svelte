@@ -16,6 +16,8 @@
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { BackButton } from '$lib/components';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
+	import { hasCompatibleClipboard } from '$lib/services/clipboardService';
+	import { createCopyAction, createDuplicateAction, createPasteHandler } from '$lib/utils/useEntityActions.svelte';
 
 	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
@@ -52,8 +54,10 @@
 
 	let schemaError: string | null = $state(null);
 
+	let prefillStoreData: Store | null = $state(null);
+
 	function newStore(): Store {
-		return {
+		return prefillStoreData ?? {
 			id: '',
 			name: '',
 			logo: '',
@@ -62,6 +66,27 @@
 			ships_to: []
 		};
 	}
+
+	// Shared actions for store cards (no children, so no options modal)
+	const storeCopy = createCopyAction('store', null);
+	const storeDuplicate = createDuplicateAction('store', false, (data) => {
+		prefillStoreData = data as Store;
+		openCreateModal();
+	});
+	const storePaste = createPasteHandler('store', (data) => {
+		prefillStoreData = data as Store;
+		openCreateModal();
+	}, (data) => {
+		const slug = generateSlug(data.name);
+		return !!(stores.find((s) => (s.slug ?? s.id).toLowerCase() === slug.toLowerCase()) ||
+			stores.find((s) => s.name.toLowerCase() === data.name.trim().toLowerCase()));
+	});
+
+	$effect(() => {
+		if (!entityState.showCreateModal) {
+			prefillStoreData = null;
+		}
+	});
 
 	async function loadData() {
 		loading = true;
@@ -163,12 +188,23 @@
 
 		<div class="flex items-center justify-between mb-2">
 			<h1 class="text-3xl font-bold">Stores</h1>
-			<Button onclick={openCreateModal}>
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-					<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-				</svg>
-				Add Store
-			</Button>
+			<div class="flex gap-2">
+				{#if hasCompatibleClipboard('store')}
+					<Button onclick={storePaste} variant="outline">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+							<path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+						</svg>
+						Paste Store
+					</Button>
+				{/if}
+				<Button onclick={openCreateModal}>
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+					</svg>
+					Add Store
+				</Button>
+			</div>
 		</div>
 		<p class="text-muted-foreground">Browse and edit filament stores</p>
 	</div>
@@ -192,7 +228,7 @@
 			{:else}
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{#each filteredStores as store}
-					{@const storePath = `stores/${store.id}`}
+					{@const storePath = `stores/${store.slug ?? store.id}`}
 					{@const changeProps = getChildChangeProps($changes, $useChangeTracking, storePath)}
 					<EntityCard
 						entity={store}
@@ -211,6 +247,10 @@
 						]}
 						hasLocalChanges={changeProps.hasLocalChanges}
 						localChangeType={changeProps.localChangeType}
+						entityType="store"
+						onCopy={() => storeCopy.request(store, `stores/${store.slug ?? store.id}`)}
+						onDuplicate={() => storeDuplicate.request(store)}
+						onPaste={storePaste}
 					/>
 				{/each}
 			</div>

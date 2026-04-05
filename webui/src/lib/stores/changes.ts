@@ -47,7 +47,8 @@ import type { EntityType } from '$lib/types/changes';
 /** Extra keys that aren't in the entity schema but are tracked in the change tree.
  *  These map to supplementary files that are stored separately on disk. */
 const SUPPLEMENTARY_KEYS: Partial<Record<EntityType, string[]>> = {
-	variant: ['sizes']
+	variant: ['sizes'],
+	material: ['id', 'materialType']
 };
 
 /** Cached sets of allowed property keys per entity type */

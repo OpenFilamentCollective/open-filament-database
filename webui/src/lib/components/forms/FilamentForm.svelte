@@ -113,6 +113,13 @@
 			formData = initializeFormData(preparedSchema, filament, config.hiddenFields);
 			slicerEnabled = initializeSlicerEnabled(filament?.slicer_settings);
 			slicerForms = initializeSlicerForms();
+			// Pre-create forms for already-enabled slicers
+			for (const key of SLICER_KEYS) {
+				if (slicerEnabled[key]) {
+					const initialValue = filament?.slicer_settings?.[key] || {};
+					slicerForms[key] = initializeSlicerForm(key, initialValue);
+				}
+			}
 		}
 	});
 
@@ -155,7 +162,7 @@
 	bind:data={formData}
 	{config}
 	{saving}
-	submitLabel={filament ? 'Update Filament' : 'Create Filament'}
+	submitLabel={filament?.id ? 'Update Filament' : 'Create Filament'}
 	submitDisabled={!canSubmit}
 	onSubmit={handleSubmit}
 >
