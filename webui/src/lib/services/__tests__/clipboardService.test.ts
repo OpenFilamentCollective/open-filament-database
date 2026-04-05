@@ -12,6 +12,7 @@ import {
 	hasCompatibleClipboard,
 	clearClipboard,
 	prepareDuplicateData,
+	prepareEntityData,
 	type ClipboardEntry
 } from '../clipboardService';
 
@@ -179,6 +180,156 @@ describe('Clipboard Service', () => {
 			prepareDuplicateData('brand', data);
 			expect(data.id).toBe('1');
 			expect(data.name).toBe('Test');
+		});
+	});
+
+	describe('prepareEntityData', () => {
+		it('without suffix keeps original name', () => {
+			const result = prepareEntityData('brand', { name: 'Bambu Lab', id: 'x' });
+			expect(result.name).toBe('Bambu Lab');
+			expect(result.id).toBeUndefined();
+		});
+
+		it('with suffix appends to name', () => {
+			const result = prepareEntityData('brand', { name: 'Bambu Lab' }, ' (Copy)');
+			expect(result.name).toBe('Bambu Lab (Copy)');
+		});
+
+		it('prepareDuplicateData delegates to prepareEntityData', () => {
+			const dup = prepareDuplicateData('filament', { name: 'Basic', id: '1' });
+			const manual = prepareEntityData('filament', { name: 'Basic', id: '1' }, ' (Copy)');
+			expect(dup).toEqual(manual);
+		});
+	});
+
+	describe('field preservation (no silent data loss)', () => {
+		it('preserves all filament data fields', () => {
+			const filament = {
+				id: 'basic',
+				slug: 'basic',
+				name: 'Basic',
+				diameter_tolerance: 0.02,
+				density: 1.24,
+				shore_hardness_a: 95,
+				shore_hardness_d: 55,
+				certifications: ['food-safe'],
+				max_dry_temperature: 55,
+				min_print_temperature: 190,
+				max_print_temperature: 220,
+				preheat_temperature: 170,
+				min_bed_temperature: 50,
+				max_bed_temperature: 70,
+				min_nozzle_diameter: 0.4,
+				data_sheet_url: 'https://example.com/ds',
+				safety_sheet_url: 'https://example.com/sds',
+				discontinued: false,
+				slicer_settings: { generic: { bed_temp: 60 } },
+				materialType: 'PLA',
+				brandId: 'bambu',
+				filamentDir: '/some/path'
+			};
+			const result = prepareEntityData('filament', filament);
+
+			// Identity fields stripped
+			expect(result.id).toBeUndefined();
+			expect(result.slug).toBeUndefined();
+			expect(result.brandId).toBeUndefined();
+			expect(result.filamentDir).toBeUndefined();
+
+			// ALL data fields preserved
+			expect(result.name).toBe('Basic');
+			expect(result.diameter_tolerance).toBe(0.02);
+			expect(result.density).toBe(1.24);
+			expect(result.shore_hardness_a).toBe(95);
+			expect(result.shore_hardness_d).toBe(55);
+			expect(result.certifications).toEqual(['food-safe']);
+			expect(result.max_dry_temperature).toBe(55);
+			expect(result.min_print_temperature).toBe(190);
+			expect(result.max_print_temperature).toBe(220);
+			expect(result.preheat_temperature).toBe(170);
+			expect(result.min_bed_temperature).toBe(50);
+			expect(result.max_bed_temperature).toBe(70);
+			expect(result.min_nozzle_diameter).toBe(0.4);
+			expect(result.data_sheet_url).toBe('https://example.com/ds');
+			expect(result.safety_sheet_url).toBe('https://example.com/sds');
+			expect(result.discontinued).toBe(false);
+			expect(result.slicer_settings).toEqual({ generic: { bed_temp: 60 } });
+			expect(result.materialType).toBe('PLA');
+		});
+
+		it('preserves all variant data fields', () => {
+			const variant = {
+				id: 'blue',
+				slug: 'blue',
+				name: 'Blue',
+				color_hex: '#0000FF',
+				discontinued: false,
+				filament_id: 'basic',
+				traits: { translucent: true, matte: false },
+				sizes: [{ filament_weight: 1000, diameter: 1.75 }]
+			};
+			const result = prepareEntityData('variant', variant);
+
+			expect(result.id).toBeUndefined();
+			expect(result.slug).toBeUndefined();
+			expect(result.name).toBe('Blue');
+			expect(result.color_hex).toBe('#0000FF');
+			expect(result.discontinued).toBe(false);
+			expect(result.filament_id).toBe('basic');
+			expect(result.traits).toEqual({ translucent: true, matte: false });
+			expect(result.sizes).toEqual([{ filament_weight: 1000, diameter: 1.75 }]);
+		});
+
+		it('preserves all brand data fields', () => {
+			const brand = {
+				id: 'bambu', slug: 'bambu', name: 'Bambu Lab',
+				website: 'https://bambulab.com', logo: 'logo.png', origin: 'CN'
+			};
+			const result = prepareEntityData('brand', brand);
+			expect(result.id).toBeUndefined();
+			expect(result.slug).toBeUndefined();
+			expect(result.name).toBe('Bambu Lab');
+			expect(result.website).toBe('https://bambulab.com');
+			expect(result.logo).toBe('logo.png');
+			expect(result.origin).toBe('CN');
+		});
+
+		it('preserves all store data fields', () => {
+			const store = {
+				id: 'amazon', slug: 'amazon', name: 'Amazon',
+				storefront_url: 'https://amazon.com', logo: 'logo.png',
+				ships_from: ['US', 'DE'], ships_to: ['US', 'DE', 'GB']
+			};
+			const result = prepareEntityData('store', store);
+			expect(result.id).toBeUndefined();
+			expect(result.slug).toBeUndefined();
+			expect(result.name).toBe('Amazon');
+			expect(result.storefront_url).toBe('https://amazon.com');
+			expect(result.logo).toBe('logo.png');
+			expect(result.ships_from).toEqual(['US', 'DE']);
+			expect(result.ships_to).toEqual(['US', 'DE', 'GB']);
+		});
+
+		it('preserves all material data fields', () => {
+			const material = {
+				id: 'PLA', materialType: 'PLA', material: 'PLA',
+				material_class: 'FFF', default_max_dry_temperature: 45,
+				default_slicer_settings: { generic: { bed_temp: 60 } }
+			};
+			const result = prepareEntityData('material', material);
+			expect(result.id).toBeUndefined();
+			expect(result.materialType).toBeUndefined();
+			expect(result.material).toBe('PLA');
+			expect(result.material_class).toBe('FFF');
+			expect(result.default_max_dry_temperature).toBe(45);
+			expect(result.default_slicer_settings).toEqual({ generic: { bed_temp: 60 } });
+		});
+
+		it('preserves unknown/future fields by default', () => {
+			const data = { id: '1', name: 'Test', some_future_field: 'value', another_new_field: 42 };
+			const result = prepareEntityData('brand', data);
+			expect(result.some_future_field).toBe('value');
+			expect(result.another_new_field).toBe(42);
 		});
 	});
 });

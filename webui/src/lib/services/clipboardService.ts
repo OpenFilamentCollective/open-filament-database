@@ -22,6 +22,84 @@ export interface ClipboardEntry {
 const STORAGE_KEY = 'ofd_clipboard';
 
 /**
+ * Identity/routing fields that must be stripped when duplicating or pasting.
+ * These are regenerated on creation (slug from name, id from slug, etc).
+ * ALL entity data fields NOT in this list are preserved as-is.
+ */
+const IDENTITY_FIELDS = ['id', 'slug', 'brandId', 'filamentDir'] as const;
+
+/**
+ * Additional identity fields to strip per entity type.
+ * materialType is identity for materials (generated from material name)
+ * but a useful reference field for filaments.
+ */
+const TYPE_IDENTITY_FIELDS: Partial<Record<ClipboardEntityType, string[]>> = {
+	material: ['materialType']
+};
+
+/**
+ * The field that holds the "name" for each entity type.
+ */
+const NAME_FIELD: Record<ClipboardEntityType, string> = {
+	brand: 'name',
+	material: 'material',
+	filament: 'name',
+	variant: 'name',
+	store: 'name'
+};
+
+/**
+ * Deep-clone entity data and strip only identity/routing fields.
+ * All actual data fields are preserved. This is the SINGLE source of truth
+ * for preparing entity data for duplication or pasting.
+ *
+ * @param entityType - The type of entity
+ * @param data - The entity data to prepare
+ * @param renameSuffix - If provided, appends this to the name field (e.g. " (Copy)")
+ */
+export function prepareEntityData(
+	entityType: ClipboardEntityType,
+	data: Record<string, any>,
+	renameSuffix?: string
+): Record<string, any> {
+	const clone = JSON.parse(JSON.stringify(data));
+
+	// Strip universal identity fields
+	for (const field of IDENTITY_FIELDS) {
+		delete clone[field];
+	}
+
+	// Strip type-specific identity fields
+	const extraFields = TYPE_IDENTITY_FIELDS[entityType];
+	if (extraFields) {
+		for (const field of extraFields) {
+			delete clone[field];
+		}
+	}
+
+	// Optionally rename
+	if (renameSuffix) {
+		const nameField = NAME_FIELD[entityType];
+		if (clone[nameField]) {
+			clone[nameField] = `${clone[nameField]}${renameSuffix}`;
+		}
+	}
+
+	return clone;
+}
+
+/**
+ * Prepare entity data for duplication (appends " (Copy)" to name).
+ * Delegates to prepareEntityData - exists for backward compatibility.
+ */
+export function prepareDuplicateData(
+	entityType: ClipboardEntityType,
+	data: Record<string, any>
+): Record<string, any> {
+	return prepareEntityData(entityType, data, ' (Copy)');
+}
+
+/**
  * Copy an entity to the clipboard (localStorage + system clipboard).
  * Optionally include children data for "copy with children".
  */
@@ -88,45 +166,4 @@ export function clearClipboard(): void {
 	if (browser) {
 		localStorage.removeItem(STORAGE_KEY);
 	}
-}
-
-/**
- * Prepare entity data for duplication by modifying the name and clearing identity fields.
- */
-export function prepareDuplicateData(
-	entityType: ClipboardEntityType,
-	data: Record<string, any>
-): Record<string, any> {
-	const clone = JSON.parse(JSON.stringify(data));
-
-	// Clear identity fields
-	delete clone.id;
-	delete clone.slug;
-
-	// Clear cloud-only fields
-	delete clone.brandId;
-	delete clone.filamentDir;
-
-	switch (entityType) {
-		case 'brand':
-			clone.name = `${data.name} (Copy)`;
-			// Keep logo so the duplicate form shows the existing logo
-			break;
-		case 'material':
-			clone.material = `${data.material} (Copy)`;
-			delete clone.materialType;
-			break;
-		case 'filament':
-			clone.name = `${data.name} (Copy)`;
-			break;
-		case 'variant':
-			clone.name = `${data.name} (Copy)`;
-			break;
-		case 'store':
-			clone.name = `${data.name} (Copy)`;
-			// Keep logo so the duplicate form shows the existing logo
-			break;
-	}
-
-	return clone;
 }

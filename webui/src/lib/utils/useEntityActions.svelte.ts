@@ -10,6 +10,7 @@ import {
 	copyEntity,
 	getClipboard,
 	prepareDuplicateData,
+	prepareEntityData,
 	type ClipboardEntityType
 } from '$lib/services/clipboardService';
 
@@ -165,26 +166,11 @@ export function createPasteHandler(
 	return () => {
 		const entry = getClipboard();
 		if (entry?.entityType === entityType) {
-			// Clone without adding "(Copy)" first
-			const rawClone = JSON.parse(JSON.stringify(entry.data));
-			// Clear identity fields
-			delete rawClone.id;
-			delete rawClone.slug;
-			delete rawClone.brandId;
-			delete rawClone.filamentDir;
-			if (entityType === 'material') {
-				delete rawClone.materialType;
-			}
-
-			// Only add "(Copy)" if there's a name conflict
-			if (hasConflict && hasConflict(rawClone)) {
-				const nameKey = entityType === 'material' ? 'material' : 'name';
-				if (rawClone[nameKey]) {
-					rawClone[nameKey] = `${rawClone[nameKey]} (Copy)`;
-				}
-			}
-
-			openFormFn(rawClone);
+			// Use the shared prepareEntityData - single source of truth for field stripping.
+			// Only add "(Copy)" suffix if there's a name conflict.
+			const conflict = hasConflict ? hasConflict(entry.data) : false;
+			const prepared = prepareEntityData(entityType, entry.data, conflict ? ' (Copy)' : undefined);
+			openFormFn(prepared);
 		}
 	};
 }
