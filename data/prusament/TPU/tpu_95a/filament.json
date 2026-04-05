@@ -3,16 +3,16 @@
   "name": "TPU 95A",
   "diameter_tolerance": 0.06,
   "density": 1.22,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Prusament TPU 95A"
-    }
-  },
   "min_print_temperature": 220,
   "max_print_temperature": 240,
   "preheat_temperature": 170,
   "min_bed_temperature": 55,
   "max_bed_temperature": 75,
   "max_chamber_temperature": 40,
-  "chamber_temperature": 30
+  "chamber_temperature": 30,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Prusament TPU 95A"
+    }
+  }
 }

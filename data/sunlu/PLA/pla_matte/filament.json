@@ -4,6 +4,10 @@
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
   "data_sheet_url": "https://cdn.shopify.com/s/files/1/0909/3450/9859/files/PLA_TDS.pdf?v=1758968249",
   "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0909/3450/9859/files/57MSDS_SUNLU_LW-PLA_filament_20250927180059.pdf?v=1758968240",
   "slicer_settings": {
@@ -22,9 +26,5 @@
       "id": "OGFSNL02",
       "profile_name": "SUNLU PLA Matte"
     }
-  },
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  }
 }

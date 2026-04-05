@@ -4,6 +4,10 @@
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "max_dry_temperature": 50,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
   "slicer_settings": {
     "bambustudio": {
       "generic_id": "GFL99",
@@ -15,9 +19,5 @@
       "id": "GF_ANPL",
       "profile_name": "addnorth PLA Economy"
     }
-  },
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  }
 }
