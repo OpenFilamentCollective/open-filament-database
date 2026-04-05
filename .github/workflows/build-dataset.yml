@@ -2,7 +2,7 @@ name: Build Dataset
 
 on:
   schedule:
-    - cron: "30 0 * * *"  # Run daily at 00:30 UTC (after profile updates)
+    - cron: "30 22 * * *"  # Run daily at 00:30 Danish time (CEST/UTC+2), 23:30 CET in winter
   workflow_dispatch:
 
 jobs:
