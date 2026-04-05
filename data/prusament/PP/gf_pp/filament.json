@@ -1,0 +1,14 @@
+{
+  "id": "gf_pp",
+  "name": "PP GF",
+  "diameter_tolerance": 0.02,
+  "density": 1.02,
+  "min_print_temperature": 240,
+  "max_print_temperature": 250,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "min_chamber_temperature": 40,
+  "max_chamber_temperature": 90,
+  "chamber_temperature": 50
+}

@@ -1,10 +1,5 @@
 {
-  "id": "black",
-  "name": "Black",
-  "color_hex": "#000000",
-  "traits": {
-    "filtration_recommended": true,
-    "abrasive": true,
-    "contains_glass_fiber": true
-  }
+    "id": "black",
+    "name": "Black",
+    "color_hex": "#000000"
 }

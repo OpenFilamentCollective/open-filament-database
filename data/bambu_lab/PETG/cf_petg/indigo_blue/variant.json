@@ -1,0 +1,9 @@
+{
+  "id": "indigo_blue",
+  "name": "Indigo Blue",
+  "color_hex": "#1E2F5A",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

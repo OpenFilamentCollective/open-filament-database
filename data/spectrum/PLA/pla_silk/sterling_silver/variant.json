@@ -1,9 +1,5 @@
 {
-  "id": "sterling_silver",
-  "name": "Sterling Silver",
-  "color_hex": "#88a1ad",
-  "traits": {
-    "industrially_compostable": true,
-    "silk": true
-  }
+    "id": "sterling_silver",
+    "name": "Sterling Silver",
+    "color_hex": "#88a1ad"
 }

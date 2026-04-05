@@ -1,10 +1,5 @@
 {
-  "id": "yellow",
-  "name": "Yellow",
-  "color_hex": "#FFE133",
-  "traits": {
-    "filtration_recommended": true,
-    "abrasive": true,
-    "contains_glass_fiber": true
-  }
+    "id": "yellow",
+    "name": "Yellow",
+    "color_hex": "#FFE133"
 }

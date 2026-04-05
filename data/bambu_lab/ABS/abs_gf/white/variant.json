@@ -1,10 +1,5 @@
 {
-  "id": "white",
-  "name": "White",
-  "color_hex": "#FFFFFF",
-  "traits": {
-    "filtration_recommended": true,
-    "abrasive": true,
-    "contains_glass_fiber": true
-  }
+    "id": "white",
+    "name": "White",
+    "color_hex": "#FFFFFF"
 }

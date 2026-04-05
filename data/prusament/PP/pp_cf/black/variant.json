@@ -1,9 +1,5 @@
 {
-  "id": "black",
-  "name": "Black",
-  "color_hex": "#333333",
-  "traits": {
-    "abrasive": true,
-    "contains_carbon_fiber": true
-  }
+    "id": "black",
+    "name": "Black",
+    "color_hex": "#333333"
 }

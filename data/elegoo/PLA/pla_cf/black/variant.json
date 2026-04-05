@@ -1,10 +1,5 @@
 {
   "id": "black",
   "name": "Black",
-  "color_hex": "#0c0908",
-  "traits": {
-    "industrially_compostable": true,
-    "abrasive": true,
-    "contains_carbon_fiber": true
-  }
+  "color_hex": "#0c0908"
 }

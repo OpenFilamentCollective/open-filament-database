@@ -1,29 +1,25 @@
 {
-  "id": "abs_gf",
-  "name": "ABS-GF",
-  "diameter_tolerance": 0.03,
-  "density": 1.08,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/Bambu_ABS-GF_Technical_Data_Sheet.pdf?v=1713428682",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_ABS-GF.pdf?v=1713341648",
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFB99",
-      "id": "GFB50",
-      "profile_name": "Bambu ABS-GF"
-    },
-    "orcaslicer": {
-      "generic_id": "GFB99",
-      "id": "GFB50",
-      "profile_name": "Bambu ABS-GF"
-    },
-    "elegooslicer": {
-      "generic_id": "GFB99",
-      "id": "OGFB50",
-      "profile_name": "Bambu ABS-GF"
+    "id": "abs_gf",
+    "name": "ABS-GF",
+    "diameter_tolerance": 0.03,
+    "density": 1.08,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/Bambu_ABS-GF_Technical_Data_Sheet.pdf?v=1713428682",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_ABS-GF.pdf?v=1713341648",
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFB99",
+            "id": "GFB50",
+            "profile_name": "Bambu ABS-GF"
+        },
+        "orcaslicer": {
+            "generic_id": "GFB99",
+            "id": "GFB50",
+            "profile_name": "Bambu ABS-GF"
+        },
+        "elegooslicer": {
+            "generic_id": "GFB99",
+            "id": "OGFB50",
+            "profile_name": "Bambu ABS-GF"
+        }
     }
-  },
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
 }

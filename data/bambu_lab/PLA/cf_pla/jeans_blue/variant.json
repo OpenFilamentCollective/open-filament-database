@@ -1,0 +1,10 @@
+{
+  "id": "jeans_blue",
+  "name": "Jeans Blue",
+  "color_hex": "#5A6A92",
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

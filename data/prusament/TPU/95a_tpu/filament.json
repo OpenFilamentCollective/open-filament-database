@@ -1,0 +1,13 @@
+{
+  "id": "95a_tpu",
+  "name": "95A TPU",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 75,
+  "max_chamber_temperature": 40,
+  "chamber_temperature": 30
+}

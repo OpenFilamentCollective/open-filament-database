@@ -1,10 +1,5 @@
 {
-  "id": "royal_blue",
-  "name": "Royal Blue",
-  "color_hex": "#2842AD",
-  "traits": {
-    "industrially_compostable": true,
-    "abrasive": true,
-    "contains_carbon_fiber": true
-  }
+    "id": "royal_blue",
+    "name": "Royal Blue",
+    "color_hex": "#2842AD"
 }

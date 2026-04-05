@@ -1,0 +1,10 @@
+{
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "abrasive": true,
+    "without_pigments": true,
+    "contains_glass_fiber": true
+  }
+}

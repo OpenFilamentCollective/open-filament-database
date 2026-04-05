@@ -1,0 +1,10 @@
+{
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#FF8B47",
+  "traits": {
+    "filtration_recommended": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

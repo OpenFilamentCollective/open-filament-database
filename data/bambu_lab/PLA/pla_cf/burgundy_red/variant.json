@@ -1,10 +1,5 @@
 {
-  "id": "burgundy_red",
-  "name": "Burgundy Red",
-  "color_hex": "#951E23",
-  "traits": {
-    "industrially_compostable": true,
-    "abrasive": true,
-    "contains_carbon_fiber": true
-  }
+    "id": "burgundy_red",
+    "name": "Burgundy Red",
+    "color_hex": "#951E23"
 }

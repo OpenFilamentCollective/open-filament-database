@@ -1,9 +1,5 @@
 {
-  "id": "navy_blue",
-  "name": "Navy Blue",
-  "color_hex": "#2d3f6f",
-  "traits": {
-    "matte": true,
-    "industrially_compostable": true
-  }
+    "id": "navy_blue",
+    "name": "Navy Blue",
+    "color_hex": "#2d3f6f"
 }

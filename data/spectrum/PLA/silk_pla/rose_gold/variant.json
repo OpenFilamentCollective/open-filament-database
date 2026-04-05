@@ -1,0 +1,9 @@
+{
+  "id": "rose_gold",
+  "name": "Rose Gold",
+  "color_hex": "#FB6066",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cf_pa11",
+  "name": "PA11 CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.11,
+  "min_print_temperature": 275,
+  "max_print_temperature": 295,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 95,
+  "max_bed_temperature": 115,
+  "min_chamber_temperature": 50,
+  "max_chamber_temperature": 90,
+  "chamber_temperature": 75
+}

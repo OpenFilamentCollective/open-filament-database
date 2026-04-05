@@ -1,26 +1,22 @@
 {
-  "id": "pet_cf",
-  "name": "PET-CF",
-  "diameter_tolerance": 0.03,
-  "density": 1.29,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PET-CF_Technical_Data_Sheet.pdf?v=1718702203",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PET-CF_MSDS.pdf",
-  "slicer_settings": {
-    "bambustudio": {
-      "id": "GFT01",
-      "profile_name": "Bambu PET-CF"
-    },
-    "orcaslicer": {
-      "id": "GFT01",
-      "profile_name": "Bambu PET-CF"
-    },
-    "elegooslicer": {
-      "id": "OGFT01",
-      "profile_name": "Bambu PET-CF"
+    "id": "pet_cf",
+    "name": "PET-CF",
+    "diameter_tolerance": 0.03,
+    "density": 1.29,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PET-CF_Technical_Data_Sheet.pdf?v=1718702203",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PET-CF_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "id": "GFT01",
+            "profile_name": "Bambu PET-CF"
+        },
+        "orcaslicer": {
+            "id": "GFT01",
+            "profile_name": "Bambu PET-CF"
+        },
+        "elegooslicer": {
+            "id": "OGFT01",
+            "profile_name": "Bambu PET-CF"
+        }
     }
-  },
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
 }

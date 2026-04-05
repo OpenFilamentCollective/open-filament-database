@@ -1,9 +1,5 @@
 {
-  "id": "candy_blue",
-  "name": "Candy Blue",
-  "color_hex": "#077fb5",
-  "traits": {
-    "industrially_compostable": true,
-    "silk": true
-  }
+    "id": "candy_blue",
+    "name": "Candy Blue",
+    "color_hex": "#077fb5"
 }

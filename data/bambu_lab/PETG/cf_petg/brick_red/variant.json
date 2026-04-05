@@ -1,0 +1,9 @@
+{
+  "id": "brick_red",
+  "name": "Brick Red",
+  "color_hex": "#8B3A3A",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

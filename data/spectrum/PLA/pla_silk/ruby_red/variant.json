@@ -1,9 +1,5 @@
 {
-  "id": "ruby_red",
-  "name": "Ruby Red",
-  "color_hex": "#d83743",
-  "traits": {
-    "industrially_compostable": true,
-    "silk": true
-  }
+    "id": "ruby_red",
+    "name": "Ruby Red",
+    "color_hex": "#d83743"
 }

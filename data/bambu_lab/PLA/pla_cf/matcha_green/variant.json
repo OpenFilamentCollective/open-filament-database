@@ -1,10 +1,5 @@
 {
-  "id": "matcha_green",
-  "name": "Matcha Green",
-  "color_hex": "#5C9748",
-  "traits": {
-    "industrially_compostable": true,
-    "abrasive": true,
-    "contains_carbon_fiber": true
-  }
+    "id": "matcha_green",
+    "name": "Matcha Green",
+    "color_hex": "#5C9748"
 }
