@@ -12,6 +12,7 @@ import os
 import re
 import subprocess
 import urllib.parse
+from collections import Counter
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -1921,30 +1922,74 @@ class ImportOpenPrintTagScript(BaseScript):
         return index
 
     @staticmethod
+    def _rename_word_swapped_filaments(
+        existing_index: dict[str, dict[str, set[str]]],
+        hierarchy: dict[str, dict[str, dict[str, dict]]],
+    ) -> list[str]:
+        """Rename hierarchy filament IDs that are word-swaps of on-disk names.
+
+        If the hierarchy contains ``cf_pla`` but the disk already has
+        ``pla_cf`` (same underscore-separated words, different order),
+        the hierarchy entries are moved under the existing name so that
+        new colours are imported into the correct directory instead of
+        being silently dropped.
+
+        Uses ``collections.Counter`` for the comparison so that IDs with
+        repeated words (e.g. ``pla_cf_cf``) are not falsely treated as
+        matching ``pla_cf``.
+
+        Mutates *hierarchy* in place and returns a list of log messages.
+        """
+        renames: list[str] = []
+        for material_type, filaments in hierarchy.items():
+            if material_type not in existing_index:
+                continue
+            to_rename: list[tuple[str, str]] = []
+            for filament_id in filaments:
+                if filament_id in existing_index[material_type]:
+                    # Exact match on disk — no rename needed.
+                    continue
+                fil_counter = Counter(filament_id.split("_"))
+                for existing_fil in existing_index[material_type]:
+                    if Counter(existing_fil.split("_")) == fil_counter:
+                        to_rename.append((filament_id, existing_fil))
+                        break
+            for old_id, new_id in to_rename:
+                colors = filaments.pop(old_id)
+                if new_id not in filaments:
+                    filaments[new_id] = {}
+                for color_id, color_data in colors.items():
+                    if color_id not in filaments[new_id]:
+                        filaments[new_id][color_id] = color_data
+                renames.append(
+                    f"word_swap_rename: {material_type}/{old_id} -> "
+                    f"{material_type}/{new_id}"
+                )
+        return renames
+
+    @staticmethod
     def _check_for_duplicates(
         existing_index: dict[str, dict[str, set[str]]],
         hierarchy: dict[str, dict[str, dict[str, dict]]],
     ) -> list[tuple[str, str, str, str, str]]:
         """Check if any hierarchy entry duplicates existing on-disk data.
 
-        Three checks are performed for each hierarchy entry at
+        Two checks are performed for each hierarchy entry at
         ``{material_type}/{filament_id}/{color_id}``:
 
         1. **Forward**: splitting *color_id* into ``prefix + remainder``
            yields an existing ``{filament_id}_{prefix}/{remainder}`` path.
            Catches: ``abs/plus_black`` duplicating ``abs_plus/black``.
 
-        2. **Word-swap**: the hierarchy *filament_id* contains the same
-           underscore-separated words as an existing on-disk filament but
-           in a different order.  All colours under the swapped name are
-           skipped to avoid creating a duplicate directory.
-           Catches: ``cf_pla`` duplicating ``pla_cf``.
-
-        3. **Reverse**: the hierarchy *filament_id* is a longer form of an
+        2. **Reverse**: the hierarchy *filament_id* is a longer form of an
            existing on-disk filament (``filament_id = base + "_" + suffix``),
            and ``suffix + "_" + color_id`` exists as a variant under that
            base filament.
            Catches: ``hips_x_bahama/yellow`` duplicating ``hips_x/bahama_yellow``.
+
+        Word-swap duplicates (e.g. ``cf_pla`` vs ``pla_cf``) are handled
+        earlier by :meth:`_rename_word_swapped_filaments`, which redirects
+        entries into the existing filament so new colours are preserved.
 
         Returns list of
         ``(material_type, new_filament, new_color, existing_filament, existing_color)``.
@@ -1998,32 +2043,6 @@ class ImportOpenPrintTagScript(BaseScript):
                     if found:
                         continue
 
-                    # Word-swap check: filament_id has the same words as
-                    # an existing on-disk filament but in a different order
-                    # (e.g. "cf_pla" vs "pla_cf").  Skip every colour
-                    # under the swapped name to avoid recreating a
-                    # duplicate directory.
-                    if material_type in existing_index:
-                        fil_parts = set(filament_id.split("_"))
-                        for existing_fil in existing_index[material_type]:
-                            if existing_fil == filament_id:
-                                continue
-                            if set(existing_fil.split("_")) == fil_parts:
-                                duplicates.append(
-                                    (
-                                        material_type,
-                                        filament_id,
-                                        color_id,
-                                        existing_fil,
-                                        color_id,
-                                    )
-                                )
-                                seen.add(key)
-                                found = True
-                                break
-                        if found:
-                            continue
-
                     # Reverse check: hierarchy filament_id is an oversplit
                     # of an existing on-disk filament.  Only check disk data
                     # to avoid flagging the correct entry when both forms
@@ -2058,8 +2077,14 @@ class ImportOpenPrintTagScript(BaseScript):
         dry_run: bool,
     ) -> None:
         """Write the material hierarchy to disk."""
-        # Detect duplicates against existing data and within the hierarchy
+        # Rename word-swapped filament IDs to match existing on-disk names
+        # before duplicate detection, so new colours land in the correct
+        # directory instead of being skipped or creating duplicates.
         existing_index = self._build_existing_index(brand_dir)
+        swap_renames = self._rename_word_swapped_filaments(existing_index, hierarchy)
+        self.report.naming_fixes.extend(swap_renames)
+
+        # Detect duplicates against existing data and within the hierarchy
         duplicates = self._check_for_duplicates(existing_index, hierarchy)
 
         skip_set: set[tuple[str, str, str]] = set()
