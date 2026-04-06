@@ -1,5 +1,9 @@
 {
-    "id": "dark_green",
-    "name": "Dark Green",
-    "color_hex": "#68724D"
+  "id": "dark_green",
+  "name": "Dark Green",
+  "color_hex": "#68724D",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

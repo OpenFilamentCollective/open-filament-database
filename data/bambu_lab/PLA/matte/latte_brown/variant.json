@@ -1,5 +1,9 @@
 {
-    "id": "latte_brown",
-    "name": "Latte Brown",
-    "color_hex": "#D3B7A7"
+  "id": "latte_brown",
+  "name": "Latte Brown",
+  "color_hex": "#D3B7A7",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }
