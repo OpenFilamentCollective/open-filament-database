@@ -1,6 +1,6 @@
 {
     "id": "basic",
-    "name": "Basic",
+    "name": "ABS Basic",
     "diameter_tolerance": 0.02,
     "density": 1.05,
     "slicer_settings": {

@@ -1,6 +1,6 @@
 {
   "id": "extrafill",
-  "name": "Extrafill",
+  "name": "PLA Extrafill",
   "diameter_tolerance": 0.05,
   "density": 1.24,
   "min_print_temperature": 190,

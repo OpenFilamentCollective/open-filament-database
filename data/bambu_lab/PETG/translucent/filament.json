@@ -1,6 +1,6 @@
 {
     "id": "translucent",
-    "name": "Translucent",
+    "name": "PETG Translucent",
     "diameter_tolerance": 0.03,
     "density": 1.25,
     "min_print_temperature": 220,

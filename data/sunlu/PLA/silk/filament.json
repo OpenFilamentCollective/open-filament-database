@@ -1,6 +1,6 @@
 {
   "id": "silk",
-  "name": "Silk",
+  "name": "PLA Silk",
   "diameter_tolerance": 0.02,
   "density": 1.26,
   "min_print_temperature": 190,

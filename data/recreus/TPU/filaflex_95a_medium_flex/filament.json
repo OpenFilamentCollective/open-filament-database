@@ -1,6 +1,6 @@
 {
   "id": "filaflex_95a_medium_flex",
-  "name": "FilaFlex 95A Medium Flex",
+  "name": "TPU FilaFlex 95A Medium Flex",
   "diameter_tolerance": 0.02,
   "density": 1.21,
   "min_print_temperature": 210,

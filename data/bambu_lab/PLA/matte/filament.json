@@ -1,6 +1,6 @@
 {
     "id": "matte",
-    "name": "Matte",
+    "name": "PLA Matte",
     "diameter_tolerance": 0.03,
     "density": 1.31,
     "min_print_temperature": 190,

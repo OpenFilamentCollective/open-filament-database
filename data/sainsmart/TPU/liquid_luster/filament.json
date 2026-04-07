@@ -1,6 +1,6 @@
 {
   "id": "liquid_luster",
-  "name": "Liquid Luster",
+  "name": "TPU Liquid Luster",
   "diameter_tolerance": 0.02,
   "density": 1.21,
   "min_print_temperature": 210,

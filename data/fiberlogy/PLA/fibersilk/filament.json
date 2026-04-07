@@ -1,6 +1,6 @@
 {
     "id": "fibersilk",
-    "name": "FiberSilk",
+    "name": "PLA FiberSilk",
     "diameter_tolerance": 0.02,
     "density": 1.22,
     "slicer_settings": {

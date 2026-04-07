@@ -1,6 +1,6 @@
 {
     "id": "fiberflex_40d",
-    "name": "FiberFlex 40D",
+    "name": "TPU FiberFlex 40D",
     "diameter_tolerance": 0.05,
     "density": 1.16,
     "min_print_temperature": 210,

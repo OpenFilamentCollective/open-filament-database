@@ -1,6 +1,6 @@
 {
     "id": "basic",
-    "name": "Basic",
+    "name": "PETG Basic",
     "diameter_tolerance": 0.02,
     "density": 1.25,
     "slicer_settings": {

@@ -1,6 +1,6 @@
 {
     "id": "glow",
-    "name": "Glow",
+    "name": "PLA Glow",
     "diameter_tolerance": 0.03,
     "density": 1.26,
     "min_print_temperature": 190,

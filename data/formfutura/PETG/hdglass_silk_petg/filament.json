@@ -1,6 +1,6 @@
 {
     "id": "hdglass_silk_petg",
-    "name": "Hdglass",
+    "name": "PETG Hdglass",
     "diameter_tolerance": 0.02,
     "density": 1.27,
     "min_print_temperature": 235,

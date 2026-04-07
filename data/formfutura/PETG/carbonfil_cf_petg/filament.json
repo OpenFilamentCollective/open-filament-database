@@ -1,6 +1,6 @@
 {
   "id": "carbonfil_cf_petg",
-  "name": "CarbonFil",
+  "name": "PETG CarbonFil",
   "diameter_tolerance": 0.02,
   "density": 1.32,
   "min_print_temperature": 230,

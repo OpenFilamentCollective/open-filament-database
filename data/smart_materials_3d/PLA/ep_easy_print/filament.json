@@ -1,6 +1,6 @@
 {
   "id": "ep_easy_print",
-  "name": "EP Easy Print",
+  "name": "PLA EP Easy Print",
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "min_print_temperature": 190,

@@ -1,6 +1,6 @@
 {
   "id": "extrafill",
-  "name": "Extrafill",
+  "name": "ASA Extrafill",
   "diameter_tolerance": 0.05,
   "density": 1.07,
   "min_print_temperature": 240,

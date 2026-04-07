@@ -1,6 +1,6 @@
 {
     "id": "fiberwood",
-    "name": "FiberWood",
+    "name": "PLA FiberWood",
     "diameter_tolerance": 0.02,
     "density": 1.23,
     "min_print_temperature": 190,
