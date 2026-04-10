@@ -9,7 +9,13 @@ tasks:
   # ── Setup ────────────────────────────────────────────────────────────────
 
   setup:
-    desc: Install Python dependencies via uv sync
+    desc: Install all dependencies (Python + WebUI)
+    # keep this task idempotent and without rules, it should instead depend on other smaller tasks to
+    # make things ready for development. Ideally `task test` should just work after running this
+    deps: [.setup-python, .setup-webui]
+
+  .setup-python:
+    internal: true
     cmds:
       - uv sync --frozen
     sources:
@@ -18,8 +24,8 @@ tasks:
     generates:
       - .venv/pyvenv.cfg
 
-  setup-webui:
-    desc: Install WebUI Node.js dependencies via {{.NPM}}
+  .setup-webui:
+    internal: true
     dir: "{{.WEBUI_DIR}}"
     cmds:
       - "{{.NPM}} install --frozen-lockfile"
@@ -32,31 +38,31 @@ tasks:
 
   validate:
     desc: Validate all data (folder names, JSON files, store IDs, logos, GTIN)
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run -m ofd validate {{.CLI_ARGS}}
 
   build:
     desc: Build all exports (JSON, SQLite, CSV, API)
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run -m ofd build {{.CLI_ARGS}}
 
   serve:
     desc: Start the OFD dev server on port 8000
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run -m ofd serve {{.CLI_ARGS}}
 
   style:
     desc: Sort and normalise all JSON data files
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run -m ofd script style_data {{.CLI_ARGS}}
 
   script:
     desc: Run a utility script (use CLI_ARGS to pass the script name and flags)
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run -m ofd script {{.CLI_ARGS}}
 
@@ -64,28 +70,28 @@ tasks:
 
   webui:
     desc: Start the WebUI dev server (http://localhost:5173)
-    deps: [setup-webui]
+    deps: [.setup-webui]
     dir: "{{.WEBUI_DIR}}"
     cmds:
       - "{{.NPM}} run dev"
 
   webui-build:
     desc: Build the WebUI for production
-    deps: [setup-webui]
+    deps: [.setup-webui]
     dir: "{{.WEBUI_DIR}}"
     cmds:
       - "{{.NPM}} run build"
 
   webui-check:
     desc: Type-check the WebUI (known ~103 non-blocking errors)
-    deps: [setup-webui]
+    deps: [.setup-webui]
     dir: "{{.WEBUI_DIR}}"
     cmds:
       - "{{.NPM}} run check"
 
   webui-test:
     desc: Run Playwright tests against the WebUI (requires prior npm run test:install)
-    deps: [setup-webui]
+    deps: [.setup-webui]
     dir: "{{.WEBUI_DIR}}"
     cmds:
       - "{{.NPM}} run test"
@@ -94,31 +100,31 @@ tasks:
 
   lint:
     desc: Lint Python code with ruff
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run ruff check .
 
   lint-fix:
     desc: Lint and auto-fix Python code with ruff
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run ruff check --fix .
 
   format:
     desc: Format Python code with ruff
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run ruff format .
 
   test:
     desc: Run Python test suite with pytest
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run pytest {{.CLI_ARGS}}
 
   requirements:
     desc: Regenerate requirements.txt from uv.lock (for pip users)
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv export --no-hashes -o requirements.txt
 
@@ -126,7 +132,7 @@ tasks:
 
   check:
     desc: Lint, format-check, and test (CI equivalent)
-    deps: [setup]
+    deps: [.setup-python]
     cmds:
       - uv run ruff check .
       - uv run ruff format --check .
