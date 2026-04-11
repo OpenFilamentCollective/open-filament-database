@@ -118,6 +118,12 @@ tasks:
     cmds:
       - uv run pytest --durations 3 --ff {{.CLI_ARGS}}
 
+  test-cov:
+    desc: Run Python tests with coverage (terminal + HTML report in htmlcov/)
+    deps: [.setup-python]
+    cmds:
+      - uv run pytest --cov=ofd --cov-report=term-missing --cov-report=html {{.CLI_ARGS}}
+
   test-all:
     desc: Run all tests (Python + WebUI)
     deps: [.setup-python, .install-playwright]
