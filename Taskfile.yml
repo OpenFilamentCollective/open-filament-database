@@ -75,7 +75,7 @@ tasks:
     desc: Run Python test suite with pytest
     deps: [.setup-python]
     cmds:
-      - uv run pytest {{.CLI_ARGS}}
+      - uv run pytest --durations 3 --ff {{.CLI_ARGS}}
 
   requirements:
     desc: Regenerate requirements.txt from uv.lock (for pip users)
