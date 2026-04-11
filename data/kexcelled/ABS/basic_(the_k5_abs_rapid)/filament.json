@@ -1,0 +1,9 @@
+{
+  "id": "basic_(the_k5_abs_rapid)",
+  "name": "Basic (THE K5 ABS Rapid)",
+  "diameter_tolerance": 0.03,
+  "density": 1.05,
+  "max_dry_temperature": 80,
+  "data_sheet_url": "https://www.kexcelled3d.com/s/THE-K5-ABS-TDS.pdf",
+  "safety_sheet_url": "https://www.kexcelled3d.com/s/KEXCELLED-THE-K5-ABS-MSDS.pdf"
+}
