@@ -122,7 +122,7 @@ tasks:
     desc: Run Python tests with coverage (terminal + HTML report in htmlcov/)
     deps: [.setup-python]
     cmds:
-      - uv run pytest --cov=ofd --cov-report=term-missing --cov-report=html {{.CLI_ARGS}}
+      - uv run pytest --cov=ofd --cov-report=term-missing:skip-covered --cov-report=html {{.CLI_ARGS}}
 
   test-all:
     desc: Run all tests (Python + WebUI)
