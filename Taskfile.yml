@@ -108,6 +108,7 @@ tasks:
 
   format:
     desc: Format Python code with ruff
+    aliases: ["fmt"]
     deps: [.setup-python]
     cmds:
       - uv run ruff format .
