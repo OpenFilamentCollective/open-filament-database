@@ -23,7 +23,7 @@ jobs:
           node-version: '22'
       - uses: pnpm/action-setup@v4
         with:
-          working-directory: webui
+          version: latest
       - name: Install Playwright browsers
         working-directory: webui
         run: pnpm run test:install
