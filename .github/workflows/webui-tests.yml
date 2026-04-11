@@ -1,4 +1,4 @@
-name: Frontend Tests
+name: WebUI Tests
 
 on:
   pull_request:
@@ -13,14 +13,17 @@ permissions:
   contents: read
 
 jobs:
-  test-frontend:
+  test-webui:
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: webui/package-lock.json
+      
       - name: Install dependencies
         working-directory: webui
         run: npm ci
@@ -28,11 +31,15 @@ jobs:
       - name: Install Playwright browsers
         working-directory: webui
         run: npm run test:install
-
+      
+      - name: Build application
+        working-directory: webui
+        run: npm run build
+      
       - name: Run tests
         working-directory: webui
         run: npm test
-
+        
       - uses: actions/upload-artifact@v4
         if: always()
         with:
