@@ -35,18 +35,27 @@ def test_slugify(text: str, expected: str) -> None:
 
 
 @pytest.mark.parametrize("color, expected", [
-    ("#FF0000",              "#FF0000"),
-    ("#ff0000",              "#FF0000"),
-    ("#fff",                 "#FFFFFF"),
-    ("fff",                  "#FFFFFF"),
-    ("FF0000",               "#FF0000"),
-    (None,                   None),
-    ("",                     None),
-    (["#ff0000", "#00ff00"], "#FF0000"),
-    ("not-a-color",          "not-a-color"),
+    ("#FF0000", "#FF0000"),
+    ("#ff0000", "#FF0000"),
+    ("#fff",    "#FFFFFF"),
+    ("fff",     "#FFFFFF"),
+    ("FF0000",  "#FF0000"),
 ])
-def test_normalize_color_hex(color: str, expected: str | None) -> None:
+def test_normalize_color_hex(color: str, expected: str) -> None:
     assert utils.normalize_color_hex(color) == expected
+
+
+def test_normalize_color_hex_list_takes_first() -> None:
+    assert utils.normalize_color_hex(["#ff0000", "#00ff00"]) == "#FF0000"
+
+
+@pytest.mark.parametrize("color", [None, ""])
+def test_normalize_color_hex_empty_returns_none(color: str | None) -> None:
+    assert utils.normalize_color_hex(color) is None
+
+
+def test_normalize_color_hex_unparseable_returned_as_is() -> None:
+    assert utils.normalize_color_hex("not-a-color") == "not-a-color"
 
 
 def test_ensure_list_none_returns_empty() -> None:
