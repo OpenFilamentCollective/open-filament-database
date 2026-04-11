@@ -1,16 +1,22 @@
 version: "3"
 
+vars:
+  WEBUI_DIR: webui
+
+# NOTE: taskfile can be easily written to support different operating systems, but for simplicity we'll assume
+# mostly *nix-like operating systems are used, esp. MacOS and Linux, meaning most rules would work without
+# need for OS-specific variants
+
 tasks:
   # ── Setup ────────────────────────────────────────────────────────────────
 
   setup:
-    desc: Install Python dependencies
+    desc: Install all dependencies (Python + WebUI)
     # keep this task idempotent and without rules, it should instead depend on other smaller tasks to
     # make things ready for development. Ideally `task test` should just work after running this
-    deps: [.setup-python]
+    deps: [.setup-python, .install-playwright]
 
   .setup-python:
-    internal: true
     cmds:
       - uv sync --frozen --extra dev
     sources:
@@ -18,6 +24,23 @@ tasks:
       - uv.lock
     generates:
       - .venv/pyvenv.cfg
+
+  .setup-webui:
+    cmds:
+      - pnpm --dir {{.WEBUI_DIR}} install --frozen-lockfile
+      - touch {{.WEBUI_DIR}}/node_modules/.webui-installed
+    sources:
+      - "{{.WEBUI_DIR}}/package.json"
+      - "{{.WEBUI_DIR}}/pnpm-lock.yaml"
+    generates:
+      - "{{.WEBUI_DIR}}/node_modules/.webui-installed"
+
+  .install-playwright:
+    deps: [.setup-webui]
+    dir: "{{.WEBUI_DIR}}"
+    status:
+      - test -f node_modules/.playwright-installed
+    cmd: pnpm run test:install && touch node_modules/.playwright-installed
 
   # ── Python CLI ───────────────────────────────────────────────────────────
 
@@ -51,13 +74,31 @@ tasks:
     cmds:
       - uv run -m ofd script {{.CLI_ARGS}}
 
+  # ── WebUI ────────────────────────────────────────────────────────────────
+
+  webui:
+    desc: Start the WebUI dev server (http://localhost:5173)
+    deps: [.setup-webui]
+    dir: "{{.WEBUI_DIR}}"
+    cmds:
+      - pnpm run dev
+
+  webui-build:
+    desc: Build the WebUI for production
+    deps: [.setup-webui]
+    dir: "{{.WEBUI_DIR}}"
+    cmds:
+      - pnpm run build
+
   # ── Code quality ─────────────────────────────────────────────────────────
 
   lint:
-    desc: Lint Python code with ruff
-    deps: [.setup-python]
+    desc: Lint all code (Python + WebUI)
+    deps: [.setup-python, .setup-webui]
     cmds:
       - uv run ruff check .
+      - uv run ruff format --check .
+      - pnpm --dir {{.WEBUI_DIR}} run check
 
   lint-fix:
     desc: Lint and auto-fix Python code with ruff
@@ -72,10 +113,11 @@ tasks:
       - uv run ruff format .
 
   test:
-    desc: Run Python test suite with pytest
-    deps: [.setup-python]
+    desc: Run all tests (Python + WebUI)
+    deps: [.setup-python, .install-playwright]
     cmds:
       - uv run pytest --durations 3 --ff {{.CLI_ARGS}}
+      - pnpm --dir {{.WEBUI_DIR}} run test
 
   requirements:
     desc: Regenerate requirements.txt from uv.lock (for pip users)
@@ -86,9 +128,5 @@ tasks:
   # ── Compound ─────────────────────────────────────────────────────────────
 
   check:
-    desc: Lint, format-check, and test (CI equivalent)
-    deps: [.setup-python]
-    cmds:
-      - uv run ruff check .
-      - uv run ruff format --check .
-      - uv run pytest
+    desc: Lint, format-check, and test — Python + WebUI (CI equivalent)
+    deps: [lint, test]
