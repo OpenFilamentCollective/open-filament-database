@@ -77,7 +77,6 @@ python_functions = ["test_*"]
 [dependency-groups]
 dev = [
     "mypy>=1.0.0",
-    "pre-commit>=4.0.0",
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
     "ruff>=0.1.0",
