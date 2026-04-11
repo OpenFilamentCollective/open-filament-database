@@ -15,31 +15,23 @@ permissions:
 jobs:
   test-webui:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
-          cache-dependency-path: webui/package-lock.json
-      
-      - name: Install dependencies
-        working-directory: webui
-        run: npm ci
-
+      - uses: pnpm/action-setup@v4
+        with:
+          working-directory: webui
       - name: Install Playwright browsers
         working-directory: webui
-        run: npm run test:install
-      
-      - name: Build application
-        working-directory: webui
-        run: npm run build
-      
+        run: pnpm run test:install
+
       - name: Run tests
         working-directory: webui
-        run: npm test
-        
+        run: pnpm test
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
