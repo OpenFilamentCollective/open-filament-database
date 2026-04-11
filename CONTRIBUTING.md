@@ -30,7 +30,8 @@ Run `task --list` for the full list.
 Automatically fixes ruff lint and formatting issues on every commit:
 
 ```sh
-uv run pre-commit install
+uv tool install prek
+prek install
 ```
 
 ## Frontend development
