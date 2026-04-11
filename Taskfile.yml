@@ -1,23 +1,51 @@
 version: "3"
 
+includes:
+  local:
+    taskfile: local/Taskfile.yml
+    optional: true # not checked in; create local/Taskfile.yml for personal tasks
+
+vars:
+  WEBUI_DIR: webui
+
+# NOTE: taskfile can be easily written to support different operating systems, but for simplicity we'll assume
+# mostly *nix-like operating systems are used, esp. MacOS and Linux, meaning most rules would work without
+# need for OS-specific variants
+
 tasks:
   # ── Setup ────────────────────────────────────────────────────────────────
 
   setup:
-    desc: Install Python dependencies
+    desc: Install all dependencies (Python + WebUI)
     # keep this task idempotent and without rules, it should instead depend on other smaller tasks to
     # make things ready for development. Ideally `task test` should just work after running this
-    deps: [.setup-python]
+    deps: [.setup-python, .install-playwright]
 
   .setup-python:
-    internal: true
     cmds:
-      - uv sync --frozen --extra dev
+      - uv sync --frozen
     sources:
       - pyproject.toml
       - uv.lock
     generates:
       - .venv/pyvenv.cfg
+
+  .setup-webui:
+    cmds:
+      - npm --prefix {{.WEBUI_DIR}} ci
+      - touch {{.WEBUI_DIR}}/node_modules/.webui-installed
+    sources:
+      - "{{.WEBUI_DIR}}/package.json"
+      - "{{.WEBUI_DIR}}/package-lock.json"
+    generates:
+      - "{{.WEBUI_DIR}}/node_modules/.webui-installed"
+
+  .install-playwright:
+    deps: [.setup-webui]
+    dir: "{{.WEBUI_DIR}}"
+    status:
+      - test -f node_modules/.playwright-installed
+    cmd: npm run test:install && touch node_modules/.playwright-installed
 
   # ── Python CLI ───────────────────────────────────────────────────────────
 
@@ -51,13 +79,31 @@ tasks:
     cmds:
       - uv run -m ofd script {{.CLI_ARGS}}
 
+  # ── WebUI ────────────────────────────────────────────────────────────────
+
+  webui:
+    desc: Start the WebUI dev server (http://localhost:5173)
+    deps: [.setup-webui]
+    dir: "{{.WEBUI_DIR}}"
+    cmds:
+      - npm run dev
+
+  webui-build:
+    desc: Build the WebUI for production
+    deps: [.setup-webui]
+    dir: "{{.WEBUI_DIR}}"
+    cmds:
+      - npm run build
+
   # ── Code quality ─────────────────────────────────────────────────────────
 
   lint:
-    desc: Lint Python code with ruff
-    deps: [.setup-python]
+    desc: Lint all code (Python + WebUI)
+    deps: [.setup-python, .setup-webui]
     cmds:
       - uv run ruff check .
+      - uv run ruff format --check .
+      - npm --prefix {{.WEBUI_DIR}} run check
 
   lint-fix:
     desc: Lint and auto-fix Python code with ruff
@@ -67,15 +113,29 @@ tasks:
 
   format:
     desc: Format Python code with ruff
+    aliases: ["fmt"]
     deps: [.setup-python]
     cmds:
       - uv run ruff format .
 
   test:
-    desc: Run Python test suite with pytest
+    desc: Run Python tests (pytest)
     deps: [.setup-python]
     cmds:
       - uv run pytest --durations 3 --ff {{.CLI_ARGS}}
+
+  test-cov:
+    desc: Run Python tests with coverage (terminal + HTML report in htmlcov/)
+    deps: [.setup-python]
+    cmds:
+      - uv run pytest --cov=ofd --cov-report= --cov-report=html {{.CLI_ARGS}}
+      - uv run coverage report --skip-covered --show-missing --sort=cover
+
+  test-all:
+    desc: Run all tests (Python + WebUI)
+    deps: [test, .install-playwright]
+    cmds:
+      - npm --prefix {{.WEBUI_DIR}} run test
 
   requirements:
     desc: Regenerate requirements.txt from uv.lock (for pip users)
@@ -83,12 +143,17 @@ tasks:
     cmds:
       - uv export --no-hashes -o requirements.txt
 
+  # ── Maintenance ──────────────────────────────────────────────────────────
+
+  clean:
+    desc: Remove Python cache files and build artefacts
+    cmds: # note: trailing plus makes command not to fail if there are no matches
+      - find ofd -type d -name __pycache__ -exec rm -rf {} +
+      - find ofd -type f -name "*.py[cod]" -delete
+      - find . -type d -name "*.egg-info" -exec rm -rf {} +
+
   # ── Compound ─────────────────────────────────────────────────────────────
 
   check:
-    desc: Lint, format-check, and test (CI equivalent)
-    deps: [.setup-python]
-    cmds:
-      - uv run ruff check .
-      - uv run ruff format --check .
-      - uv run pytest
+    desc: Lint, format-check, validate, and test — Python + WebUI (CI equivalent)
+    deps: [lint, validate, test-all]
