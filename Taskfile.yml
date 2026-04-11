@@ -148,6 +148,12 @@ tasks:
       - find ofd -type f -name "*.py[cod]" -delete
       - find . -type d -name "*.egg-info" -exec rm -rf {} +
 
+  # ── GitHub ───────────────────────────────────────────────────────────────
+
+  pr-notifs:
+    desc: Show unread notifications in upstream repo where you're participating
+    cmd: gh search prs --repo OpenFilamentCollective/open-filament-database --involves @me --state open
+
   # ── Compound ─────────────────────────────────────────────────────────────
 
   check:
