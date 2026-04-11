@@ -62,17 +62,14 @@ def test_ensure_list_none_returns_empty() -> None:
     assert utils.ensure_list(None) == []
 
 
-def test_ensure_list_scalar_string_wrapped() -> None:
-    assert utils.ensure_list("pla") == ["pla"]
-
-
-def test_ensure_list_scalar_int_wrapped() -> None:
-    assert utils.ensure_list(42) == [42]
+@pytest.mark.parametrize("value, expected", [
+    ("pla",      ["pla"]),
+    (42,         [42]),
+    ({"k": "v"}, [{"k": "v"}]),
+])
+def test_ensure_list_scalar_wrapped(value: object, expected: list) -> None:
+    assert utils.ensure_list(value) == expected
 
 
 def test_ensure_list_list_returned_unchanged() -> None:
     assert utils.ensure_list(["a", "b"]) == ["a", "b"]
-
-
-def test_ensure_list_dict_wrapped() -> None:
-    assert utils.ensure_list({"k": "v"}) == [{"k": "v"}]
