@@ -78,3 +78,8 @@ ignore_missing_imports = true
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+]

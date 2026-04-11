@@ -25,6 +25,14 @@ task serve       # start OFD API server
 
 Run `task --list` for the full list.
 
+## Pre-commit hooks (optional)
+
+Automatically fixes ruff lint and formatting issues on every commit:
+
+```sh
+uv run pre-commit install
+```
+
 ## Frontend development
 
 No need to install Task just to work on the frontend — pnpm scripts work directly:
