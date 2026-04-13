@@ -1,4 +1,6 @@
 name: Python Tests
+env:
+  PYTHON: "3.11"
 
 on:
   push:
@@ -29,6 +31,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
+          python-version: ${{ env.PYTHON }}
 
       - name: Run tests
         run: task test
