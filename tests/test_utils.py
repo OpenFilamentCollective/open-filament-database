@@ -57,8 +57,9 @@ def test_normalize_color_hex(color: str, expected: str) -> None:
 
 
 # This seems a bit odd. I'd expect code to throw in case like this, but implemented based on current behaviour.
+# Didn't fix type yet in source, because it's not yet certain what would be desired behaviour
 def test_normalize_color_hex_list_takes_first() -> None:
-    assert utils.normalize_color_hex(["#ff0000", "#00ff00"]) == "#FF0000"
+    assert utils.normalize_color_hex(["#ff0000", "#00ff00"]) == "#FF0000"  # type: ignore[arg-type]
 
 
 @pytest.mark.parametrize("color", [None, ""])
