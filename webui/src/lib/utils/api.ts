@@ -123,6 +123,79 @@ export function buildApiUrl(path: string): string {
 }
 
 /**
+ * Cache of store UUID → slug. `apiFetch` fetches the cloud API directly in
+ * cloud mode, so the server-side proxy doesn't run for browser loads — we
+ * have to rewrite purchase_links.store_id here too.
+ */
+let storeIdToSlugCache: Map<string, string> | null = null;
+let storeIdCachePromise: Promise<Map<string, string>> | null = null;
+
+async function getStoreIdToSlugMap(): Promise<Map<string, string>> {
+	if (storeIdToSlugCache) return storeIdToSlugCache;
+	if (storeIdCachePromise) return storeIdCachePromise;
+
+	const baseUrl = get(apiBaseUrl);
+	storeIdCachePromise = (async () => {
+		try {
+			const response = await fetch(`${baseUrl}/api/v1/stores/index.json`);
+			if (!response.ok) return new Map<string, string>();
+			const data = await response.json();
+			const map = new Map<string, string>();
+			if (data && Array.isArray(data.stores)) {
+				for (const store of data.stores) {
+					if (store?.id && store?.slug) {
+						map.set(store.id, store.slug);
+					}
+				}
+			}
+			storeIdToSlugCache = map;
+			return map;
+		} catch (error) {
+			console.error('Failed to build store id→slug map:', error);
+			return new Map<string, string>();
+		} finally {
+			storeIdCachePromise = null;
+		}
+	})();
+
+	return storeIdCachePromise;
+}
+
+/**
+ * Strip cloud-only UUID fields from a variant's sizes and purchase links, and
+ * rewrite purchase_links.store_id from UUID to slug. The cloud dataset assigns
+ * synthetic UUIDs to each size and purchase link that aren't part of the local
+ * JSON schema; leaving them in leaks UUIDs into saved change data and breaks
+ * submission validation.
+ */
+function normalizeCloudVariant(variant: any, storeMap: Map<string, string>): any {
+	if (!variant || typeof variant !== 'object') return variant;
+
+	const result = { ...variant };
+	if (result.slug) result.id = result.slug;
+
+	if (Array.isArray(result.sizes)) {
+		result.sizes = result.sizes.map((size: any) => {
+			if (!size || typeof size !== 'object') return size;
+			const { id: _id, variant_id: _vid, ...rest } = size;
+			if (Array.isArray(rest.purchase_links)) {
+				rest.purchase_links = rest.purchase_links.map((link: any) => {
+					if (!link || typeof link !== 'object') return link;
+					const { id: _lid, size_id: _sid, ...linkRest } = link;
+					if (linkRest.store_id && storeMap.has(linkRest.store_id)) {
+						linkRest.store_id = storeMap.get(linkRest.store_id);
+					}
+					return linkRest;
+				});
+			}
+			return rest;
+		});
+	}
+
+	return result;
+}
+
+/**
  * Transform cloud API response to match local API structure
  * Cloud API returns: { version, generated_at, count, stores/brands: [...] }
  * Local API returns: [...]
@@ -131,7 +204,7 @@ export function buildApiUrl(path: string): string {
  * @param path - The original request path
  * @returns Normalized data matching local API structure
  */
-function transformCloudResponse(data: any, path: string): any {
+async function transformCloudResponse(data: any, path: string): Promise<any> {
 	const isCloud = get(isLocalMode) === false;
 
 	if (!isCloud) {
@@ -191,7 +264,17 @@ function transformCloudResponse(data: any, path: string): any {
 		return data.variants;
 	}
 
-	// 6. Transform individual store/brand responses to map logo_slug to logo
+	// 6. Variant detail: strip cloud-only UUID fields and map store_id UUIDs to
+	// slugs so the variant's sizes/purchase_links match the local on-disk shape.
+	const variantDetailMatch = path.match(
+		/^\/api\/brands\/([^/]+)\/materials\/([^/]+)\/filaments\/([^/]+)\/variants\/([^/]+)$/
+	);
+	if (variantDetailMatch && data && typeof data === 'object' && Array.isArray(data.sizes)) {
+		const storeMap = await getStoreIdToSlugMap();
+		return normalizeCloudVariant(data, storeMap);
+	}
+
+	// 7. Transform individual store/brand responses to map logo_slug to logo
 	// This handles /api/brands/[id] and /api/stores/[id] endpoints
 	if (data && typeof data === 'object' && 'logo_slug' in data) {
 		return {
@@ -248,7 +331,7 @@ export async function apiFetch(path: string, options?: RequestInit): Promise<Res
 
 	try {
 		const data = await response.json();
-		const transformedData = transformCloudResponse(data, path);
+		const transformedData = await transformCloudResponse(data, path);
 
 		// Cache the transformed response in cloud mode
 		if (shouldCache) {

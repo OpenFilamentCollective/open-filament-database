@@ -84,11 +84,84 @@ function buildCloudUrl(localPath: string): string {
 }
 
 /**
+ * In-memory cache of store UUID → slug, populated lazily from the cloud stores
+ * index. The cloud API tags purchase links with store UUIDs, but local JSON
+ * files reference stores by slug, so we rewrite on the way through the proxy.
+ */
+let storeIdToSlugCache: Map<string, string> | null = null;
+let storeIdCachePromise: Promise<Map<string, string>> | null = null;
+
+async function getStoreIdToSlugMap(): Promise<Map<string, string>> {
+	if (storeIdToSlugCache) return storeIdToSlugCache;
+	if (storeIdCachePromise) return storeIdCachePromise;
+
+	storeIdCachePromise = (async () => {
+		try {
+			const response = await fetch(`${API_BASE}/api/v1/stores/index.json`);
+			if (!response.ok) return new Map<string, string>();
+			const data = await response.json();
+			const map = new Map<string, string>();
+			if (data && Array.isArray(data.stores)) {
+				for (const store of data.stores) {
+					if (store?.id && store?.slug) {
+						map.set(store.id, store.slug);
+					}
+				}
+			}
+			storeIdToSlugCache = map;
+			return map;
+		} catch (error) {
+			console.error('Failed to build store id→slug map:', error);
+			return new Map<string, string>();
+		} finally {
+			storeIdCachePromise = null;
+		}
+	})();
+
+	return storeIdCachePromise;
+}
+
+/**
+ * Strip cloud-only identity fields from a variant so its shape matches the
+ * on-disk variant.json + sizes.json format. Sizes and purchase links carry
+ * synthetic UUIDs in the cloud dataset that have no meaning locally; keeping
+ * them would cause schema validation to fail and leak UUIDs into submitted
+ * PRs. Also rewrites purchase_links.store_id from UUID to slug.
+ */
+function normalizeCloudVariant(variant: any, storeMap: Map<string, string>): any {
+	if (!variant || typeof variant !== 'object') return variant;
+
+	const result = { ...variant };
+	// Align id with slug so downstream save logic doesn't persist the UUID.
+	if (result.slug) result.id = result.slug;
+
+	if (Array.isArray(result.sizes)) {
+		result.sizes = result.sizes.map((size: any) => {
+			if (!size || typeof size !== 'object') return size;
+			const { id: _id, variant_id: _vid, ...rest } = size;
+			if (Array.isArray(rest.purchase_links)) {
+				rest.purchase_links = rest.purchase_links.map((link: any) => {
+					if (!link || typeof link !== 'object') return link;
+					const { id: _lid, size_id: _sid, ...linkRest } = link;
+					if (linkRest.store_id && storeMap.has(linkRest.store_id)) {
+						linkRest.store_id = storeMap.get(linkRest.store_id);
+					}
+					return linkRest;
+				});
+			}
+			return rest;
+		});
+	}
+
+	return result;
+}
+
+/**
  * Transform cloud API response to match local API structure.
  * Cloud API wraps arrays in objects: { brands: [...] }
  * Local API returns plain arrays: [...]
  */
-function transformCloudResponse(data: any, localPath: string): any {
+async function transformCloudResponse(data: any, localPath: string): Promise<any> {
 	// Stores index: { stores: [...] } -> [...]
 	if (localPath === '/api/stores') {
 		if (data && typeof data === 'object' && 'stores' in data) {
@@ -131,6 +204,16 @@ function transformCloudResponse(data: any, localPath: string): any {
 		return data.variants;
 	}
 
+	// Variant detail: strip cloud-only UUID fields from sizes/purchase_links and
+	// rewrite store_id UUIDs to slugs so saves produce schema-valid local JSON.
+	const variantDetailMatch = localPath.match(
+		/^\/api\/brands\/([^/]+)\/materials\/([^/]+)\/filaments\/([^/]+)\/variants\/([^/]+)$/
+	);
+	if (variantDetailMatch && data && typeof data === 'object' && Array.isArray(data.sizes)) {
+		const storeMap = await getStoreIdToSlugMap();
+		return normalizeCloudVariant(data, storeMap);
+	}
+
 	// Individual entity: map logo_slug -> logo
 	if (data && typeof data === 'object' && 'logo_slug' in data) {
 		return {
@@ -159,7 +242,7 @@ export async function proxyGetToCloud(localPath: string): Promise<Response> {
 		}
 
 		const data = await response.json();
-		const transformed = transformCloudResponse(data, localPath);
+		const transformed = await transformCloudResponse(data, localPath);
 		return json(transformed);
 	} catch (error) {
 		console.error(`Cloud proxy error for ${localPath}:`, error);
