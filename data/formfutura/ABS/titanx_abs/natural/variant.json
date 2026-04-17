@@ -2,6 +2,7 @@
   "id": "natural",
   "name": "Natural",
   "color_hex": "#DFDFD3",
+  "discontinued": false,
   "traits": {
     "filtration_recommended": true
   }
