@@ -1,24 +1,24 @@
 {
-  "id": "petg_basic",
-  "name": "PETG Basic",
-  "diameter_tolerance": 0.03,
-  "density": 1.25,
-  "discontinued": false,
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFG99",
-      "id": "GFG00",
-      "profile_name": "Bambu PETG Basic"
-    },
-    "orcaslicer": {
-      "generic_id": "GFG99",
-      "id": "GFG00",
-      "profile_name": "Bambu PETG Basic"
-    },
-    "elegooslicer": {
-      "generic_id": "GFG99",
-      "id": "OGFG00",
-      "profile_name": "Bambu PETG Basic"
+    "id": "petg_basic",
+    "name": "PETG Basic",
+    "diameter_tolerance": 0.03,
+    "density": 1.25,
+    "discontinued": false,
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFG99",
+            "id": "GFG00",
+            "profile_name": "Bambu PETG Basic"
+        },
+        "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "GFG00",
+            "profile_name": "Bambu PETG Basic"
+        },
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "OGFG00",
+            "profile_name": "Bambu PETG Basic"
+        }
     }
-  }
 }

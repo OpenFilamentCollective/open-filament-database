@@ -10,6 +10,11 @@
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Eolas Prints PETG"
+        },
+        "elegooslicer": {
+            "profile_name": "Eolas Prints PETG",
+            "id": "GFSEP010",
+            "generic_id": "GFG99"
         }
     }
 }

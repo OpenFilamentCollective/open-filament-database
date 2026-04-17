@@ -2,5 +2,12 @@
     "id": "pla_marble",
     "name": "PLA-Marble",
     "diameter_tolerance": 0.03,
-    "density": 1.275
+    "density": 1.275,
+    "slicer_settings": {
+        "elegooslicer": {
+            "profile_name": "eSUN PLA-Marble",
+            "id": "OGFL06",
+            "generic_id": "GFL99"
+        }
+    }
 }

@@ -15,6 +15,11 @@
             "generic_id": "GFL99",
             "id": "GFNMK00",
             "profile_name": "Numakers PLA+"
+        },
+        "elegooslicer": {
+            "profile_name": "Numakers PLA+",
+            "id": "OGFNMK00",
+            "generic_id": "GFL99"
         }
     }
 }
