@@ -1,5 +1,9 @@
 {
-    "id": "scarlet_red",
-    "name": "Scarlet Red",
-    "color_hex": "#DE4343"
+  "id": "scarlet_red",
+  "name": "Scarlet Red",
+  "color_hex": "#DE4343",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

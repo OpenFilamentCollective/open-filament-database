@@ -2,6 +2,7 @@
   "id": "anthracite_grey",
   "name": "Anthracite Grey",
   "color_hex": "#3F4647",
+  "discontinued": false,
   "traits": {
     "recycled": true,
     "filtration_recommended": true

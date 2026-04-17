@@ -1,0 +1,94 @@
+version: "3"
+
+tasks:
+  # ── Setup ────────────────────────────────────────────────────────────────
+
+  setup:
+    desc: Install Python dependencies
+    # keep this task idempotent and without rules, it should instead depend on other smaller tasks to
+    # make things ready for development. Ideally `task test` should just work after running this
+    deps: [.setup-python]
+
+  .setup-python:
+    internal: true
+    cmds:
+      - uv sync --frozen --extra dev
+    sources:
+      - pyproject.toml
+      - uv.lock
+    generates:
+      - .venv/pyvenv.cfg
+
+  # ── Python CLI ───────────────────────────────────────────────────────────
+
+  validate:
+    desc: Validate all data (folder names, JSON files, store IDs, logos, GTIN)
+    deps: [.setup-python]
+    cmds:
+      - uv run -m ofd validate {{.CLI_ARGS}}
+
+  build:
+    desc: Build all exports (JSON, SQLite, CSV, API)
+    deps: [.setup-python]
+    cmds:
+      - uv run -m ofd build {{.CLI_ARGS}}
+
+  serve:
+    desc: Start the OFD dev server on port 8000
+    deps: [.setup-python]
+    cmds:
+      - uv run -m ofd serve {{.CLI_ARGS}}
+
+  style:
+    desc: Sort and normalise all JSON data files
+    deps: [.setup-python]
+    cmds:
+      - uv run -m ofd script style_data {{.CLI_ARGS}}
+
+  script:
+    desc: Run a utility script (use CLI_ARGS to pass the script name and flags)
+    deps: [.setup-python]
+    cmds:
+      - uv run -m ofd script {{.CLI_ARGS}}
+
+  # ── Code quality ─────────────────────────────────────────────────────────
+
+  lint:
+    desc: Lint Python code with ruff
+    deps: [.setup-python]
+    cmds:
+      - uv run ruff check .
+
+  lint-fix:
+    desc: Lint and auto-fix Python code with ruff
+    deps: [.setup-python]
+    cmds:
+      - uv run ruff check --fix .
+
+  format:
+    desc: Format Python code with ruff
+    deps: [.setup-python]
+    cmds:
+      - uv run ruff format .
+
+  test:
+    desc: Run Python test suite with pytest
+    deps: [.setup-python]
+    cmds:
+      - uv run pytest --durations 3 --ff {{.CLI_ARGS}}
+
+  requirements:
+    desc: Regenerate requirements.txt from uv.lock (for pip users)
+    deps: [.setup-python]
+    cmds:
+      - uv export --no-hashes -o requirements.txt
+
+  # ── Compound ─────────────────────────────────────────────────────────────
+
+  check:
+    desc: Lint, format-check, and test (CI equivalent)
+    deps: [.setup-python]
+    cmds:
+      - uv run ruff check .
+      - uv run ruff format --check .
+      - uv run pytest

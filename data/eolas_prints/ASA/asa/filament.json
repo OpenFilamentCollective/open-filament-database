@@ -6,5 +6,12 @@
   "min_print_temperature": 235,
   "max_print_temperature": 260,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_bed_temperature": 110,
+  "slicer_settings": {
+    "elegooslicer": {
+      "generic_id": "GFB98",
+      "id": "GFSEP018",
+      "profile_name": "Eolas Prints ASA"
+    }
+  }
 }

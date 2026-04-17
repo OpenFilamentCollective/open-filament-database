@@ -1,6 +1,6 @@
 {
   "id": "apollox_foaming",
-  "name": "ApolloX Foaming",
+  "name": "ASA ApolloX Foaming",
   "diameter_tolerance": 0.02,
   "density": 1.07,
   "min_print_temperature": 220,

@@ -1,5 +1,10 @@
 {
   "id": "pink",
   "name": "Pink",
-  "color_hex": "#F17B8F"
+  "color_hex": "#F17B8F",
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
 }

@@ -1,20 +1,25 @@
 {
-    "id": "pla_plus",
-    "name": "PLA+",
-    "diameter_tolerance": 0.03,
-    "density": 1.24,
-    "min_print_temperature": 200,
-    "max_print_temperature": 230,
-    "min_bed_temperature": 40,
-    "max_bed_temperature": 60,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Numakers PLA+"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GFNMK00",
-            "profile_name": "Numakers PLA+"
-        }
+  "id": "pla_plus",
+  "name": "PLA+",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "min_print_temperature": 200,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Numakers PLA+"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GFNMK00",
+      "profile_name": "Numakers PLA+"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "OGFNMK00",
+      "profile_name": "Numakers PLA+"
     }
+  }
 }

@@ -1,5 +1,9 @@
 {
-    "id": "black",
-    "name": "Black",
-    "color_hex": "#2F2F2F"
+  "id": "black",
+  "name": "Black",
+  "color_hex": "#2F2F2F",
+  "traits": {
+    "industrially_compostable": true,
+    "silk": true
+  }
 }

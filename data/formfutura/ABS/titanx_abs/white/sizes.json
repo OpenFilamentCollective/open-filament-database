@@ -1,6 +1,100 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 165,
+    "article_number": "TITX-175WHTE-00750",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/titanx"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 625,
+    "article_number": "TITX-175WHTE-02300",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/titanx"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 785,
+    "article_number": "TITX-175WHTE-04500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/titanx"
+      }
+    ]
+  },
+  {
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 1040,
+    "article_number": "TITX-175WHTE-08000",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/titanx"
+      }
+    ]
+  },
+  {
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 165,
+    "article_number": "TITX-285WHTE-00750",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/titanx"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2300,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 625,
+    "article_number": "TITX-285WHTE-02300",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/titanx"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 785,
+    "article_number": "TITX-285WHTE-04500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/titanx"
+      }
+    ]
   }
 ]

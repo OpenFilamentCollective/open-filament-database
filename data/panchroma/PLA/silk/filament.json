@@ -1,6 +1,6 @@
 {
     "id": "silk",
-    "name": "Silk",
+    "name": "PLA Silk",
     "diameter_tolerance": 0.02,
     "density": 1.2,
     "slicer_settings": {

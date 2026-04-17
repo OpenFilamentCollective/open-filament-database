@@ -1,6 +1,6 @@
 {
     "id": "woodfill",
-    "name": "Woodfill",
+    "name": "PLA Woodfill",
     "diameter_tolerance": 0.04,
     "density": 1.25,
     "slicer_settings": {

@@ -1,6 +1,100 @@
 [
   {
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 165,
+    "article_number": "RTIT-175WHTE-01000",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/reform-rtitan"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 625,
+    "article_number": "RTIT-175WHTE-02300",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/reform-rtitan"
+      }
+    ]
+  },
+  {
+    "filament_weight": 3500,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 705,
+    "article_number": "RTIT-175WHTE-03500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/reform-rtitan"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 785,
+    "article_number": "RTIT-175WHTE-04500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/reform-rtitan"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 165,
+    "article_number": "RTIT-285WHTE-01000",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/reform-rtitan"
+      }
+    ]
+  },
+  {
+    "filament_weight": 3500,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 705,
+    "article_number": "RTIT-285WHTE-03500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/reform-rtitan"
+      }
+    ]
+  },
+  {
+    "filament_weight": 4500,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 785,
+    "article_number": "RTIT-285WHTE-04500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/reform-rtitan"
+      }
+    ]
   }
 ]

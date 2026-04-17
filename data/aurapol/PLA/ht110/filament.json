@@ -1,6 +1,6 @@
 {
   "id": "ht110",
-  "name": "HT110",
+  "name": "PLA HT110",
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "min_print_temperature": 190,

@@ -1,6 +1,6 @@
 {
   "id": "turbo_rapid",
-  "name": "Turbo Rapid",
+  "name": "PLA Turbo Rapid",
   "diameter_tolerance": 0.02,
   "density": 1.16,
   "min_print_temperature": 190,

@@ -1,7 +1,11 @@
 {
-    "id": "terracotta",
-    "name": "Terracotta",
-    "color_hex": [
-        "#a15636"
-    ]
+  "id": "terracotta",
+  "name": "Terracotta",
+  "color_hex": [
+    "#a15636"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

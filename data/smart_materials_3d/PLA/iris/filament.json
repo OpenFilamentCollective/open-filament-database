@@ -1,6 +1,6 @@
 {
   "id": "iris",
-  "name": "Iris",
+  "name": "PLA Iris",
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "min_print_temperature": 190,

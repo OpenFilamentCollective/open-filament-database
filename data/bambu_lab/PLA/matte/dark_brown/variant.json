@@ -1,5 +1,9 @@
 {
-    "id": "dark_brown",
-    "name": "Dark Brown",
-    "color_hex": "#7D6556"
+  "id": "dark_brown",
+  "name": "Dark Brown",
+  "color_hex": "#7D6556",
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

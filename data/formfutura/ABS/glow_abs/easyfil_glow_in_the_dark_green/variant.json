@@ -1,10 +1,8 @@
 {
   "id": "easyfil_glow_in_the_dark_green",
-  "name": "EasyFil – Glow in the Dark Green",
-  "color_hex": [
-    "#06B100",
-    "#DFDFD3"
-  ],
+  "name": "EasyFil ABS - Glow in the Dark",
+  "color_hex": "#A8C9A6",
+  "discontinued": false,
   "traits": {
     "glow": true,
     "filtration_recommended": true,

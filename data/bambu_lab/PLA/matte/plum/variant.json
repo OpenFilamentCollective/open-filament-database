@@ -1,7 +1,11 @@
 {
-    "id": "plum",
-    "name": "Plum",
-    "color_hex": [
-        "#9b3a5f"
-    ]
+  "id": "plum",
+  "name": "Plum",
+  "color_hex": [
+    "#9b3a5f"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

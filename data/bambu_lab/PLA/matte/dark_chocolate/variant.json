@@ -1,7 +1,11 @@
 {
-    "id": "dark_chocolate",
-    "name": "Dark Chocolate",
-    "color_hex": [
-        "#3f3730"
-    ]
+  "id": "dark_chocolate",
+  "name": "Dark Chocolate",
+  "color_hex": [
+    "#3f3730"
+  ],
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
 }

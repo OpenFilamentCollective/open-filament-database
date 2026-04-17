@@ -1,6 +1,6 @@
 {
   "id": "3dxstat_emi",
-  "name": "3DXStat EMI",
+  "name": "PETG 3DXStat EMI",
   "diameter_tolerance": 0.02,
   "density": 1.27,
   "min_print_temperature": 220,

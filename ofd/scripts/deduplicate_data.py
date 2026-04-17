@@ -13,6 +13,10 @@ Detection strategy:
   (``collections.Counter``).  E.g. ``cf_pla`` and ``pla_cf``.
 - **Doubled modifiers**: filament dirs with consecutive repeated
   segments.  E.g. ``pla_cf_cf`` → ``pla_cf``.
+- **Material-type redundancy**: filament dirs that include the parent
+  material type as a redundant word (e.g. ``matte_pla`` under ``PLA/``
+  when sibling ``matte`` already exists).  The shorter form is always
+  kept as canonical.
 
 Target selection (what to keep):
 - Within each duplicate group, the directory whose first git commit is
@@ -88,6 +92,25 @@ def _remove_doubled_segments(name: str) -> str:
     return name
 
 
+def _strip_material_type(name: str, material: str) -> str | None:
+    """Remove the parent material type word from a filament directory name.
+
+    Returns the shortened name, or ``None`` if the material word is not
+    present or removing it would produce an empty string.
+
+    Examples (material=``"pla"``):
+        ``"matte_pla"``        → ``"matte"``
+        ``"pla_basic"``        → ``"basic"``
+        ``"tpu_filaflex_82a"`` → ``"filaflex_82a"``  (material=``"tpu"``)
+        ``"pla"``              → ``None``
+    """
+    parts = name.split("_")
+    if material not in parts:
+        return None
+    remaining = [p for p in parts if p != material]
+    return "_".join(remaining) if remaining else None
+
+
 def _git_first_commit_timestamp(path: str) -> int:
     """Return the unix timestamp of the earliest commit that added *path*.
 
@@ -111,7 +134,7 @@ class DeduplicateDataScript(BaseScript):
     """Find and merge duplicate filament directories."""
 
     name = "deduplicate_data"
-    description = "Detect and merge duplicate filament directories (word-swaps, doubled modifiers)"
+    description = "Detect and merge duplicate filament directories (word-swaps, doubled modifiers, material-type redundancy)"
 
     def configure_parser(self, parser: argparse.ArgumentParser) -> None:
         parser.add_argument(
@@ -181,7 +204,21 @@ class DeduplicateDataScript(BaseScript):
                 if str(mat_path / n) not in in_group and _has_doubled_segment(n):
                     doubled_standalone.append((mat_path, n))
 
-        if not groups and not doubled_standalone:
+        # ── 4. Detect material-type-redundant pairs ────────────────
+        # E.g. matte_pla + matte under PLA/ — the longer form
+        # redundantly includes the parent material type.
+        material_redundant: list[tuple[Path, str, str]] = []
+        for mat_path, names in filament_dirs.items():
+            material = mat_path.name.lower()
+            name_set = set(names)
+            for n in names:
+                if str(mat_path / n) in in_group:
+                    continue
+                stripped = _strip_material_type(n, material)
+                if stripped is not None and stripped in name_set and stripped != n:
+                    material_redundant.append((mat_path, n, stripped))
+
+        if not groups and not doubled_standalone and not material_redundant:
             self.log("No duplicates found.")
             return ScriptResult(success=True, message="No duplicates found")
 
@@ -226,9 +263,15 @@ class DeduplicateDataScript(BaseScript):
                 else:
                     rename_plan.append((mat_path / name, clean_path))
 
-        # ── 5. Report plan ──────────────────────────────────────────
-        self.log(f"Found {len(groups)} duplicate group(s), "
-                 f"{len(doubled_standalone)} standalone doubled-modifier dir(s)")
+        # Material-redundant: always merge the longer name into the
+        # shorter canonical form (no git-age tiebreaking needed).
+        for mat_path, source_name, target_name in material_redundant:
+            merge_plan.append((mat_path / source_name, mat_path / target_name))
+
+        # ── 6. Report plan ──────────────────────────────────────────
+        self.log(f"Found {len(groups)} word-swap group(s), "
+                 f"{len(doubled_standalone)} doubled-modifier dir(s), "
+                 f"{len(material_redundant)} material-type-redundant pair(s)")
         self.log("")
 
         if merge_plan:

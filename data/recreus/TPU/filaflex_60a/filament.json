@@ -1,6 +1,6 @@
 {
   "id": "filaflex_60a",
-  "name": "FilaFlex 60A",
+  "name": "TPU FilaFlex 60A",
   "diameter_tolerance": 0.02,
   "density": 1.21,
   "min_print_temperature": 210,
