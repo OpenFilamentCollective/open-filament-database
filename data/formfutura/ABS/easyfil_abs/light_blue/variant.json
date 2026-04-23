@@ -2,6 +2,7 @@
   "id": "light_blue",
   "name": "Light Blue",
   "color_hex": "#39B9DB",
+  "discontinued": false,
   "traits": {
     "filtration_recommended": true
   }

@@ -2,6 +2,7 @@
   "id": "red",
   "name": "Red",
   "color_hex": "#E31A1F",
+  "discontinued": false,
   "traits": {
     "filtration_recommended": true
   }

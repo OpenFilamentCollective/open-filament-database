@@ -2,6 +2,7 @@
   "id": "yellow",
   "name": "Yellow",
   "color_hex": "#FBE200",
+  "discontinued": false,
   "traits": {
     "filtration_recommended": true
   }

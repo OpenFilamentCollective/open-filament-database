@@ -2,6 +2,7 @@
   "id": "light_green",
   "name": "Light Green",
   "color_hex": "#9AED51",
+  "discontinued": false,
   "traits": {
     "filtration_recommended": true
   }

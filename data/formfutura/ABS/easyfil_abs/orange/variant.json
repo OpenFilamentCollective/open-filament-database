@@ -2,6 +2,7 @@
   "id": "orange",
   "name": "Orange",
   "color_hex": "#FF9C66",
+  "discontinued": false,
   "traits": {
     "filtration_recommended": true
   }

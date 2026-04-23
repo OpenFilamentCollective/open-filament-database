@@ -2,6 +2,7 @@
   "id": "dark_green",
   "name": "Dark Green",
   "color_hex": "#008059",
+  "discontinued": false,
   "traits": {
     "filtration_recommended": true
   }
