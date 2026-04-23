@@ -2,6 +2,7 @@
   "id": "bronze",
   "name": "Bronze",
   "color_hex": "#A18D5A",
+  "discontinued": false,
   "traits": {
     "filtration_recommended": true
   }
