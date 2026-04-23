@@ -1,0 +1,18 @@
+{
+  "id": "premium_abs_medical",
+  "name": "Premium ABS Medical",
+  "diameter_tolerance": 0.02,
+  "density": 1.06,
+  "certifications": [
+    "ISO 10993-1, ISO 10993-3, ISO 10993-4, ISO 10993-5, ISO 10993-6, ISO 10993-11, ISO 10993-12.",
+    "USP Class V."
+  ],
+  "max_dry_temperature": 85,
+  "min_print_temperature": 235,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://www.formfutura.com/web/content/306558?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/306588?download=true",
+  "discontinued": false
+}
