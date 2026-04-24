@@ -2,6 +2,7 @@
   "id": "luvocom_3f_paht_9825_natural",
   "name": "LUVOCOM 3F PAHT 9825 Natural",
   "color_hex": "#D9D8DE",
+  "discontinued": true,
   "traits": {
     "high_temperature": true,
     "without_pigments": true
