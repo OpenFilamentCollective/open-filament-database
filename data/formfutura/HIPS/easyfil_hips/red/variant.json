@@ -1,5 +1,6 @@
 {
   "id": "red",
   "name": "Red",
-  "color_hex": "#D33D3D"
+  "color_hex": "#D33D3D",
+  "discontinued": false
 }

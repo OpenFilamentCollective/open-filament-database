@@ -1,5 +1,6 @@
 {
   "id": "grey",
   "name": "Grey",
-  "color_hex": "#727376"
+  "color_hex": "#727376",
+  "discontinued": false
 }
