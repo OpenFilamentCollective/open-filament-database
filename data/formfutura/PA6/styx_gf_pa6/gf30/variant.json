@@ -1,7 +1,8 @@
 {
   "id": "gf30",
-  "name": "GF30",
+  "name": "Black",
   "color_hex": "#000000",
+  "discontinued": false,
   "traits": {
     "abrasive": true,
     "contains_glass_fiber": true
