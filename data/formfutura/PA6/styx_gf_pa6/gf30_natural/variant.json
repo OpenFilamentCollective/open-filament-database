@@ -1,7 +1,8 @@
 {
   "id": "gf30_natural",
-  "name": "GF30 Natural",
+  "name": "Natural",
   "color_hex": "#DFDFD3",
+  "discontinued": false,
   "traits": {
     "abrasive": true,
     "without_pigments": true,

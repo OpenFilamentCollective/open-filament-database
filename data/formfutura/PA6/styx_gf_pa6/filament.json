@@ -1,10 +1,13 @@
 {
   "id": "styx_gf_pa6",
-  "name": "Styx GF PA6",
+  "name": "Styx PA6-GF30",
   "diameter_tolerance": 0.02,
-  "density": 1.14,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "density": 1.34,
+  "min_print_temperature": 255,
+  "max_print_temperature": 295,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256639?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/290166?download=true",
+  "discontinued": false
 }
