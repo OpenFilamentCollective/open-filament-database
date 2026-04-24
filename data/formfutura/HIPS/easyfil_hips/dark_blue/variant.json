@@ -1,5 +1,6 @@
 {
   "id": "dark_blue",
   "name": "Dark Blue",
-  "color_hex": "#0E21AE"
+  "color_hex": "#0E21AE",
+  "discontinued": false
 }
