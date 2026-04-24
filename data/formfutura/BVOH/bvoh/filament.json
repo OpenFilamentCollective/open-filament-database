@@ -3,8 +3,11 @@
   "name": "BVOH",
   "diameter_tolerance": 0.02,
   "density": 1.14,
-  "min_print_temperature": 190,
-  "max_print_temperature": 220,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_print_temperature": 200,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 65,
+  "max_bed_temperature": 75,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256487?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256488?download=true",
+  "discontinued": false
 }
