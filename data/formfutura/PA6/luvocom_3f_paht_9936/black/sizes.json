@@ -1,0 +1,44 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "article_number": "PH99-175BLCK-00500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/luvocom-3f-paht-9936"
+      }
+    ]
+  },
+  {
+    "filament_weight": 200,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 100,
+    "article_number": "PH99-285BLCK-00200",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/luvocom-3f-paht-9936"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "article_number": "PH99-285BLCK-00500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/luvocom-3f-paht-9936"
+      }
+    ]
+  }
+]
