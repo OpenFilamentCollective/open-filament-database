@@ -35,6 +35,8 @@ Click the **Fork** button in the top right of this page, a guide is [available h
 ### 3. Install our requirements
 If you don't have Git installed, [follow this guide](docs/installing-software.md#git). The OFD wrapper script will help you install Python and Node.js automatically (see step 5).
 
+Developers working on the codebase itself should also read [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ### 4. Download the database
 Download the database using either [this guide](docs/cloning.md) or by just using the command below, with `YOUR_USERNAME` replaced ofc!
 ```bash
