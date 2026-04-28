@@ -1,5 +1,6 @@
 {
   "id": "iron_grey",
   "name": "Iron Grey",
-  "color_hex": "#4C5051"
+  "color_hex": "#4C5051",
+  "discontinued": false
 }
