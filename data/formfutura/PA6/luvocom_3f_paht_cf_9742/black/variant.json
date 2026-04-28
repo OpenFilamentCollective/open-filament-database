@@ -4,7 +4,7 @@
   "color_hex": "#000000",
   "discontinued": false,
   "traits": {
-    "contains_carbon_fiber": true,
-    "abrasive": true
+    "abrasive": true,
+    "contains_carbon_fiber": true
   }
 }
