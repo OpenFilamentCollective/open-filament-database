@@ -4,6 +4,8 @@
   "color_hex": "#000000",
   "discontinued": false,
   "traits": {
-    "contains_ceramic": true
+    "contains_ceramic": true,
+    "self_extinguishing": true,
+    "high_temperature": true
   }
 }
