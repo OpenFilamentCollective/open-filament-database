@@ -1,0 +1,72 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "article_number": "PHCF-175BLCK-00500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/filaments/luvocom-3f-paht-cf-9891"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 165,
+    "article_number": "PHCF-175BLCK-01000",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/filaments/luvocom-3f-paht-cf-9891"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 625,
+    "article_number": "PHCF-175BLCK-02300",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/filaments/luvocom-3f-paht-cf-9891"
+      }
+    ]
+  },
+  {
+    "filament_weight": 200,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 100,
+    "article_number": "PHCF-285BLCK-00200",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/filaments/luvocom-3f-paht-cf-9891"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "article_number": "PHCF-285BLCK-00500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/filaments/luvocom-3f-paht-cf-9891"
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "id": "luvocom_3f_paht_cf_9891",
+  "name": "LUVOCOM 3F PAHT CF 9891",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 260,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256555?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256556?download=true",
+  "discontinued": false
+}
