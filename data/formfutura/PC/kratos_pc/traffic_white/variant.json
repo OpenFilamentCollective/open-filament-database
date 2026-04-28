@@ -1,5 +1,6 @@
 {
   "id": "traffic_white",
   "name": "Traffic White",
-  "color_hex": "#FFFFFF"
+  "color_hex": "#FFFFFF",
+  "discontinued": false
 }
