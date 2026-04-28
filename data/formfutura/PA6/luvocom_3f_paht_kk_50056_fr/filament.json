@@ -1,0 +1,13 @@
+{
+  "id": "luvocom_3f_paht_kk_50056_fr",
+  "name": "LUVOCOM 3F PAHT KK 50056 FR",
+  "diameter_tolerance": 0.02,
+  "density": 1.49,
+  "min_print_temperature": 270,
+  "max_print_temperature": 300,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256575?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256576?download=true",
+  "discontinued": false
+}
