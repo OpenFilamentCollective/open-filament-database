@@ -1,0 +1,9 @@
+{
+  "id": "ochre_washed",
+  "name": "Ochre Washed",
+  "color_hex": "#78582B",
+  "discontinued": false,
+  "traits": {
+    "contains_wood": true
+  }
+}

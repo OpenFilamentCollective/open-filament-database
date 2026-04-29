@@ -1,0 +1,9 @@
+{
+  "id": "black_washed",
+  "name": "Black Washed",
+  "color_hex": "#404040",
+  "discontinued": false,
+  "traits": {
+    "contains_wood": true
+  }
+}
