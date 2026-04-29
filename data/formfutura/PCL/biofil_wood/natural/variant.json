@@ -1,0 +1,9 @@
+{
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#FFE09E",
+  "discontinued": false,
+  "traits": {
+    "contains_wood": true
+  }
+}

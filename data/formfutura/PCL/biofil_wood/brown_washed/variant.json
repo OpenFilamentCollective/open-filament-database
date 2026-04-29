@@ -1,0 +1,9 @@
+{
+  "id": "brown_washed",
+  "name": "Brown Washed",
+  "color_hex": "#AE875B",
+  "discontinued": false,
+  "traits": {
+    "contains_wood": true
+  }
+}
