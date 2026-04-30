@@ -1,10 +1,13 @@
 {
   "id": "athenax_pctg",
-  "name": "Athenax PCTG",
+  "name": "AthenaX",
   "diameter_tolerance": 0.02,
   "density": 1.23,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "min_print_temperature": 250,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 85,
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256479?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256480?download=true",
+  "discontinued": false
 }
