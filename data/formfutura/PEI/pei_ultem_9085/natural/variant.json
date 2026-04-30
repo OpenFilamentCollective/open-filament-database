@@ -1,7 +1,7 @@
 {
-  "id": "1010",
+  "id": "natural",
   "name": "Natural",
-  "color_hex": "#EA9E3F",
+  "color_hex": "#DBDABD",
   "discontinued": false,
   "traits": {
     "low_outgassing": true
