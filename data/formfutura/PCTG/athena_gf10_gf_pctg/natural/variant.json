@@ -2,6 +2,7 @@
   "id": "natural",
   "name": "Natural",
   "color_hex": "#F2EFE9",
+  "discontinued": false,
   "traits": {
     "without_pigments": true,
     "contains_glass_fiber": true
