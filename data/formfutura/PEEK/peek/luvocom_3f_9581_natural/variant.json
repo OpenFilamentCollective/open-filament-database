@@ -1,7 +1,8 @@
 {
   "id": "luvocom_3f_9581_natural",
-  "name": "LUVOCOM 3F 9581 Natural",
+  "name": "Natural",
   "color_hex": "#DFDFD3",
+  "discontinued": false,
   "traits": {
     "low_outgassing": true,
     "without_pigments": true

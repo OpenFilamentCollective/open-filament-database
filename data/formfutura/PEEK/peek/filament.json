@@ -1,10 +1,13 @@
 {
   "id": "peek",
-  "name": "PEEK",
+  "name": "LUVOCOM 3F PEEK 9581",
   "diameter_tolerance": 0.02,
-  "density": 1.3,
-  "min_print_temperature": 360,
+  "density": 1.31,
+  "min_print_temperature": 370,
   "max_print_temperature": 420,
   "min_bed_temperature": 120,
-  "max_bed_temperature": 160
+  "max_bed_temperature": 160,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256577?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256578?download=true",
+  "discontinued": false
 }
