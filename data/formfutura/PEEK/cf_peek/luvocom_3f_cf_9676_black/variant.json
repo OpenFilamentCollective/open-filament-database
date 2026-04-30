@@ -1,8 +1,11 @@
 {
   "id": "luvocom_3f_cf_9676_black",
-  "name": "LUVOCOM 3F CF 9676 Black",
+  "name": "Black",
   "color_hex": "#000000",
+  "discontinued": false,
   "traits": {
-    "low_outgassing": true
+    "abrasive": true,
+    "low_outgassing": true,
+    "contains_carbon_fiber": true
   }
 }
