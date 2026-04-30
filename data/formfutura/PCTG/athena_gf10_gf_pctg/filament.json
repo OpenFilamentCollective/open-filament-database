@@ -1,6 +1,6 @@
 {
   "id": "athena_gf10_gf_pctg",
-  "name": "AthenaX GF10 ",
+  "name": "AthenaX GF10",
   "diameter_tolerance": 0.02,
   "density": 1.31,
   "min_print_temperature": 250,
