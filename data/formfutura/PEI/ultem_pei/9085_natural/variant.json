@@ -2,6 +2,7 @@
   "id": "9085_natural",
   "name": "9085 Natural",
   "color_hex": "#EADAC2",
+  "discontinued": true,
   "traits": {
     "low_outgassing": true,
     "without_pigments": true
