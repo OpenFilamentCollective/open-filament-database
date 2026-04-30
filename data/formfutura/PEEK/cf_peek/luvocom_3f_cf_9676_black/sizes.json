@@ -1,6 +1,16 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "article_number": "PKCF-175CRBK-00500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/luvocom-3f-peek-cf-9676"
+      }
+    ]
   }
 ]
