@@ -1,0 +1,13 @@
+{
+  "id": "luvocom_3f_pei_50236",
+  "name": "LUVOCOM 3F PEI 50236",
+  "diameter_tolerance": 0.02,
+  "density": 1.38,
+  "min_print_temperature": 400,
+  "max_print_temperature": 450,
+  "min_bed_temperature": 130,
+  "max_bed_temperature": 150,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256581?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256582?download=true",
+  "discontinued": false
+}
