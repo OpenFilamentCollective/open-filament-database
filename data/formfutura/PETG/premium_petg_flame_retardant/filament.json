@@ -1,0 +1,13 @@
+{
+  "id": "premium_petg_flame_retardant",
+  "name": "Premium PETG Flame Retardant",
+  "diameter_tolerance": 0.02,
+  "density": 1.26,
+  "min_print_temperature": 225,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://www.formfutura.com/web/content/263077?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/263073?download=true",
+  "discontinued": false
+}
