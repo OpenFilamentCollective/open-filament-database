@@ -1,7 +1,8 @@
 {
   "id": "luvocom_3f_50082_natural",
-  "name": "LUVOCOM 3F 50082 Natural",
-  "color_hex": "#EADAC2",
+  "name": "Natural",
+  "color_hex": "#5D4A2D",
+  "discontinued": false,
   "traits": {
     "low_outgassing": true,
     "without_pigments": true

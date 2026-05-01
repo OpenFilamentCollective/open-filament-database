@@ -1,10 +1,12 @@
 {
   "id": "pekk",
-  "name": "PEKK",
+  "name": "LUVOCOM 3F PEKK 50082",
   "diameter_tolerance": 0.02,
-  "density": 1.3,
-  "min_print_temperature": 350,
-  "max_print_temperature": 400,
+  "density": 1.27,
+  "min_print_temperature": 320,
+  "max_print_temperature": 360,
   "min_bed_temperature": 120,
-  "max_bed_temperature": 160
+  "max_bed_temperature": 160,
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256583?download=true",
+  "discontinued": false
 }
