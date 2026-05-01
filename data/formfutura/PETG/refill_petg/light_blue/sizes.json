@@ -1,0 +1,16 @@
+[
+  {
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "empty_spool_weight": 20,
+    "article_number": "RFPE-175LBLU-00750",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/refill-petg"
+      }
+    ]
+  }
+]
