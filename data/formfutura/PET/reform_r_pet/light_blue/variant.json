@@ -2,6 +2,7 @@
   "id": "light_blue",
   "name": "Light Blue",
   "color_hex": "#005DA4",
+  "discontinued": false,
   "traits": {
     "recycled": true
   }
