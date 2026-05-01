@@ -1,0 +1,14 @@
+{
+  "id": "petg_carbonfil",
+  "name": "CarbonFil",
+  "diameter_tolerance": 0.02,
+  "density": 1.32,
+  "min_print_temperature": 230,
+  "max_print_temperature": 275,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "min_nozzle_diameter": 0.4,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256493?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256492?download=true",
+  "discontinued": false
+}
