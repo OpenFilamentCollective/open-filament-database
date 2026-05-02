@@ -1,10 +1,13 @@
 {
   "id": "reform_r_pet",
-  "name": "ReForm r PET",
+  "name": "ReForm - rPET",
   "diameter_tolerance": 0.02,
-  "density": 1.38,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "density": 1.23,
+  "min_print_temperature": 230,
+  "max_print_temperature": 255,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256630?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256629?download=true",
+  "discontinued": false
 }

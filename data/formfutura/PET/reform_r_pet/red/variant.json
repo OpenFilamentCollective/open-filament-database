@@ -2,6 +2,7 @@
   "id": "red",
   "name": "Red",
   "color_hex": "#E72F1D",
+  "discontinued": false,
   "traits": {
     "recycled": true
   }

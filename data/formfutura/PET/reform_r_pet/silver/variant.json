@@ -2,6 +2,7 @@
   "id": "silver",
   "name": "Silver",
   "color_hex": "#ABACB0",
+  "discontinued": false,
   "traits": {
     "recycled": true
   }

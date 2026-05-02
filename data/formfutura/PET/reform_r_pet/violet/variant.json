@@ -2,6 +2,7 @@
   "id": "violet",
   "name": "Violet",
   "color_hex": "#A048F2",
+  "discontinued": false,
   "traits": {
     "recycled": true
   }
