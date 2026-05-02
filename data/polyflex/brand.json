@@ -3,5 +3,6 @@
     "name": "PolyFlex",
     "website": "https://polymaker.com/",
     "logo": "logo.svg",
-    "origin": "CN"
+    "origin": "CN",
+    "manufacturer": "polymaker"
 }
