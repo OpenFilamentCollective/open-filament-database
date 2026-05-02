@@ -1,6 +1,30 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "filament_weight": 200,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 100,
+    "article_number": "PEKK-175NTRL-00200",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/luvocom-3f-pekk-50082"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "article_number": "PEKK-175NTRL-00500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/luvocom-3f-pekk-50082"
+      }
+    ]
   }
 ]
