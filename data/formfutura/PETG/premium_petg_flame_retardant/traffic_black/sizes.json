@@ -1,0 +1,30 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "empty_spool_weight": 20,
+    "article_number": "PGFR-175TBLK-B0500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/premium-petg-flame-retardant"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "empty_spool_weight": 20,
+    "article_number": "PGFR-175TBLK-B1000",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/premium-petg-flame-retardant"
+      }
+    ]
+  }
+]
