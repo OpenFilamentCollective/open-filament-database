@@ -2,6 +2,7 @@
   "id": "iron_grey",
   "name": "Iron Grey",
   "color_hex": "#4C5051",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

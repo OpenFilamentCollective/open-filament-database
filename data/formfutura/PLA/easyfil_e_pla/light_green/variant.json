@@ -2,6 +2,7 @@
   "id": "light_green",
   "name": "Light Green",
   "color_hex": "#9AE0DD",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

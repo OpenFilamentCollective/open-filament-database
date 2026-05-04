@@ -2,6 +2,7 @@
   "id": "luminous_green",
   "name": "Luminous Green",
   "color_hex": "#06B100",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

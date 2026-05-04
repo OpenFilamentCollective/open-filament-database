@@ -1,0 +1,10 @@
+{
+  "id": "matt_polar_blue",
+  "name": "Matt Polar Blue",
+  "color_hex": "#B8FAFF",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

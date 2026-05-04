@@ -2,6 +2,7 @@
   "id": "pearl_gold",
   "name": "Pearl Gold",
   "color_hex": "#E3B145",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

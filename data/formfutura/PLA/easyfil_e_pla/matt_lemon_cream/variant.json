@@ -1,0 +1,10 @@
+{
+  "id": "matt_lemon_cream",
+  "name": "Matt Lemon Cream",
+  "color_hex": "#FFEB8A",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

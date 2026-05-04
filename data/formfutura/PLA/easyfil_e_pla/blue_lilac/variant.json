@@ -2,6 +2,7 @@
   "id": "blue_lilac",
   "name": "Blue Lilac",
   "color_hex": "#71577E",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }
