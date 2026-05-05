@@ -2,6 +2,7 @@
   "id": "squirrel_grey",
   "name": "Squirrel Grey",
   "color_hex": "#727376",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

@@ -1,0 +1,10 @@
+{
+  "id": "matt_light_grey",
+  "name": "Matt Light Grey",
+  "color_hex": "#B5B5B5",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

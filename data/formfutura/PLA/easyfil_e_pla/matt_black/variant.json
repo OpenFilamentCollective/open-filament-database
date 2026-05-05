@@ -1,0 +1,10 @@
+{
+  "id": "matt_black",
+  "name": "Matt Black",
+  "color_hex": "#000000",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

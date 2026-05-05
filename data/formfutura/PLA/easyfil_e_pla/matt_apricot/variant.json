@@ -1,0 +1,10 @@
+{
+  "id": "matt_apricot",
+  "name": "Matt Apricot",
+  "color_hex": "#FFB8B8",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

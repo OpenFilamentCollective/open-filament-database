@@ -2,6 +2,7 @@
   "id": "beige_brown",
   "name": "Beige Brown",
   "color_hex": "#694D3F",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

@@ -2,6 +2,7 @@
   "id": "traffic_yellow",
   "name": "Traffic Yellow",
   "color_hex": "#FFD342",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

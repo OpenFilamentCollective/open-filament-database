@@ -2,6 +2,7 @@
   "id": "turquoise_blue",
   "name": "Turquoise Blue",
   "color_hex": "#488D94",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

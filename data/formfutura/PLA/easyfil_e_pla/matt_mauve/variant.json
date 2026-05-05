@@ -1,0 +1,10 @@
+{
+  "id": "matt_mauve",
+  "name": "Matt Mauve",
+  "color_hex": "#FEBEF2",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

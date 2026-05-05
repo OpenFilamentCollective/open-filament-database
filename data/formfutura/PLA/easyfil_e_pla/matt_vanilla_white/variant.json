@@ -1,0 +1,10 @@
+{
+  "id": "matt_vanilla_white",
+  "name": "Matt Vanilla White",
+  "color_hex": "#FFFCEB",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

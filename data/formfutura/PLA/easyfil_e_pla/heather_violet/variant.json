@@ -2,6 +2,7 @@
   "id": "heather_violet",
   "name": "Heather Violet",
   "color_hex": "#E34A94",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

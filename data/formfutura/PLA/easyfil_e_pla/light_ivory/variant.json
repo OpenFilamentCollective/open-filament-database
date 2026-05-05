@@ -2,6 +2,7 @@
   "id": "light_ivory",
   "name": "Light Ivory",
   "color_hex": "#FFF5B5",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

@@ -2,6 +2,7 @@
   "id": "anthracite_grey",
   "name": "Anthracite Grey",
   "color_hex": "#373737",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

@@ -2,6 +2,7 @@
   "id": "luminous_bright_orange",
   "name": "Luminous Bright Orange",
   "color_hex": "#FF9A14",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true
   }

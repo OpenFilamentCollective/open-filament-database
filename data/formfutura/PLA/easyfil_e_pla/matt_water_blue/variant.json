@@ -1,0 +1,10 @@
+{
+  "id": "matt_water_blue",
+  "name": "Matt Water Blue",
+  "color_hex": "#BCB8FF",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "industrially_compostable": true
+  }
+}

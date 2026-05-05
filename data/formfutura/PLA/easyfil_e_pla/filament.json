@@ -1,10 +1,13 @@
 {
   "id": "easyfil_e_pla",
-  "name": "EasyFil e PLA",
+  "name": "EasyFil ePLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "min_print_temperature": 200,
+  "max_print_temperature": 275,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256521?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256520?download=true",
+  "discontinued": false
 }
