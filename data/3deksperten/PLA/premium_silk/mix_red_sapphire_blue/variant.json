@@ -1,8 +1,11 @@
 {
-  "id": "mix-red-Sapphire-blue",
+  "id": "mix_red_sapphire_blue",
   "name": "Mix Red-Sapphire Blue",
   "color_hex": "#7a2f2c",
-  "hex_variants": ["#7a2f2c", "#2c4275"],
+  "hex_variants": [
+    "#7a2f2c",
+    "#2c4275"
+  ],
   "traits": {
     "industrially_compostable": true,
     "silk": true

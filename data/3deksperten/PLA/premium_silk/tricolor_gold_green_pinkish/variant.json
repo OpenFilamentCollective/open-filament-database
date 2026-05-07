@@ -1,8 +1,12 @@
 {
-  "id": "tricolor-gold-green-pinkish",
+  "id": "tricolor_gold_green_pinkish",
   "name": "Tricolor Gold Green Pinkish",
   "color_hex": "#e1e07d",
-  "hex_variants": ["#e1e07d", "#3a8a3f", "#ff71c7"],
+  "hex_variants": [
+    "#e1e07d",
+    "#3a8a3f",
+    "#ff71c7"
+  ],
   "traits": {
     "industrially_compostable": true,
     "silk": true
