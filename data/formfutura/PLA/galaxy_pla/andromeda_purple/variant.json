@@ -2,6 +2,7 @@
   "id": "andromeda_purple",
   "name": "Andromeda Purple",
   "color_hex": "#9F6979",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "glitter": true

@@ -2,6 +2,7 @@
   "id": "gemini_blue",
   "name": "Gemini Blue",
   "color_hex": "#5A6A92",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "glitter": true

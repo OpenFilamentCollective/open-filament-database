@@ -2,6 +2,7 @@
   "id": "opal_green",
   "name": "Opal Green",
   "color_hex": "#488D94",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "glitter": true

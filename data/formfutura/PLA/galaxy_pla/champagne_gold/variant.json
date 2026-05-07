@@ -2,6 +2,7 @@
   "id": "champagne_gold",
   "name": "Champagne Gold",
   "color_hex": "#ACA078",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "glitter": true
