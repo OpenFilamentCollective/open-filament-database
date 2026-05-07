@@ -1,8 +1,7 @@
 {
   "id": "tricolor_gold_green_pinkish",
   "name": "Tricolor Gold Green Pinkish",
-  "color_hex": "#e1e07d",
-  "hex_variants": [
+  "color_hex": [
     "#e1e07d",
     "#3a8a3f",
     "#ff71c7"
