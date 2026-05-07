@@ -87,15 +87,21 @@ Alternatively, you can use the command-line validation scripts ([see guide](docs
 Linux/macOS:
 ```bash
 ./ofd.sh validate                 # Run all validations
-./ofd.sh validate --folder-names  # Validates folder names
-./ofd.sh validate --json-files    # Validates JSON files
+./ofd.sh validate --folder-names  # Validate folder names
+./ofd.sh validate --json-files    # Validate JSON files against schemas
+./ofd.sh validate --logos         # Validate logo files (size, naming, format)
+./ofd.sh validate --store-ids     # Validate store IDs in purchase links
+./ofd.sh validate --gtin          # Validate GTIN/EAN fields
 ```
 
 Windows:
 ```cmd
 ofd.bat validate                  # Run all validations
-ofd.bat validate --folder-names   # Validates folder names
-ofd.bat validate --json-files     # Validates JSON files
+ofd.bat validate --folder-names   # Validate folder names
+ofd.bat validate --json-files     # Validate JSON files against schemas
+ofd.bat validate --logos          # Validate logo files (size, naming, format)
+ofd.bat validate --store-ids      # Validate store IDs in purchase links
+ofd.bat validate --gtin           # Validate GTIN/EAN fields
 ```
 ### 7. Submit your changes
 Before submitting, make sure your data is sorted consistently:

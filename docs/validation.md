@@ -1,5 +1,5 @@
 # Data Validation
-To ensure all your files are correct, you can validate them using either the WebUI (recommended) or the command-line Python scripts.
+To ensure all your files are correct, you can validate them using either the WebUI (recommended) or the command-line tooling.
 
 ## Option 1: Validate Using the WebUI (Recommended)
 The easiest way to validate your changes is directly in the WebUI:
@@ -12,47 +12,53 @@ The easiest way to validate your changes is directly in the WebUI:
 
 This method is recommended because it provides immediate feedback and makes it easy to locate and fix issues.
 
-## Option 2: Validate Using Python Scripts
-If you prefer to validate using the command line, you'll need Python installed. If you haven't installed Python yet, [follow this guide](installing-software.md#python).
-
-After using the WebUI, navigate back to the open-filament-database folder:
-```bash
-cd ..
-```
-
-Then run the validation scripts based on your platform. If any errors appear, read through them carefully and fix the issues.
-
-### Windows
-```bash
-python -m ofd validate --folder-names  # Validates folder names
-python -m ofd validate --logo-files    # Validates logo files
-python -m ofd validate --json-files    # Validates JSON files
-python -m ofd validate --store-ids     # Validates store IDs
-python -m ofd validate                 # Run all validations
-```
+## Option 2: Validate From the Command Line
+If you prefer the command line, the OFD wrapper script will set up Python automatically and run the validator. If you haven't installed Python yet, [follow this guide](installing-software.md#python).
 
 ### Linux/macOS
 ```bash
-python -m ofd validate --folder-names  # Validates folder names
-python -m ofd validate --logo-files    # Validates logo files
-python -m ofd validate --json-files    # Validates JSON files
-python -m ofd validate --store-ids     # Validates store IDs
-python -m ofd validate                 # Run all validations
+./ofd.sh validate                 # Run all validations
+./ofd.sh validate --folder-names  # Validate folder names match JSON content
+./ofd.sh validate --json-files    # Validate JSON files against schemas
+./ofd.sh validate --logos         # Validate logo files (dimensions, naming, format)
+./ofd.sh validate --store-ids     # Validate store IDs in purchase links
+./ofd.sh validate --gtin          # Validate GTIN/EAN fields
 ```
 
-If this gives an error about `python` not being installed, try replacing `python` with `python3`:
+### Windows
+```cmd
+ofd.bat validate
+ofd.bat validate --folder-names
+ofd.bat validate --json-files
+ofd.bat validate --logos
+ofd.bat validate --store-ids
+ofd.bat validate --gtin
+```
+
+### Direct Python Invocation
+If you've already activated a Python virtual environment, you can call the CLI directly:
+
 ```bash
-python3 -m ofd validate --folder-names  # Validates folder names
-python3 -m ofd validate --logo-files    # Validates logo files
-python3 -m ofd validate --json-files    # Validates JSON files
-python3 -m ofd validate --store-ids     # Validates store IDs
-python3 -m ofd validate                 # Run all validations
+python -m ofd validate            # Run all validations
+python -m ofd validate --gtin     # Run a specific check
+```
+
+If `python` is not on your `PATH`, try `python3` instead.
+
+### Using uv or Task
+The repository ships with both a `uv` lockfile and a `Taskfile.yml` for contributors who prefer those tools:
+
+```bash
+uv run -m ofd validate            # uv-managed environment
+task validate                     # Taskfile alias (uses uv under the hood)
 ```
 
 ## Understanding Validation Results
 - **Errors** (shown in red) are critical issues that must be fixed before submitting your pull request
 - **Warnings** (shown in yellow) are suggestions for improvement but won't block your contribution
 - Each validation message includes the file path and specific issue to help you locate and fix problems quickly
+
+You can also produce machine-readable output with `--json`, which is useful for scripts and editors. Pass `--progress` to emit incremental progress events (used by the WebUI).
 
 ## Sorting Your Data
 Before submitting your changes, you should sort all JSON files to ensure consistency across the database. This makes it easier to review changes and maintain the codebase.
@@ -62,22 +68,21 @@ Before submitting your changes, you should sort all JSON files to ensure consist
 2. Wait for the sorting process to complete
 3. The progress will be shown in a modal window
 
-### Using Python Scripts
-Navigate to the open-filament-database folder and run:
-
-**Windows:**
-```bash
-python -m ofd script style_data
-```
-
+### Using the Command Line
 **Linux/macOS:**
 ```bash
-python -m ofd script style_data
+./ofd.sh script style_data
 ```
 
-Or if you need to use `python3`:
+**Windows:**
+```cmd
+ofd.bat script style_data
+```
+
+**Or using uv / Task:**
 ```bash
-python3 -m ofd script style_data
+uv run -m ofd script style_data
+task style
 ```
 
 The sorting script will organize all JSON files alphabetically and format them consistently. This is an important step before creating your pull request.

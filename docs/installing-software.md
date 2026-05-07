@@ -32,6 +32,8 @@ Node.js dependencies are installed lazily - only when you first run `./ofd.sh we
 
 > **Note for NixOS users:** The repo includes a `shell.nix` file. You can use `nix-shell` or enable direnv to automatically set up the environment.
 
+> **Note for developers:** The project also ships with a `pyproject.toml`, `uv.lock`, and a `Taskfile.yml`. If you have [`uv`](https://docs.astral.sh/uv/) and/or [Task](https://taskfile.dev/) installed, you can run `uv sync --extra dev` to set up the Python environment, then use `task validate`, `task build`, `task test`, etc. The wrapper script remains the recommended path for first-time contributors.
+
 If auto-installation fails, follow the manual installation guides below.
 
 ---

@@ -1,5 +1,5 @@
 # Manual Contribution Guide
-This guide explains how to manually edit the database files. We recommend reading through this document first, then exploring the `/data` folder for reference examples.
+This guide explains how to manually edit the database files. We recommend reading through this document first, then exploring the `/data` and `/stores` folders for reference examples. The authoritative source for every field is the JSON Schema in [`/schemas`](../schemas) — if anything here disagrees with a schema, the schema wins.
 
 **Note:** Most contributors find the [WebUI](webui.md) easier to use than manual editing. Consider using the WebUI unless you have a specific reason to edit files directly.
 
@@ -7,111 +7,181 @@ This guide explains how to manually edit the database files. We recommend readin
 The database is organized as a structured JSON-based hierarchy inside the `/data` directory, following this pattern:
 ```
 data/
-└── [brand-name]/
+└── [brand-id]/                      # e.g. 22_network, prusament
     ├── brand.json
-    ├── [brand-logo].json
-    └── [material-type (e.g. PLA, ABS, PETG)]/
+    ├── logo.(png|jpg|svg)           # exactly this filename
+    └── [material-type]/             # e.g. PLA, ABS, PETG (from the material enum)
         ├── material.json
-        └── [filament-name]/
+        └── [filament-id]/           # e.g. glow_pla
             ├── filament.json
-            └── [variant-name]/
+            └── [variant-id]/        # e.g. luminous_blue
                 ├── sizes.json
                 └── variant.json
 ```
-## 🧾 General Guidelines
-- Each **brand** has its own folder under `data/` which contains:
-  - A `brand.json` file with brand information
-  - The brand's logo image
-- Each **material** type (e.g., PLA, PETG, ABS) has its own subfolder inside the brand folder containing a `material.json` file
-- Each **filament** (e.g., Bambu Lab's Basic Gradient) has its own subfolder containing a `filament.json` file
-- Each **variant** of a filament (e.g., colors like Red, Blue, Black) has its own subfolder with `sizes.json` and `variant.json` files
 
-### 🏷️ Adding a Brand
+Stores live in a parallel tree:
+```
+stores/
+└── [store-id]/                      # e.g. printed_solid
+    ├── store.json
+    └── logo.(png|jpg|svg)
+```
 
-1. Go to the `data/` directory and create a new folder for your brand
-2. Add the brand's logo:
-   - Maximum size: 400x400 pixels (SVG files can be any size)
-   - Naming: Use lowercase snake_case (e.g., `colorfab.png`)
-   - Keep the filename simple
-3. Create a `brand.json` file with the following fields:
-   - `brand` - The brand name
-   - `website` - The brand's website URL
-   - `logo` - The filename of the logo (e.g., `colorfab.png`)
-   - `origin` - Country of origin (use an empty string `""` if unknown)
+## 🧾 Naming Rules
+Every folder name and every `id` field must match the regex `^[a-z0-9+]+(_[a-z0-9+]+)*$` — lowercase letters, digits, and `+`, separated by single underscores. The `id` inside the JSON must match the folder name exactly.
 
-### 🧪 Adding a Material Type
-1. Navigate to your brand's folder and create a new folder named after the material type
-2. Create a `material.json` file with:
-   - `material` - The material name (e.g., `"PLA"`, `"PETG"`, `"ABS"`)
-   - Optional fields:
-     - Default maximum dry temperature
-     - Default slicer settings (refer to `schemas/material_schema.json` for details)
+**Logos** must be:
+- Named exactly `logo.png`, `logo.jpg`, or `logo.svg` (custom names are rejected by the validator)
+- Square (width = height)
+- Between **100×100** and **400×400** pixels for raster formats (PNG/JPG)
+- A real SVG (root element `<svg>`) for SVG files
 
-### 📦 Adding a Filament
-Each filament represents a product line (e.g., "Silk PLA", "Tough PLA"), **not a specific color**.
+## 🏷️ Adding a Brand
 
-1. Navigate to your material type folder and create a new folder named after the filament
-2. Create a `filament.json` file with:
-   - Required fields:
-     - Filament name
-     - Diameter tolerance (in mm)
-     - Filament density
-   - Optional fields:
-     - Maximum dry temperature
-     - Data sheet URL
-     - Safety sheet URL
-     - Discontinued status (boolean)
-     - Slicer IDs and settings (refer to `schemas/filament_schema.json` for details)
+1. Create a folder under `data/` named with the brand's `id` (lowercase snake_case, e.g. `bambu_lab`, `prusament`)
+2. Add the logo as `logo.png`, `logo.jpg`, or `logo.svg` (see naming rules above)
+3. Create `brand.json`:
+   ```json
+   {
+     "id": "bambu_lab",
+     "name": "Bambu Lab",
+     "website": "https://bambulab.com/",
+     "logo": "logo.png",
+     "origin": "CN"
+   }
+   ```
 
-### 🎨 Adding a Variant
-Navigate to your filament folder and create a new folder named after the variant. Create the following two files:
+   **Required fields:**
+   - `id` — must match the folder name
+   - `name` — display name as shown by the manufacturer
+   - `website` — the manufacturer's official site
+   - `logo` — the logo filename (must be `logo.png`, `logo.jpg`, or `logo.svg`)
+   - `origin` — ISO 3166-1 alpha-2 country code (e.g. `US`, `DE`, `CN`), optionally with a region suffix like `US-CA`, **or** the literal string `"Unknown"`. An empty string is **not** valid.
 
-#### variant.json
-Create a `variant.json` file with:
-- Required fields:
-  - `name` - The variant name (usually a color like "Red" or "Black")
-  - `color_hex` - Hex color code representing the variant (e.g., `"#FF0000"`)
-- Optional fields (see `schemas/variant_schema.json` for details):
-  - `discontinued` - Whether the variant is discontinued (boolean)
-  - `hex_variants` - Array of alternative hex color codes
-  - `color_standards` - Standard color codes (RAL, Pantone, etc.)
-  - `traits` - Special properties (e.g., "glow-in-the-dark", "silk")
+   **Optional:** `source` — free-text note describing where the data came from (e.g. another database).
 
-#### sizes.json
-Create a `sizes.json` file containing an array of size objects. Each object includes:
-- Required fields:
-  - Filament weight (in grams)
-  - Filament diameter (in mm, typically `1.75` or `2.85`)
-- Optional fields:
-  - Empty spool weight
-  - Spool core diameter
-  - EAN code
-  - Internal article number
-  - Barcode/NFC/QR identifiers
-  - Discontinued status
-  - `purchase_links` - Array of purchase links (highly recommended):
-    - `store_id` - Reference to a store in the `/stores` directory
-    - `url` - Link to the product page
-    - `is_affiliate` - Whether this is an affiliate link (boolean)
+## 🧪 Adding a Material Type
+1. Inside the brand folder, create a folder named after the material type (e.g. `PLA`, `PETG`, `ABS`)
+2. Create `material.json`:
+   ```json
+   { "material": "PLA" }
+   ```
 
-For detailed schema information, see `schemas/sizes_schema.json`.
+   **Required:**
+   - `material` — must be one of the values listed in [`schemas/material_types_schema.json`](../schemas/material_types_schema.json) (PLA, PETG, TPU, ABS, ASA, PC, PCTG, PP, PA6, …).
 
-### 🏪 Adding a Store
-Stores are referenced in purchase links and are stored in the `/stores` directory.
+   **Optional:**
+   - `material_class` — `"FFF"` (default) or `"SLA"`
+   - `default_max_dry_temperature` — integer, °C
+   - `default_slicer_settings` — per-slicer profile names and overrides (see [`schemas/material_schema.json`](../schemas/material_schema.json))
 
-1. Create a new folder in `/stores` using lowercase snake_case (e.g., `amazon_us`, `printed_solid`)
-2. Add the store logo:
-   - Maximum size: 400x400 pixels (SVG files can be any size)
-   - Naming: Use lowercase snake_case matching the folder name (e.g., `amazon_us.png`)
-3. Create a `store.json` file with:
-   - Required fields:
-     - `id` - Store identifier (must match the folder name)
-     - `name` - Display name of the store
-     - `storefront_url` - URL to the store's homepage
-     - `logo` - Filename of the logo image
-     - `ships_from` - Array of shipping origin locations (use `[]` if unknown)
-     - `ships_to` - Array of shipping destination locations (use `[]` if unknown)
-   - Optional fields:
-     - `storefront_affiliate_link` - Affiliate link to the storefront
+## 📦 Adding a Filament
+A filament represents a **product line** (e.g. "Silk PLA", "Glow PLA"), **not a single colour**.
 
-For detailed schema information, see `schemas/store_schema.json`.
+1. Inside the material folder, create a folder named with the filament `id` (e.g. `glow_pla`)
+2. Create `filament.json`:
+   ```json
+   {
+     "id": "glow_pla",
+     "name": "Glow PLA",
+     "diameter_tolerance": 0.02,
+     "density": 1.24
+   }
+   ```
+
+   **Required:**
+   - `id` — must match the folder name
+   - `name` — manufacturer's product-line name
+   - `diameter_tolerance` — number, mm (e.g. `0.02` for ±0.02 mm)
+   - `density` — number, g/cm³ (default 1.24)
+
+   **Optional** (see [`schemas/filament_schema.json`](../schemas/filament_schema.json) for the full list):
+   - Mechanical: `shore_hardness_a`, `shore_hardness_d`, `certifications` (array of strings)
+   - Drying / printing temperatures: `max_dry_temperature`, `min_print_temperature`, `max_print_temperature`, `preheat_temperature`, `min_bed_temperature`, `max_bed_temperature`, `min_chamber_temperature`, `max_chamber_temperature`, `chamber_temperature`
+   - Hardware: `min_nozzle_diameter`
+   - Documents: `data_sheet_url`, `safety_sheet_url`
+   - Lifecycle: `discontinued` (boolean)
+   - Slicer integration: `slicer_ids` (PrusaSlicer / BambuStudio / OrcaSlicer / Cura native IDs) and `slicer_settings` (per-slicer profile names, IDs, and temperature overrides)
+
+## 🎨 Adding a Variant
+A variant represents a single colour or finish of a filament.
+
+Inside the filament folder, create a folder named with the variant `id` (e.g. `luminous_blue`) and add two files:
+
+### variant.json
+```json
+{
+  "id": "luminous_blue",
+  "name": "Luminous Blue",
+  "color_hex": "#00BFFF",
+  "traits": {
+    "glow": true
+  }
+}
+```
+
+**Required:**
+- `id` — must match the folder name
+- `name` — the manufacturer's colour name
+- `color_hex` — a `#RRGGBB` hex string, **or** an array of such strings for multi-colour filaments (gradient, dual-colour, etc.)
+
+**Optional** (full list in [`schemas/variant_schema.json`](../schemas/variant_schema.json)):
+- `discontinued` — boolean
+- `hex_variants` — array of alternative `#RRGGBB` codes the filament is known to report (e.g. via NFC)
+- `color_standards` — object with any of `ral`, `ncs`, `pantone`, `bs`, `munsell`
+- `traits` — **an object** mapping trait names to booleans, **not** an array of strings. Available traits include `silk`, `matte`, `glow`, `translucent`, `transparent`, `recycled`, `biodegradable`, `abrasive`, `glitter`, `iridescent`, `temperature_color_change`, `gradual_color_change`, `coextruded`, the `contains_*` family (carbon, glass, wood, metal, …), the `imitates_*` family, `esd_safe`, `self_extinguishing`, and many more. See the schema for the complete enumeration.
+
+### sizes.json
+A JSON **array** of one or more size objects. At minimum:
+```json
+[
+  { "filament_weight": 1000, "diameter": 1.75 }
+]
+```
+
+**Required per entry:**
+- `filament_weight` — number, grams (default 1000)
+- `diameter` — number, mm (typically `1.75` or `2.85`)
+
+**Optional per entry:**
+- Spool geometry: `empty_spool_weight`, `spool_core_diameter`, `container_width`, `container_outer_diameter`, `container_hole_diameter`
+- Identifiers: `gtin` (GTIN-12 or GTIN-13 — preferred), `ean` (deprecated alias for `gtin`), `article_number`, `barcode_identifier`, `nfc_identifier`, `qr_identifier`
+- `spool_refill` — boolean; mark the size as a refill for a reusable spool
+- `discontinued` — boolean
+- `purchase_links` — array of purchase entries:
+  - `store_id` — required; must match a folder under `/stores`
+  - `url` — required; product page URL
+  - `ships_from` / `ships_to` — optional per-link override (string or array of country codes)
+
+> **Note:** there is no `is_affiliate` field on purchase links. Affiliate handling is implicit in the store entry and the URL itself.
+
+## 🏪 Adding a Store
+Stores are referenced by `purchase_links[].store_id` and live under `/stores`.
+
+1. Create a folder under `/stores/` using the store `id` (e.g. `printed_solid`)
+2. Add the logo as `logo.png`, `logo.jpg`, or `logo.svg` (same rules as brand logos)
+3. Create `store.json`:
+   ```json
+   {
+     "id": "printed_solid",
+     "name": "Printed Solid",
+     "storefront_url": "https://www.printedsolid.com/",
+     "logo": "logo.png",
+     "ships_from": "US",
+     "ships_to": ["US", "CA"]
+   }
+   ```
+
+   **Required:**
+   - `id` — must match the folder name
+   - `name` — display name
+   - `storefront_url` — homepage URL
+   - `logo` — `logo.png`, `logo.jpg`, or `logo.svg`
+   - `ships_from` — country code string or array of country codes (e.g. `"US"` or `["US", "CA"]`). Use an empty array `[]` if unknown.
+   - `ships_to` — same shape as `ships_from`. Use `[]` if unknown.
+
+   **Optional:** `source` — free-text data-source note.
+
+   > **Note:** there is no `storefront_affiliate_link` field in the store schema.
+
+For full schema details, see [`schemas/store_schema.json`](../schemas/store_schema.json).
