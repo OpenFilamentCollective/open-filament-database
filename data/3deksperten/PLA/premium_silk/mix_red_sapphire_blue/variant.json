@@ -1,8 +1,7 @@
 {
   "id": "mix_red_sapphire_blue",
   "name": "Mix Red-Sapphire Blue",
-  "color_hex": "#7a2f2c",
-  "hex_variants": [
+  "color_hex": [
     "#7a2f2c",
     "#2c4275"
   ],
