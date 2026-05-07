@@ -2,6 +2,7 @@
   "id": "space_grey",
   "name": "Space Grey",
   "color_hex": "#76797D",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "glitter": true

@@ -2,6 +2,7 @@
   "id": "mercury_brown",
   "name": "Mercury Brown",
   "color_hex": "#8E5850",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "glitter": true
