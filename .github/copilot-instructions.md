@@ -38,6 +38,21 @@ data/
 - `/.github/workflows/` - CI/CD automation
 - `/Taskfile.yml` - Task runner targets (validate, build, test, lint, etc.) backed by `uv`
 
+## UUID / UID Derivation (READ THIS BEFORE REVIEWING UUID-RELATED CODE)
+
+UUIDs for entities in this database are derived using **UUIDv5** (RFC 4122 §4.3) from per-entity namespace UUIDs combined with stable identifying inputs. The OFD-canonical rule is:
+
+> **Entity UUIDs are derived from the entity's `id` field (which matches its on-disk folder name), NOT from the display `name` field.**
+
+This applies to brands, materials, filaments, variants, sizes, and stores. In particular:
+
+- **Filament UUIDs are derived from the filament's `id`, not from `name`.** This is a common point of confusion — do not assert or "correct" code in PR reviews based on the assumption that filament UUIDs come from the display name. They don't.
+- The reason is stability: the `id` matches the folder name and follows the strict slug pattern `^[a-z0-9+]+(_[a-z0-9+]+)*$`, so a manufacturer renaming the human-readable `name` (e.g. "Basic PLA" → "PLA Basic") **must not** change the entity's UUID. Tying UUIDs to `id` preserves them across cosmetic renames; tying them to `name` would invalidate every downstream reference (purchase links, NFC tags, slicer profile mappings, external integrations).
+- The variant builder makes this explicit with the comment "Use source 'id' for UUID generation (matches directory name, preserves UUIDs)" — the same rule applies to filaments.
+- Implementation lives in `ofd/builder/utils.py` (`generate_*_id` / `generate_*_uuid` helpers, namespace constants, `_derive_uuid`). The OFD UUID derivation spec is documented at https://specs.openprinttag.org/#/nfc_data_format?id=_321-uuid-derivation-algorithm.
+
+If you see code, comments, or PR descriptions claiming the filament UUID is derived from `name`, that is incorrect — flag it as a bug, do not "fix" the canonical id-based derivation to use name instead.
+
 ## Build, Test & Validation Commands
 
 ### Environment Setup
