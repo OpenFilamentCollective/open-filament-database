@@ -18,6 +18,11 @@
             "generic_id": "GFG99",
             "id": "ESN03",
             "profile_name": "eSUN PETG"
+        },
+        "orcaslicer": {
+            "profile_name": "eSUN PETG",
+            "id": "ESN03",
+            "generic_id": "GFG99"
         }
     }
 }

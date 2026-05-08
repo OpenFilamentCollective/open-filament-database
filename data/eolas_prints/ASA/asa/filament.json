@@ -12,6 +12,11 @@
             "generic_id": "GFB98",
             "id": "GFSEP018",
             "profile_name": "Eolas Prints ASA"
+        },
+        "orcaslicer": {
+            "profile_name": "Eolas Prints ASA",
+            "id": "GFSEP018",
+            "generic_id": "GFB98"
         }
     }
 }

@@ -15,6 +15,11 @@
             "generic_id": "GFG99",
             "id": "GFSEP010",
             "profile_name": "Eolas Prints PETG"
+        },
+        "orcaslicer": {
+            "profile_name": "Eolas Prints PETG",
+            "id": "GFSEP010",
+            "generic_id": "GFG99"
         }
     }
 }

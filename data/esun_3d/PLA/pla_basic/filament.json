@@ -12,6 +12,11 @@
             "generic_id": "GFL99",
             "id": "OGFL04",
             "profile_name": "eSUN PLA-Basic"
+        },
+        "orcaslicer": {
+            "profile_name": "eSUN PLA-Basic",
+            "id": "OGFL04",
+            "generic_id": "GFL99"
         }
     }
 }

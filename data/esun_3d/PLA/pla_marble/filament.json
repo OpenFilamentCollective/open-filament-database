@@ -8,6 +8,11 @@
             "generic_id": "GFL99",
             "id": "OGFL06",
             "profile_name": "eSUN PLA-Marble"
+        },
+        "orcaslicer": {
+            "profile_name": "eSUN PLA-Marble",
+            "id": "OGFL06",
+            "generic_id": "GFL99"
         }
     }
 }

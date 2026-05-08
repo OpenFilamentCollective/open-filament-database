@@ -12,6 +12,11 @@
             "generic_id": "GFL99",
             "id": "OGFL05",
             "profile_name": "eSUN PLA-Matte"
+        },
+        "orcaslicer": {
+            "profile_name": "eSUN PLA-Matte",
+            "id": "OGFL05",
+            "generic_id": "GFL99"
         }
     }
 }

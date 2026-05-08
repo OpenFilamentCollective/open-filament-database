@@ -8,6 +8,11 @@
             "generic_id": "GFB99",
             "id": "OVTABS08",
             "profile_name": "Overture ABS Basic"
+        },
+        "orcaslicer": {
+            "profile_name": "Overture ABS Basic",
+            "id": "OVTABS08",
+            "generic_id": "GFB99"
         }
     }
 }
