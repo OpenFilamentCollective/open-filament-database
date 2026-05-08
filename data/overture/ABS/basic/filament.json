@@ -1,18 +1,18 @@
 {
-    "id": "basic",
-    "name": "ABS Basic",
-    "diameter_tolerance": 0.02,
-    "density": 1.05,
-    "slicer_settings": {
-        "elegooslicer": {
-            "generic_id": "GFB99",
-            "id": "OVTABS08",
-            "profile_name": "Overture ABS Basic"
-        },
-        "orcaslicer": {
-            "profile_name": "Overture ABS Basic",
-            "id": "OVTABS08",
-            "generic_id": "GFB99"
-        }
+  "id": "basic",
+  "name": "ABS Basic",
+  "diameter_tolerance": 0.02,
+  "density": 1.05,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFB99",
+      "id": "OVTABS08",
+      "profile_name": "Overture ABS Basic"
+    },
+    "elegooslicer": {
+      "generic_id": "GFB99",
+      "id": "OVTABS08",
+      "profile_name": "Overture ABS Basic"
     }
+  }
 }
