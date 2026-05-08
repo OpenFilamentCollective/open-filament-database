@@ -1,0 +1,11 @@
+{
+  "id": "easyfil_glow_in_the_dark",
+  "name": "Green",
+  "color_hex": "#00C26B",
+  "discontinued": false,
+  "traits": {
+    "glow": true,
+    "industrially_compostable": true,
+    "abrasive": true
+  }
+}
