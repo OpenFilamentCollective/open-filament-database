@@ -85,13 +85,18 @@ async function fetchKnownStoreIds(): Promise<Set<string>> {
 	}
 	const data = await response.json();
 
+	// The cloud `/api/v1/stores/index.json` returns each store with both a UUID `id`
+	// and a human-readable `slug`. Variant `purchase_links.store_id` values are
+	// rewritten to slugs before submission (see normalizeCloudVariant in api.ts /
+	// cloudProxy.ts), but legacy data may still reference UUIDs — index both forms
+	// so cross-reference validation accepts either.
 	const ids = new Set<string>();
 	const stores = Array.isArray(data) ? data : data?.stores;
 	if (Array.isArray(stores)) {
 		for (const store of stores) {
-			if (store && typeof store.id === 'string') {
-				ids.add(store.id);
-			}
+			if (!store) continue;
+			if (typeof store.id === 'string') ids.add(store.id);
+			if (typeof store.slug === 'string') ids.add(store.slug);
 		}
 	}
 
