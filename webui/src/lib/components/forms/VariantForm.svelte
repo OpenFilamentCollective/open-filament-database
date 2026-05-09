@@ -3,7 +3,7 @@
 	import { db } from '$lib/services/database';
 	import type { Store, VariantSize, PurchaseLink } from '$lib/types/database';
 	import { SchemaForm } from '$lib/components/forms';
-	import { Tooltip, SizeCard } from '$lib/components/form-fields';
+	import { Tooltip, SizeCard, TextField, FormFieldRow } from '$lib/components/form-fields';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { TRAIT_CATEGORIES, findTraitByKey } from '$lib/config/traitConfig';
 	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
@@ -25,13 +25,40 @@
 
 	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey }: Props = $props();
 
+	type ColorStandards = {
+		ral: string;
+		ncs: string;
+		pantone: string;
+		bs: string;
+		munsell: string;
+	};
+
 	type VariantDraft = {
 		formData: Record<string, any>;
 		sizes: SizeWithId[];
 		nextSizeId: number;
 		nextLinkId: number;
 		selectedTraits: string[];
+		colorStandards: ColorStandards;
 	};
+
+	const COLOR_STANDARD_FIELDS: Array<{ key: keyof ColorStandards; label: string; placeholder: string }> = [
+		{ key: 'ral', label: 'RAL', placeholder: 'e.g., 3001' },
+		{ key: 'ncs', label: 'NCS', placeholder: 'e.g., S 1080-Y70R' },
+		{ key: 'pantone', label: 'Pantone', placeholder: 'e.g., 18-1664 TPX' },
+		{ key: 'bs', label: 'BS', placeholder: 'e.g., 04D45' },
+		{ key: 'munsell', label: 'Munsell', placeholder: 'e.g., 5R 4/14' }
+	];
+
+	function initializeColorStandards(source: any): ColorStandards {
+		return {
+			ral: source?.ral ?? '',
+			ncs: source?.ncs ?? '',
+			pantone: source?.pantone ?? '',
+			bs: source?.bs ?? '',
+			munsell: source?.munsell ?? ''
+		};
+	}
 
 	// Stores list for purchase link dropdowns
 	let stores: Store[] = $state([]);
@@ -71,7 +98,8 @@
 	// Tooltips for custom sections (not from schema since these are custom UI sections)
 	const SECTION_TOOLTIPS = {
 		traits: 'Select traits that describe this filament variant. Click to add/remove traits.',
-		sizes: 'Different spool sizes and configurations available for this variant.'
+		sizes: 'Different spool sizes and configurations available for this variant.',
+		colorStandards: 'Optional color standards references — fill in any that apply to this variant.'
 	};
 
 	// Prepare schema - remove id field
@@ -111,6 +139,7 @@
 							.map(([k]) => k)
 					: []
 			);
+			colorStandards = initializeColorStandards(variant?.color_standards);
 		}
 	});
 
@@ -126,6 +155,13 @@
 						.map(([k]) => k)
 				: [])
 		)
+	);
+
+	// ==================== COLOR STANDARDS HANDLING ====================
+
+	// Color standards state — restored from draft if present, else from variant
+	let colorStandards = $state<ColorStandards>(
+		initialDraft?.colorStandards ?? initializeColorStandards(variant?.color_standards)
 	);
 
 	// Trait search/filter
@@ -363,6 +399,16 @@
 			submitData.traits = traitsData;
 		}
 
+		// Include only color standards with non-empty values. Set to undefined when all
+		// blank so the spread in the parent page wipes any previously saved standards.
+		const colorStandardsData: Record<string, string> = {};
+		for (const { key } of COLOR_STANDARD_FIELDS) {
+			const value = colorStandards[key]?.trim();
+			if (value) colorStandardsData[key] = value;
+		}
+		submitData.color_standards =
+			Object.keys(colorStandardsData).length > 0 ? colorStandardsData : undefined;
+
 		onSubmit(submitData);
 	}
 
@@ -379,7 +425,8 @@
 			sizes,
 			nextSizeId,
 			nextLinkId,
-			selectedTraits: [...selectedTraits]
+			selectedTraits: [...selectedTraits],
+			colorStandards
 		});
 	});
 </script>
@@ -402,6 +449,25 @@
 	onSubmit={handleSubmit}
 >
 	{#snippet afterFields()}
+		<!-- Color Standards Section -->
+		<div class="border-t pt-4 mt-2">
+			<h3 class="text-sm font-medium text-foreground flex items-center mb-3">
+				Color Standards
+				<Tooltip text={SECTION_TOOLTIPS.colorStandards} />
+			</h3>
+			<FormFieldRow columns={3} gap="sm">
+				{#each COLOR_STANDARD_FIELDS as field (field.key)}
+					<TextField
+						bind:value={colorStandards[field.key]}
+						id="color-standard-{field.key}"
+						label={field.label}
+						placeholder={field.placeholder}
+						maxLength={1000}
+					/>
+				{/each}
+			</FormFieldRow>
+		</div>
+
 		<!-- Traits Section -->
 		<div class="border-t pt-4 mt-2">
 			<div class="flex items-center justify-between mb-3">

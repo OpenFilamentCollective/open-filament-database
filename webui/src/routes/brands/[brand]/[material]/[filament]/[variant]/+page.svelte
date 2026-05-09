@@ -302,6 +302,20 @@
 							</dd>
 						</div>
 					{/if}
+					{#if (variantData as any).color_standards && Object.values((variantData as any).color_standards as Record<string, string>).some(v => v)}
+						{@const colorStandardsEntries = Object.entries((variantData as any).color_standards as Record<string, string>).filter(([, v]) => v)}
+						<div>
+							<dt class="text-sm font-medium text-muted-foreground mb-2">Color Standards</dt>
+							<dd class="flex flex-wrap gap-1.5">
+								{#each colorStandardsEntries as [key, value]}
+									<span class="px-2 py-1 bg-muted text-foreground rounded text-sm">
+										<span class="font-medium uppercase">{key}</span>
+										<span class="font-mono ml-1">{value}</span>
+									</span>
+								{/each}
+							</dd>
+						</div>
+					{/if}
 				</dl>
 
 				{#if variantData.sizes && variantData.sizes.length > 0}
