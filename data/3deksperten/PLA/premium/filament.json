@@ -1,0 +1,13 @@
+{
+  "id": "premium",
+  "name": "Premium",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "max_dry_temperature": 50,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 60,
+  "safety_sheet_url": "https://3deksperten-my.sharepoint.com/personal/ems_3deksperten_dk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fems%5F3deksperten%5Fdk%2FDocuments%2F3D%20Printer%20Manualer%202025%2FSikkerhedsdatablade%20%2D%20Datablade%2F3DE%20Premium%2FFilament%2FPLA&viewid=cb253b60%2D5b6a%2D4ad0%2Dbb55%2D17d9296630f9",
+  "discontinued": false
+}
