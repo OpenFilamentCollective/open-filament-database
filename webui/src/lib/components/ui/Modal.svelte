@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import Button from './Button.svelte';
 
 	interface Props {
@@ -35,13 +36,42 @@
 		full: 'h-[90vh]'
 	};
 
-	// Handle click on backdrop to close modal
-	function handleBackdropClick(event: MouseEvent) {
-		// Only close if clicking directly on the backdrop, not on the modal content
-		if (event.target === event.currentTarget) {
-			onClose();
+	// Backdrop close requires a confirmation click to prevent accidental dismissal.
+	// First backdrop click arms a short window; a second click within it closes.
+	const CONFIRM_WINDOW_MS = 2500;
+	let confirmingClose = $state(false);
+	let confirmTimer: ReturnType<typeof setTimeout> | null = null;
+
+	function clearConfirmTimer() {
+		if (confirmTimer !== null) {
+			clearTimeout(confirmTimer);
+			confirmTimer = null;
 		}
 	}
+
+	function handleBackdropClick(event: MouseEvent) {
+		if (event.target !== event.currentTarget) return;
+		if (confirmingClose) {
+			clearConfirmTimer();
+			confirmingClose = false;
+			onClose();
+			return;
+		}
+		confirmingClose = true;
+		clearConfirmTimer();
+		confirmTimer = setTimeout(() => {
+			confirmingClose = false;
+			confirmTimer = null;
+		}, CONFIRM_WINDOW_MS);
+	}
+
+	// Reset confirmation state whenever the modal closes (via X, Escape, or programmatic).
+	$effect(() => {
+		if (!show) {
+			clearConfirmTimer();
+			confirmingClose = false;
+		}
+	});
 
 	// Only listen for Escape when this modal is shown
 	$effect(() => {
@@ -62,6 +92,15 @@
 		onclick={handleBackdropClick}
 		role="presentation"
 	>
+		{#if confirmingClose}
+			<div
+				class="absolute top-6 left-1/2 -translate-x-1/2 bg-popover text-foreground border border-border text-sm px-3 py-1.5 rounded-full shadow-lg pointer-events-none"
+				aria-live="polite"
+				transition:fade={{ duration: 150 }}
+			>
+				Click outside again to close
+			</div>
+		{/if}
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<!-- Modal content - stops propagation to prevent closing when clicking inside -->
 		<div
