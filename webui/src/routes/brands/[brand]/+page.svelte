@@ -22,8 +22,12 @@
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { getCountryName } from '$lib/data/countryCodes';
 	import { getClipboard } from '$lib/services/clipboardService';
+	import { formDrafts } from '$lib/stores/formDrafts';
 
 	let brandId: string = $derived($page.params.brand!);
+	let brandEditDraftKey = $derived(`edit:brand:${brandId}`);
+	let materialCreateDraftKey = $derived(`create:material:${brandId}`);
+	const BRAND_CREATE_DRAFT_KEY = 'create:brand';
 	let loadGeneration = 0;
 	let brand: Brand | null = $state(null);
 	let originalBrand: Brand | null = $state(null);
@@ -72,6 +76,7 @@
 		return await loadBrandChildren(brandId);
 	});
 	const brandDuplicate = createDuplicateAction('brand', true, (data) => {
+		formDrafts.clear(BRAND_CREATE_DRAFT_KEY);
 		entityState.openDuplicate(data);
 	});
 
@@ -82,11 +87,13 @@
 	});
 	const materialDuplicate = createDuplicateAction('material', true, (data) => {
 		createMaterialError = null;
+		formDrafts.clear(materialCreateDraftKey);
 		prefillMaterialData = data as Material;
 		showCreateMaterialModal = true;
 	});
 	const materialPaste = createPasteHandler('material', (data) => {
 		createMaterialError = null;
+		formDrafts.clear(materialCreateDraftKey);
 		prefillMaterialData = data as Material;
 		showCreateMaterialModal = true;
 	}, (data) => {
@@ -183,6 +190,7 @@
 				brand = updatedBrand;
 				entityState.resetLogo();
 				messageHandler.showSuccess('Brand saved successfully!');
+				formDrafts.clear(brandEditDraftKey);
 				entityState.closeEdit();
 			} else {
 				messageHandler.showError('Failed to save brand');
@@ -230,6 +238,7 @@
 					}
 				}
 				messageHandler.showSuccess('Material created successfully!');
+				formDrafts.clear(materialCreateDraftKey);
 				showCreateMaterialModal = false;
 				goto(`/brands/${brandId}/${result.materialType!}`);
 			} else {
@@ -317,6 +326,7 @@
 					}
 				}
 				messageHandler.showSuccess('Brand created successfully!');
+				formDrafts.clear(BRAND_CREATE_DRAFT_KEY);
 				entityState.closeDuplicate();
 				entityState.closePaste();
 				goto(`/brands/${slug}`);
@@ -401,7 +411,7 @@
 								isLocalCreate={entityState.isLocalCreate}
 								onDuplicate={() => brandDuplicate.request(brandData)}
 								onCopyRequest={() => brandCopy.request(brandData, `brands/${brandId}`)}
-								onPaste={(data) => entityState.openPaste(data)}
+								onPaste={(data) => { formDrafts.clear(BRAND_CREATE_DRAFT_KEY); entityState.openPaste(data); }}
 								onDelete={entityState.openDelete}
 								onViewDiff={entityState.openCloudCompare}
 							/>
@@ -455,6 +465,7 @@
 		<BrandForm
 			{brand}
 			{schema}
+			draftKey={brandEditDraftKey}
 			onSubmit={handleSubmit}
 			onLogoChange={entityState.handleLogoChange}
 			logoChanged={entityState.logoChanged}
@@ -492,7 +503,7 @@
 		<MessageBanner type="error" message={duplicateBrandError} />
 	{/if}
 	{#if entityState.duplicateData && schema}
-		<BrandForm brand={entityState.duplicateData} {schema} onSubmit={handleDuplicateBrandSubmit}
+		<BrandForm brand={entityState.duplicateData} {schema} draftKey={BRAND_CREATE_DRAFT_KEY} onSubmit={handleDuplicateBrandSubmit}
 			onLogoChange={entityState.handleLogoChange} logoChanged={entityState.logoChanged} saving={entityState.creating} />
 	{/if}
 </Modal>
@@ -503,7 +514,7 @@
 		<MessageBanner type="error" message={duplicateBrandError} />
 	{/if}
 	{#if entityState.pasteData && schema}
-		<BrandForm brand={entityState.pasteData} {schema} onSubmit={handleDuplicateBrandSubmit}
+		<BrandForm brand={entityState.pasteData} {schema} draftKey={BRAND_CREATE_DRAFT_KEY} onSubmit={handleDuplicateBrandSubmit}
 			onLogoChange={entityState.handleLogoChange} logoChanged={entityState.logoChanged} saving={entityState.creating} />
 	{/if}
 </Modal>
@@ -518,6 +529,7 @@
 	{/if}
 	{#if materialSchema}
 		<MaterialForm schema={materialSchema} entity={prefillMaterialData ?? undefined}
+			draftKey={materialCreateDraftKey}
 			config={{ excludeEnumValues: { material: materials.map(m => m.material) } }}
 			onSubmit={handleCreateMaterial} saving={creatingMaterial} />
 	{/if}

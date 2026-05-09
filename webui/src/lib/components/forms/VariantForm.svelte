@@ -12,15 +12,26 @@
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
+	import { formDrafts } from '$lib/stores/formDrafts';
 
 	interface Props {
 		variant?: any;
 		schema?: any;
 		onSubmit: (data: any) => void;
 		saving?: boolean;
+		/** Optional key for in-memory draft preservation across modal close/reopen */
+		draftKey?: string;
 	}
 
-	let { variant = null, schema: externalSchema, onSubmit, saving = false }: Props = $props();
+	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey }: Props = $props();
+
+	type VariantDraft = {
+		formData: Record<string, any>;
+		sizes: SizeWithId[];
+		nextSizeId: number;
+		nextLinkId: number;
+		selectedTraits: string[];
+	};
 
 	// Stores list for purchase link dropdowns
 	let stores: Store[] = $state([]);
@@ -44,7 +55,8 @@
 		} catch (e) {
 			console.error('Failed to load data:', e);
 		}
-		initializeSizes();
+		// Don't reinitialize sizes from variant if a draft was restored.
+		if (sizes.length === 0) initializeSizes();
 	});
 
 	// Config for variant form - labels, tooltips, and placeholders come from schema
@@ -65,13 +77,19 @@
 	// Prepare schema - remove id field
 	let preparedSchema = $derived(schema ? removeIdFromSchema(schema) : null);
 
+	// Restore from draft if one exists for this draftKey
+	const initialDraft = draftKey ? formDrafts.get<VariantDraft>(draftKey) : undefined;
+
 	// Form data state - initialized when schema is available
-	let formData = $state<Record<string, any>>({});
+	let formData = $state<Record<string, any>>(initialDraft?.formData ?? {});
 
 	// Track entity and schema changes to reinitialize form data
 	// NOTE: must be plain variables, NOT $state — proxy identity breaks !== comparisons.
 	let lastEntity: any = variant;
 	let lastSchema: any = null;
+	// If we restored from a draft, treat the current schema/entity as the baseline
+	// so the first $effect.pre run doesn't clobber the restored draft.
+	let draftRestored = !!initialDraft;
 
 	// Use $effect.pre to ensure formData is initialized before DOM renders
 	$effect.pre(() => {
@@ -80,6 +98,10 @@
 		if (preparedSchema && (preparedSchema !== prevSchema || variant !== prevEntity)) {
 			lastEntity = variant;
 			lastSchema = preparedSchema;
+			if (draftRestored) {
+				draftRestored = false;
+				return;
+			}
 			formData = initializeFormData(preparedSchema, variant, config.hiddenFields, config.fieldMappings, config.typeOverrides);
 			initializeSizes();
 			selectedTraits = new Set(
@@ -94,14 +116,15 @@
 
 	// ==================== TRAITS HANDLING ====================
 
-	// Traits state - set of selected trait keys
+	// Traits state - set of selected trait keys (restored from draft if present)
 	let selectedTraits = $state<Set<string>>(
 		new Set(
-			variant?.traits
+			initialDraft?.selectedTraits ??
+			(variant?.traits
 				? Object.entries(variant.traits)
 						.filter(([_, v]) => v === true)
 						.map(([k]) => k)
-				: []
+				: [])
 		)
 	);
 
@@ -182,10 +205,10 @@
 		};
 	}
 
-	// Sizes state
-	let sizes = $state<SizeWithId[]>([]);
-	let nextSizeId = $state(1);
-	let nextLinkId = $state(1);
+	// Sizes state — restored from draft if present
+	let sizes = $state<SizeWithId[]>(initialDraft?.sizes ?? []);
+	let nextSizeId = $state(initialDraft?.nextSizeId ?? 1);
+	let nextLinkId = $state(initialDraft?.nextLinkId ?? 1);
 
 	// Initialize sizes from variant data
 	function initializeSizes() {
@@ -347,6 +370,18 @@
 	let canSubmit = $derived(
 		!!formData.name && /^#[a-fA-F0-9]{6}$/.test(formData.color_hex) && sizes.length > 0
 	);
+
+	// Persist form state to the in-memory draft store on every change.
+	$effect(() => {
+		if (!draftKey) return;
+		formDrafts.set(draftKey, {
+			formData,
+			sizes,
+			nextSizeId,
+			nextLinkId,
+			selectedTraits: [...selectedTraits]
+		});
+	});
 </script>
 
 <svelte:window onkeydown={(e) => { if (e.key === 'Escape' && showTraitDropdown) { e.stopImmediatePropagation(); showTraitDropdown = false; } }} />

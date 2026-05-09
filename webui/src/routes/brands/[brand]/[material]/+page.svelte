@@ -20,9 +20,13 @@
 	import { submittedStore } from '$lib/stores/submitted';
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { getClipboard } from '$lib/services/clipboardService';
+	import { formDrafts } from '$lib/stores/formDrafts';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
+	let materialEditDraftKey = $derived(`edit:material:${brandId}:${materialType}`);
+	let filamentCreateDraftKey = $derived(`create:filament:${brandId}:${materialType}`);
+	let materialCreateDraftKey = $derived(`create:material:${brandId}`);
 	let loadGeneration = 0;
 	let material: Material | null = $state(null);
 	let originalMaterial: Material | null = $state(null);
@@ -73,6 +77,7 @@
 		return await loadMaterialChildren(brandId, materialType);
 	});
 	const materialDuplicate = createDuplicateAction('material', true, (data) => {
+		formDrafts.clear(materialCreateDraftKey);
 		entityState.openDuplicate(data);
 	});
 
@@ -83,11 +88,13 @@
 	});
 	const filamentDuplicate = createDuplicateAction('filament', true, (data) => {
 		createError = null;
+		formDrafts.clear(filamentCreateDraftKey);
 		prefillFilamentData = data as Filament;
 		entityState.openCreate();
 	});
 	const filamentPaste = createPasteHandler('filament', (data) => {
 		createError = null;
+		formDrafts.clear(filamentCreateDraftKey);
 		prefillFilamentData = data as Filament;
 		entityState.openCreate();
 	}, (data) => {
@@ -169,6 +176,7 @@
 			if (success) {
 				material = updatedMaterial;
 				messageHandler.showSuccess('Material saved successfully!');
+				formDrafts.clear(materialEditDraftKey);
 				entityState.closeEdit();
 			} else {
 				messageHandler.showError('Failed to save material');
@@ -225,6 +233,7 @@
 					}
 				}
 				messageHandler.showSuccess('Filament created successfully!');
+				formDrafts.clear(filamentCreateDraftKey);
 				entityState.closeCreate();
 				goto(`/brands/${brandId}/${materialType}/${result.filamentId}`);
 			} else {
@@ -262,6 +271,7 @@
 					} catch (e) { console.error('Failed to paste children:', e); }
 				}
 				messageHandler.showSuccess('Material created successfully!');
+				formDrafts.clear(materialCreateDraftKey);
 				entityState.closeDuplicate();
 				entityState.closePaste();
 				goto(`/brands/${brandId}/${result.materialType}`);
@@ -336,7 +346,7 @@
 								isLocalCreate={entityState.isLocalCreate}
 								onDuplicate={() => materialDuplicate.request(materialData)}
 								onCopyRequest={() => materialCopy.request(materialData, `brands/${brandId}/materials/${materialType}`)}
-								onPaste={(data) => entityState.openPaste(data)}
+								onPaste={(data) => { formDrafts.clear(materialCreateDraftKey); entityState.openPaste(data); }}
 								onDelete={entityState.openDelete}
 								onViewDiff={entityState.openCloudCompare}
 								parentNames={{ brand: '' }}
@@ -375,7 +385,7 @@
 
 <Modal show={entityState.showEditModal} title="Edit Material" onClose={entityState.closeEdit} maxWidth="5xl" height="3/4">
 	{#if material && materialSchema}
-		<MaterialForm entity={material} schema={materialSchema}
+		<MaterialForm entity={material} schema={materialSchema} draftKey={materialEditDraftKey}
 			config={{ excludeEnumValues: { material: siblingMaterials.filter(m => m.material !== material?.material).map(m => m.material) } }}
 			onSubmit={handleSubmit} saving={entityState.saving} />
 	{/if}
@@ -401,7 +411,7 @@
 <Modal show={entityState.showDuplicateModal} title="Duplicate Material" onClose={entityState.closeDuplicate} maxWidth="5xl" height="3/4">
 	{#if duplicateMaterialError}<MessageBanner type="error" message={duplicateMaterialError} />{/if}
 	{#if entityState.duplicateData && materialSchema}
-		<MaterialForm entity={entityState.duplicateData} schema={materialSchema}
+		<MaterialForm entity={entityState.duplicateData} schema={materialSchema} draftKey={materialCreateDraftKey}
 			config={{ excludeEnumValues: { material: siblingMaterials.map(m => m.material) } }}
 			onSubmit={handleDuplicateMaterialSubmit} saving={entityState.creating} />
 	{/if}
@@ -409,7 +419,7 @@
 <Modal show={entityState.showPasteModal} title="Paste Material" onClose={entityState.closePaste} maxWidth="5xl" height="3/4">
 	{#if duplicateMaterialError}<MessageBanner type="error" message={duplicateMaterialError} />{/if}
 	{#if entityState.pasteData && materialSchema}
-		<MaterialForm entity={entityState.pasteData} schema={materialSchema}
+		<MaterialForm entity={entityState.pasteData} schema={materialSchema} draftKey={materialCreateDraftKey}
 			config={{ excludeEnumValues: { material: siblingMaterials.map(m => m.material) } }}
 			onSubmit={handleDuplicateMaterialSubmit} saving={entityState.creating} />
 	{/if}
@@ -422,6 +432,6 @@
 	onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="5xl">
 	{#if createError}<MessageBanner type="error" message={createError} />{/if}
 	<div class="h-[70vh]">
-		<FilamentForm filament={prefillFilamentData ?? undefined} onSubmit={handleCreateFilament} saving={entityState.creating} />
+		<FilamentForm filament={prefillFilamentData ?? undefined} draftKey={filamentCreateDraftKey} onSubmit={handleCreateFilament} saving={entityState.creating} />
 	</div>
 </Modal>

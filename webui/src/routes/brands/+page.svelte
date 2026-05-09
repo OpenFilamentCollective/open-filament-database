@@ -22,6 +22,9 @@
 	import { createCopyAction, createDuplicateAction, createPasteHandler } from '$lib/utils/useEntityActions.svelte';
 	import { loadBrandChildren } from '$lib/services/duplicateService';
 	import { DuplicateOptionsModal } from '$lib/components/ui';
+	import { formDrafts } from '$lib/stores/formDrafts';
+
+	const BRAND_CREATE_DRAFT_KEY = 'create:brand';
 
 	let brands: Brand[] = $state([]);
 	let loading: boolean = $state(true);
@@ -75,10 +78,12 @@
 		return await loadBrandChildren(data.slug ?? data.id);
 	});
 	const brandDuplicate = createDuplicateAction('brand', true, (data) => {
+		formDrafts.clear(BRAND_CREATE_DRAFT_KEY);
 		prefillBrandData = data as Brand;
 		openCreateModal();
 	});
 	const brandPaste = createPasteHandler('brand', (data) => {
+		formDrafts.clear(BRAND_CREATE_DRAFT_KEY);
 		prefillBrandData = data as Brand;
 		openCreateModal();
 	}, (data) => {
@@ -170,6 +175,7 @@
 
 			if (success) {
 				messageHandler.showSuccess('Brand created successfully!');
+				formDrafts.clear(BRAND_CREATE_DRAFT_KEY);
 				entityState.closeCreate();
 				entityState.resetLogo();
 				goto(`/brands/${slug}`);
@@ -281,6 +287,7 @@
 		<BrandForm
 			brand={newBrand()}
 			{schema}
+			draftKey={BRAND_CREATE_DRAFT_KEY}
 			onSubmit={handleSubmit}
 			onLogoChange={entityState.handleLogoChange}
 			logoChanged={entityState.logoChanged}

@@ -19,6 +19,9 @@
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { hasCompatibleClipboard } from '$lib/services/clipboardService';
 	import { createCopyAction, createDuplicateAction, createPasteHandler } from '$lib/utils/useEntityActions.svelte';
+	import { formDrafts } from '$lib/stores/formDrafts';
+
+	const STORE_CREATE_DRAFT_KEY = 'create:store';
 
 	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
@@ -72,10 +75,12 @@
 	// Shared actions for store cards (no children, so no options modal)
 	const storeCopy = createCopyAction('store', null);
 	const storeDuplicate = createDuplicateAction('store', false, (data) => {
+		formDrafts.clear(STORE_CREATE_DRAFT_KEY);
 		prefillStoreData = data as Store;
 		openCreateModal();
 	});
 	const storePaste = createPasteHandler('store', (data) => {
+		formDrafts.clear(STORE_CREATE_DRAFT_KEY);
 		prefillStoreData = data as Store;
 		openCreateModal();
 	}, (data) => {
@@ -166,6 +171,7 @@
 
 			if (success) {
 				messageHandler.showSuccess('Store created successfully!');
+				formDrafts.clear(STORE_CREATE_DRAFT_KEY);
 				entityState.closeCreate();
 				entityState.resetLogo();
 				goto(`/stores/${slug}`);
@@ -271,6 +277,7 @@
 		<StoreForm
 			store={newStore()}
 			{schema}
+			draftKey={STORE_CREATE_DRAFT_KEY}
 			onSubmit={handleSubmit}
 			onLogoChange={entityState.handleLogoChange}
 			logoChanged={entityState.logoChanged}

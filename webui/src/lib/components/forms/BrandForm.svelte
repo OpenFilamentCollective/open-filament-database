@@ -8,6 +8,7 @@
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
 	import { LOGO_REQUIRED_ERROR, LOGO_UPDATE_SUCCESS } from '$lib/config/messages';
+	import { formDrafts } from '$lib/stores/formDrafts';
 
 	interface Props {
 		brand: any;
@@ -16,9 +17,11 @@
 		onLogoChange: (dataUrl: string) => void;
 		logoChanged?: boolean;
 		saving?: boolean;
+		/** Optional key for in-memory draft preservation across modal close/reopen */
+		draftKey?: string;
 	}
 
-	let { brand, schema, onSubmit, onLogoChange, logoChanged = false, saving = false }: Props = $props();
+	let { brand, schema, onSubmit, onLogoChange, logoChanged = false, saving = false, draftKey }: Props = $props();
 
 	// Config for brand form - labels, tooltips, and placeholders come from schema
 	const config: SchemaFormConfig = {
@@ -32,14 +35,16 @@
 	// Prepare schema - remove id field
 	let preparedSchema = $derived(removeIdFromSchema(schema));
 
-	// Form data state
+	// Form data state — restored from draft if one exists for this draftKey
 	let formData = $state<Record<string, any>>(
-		initializeFormData(preparedSchema, brand, config.hiddenFields)
+		(draftKey && formDrafts.has(draftKey))
+			? formDrafts.get(draftKey) as Record<string, any>
+			: initializeFormData(preparedSchema, brand, config.hiddenFields)
 	);
 
 	// Origin mode: separate state so switching to 'code' doesn't flip back when origin is empty
 	let originMode = $state<'unknown' | 'code'>(
-		(brand.origin && brand.origin !== 'Unknown') ? 'code' : 'unknown'
+		(formData.origin && formData.origin !== 'Unknown') ? 'code' : 'unknown'
 	);
 
 	// Ensure origin defaults to 'Unknown' when in unknown mode (new brands get '' from schema default)
@@ -74,6 +79,12 @@
 		if (logoChanged || brand.logo) {
 			logoError = null;
 		}
+	});
+
+	// Persist form data to the in-memory draft store on every change.
+	$effect(() => {
+		if (!draftKey) return;
+		formDrafts.set(draftKey, formData);
 	});
 
 	// Handle form submission

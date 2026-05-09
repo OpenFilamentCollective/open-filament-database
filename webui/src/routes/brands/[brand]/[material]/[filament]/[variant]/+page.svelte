@@ -15,11 +15,14 @@
 	import { changes } from '$lib/stores/changes';
 	import { getTraitLabel } from '$lib/config/traitConfig';
 	import { prepareDuplicateData } from '$lib/services/clipboardService';
+	import { formDrafts } from '$lib/stores/formDrafts';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
 	let filamentId: string = $derived($page.params.filament!);
 	let variantSlug: string = $derived($page.params.variant!);
+	let variantEditDraftKey = $derived(`edit:variant:${brandId}:${materialType}:${filamentId}:${variantSlug}`);
+	let variantCreateDraftKey = $derived(`create:variant:${brandId}:${materialType}:${filamentId}`);
 	let loadGeneration = 0;
 	let variant: Variant | null = $state(null);
 	let originalVariant: Variant | null = $state(null);
@@ -117,6 +120,7 @@
 			if (success) {
 				variant = updatedVariant;
 				messageHandler.showSuccess('Variant saved successfully!');
+				formDrafts.clear(variantEditDraftKey);
 				entityState.closeEdit();
 			} else {
 				messageHandler.showError('Failed to save variant');
@@ -180,6 +184,7 @@
 
 			if (result.success && result.variantSlug) {
 				messageHandler.showSuccess('Variant duplicated successfully!');
+				formDrafts.clear(variantCreateDraftKey);
 				entityState.closeDuplicate();
 				goto(`/brands/${brandId}/${materialType}/${filamentId}/${result.variantSlug}`);
 			} else {
@@ -250,8 +255,8 @@
 							entityData={variantData}
 							entityPath="brands/{brandId}/materials/{materialType}/filaments/{filamentId}/variants/{variantSlug}"
 							isLocalCreate={entityState.isLocalCreate}
-							onDuplicate={(data) => entityState.openDuplicate(data)}
-							onPaste={(data) => entityState.openPaste(data)}
+							onDuplicate={(data) => { formDrafts.clear(variantCreateDraftKey); entityState.openDuplicate(data); }}
+							onPaste={(data) => { formDrafts.clear(variantCreateDraftKey); entityState.openPaste(data); }}
 							onDelete={entityState.openDelete}
 							onViewDiff={entityState.openCloudCompare}
 							parentNames={{ brand: '', material: '', filament: '' }}
@@ -355,7 +360,7 @@
 <Modal show={entityState.showEditModal} title="Edit Variant" onClose={entityState.closeEdit} maxWidth="5xl">
 	{#if variant}
 		<div class="h-[70vh]">
-			<VariantForm {variant} onSubmit={handleSubmit} saving={entityState.saving} />
+			<VariantForm {variant} draftKey={variantEditDraftKey} onSubmit={handleSubmit} saving={entityState.saving} />
 		</div>
 	{/if}
 </Modal>
@@ -377,7 +382,7 @@
 	{/if}
 	{#if entityState.duplicateData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.duplicateData} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>
@@ -389,7 +394,7 @@
 	{/if}
 	{#if entityState.pasteData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.pasteData} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>

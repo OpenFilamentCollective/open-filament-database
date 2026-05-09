@@ -19,10 +19,14 @@
 	import { withDeletedStubs, getChildChangeProps } from '$lib/utils/deletedStubs';
 	import { getClipboard } from '$lib/services/clipboardService';
 	import { duplicateFilamentChildren, loadFilamentChildren, pasteFilamentChildren } from '$lib/services/duplicateService';
+	import { formDrafts } from '$lib/stores/formDrafts';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
 	let filamentId: string = $derived($page.params.filament!);
+	let filamentEditDraftKey = $derived(`edit:filament:${brandId}:${materialType}:${filamentId}`);
+	let variantCreateDraftKey = $derived(`create:variant:${brandId}:${materialType}:${filamentId}`);
+	let filamentCreateDraftKey = $derived(`create:filament:${brandId}:${materialType}`);
 	let loadGeneration = 0;
 	let filament: Filament | null = $state(null);
 	let originalFilament: Filament | null = $state(null);
@@ -74,6 +78,7 @@
 		return await loadFilamentChildren(brandId, materialType, filamentId);
 	});
 	const filamentDuplicate = createDuplicateAction('filament', true, (data) => {
+		formDrafts.clear(filamentCreateDraftKey);
 		entityState.openDuplicate(data);
 	});
 
@@ -81,11 +86,13 @@
 	const variantCopy = createCopyAction('variant', null);
 	const variantDuplicate = createDuplicateAction('variant', false, (data) => {
 		createError = null;
+		formDrafts.clear(variantCreateDraftKey);
 		prefillVariantData = data as Variant;
 		entityState.openCreate();
 	});
 	const variantPaste = createPasteHandler('variant', (data) => {
 		createError = null;
+		formDrafts.clear(variantCreateDraftKey);
 		prefillVariantData = data as Variant;
 		entityState.openCreate();
 	}, (data) => {
@@ -149,6 +156,7 @@
 			if (success) {
 				filament = updatedFilament;
 				messageHandler.showSuccess('Filament saved successfully!');
+				formDrafts.clear(filamentEditDraftKey);
 				entityState.closeEdit();
 			} else {
 				messageHandler.showError('Failed to save filament');
@@ -196,6 +204,7 @@
 			const result = await db.createVariant(brandId, materialType, filamentId, data);
 			if (result.success && result.variantSlug) {
 				messageHandler.showSuccess('Variant created successfully!');
+				formDrafts.clear(variantCreateDraftKey);
 				entityState.closeCreate();
 				goto(`/brands/${brandId}/${materialType}/${filamentId}/${result.variantSlug}`);
 			} else {
@@ -235,6 +244,7 @@
 					} catch (e) { console.error('Failed to paste children:', e); }
 				}
 				messageHandler.showSuccess('Filament created successfully!');
+				formDrafts.clear(filamentCreateDraftKey);
 				entityState.closeDuplicate();
 				entityState.closePaste();
 				goto(`/brands/${brandId}/${materialType}/${result.filamentId}`);
@@ -329,7 +339,7 @@
 								isLocalCreate={entityState.isLocalCreate}
 								onDuplicate={() => filamentDuplicate.request(filamentData)}
 								onCopyRequest={() => filamentCopy.request(filamentData, `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`)}
-								onPaste={(data) => entityState.openPaste(data)}
+								onPaste={(data) => { formDrafts.clear(filamentCreateDraftKey); entityState.openPaste(data); }}
 								onDelete={entityState.openDelete}
 								onViewDiff={entityState.openCloudCompare}
 								parentNames={{ brand: '', material: '' }}
@@ -373,7 +383,7 @@
 <Modal show={entityState.showEditModal} title="Edit Filament" onClose={entityState.closeEdit} maxWidth="5xl">
 	{#if filament}
 		<div class="h-[70vh]">
-			<FilamentForm {filament} onSubmit={handleSubmit} saving={entityState.saving} />
+			<FilamentForm {filament} draftKey={filamentEditDraftKey} onSubmit={handleSubmit} saving={entityState.saving} />
 		</div>
 	{/if}
 </Modal>
@@ -393,7 +403,7 @@
 	{#if duplicateFilamentError}<MessageBanner type="error" message={duplicateFilamentError} />{/if}
 	{#if entityState.duplicateData}
 		<div class="h-[70vh]">
-			<FilamentForm filament={entityState.duplicateData} onSubmit={handleDuplicateFilamentSubmit} saving={entityState.creating} />
+			<FilamentForm filament={entityState.duplicateData} draftKey={filamentCreateDraftKey} onSubmit={handleDuplicateFilamentSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>
@@ -401,7 +411,7 @@
 	{#if duplicateFilamentError}<MessageBanner type="error" message={duplicateFilamentError} />{/if}
 	{#if entityState.pasteData}
 		<div class="h-[70vh]">
-			<FilamentForm filament={entityState.pasteData} onSubmit={handleDuplicateFilamentSubmit} saving={entityState.creating} />
+			<FilamentForm filament={entityState.pasteData} draftKey={filamentCreateDraftKey} onSubmit={handleDuplicateFilamentSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>
@@ -412,5 +422,5 @@
 <Modal show={entityState.showCreateModal} title="Create New Variant"
 	onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="5xl" height="3/4">
 	{#if createError}<MessageBanner type="error" message={createError} />{/if}
-	<VariantForm variant={prefillVariantData ?? undefined} onSubmit={handleCreateVariant} saving={entityState.creating} />
+	<VariantForm variant={prefillVariantData ?? undefined} draftKey={variantCreateDraftKey} onSubmit={handleCreateVariant} saving={entityState.creating} />
 </Modal>

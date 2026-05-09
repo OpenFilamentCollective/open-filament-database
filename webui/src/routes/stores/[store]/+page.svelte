@@ -18,8 +18,12 @@
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { getCountryName } from '$lib/data/countryCodes';
 	import { prepareDuplicateData } from '$lib/services/clipboardService';
+	import { formDrafts } from '$lib/stores/formDrafts';
+
+	const STORE_CREATE_DRAFT_KEY = 'create:store';
 
 	let storeId: string = $derived($page.params.store!);
+	let storeEditDraftKey = $derived(`edit:store:${storeId}`);
 	let loadGeneration = 0;
 	let store: Store | null = $state(null);
 	let originalStore: Store | null = $state(null);
@@ -109,6 +113,7 @@
 				store = updatedStore;
 				entityState.resetLogo();
 				messageHandler.showSuccess('Store saved successfully!');
+				formDrafts.clear(storeEditDraftKey);
 				entityState.closeEdit();
 			} else {
 				messageHandler.showError('Failed to save store');
@@ -179,6 +184,7 @@
 
 			if (success) {
 				messageHandler.showSuccess('Store duplicated successfully!');
+				formDrafts.clear(STORE_CREATE_DRAFT_KEY);
 				entityState.closeDuplicate();
 				goto(`/stores/${slug}`);
 			} else {
@@ -253,8 +259,8 @@
 							entityData={storeData}
 							entityPath="stores/{storeId}"
 							isLocalCreate={entityState.isLocalCreate}
-							onDuplicate={(data) => entityState.openDuplicate(data)}
-							onPaste={(data) => entityState.openPaste(data)}
+							onDuplicate={(data) => { formDrafts.clear(STORE_CREATE_DRAFT_KEY); entityState.openDuplicate(data); }}
+							onPaste={(data) => { formDrafts.clear(STORE_CREATE_DRAFT_KEY); entityState.openPaste(data); }}
 							onDelete={entityState.openDelete}
 							onViewDiff={entityState.openCloudCompare}
 						/>
@@ -270,6 +276,7 @@
 		<StoreForm
 			{store}
 			{schema}
+			draftKey={storeEditDraftKey}
 			onSubmit={handleSubmit}
 			onLogoChange={entityState.handleLogoChange}
 			logoChanged={entityState.logoChanged}
@@ -297,6 +304,7 @@
 		<StoreForm
 			store={entityState.duplicateData}
 			{schema}
+			draftKey={STORE_CREATE_DRAFT_KEY}
 			onSubmit={handleDuplicateStoreSubmit}
 			onLogoChange={entityState.handleLogoChange}
 			logoChanged={entityState.logoChanged}
@@ -314,6 +322,7 @@
 		<StoreForm
 			store={entityState.pasteData}
 			{schema}
+			draftKey={STORE_CREATE_DRAFT_KEY}
 			onSubmit={handleDuplicateStoreSubmit}
 			onLogoChange={entityState.handleLogoChange}
 			logoChanged={entityState.logoChanged}

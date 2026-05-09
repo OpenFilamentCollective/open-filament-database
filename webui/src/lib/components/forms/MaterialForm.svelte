@@ -13,6 +13,7 @@
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
+	import { formDrafts } from '$lib/stores/formDrafts';
 
 	interface Props {
 		entity?: any;
@@ -20,6 +21,8 @@
 		config?: SchemaFormConfig;
 		onSubmit: (data: any) => void;
 		saving?: boolean;
+		/** Optional key for in-memory draft preservation across modal close/reopen */
+		draftKey?: string;
 	}
 
 	let {
@@ -27,8 +30,15 @@
 		schema,
 		config = {},
 		onSubmit,
-		saving = false
+		saving = false,
+		draftKey
 	}: Props = $props();
+
+	type MaterialDraft = {
+		formData: Record<string, any>;
+		slicerEnabled: Record<SlicerKey, boolean>;
+		slicerData: Record<string, any>;
+	};
 
 	// Default config for material form
 	const defaultConfig: SchemaFormConfig = {
@@ -40,18 +50,27 @@
 	// Prepare schema - remove id field
 	let preparedSchema = $derived(removeIdFromSchema(schema));
 
+	// Restore from draft if one exists for this draftKey
+	const initialDraft = draftKey ? formDrafts.get<MaterialDraft>(draftKey) : undefined;
+	const initialSlicerSettings = initialDraft?.slicerData ?? entity?.default_slicer_settings;
+
 	// Form data state - initialized synchronously from schema
 	let formData = $state<Record<string, any>>(
-		initializeFormData(removeIdFromSchema(schema), entity, defaultConfig.hiddenFields)
+		initialDraft?.formData ?? initializeFormData(removeIdFromSchema(schema), entity, defaultConfig.hiddenFields)
 	);
 
 	// Slicer toggle state - initialized synchronously
 	let slicerEnabled = $state<Record<SlicerKey, boolean>>(
-		initializeSlicerEnabled(entity?.default_slicer_settings)
+		initialDraft?.slicerEnabled ?? initializeSlicerEnabled(entity?.default_slicer_settings)
 	);
 
-	// Slicer settings forms
+	// Slicer settings forms — pre-create forms for already-enabled slicers
 	let slicerForms = $state<Record<SlicerKey, any>>(initializeSlicerForms());
+	for (const key of SLICER_KEYS) {
+		if (slicerEnabled[key]) {
+			slicerForms[key] = initializeSlicerForm(key, initialSlicerSettings?.[key] ?? {});
+		}
+	}
 
 	// Track entity changes to reinitialize form data and slicer state
 	// NOTE: must be a plain variable, NOT $state — proxy identity breaks !== comparisons.
@@ -71,6 +90,18 @@
 				}
 			}
 		}
+	});
+
+	// Persist form state to the in-memory draft store on every change.
+	// Slicer field-level edits aren't reactively tracked (sjsf-managed); they
+	// get captured on toggle changes and form-data changes.
+	$effect(() => {
+		if (!draftKey) return;
+		formDrafts.set(draftKey, {
+			formData,
+			slicerEnabled,
+			slicerData: buildSlicerSettings(slicerEnabled, slicerForms)
+		});
 	});
 
 	// Toggle slicer

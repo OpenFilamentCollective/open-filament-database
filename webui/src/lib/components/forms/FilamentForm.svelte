@@ -14,15 +14,24 @@
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
+	import { formDrafts } from '$lib/stores/formDrafts';
 
 	interface Props {
 		filament?: any;
 		schema?: any;
 		onSubmit: (data: any) => void;
 		saving?: boolean;
+		/** Optional key for in-memory draft preservation across modal close/reopen */
+		draftKey?: string;
 	}
 
-	let { filament = null, schema: externalSchema, onSubmit, saving = false }: Props = $props();
+	let { filament = null, schema: externalSchema, onSubmit, saving = false, draftKey }: Props = $props();
+
+	type FilamentDraft = {
+		formData: Record<string, any>;
+		slicerEnabled: Record<SlicerKey, boolean>;
+		slicerData: Record<string, any>;
+	};
 
 	// Internal schema state (loaded if not provided externally)
 	let internalSchema: any = $state(null);
@@ -87,21 +96,35 @@
 	// Prepare schema - remove id field
 	let preparedSchema = $derived(schema ? removeIdFromSchema(schema) : null);
 
+	// Restore from draft if one exists for this draftKey
+	const initialDraft = draftKey ? formDrafts.get<FilamentDraft>(draftKey) : undefined;
+
 	// Form data state - initialized when schema is available
-	let formData = $state<Record<string, any>>({});
+	let formData = $state<Record<string, any>>(initialDraft?.formData ?? {});
 
 	// Slicer toggle state
 	let slicerEnabled = $state<Record<SlicerKey, boolean>>(
-		initializeSlicerEnabled(filament?.slicer_settings)
+		initialDraft?.slicerEnabled ?? initializeSlicerEnabled(filament?.slicer_settings)
 	);
 
 	// Slicer settings forms
 	let slicerForms = $state<Record<SlicerKey, any>>(initializeSlicerForms());
+	{
+		const initialSlicerSettings = initialDraft?.slicerData ?? filament?.slicer_settings;
+		for (const key of SLICER_KEYS) {
+			if (slicerEnabled[key]) {
+				slicerForms[key] = initializeSlicerForm(key, initialSlicerSettings?.[key] ?? {});
+			}
+		}
+	}
 
 	// Track entity and schema changes to reinitialize form data
 	// NOTE: must be plain variables, NOT $state — proxy identity breaks !== comparisons.
 	let lastEntity: any = filament;
 	let lastSchema: any = null;
+	// If we restored from a draft, treat the current schema/entity as the baseline
+	// so the first $effect.pre run doesn't clobber the restored draft.
+	let draftRestored = !!initialDraft;
 
 	// Use $effect.pre to ensure formData is initialized before DOM renders
 	$effect.pre(() => {
@@ -111,6 +134,12 @@
 		if (preparedSchema && (preparedSchema !== prevSchema || filament !== prevEntity)) {
 			lastEntity = filament;
 			lastSchema = preparedSchema;
+			if (draftRestored) {
+				// Skip the schema/entity-change reinit on the first pass — the draft
+				// is already populated. Subsequent prop changes will reinit normally.
+				draftRestored = false;
+				return;
+			}
 			formData = initializeFormData(preparedSchema, filament, config.hiddenFields);
 			slicerEnabled = initializeSlicerEnabled(filament?.slicer_settings);
 			slicerForms = initializeSlicerForms();
@@ -122,6 +151,16 @@
 				}
 			}
 		}
+	});
+
+	// Persist form state to the in-memory draft store on every change.
+	$effect(() => {
+		if (!draftKey) return;
+		formDrafts.set(draftKey, {
+			formData,
+			slicerEnabled,
+			slicerData: buildSlicerSettings(slicerEnabled, slicerForms)
+		});
 	});
 
 	// Toggle slicer
