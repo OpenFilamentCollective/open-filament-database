@@ -1,0 +1,10 @@
+{
+  "id": "glass_fiber_black",
+  "name": "glass fiber black",
+  "color_hex": "#050B11",
+  "discontinued": false,
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

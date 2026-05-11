@@ -18,14 +18,14 @@
       "first_layer_bed_temp": 100,
       "first_layer_nozzle_temp": 240,
       "nozzle_temp": 245,
-      "profile_name": "SmartPrint ASA"
+      "profile_name": "ProfLab ASA"
     },
     "orcaslicer": {
       "bed_temp": 100,
       "first_layer_bed_temp": 100,
       "first_layer_nozzle_temp": 240,
       "nozzle_temp": 245,
-      "profile_name": "SmartPrint ASA"
+      "profile_name": "ProfLab ASA"
     },
     "generic": {
       "bed_temp": 100,
