@@ -1,0 +1,37 @@
+name: Python Tests
+env:
+  PYTHON: "3.11"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ofd/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - "uv.lock"
+  pull_request:
+    paths:
+      - "ofd/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - "uv.lock"
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: go-task/setup-task@v2
+        with:
+          version: 3.x
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          python-version: ${{ env.PYTHON }}
+
+      - name: Run tests
+        run: task test
