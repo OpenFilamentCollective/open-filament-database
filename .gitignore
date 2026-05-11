@@ -7,4 +7,6 @@ dist/
 .claude/
 .cache/
 .env
+.envrc
+.envrc.local
 .task/
