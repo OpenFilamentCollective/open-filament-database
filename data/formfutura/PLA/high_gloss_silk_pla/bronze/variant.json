@@ -2,6 +2,7 @@
   "id": "bronze",
   "name": "Bronze",
   "color_hex": "#8C7547",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "silk": true

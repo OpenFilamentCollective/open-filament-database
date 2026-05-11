@@ -2,6 +2,7 @@
   "id": "yellow",
   "name": "Yellow",
   "color_hex": "#E4FF33",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "silk": true

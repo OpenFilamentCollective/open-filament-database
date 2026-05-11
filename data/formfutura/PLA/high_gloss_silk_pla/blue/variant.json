@@ -2,6 +2,7 @@
   "id": "blue",
   "name": "Blue",
   "color_hex": "#0353BA",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "silk": true

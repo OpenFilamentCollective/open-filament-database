@@ -2,6 +2,7 @@
   "id": "brass",
   "name": "Brass",
   "color_hex": "#998D58",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "silk": true
