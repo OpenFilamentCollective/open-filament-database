@@ -1,0 +1,10 @@
+{
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": "#323C5D",
+  "discontinued": false,
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}
