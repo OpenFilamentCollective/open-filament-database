@@ -1,0 +1,22 @@
+{
+  "id": "petg_cf",
+  "name": "PETG-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
+  "max_dry_temperature": 65,
+  "min_print_temperature": 240,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 90,
+  "min_chamber_temperature": 35,
+  "max_chamber_temperature": 50,
+  "discontinued": false,
+  "slicer_settings": {
+    "generic": {
+      "bed_temp": 70,
+      "first_layer_bed_temp": 70,
+      "first_layer_nozzle_temp": 260,
+      "nozzle_temp": 260
+    }
+  }
+}
