@@ -2,6 +2,7 @@
   "id": "green",
   "name": "Green",
   "color_hex": "#11784F",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "silk": true

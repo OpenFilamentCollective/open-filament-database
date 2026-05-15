@@ -2,6 +2,7 @@
   "id": "copper",
   "name": "Copper",
   "color_hex": "#8D5D4F",
+  "discontinued": false,
   "traits": {
     "industrially_compostable": true,
     "silk": true

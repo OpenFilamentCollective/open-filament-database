@@ -1,10 +1,13 @@
 {
   "id": "high_gloss_silk_pla",
-  "name": "High Gloss Silk PLA",
+  "name": "High Gloss PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "density": 1.22,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256566?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256565?download=true",
+  "discontinued": false
 }

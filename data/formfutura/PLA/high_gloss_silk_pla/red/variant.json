@@ -1,7 +1,7 @@
 {
-  "id": "purple",
-  "name": "Purple",
-  "color_hex": "#492972",
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#FF0000",
   "discontinued": false,
   "traits": {
     "industrially_compostable": true,
