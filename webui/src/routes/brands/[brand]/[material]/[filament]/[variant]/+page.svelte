@@ -241,6 +241,13 @@
 				<MessageBanner type="info" message="Submitted - awaiting merge" />
 			{/if}
 
+			{#if (variant as any)?.__migratedSpoolRefill}
+				<MessageBanner
+					type="info"
+					message="Heads up: this variant uses a deprecated location for spool_refill (on purchase links). It's been auto-migrated to the size level — your next save will update the file to the current schema."
+				/>
+			{/if}
+
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
 			{/if}

@@ -135,6 +135,22 @@ function describeChange(entity: EntityIdentifier, operation: ChangeOperation, da
 }
 
 /**
+ * Recursively sort object keys so structurally-equivalent values produce
+ * identical JSON strings regardless of insertion order. Forms re-emit object
+ * literals with their own field order; without canonicalization, a rename-only
+ * edit looks like a sizes/object diff just because keys moved.
+ */
+function canonicalize(value: any): any {
+	if (Array.isArray(value)) return value.map(canonicalize);
+	if (value && typeof value === 'object') {
+		const sorted: Record<string, any> = {};
+		for (const k of Object.keys(value).sort()) sorted[k] = canonicalize(value[k]);
+		return sorted;
+	}
+	return value;
+}
+
+/**
  * Check if two values are effectively equal (handles undefined/null/empty equivalence)
  */
 function areValuesEqual(oldValue: any, newValue: any): boolean {
@@ -153,8 +169,8 @@ function areValuesEqual(oldValue: any, newValue: any): boolean {
 	if (isEmptyObj(oldValue) && newEmpty) return true;
 	if (isEmptyObj(newValue) && oldEmpty) return true;
 
-	// Deep comparison using JSON
-	return JSON.stringify(oldValue) === JSON.stringify(newValue);
+	// Deep comparison using canonical (key-sorted) JSON so field ordering doesn't matter.
+	return JSON.stringify(canonicalize(oldValue)) === JSON.stringify(canonicalize(newValue));
 }
 
 /**
