@@ -1,0 +1,9 @@
+{
+  "id": "matte",
+  "name": "Matte (THE K5 PLA M)",
+  "diameter_tolerance": 0.03,
+  "density": 1.42,
+  "max_dry_temperature": 55,
+  "data_sheet_url": "https://www.kexcelled3d.com/s/THE-K5-PLA-M-TDS.pdf",
+  "safety_sheet_url": "https://www.kexcelled3d.com/s/KEXCELLED-THE-K5-PLA-M-MSDS.pdf"
+}
