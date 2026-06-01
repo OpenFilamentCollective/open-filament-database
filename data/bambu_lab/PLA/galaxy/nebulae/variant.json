@@ -1,5 +1,6 @@
 {
-    "id": "nebulae",
-    "name": "Nebulae",
-    "color_hex": "#424379"
+  "id": "nebulae",
+  "name": "Nebulae",
+  "color_hex": "#424379",
+  "discontinued": false
 }
