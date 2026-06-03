@@ -1,0 +1,17 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "article_number": "10905",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "bambu_lab_store",
+        "url": "https://eu.store.bambulab.com/nl/products/pla-basic-gradient?id=53638219006300"
+      }
+    ]
+  }
+]
