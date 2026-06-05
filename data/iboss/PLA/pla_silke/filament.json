@@ -1,0 +1,21 @@
+{
+  "id": "pla_silke",
+  "name": "PLA+ silke",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "shore_hardness_a": 95,
+  "shore_hardness_d": 55,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "min_chamber_temperature": 40,
+  "max_chamber_temperature": 60,
+  "chamber_temperature": 46,
+  "min_nozzle_diameter": 0.4,
+  "data_sheet_url": "https://www.iboss-3d.com/IBOSS-High-quality-Material-Tri-color-Filament-3d-Printing-pd512216268.html",
+  "safety_sheet_url": "https://www.iboss-3d.com/IBOSS-High-quality-Material-Tri-color-Filament-3d-Printing-pd512216268.html",
+  "discontinued": false
+}

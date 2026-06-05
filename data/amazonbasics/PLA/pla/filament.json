@@ -1,0 +1,20 @@
+{
+  "id": "pla",
+  "name": "PLA+/PRO",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "shore_hardness_a": 95,
+  "shore_hardness_d": 55,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 65,
+  "min_chamber_temperature": 45,
+  "max_chamber_temperature": 51,
+  "chamber_temperature": 50,
+  "min_nozzle_diameter": 0.4,
+  "data_sheet_url": "https://amazon.de/dp/B0DCJSC8N8?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1",
+  "discontinued": false
+}
