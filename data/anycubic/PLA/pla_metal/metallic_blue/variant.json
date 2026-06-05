@@ -1,7 +1,10 @@
 {
   "id": "metallic_blue",
-  "name": "Metallic Blue",
-  "color_hex": [
-    "#3177A3"
-  ]
+  "name": "Metal Black",
+  "color_hex": "#000000",
+  "discontinued": false,
+  "traits": {
+    "imitates_metal": true,
+    "contains_metal": true
+  }
 }
