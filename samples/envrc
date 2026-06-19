@@ -1,0 +1,11 @@
+use nix
+
+# for local, native uv-style dev flow:
+# test -d .venv || uv venv --python $(cat .default-python-version)
+# uv sync --frozen
+# . .venv/bin/activate
+
+dotenv_if_exists  # source .env if present
+
+# add project-local path to PATH
+# PATH_add script/
