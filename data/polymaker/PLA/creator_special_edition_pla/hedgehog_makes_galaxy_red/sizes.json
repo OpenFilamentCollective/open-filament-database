@@ -1,6 +1,15 @@
 [
   {
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "spool_refill": false,
+    "article_number": "PA02106",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/panchroma-galaxy?variant=44933539987513"
+      }
+    ]
   }
 ]
