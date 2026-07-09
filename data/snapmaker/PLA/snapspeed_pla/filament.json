@@ -1,0 +1,7 @@
+{
+    "id": "snapspeed_pla",
+    "name": "SnapSpeed PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.23,
+    "max_dry_temperature": 55
+}
