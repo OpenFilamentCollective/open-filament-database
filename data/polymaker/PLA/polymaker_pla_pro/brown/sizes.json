@@ -1,0 +1,16 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 140,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/polymaker-pla-pro?variant=45411122413625"
+      }
+    ]
+  }
+]
