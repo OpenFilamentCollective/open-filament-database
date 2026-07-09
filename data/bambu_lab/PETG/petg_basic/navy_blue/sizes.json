@@ -5,6 +5,12 @@
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
-    "discontinued": false
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/products/petg-basic?id=738167451007287326"
+      }
+    ]
   }
 ]
