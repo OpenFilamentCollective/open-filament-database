@@ -1,0 +1,20 @@
+{
+    "id": "snapmaker",
+    "name": "Snapmaker",
+    "storefront_url": "https://shop.snapmaker.com/",
+    "logo": "logo.svg",
+    "ships_from": [
+        "CN",
+        "US",
+        "EU"
+    ],
+    "ships_to": [
+        "US",
+        "EU",
+        "UK",
+        "CA",
+        "AU",
+        "JP",
+        "KR"
+    ]
+}
