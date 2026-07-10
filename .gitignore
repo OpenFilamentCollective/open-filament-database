@@ -7,5 +7,7 @@ dist/
 .claude/
 .cache/
 .env
+.envrc
+.envrc.local
 .task/
 uid_migration.json
