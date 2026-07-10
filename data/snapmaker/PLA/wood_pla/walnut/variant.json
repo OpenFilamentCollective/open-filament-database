@@ -1,0 +1,9 @@
+{
+  "id": "walnut",
+  "name": "Walnut",
+  "color_hex": "#775C50",
+  "traits": {
+    "imitates_wood": true,
+    "contains_wood": true
+  }
+}

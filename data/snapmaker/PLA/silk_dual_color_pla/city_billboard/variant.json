@@ -1,0 +1,12 @@
+{
+    "id": "city_billboard",
+    "name": "City Billboard",
+    "color_hex": [
+        "#CBF914",
+        "#D623AA"
+    ],
+    "traits": {
+        "silk": true,
+        "coextruded": true
+    }
+}

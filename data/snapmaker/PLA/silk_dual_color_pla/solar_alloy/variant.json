@@ -1,0 +1,12 @@
+{
+    "id": "solar_alloy",
+    "name": "Solar Alloy",
+    "color_hex": [
+        "#D9A63A",
+        "#C4C7D9"
+    ],
+    "traits": {
+        "silk": true,
+        "coextruded": true
+    }
+}
