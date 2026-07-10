@@ -6,6 +6,10 @@
             {
                 "store_id": "snapmaker",
                 "url": "https://shop.snapmaker.com/products/silk-pla-filament"
+            },
+            {
+                "store_id": "amazon",
+                "url": "https://www.amazon.com/Snapmaker-Filament-Printer-Clog-Free-Tangle-Fee/dp/B0GVY8W4TV"
             }
         ]
     }

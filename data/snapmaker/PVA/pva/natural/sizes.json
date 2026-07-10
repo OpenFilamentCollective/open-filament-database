@@ -6,6 +6,14 @@
             {
                 "store_id": "snapmaker",
                 "url": "https://shop.snapmaker.com/products/pva-filament-500g"
+            },
+            {
+                "store_id": "3djake",
+                "url": "https://www.3djake.com/snapmaker/pva-1"
+            },
+            {
+                "store_id": "3dprima",
+                "url": "https://www.3dprima.com/spare-parts-accessories/manufacturer/snapmaker/snapmaker-pva-500g_28922_10822"
             }
         ]
     }

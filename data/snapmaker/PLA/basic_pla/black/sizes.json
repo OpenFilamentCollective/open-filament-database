@@ -6,6 +6,14 @@
             {
                 "store_id": "snapmaker",
                 "url": "https://shop.snapmaker.com/products/pla-filament-1kg"
+            },
+            {
+                "store_id": "3djake",
+                "url": "https://www.3djake.com/snapmaker/pla-black-10"
+            },
+            {
+                "store_id": "amazon",
+                "url": "https://www.amazon.com/Snapmaker-Printer-Filament-1-75mm-Spool/dp/B09FKZ399M"
             }
         ]
     }

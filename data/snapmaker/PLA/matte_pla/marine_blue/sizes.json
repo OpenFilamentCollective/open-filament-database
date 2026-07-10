@@ -6,6 +6,10 @@
             {
                 "store_id": "snapmaker",
                 "url": "https://shop.snapmaker.com/products/matte-pla-filament"
+            },
+            {
+                "store_id": "amazon",
+                "url": "https://www.amazon.com/Snapmaker-Filament-Dimensional-Accuracy-Clog-Free/dp/B0GKPL53MG"
             }
         ]
     }
