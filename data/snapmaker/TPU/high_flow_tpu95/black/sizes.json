@@ -1,0 +1,16 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/black-high-flow-tpu95-filament-1-kg"
+      },
+      {
+        "store_id": "3dprima",
+        "url": "https://www.3dprima.com/spare-parts-accessories/manufacturers/snapmaker/snapmaker-high-flow-tpu95-black-1kg_28920_10820"
+      }
+    ]
+  }
+]

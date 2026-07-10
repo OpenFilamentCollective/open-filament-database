@@ -1,0 +1,16 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/tpu-95a-hf-filament"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/Snapmaker-Filament-Flexible-Elasticity-Dimensional/dp/B0GVYP6WTJ"
+      }
+    ]
+  }
+]

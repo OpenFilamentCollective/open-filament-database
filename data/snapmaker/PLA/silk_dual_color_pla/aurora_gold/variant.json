@@ -1,0 +1,12 @@
+{
+  "id": "aurora_gold",
+  "name": "Aurora Gold",
+  "color_hex": [
+    "#D9A63A",
+    "#9675CD"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

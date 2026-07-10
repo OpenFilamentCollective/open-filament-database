@@ -1,0 +1,12 @@
+{
+  "id": "sea_glass",
+  "name": "Sea Glass",
+  "color_hex": [
+    "#44ADE5",
+    "#18CCAF"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

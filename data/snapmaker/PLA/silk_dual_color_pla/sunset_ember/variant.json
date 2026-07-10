@@ -1,0 +1,12 @@
+{
+  "id": "sunset_ember",
+  "name": "Sunset Ember",
+  "color_hex": [
+    "#D9A63A",
+    "#CC434F"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

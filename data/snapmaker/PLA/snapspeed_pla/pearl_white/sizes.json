@@ -1,12 +1,24 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "amazon",
-                "url": "https://www.amazon.com/Snapmaker-Filament-Snapspeed-Dimensional-Clog-Free/dp/B0GHN9ZRWF"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/Snapmaker-Filament-Snapspeed-Dimensional-Clog-Free/dp/B0GHN9ZRWF"
+      },
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/snapspeed-pla-filament"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/snapmaker/snapspeed-pla-pearl-white-rfid"
+      }
+    ]
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75
+  }
 ]

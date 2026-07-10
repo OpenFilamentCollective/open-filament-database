@@ -1,0 +1,12 @@
+{
+  "id": "mint_lemonade",
+  "name": "Mint Lemonade",
+  "color_hex": [
+    "#ECED17",
+    "#44ADE5"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}
