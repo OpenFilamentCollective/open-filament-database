@@ -1,12 +1,12 @@
 {
-    "id": "ice_lake",
-    "name": "Ice Lake",
-    "color_hex": [
-        "#C4C7D9",
-        "#44ADE5"
-    ],
-    "traits": {
-        "silk": true,
-        "coextruded": true
-    }
+  "id": "ice_lake",
+  "name": "Ice Lake",
+  "color_hex": [
+    "#C4C7D9",
+    "#44ADE5"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
 }

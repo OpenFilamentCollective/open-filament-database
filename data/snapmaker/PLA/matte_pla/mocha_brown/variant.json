@@ -1,8 +1,8 @@
 {
-    "id": "mocha_brown",
-    "name": "Mocha Brown",
-    "color_hex": "#775C50",
-    "traits": {
-        "matte": true
-    }
+  "id": "mocha_brown",
+  "name": "Mocha Brown",
+  "color_hex": "#775C50",
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,6 +1,6 @@
 {
-    "id": "nylon",
-    "name": "Nylon",
-    "diameter_tolerance": 0.05,
-    "density": 1.14
+  "id": "nylon",
+  "name": "Nylon",
+  "diameter_tolerance": 0.05,
+  "density": 1.14
 }

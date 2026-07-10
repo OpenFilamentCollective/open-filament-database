@@ -1,16 +1,16 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "snapmaker",
-                "url": "https://shop.snapmaker.com/products/petg-hf-filament"
-            },
-            {
-                "store_id": "amazon",
-                "url": "https://www.amazon.com/Snapmaker-Filament-Dimensional-Toughness-Moisture-Resistance/dp/B0GVY6L9L2"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/petg-hf-filament"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/Snapmaker-Filament-Dimensional-Toughness-Moisture-Resistance/dp/B0GVY6L9L2"
+      }
+    ]
+  }
 ]

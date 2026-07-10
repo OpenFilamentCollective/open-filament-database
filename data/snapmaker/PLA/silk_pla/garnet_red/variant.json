@@ -1,8 +1,8 @@
 {
-    "id": "garnet_red",
-    "name": "Garnet Red",
-    "color_hex": "#C1443F",
-    "traits": {
-        "silk": true
-    }
+  "id": "garnet_red",
+  "name": "Garnet Red",
+  "color_hex": "#C1443F",
+  "traits": {
+    "silk": true
+  }
 }

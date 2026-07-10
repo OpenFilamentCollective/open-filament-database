@@ -1,20 +1,20 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "snapmaker",
-                "url": "https://shop.snapmaker.com/products/abs-filament-1-kg"
-            },
-            {
-                "store_id": "3djake",
-                "url": "https://www.3djake.com/snapmaker/abs-white-6"
-            },
-            {
-                "store_id": "3dprima",
-                "url": "https://www.3dprima.com/spare-parts-accessories/manufacturers/snapmaker/snapmaker-abs-white-1kg_28924_10824"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/abs-filament-1-kg"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/snapmaker/abs-white-6"
+      },
+      {
+        "store_id": "3dprima",
+        "url": "https://www.3dprima.com/spare-parts-accessories/manufacturers/snapmaker/snapmaker-abs-white-1kg_28924_10824"
+      }
+    ]
+  }
 ]

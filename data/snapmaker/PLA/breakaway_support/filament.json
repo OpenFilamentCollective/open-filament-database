@@ -1,6 +1,6 @@
 {
-    "id": "breakaway_support",
-    "name": "Breakaway Support for PLA",
-    "diameter_tolerance": 0.05,
-    "density": 1.32
+  "id": "breakaway_support",
+  "name": "Breakaway Support for PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.32
 }

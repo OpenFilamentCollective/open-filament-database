@@ -1,8 +1,8 @@
 {
-    "id": "moss_mist",
-    "name": "Moss Mist",
-    "color_hex": "#BEC9A5",
-    "traits": {
-        "matte": true
-    }
+  "id": "moss_mist",
+  "name": "Moss Mist",
+  "color_hex": "#BEC9A5",
+  "traits": {
+    "matte": true
+  }
 }

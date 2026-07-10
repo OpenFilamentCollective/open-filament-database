@@ -1,8 +1,8 @@
 {
-    "id": "violet_purple",
-    "name": "Violet Purple",
-    "color_hex": "#6600CC",
-    "traits": {
-        "matte": true
-    }
+  "id": "violet_purple",
+  "name": "Violet Purple",
+  "color_hex": "#6600CC",
+  "traits": {
+    "matte": true
+  }
 }

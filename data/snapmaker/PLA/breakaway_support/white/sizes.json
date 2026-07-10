@@ -1,20 +1,20 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "snapmaker",
-                "url": "https://shop.snapmaker.com/products/white-breakaway-pla-filament"
-            },
-            {
-                "store_id": "3djake",
-                "url": "https://www.3djake.com/snapmaker/breakaway-pla"
-            },
-            {
-                "store_id": "3dprima",
-                "url": "https://www.3dprima.com/filament-resin/filaments/pla/others/snapmaker-breakaway-support-for-pla-500g_29830_11993"
-            }
-        ]
-    }
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/white-breakaway-pla-filament"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/snapmaker/breakaway-pla"
+      },
+      {
+        "store_id": "3dprima",
+        "url": "https://www.3dprima.com/filament-resin/filaments/pla/others/snapmaker-breakaway-support-for-pla-500g_29830_11993"
+      }
+    ]
+  }
 ]

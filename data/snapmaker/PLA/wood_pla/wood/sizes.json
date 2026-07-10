@@ -1,16 +1,16 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "snapmaker",
-                "url": "https://shop.snapmaker.com/products/wood-pla-filament-750g"
-            },
-            {
-                "store_id": "3djake",
-                "url": "https://www.3djake.com/snapmaker/pla-wood-4"
-            }
-        ]
-    }
+  {
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/wood-pla-filament-750g"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/snapmaker/pla-wood-4"
+      }
+    ]
+  }
 ]

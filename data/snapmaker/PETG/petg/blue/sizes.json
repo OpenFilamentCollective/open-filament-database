@@ -1,16 +1,16 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "snapmaker",
-                "url": "https://shop.snapmaker.com/products/3d-printer-best-petg-filament-1kg"
-            },
-            {
-                "store_id": "3djake",
-                "url": "https://www.3djake.com/snapmaker/petg-blue-5"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/3d-printer-best-petg-filament-1kg"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/snapmaker/petg-blue-5"
+      }
+    ]
+  }
 ]

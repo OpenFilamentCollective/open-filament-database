@@ -1,16 +1,16 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "snapmaker",
-                "url": "https://shop.snapmaker.com/products/silk-pla-filament"
-            },
-            {
-                "store_id": "amazon",
-                "url": "https://www.amazon.com/Snapmaker-Filament-Printer-Clog-Free-Tangle-Fee/dp/B0GVYGFVJ8"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/silk-pla-filament"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/Snapmaker-Filament-Printer-Clog-Free-Tangle-Fee/dp/B0GVYGFVJ8"
+      }
+    ]
+  }
 ]

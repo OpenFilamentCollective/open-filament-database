@@ -1,20 +1,20 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "snapmaker",
-                "url": "https://shop.snapmaker.com/products/black-nylon-filament-1kg"
-            },
-            {
-                "store_id": "3djake",
-                "url": "https://www.3djake.com/snapmaker/nylon-black-3"
-            },
-            {
-                "store_id": "3dprima",
-                "url": "https://www.3dprima.com/spare-parts-accessories/manufacturers/snapmaker/snapmaker-nylon-filament-black-1-kg_28921_10821"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/black-nylon-filament-1kg"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/snapmaker/nylon-black-3"
+      },
+      {
+        "store_id": "3dprima",
+        "url": "https://www.3dprima.com/spare-parts-accessories/manufacturers/snapmaker/snapmaker-nylon-filament-black-1-kg_28921_10821"
+      }
+    ]
+  }
 ]
