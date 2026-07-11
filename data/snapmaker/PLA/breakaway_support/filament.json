@@ -1,6 +1,18 @@
 {
-  "id": "breakaway_support",
-  "name": "Breakaway Support for PLA",
-  "diameter_tolerance": 0.05,
-  "density": 1.32
+    "id": "breakaway_support",
+    "name": "Breakaway Support for PLA",
+    "diameter_tolerance": 0.05,
+    "density": 1.32,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Snapmaker Breakaway Support For PLA",
+            "id": "4227461134",
+            "generic_id": "GFL99"
+        },
+        "elegooslicer": {
+            "profile_name": "Snapmaker Breakaway Support For PLA",
+            "id": "4227461134",
+            "generic_id": "GFL99"
+        }
+    }
 }

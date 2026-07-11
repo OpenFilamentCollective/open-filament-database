@@ -1,6 +1,31 @@
 {
-  "id": "tpu",
-  "name": "TPU",
-  "diameter_tolerance": 0.05,
-  "density": 1.22
+    "id": "tpu",
+    "name": "TPU",
+    "diameter_tolerance": 0.05,
+    "density": 1.22,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Snapmaker TPU",
+            "id": "29716562900",
+            "generic_id": "GFU99"
+        },
+        "crealityprint": {
+            "profile_name": "Snapmaker TPU",
+            "id": "1480063856",
+            "generic_id": "GFU99"
+        },
+        "prusaslicer": {
+            "profile_name": "Snapmaker TPU"
+        },
+        "elegooslicer": {
+            "profile_name": "Snapmaker TPU",
+            "id": "29716562900",
+            "generic_id": "GFU99"
+        },
+        "anycubicslicer": {
+            "profile_name": "Snapmaker TPU",
+            "id": "1480063856",
+            "generic_id": "GFU99"
+        }
+    }
 }

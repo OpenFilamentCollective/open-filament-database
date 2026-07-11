@@ -1,6 +1,28 @@
 {
-  "id": "pva",
-  "name": "PVA",
-  "diameter_tolerance": 0.05,
-  "density": 1.27
+    "id": "pva",
+    "name": "PVA",
+    "diameter_tolerance": 0.05,
+    "density": 1.27,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Snapmaker PVA",
+            "id": "1344609062",
+            "generic_id": "GFS99"
+        },
+        "crealityprint": {
+            "profile_name": "Snapmaker PVA",
+            "id": "1344609062",
+            "generic_id": "GFS99"
+        },
+        "elegooslicer": {
+            "profile_name": "Snapmaker PVA",
+            "id": "1344609062",
+            "generic_id": "GFS99"
+        },
+        "anycubicslicer": {
+            "profile_name": "Snapmaker PVA",
+            "id": "1344609062",
+            "generic_id": "GFS99"
+        }
+    }
 }

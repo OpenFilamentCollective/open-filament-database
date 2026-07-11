@@ -1,6 +1,31 @@
 {
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.05,
-  "density": 1.04
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.05,
+    "density": 1.04,
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Snapmaker ABS",
+            "id": "3811508002",
+            "generic_id": "GFB99"
+        },
+        "crealityprint": {
+            "profile_name": "Snapmaker ABS",
+            "id": "3811508002",
+            "generic_id": "GFB99"
+        },
+        "prusaslicer": {
+            "profile_name": "Snapmaker ABS"
+        },
+        "elegooslicer": {
+            "profile_name": "Snapmaker ABS",
+            "id": "3811508002",
+            "generic_id": "GFB99"
+        },
+        "anycubicslicer": {
+            "profile_name": "Snapmaker ABS",
+            "id": "3811508002",
+            "generic_id": "GFB99"
+        }
+    }
 }
