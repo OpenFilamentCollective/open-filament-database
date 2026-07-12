@@ -1,0 +1,11 @@
+{
+  "id": "dual_color_gold_to_purple",
+  "name": "Dual Color Gold to Purple",
+  "color_hex": "#BE8E3C",
+  "traits": {
+    "silk": true,
+    "coextruded": true,
+    "industrially_compostable": true
+  },
+  "discontinued": false
+}
