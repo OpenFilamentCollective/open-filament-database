@@ -1,0 +1,9 @@
+{
+  "id": "baby_blue_marble",
+  "name": "Baby Blue Marble",
+  "color_hex": "#7DDBFF",
+  "discontinued": false,
+  "traits": {
+    "imitates_marble": true
+  }
+}

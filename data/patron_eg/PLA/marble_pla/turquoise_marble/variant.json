@@ -1,0 +1,9 @@
+{
+  "id": "turquoise_marble",
+  "name": "Turquoise Marble",
+  "color_hex": "#73E9F4",
+  "discontinued": false,
+  "traits": {
+    "imitates_marble": true
+  }
+}
