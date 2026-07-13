@@ -1,28 +1,28 @@
 {
-  "id": "pva",
-  "name": "PVA",
-  "diameter_tolerance": 0.05,
-  "density": 1.27,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFS99",
-      "id": "1344609062",
-      "profile_name": "Snapmaker PVA"
-    },
-    "elegooslicer": {
-      "generic_id": "GFS99",
-      "id": "1344609062",
-      "profile_name": "Snapmaker PVA"
-    },
-    "crealityprint": {
-      "generic_id": "GFS99",
-      "id": "1344609062",
-      "profile_name": "Snapmaker PVA"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFS99",
-      "id": "1344609062",
-      "profile_name": "Snapmaker PVA"
+    "id": "pva",
+    "name": "PVA",
+    "diameter_tolerance": 0.05,
+    "density": 1.27,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFS99",
+            "id": "1344609062",
+            "profile_name": "Snapmaker PVA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFS99",
+            "id": "1344609062",
+            "profile_name": "Snapmaker PVA"
+        },
+        "crealityprint": {
+            "generic_id": "GFS99",
+            "id": "1344609062",
+            "profile_name": "Snapmaker PVA"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFS99",
+            "id": "1344609062",
+            "profile_name": "Snapmaker PVA"
+        }
     }
-  }
 }
