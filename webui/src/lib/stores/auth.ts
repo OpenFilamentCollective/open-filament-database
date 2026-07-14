@@ -4,6 +4,13 @@
 
 import { writable, derived } from 'svelte/store';
 import { STORAGE_KEY_REOPEN_WIZARD } from '$lib/config/storageKeys';
+import { getEmbedState } from '$lib/stores/embed';
+
+/** `?embed=1` when running inside a host iframe, so the server issues
+ *  partitioned (cross-site-frame-safe) auth cookies and returns to embed mode. */
+function embedQuery(): string {
+	return getEmbedState().embedded ? '?embed=1' : '';
+}
 
 interface GitHubUser {
 	login: string;
@@ -59,7 +66,7 @@ function createAuthStore() {
 
 		ghLogin() {
 			localStorage.setItem(STORAGE_KEY_REOPEN_WIZARD, 'github');
-			window.location.href = '/api/auth/github/login';
+			window.location.href = '/api/auth/github/login' + embedQuery();
 		},
 
 		async ghLogout() {
@@ -70,7 +77,7 @@ function createAuthStore() {
 		async checkSpStatus() {
 			update((s) => ({ ...s, spLoading: true }));
 			try {
-				const response = await fetch('/api/auth/simplyprint/status');
+				const response = await fetch('/api/auth/simplyprint/status' + embedQuery());
 				const data = await response.json();
 				update((s) => ({
 					...s,
@@ -85,7 +92,7 @@ function createAuthStore() {
 
 		spLogin() {
 			localStorage.setItem(STORAGE_KEY_REOPEN_WIZARD, 'simplyprint');
-			window.location.href = '/api/auth/simplyprint/login';
+			window.location.href = '/api/auth/simplyprint/login' + embedQuery();
 		},
 
 		async spLogout() {
@@ -99,7 +106,7 @@ function createAuthStore() {
 			try {
 				const [ghRes, spRes] = await Promise.all([
 					fetch('/api/auth/github/status'),
-					fetch('/api/auth/simplyprint/status')
+					fetch('/api/auth/simplyprint/status' + embedQuery())
 				]);
 				const [ghData, spData] = await Promise.all([ghRes.json(), spRes.json()]);
 				set({

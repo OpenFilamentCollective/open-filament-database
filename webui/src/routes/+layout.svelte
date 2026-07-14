@@ -5,6 +5,9 @@
 	import { isCloudMode } from '$lib/stores/environment';
 	import { authStore } from '$lib/stores/auth';
 	import { theme } from '$lib/stores/theme';
+	import { isSpAuthenticated, currentSpUser } from '$lib/stores/auth';
+	import { isEmbedded, embedThemeOverride, initEmbedFromUrl } from '$lib/stores/embed';
+	import { startEmbedBridge, applyEmbedTheme } from '$lib/services/embedBridge';
 	import { db } from '$lib/services/database';
 	import { clearSearchCache } from '$lib/services/searchIndex';
 	import { clearLocalDataExceptSettings } from '$lib/services/localData';
@@ -16,6 +19,17 @@
 	import { loadSlicerConfig } from '$lib/config/slicerConfig';
 
 	let { children } = $props();
+
+	// Detect + sustain embed mode from the URL (sticky across navigations).
+	initEmbedFromUrl($page.url);
+	$effect(() => {
+		initEmbedFromUrl($page.url);
+	});
+
+	// Apply the host-forced theme (e.g. the panel's dark mode) when embedded.
+	$effect(() => {
+		if ($isEmbedded) applyEmbedTheme($embedThemeOverride);
+	});
 
 	let refreshing = $state(false);
 	let themeMenuOpen = $state(false);
@@ -41,6 +55,15 @@
 		// Load schema-derived configs in parallel
 		loadTraitConfig();
 		loadSlicerConfig();
+
+		// When embedded in a host (e.g. the SimplyPrint panel), open the
+		// postMessage bridge so the host can drive theme + receive lifecycle
+		// signals. Auto-detect an existing SimplyPrint session for the identity chip.
+		if (get(isEmbedded)) {
+			const teardown = startEmbedBridge();
+			authStore.checkSpStatus();
+			return teardown;
+		}
 	});
 
 	function handleRefresh() {
@@ -94,9 +117,11 @@
 		<div class="container mx-auto flex items-center gap-4 px-6 py-4">
 			<!-- Left: App title and navigation -->
 			<div class="flex shrink-0 items-center gap-8">
-				<a href="/" class="text-lg font-bold tracking-tight text-foreground transition-colors hover:text-muted-foreground">
-					Filament Database
-				</a>
+				{#if !$isEmbedded}
+					<a href="/" class="text-lg font-bold tracking-tight text-foreground transition-colors hover:text-muted-foreground">
+						Filament Database
+					</a>
+				{/if}
 				<!-- Navigation -->
 				<nav class="flex items-center gap-1">
 					<a
@@ -133,6 +158,22 @@
 			</div>
 			<!-- Right: Action buttons -->
 			<div class="flex shrink-0 items-center gap-2">
+				{#if $isEmbedded && $isSpAuthenticated && $currentSpUser}
+					<!-- Auto-detected SimplyPrint identity -->
+					<div
+						class="flex items-center gap-2 rounded-full border bg-secondary/50 py-1 pl-1 pr-3 text-xs font-medium text-foreground"
+						title="Signed in with SimplyPrint as {$currentSpUser.name}"
+					>
+						{#if $currentSpUser.avatar_url}
+							<img src={$currentSpUser.avatar_url} alt="" class="h-6 w-6 rounded-full object-cover" />
+						{:else}
+							<span class="flex h-6 w-6 items-center justify-center rounded-full bg-primary/15 text-primary">
+								{$currentSpUser.name?.[0]?.toUpperCase() ?? '?'}
+							</span>
+						{/if}
+						<span class="max-w-[10rem] truncate">{$currentSpUser.name}</span>
+					</div>
+				{/if}
 				<!-- Theme dropdown menu -->
 				<div class="theme-menu relative">
 					<Button
@@ -238,8 +279,12 @@
 		{@render children()}
 	</main>
 
-	<Footer />
+	{#if !$isEmbedded}
+		<Footer />
+	{/if}
 </div>
 
-<WelcomeModal />
+{#if !$isEmbedded}
+	<WelcomeModal />
+{/if}
 <DebugOverlay />

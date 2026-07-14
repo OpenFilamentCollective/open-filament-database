@@ -1,7 +1,17 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { getSimplyPrintToken, getSimplyPrintUser } from '$lib/server/auth';
+import {
+	getSimplyPrintToken,
+	getSimplyPrintRefreshToken,
+	setSimplyPrintToken,
+	setSimplyPrintRefreshToken,
+	clearSimplyPrintToken,
+	refreshSimplyPrintToken,
+	getSimplyPrintUser
+} from '$lib/server/auth';
+import type { Cookies } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
+import { env as publicEnv } from '$env/dynamic/public';
 
 const SP_API_BASE =
 	env.SIMPLYPRINT_API_URL ||
@@ -26,28 +36,64 @@ async function resolveAvatarUrl(userId: number): Promise<string | null> {
 	return null;
 }
 
-export const GET: RequestHandler = async ({ cookies }) => {
-	const token = getSimplyPrintToken(cookies);
+/** Silently mint a fresh access token from the stored refresh token. */
+async function tryRefresh(cookies: Cookies, embedded: boolean): Promise<string | undefined> {
+	const refreshToken = getSimplyPrintRefreshToken(cookies);
+	const clientId = publicEnv.PUBLIC_SIMPLYPRINT_CLIENT_ID;
+	if (!refreshToken || !clientId) return undefined;
 
+	try {
+		const tokens = await refreshSimplyPrintToken(refreshToken, clientId, env.SIMPLYPRINT_CLIENT_SECRET);
+		setSimplyPrintToken(cookies, tokens.access_token, embedded);
+		if (tokens.refresh_token) {
+			// SimplyPrint rotates refresh tokens — persist the new one.
+			setSimplyPrintRefreshToken(cookies, tokens.refresh_token, embedded);
+		}
+		return tokens.access_token;
+	} catch {
+		return undefined;
+	}
+}
+
+async function respondWithUser(token: string) {
+	const user = await getSimplyPrintUser(token);
+	const avatar_url = await resolveAvatarUrl(user.id);
+	return json({
+		authenticated: true,
+		user: {
+			id: user.id,
+			name: user.name,
+			email: user.email,
+			company_name: user.company_name,
+			avatar_url
+		}
+	});
+}
+
+export const GET: RequestHandler = async ({ url, cookies }) => {
+	const embedded = url.searchParams.get('embed') === '1' || url.searchParams.get('embed') === 'true';
+	let token = getSimplyPrintToken(cookies);
+
+	// No access token — attempt a silent refresh (keeps the "one-time consent"
+	// login alive for ~1 year without re-prompting).
 	if (!token) {
-		return json({ authenticated: false });
+		token = await tryRefresh(cookies, embedded);
+		if (!token) return json({ authenticated: false });
 	}
 
 	try {
-		const user = await getSimplyPrintUser(token);
-		const avatar_url = await resolveAvatarUrl(user.id);
-		return json({
-			authenticated: true,
-			user: {
-				id: user.id,
-				name: user.name,
-				email: user.email,
-				company_name: user.company_name,
-				avatar_url
-			}
-		});
+		return await respondWithUser(token);
 	} catch {
-		cookies.delete('ofd_sp_token', { path: '/' });
+		// Access token likely expired/revoked — one refresh attempt, then retry.
+		const refreshed = await tryRefresh(cookies, embedded);
+		if (refreshed) {
+			try {
+				return await respondWithUser(refreshed);
+			} catch {
+				/* fall through to unauthenticated */
+			}
+		}
+		clearSimplyPrintToken(cookies);
 		return json({ authenticated: false });
 	}
 };

@@ -5,25 +5,30 @@ import { env as privateEnv } from '$env/dynamic/private';
 import { exchangeCodeForToken, setGitHubToken } from '$lib/server/auth';
 
 const STATE_COOKIE = 'ofd_gh_oauth_state';
+const EMBED_COOKIE = 'ofd_gh_oauth_embed';
 
 export const GET: RequestHandler = async ({ url, cookies }) => {
 	const code = url.searchParams.get('code');
 	const state = url.searchParams.get('state');
 	const storedState = cookies.get(STATE_COOKIE);
+	const embedded = cookies.get(EMBED_COOKIE) === '1';
+	const q = embedded ? 'embed=1&' : '';
 
 	// Delete the state cookie immediately (single-use)
 	cookies.delete(STATE_COOKIE, { path: '/' });
+	cookies.delete(EMBED_COOKIE, { path: '/' });
+	cookies.delete(EMBED_COOKIE, { path: '/', partitioned: true } as never);
 
 	if (!state || !storedState || state !== storedState) {
-		throw redirect(302, '/?auth_error=invalid_state');
+		throw redirect(302, `/?${q}auth_error=invalid_state`);
 	}
 
 	if (!code) {
-		throw redirect(302, '/?auth_error=no_code');
+		throw redirect(302, `/?${q}auth_error=no_code`);
 	}
 
 	if (!env.PUBLIC_GITHUB_CLIENT_ID || !privateEnv.GITHUB_CLIENT_SECRET) {
-		throw redirect(302, '/?auth_error=not_configured');
+		throw redirect(302, `/?${q}auth_error=not_configured`);
 	}
 
 	let token: string;
@@ -31,9 +36,9 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 		token = await exchangeCodeForToken(code, env.PUBLIC_GITHUB_CLIENT_ID, privateEnv.GITHUB_CLIENT_SECRET);
 	} catch (error) {
 		console.error('GitHub OAuth callback error:', error);
-		throw redirect(302, '/?auth_error=exchange_failed');
+		throw redirect(302, `/?${q}auth_error=exchange_failed`);
 	}
 
-	setGitHubToken(cookies, token);
-	throw redirect(302, '/?auth_success=true');
+	setGitHubToken(cookies, token, embedded);
+	throw redirect(302, `/?${q}auth_success=true`);
 };

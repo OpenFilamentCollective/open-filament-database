@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { getGitHubToken, getGitHubUser } from '$lib/server/auth';
+import { resolveWrapperName } from '$lib/server/wrapper';
 import { env as privateEnv } from '$env/dynamic/private';
 import {
 	forkRepo,
@@ -25,7 +26,7 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 	}
 
 	try {
-		const { changes, images, title, description } = await request.json();
+		const { changes, images, title, description, wrapper } = await request.json();
 
 		if (!changes || !Array.isArray(changes) || changes.length === 0) {
 			return json({ error: 'No changes to submit' }, { status: 400 });
@@ -92,13 +93,14 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 		// Build PR body
 		const changesSummary = buildChangesSummary(changes);
 
+		const via = resolveWrapperName(wrapper) || 'the OFD web editor';
 		const prBody = [
 			description || 'Submitted via Open Filament Database web editor.',
 			'',
 			'## Changes',
 			changesSummary,
 			'',
-			`*Submitted by @${user.login} via the OFD web editor*`
+			`*Submitted by @${user.login} via ${via}*`
 		].join('\n');
 
 		// Create PR
