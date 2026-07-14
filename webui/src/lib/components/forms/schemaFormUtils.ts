@@ -3,6 +3,7 @@
  */
 
 import type { SchemaFormConfig, ProcessedField, RenderItem, FieldType, FieldTransform } from './schemaFormTypes';
+import { stripTrackersDeep } from '$lib/utils/urlSanitizer';
 
 // ============================================
 // Built-in transform functions
@@ -469,7 +470,8 @@ export function buildSubmitData(
 		}
 	}
 
-	return submitData;
+	// Mandatory: strip tracking/affiliate params from any URL fields before the change is staged.
+	return stripTrackersDeep(submitData);
 }
 
 /**

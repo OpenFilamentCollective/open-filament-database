@@ -11,6 +11,7 @@
 	import { Button } from '$lib/components/ui';
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
+	import { stripTrackersDeep } from '$lib/utils/urlSanitizer';
 	import type { SchemaFormConfig } from './schemaFormTypes';
 	import { formDrafts } from '$lib/stores/formDrafts';
 	import { generateSlug } from '$lib/services/entityService';
@@ -475,7 +476,8 @@
 		submitData.color_standards =
 			Object.keys(colorStandardsData).length > 0 ? colorStandardsData : undefined;
 
-		onSubmit(submitData);
+		// Mandatory: strip tracking params from all purchase-link URLs before staging the change.
+		onSubmit(stripTrackersDeep(submitData));
 	}
 
 	// Check if form can be submitted

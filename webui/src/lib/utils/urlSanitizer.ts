@@ -134,6 +134,28 @@ export function hasTrackingParams(url: string): boolean {
 	return stripTrackingParams(url) !== url;
 }
 
+/** Entity fields that hold a URL (kept in sync with style_data.py's URL_FIELDS). */
+const URL_FIELDS = new Set(['url', 'storefront_url', 'website', 'data_sheet_url', 'safety_sheet_url']);
+
+/**
+ * Return a deep copy of an entity with tracking params stripped from every known URL field
+ * (recursing into nested objects/arrays, e.g. `sizes[].purchase_links[].url`). Used to make
+ * tracker removal mandatory at submission time without touching the in-progress form value.
+ */
+export function stripTrackersDeep<T>(value: T): T {
+	if (Array.isArray(value)) {
+		return value.map((v) => stripTrackersDeep(v)) as unknown as T;
+	}
+	if (value && typeof value === 'object') {
+		const out: Record<string, unknown> = {};
+		for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+			out[k] = URL_FIELDS.has(k) && typeof v === 'string' ? stripTrackingParams(v) : stripTrackersDeep(v);
+		}
+		return out as T;
+	}
+	return value;
+}
+
 /**
  * Extract the hostname (e.g. `shop.polymaker.com`, no port) from an absolute or
  * protocol-less URL. Returns null when unparseable.

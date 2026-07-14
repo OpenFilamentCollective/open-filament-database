@@ -26,6 +26,7 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from ofd.base import BaseScript, ScriptResult, register_script
 from ofd.merge import merge_has_errors, merge_trees
@@ -48,6 +49,110 @@ OPTIONAL_STRING_FIELDS = {
     "gtin",
     "ean",
 }
+
+# URL fields whose tracking/affiliate query params should be stripped.
+URL_FIELDS = {"url", "data_sheet_url", "safety_sheet_url", "storefront_url", "website"}
+
+# Known tracking query-parameter keys (lowercased). Keep in sync with the ofd-validator Rust
+# rule (crates/ofd-validator-core/src/validators/url_tracker.rs) and the webui urlSanitizer.ts.
+_TRACKING_PARAMS = {
+    "tag",
+    "linkcode",
+    "psc",
+    "th",
+    "ref",
+    "ref_",
+    "fbclid",
+    "gclid",
+    "gclsrc",
+    "dclid",
+    "msclkid",
+    "yclid",
+    "twclid",
+    "ttclid",
+    "igshid",
+    "si",
+    "mc_cid",
+    "mc_eid",
+    "_pos",
+    "_psq",
+    "_ss",
+    "_v",
+    "_sid",
+    "spm",
+    "scm",
+    "aff",
+    "affid",
+    "srsltid",
+    "gad_source",
+    "epik",
+    "pk_campaign",
+    "pk_kwd",
+    # Amazon / marketplace search-result context (identity is the /dp/<ASIN> path)
+    "dib",
+    "dib_tag",
+    "keywords",
+    "qid",
+    "sr",
+    "sprefix",
+    "crid",
+    "ascsubtag",
+    "smid",
+    "content-id",
+    "qsid",
+    "rnid",
+    "refinements",
+    "_encoding",
+    "pldnsite",
+}
+_TRACKING_PREFIXES = ("utm_", "mc_", "pk_", "pd_rd_", "pf_rd_")
+# Hosts where the product identity is entirely in the path, so the whole query is disposable.
+_WHOLE_QUERY_HOSTS = re.compile(r"(^|\.)(amazon|ebay)\.[a-z.]+$")
+_SHORTLINK_HOSTS = {"a.co", "amzn.to", "amzn.eu"}
+
+
+def _is_tracking_key(key: str) -> bool:
+    k = key.strip().lower()
+    return k.startswith(_TRACKING_PREFIXES) or k in _TRACKING_PARAMS
+
+
+def _is_tracking_fragment(fragment: str) -> bool:
+    if "=" not in fragment:
+        return False
+    return _is_tracking_key(re.split(r"[&=]", fragment, maxsplit=1)[0])
+
+
+def strip_tracking_params(url: str) -> str:
+    """Remove known tracking/affiliate params (plus an empty '?' and tracking-only fragments)
+    from a URL, preserving everything else. Idempotent. Mirrors the ofd-validator Rust rule
+    and the webui urlSanitizer.ts.
+    """
+    if not url:
+        return url
+
+    before_frag, frag = (url.split("#", 1) + [None])[:2]
+    base, query = (before_frag.split("?", 1) + [None])[:2]
+
+    try:
+        host = (urlsplit(base).hostname or "").lower()
+    except ValueError:
+        host = ""
+    drop_all = bool(_WHOLE_QUERY_HOSTS.search(host)) or host in _SHORTLINK_HOSTS
+
+    out = base
+    if query is not None and not drop_all:
+        kept = [
+            pair
+            for pair in query.split("&")
+            if pair and not _is_tracking_key(pair.split("=", 1)[0])
+        ]
+        if kept:
+            out += "?" + "&".join(kept)
+
+    if frag and not _is_tracking_fragment(frag):
+        out += "#" + frag
+
+    return out
 
 
 @dataclass
@@ -160,6 +265,14 @@ def _sanitize_dict(data: dict[str, Any], changes: list[str], prefix: str = "") -
             data[key] = stripped
             changes.append(f"{dot}{key}: stripped whitespace")
             value = stripped
+
+        # Strip tracking/affiliate params from URL fields
+        if key in URL_FIELDS and value:
+            cleaned = strip_tracking_params(value)
+            if cleaned != value:
+                data[key] = cleaned
+                changes.append(f"{dot}{key}: stripped tracking parameters")
+                value = cleaned
 
         # Remove empty optional strings
         if value == "" and key in OPTIONAL_STRING_FIELDS:

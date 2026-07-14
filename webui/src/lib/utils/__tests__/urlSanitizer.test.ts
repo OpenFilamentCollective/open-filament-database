@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { stripTrackingParams, hasTrackingParams, getHost, rewriteHost } from '../urlSanitizer';
+import {
+	stripTrackingParams,
+	hasTrackingParams,
+	getHost,
+	rewriteHost,
+	stripTrackersDeep
+} from '../urlSanitizer';
 
 describe('stripTrackingParams', () => {
 	it('strips an Amazon affiliate link', () => {
@@ -122,5 +128,41 @@ describe('rewriteHost', () => {
 	});
 	it('returns input unchanged when unparseable', () => {
 		expect(rewriteHost('not a url', 'x.com')).toBe('not a url');
+	});
+});
+
+describe('stripTrackersDeep', () => {
+	it('strips URL fields nested in sizes[].purchase_links[]', () => {
+		const entity = {
+			name: 'Red',
+			sizes: [
+				{
+					filament_weight: 1000,
+					purchase_links: [
+						{ store_id: 'amazon', url: 'https://www.amazon.com/dp/B0X?tag=aff&keywords=pla' },
+						{ store_id: 'poly', url: 'https://shop.polymaker.com/p?variant=5&utm_source=x' }
+					]
+				}
+			]
+		};
+		const out = stripTrackersDeep(entity);
+		expect(out.sizes[0].purchase_links[0].url).toBe('https://www.amazon.com/dp/B0X');
+		expect(out.sizes[0].purchase_links[1].url).toBe('https://shop.polymaker.com/p?variant=5');
+		// non-URL fields untouched, original not mutated
+		expect(out.sizes[0].purchase_links[0].store_id).toBe('amazon');
+		expect(entity.sizes[0].purchase_links[0].url).toContain('tag=aff');
+	});
+
+	it('strips top-level url fields (storefront_url, website, data_sheet_url)', () => {
+		const out = stripTrackersDeep({
+			storefront_url: 'https://shop.x.com/?ref=nav',
+			website: 'https://brand.com/?utm_campaign=y',
+			data_sheet_url: 'https://x.com/ds.pdf?gclid=z',
+			name: 'Brand'
+		});
+		expect(out.storefront_url).toBe('https://shop.x.com/');
+		expect(out.website).toBe('https://brand.com/');
+		expect(out.data_sheet_url).toBe('https://x.com/ds.pdf');
+		expect(out.name).toBe('Brand');
 	});
 });
