@@ -1,0 +1,12 @@
+{
+  "id": "recreus",
+  "name": "Recreus",
+  "storefront_url": "https://recreus.com/products/",
+  "logo": "logo.png",
+  "ships_from": [
+    "ES"
+  ],
+  "ships_to": [
+    "GB"
+  ]
+}
