@@ -1,0 +1,12 @@
+{
+  "id": "the_k5_abs_t",
+  "name": "The K5 ABS T",
+  "diameter_tolerance": 0.03,
+  "density": 1.08,
+  "min_print_temperature": 250,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0958/0111/4939/files/THE_K5_ABS_T_TDS.pdf?v=1778553398",
+  "discontinued": false
+}
