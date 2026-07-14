@@ -8,6 +8,7 @@
 	import { isSpAuthenticated, currentSpUser } from '$lib/stores/auth';
 	import { isEmbedded, embedThemeOverride, initEmbedFromUrl } from '$lib/stores/embed';
 	import { startEmbedBridge, applyEmbedTheme } from '$lib/services/embedBridge';
+	import { initEmbedDraftSync } from '$lib/services/embedDraftSync';
 	import { db } from '$lib/services/database';
 	import { clearSearchCache } from '$lib/services/searchIndex';
 	import { clearLocalDataExceptSettings } from '$lib/services/localData';
@@ -62,6 +63,9 @@
 		if (get(isEmbedded)) {
 			const teardown = startEmbedBridge();
 			authStore.checkSpStatus();
+			// Persist the layered overlay to the SimplyPrint account (not
+			// localStorage) so it follows the user across devices.
+			initEmbedDraftSync();
 			return teardown;
 		}
 	});
