@@ -66,6 +66,26 @@
 		});
 	});
 
+	// Cross-variant duplicate purchase links: the same URL copied onto many colours (a
+	// generic link) rather than colour-specific product pages. Mirrors the validator's
+	// DuplicateLink rule (>= 3 variants) as an informational notice — no safe auto-fix.
+	let duplicateLinkCount = $derived.by(() => {
+		const urlToVariants = new Map<string, Set<string>>();
+		for (const v of variants) {
+			const vid = v.slug ?? v.id;
+			for (const size of v.sizes ?? []) {
+				for (const link of size.purchase_links ?? []) {
+					if (!link?.url) continue;
+					if (!urlToVariants.has(link.url)) urlToVariants.set(link.url, new Set());
+					urlToVariants.get(link.url)!.add(vid);
+				}
+			}
+		}
+		let count = 0;
+		for (const vids of urlToVariants.values()) if (vids.size >= 3) count++;
+		return count;
+	});
+
 	const messageHandler = createMessageHandler();
 
 	const entityState = createEntityState({
@@ -348,6 +368,12 @@
 					{/snippet}
 				</EntityDetails>
 
+				{#if duplicateLinkCount > 0}
+					<div class="mb-3 rounded-md bg-amber-500/10 border border-amber-500/30 p-2.5 text-xs text-amber-700 dark:text-amber-400">
+						{duplicateLinkCount === 1 ? 'A purchase link is' : `${duplicateLinkCount} purchase links are`}
+						reused across 3 or more colours of this filament. Prefer a colour-specific product page for each variant where one exists.
+					</div>
+				{/if}
 				<ChildListPanel title="Variants" addLabel="Add Variant"
 					onAdd={() => { createError = null; entityState.openCreate(); }}
 					itemCount={displayVariants.length} emptyMessage="No variants found for this filament."

@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import Tooltip from './Tooltip.svelte';
+	import { Button } from '$lib/components/ui';
 	import { LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
+	import { stripTrackingParams, hasTrackingParams } from '$lib/utils/urlSanitizer';
 
 	const DEFAULT_PROTOCOL: string = "https://";
 
@@ -28,6 +30,30 @@
 
 	let protocol = $state(DEFAULT_PROTOCOL);
 	let urlBody = $state('');
+
+	// Whether the current value still carries tracking parameters (drives the "Remove
+	// tracking" fix button — e.g. for a dirty value loaded from existing data).
+	let hasTracker = $derived(hasTrackingParams(value));
+	// Transient confirmation shown right after auto-stripping on paste/blur.
+	let cleanedNotice = $state(false);
+	let noticeTimer: ReturnType<typeof setTimeout> | undefined;
+
+	function flashCleaned() {
+		cleanedNotice = true;
+		clearTimeout(noticeTimer);
+		noticeTimer = setTimeout(() => (cleanedNotice = false), 2500);
+	}
+
+	/** Strip tracking params from the current value and sync the protocol/body inputs. */
+	function cleanTracking() {
+		const cleaned = stripTrackingParams(value);
+		if (cleaned === value) return;
+		const parsed = splitUrl(cleaned);
+		protocol = parsed.protocol;
+		urlBody = parsed.body;
+		updateValue();
+		flashCleaned();
+	}
 
 	// Parse the initial value when it changes externally
 	$effect(() => {
@@ -111,4 +137,18 @@
 			placeholder={placeholder.replace(/^https?:\/\//i, '')}
 		/>
 	</div>
+	{#if cleanedNotice}
+		<p class="mt-1 text-xs text-green-600 dark:text-green-500">Tracking parameters removed.</p>
+	{:else if hasTracker}
+		<Button
+			type="button"
+			variant="outline"
+			size="sm"
+			onclick={cleanTracking}
+			title="Strip tracking/affiliate parameters from this link"
+			class="mt-1 h-6 self-start border-amber-500/40 px-2 text-xs text-amber-700 dark:text-amber-400"
+		>
+			Remove trackers
+		</Button>
+	{/if}
 </div>

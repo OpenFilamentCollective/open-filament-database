@@ -219,7 +219,7 @@ function findChangedProperties(oldObj: any, newObj: any, prefix = ''): PropertyC
 			continue;
 		}
 
-		// If both are objects (and not arrays), recurse
+		// If both are plain objects, recurse into fields
 		if (
 			oldValue &&
 			newValue &&
@@ -229,12 +229,60 @@ function findChangedProperties(oldObj: any, newObj: any, prefix = ''): PropertyC
 			!Array.isArray(newValue)
 		) {
 			changes.push(...findChangedProperties(oldValue, newValue, propertyPath));
+		} else if (Array.isArray(oldValue) && Array.isArray(newValue)) {
+			// Both arrays (e.g. sizes, purchase_links): diff element-by-element so a small edit
+			// (like adding one purchase link to a size) shows as just that change instead of the
+			// whole array being replaced.
+			changes.push(...findChangedArrayItems(oldValue, newValue, propertyPath));
 		} else {
 			// Value changed
 			changes.push({
 				property: propertyPath,
 				oldValue,
 				newValue,
+				timestamp: Date.now()
+			});
+		}
+	}
+
+	return changes;
+}
+
+/**
+ * Diff two arrays element-by-element, recursing into object items so nested changes (e.g. a
+ * purchase link added to a size) surface as granular property changes rather than a full-array
+ * replacement. Index-based; adequate for the append-mostly sizes/purchase_links arrays.
+ */
+function findChangedArrayItems(oldArr: any[], newArr: any[], prefix: string): PropertyChange[] {
+	const changes: PropertyChange[] = [];
+	const maxLen = Math.max(oldArr.length, newArr.length);
+
+	for (let i = 0; i < maxLen; i++) {
+		const oldItem = i < oldArr.length ? oldArr[i] : undefined;
+		const newItem = i < newArr.length ? newArr[i] : undefined;
+		const itemPath = `${prefix}[${i}]`;
+
+		if (areValuesEqual(oldItem, newItem)) {
+			continue;
+		}
+
+		if (
+			oldItem &&
+			newItem &&
+			typeof oldItem === 'object' &&
+			typeof newItem === 'object' &&
+			!Array.isArray(oldItem) &&
+			!Array.isArray(newItem)
+		) {
+			changes.push(...findChangedProperties(oldItem, newItem, itemPath));
+		} else if (Array.isArray(oldItem) && Array.isArray(newItem)) {
+			changes.push(...findChangedArrayItems(oldItem, newItem, itemPath));
+		} else {
+			// Whole item added/removed, or a scalar/type change.
+			changes.push({
+				property: itemPath,
+				oldValue: oldItem,
+				newValue: newItem,
 				timestamp: Date.now()
 			});
 		}

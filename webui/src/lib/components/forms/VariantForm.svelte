@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, untrack } from 'svelte';
+	import { onMount, untrack, tick } from 'svelte';
 	import { db } from '$lib/services/database';
 	import type { Store, VariantSize, PurchaseLink } from '$lib/types/database';
 	import { SchemaForm } from '$lib/components/forms';
@@ -13,6 +13,7 @@
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
 	import { formDrafts } from '$lib/stores/formDrafts';
+	import { generateSlug } from '$lib/services/entityService';
 
 	interface Props {
 		variant?: any;
@@ -63,6 +64,9 @@
 	// Stores list for purchase link dropdowns
 	let stores: Store[] = $state([]);
 
+	// Uppercased material-type tokens (e.g. PLA, PETG) for the redundant-name guard.
+	let materialTypes = $state<Set<string>>(new Set());
+
 	// Validation error message for form submission
 	let validationError = $state<string | null>(null);
 
@@ -81,6 +85,17 @@
 			stores = storesData;
 		} catch (e) {
 			console.error('Failed to load data:', e);
+		}
+		// Load material-type tokens for the redundant-name guard (best effort).
+		try {
+			const res = await fetch('/api/schemas/material_types');
+			if (res.ok) {
+				const schemaJson = await res.json();
+				const values: string[] = schemaJson?.enum ?? [];
+				materialTypes = new Set(values.map((v) => v.toUpperCase()));
+			}
+		} catch {
+			// Non-fatal: without the list we simply skip the material-name warning.
 		}
 		// Don't reinitialize sizes from variant if a draft was restored.
 		if (sizes.length === 0) initializeSizes();
@@ -246,6 +261,38 @@
 	let nextSizeId = $state(initialDraft?.nextSizeId ?? 1);
 	let nextLinkId = $state(initialDraft?.nextLinkId ?? 1);
 
+	// ==================== DATA-QUALITY GUARDS ====================
+
+	// Material type embedded in the colour name (redundant with the material folder).
+	let nameMaterialToken = $derived.by(() => {
+		const name = formData?.name;
+		if (!name || materialTypes.size === 0) return null;
+		const tokens = new Set([
+			...String(name).split(/[^a-zA-Z0-9]+/),
+			...generateSlug(String(name)).split('_')
+		]);
+		for (const t of tokens) {
+			if (t && materialTypes.has(t.toUpperCase())) return t.toUpperCase();
+		}
+		return null;
+	});
+
+	/** Remove the redundant material-type word(s) from the colour name. */
+	function fixName() {
+		if (!formData.name) return;
+		formData.name = String(formData.name)
+			.split(/\s+/)
+			.filter((w) => !materialTypes.has(w.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()))
+			.join(' ')
+			.replace(/\s+/g, ' ')
+			.trim();
+	}
+
+	// Nudge: sizes exist but no purchase links anywhere.
+	let showLinkNudge = $derived(
+		sizes.length > 0 && !sizes.some((s) => (s.value.purchase_links?.length ?? 0) > 0)
+	);
+
 	// Initialize sizes from variant data
 	function initializeSizes() {
 		if (variant?.sizes && Array.isArray(variant.sizes) && variant.sizes.length > 0) {
@@ -321,13 +368,17 @@
 		sizes = sizes.filter((_, i) => i !== index);
 	}
 
-	// Add purchase link to a size
-	function addPurchaseLink(sizeIndex: number) {
+	// Add purchase link to a size, then focus the new link's URL text field so the user can
+	// paste a link immediately (id matches the input rendered by UrlField in PurchaseLinkCard).
+	async function addPurchaseLink(sizeIndex: number) {
+		const linkId = nextLinkId++;
 		const newLink = {
-			id: nextLinkId++,
+			id: linkId,
 			value: { store_id: '', url: '' }
 		};
 		sizes[sizeIndex].value.purchase_links = [...sizes[sizeIndex].value.purchase_links, newLink];
+		await tick();
+		document.getElementById(`size-${sizes[sizeIndex].id}-link-${linkId}-url`)?.focus();
 	}
 
 	// Remove purchase link from a size
@@ -357,6 +408,21 @@
 		if (validSizes.length === 0) {
 			validationError = 'At least one size must have filament weight and diameter filled in.';
 			return;
+		}
+
+		// Reject partially-filled purchase links so data isn't silently dropped on save
+		// (e.g. a URL entered without picking a store).
+		for (const s of validSizes) {
+			for (const pl of s.value.purchase_links) {
+				const hasStore = !!pl.value.store_id;
+				const hasUrl = !!pl.value.url;
+				if (hasStore !== hasUrl) {
+					validationError = hasUrl
+						? 'Select a store for each purchase link (a link has a URL but no store).'
+						: 'Add a URL for each purchase link (a link has a store but no URL).';
+					return;
+				}
+			}
 		}
 
 		// Build sizes array for submission (strip internal IDs)
@@ -439,6 +505,14 @@
 	</div>
 {:else}
 {#if validationError}<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive mb-4">{validationError}</div>{/if}
+{#if nameMaterialToken}
+	<div class="rounded-md bg-amber-500/10 border border-amber-500/30 p-3 text-sm mb-4 flex items-start justify-between gap-3">
+		<span class="text-amber-700 dark:text-amber-400">
+			Material type <strong>{nameMaterialToken}</strong> is redundant in the colour name — the material is already set separately. Consider removing it.
+		</span>
+		<Button variant="outline" size="sm" onclick={fixName} class="shrink-0 border-amber-500/40">Fix</Button>
+	</div>
+{/if}
 <SchemaForm
 	schema={preparedSchema}
 	bind:data={formData}
@@ -584,6 +658,12 @@
 		</div>
 
 		<div class="flex-1 overflow-y-auto space-y-4 pr-1 min-h-0">
+			{#if showLinkNudge}
+				<div class="rounded-md bg-amber-500/10 border border-amber-500/30 p-2.5 text-xs flex items-center justify-between gap-2">
+					<span class="text-amber-700 dark:text-amber-400">No purchase links yet — add one so people can find where to buy this.</span>
+					<Button variant="outline" size="sm" onclick={() => addPurchaseLink(0)} class="shrink-0 border-amber-500/40">Add link</Button>
+				</div>
+			{/if}
 			{#if sizes.length > 0}
 				{#each sizes as size, sizeIndex (size.id)}
 					<SizeCard

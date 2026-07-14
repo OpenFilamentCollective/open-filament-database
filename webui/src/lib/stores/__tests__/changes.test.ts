@@ -169,6 +169,60 @@ describe('Change Store', () => {
 			expect(change!.propertyChanges?.length).toBe(2);
 		});
 
+		it('diffs array items granularly (adding a purchase link to a size)', () => {
+			const path = 'brands/b/materials/PLA/filaments/f/variants/red';
+			const entity = { type: 'variant' as const, id: 'red', path };
+			const oldData = {
+				id: 'red',
+				name: 'Red',
+				sizes: [{ filament_weight: 1000, diameter: 1.75 }]
+			};
+			const newData = {
+				id: 'red',
+				name: 'Red',
+				sizes: [
+					{
+						filament_weight: 1000,
+						diameter: 1.75,
+						purchase_links: [{ store_id: 'amazon', url: 'https://a.com/x' }]
+					}
+				]
+			};
+
+			changeStore.trackUpdate(entity, oldData, newData);
+
+			const props = getChangeAt(path)!.propertyChanges!;
+			// The whole `sizes` array is NOT replaced...
+			expect(props.some((c) => c.property === 'sizes')).toBe(false);
+			// ...only the added purchase_links on size 0 is reported.
+			const added = props.find((c) => c.property === 'sizes[0].purchase_links');
+			expect(added).toBeDefined();
+			expect(added!.oldValue).toBeUndefined();
+			expect(added!.newValue).toEqual([{ store_id: 'amazon', url: 'https://a.com/x' }]);
+		});
+
+		it('reports an added array element (a new size) as a single item change', () => {
+			const path = 'brands/b/materials/PLA/filaments/f/variants/blue';
+			const entity = { type: 'variant' as const, id: 'blue', path };
+			const oldData = { id: 'blue', sizes: [{ filament_weight: 1000, diameter: 1.75 }] };
+			const newData = {
+				id: 'blue',
+				sizes: [
+					{ filament_weight: 1000, diameter: 1.75 },
+					{ filament_weight: 500, diameter: 1.75 }
+				]
+			};
+
+			changeStore.trackUpdate(entity, oldData, newData);
+
+			const props = getChangeAt(path)!.propertyChanges!;
+			expect(props.some((c) => c.property === 'sizes')).toBe(false);
+			const added = props.find((c) => c.property === 'sizes[1]');
+			expect(added).toBeDefined();
+			expect(added!.oldValue).toBeUndefined();
+			expect(added!.newValue).toEqual({ filament_weight: 500, diameter: 1.75 });
+		});
+
 		it('should remove change if reverted to original', () => {
 			const entity = { type: 'brand' as const, id: 'test', path: 'brands/test' };
 			const original = { id: 'test', name: 'Original' };

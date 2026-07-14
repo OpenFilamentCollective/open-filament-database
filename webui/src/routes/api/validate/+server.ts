@@ -4,6 +4,7 @@ import path from 'node:path';
 import { activeJobs, type Job, tryAcquireValidationLock, releaseValidationLock } from '$lib/server/jobManager';
 import { IS_CLOUD } from '$lib/server/cloudProxy';
 import { runCloudValidation } from '$lib/server/cloudValidator';
+import { tryRustValidate } from '$lib/server/rustValidator';
 
 const ALLOWED_TYPES = new Set(['full', 'json_files', 'logo_files', 'folder_names', 'store_ids']);
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -26,7 +27,7 @@ export async function POST({ request }) {
 	if (IS_CLOUD) {
 		return handleCloudValidation(changes, images, sessionId);
 	} else {
-		return handleLocalValidation(type, changes, images);
+		return await handleLocalValidation(type, changes, images);
 	}
 }
 
@@ -85,7 +86,7 @@ function handleCloudValidation(
 
 // --- Local mode: Python subprocess with global lock ---
 
-function handleLocalValidation(type: string, changes: any, images: any): Response {
+async function handleLocalValidation(type: string, changes: any, images: any): Promise<Response> {
 	try {
 		// Atomically try to acquire the validation lock to prevent race conditions
 		if (!tryAcquireValidationLock('validation-current')) {
@@ -100,6 +101,37 @@ function handleLocalValidation(type: string, changes: any, images: any): Respons
 		const existingJob = activeJobs.get(jobId);
 		if (existingJob && (existingJob.status === 'complete' || existingJob.status === 'error')) {
 			activeJobs.delete(jobId);
+		}
+
+		// Determine the repo root (one level up from webui)
+		const repoRoot = path.resolve(process.cwd(), '..');
+
+		// Prefer the in-process Rust binding for full validation when it's installed — it shares
+		// the CLI's rule set (no python subprocess needed) and is fast enough to run synchronously.
+		// Typed subsets and image-bearing changes still use the python path below. Falls back
+		// automatically when the native binding isn't available.
+		const hasPendingImages = images && Object.keys(images).length > 0;
+		if (type === 'full' && !hasPendingImages) {
+			try {
+				const rustResult = await tryRustValidate(changes, repoRoot);
+				if (rustResult) {
+					const job: Job = {
+						id: jobId,
+						type: 'validation',
+						startTime: Date.now(),
+						status: 'complete',
+						events: [],
+						result: rustResult
+					};
+					job.events.push({ type: 'complete', result: rustResult });
+					job.endTime = Date.now();
+					activeJobs.set(jobId, job);
+					releaseValidationLock('validation-current');
+					return json({ jobId, sseUrl: `/api/validate/stream/${jobId}` });
+				}
+			} catch (e) {
+				console.error('Rust validator failed, falling back to python:', e);
+			}
 		}
 
 		// Build Python command arguments
@@ -123,9 +155,6 @@ function handleLocalValidation(type: string, changes: any, images: any): Respons
 			changesPayload = JSON.stringify({ changes, images: images || {} });
 			args.push('--apply-changes', '-');
 		}
-
-		// Determine the repo root (one level up from webui)
-		const repoRoot = path.resolve(process.cwd(), '..');
 
 		// Store job info
 		const job: Job = {

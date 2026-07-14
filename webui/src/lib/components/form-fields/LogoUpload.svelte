@@ -348,21 +348,56 @@
 		// Top-left
 		drawHandle(canvasCropX - cornerSize / 2, canvasCropY - cornerSize / 2, cornerSize, cornerSize);
 		// Top-right
-		drawHandle(canvasCropX + canvasCropSize - cornerSize / 2, canvasCropY - cornerSize / 2, cornerSize, cornerSize);
+		drawHandle(
+			canvasCropX + canvasCropSize - cornerSize / 2,
+			canvasCropY - cornerSize / 2,
+			cornerSize,
+			cornerSize
+		);
 		// Bottom-left
-		drawHandle(canvasCropX - cornerSize / 2, canvasCropY + canvasCropSize - cornerSize / 2, cornerSize, cornerSize);
+		drawHandle(
+			canvasCropX - cornerSize / 2,
+			canvasCropY + canvasCropSize - cornerSize / 2,
+			cornerSize,
+			cornerSize
+		);
 		// Bottom-right
-		drawHandle(canvasCropX + canvasCropSize - cornerSize / 2, canvasCropY + canvasCropSize - cornerSize / 2, cornerSize, cornerSize);
+		drawHandle(
+			canvasCropX + canvasCropSize - cornerSize / 2,
+			canvasCropY + canvasCropSize - cornerSize / 2,
+			cornerSize,
+			cornerSize
+		);
 
 		// Side handles (pill shapes on edges)
 		// Top center
-		drawHandle(canvasCropX + canvasCropSize / 2 - sideLength / 2, canvasCropY - sideSize / 2, sideLength, sideSize);
+		drawHandle(
+			canvasCropX + canvasCropSize / 2 - sideLength / 2,
+			canvasCropY - sideSize / 2,
+			sideLength,
+			sideSize
+		);
 		// Bottom center
-		drawHandle(canvasCropX + canvasCropSize / 2 - sideLength / 2, canvasCropY + canvasCropSize - sideSize / 2, sideLength, sideSize);
+		drawHandle(
+			canvasCropX + canvasCropSize / 2 - sideLength / 2,
+			canvasCropY + canvasCropSize - sideSize / 2,
+			sideLength,
+			sideSize
+		);
 		// Left center
-		drawHandle(canvasCropX - sideSize / 2, canvasCropY + canvasCropSize / 2 - sideLength / 2, sideSize, sideLength);
+		drawHandle(
+			canvasCropX - sideSize / 2,
+			canvasCropY + canvasCropSize / 2 - sideLength / 2,
+			sideSize,
+			sideLength
+		);
 		// Right center
-		drawHandle(canvasCropX + canvasCropSize - sideSize / 2, canvasCropY + canvasCropSize / 2 - sideLength / 2, sideSize, sideLength);
+		drawHandle(
+			canvasCropX + canvasCropSize - sideSize / 2,
+			canvasCropY + canvasCropSize / 2 - sideLength / 2,
+			sideSize,
+			sideLength
+		);
 	}
 
 	function canvasToCoords(event: MouseEvent): { mouseX: number; mouseY: number } {
@@ -454,7 +489,9 @@
 		}
 
 		// Bottom center
-		if (nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY + cropSize, cropSize / 3, sideTolerance)) {
+		if (
+			nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY + cropSize, cropSize / 3, sideTolerance)
+		) {
 			isResizing = true;
 			resizeHandle = 'b';
 			resizeStartX = cropX;
@@ -474,7 +511,9 @@
 		}
 
 		// Right center
-		if (nearSideH(mouseX, mouseY, cropX + cropSize, cropY + cropSize / 2, sideTolerance, cropSize / 3)) {
+		if (
+			nearSideH(mouseX, mouseY, cropX + cropSize, cropY + cropSize / 2, sideTolerance, cropSize / 3)
+		) {
 			isResizing = true;
 			resizeHandle = 'r';
 			resizeStartX = cropX;
@@ -648,13 +687,17 @@
 		if (nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY, cropSize / 3, sideTolerance)) {
 			return 'ns-resize';
 		}
-		if (nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY + cropSize, cropSize / 3, sideTolerance)) {
+		if (
+			nearSideH(mouseX, mouseY, cropX + cropSize / 2, cropY + cropSize, cropSize / 3, sideTolerance)
+		) {
 			return 'ns-resize';
 		}
 		if (nearSideH(mouseX, mouseY, cropX, cropY + cropSize / 2, sideTolerance, cropSize / 3)) {
 			return 'ew-resize';
 		}
-		if (nearSideH(mouseX, mouseY, cropX + cropSize, cropY + cropSize / 2, sideTolerance, cropSize / 3)) {
+		if (
+			nearSideH(mouseX, mouseY, cropX + cropSize, cropY + cropSize / 2, sideTolerance, cropSize / 3)
+		) {
 			return 'ew-resize';
 		}
 
@@ -740,7 +783,8 @@
 
 <div class="mb-4">
 	<div class="font-bold">
-		{label} {#if !currentLogo}*{/if}
+		{label}
+		{#if !currentLogo}*{/if}
 	</div>
 
 	<div class="flex items-start gap-4">
@@ -749,7 +793,7 @@
 				<img
 					src={previewUrl}
 					alt="Logo preview"
-					class="w-24 h-24 object-cover border border-border rounded"
+					class="flex h-24 w-24 items-center justify-evenly rounded border border-border object-cover text-center"
 				/>
 			</div>
 		{/if}
@@ -763,21 +807,16 @@
 				class="hidden"
 			/>
 
-			<Button
-				type="button"
-				onclick={triggerFileSelect}
-				disabled={processing}
-				variant="primary"
-			>
+			<Button type="button" onclick={triggerFileSelect} disabled={processing} variant="primary">
 				{processing ? 'Processing...' : previewUrl ? 'Change Logo' : 'Upload Logo'}
 			</Button>
 
-			<p class="text-xs text-muted-foreground mt-2">
+			<p class="mt-2 text-xs text-muted-foreground">
 				Square image, 100x100 to 400x400 pixels. You can crop and resize any uploaded image.
 			</p>
 
 			{#if error}
-				<p class="text-sm text-destructive mt-2">{error}</p>
+				<p class="mt-2 text-sm text-destructive">{error}</p>
 			{/if}
 		</div>
 	</div>
@@ -785,17 +824,24 @@
 
 {#if showCropModal}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onkeydown={(e) => e.key === 'Escape' && cancelCrop()} role="dialog" aria-modal="true">
-		<div class="bg-card rounded-lg shadow-xl max-w-[90vw] max-h-[90vh] overflow-hidden border border-border">
+	<div
+		class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+		onkeydown={(e) => e.key === 'Escape' && cancelCrop()}
+		role="dialog"
+		aria-modal="true"
+	>
+		<div
+			class="max-h-[90vh] max-w-[90vw] overflow-hidden rounded-lg border border-border bg-card shadow-xl"
+		>
 			<div class="p-4 sm:p-6">
-				<h3 class="text-lg font-semibold text-foreground mb-2">Crop Image</h3>
+				<h3 class="mb-2 text-lg font-semibold text-foreground">Crop Image</h3>
 
-				<p class="text-sm text-muted-foreground mb-4">
+				<p class="mb-4 text-sm text-muted-foreground">
 					Drag to move. Use corner or side handles to resize. The crop must be square.
 				</p>
 
-				<div class="flex items-center gap-4 mb-4 flex-wrap">
-					<label class="flex items-center gap-2 cursor-pointer select-none">
+				<div class="mb-4 flex flex-wrap items-center gap-4">
+					<label class="flex cursor-pointer items-center gap-2 select-none">
 						<Checkbox checked={padEnabled} onchange={togglePad} />
 						<span class="text-sm text-foreground">Pad to Square</span>
 					</label>
@@ -805,22 +851,26 @@
 							<input
 								type="color"
 								bind:value={padColor}
-								onchange={() => { needsRedraw = true; }}
-								oninput={() => { drawCropPreview(); }}
-								class="w-8 h-8 rounded border border-border cursor-pointer p-0"
+								onchange={() => {
+									needsRedraw = true;
+								}}
+								oninput={() => {
+									drawCropPreview();
+								}}
+								class="h-8 w-8 cursor-pointer rounded border border-border p-0"
 							/>
-							<span class="text-xs text-muted-foreground font-mono">{padColor}</span>
+							<span class="font-mono text-xs text-muted-foreground">{padColor}</span>
 						</label>
 					{/if}
 				</div>
 
 				{#if validation}
-					<div class="mb-4 bg-muted/50 p-3 rounded-lg flex items-center justify-center">
+					<div class="mb-4 flex items-center justify-center rounded-lg bg-muted/50 p-3">
 						<canvas
 							bind:this={cropCanvas}
 							width={canvasWidth}
 							height={canvasHeight}
-							class="border border-border rounded shadow-sm"
+							class="rounded border border-border shadow-sm"
 							onmousedown={handleMouseDown}
 							onmousemove={(e) => {
 								handleMouseMove(e);
@@ -833,20 +883,10 @@
 				{/if}
 
 				<div class="flex justify-end gap-3">
-					<Button
-						type="button"
-						onclick={cancelCrop}
-						disabled={processing}
-						variant="secondary"
-					>
+					<Button type="button" onclick={cancelCrop} disabled={processing} variant="secondary">
 						Cancel
 					</Button>
-					<Button
-						type="button"
-						onclick={applyCrop}
-						disabled={processing}
-						variant="primary"
-					>
+					<Button type="button" onclick={applyCrop} disabled={processing} variant="primary">
 						{processing ? 'Processing...' : 'Apply Crop'}
 					</Button>
 				</div>

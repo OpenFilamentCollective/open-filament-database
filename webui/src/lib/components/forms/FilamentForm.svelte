@@ -15,6 +15,7 @@
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
 	import { formDrafts } from '$lib/stores/formDrafts';
+	import { generateSlug } from '$lib/services/entityService';
 
 	interface Props {
 		filament?: any;
@@ -101,6 +102,21 @@
 
 	// Form data state - initialized when schema is available
 	let formData = $state<Record<string, any>>(initialDraft?.formData ?? {});
+
+	// Folder-id drift guard: an existing filament whose folder id carries extra trailing
+	// tokens beyond its name (e.g. name "Fluorescence PLA" but folder `fluorescence_pla_orange`
+	// — a stray colour baked into the id). Surfaced as a non-blocking notice; renaming the
+	// folder moves every child variant so it is intentionally not a one-click action here.
+	let idDrift = $derived.by(() => {
+		const currentId: string = filament?.slug || filament?.id || '';
+		const name: string = formData?.name || '';
+		if (!currentId || !name) return null;
+		const expected = generateSlug(name);
+		if (expected && currentId !== expected && currentId.startsWith(expected + '_')) {
+			return { currentId, expected };
+		}
+		return null;
+	});
 
 	// Slicer toggle state
 	let slicerEnabled = $state<Record<SlicerKey, boolean>>(
@@ -197,6 +213,14 @@
 		<p class="text-muted-foreground">Loading form...</p>
 	</div>
 {:else}
+{#if idDrift}
+	<div class="rounded-md bg-amber-500/10 border border-amber-500/30 p-3 text-sm mb-4 text-amber-700 dark:text-amber-400">
+		This filament's folder id is <strong>{idDrift.currentId}</strong> but its name suggests
+		<strong>{idDrift.expected}</strong> — a stray token (likely a colour) is baked into the id.
+		Renaming the folder moves every colour variant, so fix it by recreating the filament with a
+		clean name or renaming the <code>{idDrift.currentId}</code> directory in a PR.
+	</div>
+{/if}
 <SchemaForm
 	schema={preparedSchema}
 	bind:data={formData}
