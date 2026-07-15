@@ -72,11 +72,27 @@ function uploadImage(id: string, img: { filename: string; mimeType: string; data
  * keep showing in OFD until their PR merges — and we ship them to the account too,
  * separately from pending edits, so SimplyPrint can layer in-review contributions
  * as well. They already left the pending change store on submit.
+ *
+ * Kept PR-grouped ({ prNumber, prUrl, changes }) — SimplyPrint verifies each PR is
+ * still open on GitHub (server-side) before layering, so it never relies on this
+ * client having reconciled merged/closed PRs.
  */
-function collectSubmittedChanges(): unknown[] {
+function collectSubmittedEntries(): unknown[] {
 	try {
-		const buffer = get(submittedStore) as { entries?: Record<string, { changes?: unknown[] }> };
-		return Object.values(buffer.entries ?? {}).flatMap((entry) => entry.changes ?? []);
+		const buffer = get(submittedStore) as {
+			entries?: Record<
+				string,
+				{ prNumber?: number; prUrl?: string; submittedAt?: string; changes?: unknown[] }
+			>;
+		};
+		return Object.values(buffer.entries ?? {})
+			.filter((e) => Array.isArray(e.changes) && e.changes.length)
+			.map((e) => ({
+				prNumber: e.prNumber ?? 0,
+				prUrl: e.prUrl ?? '',
+				submittedAt: e.submittedAt ?? '',
+				changes: e.changes ?? []
+			}));
 	} catch {
 		return [];
 	}
@@ -85,7 +101,7 @@ function collectSubmittedChanges(): unknown[] {
 async function doSave() {
 	if (restoring) return;
 	const exp = await changeStore.exportChanges();
-	const submitted = collectSubmittedChanges();
+	const submitted = collectSubmittedEntries();
 
 	// Empty overlay (no pending edits AND nothing in review) -> discard the draft.
 	if (!exp.changes.length && !submitted.length && !Object.keys(exp.images).length) {
