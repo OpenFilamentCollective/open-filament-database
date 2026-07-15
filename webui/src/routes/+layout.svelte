@@ -35,6 +35,7 @@
 	let refreshing = $state(false);
 	let themeMenuOpen = $state(false);
 	let headerQuery = $state('');
+	let signingIn = $state(false);
 
 	// Reflect the active query when on the search page (so the box shows ?q=).
 	$effect(() => {
@@ -177,6 +178,17 @@
 						{/if}
 						<span class="max-w-[10rem] truncate">{$currentSpUser.name}</span>
 					</div>
+				{:else if $isEmbedded}
+					<!-- SimplyPrint can't be framed, so login opens a small popup and
+					     the session is adopted back into this frame. -->
+					<Button
+						onclick={() => { signingIn = true; Promise.resolve(authStore.spLogin()).finally(() => (signingIn = false)); }}
+						disabled={signingIn}
+						variant="primary"
+						size="sm"
+					>
+						{signingIn ? 'Signing in…' : 'Sign in with SimplyPrint'}
+					</Button>
 				{/if}
 				<!-- Theme dropdown menu -->
 				<div class="theme-menu relative">

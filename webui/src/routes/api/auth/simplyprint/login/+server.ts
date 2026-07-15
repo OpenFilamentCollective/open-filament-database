@@ -9,6 +9,7 @@ import crypto from 'crypto';
 const STATE_COOKIE = 'ofd_sp_oauth_state';
 const VERIFIER_COOKIE = 'ofd_sp_oauth_verifier';
 const EMBED_COOKIE = 'ofd_sp_oauth_embed';
+const POPUP_COOKIE = 'ofd_sp_oauth_popup';
 
 const base64url = (buf: Buffer) =>
 	buf.toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -21,7 +22,16 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 	// Embedded (iframe) logins need SameSite=None; Secure; Partitioned cookies —
 	// a SameSite=Lax cookie is dropped by the browser inside a cross-site frame,
 	// which would break the state/verifier round-trip.
-	const embedded = url.searchParams.get('embed') === '1' || url.searchParams.get('embed') === 'true';
+	//
+	// Popup logins run in a *top-level* window opened from the iframe (SimplyPrint
+	// can't be framed, so we never navigate the frame to it). That window is
+	// first-party OFD, so it uses normal Lax cookies for the state/verifier
+	// round-trip; the callback then hands the tokens back to the frame (see
+	// callback + adopt). Popup mode takes precedence over embed for the handshake.
+	const popup = url.searchParams.get('popup') === '1' || url.searchParams.get('popup') === 'true';
+	const embedded =
+		!popup &&
+		(url.searchParams.get('embed') === '1' || url.searchParams.get('embed') === 'true');
 
 	const state = crypto.randomUUID();
 
@@ -43,6 +53,9 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 	// Carry the embed flag to the callback so it stores the session token with
 	// matching partitioned attributes and redirects back into embed mode.
 	if (embedded) cookies.set(EMBED_COOKIE, '1', cookieOpts);
+	// Carry the popup flag so the callback returns the postMessage handoff page
+	// instead of redirecting.
+	if (popup) cookies.set(POPUP_COOKIE, '1', cookieOpts);
 
 	const redirectUri =
 		privateEnv.SIMPLYPRINT_REDIRECT_URI || url.origin + '/api/auth/simplyprint/callback';

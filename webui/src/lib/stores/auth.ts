@@ -5,6 +5,7 @@
 import { writable, derived } from 'svelte/store';
 import { STORAGE_KEY_REOPEN_WIZARD } from '$lib/config/storageKeys';
 import { getEmbedState } from '$lib/stores/embed';
+import { loginViaPopup } from '$lib/services/embedAuthPopup';
 
 /** `?embed=1` when running inside a host iframe, so the server issues
  *  partitioned (cross-site-frame-safe) auth cookies and returns to embed mode. */
@@ -65,8 +66,17 @@ function createAuthStore() {
 		},
 
 		ghLogin() {
+			// Embedded: GitHub can't be framed — run OAuth in a popup and adopt the
+			// token back into this frame instead of a full-page navigation.
+			if (getEmbedState().embedded) {
+				return loginViaPopup('github').then((ok) => {
+					if (ok) this.checkGitHubStatus();
+					return ok;
+				});
+			}
 			localStorage.setItem(STORAGE_KEY_REOPEN_WIZARD, 'github');
-			window.location.href = '/api/auth/github/login' + embedQuery();
+			window.location.href = '/api/auth/github/login';
+			return Promise.resolve(true);
 		},
 
 		async ghLogout() {
@@ -91,8 +101,17 @@ function createAuthStore() {
 		},
 
 		spLogin() {
+			// Embedded: SimplyPrint can't be framed — run OAuth in a popup and adopt
+			// the tokens back into this frame instead of a full-page navigation.
+			if (getEmbedState().embedded) {
+				return loginViaPopup('simplyprint').then((ok) => {
+					if (ok) this.checkSpStatus();
+					return ok;
+				});
+			}
 			localStorage.setItem(STORAGE_KEY_REOPEN_WIZARD, 'simplyprint');
-			window.location.href = '/api/auth/simplyprint/login' + embedQuery();
+			window.location.href = '/api/auth/simplyprint/login';
+			return Promise.resolve(true);
 		},
 
 		async spLogout() {

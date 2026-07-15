@@ -7,14 +7,20 @@ import crypto from 'crypto';
 
 const STATE_COOKIE = 'ofd_gh_oauth_state';
 const EMBED_COOKIE = 'ofd_gh_oauth_embed';
+const POPUP_COOKIE = 'ofd_gh_oauth_popup';
 
 export const GET: RequestHandler = async ({ url, cookies }) => {
 	if (!env.PUBLIC_GITHUB_CLIENT_ID) {
 		return new Response('GitHub OAuth not configured', { status: 500 });
 	}
 
-	// Embedded (iframe) logins need SameSite=None; Secure; Partitioned cookies.
-	const embedded = url.searchParams.get('embed') === '1' || url.searchParams.get('embed') === 'true';
+	// GitHub can't be framed either, so embedded logins run in a top-level popup
+	// (first-party OFD, normal Lax cookies); the callback hands tokens back to the
+	// frame. Legacy in-frame embed mode still uses partitioned cookies.
+	const popup = url.searchParams.get('popup') === '1' || url.searchParams.get('popup') === 'true';
+	const embedded =
+		!popup &&
+		(url.searchParams.get('embed') === '1' || url.searchParams.get('embed') === 'true');
 
 	const state = crypto.randomUUID();
 
@@ -28,6 +34,7 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 	};
 	cookies.set(STATE_COOKIE, state, cookieOpts);
 	if (embedded) cookies.set(EMBED_COOKIE, '1', cookieOpts);
+	if (popup) cookies.set(POPUP_COOKIE, '1', cookieOpts);
 
 	const redirectUri = privateEnv.GITHUB_REDIRECT_URI || (url.origin + '/api/auth/github/callback');
 	const params = new URLSearchParams({
