@@ -55,12 +55,20 @@ export function loginViaPopup(provider: Provider): Promise<boolean> {
 			resolve(ok);
 		};
 
+		// Set once the handoff arrives, so the close-poll below can't resolve the
+		// login as failed while the (async) adopt call is still in flight — the
+		// popup closes itself right after posting, which would otherwise race the
+		// pending fetch and make the first attempt look like it did nothing.
+		let received = false;
+
 		const onMessage = async (e: MessageEvent) => {
 			// Only trust our own origin (the popup navigates back to OFD before posting).
 			if (e.origin !== origin) return;
 			const d = e.data;
 			if (!d || typeof d !== 'object' || d.type !== `ofd:${provider}-auth`) return;
 
+			received = true;
+			clearInterval(closedTimer); // we have the result; stop watching for a close
 			try {
 				popup.close();
 			} catch {
@@ -88,8 +96,10 @@ export function loginViaPopup(provider: Provider): Promise<boolean> {
 
 		window.addEventListener('message', onMessage);
 
-		// If the user closes the popup without finishing, stop waiting.
+		// If the user closes the popup WITHOUT completing, stop waiting. Ignored
+		// once the handoff has arrived (the popup self-closes on success).
 		const closedTimer = setInterval(() => {
+			if (received) return;
 			if (popup.closed) finish(false);
 		}, 500);
 	});
