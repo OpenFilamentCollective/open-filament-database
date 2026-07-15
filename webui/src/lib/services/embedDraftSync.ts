@@ -25,7 +25,9 @@
  * the embed layout's onMount, alongside the theme/close bridge).
  */
 import { browser } from '$app/environment';
+import { get } from 'svelte/store';
 import { changeStore } from '$lib/stores/changes';
+import { submittedStore } from '$lib/stores/submitted';
 import type { ChangeExport } from '$lib/types/changes';
 
 const SAVE_DEBOUNCE_MS = 900;
@@ -65,12 +67,28 @@ function uploadImage(id: string, img: { filename: string; mimeType: string; data
 	});
 }
 
+/**
+ * Submitted-but-not-yet-merged contributions (the OFD "submitted" overlay). These
+ * keep showing in OFD until their PR merges — and we ship them to the account too,
+ * separately from pending edits, so SimplyPrint can layer in-review contributions
+ * as well. They already left the pending change store on submit.
+ */
+function collectSubmittedChanges(): unknown[] {
+	try {
+		const buffer = get(submittedStore) as { entries?: Record<string, { changes?: unknown[] }> };
+		return Object.values(buffer.entries ?? {}).flatMap((entry) => entry.changes ?? []);
+	} catch {
+		return [];
+	}
+}
+
 async function doSave() {
 	if (restoring) return;
 	const exp = await changeStore.exportChanges();
+	const submitted = collectSubmittedChanges();
 
-	// Empty overlay -> discard the account draft.
-	if (!exp.changes.length && !Object.keys(exp.images).length) {
+	// Empty overlay (no pending edits AND nothing in review) -> discard the draft.
+	if (!exp.changes.length && !submitted.length && !Object.keys(exp.images).length) {
 		post({ type: 'ofd:draft-clear' });
 		return;
 	}
@@ -90,13 +108,15 @@ async function doSave() {
 	}
 
 	// Store the changeset WITHOUT base64 blobs — images travel as CDN URLs.
-	post({ type: 'ofd:draft-save', draft: { metadata: exp.metadata, changes: exp.changes }, images });
+	// `submitted` rides alongside `changes` but is kept separate so restoring the
+	// draft into the editor only rehydrates pending edits, never in-review ones.
+	post({ type: 'ofd:draft-save', draft: { metadata: exp.metadata, changes: exp.changes, submitted }, images });
 }
 
 function scheduleSave() {
 	if (restoring) return;
 	if (saveTimer) clearTimeout(saveTimer);
-	saveTimer = setTimeout(() => void doSave().catch(() => {}), SAVE_DEBOUNCE_MS);
+	saveTimer = setTimeout(() => void doSave().catch(() => { }), SAVE_DEBOUNCE_MS);
 }
 
 async function dataUrlFromUrl(url: string): Promise<string | null> {
@@ -117,9 +137,13 @@ async function dataUrlFromUrl(url: string): Promise<string | null> {
 
 async function applyRestore(draft: any, images: Record<string, ImageMeta>) {
 	hydrated = true;
-	// Nothing stored on the account — keep whatever localStorage already hydrated
-	// (acts as a cache; the next edit migrates it to the account).
-	if (!draft || !Array.isArray(draft.changes) || !draft.changes.length) return;
+	// Nothing stored on the account to restore — but still push the current local
+	// state so pre-existing submitted (in-review) contributions reach the account
+	// even when there are no pending edits and nothing changes this session.
+	if (!draft || !Array.isArray(draft.changes) || !draft.changes.length) {
+		scheduleSave();
+		return;
+	}
 
 	restoring = true;
 	try {
@@ -144,8 +168,12 @@ async function applyRestore(draft: any, images: Record<string, ImageMeta>) {
 		};
 		await changeStore.importChanges(exportData);
 	} finally {
-		// Let importChanges' store update settle before re-enabling autosave.
-		setTimeout(() => (restoring = false), 0);
+		// Let importChanges' store update settle before re-enabling autosave, then
+		// push the combined (pending + submitted) state up to the account.
+		setTimeout(() => {
+			restoring = false;
+			scheduleSave();
+		}, 0);
 	}
 }
 
@@ -178,6 +206,12 @@ export function initEmbedDraftSync() {
 	post({ type: 'ofd:draft-request' });
 	changeStore.subscribe(() => {
 		if (!hydrated) return; // ignore the initial localStorage value until restore lands
+		scheduleSave();
+	});
+	// Also re-save when a contribution is submitted/reconciled, so in-review
+	// contributions land in (and merged ones leave) the account draft.
+	submittedStore.subscribe(() => {
+		if (!hydrated) return;
 		scheduleSave();
 	});
 }
