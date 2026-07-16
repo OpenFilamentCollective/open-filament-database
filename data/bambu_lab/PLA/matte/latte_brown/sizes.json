@@ -4,6 +4,7 @@
     "diameter": 1.75,
     "spool_refill": true,
     "ean": "6975337032427",
+    "article_number": "11800",
     "purchase_links": [
       {
         "store_id": "bblstore",

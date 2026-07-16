@@ -3,6 +3,7 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "6975337032038",
+    "article_number": "10601",
     "purchase_links": [
       {
         "store_id": "bblstore",
@@ -15,6 +16,7 @@
     "diameter": 1.75,
     "spool_refill": true,
     "ean": "6975337032038",
+    "article_number": "10601",
     "purchase_links": [
       {
         "store_id": "bblstore",
