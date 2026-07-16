@@ -2,10 +2,12 @@
   {
     "filament_weight": 1000,
     "diameter": 1.75,
+    "gtin": "6938936710103",
+    "article_number": "PB01008",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
@@ -15,7 +17,7 @@
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
@@ -25,17 +27,19 @@
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
     "filament_weight": 1000,
     "diameter": 2.85,
+    "gtin": "6938936711193",
+    "article_number": "PB01021",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
@@ -45,7 +49,7 @@
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
@@ -55,7 +59,7 @@
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   }

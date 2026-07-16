@@ -2,20 +2,24 @@
   {
     "filament_weight": 750,
     "diameter": 1.75,
+    "gtin": "6938936710820",
+    "article_number": "PJ01009",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polysmooth?"
+        "url": "https://us.polymaker.com/products/polysmooth"
       }
     ]
   },
   {
     "filament_weight": 750,
     "diameter": 2.85,
+    "gtin": "6938936712039",
+    "article_number": "PJ01021",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polysmooth?"
+        "url": "https://us.polymaker.com/products/polysmooth"
       }
     ]
   }
