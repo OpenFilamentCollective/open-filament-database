@@ -10,12 +10,12 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFG99",
-            "id": "OEPETGB0",
+            "id": "EPETGB00",
             "profile_name": "Elegoo PETG"
         },
         "elegooslicer": {
             "generic_id": "GFG99",
-            "id": "OEPETGB0",
+            "id": "EPETGB00",
             "profile_name": "Elegoo PETG"
         }
     }

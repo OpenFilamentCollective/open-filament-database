@@ -10,12 +10,12 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFU99",
-            "id": "OGFE07",
+            "id": "ETPU95AB00",
             "profile_name": "Elegoo TPU 95A"
         },
         "elegooslicer": {
             "generic_id": "GFU99",
-            "id": "OETPUB00",
+            "id": "ETPUB00",
             "profile_name": "Elegoo TPU 95A"
         },
         "anycubicslicer": {

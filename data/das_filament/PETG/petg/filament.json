@@ -9,10 +9,10 @@
     "max_bed_temperature": 90,
     "slicer_settings": {
         "prusaslicer": {
-            "profile_name": "Das Filament PETG"
+            "profile_name": "DAS FILAMENT PETG"
         },
         "superslicer": {
-            "profile_name": "Das Filament PETG"
+            "profile_name": "DAS FILAMENT PETG"
         }
     }
 }

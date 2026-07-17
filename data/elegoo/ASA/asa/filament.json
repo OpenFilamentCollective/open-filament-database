@@ -10,17 +10,17 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFB98",
-            "id": "OGFE06",
+            "id": "EASAB00",
             "profile_name": "Elegoo ASA"
         },
         "elegooslicer": {
             "generic_id": "GFB98",
-            "id": "OEASAB00",
+            "id": "EASAB00",
             "profile_name": "Elegoo ASA"
         },
         "anycubicslicer": {
             "generic_id": "GFB98",
-            "id": "GFB98",
+            "id": "EASAB00",
             "profile_name": "Elegoo ASA"
         }
     }

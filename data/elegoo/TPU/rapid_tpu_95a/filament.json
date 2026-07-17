@@ -6,13 +6,13 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFU99",
-            "id": "OETPUB00",
+            "id": "ETPUB00",
             "profile_name": "Elegoo Rapid TPU 95A"
         },
         "elegooslicer": {
             "generic_id": "GFU99",
-            "id": "OETPUB00",
-            "profile_name": "Elegoo Rapid TPU 95A"
+            "id": "ETPUB00",
+            "profile_name": "Elegoo RAPID TPU 95A"
         }
     }
 }
