@@ -1,0 +1,17 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "article_number": "SKU: CA19002",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/panchroma-pla?variant=44863271862329"
+      }
+    ]
+  }
+]
