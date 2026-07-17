@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337032113",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-marble?variant=41143160668296"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337032113",
+    "article_number": "13201",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-marble?variant=41143160668296"
+      }
+    ]
+  }
 ]

@@ -15,6 +15,7 @@
     "diameter": 1.75,
     "spool_refill": true,
     "gtin": "921086642252",
+    "article_number": "10800",
     "purchase_links": [
       {
         "store_id": "bblstore",

@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "gtin": "921082526004",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=41158283591816"
-            }
-        ]
-    }
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "921082526004",
+    "article_number": "14500",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=41158283591816"
+      }
+    ]
+  }
 ]
