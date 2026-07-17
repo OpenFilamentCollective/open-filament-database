@@ -2,6 +2,8 @@
   {
     "filament_weight": 1000,
     "diameter": 1.75,
+    "gtin": "6938936710110",
+    "article_number": "PB01009",
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -12,6 +14,8 @@
   {
     "filament_weight": 3000,
     "diameter": 1.75,
+    "gtin": "6938936707806",
+    "article_number": "PB01047",
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -32,6 +36,8 @@
   {
     "filament_weight": 1000,
     "diameter": 2.85,
+    "gtin": "6938936711209",
+    "article_number": "PB01022",
     "purchase_links": [
       {
         "store_id": "polymaker",

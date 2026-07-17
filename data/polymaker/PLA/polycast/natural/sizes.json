@@ -2,6 +2,8 @@
   {
     "filament_weight": 750,
     "diameter": 1.75,
+    "gtin": "6938936710936",
+    "article_number": "PJ03001",
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -12,6 +14,8 @@
   {
     "filament_weight": 3000,
     "diameter": 1.75,
+    "gtin": "6938936712848",
+    "article_number": "PJ03003",
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -22,6 +26,8 @@
   {
     "filament_weight": 750,
     "diameter": 2.85,
+    "gtin": "6938936712077",
+    "article_number": "PJ03002",
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -32,6 +38,8 @@
   {
     "filament_weight": 3000,
     "diameter": 2.85,
+    "gtin": "6938936712855",
+    "article_number": "PJ03004",
     "purchase_links": [
       {
         "store_id": "polymaker",
