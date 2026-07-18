@@ -1,6 +1,7 @@
 {
-    "id": "pa6_low_warp_gf30",
-    "name": "PA6 Low Warp GF30",
-    "diameter_tolerance": 0.02,
-    "density": 1.34
+  "uuid": "a752381b-d4b3-45ca-8d7b-4705d45bd86a",
+  "id": "pa6_low_warp_gf30",
+  "name": "PA6 Low Warp GF30",
+  "diameter_tolerance": 0.02,
+  "density": 1.34
 }

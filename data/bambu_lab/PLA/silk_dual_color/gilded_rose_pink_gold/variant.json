@@ -1,8 +1,9 @@
 {
-    "id": "gilded_rose_pink_gold",
-    "name": "Gilded Rose (Pink-Gold)",
-    "color_hex": [
-        "#FF9425",
-        "#FCA2BF"
-    ]
+  "uuid": "90ef0650-59d8-41b0-b72b-b3f4a0149ae4",
+  "id": "gilded_rose_pink_gold",
+  "name": "Gilded Rose (Pink-Gold)",
+  "color_hex": [
+    "#FF9425",
+    "#FCA2BF"
+  ]
 }

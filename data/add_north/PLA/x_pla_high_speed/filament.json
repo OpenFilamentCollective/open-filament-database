@@ -1,19 +1,20 @@
 {
-    "id": "x_pla_high_speed",
-    "name": "X-PLA High Speed",
-    "diameter_tolerance": 0.02,
-    "density": 1.26,
-    "max_dry_temperature": 50,
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFL99",
-            "id": "GF_ANXPH",
-            "profile_name": "addnorth PLA X-PLA High Speed"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GF_ANXPH",
-            "profile_name": "addnorth PLA X-PLA High Speed"
-        }
+  "uuid": "85f64fd8-1f75-4363-9ae5-f5aecea58246",
+  "id": "x_pla_high_speed",
+  "name": "X-PLA High Speed",
+  "diameter_tolerance": 0.02,
+  "density": 1.26,
+  "max_dry_temperature": 50,
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFL99",
+      "id": "GF_ANXPH",
+      "profile_name": "addnorth PLA X-PLA High Speed"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GF_ANXPH",
+      "profile_name": "addnorth PLA X-PLA High Speed"
     }
+  }
 }

@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "421fe7c4-a3c4-4887-a2fb-4caf41be39cf",
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "article_number": "51200",
@@ -8,6 +9,9 @@
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pc-tpu/products/tpu-95a-hf?variant=41469410640008"
       }
+    ],
+    "moved_from": [
+      "7b1c267f-7f3f-4ef0-ba2d-7821f5d16fd3"
     ]
   }
 ]

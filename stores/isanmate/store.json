@@ -1,10 +1,11 @@
 {
-    "id": "isanmate",
-    "name": "iSANMATE",
-    "storefront_url": "https://isanmate.store/",
-    "logo": "logo.jpg",
-    "ships_from": [
-        "HK"
-    ],
-    "ships_to": []
+  "uuid": "54e160bb-4bfa-4176-8c1d-325dff6e2cd2",
+  "id": "isanmate",
+  "name": "iSANMATE",
+  "storefront_url": "https://isanmate.store/",
+  "logo": "logo.jpg",
+  "ships_from": [
+    "HK"
+  ],
+  "ships_to": []
 }

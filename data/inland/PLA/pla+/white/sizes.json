@@ -1,23 +1,25 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/611544/inland-175mm-pla-3d-printer-filament-10-kg-%2822-lbs%29-spool-white"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/687073/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-white?sp=280"
-            }
-        ]
-    }
+  {
+    "uuid": "1a1516b0-b8e7-4123-8bf4-5bbf441ab44b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/611544/inland-175mm-pla-3d-printer-filament-10-kg-%2822-lbs%29-spool-white"
+      }
+    ]
+  },
+  {
+    "uuid": "9d92c78c-0a52-41a4-b268-74f44d5a670c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/687073/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-white?sp=280"
+      }
+    ]
+  }
 ]

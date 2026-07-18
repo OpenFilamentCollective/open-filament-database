@@ -1,15 +1,16 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.27,
-    "min_print_temperature": 220,
-    "max_print_temperature": 240,
-    "min_bed_temperature": 70,
-    "max_bed_temperature": 90,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Geeetech PETG"
-        }
+  "uuid": "2af33bc6-99db-4eff-aa4c-7d1fa6a3c818",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Geeetech PETG"
     }
+  }
 }

@@ -1,6 +1,7 @@
 {
-    "id": "hips",
-    "name": "HIPS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "1fdf6916-2339-4b9b-b6fa-c2fe584234ff",
+  "id": "hips",
+  "name": "HIPS",
+  "diameter_tolerance": 0.02,
+  "density": 1.04
 }

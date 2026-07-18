@@ -1,6 +1,7 @@
 {
-    "id": "gradient_matte_pla",
-    "name": "Gradient Matte PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.37
+  "uuid": "abd91228-08ee-4d8b-b52d-4ef76ba6b35b",
+  "id": "gradient_matte_pla",
+  "name": "Gradient Matte PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.37
 }

@@ -1,8 +1,9 @@
 {
-    "id": "orange_transparent",
-    "name": "Orange Transparent",
-    "color_hex": "#FF6900",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "a5744933-7865-408d-93bd-7520403d8118",
+  "id": "orange_transparent",
+  "name": "Orange Transparent",
+  "color_hex": "#FF6900",
+  "traits": {
+    "recyclable": true
+  }
 }

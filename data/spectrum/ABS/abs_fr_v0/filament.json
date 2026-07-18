@@ -1,6 +1,7 @@
 {
-    "id": "abs_fr_v0",
-    "name": "ABS FR V0",
-    "diameter_tolerance": 0.02,
-    "density": 1.17
+  "uuid": "81ddaec7-cac8-467f-af18-ae57804c9716",
+  "id": "abs_fr_v0",
+  "name": "ABS FR V0",
+  "diameter_tolerance": 0.02,
+  "density": 1.17
 }

@@ -1,8 +1,9 @@
 {
-    "id": "midnight_sky",
-    "name": "Midnight Sky",
-    "color_hex": "#212C78",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "e09b7f73-0744-423c-adb7-85d6d1123ab0",
+  "id": "midnight_sky",
+  "name": "Midnight Sky",
+  "color_hex": "#212C78",
+  "traits": {
+    "recyclable": true
+  }
 }

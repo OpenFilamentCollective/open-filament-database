@@ -1,6 +1,7 @@
 {
-    "id": "pla_matte_rainbow",
-    "name": "PLA Matte Rainbow",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "3c55fab1-c86f-4908-9603-9ef181017e1e",
+  "id": "pla_matte_rainbow",
+  "name": "PLA Matte Rainbow",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

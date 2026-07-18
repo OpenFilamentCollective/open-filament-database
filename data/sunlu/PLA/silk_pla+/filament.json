@@ -1,28 +1,29 @@
 {
-    "id": "silk_pla+",
-    "name": "Silk PLA+",
-    "diameter_tolerance": 0.02,
-    "density": 1.26,
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFL96",
-            "id": "GFSNL05",
-            "profile_name": "SUNLU Silk PLA+"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL96",
-            "id": "GFSNL05",
-            "profile_name": "SUNLU Silk PLA+"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL96",
-            "id": "GFSNL05",
-            "profile_name": "SUNLU Silk PLA+"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFL96",
-            "id": "GFSNL05",
-            "profile_name": "SUNLU Silk PLA+"
-        }
+  "uuid": "79cda236-2212-4303-a1c4-2d6d25c0d1e1",
+  "id": "silk_pla+",
+  "name": "Silk PLA+",
+  "diameter_tolerance": 0.02,
+  "density": 1.26,
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFL96",
+      "id": "GFSNL05",
+      "profile_name": "SUNLU Silk PLA+"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL96",
+      "id": "GFSNL05",
+      "profile_name": "SUNLU Silk PLA+"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL96",
+      "id": "GFSNL05",
+      "profile_name": "SUNLU Silk PLA+"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFL96",
+      "id": "GFSNL05",
+      "profile_name": "SUNLU Silk PLA+"
     }
+  }
 }

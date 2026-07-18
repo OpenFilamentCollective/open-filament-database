@@ -1,22 +1,26 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 230
-    },
-    {
-        "filament_weight": 2500,
-        "diameter": 1.75,
-        "empty_spool_weight": 590
-    },
-    {
-        "filament_weight": 750,
-        "diameter": 2.85,
-        "empty_spool_weight": 230
-    },
-    {
-        "filament_weight": 2500,
-        "diameter": 2.85,
-        "empty_spool_weight": 590
-    }
+  {
+    "uuid": "474bbad0-fb51-438e-88d7-95542f8a2e1b",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 230
+  },
+  {
+    "uuid": "b5cddc75-a89e-4dc0-872f-917448ff9c78",
+    "filament_weight": 2500,
+    "diameter": 1.75,
+    "empty_spool_weight": 590
+  },
+  {
+    "uuid": "49c9c444-68dd-418d-ad0a-3a7ced7b56cd",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "empty_spool_weight": 230
+  },
+  {
+    "uuid": "f5f5228a-bd55-4377-9aa4-a99bb58ec2e9",
+    "filament_weight": 2500,
+    "diameter": 2.85,
+    "empty_spool_weight": 590
+  }
 ]

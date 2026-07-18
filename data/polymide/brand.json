@@ -1,7 +1,8 @@
 {
-    "id": "polymide",
-    "name": "PolyMide",
-    "website": "https://polymaker.com/",
-    "logo": "logo.svg",
-    "origin": "CN"
+  "uuid": "fea4e45c-9879-4cf0-a98d-2599594095ad",
+  "id": "polymide",
+  "name": "PolyMide",
+  "website": "https://polymaker.com/",
+  "logo": "logo.svg",
+  "origin": "CN"
 }

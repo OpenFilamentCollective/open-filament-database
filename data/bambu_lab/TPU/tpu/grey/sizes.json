@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "86ed27b2-2c47-47fe-8f81-8182beb4eb97",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3deksperten",
+        "url": "https://3deksperten.dk/products/bambu-lab-tpu-flex-grey-1-75mm-1kg"
+      }
+    ]
+  }
+]

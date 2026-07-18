@@ -1,23 +1,25 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/611540/inland-175mm-pla-3d-printer-filament-10-kg-%2822-lbs%29-spool-purple"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/687087/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-purple?sp=289"
-            }
-        ]
-    }
+  {
+    "uuid": "029edee7-ac48-48da-8f93-07a8caee4f30",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/611540/inland-175mm-pla-3d-printer-filament-10-kg-%2822-lbs%29-spool-purple"
+      }
+    ]
+  },
+  {
+    "uuid": "238acb4f-ae63-4adc-b6a8-89312b8380f1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/687087/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-purple?sp=289"
+      }
+    ]
+  }
 ]

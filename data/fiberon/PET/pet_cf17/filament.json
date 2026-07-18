@@ -1,16 +1,17 @@
 {
-    "id": "pet_cf17",
-    "name": "PET-CF17",
-    "diameter_tolerance": 0.02,
-    "density": 1.34,
-    "slicer_settings": {
-        "orcaslicer": {
-            "id": "GFL60",
-            "profile_name": "Fiberon PET-CF17"
-        },
-        "crealityprint": {
-            "id": "P8001",
-            "profile_name": "Fiberon PET-CF17"
-        }
+  "uuid": "d49edead-37d9-46bd-9cab-3e7d41209e5a",
+  "id": "pet_cf17",
+  "name": "PET-CF17",
+  "diameter_tolerance": 0.02,
+  "density": 1.34,
+  "slicer_settings": {
+    "orcaslicer": {
+      "id": "GFL60",
+      "profile_name": "Fiberon PET-CF17"
+    },
+    "crealityprint": {
+      "id": "P8001",
+      "profile_name": "Fiberon PET-CF17"
     }
+  }
 }

@@ -1,6 +1,7 @@
 {
-    "id": "pcl",
-    "name": "PCL",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "7581c444-7968-4e84-9952-d5d4efee939b",
+  "id": "pcl",
+  "name": "PCL",
+  "diameter_tolerance": 0.02,
+  "density": 1.2
 }

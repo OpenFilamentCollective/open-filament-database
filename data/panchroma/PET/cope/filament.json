@@ -1,16 +1,17 @@
 {
-    "id": "cope",
-    "name": "PET CoPE",
-    "diameter_tolerance": 0.02,
-    "density": 1.3,
-    "slicer_settings": {
-        "orcaslicer": {
-            "id": "GFPM016",
-            "profile_name": "Panchroma CoPE"
-        },
-        "elegooslicer": {
-            "id": "OGFPM016",
-            "profile_name": "Panchroma CoPE"
-        }
+  "uuid": "9de02c77-5ed9-43f6-a49a-de4b36cbd85f",
+  "id": "cope",
+  "name": "PET CoPE",
+  "diameter_tolerance": 0.02,
+  "density": 1.3,
+  "slicer_settings": {
+    "orcaslicer": {
+      "id": "GFPM016",
+      "profile_name": "Panchroma CoPE"
+    },
+    "elegooslicer": {
+      "id": "OGFPM016",
+      "profile_name": "Panchroma CoPE"
     }
+  }
 }

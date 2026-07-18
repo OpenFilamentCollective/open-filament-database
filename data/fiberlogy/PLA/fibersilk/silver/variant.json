@@ -1,8 +1,9 @@
 {
-    "id": "silver",
-    "name": "Silver",
-    "color_hex": "#BBBCBC",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "2be00057-8c3d-4fb2-8c76-be25f9a4a5f7",
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#BBBCBC",
+  "traits": {
+    "recyclable": true
+  }
 }

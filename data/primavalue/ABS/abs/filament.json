@@ -1,6 +1,7 @@
 {
-    "id": "abs",
-    "name": "ABS",
-    "diameter_tolerance": 0.05,
-    "density": 1.03
+  "uuid": "c71a7c3a-45a2-4430-bc07-2e63fa406405",
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.05,
+  "density": 1.03
 }

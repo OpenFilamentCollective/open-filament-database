@@ -1,18 +1,19 @@
 {
-    "id": "pla_lite",
-    "name": "PLA-Lite",
-    "diameter_tolerance": 0.03,
-    "density": 1.23,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "E1004",
-            "profile_name": "eSUN PLA-Lite"
-        },
-        "crealityprint": {
-            "generic_id": "GFL99",
-            "id": "E1004",
-            "profile_name": "eSUN PLA-Lite"
-        }
+  "uuid": "b5b0923a-b1ca-412e-a8b0-9745deeeccc7",
+  "id": "pla_lite",
+  "name": "PLA-Lite",
+  "diameter_tolerance": 0.03,
+  "density": 1.23,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "E1004",
+      "profile_name": "eSUN PLA-Lite"
+    },
+    "crealityprint": {
+      "generic_id": "GFL99",
+      "id": "E1004",
+      "profile_name": "eSUN PLA-Lite"
     }
+  }
 }

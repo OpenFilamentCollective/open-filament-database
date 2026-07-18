@@ -1,23 +1,24 @@
 {
-    "id": "pla_pro",
-    "name": "PLA PRO",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "EPLAB00",
-            "profile_name": "Elegoo PLA PRO"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "EPLAB00",
-            "profile_name": "Elegoo PLA PRO"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFL99",
-            "id": "EPLAB00",
-            "profile_name": "Elegoo PLA PRO"
-        }
+  "uuid": "5e22bb9b-c9e6-4df5-b9f0-ed2eb1089024",
+  "id": "pla_pro",
+  "name": "PLA PRO",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "EPLAB00",
+      "profile_name": "Elegoo PLA PRO"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "EPLAB00",
+      "profile_name": "Elegoo PLA PRO"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFL99",
+      "id": "EPLAB00",
+      "profile_name": "Elegoo PLA PRO"
     }
+  }
 }

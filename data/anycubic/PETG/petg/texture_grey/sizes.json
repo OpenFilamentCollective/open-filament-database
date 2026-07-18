@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 127,
-        "spool_core_diameter": 58,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/petg-filament?variant=45275873345725"
-            }
-        ]
-    }
+  {
+    "uuid": "f34e6064-5ecc-407b-81a5-1b60247d5dc8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 127,
+    "spool_core_diameter": 58,
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/petg-filament?variant=45275873345725"
+      }
+    ]
+  }
 ]

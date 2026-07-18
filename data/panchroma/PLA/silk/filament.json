@@ -1,18 +1,19 @@
 {
-    "id": "silk",
-    "name": "PLA Silk",
-    "diameter_tolerance": 0.02,
-    "density": 1.2,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFL96",
-            "id": "GFPM004",
-            "profile_name": "Panchroma PLA Silk"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL96",
-            "id": "GFPM004",
-            "profile_name": "Panchroma PLA Silk"
-        }
+  "uuid": "ffff9a5f-7fde-4a85-9fb2-5c4aabc6e937",
+  "id": "silk",
+  "name": "PLA Silk",
+  "diameter_tolerance": 0.02,
+  "density": 1.2,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFL96",
+      "id": "GFPM004",
+      "profile_name": "Panchroma PLA Silk"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL96",
+      "id": "GFPM004",
+      "profile_name": "Panchroma PLA Silk"
     }
+  }
 }

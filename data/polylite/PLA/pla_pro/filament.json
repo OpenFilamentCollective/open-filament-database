@@ -1,18 +1,19 @@
 {
-    "id": "pla_pro",
-    "name": "PLA Pro",
-    "diameter_tolerance": 0.02,
-    "density": 1.22,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GFPM019",
-            "profile_name": "PolyLite PLA Pro"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "GFPM019",
-            "profile_name": "PolyLite PLA Pro"
-        }
+  "uuid": "b1d1a945-1bc0-4340-b358-010e29ac7a16",
+  "id": "pla_pro",
+  "name": "PLA Pro",
+  "diameter_tolerance": 0.02,
+  "density": 1.22,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GFPM019",
+      "profile_name": "PolyLite PLA Pro"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "GFPM019",
+      "profile_name": "PolyLite PLA Pro"
     }
+  }
 }

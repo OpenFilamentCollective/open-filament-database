@@ -1,8 +1,9 @@
 {
-    "id": "old_gold",
-    "name": "Old Gold",
-    "color_hex": "#BC983F",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "c1e2dfce-e8c1-42a0-8171-5a68345bb770",
+  "id": "old_gold",
+  "name": "Old Gold",
+  "color_hex": "#BC983F",
+  "traits": {
+    "recyclable": true
+  }
 }

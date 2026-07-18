@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "01c4b5f0-6f17-4833-9704-9f8ae20b5058",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5905991404750",
@@ -12,6 +13,7 @@
     ]
   },
   {
+    "uuid": "a7b06e62-c33a-43b8-a68d-015ea2ce017f",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5905991404712",
@@ -24,6 +26,7 @@
     ]
   },
   {
+    "uuid": "b39c79ad-39c4-4a3d-a32b-58d74a74334f",
     "filament_weight": 250,
     "diameter": 1.75,
     "ean": "5905991404743",

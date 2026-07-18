@@ -1,7 +1,8 @@
 {
-    "id": "budget_pla",
-    "name": "Budget PLA",
-    "diameter_tolerance": 0.05,
-    "density": 1.24,
-    "max_dry_temperature": 50
+  "uuid": "39bf8790-c2f9-4c1f-9b85-cea6a8a78332",
+  "id": "budget_pla",
+  "name": "Budget PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "max_dry_temperature": 50
 }

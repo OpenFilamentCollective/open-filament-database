@@ -1,6 +1,7 @@
 {
-    "id": "petg_glow_in_the_dark_filament",
-    "name": "PETG Glow In The Dark Filament",
-    "diameter_tolerance": 0.05,
-    "density": 1.24
+  "uuid": "d118415a-79d1-4f35-b57b-45e21054751a",
+  "id": "petg_glow_in_the_dark_filament",
+  "name": "PETG Glow In The Dark Filament",
+  "diameter_tolerance": 0.05,
+  "density": 1.24
 }

@@ -1,12 +1,13 @@
 [
-    {
-        "filament_weight": 500.0,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/support/products/support-for-pla-petg?variant=43112360181896"
-            }
-        ]
-    }
+  {
+    "uuid": "140bfabf-8655-4f67-9601-d9b36d927b33",
+    "filament_weight": 500.0,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/support/products/support-for-pla-petg?variant=43112360181896"
+      }
+    ]
+  }
 ]

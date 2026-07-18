@@ -1,38 +1,41 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PETG%20PRO%20Matte/PETG%20PRO%20Matte%20-%201.75mm%20-%20750g%20-%20Black"
-            }
-        ]
-    },
-    {
-        "filament_weight": 2300,
-        "diameter": 1.75,
-        "empty_spool_weight": 600,
-        "spool_core_diameter": 103,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PETG%20PRO%20Matte/PETG%20PRO%20Matte%20-%201.75mm%20-%202300g%20-%20Black"
-            }
-        ]
-    },
-    {
-        "filament_weight": 750,
-        "diameter": 2.85,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PETG%20PRO%20Matte/PETG%20PRO%20Matte%20-%202.85mm%20-%20750g%20-%20Black"
-            }
-        ]
-    }
+  {
+    "uuid": "699b5ba1-bcb3-4416-a38a-fcb9a92d96ff",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PETG%20PRO%20Matte/PETG%20PRO%20Matte%20-%201.75mm%20-%20750g%20-%20Black"
+      }
+    ]
+  },
+  {
+    "uuid": "d28920e3-b8c8-41cc-9d89-5d61e7db5e9b",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "empty_spool_weight": 600,
+    "spool_core_diameter": 103,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PETG%20PRO%20Matte/PETG%20PRO%20Matte%20-%201.75mm%20-%202300g%20-%20Black"
+      }
+    ]
+  },
+  {
+    "uuid": "17340a6b-b253-4d54-a0ce-f31789ef7938",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PETG%20PRO%20Matte/PETG%20PRO%20Matte%20-%202.85mm%20-%20750g%20-%20Black"
+      }
+    ]
+  }
 ]

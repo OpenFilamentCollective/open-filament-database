@@ -1,6 +1,7 @@
 {
-    "id": "apla",
-    "name": "APLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.26
+  "uuid": "bd5654bd-eaed-4da7-87e4-b06a80f269e5",
+  "id": "apla",
+  "name": "APLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.26
 }

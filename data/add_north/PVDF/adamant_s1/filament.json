@@ -1,25 +1,26 @@
 {
-    "id": "adamant_s1",
-    "name": "PVDF Adamant S1",
-    "diameter_tolerance": 0.02,
-    "density": 1.8,
-    "max_dry_temperature": 40,
-    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/AdamantS1_TDS_nH7jU9.pdf",
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_AdamantS1_KBl09l.pdf",
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "addnorth Adamant S1"
-        },
-        "bambustudio": {
-            "id": "GF_ANPV",
-            "profile_name": "addnorth PVDF Adamant S1"
-        },
-        "orcaslicer": {
-            "id": "GF_ANPV",
-            "profile_name": "addnorth PVDF Adamant S1"
-        },
-        "superslicer": {
-            "profile_name": "addnorth Adamant S1"
-        }
+  "uuid": "213e6de7-5ff0-42a8-aa91-bf3a736c6a46",
+  "id": "adamant_s1",
+  "name": "PVDF Adamant S1",
+  "diameter_tolerance": 0.02,
+  "density": 1.8,
+  "max_dry_temperature": 40,
+  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/AdamantS1_TDS_nH7jU9.pdf",
+  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_AdamantS1_KBl09l.pdf",
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "addnorth Adamant S1"
+    },
+    "bambustudio": {
+      "id": "GF_ANPV",
+      "profile_name": "addnorth PVDF Adamant S1"
+    },
+    "orcaslicer": {
+      "id": "GF_ANPV",
+      "profile_name": "addnorth PVDF Adamant S1"
+    },
+    "superslicer": {
+      "profile_name": "addnorth Adamant S1"
     }
+  }
 }

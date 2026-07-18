@@ -1,7 +1,8 @@
 {
-    "id": "lostboyslab",
-    "name": "lostboyslab",
-    "website": "https://www.lostboyslab.com",
-    "logo": "logo.svg",
-    "origin": "SE"
+  "uuid": "e637d34e-7160-4f27-82e8-9887bab2ebf8",
+  "id": "lostboyslab",
+  "name": "lostboyslab",
+  "website": "https://www.lostboyslab.com",
+  "logo": "logo.svg",
+  "origin": "SE"
 }

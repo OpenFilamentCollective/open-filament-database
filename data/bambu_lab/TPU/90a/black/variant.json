@@ -1,5 +1,8 @@
 {
   "id": "black",
   "name": "Black",
-  "color_hex": "#000000"
+  "color_hex": "#000000",
+  "moved_from": [
+    "55afd844-d298-4023-aa3e-5afff42d35b9"
+  ]
 }

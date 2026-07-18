@@ -1,8 +1,9 @@
 {
-    "id": "blueberry_bubblegum",
-    "name": "Blueberry Bubblegum",
-    "color_hex": [
-        "#6FCAEF",
-        "#8573DD"
-    ]
+  "uuid": "10cbc6ba-f88b-42a7-b1e5-3e22c18773cb",
+  "id": "blueberry_bubblegum",
+  "name": "Blueberry Bubblegum",
+  "color_hex": [
+    "#6FCAEF",
+    "#8573DD"
+  ]
 }

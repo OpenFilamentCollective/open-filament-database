@@ -1,7 +1,8 @@
 {
-    "id": "panchroma",
-    "name": "Panchroma",
-    "website": "https://polymaker.com/panchroma/",
-    "logo": "logo.png",
-    "origin": "CN"
+  "uuid": "df4f0cb8-53a6-4c69-b207-33df366625d3",
+  "id": "panchroma",
+  "name": "Panchroma",
+  "website": "https://polymaker.com/panchroma/",
+  "logo": "logo.png",
+  "origin": "CN"
 }

@@ -1,14 +1,15 @@
 {
-    "id": "prusa3d",
-    "name": "Prusa3D Store",
-    "storefront_url": "https://www.prusa3d.com/",
-    "logo": "logo.png",
-    "ships_from": [
-        "EU"
-    ],
-    "ships_to": [
-        "EU",
-        "US",
-        "UK"
-    ]
+  "uuid": "c6fd5930-01ef-4521-a089-39d00b8cb473",
+  "id": "prusa3d",
+  "name": "Prusa3D Store",
+  "storefront_url": "https://www.prusa3d.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "EU"
+  ],
+  "ships_to": [
+    "EU",
+    "US",
+    "UK"
+  ]
 }

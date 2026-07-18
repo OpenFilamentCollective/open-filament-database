@@ -1,6 +1,7 @@
 {
-    "id": "abs_kevlar",
-    "name": "ABS Kevlar",
-    "diameter_tolerance": 0.02,
-    "density": 1.05
+  "uuid": "e78d3667-f4ec-4844-a9bc-69938e950b27",
+  "id": "abs_kevlar",
+  "name": "ABS Kevlar",
+  "diameter_tolerance": 0.02,
+  "density": 1.05
 }

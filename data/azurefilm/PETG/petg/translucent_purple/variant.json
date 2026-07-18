@@ -1,8 +1,9 @@
 {
-    "id": "translucent_purple",
-    "name": "Translucent purple",
-    "color_hex": "#8d76c6",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "b273361b-2852-4687-b60b-ecfa4057ba69",
+  "id": "translucent_purple",
+  "name": "Translucent purple",
+  "color_hex": "#8d76c6",
+  "traits": {
+    "recyclable": true
+  }
 }

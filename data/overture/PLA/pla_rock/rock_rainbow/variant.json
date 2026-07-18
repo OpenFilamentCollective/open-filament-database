@@ -1,8 +1,9 @@
 {
-    "id": "rock_rainbow",
-    "name": "Rock Rainbow",
-    "color_hex": [
-        "#1AB790",
-        "#AF121A"
-    ]
+  "uuid": "f824c53f-7900-48c9-8bd9-45ee52216a9b",
+  "id": "rock_rainbow",
+  "name": "Rock Rainbow",
+  "color_hex": [
+    "#1AB790",
+    "#AF121A"
+  ]
 }

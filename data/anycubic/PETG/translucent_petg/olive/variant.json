@@ -1,8 +1,9 @@
 {
-    "id": "olive",
-    "name": "Olive",
-    "color_hex": "#78874D",
-    "traits": {
-        "translucent": true
-    }
+  "uuid": "f5944ab0-4812-4fd8-ad6d-78f06a9fdc15",
+  "id": "olive",
+  "name": "Olive",
+  "color_hex": "#78874D",
+  "traits": {
+    "translucent": true
+  }
 }

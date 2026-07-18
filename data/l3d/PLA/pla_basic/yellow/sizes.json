@@ -1,17 +1,18 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 210,
-        "spool_core_diameter": 53.5,
-        "ean": "5744006030337",
-        "article_number": "PLA-YELLOW-01",
-        "purchase_links": [
-            {
-                "store_id": "lab3d_store",
-                "url": "https://shop.lab3d.dk/products/lab3d-filament-pla-yellow-1-75mm-1kg",
-                "ships_to": "Eu"
-            }
-        ]
-    }
+  {
+    "uuid": "ec84896c-17b5-4feb-b693-a631200c847f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 210,
+    "spool_core_diameter": 53.5,
+    "ean": "5744006030337",
+    "article_number": "PLA-YELLOW-01",
+    "purchase_links": [
+      {
+        "store_id": "lab3d_store",
+        "url": "https://shop.lab3d.dk/products/lab3d-filament-pla-yellow-1-75mm-1kg",
+        "ships_to": "Eu"
+      }
+    ]
+  }
 ]

@@ -1,8 +1,9 @@
 {
-    "id": "light_green_transparent",
-    "name": "Light Green Transparent",
-    "color_hex": "#A7D500",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "cfbb08ea-fd25-4657-a273-f81289acf759",
+  "id": "light_green_transparent",
+  "name": "Light Green Transparent",
+  "color_hex": "#A7D500",
+  "traits": {
+    "recyclable": true
+  }
 }

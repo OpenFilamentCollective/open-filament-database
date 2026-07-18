@@ -1,31 +1,32 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.03,
-    "density": 1.26,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Snapmaker PETG"
-        },
-        "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "22090010620",
-            "profile_name": "Snapmaker PETG"
-        },
-        "elegooslicer": {
-            "generic_id": "GFG99",
-            "id": "22090010620",
-            "profile_name": "Snapmaker PETG"
-        },
-        "crealityprint": {
-            "generic_id": "GFG99",
-            "id": "1895495477",
-            "profile_name": "Snapmaker PETG"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFG99",
-            "id": "1895495477",
-            "profile_name": "Snapmaker PETG"
-        }
+  "uuid": "63b56e25-2d69-4356-b414-75e7834e580a",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.03,
+  "density": 1.26,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Snapmaker PETG"
+    },
+    "orcaslicer": {
+      "generic_id": "GFG99",
+      "id": "22090010620",
+      "profile_name": "Snapmaker PETG"
+    },
+    "elegooslicer": {
+      "generic_id": "GFG99",
+      "id": "22090010620",
+      "profile_name": "Snapmaker PETG"
+    },
+    "crealityprint": {
+      "generic_id": "GFG99",
+      "id": "1895495477",
+      "profile_name": "Snapmaker PETG"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFG99",
+      "id": "1895495477",
+      "profile_name": "Snapmaker PETG"
     }
+  }
 }

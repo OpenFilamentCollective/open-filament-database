@@ -1,8 +1,9 @@
 {
-    "id": "ash_gray",
-    "name": "Ash Gray",
-    "color_hex": "#404549",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "8097de08-71ea-4a52-a5b5-4035bfeb3960",
+  "id": "ash_gray",
+  "name": "Ash Gray",
+  "color_hex": "#404549",
+  "traits": {
+    "matte": true
+  }
 }

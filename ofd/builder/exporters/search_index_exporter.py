@@ -58,6 +58,8 @@ def build_search_records(
         }
         if b["id"] in brand_logo_id_mapping:
             rec["logo"] = brand_logo_id_mapping[b["id"]]
+        if b.get("uuid"):
+            rec["uuid"] = b["uuid"]
         records.append(rec)
 
     # Materials
@@ -65,18 +67,19 @@ def build_search_records(
         brand = brand_by_id.get(m["brand_id"])
         if not brand:
             continue
-        records.append(
-            {
-                "type": "material",
-                "name": m["material"],
-                "href": f"/brands/{brand['slug']}/{m['slug']}",
-                "brandName": brand["name"],
-                "brandSlug": brand["slug"],
-                "materialType": m["material"],
-                "keywords": _join_keywords(m["material"]),
-                "path": f"brands/{brand['slug']}/materials/{m['slug']}",
-            }
-        )
+        rec = {
+            "type": "material",
+            "name": m["material"],
+            "href": f"/brands/{brand['slug']}/{m['slug']}",
+            "brandName": brand["name"],
+            "brandSlug": brand["slug"],
+            "materialType": m["material"],
+            "keywords": _join_keywords(m["material"]),
+            "path": f"brands/{brand['slug']}/materials/{m['slug']}",
+        }
+        if m.get("uuid"):
+            rec["uuid"] = m["uuid"]
+        records.append(rec)
 
     # Filaments
     for f in db.filaments:
@@ -86,18 +89,19 @@ def build_search_records(
         brand = brand_by_id.get(material["brand_id"])
         if not brand:
             continue
-        records.append(
-            {
-                "type": "filament",
-                "name": f["name"],
-                "href": f"/brands/{brand['slug']}/{material['slug']}/{f['slug']}",
-                "brandName": brand["name"],
-                "brandSlug": brand["slug"],
-                "materialType": material["material"],
-                "keywords": _join_keywords(f["name"]),
-                "path": f"brands/{brand['slug']}/materials/{material['slug']}/filaments/{f['slug']}",
-            }
-        )
+        rec = {
+            "type": "filament",
+            "name": f["name"],
+            "href": f"/brands/{brand['slug']}/{material['slug']}/{f['slug']}",
+            "brandName": brand["name"],
+            "brandSlug": brand["slug"],
+            "materialType": material["material"],
+            "keywords": _join_keywords(f["name"]),
+            "path": f"brands/{brand['slug']}/materials/{material['slug']}/filaments/{f['slug']}",
+        }
+        if f.get("uuid"):
+            rec["uuid"] = f["uuid"]
+        records.append(rec)
 
     # Stores
     for s in db.stores:
@@ -112,6 +116,8 @@ def build_search_records(
         }
         if s["id"] in store_logo_id_mapping:
             rec["logo"] = store_logo_id_mapping[s["id"]]
+        if s.get("uuid"):
+            rec["uuid"] = s["uuid"]
         records.append(rec)
 
     return records

@@ -1,6 +1,7 @@
 {
-    "id": "draft_pla",
-    "name": "Draft PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.31
+  "uuid": "52eec0a4-6a77-4a3e-adbf-179836189764",
+  "id": "draft_pla",
+  "name": "Draft PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.31
 }

@@ -1,6 +1,7 @@
 {
-    "id": "asa_light_weight",
-    "name": "ASA Light-Weight",
-    "diameter_tolerance": 0.03,
-    "density": 0.99
+  "uuid": "c8a158fb-6cd2-41d0-8485-58190f924066",
+  "id": "asa_light_weight",
+  "name": "ASA Light-Weight",
+  "diameter_tolerance": 0.03,
+  "density": 0.99
 }

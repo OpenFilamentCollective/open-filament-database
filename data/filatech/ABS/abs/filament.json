@@ -1,18 +1,19 @@
 {
-    "id": "abs",
-    "name": "ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04,
-    "min_print_temperature": 230,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 90,
-    "max_bed_temperature": 110,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Filatech ABS"
-        },
-        "superslicer": {
-            "profile_name": "Filatech ABS"
-        }
+  "uuid": "c475cf95-968a-4ee2-9643-3e150fa9dab4",
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.04,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Filatech ABS"
+    },
+    "superslicer": {
+      "profile_name": "Filatech ABS"
     }
+  }
 }

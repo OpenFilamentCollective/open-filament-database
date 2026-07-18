@@ -1,6 +1,7 @@
 {
-    "id": "wood_pla",
-    "name": "Wood PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "1716f15f-0bdd-4f09-83f8-b4420353f968",
+  "id": "wood_pla",
+  "name": "Wood PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

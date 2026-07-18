@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Army%20Green"
-            }
-        ]
-    }
+  {
+    "uuid": "fbc0a9cb-68bb-4f96-8990-8b0af57e7e8e",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Army%20Green"
+      }
+    ]
+  }
 ]

@@ -36,6 +36,18 @@ Every folder name and every `id` field must match the regex `^[a-z0-9+]+(_[a-z0-
 - Between **100×100** and **400×400** pixels for raster formats (PNG/JPG)
 - A real SVG (root element `<svg>`) for SVG files
 
+## 🔑 Canonical UUIDs — leave them empty
+Every entity (brand, material, filament, variant, and each spool in `sizes.json`) also has a **canonical UUID**: a stable, random `uuid` field that is *not* derived from the slug, so it never changes when a name or folder is renamed.
+
+**You never write this field by hand.** When you add or edit data — manually or via the WebUI — simply omit `uuid` (or leave it empty). Continuous integration assigns a UUID to every new entry automatically when your pull request is merged. The `id`/folder-name slug is still what you set and what other files reference; the `uuid` is an additional identifier managed for you.
+
+If you're working locally and want to preview or manage these IDs, use the [`ofd uuid`](validation.md#canonical-uuids) commands (e.g. `ofd uuid assign`, `ofd uuid find <uuid>`).
+
+### Moved / former UUIDs (`moved_from`)
+When data is merged or moved, one entity's `uuid` can be retired in favour of another's. To keep old references working, the surviving entity carries an optional **`moved_from`** array listing the former UUIDs that now resolve to it — so a consumer that stored the old UUID can still find the current entity (`ofd uuid find <old-uuid>` redirects to it, and the build emits an `api/v1/uuid-index.json` redirect map for offline consumers).
+
+**You never write `moved_from` by hand either.** It is managed by tooling: the `merge_data` / `deduplicate_data` scripts record a deleted entity's UUID onto its survivor automatically, and `ofd uuid check` enforces that every `moved_from` entry is a valid, unique UUID that doesn't collide with a live one.
+
 ## 🏷️ Adding a Brand
 
 1. Create a folder under `data/` named with the brand's `id` (lowercase snake_case, e.g. `bambu_lab`, `prusament`)

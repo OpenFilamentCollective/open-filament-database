@@ -1,6 +1,7 @@
 {
-    "id": "huracan_pla",
-    "name": "Huracan PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "93abb5b1-f703-4d65-a360-d37263b73da9",
+  "id": "huracan_pla",
+  "name": "Huracan PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

@@ -1,19 +1,20 @@
 {
-    "id": "rpla_re_add",
-    "name": "rPLA RE-ADD",
-    "diameter_tolerance": 0.02,
-    "density": 1.25,
-    "max_dry_temperature": 50,
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFL99",
-            "id": "GF_ANRPL",
-            "profile_name": "addnorth PLA rPLA RE-ADD"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GF_ANRPL",
-            "profile_name": "addnorth PLA rPLA RE-ADD"
-        }
+  "uuid": "e314c1be-c27f-4394-95d8-343feb5f1816",
+  "id": "rpla_re_add",
+  "name": "rPLA RE-ADD",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "max_dry_temperature": 50,
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFL99",
+      "id": "GF_ANRPL",
+      "profile_name": "addnorth PLA rPLA RE-ADD"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GF_ANRPL",
+      "profile_name": "addnorth PLA rPLA RE-ADD"
     }
+  }
 }

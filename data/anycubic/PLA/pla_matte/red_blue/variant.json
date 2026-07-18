@@ -1,8 +1,9 @@
 {
-    "id": "red_blue",
-    "name": "Red Blue",
-    "color_hex": "#633B45",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "ba564cb7-fb04-4076-b6ee-ba04b8932220",
+  "id": "red_blue",
+  "name": "Red Blue",
+  "color_hex": "#633B45",
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,10 +1,11 @@
 {
-    "id": "pink",
-    "name": "Pink",
-    "color_hex": [
-        "#ffc0cb"
-    ],
-    "traits": {
-        "matte": true
-    }
+  "uuid": "7fb21e63-34cf-473d-aace-23f45ec00f5d",
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": [
+    "#ffc0cb"
+  ],
+  "traits": {
+    "matte": true
+  }
 }

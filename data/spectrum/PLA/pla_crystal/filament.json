@@ -1,6 +1,7 @@
 {
-    "id": "pla_crystal",
-    "name": "PLA Crystal",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "94f172ff-9255-4d23-8b37-7fdc4b804ec6",
+  "id": "pla_crystal",
+  "name": "PLA Crystal",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

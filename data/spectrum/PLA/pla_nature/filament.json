@@ -1,6 +1,7 @@
 {
-    "id": "pla_nature",
-    "name": "PLA Nature",
-    "diameter_tolerance": 0.02,
-    "density": 1.25
+  "uuid": "6e6b36fd-c4b3-492e-9156-e2d24671a1b5",
+  "id": "pla_nature",
+  "name": "PLA Nature",
+  "diameter_tolerance": 0.02,
+  "density": 1.25
 }

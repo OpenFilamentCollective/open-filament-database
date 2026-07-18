@@ -1,11 +1,12 @@
 {
-    "id": "woodfill",
-    "name": "PLA Woodfill",
-    "diameter_tolerance": 0.04,
-    "density": 1.25,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Prusament Woodfill"
-        }
+  "uuid": "19bec564-a3b4-44f0-81fc-24a28a8dd0c2",
+  "id": "woodfill",
+  "name": "PLA Woodfill",
+  "diameter_tolerance": 0.04,
+  "density": 1.25,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Prusament Woodfill"
     }
+  }
 }

@@ -1,13 +1,14 @@
 {
-    "id": "basic",
-    "name": "PETG Basic",
-    "diameter_tolerance": 0.02,
-    "density": 1.25,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "Pc44e319",
-            "profile_name": "OVERTURE PETG Basic"
-        }
+  "uuid": "c1c32cd1-d7e2-47cb-939e-326604bd9b05",
+  "id": "basic",
+  "name": "PETG Basic",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFG99",
+      "id": "Pc44e319",
+      "profile_name": "OVERTURE PETG Basic"
     }
+  }
 }

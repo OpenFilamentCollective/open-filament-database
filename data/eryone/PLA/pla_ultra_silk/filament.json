@@ -1,6 +1,7 @@
 {
-    "id": "pla_ultra_silk",
-    "name": "PLA Ultra Silk",
-    "diameter_tolerance": 0.03,
-    "density": 1.32
+  "uuid": "9496f45d-9e28-4ffd-9d24-d4c1bc5f0224",
+  "id": "pla_ultra_silk",
+  "name": "PLA Ultra Silk",
+  "diameter_tolerance": 0.03,
+  "density": 1.32
 }

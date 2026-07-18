@@ -1,8 +1,9 @@
 {
-    "id": "yousu",
-    "name": "Yousu",
-    "storefront_url": "https://www.ysfilament.com/",
-    "logo": "logo.png",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "da5bcc19-354c-458b-ab3f-357f9f946b5e",
+  "id": "yousu",
+  "name": "Yousu",
+  "storefront_url": "https://www.ysfilament.com/",
+  "logo": "logo.png",
+  "ships_from": [],
+  "ships_to": []
 }

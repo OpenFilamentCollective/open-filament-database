@@ -1,17 +1,18 @@
 {
-    "id": "adura_x",
-    "name": "PA12 Adura X",
-    "diameter_tolerance": 0.02,
-    "density": 1.2,
-    "max_dry_temperature": 70,
-    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/AduraX_TDS_mZ8KLl.pdf",
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_AduraX_OAymEK.pdf",
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "addnorth Adura X"
-        },
-        "superslicer": {
-            "profile_name": "addnorth Adura X"
-        }
+  "uuid": "c2428024-9d9d-4e48-aefa-d5a08d83c3da",
+  "id": "adura_x",
+  "name": "PA12 Adura X",
+  "diameter_tolerance": 0.02,
+  "density": 1.2,
+  "max_dry_temperature": 70,
+  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/AduraX_TDS_mZ8KLl.pdf",
+  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_AduraX_OAymEK.pdf",
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "addnorth Adura X"
+    },
+    "superslicer": {
+      "profile_name": "addnorth Adura X"
     }
+  }
 }

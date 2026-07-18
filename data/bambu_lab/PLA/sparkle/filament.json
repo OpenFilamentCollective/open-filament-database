@@ -1,35 +1,36 @@
 {
-    "id": "sparkle",
-    "name": "PLA Sparkle",
-    "diameter_tolerance": 0.03,
-    "density": 1.26,
-    "data_sheet_url": "https://cdn.shopifycdn.net/s/files/1/0584/7236/6216/files/Bambu_PLA_Sparkle-Technical_Data_Sheet.pdf",
-    "safety_sheet_url": "https://cdn.shopifycdn.net/s/files/1/0617/5798/0835/files/Bambu_PLA_Sparkle_MSDS.pdf?v=1696924498",
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFL99",
-            "id": "GFA08",
-            "profile_name": "Bambu PLA Sparkle"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA08",
-            "profile_name": "Bambu PLA Sparkle"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA08",
-            "profile_name": "Bambu PLA Sparkle"
-        },
-        "crealityprint": {
-            "generic_id": "GFL99",
-            "id": "GFA08",
-            "profile_name": "Bambu PLA Sparkle"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA08",
-            "profile_name": "Bambu PLA Sparkle"
-        }
+  "uuid": "9526a623-ee2a-4c99-8088-7b8d282bf4d4",
+  "id": "sparkle",
+  "name": "PLA Sparkle",
+  "diameter_tolerance": 0.03,
+  "density": 1.26,
+  "data_sheet_url": "https://cdn.shopifycdn.net/s/files/1/0584/7236/6216/files/Bambu_PLA_Sparkle-Technical_Data_Sheet.pdf",
+  "safety_sheet_url": "https://cdn.shopifycdn.net/s/files/1/0617/5798/0835/files/Bambu_PLA_Sparkle_MSDS.pdf?v=1696924498",
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFL99",
+      "id": "GFA08",
+      "profile_name": "Bambu PLA Sparkle"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA08",
+      "profile_name": "Bambu PLA Sparkle"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA08",
+      "profile_name": "Bambu PLA Sparkle"
+    },
+    "crealityprint": {
+      "generic_id": "GFL99",
+      "id": "GFA08",
+      "profile_name": "Bambu PLA Sparkle"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA08",
+      "profile_name": "Bambu PLA Sparkle"
     }
+  }
 }

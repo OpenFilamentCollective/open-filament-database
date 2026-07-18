@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337032588",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-aero?variant=41238296625288"
-            }
-        ]
-    }
+  {
+    "uuid": "54e751e9-677e-4544-844b-ab83aff85ab9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337032588",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-aero?variant=41238296625288"
+      }
+    ]
+  }
 ]

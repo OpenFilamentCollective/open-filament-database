@@ -1,10 +1,11 @@
 {
-    "id": "grey",
-    "name": "Grey",
-    "color_hex": [
-        "#808080"
-    ],
-    "traits": {
-        "matte": true
-    }
+  "uuid": "6d65faae-8438-4f9d-914c-9456ce123096",
+  "id": "grey",
+  "name": "Grey",
+  "color_hex": [
+    "#808080"
+  ],
+  "traits": {
+    "matte": true
+  }
 }

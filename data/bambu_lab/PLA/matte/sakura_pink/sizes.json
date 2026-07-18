@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "ab70930d-4f1d-4215-b94d-a459d49916e1",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
@@ -13,6 +14,7 @@
     ]
   },
   {
+    "uuid": "ff9ce546-f700-4400-bcf4-66b62a0d475b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,

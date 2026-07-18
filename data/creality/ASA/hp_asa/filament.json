@@ -1,6 +1,7 @@
 {
-    "id": "hp_asa",
-    "name": "HP ASA",
-    "diameter_tolerance": 0.03,
-    "density": 1.05
+  "uuid": "33c34d0a-6ec7-4f1d-8ee0-0dbd33667f7d",
+  "id": "hp_asa",
+  "name": "HP ASA",
+  "diameter_tolerance": 0.03,
+  "density": 1.05
 }

@@ -1,10 +1,11 @@
 {
-    "id": "bright_yellow",
-    "name": "Bright Yellow",
-    "color_hex": [
-        "#c4d62d"
-    ],
-    "traits": {
-        "matte": true
-    }
+  "uuid": "ed720caa-c701-44a6-b58e-6e9352c98811",
+  "id": "bright_yellow",
+  "name": "Bright Yellow",
+  "color_hex": [
+    "#c4d62d"
+  ],
+  "traits": {
+    "matte": true
+  }
 }

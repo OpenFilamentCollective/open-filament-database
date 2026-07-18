@@ -1,6 +1,7 @@
 {
-    "id": "pla_rock",
-    "name": "PLA Rock",
-    "diameter_tolerance": 0.03,
-    "density": 1.24
+  "uuid": "e230113a-1d9e-4a43-9e06-80807b9b4f08",
+  "id": "pla_rock",
+  "name": "PLA Rock",
+  "diameter_tolerance": 0.03,
+  "density": 1.24
 }

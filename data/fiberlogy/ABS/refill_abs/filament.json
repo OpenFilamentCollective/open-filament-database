@@ -1,6 +1,7 @@
 {
-    "id": "refill_abs",
-    "name": "Refill ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "520d142c-838d-4041-a079-42cce596bd6d",
+  "id": "refill_abs",
+  "name": "Refill ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.04
 }

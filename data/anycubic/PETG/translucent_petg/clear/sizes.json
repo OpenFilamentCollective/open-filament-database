@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 127,
-        "spool_core_diameter": 58,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/petg-translucent?variant=45239565156541"
-            }
-        ]
-    }
+  {
+    "uuid": "7cf1226e-90ed-498d-921f-45b7d701efaf",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 127,
+    "spool_core_diameter": 58,
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/petg-translucent?variant=45239565156541"
+      }
+    ]
+  }
 ]

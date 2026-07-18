@@ -1,21 +1,22 @@
 {
-    "id": "x_pla",
-    "name": "X-PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "max_dry_temperature": 50,
-    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/XPLA_TDS_kdctbP.pdf",
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_XPLA_5chi81.pdf",
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFL99",
-            "id": "GF_ANXP",
-            "profile_name": "addnorth PLA X-PLA"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GF_ANXP",
-            "profile_name": "addnorth PLA X-PLA"
-        }
+  "uuid": "abb22ac4-67a1-4aae-a242-984c812c1f42",
+  "id": "x_pla",
+  "name": "X-PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 50,
+  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/XPLA_TDS_kdctbP.pdf",
+  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_XPLA_5chi81.pdf",
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFL99",
+      "id": "GF_ANXP",
+      "profile_name": "addnorth PLA X-PLA"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GF_ANXP",
+      "profile_name": "addnorth PLA X-PLA"
     }
+  }
 }

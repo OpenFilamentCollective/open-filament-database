@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/X-PLA%20High%20Speed/X-PLA%20High%20Speed%20-%201.75mm%20-%20750g%20-%20Black"
-            }
-        ]
-    }
+  {
+    "uuid": "b59f944e-c25a-47c9-989c-ae8dd199d9df",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/X-PLA%20High%20Speed/X-PLA%20High%20Speed%20-%201.75mm%20-%20750g%20-%20Black"
+      }
+    ]
+  }
 ]

@@ -1,6 +1,7 @@
 {
-    "id": "pla_silk_rainbow",
-    "name": "PLA Silk Rainbow",
-    "diameter_tolerance": 0.03,
-    "density": 1.23
+  "uuid": "b7e2f7c4-8a6d-4226-8e82-af8465d0e988",
+  "id": "pla_silk_rainbow",
+  "name": "PLA Silk Rainbow",
+  "diameter_tolerance": 0.03,
+  "density": 1.23
 }

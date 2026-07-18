@@ -1,6 +1,7 @@
 {
-    "id": "refill_pctg",
-    "name": "Refill PCTG",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "652040b2-0da7-4764-b9ed-19b0ad1f044e",
+  "id": "refill_pctg",
+  "name": "Refill PCTG",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

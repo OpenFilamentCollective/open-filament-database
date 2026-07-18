@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/Textura%E2%84%A2%20Flare/Textura%E2%84%A2%20Flare%20-%201.75mm%20-%20750g%20-%20Velvet%20Red"
-            }
-        ]
-    }
+  {
+    "uuid": "35a03b95-fae2-4f64-9926-f4101c841896",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/Textura%E2%84%A2%20Flare/Textura%E2%84%A2%20Flare%20-%201.75mm%20-%20750g%20-%20Velvet%20Red"
+      }
+    ]
+  }
 ]

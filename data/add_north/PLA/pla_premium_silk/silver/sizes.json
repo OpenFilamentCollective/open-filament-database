@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PLA%20Premium%20Silk/PLA%20Premium%20Silk%20-%201.75mm%20-%20750g%20-%20Silver"
-            }
-        ]
-    }
+  {
+    "uuid": "8d4a1806-2f8b-44c6-878a-fd9954d7128a",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PLA%20Premium%20Silk/PLA%20Premium%20Silk%20-%201.75mm%20-%20750g%20-%20Silver"
+      }
+    ]
+  }
 ]

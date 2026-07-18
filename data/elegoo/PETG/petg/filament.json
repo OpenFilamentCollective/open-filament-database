@@ -1,22 +1,23 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.29,
-    "min_print_temperature": 220,
-    "max_print_temperature": 250,
-    "min_bed_temperature": 70,
-    "max_bed_temperature": 90,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "EPETGB00",
-            "profile_name": "Elegoo PETG"
-        },
-        "elegooslicer": {
-            "generic_id": "GFG99",
-            "id": "EPETGB00",
-            "profile_name": "Elegoo PETG"
-        }
+  "uuid": "d10ec042-829b-4068-8865-6792a5e9b07d",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.29,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFG99",
+      "id": "EPETGB00",
+      "profile_name": "Elegoo PETG"
+    },
+    "elegooslicer": {
+      "generic_id": "GFG99",
+      "id": "EPETGB00",
+      "profile_name": "Elegoo PETG"
     }
+  }
 }

@@ -1,15 +1,16 @@
 {
-    "id": "matte_pla",
-    "name": "Matte PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "min_print_temperature": 190,
-    "max_print_temperature": 220,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 70,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Geeetech Matte PLA"
-        }
+  "uuid": "415825d4-ebbb-4d0c-8799-5dc00b799bd6",
+  "id": "matte_pla",
+  "name": "Matte PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Geeetech Matte PLA"
     }
+  }
 }

@@ -1,6 +1,7 @@
 {
-    "id": "flex_95a_tpu",
-    "name": "Flex 95A TPU",
-    "diameter_tolerance": 0.05,
-    "density": 1.21
+  "uuid": "8dbd2a82-679b-41e5-883e-9dcf7c39fcee",
+  "id": "flex_95a_tpu",
+  "name": "Flex 95A TPU",
+  "diameter_tolerance": 0.05,
+  "density": 1.21
 }

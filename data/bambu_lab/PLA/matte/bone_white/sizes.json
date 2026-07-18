@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000.0,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/products/pla-matte?id=43292383936648"
-            }
-        ]
-    }
+  {
+    "uuid": "71fc20ba-501a-4d1b-ac1b-72f985f44b44",
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/products/pla-matte?id=43292383936648"
+      }
+    ]
+  }
 ]

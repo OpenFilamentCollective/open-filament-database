@@ -1,14 +1,15 @@
 {
-    "id": "polysmooth",
-    "name": "PLA PolySmooth",
-    "diameter_tolerance": 0.02,
-    "density": 1.1,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "PolyMaker PolySmooth"
-        },
-        "superslicer": {
-            "profile_name": "PolyMaker PolySmooth"
-        }
+  "uuid": "d17a5d26-bfb4-484a-8af9-0d7736f3d094",
+  "id": "polysmooth",
+  "name": "PLA PolySmooth",
+  "diameter_tolerance": 0.02,
+  "density": 1.1,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "PolyMaker PolySmooth"
+    },
+    "superslicer": {
+      "profile_name": "PolyMaker PolySmooth"
     }
+  }
 }

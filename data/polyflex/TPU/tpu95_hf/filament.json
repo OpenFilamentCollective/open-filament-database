@@ -1,6 +1,7 @@
 {
-    "id": "tpu95_hf",
-    "name": "TPU95-HF",
-    "diameter_tolerance": 0.02,
-    "density": 1.16
+  "uuid": "b293b01e-35ae-4333-94fe-8622fbac8163",
+  "id": "tpu95_hf",
+  "name": "TPU95-HF",
+  "diameter_tolerance": 0.02,
+  "density": 1.16
 }

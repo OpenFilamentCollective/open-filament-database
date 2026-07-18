@@ -1,6 +1,7 @@
 {
-    "id": "pla_basic",
-    "name": "PLA Basic",
-    "diameter_tolerance": 0.03,
-    "density": 1.24
+  "uuid": "ef4da29d-71cd-468c-820e-4be3997ca54d",
+  "id": "pla_basic",
+  "name": "PLA Basic",
+  "diameter_tolerance": 0.03,
+  "density": 1.24
 }

@@ -1,6 +1,7 @@
 {
-    "id": "soleyin_ultra_pla",
-    "name": "Soleyin Ultra PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.25
+  "uuid": "4e09ec75-93b2-4850-858a-17af8ece80c8",
+  "id": "soleyin_ultra_pla",
+  "name": "Soleyin Ultra PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.25
 }

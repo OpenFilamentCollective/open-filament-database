@@ -1,8 +1,9 @@
 {
-    "id": "white",
-    "name": "White",
-    "color_hex": "#FFFFFF",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "db1882c8-7410-4abd-b0d2-92b884b29291",
+  "id": "white",
+  "name": "White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "recyclable": true
+  }
 }

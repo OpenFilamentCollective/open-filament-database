@@ -1,6 +1,7 @@
 {
-    "id": "pla+",
-    "name": "PLA+",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "9f6efbc7-7dbc-4dfe-84c3-9179750d79fe",
+  "id": "pla+",
+  "name": "PLA+",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

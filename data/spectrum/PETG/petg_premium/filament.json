@@ -1,6 +1,7 @@
 {
-    "id": "petg_premium",
-    "name": "PETG Premium",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "9b5ada84-6f32-4c7f-9645-ee54f68c878f",
+  "id": "petg_premium",
+  "name": "PETG Premium",
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

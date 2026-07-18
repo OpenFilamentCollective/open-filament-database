@@ -1,8 +1,9 @@
 {
-    "id": "aurora",
-    "name": "Aurora",
-    "color_hex": "#004149",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "6ced13dc-b27e-44d9-8f65-cd44167a4990",
+  "id": "aurora",
+  "name": "Aurora",
+  "color_hex": "#004149",
+  "traits": {
+    "recyclable": true
+  }
 }

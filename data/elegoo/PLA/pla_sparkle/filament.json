@@ -1,18 +1,19 @@
 {
-    "id": "pla_sparkle",
-    "name": "PLA Sparkle",
-    "diameter_tolerance": 0.02,
-    "density": 1.23,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "EPLAB00",
-            "profile_name": "Elegoo PLA Sparkle"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "EPLAB00",
-            "profile_name": "Elegoo PLA Sparkle"
-        }
+  "uuid": "7fac575d-c02f-4781-8139-a06456ffb937",
+  "id": "pla_sparkle",
+  "name": "PLA Sparkle",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "EPLAB00",
+      "profile_name": "Elegoo PLA Sparkle"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "EPLAB00",
+      "profile_name": "Elegoo PLA Sparkle"
     }
+  }
 }
