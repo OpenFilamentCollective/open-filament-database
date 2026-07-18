@@ -448,5 +448,5 @@
 <Modal show={entityState.showCreateModal} title="Create New Variant"
 	onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="5xl" height="3/4">
 	{#if createError}<MessageBanner type="error" message={createError} />{/if}
-	<VariantForm variant={prefillVariantData ?? undefined} draftKey={variantCreateDraftKey} onSubmit={handleCreateVariant} saving={entityState.creating} />
+	<VariantForm variant={prefillVariantData ?? undefined} draftKey={variantCreateDraftKey} filamentName={`${filament?.name ?? ''} ${filamentId}`} {materialType} onSubmit={handleCreateVariant} saving={entityState.creating} />
 </Modal>

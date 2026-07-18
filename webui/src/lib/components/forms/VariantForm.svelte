@@ -8,6 +8,7 @@
 	import { TRAIT_CATEGORIES, findTraitByKey } from '$lib/config/traitConfig';
 	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
 	import { toggleSetItem } from '$lib/utils/setHelpers';
+	import { detectSuggestedTraits } from '$lib/utils/fiberTraitSuggestions';
 	import { Button } from '$lib/components/ui';
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
@@ -23,9 +24,13 @@
 		saving?: boolean;
 		/** Optional key for in-memory draft preservation across modal close/reopen */
 		draftKey?: string;
+		/** Parent filament name/slug — used to suggest fiber/high-flow traits from the name. */
+		filamentName?: string;
+		/** Parent material type (e.g. PLA) — extra context for trait suggestions. */
+		materialType?: string;
 	}
 
-	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey }: Props = $props();
+	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType }: Props = $props();
 
 	type ColorStandards = {
 		ral: string;
@@ -237,6 +242,28 @@
 	// Add trait from dropdown
 	function addTrait(key: string) {
 		selectedTraits.add(key);
+		selectedTraits = new Set(selectedTraits);
+	}
+
+	// ==================== TRAIT SUGGESTIONS ====================
+	// Suggest carbon-fiber / glass-fiber / high-flow traits detected from the
+	// material, filament and colour names (mirrors `ofd script apply_fiber_traits`).
+	// Like the other form nudges, the banner disappears once the suggested traits
+	// are added (or the name no longer matches) — there is no dismiss.
+
+	// Trait keys suggested by the current name context.
+	let suggestedTraitKeys = $derived(detectSuggestedTraits(materialType, filamentName, formData?.name));
+
+	// Suggestions still worth showing: not already selected.
+	let pendingSuggestions = $derived(suggestedTraitKeys.filter((k) => !selectedTraits.has(k)));
+
+	function addSuggestion(key: string) {
+		selectedTraits.add(key);
+		selectedTraits = new Set(selectedTraits);
+	}
+
+	function addAllSuggestions() {
+		for (const key of pendingSuggestions) selectedTraits.add(key);
 		selectedTraits = new Set(selectedTraits);
 	}
 
@@ -573,6 +600,38 @@
 					</Button>
 				</span>
 			</div>
+
+			<!-- Suggested traits detected from the name (fiber / high-flow) -->
+			{#if pendingSuggestions.length > 0}
+				<div class="mb-3 flex flex-col gap-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
+					<span class="text-xs text-foreground">Based on the name, this variant likely needs:</span>
+					<div class="flex flex-wrap gap-1.5">
+						{#each pendingSuggestions as key (key)}
+							{@const info = findTraitByKey(key)}
+							<Button
+								variant="outline"
+								size="sm"
+								onclick={() => addSuggestion(key)}
+								class="h-7 rounded-full border-primary/40 px-3 text-xs"
+								title={info?.description}
+							>
+								<PlusIcon class="h-3 w-3" />
+								{info?.label || key}
+							</Button>
+						{/each}
+						{#if pendingSuggestions.length > 1}
+							<Button
+								variant="secondary"
+								size="sm"
+								onclick={addAllSuggestions}
+								class="h-7 rounded-full px-3 text-xs"
+							>
+								Add all
+							</Button>
+						{/if}
+					</div>
+				</div>
+			{/if}
 
 			<!-- Selected traits as tiles -->
 			<div class="flex flex-wrap gap-1.5">
