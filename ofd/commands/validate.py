@@ -88,6 +88,11 @@ Examples:
         "--store-ids", action="store_true", help="Validate store IDs in purchase links"
     )
     scope_group.add_argument("--gtin", action="store_true", help="Validate GTIN/EAN fields")
+    scope_group.add_argument(
+        "--fiber-consistency",
+        action="store_true",
+        help="Validate no filament mixes carbon fiber and glass fiber across its variants",
+    )
 
     # Output options
     output_group = parser.add_argument_group("output options")
@@ -166,6 +171,7 @@ def run_validate(args: argparse.Namespace) -> int:
             args.folder_names,
             args.store_ids,
             args.gtin,
+            args.fiber_consistency,
         ]
     )
 
@@ -174,6 +180,11 @@ def run_validate(args: argparse.Namespace) -> int:
         if not args.json and not args.progress:
             print(_bold("Running all validations..."))
         result = orchestrator.validate_all(changes_json=changes_json)
+        # Native cross-variant fiber check. Skipped under a changes overlay: it reads
+        # on-disk data and can't see pending (unwritten) edits, so running it there
+        # could report stale conflicts. The webui enforces the rule pre-export.
+        if changes_json is None:
+            result.merge(orchestrator.validate_fiber_consistency())
     else:
         # Run specific validations
         if args.json_files:
@@ -186,6 +197,8 @@ def run_validate(args: argparse.Namespace) -> int:
             result.merge(orchestrator.validate_store_ids())
         if args.gtin:
             result.merge(orchestrator.validate_gtin())
+        if args.fiber_consistency:
+            result.merge(orchestrator.validate_fiber_consistency())
 
     # Output results
     if args.json:

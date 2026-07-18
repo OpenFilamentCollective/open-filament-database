@@ -21,6 +21,7 @@
 	import { getClipboard } from '$lib/services/clipboardService';
 	import { duplicateFilamentChildren, loadFilamentChildren, pasteFilamentChildren } from '$lib/services/duplicateService';
 	import { formDrafts } from '$lib/stores/formDrafts';
+	import { collectSiblingFibers, checkFiberConflict, fibersFromTraits } from '$lib/utils/fiberConflict';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -88,6 +89,10 @@
 		for (const vids of urlToVariants.values()) if (vids.size >= 3) count++;
 		return count;
 	});
+
+	// Fibers (carbon / glass) established by this filament's existing variants. A new
+	// variant can't take the opposite fiber — a filament never mixes CF and GF.
+	let filamentFibers = $derived(collectSiblingFibers(variants));
 
 	const messageHandler = createMessageHandler();
 
@@ -288,6 +293,13 @@
 			if (variants.find((v) => (v.slug ?? v.id).toLowerCase() === variantSlug) ||
 				variants.find((v) => v.name.toLowerCase() === data.name.trim().toLowerCase())) {
 				createError = `Variant "${data.name}" already exists in this filament`;
+				entityState.creating = false;
+				return;
+			}
+			// A filament can't mix carbon fiber and glass fiber across its variants.
+			const fiberConflict = checkFiberConflict(fibersFromTraits(data.traits), collectSiblingFibers(variants));
+			if (fiberConflict) {
+				createError = fiberConflict.message;
 				entityState.creating = false;
 				return;
 			}
@@ -523,5 +535,5 @@
 <Modal show={entityState.showCreateModal} title="Create New Variant"
 	onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="5xl" height="3/4">
 	{#if createError}<MessageBanner type="error" message={createError} />{/if}
-	<VariantForm variant={prefillVariantData ?? undefined} draftKey={variantCreateDraftKey} filamentName={`${filament?.name ?? ''} ${filamentId}`} {materialType} onSubmit={handleCreateVariant} saving={entityState.creating} />
+	<VariantForm variant={prefillVariantData ?? undefined} draftKey={variantCreateDraftKey} filamentName={`${filament?.name ?? ''} ${filamentId}`} {materialType} siblingFibers={[...filamentFibers]} onSubmit={handleCreateVariant} saving={entityState.creating} />
 </Modal>

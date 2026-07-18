@@ -9,6 +9,13 @@
 	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
 	import { toggleSetItem } from '$lib/utils/setHelpers';
 	import { detectSuggestedTraits } from '$lib/utils/fiberTraitSuggestions';
+	import {
+		fibersFromTraitKeys,
+		checkFiberConflict,
+		blockedFiberTraitKeys,
+		FIBER_LABEL,
+		type FiberKind
+	} from '$lib/utils/fiberConflict';
 	import { Button } from '$lib/components/ui';
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
@@ -28,9 +35,15 @@
 		filamentName?: string;
 		/** Parent material type (e.g. PLA) — extra context for trait suggestions. */
 		materialType?: string;
+		/**
+		 * Fiber kinds ('carbon' / 'glass') already established by the OTHER variants of
+		 * this filament. Used to guard against a filament mixing carbon fiber and glass
+		 * fiber across its variants — this variant can't take the opposite fiber.
+		 */
+		siblingFibers?: FiberKind[];
 	}
 
-	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType }: Props = $props();
+	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType, siblingFibers = [] }: Props = $props();
 
 	type ColorStandards = {
 		ral: string;
@@ -239,11 +252,34 @@
 		selectedTraits = new Set(selectedTraits);
 	}
 
-	// Add trait from dropdown
+	// Add trait from dropdown. Fiber traits that would make this filament mix
+	// carbon fiber and glass fiber are refused (see the fiber-conflict guard below).
 	function addTrait(key: string) {
+		if (blockedFiberTraits.has(key)) return;
 		selectedTraits.add(key);
 		selectedTraits = new Set(selectedTraits);
 	}
+
+	// ==================== FIBER CONFLICT GUARD ====================
+	// A filament can't mix carbon fiber and glass fiber across its variants. If a
+	// sibling variant already establishes one fiber, this variant may not take the
+	// other; likewise a single variant may not carry both. This blocks the offending
+	// trait at add-time, hides it from suggestions/dropdown, and prevents submit.
+
+	let siblingFiberSet = $derived(new Set<FiberKind>(siblingFibers));
+	let selectedFiberSet = $derived(fibersFromTraitKeys(selectedTraits));
+	// Trait keys that must not be added because they'd create a CF/GF mix.
+	let blockedFiberTraits = $derived(blockedFiberTraitKeys(selectedFiberSet, siblingFiberSet));
+	// Non-null when the current selection already conflicts (e.g. both fibers picked).
+	let fiberConflict = $derived(checkFiberConflict(selectedFiberSet, siblingFiberSet));
+	// When one fiber is established and the other is locked out, explain why (no active conflict).
+	let blockedFiberNote = $derived.by(() => {
+		if (fiberConflict || blockedFiberTraits.size === 0) return null;
+		const present = new Set<FiberKind>([...selectedFiberSet, ...siblingFiberSet]);
+		const establishedKind: FiberKind = present.has('carbon') ? 'carbon' : 'glass';
+		const otherKind: FiberKind = establishedKind === 'carbon' ? 'glass' : 'carbon';
+		return `This filament is ${FIBER_LABEL[establishedKind]}, so ${FIBER_LABEL[otherKind]} is unavailable — its variants can't mix the two.`;
+	});
 
 	// ==================== TRAIT SUGGESTIONS ====================
 	// Suggest carbon-fiber / glass-fiber / high-flow traits detected from the
@@ -254,10 +290,14 @@
 	// Trait keys suggested by the current name context.
 	let suggestedTraitKeys = $derived(detectSuggestedTraits(materialType, filamentName, formData?.name));
 
-	// Suggestions still worth showing: not already selected.
-	let pendingSuggestions = $derived(suggestedTraitKeys.filter((k) => !selectedTraits.has(k)));
+	// Suggestions still worth showing: not already selected, and not a fiber that
+	// would conflict with the rest of the filament.
+	let pendingSuggestions = $derived(
+		suggestedTraitKeys.filter((k) => !selectedTraits.has(k) && !blockedFiberTraits.has(k))
+	);
 
 	function addSuggestion(key: string) {
+		if (blockedFiberTraits.has(key)) return;
 		selectedTraits.add(key);
 		selectedTraits = new Set(selectedTraits);
 	}
@@ -433,6 +473,12 @@
 			return;
 		}
 
+		// A filament can't mix carbon fiber and glass fiber across its variants.
+		if (fiberConflict) {
+			validationError = fiberConflict.message;
+			return;
+		}
+
 		if (sizes.length === 0) {
 			validationError = 'At least one size must be added.';
 			return;
@@ -526,7 +572,7 @@
 
 	// Check if form can be submitted
 	let canSubmit = $derived(
-		!!formData.name && /^#[a-fA-F0-9]{6}$/.test(formData.color_hex) && sizes.length > 0
+		!!formData.name && /^#[a-fA-F0-9]{6}$/.test(formData.color_hex) && sizes.length > 0 && !fiberConflict
 	);
 
 	// Persist form state to the in-memory draft store on every change.
@@ -608,6 +654,17 @@
 				</span>
 			</div>
 
+			<!-- Fiber conflict guard: a filament can't mix carbon fiber and glass fiber -->
+			{#if fiberConflict}
+				<div class="mb-3 rounded-md bg-destructive/10 border border-destructive/30 p-2.5 text-xs text-destructive">
+					{fiberConflict.message}
+				</div>
+			{:else if blockedFiberNote}
+				<div class="mb-3 rounded-md bg-amber-500/10 border border-amber-500/30 p-2.5 text-xs text-amber-700 dark:text-amber-400">
+					{blockedFiberNote}
+				</div>
+			{/if}
+
 			<!-- Suggested traits detected from the name (fiber / high-flow) -->
 			{#if pendingSuggestions.length > 0}
 				<div class="mb-3 flex flex-col gap-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
@@ -681,7 +738,7 @@
 
 					<div class="overflow-y-auto flex-1 p-1">
 						{#each Object.entries(filteredCategories) as [catKey, category]}
-							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key))}
+							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key) && !blockedFiberTraits.has(t.key))}
 							{#if unselectedTraits.length > 0}
 								<div class="mb-1">
 									<Button

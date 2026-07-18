@@ -75,6 +75,18 @@ class ValidationOrchestrator:
         """Validate GTIN/EAN rules."""
         return _validate_gtin_ean(self.data_dir)
 
+    def validate_fiber_consistency(self) -> ValidationResult:
+        """Ensure no filament mixes carbon fiber and glass fiber across its variants.
+
+        This is a native (non-Rust) check; see fiber_consistency.py for the rule.
+        """
+        from ofd.validation.fiber_consistency import check_fiber_consistency
+
+        result = ValidationResult()
+        for error in check_fiber_consistency(self.data_dir):
+            result.add_error(error)
+        return result
+
     def validate_all(self, changes_json: str | None = None) -> ValidationResult:
         """Run all validations, optionally with pending changes applied."""
         if changes_json and _validate_all_with_changes is not None:
