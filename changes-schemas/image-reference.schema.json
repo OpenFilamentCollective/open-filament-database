@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openfilamentdatabase.org/schemas/image-reference.schema.json",
+  "title": "ImageReference",
+  "description": "Metadata reference for an image stored separately in localStorage",
+  "type": "object",
+  "required": ["id", "entityPath", "property", "filename", "mimeType", "storageKey"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this image",
+      "minLength": 1
+    },
+    "entityPath": {
+      "type": "string",
+      "description": "Path to the entity that owns this image",
+      "pattern": "^[a-z0-9_/-]+$"
+    },
+    "property": {
+      "type": "string",
+      "description": "Property name where the image is stored (e.g., 'logo', 'preview')",
+      "minLength": 1
+    },
+    "filename": {
+      "type": "string",
+      "description": "Original filename of the uploaded image",
+      "minLength": 1
+    },
+    "mimeType": {
+      "type": "string",
+      "description": "MIME type of the image",
+      "pattern": "^image/(png|jpeg|jpg|gif|webp|svg\\+xml)$",
+      "examples": ["image/png", "image/jpeg", "image/webp"]
+    },
+    "storageKey": {
+      "type": "string",
+      "description": "localStorage key where the base64-encoded image data is stored",
+      "pattern": "^ofd_image_[a-zA-Z0-9_-]+$"
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "id": "img_abc123",
+      "entityPath": "brands/prusament",
+      "property": "logo",
+      "filename": "prusament-logo.png",
+      "mimeType": "image/png",
+      "storageKey": "ofd_image_img_abc123"
+    }
+  ]
+}

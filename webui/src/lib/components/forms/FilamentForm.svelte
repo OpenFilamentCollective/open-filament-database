@@ -51,7 +51,7 @@
 		leftWidth: '2/3',
 		leftSpacing: 'sm',
 		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
-		hiddenFields: ['id', 'uuid', 'slicer_settings', 'slicer_ids'],
+		hiddenFields: ['id', 'uuid', 'moved_from', 'slicer_settings', 'slicer_ids'],
 		fieldOrder: [
 			'name',
 			'density',
@@ -202,6 +202,8 @@
 
 		// Preserve the canonical UUID on edit; left empty on create for CI to assign.
 		if (filament?.uuid) submitData.uuid = filament.uuid;
+		// Preserve former UUIDs so old references still resolve after a move/merge.
+		if (filament?.moved_from) submitData.moved_from = filament.moved_from;
 
 		onSubmit(submitData);
 	}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openfilamentdatabase.org/schemas/entity-identifier.schema.json",
+  "title": "EntityIdentifier",
+  "description": "Identifies a specific entity in the Open Filament Database",
+  "type": "object",
+  "required": ["type", "path", "id"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["store", "brand", "material", "filament", "variant"],
+      "description": "The type of entity"
+    },
+    "path": {
+      "type": "string",
+      "description": "Full hierarchical path to the entity (e.g., 'brands/prusament/materials/pla/filaments/pla_basic')",
+      "pattern": "^[a-z0-9_/-]+$"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the entity",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "type": "filament",
+      "path": "brands/prusament/materials/pla/filaments/pla_basic",
+      "id": "pla_basic"
+    },
+    {
+      "type": "brand",
+      "path": "brands/prusament",
+      "id": "prusament"
+    }
+  ]
+}

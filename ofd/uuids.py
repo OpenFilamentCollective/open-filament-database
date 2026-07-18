@@ -34,6 +34,9 @@ __all__ = [
     "assign_uuid",
     "save_container",
     "generate_canonical_uuid",
+    "resolve_uuid",
+    "build_redirect_map",
+    "record_moved_from",
 ]
 
 # Canonical UUIDv4 pattern. An empty string means "unassigned" and mirrors the
@@ -74,6 +77,20 @@ class Entity:
     def valid(self) -> bool:
         """True when the stored uuid is a well-formed canonical UUIDv4."""
         return bool(UUID_RE.match(self.raw_uuid))
+
+    @property
+    def moved_from(self) -> list[str]:
+        """Former canonical UUIDs this entity declares, normalized to lowercase.
+
+        These are the UUIDs the entity used to have (before a merge or move); an old
+        reference to any of them should resolve here. Any non-empty string entry is
+        returned as-is (lowercased/stripped) so callers like ``ofd uuid check`` can
+        flag malformed ones — validity is *not* filtered out here.
+        """
+        value = self.obj.get("moved_from")
+        if not isinstance(value, list):
+            return []
+        return [item.strip().lower() for item in value if isinstance(item, str) and item.strip()]
 
     def describe(self, root: Path | None = None) -> str:
         """Human-friendly location, e.g. ``data/brand/.../sizes.json[1]``."""
@@ -127,6 +144,110 @@ def assign_uuid(entity: Entity, value: str) -> None:
     ordered = [("uuid", value)] + [(k, v) for k, v in entity.obj.items() if k != "uuid"]
     entity.obj.clear()
     entity.obj.update(ordered)
+
+
+def _size_key(size: dict[str, Any]) -> tuple[Any, Any]:
+    """The (filament_weight, diameter) identity used to pair spools during a merge."""
+    return (size.get("filament_weight"), size.get("diameter"))
+
+
+def _absorb_moved_from(target: dict[str, Any], source: dict[str, Any]) -> list[str]:
+    """Union ``source``'s uuid (and its own ``moved_from``) into ``target['moved_from']``.
+
+    Used when a merge collapses two entities into one: the target keeps its uuid and
+    the source's is dropped, so we remember the source's former identity here. Chains
+    flatten because the source's existing ``moved_from`` is carried over too. The
+    target's own uuid is never recorded (no self-redirect). Returns the UUIDs added.
+    """
+
+    def _norm(value: Any) -> str:
+        return value.strip().lower() if isinstance(value, str) else ""
+
+    target_uuid = _norm(target.get("uuid"))
+
+    candidates: list[str] = []
+    source_uuid = _norm(source.get("uuid"))
+    if source_uuid:
+        candidates.append(source_uuid)
+    existing_source_moved = source.get("moved_from")
+    if isinstance(existing_source_moved, list):
+        candidates.extend(_norm(item) for item in existing_source_moved if _norm(item))
+
+    if not candidates:
+        return []
+
+    current = target.get("moved_from")
+    current = [x for x in current if isinstance(x, str)] if isinstance(current, list) else []
+    seen = {x.strip().lower() for x in current}
+
+    added: list[str] = []
+    for cand in candidates:
+        if cand == target_uuid or cand in seen:
+            continue
+        current.append(cand)
+        seen.add(cand)
+        added.append(cand)
+
+    if added:
+        target["moved_from"] = current
+    return added
+
+
+def record_moved_from(target_dir: Path, source_dir: Path) -> list[str]:
+    """Record a to-be-deleted source's canonical UUIDs onto the surviving target.
+
+    Call this right before ``source_dir`` is removed, after its data has been merged
+    into ``target_dir``. It pairs JSON files by their path relative to each root and,
+    for entities whose identity collapsed in the merge (the target kept its ``uuid``
+    and the source's was dropped), records the source ``uuid`` — and any ``moved_from``
+    it already carried — into the target entity's ``moved_from`` so old references
+    still resolve.
+
+    Dict files (brand/material/filament/variant/store.json) pair 1:1; ``sizes.json``
+    spools pair by ``(filament_weight, diameter)``. Unmatched source entities were
+    copied wholesale by the merge (keeping their uuid), so they need no redirect.
+    Returns the list of former UUIDs recorded (target files are persisted in place).
+    """
+    recorded: list[str] = []
+    if not source_dir.is_dir() or not target_dir.is_dir():
+        return recorded
+
+    for source_file in sorted(source_dir.rglob("*.json")):
+        rel = source_file.relative_to(source_dir)
+        target_file = target_dir / rel
+        if not target_file.exists():
+            continue
+
+        source_data = _load(source_file)
+        target_data = _load(target_file)
+        if source_data is None or target_data is None:
+            continue
+
+        changed = False
+        if isinstance(source_data, dict) and isinstance(target_data, dict):
+            added = _absorb_moved_from(target_data, source_data)
+            recorded.extend(added)
+            changed = bool(added)
+        elif isinstance(source_data, list) and isinstance(target_data, list):
+            target_by_key: dict[tuple[Any, Any], dict[str, Any]] = {}
+            for entry in target_data:
+                if isinstance(entry, dict):
+                    target_by_key.setdefault(_size_key(entry), entry)
+            for entry in source_data:
+                if not isinstance(entry, dict):
+                    continue
+                match = target_by_key.get(_size_key(entry))
+                if match is None:
+                    continue
+                added = _absorb_moved_from(match, entry)
+                if added:
+                    recorded.extend(added)
+                    changed = True
+
+        if changed:
+            save_container(target_file, target_data)
+
+    return recorded
 
 
 def iter_entities(
@@ -220,3 +341,53 @@ def _iter_stores(
         store_container = _load(store_file, parse_errors)
         if isinstance(store_container, dict):
             yield Entity("store", store_file, store_container, store_container)
+
+
+def resolve_uuid(
+    target: str, entities: Iterator[Entity] | list[Entity]
+) -> tuple[list[Entity], str | None]:
+    """Resolve a canonical UUID to the entity/entities it identifies.
+
+    A direct match on the live ``uuid`` wins. Otherwise this falls back to entities
+    that list ``target`` in their ``moved_from`` — a redirect from a former UUID (see
+    :func:`record_moved_from`). Returns ``(matches, matched_via)`` where
+    ``matched_via`` is ``"uuid"``, ``"moved_from"``, or ``None`` when nothing matches.
+
+    A *list* is returned (not a single Entity) so callers such as ``ofd uuid find``
+    keep surfacing accidental duplicates rather than hiding them.
+    """
+    target = target.strip().lower()
+    entities = list(entities)
+
+    direct = [e for e in entities if e.raw_uuid == target]
+    if direct:
+        return direct, "uuid"
+
+    aliased = [e for e in entities if target in e.moved_from]
+    if aliased:
+        return aliased, "moved_from"
+
+    return [], None
+
+
+def build_redirect_map(entities: Iterator[Entity] | list[Entity]) -> dict[str, str]:
+    """Build an ``{old_uuid: current_uuid}`` redirect map from ``moved_from`` fields.
+
+    Only entities with a valid live ``uuid`` contribute, and only their well-formed
+    ``moved_from`` entries are mapped. An old UUID that collides with a live ``uuid``
+    is skipped (that's a data error, flagged by ``ofd uuid check``) so a redirect can
+    never shadow a live entity. This is what downstream consumers (e.g. SimplyPrint)
+    read to turn a dangling old UUID into the current one.
+    """
+    entities = list(entities)
+    live = {e.raw_uuid for e in entities if e.valid}
+
+    redirects: dict[str, str] = {}
+    for e in entities:
+        if not e.valid:
+            continue
+        for old in e.moved_from:
+            if not UUID_RE.match(old) or old in live:
+                continue
+            redirects[old] = e.raw_uuid
+    return redirects

@@ -43,6 +43,11 @@ Every entity (brand, material, filament, variant, and each spool in `sizes.json`
 
 If you're working locally and want to preview or manage these IDs, use the [`ofd uuid`](validation.md#canonical-uuids) commands (e.g. `ofd uuid assign`, `ofd uuid find <uuid>`).
 
+### Moved / former UUIDs (`moved_from`)
+When data is merged or moved, one entity's `uuid` can be retired in favour of another's. To keep old references working, the surviving entity carries an optional **`moved_from`** array listing the former UUIDs that now resolve to it — so a consumer that stored the old UUID can still find the current entity (`ofd uuid find <old-uuid>` redirects to it, and the build emits an `api/v1/uuid-index.json` redirect map for offline consumers).
+
+**You never write `moved_from` by hand either.** It is managed by tooling: the `merge_data` / `deduplicate_data` scripts record a deleted entity's UUID onto its survivor automatically, and `ofd uuid check` enforces that every `moved_from` entry is a valid, unique UUID that doesn't collide with a live one.
+
 ## 🏷️ Adding a Brand
 
 1. Create a folder under `data/` named with the brand's `id` (lowercase snake_case, e.g. `bambu_lab`, `prusament`)
