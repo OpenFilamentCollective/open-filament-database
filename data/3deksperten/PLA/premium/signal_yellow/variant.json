@@ -1,0 +1,9 @@
+{
+  "id": "signal_yellow",
+  "name": "Signal Yellow",
+  "color_hex": "#F1DD61",
+  "discontinued": false,
+  "color_standards": {
+    "ral": "12-0642TPG"
+  }
+}
