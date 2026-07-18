@@ -60,6 +60,25 @@ task validate                     # Taskfile alias (uses uv under the hood)
 
 You can also produce machine-readable output with `--json`, which is useful for scripts and editors. Pass `--progress` to emit incremental progress events (used by the WebUI).
 
+## Canonical UUIDs
+Every entity carries a stable, slug-independent `uuid` (see [Canonical UUIDs — leave them empty](manual.md#-canonical-uuids--leave-them-empty)). You never author these — CI assigns one to any entry left without a UUID when your pull request is merged — but the `ofd uuid` command lets you manage them locally:
+
+```bash
+python -m ofd uuid new              # print a fresh canonical UUID
+python -m ofd uuid assign           # assign a UUID to every entity missing one (writes files)
+python -m ofd uuid assign --check   # report entities missing a UUID (exit non-zero); writes nothing
+python -m ofd uuid find <uuid>      # print the file (and spool index) for a canonical UUID
+python -m ofd uuid check            # verify every UUID is present, well-formed, and globally unique
+python -m ofd uuid check --allow-missing-uuids   # skip the presence requirement (for PR / pre-merge checks)
+python -m ofd uuid list             # print the uuid -> path index
+```
+
+By default, **a missing UUID is a validation error** — `ofd uuid check` requires every entity to have a valid, unique UUID. The one exception is pre-merge contexts, where UUIDs are *meant* to be empty (CI assigns them on merge); those pass `--allow-missing-uuids`, which still flags malformed or duplicated UUIDs but tolerates absent ones. In CI:
+- **On pull requests** (and on the raw merge commit, which also precedes assignment), the check runs with `--allow-missing-uuids`, so leaving the field empty is fine.
+- **After merge**, CI runs `ofd uuid assign` to backfill the empty ones, then `ofd uuid check` (strict) to guarantee every entity on `main` has a valid, unique UUID.
+
+The JSON schemas accept an empty string or a valid UUIDv4 for `uuid`; any other value fails schema validation.
+
 ## Sorting Your Data
 Before submitting your changes, you should sort all JSON files to ensure consistency across the database. This makes it easier to review changes and maintain the codebase.
 
