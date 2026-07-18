@@ -44,7 +44,7 @@
 	const defaultConfig: SchemaFormConfig = {
 		splitAfterKey: 'default_max_dry_temperature',
 		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
-		hiddenFields: ['uuid', 'default_slicer_settings'],
+		hiddenFields: ['uuid', 'moved_from', 'default_slicer_settings'],
 		fieldHelp: {
 			material_class:
 				'FFF (Fused Filament Fabrication) for standard filament printing, SLA (Stereolithography) for resin-based printing. Leave as FFF if you\'re unsure.'
@@ -131,6 +131,8 @@
 
 		// Preserve the canonical UUID on edit; left empty on create for CI to assign.
 		if (entity?.uuid) submitData.uuid = entity.uuid;
+		// Preserve former UUIDs so old references still resolve after a move/merge.
+		if (entity?.moved_from) submitData.moved_from = entity.moved_from;
 
 		onSubmit(submitData);
 	}

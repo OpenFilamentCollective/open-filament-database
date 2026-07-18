@@ -104,6 +104,16 @@
             "readOnly": true,
             "pattern": "^$|^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
         },
+        "moved_from": {
+            "type": "array",
+            "title": "Moved From",
+            "description": "Former canonical UUIDv4(s) this entity previously had (before a merge or move). Lets old UUID references resolve here. Managed by tooling/CI — leave empty when creating.",
+            "readOnly": true,
+            "items": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+        },
         "material": {
             "title": "Material Type",
             "description": "The type of material (e.g., PLA, PETG, ABS). This determines the base properties and recommended settings.",

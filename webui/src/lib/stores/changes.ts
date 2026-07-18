@@ -49,10 +49,13 @@ import type { EntityType } from '$lib/types/changes';
 const SUPPLEMENTARY_KEYS: Partial<Record<EntityType, string[]>> = {
 	// `uuid` is the canonical, slug-independent id. Always preserve it so editing an
 	// entity never drops (and thus never causes CI to regenerate) its UUID, even if
-	// the fetched schema predates the uuid field.
-	variant: ['sizes', 'uuid'],
-	material: ['id', 'materialType', 'uuid'],
-	filament: ['uuid'],
+	// the fetched schema predates the uuid field. `moved_from` is the redirect list
+	// (former UUIDs) written by the deprecate-and-redirect flow; keep it for the same
+	// reason (the cloud-fetched schema may predate the field), so editing/deprecating
+	// an entity never silently drops a recorded redirect.
+	variant: ['sizes', 'uuid', 'moved_from'],
+	material: ['id', 'materialType', 'uuid', 'moved_from'],
+	filament: ['uuid', 'moved_from'],
 	// Cloud-loaded stores/brands carry their repo-format identifiers in fields
 	// that the JSON schema doesn't define: `slug` (the on-disk folder id) and
 	// `logo_name` (the on-disk `logo.<ext>` filename); `logo_slug` is the CDN
@@ -60,8 +63,8 @@ const SUPPLEMENTARY_KEYS: Partial<Record<EntityType, string[]>> = {
 	// from `logo_name` when writing/validating. If filterToSchema strips these
 	// first, the cloud UUID `id` and CDN `logo_slug` leak into the saved change
 	// and fail schema validation (id pattern + logo pattern + folder-name check).
-	store: ['slug', 'logo_name', 'logo_slug', 'uuid'],
-	brand: ['slug', 'logo_name', 'logo_slug', 'uuid']
+	store: ['slug', 'logo_name', 'logo_slug', 'uuid', 'moved_from'],
+	brand: ['slug', 'logo_name', 'logo_slug', 'uuid', 'moved_from']
 };
 
 /** Cached sets of allowed property keys per entity type */

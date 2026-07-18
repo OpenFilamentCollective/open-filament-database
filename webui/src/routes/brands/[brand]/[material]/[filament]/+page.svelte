@@ -2,7 +2,8 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { Filament, Variant } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, Button, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
+	import type { SearchRecord } from '$lib/types/search';
+	import { Modal, MessageBanner, DeleteConfirmationModal, DeprecateModal, Button, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityDetails, EntityCard, SlicerSettingsDisplay, CertificationsDisplay, ChildListPanel } from '$lib/components/entity';
@@ -37,6 +38,8 @@
 	let variantSearch: string = $state('');
 	let duplicateFilamentError: string | null = $state(null);
 	let prefillVariantData: Variant | null = $state(null);
+	let showDeprecateModal: boolean = $state(false);
+	let deprecating: boolean = $state(false);
 
 	let displayVariants = $derived.by(() => withDeletedStubs({
 		changes: $changes,
@@ -210,6 +213,73 @@
 		}
 	}
 
+	// Deprecate this filament and redirect it to a chosen replacement: record this
+	// filament's canonical UUID (and any it already carried) onto the replacement's
+	// `moved_from`, then delete this filament. Both are staged as normal changes.
+	async function handleDeprecate(target: SearchRecord) {
+		if (!filament) return;
+		deprecating = true;
+		messageHandler.clear();
+		try {
+			const targetBrand = target.brandSlug ?? '';
+			const targetMaterial = target.materialType ?? '';
+			const targetId = target.path.split('/').pop() ?? '';
+			if (!targetBrand || !targetMaterial || !targetId) {
+				messageHandler.showError('Could not resolve the replacement filament.');
+				return;
+			}
+
+			const targetFilament = await db.getFilament(targetBrand, targetMaterial, targetId);
+			if (!targetFilament) {
+				messageHandler.showError('Replacement filament not found.');
+				return;
+			}
+
+			// Union the source's uuid (+ its own former uuids) into the target's moved_from,
+			// excluding the target's own uuid and de-duplicating (case-insensitive).
+			const formerUuids = [filament.uuid, ...(filament.moved_from ?? [])]
+				.map((u) => (typeof u === 'string' ? u.trim().toLowerCase() : ''))
+				.filter(Boolean);
+			const existing = (targetFilament.moved_from ?? []).map((u) => u.toLowerCase());
+			const targetUuid = (targetFilament.uuid ?? '').toLowerCase();
+			const merged = [...existing];
+			for (const u of formerUuids) {
+				if (u !== targetUuid && !merged.includes(u)) merged.push(u);
+			}
+
+			// Stage the redirect on the replacement — only if it actually adds something.
+			if (merged.length !== existing.length) {
+				const updatedTarget = { ...targetFilament, moved_from: merged } as Filament;
+				const ok = await db.saveFilament(
+					targetBrand, targetMaterial, targetId, updatedTarget, targetFilament
+				);
+				if (!ok) {
+					messageHandler.showError('Failed to record the redirect on the replacement filament.');
+					return;
+				}
+			}
+
+			// Stage deletion of this (now-deprecated) filament.
+			const result = await deleteEntity(
+				`brands/${brandId}/materials/${materialType}/filaments/${filamentId}`,
+				'Filament',
+				() => db.deleteFilament(brandId, materialType, filamentId, filament!)
+			);
+			if (!result.success) {
+				messageHandler.showError(result.message);
+				return;
+			}
+
+			showDeprecateModal = false;
+			messageHandler.showSuccess(`Deprecated "${filament.name}" → "${target.name}". Export to save.`);
+			setTimeout(() => goto(target.href), 1500);
+		} catch (e) {
+			messageHandler.showError(e instanceof Error ? e.message : 'Failed to deprecate filament');
+		} finally {
+			deprecating = false;
+		}
+	}
+
 	async function handleCreateVariant(data: any) {
 		entityState.creating = true;
 		createError = null;
@@ -361,6 +431,7 @@
 								onCopyRequest={() => filamentCopy.request(filamentData, `brands/${brandId}/materials/${materialType}/filaments/${filamentId}`)}
 								onPaste={(data) => { formDrafts.clear(filamentCreateDraftKey); entityState.openPaste(data); }}
 								onDelete={entityState.openDelete}
+								onDeprecate={() => showDeprecateModal = true}
 								onViewDiff={entityState.openCloudCompare}
 								parentNames={{ brand: '', material: '' }}
 							/>
@@ -417,6 +488,10 @@
 <DeleteConfirmationModal show={entityState.showDeleteModal} title="Delete Filament" entityName={filament?.name ?? ''}
 	isLocalCreate={entityState.isLocalCreate} deleting={entityState.deleting} onClose={entityState.closeDelete} onDelete={handleDelete}
 	cascadeWarning="This will also delete all variants within this filament." />
+
+<DeprecateModal show={showDeprecateModal} sourceName={filament?.name ?? ''} sourceUuid={filament?.uuid}
+	sourcePath={`brands/${brandId}/materials/${materialType}/filaments/${filamentId}`}
+	saving={deprecating} onClose={() => showDeprecateModal = false} onConfirm={handleDeprecate} />
 
 <!-- Copy/Duplicate options modals (filament-level) -->
 <DuplicateOptionsModal show={filamentCopy.showOptions} onClose={filamentCopy.close} onSelect={filamentCopy.select} title="Copy Filament"

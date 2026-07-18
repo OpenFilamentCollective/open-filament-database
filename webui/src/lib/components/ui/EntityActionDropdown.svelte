@@ -23,6 +23,8 @@
 		onPaste: (data: Record<string, any>) => void;
 		onDelete: () => void;
 		onViewDiff?: () => void;
+		/** If provided, adds a "Deprecate & redirect" action that maps this entry to a replacement. */
+		onDeprecate?: () => void;
 		/** If provided, called instead of default copy - lets parent show options modal */
 		onCopyRequest?: () => void;
 		/** Extra context needed for GitHub URL construction */
@@ -38,6 +40,7 @@
 		onPaste,
 		onDelete,
 		onViewDiff,
+		onDeprecate,
 		onCopyRequest,
 		parentNames = {}
 	}: Props = $props();
@@ -154,6 +157,12 @@
 				hidden: isLocal || isLocalCreate || !onViewDiff
 			},
 			'separator',
+			{
+				label: 'Deprecate & redirect…',
+				onClick: () => onDeprecate?.(),
+				hidden: !onDeprecate,
+				destructive: true
+			},
 			{
 				label: 'Delete',
 				onClick: onDelete,

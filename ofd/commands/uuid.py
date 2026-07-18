@@ -9,9 +9,12 @@ checks those UUIDs.
 Sub-actions:
     ofd uuid new [-n N]        Print fresh canonical UUID(s)
     ofd uuid assign [--check]  Assign a UUID to every entity missing one (writes files)
-    ofd uuid find <uuid>       Locate the file/entity for a canonical UUID
-    ofd uuid check             Verify UUIDs are present, valid, and globally unique
+    ofd uuid find <uuid>       Locate the entity for a UUID (falls back to moved_from)
+    ofd uuid check             Verify UUIDs (incl. moved_from) are valid and unique
     ofd uuid list              Print the uuid -> path index
+
+A former UUID recorded in an entity's ``moved_from`` (see ofd/uuids.py) redirects to
+that entity, so ``find`` resolves references to data that has since moved or merged.
 
 On merge, CI runs ``ofd uuid assign`` (see .github/workflows/style_data.yaml) so
 contributors never author UUIDs by hand.
@@ -23,12 +26,14 @@ import sys
 from pathlib import Path
 
 from ofd.uuids import (
-    assign_uuid as _assign_uuid,
-)
-from ofd.uuids import (
+    UUID_RE,
     generate_canonical_uuid,
     iter_entities,
+    resolve_uuid,
     save_container,
+)
+from ofd.uuids import (
+    assign_uuid as _assign_uuid,
 )
 
 # Project root for resolving relative paths (ofd/commands/uuid.py -> repo root).
@@ -52,7 +57,7 @@ Examples:
   ofd uuid new -n 5            Print five UUIDs
   ofd uuid assign              Assign a UUID to every entity missing one (writes files)
   ofd uuid assign --check      Report entities missing a UUID (exit 1 if any); writes nothing
-  ofd uuid find <uuid>         Print the file/entity for a canonical UUID
+  ofd uuid find <uuid>         Print the entity for a UUID (or where a moved_from UUID now lives)
   ofd uuid check               Verify every UUID is present, well-formed, and globally unique
   ofd uuid check --allow-missing-uuids   Skip the presence check (for PR / pre-merge checks)
   ofd uuid list                Print the uuid -> path index
@@ -81,7 +86,10 @@ Examples:
     p_assign.set_defaults(func=run_assign)
 
     # find ------------------------------------------------------------------
-    p_find = actions.add_parser("find", help="Locate the file/entity for a canonical UUID")
+    p_find = actions.add_parser(
+        "find",
+        help="Locate the entity for a canonical UUID (falls back to moved_from redirects)",
+    )
     p_find.add_argument("uuid", metavar="UUID", help="The canonical UUID to look up")
     _add_dir_args(p_find)
     p_find.add_argument("--json", action="store_true", help="Output results as JSON")
@@ -231,14 +239,20 @@ def run_assign(args: argparse.Namespace) -> int:
 
 
 def run_find(args: argparse.Namespace) -> int:
-    """Locate the file(s)/entity(ies) whose canonical UUID matches the argument."""
+    """Locate the file(s)/entity(ies) a canonical UUID resolves to.
+
+    A live ``uuid`` matches directly. Failing that, the lookup falls back to
+    ``moved_from``, so a former (now-deleted) UUID redirects to the entity that
+    superseded it — this is how a consumer turns a dangling old UUID into a live one.
+    """
     dirs = _resolve_dirs(args)
     if dirs is None:
         return 1
     data_dir, stores_dir = dirs
 
     target = args.uuid.strip().lower()
-    matches = [e for e in iter_entities(data_dir, stores_dir) if e.raw_uuid == target]
+    matches, matched_via = resolve_uuid(target, iter_entities(data_dir, stores_dir))
+    moved = matched_via == "moved_from"
 
     if args.json:
         print(
@@ -246,8 +260,15 @@ def run_find(args: argparse.Namespace) -> int:
                 {
                     "success": bool(matches),
                     "uuid": target,
+                    "matched_via": matched_via,
+                    "moved": moved,
                     "matches": [
-                        {"type": e.entity_type, "path": e.describe(project_root)} for e in matches
+                        {
+                            "type": e.entity_type,
+                            "path": e.describe(project_root),
+                            "current_uuid": e.raw_uuid,
+                        }
+                        for e in matches
                     ],
                 },
                 indent=2,
@@ -257,7 +278,8 @@ def run_find(args: argparse.Namespace) -> int:
         print(f"No entity found with UUID {target}", file=sys.stderr)
     else:
         for e in matches:
-            print(f"{e.entity_type:9} {e.describe(project_root)}")
+            suffix = f"  (moved; now {e.raw_uuid})" if moved else ""
+            print(f"{e.entity_type:9} {e.describe(project_root)}{suffix}")
     return 0 if matches else 1
 
 
@@ -288,9 +310,43 @@ def run_check(args: argparse.Namespace) -> int:
             missing.append(e)
 
     duplicates = {value: es for value, es in by_uuid.items() if len(es) > 1}
+
+    # moved_from integrity: each former UUID must be a well-formed UUIDv4, must not
+    # point at its own owner, must not collide with a live uuid (that would make the
+    # old id ambiguous), and must be claimed by only one entity (a unique redirect
+    # target). These run regardless of --allow-missing-uuids.
+    live_uuids = set(by_uuid)
+    moved_malformed: list[tuple] = []  # (entity, value)
+    moved_self: list[tuple] = []  # (entity, value): owner listed its own uuid
+    moved_conflicts: list[tuple] = []  # (entity, value): value equals a live uuid
+    moved_index: dict[str, list] = {}
+    for e in entities:
+        # Dedupe within one entity so a repeated entry isn't miscounted as two
+        # separate claims (which would falsely read as a cross-entity duplicate).
+        for old in dict.fromkeys(e.moved_from):
+            if not UUID_RE.match(old):
+                moved_malformed.append((e, old))
+                continue
+            if e.valid and old == e.raw_uuid:
+                moved_self.append((e, old))
+                continue
+            if old in live_uuids:
+                moved_conflicts.append((e, old))
+            moved_index.setdefault(old, []).append(e)
+    moved_duplicates = {old: es for old, es in moved_index.items() if len(es) > 1}
+
     # Unparseable files are always fatal, independent of --allow-missing-uuids: an
     # entity that can't be read can't be verified to have a UUID at all.
-    ok = not (malformed or missing or duplicates or parse_errors)
+    ok = not (
+        malformed
+        or missing
+        or duplicates
+        or parse_errors
+        or moved_malformed
+        or moved_self
+        or moved_conflicts
+        or moved_duplicates
+    )
 
     if args.json:
         print(
@@ -313,6 +369,36 @@ def run_check(args: argparse.Namespace) -> int:
                         value: [e.describe(project_root) for e in es]
                         for value, es in duplicates.items()
                     },
+                    "moved_from": {
+                        "malformed": [
+                            {
+                                "type": e.entity_type,
+                                "path": e.describe(project_root),
+                                "moved_from": old,
+                            }
+                            for e, old in moved_malformed
+                        ],
+                        "self_references": [
+                            {
+                                "type": e.entity_type,
+                                "path": e.describe(project_root),
+                                "moved_from": old,
+                            }
+                            for e, old in moved_self
+                        ],
+                        "conflicts_with_live": [
+                            {
+                                "type": e.entity_type,
+                                "path": e.describe(project_root),
+                                "moved_from": old,
+                            }
+                            for e, old in moved_conflicts
+                        ],
+                        "duplicates": {
+                            old: [e.describe(project_root) for e in es]
+                            for old, es in moved_duplicates.items()
+                        },
+                    },
                     "parse_errors": parse_errors,
                 },
                 indent=2,
@@ -333,6 +419,24 @@ def run_check(args: argparse.Namespace) -> int:
         print(f"{len(duplicates)} duplicated UUID(s):")
         for value, es in duplicates.items():
             print(f"  {value}")
+            for e in es:
+                print(f"    {e.entity_type:9} {e.describe(project_root)}")
+    if moved_malformed:
+        print(f"{len(moved_malformed)} malformed moved_from UUID(s):")
+        for e, old in moved_malformed:
+            print(f"  {e.entity_type:9} {e.describe(project_root)}  ->  {old!r}")
+    if moved_self:
+        print(f"{len(moved_self)} self-referential moved_from UUID(s):")
+        for e, old in moved_self:
+            print(f"  {e.entity_type:9} {e.describe(project_root)}  ->  {old}")
+    if moved_conflicts:
+        print(f"{len(moved_conflicts)} moved_from UUID(s) colliding with a live UUID:")
+        for e, old in moved_conflicts:
+            print(f"  {e.entity_type:9} {e.describe(project_root)}  ->  {old}")
+    if moved_duplicates:
+        print(f"{len(moved_duplicates)} moved_from UUID(s) claimed by multiple entities:")
+        for old, es in moved_duplicates.items():
+            print(f"  {old}")
             for e in es:
                 print(f"    {e.entity_type:9} {e.describe(project_root)}")
     if ok:

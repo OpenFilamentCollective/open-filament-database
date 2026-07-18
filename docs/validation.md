@@ -67,8 +67,8 @@ Every entity carries a stable, slug-independent `uuid` (see [Canonical UUIDs —
 python -m ofd uuid new              # print a fresh canonical UUID
 python -m ofd uuid assign           # assign a UUID to every entity missing one (writes files)
 python -m ofd uuid assign --check   # report entities missing a UUID (exit non-zero); writes nothing
-python -m ofd uuid find <uuid>      # print the file (and spool index) for a canonical UUID
-python -m ofd uuid check            # verify every UUID is present, well-formed, and globally unique
+python -m ofd uuid find <uuid>      # print the file (and spool index) for a canonical UUID, or where a moved_from UUID now lives
+python -m ofd uuid check            # verify every UUID (incl. moved_from) is present, well-formed, and globally unique
 python -m ofd uuid check --allow-missing-uuids   # skip the presence requirement (for PR / pre-merge checks)
 python -m ofd uuid list             # print the uuid -> path index
 ```
@@ -78,6 +78,9 @@ By default, **a missing UUID is a validation error** — `ofd uuid check` requir
 - **After merge**, CI runs `ofd uuid assign` to backfill the empty ones, then `ofd uuid check` (strict) to guarantee every entity on `main` has a valid, unique UUID.
 
 The JSON schemas accept an empty string or a valid UUIDv4 for `uuid`; any other value fails schema validation.
+
+### Moved / former UUIDs (`moved_from`)
+An entity that supersedes another (after a merge or move) records the retired UUID(s) in an optional `moved_from` array, so old references still resolve. `ofd uuid find <old-uuid>` follows these redirects, and `ofd uuid check` validates them alongside `uuid`: each `moved_from` entry must be a well-formed UUIDv4, must not point at its own owner, must not collide with any live `uuid`, and must be claimed by only one entity. These checks run regardless of `--allow-missing-uuids`. The build additionally emits `api/v1/uuid-index.json`, a flat `{old_uuid: current_uuid}` redirect map for downstream consumers. You never author `moved_from` by hand — the `merge_data` / `deduplicate_data` scripts populate it when they delete a merged-away entity.
 
 ## Sorting Your Data
 Before submitting your changes, you should sort all JSON files to ensure consistency across the database. This makes it easier to review changes and maintain the codebase.

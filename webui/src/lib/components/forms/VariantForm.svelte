@@ -105,7 +105,7 @@
 	// Config for variant form - labels, tooltips, and placeholders come from schema
 	const config: SchemaFormConfig = {
 		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
-		hiddenFields: ['id', 'uuid', 'traits', 'sizes', 'hex_variants', 'color_standards'],
+		hiddenFields: ['id', 'uuid', 'moved_from', 'traits', 'sizes', 'hex_variants', 'color_standards'],
 		fieldOrder: ['name', 'color_hex', 'discontinued'],
 		typeOverrides: {
 			color_hex: 'color'
@@ -249,6 +249,8 @@
 			// Canonical UUID of an existing spool, preserved across edits (assigned by
 			// CI on merge). Undefined for spools added in this session.
 			uuid?: string;
+			// Former UUID(s) of an existing spool, preserved so old references still resolve.
+			moved_from?: string[];
 			filament_weight: number | undefined;
 			diameter: number;
 			empty_spool_weight?: number;
@@ -305,6 +307,7 @@
 				id: index + 1,
 				value: {
 					uuid: s.uuid,
+					moved_from: s.moved_from,
 					filament_weight: s.filament_weight,
 					diameter: s.diameter || 1.75,
 					empty_spool_weight: s.empty_spool_weight,
@@ -440,6 +443,8 @@
 
 			// Preserve an existing spool's canonical UUID; new spools get one from CI on merge.
 			if (s.value.uuid) sizeValue.uuid = s.value.uuid;
+			// Preserve former UUIDs so old references still resolve after a move/merge.
+			if (s.value.moved_from) sizeValue.moved_from = s.value.moved_from;
 			if (s.value.empty_spool_weight != null) sizeValue.empty_spool_weight = s.value.empty_spool_weight;
 			if (s.value.spool_core_diameter != null) sizeValue.spool_core_diameter = s.value.spool_core_diameter;
 			if (s.value.gtin) sizeValue.gtin = s.value.gtin;
@@ -485,6 +490,8 @@
 
 		// Preserve the variant's canonical UUID on edit; left empty on create for CI to assign.
 		if (variant?.uuid) submitData.uuid = variant.uuid;
+		// Preserve former UUIDs so old references still resolve after a move/merge.
+		if (variant?.moved_from) submitData.moved_from = variant.moved_from;
 
 		// Mandatory: strip tracking params from all purchase-link URLs before staging the change.
 		onSubmit(stripTrackersDeep(submitData));

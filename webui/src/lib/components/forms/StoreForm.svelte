@@ -24,7 +24,7 @@
 	// Config for store form - labels, tooltips, and placeholders come from schema
 	const config: SchemaFormConfig = {
 		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
-		hiddenFields: ['id', 'uuid', 'logo'],
+		hiddenFields: ['id', 'uuid', 'moved_from', 'logo'],
 		fieldOrder: ['name', 'storefront_url', 'ships_from', 'ships_to'],
 		fieldGroups: [['ships_from', 'ships_to']],
 		typeOverrides: {
@@ -89,6 +89,8 @@
 		}
 		// Preserve the canonical UUID on edit; left empty on create for CI to assign.
 		if (store?.uuid) submitData.uuid = store.uuid;
+		// Preserve former UUIDs so old references still resolve after a move/merge.
+		if (store?.moved_from) submitData.moved_from = store.moved_from;
 		onSubmit(submitData);
 	}
 
