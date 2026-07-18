@@ -272,9 +272,7 @@ class ApplyFiberTraitsScript(BaseScript):
 
         stats.variants_scanned += 1
 
-        variant_text = _norm(
-            variant_dir.name, str(data.get("id", "")), str(data.get("name", ""))
-        )
+        variant_text = _norm(variant_dir.name, str(data.get("id", "")), str(data.get("name", "")))
         codes = filament_codes | detect_codes(variant_text)
         if not codes:
             return
@@ -313,9 +311,7 @@ class ApplyFiberTraitsScript(BaseScript):
 
         stats.variants_modified += 1
         rel = variant_file.relative_to(self.project_root)
-        changes.append(
-            {"path": str(rel), "codes": sorted(codes), "traits_added": sorted(added)}
-        )
+        changes.append({"path": str(rel), "codes": sorted(codes), "traits_added": sorted(added)})
         verb = "Would add" if dry_run else "Added"
         self.log(f"  {verb} [{'+'.join(sorted(added))}] -> {rel}")
 
@@ -329,7 +325,9 @@ class ApplyFiberTraitsScript(BaseScript):
         self.log("DRY RUN SUMMARY" if dry_run else "SUMMARY")
         self.log("=" * 60)
         self.log(f"Variants scanned:  {stats.variants_scanned}")
-        self.log(f"Detected  CF/GF/HF: {stats.cf_detected} / {stats.gf_detected} / {stats.hf_detected}")
+        self.log(
+            f"Detected  CF/GF/HF: {stats.cf_detected} / {stats.gf_detected} / {stats.hf_detected}"
+        )
         self.log(f"Variants {'to modify' if dry_run else 'modified'}: {stats.variants_modified}")
         if stats.flipped_from_false:
             self.log(f"Traits flipped false->true: {stats.flipped_from_false}")
