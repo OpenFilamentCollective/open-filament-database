@@ -2,5 +2,8 @@
   "uuid": "6a936bbf-600b-4702-b791-891291bfad6f",
   "id": "gray",
   "name": "Gray",
-  "color_hex": "#808080"
+  "color_hex": "#808080",
+  "traits": {
+    "high_flow": true
+  }
 }

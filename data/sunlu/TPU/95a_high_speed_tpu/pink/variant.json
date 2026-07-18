@@ -2,5 +2,8 @@
   "uuid": "32d0ecac-49fd-4907-8194-2e6a2edd2543",
   "id": "pink",
   "name": "Pink",
-  "color_hex": "#F06E92"
+  "color_hex": "#F06E92",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -2,5 +2,8 @@
   "uuid": "0898a211-e5aa-4640-8197-364667336790",
   "id": "safety_orange",
   "name": "Safety Orange",
-  "color_hex": "#FE5000"
+  "color_hex": "#FE5000",
+  "traits": {
+    "high_flow": true
+  }
 }

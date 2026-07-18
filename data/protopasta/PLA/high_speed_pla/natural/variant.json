@@ -2,5 +2,8 @@
   "uuid": "e11f6b73-8de8-46bd-b215-f34ea9446458",
   "id": "natural",
   "name": "Natural",
-  "color_hex": "#F9EFE6"
+  "color_hex": "#F9EFE6",
+  "traits": {
+    "high_flow": true
+  }
 }

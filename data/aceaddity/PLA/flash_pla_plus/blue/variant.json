@@ -2,5 +2,8 @@
   "uuid": "1ea593bb-51aa-403e-97f8-91631f68130a",
   "id": "blue",
   "name": "Blue",
-  "color_hex": "#0000FF"
+  "color_hex": "#0000FF",
+  "traits": {
+    "high_flow": true
+  }
 }

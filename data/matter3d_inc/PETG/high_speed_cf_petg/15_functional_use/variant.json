@@ -4,6 +4,8 @@
   "name": "15% - Functional Use",
   "color_hex": "#545252",
   "traits": {
+    "abrasive": true,
+    "high_flow": true,
     "contains_carbon_fiber": true
   }
 }

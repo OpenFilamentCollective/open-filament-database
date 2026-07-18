@@ -4,6 +4,7 @@
   "name": "Translucent Red",
   "color_hex": "#F00C00",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

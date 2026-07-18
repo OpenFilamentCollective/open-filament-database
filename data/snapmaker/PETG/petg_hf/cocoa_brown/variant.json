@@ -2,5 +2,8 @@
   "uuid": "4a70322e-0ed9-420e-88a9-45b4d7cce9ef",
   "id": "cocoa_brown",
   "name": "Cocoa Brown",
-  "color_hex": "#6B504C"
+  "color_hex": "#6B504C",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -2,5 +2,8 @@
   "uuid": "6af10f1d-b9c6-4b3c-9385-6636ee520900",
   "id": "high_speed_black",
   "name": "High Speed Black",
-  "color_hex": "#000000"
+  "color_hex": "#000000",
+  "traits": {
+    "high_flow": true
+  }
 }

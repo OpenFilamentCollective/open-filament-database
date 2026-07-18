@@ -2,5 +2,8 @@
   "uuid": "fb304c32-d5fa-48ca-b2da-67df69bb32a2",
   "id": "neon_green_uv",
   "name": "Neon Green UV",
-  "color_hex": "#62f205"
+  "color_hex": "#62f205",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -2,5 +2,9 @@
   "uuid": "6a6c1bee-0551-454a-9c65-01482c092038",
   "id": "carbon_fibre_natural",
   "name": "Carbon Fibre Natural",
-  "color_hex": "#232323"
+  "color_hex": "#232323",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

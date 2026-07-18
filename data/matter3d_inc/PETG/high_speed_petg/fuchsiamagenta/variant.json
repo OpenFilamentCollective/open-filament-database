@@ -2,5 +2,8 @@
   "uuid": "ecf8fb5a-b83d-42f2-866d-94ce00f5cb86",
   "id": "fuchsiamagenta",
   "name": "Fuchsia/Magenta",
-  "color_hex": "#C20078"
+  "color_hex": "#C20078",
+  "traits": {
+    "high_flow": true
+  }
 }

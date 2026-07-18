@@ -4,6 +4,7 @@
   "name": "Walnut Brown",
   "color_hex": "#55331A",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

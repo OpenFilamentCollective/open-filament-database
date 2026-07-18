@@ -2,5 +2,8 @@
   "uuid": "bbf3e824-097b-49f8-ae02-31e687f1de95",
   "id": "stone_brown_khaki_white",
   "name": "Stone (Brown & Khaki & White)",
-  "color_hex": "#c0b6ae"
+  "color_hex": "#c0b6ae",
+  "traits": {
+    "high_flow": true
+  }
 }

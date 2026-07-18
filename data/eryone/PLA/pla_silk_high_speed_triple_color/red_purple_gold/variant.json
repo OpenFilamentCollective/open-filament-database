@@ -2,5 +2,8 @@
   "uuid": "cbee70b6-3511-4af2-a4a3-7b3093104167",
   "id": "red_purple_gold",
   "name": "Red & Purple & Gold",
-  "color_hex": "#f598b3"
+  "color_hex": "#f598b3",
+  "traits": {
+    "high_flow": true
+  }
 }

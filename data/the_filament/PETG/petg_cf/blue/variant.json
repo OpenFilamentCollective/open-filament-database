@@ -2,5 +2,9 @@
   "uuid": "8a056db4-f40b-4ca8-81ce-3c197cda6309",
   "id": "blue",
   "name": "Blue",
-  "color_hex": "#0A748E"
+  "color_hex": "#0A748E",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

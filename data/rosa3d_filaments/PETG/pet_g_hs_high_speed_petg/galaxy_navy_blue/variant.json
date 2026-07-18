@@ -4,6 +4,7 @@
   "name": "Galaxy Navy Blue",
   "color_hex": "#436176",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }

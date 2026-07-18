@@ -4,6 +4,7 @@
   "name": "Natural",
   "color_hex": "#F5F5F5",
   "traits": {
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

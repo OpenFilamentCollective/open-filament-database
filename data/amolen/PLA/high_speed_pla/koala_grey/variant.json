@@ -2,5 +2,8 @@
   "uuid": "7cb30b44-4d04-4bda-9f16-e142c2061706",
   "id": "koala_grey",
   "name": "Koala Grey",
-  "color_hex": "#8A7B8E"
+  "color_hex": "#8A7B8E",
+  "traits": {
+    "high_flow": true
+  }
 }

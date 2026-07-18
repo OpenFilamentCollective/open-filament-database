@@ -2,5 +2,8 @@
   "uuid": "c796d19d-32d0-4194-86eb-3bff55c0c742",
   "id": "gorgeous_quartet_red_yellow_blue_green",
   "name": "Gorgeous Quartet (Red & Yellow & Blue & Green)",
-  "color_hex": "#563d2c"
+  "color_hex": "#563d2c",
+  "traits": {
+    "high_flow": true
+  }
 }

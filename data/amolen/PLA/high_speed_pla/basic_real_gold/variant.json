@@ -2,5 +2,8 @@
   "uuid": "e2edf8f1-a307-4527-8d2c-42ed385d78e5",
   "id": "basic_real_gold",
   "name": "Basic- Real Gold",
-  "color_hex": "#F1BB51"
+  "color_hex": "#F1BB51",
+  "traits": {
+    "high_flow": true
+  }
 }

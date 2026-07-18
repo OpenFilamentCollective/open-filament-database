@@ -2,5 +2,8 @@
   "uuid": "81fb0814-cee7-499b-b0c9-53b73123d342",
   "id": "magenta_hot_pink",
   "name": "Magenta (Hot Pink)",
-  "color_hex": "#FF00A2"
+  "color_hex": "#FF00A2",
+  "traits": {
+    "high_flow": true
+  }
 }

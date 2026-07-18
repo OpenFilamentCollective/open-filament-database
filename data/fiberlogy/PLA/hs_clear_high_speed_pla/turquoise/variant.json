@@ -5,6 +5,7 @@
   "color_hex": "#005DA4",
   "traits": {
     "translucent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

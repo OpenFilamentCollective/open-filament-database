@@ -2,5 +2,8 @@
   "uuid": "0a378297-599c-480d-9426-d57af5e5ba11",
   "id": "arctic_blue",
   "name": "Arctic Blue",
-  "color_hex": "#5dccf6"
+  "color_hex": "#5dccf6",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -2,5 +2,8 @@
   "uuid": "b22c5390-d964-4532-a9dd-ab751f16ef39",
   "id": "totem_engraving",
   "name": "Totem Engraving",
-  "color_hex": "#ad907c"
+  "color_hex": "#ad907c",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -8,6 +8,7 @@
   ],
   "traits": {
     "glow": true,
-    "illuminescent_color_change": true
+    "illuminescent_color_change": true,
+    "high_flow": true
   }
 }

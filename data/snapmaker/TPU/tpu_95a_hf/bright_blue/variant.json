@@ -2,5 +2,8 @@
   "uuid": "a79dab48-3761-4c41-a6ae-0ca73f8612e6",
   "id": "bright_blue",
   "name": "Bright Blue",
-  "color_hex": "#0683EF"
+  "color_hex": "#0683EF",
+  "traits": {
+    "high_flow": true
+  }
 }

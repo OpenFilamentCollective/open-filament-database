@@ -4,6 +4,7 @@
   "name": "Transparent Blue",
   "color_hex": "#4921C1",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Yellow Green",
   "color_hex": "#41A840",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

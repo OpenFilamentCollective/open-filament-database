@@ -4,6 +4,7 @@
   "name": "PET-G CF Carbon",
   "color_hex": "#545252",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

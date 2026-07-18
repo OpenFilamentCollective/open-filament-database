@@ -2,5 +2,8 @@
   "uuid": "ffe765a4-b216-488c-a1d2-551838cf3830",
   "id": "pink_ombr",
   "name": "Pink Ombré",
-  "color_hex": "#FF00A2"
+  "color_hex": "#FF00A2",
+  "traits": {
+    "high_flow": true
+  }
 }

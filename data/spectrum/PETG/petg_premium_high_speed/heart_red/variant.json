@@ -2,5 +2,8 @@
   "uuid": "fd6ddfc4-524f-4155-95dd-72930dafeef4",
   "id": "heart_red",
   "name": "Heart Red",
-  "color_hex": "#E72A2C"
+  "color_hex": "#E72A2C",
+  "traits": {
+    "high_flow": true
+  }
 }

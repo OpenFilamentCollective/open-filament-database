@@ -2,5 +2,8 @@
   "uuid": "7c9d662a-b13c-47e3-91e3-1cadcf970074",
   "id": "purple",
   "name": "Purple",
-  "color_hex": "#A000CA"
+  "color_hex": "#A000CA",
+  "traits": {
+    "high_flow": true
+  }
 }

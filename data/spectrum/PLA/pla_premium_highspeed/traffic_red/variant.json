@@ -2,5 +2,8 @@
   "uuid": "7842ca64-f739-430a-8cc4-2422f7547d65",
   "id": "traffic_red",
   "name": "Traffic Red",
-  "color_hex": "#cc1d35"
+  "color_hex": "#cc1d35",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -2,5 +2,8 @@
   "uuid": "bfd92490-8c90-4b78-aaad-741907ad02b2",
   "id": "canary_yellow",
   "name": "Canary Yellow",
-  "color_hex": "#FADB24"
+  "color_hex": "#FADB24",
+  "traits": {
+    "high_flow": true
+  }
 }

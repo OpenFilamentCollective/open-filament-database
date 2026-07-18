@@ -2,5 +2,9 @@
   "uuid": "ee205428-3212-4246-abe0-aa0320578057",
   "id": "grey",
   "name": "Grey",
-  "color_hex": "#c7d5d8"
+  "color_hex": "#c7d5d8",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

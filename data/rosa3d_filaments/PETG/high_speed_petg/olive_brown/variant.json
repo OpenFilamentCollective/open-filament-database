@@ -2,5 +2,8 @@
   "uuid": "d7df2d56-5cf0-4f27-865e-4808d20be079",
   "id": "olive_brown",
   "name": "Olive Brown",
-  "color_hex": "#3E413F"
+  "color_hex": "#3E413F",
+  "traits": {
+    "high_flow": true
+  }
 }

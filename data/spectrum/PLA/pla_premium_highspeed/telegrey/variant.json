@@ -2,5 +2,8 @@
   "uuid": "8763df77-df7d-438a-871e-c7477a12d78e",
   "id": "telegrey",
   "name": "Telegrey",
-  "color_hex": "#eaebed"
+  "color_hex": "#eaebed",
+  "traits": {
+    "high_flow": true
+  }
 }

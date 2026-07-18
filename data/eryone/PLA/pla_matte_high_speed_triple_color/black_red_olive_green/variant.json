@@ -2,5 +2,8 @@
   "uuid": "ccdecd66-8521-4076-af92-7f0a491a8c15",
   "id": "black_red_olive_green",
   "name": "Black & red & olive green",
-  "color_hex": "#cea79b"
+  "color_hex": "#cea79b",
+  "traits": {
+    "high_flow": true
+  }
 }

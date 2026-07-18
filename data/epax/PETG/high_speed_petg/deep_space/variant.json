@@ -7,6 +7,7 @@
     "#7F068C"
   ],
   "traits": {
-    "iridescent": true
+    "iridescent": true,
+    "high_flow": true
   }
 }

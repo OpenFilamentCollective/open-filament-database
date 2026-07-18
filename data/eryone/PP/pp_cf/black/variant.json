@@ -2,5 +2,9 @@
   "uuid": "91c0e943-6724-4abd-accd-b852dd1314fc",
   "id": "black",
   "name": "Black",
-  "color_hex": "#171319"
+  "color_hex": "#171319",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

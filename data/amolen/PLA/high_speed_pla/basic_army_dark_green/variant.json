@@ -2,5 +2,8 @@
   "uuid": "f72bd579-a740-4c38-ad1a-102927483a3f",
   "id": "basic_army_dark_green",
   "name": "Basic- Army Dark Green",
-  "color_hex": "#4E7642"
+  "color_hex": "#4E7642",
+  "traits": {
+    "high_flow": true
+  }
 }

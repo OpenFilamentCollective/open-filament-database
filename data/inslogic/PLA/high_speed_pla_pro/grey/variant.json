@@ -3,5 +3,7 @@
   "id": "grey",
   "name": "Grey",
   "color_hex": "#A7A8A9",
-  "traits": {}
+  "traits": {
+    "high_flow": true
+  }
 }

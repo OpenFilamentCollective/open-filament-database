@@ -374,7 +374,7 @@
 <Modal show={entityState.showEditModal} title="Edit Variant" onClose={entityState.closeEdit} maxWidth="5xl">
 	{#if variant}
 		<div class="h-[70vh]">
-			<VariantForm {variant} draftKey={variantEditDraftKey} onSubmit={handleSubmit} saving={entityState.saving} />
+			<VariantForm {variant} draftKey={variantEditDraftKey} filamentName={filamentId} {materialType} onSubmit={handleSubmit} saving={entityState.saving} />
 		</div>
 	{/if}
 </Modal>
@@ -396,7 +396,7 @@
 	{/if}
 	{#if entityState.duplicateData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>
@@ -408,7 +408,7 @@
 	{/if}
 	{#if entityState.pasteData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>

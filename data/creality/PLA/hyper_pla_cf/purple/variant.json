@@ -2,5 +2,9 @@
   "uuid": "29aac376-32d9-44de-9961-2f9a337631fb",
   "id": "purple",
   "name": "Purple",
-  "color_hex": "#645e83"
+  "color_hex": "#645e83",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

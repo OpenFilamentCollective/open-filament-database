@@ -2,5 +2,8 @@
   "uuid": "63e4d454-dda5-4606-aa14-a9a8a71f5801",
   "id": "green_grass",
   "name": "Green Grass",
-  "color_hex": "#5AEB90"
+  "color_hex": "#5AEB90",
+  "traits": {
+    "high_flow": true
+  }
 }

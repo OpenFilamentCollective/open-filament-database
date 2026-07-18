@@ -2,5 +2,9 @@
   "uuid": "207416de-1018-473a-a31a-fa5e8a84495e",
   "id": "power_tool_yellow",
   "name": "Power Tool Yellow",
-  "color_hex": "#ffa420"
+  "color_hex": "#ffa420",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
 }

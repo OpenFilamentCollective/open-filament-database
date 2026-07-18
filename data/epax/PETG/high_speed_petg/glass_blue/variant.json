@@ -4,6 +4,7 @@
   "name": "Glass Blue",
   "color_hex": "#0E21AE",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

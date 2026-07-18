@@ -4,6 +4,7 @@
   "name": "Neon Green",
   "color_hex": "#70FA00",
   "traits": {
-    "neon": true
+    "neon": true,
+    "high_flow": true
   }
 }

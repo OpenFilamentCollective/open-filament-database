@@ -2,5 +2,8 @@
   "uuid": "03703f7a-3c5a-4617-946c-22ca17c58b3d",
   "id": "periwinkle_blue",
   "name": "Periwinkle Blue",
-  "color_hex": "#8FA7FF"
+  "color_hex": "#8FA7FF",
+  "traits": {
+    "high_flow": true
+  }
 }

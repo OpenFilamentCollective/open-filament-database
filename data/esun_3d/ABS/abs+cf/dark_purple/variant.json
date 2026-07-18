@@ -2,5 +2,9 @@
   "uuid": "83196dc1-bde6-4775-b733-5c38207a4384",
   "id": "dark_purple",
   "name": "Dark Purple",
-  "color_hex": "#302D38"
+  "color_hex": "#302D38",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

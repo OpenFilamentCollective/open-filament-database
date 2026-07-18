@@ -2,5 +2,9 @@
   "uuid": "274bb65a-fd3d-4891-9b46-c30ff9376742",
   "id": "green",
   "name": "Green",
-  "color_hex": "#275749"
+  "color_hex": "#275749",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

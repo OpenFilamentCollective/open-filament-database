@@ -2,5 +2,8 @@
   "uuid": "e9629c51-a886-4696-a4c0-740907b1d684",
   "id": "light_ivory",
   "name": "Light Ivory",
-  "color_hex": "#C1A98F"
+  "color_hex": "#C1A98F",
+  "traits": {
+    "high_flow": true
+  }
 }

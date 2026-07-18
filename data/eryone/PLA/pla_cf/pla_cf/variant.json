@@ -2,5 +2,9 @@
   "uuid": "737acc21-a94f-4f2f-a2cb-81f9217f6327",
   "id": "pla_cf",
   "name": "PLA-CF",
-  "color_hex": "#14181b"
+  "color_hex": "#14181b",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

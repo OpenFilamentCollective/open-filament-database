@@ -2,5 +2,8 @@
   "uuid": "727c8531-588f-4852-b424-bcb15facdaa4",
   "id": "lilac",
   "name": "Lilac",
-  "color_hex": "#F87FB5"
+  "color_hex": "#F87FB5",
+  "traits": {
+    "high_flow": true
+  }
 }

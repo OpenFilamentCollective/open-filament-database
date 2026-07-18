@@ -2,5 +2,8 @@
   "uuid": "68ccdb2b-b7a6-481f-bed3-52cc740bab64",
   "id": "sulfur_yellow",
   "name": "Sulfur Yellow",
-  "color_hex": "#FFE962"
+  "color_hex": "#FFE962",
+  "traits": {
+    "high_flow": true
+  }
 }

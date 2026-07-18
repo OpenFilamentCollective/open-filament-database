@@ -7,6 +7,7 @@
     "#E31A1F"
   ],
   "traits": {
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "high_flow": true
   }
 }

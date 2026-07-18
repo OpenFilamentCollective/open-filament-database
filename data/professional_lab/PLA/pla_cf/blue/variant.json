@@ -4,6 +4,7 @@
   "name": "Blue",
   "color_hex": "#0042aa",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

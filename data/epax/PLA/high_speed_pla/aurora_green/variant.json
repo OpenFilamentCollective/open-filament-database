@@ -2,5 +2,8 @@
   "uuid": "0426109a-40a8-4a7f-b607-f20ab6adead8",
   "id": "aurora_green",
   "name": "Aurora Green",
-  "color_hex": "#00935C"
+  "color_hex": "#00935C",
+  "traits": {
+    "high_flow": true
+  }
 }

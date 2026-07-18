@@ -2,5 +2,8 @@
   "uuid": "f1c311c5-d0e8-45e8-840c-b728011ebfb4",
   "id": "blue_red",
   "name": "Blue&Red",
-  "color_hex": "#8778df"
+  "color_hex": "#8778df",
+  "traits": {
+    "high_flow": true
+  }
 }

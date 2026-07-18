@@ -2,5 +2,8 @@
   "uuid": "727b9279-82ec-4adf-ba07-6251c6f0397c",
   "id": "cream",
   "name": "Cream",
-  "color_hex": "#F9DFB9"
+  "color_hex": "#F9DFB9",
+  "traits": {
+    "high_flow": true
+  }
 }

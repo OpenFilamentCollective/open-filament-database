@@ -4,6 +4,8 @@
   "name": "Black",
   "color_hex": "#000000",
   "traits": {
-    "filtration_recommended": true
+    "abrasive": true,
+    "filtration_recommended": true,
+    "contains_carbon_fiber": true
   }
 }

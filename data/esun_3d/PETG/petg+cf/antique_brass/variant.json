@@ -2,5 +2,9 @@
   "uuid": "a7d17534-f917-44c0-84f7-76ef0cde723f",
   "id": "antique_brass",
   "name": "Antique Brass",
-  "color_hex": "#A38273"
+  "color_hex": "#A38273",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

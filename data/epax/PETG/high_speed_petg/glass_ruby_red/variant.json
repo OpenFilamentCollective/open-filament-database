@@ -4,6 +4,7 @@
   "name": "Glass Ruby Red",
   "color_hex": "#AD0028",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }
