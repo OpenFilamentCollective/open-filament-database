@@ -1,19 +1,20 @@
 {
-    "id": "tpu_pro_matte_95a",
-    "name": "TPU Pro Matte 95A",
-    "diameter_tolerance": 0.02,
-    "density": 1.1,
-    "max_dry_temperature": 55,
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFU99",
-            "id": "GF_ANTM",
-            "profile_name": "addnorth TPU Pro Matte 95A"
-        },
-        "orcaslicer": {
-            "generic_id": "GFU99",
-            "id": "GF_ANTM",
-            "profile_name": "addnorth TPU Pro Matte 95A"
-        }
+  "uuid": "6a7b6a08-ad60-4415-9dc3-14709c9a3fe8",
+  "id": "tpu_pro_matte_95a",
+  "name": "TPU Pro Matte 95A",
+  "diameter_tolerance": 0.02,
+  "density": 1.1,
+  "max_dry_temperature": 55,
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFU99",
+      "id": "GF_ANTM",
+      "profile_name": "addnorth TPU Pro Matte 95A"
+    },
+    "orcaslicer": {
+      "generic_id": "GFU99",
+      "id": "GF_ANTM",
+      "profile_name": "addnorth TPU Pro Matte 95A"
     }
+  }
 }

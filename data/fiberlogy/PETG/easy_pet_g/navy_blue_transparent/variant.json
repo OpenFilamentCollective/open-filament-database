@@ -1,8 +1,9 @@
 {
-    "id": "navy_blue_transparent",
-    "name": "Navy Blue Transparent",
-    "color_hex": "#10069F",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "38660807-48a2-4b30-a030-56fe1ef2ac55",
+  "id": "navy_blue_transparent",
+  "name": "Navy Blue Transparent",
+  "color_hex": "#10069F",
+  "traits": {
+    "recyclable": true
+  }
 }

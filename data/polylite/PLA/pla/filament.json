@@ -1,36 +1,37 @@
 {
-    "id": "pla",
-    "name": "PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "PolyLite PLA"
-        },
-        "bambustudio": {
-            "generic_id": "GFL99",
-            "id": "GFL00",
-            "profile_name": "PolyLite PLA"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GFL00",
-            "profile_name": "PolyLite PLA"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "GFL00",
-            "profile_name": "PolyLite PLA"
-        },
-        "crealityprint": {
-            "generic_id": "GFL99",
-            "id": "GFL00",
-            "profile_name": "PolyLite PLA"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFL99",
-            "id": "GFL00",
-            "profile_name": "PolyLite PLA"
-        }
+  "uuid": "f7df0fc5-5e8c-46c2-bf0b-bf1fd6c23c46",
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "PolyLite PLA"
+    },
+    "bambustudio": {
+      "generic_id": "GFL99",
+      "id": "GFL00",
+      "profile_name": "PolyLite PLA"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GFL00",
+      "profile_name": "PolyLite PLA"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "GFL00",
+      "profile_name": "PolyLite PLA"
+    },
+    "crealityprint": {
+      "generic_id": "GFL99",
+      "id": "GFL00",
+      "profile_name": "PolyLite PLA"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFL99",
+      "id": "GFL00",
+      "profile_name": "PolyLite PLA"
     }
+  }
 }

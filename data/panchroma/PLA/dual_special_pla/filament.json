@@ -1,6 +1,7 @@
 {
-    "id": "dual_special_pla",
-    "name": "Dual Special PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.37
+  "uuid": "ba629e03-f3b0-4d4e-9b61-50df57b967c2",
+  "id": "dual_special_pla",
+  "name": "Dual Special PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.37
 }

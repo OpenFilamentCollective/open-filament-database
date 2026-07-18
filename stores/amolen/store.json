@@ -1,8 +1,9 @@
 {
-    "id": "amolen",
-    "name": "Amolen",
-    "storefront_url": "https://www.amolen.com/",
-    "logo": "logo.jpg",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "d13f65d1-c390-4eef-8093-ac1a4f5c16d1",
+  "id": "amolen",
+  "name": "Amolen",
+  "storefront_url": "https://www.amolen.com/",
+  "logo": "logo.jpg",
+  "ships_from": [],
+  "ships_to": []
 }

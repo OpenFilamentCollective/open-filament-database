@@ -1,4 +1,5 @@
 {
+  "uuid": "1685c8cd-2a89-4733-bae8-a4a726d9c3a0",
   "id": "edge_tpu",
   "name": "Edge TPU",
   "diameter_tolerance": 0.02,

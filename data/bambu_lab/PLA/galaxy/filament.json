@@ -1,35 +1,36 @@
 {
-    "id": "galaxy",
-    "name": "PLA Galaxy",
-    "diameter_tolerance": 0.03,
-    "density": 1.19,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Galaxy_Technical_Data_Sheet.pdf?v=1709278402",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_PLA_Galaxy.pdf",
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFL99",
-            "id": "GFA15",
-            "profile_name": "Bambu PLA Galaxy"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA15",
-            "profile_name": "Bambu PLA Galaxy"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA15",
-            "profile_name": "Bambu PLA Galaxy"
-        },
-        "crealityprint": {
-            "generic_id": "GFL99",
-            "id": "GFA15",
-            "profile_name": "Bambu PLA Galaxy"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA15",
-            "profile_name": "Bambu PLA Galaxy"
-        }
+  "uuid": "0cfd67db-fe36-4a97-9dbd-7a633ad15fb9",
+  "id": "galaxy",
+  "name": "PLA Galaxy",
+  "diameter_tolerance": 0.03,
+  "density": 1.19,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Galaxy_Technical_Data_Sheet.pdf?v=1709278402",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_PLA_Galaxy.pdf",
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFL99",
+      "id": "GFA15",
+      "profile_name": "Bambu PLA Galaxy"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA15",
+      "profile_name": "Bambu PLA Galaxy"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA15",
+      "profile_name": "Bambu PLA Galaxy"
+    },
+    "crealityprint": {
+      "generic_id": "GFL99",
+      "id": "GFA15",
+      "profile_name": "Bambu PLA Galaxy"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA15",
+      "profile_name": "Bambu PLA Galaxy"
     }
+  }
 }

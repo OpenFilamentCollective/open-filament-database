@@ -1,15 +1,16 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%20750g%20-%20Red",
-                "ships_from": "SE"
-            }
-        ]
-    }
+  {
+    "uuid": "48a5e166-554a-430a-a990-73ce0e995fed",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%20750g%20-%20Red",
+        "ships_from": "SE"
+      }
+    ]
+  }
 ]

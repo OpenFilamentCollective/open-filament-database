@@ -47,8 +47,12 @@ import type { EntityType } from '$lib/types/changes';
 /** Extra keys that aren't in the entity schema but are tracked in the change tree.
  *  These map to supplementary files that are stored separately on disk. */
 const SUPPLEMENTARY_KEYS: Partial<Record<EntityType, string[]>> = {
-	variant: ['sizes'],
-	material: ['id', 'materialType'],
+	// `uuid` is the canonical, slug-independent id. Always preserve it so editing an
+	// entity never drops (and thus never causes CI to regenerate) its UUID, even if
+	// the fetched schema predates the uuid field.
+	variant: ['sizes', 'uuid'],
+	material: ['id', 'materialType', 'uuid'],
+	filament: ['uuid'],
 	// Cloud-loaded stores/brands carry their repo-format identifiers in fields
 	// that the JSON schema doesn't define: `slug` (the on-disk folder id) and
 	// `logo_name` (the on-disk `logo.<ext>` filename); `logo_slug` is the CDN
@@ -56,8 +60,8 @@ const SUPPLEMENTARY_KEYS: Partial<Record<EntityType, string[]>> = {
 	// from `logo_name` when writing/validating. If filterToSchema strips these
 	// first, the cloud UUID `id` and CDN `logo_slug` leak into the saved change
 	// and fail schema validation (id pattern + logo pattern + folder-name check).
-	store: ['slug', 'logo_name', 'logo_slug'],
-	brand: ['slug', 'logo_name', 'logo_slug']
+	store: ['slug', 'logo_name', 'logo_slug', 'uuid'],
+	brand: ['slug', 'logo_name', 'logo_slug', 'uuid']
 };
 
 /** Cached sets of allowed property keys per entity type */

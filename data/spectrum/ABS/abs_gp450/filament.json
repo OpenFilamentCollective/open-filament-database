@@ -1,6 +1,7 @@
 {
-    "id": "abs_gp450",
-    "name": "ABS GP450",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "70e0fa81-c3e6-46bf-abbc-2e2118c7de8c",
+  "id": "abs_gp450",
+  "name": "ABS GP450",
+  "diameter_tolerance": 0.02,
+  "density": 1.04
 }

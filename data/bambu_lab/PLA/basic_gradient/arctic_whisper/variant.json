@@ -1,8 +1,9 @@
 {
-    "id": "arctic_whisper",
-    "name": "Arctic Whisper",
-    "color_hex": [
-        "#9CDBD9",
-        "#FFFFFF"
-    ]
+  "uuid": "76da786e-49e6-4416-a526-4e75c6dcc392",
+  "id": "arctic_whisper",
+  "name": "Arctic Whisper",
+  "color_hex": [
+    "#9CDBD9",
+    "#FFFFFF"
+  ]
 }

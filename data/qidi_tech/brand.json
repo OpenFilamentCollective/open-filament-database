@@ -1,7 +1,8 @@
 {
-    "id": "qidi_tech",
-    "name": "QIDI Tech",
-    "website": "qidi3d.com",
-    "logo": "logo.png",
-    "origin": "CN"
+  "uuid": "68eeb39a-0707-463b-a9e6-3eccb1a92c04",
+  "id": "qidi_tech",
+  "name": "QIDI Tech",
+  "website": "qidi3d.com",
+  "logo": "logo.png",
+  "origin": "CN"
 }

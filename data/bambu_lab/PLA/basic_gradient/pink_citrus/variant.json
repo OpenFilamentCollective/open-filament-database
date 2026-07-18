@@ -1,8 +1,9 @@
 {
-    "id": "pink_citrus",
-    "name": "Pink Citrus",
-    "color_hex": [
-        "#F78F77",
-        "#E4505A"
-    ]
+  "uuid": "e182aaab-5ded-4b02-bbae-b4b2e42d087b",
+  "id": "pink_citrus",
+  "name": "Pink Citrus",
+  "color_hex": [
+    "#F78F77",
+    "#E4505A"
+  ]
 }

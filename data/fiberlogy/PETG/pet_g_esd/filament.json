@@ -1,6 +1,7 @@
 {
-    "id": "pet_g_esd",
-    "name": "PET-G ESD",
-    "diameter_tolerance": 0.02,
-    "density": 1.3
+  "uuid": "661eed32-98d8-4a0e-b72e-335c7b40c537",
+  "id": "pet_g_esd",
+  "name": "PET-G ESD",
+  "diameter_tolerance": 0.02,
+  "density": 1.3
 }

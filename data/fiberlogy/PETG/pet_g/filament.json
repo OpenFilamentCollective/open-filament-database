@@ -1,6 +1,7 @@
 {
-    "id": "pet_g",
-    "name": "PET-G",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "76285063-f893-4b12-9903-0d9301077eff",
+  "id": "pet_g",
+  "name": "PET-G",
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

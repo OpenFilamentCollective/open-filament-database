@@ -1,7 +1,8 @@
 {
-    "id": "easyprint",
-    "name": "EasyPrint",
-    "website": "https://primacreator.com/",
-    "logo": "logo.png",
-    "origin": "SW"
+  "uuid": "2716041f-6b48-438d-a64d-57f211cc6776",
+  "id": "easyprint",
+  "name": "EasyPrint",
+  "website": "https://primacreator.com/",
+  "logo": "logo.png",
+  "origin": "SW"
 }

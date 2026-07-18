@@ -1,14 +1,15 @@
 {
-    "id": "pla",
-    "name": "PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "AzureFilm PLA"
-        },
-        "superslicer": {
-            "profile_name": "AzureFilm PLA"
-        }
+  "uuid": "f49e7cba-2827-45aa-959d-1d59d4327610",
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "AzureFilm PLA"
+    },
+    "superslicer": {
+      "profile_name": "AzureFilm PLA"
     }
+  }
 }

@@ -1,6 +1,7 @@
 {
-    "id": "pla_rainbow",
-    "name": "PLA Rainbow",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "6ade1338-00ea-43d3-8b57-49b65eb35cd3",
+  "id": "pla_rainbow",
+  "name": "PLA Rainbow",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

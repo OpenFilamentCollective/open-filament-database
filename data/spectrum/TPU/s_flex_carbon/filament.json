@@ -1,6 +1,7 @@
 {
-    "id": "s_flex_carbon",
-    "name": "TPU S-Flex Carbon",
-    "diameter_tolerance": 0.02,
-    "density": 1.09
+  "uuid": "d2191288-7097-491d-9540-a771cab8ff94",
+  "id": "s_flex_carbon",
+  "name": "TPU S-Flex Carbon",
+  "diameter_tolerance": 0.02,
+  "density": 1.09
 }

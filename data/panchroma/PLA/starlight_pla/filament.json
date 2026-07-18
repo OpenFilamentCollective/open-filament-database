@@ -1,6 +1,7 @@
 {
-    "id": "starlight_pla",
-    "name": "Starlight PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "451eee6e-b7ec-4155-a9cb-0e0c4b408a18",
+  "id": "starlight_pla",
+  "name": "Starlight PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19
 }

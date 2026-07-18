@@ -104,7 +104,8 @@
 
 	// Config for variant form - labels, tooltips, and placeholders come from schema
 	const config: SchemaFormConfig = {
-		hiddenFields: ['id', 'traits', 'sizes', 'hex_variants', 'color_standards'],
+		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
+		hiddenFields: ['id', 'uuid', 'traits', 'sizes', 'hex_variants', 'color_standards'],
 		fieldOrder: ['name', 'color_hex', 'discontinued'],
 		typeOverrides: {
 			color_hex: 'color'
@@ -245,6 +246,9 @@
 	interface SizeWithId {
 		id: number;
 		value: {
+			// Canonical UUID of an existing spool, preserved across edits (assigned by
+			// CI on merge). Undefined for spools added in this session.
+			uuid?: string;
 			filament_weight: number | undefined;
 			diameter: number;
 			empty_spool_weight?: number;
@@ -300,6 +304,7 @@
 			sizes = variant.sizes.map((s: VariantSize, index: number) => ({
 				id: index + 1,
 				value: {
+					uuid: s.uuid,
 					filament_weight: s.filament_weight,
 					diameter: s.diameter || 1.75,
 					empty_spool_weight: s.empty_spool_weight,
@@ -433,6 +438,8 @@
 				diameter: s.value.diameter
 			};
 
+			// Preserve an existing spool's canonical UUID; new spools get one from CI on merge.
+			if (s.value.uuid) sizeValue.uuid = s.value.uuid;
 			if (s.value.empty_spool_weight != null) sizeValue.empty_spool_weight = s.value.empty_spool_weight;
 			if (s.value.spool_core_diameter != null) sizeValue.spool_core_diameter = s.value.spool_core_diameter;
 			if (s.value.gtin) sizeValue.gtin = s.value.gtin;
@@ -475,6 +482,9 @@
 		}
 		submitData.color_standards =
 			Object.keys(colorStandardsData).length > 0 ? colorStandardsData : undefined;
+
+		// Preserve the variant's canonical UUID on edit; left empty on create for CI to assign.
+		if (variant?.uuid) submitData.uuid = variant.uuid;
 
 		// Mandatory: strip tracking params from all purchase-link URLs before staging the change.
 		onSubmit(stripTrackersDeep(submitData));

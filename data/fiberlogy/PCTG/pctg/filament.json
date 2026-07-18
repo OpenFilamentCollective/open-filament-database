@@ -1,18 +1,19 @@
 {
-    "id": "pctg",
-    "name": "PCTG",
-    "diameter_tolerance": 0.02,
-    "density": 1.23,
-    "min_print_temperature": 230,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 70,
-    "max_bed_temperature": 90,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Fiberlogy PCTG"
-        },
-        "superslicer": {
-            "profile_name": "Fiberlogy PCTG"
-        }
+  "uuid": "5bcf8dc7-c206-4aea-907c-20dbda39d5cd",
+  "id": "pctg",
+  "name": "PCTG",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Fiberlogy PCTG"
+    },
+    "superslicer": {
+      "profile_name": "Fiberlogy PCTG"
     }
+  }
 }

@@ -1,6 +1,7 @@
 {
-    "id": "pa6_neat_bk",
-    "name": "PA6 Neat BK",
-    "diameter_tolerance": 0.02,
-    "density": 1.14
+  "uuid": "b9cbde25-b862-40d1-a89d-09e201fe8d3f",
+  "id": "pa6_neat_bk",
+  "name": "PA6 Neat BK",
+  "diameter_tolerance": 0.02,
+  "density": 1.14
 }

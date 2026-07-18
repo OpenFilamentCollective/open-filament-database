@@ -1,8 +1,9 @@
 {
-    "id": "gradiant_blue_purple",
-    "name": "Gradiant Blue-Purple",
-    "color_hex": "#6A5ACD",
-    "traits": {
-        "translucent": true
-    }
+  "uuid": "c8c2ca75-a0f0-4c12-b109-2da14f8f31d8",
+  "id": "gradiant_blue_purple",
+  "name": "Gradiant Blue-Purple",
+  "color_hex": "#6A5ACD",
+  "traits": {
+    "translucent": true
+  }
 }

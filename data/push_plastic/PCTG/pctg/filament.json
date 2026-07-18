@@ -1,15 +1,16 @@
 {
-    "id": "pctg",
-    "name": "PCTG",
-    "diameter_tolerance": 0.02,
-    "density": 1.23,
-    "min_print_temperature": 230,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 70,
-    "max_bed_temperature": 90,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Push Plastic PCTG"
-        }
+  "uuid": "a234a5d6-1c59-47d0-ab6d-362e9c1bf604",
+  "id": "pctg",
+  "name": "PCTG",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Push Plastic PCTG"
     }
+  }
 }

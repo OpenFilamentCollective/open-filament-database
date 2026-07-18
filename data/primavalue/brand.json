@@ -1,7 +1,8 @@
 {
-    "id": "primavalue",
-    "name": "PrimaValue",
-    "website": "https://primacreator.com/",
-    "logo": "logo.png",
-    "origin": "SW"
+  "uuid": "7c934944-fb26-44bc-8868-93a204a58373",
+  "id": "primavalue",
+  "name": "PrimaValue",
+  "website": "https://primacreator.com/",
+  "logo": "logo.png",
+  "origin": "SW"
 }

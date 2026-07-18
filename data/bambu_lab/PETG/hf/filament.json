@@ -1,30 +1,31 @@
 {
-    "id": "hf",
-    "name": "PETG HF",
-    "diameter_tolerance": 0.03,
-    "density": 1.28,
-    "data_sheet_url": "https://store.bblcdn.com/ce12d65176a94f1086e6aefa238e62e2.pdf",
-    "safety_sheet_url": "https://store.bblcdn.com/84de0227cd6c44389be1dfccb5280dcb.pdf",
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFG99",
-            "id": "GFG02",
-            "profile_name": "Bambu PETG HF"
-        },
-        "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "GFG02",
-            "profile_name": "Bambu PETG HF"
-        },
-        "elegooslicer": {
-            "generic_id": "GFG99",
-            "id": "GFG02",
-            "profile_name": "Bambu PETG HF"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFG99",
-            "id": "GFG02",
-            "profile_name": "Bambu PETG HF"
-        }
+  "uuid": "a12dbbe2-8302-44c2-b7e8-cae6347d5cf3",
+  "id": "hf",
+  "name": "PETG HF",
+  "diameter_tolerance": 0.03,
+  "density": 1.28,
+  "data_sheet_url": "https://store.bblcdn.com/ce12d65176a94f1086e6aefa238e62e2.pdf",
+  "safety_sheet_url": "https://store.bblcdn.com/84de0227cd6c44389be1dfccb5280dcb.pdf",
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFG99",
+      "id": "GFG02",
+      "profile_name": "Bambu PETG HF"
+    },
+    "orcaslicer": {
+      "generic_id": "GFG99",
+      "id": "GFG02",
+      "profile_name": "Bambu PETG HF"
+    },
+    "elegooslicer": {
+      "generic_id": "GFG99",
+      "id": "GFG02",
+      "profile_name": "Bambu PETG HF"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFG99",
+      "id": "GFG02",
+      "profile_name": "Bambu PETG HF"
     }
+  }
 }

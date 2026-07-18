@@ -1,6 +1,7 @@
 {
-    "id": "pc_pbt",
-    "name": "PC-PBT",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "39a5e011-27a9-41c9-a7f1-b617936d7c82",
+  "id": "pc_pbt",
+  "name": "PC-PBT",
+  "diameter_tolerance": 0.02,
+  "density": 1.2
 }

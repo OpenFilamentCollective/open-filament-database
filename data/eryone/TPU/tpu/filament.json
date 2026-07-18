@@ -1,18 +1,19 @@
 {
-    "id": "tpu",
-    "name": "TPU",
-    "diameter_tolerance": 0.03,
-    "density": 1.21,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFU99",
-            "id": "EFL95",
-            "profile_name": "Eryone TPU"
-        },
-        "elegooslicer": {
-            "generic_id": "GFU99",
-            "id": "EFL95",
-            "profile_name": "Eryone TPU"
-        }
+  "uuid": "377c48ba-bd7a-421e-bf96-67c8eb5f80e2",
+  "id": "tpu",
+  "name": "TPU",
+  "diameter_tolerance": 0.03,
+  "density": 1.21,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFU99",
+      "id": "EFL95",
+      "profile_name": "Eryone TPU"
+    },
+    "elegooslicer": {
+      "generic_id": "GFU99",
+      "id": "EFL95",
+      "profile_name": "Eryone TPU"
     }
+  }
 }

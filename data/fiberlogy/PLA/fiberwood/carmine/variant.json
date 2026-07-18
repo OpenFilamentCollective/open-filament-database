@@ -1,8 +1,9 @@
 {
-    "id": "carmine",
-    "name": "Carmine",
-    "color_hex": "#960018",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "6e5ba87b-4a86-454c-9f95-5e1b3e200294",
+  "id": "carmine",
+  "name": "Carmine",
+  "color_hex": "#960018",
+  "traits": {
+    "recyclable": true
+  }
 }

@@ -1,7 +1,8 @@
 {
-    "id": "polymax",
-    "name": "PolyMax",
-    "website": "https://polymaker.com/",
-    "logo": "logo.svg",
-    "origin": "CN"
+  "uuid": "d158cdbf-3248-4fce-8410-ce7642f528a9",
+  "id": "polymax",
+  "name": "PolyMax",
+  "website": "https://polymaker.com/",
+  "logo": "logo.svg",
+  "origin": "CN"
 }

@@ -1,6 +1,7 @@
 {
-    "id": "pc_fr",
-    "name": "PC-FR",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "f1c8c590-a747-4aea-b7e8-10959d5576e0",
+  "id": "pc_fr",
+  "name": "PC-FR",
+  "diameter_tolerance": 0.02,
+  "density": 1.2
 }

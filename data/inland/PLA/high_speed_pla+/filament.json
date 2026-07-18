@@ -1,6 +1,7 @@
 {
-    "id": "high_speed_pla+",
-    "name": "High Speed PLA+",
-    "diameter_tolerance": 0.03,
-    "density": 1.24
+  "uuid": "93d87d4c-d9b5-4d80-ac24-3b3291ed7062",
+  "id": "high_speed_pla+",
+  "name": "High Speed PLA+",
+  "diameter_tolerance": 0.03,
+  "density": 1.24
 }

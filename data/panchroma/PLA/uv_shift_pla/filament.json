@@ -1,6 +1,7 @@
 {
-    "id": "uv_shift_pla",
-    "name": "UV Shift PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "33328aea-29a0-4230-9db1-2f4e495f2f7a",
+  "id": "uv_shift_pla",
+  "name": "UV Shift PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19
 }

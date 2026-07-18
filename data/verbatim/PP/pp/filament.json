@@ -1,18 +1,19 @@
 {
-    "id": "pp",
-    "name": "PP",
-    "diameter_tolerance": 0.02,
-    "density": 0.9,
-    "min_print_temperature": 210,
-    "max_print_temperature": 240,
-    "min_bed_temperature": 80,
-    "max_bed_temperature": 100,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Verbatim PP"
-        },
-        "superslicer": {
-            "profile_name": "Verbatim PP"
-        }
+  "uuid": "260d68ff-f855-44d0-8c5f-2bf61fdcada4",
+  "id": "pp",
+  "name": "PP",
+  "diameter_tolerance": 0.02,
+  "density": 0.9,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Verbatim PP"
+    },
+    "superslicer": {
+      "profile_name": "Verbatim PP"
     }
+  }
 }

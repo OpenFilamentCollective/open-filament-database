@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 125,
-        "spool_core_diameter": 52,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/silk-pla-dual-tri-color-filament?variant=44831266046141"
-            }
-        ]
-    }
+  {
+    "uuid": "40e34759-afbf-4580-a530-4a1326a0e5e5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 125,
+    "spool_core_diameter": 52,
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/silk-pla-dual-tri-color-filament?variant=44831266046141"
+      }
+    ]
+  }
 ]

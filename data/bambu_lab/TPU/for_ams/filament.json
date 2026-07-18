@@ -1,30 +1,31 @@
 {
-    "id": "for_ams",
-    "name": "TPU for AMS",
-    "diameter_tolerance": 0.05,
-    "density": 1.26,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_TPU_for_AMS_Technical_Data_Sheet.pdf?v=1730944629",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_TPU_for_AMS_MSDS.pdf?v=1730944633",
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFU99",
-            "id": "GFU02",
-            "profile_name": "Bambu TPU for AMS"
-        },
-        "orcaslicer": {
-            "generic_id": "GFU99",
-            "id": "GFU02",
-            "profile_name": "Bambu TPU for AMS"
-        },
-        "elegooslicer": {
-            "generic_id": "GFU99",
-            "id": "GFU02",
-            "profile_name": "Bambu TPU for AMS"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFU99",
-            "id": "GFU02",
-            "profile_name": "Bambu TPU for AMS"
-        }
+  "uuid": "2c7c7aec-b9ae-4faf-9789-9dce969cd66e",
+  "id": "for_ams",
+  "name": "TPU for AMS",
+  "diameter_tolerance": 0.05,
+  "density": 1.26,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_TPU_for_AMS_Technical_Data_Sheet.pdf?v=1730944629",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_TPU_for_AMS_MSDS.pdf?v=1730944633",
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFU99",
+      "id": "GFU02",
+      "profile_name": "Bambu TPU for AMS"
+    },
+    "orcaslicer": {
+      "generic_id": "GFU99",
+      "id": "GFU02",
+      "profile_name": "Bambu TPU for AMS"
+    },
+    "elegooslicer": {
+      "generic_id": "GFU99",
+      "id": "GFU02",
+      "profile_name": "Bambu TPU for AMS"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFU99",
+      "id": "GFU02",
+      "profile_name": "Bambu TPU for AMS"
     }
+  }
 }

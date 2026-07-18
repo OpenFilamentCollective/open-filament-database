@@ -1,6 +1,7 @@
 {
-    "id": "pla_silk_high_speed_triple_color",
-    "name": "PLA Silk High-Speed Triple-Color",
-    "diameter_tolerance": 0.03,
-    "density": 1.32
+  "uuid": "5794e689-7285-4bbc-94d6-a8f5650bf94c",
+  "id": "pla_silk_high_speed_triple_color",
+  "name": "PLA Silk High-Speed Triple-Color",
+  "diameter_tolerance": 0.03,
+  "density": 1.32
 }

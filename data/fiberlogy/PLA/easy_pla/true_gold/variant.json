@@ -1,8 +1,9 @@
 {
-    "id": "true_gold",
-    "name": "True Gold",
-    "color_hex": "#E5C100",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "029a6f89-7ff6-4f89-85e1-caa3ef097e79",
+  "id": "true_gold",
+  "name": "True Gold",
+  "color_hex": "#E5C100",
+  "traits": {
+    "recyclable": true
+  }
 }

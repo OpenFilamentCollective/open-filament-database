@@ -1,16 +1,17 @@
 {
-    "id": "pa6_gf25",
-    "name": "PA6-GF25",
-    "diameter_tolerance": 0.02,
-    "density": 1.2,
-    "slicer_settings": {
-        "orcaslicer": {
-            "id": "GFL58",
-            "profile_name": "Fiberon PA6-GF25"
-        },
-        "crealityprint": {
-            "id": "P7001",
-            "profile_name": "Fiberon PA6-GF25"
-        }
+  "uuid": "fe0c31f3-f6db-4ea4-9387-ac7e2b704e09",
+  "id": "pa6_gf25",
+  "name": "PA6-GF25",
+  "diameter_tolerance": 0.02,
+  "density": 1.2,
+  "slicer_settings": {
+    "orcaslicer": {
+      "id": "GFL58",
+      "profile_name": "Fiberon PA6-GF25"
+    },
+    "crealityprint": {
+      "id": "P7001",
+      "profile_name": "Fiberon PA6-GF25"
     }
+  }
 }

@@ -38,3 +38,23 @@ jobs:
         run: pip install -r requirements.txt
       - name: Validate data
         run: python -m ofd validate --${{ matrix.name }}
+
+  # Canonical UUIDs are assigned post-merge (see style_data.yaml). This gate runs on
+  # PRs and on the raw merge commit — both legitimately precede assignment — so it
+  # passes `--allow-missing-uuids`: it flags malformed or duplicated UUIDs but does NOT
+  # require presence. Presence is enforced strictly in style_data.yaml, right after
+  # `ofd uuid assign` fills the empty ones.
+  validate_uuids:
+    runs-on: ubuntu-24.04
+    name: Validate data - uuids
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check UUID format and uniqueness
+        run: python -m ofd uuid check --allow-missing-uuids

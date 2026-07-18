@@ -1,22 +1,23 @@
 {
-    "id": "silk_pla",
-    "name": "Silk PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "min_print_temperature": 190,
-    "max_print_temperature": 230,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 70,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFL96",
-            "id": "GFOT002",
-            "profile_name": "Overture Silk PLA"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL96",
-            "id": "GFOT002_00",
-            "profile_name": "Overture Silk PLA"
-        }
+  "uuid": "b303de02-6698-4742-ba7c-f86c4f7084dd",
+  "id": "silk_pla",
+  "name": "Silk PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFL96",
+      "id": "GFOT002",
+      "profile_name": "Overture Silk PLA"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL96",
+      "id": "GFOT002_00",
+      "profile_name": "Overture Silk PLA"
     }
+  }
 }

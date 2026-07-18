@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6937285500694",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://eu.store.bambulab.com/products/pla-tough-upgrade?id=624496486489088048"
-            }
-        ]
-    }
+  {
+    "uuid": "e075597a-e3a9-44e5-80f8-6602c47cf493",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6937285500694",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://eu.store.bambulab.com/products/pla-tough-upgrade?id=624496486489088048"
+      }
+    ]
+  }
 ]

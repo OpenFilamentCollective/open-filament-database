@@ -1,6 +1,7 @@
 {
-    "id": "pla_matte_high_speed_triple_color",
-    "name": "PLA Matte High Speed Triple-Color",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "3d86a74d-1ee6-4d93-aa87-a64dd01baeed",
+  "id": "pla_matte_high_speed_triple_color",
+  "name": "PLA Matte High Speed Triple-Color",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

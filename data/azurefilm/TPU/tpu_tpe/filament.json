@@ -1,6 +1,7 @@
 {
-    "id": "tpu_tpe",
-    "name": "TPU/TPE",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "59fafa7c-229a-4a2f-be9e-95bbe88d08dc",
+  "id": "tpu_tpe",
+  "name": "TPU/TPE",
+  "diameter_tolerance": 0.02,
+  "density": 1.2
 }

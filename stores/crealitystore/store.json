@@ -1,12 +1,13 @@
 {
-    "id": "crealitystore",
-    "name": "Creality Store",
-    "storefront_url": "https://store.creality.com",
-    "logo": "logo.png",
-    "ships_from": [
-        "US"
-    ],
-    "ships_to": [
-        "US"
-    ]
+  "uuid": "7deba863-0d03-4908-bc75-c0991fda9a0b",
+  "id": "crealitystore",
+  "name": "Creality Store",
+  "storefront_url": "https://store.creality.com",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": [
+    "US"
+  ]
 }

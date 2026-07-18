@@ -1,16 +1,17 @@
 {
-    "id": "amazon",
-    "name": "Amazon",
-    "storefront_url": "https://www.amazon.com/",
-    "logo": "logo.png",
-    "ships_from": [
-        "US",
-        "CA",
-        "MX"
-    ],
-    "ships_to": [
-        "US",
-        "CA",
-        "MX"
-    ]
+  "uuid": "73280a50-7c5f-4087-a524-7092936a5085",
+  "id": "amazon",
+  "name": "Amazon",
+  "storefront_url": "https://www.amazon.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US",
+    "CA",
+    "MX"
+  ],
+  "ships_to": [
+    "US",
+    "CA",
+    "MX"
+  ]
 }

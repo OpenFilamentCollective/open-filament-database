@@ -1,6 +1,7 @@
 {
-    "id": "asa_900grs",
-    "name": "ASA 900Grs",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "f6cc17b2-05dd-46e4-97e9-096b9f05bc62",
+  "id": "asa_900grs",
+  "name": "ASA 900Grs",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

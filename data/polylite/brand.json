@@ -1,7 +1,8 @@
 {
-    "id": "polylite",
-    "name": "PolyLite",
-    "website": "https://polymaker.com/",
-    "logo": "logo.svg",
-    "origin": "CN"
+  "uuid": "b89c1577-28c9-4e89-8245-4f77fce7716d",
+  "id": "polylite",
+  "name": "PolyLite",
+  "website": "https://polymaker.com/",
+  "logo": "logo.svg",
+  "origin": "CN"
 }

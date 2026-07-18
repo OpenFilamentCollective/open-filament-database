@@ -1,18 +1,19 @@
 {
-    "id": "petg_basic",
-    "name": "PETG-Basic",
-    "diameter_tolerance": 0.03,
-    "density": 1.27,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "E2003",
-            "profile_name": "eSUN PETG-Basic"
-        },
-        "crealityprint": {
-            "generic_id": "GFG99",
-            "id": "E2003",
-            "profile_name": "eSUN PETG-Basic"
-        }
+  "uuid": "644bca46-0925-498d-a541-e789281ea4c2",
+  "id": "petg_basic",
+  "name": "PETG-Basic",
+  "diameter_tolerance": 0.03,
+  "density": 1.27,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFG99",
+      "id": "E2003",
+      "profile_name": "eSUN PETG-Basic"
+    },
+    "crealityprint": {
+      "generic_id": "GFG99",
+      "id": "E2003",
+      "profile_name": "eSUN PETG-Basic"
     }
+  }
 }

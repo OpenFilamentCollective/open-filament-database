@@ -1,6 +1,7 @@
 {
-    "id": "pla_thermoactive",
-    "name": "PLA Thermoactive",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "6818908c-443e-40f2-98e6-43c56fc21830",
+  "id": "pla_thermoactive",
+  "name": "PLA Thermoactive",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

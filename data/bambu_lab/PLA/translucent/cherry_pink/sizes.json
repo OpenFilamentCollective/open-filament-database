@@ -1,12 +1,13 @@
 [
-    {
-        "filament_weight": 1000.0,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://eu.store.bambulab.com/products/pla-translucent?id=54407223050588"
-            }
-        ]
-    }
+  {
+    "uuid": "bfd67cbe-3728-475f-bdeb-730b60d979c2",
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://eu.store.bambulab.com/products/pla-translucent?id=54407223050588"
+      }
+    ]
+  }
 ]

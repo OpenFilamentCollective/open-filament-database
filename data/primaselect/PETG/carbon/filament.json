@@ -1,6 +1,7 @@
 {
-    "id": "carbon",
-    "name": "PETG CARBON",
-    "diameter_tolerance": 0.05,
-    "density": 1.2
+  "uuid": "9b5d7000-558d-48e7-9b73-ad4249eafe6f",
+  "id": "carbon",
+  "name": "PETG CARBON",
+  "diameter_tolerance": 0.05,
+  "density": 1.2
 }

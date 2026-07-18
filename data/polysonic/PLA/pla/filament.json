@@ -1,18 +1,19 @@
 {
-    "id": "pla",
-    "name": "PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.23,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "P1004",
-            "profile_name": "PolySonic PLA"
-        },
-        "crealityprint": {
-            "generic_id": "GFL99",
-            "id": "P1004",
-            "profile_name": "PolySonic PLA"
-        }
+  "uuid": "d39da8c2-70bd-43c6-bd18-1c35931c426b",
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "P1004",
+      "profile_name": "PolySonic PLA"
+    },
+    "crealityprint": {
+      "generic_id": "GFL99",
+      "id": "P1004",
+      "profile_name": "PolySonic PLA"
     }
+  }
 }

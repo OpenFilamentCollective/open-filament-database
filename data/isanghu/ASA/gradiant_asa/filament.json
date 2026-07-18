@@ -1,7 +1,8 @@
 {
-    "id": "gradiant_asa",
-    "name": "Gradiant ASA",
-    "diameter_tolerance": 0.02,
-    "density": 1.07,
-    "max_dry_temperature": 85
+  "uuid": "26d3cd65-41fa-4ce4-8cde-dad3e8963473",
+  "id": "gradiant_asa",
+  "name": "Gradiant ASA",
+  "diameter_tolerance": 0.02,
+  "density": 1.07,
+  "max_dry_temperature": 85
 }

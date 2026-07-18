@@ -1,6 +1,7 @@
 {
-    "id": "petg_tungsten",
-    "name": "PETG Tungsten",
-    "diameter_tolerance": 0.03,
-    "density": 4
+  "uuid": "4c27a87d-bad2-44c2-89d0-b4142790e895",
+  "id": "petg_tungsten",
+  "name": "PETG Tungsten",
+  "diameter_tolerance": 0.03,
+  "density": 4
 }

@@ -1,12 +1,13 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/pla-basic-special-color-filament?variant=44831261229245"
-            }
-        ]
-    }
+  {
+    "uuid": "5c2b12fe-4d91-4f50-984c-cdeaf2e9571c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/pla-basic-special-color-filament?variant=44831261229245"
+      }
+    ]
+  }
 ]

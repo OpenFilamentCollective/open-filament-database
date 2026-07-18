@@ -1,6 +1,7 @@
 {
-    "id": "pa12_cf",
-    "name": "PA12-CF",
-    "diameter_tolerance": 0.03,
-    "density": 1.06
+  "uuid": "466d3b2c-2409-43a2-8ebf-cbfe748f251d",
+  "id": "pa12_cf",
+  "name": "PA12-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.06
 }

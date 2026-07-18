@@ -1,18 +1,19 @@
 {
-    "id": "abs_cf",
-    "name": "ABS-CF",
-    "diameter_tolerance": 0.03,
-    "density": 1.04,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "EFL81",
-            "profile_name": "Eryone ABS-CF"
-        },
-        "elegooslicer": {
-            "generic_id": "GFB99",
-            "id": "EFL81",
-            "profile_name": "Eryone ABS-CF"
-        }
+  "uuid": "cfd7ba79-6fe1-4b69-93b1-ed7e4881ef68",
+  "id": "abs_cf",
+  "name": "ABS-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.04,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFB99",
+      "id": "EFL81",
+      "profile_name": "Eryone ABS-CF"
+    },
+    "elegooslicer": {
+      "generic_id": "GFB99",
+      "id": "EFL81",
+      "profile_name": "Eryone ABS-CF"
     }
+  }
 }

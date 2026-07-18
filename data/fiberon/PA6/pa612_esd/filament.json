@@ -1,16 +1,17 @@
 {
-    "id": "pa612_esd",
-    "name": "PA612-ESD",
-    "diameter_tolerance": 0.02,
-    "density": 1.03,
-    "slicer_settings": {
-        "orcaslicer": {
-            "id": "GFL72",
-            "profile_name": "Fiberon PA612-ESD"
-        },
-        "crealityprint": {
-            "id": "P7005",
-            "profile_name": "Fiberon PA612-ESD"
-        }
+  "uuid": "798e7acc-e4fa-4b7d-8d6f-17c9b53c1702",
+  "id": "pa612_esd",
+  "name": "PA612-ESD",
+  "diameter_tolerance": 0.02,
+  "density": 1.03,
+  "slicer_settings": {
+    "orcaslicer": {
+      "id": "GFL72",
+      "profile_name": "Fiberon PA612-ESD"
+    },
+    "crealityprint": {
+      "id": "P7005",
+      "profile_name": "Fiberon PA612-ESD"
     }
+  }
 }

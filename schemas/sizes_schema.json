@@ -8,6 +8,13 @@
     "items": {
         "type": "object",
         "properties": {
+            "uuid": {
+                "type": "string",
+                "title": "UUID",
+                "description": "Canonical UUID (UUIDv4), assigned automatically by CI on merge. Leave empty when creating.",
+                "readOnly": true,
+                "pattern": "^$|^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
             "filament_weight": {
                 "type": "number",
                 "description": "The weight of the filament alone (in grams)",

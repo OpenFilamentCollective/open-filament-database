@@ -1,7 +1,8 @@
 {
-    "id": "prografen",
-    "name": "Prografen",
-    "website": "https://prografen.com/",
-    "logo": "logo.svg",
-    "origin": "PL"
+  "uuid": "24f34176-18b8-4268-97c5-fe8a8ec2f953",
+  "id": "prografen",
+  "name": "Prografen",
+  "website": "https://prografen.com/",
+  "logo": "logo.svg",
+  "origin": "PL"
 }

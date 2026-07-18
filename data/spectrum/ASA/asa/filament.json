@@ -1,15 +1,16 @@
 {
-    "id": "asa",
-    "name": "ASA",
-    "diameter_tolerance": 0.02,
-    "density": 1.08,
-    "min_print_temperature": 235,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 90,
-    "max_bed_temperature": 110,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Spectrum ASA"
-        }
+  "uuid": "297d80e6-80d9-4167-939d-8a5eb4a77f38",
+  "id": "asa",
+  "name": "ASA",
+  "diameter_tolerance": 0.02,
+  "density": 1.08,
+  "min_print_temperature": 235,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Spectrum ASA"
     }
+  }
 }

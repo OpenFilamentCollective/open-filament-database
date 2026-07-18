@@ -1,6 +1,7 @@
 {
-    "id": "aquaprint",
-    "name": "PLA AquaPrint",
-    "diameter_tolerance": 0.02,
-    "density": 0.9
+  "uuid": "441791b6-5165-41f4-bb29-2ae3006616f7",
+  "id": "aquaprint",
+  "name": "PLA AquaPrint",
+  "diameter_tolerance": 0.02,
+  "density": 0.9
 }

@@ -1,7 +1,8 @@
 {
-    "id": "pla_basic",
-    "name": "PLA Basic",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "max_dry_temperature": 50
+  "uuid": "3a36dda6-f3b6-4d33-a0cc-9eba66bc5098",
+  "id": "pla_basic",
+  "name": "PLA Basic",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 50
 }

@@ -1,8 +1,9 @@
 {
-    "id": "true_blue",
-    "name": "True Blue",
-    "color_hex": "#016AAF",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "4cb2738f-9793-4ea4-83e4-56272d2b8927",
+  "id": "true_blue",
+  "name": "True Blue",
+  "color_hex": "#016AAF",
+  "traits": {
+    "recyclable": true
+  }
 }

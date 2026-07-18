@@ -1,8 +1,9 @@
 {
-    "id": "burgundy_transparent",
-    "name": "Burgundy Transparent",
-    "color_hex": "#971B2F",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "5b9b128f-7a1f-479e-b278-2c7247e4da33",
+  "id": "burgundy_transparent",
+  "name": "Burgundy Transparent",
+  "color_hex": "#971B2F",
+  "traits": {
+    "recyclable": true
+  }
 }

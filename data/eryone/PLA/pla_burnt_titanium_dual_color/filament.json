@@ -1,6 +1,7 @@
 {
-    "id": "pla_burnt_titanium_dual_color",
-    "name": "PLA Burnt Titanium Dual-Color",
-    "diameter_tolerance": 0.03,
-    "density": 1.23
+  "uuid": "d81e4a85-ef5b-43cc-be07-55d10cb6e25e",
+  "id": "pla_burnt_titanium_dual_color",
+  "name": "PLA Burnt Titanium Dual-Color",
+  "diameter_tolerance": 0.03,
+  "density": 1.23
 }

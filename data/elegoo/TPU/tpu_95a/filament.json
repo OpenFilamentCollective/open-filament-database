@@ -1,27 +1,28 @@
 {
-    "id": "tpu_95a",
-    "name": "TPU 95A",
-    "diameter_tolerance": 0.02,
-    "density": 1.16,
-    "min_print_temperature": 210,
-    "max_print_temperature": 240,
-    "min_bed_temperature": 30,
-    "max_bed_temperature": 60,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFU99",
-            "id": "ETPU95AB00",
-            "profile_name": "Elegoo TPU 95A"
-        },
-        "elegooslicer": {
-            "generic_id": "GFU99",
-            "id": "ETPUB00",
-            "profile_name": "Elegoo TPU 95A"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFU99",
-            "id": "ETPU95AB00",
-            "profile_name": "Elegoo TPU 95A"
-        }
+  "uuid": "8e3c2541-beb0-4779-ad8e-98c381090eed",
+  "id": "tpu_95a",
+  "name": "TPU 95A",
+  "diameter_tolerance": 0.02,
+  "density": 1.16,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFU99",
+      "id": "ETPU95AB00",
+      "profile_name": "Elegoo TPU 95A"
+    },
+    "elegooslicer": {
+      "generic_id": "GFU99",
+      "id": "ETPUB00",
+      "profile_name": "Elegoo TPU 95A"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFU99",
+      "id": "ETPU95AB00",
+      "profile_name": "Elegoo TPU 95A"
     }
+  }
 }

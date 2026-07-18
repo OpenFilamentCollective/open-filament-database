@@ -1,33 +1,34 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.25,
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFG99",
-            "id": "GFG60",
-            "profile_name": "PolyLite PETG"
-        },
-        "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "GFG60",
-            "profile_name": "PolyLite PETG"
-        },
-        "elegooslicer": {
-            "generic_id": "GFG99",
-            "id": "GFG60",
-            "profile_name": "PolyLite PETG"
-        },
-        "crealityprint": {
-            "generic_id": "GFG99",
-            "id": "GFG60",
-            "profile_name": "PolyLite PETG"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFG99",
-            "id": "GFG60",
-            "profile_name": "PolyLite PETG"
-        }
+  "uuid": "7e416931-52e6-423e-9ea2-067e594c597d",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFG99",
+      "id": "GFG60",
+      "profile_name": "PolyLite PETG"
+    },
+    "orcaslicer": {
+      "generic_id": "GFG99",
+      "id": "GFG60",
+      "profile_name": "PolyLite PETG"
+    },
+    "elegooslicer": {
+      "generic_id": "GFG99",
+      "id": "GFG60",
+      "profile_name": "PolyLite PETG"
+    },
+    "crealityprint": {
+      "generic_id": "GFG99",
+      "id": "GFG60",
+      "profile_name": "PolyLite PETG"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFG99",
+      "id": "GFG60",
+      "profile_name": "PolyLite PETG"
     }
+  }
 }

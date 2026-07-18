@@ -1,23 +1,25 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/611550/inland-175mm-green-pla-3d-printer-filament-1kg-spool-(22-lbs)?sp=1"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/687082/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-green?sp=426"
-            }
-        ]
-    }
+  {
+    "uuid": "2add3036-1083-4d42-8e09-2271652bc510",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/611550/inland-175mm-green-pla-3d-printer-filament-1kg-spool-(22-lbs)?sp=1"
+      }
+    ]
+  },
+  {
+    "uuid": "7cba1353-66e9-4862-807b-d16610afb380",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/687082/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-green?sp=426"
+      }
+    ]
+  }
 ]

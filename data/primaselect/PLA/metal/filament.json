@@ -1,6 +1,7 @@
 {
-    "id": "metal",
-    "name": "PLA METAL",
-    "diameter_tolerance": 0.05,
-    "density": 7.23
+  "uuid": "1a6d8bed-e94b-4e9d-9017-a083aa7b27b7",
+  "id": "metal",
+  "name": "PLA METAL",
+  "diameter_tolerance": 0.05,
+  "density": 7.23
 }

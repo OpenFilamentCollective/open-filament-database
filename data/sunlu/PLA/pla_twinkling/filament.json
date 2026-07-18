@@ -1,6 +1,7 @@
 {
-    "id": "pla_twinkling",
-    "name": "PLA Twinkling",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "14f12138-fed8-44cb-bccb-d6b05e1285df",
+  "id": "pla_twinkling",
+  "name": "PLA Twinkling",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

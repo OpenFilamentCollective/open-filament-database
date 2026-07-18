@@ -1,17 +1,18 @@
 {
-    "id": "tpu_95a",
-    "name": "TPU-95A",
-    "diameter_tolerance": 0.03,
-    "density": 1.2,
-    "min_print_temperature": 210,
-    "max_print_temperature": 240,
-    "min_bed_temperature": 30,
-    "max_bed_temperature": 60,
-    "slicer_settings": {
-        "crealityprint": {
-            "generic_id": "GFU99",
-            "id": "E5001",
-            "profile_name": "eSUN TPU-95A"
-        }
+  "uuid": "4e81e04d-c40c-4bd1-a8f8-74b6c9c0aa5b",
+  "id": "tpu_95a",
+  "name": "TPU-95A",
+  "diameter_tolerance": 0.03,
+  "density": 1.2,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "slicer_settings": {
+    "crealityprint": {
+      "generic_id": "GFU99",
+      "id": "E5001",
+      "profile_name": "eSUN TPU-95A"
     }
+  }
 }

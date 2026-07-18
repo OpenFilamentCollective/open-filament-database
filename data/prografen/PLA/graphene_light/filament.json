@@ -1,6 +1,7 @@
 {
-    "id": "graphene_light",
-    "name": "PLA Graphene Light",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "4c4782ca-17ae-4e18-a89e-5157a4d0c29d",
+  "id": "graphene_light",
+  "name": "PLA Graphene Light",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

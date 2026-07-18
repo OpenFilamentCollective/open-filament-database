@@ -1,9 +1,10 @@
 {
-    "id": "wetland_green",
-    "name": "Wetland Green",
-    "color_hex": [
-        "#669C35",
-        "#9AA60E",
-        "#D9EB37"
-    ]
+  "uuid": "7f2d2375-8e04-4df4-8d31-cdec71324e19",
+  "id": "wetland_green",
+  "name": "Wetland Green",
+  "color_hex": [
+    "#669C35",
+    "#9AA60E",
+    "#D9EB37"
+  ]
 }

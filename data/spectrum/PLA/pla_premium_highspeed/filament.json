@@ -1,6 +1,7 @@
 {
-    "id": "pla_premium_highspeed",
-    "name": "PLA Premium HighSpeed",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "3bb6f2f6-bceb-450c-a849-4b24e597a42a",
+  "id": "pla_premium_highspeed",
+  "name": "PLA Premium HighSpeed",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

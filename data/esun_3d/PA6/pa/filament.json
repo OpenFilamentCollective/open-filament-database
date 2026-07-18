@@ -1,6 +1,7 @@
 {
-    "id": "pa",
-    "name": "PA6 PA",
-    "diameter_tolerance": 0.03,
-    "density": 1.12
+  "uuid": "96d81ce1-628f-4623-b7e4-847eb1a73e2d",
+  "id": "pa",
+  "name": "PA6 PA",
+  "diameter_tolerance": 0.03,
+  "density": 1.12
 }

@@ -1,6 +1,7 @@
 {
-    "id": "pa_cf",
-    "name": "PA6 PA-CF",
-    "diameter_tolerance": 0.03,
-    "density": 1.24
+  "uuid": "da4443b0-30cf-4423-89c3-54715bae1a5e",
+  "id": "pa_cf",
+  "name": "PA6 PA-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.24
 }

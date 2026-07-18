@@ -1,8 +1,9 @@
 {
-    "id": "green",
-    "name": "Green",
-    "color_hex": "#7CE0D3",
-    "traits": {
-        "translucent": true
-    }
+  "uuid": "35a4f411-bdc7-4e1f-8ea6-1d77cc00b1b3",
+  "id": "green",
+  "name": "Green",
+  "color_hex": "#7CE0D3",
+  "traits": {
+    "translucent": true
+  }
 }

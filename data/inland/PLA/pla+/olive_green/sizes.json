@@ -1,23 +1,25 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/611555/inland-175mm-pla-3d-printer-filament-10-kg-(22-lbs)-spool-olive-green?sp=715"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/701012/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-olive-green?sp=293"
-            }
-        ]
-    }
+  {
+    "uuid": "376f4283-0824-4912-919d-f1c3561df36a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/611555/inland-175mm-pla-3d-printer-filament-10-kg-(22-lbs)-spool-olive-green?sp=715"
+      }
+    ]
+  },
+  {
+    "uuid": "57b0ab67-45c3-408d-9db8-ca92a514a9ce",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/701012/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-olive-green?sp=293"
+      }
+    ]
+  }
 ]

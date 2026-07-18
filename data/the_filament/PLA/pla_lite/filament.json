@@ -1,6 +1,7 @@
 {
-    "id": "pla_lite",
-    "name": "PLA Lite",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "b741202e-e3c6-4ad0-8a43-463f7728bab5",
+  "id": "pla_lite",
+  "name": "PLA Lite",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }
