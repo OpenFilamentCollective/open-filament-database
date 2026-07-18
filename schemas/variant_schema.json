@@ -277,6 +277,12 @@
                     "x-category": "properties",
                     "x-label": "High Temp"
                 },
+                "high_flow": {
+                    "type": "boolean",
+                    "description": "Formulated for high volumetric flow, enabling faster print speeds than typical for the material type (also marketed as high-speed)",
+                    "x-category": "properties",
+                    "x-label": "High Flow"
+                },
                 "low_outgassing": {
                     "type": "boolean",
                     "description": "Releases only minimal gas when placed in a vacuum",

@@ -112,6 +112,7 @@ export interface VariantTraits {
 	castable?: boolean;
 	self_extinguishing?: boolean;
 	high_temperature?: boolean;
+	high_flow?: boolean;
 	low_outgassing?: boolean;
 	water_soluble?: boolean;
 	ipa_soluble?: boolean;
