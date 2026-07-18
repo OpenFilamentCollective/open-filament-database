@@ -88,11 +88,21 @@ class Entity:
         return f"{path}[{self.index}]"
 
 
-def _load(path: Path) -> Any:
-    """Parse a JSON file, returning None on missing file or parse error."""
+def _load(path: Path, parse_errors: list[dict[str, str]] | None = None) -> Any:
+    """Parse a JSON file.
+
+    Returns None when the file is absent (expected for optional files such as
+    ``material.json``). A *malformed* or otherwise unreadable file is recorded in
+    ``parse_errors`` (when a list is provided) so callers like ``ofd uuid check``
+    can surface it instead of silently dropping the entity.
+    """
     try:
         return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+    except FileNotFoundError:
+        return None
+    except (OSError, json.JSONDecodeError) as exc:
+        if parse_errors is not None:
+            parse_errors.append({"path": str(path), "error": str(exc)})
         return None
 
 
@@ -119,18 +129,33 @@ def assign_uuid(entity: Entity, value: str) -> None:
     entity.obj.update(ordered)
 
 
-def iter_entities(data_dir: Path, stores_dir: Path) -> Iterator[Entity]:
+def iter_entities(
+    data_dir: Path, stores_dir: Path, parse_errors: list[dict[str, str]] | None = None
+) -> Iterator[Entity]:
     """Yield every canonical-UUID-bearing entity under ``data_dir`` and ``stores_dir``.
 
-    Mirrors the crawler's traversal (brand -> material -> filament -> variant ->
-    sizes[]) plus flat stores. Files that are missing or fail to parse are skipped;
-    ``ofd validate --json-files`` is responsible for reporting malformed JSON.
+    Walks the same tree the crawler does (brand -> material -> filament -> variant
+    -> sizes[]) plus flat stores, yielding one :class:`Entity` per parseable JSON
+    object that has a slot for a ``uuid``.
+
+    This is intentionally a *superset* of what ``ofd build`` exports: the crawler
+    additionally drops entities it considers incomplete (e.g. a size with no
+    ``filament_weight``), whereas here every on-disk entity is given a UUID so it
+    keeps a stable identity once completed. A lone object in ``sizes.json`` (which
+    is schema-invalid, but which the crawler still wraps and exports) is treated as
+    a single spool.
+
+    Missing optional files are skipped. When ``parse_errors`` is provided, malformed
+    JSON files are appended to it (as ``{"path", "error"}``) rather than silently
+    dropped, so ``ofd uuid check`` can fail on them.
     """
-    yield from _iter_data(data_dir)
-    yield from _iter_stores(stores_dir)
+    yield from _iter_data(data_dir, parse_errors)
+    yield from _iter_stores(stores_dir, parse_errors)
 
 
-def _iter_data(data_dir: Path) -> Iterator[Entity]:
+def _iter_data(
+    data_dir: Path, parse_errors: list[dict[str, str]] | None = None
+) -> Iterator[Entity]:
     if not data_dir.exists():
         return
     for brand_dir in sorted(data_dir.iterdir()):
@@ -138,7 +163,7 @@ def _iter_data(data_dir: Path) -> Iterator[Entity]:
             continue
 
         brand_file = brand_dir / "brand.json"
-        brand_container = _load(brand_file)
+        brand_container = _load(brand_file, parse_errors)
         if isinstance(brand_container, dict):
             yield Entity("brand", brand_file, brand_container, brand_container)
 
@@ -147,7 +172,7 @@ def _iter_data(data_dir: Path) -> Iterator[Entity]:
                 continue
 
             material_file = material_dir / "material.json"
-            material_container = _load(material_file)
+            material_container = _load(material_file, parse_errors)
             if isinstance(material_container, dict):
                 yield Entity("material", material_file, material_container, material_container)
 
@@ -156,7 +181,7 @@ def _iter_data(data_dir: Path) -> Iterator[Entity]:
                     continue
 
                 filament_file = filament_dir / "filament.json"
-                filament_container = _load(filament_file)
+                filament_container = _load(filament_file, parse_errors)
                 if isinstance(filament_container, dict):
                     yield Entity("filament", filament_file, filament_container, filament_container)
 
@@ -165,25 +190,33 @@ def _iter_data(data_dir: Path) -> Iterator[Entity]:
                         continue
 
                     variant_file = variant_dir / "variant.json"
-                    variant_container = _load(variant_file)
+                    variant_container = _load(variant_file, parse_errors)
                     if isinstance(variant_container, dict):
                         yield Entity("variant", variant_file, variant_container, variant_container)
 
                     sizes_file = variant_dir / "sizes.json"
-                    sizes_container = _load(sizes_file)
+                    sizes_container = _load(sizes_file, parse_errors)
                     if isinstance(sizes_container, list):
                         for idx, entry in enumerate(sizes_container):
                             if isinstance(entry, dict):
                                 yield Entity("size", sizes_file, entry, sizes_container, idx)
+                    elif isinstance(sizes_container, dict):
+                        # A lone object rather than an array: schema-invalid, but the
+                        # crawler still wraps and exports it, so give it a UUID too —
+                        # in place, without rewriting object -> array (style_data owns
+                        # structural normalisation).
+                        yield Entity("size", sizes_file, sizes_container, sizes_container)
 
 
-def _iter_stores(stores_dir: Path) -> Iterator[Entity]:
+def _iter_stores(
+    stores_dir: Path, parse_errors: list[dict[str, str]] | None = None
+) -> Iterator[Entity]:
     if not stores_dir.exists():
         return
     for store_dir in sorted(stores_dir.iterdir()):
         if not store_dir.is_dir() or store_dir.name.startswith("."):
             continue
         store_file = store_dir / "store.json"
-        store_container = _load(store_file)
+        store_container = _load(store_file, parse_errors)
         if isinstance(store_container, dict):
             yield Entity("store", store_file, store_container, store_container)

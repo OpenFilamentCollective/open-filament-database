@@ -121,6 +121,15 @@ def _no_action(parser: argparse.ArgumentParser) -> int:
     return 1
 
 
+def _print_parse_errors(parse_errors: list[dict[str, str]]) -> None:
+    """Print any unparseable-file records (text mode)."""
+    if not parse_errors:
+        return
+    print(f"{len(parse_errors)} unparseable file(s):")
+    for pe in parse_errors:
+        print(f"  {pe['path']}  ->  {pe['error']}")
+
+
 def _resolve_dirs(args: argparse.Namespace) -> tuple[Path, Path] | None:
     data_dir = project_root / args.data_dir
     stores_dir = project_root / args.stores_dir
@@ -152,21 +161,25 @@ def run_assign(args: argparse.Namespace) -> int:
         return 1
     data_dir, stores_dir = dirs
 
-    entities = list(iter_entities(data_dir, stores_dir))
+    # A malformed file can't be given a UUID; surface it instead of silently skipping.
+    parse_errors: list[dict[str, str]] = []
+    entities = list(iter_entities(data_dir, stores_dir, parse_errors))
     existing = {e.raw_uuid for e in entities if e.assigned}
     missing = [e for e in entities if not e.assigned]
 
     if args.check:
+        ok = not (missing or parse_errors)
         if args.json:
             print(
                 json.dumps(
                     {
-                        "success": not missing,
+                        "success": ok,
                         "missing": [
                             {"type": e.entity_type, "path": e.describe(project_root)}
                             for e in missing
                         ],
                         "missing_count": len(missing),
+                        "parse_errors": parse_errors,
                         "total": len(entities),
                     },
                     indent=2,
@@ -177,9 +190,10 @@ def run_assign(args: argparse.Namespace) -> int:
                 print(f"{len(missing)} entit{'y' if len(missing) == 1 else 'ies'} missing a UUID:")
                 for e in missing:
                     print(f"  {e.entity_type:9} {e.describe(project_root)}")
-            else:
+            _print_parse_errors(parse_errors)
+            if ok:
                 print(f"All {len(entities)} entities have a UUID.")
-        return 1 if missing else 0
+        return 0 if ok else 1
 
     # Assign new UUIDs and persist each touched file once.
     dirty: dict[Path, object] = {}
@@ -198,9 +212,10 @@ def run_assign(args: argparse.Namespace) -> int:
         print(
             json.dumps(
                 {
-                    "success": True,
+                    "success": not parse_errors,
                     "assigned": len(missing),
                     "files_written": len(dirty),
+                    "parse_errors": parse_errors,
                     "total": len(entities),
                 },
                 indent=2,
@@ -211,7 +226,8 @@ def run_assign(args: argparse.Namespace) -> int:
             f"Assigned {len(missing)} UUID(s) across {len(dirty)} file(s) "
             f"({len(entities)} entities total)."
         )
-    return 0
+        _print_parse_errors(parse_errors)
+    return 1 if parse_errors else 0
 
 
 def run_find(args: argparse.Namespace) -> int:
@@ -246,13 +262,18 @@ def run_find(args: argparse.Namespace) -> int:
 
 
 def run_check(args: argparse.Namespace) -> int:
-    """Verify UUIDs are well-formed and globally unique (optionally require presence)."""
+    """Verify UUIDs are present, well-formed, and globally unique.
+
+    Presence is required by default; ``--allow-missing-uuids`` relaxes only that.
+    Malformed/duplicate UUIDs and unparseable files always fail.
+    """
     dirs = _resolve_dirs(args)
     if dirs is None:
         return 1
     data_dir, stores_dir = dirs
 
-    entities = list(iter_entities(data_dir, stores_dir))
+    parse_errors: list[dict[str, str]] = []
+    entities = list(iter_entities(data_dir, stores_dir, parse_errors))
     malformed: list = []
     missing: list = []
     by_uuid: dict[str, list] = {}
@@ -267,7 +288,9 @@ def run_check(args: argparse.Namespace) -> int:
             missing.append(e)
 
     duplicates = {value: es for value, es in by_uuid.items() if len(es) > 1}
-    ok = not (malformed or missing or duplicates)
+    # Unparseable files are always fatal, independent of --allow-missing-uuids: an
+    # entity that can't be read can't be verified to have a UUID at all.
+    ok = not (malformed or missing or duplicates or parse_errors)
 
     if args.json:
         print(
@@ -290,12 +313,14 @@ def run_check(args: argparse.Namespace) -> int:
                         value: [e.describe(project_root) for e in es]
                         for value, es in duplicates.items()
                     },
+                    "parse_errors": parse_errors,
                 },
                 indent=2,
             )
         )
         return 0 if ok else 1
 
+    _print_parse_errors(parse_errors)
     if malformed:
         print(f"{len(malformed)} malformed UUID(s):")
         for e in malformed:
