@@ -4,6 +4,7 @@
   "name": "Signal green",
   "color_hex": "#06924D",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

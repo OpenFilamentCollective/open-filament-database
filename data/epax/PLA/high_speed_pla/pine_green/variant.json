@@ -2,5 +2,8 @@
   "uuid": "23a1d609-3fb5-42da-99bd-542907bb68a2",
   "id": "pine_green",
   "name": "Pine Green",
-  "color_hex": "#37823F"
+  "color_hex": "#37823F",
+  "traits": {
+    "high_flow": true
+  }
 }

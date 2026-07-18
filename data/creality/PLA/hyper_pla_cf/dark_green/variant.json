@@ -2,5 +2,9 @@
   "uuid": "5886a4ad-ba39-4221-97f1-aae91d4361e0",
   "id": "dark_green",
   "name": "Dark Green",
-  "color_hex": "#3a4e53"
+  "color_hex": "#3a4e53",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

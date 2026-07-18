@@ -2,5 +2,8 @@
   "uuid": "996cfc83-ef1f-435d-9311-0e655d659d29",
   "id": "basic_chestnut_brown",
   "name": "Basic- Chestnut Brown",
-  "color_hex": "#AD4E38"
+  "color_hex": "#AD4E38",
+  "traits": {
+    "high_flow": true
+  }
 }

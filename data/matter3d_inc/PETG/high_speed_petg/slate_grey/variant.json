@@ -2,5 +2,8 @@
   "uuid": "171053d4-ba9a-4b4a-a276-87573c6819be",
   "id": "slate_grey",
   "name": "Slate Grey",
-  "color_hex": "#808080"
+  "color_hex": "#808080",
+  "traits": {
+    "high_flow": true
+  }
 }

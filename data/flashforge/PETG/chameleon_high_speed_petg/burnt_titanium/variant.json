@@ -4,6 +4,7 @@
   "name": "Burnt Titanium",
   "color_hex": "#0E304F",
   "traits": {
-    "iridescent": true
+    "iridescent": true,
+    "high_flow": true
   }
 }

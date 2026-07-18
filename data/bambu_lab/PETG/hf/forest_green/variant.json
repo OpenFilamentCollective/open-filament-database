@@ -2,5 +2,8 @@
   "uuid": "c9b52899-ad13-4b1a-b415-eb28aad0c512",
   "id": "forest_green",
   "name": "Forest Green",
-  "color_hex": "#39541A"
+  "color_hex": "#39541A",
+  "traits": {
+    "high_flow": true
+  }
 }

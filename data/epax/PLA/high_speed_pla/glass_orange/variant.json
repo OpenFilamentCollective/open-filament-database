@@ -4,6 +4,7 @@
   "name": "Glass Orange",
   "color_hex": "#FF8133",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

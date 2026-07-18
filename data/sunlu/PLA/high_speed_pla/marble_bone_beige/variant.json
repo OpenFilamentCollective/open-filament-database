@@ -5,6 +5,7 @@
   "color_hex": "#EFEFEF",
   "traits": {
     "imitates_marble": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

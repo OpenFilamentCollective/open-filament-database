@@ -2,5 +2,8 @@
   "uuid": "022cdda2-7423-4411-b4b1-8674cee8fa6d",
   "id": "black_yellow_blue",
   "name": "Black & yellow & blue",
-  "color_hex": "#8e9d95"
+  "color_hex": "#8e9d95",
+  "traits": {
+    "high_flow": true
+  }
 }

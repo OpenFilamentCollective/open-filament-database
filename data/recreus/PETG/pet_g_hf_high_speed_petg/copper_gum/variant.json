@@ -2,5 +2,8 @@
   "uuid": "12e78b30-ce72-485b-9642-06b379b49dc3",
   "id": "copper_gum",
   "name": "Copper gum",
-  "color_hex": "#EC6C5C"
+  "color_hex": "#EC6C5C",
+  "traits": {
+    "high_flow": true
+  }
 }

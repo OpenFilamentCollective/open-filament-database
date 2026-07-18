@@ -2,5 +2,9 @@
   "uuid": "04d7a606-e12f-478c-ac0a-900c0bae30c2",
   "id": "ochre",
   "name": "Ochre",
-  "color_hex": "#4d352a"
+  "color_hex": "#4d352a",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

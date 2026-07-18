@@ -4,6 +4,7 @@
   "name": "10CF Black",
   "color_hex": "#292B2B",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

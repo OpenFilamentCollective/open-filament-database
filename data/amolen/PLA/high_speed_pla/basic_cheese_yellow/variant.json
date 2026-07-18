@@ -2,5 +2,8 @@
   "uuid": "f1504a9c-3195-45b0-bec6-00f31b53dbcd",
   "id": "basic_cheese_yellow",
   "name": "Basic- Cheese Yellow",
-  "color_hex": "#FFE15B"
+  "color_hex": "#FFE15B",
+  "traits": {
+    "high_flow": true
+  }
 }

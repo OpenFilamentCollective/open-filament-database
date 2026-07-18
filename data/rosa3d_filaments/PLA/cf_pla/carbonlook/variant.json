@@ -4,6 +4,7 @@
   "name": "CarbonLook",
   "color_hex": "#292824",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

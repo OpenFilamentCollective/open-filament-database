@@ -2,5 +2,8 @@
   "uuid": "d4363014-4f7a-43f0-876c-891976f186a4",
   "id": "salt_flat_veins",
   "name": "Salt Flat Veins",
-  "color_hex": "#596682"
+  "color_hex": "#596682",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -2,5 +2,8 @@
   "uuid": "fbedb072-df47-467f-a338-66318e5074c2",
   "id": "tr_blue",
   "name": "Tr. Blue",
-  "color_hex": "#001967"
+  "color_hex": "#001967",
+  "traits": {
+    "high_flow": true
+  }
 }

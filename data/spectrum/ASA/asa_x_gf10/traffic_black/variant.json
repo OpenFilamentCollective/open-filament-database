@@ -2,5 +2,9 @@
   "uuid": "56862fe1-40ed-48b2-981c-a75d8c5f8536",
   "id": "traffic_black",
   "name": "Traffic Black",
-  "color_hex": "#191A1C"
+  "color_hex": "#191A1C",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
 }

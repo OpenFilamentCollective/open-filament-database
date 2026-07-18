@@ -2,5 +2,8 @@
   "uuid": "11ef0a8f-3a6d-4db7-bb2a-ebd93e8f2205",
   "id": "basic_sakura_pink",
   "name": "Basic- Sakura Pink",
-  "color_hex": "#FFBADE"
+  "color_hex": "#FFBADE",
+  "traits": {
+    "high_flow": true
+  }
 }

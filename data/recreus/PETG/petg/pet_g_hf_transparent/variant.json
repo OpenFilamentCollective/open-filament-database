@@ -4,6 +4,7 @@
   "name": "PET-G HF Transparent",
   "color_hex": "#E4E7E5",
   "traits": {
-    "transparent": true
+    "transparent": true,
+    "high_flow": true
   }
 }

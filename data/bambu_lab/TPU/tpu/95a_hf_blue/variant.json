@@ -2,5 +2,8 @@
   "uuid": "50e9e247-fccc-46b7-a65a-b7a533f500f0",
   "id": "95a_hf_blue",
   "name": "95A HF Blue",
-  "color_hex": "#0099E6"
+  "color_hex": "#0099E6",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -4,6 +4,7 @@
   "name": "Fire Orange",
   "color_hex": "#F67405",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

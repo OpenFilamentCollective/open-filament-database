@@ -2,5 +2,8 @@
   "uuid": "214978fc-0fa3-4f32-af9d-2a2ec3c4b84b",
   "id": "snowfield_blue_white",
   "name": "Snowfield (Blue & White)",
-  "color_hex": "#ecfbf2"
+  "color_hex": "#ecfbf2",
+  "traits": {
+    "high_flow": true
+  }
 }

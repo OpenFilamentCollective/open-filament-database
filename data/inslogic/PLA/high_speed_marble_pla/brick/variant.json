@@ -5,6 +5,7 @@
   "color_hex": "#A0522D",
   "traits": {
     "imitates_marble": true,
-    "imitates_stone": true
+    "imitates_stone": true,
+    "high_flow": true
   }
 }

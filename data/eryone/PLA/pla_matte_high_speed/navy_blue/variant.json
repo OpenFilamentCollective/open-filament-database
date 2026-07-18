@@ -2,5 +2,8 @@
   "uuid": "e00becb6-0bb3-4ca9-b70d-968646040cdf",
   "id": "navy_blue",
   "name": "Navy blue",
-  "color_hex": "#2c3c58"
+  "color_hex": "#2c3c58",
+  "traits": {
+    "high_flow": true
+  }
 }

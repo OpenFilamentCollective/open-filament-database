@@ -4,6 +4,7 @@
   "name": "Glass Yellow",
   "color_hex": "#F8CC00",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

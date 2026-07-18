@@ -2,5 +2,8 @@
   "uuid": "a10d7f9e-5bcc-4cfe-b36d-40810363b888",
   "id": "royal_essence",
   "name": "Royal Essence",
-  "color_hex": "#3a6663"
+  "color_hex": "#3a6663",
+  "traits": {
+    "high_flow": true
+  }
 }

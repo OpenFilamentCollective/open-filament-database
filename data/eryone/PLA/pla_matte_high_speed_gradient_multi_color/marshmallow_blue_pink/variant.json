@@ -2,5 +2,8 @@
   "uuid": "5bddac48-4daa-45ee-9ec8-762b6add1e40",
   "id": "marshmallow_blue_pink",
   "name": "Marshmallow (Blue & Pink)",
-  "color_hex": "#f6e2e0"
+  "color_hex": "#f6e2e0",
+  "traits": {
+    "high_flow": true
+  }
 }

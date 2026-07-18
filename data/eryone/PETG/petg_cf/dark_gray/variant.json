@@ -2,5 +2,9 @@
   "uuid": "3b96aa1b-ce91-4d4d-bf26-70b74ae7afb4",
   "id": "dark_gray",
   "name": "dark gray",
-  "color_hex": "#52555b"
+  "color_hex": "#52555b",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

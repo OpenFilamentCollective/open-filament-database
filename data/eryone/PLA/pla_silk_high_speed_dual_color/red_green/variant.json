@@ -2,5 +2,8 @@
   "uuid": "36ec3b9a-5499-4362-bb2b-27956fe88fbf",
   "id": "red_green",
   "name": "Red&Green",
-  "color_hex": "#9b8aa0"
+  "color_hex": "#9b8aa0",
+  "traits": {
+    "high_flow": true
+  }
 }

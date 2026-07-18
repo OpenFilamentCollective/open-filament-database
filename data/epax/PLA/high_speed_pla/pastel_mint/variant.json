@@ -2,5 +2,8 @@
   "uuid": "a2574dd3-3ce2-48f3-bdd2-cd83d4f29d13",
   "id": "pastel_mint",
   "name": "Pastel Mint",
-  "color_hex": "#00E1C5"
+  "color_hex": "#00E1C5",
+  "traits": {
+    "high_flow": true
+  }
 }

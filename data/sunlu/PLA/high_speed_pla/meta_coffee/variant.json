@@ -4,6 +4,7 @@
   "name": "Meta Coffee",
   "color_hex": "#8E7451",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

@@ -2,5 +2,8 @@
   "uuid": "d3e33b5f-4b38-419c-98b8-3aab5259bdc6",
   "id": "zebra_stone",
   "name": "Zebra Stone",
-  "color_hex": "#828697"
+  "color_hex": "#828697",
+  "traits": {
+    "high_flow": true
+  }
 }

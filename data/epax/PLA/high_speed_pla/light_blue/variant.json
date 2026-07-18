@@ -2,5 +2,8 @@
   "uuid": "03938f48-3684-448f-8ada-df67b62e1b8f",
   "id": "light_blue",
   "name": "Light Blue",
-  "color_hex": "#39B9DB"
+  "color_hex": "#39B9DB",
+  "traits": {
+    "high_flow": true
+  }
 }

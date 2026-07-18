@@ -2,5 +2,8 @@
   "uuid": "3e63d48b-0f12-4c0e-9c2d-1c640f69df96",
   "id": "lavender",
   "name": "Lavender",
-  "color_hex": "#845CD6"
+  "color_hex": "#845CD6",
+  "traits": {
+    "high_flow": true
+  }
 }

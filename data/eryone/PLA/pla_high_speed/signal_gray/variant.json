@@ -2,5 +2,8 @@
   "uuid": "d0ce7467-81bf-429f-826d-197a18027774",
   "id": "signal_gray",
   "name": "Signal Gray",
-  "color_hex": "#aaafb0"
+  "color_hex": "#aaafb0",
+  "traits": {
+    "high_flow": true
+  }
 }

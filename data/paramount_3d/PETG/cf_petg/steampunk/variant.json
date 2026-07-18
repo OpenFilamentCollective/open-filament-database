@@ -4,6 +4,7 @@
   "name": "(Steampunk)",
   "color_hex": "#5C5B59",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

@@ -2,5 +2,8 @@
   "uuid": "4395d16e-58d1-4f05-bc74-761e6b978c1a",
   "id": "violet",
   "name": "Violet",
-  "color_hex": "#721259"
+  "color_hex": "#721259",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -2,5 +2,9 @@
   "uuid": "640af9e0-bd71-4fef-b3ec-7d3b132025e0",
   "id": "olive_green",
   "name": "Olive green",
-  "color_hex": "#657952"
+  "color_hex": "#657952",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

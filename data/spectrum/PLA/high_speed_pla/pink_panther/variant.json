@@ -4,6 +4,7 @@
   "name": "Pink Panther",
   "color_hex": "#FF5786",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

@@ -2,5 +2,8 @@
   "uuid": "8fb20290-1146-4ecb-bf01-e5b981eadbd9",
   "id": "agate_gray",
   "name": "Agate Gray",
-  "color_hex": "#6c7371"
+  "color_hex": "#6c7371",
+  "traits": {
+    "high_flow": true
+  }
 }

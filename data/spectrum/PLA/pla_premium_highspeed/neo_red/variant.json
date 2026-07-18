@@ -2,5 +2,8 @@
   "uuid": "a077de17-b475-4f19-af52-788cc8c1a9de",
   "id": "neo_red",
   "name": "Neo Red",
-  "color_hex": "#fb432a"
+  "color_hex": "#fb432a",
+  "traits": {
+    "high_flow": true
+  }
 }

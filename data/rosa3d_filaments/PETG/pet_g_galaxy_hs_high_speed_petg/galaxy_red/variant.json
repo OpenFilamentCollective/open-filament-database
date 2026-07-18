@@ -4,6 +4,7 @@
   "name": "Galaxy Red",
   "color_hex": "#861D2B",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }

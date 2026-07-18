@@ -4,6 +4,7 @@
   "name": "Mulberry Sparkle",
   "color_hex": "#87366B",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }

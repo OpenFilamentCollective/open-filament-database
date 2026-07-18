@@ -4,6 +4,7 @@
   "name": "Lion Orange",
   "color_hex": "#FD9106",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Translucent Purple",
   "color_hex": "#583061",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

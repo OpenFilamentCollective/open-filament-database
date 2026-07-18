@@ -2,5 +2,8 @@
   "uuid": "c201e55b-0e69-4495-a03f-bf9fb8ee7560",
   "id": "mint_green",
   "name": "Mint Green",
-  "color_hex": "#6FEEDB"
+  "color_hex": "#6FEEDB",
+  "traits": {
+    "high_flow": true
+  }
 }

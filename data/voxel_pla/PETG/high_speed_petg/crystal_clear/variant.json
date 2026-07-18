@@ -4,6 +4,7 @@
   "name": "Crystal Clear",
   "color_hex": "#E4E7E5",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

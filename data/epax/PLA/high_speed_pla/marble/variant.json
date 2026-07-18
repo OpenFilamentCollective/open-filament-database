@@ -4,6 +4,7 @@
   "name": "Marble",
   "color_hex": "#ECEFED",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "high_flow": true
   }
 }

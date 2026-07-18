@@ -2,5 +2,8 @@
   "uuid": "136b72b8-79da-45ac-aaae-70165a72a576",
   "id": "dark_chocolate_brown",
   "name": "Dark Chocolate Brown",
-  "color_hex": "#503529"
+  "color_hex": "#503529",
+  "traits": {
+    "high_flow": true
+  }
 }

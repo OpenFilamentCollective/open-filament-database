@@ -2,5 +2,8 @@
   "uuid": "8ca0fdf5-6b53-4519-af78-7f66da1aa2f5",
   "id": "metallic_red",
   "name": "Metallic Red",
-  "color_hex": "#BB264D"
+  "color_hex": "#BB264D",
+  "traits": {
+    "high_flow": true
+  }
 }

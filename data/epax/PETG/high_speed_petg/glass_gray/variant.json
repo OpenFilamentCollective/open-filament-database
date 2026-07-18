@@ -4,6 +4,7 @@
   "name": "Glass Gray",
   "color_hex": "#686D93",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

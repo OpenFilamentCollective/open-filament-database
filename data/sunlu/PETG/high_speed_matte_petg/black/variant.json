@@ -5,6 +5,7 @@
   "color_hex": "#000000",
   "traits": {
     "matte": true,
-    "recycled": true
+    "recycled": true,
+    "high_flow": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Gray",
   "color_hex": "#A2AAAD",
   "traits": {
+    "abrasive": true,
     "high_temperature": true,
     "contains_glass_fiber": true
   }

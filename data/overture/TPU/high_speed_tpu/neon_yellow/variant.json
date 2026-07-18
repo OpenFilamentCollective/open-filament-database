@@ -4,6 +4,7 @@
   "name": "Neon Yellow",
   "color_hex": "#E2FF4D",
   "traits": {
-    "neon": true
+    "neon": true,
+    "high_flow": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Carbon",
   "color_hex": "#232323",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

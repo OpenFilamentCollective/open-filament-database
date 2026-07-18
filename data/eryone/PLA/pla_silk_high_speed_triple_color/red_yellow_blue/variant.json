@@ -2,5 +2,8 @@
   "uuid": "67ee5d1f-57e0-4d83-b369-872013dc844e",
   "id": "red_yellow_blue",
   "name": "Red & Yellow & Blue",
-  "color_hex": "#b58595"
+  "color_hex": "#b58595",
+  "traits": {
+    "high_flow": true
+  }
 }

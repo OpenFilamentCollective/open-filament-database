@@ -2,5 +2,8 @@
   "uuid": "2733916b-d978-4598-b9ba-f9ef13f4b103",
   "id": "lion_orange",
   "name": "Lion Orange",
-  "color_hex": "#FF8005"
+  "color_hex": "#FF8005",
+  "traits": {
+    "high_flow": true
+  }
 }

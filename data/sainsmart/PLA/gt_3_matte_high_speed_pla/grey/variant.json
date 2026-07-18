@@ -5,6 +5,7 @@
   "color_hex": "#9F9F9F",
   "traits": {
     "matte": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

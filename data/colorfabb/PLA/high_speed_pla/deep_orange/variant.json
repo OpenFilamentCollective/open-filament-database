@@ -4,6 +4,7 @@
   "name": "Deep orange",
   "color_hex": "#FF5F2E",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

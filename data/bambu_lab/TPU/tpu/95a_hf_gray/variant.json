@@ -2,5 +2,8 @@
   "uuid": "ae8b9558-6dd3-4a67-8a2d-2fc763ce9798",
   "id": "95a_hf_gray",
   "name": "95A HF Gray",
-  "color_hex": "#949A9E"
+  "color_hex": "#949A9E",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -4,6 +4,7 @@
   "name": "Forest Green",
   "color_hex": "#32A584",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

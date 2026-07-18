@@ -2,5 +2,8 @@
   "uuid": "00c9d50b-f1f7-464b-9cf9-56810457d00e",
   "id": "basic_charcoal_black",
   "name": "Basic- Charcoal Black",
-  "color_hex": "#545252"
+  "color_hex": "#545252",
+  "traits": {
+    "high_flow": true
+  }
 }

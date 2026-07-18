@@ -6,6 +6,7 @@
   "discontinued": false,
   "traits": {
     "without_pigments": true,
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

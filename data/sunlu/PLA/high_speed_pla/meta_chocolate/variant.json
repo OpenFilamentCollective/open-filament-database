@@ -4,6 +4,7 @@
   "name": "Meta Chocolate",
   "color_hex": "#6E4325",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

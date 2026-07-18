@@ -11,6 +11,7 @@
     "#DB3FA9"
   ],
   "traits": {
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "high_flow": true
   }
 }

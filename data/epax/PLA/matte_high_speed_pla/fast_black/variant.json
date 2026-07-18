@@ -4,6 +4,7 @@
   "name": "Fast + Black",
   "color_hex": "#24292A",
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

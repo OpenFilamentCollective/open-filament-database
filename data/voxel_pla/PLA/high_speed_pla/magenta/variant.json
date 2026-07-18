@@ -4,6 +4,7 @@
   "name": "Magenta",
   "color_hex": "#F2306E",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

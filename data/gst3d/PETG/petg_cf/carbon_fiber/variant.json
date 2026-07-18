@@ -2,5 +2,9 @@
   "uuid": "67ea89b6-47de-4782-9dd9-dc889fbfa23e",
   "id": "carbon_fiber",
   "name": "Carbon fiber",
-  "color_hex": "#010406"
+  "color_hex": "#010406",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

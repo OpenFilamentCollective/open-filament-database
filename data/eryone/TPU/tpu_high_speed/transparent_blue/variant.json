@@ -2,5 +2,8 @@
   "uuid": "41633e86-c148-4f56-adf9-105264566cc7",
   "id": "transparent_blue",
   "name": "transparent blue",
-  "color_hex": "#3c93f3"
+  "color_hex": "#3c93f3",
+  "traits": {
+    "high_flow": true
+  }
 }

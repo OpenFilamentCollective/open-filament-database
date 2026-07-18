@@ -2,5 +2,8 @@
   "uuid": "5ce6f3d1-fc91-4581-9f38-bc7c62676e34",
   "id": "pastel_blue",
   "name": "Pastel Blue",
-  "color_hex": "#2A7690"
+  "color_hex": "#2A7690",
+  "traits": {
+    "high_flow": true
+  }
 }

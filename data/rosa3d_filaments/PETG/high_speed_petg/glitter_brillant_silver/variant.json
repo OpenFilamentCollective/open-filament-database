@@ -4,6 +4,7 @@
   "name": "Glitter Brillant Silver",
   "color_hex": "#9F9F9F",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }
