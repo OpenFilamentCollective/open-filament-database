@@ -6,8 +6,7 @@ import {
 	fibersFromTraitKeys,
 	collectSiblingFibers,
 	checkFiberConflict,
-	blockedFiberTraitKeys,
-	findFilamentFiberConflict
+	blockedFiberTraitKeys
 } from '../fiberConflict';
 
 const cf = (extra: Record<string, unknown> = {}) => ({ [CARBON_FIBER_TRAIT]: true, ...extra });
@@ -90,6 +89,22 @@ describe('checkFiberConflict', () => {
 		expect(conflict!.sameVariant).toBe(true);
 		expect(conflict!.message).toMatch(/cannot contain both/);
 	});
+
+	it('does not blame a fiber-less variant when siblings alone mix CF and GF', () => {
+		// Pre-existing/legacy filament where OTHER variants already hold both fibers.
+		// The current (fiber-less) variant is innocent and must stay editable.
+		expect(checkFiberConflict(new Set(), new Set(['carbon', 'glass']))).toBeNull();
+	});
+
+	it('only flags when this variant\'s own fiber opposes a sibling', () => {
+		// Carbon variant in an all-carbon filament (siblings also hold glass) is still
+		// flagged because a glass sibling genuinely opposes this variant's carbon.
+		const conflict = checkFiberConflict(new Set(['carbon']), new Set(['carbon', 'glass']));
+		expect(conflict!.kind).toBe('carbon');
+		expect(conflict!.conflictsWith).toBe('glass');
+		// But a carbon variant among only-carbon siblings is fine.
+		expect(checkFiberConflict(new Set(['carbon']), new Set(['carbon']))).toBeNull();
+	});
 });
 
 describe('blockedFiberTraitKeys', () => {
@@ -111,30 +126,5 @@ describe('blockedFiberTraitKeys', () => {
 
 	it('blocks nothing when no fiber is present', () => {
 		expect([...blockedFiberTraitKeys(new Set(), new Set())]).toEqual([]);
-	});
-});
-
-describe('findFilamentFiberConflict', () => {
-	it('returns null for a consistent CF filament', () => {
-		expect(findFilamentFiberConflict([{ slug: 'a', traits: cf() }, { slug: 'b', traits: cf() }])).toBeNull();
-	});
-
-	it('detects a filament mixing CF and GF across variants', () => {
-		const conflict = findFilamentFiberConflict([
-			{ slug: 'black', name: 'Black', traits: cf() },
-			{ slug: 'natural', name: 'Natural', traits: gf() }
-		]);
-		expect(conflict).not.toBeNull();
-		expect(conflict!.sameVariant).toBe(false);
-		expect(conflict!.variant).toBe('Black');
-		expect(conflict!.otherVariant).toBe('Natural');
-	});
-
-	it('detects a single variant carrying both fibers', () => {
-		const conflict = findFilamentFiberConflict([
-			{ slug: 'weird', name: 'Weird', traits: { [CARBON_FIBER_TRAIT]: true, [GLASS_FIBER_TRAIT]: true } }
-		]);
-		expect(conflict!.sameVariant).toBe(true);
-		expect(conflict!.variant).toBe('Weird');
 	});
 });

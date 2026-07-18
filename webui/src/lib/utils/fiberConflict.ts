@@ -112,9 +112,6 @@ export function checkFiberConflict(
 	currentFibers: Set<FiberKind>,
 	siblingFibers: Set<FiberKind>
 ): FiberConflict | null {
-	const present = new Set<FiberKind>([...currentFibers, ...siblingFibers]);
-	if (!(present.has('carbon') && present.has('glass'))) return null;
-
 	// Same-variant conflict takes priority — the fix is to drop one trait here.
 	if (currentFibers.has('carbon') && currentFibers.has('glass')) {
 		return {
@@ -125,10 +122,16 @@ export function checkFiberConflict(
 		};
 	}
 
-	// Otherwise the current variant introduces one fiber that a sibling contradicts.
-	const kind: FiberKind = currentFibers.has('carbon') ? 'carbon' : 'glass';
-	const conflictsWith: FiberKind = kind === 'carbon' ? 'glass' : 'carbon';
-	return { kind, conflictsWith, sameVariant: false, message: conflictMessage(kind, conflictsWith, false) };
+	// This variant only conflicts if the fiber IT carries opposes one a sibling
+	// established. A fiber-less variant is never blamed — nor is a pre-existing
+	// sibling-only CF/GF mix, which is the other variants' problem to fix.
+	if (currentFibers.has('carbon') && siblingFibers.has('glass')) {
+		return { kind: 'carbon', conflictsWith: 'glass', sameVariant: false, message: conflictMessage('carbon', 'glass', false) };
+	}
+	if (currentFibers.has('glass') && siblingFibers.has('carbon')) {
+		return { kind: 'glass', conflictsWith: 'carbon', sameVariant: false, message: conflictMessage('glass', 'carbon', false) };
+	}
+	return null;
 }
 
 /**
@@ -147,42 +150,4 @@ export function blockedFiberTraitKeys(
 	if (present.has('glass')) blocked.add('carbon');
 	for (const kind of currentFibers) blocked.delete(kind);
 	return new Set([...blocked].map((k) => FIBER_TRAIT[k]));
-}
-
-/**
- * Whole-filament invariant: scan every variant and report the first CF/GF
- * conflict found (mixed across variants, or both on a single variant). Used by
- * save-time guards and mirrors the Python CI check.
- */
-export function findFilamentFiberConflict(
-	variants: readonly VariantLike[] | null | undefined
-): (FiberConflict & { variant?: string; otherVariant?: string }) | null {
-	if (!variants) return null;
-	let carbonVariant: VariantLike | undefined;
-	let glassVariant: VariantLike | undefined;
-	for (const v of variants) {
-		const fibers = fibersFromTraits(v.traits);
-		if (fibers.has('carbon') && fibers.has('glass')) {
-			return {
-				kind: 'carbon',
-				conflictsWith: 'glass',
-				sameVariant: true,
-				message: conflictMessage('carbon', 'glass', true),
-				variant: v.name ?? v.slug ?? v.id
-			};
-		}
-		if (fibers.has('carbon')) carbonVariant ??= v;
-		if (fibers.has('glass')) glassVariant ??= v;
-	}
-	if (carbonVariant && glassVariant) {
-		return {
-			kind: 'carbon',
-			conflictsWith: 'glass',
-			sameVariant: false,
-			message: conflictMessage('carbon', 'glass', false),
-			variant: carbonVariant.name ?? carbonVariant.slug ?? carbonVariant.id,
-			otherVariant: glassVariant.name ?? glassVariant.slug ?? glassVariant.id
-		};
-	}
-	return null;
 }

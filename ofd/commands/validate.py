@@ -179,12 +179,9 @@ def run_validate(args: argparse.Namespace) -> int:
         # Run all validations
         if not args.json and not args.progress:
             print(_bold("Running all validations..."))
+        # validate_all() already includes the native fiber-consistency check
+        # (skipped automatically under a changes overlay).
         result = orchestrator.validate_all(changes_json=changes_json)
-        # Native cross-variant fiber check. Skipped under a changes overlay: it reads
-        # on-disk data and can't see pending (unwritten) edits, so running it there
-        # could report stale conflicts. The webui enforces the rule pre-export.
-        if changes_json is None:
-            result.merge(orchestrator.validate_fiber_consistency())
     else:
         # Run specific validations
         if args.json_files:
@@ -198,7 +195,18 @@ def run_validate(args: argparse.Namespace) -> int:
         if args.gtin:
             result.merge(orchestrator.validate_gtin())
         if args.fiber_consistency:
-            result.merge(orchestrator.validate_fiber_consistency())
+            # The native check reads on-disk data and can't apply a changes overlay,
+            # so skip it (with a note) rather than report stale conflicts.
+            if changes_json is None:
+                result.merge(orchestrator.validate_fiber_consistency())
+            else:
+                print(
+                    _yellow(
+                        "Skipping fiber-consistency: it runs against on-disk data and "
+                        "cannot apply --apply-changes."
+                    ),
+                    file=sys.stderr,
+                )
 
     # Output results
     if args.json:

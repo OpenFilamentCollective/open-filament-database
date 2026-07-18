@@ -92,5 +92,24 @@ def test_conflicts_are_isolated_per_filament(tmp_path):
     assert check_fiber_consistency(data) == []
 
 
+def test_reports_both_variant_and_cross_mix_together(tmp_path):
+    # A variant carrying both fibers alongside a carbon-only sibling must surface
+    # BOTH the per-variant "carries both" error and the filament-level mix error,
+    # not just the former.
+    data = tmp_path / "data"
+    make_filament(
+        data,
+        [
+            {"name": "black", "traits": {CARBON_FIBER_TRAIT: True}},
+            {"name": "weird", "traits": {CARBON_FIBER_TRAIT: True, GLASS_FIBER_TRAIT: True}},
+        ],
+    )
+    errors = check_fiber_consistency(data)
+    msgs = [e.message for e in errors]
+    assert len(errors) == 2
+    assert any("carries both carbon fiber and glass fiber" in m for m in msgs)
+    assert any("mixes carbon fiber" in m for m in msgs)
+
+
 def test_missing_data_dir_returns_no_errors(tmp_path):
     assert check_fiber_consistency(tmp_path / "does_not_exist") == []

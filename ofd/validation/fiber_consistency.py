@@ -77,6 +77,7 @@ def check_fiber_consistency(data_dir) -> list[ValidationError]:
 
                 carbon_only: list[str] = []
                 glass_only: list[str] = []
+                both: list[str] = []
 
                 for variant_dir in sorted(filament_dir.iterdir()):
                     if not variant_dir.is_dir():
@@ -94,6 +95,7 @@ def check_fiber_consistency(data_dir) -> list[ValidationError]:
                     name = str(data.get("name") or data.get("id") or variant_dir.name)
 
                     if "carbon" in fibers and "glass" in fibers:
+                        both.append(name)
                         errors.append(
                             ValidationError(
                                 ValidationLevel.Error,
@@ -108,13 +110,18 @@ def check_fiber_consistency(data_dir) -> list[ValidationError]:
                     elif "glass" in fibers:
                         glass_only.append(name)
 
-                if carbon_only and glass_only:
+                # A carbon-bearing variant and a glass-bearing variant that are NOT the
+                # same variant. A lone both-fiber variant is already reported above, so
+                # it only counts here when it coexists with an opposing single-fiber one.
+                if (carbon_only and glass_only) or (both and (carbon_only or glass_only)):
+                    carbon_names = carbon_only + both
+                    glass_names = glass_only + both
                     errors.append(
                         ValidationError(
                             ValidationLevel.Error,
                             CATEGORY,
-                            f"Filament mixes carbon fiber ({', '.join(carbon_only)}) and glass "
-                            f"fiber ({', '.join(glass_only)}) across its variants; a filament "
+                            f"Filament mixes carbon fiber ({', '.join(carbon_names)}) and glass "
+                            f"fiber ({', '.join(glass_names)}) across its variants; a filament "
                             f"can't contain both.",
                             _rel(filament_dir, base),
                         )

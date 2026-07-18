@@ -37,9 +37,31 @@
 
 	// Fibers (carbon / glass) established by the OTHER variants of this filament — used
 	// to stop the filament mixing CF and GF. Editing excludes this variant itself; a
-	// new (duplicate/paste) variant counts every existing sibling.
+	// new (duplicate/paste) variant counts every existing sibling. Siblings are loaded
+	// lazily (only when a create/edit modal opens), not on every page view.
 	let editSiblingFibers = $derived(collectSiblingFibers(siblingVariants, variantSlug));
 	let newVariantSiblingFibers = $derived(collectSiblingFibers(siblingVariants));
+
+	// Which filament's siblings are currently loaded, so we fetch at most once per page.
+	let siblingsLoadedFor: string | null = null;
+
+	async function ensureSiblingsLoaded() {
+		const key = `${brandId}/${materialType}/${filamentId}`;
+		if (siblingsLoadedFor === key) return;
+		siblingsLoadedFor = key;
+		try {
+			siblingVariants = (await db.loadVariants(brandId, materialType, filamentId)) || [];
+		} catch {
+			siblingVariants = [];
+		}
+	}
+
+	// Fetch sibling variants the first time any variant-editing modal opens.
+	$effect(() => {
+		if (entityState.showEditModal || entityState.showDuplicateModal || entityState.showPasteModal) {
+			ensureSiblingsLoaded();
+		}
+	});
 
 	function getStoreName(storeId: string): string {
 		const store = stores.find((s) => s.id === storeId);
@@ -64,13 +86,15 @@
 		loading = true;
 		error = null;
 		entityState.showEditModal = false;
+		// New filament context — force sibling reload the next time a modal opens.
+		siblingsLoadedFor = null;
+		siblingVariants = [];
 
 		(async () => {
 			try {
-				const [variantData, storesData, siblingsData] = await Promise.all([
+				const [variantData, storesData] = await Promise.all([
 					db.getVariant(params.brandId, params.materialType, params.filamentId, params.variantSlug),
-					db.loadStores(),
-					db.loadVariants(params.brandId, params.materialType, params.filamentId)
+					db.loadStores()
 				]);
 
 				if (gen !== loadGeneration) return;
@@ -90,7 +114,6 @@
 
 				variant = variantData;
 				originalVariant = structuredClone(variantData);
-				siblingVariants = siblingsData || [];
 				stores = storesData;
 			} catch (e) {
 				if (gen !== loadGeneration) return;
@@ -113,6 +136,8 @@
 			const existingSlug = variant.slug || variant.id;
 
 			// A filament can't mix carbon fiber and glass fiber across its variants.
+			// Ensure siblings are loaded first (they load lazily on modal open).
+			await ensureSiblingsLoaded();
 			const fiberConflict = checkFiberConflict(
 				fibersFromTraits(data.traits),
 				collectSiblingFibers(siblingVariants, existingSlug)
@@ -202,6 +227,7 @@
 				return;
 			}
 			// A filament can't mix carbon fiber and glass fiber across its variants.
+			await ensureSiblingsLoaded();
 			const fiberConflict = checkFiberConflict(fibersFromTraits(data.traits), collectSiblingFibers(siblingVariants));
 			if (fiberConflict) {
 				duplicateVariantError = fiberConflict.message;
