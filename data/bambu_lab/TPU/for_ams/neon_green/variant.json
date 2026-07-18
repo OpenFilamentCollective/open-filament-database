@@ -1,9 +1,9 @@
 {
   "uuid": "80099458-d203-4774-87f3-1dc4b3daa00f",
-  "id": "neon_green",
-  "name": "Neon Green",
-  "color_hex": "#90FF1A",
   "moved_from": [
     "ac418129-718a-4129-9d8a-cf1f4c521a82"
-  ]
+  ],
+  "id": "neon_green",
+  "name": "Neon Green",
+  "color_hex": "#90FF1A"
 }

@@ -1,9 +1,9 @@
 {
   "uuid": "2bea6ef9-8917-4ea1-9a5a-2cf5ff1a7d7d",
-  "id": "blue",
-  "name": "Blue",
-  "color_hex": "#5898DD",
   "moved_from": [
     "2740b086-cbcf-4938-b134-5e9646e47872"
-  ]
+  ],
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": "#5898DD"
 }

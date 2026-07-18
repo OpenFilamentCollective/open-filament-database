@@ -1,6 +1,9 @@
 [
   {
     "uuid": "7add3f8b-d218-415d-ac88-77dbf8a9ef30",
+    "moved_from": [
+      "9b03fe17-43ea-4f8b-9e53-d50cf355a52a"
+    ],
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "article_number": "53101",
@@ -9,9 +12,6 @@
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pc-tpu/products/tpu-for-ams?variant=43059884785800"
       }
-    ],
-    "moved_from": [
-      "9b03fe17-43ea-4f8b-9e53-d50cf355a52a"
     ]
   }
 ]

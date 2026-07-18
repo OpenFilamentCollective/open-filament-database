@@ -1,13 +1,14 @@
 {
+  "uuid": "18e9364e-c8c3-406c-bab6-69e08f7d2d04",
   "id": "90a",
   "name": "TPU 90A",
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "shore_hardness_a": 90,
+  "max_dry_temperature": 70,
   "min_print_temperature": 200,
   "max_print_temperature": 250,
   "min_bed_temperature": 30,
   "max_bed_temperature": 35,
-  "max_dry_temperature": 70,
   "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_TPU_90A_Technical_Data_Sheet_582bf8f6-1f0a-474c-aeda-9e72af3689dc.pdf"
 }
