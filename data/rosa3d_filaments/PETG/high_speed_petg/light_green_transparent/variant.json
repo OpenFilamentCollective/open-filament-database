@@ -4,6 +4,7 @@
   "name": "Light Green Transparent",
   "color_hex": "#26A648",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

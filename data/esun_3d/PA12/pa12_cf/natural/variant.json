@@ -2,5 +2,9 @@
   "uuid": "8c545cd4-0573-45fc-a0fe-6ee960550101",
   "id": "natural",
   "name": "Natural",
-  "color_hex": "#090909"
+  "color_hex": "#090909",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

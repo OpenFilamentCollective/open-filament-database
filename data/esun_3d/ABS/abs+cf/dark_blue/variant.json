@@ -2,5 +2,9 @@
   "uuid": "24e13182-d969-4b41-88b8-6b8a0fbd1182",
   "id": "dark_blue",
   "name": "Dark Blue",
-  "color_hex": "#2A3247"
+  "color_hex": "#2A3247",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

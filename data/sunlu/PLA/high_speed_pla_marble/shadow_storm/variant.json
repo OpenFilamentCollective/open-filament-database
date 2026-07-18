@@ -2,5 +2,8 @@
   "uuid": "19359c3a-0920-42b8-b83e-93fa44889001",
   "id": "shadow_storm",
   "name": "Shadow Storm",
-  "color_hex": "#E1E1DF"
+  "color_hex": "#E1E1DF",
+  "traits": {
+    "high_flow": true
+  }
 }

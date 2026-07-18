@@ -4,6 +4,7 @@
   "name": "White",
   "color_hex": "#FFFFFF",
   "traits": {
-    "silk": true
+    "silk": true,
+    "high_flow": true
   }
 }

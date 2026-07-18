@@ -4,6 +4,7 @@
   "name": "Leaf Green",
   "color_hex": "#3D9441",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

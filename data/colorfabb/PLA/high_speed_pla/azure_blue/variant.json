@@ -4,6 +4,7 @@
   "name": "Azure blue",
   "color_hex": "#23668C",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

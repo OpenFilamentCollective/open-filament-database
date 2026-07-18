@@ -2,5 +2,8 @@
   "uuid": "fb765b5d-2758-4280-9a64-b90d9f8a19d0",
   "id": "juicy_orange",
   "name": "Juicy Orange",
-  "color_hex": "#F55928"
+  "color_hex": "#F55928",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -4,6 +4,8 @@
   "name": "Natural",
   "color_hex": "#FAF8DF",
   "traits": {
-    "recyclable": true
+    "recyclable": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
   }
 }

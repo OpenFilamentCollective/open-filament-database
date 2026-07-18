@@ -2,5 +2,8 @@
   "uuid": "71046f92-79aa-4aa5-bf28-52ec5c09ca08",
   "id": "sea_blue",
   "name": "Sea Blue",
-  "color_hex": "#4921C1"
+  "color_hex": "#4921C1",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -6,6 +6,7 @@
     "#000000"
   ],
   "traits": {
+    "abrasive": true,
     "contains_carbon": true,
     "contains_carbon_fiber": true
   }

@@ -2,5 +2,8 @@
   "uuid": "a253c195-b10a-404c-b2e2-97571e502f71",
   "id": "nude",
   "name": "Nude",
-  "color_hex": "#FEC8A4"
+  "color_hex": "#FEC8A4",
+  "traits": {
+    "high_flow": true
+  }
 }

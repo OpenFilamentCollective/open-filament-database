@@ -2,5 +2,8 @@
   "uuid": "d68e1e7a-f02d-4a00-a78c-5b6c98a40711",
   "id": "pastel_orange",
   "name": "Pastel Orange",
-  "color_hex": "#FBD1A7"
+  "color_hex": "#FBD1A7",
+  "traits": {
+    "high_flow": true
+  }
 }

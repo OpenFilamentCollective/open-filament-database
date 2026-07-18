@@ -2,5 +2,8 @@
   "uuid": "adf19e67-40d4-44db-a131-982388f6b869",
   "id": "peanut_brown",
   "name": "Peanut Brown",
-  "color_hex": "#875718"
+  "color_hex": "#875718",
+  "traits": {
+    "high_flow": true
+  }
 }

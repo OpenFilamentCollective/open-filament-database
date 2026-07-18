@@ -2,5 +2,8 @@
   "uuid": "5ea25dfc-bbb9-4f45-a7ae-a60356d3aaaa",
   "id": "orange",
   "name": "Orange",
-  "color_hex": "#FF8A00"
+  "color_hex": "#FF8A00",
+  "traits": {
+    "high_flow": true
+  }
 }

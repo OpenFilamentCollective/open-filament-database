@@ -2,5 +2,8 @@
   "uuid": "ae1b82b9-0244-431f-9e56-4677d6d5e81c",
   "id": "devil_red",
   "name": "Devil Red",
-  "color_hex": "#BB2E33"
+  "color_hex": "#BB2E33",
+  "traits": {
+    "high_flow": true
+  }
 }

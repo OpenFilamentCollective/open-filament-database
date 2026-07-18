@@ -5,5 +5,8 @@
   ],
   "id": "red",
   "name": "Red",
-  "color_hex": "#C8102E"
+  "color_hex": "#C8102E",
+  "traits": {
+    "high_flow": true
+  }
 }

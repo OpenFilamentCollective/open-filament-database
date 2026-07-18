@@ -5,6 +5,7 @@
   "color_hex": "#EADAC2",
   "traits": {
     "without_pigments": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

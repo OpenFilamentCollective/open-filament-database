@@ -4,6 +4,7 @@
   "name": "Crimson Red",
   "color_hex": "#932721",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

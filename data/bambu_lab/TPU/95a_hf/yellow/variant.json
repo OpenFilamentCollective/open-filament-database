@@ -5,5 +5,8 @@
   ],
   "id": "yellow",
   "name": "Yellow",
-  "color_hex": "#F3E600"
+  "color_hex": "#F3E600",
+  "traits": {
+    "high_flow": true
+  }
 }

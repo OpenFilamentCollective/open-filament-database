@@ -2,5 +2,9 @@
   "uuid": "14a16f31-3acf-4099-af4d-35fac3cb2af1",
   "id": "army_green",
   "name": "Army Green",
-  "color_hex": "#726747"
+  "color_hex": "#726747",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
 }

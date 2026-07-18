@@ -2,5 +2,8 @@
   "uuid": "eb9aa273-3cd5-4ef8-ac2d-f4e4cd943ecc",
   "id": "brick_red",
   "name": "Brick Red",
-  "color_hex": "#512424"
+  "color_hex": "#512424",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -4,6 +4,7 @@
   "name": "Green",
   "color_hex": "#4F7B57",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }

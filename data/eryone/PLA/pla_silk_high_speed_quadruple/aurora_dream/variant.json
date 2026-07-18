@@ -2,5 +2,8 @@
   "uuid": "d65c1cfd-3cb6-4209-8589-ab7b4c77961e",
   "id": "aurora_dream",
   "name": "Aurora Dream",
-  "color_hex": "#344161"
+  "color_hex": "#344161",
+  "traits": {
+    "high_flow": true
+  }
 }

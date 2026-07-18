@@ -4,6 +4,7 @@
   "name": "Ultramarine Blue Transparent",
   "color_hex": "#413A7A",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

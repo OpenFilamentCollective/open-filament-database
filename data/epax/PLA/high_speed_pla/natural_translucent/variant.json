@@ -5,6 +5,7 @@
   "color_hex": "#DEE2DA",
   "traits": {
     "translucent": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "high_flow": true
   }
 }

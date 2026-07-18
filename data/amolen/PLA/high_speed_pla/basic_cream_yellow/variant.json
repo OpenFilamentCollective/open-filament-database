@@ -2,5 +2,8 @@
   "uuid": "a89db01f-f0e5-44bb-b236-2570ba44e549",
   "id": "basic_cream_yellow",
   "name": "Basic- Cream Yellow",
-  "color_hex": "#F5F3D1"
+  "color_hex": "#F5F3D1",
+  "traits": {
+    "high_flow": true
+  }
 }

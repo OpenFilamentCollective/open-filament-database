@@ -2,5 +2,8 @@
   "uuid": "7707974a-b944-4e12-afa5-b78195775a16",
   "id": "silver_star",
   "name": "Silver Star",
-  "color_hex": "#6f6d6e"
+  "color_hex": "#6f6d6e",
+  "traits": {
+    "high_flow": true
+  }
 }

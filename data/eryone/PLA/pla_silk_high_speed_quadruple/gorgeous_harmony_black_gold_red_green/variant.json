@@ -2,5 +2,8 @@
   "uuid": "b1cef2ad-542d-4b30-9352-f6bb14f6a15f",
   "id": "gorgeous_harmony_black_gold_red_green",
   "name": "Gorgeous Harmony (Black & Gold & Red & Green)",
-  "color_hex": "#96859b"
+  "color_hex": "#96859b",
+  "traits": {
+    "high_flow": true
+  }
 }

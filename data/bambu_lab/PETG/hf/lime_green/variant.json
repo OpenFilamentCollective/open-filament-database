@@ -2,5 +2,8 @@
   "uuid": "cf265eab-def3-4243-9523-334e6018fdf2",
   "id": "lime_green",
   "name": "Lime Green",
-  "color_hex": "#6EE53C"
+  "color_hex": "#6EE53C",
+  "traits": {
+    "high_flow": true
+  }
 }

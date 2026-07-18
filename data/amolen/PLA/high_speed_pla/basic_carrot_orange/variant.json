@@ -2,5 +2,8 @@
   "uuid": "d6950350-e5ab-499d-904f-90480715fcc7",
   "id": "basic_carrot_orange",
   "name": "Basic- Carrot Orange",
-  "color_hex": "#FF7A33"
+  "color_hex": "#FF7A33",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -2,5 +2,8 @@
   "uuid": "0aaef001-e149-4048-9749-ef17e6dcc934",
   "id": "black_red_gold",
   "name": "Black & Red & Gold",
-  "color_hex": "#c06370"
+  "color_hex": "#c06370",
+  "traits": {
+    "high_flow": true
+  }
 }

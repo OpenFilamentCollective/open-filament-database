@@ -8,6 +8,7 @@
   ],
   "traits": {
     "glitter": true,
-    "iridescent": true
+    "iridescent": true,
+    "high_flow": true
   }
 }

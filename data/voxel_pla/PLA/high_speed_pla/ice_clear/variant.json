@@ -4,6 +4,7 @@
   "name": "Ice Clear",
   "color_hex": "#E4E7E5",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

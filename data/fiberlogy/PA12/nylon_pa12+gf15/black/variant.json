@@ -4,6 +4,8 @@
   "name": "Black",
   "color_hex": "#000000",
   "traits": {
-    "recyclable": true
+    "recyclable": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
   }
 }

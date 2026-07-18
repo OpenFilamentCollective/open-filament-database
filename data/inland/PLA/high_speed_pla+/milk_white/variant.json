@@ -2,5 +2,8 @@
   "uuid": "589c0c30-75d0-4d54-a1db-b68d1b08cdd9",
   "id": "milk_white",
   "name": "Milk White",
-  "color_hex": "#F2F2EA"
+  "color_hex": "#F2F2EA",
+  "traits": {
+    "high_flow": true
+  }
 }

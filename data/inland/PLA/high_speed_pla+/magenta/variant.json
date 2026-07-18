@@ -2,5 +2,8 @@
   "uuid": "24b02388-cd95-4e07-91ec-e7660a49545b",
   "id": "magenta",
   "name": "Magenta",
-  "color_hex": "#C51162"
+  "color_hex": "#C51162",
+  "traits": {
+    "high_flow": true
+  }
 }

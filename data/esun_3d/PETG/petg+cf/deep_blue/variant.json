@@ -2,5 +2,9 @@
   "uuid": "163e4cdb-10a2-4d59-9286-364647c3d0e3",
   "id": "deep_blue",
   "name": "Deep Blue",
-  "color_hex": "#3C4354"
+  "color_hex": "#3C4354",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

@@ -2,5 +2,8 @@
   "uuid": "68528065-b763-4486-b3bf-6297ef9b29e5",
   "id": "jet_black",
   "name": "Jet Black",
-  "color_hex": "#292824"
+  "color_hex": "#292824",
+  "traits": {
+    "high_flow": true
+  }
 }

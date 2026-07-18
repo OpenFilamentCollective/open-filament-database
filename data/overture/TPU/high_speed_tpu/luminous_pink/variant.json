@@ -7,6 +7,7 @@
     "#EAECF5"
   ],
   "traits": {
-    "illuminescent_color_change": true
+    "illuminescent_color_change": true,
+    "high_flow": true
   }
 }

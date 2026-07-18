@@ -2,5 +2,9 @@
   "uuid": "e481b42a-ac3d-4c79-a697-8d0f99ac550c",
   "id": "power_tool_red",
   "name": "Power Tool Red",
-  "color_hex": "#b2484d"
+  "color_hex": "#b2484d",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
 }

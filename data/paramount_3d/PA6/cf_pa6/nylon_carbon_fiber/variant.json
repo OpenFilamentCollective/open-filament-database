@@ -4,6 +4,7 @@
   "name": "Nylon Carbon Fiber",
   "color_hex": "#6A6C6E",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Lavender Purple",
   "color_hex": "#AAB1FF",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

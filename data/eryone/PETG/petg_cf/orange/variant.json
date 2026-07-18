@@ -2,5 +2,9 @@
   "uuid": "01716691-7f0c-45fa-a3de-0102e628d96e",
   "id": "orange",
   "name": "Orange",
-  "color_hex": "#e67018"
+  "color_hex": "#e67018",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

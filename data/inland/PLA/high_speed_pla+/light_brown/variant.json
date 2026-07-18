@@ -2,5 +2,8 @@
   "uuid": "44c4bc49-eae9-429b-b373-d4354b128d32",
   "id": "light_brown",
   "name": "Light Brown",
-  "color_hex": "#A47551"
+  "color_hex": "#A47551",
+  "traits": {
+    "high_flow": true
+  }
 }

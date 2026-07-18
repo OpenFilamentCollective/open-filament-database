@@ -2,5 +2,8 @@
   "uuid": "df05c7dd-b4f2-4c16-9457-a9d2e5971fcc",
   "id": "basic_eggnt_purple",
   "name": "Basic- Eggnt Purple",
-  "color_hex": "#CD00D7"
+  "color_hex": "#CD00D7",
+  "traits": {
+    "high_flow": true
+  }
 }

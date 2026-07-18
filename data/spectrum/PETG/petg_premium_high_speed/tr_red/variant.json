@@ -2,5 +2,8 @@
   "uuid": "0789f532-ee2b-42db-820d-9d85d50f0024",
   "id": "tr_red",
   "name": "Tr. Red",
-  "color_hex": "#75081E"
+  "color_hex": "#75081E",
+  "traits": {
+    "high_flow": true
+  }
 }

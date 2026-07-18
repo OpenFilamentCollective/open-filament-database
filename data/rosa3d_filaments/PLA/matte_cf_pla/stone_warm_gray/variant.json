@@ -5,6 +5,7 @@
   "color_hex": "#A8B39B",
   "traits": {
     "matte": true,
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

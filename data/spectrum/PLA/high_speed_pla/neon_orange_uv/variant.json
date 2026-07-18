@@ -9,6 +9,7 @@
   "traits": {
     "neon": true,
     "illuminescent_color_change": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Blueberry Sparkle",
   "color_hex": "#0E21AE",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }

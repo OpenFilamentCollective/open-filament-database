@@ -2,5 +2,8 @@
   "uuid": "1342b7ee-15af-45d9-ba6f-af041e44f803",
   "id": "sunshine_yellow",
   "name": "Sunshine Yellow",
-  "color_hex": "#FFE900"
+  "color_hex": "#FFE900",
+  "traits": {
+    "high_flow": true
+  }
 }

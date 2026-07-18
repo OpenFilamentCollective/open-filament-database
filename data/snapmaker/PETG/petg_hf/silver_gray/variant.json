@@ -2,5 +2,8 @@
   "uuid": "cff2dbaa-973c-4703-9a54-b7266ca7a43e",
   "id": "silver_gray",
   "name": "Silver Gray",
-  "color_hex": "#7C818E"
+  "color_hex": "#7C818E",
+  "traits": {
+    "high_flow": true
+  }
 }

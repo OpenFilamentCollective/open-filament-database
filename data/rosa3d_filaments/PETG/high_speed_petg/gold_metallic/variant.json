@@ -2,5 +2,8 @@
   "uuid": "127a4134-cb48-43a4-8599-108ad4230b97",
   "id": "gold_metallic",
   "name": "Gold Metallic",
-  "color_hex": "#CE9F2E"
+  "color_hex": "#CE9F2E",
+  "traits": {
+    "high_flow": true
+  }
 }

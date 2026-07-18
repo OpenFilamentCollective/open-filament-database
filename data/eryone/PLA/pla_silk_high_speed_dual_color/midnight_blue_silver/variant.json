@@ -2,5 +2,8 @@
   "uuid": "67eabd42-74d2-4744-91d9-a9ef44829311",
   "id": "midnight_blue_silver",
   "name": "Midnight Blue&Silver",
-  "color_hex": "#648edf"
+  "color_hex": "#648edf",
+  "traits": {
+    "high_flow": true
+  }
 }

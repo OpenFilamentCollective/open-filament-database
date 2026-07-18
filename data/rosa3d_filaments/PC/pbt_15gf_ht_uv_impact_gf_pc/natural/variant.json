@@ -5,6 +5,7 @@
   "color_hex": "#F9F3E5",
   "traits": {
     "without_pigments": true,
+    "abrasive": true,
     "high_temperature": true,
     "contains_glass_fiber": true
   }

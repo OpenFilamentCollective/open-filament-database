@@ -2,5 +2,8 @@
   "uuid": "a9e395a3-21fe-471c-8f73-2aaaf36621e1",
   "id": "deep_black",
   "name": "Deep Black",
-  "color_hex": "#17181a"
+  "color_hex": "#17181a",
+  "traits": {
+    "high_flow": true
+  }
 }

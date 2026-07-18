@@ -2,5 +2,8 @@
   "uuid": "2f968285-98b4-4972-a2ce-a03dfdd44043",
   "id": "arctic_white",
   "name": "Arctic White",
-  "color_hex": "#EDECE8"
+  "color_hex": "#EDECE8",
+  "traits": {
+    "high_flow": true
+  }
 }

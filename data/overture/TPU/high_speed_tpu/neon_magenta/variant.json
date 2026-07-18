@@ -4,6 +4,7 @@
   "name": "Neon Magenta",
   "color_hex": "#FD3DB5",
   "traits": {
-    "neon": true
+    "neon": true,
+    "high_flow": true
   }
 }

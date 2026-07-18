@@ -2,5 +2,8 @@
   "uuid": "7f056d54-e74c-4592-bbef-5f5c44da442e",
   "id": "clear",
   "name": "Clear",
-  "color_hex": "#DBD5D6"
+  "color_hex": "#DBD5D6",
+  "traits": {
+    "high_flow": true
+  }
 }

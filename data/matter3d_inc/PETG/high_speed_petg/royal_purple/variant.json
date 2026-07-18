@@ -2,5 +2,8 @@
   "uuid": "5139e76e-deb4-425b-9c28-ef60d149f335",
   "id": "royal_purple",
   "name": "Royal Purple",
-  "color_hex": "#4B006E"
+  "color_hex": "#4B006E",
+  "traits": {
+    "high_flow": true
+  }
 }

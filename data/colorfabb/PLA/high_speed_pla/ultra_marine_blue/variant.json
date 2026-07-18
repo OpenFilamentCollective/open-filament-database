@@ -4,6 +4,7 @@
   "name": "Ultra Marine Blue",
   "color_hex": "#0353BA",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

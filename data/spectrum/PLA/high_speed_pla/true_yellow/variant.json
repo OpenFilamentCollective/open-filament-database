@@ -4,6 +4,7 @@
   "name": "True Yellow",
   "color_hex": "#FAD61B",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

@@ -2,5 +2,8 @@
   "uuid": "8f6c8757-051b-4fb1-b1b0-7e0d3e74ed3d",
   "id": "chameleon_green",
   "name": "Chameleon Green",
-  "color_hex": "#06924D"
+  "color_hex": "#06924D",
+  "traits": {
+    "high_flow": true
+  }
 }

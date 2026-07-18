@@ -2,5 +2,8 @@
   "uuid": "272eb0b0-f502-411f-9e26-81e1700e358a",
   "id": "latte_beige",
   "name": "Latte Beige",
-  "color_hex": "#ccb282"
+  "color_hex": "#ccb282",
+  "traits": {
+    "high_flow": true
+  }
 }

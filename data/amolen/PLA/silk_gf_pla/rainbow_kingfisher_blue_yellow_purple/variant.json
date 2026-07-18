@@ -10,6 +10,8 @@
   ],
   "traits": {
     "silk": true,
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
   }
 }

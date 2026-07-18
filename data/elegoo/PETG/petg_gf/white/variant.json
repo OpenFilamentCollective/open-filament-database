@@ -2,5 +2,9 @@
   "uuid": "5b283695-4ddd-42b8-95c4-8809ecba4e8b",
   "id": "white",
   "name": "White",
-  "color_hex": "#ffffff"
+  "color_hex": "#ffffff",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
 }
