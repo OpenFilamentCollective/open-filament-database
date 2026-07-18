@@ -97,6 +97,13 @@
         }
     },
     "properties": {
+        "uuid": {
+            "type": "string",
+            "title": "UUID",
+            "description": "Canonical UUID (UUIDv4), assigned automatically by CI on merge. Leave empty when creating.",
+            "readOnly": true,
+            "pattern": "^$|^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
         "material": {
             "title": "Material Type",
             "description": "The type of material (e.g., PLA, PETG, ABS). This determines the base properties and recommended settings.",

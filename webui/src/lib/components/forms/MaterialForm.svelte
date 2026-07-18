@@ -43,7 +43,8 @@
 	// Default config for material form
 	const defaultConfig: SchemaFormConfig = {
 		splitAfterKey: 'default_max_dry_temperature',
-		hiddenFields: ['default_slicer_settings'],
+		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
+		hiddenFields: ['uuid', 'default_slicer_settings'],
 		fieldHelp: {
 			material_class:
 				'FFF (Fused Filament Fabrication) for standard filament printing, SLA (Stereolithography) for resin-based printing. Leave as FFF if you\'re unsure.'
@@ -127,6 +128,9 @@
 		if (Object.keys(default_slicer_settings).length > 0) {
 			submitData.default_slicer_settings = default_slicer_settings;
 		}
+
+		// Preserve the canonical UUID on edit; left empty on create for CI to assign.
+		if (entity?.uuid) submitData.uuid = entity.uuid;
 
 		onSubmit(submitData);
 	}
