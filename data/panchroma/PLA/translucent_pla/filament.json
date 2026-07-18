@@ -1,6 +1,7 @@
 {
-    "id": "translucent_pla",
-    "name": "Translucent PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "dbc6278e-2e6a-4d64-ad48-2ad7b89e5f98",
+  "id": "translucent_pla",
+  "name": "Translucent PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19
 }

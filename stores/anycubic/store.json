@@ -1,12 +1,13 @@
 {
-    "id": "anycubic",
-    "name": "Anycubic",
-    "storefront_url": "https://store.anycubic.com/",
-    "logo": "logo.png",
-    "ships_from": [
-        "CN, US, CA, EU, UK, AU"
-    ],
-    "ships_to": [
-        "CN, US, CA, EU, UK, AU"
-    ]
+  "uuid": "bf34975d-8531-4f4f-bc4b-153abfad9230",
+  "id": "anycubic",
+  "name": "Anycubic",
+  "storefront_url": "https://store.anycubic.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "CN, US, CA, EU, UK, AU"
+  ],
+  "ships_to": [
+    "CN, US, CA, EU, UK, AU"
+  ]
 }

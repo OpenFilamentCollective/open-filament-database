@@ -1,8 +1,9 @@
 {
-    "id": "cherry_red",
-    "name": "Cherry Red",
-    "color_hex": "#8F2637",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "b1265a45-a101-4305-909b-17bf8c796c45",
+  "id": "cherry_red",
+  "name": "Cherry Red",
+  "color_hex": "#8F2637",
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,6 +1,7 @@
 {
-    "id": "polysupport_for_pa12",
-    "name": "PVA PolySupport for PA12",
-    "diameter_tolerance": 0.02,
-    "density": 1.29
+  "uuid": "97df3219-7c53-494e-b585-974f31afcf9b",
+  "id": "polysupport_for_pa12",
+  "name": "PVA PolySupport for PA12",
+  "diameter_tolerance": 0.02,
+  "density": 1.29
 }

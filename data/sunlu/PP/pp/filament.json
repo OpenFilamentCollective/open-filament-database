@@ -1,6 +1,7 @@
 {
-    "id": "pp",
-    "name": "PP",
-    "diameter_tolerance": 0.02,
-    "density": 1.08
+  "uuid": "08d87965-7e79-4a4a-85e3-6890c634f478",
+  "id": "pp",
+  "name": "PP",
+  "diameter_tolerance": 0.02,
+  "density": 1.08
 }

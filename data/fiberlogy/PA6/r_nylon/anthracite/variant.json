@@ -1,9 +1,10 @@
 {
-    "id": "anthracite",
-    "name": "Anthracite",
-    "color_hex": "#0E100D",
-    "traits": {
-        "recycled": true,
-        "recyclable": true
-    }
+  "uuid": "25e8ed54-3703-4ae2-a069-efdf0419593c",
+  "id": "anthracite",
+  "name": "Anthracite",
+  "color_hex": "#0E100D",
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
 }

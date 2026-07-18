@@ -1,6 +1,7 @@
 {
-    "id": "peek",
-    "name": "PEEK",
-    "diameter_tolerance": 0.02,
-    "density": 1.08
+  "uuid": "2590ac51-0dc6-495a-8c64-a3e68b3c28f9",
+  "id": "peek",
+  "name": "PEEK",
+  "diameter_tolerance": 0.02,
+  "density": 1.08
 }

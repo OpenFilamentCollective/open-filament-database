@@ -1,6 +1,7 @@
 {
-    "id": "pla_glow_in_the_dark",
-    "name": "PLA Glow in the Dark",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "7975500f-42c1-4240-a7a0-61dd685b7d34",
+  "id": "pla_glow_in_the_dark",
+  "name": "PLA Glow in the Dark",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

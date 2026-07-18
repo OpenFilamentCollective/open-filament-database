@@ -1,8 +1,9 @@
 {
-    "id": "kraft",
-    "name": "Kraft",
-    "color_hex": "#BCA07A",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "66142726-4a0d-439b-aa8b-20d9703e441d",
+  "id": "kraft",
+  "name": "Kraft",
+  "color_hex": "#BCA07A",
+  "traits": {
+    "matte": true
+  }
 }

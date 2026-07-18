@@ -1,26 +1,28 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Black"
-            }
-        ]
-    },
-    {
-        "filament_weight": 2300,
-        "diameter": 1.75,
-        "empty_spool_weight": 600,
-        "spool_core_diameter": 103,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%202300g%20-%20Black"
-            }
-        ]
-    }
+  {
+    "uuid": "67427d86-44ed-4882-9ccc-4c62b7e70071",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Black"
+      }
+    ]
+  },
+  {
+    "uuid": "85fb6fd3-ca77-4c80-8ad1-6ed0fbafcc5f",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "empty_spool_weight": 600,
+    "spool_core_diameter": 103,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%202300g%20-%20Black"
+      }
+    ]
+  }
 ]

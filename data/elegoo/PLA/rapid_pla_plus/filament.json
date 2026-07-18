@@ -1,6 +1,7 @@
 {
-    "id": "rapid_pla_plus",
-    "name": "RAPID PLA Plus",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "10cdc62f-4466-41d3-a7d3-4c80bc52c80d",
+  "id": "rapid_pla_plus",
+  "name": "RAPID PLA Plus",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

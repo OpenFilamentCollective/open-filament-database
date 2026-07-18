@@ -1,6 +1,7 @@
 {
-    "id": "carbonfiber_pet",
-    "name": "Carbonfiber PET",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "fc8e0cb8-436f-490c-a389-425178bbea2d",
+  "id": "carbonfiber_pet",
+  "name": "Carbonfiber PET",
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

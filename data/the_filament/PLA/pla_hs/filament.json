@@ -1,6 +1,7 @@
 {
-    "id": "pla_hs",
-    "name": "PLA HS",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "f8ac142c-74fc-4a23-b679-7ad1c38575c0",
+  "id": "pla_hs",
+  "name": "PLA HS",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

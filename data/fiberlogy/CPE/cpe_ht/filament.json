@@ -1,14 +1,15 @@
 {
-    "id": "cpe_ht",
-    "name": "CPE HT",
-    "diameter_tolerance": 0.02,
-    "density": 1.18,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Fiberlogy CPE HT"
-        },
-        "superslicer": {
-            "profile_name": "Fiberlogy CPE HT"
-        }
+  "uuid": "085862e6-90a6-4366-bb7e-b9cb0aaa6a32",
+  "id": "cpe_ht",
+  "name": "CPE HT",
+  "diameter_tolerance": 0.02,
+  "density": 1.18,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Fiberlogy CPE HT"
+    },
+    "superslicer": {
+      "profile_name": "Fiberlogy CPE HT"
     }
+  }
 }

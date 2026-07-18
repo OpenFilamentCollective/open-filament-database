@@ -1,6 +1,7 @@
 {
-    "id": "black",
-    "name": "Black",
-    "color_hex": "#000000",
-    "discontinued": true
+  "uuid": "6c00c472-b8bb-478d-80e4-54772380bcef",
+  "id": "black",
+  "name": "Black",
+  "color_hex": "#000000",
+  "discontinued": true
 }

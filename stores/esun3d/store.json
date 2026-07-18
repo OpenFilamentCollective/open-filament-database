@@ -1,18 +1,19 @@
 {
-    "id": "esun3d",
-    "name": "eSUN",
-    "storefront_url": "https://esun3dstore.com/",
-    "logo": "logo.png",
-    "ships_from": [
-        "US",
-        "UK",
-        "EU",
-        "CA"
-    ],
-    "ships_to": [
-        "US",
-        "UK",
-        "EU",
-        "CA"
-    ]
+  "uuid": "806afd47-6078-4154-9d79-077819ebae08",
+  "id": "esun3d",
+  "name": "eSUN",
+  "storefront_url": "https://esun3dstore.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US",
+    "UK",
+    "EU",
+    "CA"
+  ],
+  "ships_to": [
+    "US",
+    "UK",
+    "EU",
+    "CA"
+  ]
 }

@@ -1,8 +1,9 @@
 {
-    "id": "solar_breeze",
-    "name": "Solar Breeze",
-    "color_hex": [
-        "#E94B3C",
-        "#FFFFFF"
-    ]
+  "uuid": "192a0dc3-5504-4e45-91f6-ed280f79ca26",
+  "id": "solar_breeze",
+  "name": "Solar Breeze",
+  "color_hex": [
+    "#E94B3C",
+    "#FFFFFF"
+  ]
 }

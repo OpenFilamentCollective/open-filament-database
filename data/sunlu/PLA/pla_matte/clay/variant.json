@@ -1,10 +1,11 @@
 {
-    "id": "clay",
-    "name": "Clay",
-    "color_hex": [
-        "#8b8372"
-    ],
-    "traits": {
-        "matte": true
-    }
+  "uuid": "af726126-1cce-4032-b102-ed667e806604",
+  "id": "clay",
+  "name": "Clay",
+  "color_hex": [
+    "#8b8372"
+  ],
+  "traits": {
+    "matte": true
+  }
 }

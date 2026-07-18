@@ -1,6 +1,7 @@
 {
-    "id": "pla_burnt_titanium",
-    "name": "PLA Burnt Titanium",
-    "diameter_tolerance": 0.03,
-    "density": 1.23
+  "uuid": "9d5a40be-13a8-4520-8384-ea15677211ab",
+  "id": "pla_burnt_titanium",
+  "name": "PLA Burnt Titanium",
+  "diameter_tolerance": 0.03,
+  "density": 1.23
 }

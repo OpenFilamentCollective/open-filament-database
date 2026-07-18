@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/rABS/rABS%20-%201.75mm%20-%20750g%20-%20Black"
-            }
-        ]
-    }
+  {
+    "uuid": "9df1db76-91fc-4d0c-ba48-1058a5882186",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/rABS/rABS%20-%201.75mm%20-%20750g%20-%20Black"
+      }
+    ]
+  }
 ]

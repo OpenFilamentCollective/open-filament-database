@@ -1,7 +1,8 @@
 {
-    "id": "gst3d",
-    "name": "GST3D",
-    "website": "https://gst3d.eu/",
-    "logo": "logo.png",
-    "origin": "ES"
+  "uuid": "7b82eb83-f6c4-4e16-a2f5-5c7c6c15bca5",
+  "id": "gst3d",
+  "name": "GST3D",
+  "website": "https://gst3d.eu/",
+  "logo": "logo.png",
+  "origin": "ES"
 }

@@ -1,8 +1,9 @@
 {
-    "id": "gadgethuset",
-    "name": "Gadgethuset",
-    "storefront_url": "https://www.gadgethuset.dk/",
-    "logo": "logo.jpg",
-    "ships_from": "DK",
-    "ships_to": []
+  "uuid": "897cdd4c-e101-4f63-af54-c5cfeaa7b9ed",
+  "id": "gadgethuset",
+  "name": "Gadgethuset",
+  "storefront_url": "https://www.gadgethuset.dk/",
+  "logo": "logo.jpg",
+  "ships_from": "DK",
+  "ships_to": []
 }

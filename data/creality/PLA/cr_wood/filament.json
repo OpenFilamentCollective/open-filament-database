@@ -1,6 +1,7 @@
 {
-    "id": "cr_wood",
-    "name": "PLA CR-Wood",
-    "diameter_tolerance": 0.03,
-    "density": 1.15
+  "uuid": "f3d8bbaa-1e30-4df3-881d-4741a66e7bb3",
+  "id": "cr_wood",
+  "name": "PLA CR-Wood",
+  "diameter_tolerance": 0.03,
+  "density": 1.15
 }

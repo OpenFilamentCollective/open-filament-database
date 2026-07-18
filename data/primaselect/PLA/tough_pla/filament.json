@@ -1,6 +1,7 @@
 {
-    "id": "tough_pla",
-    "name": "Tough PLA",
-    "diameter_tolerance": 0.05,
-    "density": 1.21
+  "uuid": "6174de0b-5487-48e6-aa7f-a0c7652d407c",
+  "id": "tough_pla",
+  "name": "Tough PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.21
 }

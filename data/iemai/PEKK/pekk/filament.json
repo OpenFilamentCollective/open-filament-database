@@ -1,8 +1,9 @@
 {
+  "uuid": "810fdba6-6a37-486f-a5dc-5528736c9f3e",
   "id": "pekk",
   "name": "PEKK",
   "diameter_tolerance": 0.05,
-  "density": 1.30,
+  "density": 1.3,
   "min_print_temperature": 360,
   "max_print_temperature": 410,
   "min_bed_temperature": 120,

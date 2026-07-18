@@ -1,34 +1,35 @@
 {
-    "id": "pc_blend",
-    "name": "PC Blend",
-    "diameter_tolerance": 0.03,
-    "density": 1.22,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Prusament PC Blend"
-        },
-        "orcaslicer": {
-            "generic_id": "GFC99",
-            "id": "GFC99",
-            "profile_name": "Prusament PC Blend"
-        },
-        "superslicer": {
-            "profile_name": "Prusament PC Blend"
-        },
-        "elegooslicer": {
-            "generic_id": "GFC99",
-            "id": "GFC99",
-            "profile_name": "Prusament PC Blend"
-        },
-        "crealityprint": {
-            "generic_id": "GFC99",
-            "id": "GFL99_1",
-            "profile_name": "Prusament PC Blend"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFC99",
-            "id": "GFC99",
-            "profile_name": "Prusament PC Blend"
-        }
+  "uuid": "92a21a8d-0991-4533-8281-32c623161d27",
+  "id": "pc_blend",
+  "name": "PC Blend",
+  "diameter_tolerance": 0.03,
+  "density": 1.22,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Prusament PC Blend"
+    },
+    "orcaslicer": {
+      "generic_id": "GFC99",
+      "id": "GFC99",
+      "profile_name": "Prusament PC Blend"
+    },
+    "superslicer": {
+      "profile_name": "Prusament PC Blend"
+    },
+    "elegooslicer": {
+      "generic_id": "GFC99",
+      "id": "GFC99",
+      "profile_name": "Prusament PC Blend"
+    },
+    "crealityprint": {
+      "generic_id": "GFC99",
+      "id": "GFL99_1",
+      "profile_name": "Prusament PC Blend"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFC99",
+      "id": "GFC99",
+      "profile_name": "Prusament PC Blend"
     }
+  }
 }

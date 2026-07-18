@@ -1,8 +1,9 @@
 {
-    "id": "transparent",
-    "name": "Transparent",
-    "color_hex": "#ededed",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "d0a6460e-03ea-4379-bf62-9867f324e147",
+  "id": "transparent",
+  "name": "Transparent",
+  "color_hex": "#ededed",
+  "traits": {
+    "recyclable": true
+  }
 }

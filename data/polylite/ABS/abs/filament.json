@@ -1,33 +1,34 @@
 {
-    "id": "abs",
-    "name": "ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.12,
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFB99",
-            "id": "GFB60",
-            "profile_name": "PolyLite ABS"
-        },
-        "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "GFB60",
-            "profile_name": "PolyLite ABS"
-        },
-        "elegooslicer": {
-            "generic_id": "GFB99",
-            "id": "GFB60",
-            "profile_name": "PolyLite ABS"
-        },
-        "crealityprint": {
-            "generic_id": "GFB99",
-            "id": "GFB60",
-            "profile_name": "PolyLite ABS"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFB99",
-            "id": "GFB60",
-            "profile_name": "PolyLite ABS"
-        }
+  "uuid": "ae228466-d15c-4e04-9ee4-c8b3847c7f83",
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.12,
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFB99",
+      "id": "GFB60",
+      "profile_name": "PolyLite ABS"
+    },
+    "orcaslicer": {
+      "generic_id": "GFB99",
+      "id": "GFB60",
+      "profile_name": "PolyLite ABS"
+    },
+    "elegooslicer": {
+      "generic_id": "GFB99",
+      "id": "GFB60",
+      "profile_name": "PolyLite ABS"
+    },
+    "crealityprint": {
+      "generic_id": "GFB99",
+      "id": "GFB60",
+      "profile_name": "PolyLite ABS"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFB99",
+      "id": "GFB60",
+      "profile_name": "PolyLite ABS"
     }
+  }
 }

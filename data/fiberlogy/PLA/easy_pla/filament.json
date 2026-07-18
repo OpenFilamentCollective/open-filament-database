@@ -1,14 +1,15 @@
 {
-    "id": "easy_pla",
-    "name": "Easy PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Fiberlogy Easy PLA"
-        },
-        "superslicer": {
-            "profile_name": "Fiberlogy Easy PLA"
-        }
+  "uuid": "a3c3406a-5d2d-4f73-a807-59bd2c2757a2",
+  "id": "easy_pla",
+  "name": "Easy PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Fiberlogy Easy PLA"
+    },
+    "superslicer": {
+      "profile_name": "Fiberlogy Easy PLA"
     }
+  }
 }

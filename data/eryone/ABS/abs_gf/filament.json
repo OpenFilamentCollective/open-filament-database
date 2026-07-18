@@ -1,6 +1,7 @@
 {
-    "id": "abs_gf",
-    "name": "ABS-GF",
-    "diameter_tolerance": 0.03,
-    "density": 1.1
+  "uuid": "0fcd99f2-972a-433c-a2ff-1816e99561d2",
+  "id": "abs_gf",
+  "name": "ABS-GF",
+  "diameter_tolerance": 0.03,
+  "density": 1.1
 }

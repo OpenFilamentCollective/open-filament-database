@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "ean": "6975337032236",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/support/products/support-for-pa-pet"
-            }
-        ]
-    }
+  {
+    "uuid": "4b819815-be74-4af3-89be-7067701bafde",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "ean": "6975337032236",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/support/products/support-for-pa-pet"
+      }
+    ]
+  }
 ]

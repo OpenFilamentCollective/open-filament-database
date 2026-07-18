@@ -1,6 +1,7 @@
 {
-    "id": "refill_easy_pla",
-    "name": "Refill Easy PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "44cb678c-bbc2-4de1-b949-00385817593d",
+  "id": "refill_easy_pla",
+  "name": "Refill Easy PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

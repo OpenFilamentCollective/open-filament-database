@@ -1,6 +1,7 @@
 {
-    "id": "safeguard_pla",
-    "name": "SafeGuard PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "b2ec0db2-0e99-4178-8d59-ef739f59b94a",
+  "id": "safeguard_pla",
+  "name": "SafeGuard PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

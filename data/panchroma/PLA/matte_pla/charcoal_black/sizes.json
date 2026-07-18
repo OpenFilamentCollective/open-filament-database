@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "8de4bb44-51b8-4660-90bf-306f80abbb4a",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
@@ -10,6 +11,7 @@
     ]
   },
   {
+    "uuid": "0de587ea-bbf8-4ac8-b791-d9f117839c02",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
@@ -20,6 +22,7 @@
     ]
   },
   {
+    "uuid": "cab61cca-39ee-45fe-923a-cdc53ea4b68e",
     "filament_weight": 1000,
     "diameter": 2.85,
     "purchase_links": [
@@ -30,6 +33,7 @@
     ]
   },
   {
+    "uuid": "ed4d000c-4f12-4f10-9c26-d15daa4a2e7e",
     "filament_weight": 3000,
     "diameter": 2.85,
     "purchase_links": [

@@ -1,43 +1,44 @@
 {
-    "id": "pla",
-    "name": "PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.16,
-    "min_print_temperature": 190,
-    "max_print_temperature": 230,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 70,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Overture PLA"
-        },
-        "bambustudio": {
-            "generic_id": "GFL99",
-            "id": "GFL04",
-            "profile_name": "Overture PLA"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GFL04",
-            "profile_name": "Overture PLA"
-        },
-        "superslicer": {
-            "profile_name": "Overture PLA"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "GFL04",
-            "profile_name": "Overture PLA"
-        },
-        "crealityprint": {
-            "generic_id": "GFL99",
-            "id": "GFL04",
-            "profile_name": "Overture PLA"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFL99",
-            "id": "GFL04",
-            "profile_name": "Overture PLA"
-        }
+  "uuid": "8dbc78d7-39b4-4690-b669-c773350f14bf",
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.16,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Overture PLA"
+    },
+    "bambustudio": {
+      "generic_id": "GFL99",
+      "id": "GFL04",
+      "profile_name": "Overture PLA"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GFL04",
+      "profile_name": "Overture PLA"
+    },
+    "superslicer": {
+      "profile_name": "Overture PLA"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "GFL04",
+      "profile_name": "Overture PLA"
+    },
+    "crealityprint": {
+      "generic_id": "GFL99",
+      "id": "GFL04",
+      "profile_name": "Overture PLA"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFL99",
+      "id": "GFL04",
+      "profile_name": "Overture PLA"
     }
+  }
 }

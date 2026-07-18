@@ -1,6 +1,7 @@
 {
-    "id": "pla_magic_silk",
-    "name": "PLA Magic SILK",
-    "diameter_tolerance": 0.02,
-    "density": 1.22
+  "uuid": "2eec2637-f5a9-47ef-981d-c47a9e3b0b5e",
+  "id": "pla_magic_silk",
+  "name": "PLA Magic SILK",
+  "diameter_tolerance": 0.02,
+  "density": 1.22
 }

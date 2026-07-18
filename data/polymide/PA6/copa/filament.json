@@ -1,6 +1,7 @@
 {
-    "id": "copa",
-    "name": "PA6 CoPa",
-    "diameter_tolerance": 0.02,
-    "density": 1.12
+  "uuid": "80ac9987-cfaf-4055-870d-1576ba8ebd84",
+  "id": "copa",
+  "name": "PA6 CoPa",
+  "diameter_tolerance": 0.02,
+  "density": 1.12
 }

@@ -1,15 +1,16 @@
 {
-    "id": "abs",
-    "name": "ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04,
-    "min_print_temperature": 230,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 90,
-    "max_bed_temperature": 110,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Push Plastic ABS"
-        }
+  "uuid": "e83c87f2-2144-48ca-92f9-a7b23a4bce68",
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.04,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Push Plastic ABS"
     }
+  }
 }

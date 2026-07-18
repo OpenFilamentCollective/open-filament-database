@@ -1,6 +1,7 @@
 {
-    "id": "pla_satin",
-    "name": "PLA Satin",
-    "diameter_tolerance": 0.05,
-    "density": 1.24
+  "uuid": "3156b989-f869-4774-9520-5ed131462a90",
+  "id": "pla_satin",
+  "name": "PLA Satin",
+  "diameter_tolerance": 0.05,
+  "density": 1.24
 }

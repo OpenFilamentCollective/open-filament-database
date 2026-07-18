@@ -1,9 +1,10 @@
 {
-    "id": "esd_petg",
-    "name": "ESD PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.29,
-    "max_dry_temperature": 65,
-    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_ESD_PETG_3mpUZx.pdf",
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_ESD-PETG_aHumwB.pdf"
+  "uuid": "cd519592-e63e-4c08-bb68-1399b988d33b",
+  "id": "esd_petg",
+  "name": "ESD PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.29,
+  "max_dry_temperature": 65,
+  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_ESD_PETG_3mpUZx.pdf",
+  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_ESD-PETG_aHumwB.pdf"
 }

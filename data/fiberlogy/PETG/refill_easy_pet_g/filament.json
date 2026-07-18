@@ -1,6 +1,7 @@
 {
-    "id": "refill_easy_pet_g",
-    "name": "Refill Easy PET-G",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "887bf6c7-6a23-4b62-b12b-59777dfa185a",
+  "id": "refill_easy_pet_g",
+  "name": "Refill Easy PET-G",
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

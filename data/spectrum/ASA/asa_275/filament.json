@@ -1,11 +1,12 @@
 {
-    "id": "asa_275",
-    "name": "ASA 275",
-    "diameter_tolerance": 0.02,
-    "density": 1.07,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Spectrum ASA 275"
-        }
+  "uuid": "7631d734-547b-43c1-81d4-b73088ce069e",
+  "id": "asa_275",
+  "name": "ASA 275",
+  "diameter_tolerance": 0.02,
+  "density": 1.07,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Spectrum ASA 275"
     }
+  }
 }

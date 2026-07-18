@@ -1,6 +1,7 @@
 {
-    "id": "tpu_high_speed",
-    "name": "TPU High-Speed",
-    "diameter_tolerance": 0.03,
-    "density": 1.22
+  "uuid": "8a578b46-49f9-43fc-8063-74402e687d50",
+  "id": "tpu_high_speed",
+  "name": "TPU High-Speed",
+  "diameter_tolerance": 0.03,
+  "density": 1.22
 }

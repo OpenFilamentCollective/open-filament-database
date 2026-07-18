@@ -1,11 +1,12 @@
 {
-    "id": "asa",
-    "name": "ASA",
-    "diameter_tolerance": 0.05,
-    "density": 1.18,
-    "slicer_settings": {
-        "superslicer": {
-            "profile_name": "3DO ASA"
-        }
+  "uuid": "d81ff387-e886-4374-922e-237ca2da2e2a",
+  "id": "asa",
+  "name": "ASA",
+  "diameter_tolerance": 0.05,
+  "density": 1.18,
+  "slicer_settings": {
+    "superslicer": {
+      "profile_name": "3DO ASA"
     }
+  }
 }

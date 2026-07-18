@@ -1,35 +1,36 @@
 {
-    "id": "marble",
-    "name": "PLA Marble",
-    "diameter_tolerance": 0.03,
-    "density": 1.22,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PLA_Marble_Technical_Data_Sheet.pdf",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Marble_MSDS.pdf",
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFL99",
-            "id": "GFA07",
-            "profile_name": "Bambu PLA Marble"
-        },
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA07",
-            "profile_name": "Bambu PLA Marble"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA07",
-            "profile_name": "Bambu PLA Marble"
-        },
-        "crealityprint": {
-            "generic_id": "GFL99",
-            "id": "GFA07",
-            "profile_name": "Bambu PLA Marble"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFL99",
-            "id": "GFA07",
-            "profile_name": "Bambu PLA Marble"
-        }
+  "uuid": "efc5b62f-748a-4f43-ad0a-ad2528b7fafa",
+  "id": "marble",
+  "name": "PLA Marble",
+  "diameter_tolerance": 0.03,
+  "density": 1.22,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PLA_Marble_Technical_Data_Sheet.pdf",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Marble_MSDS.pdf",
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFL99",
+      "id": "GFA07",
+      "profile_name": "Bambu PLA Marble"
+    },
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA07",
+      "profile_name": "Bambu PLA Marble"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA07",
+      "profile_name": "Bambu PLA Marble"
+    },
+    "crealityprint": {
+      "generic_id": "GFL99",
+      "id": "GFA07",
+      "profile_name": "Bambu PLA Marble"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFL99",
+      "id": "GFA07",
+      "profile_name": "Bambu PLA Marble"
     }
+  }
 }

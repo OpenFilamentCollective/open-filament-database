@@ -1,14 +1,15 @@
 {
-    "id": "fibersilk",
-    "name": "PLA FiberSilk",
-    "diameter_tolerance": 0.02,
-    "density": 1.22,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Fiberlogy FiberSilk"
-        },
-        "superslicer": {
-            "profile_name": "Fiberlogy FiberSilk"
-        }
+  "uuid": "e38883d8-92be-4b9e-a69b-c5a4319c2ad2",
+  "id": "fibersilk",
+  "name": "PLA FiberSilk",
+  "diameter_tolerance": 0.02,
+  "density": 1.22,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Fiberlogy FiberSilk"
+    },
+    "superslicer": {
+      "profile_name": "Fiberlogy FiberSilk"
     }
+  }
 }

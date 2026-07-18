@@ -1,6 +1,7 @@
 {
-    "id": "petg_fr_v0",
-    "name": "PETG FR V0",
-    "diameter_tolerance": 0.02,
-    "density": 1.26
+  "uuid": "78f82aee-0af2-4bf4-bc1e-9c8d851fbbb6",
+  "id": "petg_fr_v0",
+  "name": "PETG FR V0",
+  "diameter_tolerance": 0.02,
+  "density": 1.26
 }

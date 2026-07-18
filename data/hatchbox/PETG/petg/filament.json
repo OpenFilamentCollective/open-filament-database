@@ -1,33 +1,34 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.27,
-    "min_print_temperature": 220,
-    "max_print_temperature": 250,
-    "min_bed_temperature": 70,
-    "max_bed_temperature": 90,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Hatchbox PETG"
-        },
-        "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "GFG99",
-            "profile_name": "HATCHBOX PETG"
-        },
-        "superslicer": {
-            "profile_name": "Hatchbox PETG"
-        },
-        "elegooslicer": {
-            "generic_id": "GFG99",
-            "id": "GFG99",
-            "profile_name": "HATCHBOX PETG"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFG99",
-            "id": "GFB99",
-            "profile_name": "HATCHBOX PETG"
-        }
+  "uuid": "3a71e512-c43f-426e-8d4c-0491321408f7",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Hatchbox PETG"
+    },
+    "orcaslicer": {
+      "generic_id": "GFG99",
+      "id": "GFG99",
+      "profile_name": "HATCHBOX PETG"
+    },
+    "superslicer": {
+      "profile_name": "Hatchbox PETG"
+    },
+    "elegooslicer": {
+      "generic_id": "GFG99",
+      "id": "GFG99",
+      "profile_name": "HATCHBOX PETG"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFG99",
+      "id": "GFB99",
+      "profile_name": "HATCHBOX PETG"
     }
+  }
 }

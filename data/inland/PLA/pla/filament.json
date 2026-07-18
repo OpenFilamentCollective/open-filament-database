@@ -1,18 +1,19 @@
 {
-    "id": "pla",
-    "name": "PLA",
-    "diameter_tolerance": 0.03,
-    "density": 1.24,
-    "min_print_temperature": 190,
-    "max_print_temperature": 230,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 70,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Inland PLA"
-        },
-        "superslicer": {
-            "profile_name": "Inland PLA"
-        }
+  "uuid": "b0064df2-8a98-43e5-bb44-a951611d3177",
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Inland PLA"
+    },
+    "superslicer": {
+      "profile_name": "Inland PLA"
     }
+  }
 }

@@ -1,5 +1,6 @@
 {
-    "id": "traffic_red",
-    "name": "Traffic Red",
-    "color_hex": "#B21A26"
+  "uuid": "c0f76c55-8ba2-4433-9694-9bf0f3dfed6e",
+  "id": "traffic_red",
+  "name": "Traffic Red",
+  "color_hex": "#B21A26"
 }

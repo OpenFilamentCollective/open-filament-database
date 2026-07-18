@@ -1,9 +1,10 @@
 {
-    "id": "fossil_rock",
-    "name": "Fossil Rock",
-    "color_hex": [
-        "#C2C0BA",
-        "#503529",
-        "#EDD5A6"
-    ]
+  "uuid": "e19673f8-d663-43e2-81a9-e13624959bfc",
+  "id": "fossil_rock",
+  "name": "Fossil Rock",
+  "color_hex": [
+    "#C2C0BA",
+    "#503529",
+    "#EDD5A6"
+  ]
 }

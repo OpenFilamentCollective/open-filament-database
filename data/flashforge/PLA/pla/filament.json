@@ -1,32 +1,33 @@
 {
-    "id": "pla",
-    "name": "PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "min_print_temperature": 190,
-    "max_print_temperature": 230,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 70,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "FFF01",
-            "profile_name": "Flashforge PLA"
-        },
-        "elegooslicer": {
-            "generic_id": "GFL99",
-            "id": "FFF01",
-            "profile_name": "Flashforge PLA"
-        },
-        "crealityprint": {
-            "generic_id": "GFL99",
-            "id": "GFL99",
-            "profile_name": "Flashforge PLA"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFL99",
-            "id": "FFF01",
-            "profile_name": "Flashforge PLA"
-        }
+  "uuid": "f20fe582-2efd-4cc6-8f63-be8fd2d5e13a",
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFL99",
+      "id": "FFF01",
+      "profile_name": "Flashforge PLA"
+    },
+    "elegooslicer": {
+      "generic_id": "GFL99",
+      "id": "FFF01",
+      "profile_name": "Flashforge PLA"
+    },
+    "crealityprint": {
+      "generic_id": "GFL99",
+      "id": "GFL99",
+      "profile_name": "Flashforge PLA"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFL99",
+      "id": "FFF01",
+      "profile_name": "Flashforge PLA"
     }
+  }
 }

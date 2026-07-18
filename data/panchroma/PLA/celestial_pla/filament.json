@@ -1,6 +1,7 @@
 {
-    "id": "celestial_pla",
-    "name": "Celestial PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "f9012705-61eb-4bfb-85e5-1f913d45d901",
+  "id": "celestial_pla",
+  "name": "Celestial PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19
 }

@@ -1,6 +1,7 @@
 {
-    "id": "polycast",
-    "name": "PLA PolyCast",
-    "diameter_tolerance": 0.02,
-    "density": 1.1
+  "uuid": "776d86a1-ea6d-4c64-8005-8ca3af2188b2",
+  "id": "polycast",
+  "name": "PLA PolyCast",
+  "diameter_tolerance": 0.02,
+  "density": 1.1
 }

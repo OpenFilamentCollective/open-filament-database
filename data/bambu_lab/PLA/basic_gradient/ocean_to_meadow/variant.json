@@ -1,8 +1,9 @@
 {
-    "id": "ocean_to_meadow",
-    "name": "Ocean to Meadow",
-    "color_hex": [
-        "#307FE2",
-        "#54FF9B"
-    ]
+  "uuid": "e1216c32-f166-44d0-a0cc-c74b5f5317ab",
+  "id": "ocean_to_meadow",
+  "name": "Ocean to Meadow",
+  "color_hex": [
+    "#307FE2",
+    "#54FF9B"
+  ]
 }

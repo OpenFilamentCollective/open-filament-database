@@ -1,6 +1,7 @@
 {
-    "id": "graphene_strong",
-    "name": "PLA Graphene Strong",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "c3a89120-978b-4dbe-91bb-a3881d33b513",
+  "id": "graphene_strong",
+  "name": "PLA Graphene Strong",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

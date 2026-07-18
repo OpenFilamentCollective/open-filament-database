@@ -1,31 +1,32 @@
 {
-    "id": "abs",
-    "name": "ABS",
-    "diameter_tolerance": 0.05,
-    "density": 1.04,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Snapmaker ABS"
-        },
-        "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "1682237920",
-            "profile_name": "Snapmaker ABS"
-        },
-        "elegooslicer": {
-            "generic_id": "GFB99",
-            "id": "1682237920",
-            "profile_name": "Snapmaker ABS"
-        },
-        "crealityprint": {
-            "generic_id": "GFB99",
-            "id": "3811508002",
-            "profile_name": "Snapmaker ABS"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFB99",
-            "id": "3811508002",
-            "profile_name": "Snapmaker ABS"
-        }
+  "uuid": "279d9984-0e43-4968-beec-0d148211d8c2",
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.05,
+  "density": 1.04,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Snapmaker ABS"
+    },
+    "orcaslicer": {
+      "generic_id": "GFB99",
+      "id": "1682237920",
+      "profile_name": "Snapmaker ABS"
+    },
+    "elegooslicer": {
+      "generic_id": "GFB99",
+      "id": "1682237920",
+      "profile_name": "Snapmaker ABS"
+    },
+    "crealityprint": {
+      "generic_id": "GFB99",
+      "id": "3811508002",
+      "profile_name": "Snapmaker ABS"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFB99",
+      "id": "3811508002",
+      "profile_name": "Snapmaker ABS"
     }
+  }
 }

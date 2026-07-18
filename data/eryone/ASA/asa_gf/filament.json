@@ -1,6 +1,7 @@
 {
-    "id": "asa_gf",
-    "name": "ASA-GF",
-    "diameter_tolerance": 0.03,
-    "density": 1.17
+  "uuid": "1c9368e5-6ac6-40c5-bbe3-0daf90e37091",
+  "id": "asa_gf",
+  "name": "ASA-GF",
+  "diameter_tolerance": 0.03,
+  "density": 1.17
 }

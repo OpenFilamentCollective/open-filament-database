@@ -1,22 +1,23 @@
 {
-    "id": "abs+",
-    "name": "ABS+",
-    "diameter_tolerance": 0.03,
-    "density": 1.06,
-    "min_print_temperature": 230,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 90,
-    "max_bed_temperature": 110,
-    "slicer_settings": {
-        "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "E3001",
-            "profile_name": "eSUN ABS+"
-        },
-        "crealityprint": {
-            "generic_id": "GFB99",
-            "id": "E3001",
-            "profile_name": "eSUN ABS+"
-        }
+  "uuid": "67391787-ec98-4aff-b5f0-6293a79a6fea",
+  "id": "abs+",
+  "name": "ABS+",
+  "diameter_tolerance": 0.03,
+  "density": 1.06,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "GFB99",
+      "id": "E3001",
+      "profile_name": "eSUN ABS+"
+    },
+    "crealityprint": {
+      "generic_id": "GFB99",
+      "id": "E3001",
+      "profile_name": "eSUN ABS+"
     }
+  }
 }

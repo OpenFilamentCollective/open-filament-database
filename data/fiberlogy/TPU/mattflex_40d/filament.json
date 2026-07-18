@@ -1,14 +1,15 @@
 {
-    "id": "mattflex_40d",
-    "name": "TPU MattFlex 40D",
-    "diameter_tolerance": 0.05,
-    "density": 1.16,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Fiberlogy MattFlex 40D"
-        },
-        "superslicer": {
-            "profile_name": "Fiberlogy MattFlex 40D"
-        }
+  "uuid": "fe742843-7da9-4b5a-9bc5-f8f8583037cc",
+  "id": "mattflex_40d",
+  "name": "TPU MattFlex 40D",
+  "diameter_tolerance": 0.05,
+  "density": 1.16,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Fiberlogy MattFlex 40D"
+    },
+    "superslicer": {
+      "profile_name": "Fiberlogy MattFlex 40D"
     }
+  }
 }

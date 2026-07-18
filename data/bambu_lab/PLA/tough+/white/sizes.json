@@ -1,24 +1,26 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6937285500717",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://eu.store.bambulab.com/products/pla-tough-upgrade?id=624496486489088012"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6977252427432",
-        "purchase_links": [
-            {
-                "store_id": "3deksperten",
-                "url": "https://3deksperten.dk/products/bambu-lab-pla-silk-white-1-75mm-1kg-1"
-            }
-        ]
-    }
+  {
+    "uuid": "ba4f812c-4315-4693-8b8a-a453848b600d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6937285500717",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://eu.store.bambulab.com/products/pla-tough-upgrade?id=624496486489088012"
+      }
+    ]
+  },
+  {
+    "uuid": "fcc852e3-c786-44d7-8109-20492a885964",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6977252427432",
+    "purchase_links": [
+      {
+        "store_id": "3deksperten",
+        "url": "https://3deksperten.dk/products/bambu-lab-pla-silk-white-1-75mm-1kg-1"
+      }
+    ]
+  }
 ]

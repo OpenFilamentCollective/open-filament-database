@@ -1,6 +1,7 @@
 {
-    "id": "basic",
-    "name": "ASA Basic",
-    "diameter_tolerance": 0.02,
-    "density": 1.05
+  "uuid": "960fd243-9287-459b-866b-87d7d8bfcc4a",
+  "id": "basic",
+  "name": "ASA Basic",
+  "diameter_tolerance": 0.02,
+  "density": 1.05
 }

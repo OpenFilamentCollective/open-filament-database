@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "df158c60-105f-4b26-b1ea-519e794289fa",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 195,
@@ -7,16 +8,19 @@
     "article_number": "FP171-9005"
   },
   {
+    "uuid": "2767b835-2bc6-4099-89b8-6a3c6c90e219",
     "filament_weight": 2100,
     "diameter": 1.75,
     "article_number": "FP471-9005"
   },
   {
+    "uuid": "c53afc6f-126f-4613-8d12-ef6415a5640d",
     "filament_weight": 10000,
     "diameter": 1.75,
     "article_number": "FPB71-9005"
   },
   {
+    "uuid": "fee16733-b737-4d7c-ad50-889db34fb560",
     "filament_weight": 5000,
     "diameter": 1.75,
     "article_number": "FPM71-9005"

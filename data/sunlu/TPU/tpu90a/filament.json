@@ -1,6 +1,7 @@
 {
-    "id": "tpu90a",
-    "name": "TPU90A",
-    "diameter_tolerance": 0.02,
-    "density": 1.07
+  "uuid": "6c2ff439-684e-49aa-8532-304223d99b69",
+  "id": "tpu90a",
+  "name": "TPU90A",
+  "diameter_tolerance": 0.02,
+  "density": 1.07
 }

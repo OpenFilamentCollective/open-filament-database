@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "empty_spool_weight": 175,
-        "spool_core_diameter": 41,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/Adura%E2%84%A2/Adura%E2%84%A2%20-%201.75mm%20-%20500g%20-%20Grey"
-            }
-        ]
-    }
+  {
+    "uuid": "ed689ea4-0ce9-4122-9a5c-c4fb2fe3fea0",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "empty_spool_weight": 175,
+    "spool_core_diameter": 41,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/Adura%E2%84%A2/Adura%E2%84%A2%20-%201.75mm%20-%20500g%20-%20Grey"
+      }
+    ]
+  }
 ]

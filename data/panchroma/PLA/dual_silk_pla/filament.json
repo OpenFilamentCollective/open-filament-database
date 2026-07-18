@@ -1,6 +1,7 @@
 {
-    "id": "dual_silk_pla",
-    "name": "Dual Silk PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "26ddd55a-23e7-4d48-8384-1b235e578522",
+  "id": "dual_silk_pla",
+  "name": "Dual Silk PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.2
 }

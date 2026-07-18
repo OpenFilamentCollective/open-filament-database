@@ -1,33 +1,34 @@
 {
-    "id": "abs",
-    "name": "ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04,
-    "min_print_temperature": 230,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 90,
-    "max_bed_temperature": 110,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Hatchbox ABS"
-        },
-        "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "GFB99",
-            "profile_name": "HATCHBOX ABS"
-        },
-        "superslicer": {
-            "profile_name": "Hatchbox ABS"
-        },
-        "elegooslicer": {
-            "generic_id": "GFB99",
-            "id": "GFB99",
-            "profile_name": "HATCHBOX ABS"
-        },
-        "anycubicslicer": {
-            "generic_id": "GFB99",
-            "id": "GFB99",
-            "profile_name": "HATCHBOX ABS"
-        }
+  "uuid": "156ac1c6-0aac-44cc-a832-65ebef92216d",
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.04,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Hatchbox ABS"
+    },
+    "orcaslicer": {
+      "generic_id": "GFB99",
+      "id": "GFB99",
+      "profile_name": "HATCHBOX ABS"
+    },
+    "superslicer": {
+      "profile_name": "Hatchbox ABS"
+    },
+    "elegooslicer": {
+      "generic_id": "GFB99",
+      "id": "GFB99",
+      "profile_name": "HATCHBOX ABS"
+    },
+    "anycubicslicer": {
+      "generic_id": "GFB99",
+      "id": "GFB99",
+      "profile_name": "HATCHBOX ABS"
     }
+  }
 }

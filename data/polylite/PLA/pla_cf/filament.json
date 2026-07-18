@@ -1,6 +1,7 @@
 {
-    "id": "pla_cf",
-    "name": "PLA-CF",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "de0f3f6f-9198-4d89-97ec-746d3df670b0",
+  "id": "pla_cf",
+  "name": "PLA-CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.2
 }
