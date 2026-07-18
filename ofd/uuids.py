@@ -25,6 +25,7 @@ from pathlib import Path
 from typing import Any
 
 from ofd.builder.utils import generate_canonical_uuid
+from ofd.merge import size_dedupe_key
 
 __all__ = [
     "UUID_RE",
@@ -146,11 +147,6 @@ def assign_uuid(entity: Entity, value: str) -> None:
     entity.obj.update(ordered)
 
 
-def _size_key(size: dict[str, Any]) -> tuple[Any, Any]:
-    """The (filament_weight, diameter) identity used to pair spools during a merge."""
-    return (size.get("filament_weight"), size.get("diameter"))
-
-
 def _absorb_moved_from(target: dict[str, Any], source: dict[str, Any]) -> list[str]:
     """Union ``source``'s uuid (and its own ``moved_from``) into ``target['moved_from']``.
 
@@ -229,14 +225,14 @@ def record_moved_from(target_dir: Path, source_dir: Path) -> list[str]:
             recorded.extend(added)
             changed = bool(added)
         elif isinstance(source_data, list) and isinstance(target_data, list):
-            target_by_key: dict[tuple[Any, Any], dict[str, Any]] = {}
+            target_by_key: dict[tuple, dict[str, Any]] = {}
             for entry in target_data:
                 if isinstance(entry, dict):
-                    target_by_key.setdefault(_size_key(entry), entry)
+                    target_by_key.setdefault(size_dedupe_key(entry), entry)
             for entry in source_data:
                 if not isinstance(entry, dict):
                     continue
-                match = target_by_key.get(_size_key(entry))
+                match = target_by_key.get(size_dedupe_key(entry))
                 if match is None:
                     continue
                 added = _absorb_moved_from(match, entry)
@@ -357,6 +353,10 @@ def resolve_uuid(
     keep surfacing accidental duplicates rather than hiding them.
     """
     target = target.strip().lower()
+    # An empty target must not match: raw_uuid is "" for every unassigned entity,
+    # so `e.raw_uuid == ""` would otherwise return all of them as spurious matches.
+    if not target:
+        return [], None
     entities = list(entities)
 
     direct = [e for e in entities if e.raw_uuid == target]
@@ -376,18 +376,26 @@ def build_redirect_map(entities: Iterator[Entity] | list[Entity]) -> dict[str, s
     Only entities with a valid live ``uuid`` contribute, and only their well-formed
     ``moved_from`` entries are mapped. An old UUID that collides with a live ``uuid``
     is skipped (that's a data error, flagged by ``ofd uuid check``) so a redirect can
-    never shadow a live entity. This is what downstream consumers (e.g. SimplyPrint)
-    read to turn a dangling old UUID into the current one.
+    never shadow a live entity. An old UUID claimed by two *different* current UUIDs is
+    ambiguous, so it is omitted entirely rather than silently resolved to whichever
+    entity happened to be walked last. This is what downstream consumers (e.g.
+    SimplyPrint) read to turn a dangling old UUID into the current one.
     """
     entities = list(entities)
     live = {e.raw_uuid for e in entities if e.valid}
 
     redirects: dict[str, str] = {}
+    ambiguous: set[str] = set()
     for e in entities:
         if not e.valid:
             continue
         for old in e.moved_from:
             if not UUID_RE.match(old) or old in live:
                 continue
-            redirects[old] = e.raw_uuid
+            if old in redirects and redirects[old] != e.raw_uuid:
+                ambiguous.add(old)
+            else:
+                redirects[old] = e.raw_uuid
+    for old in ambiguous:
+        redirects.pop(old, None)
     return redirects

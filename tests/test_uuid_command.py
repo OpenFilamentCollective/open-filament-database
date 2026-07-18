@@ -75,6 +75,16 @@ def test_find_miss(tmp_path, capsys):
     assert out["matched_via"] is None
 
 
+def test_find_empty_uuid_matches_nothing(tmp_path, capsys):
+    # An empty/whitespace argument must not resolve to every unassigned entity.
+    data, stores = make_tree(tmp_path, [{"name": "acme"}, {"name": "beta"}])  # no uuids
+    rc = run_find(make_args(data, stores, uuid="  ", json=True))
+    out = json.loads(capsys.readouterr().out)
+    assert rc == 1
+    assert out["success"] is False
+    assert out["matches"] == []
+
+
 # --------------------------------------------------------------------------- #
 # check
 # --------------------------------------------------------------------------- #
@@ -128,3 +138,14 @@ def test_check_self_referential_moved_from(tmp_path, capsys):
     out = json.loads(capsys.readouterr().out)
     assert rc == 1
     assert out["moved_from"]["self_references"]
+
+
+def test_check_intra_entity_duplicate_not_flagged_as_cross_entity(tmp_path, capsys):
+    # One entity listing the same former UUID twice is a harmless intra-array
+    # duplicate, not a cross-entity collision — it must not be reported as one.
+    data, stores = make_tree(tmp_path, [{"name": "acme", "uuid": U2, "moved_from": [U1, U1]}])
+    rc = run_check(make_args(data, stores, json=True))
+    out = json.loads(capsys.readouterr().out)
+    assert rc == 0
+    assert out["success"] is True
+    assert out["moved_from"]["duplicates"] == {}

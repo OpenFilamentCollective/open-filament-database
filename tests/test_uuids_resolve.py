@@ -82,6 +82,13 @@ def test_resolve_miss_returns_none():
     assert via is None
 
 
+def test_resolve_empty_target_matches_nothing():
+    # "" must NOT match unassigned entities (raw_uuid == "" for them).
+    entities = [ent("brand"), ent("store"), ent("filament", U1)]
+    assert resolve_uuid("", entities) == ([], None)
+    assert resolve_uuid("   ", entities) == ([], None)
+
+
 # --------------------------------------------------------------------------- #
 # build_redirect_map
 # --------------------------------------------------------------------------- #
@@ -103,6 +110,16 @@ def test_build_redirect_map_skips_malformed_and_unassigned():
         ent("brand", "", moved_from=[U3]),  # owner has no valid uuid -> no redirect
     ]
     assert build_redirect_map(entities) == {U1: U2}
+
+
+def test_build_redirect_map_omits_ambiguous_claims():
+    # Two different survivors claim the same former UUID -> ambiguous -> no redirect
+    # (rather than silently resolving to whichever was walked last).
+    entities = [
+        ent("brand", U2, moved_from=[U1]),
+        ent("variant", U3, moved_from=[U1]),
+    ]
+    assert build_redirect_map(entities) == {}
 
 
 # --------------------------------------------------------------------------- #
@@ -151,6 +168,16 @@ def test_record_moved_from_skips_identical_identity(tmp_path):
 
     assert record_moved_from(target, source) == []
     assert "moved_from" not in _read(target / "brand.json")
+
+
+def test_size_pairing_uses_shared_merge_key():
+    # record_moved_from must pair spools with the same key merge_sizes dedupes on,
+    # so both paths import the single-sourced helper from ofd.merge.
+    from ofd import merge as merge_module
+    from ofd import uuids as uuids_module
+
+    assert uuids_module.size_dedupe_key is merge_module.size_dedupe_key
+    assert merge_module.size_dedupe_key({"filament_weight": 1000, "diameter": 1.75}) == (1000, 1.75)
 
 
 def test_record_moved_from_pairs_sizes_by_key(tmp_path):

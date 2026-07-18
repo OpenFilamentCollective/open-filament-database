@@ -321,7 +321,9 @@ def run_check(args: argparse.Namespace) -> int:
     moved_conflicts: list[tuple] = []  # (entity, value): value equals a live uuid
     moved_index: dict[str, list] = {}
     for e in entities:
-        for old in e.moved_from:
+        # Dedupe within one entity so a repeated entry isn't miscounted as two
+        # separate claims (which would falsely read as a cross-entity duplicate).
+        for old in dict.fromkeys(e.moved_from):
             if not UUID_RE.match(old):
                 moved_malformed.append((e, old))
                 continue
