@@ -1,13 +1,13 @@
 {
-  "uuid": "5ffdcca0-8391-4b1e-932a-3e7bb420f4ff",
-  "id": "pps_cf10",
-  "name": "PPS-CF10",
-  "diameter_tolerance": 0.03,
-  "density": 1.29,
-  "slicer_settings": {
-    "crealityprint": {
-      "id": "P9001",
-      "profile_name": "Fiberon PPS-CF10"
+    "uuid": "5ffdcca0-8391-4b1e-932a-3e7bb420f4ff",
+    "id": "pps_cf10",
+    "name": "PPS-CF10",
+    "diameter_tolerance": 0.03,
+    "density": 1.29,
+    "slicer_settings": {
+        "crealityprint": {
+            "id": "P9001",
+            "profile_name": "Fiberon PPS-CF10"
+        }
     }
-  }
 }

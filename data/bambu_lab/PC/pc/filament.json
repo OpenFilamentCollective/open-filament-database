@@ -1,40 +1,40 @@
 {
-  "uuid": "a1396ab8-c441-4e57-bc34-6b4de1a4a781",
-  "id": "pc",
-  "name": "PC",
-  "diameter_tolerance": 0.03,
-  "density": 1.2,
-  "min_print_temperature": 260,
-  "max_print_temperature": 300,
-  "min_bed_temperature": 100,
-  "max_bed_temperature": 120,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PC_Technical_Data_Sheet.pdf",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PC_MSDS.pdf",
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFC99",
-      "id": "GFC00",
-      "profile_name": "Bambu PC"
-    },
-    "orcaslicer": {
-      "generic_id": "GFC99",
-      "id": "GFC00",
-      "profile_name": "Bambu PC"
-    },
-    "elegooslicer": {
-      "generic_id": "GFC99",
-      "id": "GFC00",
-      "profile_name": "Bambu PC"
-    },
-    "crealityprint": {
-      "generic_id": "GFC99",
-      "id": "GFC00",
-      "profile_name": "Bambu PC"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFC99",
-      "id": "GFC00",
-      "profile_name": "Bambu PC"
+    "uuid": "a1396ab8-c441-4e57-bc34-6b4de1a4a781",
+    "id": "pc",
+    "name": "PC",
+    "diameter_tolerance": 0.03,
+    "density": 1.2,
+    "min_print_temperature": 260,
+    "max_print_temperature": 300,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 120,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PC_Technical_Data_Sheet.pdf",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PC_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFC99",
+            "id": "GFC00",
+            "profile_name": "Bambu PC"
+        },
+        "orcaslicer": {
+            "generic_id": "GFC99",
+            "id": "GFC00",
+            "profile_name": "Bambu PC"
+        },
+        "elegooslicer": {
+            "generic_id": "GFC99",
+            "id": "GFC00",
+            "profile_name": "Bambu PC"
+        },
+        "crealityprint": {
+            "generic_id": "GFC99",
+            "id": "GFC00",
+            "profile_name": "Bambu PC"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFC99",
+            "id": "GFC00",
+            "profile_name": "Bambu PC"
+        }
     }
-  }
 }

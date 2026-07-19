@@ -1,29 +1,29 @@
 {
-  "uuid": "bb345b01-3a35-4246-ad9f-144d273b380b",
-  "id": "tpu",
-  "name": "TPU",
-  "diameter_tolerance": 0.02,
-  "density": 1.27,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Overture TPU"
-    },
-    "orcaslicer": {
-      "generic_id": "GFU99",
-      "id": "GFOT008",
-      "profile_name": "Overture TPU"
-    },
-    "superslicer": {
-      "profile_name": "Overture TPU"
-    },
-    "elegooslicer": {
-      "generic_id": "GFU99",
-      "id": "GFOT008_06",
-      "profile_name": "Overture TPU"
+    "uuid": "bb345b01-3a35-4246-ad9f-144d273b380b",
+    "id": "tpu",
+    "name": "TPU",
+    "diameter_tolerance": 0.02,
+    "density": 1.27,
+    "min_print_temperature": 210,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 30,
+    "max_bed_temperature": 60,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Overture TPU"
+        },
+        "orcaslicer": {
+            "generic_id": "GFU99",
+            "id": "GFOT008",
+            "profile_name": "Overture TPU"
+        },
+        "superslicer": {
+            "profile_name": "Overture TPU"
+        },
+        "elegooslicer": {
+            "generic_id": "GFU99",
+            "id": "GFOT008_06",
+            "profile_name": "Overture TPU"
+        }
     }
-  }
 }

@@ -1,16 +1,16 @@
 {
-  "uuid": "b47887f8-6afb-416b-baae-1c82a8f12c6a",
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Print With Smile ABS"
+    "uuid": "b47887f8-6afb-416b-baae-1c82a8f12c6a",
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.04,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Print With Smile ABS"
+        }
     }
-  }
 }

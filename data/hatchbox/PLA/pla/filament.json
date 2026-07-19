@@ -1,34 +1,34 @@
 {
-  "uuid": "af578d51-6a86-4e47-8534-a335d65c9c36",
-  "id": "pla",
-  "name": "PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Hatchbox PLA"
-    },
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "GFB99",
-      "profile_name": "HATCHBOX PLA"
-    },
-    "superslicer": {
-      "profile_name": "Hatchbox PLA"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "GFB99",
-      "profile_name": "HATCHBOX PLA"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL99",
-      "id": "GFB99",
-      "profile_name": "HATCHBOX PLA"
+    "uuid": "af578d51-6a86-4e47-8534-a335d65c9c36",
+    "id": "pla",
+    "name": "PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.24,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Hatchbox PLA"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GFB99",
+            "profile_name": "HATCHBOX PLA"
+        },
+        "superslicer": {
+            "profile_name": "Hatchbox PLA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFB99",
+            "profile_name": "HATCHBOX PLA"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "GFB99",
+            "profile_name": "HATCHBOX PLA"
+        }
     }
-  }
 }

@@ -1,36 +1,36 @@
 {
-  "uuid": "f5516d69-ec34-4a83-9dc7-9e39dacdfa69",
-  "id": "petg",
-  "name": "PETG",
-  "diameter_tolerance": 0.05,
-  "density": 1.24,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Sunlu PETG"
-    },
-    "bambustudio": {
-      "generic_id": "GFG99",
-      "id": "GFSNL08",
-      "profile_name": "SUNLU PETG"
-    },
-    "orcaslicer": {
-      "generic_id": "GFG99",
-      "id": "GFSNL08",
-      "profile_name": "SUNLU PETG"
-    },
-    "elegooslicer": {
-      "generic_id": "GFG99",
-      "id": "GFSNL08",
-      "profile_name": "SUNLU PETG"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFG99",
-      "id": "GFSNL08",
-      "profile_name": "SUNLU PETG"
+    "uuid": "f5516d69-ec34-4a83-9dc7-9e39dacdfa69",
+    "id": "petg",
+    "name": "PETG",
+    "diameter_tolerance": 0.05,
+    "density": 1.24,
+    "min_print_temperature": 220,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 90,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Sunlu PETG"
+        },
+        "bambustudio": {
+            "generic_id": "GFG99",
+            "id": "GFSNL08",
+            "profile_name": "SUNLU PETG"
+        },
+        "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "GFSNL08",
+            "profile_name": "SUNLU PETG"
+        },
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "GFSNL08",
+            "profile_name": "SUNLU PETG"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFG99",
+            "id": "GFSNL08",
+            "profile_name": "SUNLU PETG"
+        }
     }
-  }
 }

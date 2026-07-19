@@ -1,40 +1,40 @@
 {
-  "uuid": "d83ea1c8-7c62-43d4-b413-760e10f2e9bc",
-  "id": "pla_cf",
-  "name": "PLA-CF",
-  "diameter_tolerance": 0.03,
-  "density": 1.22,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA-CF_Technical_Data_Sheet_V3.pdf",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA-CF_MSDS.pdf",
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFL99",
-      "id": "GFA50",
-      "profile_name": "Bambu PLA-CF"
-    },
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA50",
-      "profile_name": "Bambu PLA-CF"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA50",
-      "profile_name": "Bambu PLA-CF"
-    },
-    "crealityprint": {
-      "generic_id": "GFL99",
-      "id": "GFA50",
-      "profile_name": "Bambu PLA-CF"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA50",
-      "profile_name": "Bambu PLA-CF"
+    "uuid": "d83ea1c8-7c62-43d4-b413-760e10f2e9bc",
+    "id": "pla_cf",
+    "name": "PLA-CF",
+    "diameter_tolerance": 0.03,
+    "density": 1.22,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA-CF_Technical_Data_Sheet_V3.pdf",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA-CF_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFL99",
+            "id": "GFA50",
+            "profile_name": "Bambu PLA-CF"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA50",
+            "profile_name": "Bambu PLA-CF"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA50",
+            "profile_name": "Bambu PLA-CF"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFA50",
+            "profile_name": "Bambu PLA-CF"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA50",
+            "profile_name": "Bambu PLA-CF"
+        }
     }
-  }
 }

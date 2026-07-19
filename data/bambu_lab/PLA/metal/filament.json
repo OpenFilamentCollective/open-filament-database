@@ -1,36 +1,36 @@
 {
-  "uuid": "baa26184-1aa9-4c6e-ad4c-f9394dd80168",
-  "id": "metal",
-  "name": "PLA Metal",
-  "diameter_tolerance": 0.03,
-  "density": 1.25,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PLA_Metal_Technical_Data_Sheet.pdf?v=1695182427",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Metal_MSDS.pdf",
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFL99",
-      "id": "GFA02",
-      "profile_name": "Bambu PLA Metal"
-    },
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA02",
-      "profile_name": "Bambu PLA Metal"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA02",
-      "profile_name": "Bambu PLA Metal"
-    },
-    "crealityprint": {
-      "generic_id": "GFL99",
-      "id": "GFA02",
-      "profile_name": "Bambu PLA Metal"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA02",
-      "profile_name": "Bambu PLA Metal"
+    "uuid": "baa26184-1aa9-4c6e-ad4c-f9394dd80168",
+    "id": "metal",
+    "name": "PLA Metal",
+    "diameter_tolerance": 0.03,
+    "density": 1.25,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PLA_Metal_Technical_Data_Sheet.pdf?v=1695182427",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Metal_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFL99",
+            "id": "GFA02",
+            "profile_name": "Bambu PLA Metal"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA02",
+            "profile_name": "Bambu PLA Metal"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA02",
+            "profile_name": "Bambu PLA Metal"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFA02",
+            "profile_name": "Bambu PLA Metal"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA02",
+            "profile_name": "Bambu PLA Metal"
+        }
     }
-  }
 }

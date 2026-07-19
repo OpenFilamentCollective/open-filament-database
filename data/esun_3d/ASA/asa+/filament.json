@@ -1,23 +1,23 @@
 {
-  "uuid": "a2e82384-f8bd-49a3-8b43-ee02a8618043",
-  "id": "asa+",
-  "name": "ASA+",
-  "diameter_tolerance": 0.03,
-  "density": 1.06,
-  "min_print_temperature": 235,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFB98",
-      "id": "E4001",
-      "profile_name": "eSUN ASA+"
-    },
-    "crealityprint": {
-      "generic_id": "GFB98",
-      "id": "E4001",
-      "profile_name": "eSUN ASA+"
+    "uuid": "a2e82384-f8bd-49a3-8b43-ee02a8618043",
+    "id": "asa+",
+    "name": "ASA+",
+    "diameter_tolerance": 0.03,
+    "density": 1.06,
+    "min_print_temperature": 235,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFB98",
+            "id": "E4001",
+            "profile_name": "eSUN ASA+"
+        },
+        "crealityprint": {
+            "generic_id": "GFB98",
+            "id": "E4001",
+            "profile_name": "eSUN ASA+"
+        }
     }
-  }
 }

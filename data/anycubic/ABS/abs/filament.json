@@ -1,26 +1,26 @@
 {
-  "uuid": "8bcccfc6-3726-401a-bc51-4a2eb522edf8",
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.05,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/ANYCUBIC_TDS_ABS_V3.0.pdf?v=1757562279",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_ABS_Filament_CANEC25014249401_SZP25-029821_-Final.pdf?v=1757562195",
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFB99",
-      "id": "GFABS",
-      "profile_name": "Anycubic ABS"
-    },
-    "elegooslicer": {
-      "generic_id": "GFB99",
-      "id": "GFABS",
-      "profile_name": "Anycubic ABS"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFB99",
-      "id": "GFB99",
-      "profile_name": "Anycubic ABS"
+    "uuid": "8bcccfc6-3726-401a-bc51-4a2eb522edf8",
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.05,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/ANYCUBIC_TDS_ABS_V3.0.pdf?v=1757562279",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_ABS_Filament_CANEC25014249401_SZP25-029821_-Final.pdf?v=1757562195",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFB99",
+            "id": "GFABS",
+            "profile_name": "Anycubic ABS"
+        },
+        "elegooslicer": {
+            "generic_id": "GFB99",
+            "id": "GFABS",
+            "profile_name": "Anycubic ABS"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFB99",
+            "id": "GFB99",
+            "profile_name": "Anycubic ABS"
+        }
     }
-  }
 }

@@ -1,27 +1,27 @@
 {
-  "uuid": "1774de9f-5fea-4310-8d1e-dcc4cbc20702",
-  "id": "tpu",
-  "name": "TPU",
-  "diameter_tolerance": 0.05,
-  "density": 1.23,
-  "max_dry_temperature": 80,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/ANYCUBIC_TDS_TPU_V3.0.pdf?v=1757560611",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_TPU_Filament_CANEC25014246601_SZP25-029821_-Final.pdf?v=1757560593",
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFU99",
-      "id": "GFU99",
-      "profile_name": "Anycubic TPU"
-    },
-    "elegooslicer": {
-      "generic_id": "GFU99",
-      "id": "GFU99",
-      "profile_name": "Anycubic TPU"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFU99",
-      "id": "GFU99",
-      "profile_name": "Anycubic TPU"
+    "uuid": "1774de9f-5fea-4310-8d1e-dcc4cbc20702",
+    "id": "tpu",
+    "name": "TPU",
+    "diameter_tolerance": 0.05,
+    "density": 1.23,
+    "max_dry_temperature": 80,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/ANYCUBIC_TDS_TPU_V3.0.pdf?v=1757560611",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_TPU_Filament_CANEC25014246601_SZP25-029821_-Final.pdf?v=1757560593",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFU99",
+            "id": "GFU99",
+            "profile_name": "Anycubic TPU"
+        },
+        "elegooslicer": {
+            "generic_id": "GFU99",
+            "id": "GFU99",
+            "profile_name": "Anycubic TPU"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFU99",
+            "id": "GFU99",
+            "profile_name": "Anycubic TPU"
+        }
     }
-  }
 }

@@ -1,21 +1,21 @@
 {
-  "uuid": "6eda8af8-2b83-4cf5-987e-332c2b76951c",
-  "id": "petg_economy",
-  "name": "PETG Economy",
-  "diameter_tolerance": 0.02,
-  "density": 1.25,
-  "max_dry_temperature": 65,
-  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_PETGv0_oY3Rem.pdf",
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFG99",
-      "id": "GF_ANGE",
-      "profile_name": "addnorth PETG Economy"
-    },
-    "orcaslicer": {
-      "generic_id": "GFG99",
-      "id": "GF_ANGE",
-      "profile_name": "addnorth PETG Economy"
+    "uuid": "6eda8af8-2b83-4cf5-987e-332c2b76951c",
+    "id": "petg_economy",
+    "name": "PETG Economy",
+    "diameter_tolerance": 0.02,
+    "density": 1.25,
+    "max_dry_temperature": 65,
+    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_PETGv0_oY3Rem.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFG99",
+            "id": "GF_ANGE",
+            "profile_name": "addnorth PETG Economy"
+        },
+        "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "GF_ANGE",
+            "profile_name": "addnorth PETG Economy"
+        }
     }
-  }
 }

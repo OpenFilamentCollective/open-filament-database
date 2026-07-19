@@ -1,16 +1,16 @@
 {
-  "uuid": "31e44b84-add5-4a45-9c8c-a5c8d0351fe9",
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Buddy3D ABS"
+    "uuid": "31e44b84-add5-4a45-9c8c-a5c8d0351fe9",
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.04,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Buddy3D ABS"
+        }
     }
-  }
 }

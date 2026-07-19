@@ -1,17 +1,17 @@
 {
-  "uuid": "e6bc44ee-47ba-4956-b3a5-9e1de49e7416",
-  "id": "pa12_cf10",
-  "name": "PA12-CF10",
-  "diameter_tolerance": 0.02,
-  "density": 1.06,
-  "slicer_settings": {
-    "orcaslicer": {
-      "id": "GFL56",
-      "profile_name": "Fiberon PA12-CF10"
-    },
-    "crealityprint": {
-      "id": "P7004",
-      "profile_name": "Fiberon PA12-CF10"
+    "uuid": "e6bc44ee-47ba-4956-b3a5-9e1de49e7416",
+    "id": "pa12_cf10",
+    "name": "PA12-CF10",
+    "diameter_tolerance": 0.02,
+    "density": 1.06,
+    "slicer_settings": {
+        "orcaslicer": {
+            "id": "GFL56",
+            "profile_name": "Fiberon PA12-CF10"
+        },
+        "crealityprint": {
+            "id": "P7004",
+            "profile_name": "Fiberon PA12-CF10"
+        }
     }
-  }
 }

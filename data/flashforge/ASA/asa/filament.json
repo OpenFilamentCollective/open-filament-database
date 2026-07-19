@@ -1,18 +1,18 @@
 {
-  "uuid": "bb30b5d3-c874-4bbb-9b38-ea2ff40e644f",
-  "id": "asa",
-  "name": "ASA",
-  "diameter_tolerance": 0.02,
-  "density": 1.07,
-  "min_print_temperature": 235,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "crealityprint": {
-      "generic_id": "GFB98",
-      "id": "GFL99",
-      "profile_name": "Flashforge ASA"
+    "uuid": "bb30b5d3-c874-4bbb-9b38-ea2ff40e644f",
+    "id": "asa",
+    "name": "ASA",
+    "diameter_tolerance": 0.02,
+    "density": 1.07,
+    "min_print_temperature": 235,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "crealityprint": {
+            "generic_id": "GFB98",
+            "id": "GFL99",
+            "profile_name": "Flashforge ASA"
+        }
     }
-  }
 }

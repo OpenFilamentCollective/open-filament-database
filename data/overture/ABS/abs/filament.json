@@ -1,28 +1,28 @@
 {
-  "uuid": "d5077fab-86bf-4204-b18e-5f3bacbbec1d",
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFB99",
-      "id": "GFB99",
-      "profile_name": "Overture ABS"
-    },
-    "elegooslicer": {
-      "generic_id": "GFB99",
-      "id": "GFB99",
-      "profile_name": "Overture ABS"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFB99",
-      "id": "GFB99",
-      "profile_name": "Overture ABS"
+    "uuid": "d5077fab-86bf-4204-b18e-5f3bacbbec1d",
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.04,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFB99",
+            "id": "GFB99",
+            "profile_name": "Overture ABS"
+        },
+        "elegooslicer": {
+            "generic_id": "GFB99",
+            "id": "GFB99",
+            "profile_name": "Overture ABS"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFB99",
+            "id": "GFB99",
+            "profile_name": "Overture ABS"
+        }
     }
-  }
 }

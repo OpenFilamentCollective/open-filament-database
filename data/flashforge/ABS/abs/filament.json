@@ -1,33 +1,33 @@
 {
-  "uuid": "7367db81-0a87-4406-9b49-e32a46a895b6",
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFB99",
-      "id": "FFF02",
-      "profile_name": "Flashforge ABS"
-    },
-    "elegooslicer": {
-      "generic_id": "GFB99",
-      "id": "FFF02",
-      "profile_name": "Flashforge ABS"
-    },
-    "crealityprint": {
-      "generic_id": "GFB99",
-      "id": "GFB99",
-      "profile_name": "Flashforge ABS"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFB99",
-      "id": "FFF02",
-      "profile_name": "Flashforge ABS"
+    "uuid": "7367db81-0a87-4406-9b49-e32a46a895b6",
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.04,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFB99",
+            "id": "FFF02",
+            "profile_name": "Flashforge ABS"
+        },
+        "elegooslicer": {
+            "generic_id": "GFB99",
+            "id": "FFF02",
+            "profile_name": "Flashforge ABS"
+        },
+        "crealityprint": {
+            "generic_id": "GFB99",
+            "id": "GFB99",
+            "profile_name": "Flashforge ABS"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFB99",
+            "id": "FFF02",
+            "profile_name": "Flashforge ABS"
+        }
     }
-  }
 }

@@ -1,19 +1,19 @@
 {
-  "uuid": "87197138-8b8c-404c-9319-e683fd8624c4",
-  "id": "asa",
-  "name": "ASA",
-  "diameter_tolerance": 0.02,
-  "density": 1.07,
-  "min_print_temperature": 250,
-  "max_print_temperature": 270,
-  "preheat_temperature": 170,
-  "min_bed_temperature": 100,
-  "max_bed_temperature": 120,
-  "min_chamber_temperature": 55,
-  "chamber_temperature": 90,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Buddy3D ASA"
+    "uuid": "87197138-8b8c-404c-9319-e683fd8624c4",
+    "id": "asa",
+    "name": "ASA",
+    "diameter_tolerance": 0.02,
+    "density": 1.07,
+    "min_print_temperature": 250,
+    "max_print_temperature": 270,
+    "preheat_temperature": 170,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 120,
+    "min_chamber_temperature": 55,
+    "chamber_temperature": 90,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Buddy3D ASA"
+        }
     }
-  }
 }

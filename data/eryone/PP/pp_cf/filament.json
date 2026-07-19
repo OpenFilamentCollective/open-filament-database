@@ -1,19 +1,19 @@
 {
-  "uuid": "b322ea6a-1d31-482e-acd8-a06391cd8dbc",
-  "id": "pp_cf",
-  "name": "PP-CF",
-  "diameter_tolerance": 0.03,
-  "density": 0.95,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFP97",
-      "id": "EFL33",
-      "profile_name": "Eryone PP-CF"
-    },
-    "elegooslicer": {
-      "generic_id": "GFP97",
-      "id": "EFL33",
-      "profile_name": "Eryone PP-CF"
+    "uuid": "b322ea6a-1d31-482e-acd8-a06391cd8dbc",
+    "id": "pp_cf",
+    "name": "PP-CF",
+    "diameter_tolerance": 0.03,
+    "density": 0.95,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFP97",
+            "id": "EFL33",
+            "profile_name": "Eryone PP-CF"
+        },
+        "elegooslicer": {
+            "generic_id": "GFP97",
+            "id": "EFL33",
+            "profile_name": "Eryone PP-CF"
+        }
     }
-  }
 }

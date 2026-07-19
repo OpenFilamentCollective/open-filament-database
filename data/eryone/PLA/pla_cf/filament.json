@@ -1,19 +1,19 @@
 {
-  "uuid": "c70e6b7f-fb66-4d79-81b8-b7f202c101a7",
-  "id": "pla_cf",
-  "name": "PLA-CF",
-  "diameter_tolerance": 0.03,
-  "density": 1.24,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "EFL40",
-      "profile_name": "Eryone PLA-CF"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "EFL40",
-      "profile_name": "Eryone PLA-CF"
+    "uuid": "c70e6b7f-fb66-4d79-81b8-b7f202c101a7",
+    "id": "pla_cf",
+    "name": "PLA-CF",
+    "diameter_tolerance": 0.03,
+    "density": 1.24,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "EFL40",
+            "profile_name": "Eryone PLA-CF"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "EFL40",
+            "profile_name": "Eryone PLA-CF"
+        }
     }
-  }
 }

@@ -1,19 +1,19 @@
 {
-  "uuid": "e09d5eaa-77e6-4996-aa23-5fe0dbc81625",
-  "id": "pla_marble",
-  "name": "PLA-Marble",
-  "diameter_tolerance": 0.03,
-  "density": 1.275,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "OGFL06",
-      "profile_name": "eSUN PLA-Marble"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "OGFL06",
-      "profile_name": "eSUN PLA-Marble"
+    "uuid": "e09d5eaa-77e6-4996-aa23-5fe0dbc81625",
+    "id": "pla_marble",
+    "name": "PLA-Marble",
+    "diameter_tolerance": 0.03,
+    "density": 1.275,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "OGFL06",
+            "profile_name": "eSUN PLA-Marble"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "OGFL06",
+            "profile_name": "eSUN PLA-Marble"
+        }
     }
-  }
 }

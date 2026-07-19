@@ -1,25 +1,25 @@
 {
-  "uuid": "bcf056c0-5b76-4553-a9cf-2f32610c975a",
-  "id": "petg",
-  "name": "PETG",
-  "diameter_tolerance": 0.03,
-  "density": 1.25,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "ERYONE PETG"
-    },
-    "orcaslicer": {
-      "generic_id": "GFG99",
-      "id": "EFL93",
-      "profile_name": "Eryone PETG"
-    },
-    "superslicer": {
-      "profile_name": "ERYONE PETG"
-    },
-    "elegooslicer": {
-      "generic_id": "GFG99",
-      "id": "EFL93",
-      "profile_name": "Eryone PETG"
+    "uuid": "bcf056c0-5b76-4553-a9cf-2f32610c975a",
+    "id": "petg",
+    "name": "PETG",
+    "diameter_tolerance": 0.03,
+    "density": 1.25,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "ERYONE PETG"
+        },
+        "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "EFL93",
+            "profile_name": "Eryone PETG"
+        },
+        "superslicer": {
+            "profile_name": "ERYONE PETG"
+        },
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "EFL93",
+            "profile_name": "Eryone PETG"
+        }
     }
-  }
 }

@@ -1,31 +1,31 @@
 {
-  "uuid": "d9fa5e54-955f-4dbf-81d7-0242e1e203e8",
-  "id": "paht_cf",
-  "name": "PAHT-CF",
-  "diameter_tolerance": 0.03,
-  "density": 1.06,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PAHT-CF_Technical_Data_Sheet_V2.pdf",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PAHT-CF_MSDS.pdf",
-  "slicer_settings": {
-    "bambustudio": {
-      "id": "GFN04",
-      "profile_name": "Bambu PAHT-CF"
-    },
-    "orcaslicer": {
-      "id": "GFN04",
-      "profile_name": "Bambu PAHT-CF"
-    },
-    "elegooslicer": {
-      "id": "GFN04",
-      "profile_name": "Bambu PAHT-CF"
-    },
-    "crealityprint": {
-      "id": "GFN04",
-      "profile_name": "Bambu PAHT-CF"
-    },
-    "anycubicslicer": {
-      "id": "GFN04",
-      "profile_name": "Bambu PAHT-CF"
+    "uuid": "d9fa5e54-955f-4dbf-81d7-0242e1e203e8",
+    "id": "paht_cf",
+    "name": "PAHT-CF",
+    "diameter_tolerance": 0.03,
+    "density": 1.06,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PAHT-CF_Technical_Data_Sheet_V2.pdf",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PAHT-CF_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "id": "GFN04",
+            "profile_name": "Bambu PAHT-CF"
+        },
+        "orcaslicer": {
+            "id": "GFN04",
+            "profile_name": "Bambu PAHT-CF"
+        },
+        "elegooslicer": {
+            "id": "GFN04",
+            "profile_name": "Bambu PAHT-CF"
+        },
+        "crealityprint": {
+            "id": "GFN04",
+            "profile_name": "Bambu PAHT-CF"
+        },
+        "anycubicslicer": {
+            "id": "GFN04",
+            "profile_name": "Bambu PAHT-CF"
+        }
     }
-  }
 }

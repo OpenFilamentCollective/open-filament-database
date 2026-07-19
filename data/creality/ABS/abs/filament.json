@@ -1,19 +1,19 @@
 {
-  "uuid": "a5536ce7-39a3-48cb-ad2d-a4fc734b4493",
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Creality ABS"
-    },
-    "superslicer": {
-      "profile_name": "Creality ABS"
+    "uuid": "a5536ce7-39a3-48cb-ad2d-a4fc734b4493",
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.04,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Creality ABS"
+        },
+        "superslicer": {
+            "profile_name": "Creality ABS"
+        }
     }
-  }
 }

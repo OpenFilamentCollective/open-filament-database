@@ -1,23 +1,23 @@
 {
-  "uuid": "22575570-f072-4de9-ab26-725ef18c0136",
-  "id": "pla_cf",
-  "name": "PLA-CF",
-  "diameter_tolerance": 0.03,
-  "density": 1.21,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "E1005",
-      "profile_name": "eSUN PLA-CF"
-    },
-    "crealityprint": {
-      "generic_id": "GFL99",
-      "id": "E1005",
-      "profile_name": "eSUN PLA-CF"
+    "uuid": "22575570-f072-4de9-ab26-725ef18c0136",
+    "id": "pla_cf",
+    "name": "PLA-CF",
+    "diameter_tolerance": 0.03,
+    "density": 1.21,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "E1005",
+            "profile_name": "eSUN PLA-CF"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "E1005",
+            "profile_name": "eSUN PLA-CF"
+        }
     }
-  }
 }

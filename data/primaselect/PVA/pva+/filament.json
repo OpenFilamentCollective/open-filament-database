@@ -1,15 +1,15 @@
 {
-  "uuid": "9da46e98-af26-4c10-b25e-45d7c9d6ed71",
-  "id": "pva+",
-  "name": "PVA+",
-  "diameter_tolerance": 0.05,
-  "density": 1.19,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "PrimaSelect PVA+"
-    },
-    "superslicer": {
-      "profile_name": "PrimaSelect PVA+"
+    "uuid": "9da46e98-af26-4c10-b25e-45d7c9d6ed71",
+    "id": "pva+",
+    "name": "PVA+",
+    "diameter_tolerance": 0.05,
+    "density": 1.19,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "PrimaSelect PVA+"
+        },
+        "superslicer": {
+            "profile_name": "PrimaSelect PVA+"
+        }
     }
-  }
 }

@@ -1,19 +1,19 @@
 {
-  "uuid": "992cf1b7-c633-4d06-8bd7-948c34ce5043",
-  "id": "rapid_tpu_95a",
-  "name": "Rapid TPU 95A",
-  "diameter_tolerance": 0.02,
-  "density": 1.16,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFU99",
-      "id": "ETPUB00",
-      "profile_name": "Elegoo Rapid TPU 95A"
-    },
-    "elegooslicer": {
-      "generic_id": "GFU99",
-      "id": "ETPUB00",
-      "profile_name": "Elegoo RAPID TPU 95A"
+    "uuid": "992cf1b7-c633-4d06-8bd7-948c34ce5043",
+    "id": "rapid_tpu_95a",
+    "name": "Rapid TPU 95A",
+    "diameter_tolerance": 0.02,
+    "density": 1.16,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFU99",
+            "id": "ETPUB00",
+            "profile_name": "Elegoo Rapid TPU 95A"
+        },
+        "elegooslicer": {
+            "generic_id": "GFU99",
+            "id": "ETPUB00",
+            "profile_name": "Elegoo RAPID TPU 95A"
+        }
     }
-  }
 }

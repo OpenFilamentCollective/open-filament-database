@@ -1,24 +1,24 @@
 {
-  "uuid": "bac540d1-5248-44fc-a71c-f61b2e54cf12",
-  "id": "hyper_pla_cf",
-  "name": "Hyper PLA-CF",
-  "diameter_tolerance": 0.03,
-  "density": 1.25,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "02001",
-      "profile_name": "Creality Hyper PLA-CF"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "02001",
-      "profile_name": "Creality Hyper PLA-CF"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL99",
-      "id": "02001",
-      "profile_name": "Creality Hyper PLA-CF"
+    "uuid": "bac540d1-5248-44fc-a71c-f61b2e54cf12",
+    "id": "hyper_pla_cf",
+    "name": "Hyper PLA-CF",
+    "diameter_tolerance": 0.03,
+    "density": 1.25,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "02001",
+            "profile_name": "Creality Hyper PLA-CF"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "02001",
+            "profile_name": "Creality Hyper PLA-CF"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "02001",
+            "profile_name": "Creality Hyper PLA-CF"
+        }
     }
-  }
 }

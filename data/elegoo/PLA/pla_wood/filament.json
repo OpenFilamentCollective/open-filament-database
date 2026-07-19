@@ -1,20 +1,20 @@
 {
-  "uuid": "e19e34e6-41c8-4e55-be33-17d3c93b5ba7",
-  "id": "pla_wood",
-  "name": "PLA Wood",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "max_dry_temperature": 55,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "EPLAB00",
-      "profile_name": "Elegoo PLA Wood"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "EPLAB00",
-      "profile_name": "Elegoo PLA Wood"
+    "uuid": "e19e34e6-41c8-4e55-be33-17d3c93b5ba7",
+    "id": "pla_wood",
+    "name": "PLA Wood",
+    "diameter_tolerance": 0.02,
+    "density": 1.24,
+    "max_dry_temperature": 55,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "EPLAB00",
+            "profile_name": "Elegoo PLA Wood"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "EPLAB00",
+            "profile_name": "Elegoo PLA Wood"
+        }
     }
-  }
 }

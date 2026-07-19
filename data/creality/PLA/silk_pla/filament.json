@@ -1,28 +1,28 @@
 {
-  "uuid": "d341e1df-fd76-4630-8660-6492110d68a0",
-  "id": "silk_pla",
-  "name": "Silk PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFL96",
-      "id": "05001",
-      "profile_name": "Creality Silk PLA"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL96",
-      "id": "05001",
-      "profile_name": "Creality Silk PLA"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL96",
-      "id": "05001",
-      "profile_name": "Creality Silk PLA"
+    "uuid": "d341e1df-fd76-4630-8660-6492110d68a0",
+    "id": "silk_pla",
+    "name": "Silk PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.24,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFL96",
+            "id": "05001",
+            "profile_name": "Creality Silk PLA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL96",
+            "id": "05001",
+            "profile_name": "Creality Silk PLA"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL96",
+            "id": "05001",
+            "profile_name": "Creality Silk PLA"
+        }
     }
-  }
 }

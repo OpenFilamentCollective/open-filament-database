@@ -1,32 +1,32 @@
 {
-  "uuid": "974f64a9-5744-49b1-a0af-1d32401e5914",
-  "id": "rpla",
-  "name": "rPLA",
-  "diameter_tolerance": 0.03,
-  "density": 1.24,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Prusament rPLA"
-    },
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "GFL99",
-      "profile_name": "Prusament rPLA"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "GFL99",
-      "profile_name": "Prusament rPLA"
-    },
-    "crealityprint": {
-      "generic_id": "GFL99",
-      "id": "GFL99_1",
-      "profile_name": "Prusament rPLA"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL99",
-      "id": "GFL99",
-      "profile_name": "Prusament rPLA"
+    "uuid": "974f64a9-5744-49b1-a0af-1d32401e5914",
+    "id": "rpla",
+    "name": "rPLA",
+    "diameter_tolerance": 0.03,
+    "density": 1.24,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament rPLA"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GFL99",
+            "profile_name": "Prusament rPLA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFL99",
+            "profile_name": "Prusament rPLA"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFL99_1",
+            "profile_name": "Prusament rPLA"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "GFL99",
+            "profile_name": "Prusament rPLA"
+        }
     }
-  }
 }

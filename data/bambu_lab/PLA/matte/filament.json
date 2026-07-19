@@ -1,40 +1,40 @@
 {
-  "uuid": "9bee6ab3-52b9-4069-a7ed-e64b902b9edf",
-  "id": "matte",
-  "name": "PLA Matte",
-  "diameter_tolerance": 0.03,
-  "density": 1.31,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Matte_Technical_Data_Sheet_60a941f9-8495-48ec-b1b0-52e07ff0f4c2.pdf?v=1734060943",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Matte_MSDS.pdf",
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFL99",
-      "id": "GFA01",
-      "profile_name": "Bambu PLA Matte"
-    },
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA01",
-      "profile_name": "Bambu PLA Matte"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA01",
-      "profile_name": "Bambu PLA Matte"
-    },
-    "crealityprint": {
-      "generic_id": "GFL99",
-      "id": "GFA01",
-      "profile_name": "Bambu PLA Matte"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL99",
-      "id": "GFA01",
-      "profile_name": "Bambu PLA Matte"
+    "uuid": "9bee6ab3-52b9-4069-a7ed-e64b902b9edf",
+    "id": "matte",
+    "name": "PLA Matte",
+    "diameter_tolerance": 0.03,
+    "density": 1.31,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Matte_Technical_Data_Sheet_60a941f9-8495-48ec-b1b0-52e07ff0f4c2.pdf?v=1734060943",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Matte_MSDS.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFL99",
+            "id": "GFA01",
+            "profile_name": "Bambu PLA Matte"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA01",
+            "profile_name": "Bambu PLA Matte"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA01",
+            "profile_name": "Bambu PLA Matte"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFA01",
+            "profile_name": "Bambu PLA Matte"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA01",
+            "profile_name": "Bambu PLA Matte"
+        }
     }
-  }
 }

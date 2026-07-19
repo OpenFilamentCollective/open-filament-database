@@ -1,16 +1,16 @@
 {
-  "uuid": "e47f9d0b-e6b3-4b7d-ad5e-a67e93d04560",
-  "id": "ninjaflex_tpu",
-  "name": "NinjaFlex TPU",
-  "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "NinjaTek NinjaFlex TPU"
+    "uuid": "e47f9d0b-e6b3-4b7d-ad5e-a67e93d04560",
+    "id": "ninjaflex_tpu",
+    "name": "NinjaFlex TPU",
+    "diameter_tolerance": 0.02,
+    "density": 1.21,
+    "min_print_temperature": 210,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 30,
+    "max_bed_temperature": 60,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "NinjaTek NinjaFlex TPU"
+        }
     }
-  }
 }

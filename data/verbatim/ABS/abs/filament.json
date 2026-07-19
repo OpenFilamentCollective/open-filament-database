@@ -1,19 +1,19 @@
 {
-  "uuid": "11da41e4-acce-4dc0-b6b7-bccbbe098bc0",
-  "id": "abs",
-  "name": "ABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Verbatim ABS"
-    },
-    "superslicer": {
-      "profile_name": "Verbatim ABS"
+    "uuid": "11da41e4-acce-4dc0-b6b7-bccbbe098bc0",
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.04,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Verbatim ABS"
+        },
+        "superslicer": {
+            "profile_name": "Verbatim ABS"
+        }
     }
-  }
 }

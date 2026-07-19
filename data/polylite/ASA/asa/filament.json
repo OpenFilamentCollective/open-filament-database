@@ -1,34 +1,34 @@
 {
-  "uuid": "5af70275-d631-42ed-8635-72079abb3483",
-  "id": "asa",
-  "name": "ASA",
-  "diameter_tolerance": 0.02,
-  "density": 1.13,
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFB98",
-      "id": "GFB61",
-      "profile_name": "PolyLite ASA"
-    },
-    "orcaslicer": {
-      "generic_id": "GFB98",
-      "id": "GFB61",
-      "profile_name": "PolyLite ASA"
-    },
-    "elegooslicer": {
-      "generic_id": "GFB98",
-      "id": "GFB61",
-      "profile_name": "PolyLite ASA"
-    },
-    "crealityprint": {
-      "generic_id": "GFB98",
-      "id": "GFB61",
-      "profile_name": "PolyLite ASA"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFB98",
-      "id": "GFB61",
-      "profile_name": "PolyLite ASA"
+    "uuid": "5af70275-d631-42ed-8635-72079abb3483",
+    "id": "asa",
+    "name": "ASA",
+    "diameter_tolerance": 0.02,
+    "density": 1.13,
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFB98",
+            "id": "GFB61",
+            "profile_name": "PolyLite ASA"
+        },
+        "orcaslicer": {
+            "generic_id": "GFB98",
+            "id": "GFB61",
+            "profile_name": "PolyLite ASA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFB98",
+            "id": "GFB61",
+            "profile_name": "PolyLite ASA"
+        },
+        "crealityprint": {
+            "generic_id": "GFB98",
+            "id": "GFB61",
+            "profile_name": "PolyLite ASA"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFB98",
+            "id": "GFB61",
+            "profile_name": "PolyLite ASA"
+        }
     }
-  }
 }

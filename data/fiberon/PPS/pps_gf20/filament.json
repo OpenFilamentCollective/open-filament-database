@@ -1,14 +1,14 @@
 {
-  "uuid": "34cf5103-33f1-4f1f-bf71-2eb517e612d7",
-  "id": "pps_gf20",
-  "name": "PPS-GF20",
-  "diameter_tolerance": 0.03,
-  "density": 1.36,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFT97",
-      "id": "GFL73",
-      "profile_name": "Fiberon PPS-GF20"
+    "uuid": "34cf5103-33f1-4f1f-bf71-2eb517e612d7",
+    "id": "pps_gf20",
+    "name": "PPS-GF20",
+    "diameter_tolerance": 0.03,
+    "density": 1.36,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFT97",
+            "id": "GFL73",
+            "profile_name": "Fiberon PPS-GF20"
+        }
     }
-  }
 }

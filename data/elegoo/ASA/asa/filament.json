@@ -1,28 +1,28 @@
 {
-  "uuid": "0cf11839-4ca1-47a6-8ec6-596cdb6e1a62",
-  "id": "asa",
-  "name": "ASA",
-  "diameter_tolerance": 0.02,
-  "density": 1.09,
-  "min_print_temperature": 235,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "GFB98",
-      "id": "EASAB00",
-      "profile_name": "Elegoo ASA"
-    },
-    "elegooslicer": {
-      "generic_id": "GFB98",
-      "id": "EASAB00",
-      "profile_name": "Elegoo ASA"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFB98",
-      "id": "EASAB00",
-      "profile_name": "Elegoo ASA"
+    "uuid": "0cf11839-4ca1-47a6-8ec6-596cdb6e1a62",
+    "id": "asa",
+    "name": "ASA",
+    "diameter_tolerance": 0.02,
+    "density": 1.09,
+    "min_print_temperature": 235,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFB98",
+            "id": "EASAB00",
+            "profile_name": "Elegoo ASA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFB98",
+            "id": "EASAB00",
+            "profile_name": "Elegoo ASA"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFB98",
+            "id": "EASAB00",
+            "profile_name": "Elegoo ASA"
+        }
     }
-  }
 }

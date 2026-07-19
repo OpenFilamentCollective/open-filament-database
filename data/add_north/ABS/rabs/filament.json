@@ -1,21 +1,21 @@
 {
-  "uuid": "80664fd9-2f4f-4b1f-a9a7-4e2dd46f2c1e",
-  "id": "rabs",
-  "name": "rABS",
-  "diameter_tolerance": 0.02,
-  "density": 1.03,
-  "max_dry_temperature": 65,
-  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_rABS_Aw6GuW.pdf",
-  "slicer_settings": {
-    "bambustudio": {
-      "generic_id": "GFB99",
-      "id": "GF_ANRA",
-      "profile_name": "addnorth ABS rABS"
-    },
-    "orcaslicer": {
-      "generic_id": "GFB99",
-      "id": "GF_ANRA",
-      "profile_name": "addnorth ABS rABS"
+    "uuid": "80664fd9-2f4f-4b1f-a9a7-4e2dd46f2c1e",
+    "id": "rabs",
+    "name": "rABS",
+    "diameter_tolerance": 0.02,
+    "density": 1.03,
+    "max_dry_temperature": 65,
+    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_rABS_Aw6GuW.pdf",
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFB99",
+            "id": "GF_ANRA",
+            "profile_name": "addnorth ABS rABS"
+        },
+        "orcaslicer": {
+            "generic_id": "GFB99",
+            "id": "GF_ANRA",
+            "profile_name": "addnorth ABS rABS"
+        }
     }
-  }
 }

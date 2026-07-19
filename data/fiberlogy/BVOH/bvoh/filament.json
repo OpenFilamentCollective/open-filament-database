@@ -1,16 +1,16 @@
 {
-  "uuid": "74bfe10a-944d-412c-9abb-0ef9f23b39f8",
-  "id": "bvoh",
-  "name": "BVOH",
-  "diameter_tolerance": 0.02,
-  "density": 1.14,
-  "min_print_temperature": 190,
-  "max_print_temperature": 220,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Fiberlogy BVOH"
+    "uuid": "74bfe10a-944d-412c-9abb-0ef9f23b39f8",
+    "id": "bvoh",
+    "name": "BVOH",
+    "diameter_tolerance": 0.02,
+    "density": 1.14,
+    "min_print_temperature": 190,
+    "max_print_temperature": 220,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 70,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy BVOH"
+        }
     }
-  }
 }

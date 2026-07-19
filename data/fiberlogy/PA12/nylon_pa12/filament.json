@@ -1,15 +1,15 @@
 {
-  "uuid": "d3242a54-36b4-45e5-b9ff-7efd6f2d6698",
-  "id": "nylon_pa12",
-  "name": "Nylon PA12",
-  "diameter_tolerance": 0.02,
-  "density": 1.01,
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Fiberlogy Nylon PA12"
-    },
-    "superslicer": {
-      "profile_name": "Fiberlogy Nylon PA12"
+    "uuid": "d3242a54-36b4-45e5-b9ff-7efd6f2d6698",
+    "id": "nylon_pa12",
+    "name": "Nylon PA12",
+    "diameter_tolerance": 0.02,
+    "density": 1.01,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fiberlogy Nylon PA12"
+        },
+        "superslicer": {
+            "profile_name": "Fiberlogy Nylon PA12"
+        }
     }
-  }
 }
