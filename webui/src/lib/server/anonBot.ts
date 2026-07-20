@@ -25,6 +25,8 @@ export interface AnonSubmission {
 	images: Record<string, any>;
 	title?: string;
 	description?: string;
+	/** Resolved attribution label (e.g. "SimplyPrint") for embedded submissions. */
+	wrapper?: string;
 }
 
 export interface AnonSubmissionResult {
@@ -107,7 +109,7 @@ export async function createAnonPR(submission: AnonSubmission): Promise<AnonSubm
 	const uuidComment = buildUuidComment(submission.uuid);
 	const changesSummary = buildChangesSummary(submission.changes);
 
-	const via = publicEnv.PUBLIC_WRAPPER_NAME || 'the OFD web editor';
+	const via = submission.wrapper || publicEnv.PUBLIC_WRAPPER_NAME || 'the OFD web editor';
 	const attribution = `*Submitted via ${via}*`;
 
 	const prBody = [

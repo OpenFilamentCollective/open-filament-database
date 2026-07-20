@@ -5,6 +5,10 @@
 	import { isCloudMode } from '$lib/stores/environment';
 	import { authStore } from '$lib/stores/auth';
 	import { theme } from '$lib/stores/theme';
+	import { isSpAuthenticated, currentSpUser } from '$lib/stores/auth';
+	import { isEmbedded, embedThemeOverride, initEmbedFromUrl } from '$lib/stores/embed';
+	import { startEmbedBridge, applyEmbedTheme } from '$lib/services/embedBridge';
+	import { initEmbedDraftSync } from '$lib/services/embedDraftSync';
 	import { db } from '$lib/services/database';
 	import { clearSearchCache } from '$lib/services/searchIndex';
 	import { clearLocalDataExceptSettings } from '$lib/services/localData';
@@ -17,9 +21,21 @@
 
 	let { children } = $props();
 
+	// Detect + sustain embed mode from the URL (sticky across navigations).
+	initEmbedFromUrl($page.url);
+	$effect(() => {
+		initEmbedFromUrl($page.url);
+	});
+
+	// Apply the host-forced theme (e.g. the panel's dark mode) when embedded.
+	$effect(() => {
+		if ($isEmbedded) applyEmbedTheme($embedThemeOverride);
+	});
+
 	let refreshing = $state(false);
 	let themeMenuOpen = $state(false);
 	let headerQuery = $state('');
+	let signingIn = $state(false);
 
 	// Reflect the active query when on the search page (so the box shows ?q=).
 	$effect(() => {
@@ -41,6 +57,18 @@
 		// Load schema-derived configs in parallel
 		loadTraitConfig();
 		loadSlicerConfig();
+
+		// When embedded in a host (e.g. the SimplyPrint panel), open the
+		// postMessage bridge so the host can drive theme + receive lifecycle
+		// signals. Auto-detect an existing SimplyPrint session for the identity chip.
+		if (get(isEmbedded)) {
+			const teardown = startEmbedBridge();
+			authStore.checkSpStatus();
+			// Persist the layered overlay to the SimplyPrint account (not
+			// localStorage) so it follows the user across devices.
+			initEmbedDraftSync();
+			return teardown;
+		}
 	});
 
 	function handleRefresh() {
@@ -86,7 +114,12 @@
 	}
 </script>
 
-<svelte:window onclick={handleClickOutside} onkeydown={(e) => { if (e.key === 'Escape' && themeMenuOpen) themeMenuOpen = false; }} />
+<svelte:window
+	onclick={handleClickOutside}
+	onkeydown={(e) => {
+		if (e.key === 'Escape' && themeMenuOpen) themeMenuOpen = false;
+	}}
+/>
 
 <div class="flex min-h-screen flex-col">
 	<!-- Header -->
@@ -94,26 +127,43 @@
 		<div class="container mx-auto flex items-center gap-4 px-6 py-4">
 			<!-- Left: App title and navigation -->
 			<div class="flex shrink-0 items-center gap-8">
-				<a href="/" class="text-lg font-bold tracking-tight text-foreground transition-colors hover:text-muted-foreground">
-					Filament Database
-				</a>
+				{#if !$isEmbedded}
+					<a
+						href="/"
+						class="text-lg font-bold tracking-tight text-foreground transition-colors hover:text-muted-foreground"
+					>
+						Filament Database
+					</a>
+				{/if}
 				<!-- Navigation -->
 				<nav class="flex items-center gap-1">
 					<a
 						href="/brands"
-						class="rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname.startsWith('/brands') ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
+						class="rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname.startsWith(
+							'/brands'
+						)
+							? 'bg-secondary text-foreground'
+							: 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
 					>
 						Brands
 					</a>
 					<a
 						href="/stores"
-						class="rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname.startsWith('/stores') ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
+						class="rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname.startsWith(
+							'/stores'
+						)
+							? 'bg-secondary text-foreground'
+							: 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
 					>
 						Stores
 					</a>
 					<a
 						href="/docs"
-						class="rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname.startsWith('/docs') ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
+						class="rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname.startsWith(
+							'/docs'
+						)
+							? 'bg-secondary text-foreground'
+							: 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
 					>
 						API
 					</a>
@@ -136,57 +186,117 @@
 				<!-- Theme dropdown menu -->
 				<div class="theme-menu relative">
 					<Button
-						onclick={(e) => { e.stopPropagation(); themeMenuOpen = !themeMenuOpen; }}
+						onclick={(e) => {
+							e.stopPropagation();
+							themeMenuOpen = !themeMenuOpen;
+						}}
 						variant="ghost"
 						size="icon"
 						title="Change theme"
 					>
 						{#if $theme === 'light'}
 							<!-- Sun icon -->
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-								<path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+									clip-rule="evenodd"
+								/>
 							</svg>
 						{:else if $theme === 'dark'}
 							<!-- Moon icon -->
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
 								<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
 							</svg>
 						{:else}
 							<!-- Computer/System icon -->
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-								<path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-5 w-5"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
+									clip-rule="evenodd"
+								/>
 							</svg>
 						{/if}
 					</Button>
 
 					{#if themeMenuOpen}
 						<div class="absolute right-0 z-50 mt-2 w-56 rounded-lg border bg-popover p-3 shadow-md">
-							<p class="mb-3 text-xs text-muted-foreground">Choose how the interface looks to you</p>
+							<p class="mb-3 text-xs text-muted-foreground">
+								Choose how the interface looks to you
+							</p>
 							<div class="grid grid-cols-3 gap-2">
 								<button
 									onclick={() => setTheme('light')}
-									class="flex flex-col items-center gap-2 rounded-md border-2 px-2 py-3 text-xs transition-colors {$theme === 'light' ? 'border-primary bg-primary/10 text-primary' : 'border-input bg-background hover:bg-accent hover:text-accent-foreground'}"
+									class="flex flex-col items-center gap-2 rounded-md border-2 px-2 py-3 text-xs transition-colors {$theme ===
+									'light'
+										? 'border-primary bg-primary/10 text-primary'
+										: 'border-input bg-background hover:bg-accent hover:text-accent-foreground'}"
 								>
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-										<path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-5 w-5"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+											clip-rule="evenodd"
+										/>
 									</svg>
 									Light
 								</button>
 								<button
 									onclick={() => setTheme('dark')}
-									class="flex flex-col items-center gap-2 rounded-md border-2 px-2 py-3 text-xs transition-colors {$theme === 'dark' ? 'border-primary bg-primary/10 text-primary' : 'border-input bg-background hover:bg-accent hover:text-accent-foreground'}"
+									class="flex flex-col items-center gap-2 rounded-md border-2 px-2 py-3 text-xs transition-colors {$theme ===
+									'dark'
+										? 'border-primary bg-primary/10 text-primary'
+										: 'border-input bg-background hover:bg-accent hover:text-accent-foreground'}"
 								>
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-5 w-5"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+									>
 										<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
 									</svg>
 									Dark
 								</button>
 								<button
 									onclick={() => setTheme('system')}
-									class="flex flex-col items-center gap-2 rounded-md border-2 px-2 py-3 text-xs transition-colors {$theme === 'system' ? 'border-primary bg-primary/10 text-primary' : 'border-input bg-background hover:bg-accent hover:text-accent-foreground'}"
+									class="flex flex-col items-center gap-2 rounded-md border-2 px-2 py-3 text-xs transition-colors {$theme ===
+									'system'
+										? 'border-primary bg-primary/10 text-primary'
+										: 'border-input bg-background hover:bg-accent hover:text-accent-foreground'}"
 								>
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-										<path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-5 w-5"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
+											clip-rule="evenodd"
+										/>
 									</svg>
 									System
 								</button>
@@ -199,8 +309,17 @@
 									class="flex w-full items-center justify-center gap-2 rounded-md border border-destructive/30 px-2 py-2 text-xs font-medium text-destructive transition-colors hover:bg-destructive/10 disabled:cursor-not-allowed disabled:opacity-50"
 									title="Remove pending changes, cached images, and other local data from this browser (keeps your settings)"
 								>
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-										<path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-4 w-4"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+											clip-rule="evenodd"
+										/>
 									</svg>
 									{clearingLocalData ? 'Clearing…' : 'Clear local data'}
 								</button>
@@ -238,8 +357,12 @@
 		{@render children()}
 	</main>
 
-	<Footer />
+	{#if !$isEmbedded}
+		<Footer />
+	{/if}
 </div>
 
-<WelcomeModal />
+{#if !$isEmbedded}
+	<WelcomeModal />
+{/if}
 <DebugOverlay />

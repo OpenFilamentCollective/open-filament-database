@@ -4,6 +4,14 @@
 
 import { writable, derived } from 'svelte/store';
 import { STORAGE_KEY_REOPEN_WIZARD } from '$lib/config/storageKeys';
+import { getEmbedState } from '$lib/stores/embed';
+import { loginViaPopup } from '$lib/services/embedAuthPopup';
+
+/** `?embed=1` when running inside a host iframe, so the server issues
+ *  partitioned (cross-site-frame-safe) auth cookies and returns to embed mode. */
+function embedQuery(): string {
+	return getEmbedState().embedded ? '?embed=1' : '';
+}
 
 interface GitHubUser {
 	login: string;
@@ -58,8 +66,17 @@ function createAuthStore() {
 		},
 
 		ghLogin() {
+			// Embedded: GitHub can't be framed — run OAuth in a popup and adopt the
+			// token back into this frame instead of a full-page navigation.
+			if (getEmbedState().embedded) {
+				return loginViaPopup('github').then((ok) => {
+					if (ok) this.checkGitHubStatus();
+					return ok;
+				});
+			}
 			localStorage.setItem(STORAGE_KEY_REOPEN_WIZARD, 'github');
 			window.location.href = '/api/auth/github/login';
+			return Promise.resolve(true);
 		},
 
 		async ghLogout() {
@@ -70,7 +87,7 @@ function createAuthStore() {
 		async checkSpStatus() {
 			update((s) => ({ ...s, spLoading: true }));
 			try {
-				const response = await fetch('/api/auth/simplyprint/status');
+				const response = await fetch('/api/auth/simplyprint/status' + embedQuery());
 				const data = await response.json();
 				update((s) => ({
 					...s,
@@ -84,8 +101,17 @@ function createAuthStore() {
 		},
 
 		spLogin() {
+			// Embedded: SimplyPrint can't be framed — run OAuth in a popup and adopt
+			// the tokens back into this frame instead of a full-page navigation.
+			if (getEmbedState().embedded) {
+				return loginViaPopup('simplyprint').then((ok) => {
+					if (ok) this.checkSpStatus();
+					return ok;
+				});
+			}
 			localStorage.setItem(STORAGE_KEY_REOPEN_WIZARD, 'simplyprint');
 			window.location.href = '/api/auth/simplyprint/login';
+			return Promise.resolve(true);
 		},
 
 		async spLogout() {
@@ -99,7 +125,7 @@ function createAuthStore() {
 			try {
 				const [ghRes, spRes] = await Promise.all([
 					fetch('/api/auth/github/status'),
-					fetch('/api/auth/simplyprint/status')
+					fetch('/api/auth/simplyprint/status' + embedQuery())
 				]);
 				const [ghData, spData] = await Promise.all([ghRes.json(), spRes.json()]);
 				set({
