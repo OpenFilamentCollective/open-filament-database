@@ -1,31 +1,31 @@
 {
-    "uuid": "74140b25-f211-46fc-8b2e-8152eeae5173",
-    "id": "85a",
-    "name": "TPU 85A",
-    "diameter_tolerance": 0.02,
-    "density": 1.18,
-    "shore_hardness_a": 85,
-    "max_dry_temperature": 70,
-    "min_print_temperature": 200,
-    "max_print_temperature": 250,
-    "min_bed_temperature": 30,
-    "max_bed_temperature": 35,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_TPU_85A_Technical_Data_Sheet_a7233668-497b-487f-af8a-3adb49fafaa1.pdf?v=1741314674",
-    "slicer_settings": {
-        "bambustudio": {
-            "profile_name": "Bambu TPU 85A",
-            "id": "GFU04",
-            "generic_id": "GFU99"
-        },
-        "orcaslicer": {
-            "profile_name": "Bambu TPU 85A",
-            "id": "GFU04",
-            "generic_id": "GFU99"
-        },
-        "elegooslicer": {
-            "profile_name": "Bambu TPU 85A",
-            "id": "GFU04",
-            "generic_id": "GFU99"
-        }
+  "uuid": "74140b25-f211-46fc-8b2e-8152eeae5173",
+  "id": "85a",
+  "name": "TPU 85A",
+  "diameter_tolerance": 0.02,
+  "density": 1.18,
+  "shore_hardness_a": 85,
+  "max_dry_temperature": 70,
+  "min_print_temperature": 200,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 35,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_TPU_85A_Technical_Data_Sheet_a7233668-497b-487f-af8a-3adb49fafaa1.pdf?v=1741314674",
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFU99",
+      "id": "GFU04",
+      "profile_name": "Bambu TPU 85A"
+    },
+    "orcaslicer": {
+      "generic_id": "GFU99",
+      "id": "GFU04",
+      "profile_name": "Bambu TPU 85A"
+    },
+    "elegooslicer": {
+      "generic_id": "GFU99",
+      "id": "GFU04",
+      "profile_name": "Bambu TPU 85A"
     }
+  }
 }
