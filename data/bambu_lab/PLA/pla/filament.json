@@ -11,17 +11,17 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "GFL99",
+            "id": "GFB99",
             "profile_name": "Bambu PLA"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "GFL99",
+            "id": "GFB99",
             "profile_name": "Bambu PLA"
         },
         "anycubicslicer": {
             "generic_id": "GFL99",
-            "id": "GFL99",
+            "id": "GFB99",
             "profile_name": "Bambu PLA"
         }
     }
