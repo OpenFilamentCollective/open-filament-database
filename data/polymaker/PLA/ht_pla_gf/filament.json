@@ -7,12 +7,12 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "PMPL01",
+            "id": "GFPM018",
             "profile_name": "Polymaker HT-PLA-GF"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "PMPL01",
+            "id": "GFPM018",
             "profile_name": "Polymaker HT-PLA-GF"
         }
     }
