@@ -78,6 +78,11 @@
                     "x-label": "AnyCubic Slicer",
                     "x-description": "Settings for AnyCubic Slicer. Compatible with AnyCubic FDM printers."
                 },
+                "kirimoto": {
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Kirimoto",
+                    "x-description": "Settings for Kirimoto. Compatible with Kirimoto FDM printers."
+                },
                 "generic": {
                     "type": "object",
                     "x-label": "Generic",

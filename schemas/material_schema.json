@@ -74,6 +74,9 @@
                 "anycubicslicer": {
                     "$ref": "#/definitions/specific_slicer_settings"
                 },
+                "kirimoto": {
+                    "$ref": "#/definitions/specific_slicer_settings"
+                },
                 "generic": {
                     "type": "object",
                     "description": "Generic options that will automatically be mapped to the correct config definition for each slicer. Slicer specific settings are applied first, then these are applied on top",
