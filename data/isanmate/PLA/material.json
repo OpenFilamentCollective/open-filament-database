@@ -1,0 +1,13 @@
+{
+  "material": "PLA",
+  "material_class": "FFF",
+  "default_max_dry_temperature": 45,
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 55,
+      "first_layer_bed_temp": 60,
+      "first_layer_nozzle_temp": 215,
+      "nozzle_temp": 210
+    }
+  }
+}
