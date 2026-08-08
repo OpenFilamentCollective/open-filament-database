@@ -12,6 +12,8 @@
 	import { authStore } from '$lib/stores/auth';
 	import { userPrefs } from '$lib/stores/userPrefs';
 	import { STORAGE_KEY_REOPEN_WIZARD } from '$lib/config/storageKeys';
+	import { getEmbedState } from '$lib/stores/embed';
+	import { postToHost } from '$lib/services/embedBridge';
 	import { onMount, onDestroy } from 'svelte';
 
 	let menuOpen = $state(false);
@@ -440,7 +442,9 @@
 			body: JSON.stringify({
 				changes: exportData.changes,
 				images: imagesWithPaths,
-				title: generateChangeTitle(exportData.changes)
+				title: generateChangeTitle(exportData.changes),
+				// Attribute embedded submissions to the host (e.g. "via SimplyPrint").
+				wrapper: getEmbedState().wrapper || undefined
 			})
 		});
 
@@ -455,6 +459,7 @@
 			});
 			userPrefs.addSubmission(result.uuid!, result.prUrl || '', result.prNumber || 0);
 			changeStore.clear();
+			postToHost({ type: 'ofd:submitted', prUrl: result.prUrl, prNumber: result.prNumber });
 			return {
 				success: true,
 				message: 'Your changes have been submitted for review by a maintainer.',
@@ -492,7 +497,9 @@
 				changes: exportData.changes,
 				images: imagesWithPaths,
 				title: title || generateChangeTitle(exportData.changes),
-				description
+				description,
+				// Attribute embedded submissions to the host (e.g. "via SimplyPrint").
+				wrapper: getEmbedState().wrapper || undefined
 			})
 		});
 
@@ -508,6 +515,7 @@
 			});
 			userPrefs.addSubmission(uuid, result.prUrl || '', result.prNumber || 0);
 			changeStore.clear();
+			postToHost({ type: 'ofd:submitted', prUrl: result.prUrl, prNumber: result.prNumber });
 			return {
 				success: true,
 				message: `PR #${result.prNumber} created successfully!`,

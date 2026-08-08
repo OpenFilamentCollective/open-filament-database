@@ -1,6 +1,7 @@
 import { copyFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { env } from '$env/dynamic/public';
+import type { Handle } from '@sveltejs/kit';
 import { installServerLogCapture } from '$lib/server/debugLog';
 
 // Install server-side log capture as early as possible so all output is buffered
@@ -94,3 +95,37 @@ if (env.PUBLIC_API_BASE_URL) {
 if (process.env.ANON_BOT_ENABLED === 'true') {
 	console.log(`[env] Bot submissions: enabled`);
 }
+
+// Hosts allowed to embed the app in an iframe (the SimplyPrint panel modal).
+// Extra origins can be added via EMBED_FRAME_ANCESTORS (space-separated).
+const FRAME_ANCESTORS = [
+	"'self'",
+	'https://simplyprint.io',
+	'https://*.simplyprint.io',
+	...(process.env.EMBED_FRAME_ANCESTORS?.trim().split(/\s+/).filter(Boolean) ?? [])
+].join(' ');
+
+/**
+ * Allow the app to be framed by SimplyPrint (and drop any restrictive
+ * X-Frame-Options a proxy might inject). `frame-ancestors` is the modern,
+ * origin-scoped control that browsers honour for embedding.
+ */
+export const handle: Handle = async ({ event, resolve }) => {
+	const response = await resolve(event);
+
+	// Only relax framing for document responses; leave asset/data responses alone.
+	const contentType = response.headers.get('content-type') ?? '';
+	if (contentType.includes('text/html')) {
+		response.headers.delete('X-Frame-Options');
+		const existing = response.headers.get('Content-Security-Policy');
+		const frameDirective = `frame-ancestors ${FRAME_ANCESTORS}`;
+		response.headers.set(
+			'Content-Security-Policy',
+			existing && !/frame-ancestors/i.test(existing)
+				? `${existing}; ${frameDirective}`
+				: frameDirective
+		);
+	}
+
+	return response;
+};
