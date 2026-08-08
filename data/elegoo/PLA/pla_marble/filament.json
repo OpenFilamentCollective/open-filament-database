@@ -1,0 +1,15 @@
+{
+  "id": "pla_marble",
+  "name": "PLA Marble",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 65,
+  "min_chamber_temperature": 20,
+  "max_chamber_temperature": 45,
+  "min_nozzle_diameter": 0.4,
+  "discontinued": false
+}
