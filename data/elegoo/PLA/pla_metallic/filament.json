@@ -1,5 +1,4 @@
 {
-  "uuid": "6364853f-a44f-41c7-8f8e-9425a18d0659",
   "id": "pla_metallic",
   "name": "PLA Metallic",
   "diameter_tolerance": 0.02,
@@ -11,6 +10,5 @@
   "max_bed_temperature": 65,
   "min_chamber_temperature": 20,
   "max_chamber_temperature": 45,
-  "min_nozzle_diameter": 0.4,
   "discontinued": false
 }
