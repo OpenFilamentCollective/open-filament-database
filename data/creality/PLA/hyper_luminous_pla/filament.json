@@ -1,5 +1,8 @@
 {
   "uuid": "a9ee9058-ccdf-42ad-bf02-d62f19853f13",
+  "moved_from": [
+    "6dd229ac-4663-46d2-9cfc-cd8667b03a4c"
+  ],
   "id": "hyper_luminous_pla",
   "name": "Hyper Luminous PLA",
   "diameter_tolerance": 0.03,
