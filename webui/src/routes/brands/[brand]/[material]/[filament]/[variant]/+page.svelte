@@ -2,13 +2,14 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { Variant, Store } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteEntityModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
 	import { VariantForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, generateSlug } from '$lib/services/entityService';
+	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
+	import { generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
@@ -78,6 +79,8 @@
 				: null,
 		getEntity: () => variant
 	});
+
+	const deleteFlow = createDeleteFlow(messageHandler);
 
 	// Load data when route parameters change
 	$effect(() => {
@@ -180,34 +183,18 @@
 		}
 	}
 
-	async function handleDelete() {
+	function openDeleteVariant() {
 		if (!variant) return;
-
-		entityState.deleting = true;
-		messageHandler.clear();
-
-		try {
-			const result = await deleteEntity(
-				`brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`,
-				'Variant',
-				() => db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant!)
-			);
-
-			if (result.success) {
-				messageHandler.showSuccess(result.message);
-				entityState.closeDelete();
-				entityState.deleting = false;
-				setTimeout(() => {
-					goto(`/brands/${brandId}/${materialType}/${filamentId}`);
-				}, 1500);
-			} else {
-				messageHandler.showError(result.message);
-				entityState.deleting = false;
-			}
-		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete variant');
-			entityState.deleting = false;
-		}
+		deleteFlow.open({
+			type: 'variant',
+			path: `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`,
+			label: 'Variant',
+			name: variant.name,
+			uuid: variant.uuid,
+			movedFrom: variant.moved_from,
+			deleteFn: () => db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant!),
+			navigateOnDelete: `/brands/${brandId}/${materialType}/${filamentId}`
+		});
 	}
 
 	// Duplicate variant handler
@@ -313,7 +300,7 @@
 							isLocalCreate={entityState.isLocalCreate}
 							onDuplicate={(data) => { formDrafts.clear(variantCreateDraftKey); entityState.openDuplicate(data); }}
 							onPaste={(data) => { formDrafts.clear(variantCreateDraftKey); entityState.openPaste(data); }}
-							onDelete={entityState.openDelete}
+							onDelete={openDeleteVariant}
 							onViewDiff={entityState.openCloudCompare}
 							parentNames={{ brand: '', material: '', filament: '' }}
 						/>
@@ -438,14 +425,16 @@
 	{/if}
 </Modal>
 
-<DeleteConfirmationModal
-	show={entityState.showDeleteModal}
-	title="Delete Variant"
-	entityName={variant?.name ?? ''}
-	isLocalCreate={entityState.isLocalCreate}
-	deleting={entityState.deleting}
-	onClose={entityState.closeDelete}
-	onDelete={handleDelete}
+<DeleteEntityModal
+	show={deleteFlow.show}
+	source={deleteFlow.source}
+	isLocalCreate={deleteFlow.isLocalCreate}
+	cascadeWarning={deleteFlow.cascadeWarning}
+	busy={deleteFlow.busy}
+	resolving={deleteFlow.resolving}
+	error={deleteFlow.error}
+	onClose={deleteFlow.close}
+	onConfirm={deleteFlow.confirm}
 />
 
 <!-- Duplicate Variant Modal -->

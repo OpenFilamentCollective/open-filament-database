@@ -50,9 +50,9 @@ const SUPPLEMENTARY_KEYS: Partial<Record<EntityType, string[]>> = {
 	// `uuid` is the canonical, slug-independent id. Always preserve it so editing an
 	// entity never drops (and thus never causes CI to regenerate) its UUID, even if
 	// the fetched schema predates the uuid field. `moved_from` is the redirect list
-	// (former UUIDs) written by the deprecate-and-redirect flow; keep it for the same
-	// reason (the cloud-fetched schema may predate the field), so editing/deprecating
-	// an entity never silently drops a recorded redirect.
+	// (former UUIDs) written when a deleted entity is redirected to its replacement;
+	// keep it for the same reason (the cloud-fetched schema may predate the field), so
+	// editing an entity never silently drops a recorded redirect.
 	variant: ['sizes', 'uuid', 'moved_from'],
 	material: ['id', 'materialType', 'uuid', 'moved_from'],
 	filament: ['uuid', 'moved_from'],

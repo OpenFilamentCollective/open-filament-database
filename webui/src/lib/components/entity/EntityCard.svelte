@@ -129,7 +129,7 @@
 		}
 		if (onDelete) {
 			items.push('separator');
-			items.push({ label: 'Delete', onClick: onDelete, destructive: true });
+			items.push({ label: 'Delete…', onClick: onDelete, destructive: true });
 		}
 		return items;
 	});
@@ -146,7 +146,7 @@
 		}
 		if (onDelete) {
 			items.push('separator');
-			items.push({ label: 'Delete', onClick: onDelete, destructive: true });
+			items.push({ label: 'Delete…', onClick: onDelete, destructive: true });
 		}
 		return items;
 	});
