@@ -39,6 +39,100 @@ export function isUuidSegment(segment: string): boolean {
 }
 
 /**
+ * Identity fields that are never authored in the editor: `uuid` is the canonical
+ * id minted by CI on merge, `moved_from` is written by the merge tooling. Both
+ * are hidden by every form, which re-attaches them only when the entity it
+ * loaded already carried them.
+ *
+ * A payload can legitimately predate assignment — a `create` staged before the
+ * entity was published, or an edit loaded before CI filled the uuid in — and
+ * every write here replaces the whole file. Without carrying these over from
+ * what is already committed at the target path, such a payload silently drops
+ * them, and the post-merge `ofd uuid assign` mints a *new* uuid for what is the
+ * same entity, breaking every external reference to it.
+ */
+export const CANONICAL_IDENTITY_FIELDS = ['uuid', 'moved_from'] as const;
+
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+	return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+/** True when a field actually carries an identity (not missing/blank/empty). */
+function hasIdentityValue(value: unknown): boolean {
+	if (value === undefined || value === null || value === '') return false;
+	if (Array.isArray(value)) return value.length > 0;
+	return true;
+}
+
+/**
+ * The `(filament_weight, diameter)` identity used to pair spools across a
+ * rewrite. Mirrors `size_dedupe_key` in ofd/merge.py, which is what the Python
+ * side uses to pair the same spools — they must not diverge.
+ */
+function sizeKey(size: Record<string, unknown>): string {
+	return JSON.stringify([size.filament_weight ?? null, size.diameter ?? null]);
+}
+
+function mergeIdentity(
+	incoming: Record<string, unknown>,
+	existing: Record<string, unknown>
+): Record<string, unknown> {
+	const missing = CANONICAL_IDENTITY_FIELDS.some(
+		(field) => !hasIdentityValue(incoming[field]) && hasIdentityValue(existing[field])
+	);
+	if (!missing) return incoming;
+
+	// Canonical fields lead, in schema order — the placement `ofd uuid assign` uses.
+	const merged: Record<string, unknown> = {};
+	for (const field of CANONICAL_IDENTITY_FIELDS) {
+		if (hasIdentityValue(incoming[field])) merged[field] = incoming[field];
+		else if (hasIdentityValue(existing[field])) merged[field] = existing[field];
+	}
+	for (const [key, value] of Object.entries(incoming)) {
+		if (!(key in merged)) merged[key] = value;
+	}
+	return merged;
+}
+
+function mergeSizesIdentity(incoming: unknown[], existing: unknown[]): unknown[] {
+	const byKey = new Map<string, Record<string, unknown>[]>();
+	for (const entry of existing) {
+		if (!isPlainObject(entry)) continue;
+		const key = sizeKey(entry);
+		const bucket = byKey.get(key);
+		if (bucket) bucket.push(entry);
+		else byKey.set(key, [entry]);
+	}
+
+	return incoming.map((entry) => {
+		if (!isPlainObject(entry)) return entry;
+		// shift(), so two spools sharing a (weight, diameter) key can't both claim
+		// the same uuid — the second one is left unassigned for CI instead.
+		const match = byKey.get(sizeKey(entry))?.shift();
+		return match ? mergeIdentity(entry, match) : entry;
+	});
+}
+
+/**
+ * Carry `CANONICAL_IDENTITY_FIELDS` from the currently committed file (`existing`)
+ * onto the data about to replace it, for any the payload doesn't already carry.
+ *
+ * Handles both an entity object (brand/material/filament/variant/store.json) and
+ * a `sizes.json` array, whose spools are paired by `(filament_weight, diameter)`.
+ * Returns `incoming` untouched when there is nothing to preserve, when the path
+ * is new (`existing` is null), or when the two shapes don't match.
+ */
+export function preserveCanonicalFields<T>(incoming: T, existing: unknown): T {
+	if (Array.isArray(incoming)) {
+		return (Array.isArray(existing) ? mergeSizesIdentity(incoming, existing) : incoming) as T;
+	}
+	if (isPlainObject(incoming) && isPlainObject(existing)) {
+		return mergeIdentity(incoming, existing) as T;
+	}
+	return incoming;
+}
+
+/**
  * Fields to strip from entity data before writing to disk.
  * These are internal tracking fields added by the webui.
  */

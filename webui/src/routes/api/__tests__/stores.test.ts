@@ -205,6 +205,28 @@ describe('Stores API', () => {
 			expect(writtenContent.endsWith('\n')).toBe(true);
 		});
 
+		// The write replaces the whole file; the form only re-attaches a uuid it
+		// loaded, so an edit made before CI assigned one must not drop it.
+		it('should keep the canonical uuid already on disk', async () => {
+			mockAppMode = 'local';
+			mockAccess.mockResolvedValue(undefined);
+			mockWriteFile.mockResolvedValue(undefined);
+			mockReadFile.mockResolvedValue(
+				JSON.stringify({ uuid: 'store-uuid', id: 'test', name: 'Test' })
+			);
+
+			vi.resetModules();
+			const { PUT } = await import('../stores/[id]/+server');
+			await PUT({
+				params: { id: 'test' },
+				request: { json: async () => ({ id: 'test', name: 'Renamed' }) }
+			} as any);
+
+			const written = JSON.parse(mockWriteFile.mock.calls[0][1]);
+			expect(written.uuid).toBe('store-uuid');
+			expect(written.name).toBe('Renamed');
+		});
+
 		it('should return 500 on write error', async () => {
 			mockAppMode = 'local';
 			mockAccess.mockResolvedValue(undefined);

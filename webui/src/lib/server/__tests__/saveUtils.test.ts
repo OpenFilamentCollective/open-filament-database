@@ -4,6 +4,7 @@ import {
 	entityPathToFsPath,
 	entityPathToDir,
 	cleanEntityData,
+	preserveCanonicalFields,
 	isUuidSegment,
 	SAFE_SEGMENT,
 	STRIP_FIELDS,
@@ -293,6 +294,103 @@ describe('saveUtils', () => {
 			expect(STRIP_FIELDS.has('name')).toBe(false);
 			expect(STRIP_FIELDS.has('origin')).toBe(false);
 			expect(STRIP_FIELDS.has('logo')).toBe(false);
+		});
+	});
+
+	// Every write replaces the whole file, and a payload can legitimately predate
+	// UUID assignment (a `create` staged before the entity was published, then
+	// submitted again after it merged — see PR #442, which wiped nine uuids that
+	// CI had assigned). The canonical identity already committed must survive.
+	describe('preserveCanonicalFields', () => {
+		const UUID = '6364853f-a44f-41c7-8f8e-9425a18d0659';
+
+		it('carries uuid over onto a payload that has none', () => {
+			const result = preserveCanonicalFields(
+				{ id: 'pla_metallic', name: 'PLA Metallic' },
+				{ uuid: UUID, id: 'pla_metallic', name: 'PLA Metallic' }
+			);
+			expect(result).toEqual({ uuid: UUID, id: 'pla_metallic', name: 'PLA Metallic' });
+		});
+
+		it('leads with the canonical fields, in schema order', () => {
+			const result = preserveCanonicalFields(
+				{ id: 'pla', name: 'PLA' },
+				{ uuid: UUID, moved_from: ['old-uuid'], id: 'pla' }
+			);
+			expect(Object.keys(result)).toEqual(['uuid', 'moved_from', 'id', 'name']);
+		});
+
+		it('keeps the uuid the payload carries (a move re-points identity)', () => {
+			const result = preserveCanonicalFields(
+				{ uuid: 'incoming-uuid', id: 'pla' },
+				{ uuid: UUID, id: 'pla' }
+			);
+			expect(result.uuid).toBe('incoming-uuid');
+		});
+
+		it('treats an empty uuid as unassigned', () => {
+			const result = preserveCanonicalFields({ uuid: '', id: 'pla' }, { uuid: UUID, id: 'pla' });
+			expect(result.uuid).toBe(UUID);
+		});
+
+		it('carries moved_from over independently of uuid', () => {
+			const result = preserveCanonicalFields<Record<string, unknown>>(
+				{ uuid: UUID, id: 'pla' },
+				{ uuid: UUID, moved_from: ['old-uuid'], id: 'pla' }
+			);
+			expect(result.moved_from).toEqual(['old-uuid']);
+		});
+
+		it('returns the payload untouched for a path with nothing committed', () => {
+			const incoming = { id: 'pla', name: 'PLA' };
+			expect(preserveCanonicalFields(incoming, null)).toBe(incoming);
+		});
+
+		it('does not modify the input object', () => {
+			const incoming = { id: 'pla' };
+			preserveCanonicalFields(incoming, { uuid: UUID, id: 'pla' });
+			expect(incoming).toEqual({ id: 'pla' });
+		});
+
+		it('pairs spools by (filament_weight, diameter)', () => {
+			const result = preserveCanonicalFields<Record<string, unknown>[]>(
+				[
+					{ filament_weight: 1000, diameter: 1.75, discontinued: false },
+					{ filament_weight: 250, diameter: 1.75, discontinued: false }
+				],
+				[
+					// Committed in the opposite order — pairing is by identity, not index.
+					{ uuid: 'uuid-250', filament_weight: 250, diameter: 1.75 },
+					{ uuid: 'uuid-1000', filament_weight: 1000, diameter: 1.75 }
+				]
+			);
+			expect(result[0].uuid).toBe('uuid-1000');
+			expect(result[1].uuid).toBe('uuid-250');
+		});
+
+		it('leaves a spool that matches nothing committed unassigned', () => {
+			const result = preserveCanonicalFields(
+				[{ filament_weight: 5000, diameter: 2.85 }],
+				[{ uuid: 'uuid-1000', filament_weight: 1000, diameter: 1.75 }]
+			);
+			expect(result[0]).not.toHaveProperty('uuid');
+		});
+
+		it('never hands the same uuid to two spools sharing an identity', () => {
+			const result = preserveCanonicalFields<Record<string, unknown>[]>(
+				[
+					{ filament_weight: 1000, diameter: 1.75, spool_refill: false },
+					{ filament_weight: 1000, diameter: 1.75, spool_refill: true }
+				],
+				[{ uuid: 'uuid-1000', filament_weight: 1000, diameter: 1.75 }]
+			);
+			expect(result[0].uuid).toBe('uuid-1000');
+			expect(result[1]).not.toHaveProperty('uuid');
+		});
+
+		it('ignores a committed file whose shape does not match the payload', () => {
+			const incoming = [{ filament_weight: 1000, diameter: 1.75 }];
+			expect(preserveCanonicalFields(incoming, { uuid: UUID })).toBe(incoming);
 		});
 	});
 });

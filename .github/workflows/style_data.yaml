@@ -7,10 +7,18 @@ on:
       - 'data/**'
       - 'stores/**'
       - 'schemas/**'
-  workflow_dispatch: 
+  workflow_dispatch:
 
 permissions:
   contents: write
+
+# Styling is a whole-tree, idempotent operation, so only the newest run matters:
+# it sees every change the superseded runs would have styled. Merging a batch of
+# PRs therefore collapses into a single styling run instead of a pile of runs
+# racing each other to push.
+concurrency:
+  group: style-data-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   style_data:
@@ -21,30 +29,101 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check this run is styling the branch tip
+        # A run queued behind a batch of merges can start on a commit that is no
+        # longer the tip. Its push would be rejected at the very end, after all
+        # the work. Detect that up front and skip cleanly instead.
+        id: freshness
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          git fetch --quiet origin "$BRANCH"
+          LOCAL="$(git rev-parse HEAD)"
+          REMOTE="$(git rev-parse FETCH_HEAD)"
+
+          if [ "$LOCAL" = "$REMOTE" ]; then
+            echo "up_to_date=true" >> "$GITHUB_OUTPUT"
+            echo "Styling $BRANCH at $LOCAL (branch tip)."
+          else
+            echo "up_to_date=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Behind origin/$BRANCH ($LOCAL vs $REMOTE) - skipping, a newer run covers these changes."
+            {
+              echo "### Style data skipped - behind \`origin/$BRANCH\`"
+              echo ""
+              echo "Checked out \`$LOCAL\`, but \`origin/$BRANCH\` has since moved to \`$REMOTE\`."
+              echo "Styling covers the whole tree, so the run triggered by the newer commit"
+              echo "styles these changes as well. Nothing is lost by stopping here."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Set up Python
+        if: steps.freshness.outputs.up_to_date == 'true'
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.freshness.outputs.up_to_date == 'true'
         run: pip install -r requirements.txt
 
       - name: Assign canonical UUIDs
         # Backfill a canonical UUIDv4 into every entity that was merged without one
         # (manual or webui contributions leave the uuid field empty). Runs before
         # style_data so the new field is sorted into schema order.
+        if: steps.freshness.outputs.up_to_date == 'true'
         run: python -m ofd uuid assign
 
       - name: Verify UUIDs
         # Every entity must now have a valid, unique UUID (presence is required by default).
+        if: steps.freshness.outputs.up_to_date == 'true'
         run: python -m ofd uuid check
 
       - name: Run style_data
+        if: steps.freshness.outputs.up_to_date == 'true'
         run: python -m ofd script style_data
 
       - name: Commit changes
+        # The branch can still move while this job runs - a merge that touches no
+        # data path moves main without triggering a styling run of its own, so we
+        # cannot just defer to "a newer run will handle it" here. On a rejected
+        # push, re-sync onto the new tip and restyle: because `uuid assign` and
+        # `style_data` are whole-tree and idempotent, restyling the updated tree
+        # gives the same result as a rebase, with no conflicts to resolve.
+        if: steps.freshness.outputs.up_to_date == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ stores/
-          git diff --cached --quiet || (git commit -m "Assign UUIDs and style data" && git push)
+
+          BRANCH="${{ github.ref_name }}"
+          ATTEMPTS=3
+
+          for attempt in $(seq 1 "$ATTEMPTS"); do
+            git add data/ stores/
+
+            if git diff --cached --quiet; then
+              echo "No styling changes to commit."
+              exit 0
+            fi
+
+            git commit -m "Assign UUIDs and style data"
+
+            if git push origin "HEAD:$BRANCH"; then
+              echo "Pushed styling changes on attempt $attempt/$ATTEMPTS."
+              exit 0
+            fi
+
+            echo "::warning::Push rejected - $BRANCH moved during this run (attempt $attempt/$ATTEMPTS). Re-syncing and restyling."
+
+            git fetch --quiet origin "$BRANCH"
+            git reset --hard FETCH_HEAD
+            python -m ofd uuid assign
+            python -m ofd uuid check
+            python -m ofd script style_data
+          done
+
+          echo "::notice::$BRANCH kept moving through $ATTEMPTS attempts - stopping without pushing."
+          {
+            echo "### Style data stopped - \`$BRANCH\` kept moving"
+            echo ""
+            echo "The branch advanced faster than this run could restyle it ($ATTEMPTS attempts)."
+            echo "The next push to a data path styles the tree, or run this workflow manually."
+          } >> "$GITHUB_STEP_SUMMARY"

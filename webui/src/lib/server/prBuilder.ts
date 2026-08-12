@@ -5,9 +5,16 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { IS_CLOUD, API_BASE } from '$lib/server/cloudProxy';
-import { SAFE_SEGMENT, isUuidSegment, cleanEntityData, JSON_INDENT_REPO } from '$lib/server/saveUtils';
+import {
+	SAFE_SEGMENT,
+	isUuidSegment,
+	cleanEntityData,
+	preserveCanonicalFields,
+	JSON_INDENT_REPO
+} from '$lib/server/saveUtils';
 import {
 	getRecursiveTree,
+	getBlobText,
 	createBlob
 } from '$lib/server/github';
 
@@ -231,6 +238,33 @@ export type TreeItem = { path: string; sha: string | null; mode?: string; type?:
  */
 export type NoopDelete = { path: string; description?: string };
 
+type ExistingTree = Map<string, { sha: string; mode: string; type: string }>;
+
+/**
+ * Read and parse the JSON currently committed at `repoPath`, or null when the
+ * path is new or its blob isn't readable JSON. Used to carry canonical identity
+ * fields onto a write that would otherwise replace the file wholesale.
+ */
+async function readUpstreamJson(
+	token: string,
+	owner: string,
+	repo: string,
+	tree: ExistingTree | null,
+	repoPath: string
+): Promise<unknown> {
+	const entry = tree?.get(repoPath);
+	if (!entry) return null;
+
+	const text = await getBlobText(token, owner, repo, entry.sha);
+	if (text === null) return null;
+
+	try {
+		return JSON.parse(text);
+	} catch {
+		return null;
+	}
+}
+
 /**
  * Build tree items from a set of changes and images.
  * Returns the items ready for createTree(), a list of skipped (unmappable)
@@ -253,11 +287,14 @@ export async function buildTreeItems(
 	const skippedPaths: string[] = [];
 	const noopDeletes: NoopDelete[] = [];
 
-	// Check if any changes are deletes — we need the recursive tree listing
-	// to discover all files under a deleted entity's directory for cascade delete.
+	// The recursive tree listing serves both kinds of change: deletes need it to
+	// discover every file under a deleted entity's directory (cascade delete), and
+	// writes need it to tell a genuinely new path from one that already holds a
+	// committed file whose canonical identity must be carried over.
 	const hasDeletes = changes.some((c: any) => c.operation === 'delete');
-	let existingTree: Map<string, { sha: string; mode: string; type: string }> | null = null;
-	if (hasDeletes) {
+	const hasWrites = changes.some((c: any) => c.operation !== 'delete' && c.data);
+	let existingTree: ExistingTree | null = null;
+	if (hasDeletes || hasWrites) {
 		existingTree = await getRecursiveTree(
 			token, upstreamOwner, upstreamRepo, baseTreeSha
 		);
@@ -294,6 +331,15 @@ export async function buildTreeItems(
 			// Create/update: clean, sort keys per schema, then create blob
 			let cleanData = cleanEntityData(change.data, { imageFilenames, schemaType });
 
+			// This write replaces the file, and the payload may predate UUID
+			// assignment (e.g. a `create` staged before the entity was published,
+			// then submitted again after it merged). Keep whatever canonical
+			// identity is already committed here rather than dropping it.
+			cleanData = preserveCanonicalFields(
+				cleanData,
+				await readUpstreamJson(token, upstreamOwner, upstreamRepo, existingTree, repoPath)
+			);
+
 			// For variant entities, extract sizes into a separate file
 			let sizesData = null;
 			if (schemaType === 'variant' && cleanData.sizes) {
@@ -312,9 +358,14 @@ export async function buildTreeItems(
 			// Write sizes.json alongside variant.json
 			if (sizesData && Array.isArray(sizesData) && sizesData.length > 0) {
 				const sizesRepoPath = repoPath.replace(/variant\.json$/, 'sizes.json');
-				let sortedSizes: any = sizesData;
+				// Spools carry their own canonical UUIDs; pair them with the committed
+				// ones by (filament_weight, diameter) so a rewrite keeps them too.
+				let sortedSizes: any = preserveCanonicalFields(
+					sizesData,
+					await readUpstreamJson(token, upstreamOwner, upstreamRepo, existingTree, sizesRepoPath)
+				);
 				if (schemas['sizes']) {
-					sortedSizes = sortJsonKeys(sizesData, schemas['sizes']);
+					sortedSizes = sortJsonKeys(sortedSizes, schemas['sizes']);
 				}
 				const sizesContent = JSON.stringify(sortedSizes, null, JSON_INDENT_REPO) + '\n';
 				const sizesBlobSha = await createBlob(token, forkOwner, forkRepo, sizesContent);

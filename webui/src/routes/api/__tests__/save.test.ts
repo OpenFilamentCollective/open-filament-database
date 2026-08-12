@@ -18,6 +18,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const fsMock = vi.hoisted(() => ({
 	mkdir: vi.fn(),
 	writeFile: vi.fn(),
+	readFile: vi.fn(),
 	rm: vi.fn()
 }));
 
@@ -25,6 +26,7 @@ vi.mock('fs', () => {
 	const promises = {
 		mkdir: (...args: any[]) => fsMock.mkdir(...args),
 		writeFile: (...args: any[]) => fsMock.writeFile(...args),
+		readFile: (...args: any[]) => fsMock.readFile(...args),
 		rm: (...args: any[]) => fsMock.rm(...args)
 	};
 	return { default: { promises }, promises };
@@ -77,9 +79,12 @@ describe('POST /api/save', () => {
 	beforeEach(() => {
 		fsMock.mkdir.mockReset();
 		fsMock.writeFile.mockReset();
+		fsMock.readFile.mockReset();
 		fsMock.rm.mockReset();
 		fsMock.mkdir.mockResolvedValue(undefined);
 		fsMock.writeFile.mockResolvedValue(undefined);
+		// Default: nothing on disk yet at the target path.
+		fsMock.readFile.mockRejectedValue(Object.assign(new Error('ENOENT'), { code: 'ENOENT' }));
 		fsMock.rm.mockResolvedValue(undefined);
 		isLocal = true;
 	});
@@ -156,6 +161,48 @@ describe('POST /api/save', () => {
 			(c: any[]) => (c[0] as string).endsWith('variant.json')
 		)![1] as string;
 		expect(variantContent).not.toContain('"sizes"');
+	});
+
+	// The write replaces the whole file, so a payload staged before the entity got
+	// its canonical uuid must not drop the one already on disk.
+	it('keeps the uuid already on disk when the payload has none', async () => {
+		fsMock.readFile.mockImplementation(async (filePath: string) => {
+			if (filePath.endsWith('variant.json')) {
+				return JSON.stringify({ uuid: 'variant-uuid', id: 'red', color_hex: 'FF0000' });
+			}
+			if (filePath.endsWith('sizes.json')) {
+				return JSON.stringify([{ uuid: 'size-uuid', filament_weight: 1000, diameter: 1.75 }]);
+			}
+			throw Object.assign(new Error('ENOENT'), { code: 'ENOENT' });
+		});
+
+		await POST(
+			makeRequest({
+				changes: [
+					{
+						entity: {
+							type: 'variant',
+							id: 'red',
+							path: 'brands/acme/materials/PLA/filaments/basic/variants/red'
+						},
+						operation: 'create',
+						data: {
+							id: 'red',
+							color_hex: 'FF0000',
+							sizes: [{ filament_weight: 1000, diameter: 1.75 }]
+						}
+					}
+				]
+			})
+		);
+
+		const contentFor = (suffix: string) =>
+			JSON.parse(
+				fsMock.writeFile.mock.calls.find((c: any[]) => (c[0] as string).endsWith(suffix))![1] as string
+			);
+
+		expect(contentFor('variant.json').uuid).toBe('variant-uuid');
+		expect(contentFor('sizes.json')[0].uuid).toBe('size-uuid');
 	});
 
 	it('skips sizes.json when sizes array is empty', async () => {
