@@ -5,6 +5,11 @@
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "max_dry_temperature": 50,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 65,
   "data_sheet_url": "https://cdn.shopify.com/s/files/1/0698/1235/5357/files/ANYCUBIC_TDS_PLA_V3.0.pdf?v=1757585748",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0698/1235/5357/files/EN_SDS_ANYCUBIC_PLA_Filament__SDS_SGS_GHS_ANNEXII_CLP_2024516_SGS-SHENZHEN-34_Shenzhen_Anycubic_Technology_Co._Ltd.pdf?v=1757585708"
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0698/1235/5357/files/EN_SDS_ANYCUBIC_PLA_Filament__SDS_SGS_GHS_ANNEXII_CLP_2024516_SGS-SHENZHEN-34_Shenzhen_Anycubic_Technology_Co._Ltd.pdf?v=1757585708",
+  "discontinued": false
 }
