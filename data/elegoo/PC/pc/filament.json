@@ -7,12 +7,12 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFC99",
-            "id": "EPCB00",
+            "id": "OEPCB00",
             "profile_name": "Elegoo PC"
         },
         "elegooslicer": {
             "generic_id": "GFC99",
-            "id": "EPCB00",
+            "id": "OEPCB00",
             "profile_name": "Elegoo PC"
         }
     }

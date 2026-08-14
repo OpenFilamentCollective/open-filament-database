@@ -12,12 +12,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFB99",
-            "id": "GFB99",
+            "id": "GFB60",
             "profile_name": "PolyLite ABS"
         },
         "elegooslicer": {
             "generic_id": "GFB99",
-            "id": "GFB99",
+            "id": "GFB60",
             "profile_name": "PolyLite ABS"
         },
         "crealityprint": {
@@ -27,7 +27,7 @@
         },
         "anycubicslicer": {
             "generic_id": "GFB99",
-            "id": "GFB99",
+            "id": "GFB60",
             "profile_name": "PolyLite ABS"
         }
     }

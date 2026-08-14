@@ -8,12 +8,12 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "EPLAB00",
+            "id": "OEPLAB00",
             "profile_name": "Elegoo PLA Wood"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "EPLAB00",
+            "id": "OEPLAB00",
             "profile_name": "Elegoo PLA Wood"
         }
     }

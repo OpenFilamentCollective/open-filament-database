@@ -7,12 +7,12 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFB99",
-            "id": "EABSB00",
+            "id": "OEABSB00",
             "profile_name": "Elegoo ABS"
         },
         "elegooslicer": {
             "generic_id": "GFB99",
-            "id": "EABSB00",
+            "id": "OEABSB00",
             "profile_name": "Elegoo ABS"
         }
     }
