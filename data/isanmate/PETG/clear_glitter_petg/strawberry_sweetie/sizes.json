@@ -6,11 +6,5 @@
     "empty_spool_weight": 143,
     "spool_core_diameter": 100,
     "discontinued": false
-  },
-  {
-    "filament_weight": 1000,
-    "diameter": 1.75,
-    "spool_refill": false,
-    "discontinued": false
   }
 ]
