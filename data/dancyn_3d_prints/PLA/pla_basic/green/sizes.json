@@ -4,6 +4,24 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
-    "discontinued": false
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "dancyn_3d_prints",
+        "url": "https://www.dancyn3dprints.com/products/pla-basic?variant=50741378973948"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "dancyn_3d_prints",
+        "url": "https://www.dancyn3dprints.com/products/pla-basic?variant=50741378941180"
+      }
+    ]
   }
 ]
