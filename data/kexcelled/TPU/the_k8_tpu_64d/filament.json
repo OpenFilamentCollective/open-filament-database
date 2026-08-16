@@ -1,0 +1,10 @@
+{
+  "id": "the_k8_tpu_64d",
+  "name": "The K8 TPU 64D",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "shore_hardness_d": 64,
+  "min_print_temperature": 215,
+  "max_print_temperature": 235,
+  "discontinued": false
+}
