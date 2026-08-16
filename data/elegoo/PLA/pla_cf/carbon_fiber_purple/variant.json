@@ -2,5 +2,10 @@
   "id": "carbon_fiber_purple",
   "name": "carbon fiber purple",
   "color_hex": "#8000FF",
-  "discontinued": false
+  "discontinued": false,
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }
