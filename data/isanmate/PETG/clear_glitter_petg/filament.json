@@ -1,0 +1,14 @@
+{
+  "id": "clear_glitter_petg",
+  "name": "PETG Clear Glitter",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "certifications": [
+    ""
+  ],
+  "min_print_temperature": 260,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
+  "discontinued": false
+}
