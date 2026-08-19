@@ -110,6 +110,8 @@ export interface ChangeProps {
 	hasDescendantChanges: boolean;
 	hasSubmittedChanges: boolean;
 	submittedChangeType: ChangeOperation | undefined;
+	/** PR number of the submission this entity is in, so the badge can name the review. */
+	submittedPrNumber: number | undefined;
 }
 
 const NO_CHANGES: ChangeProps = {
@@ -117,7 +119,8 @@ const NO_CHANGES: ChangeProps = {
 	localChangeType: undefined,
 	hasDescendantChanges: false,
 	hasSubmittedChanges: false,
-	submittedChangeType: undefined
+	submittedChangeType: undefined,
+	submittedPrNumber: undefined
 };
 
 /**
@@ -139,6 +142,7 @@ export function getChildChangeProps(
 		localChangeType: change?.operation,
 		hasDescendantChanges: changes.hasDescendantChanges(entityPath),
 		hasSubmittedChanges: !!sub,
-		submittedChangeType: sub?.change.operation
+		submittedChangeType: sub?.change.operation,
+		submittedPrNumber: sub?.entry.prNumber
 	};
 }

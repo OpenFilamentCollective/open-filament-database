@@ -7,7 +7,7 @@
 	import { BrandForm, MaterialForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { Logo, EntityDetails, EntityCard, ChildListPanel } from '$lib/components/entity';
+	import { Logo, EntityDetails, EntityCard, ChildListPanel, SubmittedBanner, InFlightHint } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
@@ -365,8 +365,8 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
-			{:else if entityState.hasSubmittedChanges}
-				<MessageBanner type="info" message="Submitted - awaiting merge" />
+			{:else if entityState.submittedEntry}
+				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
 
 			{#if messageHandler.message}
@@ -425,6 +425,7 @@
 							hasLocalChanges={changeProps.hasLocalChanges}
 							localChangeType={changeProps.localChangeType}
 							hasSubmittedChanges={changeProps.hasSubmittedChanges}
+							submittedPrNumber={changeProps.submittedPrNumber}
 							submittedChangeType={changeProps.submittedChangeType}
 							entityType="material"
 							onCopy={() => materialCopy.request(material, materialPath)}
@@ -509,6 +510,7 @@
 	{#if createMaterialError}
 		<MessageBanner type="error" message={createMaterialError} />
 	{/if}
+	<InFlightHint path="brands/{brandId}" label="brand" />
 	{#if materialSchema}
 		<MaterialForm schema={materialSchema} entity={prefillMaterialData ?? undefined}
 			draftKey={materialCreateDraftKey}

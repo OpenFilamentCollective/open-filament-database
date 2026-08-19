@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import type { Variant, Store } from '$lib/types/database';
 	import { Modal, MessageBanner, DeleteEntityModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
+	import { SubmittedBanner } from '$lib/components/entity';
 	import { VariantForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
@@ -43,6 +44,13 @@
 	// lazily (only when a create/edit modal opens), not on every page view.
 	let editSiblingFibers = $derived(collectSiblingFibers(siblingVariants, variantSlug));
 	let newVariantSiblingFibers = $derived(collectSiblingFibers(siblingVariants));
+
+	// Sibling display names, for the Title Case nudge. Same split as the fiber sets: an
+	// edit compares against every OTHER variant, a new one against all of them.
+	let editSiblingNames = $derived(
+		siblingVariants.filter((v) => (v.slug ?? v.id) !== variantSlug).map((v) => v.name)
+	);
+	let newVariantSiblingNames = $derived(siblingVariants.map((v) => v.name));
 
 	// Which filament's siblings are currently loaded, so we fetch at most once per page.
 	let siblingsLoadedFor: string | null = null;
@@ -280,8 +288,8 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
-			{:else if entityState.hasSubmittedChanges}
-				<MessageBanner type="info" message="Submitted - awaiting merge" />
+			{:else if entityState.submittedEntry}
+				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
 
 			{#if messageHandler.message}
@@ -420,7 +428,7 @@
 <Modal show={entityState.showEditModal} title="Edit Variant" onClose={entityState.closeEdit} maxWidth="5xl">
 	{#if variant}
 		<div class="h-[70vh]">
-			<VariantForm {variant} draftKey={variantEditDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...editSiblingFibers]} onSubmit={handleSubmit} saving={entityState.saving} />
+			<VariantForm {variant} draftKey={variantEditDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...editSiblingFibers]} siblingNames={editSiblingNames} onSubmit={handleSubmit} saving={entityState.saving} />
 		</div>
 	{/if}
 </Modal>
@@ -444,7 +452,7 @@
 	{/if}
 	{#if entityState.duplicateData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} siblingNames={newVariantSiblingNames} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>
@@ -456,7 +464,7 @@
 	{/if}
 	{#if entityState.pasteData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} siblingNames={newVariantSiblingNames} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>

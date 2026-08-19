@@ -235,6 +235,7 @@
 						hasLocalChanges={changeProps.hasLocalChanges}
 						localChangeType={changeProps.localChangeType}
 						hasSubmittedChanges={changeProps.hasSubmittedChanges}
+						submittedPrNumber={changeProps.submittedPrNumber}
 						submittedChangeType={changeProps.submittedChangeType}
 						entityType="brand"
 						onCopy={() => brandCopy.request(brand, `brands/${brand.slug ?? brand.id}`)}

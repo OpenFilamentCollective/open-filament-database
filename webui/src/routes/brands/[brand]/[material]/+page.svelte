@@ -8,7 +8,7 @@
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel } from '$lib/components/entity';
+	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel, SubmittedBanner, InFlightHint } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
@@ -319,8 +319,8 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
-			{:else if entityState.hasSubmittedChanges}
-				<MessageBanner type="info" message="Submitted - awaiting merge" />
+			{:else if entityState.submittedEntry}
+				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
@@ -367,6 +367,7 @@
 							badge={filament.discontinued ? { text: 'Discontinued', color: 'red' } : undefined}
 							hasLocalChanges={changeProps.hasLocalChanges} localChangeType={changeProps.localChangeType}
 							hasSubmittedChanges={changeProps.hasSubmittedChanges} submittedChangeType={changeProps.submittedChangeType}
+							submittedPrNumber={changeProps.submittedPrNumber}
 							entityType="filament"
 							onCopy={() => filamentCopy.request(filament, filamentPath)}
 							onDuplicate={() => filamentDuplicate.request(filament)}
@@ -430,6 +431,7 @@
 <Modal show={entityState.showCreateModal} title="Create New Filament"
 	onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="5xl">
 	{#if createError}<MessageBanner type="error" message={createError} />{/if}
+	<InFlightHint path="brands/{brandId}/materials/{materialType}" label="material" />
 	<div class="h-[70vh]">
 		<FilamentForm filament={prefillFilamentData ?? undefined} draftKey={filamentCreateDraftKey} onSubmit={handleCreateFilament} saving={entityState.creating} />
 	</div>

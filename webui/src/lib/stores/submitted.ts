@@ -1,12 +1,41 @@
 import { writable, derived, get } from 'svelte/store';
 import { browser } from '$app/environment';
-import type { EntityChange, SubmittedEntry, SubmittedBuffer } from '$lib/types/changes';
+import type {
+	EntityChange,
+	SubmittedEntry,
+	SubmittedBuffer,
+	SubmissionStatus
+} from '$lib/types/changes';
 import { STORAGE_KEY_SUBMITTED } from '$lib/config/storageKeys';
+import { datasetVisibleAfter } from '$lib/config/datasetSchedule';
 
 const DEFAULT_TTL_DAYS = 7;
 
 function createEmptyBuffer(): SubmittedBuffer {
 	return { entries: {}, version: 1 };
+}
+
+/** Entries written before `status` existed predate any reconcile, so they are still open. */
+function statusOf(entry: SubmittedEntry): SubmissionStatus {
+	return entry.status ?? 'open';
+}
+
+/** True while the PR is still in review — the case an amend can be offered for. */
+function isOpen(entry: SubmittedEntry): boolean {
+	const status = statusOf(entry);
+	return status === 'open' || status === 'changes_requested';
+}
+
+/**
+ * True once a merged entry's data can be expected to have reached the upstream API, so the
+ * overlay copy is redundant and should be dropped. Open/closed entries are not stale by this
+ * measure — open ones are still pending, and closed ones are removed outright.
+ */
+function isMergedAndPublished(entry: SubmittedEntry, now: number): boolean {
+	if (statusOf(entry) !== 'merged') return false;
+	// A merged entry with no timestamp can't be aged; the TTL still evicts it.
+	if (!entry.mergedAt) return false;
+	return datasetVisibleAfter(entry.mergedAt).getTime() <= now;
 }
 
 /** Build a path-to-change index from all entries (newest submission wins). */
@@ -45,10 +74,10 @@ function createSubmittedStore() {
 			if (stored) {
 				const parsed: SubmittedBuffer = JSON.parse(stored);
 				if (parsed.version === 1) {
-					// Evict expired entries on load
+					// Evict expired entries on load, plus merged ones upstream has published.
 					const now = Date.now();
 					for (const [uuid, entry] of Object.entries(parsed.entries)) {
-						if (new Date(entry.expiresAt).getTime() <= now) {
+						if (new Date(entry.expiresAt).getTime() <= now || isMergedAndPublished(entry, now)) {
 							delete parsed.entries[uuid];
 						}
 					}
@@ -74,6 +103,19 @@ function createSubmittedStore() {
 
 	function rebuildIndex(buffer: SubmittedBuffer) {
 		_index = buildIndex(buffer);
+	}
+
+	/** Drop merged entries the nightly rebuild has published. Returns true if anything went. */
+	function evictPublishedFrom(buffer: SubmittedBuffer): boolean {
+		const now = Date.now();
+		let changed = false;
+		for (const [uuid, entry] of Object.entries(buffer.entries)) {
+			if (isMergedAndPublished(entry, now)) {
+				delete buffer.entries[uuid];
+				changed = true;
+			}
+		}
+		return changed;
 	}
 
 	return {
@@ -110,7 +152,8 @@ function createSubmittedStore() {
 				submittedAt: now.toISOString(),
 				expiresAt,
 				changes: lightChanges,
-				paths: lightChanges.map((c) => c.entity.path)
+				paths: lightChanges.map((c) => c.entity.path),
+				status: 'open'
 			};
 
 			update((buffer) => {
@@ -123,9 +166,19 @@ function createSubmittedStore() {
 
 		/**
 		 * Reconcile tracked submissions against GitHub's real PR state.
-		 * Asks the server for the current status of each tracked PR (which checks
-		 * GitHub for anything the merge webhook may have missed) and drops entries
-		 * whose PR is merged or closed. Safe to call on load; no-ops with no entries.
+		 *
+		 * Asks the server for the current status of each tracked PR (which checks GitHub for
+		 * anything the merge webhook may have missed) and records it on the entry.
+		 *
+		 * A **closed** PR is dropped immediately — its data is never coming.
+		 *
+		 * A **merged** PR is deliberately *kept*, marked `merged` with the merge time, until
+		 * the nightly dataset rebuild has plausibly published it (`datasetVisibleAfter`).
+		 * Merging does not make the change visible upstream — the API is rebuilt once a day —
+		 * so dropping the overlay at merge time makes the contributor's own work disappear
+		 * from their view. That is what produced the duplicate submissions in #442 and #460.
+		 *
+		 * Safe to call on load; no-ops with no entries.
 		 */
 		async reconcile(): Promise<void> {
 			if (!browser) return;
@@ -135,6 +188,7 @@ function createSubmittedStore() {
 			if (prNumbers.length === 0) return;
 
 			let statuses: Record<number, string>;
+			let mergedAt: Record<number, string | null> = {};
 			try {
 				const res = await fetch('/api/submissions/status', {
 					method: 'POST',
@@ -142,26 +196,91 @@ function createSubmittedStore() {
 					body: JSON.stringify({ prNumbers })
 				});
 				if (!res.ok) return;
-				({ statuses } = await res.json());
+				const payload = await res.json();
+				statuses = payload.statuses;
+				mergedAt = payload.mergedAt ?? {};
 			} catch {
 				return; // Network/offline — leave entries as-is.
 			}
 
+			const now = new Date().toISOString();
+
 			update((buffer) => {
 				let changed = false;
 				for (const entry of Object.values(buffer.entries)) {
-					const status = statuses[entry.prNumber];
-					if (status === 'merged' || status === 'closed') {
+					const status = statuses[entry.prNumber] as SubmissionStatus | 'unknown' | undefined;
+					if (!status || status === 'unknown') continue;
+
+					if (status === 'closed') {
 						delete buffer.entries[entry.uuid];
+						changed = true;
+						continue;
+					}
+
+					if (status === 'merged') {
+						// Prefer GitHub's merge time; fall back to first observation, which is
+						// close enough given reconcile runs whenever the menu mounts.
+						const merged = mergedAt[entry.prNumber] ?? entry.mergedAt ?? now;
+						if (entry.status !== 'merged' || entry.mergedAt !== merged) {
+							entry.status = 'merged';
+							entry.mergedAt = merged;
+							changed = true;
+						}
+						continue;
+					}
+
+					if (entry.status !== status) {
+						entry.status = status;
 						changed = true;
 					}
 				}
+
+				// A merged entry whose data has since been published upstream is redundant.
+				if (evictPublishedFrom(buffer)) changed = true;
+
 				if (changed) {
 					rebuildIndex(buffer);
 					persist(buffer);
 				}
 				return buffer;
 			});
+		},
+
+		/**
+		 * Entries whose PR is still in review, newest first — the candidates for amending
+		 * rather than opening a competing PR.
+		 */
+		openEntries(): SubmittedEntry[] {
+			const buffer = get({ subscribe });
+			return Object.values(buffer.entries)
+				.filter(isOpen)
+				.sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());
+		},
+
+		/**
+		 * Which still-open submissions already touch any of `paths`. Opening a second PR over
+		 * these is what causes the out-of-order merges and hand-resolved conflicts this store
+		 * exists to prevent, so the submit flow offers to amend instead.
+		 *
+		 * A path counts as overlapping when it matches an in-flight path exactly, or is an
+		 * ancestor/descendant of one — editing a filament that is in review conflicts with the
+		 * PR that created it just as much as re-editing the filament itself does.
+		 */
+		findOverlap(paths: string[]): Array<{ entry: SubmittedEntry; paths: string[] }> {
+			if (paths.length === 0) return [];
+			const results: Array<{ entry: SubmittedEntry; paths: string[] }> = [];
+
+			for (const entry of this.openEntries()) {
+				const inFlight = entry.paths;
+				const hits = paths.filter((p) =>
+					inFlight.some(
+						(q) => p === q || p.startsWith(q + '/') || q.startsWith(p + '/')
+					)
+				);
+				if (hits.length > 0) results.push({ entry, paths: hits });
+			}
+
+			return results;
 		},
 
 		/** Remove a specific submission by UUID. */
@@ -174,13 +293,13 @@ function createSubmittedStore() {
 			});
 		},
 
-		/** Evict expired entries. */
+		/** Evict entries past their TTL, plus merged ones the upstream API has since published. */
 		evictExpired() {
 			const now = Date.now();
 			update((buffer) => {
 				let changed = false;
 				for (const [uuid, entry] of Object.entries(buffer.entries)) {
-					if (new Date(entry.expiresAt).getTime() <= now) {
+					if (new Date(entry.expiresAt).getTime() <= now || isMergedAndPublished(entry, now)) {
 						delete buffer.entries[uuid];
 						changed = true;
 					}
@@ -231,6 +350,11 @@ function createSubmittedStore() {
 				if (p.startsWith(prefix)) return true;
 			}
 			return false;
+		},
+
+		/** Look up one submission by UUID. */
+		getEntry(uuid: string): SubmittedEntry | undefined {
+			return get({ subscribe }).entries[uuid];
 		},
 
 		/** Get all entries (for ChangesMenu display). Sorted newest first. */

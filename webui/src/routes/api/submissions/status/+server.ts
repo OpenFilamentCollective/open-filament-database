@@ -54,6 +54,10 @@ export const POST: RequestHandler = async ({ request }) => {
 	}
 
 	const statuses: Record<number, Status> = {};
+	// GitHub's merge timestamps, so the client can tell when the nightly dataset rebuild will
+	// have published a merged submission (see $lib/config/datasetSchedule.ts). Absent for PRs
+	// answered from the local terminal-status cache, where the client falls back to "now".
+	const mergedAt: Record<number, string | null> = {};
 
 	await Promise.all(
 		prNumbers.map(async (prNumber) => {
@@ -71,6 +75,7 @@ export const POST: RequestHandler = async ({ request }) => {
 					statuses[prNumber] = 'unknown';
 					return;
 				}
+				if (pr.merged_at) mergedAt[prNumber] = pr.merged_at;
 
 				let status: Status;
 				if (pr.merged) status = 'merged';
@@ -90,5 +95,5 @@ export const POST: RequestHandler = async ({ request }) => {
 		})
 	);
 
-	return json({ statuses });
+	return json({ statuses, mergedAt });
 };

@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Button, LoadingSpinner } from '$lib/components/ui';
+	import { Button, LoadingSpinner, FixHint } from '$lib/components/ui';
 	import { isAuthenticated, currentUser, isSpAuthenticated, currentSpUser, authStore } from '$lib/stores/auth';
+	import type { SubmittedEntry } from '$lib/types/changes';
 
 	type Step = 'method' | 'details' | 'success';
 	type SubmitMethod = 'simplyprint' | 'github';
@@ -10,10 +11,17 @@
 		validationIsValid: boolean | null;
 		validationErrorCount: number;
 		validationWarningCount: number;
-		onSubmitSimplyPrint: () => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string }>;
+		onSubmitSimplyPrint: (
+			amendUuid?: string
+		) => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string; amended?: boolean }>;
 		onSubmitGitHub: (title: string, description: string) => Promise<{ success: boolean; message: string; prUrl?: string }>;
 		onClose: () => void;
 		initialMethod?: SubmitMethod;
+		/**
+		 * Still-open submissions whose paths the pending changes also touch. When non-empty the
+		 * wizard offers to add to the newest one instead of opening a competing PR.
+		 */
+		overlap?: Array<{ entry: SubmittedEntry; paths: string[] }>;
 	}
 
 	let {
@@ -24,13 +32,28 @@
 		onSubmitSimplyPrint,
 		onSubmitGitHub,
 		onClose,
-		initialMethod
+		initialMethod,
+		overlap = []
 	}: Props = $props();
 
 	let step = $state<Step>(initialMethod ? 'details' : 'method');
 	let method = $state<SubmitMethod>(initialMethod ?? 'simplyprint');
 	let submitting = $state(false);
-	let result = $state<{ success: boolean; message: string; uuid?: string; prUrl?: string } | null>(null);
+	let result = $state<{
+		success: boolean;
+		message: string;
+		uuid?: string;
+		prUrl?: string;
+		amended?: boolean;
+	} | null>(null);
+
+	// The submission to add to. Amending is only wired up for the SimplyPrint/anon path —
+	// GitHub submissions go to a fork on a per-submission branch, which the bot doesn't own.
+	let amendTarget = $derived(overlap[0]?.entry);
+	let canAmend = $derived(method === 'simplyprint' && !!amendTarget);
+	// Adding to the open PR is the right default; it is what avoids the conflicting,
+	// out-of-order merges that repeat submissions on the same paths produce.
+	let addToExisting = $state(true);
 
 	// Form fields (GitHub only)
 	let prTitle = $state('');
@@ -54,7 +77,9 @@
 
 		try {
 			if (method === 'simplyprint') {
-				result = await onSubmitSimplyPrint();
+				result = await onSubmitSimplyPrint(
+					canAmend && addToExisting ? amendTarget!.uuid : undefined
+				);
 			} else {
 				result = await onSubmitGitHub(prTitle, prDescription);
 			}
@@ -174,6 +199,53 @@
 					</div>
 
 					<div class="flex-1 space-y-3">
+						{#if canAmend}
+							<!-- Opening a second PR over files already in review is what produced the
+							     out-of-order merges and hand-resolved conflicts in #459/#460/#461. -->
+							<div class="rounded-md border border-amber-500/30 bg-amber-500/10 p-3">
+								<p class="text-sm font-medium text-amber-700 dark:text-amber-400">
+									You have an open submission covering some of these changes
+								</p>
+								<p class="mt-0.5 text-xs text-amber-700/80 dark:text-amber-400/80">
+									PR #{amendTarget!.prNumber} · {overlap[0].paths.length} matching
+									{overlap[0].paths.length === 1 ? 'entry' : 'entries'} · still awaiting review
+								</p>
+
+								<div class="mt-3 space-y-2">
+									<label class="flex cursor-pointer items-start gap-2 text-sm">
+										<input type="radio" bind:group={addToExisting} value={true} class="mt-0.5" />
+										<span>
+											Add to submission #{amendTarget!.prNumber}
+											<span class="text-muted-foreground">(recommended)</span>
+										</span>
+									</label>
+									<label class="flex cursor-pointer items-start gap-2 text-sm">
+										<input type="radio" bind:group={addToExisting} value={false} class="mt-0.5" />
+										<span>Open a separate pull request</span>
+									</label>
+								</div>
+
+								<p class="mt-2 text-xs text-muted-foreground">
+									{#if addToExisting}
+										Everything stays in one review, and the two batches can't conflict with
+										each other.
+									{:else}
+										Two pull requests changing the same files usually need a maintainer to
+										resolve conflicts by hand.
+									{/if}
+								</p>
+
+								<a
+									href={amendTarget!.prUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="mt-2 inline-block text-xs text-primary hover:underline"
+								>
+									View submission #{amendTarget!.prNumber} ↗
+								</a>
+							</div>
+						{/if}
+
 						<p class="text-sm text-muted-foreground">Your changes will be submitted anonymously as a pull request to the database. A maintainer will review and merge them.</p>
 
 						<div class="rounded-md border border-muted bg-muted/30 p-3 text-xs text-muted-foreground">
@@ -191,6 +263,8 @@
 							{#if submitting}
 								<LoadingSpinner />
 								Submitting...
+							{:else if canAmend && addToExisting}
+								Add to Submission #{amendTarget!.prNumber}
 							{:else}
 								Submit Changes
 							{/if}
@@ -211,6 +285,21 @@
 			{:else}
 				<!-- GitHub submission -->
 				<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">GitHub Submission</h4>
+
+				{#if amendTarget}
+					<!-- GitHub submissions go to the user's own fork, so the bot can't stack onto
+					     them. All we can do here is say the overlap exists. -->
+					<FixHint
+						level="warn"
+						href={amendTarget.prUrl}
+						hrefLabel="View #{amendTarget.prNumber} ↗"
+						class="mb-4"
+					>
+						Submission <strong>#{amendTarget.prNumber}</strong> is still in review and already
+						changes some of these files. A second pull request over the same files usually
+						needs a maintainer to resolve conflicts by hand.
+					</FixHint>
+				{/if}
 
 				{#if $isAuthenticated}
 					<div class="mb-4 flex items-center gap-3">
@@ -291,7 +380,9 @@
 				</svg>
 			</div>
 
-			<h3 class="mb-2 text-lg font-semibold">Your changes have been submitted!</h3>
+			<h3 class="mb-2 text-lg font-semibold">
+				{result?.amended ? 'Your changes were added to your open submission!' : 'Your changes have been submitted!'}
+			</h3>
 			<p class="mb-6 text-sm text-muted-foreground">
 				A maintainer will review and merge your changes.
 			</p>

@@ -5,7 +5,7 @@
 	import { Modal, MessageBanner, DeleteEntityModal, Button, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { EntityDetails, EntityCard, SlicerSettingsDisplay, CertificationsDisplay, ChildListPanel } from '$lib/components/entity';
+	import { EntityDetails, EntityCard, SlicerSettingsDisplay, CertificationsDisplay, ChildListPanel, SubmittedBanner, InFlightHint } from '$lib/components/entity';
 	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
@@ -334,8 +334,8 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
-			{:else if entityState.hasSubmittedChanges}
-				<MessageBanner type="info" message="Submitted - awaiting merge" />
+			{:else if entityState.submittedEntry}
+				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
@@ -402,6 +402,7 @@
 							secondaryInfo={sizesInfo}
 							hasLocalChanges={changeProps.hasLocalChanges} localChangeType={changeProps.localChangeType}
 							hasSubmittedChanges={changeProps.hasSubmittedChanges} submittedChangeType={changeProps.submittedChangeType}
+							submittedPrNumber={changeProps.submittedPrNumber}
 							entityType="variant"
 							onCopy={() => variantCopy.request(variant, variantPath)}
 							onDuplicate={() => variantDuplicate.request(variant)}
@@ -459,5 +460,6 @@
 <Modal show={entityState.showCreateModal} title="Create New Variant"
 	onClose={() => { createError = null; entityState.closeCreate(); }} maxWidth="5xl" height="3/4">
 	{#if createError}<MessageBanner type="error" message={createError} />{/if}
-	<VariantForm variant={prefillVariantData ?? undefined} draftKey={variantCreateDraftKey} filamentName={`${filament?.name ?? ''} ${filamentId}`} {materialType} siblingFibers={[...filamentFibers]} onSubmit={handleCreateVariant} saving={entityState.creating} />
+	<InFlightHint path="brands/{brandId}/materials/{materialType}/filaments/{filamentId}" label="filament" />
+	<VariantForm variant={prefillVariantData ?? undefined} draftKey={variantCreateDraftKey} filamentName={`${filament?.name ?? ''} ${filamentId}`} {materialType} siblingFibers={[...filamentFibers]} siblingNames={variants.map((v) => v.name)} onSubmit={handleCreateVariant} saving={entityState.creating} />
 </Modal>

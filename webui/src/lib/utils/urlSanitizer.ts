@@ -62,7 +62,14 @@ const TRACKING_PARAMS = new Set<string>([
 	'rnid',
 	'refinements',
 	'_encoding',
-	'pldnsite'
+	'pldnsite',
+	// SimplyPrint storefront recommender context. These reached `main` on 3dhojor's datasheet
+	// URLs (#461) because nothing matched them — the token is per-session and hundreds of
+	// characters long.
+	'_su_rec',
+	'_su_rec_id',
+	// Shopify affiliate referral (seen across SUNLU's purchase links).
+	'sca_ref'
 ]);
 
 /** Hosts (regex on the lowercased hostname) where the product identity is entirely in the
@@ -78,6 +85,7 @@ function isTrackingKey(key: string): boolean {
 		k.startsWith('pk_') ||
 		k.startsWith('pd_rd_') ||
 		k.startsWith('pf_rd_') ||
+		k.startsWith('_su_') ||
 		TRACKING_PARAMS.has(k)
 	);
 }
@@ -96,6 +104,29 @@ function isTrackingFragment(fragment: string): boolean {
 }
 
 /**
+ * Amazon puts a tracking breadcrumb in the *path*, not just the query: a trailing
+ * `/ref=<how-you-got-here>` segment. #408 was submitted as
+ * `.../AzureFilm-PLA-filament-3D-printer-præcision-prototyper/dp/B0FB93XQLM/ref=sr_1_6`,
+ * where `sr_1_6` records "search result, page 1, position 6" — and had to be shortened by
+ * hand in review.
+ *
+ * Truncates the path at that segment. The product-name slug before `/dp/<ASIN>` is left
+ * alone: Amazon ignores it, and it makes the link readable.
+ */
+function stripAmazonRefPath(base: string): string {
+	const host = (getHost(base) ?? '').toLowerCase();
+	if (!/(^|\.)amazon\.[a-z.]+$/.test(host)) return base;
+
+	const schemeEnd = base.indexOf('://');
+	const pathStart = base.indexOf('/', schemeEnd === -1 ? 0 : schemeEnd + 3);
+	if (pathStart === -1) return base;
+
+	const path = base.slice(pathStart);
+	const refIndex = path.search(/\/ref=/);
+	return refIndex === -1 ? base : base.slice(0, pathStart + refIndex);
+}
+
+/**
  * Remove known tracking parameters (plus an empty `?` and tracking-only fragments) from a
  * URL, preserving the original ordering/encoding of everything kept. Idempotent. Returns the
  * input unchanged when there is nothing to strip.
@@ -108,8 +139,11 @@ export function stripTrackingParams(url: string): string {
 	const fragment = hashIdx === -1 ? null : url.slice(hashIdx + 1);
 
 	const qIdx = beforeFrag.indexOf('?');
-	const base = qIdx === -1 ? beforeFrag : beforeFrag.slice(0, qIdx);
+	const rawBase = qIdx === -1 ? beforeFrag : beforeFrag.slice(0, qIdx);
 	const query = qIdx === -1 ? null : beforeFrag.slice(qIdx + 1);
+
+	// Amazon carries tracking in the path, not only the query.
+	const base = stripAmazonRefPath(rawBase);
 
 	let out = base;
 
@@ -154,6 +188,71 @@ export function stripTrackersDeep<T>(value: T): T {
 		return out as T;
 	}
 	return value;
+}
+
+/** Path segments that are a shop's landing area rather than a product. */
+const LANDING_SEGMENTS = new Set(['shop', 'store', 'home', 'index.html', 'index.php']);
+
+/** Lowercased `host + path`, without protocol, trailing slash, query or fragment. */
+function hostAndPath(url: string): string | null {
+	if (!url) return null;
+	try {
+		const parsed = new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(url) ? url : `https://${url}`);
+		if (!parsed.hostname) return null;
+		return (parsed.hostname + parsed.pathname).toLowerCase().replace(/\/+$/, '');
+	} catch {
+		return null;
+	}
+}
+
+/**
+ * True when a purchase link points at a shop's front door rather than at the product.
+ *
+ * PR #454 was submitted with `https://store.bambulab.com/` as the purchase link for a
+ * specific colour, and a maintainer had to go find the real product page by hand. A
+ * homepage identifies neither the filament nor the colour, so it is worse than no link:
+ * downstream consumers treat it as "buy this here" and send people to a catalogue.
+ *
+ * `storefrontUrl` (from the selected store) and `brandWebsite` are compared too, since a
+ * shop's canonical entry point is not always the bare origin (e.g. `example.com/shop`).
+ */
+export function isStorefrontRoot(
+	url: string,
+	storefrontUrl?: string | null,
+	brandWebsite?: string | null
+): boolean {
+	const target = hostAndPath(url);
+	if (!target) return false;
+
+	// A bare origin, or one whose only path segment is a landing area.
+	const segments = target.split('/').slice(1).filter(Boolean);
+	if (segments.length === 0) return true;
+	if (segments.length === 1 && LANDING_SEGMENTS.has(segments[0])) return true;
+
+	// Or exactly the store's / brand's own front page, however deep that happens to be.
+	for (const candidate of [storefrontUrl, brandWebsite]) {
+		const front = candidate ? hostAndPath(candidate) : null;
+		if (front && front === target) return true;
+	}
+
+	return false;
+}
+
+/**
+ * True when a URL looks like a storefront product page rather than a document.
+ *
+ * `data_sheet_url` / `safety_sheet_url` are meant to reach a TDS/SDS. 3dhojor's merged
+ * filament (#461) has both fields pointing at the same Shopify product page — a shop listing
+ * is not a datasheet, and a `?variant=` selector makes it colour-specific on a field that
+ * describes the whole filament.
+ */
+export function looksLikeProductPage(url: string): boolean {
+	if (!url) return false;
+	const target = hostAndPath(url);
+	if (!target) return false;
+	if (/\.(pdf|docx?|xlsx?)$/.test(target)) return false;
+	if (/[?&]variant=/i.test(url)) return true;
+	return /\/(products?|collections|item|dp|sku)\//.test(target + '/');
 }
 
 /**

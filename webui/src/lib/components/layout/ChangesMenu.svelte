@@ -53,8 +53,9 @@
 	onMount(async () => {
 		stores = await db.loadStores();
 
-		// Reconcile tracked submissions against GitHub: drops any whose PR was
-		// merged/closed while the merge webhook was unavailable (e.g. server down).
+		// Refresh tracked submissions against GitHub: drops closed ones, and records merges
+		// the webhook may have missed. Merged entries deliberately stay in the overlay until
+		// the nightly dataset rebuild publishes them — see $lib/config/datasetSchedule.ts.
 		submittedStore.reconcile();
 
 		// Reopen submission wizard after OAuth redirect (GitHub or SimplyPrint)
@@ -416,11 +417,12 @@
 	}
 
 	// Wizard callbacks: return results instead of managing state directly
-	async function submitSimplyPrintForWizard(): Promise<{
+	async function submitSimplyPrintForWizard(amendUuid?: string): Promise<{
 		success: boolean;
 		message: string;
 		uuid?: string;
 		prUrl?: string;
+		amended?: boolean;
 	}> {
 		const exportData = await changeStore.exportChanges();
 
@@ -440,26 +442,33 @@
 			body: JSON.stringify({
 				changes: exportData.changes,
 				images: imagesWithPaths,
-				title: generateChangeTitle(exportData.changes)
+				title: generateChangeTitle(exportData.changes),
+				amendUuid
 			})
 		});
 
 		const result = await response.json();
 
 		if (result.success) {
+			// An amend keeps the submission's UUID, so this merges the new batch into the
+			// existing overlay entry rather than creating a second one for the same PR.
+			const previous = result.amended ? submittedStore.getEntry(result.uuid!) : undefined;
 			submittedStore.archive({
 				uuid: result.uuid!,
 				prUrl: result.prUrl || '',
 				prNumber: result.prNumber || 0,
-				changes: exportData.changes
+				changes: [...(previous?.changes ?? []), ...exportData.changes]
 			});
 			userPrefs.addSubmission(result.uuid!, result.prUrl || '', result.prNumber || 0);
 			changeStore.clear();
 			return {
 				success: true,
-				message: 'Your changes have been submitted for review by a maintainer.',
+				message: result.amended
+					? `Your changes were added to submission #${result.prNumber}.`
+					: 'Your changes have been submitted for review by a maintainer.',
 				uuid: result.uuid,
-				prUrl: result.prUrl
+				prUrl: result.prUrl,
+				amended: result.amended === true
 			};
 		} else {
 			return {
@@ -468,6 +477,15 @@
 			};
 		}
 	}
+
+	/**
+	 * Still-open submissions that already cover paths in the pending change set.
+	 *
+	 * A contributor who finishes one batch, submits, and keeps editing would otherwise open a
+	 * competing PR on the same files — #459/#460/#461 did exactly that within 13 minutes and
+	 * merged out of order. The wizard offers to add to the open PR instead.
+	 */
+	let submissionOverlap = $derived(submittedStore.findOverlap($changesList.map((c) => c.entity.path)));
 
 	async function createPRForWizard(
 		title: string,
@@ -1010,6 +1028,7 @@
 							{validationWarningCount}
 							onSubmitSimplyPrint={submitSimplyPrintForWizard}
 							onSubmitGitHub={createPRForWizard}
+							overlap={submissionOverlap}
 							onClose={() => {
 								submitModalOpen = false;
 								reopenedAfterAuth = false;

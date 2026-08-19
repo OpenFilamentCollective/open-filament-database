@@ -104,8 +104,14 @@ _TRACKING_PARAMS = {
     "refinements",
     "_encoding",
     "pldnsite",
+    # SimplyPrint storefront recommender context. Seen on 3dhojor datasheet URLs merged in
+    # #461; the token is per-session and hundreds of characters long.
+    "_su_rec",
+    "_su_rec_id",
+    # Shopify affiliate referral (seen across SUNLU's purchase links).
+    "sca_ref",
 }
-_TRACKING_PREFIXES = ("utm_", "mc_", "pk_", "pd_rd_", "pf_rd_")
+_TRACKING_PREFIXES = ("utm_", "mc_", "pk_", "pd_rd_", "pf_rd_", "_su_")
 # Hosts where the product identity is entirely in the path, so the whole query is disposable.
 _WHOLE_QUERY_HOSTS = re.compile(r"(^|\.)(amazon|ebay)\.[a-z.]+$")
 _SHORTLINK_HOSTS = {"a.co", "amzn.to", "amzn.eu"}
@@ -120,6 +126,26 @@ def _is_tracking_fragment(fragment: str) -> bool:
     if "=" not in fragment:
         return False
     return _is_tracking_key(re.split(r"[&=]", fragment, maxsplit=1)[0])
+
+
+_AMAZON_HOST = re.compile(r"(^|\.)amazon\.[a-z.]+$")
+
+
+def _strip_amazon_ref_path(base: str, host: str) -> str:
+    """Drop Amazon's trailing `/ref=<how-you-got-here>` path breadcrumb.
+
+    Amazon puts a tracker in the *path*, not only the query. PR #408 was submitted as
+    `.../dp/B0FB93XQLM/ref=sr_1_6` ("search result, page 1, position 6") and had to be
+    shortened by hand in review. The product-name slug before `/dp/<ASIN>` is kept — Amazon
+    ignores it and it makes the link readable.
+    """
+    if not _AMAZON_HOST.search(host):
+        return base
+    path = urlsplit(base).path
+    idx = path.find("/ref=")
+    if idx == -1:
+        return base
+    return base[: len(base) - len(path) + idx]
 
 
 def strip_tracking_params(url: str) -> str:
@@ -138,6 +164,9 @@ def strip_tracking_params(url: str) -> str:
     except ValueError:
         host = ""
     drop_all = bool(_WHOLE_QUERY_HOSTS.search(host)) or host in _SHORTLINK_HOSTS
+
+    # Amazon carries tracking in the path, not only the query.
+    base = _strip_amazon_ref_path(base, host)
 
     out = base
     if query is not None and not drop_all:

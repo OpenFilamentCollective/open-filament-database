@@ -94,6 +94,8 @@ export interface ImageReference {
  * A single submitted (PR-created) change set, preserved for visual overlay
  * until the entry expires (TTL-based).
  */
+export type SubmissionStatus = 'open' | 'merged' | 'closed' | 'changes_requested';
+
 export interface SubmittedEntry {
 	uuid: string;
 	prUrl: string;
@@ -103,6 +105,17 @@ export interface SubmittedEntry {
 	changes: EntityChange[];
 	/** Denormalized entity paths for O(1) lookup */
 	paths: string[];
+	/**
+	 * Last known PR state, refreshed by `submittedStore.reconcile()`. Absent on entries
+	 * written before this field existed; treat that as 'open'.
+	 */
+	status?: SubmissionStatus;
+	/**
+	 * When the PR merged. A merged entry stays in the overlay until the nightly dataset
+	 * rebuild has plausibly published it (see `$lib/config/datasetSchedule.ts`) — otherwise
+	 * the contributor's own work disappears from their view and they re-submit it.
+	 */
+	mergedAt?: string;
 }
 
 /**
