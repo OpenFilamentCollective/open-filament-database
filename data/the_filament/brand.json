@@ -1,7 +1,8 @@
 {
-    "id": "the_filament",
-    "name": "The Filament",
-    "website": "https://spectrumfilaments.com/en/brand/the-filament-en/",
-    "logo": "logo.png",
-    "origin": "PL"
+  "uuid": "4c73d2cc-c3ab-4976-b752-25a687fa6485",
+  "id": "the_filament",
+  "name": "The Filament",
+  "website": "https://spectrumfilaments.com/en/brand/the-filament-en/",
+  "logo": "logo.png",
+  "origin": "PL"
 }

@@ -1,9 +1,11 @@
 {
+  "uuid": "67674e46-6edb-4971-a363-081bc223dd75",
   "id": "pure_transparent",
   "name": "Pure Transparent",
   "color_hex": "#EFE8D8",
   "traits": {
     "translucent": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

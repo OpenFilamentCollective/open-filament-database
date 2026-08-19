@@ -1,12 +1,13 @@
 [
-    {
-      "filament_weight": 1000,
-      "diameter": 1.75,
-      "purchase_links": [
-        {
-          "store_id": "overture3d",
-          "url": "https://overture3d.com/collections/all/products/overture-petg"
-        }
-      ]
-    }
-  ]
+  {
+    "uuid": "fa1f32d0-6d6d-48b3-87f0-05ecf228455e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "overture3d",
+        "url": "https://overture3d.com/collections/all/products/overture-petg"
+      }
+    ]
+  }
+]

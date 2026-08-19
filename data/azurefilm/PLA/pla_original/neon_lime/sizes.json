@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "ac00b66a-f18f-4d27-991f-aec89f161709",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.de/-/da/dp/B0FB959ZG7"
+      }
+    ]
+  }
+]

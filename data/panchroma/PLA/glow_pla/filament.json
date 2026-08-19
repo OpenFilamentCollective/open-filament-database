@@ -1,6 +1,7 @@
 {
-    "id": "glow_pla",
-    "name": "Glow PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "8e4cde48-b30e-495b-9bb8-baddd9d020f0",
+  "id": "glow_pla",
+  "name": "Glow PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

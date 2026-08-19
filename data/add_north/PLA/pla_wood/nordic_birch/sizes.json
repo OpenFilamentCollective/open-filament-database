@@ -1,26 +1,28 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "empty_spool_weight": 175,
-        "spool_core_diameter": 41,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PLA%20Wood/PLA%20Wood%20-%201.75mm%20-%20500g%20-%20Nordic%20Birch"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 238,
-        "spool_core_diameter": 67,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PLA%20Wood/PLA%20Wood%20-%201.75mm%20-%201000g%20-%20Nordic%20Birch"
-            }
-        ]
-    }
+  {
+    "uuid": "ed25a02e-196b-44cd-8e42-a08f7f2ef316",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "empty_spool_weight": 175,
+    "spool_core_diameter": 41,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PLA%20Wood/PLA%20Wood%20-%201.75mm%20-%20500g%20-%20Nordic%20Birch"
+      }
+    ]
+  },
+  {
+    "uuid": "a814d455-fe5b-43df-b987-f03e847b41bb",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 238,
+    "spool_core_diameter": 67,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PLA%20Wood/PLA%20Wood%20-%201.75mm%20-%201000g%20-%20Nordic%20Birch"
+      }
+    ]
+  }
 ]

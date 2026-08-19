@@ -1,4 +1,5 @@
 {
+    "uuid": "815b629b-7d97-4412-b0d4-7459b8735b09",
     "id": "petg",
     "name": "PETG",
     "diameter_tolerance": 0.03,
@@ -21,7 +22,7 @@
         },
         "elegooslicer": {
             "generic_id": "GFG99",
-            "id": "ESN03",
+            "id": "E2001",
             "profile_name": "eSUN PETG"
         },
         "crealityprint": {

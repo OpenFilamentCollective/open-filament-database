@@ -1,0 +1,21 @@
+{
+  "uuid": "81f56444-f089-4f00-ab2d-ba345c6617ce",
+  "id": "cr_petg",
+  "name": "CR-PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "discontinued": false,
+  "slicer_settings": {
+    "crealityprint": {
+      "bed_temp": 70,
+      "first_layer_bed_temp": 75,
+      "first_layer_nozzle_temp": 250,
+      "nozzle_temp": 250,
+      "profile_name": "Creality CR-PETG"
+    }
+  }
+}

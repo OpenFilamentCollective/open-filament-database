@@ -1,8 +1,9 @@
 {
-    "id": "glacier_blue",
-    "name": "Glacier Blue",
-    "color_hex": [
-        "#FFFFFF",
-        "#A3EAFF"
-    ]
+  "uuid": "21154e06-ce0c-4dcf-b000-a9003f0b0eca",
+  "id": "glacier_blue",
+  "name": "Glacier Blue",
+  "color_hex": [
+    "#FFFFFF",
+    "#A3EAFF"
+  ]
 }

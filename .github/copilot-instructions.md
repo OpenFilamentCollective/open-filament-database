@@ -175,6 +175,11 @@ The repository runs these workflows:
 
 4. **Style Data** (`style_data.yaml`):
    - Auto-runs `ofd script style_data` to keep JSON files sorted and normalized
+   - Commits the result back to `main`, so it must not race itself: runs are
+     serialized by a `concurrency` group, a run that starts on a commit that is no
+     longer the branch tip skips cleanly, and a push rejected mid-run re-syncs and
+     restyles before retrying. Styling is whole-tree and idempotent, which is what
+     makes skipping and restyling safe.
 
 5. **Profile Updates** (`update_profiles.yaml`):
    - Scheduled daily at midnight UTC

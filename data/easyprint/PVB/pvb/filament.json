@@ -1,6 +1,7 @@
 {
-    "id": "pvb",
-    "name": "PVB",
-    "diameter_tolerance": 0.02,
-    "density": 1.11
+  "uuid": "99088e5f-2069-49ef-9d54-cc6ea0097af1",
+  "id": "pvb",
+  "name": "PVB",
+  "diameter_tolerance": 0.02,
+  "density": 1.11
 }

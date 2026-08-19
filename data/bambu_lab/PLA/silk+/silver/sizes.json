@@ -1,12 +1,14 @@
 [
-    {
-        "filament_weight": 1000.0,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-silk-upgrade?variant=43128679760008"
-            }
-        ]
-    }
+  {
+    "uuid": "04399ecd-796f-4f4e-887d-c4bb4b32b2f2",
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "article_number": "13109",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-silk-upgrade?variant=43128679760008"
+      }
+    ]
+  }
 ]

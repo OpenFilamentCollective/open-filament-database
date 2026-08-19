@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "b7237fc8-4e25-4b04-9337-bd4aa38dbed9",
     "filament_weight": 500,
     "diameter": 1.75,
     "ean": "5903175655189",
@@ -12,6 +13,7 @@
     ]
   },
   {
+    "uuid": "d4f14b0c-81f8-42b4-aaee-349f3fed3689",
     "filament_weight": 1000,
     "diameter": 1.75,
     "article_number": "80716",
@@ -23,6 +25,7 @@
     ]
   },
   {
+    "uuid": "a6d54fb7-f752-4ea4-b901-82eaa8b6d47c",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5905991404040",
@@ -35,6 +38,7 @@
     ]
   },
   {
+    "uuid": "64dd39aa-ee95-4b4f-98da-e5c9d04a019d",
     "filament_weight": 2000,
     "diameter": 1.75,
     "ean": "5903175659019",

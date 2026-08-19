@@ -1,9 +1,11 @@
 {
+  "uuid": "b6a99e30-87c5-4fb3-be29-0bac7247bb0f",
   "id": "fired_brick",
   "name": "Fired Brick",
   "color_hex": "#8B3A3A",
   "traits": {
     "matte": true,
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

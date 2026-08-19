@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "40c648eb-503e-4b32-9397-f82716a4b9dd",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
@@ -9,7 +10,7 @@
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-glow?"
+        "url": "https://us.polymaker.com/products/panchroma-glow"
       }
     ]
   }

@@ -1,4 +1,5 @@
 {
+    "uuid": "8dbc78d7-39b4-4690-b669-c773350f14bf",
     "id": "pla",
     "name": "PLA",
     "diameter_tolerance": 0.02,
@@ -18,7 +19,7 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFL04",
+            "id": "GFL04",
             "profile_name": "Overture PLA"
         },
         "superslicer": {
@@ -26,7 +27,7 @@
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFL04",
+            "id": "GFL04",
             "profile_name": "Overture PLA"
         },
         "crealityprint": {

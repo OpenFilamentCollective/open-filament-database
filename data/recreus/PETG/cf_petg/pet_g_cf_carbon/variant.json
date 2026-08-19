@@ -1,8 +1,10 @@
 {
+  "uuid": "79371e05-aa0c-42f2-bebe-654e3c9a148e",
   "id": "pet_g_cf_carbon",
   "name": "PET-G CF Carbon",
   "color_hex": "#545252",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

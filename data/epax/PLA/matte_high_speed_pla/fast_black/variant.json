@@ -1,8 +1,10 @@
 {
+  "uuid": "87b8eda7-ef4f-4ad3-bb07-0a4d177743fc",
   "id": "fast_black",
   "name": "Fast + Black",
   "color_hex": "#24292A",
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

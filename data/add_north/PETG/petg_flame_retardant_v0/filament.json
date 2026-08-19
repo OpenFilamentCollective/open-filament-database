@@ -1,8 +1,9 @@
 {
-    "id": "petg_flame_retardant_v0",
-    "name": "PETG Flame Retardant V0",
-    "diameter_tolerance": 0.02,
-    "density": 1.25,
-    "max_dry_temperature": 65,
-    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_PETGv0_oY3Rem.pdf"
+  "uuid": "df52df06-f31c-4e62-8bc3-3f07d17d76ef",
+  "id": "petg_flame_retardant_v0",
+  "name": "PETG Flame Retardant V0",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "max_dry_temperature": 65,
+  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_PETGv0_oY3Rem.pdf"
 }

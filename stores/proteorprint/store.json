@@ -1,10 +1,11 @@
 {
-    "id": "proteorprint",
-    "name": "Proteor Print",
-    "storefront_url": "https://www.proteordigital.com/category/all-products",
-    "logo": "logo.png",
-    "ships_from": [
-        "US"
-    ],
-    "ships_to": []
+  "uuid": "825b4358-e556-4a3e-96be-1389d0fd444a",
+  "id": "proteorprint",
+  "name": "Proteor Print",
+  "storefront_url": "https://www.proteordigital.com/category/all-products",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": []
 }

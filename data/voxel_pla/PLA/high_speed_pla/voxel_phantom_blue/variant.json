@@ -1,8 +1,10 @@
 {
+  "uuid": "fb03c71e-8ca2-4b3a-918d-55ca09c573c1",
   "id": "voxel_phantom_blue",
   "name": "VOXEL Phantom Blue",
   "color_hex": "#003287",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

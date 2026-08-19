@@ -1,6 +1,7 @@
 {
-    "id": "pa6_gk10",
-    "name": "PA6 GK10",
-    "diameter_tolerance": 0.02,
-    "density": 1.01
+  "uuid": "7a6aaadb-0ef9-4333-9704-fba1f081ffe3",
+  "id": "pa6_gk10",
+  "name": "PA6 GK10",
+  "diameter_tolerance": 0.02,
+  "density": 1.01
 }

@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { Brand, Material } from '$lib/types/database';
-	import { Modal, MessageBanner, Button, DeleteConfirmationModal, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
+	import { Modal, MessageBanner, Button, DeleteEntityModal, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
 	import { duplicateBrandChildren, loadBrandChildren, pasteBrandChildren, loadMaterialChildren, pasteMaterialChildren } from '$lib/services/duplicateService';
 	import { BrandForm, MaterialForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
@@ -10,10 +10,11 @@
 	import { Logo, EntityDetails, EntityCard, ChildListPanel } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
+	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
 	import { createCopyAction, createDuplicateAction, createPasteHandler } from '$lib/utils/useEntityActions.svelte';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { db } from '$lib/services/database';
-	import { deleteEntity, generateMaterialType, generateSlug, mergeEntityData } from '$lib/services/entityService';
+	import { generateMaterialType, generateSlug, mergeEntityData } from '$lib/services/entityService';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { untrack } from 'svelte';
 	import { changes } from '$lib/stores/changes';
@@ -60,6 +61,8 @@
 		getEntityPath: () => brand ? `brands/${brandId}` : null,
 		getEntity: () => brand
 	});
+
+	const deleteFlow = createDeleteFlow(messageHandler);
 
 	// --- Shared actions for THIS brand (detail-level) ---
 	const brandCopy = createCopyAction('brand', async (_data, _path) => {
@@ -247,33 +250,19 @@
 		}
 	}
 
-	// --- Delete brand handler ---
-	async function handleDelete() {
+	// --- Delete brand (redirect-first) ---
+	function openDeleteBrand() {
 		if (!brand) return;
-
-		entityState.deleting = true;
-		messageHandler.clear();
-
-		try {
-			const result = await deleteEntity(
-				`brands/${brandId}`,
-				'Brand',
-				() => db.deleteBrand(brandId, brand!)
-			);
-
-			if (result.success) {
-				messageHandler.showSuccess(result.message);
-				entityState.closeDelete();
-				entityState.deleting = false;
-				setTimeout(() => goto('/brands'), 1500);
-			} else {
-				messageHandler.showError(result.message);
-				entityState.deleting = false;
-			}
-		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete brand');
-			entityState.deleting = false;
-		}
+		deleteFlow.open({
+			type: 'brand',
+			path: `brands/${brandId}`,
+			label: 'Brand',
+			name: brand.name,
+			uuid: brand.uuid,
+			movedFrom: brand.moved_from,
+			deleteFn: () => db.deleteBrand(brandId, brand!),
+			navigateOnDelete: '/brands'
+		});
 	}
 
 	// --- Duplicate/paste brand submit handler ---
@@ -336,24 +325,22 @@
 		}
 	}
 
-	// --- Delete material from card ---
-	async function handleDeleteMaterial(material: Material) {
+	// --- Delete material from card (same modal, stays on this page) ---
+	function openDeleteMaterial(material: Material) {
 		const matType = material.materialType ?? material.material.toLowerCase();
-		try {
-			const result = await deleteEntity(
-				`brands/${brandId}/materials/${matType}`,
-				'Material',
-				() => db.deleteMaterial(brandId, matType, material)
-			);
-			if (result.success) {
-				messageHandler.showSuccess(result.message);
+		deleteFlow.open({
+			type: 'material',
+			path: `brands/${brandId}/materials/${matType}`,
+			label: 'Material',
+			name: material.material,
+			uuid: material.uuid,
+			movedFrom: material.moved_from,
+			deleteFn: () => db.deleteMaterial(brandId, matType, material),
+			navigateOnDelete: null,
+			onSuccess: () => {
 				materials = materials.filter((m) => (m.materialType ?? m.material.toLowerCase()) !== matType);
-			} else {
-				messageHandler.showError(result.message);
 			}
-		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete material');
-		}
+		});
 	}
 </script>
 
@@ -408,7 +395,7 @@
 								onDuplicate={() => brandDuplicate.request(brandData)}
 								onCopyRequest={() => brandCopy.request(brandData, `brands/${brandId}`)}
 								onPaste={(data) => { formDrafts.clear(BRAND_CREATE_DRAFT_KEY); entityState.openPaste(data); }}
-								onDelete={entityState.openDelete}
+								onDelete={openDeleteBrand}
 								onViewDiff={entityState.openCloudCompare}
 							/>
 						</div>
@@ -443,7 +430,9 @@
 							onCopy={() => materialCopy.request(material, materialPath)}
 							onDuplicate={() => materialDuplicate.request(material)}
 							onPaste={materialPaste}
-							onDelete={() => handleDeleteMaterial(material)}
+							onDelete={changeProps.localChangeType === 'delete' || changeProps.submittedChangeType === 'delete'
+								? undefined
+								: () => openDeleteMaterial(material)}
 						/>
 					{/each}
 				</ChildListPanel>
@@ -466,15 +455,16 @@
 	{/if}
 </Modal>
 
-<DeleteConfirmationModal
-	show={entityState.showDeleteModal}
-	title="Delete Brand"
-	entityName={brand?.name ?? ''}
-	isLocalCreate={entityState.isLocalCreate}
-	deleting={entityState.deleting}
-	onClose={entityState.closeDelete}
-	onDelete={handleDelete}
-	cascadeWarning="This will also delete all materials, filaments, and variants within this brand."
+<DeleteEntityModal
+	show={deleteFlow.show}
+	source={deleteFlow.source}
+	isLocalCreate={deleteFlow.isLocalCreate}
+	cascadeWarning={deleteFlow.cascadeWarning}
+	busy={deleteFlow.busy}
+	resolving={deleteFlow.resolving}
+	error={deleteFlow.error}
+	onClose={deleteFlow.close}
+	onConfirm={deleteFlow.confirm}
 />
 
 <!-- Copy/Duplicate options modals (brand-level) -->

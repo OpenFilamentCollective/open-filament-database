@@ -1,4 +1,5 @@
 {
+    "uuid": "03bb37bf-0e97-4282-a895-84e75c9fceba",
     "id": "tpu",
     "name": "TPU",
     "diameter_tolerance": 0.05,
@@ -9,12 +10,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFU99",
-            "id": "29716562900",
+            "id": "1480063856",
             "profile_name": "Snapmaker TPU"
         },
         "elegooslicer": {
             "generic_id": "GFU99",
-            "id": "29716562900",
+            "id": "1480063856",
             "profile_name": "Snapmaker TPU"
         },
         "crealityprint": {

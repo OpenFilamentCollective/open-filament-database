@@ -1,4 +1,5 @@
 {
+    "uuid": "faa650cd-45bc-490f-a93e-f3deed007d4b",
     "id": "silk+",
     "name": "PLA Silk+",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL96",
-            "id": "OGFA06",
+            "id": "GFA06",
             "profile_name": "Bambu PLA Silk+"
         },
         "elegooslicer": {
             "generic_id": "GFL96",
-            "id": "OGFA06",
+            "id": "GFA06",
             "profile_name": "Bambu PLA Silk+"
         },
         "anycubicslicer": {

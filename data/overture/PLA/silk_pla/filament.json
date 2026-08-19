@@ -1,4 +1,5 @@
 {
+    "uuid": "b303de02-6698-4742-ba7c-f86c4f7084dd",
     "id": "silk_pla",
     "name": "Silk PLA",
     "diameter_tolerance": 0.02,
@@ -15,7 +16,7 @@
         },
         "elegooslicer": {
             "generic_id": "GFL96",
-            "id": "GFOT002",
+            "id": "GFOT002_02",
             "profile_name": "Overture Silk PLA"
         }
     }

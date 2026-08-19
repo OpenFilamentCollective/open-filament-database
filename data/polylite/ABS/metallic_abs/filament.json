@@ -1,6 +1,7 @@
 {
-    "id": "metallic_abs",
-    "name": "Metallic ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.12
+  "uuid": "84823c84-4274-4a54-a5c0-a7dd4b9b852a",
+  "id": "metallic_abs",
+  "name": "Metallic ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.12
 }

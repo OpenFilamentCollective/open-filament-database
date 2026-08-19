@@ -1,0 +1,26 @@
+{
+    "uuid": "cc5a3aed-8228-44f0-a33e-d2a2c34069da",
+    "id": "pet_cf",
+    "name": "PET-CF",
+    "diameter_tolerance": 0.02,
+    "density": 1.32,
+    "max_dry_temperature": 85,
+    "min_print_temperature": 260,
+    "max_print_temperature": 290,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "min_chamber_temperature": 45,
+    "max_chamber_temperature": 60,
+    "min_nozzle_diameter": 0.4,
+    "discontinued": false,
+    "slicer_settings": {
+        "orcaslicer": {
+            "id": "OEPETGB0",
+            "profile_name": "Elegoo PET-CF"
+        },
+        "elegooslicer": {
+            "id": "OEPETGB0",
+            "profile_name": "Elegoo PET-CF"
+        }
+    }
+}

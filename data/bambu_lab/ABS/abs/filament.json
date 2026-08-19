@@ -1,4 +1,5 @@
 {
+    "uuid": "ad4bca77-da39-4b75-a4c6-4562e46cfdb4",
     "id": "abs",
     "name": "ABS",
     "diameter_tolerance": 0.03,
@@ -17,12 +18,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFB99",
-            "id": "OGFB00",
+            "id": "GFB00",
             "profile_name": "Bambu ABS"
         },
         "elegooslicer": {
             "generic_id": "GFB99",
-            "id": "OGFB00",
+            "id": "GFB00",
             "profile_name": "Bambu ABS"
         },
         "crealityprint": {

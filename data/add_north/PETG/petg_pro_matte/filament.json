@@ -1,4 +1,5 @@
 {
+    "uuid": "3b566d45-c655-4524-82a2-c2aaf53ba280",
     "id": "petg_pro_matte",
     "name": "PETG PRO Matte",
     "diameter_tolerance": 0.02,
@@ -11,6 +12,11 @@
             "profile_name": "addnorth PETG PRO Matte"
         },
         "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "GF_ANPM",
+            "profile_name": "addnorth PETG PRO Matte"
+        },
+        "elegooslicer": {
             "generic_id": "GFG99",
             "id": "GF_ANPM",
             "profile_name": "addnorth PETG PRO Matte"

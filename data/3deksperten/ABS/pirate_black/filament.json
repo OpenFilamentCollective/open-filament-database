@@ -1,0 +1,18 @@
+{
+  "uuid": "24e6a665-9451-4eee-97c0-3a9d65f1fd65",
+  "id": "pirate_black",
+  "name": "Pirate Black",
+  "diameter_tolerance": 0.02,
+  "density": 1.05,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 240,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 76,
+  "min_chamber_temperature": 40,
+  "max_chamber_temperature": 45,
+  "chamber_temperature": 14,
+  "min_nozzle_diameter": 0.4,
+  "safety_sheet_url": "https://3deksperten.dk/products/pirate-black-3de-premium-abs-1-75mm",
+  "discontinued": false
+}

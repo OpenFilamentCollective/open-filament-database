@@ -1,15 +1,16 @@
 {
-    "id": "gst3d",
-    "name": "GST3d",
-    "storefront_url": "https://gst3d.eu/",
-    "logo": "logo.png",
-    "ships_from": [
-        "ES"
-    ],
-    "ships_to": [
-        "US",
-        "UK",
-        "EU",
-        "CA"
-    ]
+  "uuid": "d314bacf-3ff5-4340-8d25-2cfee279aa5b",
+  "id": "gst3d",
+  "name": "GST3d",
+  "storefront_url": "https://gst3d.eu/",
+  "logo": "logo.png",
+  "ships_from": [
+    "ES"
+  ],
+  "ships_to": [
+    "US",
+    "UK",
+    "EU",
+    "CA"
+  ]
 }

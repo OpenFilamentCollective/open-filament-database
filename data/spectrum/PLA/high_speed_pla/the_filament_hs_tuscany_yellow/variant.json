@@ -1,8 +1,10 @@
 {
+  "uuid": "6315dfbb-1069-4432-9c6c-f86e5e522e20",
   "id": "the_filament_hs_tuscany_yellow",
   "name": "The Filament HS Tuscany Yellow",
   "color_hex": "#F2DE00",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

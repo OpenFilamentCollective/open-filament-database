@@ -1,10 +1,11 @@
 {
-    "id": "blue",
-    "name": "Blue",
-    "color_hex": [
-        "#005bd3"
-    ],
-    "traits": {
-        "matte": true
-    }
+  "uuid": "fa13c407-d09b-4ffc-911a-35738bed2542",
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": [
+    "#005bd3"
+  ],
+  "traits": {
+    "matte": true
+  }
 }

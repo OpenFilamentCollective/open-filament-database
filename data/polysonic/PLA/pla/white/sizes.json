@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "84152ec1-bc69-4a56-a1d1-3f410a4cd457",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polysonic-pla?"
+        "url": "https://us.polymaker.com/products/polysonic-pla"
       }
     ]
   }

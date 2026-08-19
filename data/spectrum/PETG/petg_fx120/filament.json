@@ -1,6 +1,7 @@
 {
-    "id": "petg_fx120",
-    "name": "PETG FX120",
-    "diameter_tolerance": 0.02,
-    "density": 1.13
+  "uuid": "c19b3d8a-fb0c-435e-8ecb-db07d7f83a89",
+  "id": "petg_fx120",
+  "name": "PETG FX120",
+  "diameter_tolerance": 0.02,
+  "density": 1.13
 }

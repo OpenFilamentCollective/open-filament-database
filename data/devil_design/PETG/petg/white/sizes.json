@@ -1,15 +1,18 @@
 [
   {
+    "uuid": "e9692cee-991f-48e4-a039-f1b569b31d18",
     "filament_weight": 1000,
     "diameter": 1.75,
     "gtin": "5902280030379"
   },
   {
+    "uuid": "650d5e3c-16b9-4cb8-88fe-0287590b7f2d",
     "filament_weight": 2000,
     "diameter": 1.75,
     "gtin": "5902280030089"
   },
   {
+    "uuid": "d00aa189-1c16-4837-9127-57d434cffb2d",
     "filament_weight": 5000,
     "diameter": 1.75,
     "gtin": "5902280030966"

@@ -1,4 +1,5 @@
 {
+    "uuid": "0cfd67db-fe36-4a97-9dbd-7a633ad15fb9",
     "id": "galaxy",
     "name": "PLA Galaxy",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA15",
+            "id": "GFA15",
             "profile_name": "Bambu PLA Galaxy"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA15",
+            "id": "GFA15",
             "profile_name": "Bambu PLA Galaxy"
         },
         "crealityprint": {

@@ -1,6 +1,7 @@
 {
-    "id": "graphene_strong",
-    "name": "PETG Graphene Strong",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "46680564-0dce-4225-b465-ff8e3be6ccf4",
+  "id": "graphene_strong",
+  "name": "PETG Graphene Strong",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

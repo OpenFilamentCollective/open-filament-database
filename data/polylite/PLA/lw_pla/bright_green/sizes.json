@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "c6dfa4d7-8756-4c0d-a69f-1743794be607",
     "filament_weight": 800,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-lw-pla?"
+        "url": "https://us.polymaker.com/products/polylite-lw-pla"
       }
     ]
   }

@@ -1,21 +1,23 @@
 [
   {
+    "uuid": "0678669c-d59f-4271-9371-2603ecb2b53b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-satin?"
+        "url": "https://us.polymaker.com/products/panchroma-satin"
       }
     ]
   },
   {
+    "uuid": "3a64aee8-4310-41c0-a506-c3760dfba1c0",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-satin?"
+        "url": "https://us.polymaker.com/products/panchroma-satin"
       }
     ]
   }

@@ -1,61 +1,71 @@
 [
   {
+    "uuid": "c09dca05-acb1-470b-8f4c-094cb05f51fe",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "gtin": "6938936710080",
+    "article_number": "PB01006",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "dd3c77b4-b136-482e-868e-2cddb022b829",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "616c420d-b4f0-4b4f-a6fa-dc4f533786b6",
     "filament_weight": 5000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "28fd748a-e970-4d94-b24e-65d647b9db8a",
     "filament_weight": 1000,
     "diameter": 2.85,
+    "gtin": "6938936711179",
+    "article_number": "PB01019",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "3e9e69cd-a023-4cdf-8ea6-ec43862d16cc",
     "filament_weight": 3000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "64f00776-5114-417a-8ac5-f15f04fbe051",
     "filament_weight": 5000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   }

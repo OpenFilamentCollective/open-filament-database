@@ -1,6 +1,7 @@
 {
-    "id": "pla_carbon_fiber",
-    "name": "PLA Carbon Fiber",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "b69741c0-b7db-43b3-b4c2-e32640d91941",
+  "id": "pla_carbon_fiber",
+  "name": "PLA Carbon Fiber",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

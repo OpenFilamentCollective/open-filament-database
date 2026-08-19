@@ -1,6 +1,7 @@
 {
-    "id": "neon_abs",
-    "name": "Neon ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.12
+  "uuid": "df3e8b3e-c379-4707-8762-084afa77b218",
+  "id": "neon_abs",
+  "name": "Neon ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.12
 }

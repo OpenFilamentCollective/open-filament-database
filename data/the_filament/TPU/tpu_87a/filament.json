@@ -1,6 +1,7 @@
 {
-    "id": "tpu_87a",
-    "name": "TPU-87A",
-    "diameter_tolerance": 0.02,
-    "density": 1.21
+  "uuid": "f74077cd-f8f8-4128-a070-ac5cf9e6afb1",
+  "id": "tpu_87a",
+  "name": "TPU-87A",
+  "diameter_tolerance": 0.02,
+  "density": 1.21
 }

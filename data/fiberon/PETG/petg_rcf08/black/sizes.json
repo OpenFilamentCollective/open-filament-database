@@ -1,21 +1,23 @@
 [
   {
+    "uuid": "7e929205-d59e-4b33-8811-1da105589db9",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon-petg-rcf08?"
+        "url": "https://us.polymaker.com/products/fiberon-petg-rcf08"
       }
     ]
   },
   {
+    "uuid": "f659a447-190c-4567-8ba9-77434ec00c0f",
     "filament_weight": 500,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon-petg-rcf08?"
+        "url": "https://us.polymaker.com/products/fiberon-petg-rcf08"
       }
     ]
   }

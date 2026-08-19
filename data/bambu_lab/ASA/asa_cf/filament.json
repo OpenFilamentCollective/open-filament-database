@@ -1,4 +1,5 @@
 {
+    "uuid": "920a777b-c16b-40a5-b378-a964e1d75d98",
     "id": "asa_cf",
     "name": "ASA-CF",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFB98",
-            "id": "OGFB51",
+            "id": "GFB51",
             "profile_name": "Bambu ASA-CF"
         },
         "elegooslicer": {
             "generic_id": "GFB98",
-            "id": "OGFB51",
+            "id": "GFB51",
             "profile_name": "Bambu ASA-CF"
         },
         "anycubicslicer": {

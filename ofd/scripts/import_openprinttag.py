@@ -26,6 +26,7 @@ from ofd.merge import merge_dicts, merge_sizes
 from ofd.scripts.opt_naming_rules import (
     GENERIC_RENAME_RULES,
     KNOWN_COLORS,
+    MATERIAL_KEYWORDS,
     MAX_VARIANT_LENGTH,
     MOVE_RULES,
     PREFIX_RULES,
@@ -439,6 +440,92 @@ def convert_rgba_to_rgb(rgba: str | None) -> str:
 def microns_to_mm(microns: int) -> float:
     """Convert microns to millimeters."""
     return microns / 1000.0
+
+
+# Flexible material types where Shore hardness is a product-line distinction:
+# products of different hardness are separate filaments, not colour variants.
+FLEXIBLE_MATERIALS = {"TPU", "TPE", "TPC", "TPS", "TPEE", "PEBA", "TPI"}
+
+# Matches a Shore-hardness code token, e.g. "85a", "98a", "68d", "45d".
+_HARDNESS_TOKEN = re.compile(r"^(\d{2,3})([ad])$", re.IGNORECASE)
+
+# Matches a hardness code appearing anywhere in a slug (used to detect colour
+# ids that still embed line/hardness tokens from an inconsistent parse).
+_HARDNESS_ANYWHERE = re.compile(r"\d{2,3}[ad]", re.IGNORECASE)
+
+# Matches a bare id/number token such as "id6" or "42" (parse garbage).
+_ID_TOKEN = re.compile(r"^id\d+$|^\d+$", re.IGNORECASE)
+
+# Extra colour/finish words recognised only when validating a hardness-stripped
+# colour remainder during regroup — kept local so the global name parser (and
+# every other brand's filament layout) is unaffected.
+_EXTRA_COLOR_WORDS = {"transparent", "translucent"}
+
+
+def color_remainder_ok(remainder: str) -> bool:
+    """Whether a hardness-stripped colour id is a real colour worth keeping.
+
+    Accepts clean colours (``is_color_like``) plus colour-with-descriptor forms
+    like ``ivory_skin`` / ``brown_leather`` — a known colour word with no
+    garbage — while rejecting line names (``primaselect``), material keywords
+    and id-suffixed junk (``skin_tone_id10``).
+    """
+    if not remainder:
+        return False
+    if is_color_like(remainder):
+        return True
+    tokens = remainder.split("_")
+    if any(_ID_TOKEN.match(t) for t in tokens):
+        return False
+    if any(t in MATERIAL_KEYWORDS for t in tokens):
+        return False
+    return any(t in KNOWN_COLORS or t in _EXTRA_COLOR_WORDS for t in tokens)
+
+
+def hardness_in_slug(slug: str) -> str | None:
+    """Extract a leading or trailing Shore-hardness token from a slug.
+
+    Fallback for products whose hardness is encoded in the name (and thus the
+    colour id, e.g. ``85a_transparent``) but missing from OPT ``properties``.
+    """
+    parts = slug.split("_")
+    if parts and _HARDNESS_TOKEN.match(parts[0]):
+        return parts[0].lower()
+    if len(parts) > 1 and _HARDNESS_TOKEN.match(parts[-1]):
+        return parts[-1].lower()
+    return None
+
+
+def hardness_code_from_properties(properties: dict) -> str | None:
+    """Return a hardness code like ``85a`` / ``68d`` from OPT ``properties``.
+
+    Shore A takes precedence over Shore D when both are present (rare).
+    Returns ``None`` when the material carries no Shore-hardness data.
+    """
+    if not properties:
+        return None
+    if properties.get("hardness_shore_a") is not None:
+        return f"{int(properties['hardness_shore_a'])}a"
+    if properties.get("hardness_shore_d") is not None:
+        return f"{int(properties['hardness_shore_d'])}d"
+    return None
+
+
+def canonical_hardness_filament_id(source_filament: str, material_type: str, hardness: str) -> str:
+    """Build a deterministic ``{material}_{line}_{hardness}`` filament id.
+
+    Normalises inconsistent token orderings the name parser produces (e.g.
+    ``python_flex_tpu`` and ``tpu_python_flex_90a`` both collapse to
+    ``tpu_python_flex_90a``) so lumped and pre-split fragments of one product
+    line share a single canonical id, while distinct lines stay separate.
+    A generic material filament (no line tokens) yields the bare hardness id.
+    """
+    mat = material_type.lower()
+    line_tokens = [
+        t for t in source_filament.split("_") if t and t != mat and not _HARDNESS_TOKEN.match(t)
+    ]
+    parts = ([mat] + line_tokens + [hardness]) if line_tokens else [hardness]
+    return "_".join(parts)
 
 
 @register_script
@@ -1109,6 +1196,7 @@ class ImportOpenPrintTagScript(BaseScript):
                     "filament": filament_data,
                     "variant": variant_data,
                     "sizes": [],
+                    "_hardness": hardness_code_from_properties(properties),
                 }
             else:
                 hierarchy[material_type][filament_id][color_id]["variant"] = variant_data
@@ -1281,6 +1369,11 @@ class ImportOpenPrintTagScript(BaseScript):
         hierarchy: dict[str, dict[str, dict[str, dict]]],
     ) -> dict[str, dict[str, dict[str, dict]]]:
         """Apply all naming cleanup rules to the in-memory hierarchy."""
+        # A0. Hardness regroup — deterministically split/normalise flexible
+        # materials by Shore hardness before the name-based heuristics run, so
+        # lumped or inconsistently-ordered hardness fragments can't survive.
+        hierarchy = self._apply_hardness_regroup(brand_id, hierarchy)
+
         # A. MOVE_RULES — move variants to correct filament dirs
         hierarchy = self._apply_move_rules(brand_id, hierarchy)
 
@@ -1316,6 +1409,115 @@ class ImportOpenPrintTagScript(BaseScript):
 
         # J. Categories 4 & 6: Report-only warnings
         self._emit_naming_warnings(brand_id, hierarchy)
+
+        return hierarchy
+
+    @staticmethod
+    def _strip_hardness_from_name(name: str, hardness: str) -> str:
+        """Drop a leading or trailing hardness word (e.g. ``85A``) from a name."""
+        if not name:
+            return name
+        head, _, tail = name.partition(" ")
+        if head.lower() == hardness.lower() and tail:
+            return tail
+        lead, _, last = name.rpartition(" ")
+        if last.lower() == hardness.lower() and lead:
+            return lead
+        return name
+
+    def _apply_hardness_regroup(
+        self,
+        brand_id: str,
+        hierarchy: dict[str, dict[str, dict[str, dict]]],
+    ) -> dict[str, dict[str, dict[str, dict]]]:
+        """Regroup flexible-material variants into one filament per Shore hardness.
+
+        For flexible materials NOT governed by brand MOVE_RULES, when a
+        material's variants span >=2 distinct hardnesses, move every
+        hardness-bearing variant into a deterministic per-hardness filament
+        (see :func:`canonical_hardness_filament_id`). This both splits filaments
+        that lump multiple hardnesses and unifies the inconsistent
+        ``python_flex_tpu`` / ``tpu_python_flex_90a`` orderings the name parser
+        emits, so a re-import can't reintroduce hardness-lumped filaments.
+        Variants without hardness data (e.g. VarioShore) are left untouched.
+        """
+        for material_type, filaments in list(hierarchy.items()):
+            if material_type not in FLEXIBLE_MATERIALS:
+                continue
+            # Defer to hand-written rules for brands that curate this material.
+            if material_type in MOVE_RULES.get(brand_id, {}):
+                continue
+
+            distinct = {
+                entry.get("_hardness") or hardness_in_slug(color_id)
+                for colors in filaments.values()
+                for color_id, entry in colors.items()
+            }
+            distinct.discard(None)
+            if len(distinct) < 2:
+                continue  # single hardness (or none): nothing to regroup
+
+            for source_filament in list(filaments.keys()):
+                colors = filaments[source_filament]
+                for color_id in list(colors.keys()):
+                    entry = colors[color_id]
+                    hardness = entry.get("_hardness") or hardness_in_slug(color_id)
+                    if not hardness:
+                        continue
+                    # Split the colour id around its hardness token into a line
+                    # part (-> filament) and a colour part (-> variant), so that
+                    # ``85a_flesh`` (prefix), ``black_85a`` (suffix) and
+                    # ``rosa_flex_85a_transparent`` (line_hardness_colour) all
+                    # normalise. Only proceed when the colour side is a real
+                    # colour — a line name (``primaselect``) or id-suffixed junk
+                    # (``skin_tone_id6``) is left exactly as-is.
+                    toks = color_id.split("_")
+                    if hardness in toks:
+                        idx = toks.index(hardness)
+                        before = "_".join(toks[:idx])
+                        after = "_".join(toks[idx + 1 :])
+                        if after and color_remainder_ok(after):
+                            line, new_color_id = before, after
+                        elif before and color_remainder_ok(before) and not after:
+                            line, new_color_id = "", before
+                        else:
+                            continue  # neither side is a clean colour
+                        src = f"{source_filament}_{line}" if line else source_filament
+                    else:
+                        new_color_id = color_id  # plain colour, no hardness token
+                        src = source_filament
+                    target = canonical_hardness_filament_id(src, material_type, hardness)
+                    if target == source_filament and new_color_id == color_id:
+                        continue  # already canonical
+
+                    dest = filaments.setdefault(target, {})
+                    if new_color_id in dest and dest is not colors:
+                        self.report.parse_warnings.append(
+                            f"hardness_regroup collision: {brand_id}/{material_type}/"
+                            f"{target}/{new_color_id} (kept existing)"
+                        )
+                        continue
+
+                    colors.pop(color_id)
+                    entry["variant"]["id"] = new_color_id
+                    entry["variant"]["name"] = self._strip_hardness_from_name(
+                        entry["variant"].get("name", ""), hardness
+                    )
+                    new_filament = entry["filament"].copy()
+                    new_filament["id"] = target
+                    new_filament["name"] = id_to_display_name(target)
+                    field = "shore_hardness_a" if hardness[-1] == "a" else "shore_hardness_d"
+                    new_filament[field] = int(hardness[:-1])
+                    entry["filament"] = new_filament
+
+                    dest[new_color_id] = entry
+                    self.report.naming_fixes.append(
+                        f"hardness_regroup: {brand_id}/{material_type}/"
+                        f"{source_filament}/{color_id} -> {target}/{new_color_id}"
+                    )
+
+                if source_filament in filaments and not filaments[source_filament]:
+                    del filaments[source_filament]
 
         return hierarchy
 
@@ -2013,6 +2215,23 @@ class ImportOpenPrintTagScript(BaseScript):
                     if key in seen:
                         continue
 
+                    # Line-as-colour check: an uncoloured product (e.g. the bare
+                    # "TPU for AMS") lands in the generic material bucket with a
+                    # colour id that is really another filament's line name. When
+                    # such a bucket variant isn't colour-like and matches a sibling
+                    # filament in this material, it's a stray duplicate of that
+                    # line — skip it. Restricted to the generic bucket so genuine
+                    # colour variants mis-parsed into named filaments are kept.
+                    if (
+                        filament_id == material_type.lower()
+                        and color_id != filament_id
+                        and color_id in combined
+                        and not is_color_like(color_id)
+                    ):
+                        duplicates.append((material_type, filament_id, color_id, color_id, "*"))
+                        seen.add(key)
+                        continue
+
                     # Forward check: split color_id into prefix + remainder
                     parts = color_id.split("_")
                     found = False
@@ -2108,6 +2327,13 @@ class ImportOpenPrintTagScript(BaseScript):
 
             for filament_id in sorted(filaments.keys()):
                 colors = filaments[filament_id]
+
+                # Skip a filament whose every variant was flagged as a duplicate
+                # (e.g. a generic "tpu" left holding only a line-as-colour stray),
+                # so we don't emit an empty filament directory.
+                if colors and all((material_type, filament_id, cid) in skip_set for cid in colors):
+                    continue
+
                 filament_dir = material_dir / filament_id
 
                 # Get filament data from first color (they share filament data)

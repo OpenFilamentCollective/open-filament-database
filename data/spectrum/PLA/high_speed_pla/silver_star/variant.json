@@ -1,8 +1,10 @@
 {
+  "uuid": "b30cd7fd-f55e-426d-9a63-46a01aa05934",
   "id": "silver_star",
   "name": "Silver Star",
   "color_hex": "#959FA1",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "8ebde9f4-e962-4790-a4d9-9aa84a7bc0e5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/SOLEYIN-Filament-High-Strength-Toughness-Dimensional/dp/B0GXK5G2XN"
+      }
+    ]
+  }
+]

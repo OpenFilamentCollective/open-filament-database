@@ -1,8 +1,9 @@
 {
-    "id": "ruby_red",
-    "name": "Ruby Red",
-    "color_hex": "#950B27",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "02a00f8a-e7c1-410b-bd08-391b4fb992aa",
+  "id": "ruby_red",
+  "name": "Ruby Red",
+  "color_hex": "#950B27",
+  "traits": {
+    "recyclable": true
+  }
 }

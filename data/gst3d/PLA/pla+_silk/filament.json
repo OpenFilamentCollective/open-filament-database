@@ -1,6 +1,7 @@
 {
-    "id": "pla+_silk",
-    "name": "PLA+ SILK",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "41149419-87fe-4d58-9336-d83154db6350",
+  "id": "pla+_silk",
+  "name": "PLA+ SILK",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

@@ -1,6 +1,7 @@
 {
-    "id": "pla_marble",
-    "name": "PLA Marble",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "37bfe82d-4aea-40ee-98fd-8f6c4dce1006",
+  "id": "pla_marble",
+  "name": "PLA Marble",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

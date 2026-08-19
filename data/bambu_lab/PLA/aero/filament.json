@@ -1,4 +1,5 @@
 {
+    "uuid": "0df310a8-2aa4-4a57-8bfa-e63b4a873e73",
     "id": "aero",
     "name": "PLA Aero",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA11",
+            "id": "GFA11",
             "profile_name": "Bambu PLA Aero"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA11",
+            "id": "GFA11",
             "profile_name": "Bambu PLA Aero"
         },
         "crealityprint": {

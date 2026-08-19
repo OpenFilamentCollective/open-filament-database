@@ -1,13 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6977252424752",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-wood?variant=43075832053896"
-            }
-        ]
-    }
+  {
+    "uuid": "47363f49-a89d-474c-b6a6-d0a797d0fd60",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6977252424752",
+    "article_number": "13505",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-wood?variant=43075832053896"
+      }
+    ]
+  }
 ]

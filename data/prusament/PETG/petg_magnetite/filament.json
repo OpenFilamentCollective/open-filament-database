@@ -1,6 +1,7 @@
 {
-    "id": "petg_magnetite",
-    "name": "PETG Magnetite",
-    "diameter_tolerance": 0.03,
-    "density": 1.82
+  "uuid": "0c278afc-d32b-43a3-a27d-eef1e9fd31d6",
+  "id": "petg_magnetite",
+  "name": "PETG Magnetite",
+  "diameter_tolerance": 0.03,
+  "density": 1.82
 }

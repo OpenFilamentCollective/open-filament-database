@@ -1,0 +1,12 @@
+{
+  "uuid": "826c38d3-5497-4bd9-9bff-751048596be0",
+  "id": "easy_nylon",
+  "name": "Easy Nylon",
+  "diameter_tolerance": 0.02,
+  "density": 1.13,
+  "min_print_temperature": 245,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 50,
+  "discontinued": false
+}

@@ -1,4 +1,5 @@
 {
+  "uuid": "290af26f-c2c9-405a-bcee-b90c23acafa4",
   "id": "orange",
   "name": "Orange",
   "color_hex": [
@@ -7,6 +8,7 @@
   ],
   "traits": {
     "glow": true,
-    "illuminescent_color_change": true
+    "illuminescent_color_change": true,
+    "high_flow": true
   }
 }

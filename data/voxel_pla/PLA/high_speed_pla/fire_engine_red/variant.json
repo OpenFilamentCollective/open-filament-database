@@ -1,8 +1,10 @@
 {
+  "uuid": "9c3e61a3-55ec-4138-8dac-7ad4df2f99ef",
   "id": "fire_engine_red",
   "name": "Fire Engine Red",
   "color_hex": "#E20010",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

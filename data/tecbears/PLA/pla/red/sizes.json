@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "032e8661-d043-4920-9efc-188db18699e5",
     "filament_weight": 1100,
     "diameter": 1.75,
     "empty_spool_weight": 135,
@@ -7,7 +8,7 @@
     "purchase_links": [
       {
         "store_id": "amazon",
-        "url": "https://www.amazon.co.uk/dp/B0CGKY8YQL?language=en_US"
+        "url": "https://www.amazon.co.uk/dp/B0CGKY8YQL"
       }
     ]
   }

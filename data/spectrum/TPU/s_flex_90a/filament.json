@@ -1,6 +1,7 @@
 {
-    "id": "s_flex_90a",
-    "name": "TPU S-Flex 90A",
-    "diameter_tolerance": 0.02,
-    "density": 1.22
+  "uuid": "841aa93f-9cf3-4aea-9f54-ac16fe301a64",
+  "id": "s_flex_90a",
+  "name": "TPU S-Flex 90A",
+  "diameter_tolerance": 0.02,
+  "density": 1.22
 }

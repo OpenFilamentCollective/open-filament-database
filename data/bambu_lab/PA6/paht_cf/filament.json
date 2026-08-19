@@ -1,4 +1,5 @@
 {
+    "uuid": "d9fa5e54-955f-4dbf-81d7-0242e1e203e8",
     "id": "paht_cf",
     "name": "PAHT-CF",
     "diameter_tolerance": 0.03,
@@ -11,11 +12,11 @@
             "profile_name": "Bambu PAHT-CF"
         },
         "orcaslicer": {
-            "id": "OGFN04",
+            "id": "GFN04",
             "profile_name": "Bambu PAHT-CF"
         },
         "elegooslicer": {
-            "id": "OGFN04",
+            "id": "GFN04",
             "profile_name": "Bambu PAHT-CF"
         },
         "crealityprint": {

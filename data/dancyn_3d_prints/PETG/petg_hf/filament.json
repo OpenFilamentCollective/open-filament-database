@@ -1,0 +1,14 @@
+{
+  "uuid": "6cc860ca-6515-4bd0-b68f-838d88721403",
+  "id": "petg_hf",
+  "name": "PETG HF",
+  "diameter_tolerance": 0.02,
+  "density": 1.29,
+  "max_dry_temperature": 65,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "preheat_temperature": 245,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "discontinued": false
+}

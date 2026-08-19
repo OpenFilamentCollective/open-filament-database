@@ -13,9 +13,10 @@ from ..serialization import entity_to_dict, serialize_for_csv
 # Preferred key ordering per entity type for stable CSV columns.
 # Keys not listed here are appended alphabetically after these.
 _KEY_ORDER = {
-    "brand": ["id", "name", "slug", "website", "logo_name", "origin", "source"],
+    "brand": ["id", "uuid", "name", "slug", "website", "logo_name", "origin", "source"],
     "material": [
         "id",
+        "uuid",
         "brand_id",
         "material",
         "slug",
@@ -25,6 +26,7 @@ _KEY_ORDER = {
     ],
     "filament": [
         "id",
+        "uuid",
         "brand_id",
         "material_id",
         "name",
@@ -36,6 +38,7 @@ _KEY_ORDER = {
     ],
     "variant": [
         "id",
+        "uuid",
         "filament_id",
         "slug",
         "name",
@@ -47,6 +50,7 @@ _KEY_ORDER = {
     ],
     "size": [
         "id",
+        "uuid",
         "variant_id",
         "filament_weight",
         "diameter",
@@ -56,7 +60,16 @@ _KEY_ORDER = {
         "article_number",
         "discontinued",
     ],
-    "store": ["id", "name", "slug", "storefront_url", "logo_name", "ships_from", "ships_to"],
+    "store": [
+        "id",
+        "uuid",
+        "name",
+        "slug",
+        "storefront_url",
+        "logo_name",
+        "ships_from",
+        "ships_to",
+    ],
     "purchase_link": ["id", "size_id", "store_id", "url", "spool_refill", "ships_from", "ships_to"],
 }
 

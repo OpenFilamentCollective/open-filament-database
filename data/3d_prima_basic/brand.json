@@ -1,7 +1,8 @@
 {
-    "id": "3d_prima_basic",
-    "name": "3D Prima Basic",
-    "website": "https://www.3dprima.com/",
-    "logo": "logo.png",
-    "origin": "Unknown"
+  "uuid": "6cf69613-f917-4d76-8a27-0b09eadda5b6",
+  "id": "3d_prima_basic",
+  "name": "3D Prima Basic",
+  "website": "https://www.3dprima.com/",
+  "logo": "logo.png",
+  "origin": "Unknown"
 }

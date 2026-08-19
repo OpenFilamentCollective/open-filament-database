@@ -1,6 +1,7 @@
 {
-    "id": "r_nylon",
-    "name": "PA6 R NYLON",
-    "diameter_tolerance": 0.02,
-    "density": 1.01
+  "uuid": "9f29afcd-8550-4d92-9ded-5ff89c3b32fe",
+  "id": "r_nylon",
+  "name": "PA6 R NYLON",
+  "diameter_tolerance": 0.02,
+  "density": 1.01
 }

@@ -1,9 +1,11 @@
 {
+  "uuid": "c7dea480-8157-4cdc-a264-60d4ac420b9f",
   "id": "stone_cold_gray",
   "name": "Stone Cold Gray",
   "color_hex": "#A2AAAD",
   "traits": {
     "matte": true,
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

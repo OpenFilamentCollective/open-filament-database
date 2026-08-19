@@ -1,8 +1,9 @@
 {
-    "id": "basic_gradient",
-    "name": "PLA Basic Gradient",
-    "diameter_tolerance": 0.03,
-    "density": 1.24,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Basic_Gradient_Technical_Data_Sheet.pdf",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Basic_MSDS.pdf"
+  "uuid": "6f0e9872-64bb-4bcc-9934-96e7d92ba08d",
+  "id": "basic_gradient",
+  "name": "PLA Basic Gradient",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Basic_Gradient_Technical_Data_Sheet.pdf",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Basic_MSDS.pdf"
 }

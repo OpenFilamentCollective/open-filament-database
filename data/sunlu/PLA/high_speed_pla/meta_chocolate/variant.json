@@ -1,8 +1,10 @@
 {
+  "uuid": "09bffd8b-a5b1-432d-869d-bf86a3c7ad6f",
   "id": "meta_chocolate",
   "name": "Meta Chocolate",
   "color_hex": "#6E4325",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

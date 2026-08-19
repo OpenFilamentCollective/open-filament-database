@@ -1,4 +1,5 @@
 {
+    "uuid": "78301251-ceb8-4c84-88fe-7a3d82a8e769",
     "id": "pva",
     "name": "PVA",
     "diameter_tolerance": 0.03,
@@ -17,12 +18,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFS99",
-            "id": "OGFS04",
+            "id": "GFS04",
             "profile_name": "Bambu PVA"
         },
         "elegooslicer": {
             "generic_id": "GFS99",
-            "id": "OGFS04",
+            "id": "GFS04",
             "profile_name": "Bambu PVA"
         },
         "crealityprint": {

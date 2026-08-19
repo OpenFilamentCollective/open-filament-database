@@ -1,4 +1,5 @@
 {
+    "uuid": "ae228466-d15c-4e04-9ee4-c8b3847c7f83",
     "id": "abs",
     "name": "ABS",
     "diameter_tolerance": 0.02,
@@ -11,12 +12,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFB99",
-            "id": "OGFB60",
+            "id": "GFB60",
             "profile_name": "PolyLite ABS"
         },
         "elegooslicer": {
             "generic_id": "GFB99",
-            "id": "OGFB60",
+            "id": "GFB60",
             "profile_name": "PolyLite ABS"
         },
         "crealityprint": {

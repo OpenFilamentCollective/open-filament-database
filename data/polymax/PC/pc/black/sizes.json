@@ -1,41 +1,45 @@
 [
   {
+    "uuid": "26435bd1-037c-45b3-a859-743ae1502e5b",
     "filament_weight": 750,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymax-pc?"
+        "url": "https://us.polymaker.com/products/polymax-pc"
       }
     ]
   },
   {
+    "uuid": "a779ab19-353e-40d8-8cb9-52d344be603c",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymax-pc?"
+        "url": "https://us.polymaker.com/products/polymax-pc"
       }
     ]
   },
   {
+    "uuid": "58dcd249-2e5f-40fd-ba71-40dbc37b1d74",
     "filament_weight": 750,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymax-pc?"
+        "url": "https://us.polymaker.com/products/polymax-pc"
       }
     ]
   },
   {
+    "uuid": "295b6d1f-8380-4e80-a2d6-28a0c5f1e268",
     "filament_weight": 3000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymax-pc?"
+        "url": "https://us.polymaker.com/products/polymax-pc"
       }
     ]
   }

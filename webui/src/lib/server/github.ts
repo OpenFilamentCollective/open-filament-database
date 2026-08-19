@@ -176,6 +176,30 @@ export async function getRecursiveTree(
 }
 
 /**
+ * Read a blob's contents as text. Returns null when the blob is gone (404) or
+ * too large for the API to inline (GitHub omits the content past ~100 MB).
+ */
+export async function getBlobText(
+	token: string,
+	owner: string,
+	repo: string,
+	sha: string
+): Promise<string | null> {
+	const response = await ghFetch(token, `/repos/${owner}/${repo}/git/blobs/${sha}`);
+
+	if (response.status === 404) return null;
+	if (!response.ok) {
+		throw await ghError(response, 'Failed to get blob');
+	}
+
+	const blob = await response.json();
+	if (typeof blob.content !== 'string') return null;
+	if (blob.encoding === 'base64') return Buffer.from(blob.content, 'base64').toString('utf-8');
+	if (blob.encoding === 'utf-8') return blob.content;
+	return null;
+}
+
+/**
  * Create a tree (directory listing) in the repository.
  * If baseTreeSha is provided, creates an incremental tree.
  * If null, creates a full tree from scratch (all entries must be provided).

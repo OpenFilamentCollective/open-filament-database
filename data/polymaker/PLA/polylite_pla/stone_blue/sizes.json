@@ -1,6 +1,9 @@
 [
   {
+    "uuid": "bffab25e-a7ae-4f6c-832e-e9327b5c11fb",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6938936707073",
+    "article_number": "PA02062"
   }
 ]

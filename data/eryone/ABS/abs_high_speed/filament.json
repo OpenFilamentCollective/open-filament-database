@@ -1,6 +1,7 @@
 {
-    "id": "abs_high_speed",
-    "name": "ABS High-Speed",
-    "diameter_tolerance": 0.03,
-    "density": 1.1
+  "uuid": "dbad66cb-522d-470b-a55a-2cfbb4f25325",
+  "id": "abs_high_speed",
+  "name": "ABS High-Speed",
+  "diameter_tolerance": 0.03,
+  "density": 1.1
 }

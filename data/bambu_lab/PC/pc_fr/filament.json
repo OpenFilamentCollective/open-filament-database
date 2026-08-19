@@ -1,4 +1,5 @@
 {
+    "uuid": "7d8c175d-1ca1-40b0-9117-36a52b69dd4d",
     "id": "pc_fr",
     "name": "PC FR",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFC99",
-            "id": "OGFC01",
+            "id": "GFC01",
             "profile_name": "Bambu PC FR"
         },
         "elegooslicer": {
             "generic_id": "GFC99",
-            "id": "OGFC01",
+            "id": "GFC01",
             "profile_name": "Bambu PC FR"
         },
         "anycubicslicer": {

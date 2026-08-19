@@ -1,8 +1,9 @@
 {
-    "id": "3djake",
-    "name": "3DJake",
-    "storefront_url": "https://www.3djake.com/",
-    "logo": "logo.jpg",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "416b7a41-858d-4290-b8ba-2d9a43208351",
+  "id": "3djake",
+  "name": "3DJake",
+  "storefront_url": "https://www.3djake.com/",
+  "logo": "logo.jpg",
+  "ships_from": [],
+  "ships_to": []
 }

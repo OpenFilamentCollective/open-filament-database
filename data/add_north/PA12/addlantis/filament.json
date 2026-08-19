@@ -1,7 +1,8 @@
 {
-    "id": "addlantis",
-    "name": "PA12 Addlantis",
-    "diameter_tolerance": 0.02,
-    "density": 1.18,
-    "max_dry_temperature": 70
+  "uuid": "66ea586c-deef-40da-afb1-a99d87555ae7",
+  "id": "addlantis",
+  "name": "PA12 Addlantis",
+  "diameter_tolerance": 0.02,
+  "density": 1.18,
+  "max_dry_temperature": 70
 }

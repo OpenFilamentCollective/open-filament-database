@@ -1,9 +1,10 @@
 {
-    "id": "pla_silk_dual_tricolor",
-    "name": "PLA Silk Dual-Tricolor",
-    "diameter_tolerance": 0.02,
-    "density": 1.22,
-    "max_dry_temperature": 65,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/ANYCUBIC_TDS_PLA_silk_V3.0.pdf?v=1757561075",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_PLA_Silk_Filament_CANEC25014243401_SZP25-029821_-Final.pdf?v=1757561038"
+  "uuid": "8a2b15b5-9196-4960-9aba-5b48cc068fbd",
+  "id": "pla_silk_dual_tricolor",
+  "name": "PLA Silk Dual-Tricolor",
+  "diameter_tolerance": 0.02,
+  "density": 1.22,
+  "max_dry_temperature": 65,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/ANYCUBIC_TDS_PLA_silk_V3.0.pdf?v=1757561075",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_PLA_Silk_Filament_CANEC25014243401_SZP25-029821_-Final.pdf?v=1757561038"
 }

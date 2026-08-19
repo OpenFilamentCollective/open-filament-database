@@ -34,6 +34,7 @@ from pathlib import Path
 
 from ofd.base import BaseScript, ScriptResult, register_script
 from ofd.merge import merge_has_errors, merge_trees, paths_overlap
+from ofd.uuids import record_moved_from
 from ofd.validation import ValidationOrchestrator
 
 
@@ -136,6 +137,13 @@ class MergeDataScript(BaseScript):
             if merge_has_errors(actions):
                 self.log("\nSource NOT deleted (merge had skipped/unreadable files)")
             else:
+                # Preserve the source's canonical UUIDs so old references still
+                # resolve to the surviving target (see ofd.uuids.record_moved_from).
+                recorded = record_moved_from(target, source)
+                if recorded:
+                    self.log(
+                        f"Recorded {len(recorded)} former UUID(s) into {target.name} moved_from"
+                    )
                 shutil.rmtree(source)
                 self.log(f"\nDeleted source: {source.name}")
                 deleted = True

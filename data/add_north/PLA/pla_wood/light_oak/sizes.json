@@ -1,26 +1,28 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "empty_spool_weight": 175,
-        "spool_core_diameter": 41,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PLA%20Wood/PLA%20Wood%20-%201.75mm%20-%20500g%20-%20Light%20Oak"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 238,
-        "spool_core_diameter": 67,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PLA%20Wood/PLA%20Wood%20-%201.75mm%20-%201000g%20-%20Light%20Oak"
-            }
-        ]
-    }
+  {
+    "uuid": "37ebc8ca-be6e-403a-8c10-c1327fabe437",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "empty_spool_weight": 175,
+    "spool_core_diameter": 41,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PLA%20Wood/PLA%20Wood%20-%201.75mm%20-%20500g%20-%20Light%20Oak"
+      }
+    ]
+  },
+  {
+    "uuid": "89dc525c-d88d-4147-ad86-b96eefc5547a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 238,
+    "spool_core_diameter": 67,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PLA%20Wood/PLA%20Wood%20-%201.75mm%20-%201000g%20-%20Light%20Oak"
+      }
+    ]
+  }
 ]

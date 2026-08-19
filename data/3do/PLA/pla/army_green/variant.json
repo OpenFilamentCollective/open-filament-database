@@ -1,11 +1,12 @@
 {
-    "id": "army_green",
-    "name": "Army Green",
-    "color_hex": "#4B573E",
-    "color_standards": {
-        "ral": "6003"
-    },
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "797958b3-239a-498a-a680-d241e921d6cc",
+  "id": "army_green",
+  "name": "Army Green",
+  "color_hex": "#4B573E",
+  "color_standards": {
+    "ral": "6003"
+  },
+  "traits": {
+    "recyclable": true
+  }
 }

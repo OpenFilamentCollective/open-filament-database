@@ -1,4 +1,5 @@
 {
+    "uuid": "213e6de7-5ff0-42a8-aa91-bf3a736c6a46",
     "id": "adamant_s1",
     "name": "PVDF Adamant S1",
     "diameter_tolerance": 0.02,
@@ -20,6 +21,10 @@
         },
         "superslicer": {
             "profile_name": "addnorth Adamant S1"
+        },
+        "elegooslicer": {
+            "id": "GF_ANPV",
+            "profile_name": "addnorth PVDF Adamant S1"
         }
     }
 }

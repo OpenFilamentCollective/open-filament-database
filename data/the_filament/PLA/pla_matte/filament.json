@@ -1,6 +1,7 @@
 {
-    "id": "pla_matte",
-    "name": "PLA Matte",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "1a80e8f1-8079-4e79-af93-860ee1135873",
+  "id": "pla_matte",
+  "name": "PLA Matte",
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

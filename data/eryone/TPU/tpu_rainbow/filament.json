@@ -1,6 +1,7 @@
 {
-    "id": "tpu_rainbow",
-    "name": "TPU Rainbow",
-    "diameter_tolerance": 0.05,
-    "density": 1.25
+  "uuid": "c57bb94a-22bd-422c-a208-1eabfec1ade0",
+  "id": "tpu_rainbow",
+  "name": "TPU Rainbow",
+  "diameter_tolerance": 0.05,
+  "density": 1.25
 }

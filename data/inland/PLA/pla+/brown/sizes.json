@@ -1,23 +1,25 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/611536/inland-175mm-brown-pla-3d-printer-filament-1kg-spool-%2822-lbs%29"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/687088/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-brown?sp=420"
-            }
-        ]
-    }
+  {
+    "uuid": "47e1bf36-2f27-4098-852b-0f4e06c5e490",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/611536/inland-175mm-brown-pla-3d-printer-filament-1kg-spool-%2822-lbs%29"
+      }
+    ]
+  },
+  {
+    "uuid": "d1744460-b969-4ec0-ba68-094b185b57e6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/687088/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-brown?sp=420"
+      }
+    ]
+  }
 ]

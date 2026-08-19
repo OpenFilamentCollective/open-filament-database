@@ -1,8 +1,10 @@
 {
+  "uuid": "f639d171-4043-4597-ae16-34708eb75c6d",
   "id": "pacific_blue",
   "name": "Pacific Blue",
   "color_hex": "#0099E6",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

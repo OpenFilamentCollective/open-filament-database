@@ -1,9 +1,11 @@
 {
+  "uuid": "52726346-6d24-45d1-81f6-89ebabb66ee8",
   "id": "blue_jeans",
   "name": "Blue Jeans",
   "color_hex": "#9DB6D4",
   "traits": {
     "matte": true,
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

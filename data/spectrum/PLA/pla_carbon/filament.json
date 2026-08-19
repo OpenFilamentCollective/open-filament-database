@@ -1,6 +1,7 @@
 {
-    "id": "pla_carbon",
-    "name": "PLA Carbon",
-    "diameter_tolerance": 0.02,
-    "density": 1.3
+  "uuid": "dd42a33f-5798-4334-9b94-2cdd314e90d6",
+  "id": "pla_carbon",
+  "name": "PLA Carbon",
+  "diameter_tolerance": 0.02,
+  "density": 1.3
 }

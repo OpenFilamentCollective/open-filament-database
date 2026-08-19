@@ -1,7 +1,8 @@
 {
-    "id": "budget_petg",
-    "name": "Budget PETG",
-    "diameter_tolerance": 0.03,
-    "density": 1.27,
-    "max_dry_temperature": 65
+  "uuid": "f3f20549-e2f4-4155-a1fb-3c81bbcefa0d",
+  "id": "budget_petg",
+  "name": "Budget PETG",
+  "diameter_tolerance": 0.03,
+  "density": 1.27,
+  "max_dry_temperature": 65
 }

@@ -1,6 +1,7 @@
 {
-    "id": "pc_abs",
-    "name": "PC-ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "e9f59f42-da89-46d4-ad0f-b33a758dd1d5",
+  "id": "pc_abs",
+  "name": "PC-ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.04
 }

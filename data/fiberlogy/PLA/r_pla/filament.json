@@ -1,6 +1,7 @@
 {
-    "id": "r_pla",
-    "name": "R PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "5b0f0180-1485-49f1-a97e-dd4e56ea1651",
+  "id": "r_pla",
+  "name": "R PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { Material, Filament } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, Button, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteEntityModal, Button, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
 	import { duplicateMaterialChildren, loadMaterialChildren, pasteMaterialChildren, loadFilamentChildren, pasteFilamentChildren } from '$lib/services/duplicateService';
 	import { MaterialForm, FilamentForm } from '$lib/components/forms';
 	import { fetchEntitySchema } from '$lib/services/schemaService';
@@ -11,8 +11,9 @@
 	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
+	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
 	import { createCopyAction, createDuplicateAction, createPasteHandler } from '$lib/utils/useEntityActions.svelte';
-	import { deleteEntity, generateSlug, generateMaterialType } from '$lib/services/entityService';
+	import { generateSlug, generateMaterialType } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
@@ -71,6 +72,8 @@
 				: null,
 		getEntity: () => material
 	});
+
+	const deleteFlow = createDeleteFlow(messageHandler);
 
 	// --- Shared actions for THIS material (detail-level) ---
 	const materialCopy = createCopyAction('material', async () => {
@@ -188,26 +191,18 @@
 		}
 	}
 
-	async function handleDelete() {
+	function openDeleteMaterial() {
 		if (!material) return;
-		entityState.deleting = true;
-		messageHandler.clear();
-		try {
-			const result = await deleteEntity(`brands/${brandId}/materials/${materialType}`, 'Material',
-				() => db.deleteMaterial(brandId, materialType, material!));
-			if (result.success) {
-				messageHandler.showSuccess(result.message);
-				entityState.closeDelete();
-				entityState.deleting = false;
-				setTimeout(() => goto(`/brands/${brandId}`), 1500);
-			} else {
-				messageHandler.showError(result.message);
-				entityState.deleting = false;
-			}
-		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete material');
-			entityState.deleting = false;
-		}
+		deleteFlow.open({
+			type: 'material',
+			path: `brands/${brandId}/materials/${materialType}`,
+			label: 'Material',
+			name: material.material,
+			uuid: material.uuid,
+			movedFrom: material.moved_from,
+			deleteFn: () => db.deleteMaterial(brandId, materialType, material!),
+			navigateOnDelete: `/brands/${brandId}`
+		});
 	}
 
 	async function handleCreateFilament(data: any) {
@@ -285,20 +280,22 @@
 		}
 	}
 
-	async function handleDeleteFilament(filament: Filament) {
+	// Child card: same modal, but stays on this page and prunes the list.
+	function openDeleteFilament(filament: Filament) {
 		const fId = filament.slug ?? filament.id;
-		try {
-			const result = await deleteEntity(`brands/${brandId}/materials/${materialType}/filaments/${fId}`, 'Filament',
-				() => db.deleteFilament(brandId, materialType, fId, filament));
-			if (result.success) {
-				messageHandler.showSuccess(result.message);
+		deleteFlow.open({
+			type: 'filament',
+			path: `brands/${brandId}/materials/${materialType}/filaments/${fId}`,
+			label: 'Filament',
+			name: filament.name,
+			uuid: filament.uuid,
+			movedFrom: filament.moved_from,
+			deleteFn: () => db.deleteFilament(brandId, materialType, fId, filament),
+			navigateOnDelete: null,
+			onSuccess: () => {
 				filaments = filaments.filter((f) => (f.slug ?? f.id) !== fId);
-			} else {
-				messageHandler.showError(result.message);
 			}
-		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete filament');
-		}
+		});
 	}
 </script>
 
@@ -347,7 +344,7 @@
 								onDuplicate={() => materialDuplicate.request(materialData)}
 								onCopyRequest={() => materialCopy.request(materialData, `brands/${brandId}/materials/${materialType}`)}
 								onPaste={(data) => { formDrafts.clear(materialCreateDraftKey); entityState.openPaste(data); }}
-								onDelete={entityState.openDelete}
+								onDelete={openDeleteMaterial}
 								onViewDiff={entityState.openCloudCompare}
 								parentNames={{ brand: '' }}
 							/>
@@ -374,7 +371,9 @@
 							onCopy={() => filamentCopy.request(filament, filamentPath)}
 							onDuplicate={() => filamentDuplicate.request(filament)}
 							onPaste={filamentPaste}
-							onDelete={() => handleDeleteFilament(filament)}
+							onDelete={changeProps.localChangeType === 'delete' || changeProps.submittedChangeType === 'delete'
+								? undefined
+								: () => openDeleteFilament(filament)}
 						/>
 					{/each}
 				</ChildListPanel>
@@ -391,9 +390,9 @@
 	{/if}
 </Modal>
 
-<DeleteConfirmationModal show={entityState.showDeleteModal} title="Delete Material" entityName={material?.material ?? ''}
-	isLocalCreate={entityState.isLocalCreate} deleting={entityState.deleting} onClose={entityState.closeDelete} onDelete={handleDelete}
-	cascadeWarning="This will also delete all filaments and variants within this material." />
+<DeleteEntityModal show={deleteFlow.show} source={deleteFlow.source} isLocalCreate={deleteFlow.isLocalCreate}
+	cascadeWarning={deleteFlow.cascadeWarning} busy={deleteFlow.busy} resolving={deleteFlow.resolving} error={deleteFlow.error}
+	onClose={deleteFlow.close} onConfirm={deleteFlow.confirm} />
 
 <!-- Copy/Duplicate options modals (material-level) -->
 <DuplicateOptionsModal show={materialCopy.showOptions} onClose={materialCopy.close} onSelect={materialCopy.select} title="Copy Material"

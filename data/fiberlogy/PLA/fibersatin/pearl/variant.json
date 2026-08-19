@@ -1,8 +1,9 @@
 {
-    "id": "pearl",
-    "name": "Pearl",
-    "color_hex": "#E6E0CA",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "75b55586-bda6-49b1-907a-1c07d045bc45",
+  "id": "pearl",
+  "name": "Pearl",
+  "color_hex": "#E6E0CA",
+  "traits": {
+    "recyclable": true
+  }
 }

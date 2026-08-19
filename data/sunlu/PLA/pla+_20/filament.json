@@ -1,4 +1,5 @@
 {
+    "uuid": "a5993d52-4f00-40ce-b75c-47f0c44d5063",
     "id": "pla+_20",
     "name": "PLA+ 2.0",
     "diameter_tolerance": 0.02,
@@ -14,12 +15,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFSNL04",
+            "id": "GFSNL04",
             "profile_name": "SUNLU PLA+ 2.0"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFSNL04",
+            "id": "GFSNL04",
             "profile_name": "SUNLU PLA+ 2.0"
         },
         "anycubicslicer": {

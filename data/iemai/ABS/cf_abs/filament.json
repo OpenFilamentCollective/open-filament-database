@@ -1,8 +1,9 @@
 {
+  "uuid": "70fdb7fa-f539-4baf-87e2-65d55a82705e",
   "id": "cf_abs",
   "name": "CF-ABS",
   "diameter_tolerance": 0.05,
-  "density": 1.10,
+  "density": 1.1,
   "min_print_temperature": 220,
   "max_print_temperature": 260,
   "min_bed_temperature": 100,

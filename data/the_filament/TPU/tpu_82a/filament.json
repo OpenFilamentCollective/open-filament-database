@@ -1,6 +1,7 @@
 {
-    "id": "tpu_82a",
-    "name": "TPU-82A",
-    "diameter_tolerance": 0.02,
-    "density": 1.21
+  "uuid": "15663713-f6a4-4613-bc5f-a498564bccc3",
+  "id": "tpu_82a",
+  "name": "TPU-82A",
+  "diameter_tolerance": 0.02,
+  "density": 1.21
 }

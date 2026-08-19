@@ -155,7 +155,7 @@
 			},
 			'separator',
 			{
-				label: 'Delete',
+				label: 'Delete…',
 				onClick: onDelete,
 				destructive: true
 			}

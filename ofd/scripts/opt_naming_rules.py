@@ -669,7 +669,19 @@ MOVE_RULES: dict[str, dict[str, dict[str, list[tuple[str, str, str, list[str]]]]
             "tpu": [
                 ("95a_hf_", "95a_hf", "95A HF", ["95A HF "]),
                 ("for_ams_", "for_ams", "For AMS", ["For AMS "]),
+                ("85a_", "85a", "TPU 85A", ["85A "]),
+                ("90a_", "90a", "TPU 90A", ["90A "]),
             ],
+            # Consolidate filaments that _apply_common_prefix over-splits out of
+            # "tpu" (e.g. tpu_85a, tpu_high_speed_95a_hf) back into the canonical
+            # hardness/line filaments, so a re-import matches the curated layout
+            # instead of creating duplicate product-line filaments.
+            "tpu_85a": [("", "85a", "TPU 85A", [])],
+            "tpu_90a": [("", "90a", "TPU 90A", [])],
+            "tpu_90a_cocoa": [("", "90a", "TPU 90A", [])],
+            "tpu_90a_crystal": [("", "90a", "TPU 90A", [])],
+            "tpu_for_ams": [("", "for_ams", "TPU for AMS", [])],
+            "tpu_high_speed_95a_hf": [("", "95a_hf", "TPU 95A HF", [])],
         },
     },
     "colorfabb": {

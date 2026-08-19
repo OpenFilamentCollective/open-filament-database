@@ -1,6 +1,7 @@
 {
-    "id": "pps_am230",
-    "name": "PPS AM230",
-    "diameter_tolerance": 0.02,
-    "density": 1.33
+  "uuid": "4db3b665-efae-45f3-97ac-c9d982e5e4b2",
+  "id": "pps_am230",
+  "name": "PPS AM230",
+  "diameter_tolerance": 0.02,
+  "density": 1.33
 }

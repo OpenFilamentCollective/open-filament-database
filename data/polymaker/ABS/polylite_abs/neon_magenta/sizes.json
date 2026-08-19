@@ -1,6 +1,9 @@
 [
   {
+    "uuid": "ec95bb75-f284-4a30-92f2-826559f00eb0",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6938936713531",
+    "article_number": "PE01048"
   }
 ]

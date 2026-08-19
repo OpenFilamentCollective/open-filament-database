@@ -1,0 +1,16 @@
+{
+  "uuid": "a60349a4-a8bf-48c4-949d-18ee3068179b",
+  "id": "silk_blue_green",
+  "name": "Silk Blue Green",
+  "diameter_tolerance": 0.03,
+  "density": 1.23,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 210,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "min_nozzle_diameter": 0.4,
+  "data_sheet_url": "https://3dhojor.com/products/3dprinting-silk-pla-dual-tri-color-filament?_su_rec=tHGijyqxpJgrAXISK1V6KIs_AFExYloZpXFpcB7tVOzR5AnwsJzjJeuBJNQXuxPKpSuaIBJ5ggTuHCokarmThjjk-M7fIOwvRcsyIModIZYfgHK2oxSEnsZ52PsJBH4LxqvafYH97E2t-k5EbCIOybC8dG7Y_MEqPIjFM2lmu-PVkRBayxzYgIfPXjBFEqza5yGKxY938ZKyvQIdF1-y6BCC8ABH2ZkwvXDTVQWQB2tNZts0iGZvhbpcj6WM4o5_HEtszNsaaDOxSUM&_su_rec_id=76ac0788-67aa-4a2e-bed7-2b99a1c5ebfe-1787084036&variant=44298583081060",
+  "safety_sheet_url": "https://3dhojor.com/products/3dprinting-silk-pla-dual-tri-color-filament?_su_rec=tHGijyqxpJgrAXISK1V6KIs_AFExYloZpXFpcB7tVOzR5AnwsJzjJeuBJNQXuxPKpSuaIBJ5ggTuHCokarmThjjk-M7fIOwvRcsyIModIZYfgHK2oxSEnsZ52PsJBH4LxqvafYH97E2t-k5EbCIOybC8dG7Y_MEqPIjFM2lmu-PVkRBayxzYgIfPXjBFEqza5yGKxY938ZKyvQIdF1-y6BCC8ABH2ZkwvXDTVQWQB2tNZts0iGZvhbpcj6WM4o5_HEtszNsaaDOxSUM&_su_rec_id=76ac0788-67aa-4a2e-bed7-2b99a1c5ebfe-1787084036&variant=44298583081060",
+  "discontinued": false
+}

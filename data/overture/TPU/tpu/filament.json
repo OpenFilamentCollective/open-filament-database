@@ -1,4 +1,5 @@
 {
+    "uuid": "bb345b01-3a35-4246-ad9f-144d273b380b",
     "id": "tpu",
     "name": "TPU",
     "diameter_tolerance": 0.02,
@@ -21,7 +22,7 @@
         },
         "elegooslicer": {
             "generic_id": "GFU99",
-            "id": "GFOT008",
+            "id": "GFOT008_06",
             "profile_name": "Overture TPU"
         }
     }

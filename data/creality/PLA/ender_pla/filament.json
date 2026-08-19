@@ -1,0 +1,15 @@
+{
+  "uuid": "9a7e1af5-6305-4751-aecb-ef2b5bf9e3af",
+  "id": "ender_pla",
+  "name": "Ender PLA+",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 70,
+  "min_nozzle_diameter": 0.4,
+  "discontinued": false
+}

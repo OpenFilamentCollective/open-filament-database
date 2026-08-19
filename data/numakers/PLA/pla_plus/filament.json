@@ -1,4 +1,5 @@
 {
+    "uuid": "db72f902-e6c2-4b9a-b703-1f22796fc644",
     "id": "pla_plus",
     "name": "PLA+",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFNMK00",
+            "id": "GFNMK00",
             "profile_name": "Numakers PLA+"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFNMK00",
+            "id": "GFNMK00",
             "profile_name": "Numakers PLA+"
         }
     }

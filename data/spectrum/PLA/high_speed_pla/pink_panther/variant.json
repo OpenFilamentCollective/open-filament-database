@@ -1,8 +1,10 @@
 {
+  "uuid": "6982d57b-2697-41c2-b8f8-3d62543ac0d8",
   "id": "pink_panther",
   "name": "Pink Panther",
   "color_hex": "#FF5786",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

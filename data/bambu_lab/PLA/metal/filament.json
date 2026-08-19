@@ -1,4 +1,5 @@
 {
+    "uuid": "baa26184-1aa9-4c6e-ad4c-f9394dd80168",
     "id": "metal",
     "name": "PLA Metal",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA02",
+            "id": "GFA02",
             "profile_name": "Bambu PLA Metal"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA02",
+            "id": "GFA02",
             "profile_name": "Bambu PLA Metal"
         },
         "crealityprint": {

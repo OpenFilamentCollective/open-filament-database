@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "5c0f951c-b2f0-4fab-9e3b-1ab99f443ef9",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-gradient-satin?"
+        "url": "https://us.polymaker.com/products/panchroma-gradient-satin"
       }
     ]
   }

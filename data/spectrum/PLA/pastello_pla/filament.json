@@ -1,6 +1,7 @@
 {
-    "id": "pastello_pla",
-    "name": "Pastello PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "3d2bbd65-6598-4b00-a226-3a20f042d33d",
+  "id": "pastello_pla",
+  "name": "Pastello PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

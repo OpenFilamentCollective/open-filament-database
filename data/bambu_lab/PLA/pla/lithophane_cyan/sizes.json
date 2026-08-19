@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "2a6a58d8-3fba-4449-9ccb-f64ee96c13da",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://eu.store.bambulab.com/products/pla-cmyk-lithophane"
+      }
+    ]
+  }
+]

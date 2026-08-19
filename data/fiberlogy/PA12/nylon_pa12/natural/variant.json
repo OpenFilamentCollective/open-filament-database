@@ -1,8 +1,9 @@
 {
-    "id": "natural",
-    "name": "Natural",
-    "color_hex": "#FAF8DF",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "a2336544-e9a3-4d31-8e24-0dbaac78de42",
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#FAF8DF",
+  "traits": {
+    "recyclable": true
+  }
 }

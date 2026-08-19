@@ -1,11 +1,12 @@
 {
-    "id": "stone_grey",
-    "name": "Stone Grey",
-    "color_hex": "#939388",
-    "color_standards": {
-        "ral": "7030"
-    },
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "96eed058-e108-424c-983b-6f63b42420bb",
+  "id": "stone_grey",
+  "name": "Stone Grey",
+  "color_hex": "#939388",
+  "color_standards": {
+    "ral": "7030"
+  },
+  "traits": {
+    "recyclable": true
+  }
 }

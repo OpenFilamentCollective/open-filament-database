@@ -1,34 +1,38 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=41638807961736"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42828180390024"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337035954",
-        "purchase_links": [
-            {
-                "store_id": "3deksperten",
-                "url": "https://3deksperten.dk/products/bambu-lab-petg-translucent-translucent-grey-1-75mm-1kg"
-            }
-        ]
-    }
+  {
+    "uuid": "5757230b-5721-4c0d-87d1-2d0608055848",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=41638807961736"
+      }
+    ]
+  },
+  {
+    "uuid": "b79722bd-96eb-48b4-ab8e-beda4dc88e61",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "article_number": "32100",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42828180390024"
+      }
+    ]
+  },
+  {
+    "uuid": "d5af305c-53f2-47dd-a02f-1c955435fed5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337035954",
+    "purchase_links": [
+      {
+        "store_id": "3deksperten",
+        "url": "https://3deksperten.dk/products/bambu-lab-petg-translucent-translucent-grey-1-75mm-1kg"
+      }
+    ]
+  }
 ]

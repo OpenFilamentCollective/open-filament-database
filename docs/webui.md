@@ -165,6 +165,8 @@ Brand (e.g. Bambu Lab, eSUN, SUNLU)
             └── Sizes & Purchase Links
 ```
 
+Every entity above (including each spool under Sizes) has a stable, slug-independent **canonical `uuid`**. The WebUI never asks you to enter it and never generates one: new entries are submitted with an empty `uuid`, and CI assigns a permanent UUID when your pull request is merged. Editing an existing entry preserves its UUID unchanged. See [Canonical UUIDs](manual.md#-canonical-uuids--leave-them-empty) for details.
+
 ### Change Tracking
 
 In cloud mode, all creates, updates, and deletes are recorded in `localStorage`:

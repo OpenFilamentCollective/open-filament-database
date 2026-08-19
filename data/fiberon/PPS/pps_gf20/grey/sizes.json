@@ -1,21 +1,23 @@
 [
   {
+    "uuid": "7727a8e7-21fa-470e-b472-38778803afdf",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon-pps-gf20?"
+        "url": "https://us.polymaker.com/products/fiberon-pps-gf20"
       }
     ]
   },
   {
+    "uuid": "1fd9442d-a895-4926-9a8b-78d2ca1d7cf4",
     "filament_weight": 500,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon-pps-gf20?"
+        "url": "https://us.polymaker.com/products/fiberon-pps-gf20"
       }
     ]
   }

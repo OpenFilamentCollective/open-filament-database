@@ -1,8 +1,9 @@
 {
-    "id": "orange",
-    "name": "Orange",
-    "color_hex": "#FF8F1C",
-    "traits": {
-        "translucent": true
-    }
+  "uuid": "36b44975-c863-4114-8085-04f948af9889",
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#FF8F1C",
+  "traits": {
+    "translucent": true
+  }
 }

@@ -1,6 +1,7 @@
 {
-    "id": "polysupport_for_pla",
-    "name": "PVA PolySupport for PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.22
+  "uuid": "4db219e5-b26e-4474-9583-3ebd19a802e7",
+  "id": "polysupport_for_pla",
+  "name": "PVA PolySupport for PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.22
 }

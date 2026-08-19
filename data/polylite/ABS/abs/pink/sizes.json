@@ -1,61 +1,67 @@
 [
   {
+    "uuid": "eb2bc269-32e6-4b70-b915-9db0d81a84e1",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-abs?"
+        "url": "https://us.polymaker.com/products/polylite-abs"
       }
     ]
   },
   {
+    "uuid": "cf5dd5d2-5f1f-4a60-b439-b3121009eca1",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-abs?"
+        "url": "https://us.polymaker.com/products/polylite-abs"
       }
     ]
   },
   {
+    "uuid": "f7857e50-aa62-4429-8164-612c272677e9",
     "filament_weight": 5000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-abs?"
+        "url": "https://us.polymaker.com/products/polylite-abs"
       }
     ]
   },
   {
+    "uuid": "99a1124a-ce41-4964-a5e3-7291c4bb9a17",
     "filament_weight": 1000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-abs?"
+        "url": "https://us.polymaker.com/products/polylite-abs"
       }
     ]
   },
   {
+    "uuid": "b9c32d23-82fe-49d2-8f29-a13a3d6ffd02",
     "filament_weight": 3000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-abs?"
+        "url": "https://us.polymaker.com/products/polylite-abs"
       }
     ]
   },
   {
+    "uuid": "d7a31ad8-c397-4eb3-a7bf-9ccdb4aaf824",
     "filament_weight": 5000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-abs?"
+        "url": "https://us.polymaker.com/products/polylite-abs"
       }
     ]
   }

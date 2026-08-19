@@ -1,4 +1,5 @@
 {
+    "uuid": "766a2432-4b60-41ca-9e0a-e04c069cab63",
     "id": "pla_economy",
     "name": "PLA Economy",
     "diameter_tolerance": 0.02,
@@ -15,6 +16,11 @@
             "profile_name": "addnorth PLA Economy"
         },
         "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GF_ANPL",
+            "profile_name": "addnorth PLA Economy"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GF_ANPL",
             "profile_name": "addnorth PLA Economy"

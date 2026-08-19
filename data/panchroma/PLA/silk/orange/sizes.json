@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "1f23d258-983c-42e1-9e64-406187183a1c",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-silk?"
+        "url": "https://us.polymaker.com/products/panchroma-silk"
       }
     ]
   }

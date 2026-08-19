@@ -1,6 +1,7 @@
 {
-    "id": "temp_shift_pla",
-    "name": "Temp Shift PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.31
+  "uuid": "23e76bc2-e9cf-477e-bb69-b80e4ac87637",
+  "id": "temp_shift_pla",
+  "name": "Temp Shift PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.31
 }

@@ -1,8 +1,9 @@
 {
-    "id": "cotton_candy_cloud",
-    "name": "Cotton Candy Cloud",
-    "color_hex": [
-        "#E7C1D5",
-        "#8EC9E9"
-    ]
+  "uuid": "5e544a93-9730-455a-b847-f189e08b743f",
+  "id": "cotton_candy_cloud",
+  "name": "Cotton Candy Cloud",
+  "color_hex": [
+    "#E7C1D5",
+    "#8EC9E9"
+  ]
 }

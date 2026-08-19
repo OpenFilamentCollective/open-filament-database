@@ -1,6 +1,7 @@
 {
-    "id": "abs_esd",
-    "name": "ABS ESD",
-    "diameter_tolerance": 0.02,
-    "density": 1.05
+  "uuid": "80514351-b176-48ed-be60-6e0ac4df0211",
+  "id": "abs_esd",
+  "name": "ABS ESD",
+  "diameter_tolerance": 0.02,
+  "density": 1.05
 }

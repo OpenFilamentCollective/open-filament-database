@@ -1,4 +1,5 @@
 {
+    "uuid": "a12dbbe2-8302-44c2-b7e8-cae6347d5cf3",
     "id": "hf",
     "name": "PETG HF",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFG99",
-            "id": "OGFG02",
+            "id": "GFG02",
             "profile_name": "Bambu PETG HF"
         },
         "elegooslicer": {
             "generic_id": "GFG99",
-            "id": "OGFG02",
+            "id": "GFG02",
             "profile_name": "Bambu PETG HF"
         },
         "anycubicslicer": {

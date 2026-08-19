@@ -51,6 +51,17 @@ async function openDeleteFromDropdown(page: import('@playwright/test').Page) {
 	await deleteItem.click();
 }
 
+/** The delete modal opens redirect-first whenever the entity has a canonical UUID.
+ *  These tests exercise the plain delete, so step past the replacement picker.
+ *  The modal shows a loading state first while it resolves that UUID, so wait for
+ *  whichever pane it settles on before deciding. */
+async function chooseDeleteWithoutRedirect(page: import('@playwright/test').Page) {
+	const modal = page.getByRole('dialog');
+	await expect(modal.getByText(/pick what replaces|are you sure/i)).toBeVisible();
+	const skip = modal.getByRole('button', { name: /can.t be redirected/i });
+	if (await skip.isVisible()) await skip.click();
+}
+
 /** Upload the project logo via the hidden file input and handle crop modal */
 async function uploadLogo(page: import('@playwright/test').Page) {
 	const fileInput = page.locator('input[type="file"]');
@@ -167,7 +178,8 @@ test.describe.serial('CRUD Operations', () => {
 		// Open kebab dropdown and click Delete (Delete moved out of ActionButtons)
 		await openDeleteFromDropdown(page);
 
-		// Confirm in DeleteConfirmationModal
+		// Confirm in the delete modal
+		await chooseDeleteWithoutRedirect(page);
 		const modal = page.getByRole('dialog');
 		await expect(modal.getByText(/are you sure/i)).toBeVisible();
 		await modal.getByRole('button', { name: 'Delete' }).click();
@@ -183,6 +195,7 @@ test.describe.serial('CRUD Operations', () => {
 		const result = await navigateDeep(page, 'filament', 'last');
 
 		await openDeleteFromDropdown(page);
+		await chooseDeleteWithoutRedirect(page);
 		const modal = page.getByRole('dialog');
 		await expect(modal.getByText(/are you sure/i)).toBeVisible();
 		await modal.getByRole('button', { name: 'Delete' }).click();
@@ -197,6 +210,7 @@ test.describe.serial('CRUD Operations', () => {
 		const heading = await page.locator('h1').textContent();
 
 		await openDeleteFromDropdown(page);
+		await chooseDeleteWithoutRedirect(page);
 		const modal = page.getByRole('dialog');
 		await expect(modal.getByText(/are you sure/i)).toBeVisible();
 		await modal.getByRole('button', { name: 'Delete' }).click();
@@ -218,6 +232,7 @@ test.describe.serial('CRUD Operations', () => {
 		await waitForLoad(page);
 
 		await openDeleteFromDropdown(page);
+		await chooseDeleteWithoutRedirect(page);
 		const modal = page.getByRole('dialog');
 		await expect(modal.getByText(/are you sure/i)).toBeVisible();
 		await modal.getByRole('button', { name: 'Delete' }).click();
@@ -237,6 +252,7 @@ test.describe.serial('CRUD Operations', () => {
 		await waitForLoad(page);
 
 		await openDeleteFromDropdown(page);
+		await chooseDeleteWithoutRedirect(page);
 		const modal = page.getByRole('dialog');
 		await expect(modal.getByText(/are you sure/i)).toBeVisible();
 		await modal.getByRole('button', { name: 'Delete' }).click();

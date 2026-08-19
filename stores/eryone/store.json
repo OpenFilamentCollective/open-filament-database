@@ -1,20 +1,21 @@
 {
-    "id": "eryone",
-    "name": "Eryone",
-    "storefront_url": "https://eryone3d.com/",
-    "logo": "logo.png",
-    "ships_from": [
-        "US",
-        "CA",
-        "EU",
-        "UK",
-        "RU"
-    ],
-    "ships_to": [
-        "US",
-        "CA",
-        "EU",
-        "UK",
-        "RU"
-    ]
+  "uuid": "9ca79f68-8c47-41fb-b86c-fffb01a88e3b",
+  "id": "eryone",
+  "name": "Eryone",
+  "storefront_url": "https://eryone3d.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US",
+    "CA",
+    "EU",
+    "UK",
+    "RU"
+  ],
+  "ships_to": [
+    "US",
+    "CA",
+    "EU",
+    "UK",
+    "RU"
+  ]
 }

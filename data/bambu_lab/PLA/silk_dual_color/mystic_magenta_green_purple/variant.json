@@ -1,8 +1,9 @@
 {
-    "id": "mystic_magenta_green_purple",
-    "name": "Mystic Magenta (Green-Purple)",
-    "color_hex": [
-        "#720062",
-        "#3A913F"
-    ]
+  "uuid": "1d7ce525-cd8e-4e5a-8de3-06d8b150c74c",
+  "id": "mystic_magenta_green_purple",
+  "name": "Mystic Magenta (Green-Purple)",
+  "color_hex": [
+    "#720062",
+    "#3A913F"
+  ]
 }

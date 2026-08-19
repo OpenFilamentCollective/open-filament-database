@@ -1,8 +1,9 @@
 {
-    "id": "pink",
-    "name": "Pink",
-    "color_hex": "#E80BA2",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "8cfec84a-540b-4625-94fd-c7b5c0ffe70d",
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#E80BA2",
+  "traits": {
+    "recyclable": true
+  }
 }

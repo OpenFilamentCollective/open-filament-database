@@ -1,4 +1,5 @@
 {
+    "uuid": "a2e82384-f8bd-49a3-8b43-ee02a8618043",
     "id": "asa+",
     "name": "ASA+",
     "diameter_tolerance": 0.03,
@@ -9,6 +10,11 @@
     "max_bed_temperature": 110,
     "slicer_settings": {
         "orcaslicer": {
+            "generic_id": "GFB98",
+            "id": "E4001",
+            "profile_name": "eSUN ASA+"
+        },
+        "elegooslicer": {
             "generic_id": "GFB98",
             "id": "E4001",
             "profile_name": "eSUN ASA+"

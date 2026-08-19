@@ -1,6 +1,7 @@
 {
-    "id": "nylonpower_glass_fibre",
-    "name": "PA6 NylonPower Glass Fibre",
-    "diameter_tolerance": 0.05,
-    "density": 1
+  "uuid": "53988132-735c-4e11-961d-1cad30e99e38",
+  "id": "nylonpower_glass_fibre",
+  "name": "PA6 NylonPower Glass Fibre",
+  "diameter_tolerance": 0.05,
+  "density": 1
 }

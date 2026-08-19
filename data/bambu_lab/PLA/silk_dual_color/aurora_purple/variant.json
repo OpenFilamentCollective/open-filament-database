@@ -1,8 +1,9 @@
 {
-    "id": "aurora_purple",
-    "name": "Aurora Purple",
-    "color_hex": [
-        "#7F3696",
-        "#006EC9"
-    ]
+  "uuid": "249b575f-eebf-42c9-81bb-7913ab5a0dfe",
+  "id": "aurora_purple",
+  "name": "Aurora Purple",
+  "color_hex": [
+    "#7F3696",
+    "#006EC9"
+  ]
 }

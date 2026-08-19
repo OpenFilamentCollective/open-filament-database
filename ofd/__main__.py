@@ -13,6 +13,7 @@ Commands:
     build       - Build database exports (JSON, SQLite, CSV, API)
     serve       - Start development server with CORS
     script      - Run utility scripts (style_data, etc.)
+    uuid        - Manage canonical UUIDs (new, assign, find, check, list)
 
 Examples:
     uv run -m ofd validate                    # Run all validations
@@ -34,7 +35,7 @@ import argcomplete
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from ofd.commands import build, script, serve, validate, webui  # noqa: E402
+from ofd.commands import build, script, serve, uuid, validate, webui  # noqa: E402
 
 
 class CommandHelpFormatter(argparse.RawDescriptionHelpFormatter):
@@ -70,6 +71,7 @@ Command Details:
   serve      [-d DIR] [-p PORT] [--host HOST]
   script     [--list] <script_name> [script_args...]
   webui      [-p PORT] [--host HOST] [--open] [--install]
+  uuid       <new|assign|find|check|list> [options]
 
 Examples:
   ofd validate                     Run all data validations
@@ -82,6 +84,9 @@ Examples:
   ofd script style_data --dry-run  Preview sorting changes
   ofd webui                        Start the WebUI on port 5173
   ofd webui --open                 Start WebUI and open browser
+  ofd uuid new                     Print a fresh canonical UUID
+  ofd uuid assign                  Assign UUIDs to entities missing one
+  ofd uuid find <uuid>             Find the file for a canonical UUID
         """,
     )
 
@@ -97,6 +102,7 @@ Examples:
     serve.register_subcommand(subparsers)
     script.register_subcommand(subparsers)
     webui.register_subcommand(subparsers)
+    uuid.register_subcommand(subparsers)
 
     return parser
 

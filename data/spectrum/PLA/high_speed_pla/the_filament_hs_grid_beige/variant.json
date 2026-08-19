@@ -1,8 +1,10 @@
 {
+  "uuid": "b4b9d53f-f2f5-4211-8631-2027b34e200a",
   "id": "the_filament_hs_grid_beige",
   "name": "The Filament HS Grid Beige",
   "color_hex": "#F1E6B2",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

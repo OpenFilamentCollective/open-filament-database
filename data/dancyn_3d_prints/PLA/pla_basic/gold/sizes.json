@@ -1,0 +1,32 @@
+[
+  {
+    "uuid": "3fb3c4bf-4023-45bf-99cf-f160f56de692",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "dancyn_3d_prints",
+        "url": "https://www.dancyn3dprints.com/products/pla-basic?variant=49889620984060"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/Dancyn-3D-Prints-Filament-Dimensional/dp/B0HBCT5GF7/ref=sr_1_1_sspa"
+      }
+    ]
+  },
+  {
+    "uuid": "d1c8872c-b0de-48e1-adb4-4e06fd81626d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "dancyn_3d_prints",
+        "url": "https://www.dancyn3dprints.com/products/pla-basic?variant=48727202169084"
+      }
+    ]
+  }
+]

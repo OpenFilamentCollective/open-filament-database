@@ -1,11 +1,12 @@
 {
-    "id": "anthracite",
-    "name": "Anthracite",
-    "color_hex": "#373F43",
-    "color_standards": {
-        "ral": "7016"
-    },
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "681a597b-442b-408c-a3e8-b9720ca1d15e",
+  "id": "anthracite",
+  "name": "Anthracite",
+  "color_hex": "#373F43",
+  "color_standards": {
+    "ral": "7016"
+  },
+  "traits": {
+    "recyclable": true
+  }
 }

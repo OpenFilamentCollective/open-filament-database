@@ -1,6 +1,7 @@
 {
-    "id": "pctg_gf10",
-    "name": "PCTG GF10",
-    "diameter_tolerance": 0.02,
-    "density": 1.31
+  "uuid": "aed194f7-fe3f-4742-a912-1e8e3539688e",
+  "id": "pctg_gf10",
+  "name": "PCTG GF10",
+  "diameter_tolerance": 0.02,
+  "density": 1.31
 }

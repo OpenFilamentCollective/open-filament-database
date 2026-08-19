@@ -1,6 +1,7 @@
 {
-    "id": "pla_galaxy",
-    "name": "PLA Galaxy",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "43fa673b-cecb-4e04-b261-2b83714fe29a",
+  "id": "pla_galaxy",
+  "name": "PLA Galaxy",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

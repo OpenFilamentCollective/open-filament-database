@@ -1,8 +1,10 @@
 {
+  "uuid": "d92989cd-e0a2-4efe-9742-2c51d4ba57fe",
   "id": "semi_black",
   "name": "Semi- Black",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

@@ -1,7 +1,8 @@
 {
-    "id": "pla+",
-    "name": "PLA+",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "max_dry_temperature": 55
+  "uuid": "e8bde71f-65a5-47fb-84f9-d69323350d80",
+  "id": "pla+",
+  "name": "PLA+",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 55
 }

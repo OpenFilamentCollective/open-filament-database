@@ -1,21 +1,23 @@
 [
   {
+    "uuid": "b3187560-0f9e-4f30-af7d-ba33beae66b5",
     "filament_weight": 750,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polysupport-for-pla?"
+        "url": "https://us.polymaker.com/products/polysupport-for-pla"
       }
     ]
   },
   {
+    "uuid": "1b1e6754-b44d-4199-89f8-db9da666a0e3",
     "filament_weight": 750,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polysupport-for-pla?"
+        "url": "https://us.polymaker.com/products/polysupport-for-pla"
       }
     ]
   }

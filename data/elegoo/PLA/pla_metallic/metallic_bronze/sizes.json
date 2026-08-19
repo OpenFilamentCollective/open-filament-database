@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "f93c3872-c2c7-4ba3-8019-2be356ec74d1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "elegoo",
+        "url": "https://elegoo.com/collections/pla-filament/products/pla-metal-filament-1-75-mm-colored-1-kg"
+      }
+    ]
+  }
+]

@@ -1,6 +1,7 @@
 {
-    "id": "recycle_pla",
-    "name": "Recycle PLA",
-    "diameter_tolerance": 0.05,
-    "density": 1.24
+  "uuid": "dd120cf1-846b-44fe-a555-153688ca5f5f",
+  "id": "recycle_pla",
+  "name": "Recycle PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.24
 }

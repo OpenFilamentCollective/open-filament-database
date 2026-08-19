@@ -1,6 +1,7 @@
 {
-    "id": "pla_stars",
-    "name": "PLA-Stars",
-    "diameter_tolerance": 0.03,
-    "density": 1.2
+  "uuid": "b18868ec-8309-43a7-9ba4-06027b4cffce",
+  "id": "pla_stars",
+  "name": "PLA-Stars",
+  "diameter_tolerance": 0.03,
+  "density": 1.2
 }

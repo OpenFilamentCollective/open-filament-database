@@ -1,4 +1,5 @@
 {
+    "uuid": "9bee6ab3-52b9-4069-a7ed-e64b902b9edf",
     "id": "matte",
     "name": "PLA Matte",
     "diameter_tolerance": 0.03,
@@ -17,12 +18,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA01",
+            "id": "GFA01",
             "profile_name": "Bambu PLA Matte"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA01",
+            "id": "GFA01",
             "profile_name": "Bambu PLA Matte"
         },
         "crealityprint": {

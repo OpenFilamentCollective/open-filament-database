@@ -1,8 +1,10 @@
 {
+  "uuid": "50b966ea-8a4d-4025-b0c1-d66b17d3ead5",
   "id": "ultra_marine_blue",
   "name": "Ultra Marine Blue",
   "color_hex": "#0353BA",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

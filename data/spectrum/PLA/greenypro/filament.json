@@ -1,6 +1,7 @@
 {
-    "id": "greenypro",
-    "name": "PLA GreenyPro",
-    "diameter_tolerance": 0.02,
-    "density": 1.34
+  "uuid": "e400e69a-fbe7-4752-ab30-1093ae5f8c38",
+  "id": "greenypro",
+  "name": "PLA GreenyPro",
+  "diameter_tolerance": 0.02,
+  "density": 1.34
 }

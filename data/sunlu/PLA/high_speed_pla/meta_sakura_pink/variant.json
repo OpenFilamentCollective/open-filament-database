@@ -1,8 +1,10 @@
 {
+  "uuid": "1d72a842-78b1-4494-931b-3eb2e5fbb818",
   "id": "meta_sakura_pink",
   "name": "Meta Sakura Pink",
   "color_hex": "#F4A0B1",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

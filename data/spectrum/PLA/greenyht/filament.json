@@ -1,11 +1,12 @@
 {
-    "id": "greenyht",
-    "name": "PLA GreenyHT",
-    "diameter_tolerance": 0.02,
-    "density": 1.54,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Spectrum GreenyHT"
-        }
+  "uuid": "7ffded7e-18e4-477c-84ec-42fd95fc8677",
+  "id": "greenyht",
+  "name": "PLA GreenyHT",
+  "diameter_tolerance": 0.02,
+  "density": 1.54,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Spectrum GreenyHT"
     }
+  }
 }

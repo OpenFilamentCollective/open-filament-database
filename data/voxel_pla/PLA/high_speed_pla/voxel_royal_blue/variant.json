@@ -1,8 +1,10 @@
 {
+  "uuid": "21ebc06b-f84d-42a6-be1f-af1fac71eb72",
   "id": "voxel_royal_blue",
   "name": "Voxel Royal Blue",
   "color_hex": "#2E56F1",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

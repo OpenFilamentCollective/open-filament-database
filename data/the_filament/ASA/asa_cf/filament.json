@@ -1,6 +1,7 @@
 {
-    "id": "asa_cf",
-    "name": "ASA CF",
-    "diameter_tolerance": 0.02,
-    "density": 1.12
+  "uuid": "9548b0aa-82eb-47a6-b996-5eb5653e957c",
+  "id": "asa_cf",
+  "name": "ASA CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.12
 }

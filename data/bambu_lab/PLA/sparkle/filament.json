@@ -1,4 +1,5 @@
 {
+    "uuid": "9526a623-ee2a-4c99-8088-7b8d282bf4d4",
     "id": "sparkle",
     "name": "PLA Sparkle",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA08",
+            "id": "GFA08",
             "profile_name": "Bambu PLA Sparkle"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA08",
+            "id": "GFA08",
             "profile_name": "Bambu PLA Sparkle"
         },
         "crealityprint": {

@@ -1,6 +1,7 @@
 {
-    "id": "flameguard_pla",
-    "name": "FlameGuard PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.26
+  "uuid": "6f5c60da-e4ba-4c4b-9dd8-5d9a217a1b80",
+  "id": "flameguard_pla",
+  "name": "FlameGuard PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.26
 }

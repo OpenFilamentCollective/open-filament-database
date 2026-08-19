@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS meta (
 -- Store table
 CREATE TABLE IF NOT EXISTS store (
     id TEXT PRIMARY KEY,
+    uuid TEXT,  -- canonical UUID (slug-independent); NULL until assigned by CI
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
     storefront_url TEXT NOT NULL,
@@ -37,6 +38,7 @@ CREATE TABLE IF NOT EXISTS store (
 );
 CREATE INDEX IF NOT EXISTS ix_store_name ON store(name);
 CREATE INDEX IF NOT EXISTS ix_store_slug ON store(slug);
+CREATE INDEX IF NOT EXISTS ix_store_uuid ON store(uuid);
 
 -- Store shipping regions view (for easier querying)
 CREATE VIEW IF NOT EXISTS v_store_shipping AS

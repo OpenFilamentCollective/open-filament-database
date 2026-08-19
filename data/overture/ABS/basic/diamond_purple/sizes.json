@@ -1,12 +1,13 @@
 [
-    {
-      "filament_weight": 1000,
-      "diameter": 1.75,
-      "purchase_links": [
-        {
-          "store_id": "overture3d",
-          "url": "https://overture3d.com/products/overture-abs-filament-1-75mm"
-        }
-      ]
-    }
-  ]
+  {
+    "uuid": "dd84b5ad-a7c8-4e7a-a4aa-ebc17224e843",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "overture3d",
+        "url": "https://overture3d.com/products/overture-abs-filament-1-75mm"
+      }
+    ]
+  }
+]

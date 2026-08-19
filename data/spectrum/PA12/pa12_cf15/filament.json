@@ -1,6 +1,7 @@
 {
-    "id": "pa12_cf15",
-    "name": "PA12 CF15",
-    "diameter_tolerance": 0.02,
-    "density": 1.07
+  "uuid": "0a14f36f-afb0-45f1-b869-a0d53ac0473f",
+  "id": "pa12_cf15",
+  "name": "PA12 CF15",
+  "diameter_tolerance": 0.02,
+  "density": 1.07
 }

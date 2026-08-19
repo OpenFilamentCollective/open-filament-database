@@ -1,6 +1,7 @@
 {
-    "id": "pet_cf15",
-    "name": "PET CF15",
-    "diameter_tolerance": 0.02,
-    "density": 1.4
+  "uuid": "dbd39dbc-1b94-4e07-963a-b5d0ed0b60a2",
+  "id": "pet_cf15",
+  "name": "PET CF15",
+  "diameter_tolerance": 0.02,
+  "density": 1.4
 }

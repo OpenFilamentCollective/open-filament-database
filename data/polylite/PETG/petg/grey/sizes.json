@@ -1,61 +1,67 @@
 [
   {
+    "uuid": "45452644-a0f8-4a3a-b714-94aa40824194",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-petg?"
+        "url": "https://us.polymaker.com/products/polylite-petg"
       }
     ]
   },
   {
+    "uuid": "5acce89d-d825-4480-8790-ac6cc5a71168",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-petg?"
+        "url": "https://us.polymaker.com/products/polylite-petg"
       }
     ]
   },
   {
+    "uuid": "6d6bed47-35fa-4056-9fac-aee1fe0362a6",
     "filament_weight": 5000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-petg?"
+        "url": "https://us.polymaker.com/products/polylite-petg"
       }
     ]
   },
   {
+    "uuid": "785bcf68-b3fc-4745-9a4c-4e231b17ca71",
     "filament_weight": 1000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-petg?"
+        "url": "https://us.polymaker.com/products/polylite-petg"
       }
     ]
   },
   {
+    "uuid": "24ade868-50fb-44a1-bbca-2b3e88fce560",
     "filament_weight": 3000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-petg?"
+        "url": "https://us.polymaker.com/products/polylite-petg"
       }
     ]
   },
   {
+    "uuid": "340cd265-eb63-41e0-bdfd-78178cc0393e",
     "filament_weight": 5000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-petg?"
+        "url": "https://us.polymaker.com/products/polylite-petg"
       }
     ]
   }

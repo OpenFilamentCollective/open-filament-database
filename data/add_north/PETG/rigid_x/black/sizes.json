@@ -1,26 +1,28 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "empty_spool_weight": 175,
-        "spool_core_diameter": 41,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/Rigid%20X/Rigid%20X%20-%201.75mm%20-%20500g%20-%20Black"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 238,
-        "spool_core_diameter": 67,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/Rigid%20X/Rigid%20X%20-%201.75mm%20-%201000g%20-%20Black"
-            }
-        ]
-    }
+  {
+    "uuid": "6238c927-1b46-4d09-8a18-7a15fdc655ba",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "empty_spool_weight": 175,
+    "spool_core_diameter": 41,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/Rigid%20X/Rigid%20X%20-%201.75mm%20-%20500g%20-%20Black"
+      }
+    ]
+  },
+  {
+    "uuid": "94854d56-4910-4a25-9646-2979c480276f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 238,
+    "spool_core_diameter": 67,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/Rigid%20X/Rigid%20X%20-%201.75mm%20-%201000g%20-%20Black"
+      }
+    ]
+  }
 ]

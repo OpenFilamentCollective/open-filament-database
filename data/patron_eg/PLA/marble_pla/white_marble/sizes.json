@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "e0208ac2-ef1e-4021-8ba6-ed0e25db9a13",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
@@ -9,7 +10,7 @@
     "purchase_links": [
       {
         "store_id": "amazon",
-        "url": "https://www.amazon.eg/dp/B0GVSM88NP/?tag=3dfil-20&linkCode=ogi&psc=1&th=1"
+        "url": "https://www.amazon.eg/dp/B0GVSM88NP/"
       }
     ]
   }

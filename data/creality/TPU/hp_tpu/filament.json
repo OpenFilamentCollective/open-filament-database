@@ -1,6 +1,7 @@
 {
-    "id": "hp_tpu",
-    "name": "HP-TPU",
-    "diameter_tolerance": 0.03,
-    "density": 1.21
+  "uuid": "79b7ab02-75dc-4875-826c-b015a674b394",
+  "id": "hp_tpu",
+  "name": "HP-TPU",
+  "diameter_tolerance": 0.03,
+  "density": 1.21
 }

@@ -1,6 +1,7 @@
 {
-    "id": "abs_medical",
-    "name": "ABS Medical",
-    "diameter_tolerance": 0.02,
-    "density": 1.06
+  "uuid": "4afd4952-d5ab-44c2-a879-3412a659be55",
+  "id": "abs_medical",
+  "name": "ABS Medical",
+  "diameter_tolerance": 0.02,
+  "density": 1.06
 }

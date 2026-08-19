@@ -101,6 +101,9 @@ class DataCrawler:
         store = {
             **data,
             "id": store_id,
+            # Canonical UUID stored in source JSON, independent of slug/id. None
+            # when unassigned (stripped on export); assigned by CI on merge.
+            "uuid": data.get("uuid") or None,
             "name": data.get("name", store_dir.name),
             "slug": slugify(data.get("id", store_dir.name)),
             "directory_name": store_dir.name,  # internal, stripped on export
@@ -151,6 +154,7 @@ class DataCrawler:
         brand = {
             **brand_data,
             "id": brand_id,
+            "uuid": brand_data.get("uuid") or None,
             "name": brand_data.get("name", brand_name),
             # Slug must match the on-disk directory so cloud paths round-trip back
             # to the repo (PR building maps brands/<slug> -> data/<slug>/). Mirror
@@ -198,6 +202,7 @@ class DataCrawler:
             material = {
                 **material_data,
                 "id": material_id,
+                "uuid": material_data.get("uuid") or None,
                 "brand_id": brand_id,
                 "material": material_data.get("material", material_name),
                 "slug": material_data.get("material", material_name),
@@ -244,6 +249,7 @@ class DataCrawler:
         filament = {
             **filament_data,
             "id": filament_id,
+            "uuid": filament_data.get("uuid") or None,
             "brand_id": brand_id,
             "material_id": material_id,
             "name": filament_name,
@@ -303,6 +309,7 @@ class DataCrawler:
         variant = {
             **variant_data,
             "id": variant_id,
+            "uuid": variant_data.get("uuid") or None,
             "filament_id": filament_id,
             "slug": slugify(variant_source_id),
             "name": color_name,
@@ -360,6 +367,7 @@ class DataCrawler:
         size = {
             **size_entry,
             "id": size_id,
+            "uuid": size_entry.get("uuid") or None,
             "variant_id": variant_id,
             "filament_weight": int(weight),
             "diameter": float(diameter),

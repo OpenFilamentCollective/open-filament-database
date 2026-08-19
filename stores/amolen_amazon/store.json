@@ -1,8 +1,9 @@
 {
-    "id": "amolen_amazon",
-    "name": "amolen - Amazon",
-    "storefront_url": "https://www.amazon.com/stores/AMOLEN/page/358D2B52-F200-4D4C-8DA5-C4DE7797C263",
-    "logo": "logo.jpg",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "9926d4f8-874e-4511-bf5d-26156b372176",
+  "id": "amolen_amazon",
+  "name": "amolen - Amazon",
+  "storefront_url": "https://www.amazon.com/stores/AMOLEN/page/358D2B52-F200-4D4C-8DA5-C4DE7797C263",
+  "logo": "logo.jpg",
+  "ships_from": [],
+  "ships_to": []
 }

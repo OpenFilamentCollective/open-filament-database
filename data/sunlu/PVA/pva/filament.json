@@ -1,6 +1,7 @@
 {
-    "id": "pva",
-    "name": "PVA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "9060a92d-7e9a-4593-b9e0-0593d2187c96",
+  "id": "pva",
+  "name": "PVA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19
 }

@@ -1,21 +1,23 @@
 [
   {
+    "uuid": "cc2f8297-c8ce-4938-bcb7-e9f3ff34f130",
     "filament_weight": 500,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon%E2%84%A2-pa612-esd?"
+        "url": "https://us.polymaker.com/products/fiberon%E2%84%A2-pa612-esd"
       }
     ]
   },
   {
+    "uuid": "439e1d6f-9e23-4322-a4bd-5bf45fe45672",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon%E2%84%A2-pa612-esd?"
+        "url": "https://us.polymaker.com/products/fiberon%E2%84%A2-pa612-esd"
       }
     ]
   }

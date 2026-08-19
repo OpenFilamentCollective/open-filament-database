@@ -1,6 +1,7 @@
 {
-    "id": "asa_high_speed",
-    "name": "ASA High-Speed",
-    "diameter_tolerance": 0.03,
-    "density": 1.05
+  "uuid": "fafa7d73-2d67-4c84-b9f7-6ea800ce07cc",
+  "id": "asa_high_speed",
+  "name": "ASA High-Speed",
+  "diameter_tolerance": 0.03,
+  "density": 1.05
 }

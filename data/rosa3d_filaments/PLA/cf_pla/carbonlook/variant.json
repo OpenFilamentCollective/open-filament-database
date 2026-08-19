@@ -1,8 +1,10 @@
 {
+  "uuid": "363b98c5-ebf2-4b48-ba8f-2bf54cce5f3a",
   "id": "carbonlook",
   "name": "CarbonLook",
   "color_hex": "#292824",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

@@ -1,4 +1,5 @@
 {
+    "uuid": "5274d23e-d86d-4724-9b2b-bc370f8ee753",
     "id": "pla_premium_silk",
     "name": "PLA Premium Silk",
     "diameter_tolerance": 0.02,
@@ -11,6 +12,11 @@
             "profile_name": "addnorth PLA Premium Silk"
         },
         "orcaslicer": {
+            "generic_id": "GFL96",
+            "id": "GF_ANPS",
+            "profile_name": "addnorth PLA Premium Silk"
+        },
+        "elegooslicer": {
             "generic_id": "GFL96",
             "id": "GF_ANPS",
             "profile_name": "addnorth PLA Premium Silk"

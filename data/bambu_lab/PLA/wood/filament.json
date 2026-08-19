@@ -1,4 +1,5 @@
 {
+    "uuid": "319f5b08-f625-4b28-8291-29989caf3735",
     "id": "wood",
     "name": "PLA Wood",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA16",
+            "id": "GFA16",
             "profile_name": "Bambu PLA Wood"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA16",
+            "id": "GFA16",
             "profile_name": "Bambu PLA Wood"
         },
         "anycubicslicer": {

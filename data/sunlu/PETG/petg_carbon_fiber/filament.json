@@ -1,6 +1,7 @@
 {
-    "id": "petg_carbon_fiber",
-    "name": "PETG Carbon Fiber",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "e896671f-e08e-4d60-9554-2bc40e53abfc",
+  "id": "petg_carbon_fiber",
+  "name": "PETG Carbon Fiber",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

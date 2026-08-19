@@ -1,7 +1,8 @@
 {
-    "id": "polysonic",
-    "name": "PolySonic",
-    "website": "https://polymaker.com/",
-    "logo": "logo.svg",
-    "origin": "CN"
+  "uuid": "bc3059ca-cf1a-4153-8e93-12e21456fb72",
+  "id": "polysonic",
+  "name": "PolySonic",
+  "website": "https://polymaker.com/",
+  "logo": "logo.svg",
+  "origin": "CN"
 }

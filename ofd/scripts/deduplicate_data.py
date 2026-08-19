@@ -48,6 +48,7 @@ from pathlib import Path
 
 from ofd.base import BaseScript, ScriptResult, register_script
 from ofd.merge import merge_has_errors, merge_trees, save_json
+from ofd.uuids import record_moved_from
 
 
 def _has_doubled_segment(name: str) -> bool:
@@ -309,6 +310,13 @@ class DeduplicateDataScript(BaseScript):
                 self.log("  No changes needed")
 
             if delete_source and not merge_has_errors(actions):
+                # Preserve the merged-away directory's canonical UUIDs so old
+                # references still resolve to the surviving target.
+                recorded = record_moved_from(tgt, src)
+                if recorded:
+                    self.log(
+                        f"  Recorded {len(recorded)} former UUID(s) into {tgt.name} moved_from"
+                    )
                 shutil.rmtree(src)
                 self.log(f"  Deleted: {src.name}")
                 merge_ok += 1

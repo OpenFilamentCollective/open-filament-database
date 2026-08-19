@@ -1,6 +1,7 @@
 {
-    "id": "pla_meta",
-    "name": "PLA-Meta",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "ac25a833-3cca-480a-a249-10deab50da2f",
+  "id": "pla_meta",
+  "name": "PLA-Meta",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

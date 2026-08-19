@@ -1,21 +1,23 @@
 [
   {
+    "uuid": "e13dc9fe-9e48-4c46-a73a-d080206d6ece",
     "filament_weight": 750,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polyflex-tpu90?"
+        "url": "https://us.polymaker.com/products/polyflex-tpu90"
       }
     ]
   },
   {
+    "uuid": "c20f1eaa-9a82-4d08-b9c3-3922e9647e81",
     "filament_weight": 750,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polyflex-tpu90?"
+        "url": "https://us.polymaker.com/products/polyflex-tpu90"
       }
     ]
   }

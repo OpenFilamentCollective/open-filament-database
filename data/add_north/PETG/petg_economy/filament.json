@@ -1,4 +1,5 @@
 {
+    "uuid": "6eda8af8-2b83-4cf5-987e-332c2b76951c",
     "id": "petg_economy",
     "name": "PETG Economy",
     "diameter_tolerance": 0.02,
@@ -12,6 +13,11 @@
             "profile_name": "addnorth PETG Economy"
         },
         "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "GF_ANGE",
+            "profile_name": "addnorth PETG Economy"
+        },
+        "elegooslicer": {
             "generic_id": "GFG99",
             "id": "GF_ANGE",
             "profile_name": "addnorth PETG Economy"

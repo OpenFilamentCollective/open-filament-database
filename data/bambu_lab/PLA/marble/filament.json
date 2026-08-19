@@ -1,4 +1,5 @@
 {
+    "uuid": "efc5b62f-748a-4f43-ad0a-ad2528b7fafa",
     "id": "marble",
     "name": "PLA Marble",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA07",
+            "id": "GFA07",
             "profile_name": "Bambu PLA Marble"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA07",
+            "id": "GFA07",
             "profile_name": "Bambu PLA Marble"
         },
         "crealityprint": {

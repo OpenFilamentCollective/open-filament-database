@@ -1,4 +1,5 @@
 {
+    "uuid": "eb6eadab-79f7-4cda-ba81-123151797ed1",
     "id": "glow",
     "name": "PLA Glow",
     "diameter_tolerance": 0.03,
@@ -17,12 +18,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA12",
+            "id": "GFA12",
             "profile_name": "Bambu PLA Glow"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA12",
+            "id": "GFA12",
             "profile_name": "Bambu PLA Glow"
         },
         "crealityprint": {

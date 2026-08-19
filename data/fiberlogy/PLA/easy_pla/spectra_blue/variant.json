@@ -1,8 +1,9 @@
 {
-    "id": "spectra_blue",
-    "name": "Spectra Blue",
-    "color_hex": "#2C4F66",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "1c4ae439-cd7b-471e-ae4f-da222420979a",
+  "id": "spectra_blue",
+  "name": "Spectra Blue",
+  "color_hex": "#2C4F66",
+  "traits": {
+    "recyclable": true
+  }
 }

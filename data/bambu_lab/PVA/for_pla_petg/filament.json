@@ -1,4 +1,5 @@
 {
+    "uuid": "04adc505-4a61-4b9b-802f-116b9e0fd89e",
     "id": "for_pla_petg",
     "name": "Support for PLA/PETG",
     "diameter_tolerance": 0.05,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFS99",
-            "id": "OGFS05",
+            "id": "GFS05",
             "profile_name": "Bambu Support For PLA/PETG"
         },
         "elegooslicer": {
             "generic_id": "GFS99",
-            "id": "OGFS05",
+            "id": "GFS05",
             "profile_name": "Bambu Support For PLA/PETG"
         },
         "crealityprint": {

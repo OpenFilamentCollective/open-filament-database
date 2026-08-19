@@ -1,6 +1,7 @@
 {
-    "id": "metallic_pla_pro",
-    "name": "Metallic PLA Pro",
-    "diameter_tolerance": 0.02,
-    "density": 1.22
+  "uuid": "2e0d2795-366b-45cc-91df-ed73aac650c6",
+  "id": "metallic_pla_pro",
+  "name": "Metallic PLA Pro",
+  "diameter_tolerance": 0.02,
+  "density": 1.22
 }

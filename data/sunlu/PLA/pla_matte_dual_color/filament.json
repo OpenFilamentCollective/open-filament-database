@@ -1,6 +1,7 @@
 {
-    "id": "pla_matte_dual_color",
-    "name": "PLA Matte Dual-Color",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "72ede74d-0aaf-4adf-a74f-40092f8498e5",
+  "id": "pla_matte_dual_color",
+  "name": "PLA Matte Dual-Color",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

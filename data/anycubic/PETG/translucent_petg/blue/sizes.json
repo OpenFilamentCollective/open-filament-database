@@ -1,15 +1,16 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 127,
-        "spool_core_diameter": 58,
-        "article_number": "ahpetb-101",
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/petg-filament-translucent?variant=45760708378786"
-            }
-        ]
-    }
+  {
+    "uuid": "2f5066c4-ff9a-4ef7-ae36-1bccfb80cbed",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 127,
+    "spool_core_diameter": 58,
+    "article_number": "ahpetb-101",
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/petg-filament-translucent?variant=45760708378786"
+      }
+    ]
+  }
 ]

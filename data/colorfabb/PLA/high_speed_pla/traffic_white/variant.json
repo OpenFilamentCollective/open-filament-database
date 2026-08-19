@@ -1,8 +1,10 @@
 {
+  "uuid": "5ae31374-15ea-4576-88bc-d730a95338a2",
   "id": "traffic_white",
   "name": "Traffic White",
   "color_hex": "#FFFFFF",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

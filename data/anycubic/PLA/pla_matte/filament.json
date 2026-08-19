@@ -1,4 +1,5 @@
 {
+    "uuid": "47290fc1-f65f-4ab4-b83b-764d784abb0d",
     "id": "pla_matte",
     "name": "PLA Matte",
     "diameter_tolerance": 0.03,
@@ -8,12 +9,12 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "GFL99",
+            "id": "GFL95",
             "profile_name": "Anycubic PLA Matte"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "GFL99",
+            "id": "GFL95",
             "profile_name": "Anycubic PLA Matte"
         },
         "anycubicslicer": {

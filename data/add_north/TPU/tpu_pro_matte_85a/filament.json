@@ -1,4 +1,5 @@
 {
+    "uuid": "9a9995fe-951d-4d18-9401-1d0bb22d859e",
     "id": "tpu_pro_matte_85a",
     "name": "TPU Pro Matte 85A",
     "diameter_tolerance": 0.02,
@@ -11,6 +12,11 @@
             "profile_name": "addnorth TPU Pro Matte 85A"
         },
         "orcaslicer": {
+            "generic_id": "GFU99",
+            "id": "GF_ANTA",
+            "profile_name": "addnorth TPU Pro Matte 85A"
+        },
+        "elegooslicer": {
             "generic_id": "GFU99",
             "id": "GF_ANTA",
             "profile_name": "addnorth TPU Pro Matte 85A"

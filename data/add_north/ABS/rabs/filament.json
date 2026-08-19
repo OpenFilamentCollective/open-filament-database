@@ -1,4 +1,5 @@
 {
+    "uuid": "80664fd9-2f4f-4b1f-a9a7-4e2dd46f2c1e",
     "id": "rabs",
     "name": "rABS",
     "diameter_tolerance": 0.02,
@@ -12,6 +13,11 @@
             "profile_name": "addnorth ABS rABS"
         },
         "orcaslicer": {
+            "generic_id": "GFB99",
+            "id": "GF_ANRA",
+            "profile_name": "addnorth ABS rABS"
+        },
+        "elegooslicer": {
             "generic_id": "GFB99",
             "id": "GF_ANRA",
             "profile_name": "addnorth ABS rABS"

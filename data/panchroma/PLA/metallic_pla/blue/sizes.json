@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "9c60ab8c-ea36-4baa-8675-3358a8fd0cd3",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-metallic?"
+        "url": "https://us.polymaker.com/products/panchroma-metallic"
       }
     ]
   }

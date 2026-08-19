@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "cae75e90-ab7b-46ba-beef-6e6e020f08f6",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
     "ean": "6977252427203",
+    "article_number": "10205",
     "purchase_links": [
       {
         "store_id": "bblstore",

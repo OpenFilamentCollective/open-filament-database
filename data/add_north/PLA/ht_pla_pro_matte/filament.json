@@ -1,4 +1,5 @@
 {
+    "uuid": "2d351b56-8d36-4b60-8c75-6e6a3a85679f",
     "id": "ht_pla_pro_matte",
     "name": "HT-PLA Pro Matte",
     "diameter_tolerance": 0.02,
@@ -13,6 +14,11 @@
             "profile_name": "addnorth PLA HT-PLA PRO Matte"
         },
         "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GF_ANHTP",
+            "profile_name": "addnorth PLA HT-PLA PRO Matte"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GF_ANHTP",
             "profile_name": "addnorth PLA HT-PLA PRO Matte"

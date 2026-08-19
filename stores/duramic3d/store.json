@@ -1,10 +1,11 @@
 {
-    "id": "duramic3d",
-    "name": "DuramiC 3D",
-    "storefront_url": "https://duramic3d.com/collections/all",
-    "logo": "logo.jpg",
-    "ships_from": [
-        "CN"
-    ],
-    "ships_to": []
+  "uuid": "d767106a-6893-4d74-b489-279eee6491ff",
+  "id": "duramic3d",
+  "name": "DuramiC 3D",
+  "storefront_url": "https://duramic3d.com/collections/all",
+  "logo": "logo.jpg",
+  "ships_from": [
+    "CN"
+  ],
+  "ships_to": []
 }

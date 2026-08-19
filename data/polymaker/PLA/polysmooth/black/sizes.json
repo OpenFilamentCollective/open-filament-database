@@ -1,21 +1,27 @@
 [
   {
+    "uuid": "c7cd529d-465f-423d-b56d-962cf1c0918f",
     "filament_weight": 750,
     "diameter": 1.75,
+    "gtin": "6938936710745",
+    "article_number": "PJ01001",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polysmooth?"
+        "url": "https://us.polymaker.com/products/polysmooth"
       }
     ]
   },
   {
+    "uuid": "9f469dc5-16d5-4b41-a706-ac68878e3212",
     "filament_weight": 750,
     "diameter": 2.85,
+    "gtin": "6938936711957",
+    "article_number": "PJ01013",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polysmooth?"
+        "url": "https://us.polymaker.com/products/polysmooth"
       }
     ]
   }

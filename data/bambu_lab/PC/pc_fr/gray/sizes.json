@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6977252426466",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pc-tpu/products/pc-fr?variant=43160588025992"
-            }
-        ]
-    }
+  {
+    "uuid": "569340c7-5fae-453e-9693-ae94fb0350b3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6977252426466",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pc-tpu/products/pc-fr?variant=43160588025992"
+      }
+    ]
+  }
 ]

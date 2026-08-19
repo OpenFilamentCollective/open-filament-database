@@ -1,6 +1,7 @@
 {
-    "id": "pla_matte_high_speed",
-    "name": "PLA Matte High Speed",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "6a2493d3-9012-4d15-b9ec-c14091e841f3",
+  "id": "pla_matte_high_speed",
+  "name": "PLA Matte High Speed",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

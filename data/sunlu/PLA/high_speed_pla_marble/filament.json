@@ -1,6 +1,7 @@
 {
-    "id": "high_speed_pla_marble",
-    "name": "High Speed PLA Marble",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "1ca6e4ce-b686-4eaf-8f53-c825b556a5bd",
+  "id": "high_speed_pla_marble",
+  "name": "High Speed PLA Marble",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

@@ -1,0 +1,12 @@
+{
+  "uuid": "7e09cfae-9ab2-484b-8be3-a2f91cf9cc93",
+  "id": "carbon_fiber_blue",
+  "name": "carbon fiber blue",
+  "color_hex": "#0000FF",
+  "discontinued": false,
+  "traits": {
+    "industrially_compostable": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "b8fa6e28-e68d-4df1-b9fd-9fbfeb64ffab",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-ht-pla-gf?"
+        "url": "https://us.polymaker.com/products/polymaker-ht-pla-gf"
       }
     ]
   }

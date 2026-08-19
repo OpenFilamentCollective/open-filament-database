@@ -1,6 +1,7 @@
 {
-    "id": "hyper_petg",
-    "name": "Hyper PETG",
-    "diameter_tolerance": 0.05,
-    "density": 1.27
+  "uuid": "a5fb826d-def2-45e3-8044-855afa9cbeb0",
+  "id": "hyper_petg",
+  "name": "Hyper PETG",
+  "diameter_tolerance": 0.05,
+  "density": 1.27
 }

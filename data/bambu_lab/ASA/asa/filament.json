@@ -1,4 +1,5 @@
 {
+    "uuid": "e3e4334e-4303-4924-9118-72b07e27ed48",
     "id": "asa",
     "name": "ASA",
     "diameter_tolerance": 0.03,
@@ -17,12 +18,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFB98",
-            "id": "OGFB01",
+            "id": "GFB01",
             "profile_name": "Bambu ASA"
         },
         "elegooslicer": {
             "generic_id": "GFB98",
-            "id": "OGFB01",
+            "id": "GFB01",
             "profile_name": "Bambu ASA"
         },
         "crealityprint": {

@@ -2,13 +2,14 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { Variant, Store } from '$lib/types/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteEntityModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
 	import { VariantForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, generateSlug } from '$lib/services/entityService';
+	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
+	import { generateSlug } from '$lib/services/entityService';
 	import { db } from '$lib/services/database';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
@@ -16,6 +17,8 @@
 	import { getTraitLabel } from '$lib/config/traitConfig';
 	import { prepareDuplicateData } from '$lib/services/clipboardService';
 	import { formDrafts } from '$lib/stores/formDrafts';
+	import { collectSiblingFibers, checkFiberConflict, fibersFromTraits } from '$lib/utils/fiberConflict';
+	import { colorHexList, colorSwatchStyle, formatColorHex } from '$lib/utils/colorHex';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -26,12 +29,41 @@
 	let loadGeneration = 0;
 	let variant: Variant | null = $state(null);
 	let originalVariant: Variant | null = $state(null);
+	let siblingVariants: Variant[] = $state([]);
 	let stores: Store[] = $state([]);
 	let loading: boolean = $state(true);
 	let error: string | null = $state(null);
 
 	// Duplicate variant state
 	let duplicateVariantError: string | null = $state(null);
+
+	// Fibers (carbon / glass) established by the OTHER variants of this filament — used
+	// to stop the filament mixing CF and GF. Editing excludes this variant itself; a
+	// new (duplicate/paste) variant counts every existing sibling. Siblings are loaded
+	// lazily (only when a create/edit modal opens), not on every page view.
+	let editSiblingFibers = $derived(collectSiblingFibers(siblingVariants, variantSlug));
+	let newVariantSiblingFibers = $derived(collectSiblingFibers(siblingVariants));
+
+	// Which filament's siblings are currently loaded, so we fetch at most once per page.
+	let siblingsLoadedFor: string | null = null;
+
+	async function ensureSiblingsLoaded() {
+		const key = `${brandId}/${materialType}/${filamentId}`;
+		if (siblingsLoadedFor === key) return;
+		siblingsLoadedFor = key;
+		try {
+			siblingVariants = (await db.loadVariants(brandId, materialType, filamentId)) || [];
+		} catch {
+			siblingVariants = [];
+		}
+	}
+
+	// Fetch sibling variants the first time any variant-editing modal opens.
+	$effect(() => {
+		if (entityState.showEditModal || entityState.showDuplicateModal || entityState.showPasteModal) {
+			ensureSiblingsLoaded();
+		}
+	});
 
 	function getStoreName(storeId: string): string {
 		const store = stores.find((s) => s.id === storeId);
@@ -48,6 +80,8 @@
 		getEntity: () => variant
 	});
 
+	const deleteFlow = createDeleteFlow(messageHandler);
+
 	// Load data when route parameters change
 	$effect(() => {
 		const params = { brandId, materialType, filamentId, variantSlug };
@@ -56,6 +90,9 @@
 		loading = true;
 		error = null;
 		entityState.showEditModal = false;
+		// New filament context — force sibling reload the next time a modal opens.
+		siblingsLoadedFor = null;
+		siblingVariants = [];
 
 		(async () => {
 			try {
@@ -101,6 +138,20 @@
 
 		try {
 			const existingSlug = variant.slug || variant.id;
+
+			// A filament can't mix carbon fiber and glass fiber across its variants.
+			// Ensure siblings are loaded first (they load lazily on modal open).
+			await ensureSiblingsLoaded();
+			const fiberConflict = checkFiberConflict(
+				fibersFromTraits(data.traits),
+				collectSiblingFibers(siblingVariants, existingSlug)
+			);
+			if (fiberConflict) {
+				messageHandler.showError(fiberConflict.message);
+				entityState.saving = false;
+				return;
+			}
+
 			const updatedVariant = {
 				...variant,
 				...data,
@@ -132,34 +183,18 @@
 		}
 	}
 
-	async function handleDelete() {
+	function openDeleteVariant() {
 		if (!variant) return;
-
-		entityState.deleting = true;
-		messageHandler.clear();
-
-		try {
-			const result = await deleteEntity(
-				`brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`,
-				'Variant',
-				() => db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant!)
-			);
-
-			if (result.success) {
-				messageHandler.showSuccess(result.message);
-				entityState.closeDelete();
-				entityState.deleting = false;
-				setTimeout(() => {
-					goto(`/brands/${brandId}/${materialType}/${filamentId}`);
-				}, 1500);
-			} else {
-				messageHandler.showError(result.message);
-				entityState.deleting = false;
-			}
-		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete variant');
-			entityState.deleting = false;
-		}
+		deleteFlow.open({
+			type: 'variant',
+			path: `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variantSlug}`,
+			label: 'Variant',
+			name: variant.name,
+			uuid: variant.uuid,
+			movedFrom: variant.moved_from,
+			deleteFn: () => db.deleteVariant(brandId, materialType, filamentId, variantSlug, variant!),
+			navigateOnDelete: `/brands/${brandId}/${materialType}/${filamentId}`
+		});
 	}
 
 	// Duplicate variant handler
@@ -176,6 +211,14 @@
 			);
 			if (dup) {
 				duplicateVariantError = `Variant "${data.name}" already exists`;
+				entityState.creating = false;
+				return;
+			}
+			// A filament can't mix carbon fiber and glass fiber across its variants.
+			await ensureSiblingsLoaded();
+			const fiberConflict = checkFiberConflict(fibersFromTraits(data.traits), collectSiblingFibers(siblingVariants));
+			if (fiberConflict) {
+				duplicateVariantError = fiberConflict.message;
 				entityState.creating = false;
 				return;
 			}
@@ -220,8 +263,8 @@
 				<div class="flex items-center gap-3 mb-2">
 					<div
 						class="w-12 h-12 rounded-full border-2 border-border"
-						style="background-color: {variantData.color_hex}"
-						title={variantData.color_hex}
+						style={colorSwatchStyle(variantData.color_hex)}
+						title={formatColorHex(variantData.color_hex)}
 					></div>
 					<div>
 						<h1 class="text-3xl font-bold">{variantData.name}</h1>
@@ -257,7 +300,7 @@
 							isLocalCreate={entityState.isLocalCreate}
 							onDuplicate={(data) => { formDrafts.clear(variantCreateDraftKey); entityState.openDuplicate(data); }}
 							onPaste={(data) => { formDrafts.clear(variantCreateDraftKey); entityState.openPaste(data); }}
-							onDelete={entityState.openDelete}
+							onDelete={openDeleteVariant}
 							onViewDiff={entityState.openCloudCompare}
 							parentNames={{ brand: '', material: '', filament: '' }}
 						/>
@@ -274,13 +317,16 @@
 						<dd class="mt-1">{variantData.slug}</dd>
 					</div>
 					<div>
-						<dt class="text-sm font-medium text-muted-foreground">Color</dt>
-						<dd class="mt-1 flex items-center gap-2">
-							<div
-								class="w-8 h-8 rounded border-2 border-border"
-								style="background-color: {variantData.color_hex}"
-							></div>
-							<span class="font-mono">{variantData.color_hex}</span>
+						<dt class="text-sm font-medium text-muted-foreground">
+							{colorHexList(variantData.color_hex).length > 1 ? 'Colors' : 'Color'}
+						</dt>
+						<dd class="mt-1 flex items-center gap-2 flex-wrap">
+							{#each colorHexList(variantData.color_hex) as hex, i (i)}
+								<div class="flex items-center gap-2">
+									<div class="w-8 h-8 rounded border-2 border-border" style="background-color: {hex}"></div>
+									<span class="font-mono">{hex}</span>
+								</div>
+							{/each}
 						</dd>
 					</div>
 					<div>
@@ -374,19 +420,21 @@
 <Modal show={entityState.showEditModal} title="Edit Variant" onClose={entityState.closeEdit} maxWidth="5xl">
 	{#if variant}
 		<div class="h-[70vh]">
-			<VariantForm {variant} draftKey={variantEditDraftKey} onSubmit={handleSubmit} saving={entityState.saving} />
+			<VariantForm {variant} draftKey={variantEditDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...editSiblingFibers]} onSubmit={handleSubmit} saving={entityState.saving} />
 		</div>
 	{/if}
 </Modal>
 
-<DeleteConfirmationModal
-	show={entityState.showDeleteModal}
-	title="Delete Variant"
-	entityName={variant?.name ?? ''}
-	isLocalCreate={entityState.isLocalCreate}
-	deleting={entityState.deleting}
-	onClose={entityState.closeDelete}
-	onDelete={handleDelete}
+<DeleteEntityModal
+	show={deleteFlow.show}
+	source={deleteFlow.source}
+	isLocalCreate={deleteFlow.isLocalCreate}
+	cascadeWarning={deleteFlow.cascadeWarning}
+	busy={deleteFlow.busy}
+	resolving={deleteFlow.resolving}
+	error={deleteFlow.error}
+	onClose={deleteFlow.close}
+	onConfirm={deleteFlow.confirm}
 />
 
 <!-- Duplicate Variant Modal -->
@@ -396,7 +444,7 @@
 	{/if}
 	{#if entityState.duplicateData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>
@@ -408,7 +456,7 @@
 	{/if}
 	{#if entityState.pasteData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>

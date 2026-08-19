@@ -1,4 +1,5 @@
 {
+    "uuid": "e138407c-8c30-446c-8e60-e264c82c784a",
     "id": "petg_cf",
     "name": "PETG-CF",
     "diameter_tolerance": 0.03,
@@ -17,12 +18,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFG99",
-            "id": "OGFG50",
+            "id": "GFG50",
             "profile_name": "Bambu PETG-CF"
         },
         "elegooslicer": {
             "generic_id": "GFG99",
-            "id": "OGFG50",
+            "id": "GFG50",
             "profile_name": "Bambu PETG-CF"
         },
         "crealityprint": {

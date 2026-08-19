@@ -1,4 +1,5 @@
 {
+    "uuid": "82a896a5-e374-4e93-b411-f6ee48563652",
     "id": "easyflex",
     "name": "TPU EasyFlex",
     "diameter_tolerance": 0.02,
@@ -16,6 +17,11 @@
             "profile_name": "addnorth TPU EasyFlex"
         },
         "orcaslicer": {
+            "generic_id": "GFU99",
+            "id": "GF_ANEF",
+            "profile_name": "addnorth TPU EasyFlex"
+        },
+        "elegooslicer": {
             "generic_id": "GFU99",
             "id": "GF_ANEF",
             "profile_name": "addnorth TPU EasyFlex"

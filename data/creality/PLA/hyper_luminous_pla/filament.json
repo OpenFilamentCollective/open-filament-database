@@ -1,0 +1,15 @@
+{
+  "uuid": "a9ee9058-ccdf-42ad-bf02-d62f19853f13",
+  "moved_from": [
+    "6dd229ac-4663-46d2-9cfc-cd8667b03a4c"
+  ],
+  "id": "hyper_luminous_pla",
+  "name": "Hyper Luminous PLA",
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "discontinued": false
+}

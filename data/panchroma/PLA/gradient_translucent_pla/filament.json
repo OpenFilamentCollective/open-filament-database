@@ -1,6 +1,7 @@
 {
-    "id": "gradient_translucent_pla",
-    "name": "Gradient Translucent PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "0b99b55d-5075-4295-9502-6bcc13051c58",
+  "id": "gradient_translucent_pla",
+  "name": "Gradient Translucent PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19
 }

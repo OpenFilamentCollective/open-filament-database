@@ -1,26 +1,28 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/HT-PLA%20Pro%20Matte/HT-PLA%20PRO%20Matte%20-%201.75mm%20-%20750g%20-%20White"
-            }
-        ]
-    },
-    {
-        "filament_weight": 2300,
-        "diameter": 1.75,
-        "empty_spool_weight": 600,
-        "spool_core_diameter": 103,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/HT-PLA%20Pro%20Matte/HT-PLA%20PRO%20Matte%20-%201.75mm%20-%202300g%20-%20White"
-            }
-        ]
-    }
+  {
+    "uuid": "3ac11a15-30f2-4efd-ac17-39fe3d01905a",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/HT-PLA%20Pro%20Matte/HT-PLA%20PRO%20Matte%20-%201.75mm%20-%20750g%20-%20White"
+      }
+    ]
+  },
+  {
+    "uuid": "1becb33c-0def-4b4b-893b-e2760bcd0a8f",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "empty_spool_weight": 600,
+    "spool_core_diameter": 103,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/HT-PLA%20Pro%20Matte/HT-PLA%20PRO%20Matte%20-%201.75mm%20-%202300g%20-%20White"
+      }
+    ]
+  }
 ]

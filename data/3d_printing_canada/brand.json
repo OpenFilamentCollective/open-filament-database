@@ -1,7 +1,8 @@
 {
-    "id": "3d_printing_canada",
-    "name": "3D Printing Canada",
-    "website": "https://3dprintingcanada.com/",
-    "logo": "logo.png",
-    "origin": "CA"
+  "uuid": "e6330b22-7144-4706-8347-26538fe7a219",
+  "id": "3d_printing_canada",
+  "name": "3D Printing Canada",
+  "website": "https://3dprintingcanada.com/",
+  "logo": "logo.png",
+  "origin": "CA"
 }

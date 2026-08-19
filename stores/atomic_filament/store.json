@@ -1,8 +1,9 @@
 {
-    "id": "atomic_filament",
-    "name": "Atomic Filament",
-    "storefront_url": "https://atomicfilament.com/",
-    "logo": "logo.jpg",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "c61e0781-ab99-4f06-8291-31037d16a8d3",
+  "id": "atomic_filament",
+  "name": "Atomic Filament",
+  "storefront_url": "https://atomicfilament.com/",
+  "logo": "logo.jpg",
+  "ships_from": [],
+  "ships_to": []
 }

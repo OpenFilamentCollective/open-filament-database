@@ -1,0 +1,11 @@
+[
+  {
+    "uuid": "a8aecc13-898e-447b-9be6-13a40cc6978f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false
+  }
+]

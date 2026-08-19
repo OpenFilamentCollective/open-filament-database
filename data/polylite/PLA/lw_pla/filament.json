@@ -1,6 +1,7 @@
 {
-    "id": "lw_pla",
-    "name": "LW-PLA",
-    "diameter_tolerance": 0.02,
-    "density": 0.9
+  "uuid": "0de731fc-b7f0-4a0d-b771-ca39a690d973",
+  "id": "lw_pla",
+  "name": "LW-PLA",
+  "diameter_tolerance": 0.02,
+  "density": 0.9
 }

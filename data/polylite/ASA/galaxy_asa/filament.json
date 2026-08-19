@@ -1,6 +1,7 @@
 {
-    "id": "galaxy_asa",
-    "name": "Galaxy ASA",
-    "diameter_tolerance": 0.02,
-    "density": 1.13
+  "uuid": "c91be1d5-f881-440e-bfed-3cbbeb0e4e13",
+  "id": "galaxy_asa",
+  "name": "Galaxy ASA",
+  "diameter_tolerance": 0.02,
+  "density": 1.13
 }

@@ -1,6 +1,7 @@
 {
-    "id": "asa_x_gf10",
-    "name": "ASA-X GF10",
-    "diameter_tolerance": 0.02,
-    "density": 1.11
+  "uuid": "acfa55e5-63c0-4062-8557-1e0cdc0df375",
+  "id": "asa_x_gf10",
+  "name": "ASA-X GF10",
+  "diameter_tolerance": 0.02,
+  "density": 1.11
 }

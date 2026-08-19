@@ -1,14 +1,15 @@
 [
-    {
-        "filament_weight": 5310,
-        "diameter": 2.85,
-        "empty_spool_weight": 810,
-        "spool_core_diameter": 50,
-        "purchase_links": [
-            {
-                "store_id": "proteorprint",
-                "url": "https://www.proteordigital.com/product-page/petg"
-            }
-        ]
-    }
+  {
+    "uuid": "5144f02d-4a3e-46f0-bd56-20befdd4e618",
+    "filament_weight": 5310,
+    "diameter": 2.85,
+    "empty_spool_weight": 810,
+    "spool_core_diameter": 50,
+    "purchase_links": [
+      {
+        "store_id": "proteorprint",
+        "url": "https://www.proteordigital.com/product-page/petg"
+      }
+    ]
+  }
 ]

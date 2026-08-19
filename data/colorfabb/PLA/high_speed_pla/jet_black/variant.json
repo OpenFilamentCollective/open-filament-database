@@ -1,8 +1,10 @@
 {
+  "uuid": "c81b4e2d-7041-4797-901f-7731d0bf60ff",
   "id": "jet_black",
   "name": "Jet black",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

@@ -1,7 +1,8 @@
 {
-    "id": "fiberon",
-    "name": "Fiberon",
-    "website": "https://fiberon.polymaker.com/",
-    "logo": "logo.svg",
-    "origin": "CN"
+  "uuid": "98ef6c66-fc56-4cdb-9d95-3391a9d0e978",
+  "id": "fiberon",
+  "name": "Fiberon",
+  "website": "https://fiberon.polymaker.com/",
+  "logo": "logo.svg",
+  "origin": "CN"
 }

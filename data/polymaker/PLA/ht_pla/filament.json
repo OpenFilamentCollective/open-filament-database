@@ -1,4 +1,5 @@
 {
+    "uuid": "b4cb942c-ecfd-4ec5-b64c-42dc92f2ea47",
     "id": "ht_pla",
     "name": "HT-PLA",
     "diameter_tolerance": 0.02,
@@ -6,12 +7,12 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "PMPL02",
+            "id": "GFPM017",
             "profile_name": "Polymaker HT-PLA"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "PMPL02",
+            "id": "GFPM017",
             "profile_name": "Polymaker HT-PLA"
         }
     }

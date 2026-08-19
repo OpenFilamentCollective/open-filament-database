@@ -1,6 +1,7 @@
 {
-    "id": "pctg_cf10",
-    "name": "PCTG CF10",
-    "diameter_tolerance": 0.02,
-    "density": 1.28
+  "uuid": "3c18b819-cefb-4fe7-9983-c1a3b8786c08",
+  "id": "pctg_cf10",
+  "name": "PCTG CF10",
+  "diameter_tolerance": 0.02,
+  "density": 1.28
 }

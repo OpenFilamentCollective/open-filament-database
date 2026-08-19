@@ -1,8 +1,10 @@
 [
   {
+    "uuid": "ccb811dc-2d40-4234-9a34-555e39711a86",
     "filament_weight": 1000,
     "diameter": 1.75,
     "gtin": "921072925224",
+    "article_number": "60103",
     "purchase_links": [
       {
         "store_id": "bblstore",

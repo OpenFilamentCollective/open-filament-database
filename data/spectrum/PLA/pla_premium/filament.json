@@ -1,6 +1,7 @@
 {
-    "id": "pla_premium",
-    "name": "PLA Premium",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "65fcab98-9e4e-4c8c-9601-0b515251dab6",
+  "id": "pla_premium",
+  "name": "PLA Premium",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

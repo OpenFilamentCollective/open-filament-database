@@ -1,0 +1,10 @@
+{
+  "uuid": "3346a374-77c3-4037-9300-c3d956cdf7e4",
+  "id": "signal_yellow",
+  "name": "Signal Yellow",
+  "color_hex": "#F1DD61",
+  "discontinued": false,
+  "color_standards": {
+    "ral": "12-0642TPG"
+  }
+}

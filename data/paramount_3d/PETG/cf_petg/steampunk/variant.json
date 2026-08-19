@@ -1,8 +1,10 @@
 {
+  "uuid": "b8648309-1b63-4601-9a7e-9b33a2fcf326",
   "id": "steampunk",
   "name": "(Steampunk)",
   "color_hex": "#5C5B59",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

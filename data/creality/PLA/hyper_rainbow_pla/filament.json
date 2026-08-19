@@ -1,6 +1,7 @@
 {
-    "id": "hyper_rainbow_pla",
-    "name": "Hyper Rainbow PLA",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "c4cfda06-ed01-48aa-80b0-b3efc0408ba6",
+  "id": "hyper_rainbow_pla",
+  "name": "Hyper Rainbow PLA",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

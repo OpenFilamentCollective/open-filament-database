@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337036715",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/asa-abs/products/asa-aero"
-            }
-        ]
-    }
+  {
+    "uuid": "2d9dbd94-f687-4711-9edd-efe80add0ad7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337036715",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/asa-abs/products/asa-aero"
+      }
+    ]
+  }
 ]

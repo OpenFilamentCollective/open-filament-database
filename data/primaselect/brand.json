@@ -1,7 +1,8 @@
 {
-    "id": "primaselect",
-    "name": "PrimaSelect",
-    "website": "https://primacreator.com/",
-    "logo": "logo.png",
-    "origin": "SW"
+  "uuid": "27d1baa1-f2f3-4b7d-886d-f776ab3c4f05",
+  "id": "primaselect",
+  "name": "PrimaSelect",
+  "website": "https://primacreator.com/",
+  "logo": "logo.png",
+  "origin": "SW"
 }

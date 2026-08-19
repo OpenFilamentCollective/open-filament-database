@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "766be176-af22-4357-a666-cd20b82ea502",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-gradient-matte?"
+        "url": "https://us.polymaker.com/products/panchroma-gradient-matte"
       }
     ]
   }

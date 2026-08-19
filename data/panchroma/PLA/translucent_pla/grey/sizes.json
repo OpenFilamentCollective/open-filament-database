@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "7e4d73be-fe3e-4bfe-97e3-51fbe073c188",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-translucent?"
+        "url": "https://us.polymaker.com/products/panchroma-translucent"
       }
     ]
   }

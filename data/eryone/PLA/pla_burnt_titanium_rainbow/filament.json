@@ -1,6 +1,7 @@
 {
-    "id": "pla_burnt_titanium_rainbow",
-    "name": "PLA Burnt Titanium Rainbow",
-    "diameter_tolerance": 0.03,
-    "density": 1.23
+  "uuid": "04f010cf-2c5a-4542-bd0f-03bef76c913f",
+  "id": "pla_burnt_titanium_rainbow",
+  "name": "PLA Burnt Titanium Rainbow",
+  "diameter_tolerance": 0.03,
+  "density": 1.23
 }

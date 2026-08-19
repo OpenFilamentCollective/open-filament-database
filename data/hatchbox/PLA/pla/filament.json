@@ -1,4 +1,5 @@
 {
+    "uuid": "af578d51-6a86-4e47-8534-a335d65c9c36",
     "id": "pla",
     "name": "PLA",
     "diameter_tolerance": 0.02,
@@ -13,7 +14,7 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "GFB99",
+            "id": "GFL99",
             "profile_name": "HATCHBOX PLA"
         },
         "superslicer": {
@@ -21,7 +22,7 @@
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "GFB99",
+            "id": "GFL99",
             "profile_name": "HATCHBOX PLA"
         },
         "anycubicslicer": {

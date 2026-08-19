@@ -1,0 +1,12 @@
+{
+  "uuid": "9ed1f522-8f75-4acd-a4f2-6df020b00c0c",
+  "id": "123_3d_filament_pla",
+  "name": "123-3D Filament PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 50,
+  "discontinued": false
+}

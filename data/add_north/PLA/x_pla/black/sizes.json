@@ -1,51 +1,55 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%20750g%20-%20Black",
-                "ships_from": "SE"
-            }
-        ]
-    },
-    {
-        "filament_weight": 2300,
-        "diameter": 1.75,
-        "empty_spool_weight": 600,
-        "spool_core_diameter": 103,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%202300g%20-%20Black"
-            }
-        ]
-    },
-    {
-        "filament_weight": 5000,
-        "diameter": 1.75,
-        "empty_spool_weight": 780,
-        "spool_core_diameter": 101,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%205000g%20-%20Black"
-            }
-        ]
-    },
-    {
-        "filament_weight": 5000,
-        "diameter": 2.85,
-        "empty_spool_weight": 780,
-        "spool_core_diameter": 101,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%202.85mm%20-%205000g%20-%20Black"
-            }
-        ]
-    }
+  {
+    "uuid": "67b26d98-51af-4fee-9df9-1dac22ca087d",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%20750g%20-%20Black",
+        "ships_from": "SE"
+      }
+    ]
+  },
+  {
+    "uuid": "1ddee35e-6214-4fc2-80a2-a08e2cfbd10d",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "empty_spool_weight": 600,
+    "spool_core_diameter": 103,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%202300g%20-%20Black"
+      }
+    ]
+  },
+  {
+    "uuid": "257f12e5-c2f7-4d5d-b94c-aa0121b2bf4a",
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "empty_spool_weight": 780,
+    "spool_core_diameter": 101,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%201.75mm%20-%205000g%20-%20Black"
+      }
+    ]
+  },
+  {
+    "uuid": "78ba5fe3-07c7-46d2-9a21-e1dc421e87f1",
+    "filament_weight": 5000,
+    "diameter": 2.85,
+    "empty_spool_weight": 780,
+    "spool_core_diameter": 101,
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/X-PLA/X-PLA%20-%202.85mm%20-%205000g%20-%20Black"
+      }
+    ]
+  }
 ]

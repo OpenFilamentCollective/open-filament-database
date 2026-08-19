@@ -1,6 +1,7 @@
 {
-    "id": "asa_x_cf10",
-    "name": "ASA-X CF10",
-    "diameter_tolerance": 0.02,
-    "density": 1.1
+  "uuid": "6e24765e-7c26-4729-8338-72e258e10e60",
+  "id": "asa_x_cf10",
+  "name": "ASA-X CF10",
+  "diameter_tolerance": 0.02,
+  "density": 1.1
 }

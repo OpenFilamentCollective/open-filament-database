@@ -1,9 +1,10 @@
 {
-    "id": "painted_hills",
-    "name": "Painted Hills",
-    "color_hex": [
-        "#FFA57D",
-        "#FF6251",
-        "#ED719E"
-    ]
+  "uuid": "69734d25-5fde-410f-bf52-5b08ac811fc5",
+  "id": "painted_hills",
+  "name": "Painted Hills",
+  "color_hex": [
+    "#FFA57D",
+    "#FF6251",
+    "#ED719E"
+  ]
 }

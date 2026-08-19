@@ -1,7 +1,8 @@
 {
-    "id": "azurefilm",
-    "name": "AzureFilm",
-    "website": "https://www.azurefilm.com/",
-    "logo": "logo.png",
-    "origin": "SL"
+  "uuid": "c0967b79-d21f-4294-a32c-6d73c931fffe",
+  "id": "azurefilm",
+  "name": "AzureFilm",
+  "website": "https://www.azurefilm.com/",
+  "logo": "logo.png",
+  "origin": "SL"
 }

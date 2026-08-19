@@ -1,8 +1,9 @@
 {
-    "id": "bronze",
-    "name": "Bronze",
-    "color_hex": "#CA7E47",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "97d98543-8660-4c35-8bd4-3a1e7cb92413",
+  "id": "bronze",
+  "name": "Bronze",
+  "color_hex": "#CA7E47",
+  "traits": {
+    "recyclable": true
+  }
 }

@@ -1,17 +1,18 @@
 {
-    "id": "rigid_x",
-    "name": "PETG Rigid X",
-    "diameter_tolerance": 0.02,
-    "density": 1.32,
-    "max_dry_temperature": 65,
-    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_rigidX_10waLr.pdf",
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_rigidx_IFXs5v.pdf",
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "addnorth Rigid X"
-        },
-        "superslicer": {
-            "profile_name": "addnorth Rigid X"
-        }
+  "uuid": "0af5d9eb-4221-475a-9998-8a77fb25706e",
+  "id": "rigid_x",
+  "name": "PETG Rigid X",
+  "diameter_tolerance": 0.02,
+  "density": 1.32,
+  "max_dry_temperature": 65,
+  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_rigidX_10waLr.pdf",
+  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_rigidx_IFXs5v.pdf",
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "addnorth Rigid X"
+    },
+    "superslicer": {
+      "profile_name": "addnorth Rigid X"
     }
+  }
 }

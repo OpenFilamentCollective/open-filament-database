@@ -76,6 +76,9 @@
                 },
                 "anycubicslicer": {
                     "$ref": "#/definitions/specific_slicer_settings"
+                },
+                "kirimoto": {
+                    "$ref": "#/definitions/specific_slicer_settings"
                 }
             },
             "additionalProperties": false

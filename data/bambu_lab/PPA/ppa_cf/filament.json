@@ -1,4 +1,5 @@
 {
+    "uuid": "8628cdcd-b3b0-4438-97e3-9e1bd2308c04",
     "id": "ppa_cf",
     "name": "PPA-CF",
     "diameter_tolerance": 0.05,
@@ -11,11 +12,11 @@
             "profile_name": "Bambu PPA-CF"
         },
         "orcaslicer": {
-            "id": "OGFN06",
+            "id": "GFN06",
             "profile_name": "Bambu PPA-CF"
         },
         "elegooslicer": {
-            "id": "OGFN06",
+            "id": "GFN06",
             "profile_name": "Bambu PPA-CF"
         },
         "anycubicslicer": {

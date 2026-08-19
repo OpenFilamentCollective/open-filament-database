@@ -1,4 +1,5 @@
 {
+    "uuid": "5af70275-d631-42ed-8635-72079abb3483",
     "id": "asa",
     "name": "ASA",
     "diameter_tolerance": 0.02,
@@ -11,12 +12,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFB98",
-            "id": "OGFB61",
+            "id": "GFB61",
             "profile_name": "PolyLite ASA"
         },
         "elegooslicer": {
             "generic_id": "GFB98",
-            "id": "OGFB61",
+            "id": "GFB61",
             "profile_name": "PolyLite ASA"
         },
         "crealityprint": {

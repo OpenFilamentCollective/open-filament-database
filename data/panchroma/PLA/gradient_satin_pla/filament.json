@@ -1,6 +1,7 @@
 {
-    "id": "gradient_satin_pla",
-    "name": "Gradient Satin PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "3b932133-e90f-408c-8858-97794bc21db9",
+  "id": "gradient_satin_pla",
+  "name": "Gradient Satin PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

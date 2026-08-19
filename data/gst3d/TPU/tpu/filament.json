@@ -1,6 +1,7 @@
 {
-    "id": "tpu",
-    "name": "TPU",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "af700e35-4944-4f2b-b2df-c9df203fb701",
+  "id": "tpu",
+  "name": "TPU",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

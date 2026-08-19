@@ -1,8 +1,9 @@
 {
-    "id": "apple_green",
-    "name": "Apple Green",
-    "color_hex": "#C2E189",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "ee2fb56f-9c60-407c-834c-2fbf2f54948f",
+  "id": "apple_green",
+  "name": "Apple Green",
+  "color_hex": "#C2E189",
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,5 +1,9 @@
 export interface Store {
 	id: string;
+	/** Canonical UUID (slug-independent); assigned by CI on merge, empty on create. */
+	uuid?: string;
+	/** Former canonical UUID(s) this entity had before a merge/move; old refs redirect here. */
+	moved_from?: string[];
 	slug?: string;
 	name: string;
 	storefront_url: string;
@@ -10,6 +14,10 @@ export interface Store {
 
 export interface Brand {
 	id: string;
+	/** Canonical UUID (slug-independent); assigned by CI on merge, empty on create. */
+	uuid?: string;
+	/** Former canonical UUID(s) this entity had before a merge/move; old refs redirect here. */
+	moved_from?: string[];
 	slug?: string;
 	name: string;
 	website: string;
@@ -19,6 +27,10 @@ export interface Brand {
 
 export interface Material {
 	id: string; // Same as materialType, used for change tracking
+	/** Canonical UUID (slug-independent); assigned by CI on merge, empty on create. */
+	uuid?: string;
+	/** Former canonical UUID(s) this entity had before a merge/move; old refs redirect here. */
+	moved_from?: string[];
 	slug?: string;
 	material: string;
 	material_class?: 'FFF' | 'SLA';
@@ -30,6 +42,10 @@ export interface Material {
 
 export interface Filament {
 	id: string;
+	/** Canonical UUID (slug-independent); assigned by CI on merge, empty on create. */
+	uuid?: string;
+	/** Former canonical UUID(s) this entity had before a merge/move; old refs redirect here. */
+	moved_from?: string[];
 	slug?: string;
 	name: string;
 	diameter_tolerance: number;
@@ -65,6 +81,10 @@ export interface PurchaseLink {
 }
 
 export interface VariantSize {
+	/** Canonical UUID (slug-independent); assigned by CI on merge, empty on create. */
+	uuid?: string;
+	/** Former canonical UUID(s) this spool had before a merge/move; old refs redirect here. */
+	moved_from?: string[];
 	filament_weight: number;
 	diameter: number;
 	empty_spool_weight?: number;
@@ -102,6 +122,7 @@ export interface VariantTraits {
 	castable?: boolean;
 	self_extinguishing?: boolean;
 	high_temperature?: boolean;
+	high_flow?: boolean;
 	low_outgassing?: boolean;
 	water_soluble?: boolean;
 	ipa_soluble?: boolean;
@@ -153,10 +174,15 @@ export interface VariantTraits {
 
 export interface Variant {
 	id: string;
+	/** Canonical UUID (slug-independent); assigned by CI on merge, empty on create. */
+	uuid?: string;
+	/** Former canonical UUID(s) this variant had before a merge/move; old refs redirect here. */
+	moved_from?: string[];
 	filament_id: string;
 	slug: string;
 	name: string;
-	color_hex: string;
+	/** A single hex colour, or several for multi-colour variants (co-extruded, gradient…). */
+	color_hex: string | string[];
 	discontinued: boolean;
 	traits?: VariantTraits;
 	sizes?: VariantSize[];

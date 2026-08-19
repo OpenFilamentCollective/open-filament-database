@@ -8,10 +8,19 @@
 	import { TRAIT_CATEGORIES, findTraitByKey } from '$lib/config/traitConfig';
 	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
 	import { toggleSetItem } from '$lib/utils/setHelpers';
+	import { detectSuggestedTraits } from '$lib/utils/fiberTraitSuggestions';
+	import {
+		fibersFromTraitKeys,
+		checkFiberConflict,
+		blockedFiberTraitKeys,
+		FIBER_LABEL,
+		type FiberKind
+	} from '$lib/utils/fiberConflict';
 	import { Button } from '$lib/components/ui';
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import { stripTrackersDeep } from '$lib/utils/urlSanitizer';
+	import { isValidColorHex } from '$lib/utils/colorHex';
 	import type { SchemaFormConfig } from './schemaFormTypes';
 	import { formDrafts } from '$lib/stores/formDrafts';
 	import { generateSlug } from '$lib/services/entityService';
@@ -23,9 +32,19 @@
 		saving?: boolean;
 		/** Optional key for in-memory draft preservation across modal close/reopen */
 		draftKey?: string;
+		/** Parent filament name/slug — used to suggest fiber/high-flow traits from the name. */
+		filamentName?: string;
+		/** Parent material type (e.g. PLA) — extra context for trait suggestions. */
+		materialType?: string;
+		/**
+		 * Fiber kinds ('carbon' / 'glass') already established by the OTHER variants of
+		 * this filament. Used to guard against a filament mixing carbon fiber and glass
+		 * fiber across its variants — this variant can't take the opposite fiber.
+		 */
+		siblingFibers?: FiberKind[];
 	}
 
-	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey }: Props = $props();
+	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType, siblingFibers = [] }: Props = $props();
 
 	type ColorStandards = {
 		ral: string;
@@ -104,7 +123,8 @@
 
 	// Config for variant form - labels, tooltips, and placeholders come from schema
 	const config: SchemaFormConfig = {
-		hiddenFields: ['id', 'traits', 'sizes', 'hex_variants', 'color_standards'],
+		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
+		hiddenFields: ['id', 'uuid', 'moved_from', 'traits', 'sizes', 'hex_variants', 'color_standards'],
 		fieldOrder: ['name', 'color_hex', 'discontinued'],
 		typeOverrides: {
 			color_hex: 'color'
@@ -233,9 +253,58 @@
 		selectedTraits = new Set(selectedTraits);
 	}
 
-	// Add trait from dropdown
+	// Add trait from dropdown. Fiber traits that would make this filament mix
+	// carbon fiber and glass fiber are refused (see the fiber-conflict guard below).
 	function addTrait(key: string) {
+		if (blockedFiberTraits.has(key)) return;
 		selectedTraits.add(key);
+		selectedTraits = new Set(selectedTraits);
+	}
+
+	// ==================== FIBER CONFLICT GUARD ====================
+	// A filament can't mix carbon fiber and glass fiber across its variants. If a
+	// sibling variant already establishes one fiber, this variant may not take the
+	// other; likewise a single variant may not carry both. This blocks the offending
+	// trait at add-time, hides it from suggestions/dropdown, and prevents submit.
+
+	let siblingFiberSet = $derived(new Set<FiberKind>(siblingFibers));
+	let selectedFiberSet = $derived(fibersFromTraitKeys(selectedTraits));
+	// Trait keys that must not be added because they'd create a CF/GF mix.
+	let blockedFiberTraits = $derived(blockedFiberTraitKeys(selectedFiberSet, siblingFiberSet));
+	// Non-null when the current selection already conflicts (e.g. both fibers picked).
+	let fiberConflict = $derived(checkFiberConflict(selectedFiberSet, siblingFiberSet));
+	// When one fiber is established and the other is locked out, explain why (no active conflict).
+	let blockedFiberNote = $derived.by(() => {
+		if (fiberConflict || blockedFiberTraits.size === 0) return null;
+		const present = new Set<FiberKind>([...selectedFiberSet, ...siblingFiberSet]);
+		const establishedKind: FiberKind = present.has('carbon') ? 'carbon' : 'glass';
+		const otherKind: FiberKind = establishedKind === 'carbon' ? 'glass' : 'carbon';
+		return `This filament is ${FIBER_LABEL[establishedKind]}, so ${FIBER_LABEL[otherKind]} is unavailable — its variants can't mix the two.`;
+	});
+
+	// ==================== TRAIT SUGGESTIONS ====================
+	// Suggest carbon-fiber / glass-fiber / high-flow traits detected from the
+	// material, filament and colour names (mirrors `ofd script apply_fiber_traits`).
+	// Like the other form nudges, the banner disappears once the suggested traits
+	// are added (or the name no longer matches) — there is no dismiss.
+
+	// Trait keys suggested by the current name context.
+	let suggestedTraitKeys = $derived(detectSuggestedTraits(materialType, filamentName, formData?.name));
+
+	// Suggestions still worth showing: not already selected, and not a fiber that
+	// would conflict with the rest of the filament.
+	let pendingSuggestions = $derived(
+		suggestedTraitKeys.filter((k) => !selectedTraits.has(k) && !blockedFiberTraits.has(k))
+	);
+
+	function addSuggestion(key: string) {
+		if (blockedFiberTraits.has(key)) return;
+		selectedTraits.add(key);
+		selectedTraits = new Set(selectedTraits);
+	}
+
+	function addAllSuggestions() {
+		for (const key of pendingSuggestions) selectedTraits.add(key);
 		selectedTraits = new Set(selectedTraits);
 	}
 
@@ -245,6 +314,11 @@
 	interface SizeWithId {
 		id: number;
 		value: {
+			// Canonical UUID of an existing spool, preserved across edits (assigned by
+			// CI on merge). Undefined for spools added in this session.
+			uuid?: string;
+			// Former UUID(s) of an existing spool, preserved so old references still resolve.
+			moved_from?: string[];
 			filament_weight: number | undefined;
 			diameter: number;
 			empty_spool_weight?: number;
@@ -300,6 +374,8 @@
 			sizes = variant.sizes.map((s: VariantSize, index: number) => ({
 				id: index + 1,
 				value: {
+					uuid: s.uuid,
+					moved_from: s.moved_from,
 					filament_weight: s.filament_weight,
 					diameter: s.diameter || 1.75,
 					empty_spool_weight: s.empty_spool_weight,
@@ -392,9 +468,16 @@
 	function handleSubmit(data: any) {
 		validationError = null;
 
-		// Validate required fields
-		if (!data.name || !data.color_hex) {
-			validationError = 'Name and color are required fields.';
+		// Validate required fields. `color_hex` may hold several colours (multi-colour
+		// variants) — every one of them has to be a complete hex value.
+		if (!data.name || !isValidColorHex(data.color_hex)) {
+			validationError = 'Name and color are required fields, and every color must be a full 6-digit hex.';
+			return;
+		}
+
+		// A filament can't mix carbon fiber and glass fiber across its variants.
+		if (fiberConflict) {
+			validationError = fiberConflict.message;
 			return;
 		}
 
@@ -433,6 +516,10 @@
 				diameter: s.value.diameter
 			};
 
+			// Preserve an existing spool's canonical UUID; new spools get one from CI on merge.
+			if (s.value.uuid) sizeValue.uuid = s.value.uuid;
+			// Preserve former UUIDs so old references still resolve after a move/merge.
+			if (s.value.moved_from) sizeValue.moved_from = s.value.moved_from;
 			if (s.value.empty_spool_weight != null) sizeValue.empty_spool_weight = s.value.empty_spool_weight;
 			if (s.value.spool_core_diameter != null) sizeValue.spool_core_diameter = s.value.spool_core_diameter;
 			if (s.value.gtin) sizeValue.gtin = s.value.gtin;
@@ -476,13 +563,18 @@
 		submitData.color_standards =
 			Object.keys(colorStandardsData).length > 0 ? colorStandardsData : undefined;
 
+		// Preserve the variant's canonical UUID on edit; left empty on create for CI to assign.
+		if (variant?.uuid) submitData.uuid = variant.uuid;
+		// Preserve former UUIDs so old references still resolve after a move/merge.
+		if (variant?.moved_from) submitData.moved_from = variant.moved_from;
+
 		// Mandatory: strip tracking params from all purchase-link URLs before staging the change.
 		onSubmit(stripTrackersDeep(submitData));
 	}
 
 	// Check if form can be submitted
 	let canSubmit = $derived(
-		!!formData.name && /^#[a-fA-F0-9]{6}$/.test(formData.color_hex) && sizes.length > 0
+		!!formData.name && isValidColorHex(formData.color_hex) && sizes.length > 0 && !fiberConflict
 	);
 
 	// Persist form state to the in-memory draft store on every change.
@@ -564,6 +656,49 @@
 				</span>
 			</div>
 
+			<!-- Fiber conflict guard: a filament can't mix carbon fiber and glass fiber -->
+			{#if fiberConflict}
+				<div class="mb-3 rounded-md bg-destructive/10 border border-destructive/30 p-2.5 text-xs text-destructive">
+					{fiberConflict.message}
+				</div>
+			{:else if blockedFiberNote}
+				<div class="mb-3 rounded-md bg-amber-500/10 border border-amber-500/30 p-2.5 text-xs text-amber-700 dark:text-amber-400">
+					{blockedFiberNote}
+				</div>
+			{/if}
+
+			<!-- Suggested traits detected from the name (fiber / high-flow) -->
+			{#if pendingSuggestions.length > 0}
+				<div class="mb-3 flex flex-col gap-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
+					<span class="text-xs text-foreground">Based on the name, this variant likely needs:</span>
+					<div class="flex flex-wrap gap-1.5">
+						{#each pendingSuggestions as key (key)}
+							{@const info = findTraitByKey(key)}
+							<Button
+								variant="outline"
+								size="sm"
+								onclick={() => addSuggestion(key)}
+								class="h-7 rounded-full border-primary/40 px-3 text-xs"
+								title={info?.description}
+							>
+								<PlusIcon class="h-3 w-3" />
+								{info?.label || key}
+							</Button>
+						{/each}
+						{#if pendingSuggestions.length > 1}
+							<Button
+								variant="secondary"
+								size="sm"
+								onclick={addAllSuggestions}
+								class="h-7 rounded-full px-3 text-xs"
+							>
+								Add all
+							</Button>
+						{/if}
+					</div>
+				</div>
+			{/if}
+
 			<!-- Selected traits as tiles -->
 			<div class="flex flex-wrap gap-1.5">
 				{#each [...selectedTraits] as traitKey}
@@ -605,7 +740,7 @@
 
 					<div class="overflow-y-auto flex-1 p-1">
 						{#each Object.entries(filteredCategories) as [catKey, category]}
-							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key))}
+							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key) && !blockedFiberTraits.has(t.key))}
 							{#if unselectedTraits.length > 0}
 								<div class="mb-1">
 									<Button

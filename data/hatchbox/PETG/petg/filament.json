@@ -1,4 +1,5 @@
 {
+    "uuid": "3a71e512-c43f-426e-8d4c-0491321408f7",
     "id": "petg",
     "name": "PETG",
     "diameter_tolerance": 0.02,
@@ -13,7 +14,7 @@
         },
         "orcaslicer": {
             "generic_id": "GFG99",
-            "id": "GFG99",
+            "id": "GFB99",
             "profile_name": "HATCHBOX PETG"
         },
         "superslicer": {
@@ -21,12 +22,12 @@
         },
         "elegooslicer": {
             "generic_id": "GFG99",
-            "id": "GFG99",
+            "id": "GFB99",
             "profile_name": "HATCHBOX PETG"
         },
         "anycubicslicer": {
             "generic_id": "GFG99",
-            "id": "GFG99",
+            "id": "GFB99",
             "profile_name": "HATCHBOX PETG"
         }
     }

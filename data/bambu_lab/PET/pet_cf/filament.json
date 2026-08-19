@@ -1,4 +1,5 @@
 {
+    "uuid": "ddda966b-faee-4044-aaf0-91bdc5c5b570",
     "id": "pet_cf",
     "name": "PET-CF",
     "diameter_tolerance": 0.03,
@@ -15,11 +16,11 @@
             "profile_name": "Bambu PET-CF"
         },
         "orcaslicer": {
-            "id": "OGFT01",
+            "id": "GFT01",
             "profile_name": "Bambu PET-CF"
         },
         "elegooslicer": {
-            "id": "OGFT01",
+            "id": "GFT01",
             "profile_name": "Bambu PET-CF"
         },
         "crealityprint": {

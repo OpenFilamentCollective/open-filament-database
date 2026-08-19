@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "df27dd1a-9f3b-4a22-a11f-a38981acc7d2",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 182,
@@ -8,7 +9,7 @@
     "purchase_links": [
       {
         "store_id": "printed_solid",
-        "url": "https://www.printedsolid.com/products/jessie-pla-1-75mm-x-1kg-beige-500?_pos=8&_psq=jessie&_ss=e&_v=1.0"
+        "url": "https://www.printedsolid.com/products/jessie-pla-1-75mm-x-1kg-beige-500"
       }
     ]
   }

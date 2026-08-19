@@ -6,6 +6,7 @@
 	import DropdownMenu from '$lib/components/ui/DropdownMenu.svelte';
 	import type { DropdownItem } from '$lib/components/ui/DropdownMenu.svelte';
 	import { hasCompatibleClipboard, type ClipboardEntityType } from '$lib/services/clipboardService';
+	import { colorSwatchStyle, formatColorHex, type ColorHexValue } from '$lib/utils/colorHex';
 	import { goto } from '$app/navigation';
 
 	interface Field {
@@ -41,8 +42,8 @@
 		badge?: Badge;
 		/** Custom content snippet */
 		children?: Snippet;
-		/** Color swatch hex (for variants) */
-		colorHex?: string;
+		/** Color swatch hex (for variants); an array for multi-color variants */
+		colorHex?: ColorHexValue;
 		/** Whether to show logo (default: true if logo provided) */
 		showLogo?: boolean;
 		/** Secondary info text (e.g., sizes count) */
@@ -128,7 +129,7 @@
 		}
 		if (onDelete) {
 			items.push('separator');
-			items.push({ label: 'Delete', onClick: onDelete, destructive: true });
+			items.push({ label: 'Delete…', onClick: onDelete, destructive: true });
 		}
 		return items;
 	});
@@ -145,7 +146,7 @@
 		}
 		if (onDelete) {
 			items.push('separator');
-			items.push({ label: 'Delete', onClick: onDelete, destructive: true });
+			items.push({ label: 'Delete…', onClick: onDelete, destructive: true });
 		}
 		return items;
 	});
@@ -193,11 +194,11 @@
 >
 	<div class="flex items-center gap-4">
 		{#if colorHex}
-			<!-- Color swatch for variants -->
+			<!-- Color swatch for variants (banded when the variant has several colors) -->
 			<div
 				class="w-8 h-8 rounded-full border-2 border-border shrink-0"
-				style="background-color: {colorHex}"
-				title={colorHex}
+				style={colorSwatchStyle(colorHex)}
+				title={formatColorHex(colorHex)}
 			></div>
 		{:else if logo && showLogo && logoType}
 			<!-- Logo for brands/stores -->

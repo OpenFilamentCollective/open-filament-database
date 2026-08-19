@@ -1,4 +1,5 @@
 {
+    "uuid": "7fd3a57e-c56e-4a9e-8394-cc0423750e1d",
     "id": "pla",
     "name": "PLA",
     "diameter_tolerance": 0.02,
@@ -9,6 +10,11 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GFL78",
+            "profile_name": "Polymaker PLA"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GFL78",
             "profile_name": "Polymaker PLA"

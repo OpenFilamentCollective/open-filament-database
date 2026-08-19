@@ -1,8 +1,9 @@
 {
-    "id": "brown",
-    "name": "Brown",
-    "color_hex": "#CDA077",
-    "traits": {
-        "translucent": true
-    }
+  "uuid": "7412dee0-73e3-402d-b16c-c930911b098b",
+  "id": "brown",
+  "name": "Brown",
+  "color_hex": "#CDA077",
+  "traits": {
+    "translucent": true
+  }
 }

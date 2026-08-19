@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "3deksperten",
-                "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-nardo-grey-1-75mm-1kg-refill"
-            }
-        ]
-    }
+  {
+    "uuid": "086f6f61-d3d9-45b3-b8b0-4d6bdfb02df0",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "purchase_links": [
+      {
+        "store_id": "3deksperten",
+        "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-nardo-grey-1-75mm-1kg-refill"
+      }
+    ]
+  }
 ]

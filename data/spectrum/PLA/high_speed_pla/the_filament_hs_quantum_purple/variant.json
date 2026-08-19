@@ -1,8 +1,10 @@
 {
+  "uuid": "d604e20a-6b0d-43a8-8377-f58553807f74",
   "id": "the_filament_hs_quantum_purple",
   "name": "The Filament HS Quantum Purple",
   "color_hex": "#E23288",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

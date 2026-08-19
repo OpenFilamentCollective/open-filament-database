@@ -1,4 +1,5 @@
 {
-    "material": "PA12",
-    "default_max_dry_temperature": 110
+  "uuid": "83763f64-ff2d-4a57-b9c4-450e368016cf",
+  "material": "PA12",
+  "default_max_dry_temperature": 110
 }

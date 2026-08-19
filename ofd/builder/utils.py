@@ -242,6 +242,23 @@ def generate_purchase_link_id(size_id: str, store_id: str, url: str) -> str:
 
 
 # =============================================================================
+# Canonical UUID Generation (slug-independent)
+# =============================================================================
+
+
+def generate_canonical_uuid() -> str:
+    """Generate a fresh random canonical UUID (UUIDv4).
+
+    Unlike the derived ``generate_*_id`` helpers above, this is NOT a function of
+    any slug, name, or position in the hierarchy. It is a stable, opaque identifier
+    meant to be stored directly in the source JSON (the ``uuid`` field) so an
+    entity keeps the same identity even when its slug/name changes. Assigned by the
+    ``ofd uuid`` command; see ofd/uuids.py.
+    """
+    return str(uuid.uuid4())
+
+
+# =============================================================================
 # String Utilities
 # =============================================================================
 

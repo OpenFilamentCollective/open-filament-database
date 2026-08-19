@@ -1,7 +1,8 @@
 {
-    "id": "3do",
-    "name": "3DO",
-    "website": "https://3do.dk/",
-    "logo": "logo.png",
-    "origin": "EU"
+  "uuid": "da53e5fb-a090-4fec-801d-96122ca220da",
+  "id": "3do",
+  "name": "3DO",
+  "website": "https://3do.dk/",
+  "logo": "logo.png",
+  "origin": "EU"
 }

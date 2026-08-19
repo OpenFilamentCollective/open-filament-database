@@ -1,4 +1,5 @@
 {
+    "uuid": "7aaea8e5-c6c2-4858-87b3-7d2c64aa9bdd",
     "id": "basic",
     "name": "PLA Basic",
     "diameter_tolerance": 0.03,
@@ -13,12 +14,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA00",
+            "id": "GFA00",
             "profile_name": "Bambu PLA Basic"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFA00",
+            "id": "GFA00",
             "profile_name": "Bambu PLA Basic"
         },
         "crealityprint": {

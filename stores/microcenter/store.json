@@ -1,8 +1,9 @@
 {
-    "id": "microcenter",
-    "name": "Microcenter",
-    "storefront_url": "https://microcenter.com",
-    "logo": "logo.png",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "29b1df18-53a7-4aed-b5e8-245ee547a9da",
+  "id": "microcenter",
+  "name": "Microcenter",
+  "storefront_url": "https://microcenter.com",
+  "logo": "logo.png",
+  "ships_from": [],
+  "ships_to": []
 }

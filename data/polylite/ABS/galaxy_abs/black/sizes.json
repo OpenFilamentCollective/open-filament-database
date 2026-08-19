@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "970bf0f8-15eb-48c0-a09c-b70dcecbc5b3",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-galaxy-abs?"
+        "url": "https://us.polymaker.com/products/polylite-galaxy-abs"
       }
     ]
   }

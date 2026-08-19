@@ -1,8 +1,10 @@
 {
+  "uuid": "b66ee838-a73a-4d86-8968-d8c25e72b4b5",
   "id": "witch_green",
   "name": "Witch Green",
   "color_hex": "#58C91B",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

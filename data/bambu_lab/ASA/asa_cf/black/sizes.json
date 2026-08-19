@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6977252424783",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/asa-abs/products/asa-cf"
-            }
-        ]
-    }
+  {
+    "uuid": "97c9f441-f7aa-41e0-a43d-6f7f811c1ca9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6977252424783",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/asa-abs/products/asa-cf"
+      }
+    ]
+  }
 ]

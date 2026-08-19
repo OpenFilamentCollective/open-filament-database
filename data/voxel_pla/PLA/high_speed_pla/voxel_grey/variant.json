@@ -1,8 +1,10 @@
 {
+  "uuid": "fba19fea-e0b0-4f90-8dc7-c646a0d89f70",
   "id": "voxel_grey",
   "name": "Voxel Grey",
   "color_hex": "#C3CCD5",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

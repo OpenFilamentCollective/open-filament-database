@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "0a4e7b8a-3fa7-40fc-8ba3-373c1c9bd43f",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-abs-metallic?"
+        "url": "https://us.polymaker.com/products/polylite-abs-metallic"
       }
     ]
   }

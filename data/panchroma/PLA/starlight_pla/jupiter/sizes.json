@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "d5c01ca6-328b-4df5-a861-8349e43dcc21",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-starlight?"
+        "url": "https://us.polymaker.com/products/panchroma-starlight"
       }
     ]
   }

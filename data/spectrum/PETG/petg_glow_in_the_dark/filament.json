@@ -1,6 +1,7 @@
 {
-    "id": "petg_glow_in_the_dark",
-    "name": "PETG Glow in the Dark",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "1896285f-e2e4-4ae6-9de9-3d4e38e189c3",
+  "id": "petg_glow_in_the_dark",
+  "name": "PETG Glow in the Dark",
+  "diameter_tolerance": 0.02,
+  "density": 1.27
 }

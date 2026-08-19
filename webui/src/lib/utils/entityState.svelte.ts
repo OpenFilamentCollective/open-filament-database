@@ -32,14 +32,12 @@ export interface EntityStateConfig {
  *
  * // Use in template
  * <Modal show={state.showEditModal} onClose={state.closeEdit}>
- * <button onclick={state.openDelete}>Delete</button>
  * {#if state.hasLocalChanges}...{/if}
  * ```
  */
 export function createEntityState(config: EntityStateConfig) {
 	// Modal states
 	let showEditModal = $state(false);
-	let showDeleteModal = $state(false);
 	let showCreateModal = $state(false);
 	let showDuplicateModal = $state(false);
 	let showPasteModal = $state(false);
@@ -51,7 +49,6 @@ export function createEntityState(config: EntityStateConfig) {
 
 	// Operation states
 	let saving = $state(false);
-	let deleting = $state(false);
 	let creating = $state(false);
 
 	// Logo states
@@ -141,12 +138,6 @@ export function createEntityState(config: EntityStateConfig) {
 		set showEditModal(v: boolean) {
 			showEditModal = v;
 		},
-		get showDeleteModal() {
-			return showDeleteModal;
-		},
-		set showDeleteModal(v: boolean) {
-			showDeleteModal = v;
-		},
 		get showCreateModal() {
 			return showCreateModal;
 		},
@@ -160,12 +151,6 @@ export function createEntityState(config: EntityStateConfig) {
 		},
 		set saving(v: boolean) {
 			saving = v;
-		},
-		get deleting() {
-			return deleting;
-		},
-		set deleting(v: boolean) {
-			deleting = v;
 		},
 		get creating() {
 			return creating;
@@ -238,12 +223,6 @@ export function createEntityState(config: EntityStateConfig) {
 			showEditModal = false;
 			logoDataUrl = '';
 			logoChanged = false;
-		},
-		openDelete() {
-			showDeleteModal = true;
-		},
-		closeDelete() {
-			showDeleteModal = false;
 		},
 		openCreate() {
 			showCreateModal = true;

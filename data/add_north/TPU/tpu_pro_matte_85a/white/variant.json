@@ -1,8 +1,9 @@
 {
-    "id": "white",
-    "name": "White",
-    "color_hex": "#FFFFFF",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "56c2a83d-ba3e-4852-ad7f-8ad6133c4da3",
+  "id": "white",
+  "name": "White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "matte": true
+  }
 }

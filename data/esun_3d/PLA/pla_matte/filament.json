@@ -1,4 +1,5 @@
 {
+    "uuid": "b92930ca-d4f6-4a62-82ea-1c520bac7d7e",
     "id": "pla_matte",
     "name": "PLA-Matte",
     "diameter_tolerance": 0.03,
@@ -15,7 +16,7 @@
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFL05",
+            "id": "E1003",
             "profile_name": "eSUN PLA-Matte"
         },
         "crealityprint": {

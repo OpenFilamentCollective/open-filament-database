@@ -1,0 +1,13 @@
+{
+    "uuid": "d996e6ce-e1c2-4f77-afe6-5b719c7e7dcb",
+    "id": "cpe_hg100",
+    "name": "CPE HG100",
+    "diameter_tolerance": 0.02,
+    "density": 1.25,
+    "discontinued": false,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fillamentum CPE HG100"
+        }
+    }
+}

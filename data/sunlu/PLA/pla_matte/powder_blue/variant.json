@@ -1,8 +1,9 @@
 {
-    "id": "powder_blue",
-    "name": "Powder Blue",
-    "color_hex": "#b8e5e5",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "e4fd0c2a-00ec-44fe-a160-e7905e4339b0",
+  "id": "powder_blue",
+  "name": "Powder Blue",
+  "color_hex": "#b8e5e5",
+  "traits": {
+    "matte": true
+  }
 }

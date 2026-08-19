@@ -1,23 +1,25 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/611539/inland-175mm-pla-3d-printer-filament-10-kg-%2822-lbs%29-spool-orange"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "microcenter",
-                "url": "https://www.microcenter.com/product/687080/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-orange?sp=290"
-            }
-        ]
-    }
+  {
+    "uuid": "832ae9be-357c-424f-b406-1b61434ba2c9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/611539/inland-175mm-pla-3d-printer-filament-10-kg-%2822-lbs%29-spool-orange"
+      }
+    ]
+  },
+  {
+    "uuid": "4910d294-0d70-46b0-bdfe-c978e8478ae1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://www.microcenter.com/product/687080/inland-175mm-pla-3d-printer-filament-100-kg-(22-lbs)-spooless-–-orange?sp=290"
+      }
+    ]
+  }
 ]

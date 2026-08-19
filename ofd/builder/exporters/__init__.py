@@ -11,6 +11,7 @@ from .json_exporter import export_all_json, export_json, export_ndjson, export_p
 from .search_index_exporter import export_search_index
 from .sqlite_exporter import export_sqlite
 from .sqlite_stores_exporter import export_sqlite_stores
+from .uuid_index_exporter import export_uuid_index
 
 __all__ = [
     "export_json",
@@ -22,6 +23,7 @@ __all__ = [
     "export_csv",
     "export_api",
     "export_search_index",
+    "export_uuid_index",
     "export_html",
     "export_directory_listings",
     "export_badges",

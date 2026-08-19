@@ -1,9 +1,11 @@
 {
+  "uuid": "41d193eb-09d5-4abc-ad9a-b04f1e1f3221",
   "id": "marble_light_cyan",
   "name": "Marble Light Cyan",
   "color_hex": "#D7EDE6",
   "traits": {
     "imitates_marble": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

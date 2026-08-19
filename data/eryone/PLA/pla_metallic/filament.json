@@ -1,6 +1,7 @@
 {
-    "id": "pla_metallic",
-    "name": "PLA Metallic",
-    "diameter_tolerance": 0.03,
-    "density": 1.23
+  "uuid": "1363780f-e153-48dc-88ee-83a3134b1c23",
+  "id": "pla_metallic",
+  "name": "PLA Metallic",
+  "diameter_tolerance": 0.03,
+  "density": 1.23
 }

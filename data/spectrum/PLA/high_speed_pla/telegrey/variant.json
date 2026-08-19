@@ -1,8 +1,10 @@
 {
+  "uuid": "9c08068f-5770-4234-a384-11ccce3209ad",
   "id": "telegrey",
   "name": "Telegrey",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

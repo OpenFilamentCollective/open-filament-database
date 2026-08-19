@@ -1,8 +1,9 @@
 {
-    "id": "burgundy",
-    "name": "Burgundy",
-    "color_hex": "#971B2F",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "ee8de06f-a895-4c94-9333-fc25b254eef2",
+  "id": "burgundy",
+  "name": "Burgundy",
+  "color_hex": "#971B2F",
+  "traits": {
+    "recyclable": true
+  }
 }

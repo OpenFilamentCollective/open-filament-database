@@ -1,0 +1,13 @@
+{
+  "uuid": "a4a9a7de-3caa-4501-b358-57e6ee0e7261",
+  "id": "isanmate_matte_pla",
+  "name": "iSANMATE Matte PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 50,
+  "min_print_temperature": 190,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 65,
+  "discontinued": false
+}

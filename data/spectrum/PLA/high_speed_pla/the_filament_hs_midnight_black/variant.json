@@ -1,8 +1,10 @@
 {
+  "uuid": "b39e758b-9e1a-4d26-8849-daef8b1b1e28",
   "id": "the_filament_hs_midnight_black",
   "name": "The Filament HS Midnight Black",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

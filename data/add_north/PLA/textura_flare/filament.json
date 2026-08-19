@@ -1,8 +1,9 @@
 {
-    "id": "textura_flare",
-    "name": "PLA Textura Flare",
-    "diameter_tolerance": 0.02,
-    "density": 1.21,
-    "max_dry_temperature": 50,
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/Textura_Flare_SDS_QX0Mzh.pdf"
+  "uuid": "c1b12519-2242-47e6-9a0b-be8fa5a5d021",
+  "id": "textura_flare",
+  "name": "PLA Textura Flare",
+  "diameter_tolerance": 0.02,
+  "density": 1.21,
+  "max_dry_temperature": 50,
+  "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/Textura_Flare_SDS_QX0Mzh.pdf"
 }

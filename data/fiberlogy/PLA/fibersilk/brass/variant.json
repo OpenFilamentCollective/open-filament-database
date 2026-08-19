@@ -1,8 +1,9 @@
 {
-    "id": "brass",
-    "name": "Brass",
-    "color_hex": "#B5A642",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "8b98cb96-4352-4e84-9f35-ddc31ea5e95d",
+  "id": "brass",
+  "name": "Brass",
+  "color_hex": "#B5A642",
+  "traits": {
+    "recyclable": true
+  }
 }

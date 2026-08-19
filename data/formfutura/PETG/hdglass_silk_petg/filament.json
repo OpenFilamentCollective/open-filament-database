@@ -1,21 +1,22 @@
 {
-    "id": "hdglass_silk_petg",
-    "name": "PETG Hdglass",
-    "diameter_tolerance": 0.02,
-    "density": 1.27,
-    "min_print_temperature": 235,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 80,
-    "max_bed_temperature": 90,
-    "data_sheet_url": "https://www.formfutura.com/web/content/256561?download=true",
-    "safety_sheet_url": "https://www.formfutura.com/web/content/256562?download=true",
-    "discontinued": false,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "FormFutura HDglass"
-        },
-        "superslicer": {
-            "profile_name": "FormFutura HDglass"
-        }
+  "uuid": "c9acd562-aa92-4e94-951a-babc6c875b32",
+  "id": "hdglass_silk_petg",
+  "name": "PETG Hdglass",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "min_print_temperature": 235,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://www.formfutura.com/web/content/256561?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256562?download=true",
+  "discontinued": false,
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "FormFutura HDglass"
+    },
+    "superslicer": {
+      "profile_name": "FormFutura HDglass"
     }
+  }
 }

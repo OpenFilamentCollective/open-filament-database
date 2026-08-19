@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "a92b07be-5cf7-4195-8603-5e674e4163c3",
     "filament_weight": 2500,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/matte-pla-for-production?"
+        "url": "https://us.polymaker.com/products/matte-pla-for-production"
       }
     ]
   }

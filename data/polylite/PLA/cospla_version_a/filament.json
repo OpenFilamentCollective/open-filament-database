@@ -1,6 +1,7 @@
 {
-    "id": "cospla_version_a",
-    "name": "CosPLA Version A",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "b69b5e61-e944-490b-ad54-315547e28c5a",
+  "id": "cospla_version_a",
+  "name": "CosPLA Version A",
+  "diameter_tolerance": 0.02,
+  "density": 1.24
 }

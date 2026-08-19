@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "75304eda-c720-418f-afb8-4bf61ed34b8b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-cope?"
+        "url": "https://us.polymaker.com/products/panchroma-cope"
       }
     ]
   }

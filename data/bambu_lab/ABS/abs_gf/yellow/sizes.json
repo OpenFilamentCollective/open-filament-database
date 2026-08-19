@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000.0,
-        "diameter": 1.75,
-        "ean": "6975337037262",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-gf?variant=42166898294920"
-            }
-        ]
-    }
+  {
+    "uuid": "4b6d0f5b-37e0-43ed-b473-c2432c9c9892",
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "ean": "6975337037262",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-gf?variant=42166898294920"
+      }
+    ]
+  }
 ]

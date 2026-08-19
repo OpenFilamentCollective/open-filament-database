@@ -1,9 +1,11 @@
 {
+  "uuid": "6813f551-f53e-49fb-b5e2-2ff3ddb5a80f",
   "id": "x_black",
   "name": "X- Black",
   "color_hex": "#000000",
   "traits": {
     "matte": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

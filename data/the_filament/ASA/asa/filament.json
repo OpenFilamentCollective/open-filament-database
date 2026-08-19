@@ -1,6 +1,7 @@
 {
-    "id": "asa",
-    "name": "ASA",
-    "diameter_tolerance": 0.02,
-    "density": 1.07
+  "uuid": "ebfc9aee-6282-4812-be4b-3cecac744f58",
+  "id": "asa",
+  "name": "ASA",
+  "diameter_tolerance": 0.02,
+  "density": 1.07
 }

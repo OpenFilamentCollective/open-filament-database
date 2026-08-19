@@ -1,6 +1,7 @@
 {
-    "id": "silk_pla+_dual_color",
-    "name": "Silk PLA+ Dual-Color",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "f7f83e2b-28fc-41c9-bf4c-14092b066dc9",
+  "id": "silk_pla+_dual_color",
+  "name": "Silk PLA+ Dual-Color",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

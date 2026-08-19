@@ -1,7 +1,8 @@
 {
-    "id": "proteor_print",
-    "name": "Proteor Print",
-    "website": "https://www.proteordigital.com/category/all-products",
-    "logo": "logo.png",
-    "origin": "US"
+  "uuid": "18523783-22c9-4652-b564-7fb015d2349d",
+  "id": "proteor_print",
+  "name": "Proteor Print",
+  "website": "https://www.proteordigital.com/category/all-products",
+  "logo": "logo.png",
+  "origin": "US"
 }

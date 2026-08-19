@@ -1,13 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "gtin": "921092325978",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/petg/products/petg-cf?variant=41230657945736"
-            }
-        ]
-    }
+  {
+    "uuid": "efecc60b-4b35-4401-8247-fc4a5dd18854",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "921092325978",
+    "article_number": "31700",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/petg/products/petg-cf?variant=41230657945736"
+      }
+    ]
+  }
 ]

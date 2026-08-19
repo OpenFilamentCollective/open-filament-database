@@ -1,49 +1,61 @@
 [
   {
+    "uuid": "339ed97f-25f1-45bf-aec9-3e05ba958167",
     "filament_weight": 250,
     "diameter": 1.75
   },
   {
+    "uuid": "7cae64ee-4f77-4703-ba6a-ec57a09e59a3",
     "filament_weight": 500,
     "diameter": 1.75
   },
   {
+    "uuid": "bef3f5c7-d3ef-4a7d-bb74-c91bff27a58e",
     "filament_weight": 1000,
     "diameter": 1.75
   },
   {
+    "uuid": "304d1d57-8afe-4db9-b806-ef66441cb649",
     "filament_weight": 2000,
     "diameter": 1.75
   },
   {
+    "uuid": "2619986c-dbab-416e-adf2-0c649c57cb40",
     "filament_weight": 3000,
     "diameter": 1.75
   },
   {
+    "uuid": "696586b0-1b3e-470d-81e2-ba33f6f3dce1",
     "filament_weight": 5000,
     "diameter": 2.85
   },
   {
+    "uuid": "f2753de4-b848-4788-9e6e-c012aeeabbea",
     "filament_weight": 250,
     "diameter": 2.85
   },
   {
+    "uuid": "5dec7cac-834f-490a-9a82-cb586823ddda",
     "filament_weight": 500,
     "diameter": 2.85
   },
   {
+    "uuid": "afb9d30a-72ab-4b2b-9a66-d96628168a9e",
     "filament_weight": 1000,
     "diameter": 2.85
   },
   {
+    "uuid": "f5475603-803e-47d2-b8b7-c97119c8f48b",
     "filament_weight": 2000,
     "diameter": 2.85
   },
   {
+    "uuid": "fe8052e5-a724-423a-b826-2f6b0cef0ebb",
     "filament_weight": 3000,
     "diameter": 2.85
   },
   {
+    "uuid": "a10329db-82d9-40da-9966-256548cef7d4",
     "filament_weight": 5000,
     "diameter": 2.85
   }

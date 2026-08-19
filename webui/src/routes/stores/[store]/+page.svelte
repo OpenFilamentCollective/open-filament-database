@@ -3,14 +3,15 @@
 	import { goto } from '$app/navigation';
 	import type { Store } from '$lib/types/database';
 	import { db } from '$lib/services/database';
-	import { Modal, MessageBanner, DeleteConfirmationModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
+	import { Modal, MessageBanner, DeleteEntityModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
 	import { StoreForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
 	import { EntityDetails, Logo } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
-	import { deleteEntity, mergeEntityData, generateSlug } from '$lib/services/entityService';
+	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
+	import { mergeEntityData, generateSlug } from '$lib/services/entityService';
 	import { saveLogoImage } from '$lib/utils/logoManagement';
 	import { untrack } from 'svelte';
 	import { useChangeTracking } from '$lib/stores/environment';
@@ -40,6 +41,8 @@
 		getEntityPath: () => (store ? `stores/${storeId}` : null),
 		getEntity: () => store
 	});
+
+	const deleteFlow = createDeleteFlow(messageHandler);
 
 	$effect(() => {
 		const id = storeId;
@@ -125,32 +128,21 @@
 		}
 	}
 
-	async function handleDelete() {
+	// Deleting a store can break consumers that reference its canonical UUID.
+	// The modal encourages choosing a replacement so the old UUID can be recorded on
+	// the replacement’s `moved_from` list (purchase_links.store_id references still need manual updates).
+	function openDeleteStore() {
 		if (!store) return;
-
-		entityState.deleting = true;
-		messageHandler.clear();
-
-		try {
-			const result = await deleteEntity(`stores/${storeId}`, 'Store', () =>
-				db.deleteStore(storeId, store!)
-			);
-
-			if (result.success) {
-				messageHandler.showSuccess(result.message);
-				entityState.closeDelete();
-				entityState.deleting = false;
-				setTimeout(() => {
-					goto('/stores');
-				}, 1500);
-			} else {
-				messageHandler.showError(result.message);
-				entityState.deleting = false;
-			}
-		} catch (e) {
-			messageHandler.showError(e instanceof Error ? e.message : 'Failed to delete store');
-			entityState.deleting = false;
-		}
+		deleteFlow.open({
+			type: 'store',
+			path: `stores/${storeId}`,
+			label: 'Store',
+			name: store.name,
+			uuid: store.uuid,
+			movedFrom: store.moved_from,
+			deleteFn: () => db.deleteStore(storeId, store!),
+			navigateOnDelete: '/stores'
+		});
 	}
 
 	// Duplicate store handler
@@ -261,7 +253,7 @@
 							isLocalCreate={entityState.isLocalCreate}
 							onDuplicate={(data) => { formDrafts.clear(STORE_CREATE_DRAFT_KEY); entityState.openDuplicate(data); }}
 							onPaste={(data) => { formDrafts.clear(STORE_CREATE_DRAFT_KEY); entityState.openPaste(data); }}
-							onDelete={entityState.openDelete}
+							onDelete={openDeleteStore}
 							onViewDiff={entityState.openCloudCompare}
 						/>
 					</div>
@@ -285,14 +277,16 @@
 	{/if}
 </Modal>
 
-<DeleteConfirmationModal
-	show={entityState.showDeleteModal}
-	title="Delete Store"
-	entityName={store?.name ?? ''}
-	isLocalCreate={entityState.isLocalCreate}
-	deleting={entityState.deleting}
-	onClose={entityState.closeDelete}
-	onDelete={handleDelete}
+<DeleteEntityModal
+	show={deleteFlow.show}
+	source={deleteFlow.source}
+	isLocalCreate={deleteFlow.isLocalCreate}
+	cascadeWarning={deleteFlow.cascadeWarning}
+	busy={deleteFlow.busy}
+	resolving={deleteFlow.resolving}
+	error={deleteFlow.error}
+	onClose={deleteFlow.close}
+	onConfirm={deleteFlow.confirm}
 />
 
 <!-- Duplicate Store Modal -->

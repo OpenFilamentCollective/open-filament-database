@@ -1,8 +1,10 @@
 {
+  "uuid": "86a27f71-6368-4a14-bae8-ed491254819e",
   "id": "red_transparent",
   "name": "Red Transparent",
   "color_hex": "#EC0000",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

@@ -1,0 +1,13 @@
+{
+  "uuid": "5f3d3fba-38c0-4071-ab22-f0acd511e425",
+  "id": "dancyn_3d_prints",
+  "name": "Dancyn 3D Prints",
+  "storefront_url": "https://www.dancyn3dprints.com",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": [
+    "US"
+  ]
+}

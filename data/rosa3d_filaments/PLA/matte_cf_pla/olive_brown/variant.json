@@ -1,9 +1,11 @@
 {
+  "uuid": "b922a454-e10d-49af-9907-5f37fd1e3896",
   "id": "olive_brown",
   "name": "Olive Brown",
   "color_hex": "#837E68",
   "traits": {
     "matte": true,
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

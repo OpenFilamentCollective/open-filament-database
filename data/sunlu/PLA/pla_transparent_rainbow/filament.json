@@ -1,6 +1,7 @@
 {
-    "id": "pla_transparent_rainbow",
-    "name": "PLA Transparent Rainbow",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "3b897b07-2e98-45d6-80b1-53b3e67ddf29",
+  "id": "pla_transparent_rainbow",
+  "name": "PLA Transparent Rainbow",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

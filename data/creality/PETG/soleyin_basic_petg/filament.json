@@ -1,0 +1,10 @@
+{
+  "uuid": "b29ff475-0ecc-433b-94d1-924ba5be127a",
+  "id": "soleyin_basic_petg",
+  "name": "Soleyin Basic PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250,
+  "discontinued": false
+}

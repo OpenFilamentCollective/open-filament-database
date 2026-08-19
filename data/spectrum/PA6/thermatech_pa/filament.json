@@ -1,6 +1,7 @@
 {
-    "id": "thermatech_pa",
-    "name": "ThermaTech PA",
-    "diameter_tolerance": 0.02,
-    "density": 1.3
+  "uuid": "a2ea25c6-38a2-41a9-b7d9-1db50de09e21",
+  "id": "thermatech_pa",
+  "name": "ThermaTech PA",
+  "diameter_tolerance": 0.02,
+  "density": 1.3
 }

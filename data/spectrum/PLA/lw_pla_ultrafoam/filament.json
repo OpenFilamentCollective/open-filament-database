@@ -1,6 +1,7 @@
 {
-    "id": "lw_pla_ultrafoam",
-    "name": "LW-PLA UltraFoam",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "6bb80bf6-df6c-47e8-8c46-3ec0decb4387",
+  "id": "lw_pla_ultrafoam",
+  "name": "LW-PLA UltraFoam",
+  "diameter_tolerance": 0.02,
+  "density": 1.23
 }

@@ -1,0 +1,13 @@
+{
+  "uuid": "f69a7c40-e673-47c6-9400-4c8bc3a3fb29",
+  "id": "artillery_3d",
+  "name": "Artillery 3D",
+  "storefront_url": "https://www.artillery3d.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": [
+    "US"
+  ]
+}

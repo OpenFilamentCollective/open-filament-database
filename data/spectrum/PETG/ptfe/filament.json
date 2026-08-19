@@ -1,6 +1,7 @@
 {
-    "id": "ptfe",
-    "name": "PTFE",
-    "diameter_tolerance": 0.02,
-    "density": 1.32
+  "uuid": "328b7ccb-dc4e-4a02-b059-90a357b94d33",
+  "id": "ptfe",
+  "name": "PTFE",
+  "diameter_tolerance": 0.02,
+  "density": 1.32
 }

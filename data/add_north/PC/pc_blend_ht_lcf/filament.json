@@ -1,4 +1,5 @@
 {
+    "uuid": "13496ec0-6593-4e00-9e5c-d0f2893fdc0d",
     "id": "pc_blend_ht_lcf",
     "name": "PC Blend HT LCF",
     "diameter_tolerance": 0.02,
@@ -12,6 +13,11 @@
             "profile_name": "addnorth PC BLend HT LCF"
         },
         "orcaslicer": {
+            "generic_id": "GFC99",
+            "id": "GF_ANPBX",
+            "profile_name": "addnorth PC BLend HT LCF"
+        },
+        "elegooslicer": {
             "generic_id": "GFC99",
             "id": "GF_ANPBX",
             "profile_name": "addnorth PC BLend HT LCF"

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "130f2ebc-8cac-4ca2-9961-dba7ac1f7675",
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "spool_refill": true,
     "gtin": "921072925240",
+    "article_number": "40500",
     "purchase_links": [
       {
         "store_id": "bblstore",

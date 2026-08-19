@@ -1,4 +1,5 @@
 {
+    "uuid": "107bc41a-6b76-4b92-adac-b0ff7620cc9e",
     "id": "pa6_gf",
     "name": "PA6-GF",
     "diameter_tolerance": 0.03,
@@ -15,11 +16,11 @@
             "profile_name": "Bambu PA6-GF"
         },
         "orcaslicer": {
-            "id": "OGFN08",
+            "id": "GFN08",
             "profile_name": "Bambu PA6-GF"
         },
         "elegooslicer": {
-            "id": "OGFN08",
+            "id": "GFN08",
             "profile_name": "Bambu PA6-GF"
         },
         "crealityprint": {

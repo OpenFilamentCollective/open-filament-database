@@ -1,4 +1,5 @@
 {
+    "uuid": "b960da81-b47c-4936-91a1-0f80c57a0743",
     "id": "pla_lw",
     "name": "PLA-LW",
     "diameter_tolerance": 0.03,
@@ -9,9 +10,14 @@
             "id": "00035",
             "profile_name": "eSUN PLA-LW"
         },
-        "crealityprint": {
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "00035",
+            "profile_name": "eSUN PLA-LW"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "E1008",
             "profile_name": "eSUN PLA-LW"
         }
     }

@@ -1,8 +1,10 @@
 {
+  "uuid": "36479577-5dae-4954-b8f6-86863eedd492",
   "id": "glitter_brillant_silver",
   "name": "Glitter Brillant Silver",
   "color_hex": "#9F9F9F",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }

@@ -1,8 +1,9 @@
 {
-    "id": "south_beach",
-    "name": "South Beach",
-    "color_hex": [
-        "#F772A4",
-        "#00918B"
-    ]
+  "uuid": "346569bc-44a2-45aa-b11e-5e6d70650911",
+  "id": "south_beach",
+  "name": "South Beach",
+  "color_hex": [
+    "#F772A4",
+    "#00918B"
+  ]
 }

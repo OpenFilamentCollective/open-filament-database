@@ -1,8 +1,10 @@
 {
+  "uuid": "9ccfee81-f5e5-4306-847f-30bcb1ae1c0e",
   "id": "moss_green",
   "name": "Moss green",
   "color_hex": "#2E5448",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }

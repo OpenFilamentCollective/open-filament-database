@@ -1,4 +1,5 @@
 {
+    "uuid": "60009020-94f2-4454-85d5-616e32c6cb0b",
     "id": "petg+hs",
     "name": "PETG+HS",
     "diameter_tolerance": 0.03,
@@ -9,6 +10,11 @@
     "max_bed_temperature": 90,
     "slicer_settings": {
         "orcaslicer": {
+            "generic_id": "GFG99",
+            "id": "E2002",
+            "profile_name": "eSUN PETG+HS"
+        },
+        "elegooslicer": {
             "generic_id": "GFG99",
             "id": "E2002",
             "profile_name": "eSUN PETG+HS"

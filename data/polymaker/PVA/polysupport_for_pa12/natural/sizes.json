@@ -1,11 +1,12 @@
 [
   {
+    "uuid": "46a54834-7785-42d4-a19c-d7e790e08b59",
     "filament_weight": 500,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polysupport?"
+        "url": "https://us.polymaker.com/products/polysupport"
       }
     ]
   }

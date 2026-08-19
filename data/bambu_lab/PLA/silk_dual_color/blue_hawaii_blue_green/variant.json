@@ -1,8 +1,9 @@
 {
-    "id": "blue_hawaii_blue_green",
-    "name": "Blue Hawaii (Blue-Green)",
-    "color_hex": [
-        "#60A4E8",
-        "#4CE4A0"
-    ]
+  "uuid": "b8306760-4539-4ca9-ad82-327c192f7399",
+  "id": "blue_hawaii_blue_green",
+  "name": "Blue Hawaii (Blue-Green)",
+  "color_hex": [
+    "#60A4E8",
+    "#4CE4A0"
+  ]
 }

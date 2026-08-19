@@ -1,5 +1,6 @@
 {
-    "id": "linden_light",
-    "name": "Linden Light",
-    "color_hex": "#f4d3ae"
+  "uuid": "dd029d31-dc0f-4d9c-bf78-8c7130be14e6",
+  "id": "linden_light",
+  "name": "Linden Light",
+  "color_hex": "#f4d3ae"
 }

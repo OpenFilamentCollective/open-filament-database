@@ -1,4 +1,5 @@
 {
+    "uuid": "bac9702c-4e18-4b1e-ac88-cabb332ae391",
     "id": "pla_silk",
     "name": "PLA-Silk",
     "diameter_tolerance": 0.03,
@@ -9,6 +10,11 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "orcaslicer": {
+            "generic_id": "GFL96",
+            "id": "E1002",
+            "profile_name": "eSUN PLA-Silk"
+        },
+        "elegooslicer": {
             "generic_id": "GFL96",
             "id": "E1002",
             "profile_name": "eSUN PLA-Silk"

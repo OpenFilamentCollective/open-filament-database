@@ -1,4 +1,5 @@
 {
+    "uuid": "78b15730-9e74-4925-a8bf-76de98aa0d81",
     "id": "pla_wood",
     "name": "PLA Wood",
     "diameter_tolerance": 0.02,
@@ -16,6 +17,11 @@
             "profile_name": "addnorth PLA Wood"
         },
         "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GF_ANPLW",
+            "profile_name": "addnorth PLA Wood"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GF_ANPLW",
             "profile_name": "addnorth PLA Wood"

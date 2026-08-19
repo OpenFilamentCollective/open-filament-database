@@ -1,9 +1,11 @@
 {
+  "uuid": "17f06df6-49da-4176-a476-f2786398cd07",
   "id": "grey",
   "name": "Grey",
   "color_hex": "#808080",
   "traits": {
     "imitates_marble": true,
-    "imitates_stone": true
+    "imitates_stone": true,
+    "high_flow": true
   }
 }

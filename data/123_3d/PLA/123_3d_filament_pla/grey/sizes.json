@@ -1,0 +1,21 @@
+[
+  {
+    "uuid": "311c171e-ef31-4a48-8e87-10cbc3ea0993",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 216,
+    "spool_core_diameter": 52,
+    "article_number": "DHM00003",
+    "discontinued": false
+  },
+  {
+    "uuid": "bb53ccc0-b889-428b-8fed-6b66996490d7",
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "spool_core_diameter": 52,
+    "article_number": "DHM00183",
+    "discontinued": false
+  }
+]

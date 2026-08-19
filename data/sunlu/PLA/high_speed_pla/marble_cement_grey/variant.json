@@ -1,9 +1,11 @@
 {
+  "uuid": "0f52c4db-c4c0-4f97-a3e7-fde027970cf5",
   "id": "marble_cement_grey",
   "name": "Marble Cement Grey",
   "color_hex": "#ACB1BA",
   "traits": {
     "imitates_marble": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "high_flow": true
   }
 }
