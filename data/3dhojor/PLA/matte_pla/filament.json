@@ -1,0 +1,13 @@
+{
+  "uuid": "f48bf4ea-59e1-4faf-8d05-35984ea6ea59",
+  "id": "matte_pla",
+  "name": "Matte PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "discontinued": false
+}
