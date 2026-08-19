@@ -114,7 +114,8 @@ export interface ChangeProps {
 	submittedPrNumber: number | undefined;
 }
 
-const NO_CHANGES: ChangeProps = {
+/** Shared "nothing changed here" props, for callers that skip the lookup entirely. */
+export const NO_CHANGES: ChangeProps = {
 	hasLocalChanges: false,
 	localChangeType: undefined,
 	hasDescendantChanges: false,

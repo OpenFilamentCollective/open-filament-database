@@ -115,7 +115,12 @@ function sizeKey(size: Record<string, unknown>): string {
 	return `${size.filament_weight ?? ''}|${size.diameter ?? ''}`;
 }
 
-/** Fields that make a spool row worth keeping, ignoring canonical identity. */
+/**
+ * Fields that make a spool row worth keeping, ignoring canonical identity.
+ *
+ * Blank values say nothing an absent field doesn't, so they must not be what tells two
+ * rows apart. Kept in step with `_redundant_size_fields` in `ofd/validation/data_quality.py`.
+ */
 function meaningfulFields(size: Record<string, unknown>): Array<[string, unknown]> {
 	return Object.entries(size).filter(
 		([key, value]) =>
@@ -123,7 +128,7 @@ function meaningfulFields(size: Record<string, unknown>): Array<[string, unknown
 			key !== 'moved_from' &&
 			value !== undefined &&
 			value !== null &&
-			value !== ''
+			!(typeof value === 'string' && value.trim() === '')
 	);
 }
 

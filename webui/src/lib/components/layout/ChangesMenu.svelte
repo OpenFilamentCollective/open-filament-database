@@ -485,7 +485,10 @@
 	 * competing PR on the same files — #459/#460/#461 did exactly that within 13 minutes and
 	 * merged out of order. The wizard offers to add to the open PR instead.
 	 */
-	let submissionOverlap = $derived(submittedStore.findOverlap($changesList.map((c) => c.entity.path)));
+	let submissionOverlap = $derived.by(() => {
+		void $submittedStore; // findOverlap reads the buffer via get(), so track it explicitly
+		return submittedStore.findOverlap($changesList.map((c) => c.entity.path));
+	});
 
 	async function createPRForWizard(
 		title: string,

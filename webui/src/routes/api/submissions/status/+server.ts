@@ -55,24 +55,26 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const statuses: Record<number, Status> = {};
 	// GitHub's merge timestamps, so the client can tell when the nightly dataset rebuild will
-	// have published a merged submission (see $lib/config/datasetSchedule.ts). Absent for PRs
-	// answered from the local terminal-status cache, where the client falls back to "now".
+	// have published a merged submission (see $lib/config/datasetSchedule.ts). The client falls
+	// back to "now" when a timestamp is missing, which over-extends the overlay, so a merged PR
+	// is always asked about upstream even when we already know it merged.
 	const mergedAt: Record<number, string | null> = {};
 
 	await Promise.all(
 		prNumbers.map(async (prNumber) => {
-			// Trust a terminal status already recorded locally — no GitHub call needed.
 			const uuid = getUuidByPrNumber(prNumber);
 			const cached = uuid ? getSubmission(uuid) : undefined;
-			if (cached && (cached.status === 'merged' || cached.status === 'closed')) {
-				statuses[prNumber] = cached.status;
+			// A locally-recorded 'closed' is the whole answer — nothing else to learn from GitHub.
+			// 'merged' still needs the upstream call for `merged_at`; the store has no such column.
+			if (cached?.status === 'closed') {
+				statuses[prNumber] = 'closed';
 				return;
 			}
 
 			try {
 				const pr = await getPullRequest(token, owner, repo, prNumber);
 				if (!pr) {
-					statuses[prNumber] = 'unknown';
+					statuses[prNumber] = cached?.status === 'merged' ? 'merged' : 'unknown';
 					return;
 				}
 				if (pr.merged_at) mergedAt[prNumber] = pr.merged_at;
@@ -90,7 +92,8 @@ export const POST: RequestHandler = async ({ request }) => {
 				statuses[prNumber] = status;
 			} catch (err) {
 				console.warn(`[Submissions] Failed to check PR #${prNumber}:`, (err as Error).message);
-				statuses[prNumber] = 'unknown';
+				// Don't downgrade a merge we already know about just because GitHub was unreachable.
+				statuses[prNumber] = cached?.status === 'merged' ? 'merged' : 'unknown';
 			}
 		})
 	);

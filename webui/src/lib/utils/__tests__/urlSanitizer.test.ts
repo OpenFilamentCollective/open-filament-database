@@ -220,8 +220,20 @@ describe('isStorefrontRoot', () => {
 		expect(isStorefrontRoot('https://brand.com/en/', null, 'https://brand.com/en')).toBe(true);
 	});
 
-	it('ignores query and fragment when comparing', () => {
+	it('ignores tracking query params and fragments when comparing', () => {
 		expect(isStorefrontRoot('https://store.bambulab.com/?utm_source=x#top')).toBe(true);
+	});
+
+	it('accepts a product identified by the query string rather than the path', () => {
+		// Older shop software (OpenCart, PrestaShop) routes products through `index.php`.
+		expect(
+			isStorefrontRoot('https://shop.example.com/index.php?route=product/product&product_id=123')
+		).toBe(false);
+		expect(isStorefrontRoot('https://example.com/shop?p=4711')).toBe(false);
+		// Including when the path is exactly the store's own front page.
+		expect(
+			isStorefrontRoot('https://example.com/eu/shop?product_id=9', 'https://example.com/eu/shop')
+		).toBe(false);
 	});
 
 	it('is false for an unparseable value', () => {

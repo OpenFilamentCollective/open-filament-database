@@ -193,6 +193,23 @@ export function stripTrackersDeep<T>(value: T): T {
 /** Path segments that are a shop's landing area rather than a product. */
 const LANDING_SEGMENTS = new Set(['shop', 'store', 'home', 'index.html', 'index.php']);
 
+/**
+ * True when a URL carries query parameters that could identify a specific product,
+ * i.e. any parameter that is not a known tracking key.
+ */
+function hasIdentifyingQuery(url: string): boolean {
+	if (!url) return false;
+	try {
+		const parsed = new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(url) ? url : `https://${url}`);
+		for (const key of parsed.searchParams.keys()) {
+			if (!isTrackingKey(key)) return true;
+		}
+		return false;
+	} catch {
+		return false;
+	}
+}
+
 /** Lowercased `host + path`, without protocol, trailing slash, query or fragment. */
 function hostAndPath(url: string): string | null {
 	if (!url) return null;
@@ -223,6 +240,11 @@ export function isStorefrontRoot(
 ): boolean {
 	const target = hostAndPath(url);
 	if (!target) return false;
+
+	// Older shop software routes products through the query string rather than the path
+	// (`/index.php?route=product/product&product_id=123`). That names a product, so the
+	// path alone says nothing — tracking params excepted, since those name no product.
+	if (hasIdentifyingQuery(url)) return false;
 
 	// A bare origin, or one whose only path segment is a landing area.
 	const segments = target.split('/').slice(1).filter(Boolean);

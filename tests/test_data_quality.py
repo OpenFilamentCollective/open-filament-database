@@ -89,7 +89,7 @@ def test_empty_string_in_an_array_is_an_error(tmp_path):
         filament_extra={"certifications": [""]},
         variants=[{"id": "black", "name": "Black"}],
     )
-    found = messages(check_data_quality(data), "empty string")
+    found = messages(check_data_quality(data), "is blank")
     assert len(found) == 1
     assert "certifications[0]" in found[0].message
     assert found[0].level.value == "ERROR"
@@ -101,7 +101,19 @@ def test_an_empty_array_is_fine(tmp_path):
         filament_extra={"certifications": []},
         variants=[{"id": "black", "name": "Black"}],
     )
-    assert messages(check_data_quality(data), "empty string") == []
+    assert messages(check_data_quality(data), "is blank") == []
+
+
+def test_whitespace_only_string_is_an_error(tmp_path):
+    """A blank-looking value is as meaningless as ``""`` — and the webui flags it too."""
+    data = build(
+        tmp_path / "data",
+        filament_extra={"certifications": ["   "]},
+        variants=[{"id": "black", "name": "Black"}],
+    )
+    found = messages(check_data_quality(data), "is blank")
+    assert len(found) == 1
+    assert "certifications[0]" in found[0].message
 
 
 def test_empty_string_nested_in_a_purchase_link_is_found(tmp_path):
@@ -121,7 +133,7 @@ def test_empty_string_nested_in_a_purchase_link_is_found(tmp_path):
             }
         ],
     )
-    found = messages(check_data_quality(data), "empty string")
+    found = messages(check_data_quality(data), "is blank")
     assert len(found) == 1
     assert "purchase_links[0].url" in found[0].message
 

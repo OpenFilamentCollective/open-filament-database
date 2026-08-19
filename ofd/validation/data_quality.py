@@ -77,11 +77,13 @@ def _err(level, message: str, path: str) -> ValidationError:
 
 
 def _placeholder_paths(value, prefix: str = "") -> list[str]:
-    """Dotted paths of empty-string values, recursing into dicts and lists.
+    """Dotted paths of blank string values, recursing into dicts and lists.
 
-    An empty string is never meaningful data. ``certifications: [""]`` (#453) reads
+    A blank string is never meaningful data. ``certifications: [""]`` (#453) reads
     downstream as "this filament has a certification" whose name is blank; an empty
-    array (or an absent field) says the true thing.
+    array (or an absent field) says the true thing. Whitespace-only counts as blank —
+    ``" "`` is no more a certification name than ``""`` is, and the webui's
+    ``checkPlaceholderEntries`` flags it as one too.
     """
     found: list[str] = []
     if isinstance(value, dict):
@@ -90,7 +92,7 @@ def _placeholder_paths(value, prefix: str = "") -> list[str]:
     elif isinstance(value, list):
         for index, sub in enumerate(value):
             found.extend(_placeholder_paths(sub, f"{prefix}[{index}]"))
-    elif isinstance(value, str) and value == "" and prefix:
+    elif isinstance(value, str) and value.strip() == "" and prefix:
         found.append(prefix)
     return found
 
@@ -99,7 +101,7 @@ def _check_placeholders(data, file_path: Path, base: Path) -> list[ValidationErr
     return [
         _err(
             ValidationLevel.Error,
-            f"'{dotted}' is an empty string. Remove the field, or drop the empty entry "
+            f"'{dotted}' is blank. Remove the field, or drop the empty entry "
             f"from the array — a blank value is not the same as no value.",
             _rel(file_path, base),
         )
@@ -147,8 +149,19 @@ def _check_name_whitespace(data, file_path: Path, base: Path) -> list[Validation
 
 
 def _redundant_size_fields(size: dict) -> dict:
-    """The fields that make a spool row worth keeping, ignoring canonical identity."""
-    return {k: v for k, v in size.items() if k not in ("uuid", "moved_from")}
+    """The fields that make a spool row worth keeping, ignoring canonical identity.
+
+    A field set to ``None`` or a blank string says nothing the absent field doesn't, so
+    it must not be what distinguishes two rows — otherwise ``{"gtin": null}`` reads as a
+    distinct GTIN. The webui's ``meaningfulFields`` drops the same values.
+    """
+    return {
+        k: v
+        for k, v in size.items()
+        if k not in ("uuid", "moved_from")
+        and v is not None
+        and not (isinstance(v, str) and v.strip() == "")
+    }
 
 
 def _is_subsumed(size: dict, earlier: dict) -> bool:

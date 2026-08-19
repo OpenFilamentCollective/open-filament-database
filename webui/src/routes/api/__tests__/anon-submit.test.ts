@@ -183,13 +183,18 @@ describe('POST /api/anon/submit', () => {
 			expect(res.status).toBe(403);
 		});
 
-		it('returns 409 when the submission is already merged', async () => {
+		it('opens a new PR when the submission has already merged', async () => {
+			// Same fallback as when `amendAnonPR` discovers the merge one layer down: the
+			// contributor's work lands either way, so a dead-end error would be gratuitous.
 			mocks.getSubmission.mockReturnValue({ ...OPEN_SUBMISSION, status: 'merged' });
 			const res: any = await POST(
 				makeEvent({ changes: [{ id: 'c' }], amendUuid: 'sub-459' })
 			);
-			expect(res.status).toBe(409);
-			expect(res.body.retryAsNew).toBe(true);
+			expect(res.status).toBe(200);
+			expect(mocks.amendAnonPR).not.toHaveBeenCalled();
+			expect(mocks.createAnonPR).toHaveBeenCalledOnce();
+			expect(res.body.amended).toBe(false);
+			expect(res.body.amendFellBackFrom).toBe('sub-459');
 		});
 
 		it('allows amending a submission with changes requested', async () => {

@@ -18,6 +18,8 @@ import {
 } from '$lib/server/github';
 import { getInstallationToken } from '$lib/server/githubApp';
 import { buildTreeItems, buildChangesSummary, explainEmptyTree } from '$lib/server/prBuilder';
+import { generateChangeTitle } from '$lib/utils/changeTitleGenerator';
+import type { EntityChange } from '$lib/types/changes';
 
 // --- Types ---
 
@@ -174,10 +176,11 @@ export async function amendAnonPR(
 	);
 	await updateRef(token, upstreamOwner, upstreamRepo, branchName, commitSha);
 
-	// 5. Rewrite the PR body so `## Changes` covers every batch. The title is only widened
-	//    when the caller supplies one — a stale title is less confusing than a wrong one.
+	// 5. Rewrite the PR title and body so both cover every batch. `amendment.title` describes
+	//    only the batch being added — good as the commit message above, wrong as the PR title,
+	//    which would otherwise end up naming the last batch while the body lists them all.
 	const updated = await updatePullRequest(token, upstreamOwner, upstreamRepo, amendment.prNumber, {
-		title: amendment.title,
+		title: generateChangeTitle(amendment.allChanges as EntityChange[]),
 		body: buildPrBody(amendment.uuid, amendment.description, amendment.allChanges)
 	});
 

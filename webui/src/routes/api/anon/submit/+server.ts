@@ -71,6 +71,10 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 	//    A submission UUID is not a secret — it is printed in the PR body — so amending is
 	//    gated on the submission having been made by *this* SimplyPrint account.
 	let amendTarget: { uuid: string; prNumber: number; previousChanges: any[] } | null = null;
+	//    Set when an amend was asked for but the PR turned out to be unamendable, so the
+	//    response can explain why a new PR number came back. The same fallback is applied
+	//    whether the closed PR is noticed here or by `amendAnonPR` a few steps down.
+	let amendUuidRetired: string | undefined;
 	if (typeof amendUuid === 'string' && amendUuid.length > 0) {
 		const existing = getSubmission(amendUuid);
 		if (!existing) {
@@ -80,20 +84,19 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 			return json({ error: 'That submission belongs to someone else.' }, { status: 403 });
 		}
 		if (existing.status !== 'open' && existing.status !== 'changes_requested') {
-			return json(
-				{ error: 'That submission is no longer open.', retryAsNew: true },
-				{ status: 409 }
-			);
+			// Already merged or closed. Fall through to a fresh PR rather than erroring out —
+			// the contributor's work is the same either way, and the alternative is a dead end.
+			amendUuidRetired = amendUuid;
+		} else {
+			// The previous batches, so the rewritten PR body describes the whole submission.
+			let previousChanges: any[] = [];
+			try {
+				previousChanges = JSON.parse(existing.changeData || '{}').changes ?? [];
+			} catch {
+				// A malformed cached payload only costs us the earlier bullets in the PR body.
+			}
+			amendTarget = { uuid: amendUuid, prNumber: existing.prNumber, previousChanges };
 		}
-
-		// The previous batches, so the rewritten PR body describes the whole submission.
-		let previousChanges: any[] = [];
-		try {
-			previousChanges = JSON.parse(existing.changeData || '{}').changes ?? [];
-		} catch {
-			// A malformed cached payload only costs us the earlier bullets in the PR body.
-		}
-		amendTarget = { uuid: amendUuid, prNumber: existing.prNumber, previousChanges };
 	}
 
 	// 6. Generate UUID (an amend reuses the submission's existing one)
@@ -144,7 +147,6 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 		// The PR may have merged or had its branch deleted between the client's last status
 		// poll and now. Falling back to a new PR is better than losing the contributor's work.
 		let submissionUuid = uuid;
-		let amendUuidRetired: string | undefined;
 		if (!result.success && 'retryAsNew' in result && result.retryAsNew) {
 			amendUuidRetired = amendTarget!.uuid;
 			amendTarget = null;
