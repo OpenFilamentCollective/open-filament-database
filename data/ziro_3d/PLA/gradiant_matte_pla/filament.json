@@ -1,0 +1,10 @@
+{
+  "uuid": "b25829ff-35b7-479e-a8dc-2adebe5830e6",
+  "id": "gradiant_matte_pla",
+  "name": "Gradiant Matte PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "discontinued": false
+}
