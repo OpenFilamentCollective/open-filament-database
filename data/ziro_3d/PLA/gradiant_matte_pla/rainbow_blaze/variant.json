@@ -1,0 +1,10 @@
+{
+  "id": "rainbow_blaze",
+  "name": "Rainbow Blaze",
+  "color_hex": "#41A479",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}
