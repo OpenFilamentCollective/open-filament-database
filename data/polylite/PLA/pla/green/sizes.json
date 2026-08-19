@@ -25,6 +25,9 @@
   },
   {
     "uuid": "f2d7f379-4476-4aac-9b92-0c9d00b2f1b9",
+    "moved_from": [
+      "e275ea2a-decb-4b7b-b1ca-66e277df814d"
+    ],
     "filament_weight": 5000,
     "diameter": 1.75,
     "empty_spool_weight": 819,
@@ -52,17 +55,6 @@
     "filament_weight": 3000,
     "diameter": 2.85,
     "empty_spool_weight": 425,
-    "purchase_links": [
-      {
-        "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-pla"
-      }
-    ]
-  },
-  {
-    "uuid": "e275ea2a-decb-4b7b-b1ca-66e277df814d",
-    "filament_weight": 5000,
-    "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",

@@ -26,6 +26,9 @@
   },
   {
     "uuid": "c9bf0b3d-a284-4ae6-9b35-fcd3a4c8564e",
+    "moved_from": [
+      "7f390038-30a1-4b6c-96fa-16de86be02ea"
+    ],
     "filament_weight": 5000,
     "diameter": 2.85
   },
@@ -52,11 +55,6 @@
   {
     "uuid": "7ee7facb-4393-4592-84a3-b283ffb7cd45",
     "filament_weight": 3000,
-    "diameter": 2.85
-  },
-  {
-    "uuid": "7f390038-30a1-4b6c-96fa-16de86be02ea",
-    "filament_weight": 5000,
     "diameter": 2.85
   }
 ]
