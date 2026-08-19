@@ -10,6 +10,7 @@ import { runCloudValidation } from '$lib/server/cloudValidator';
 import { sendWebhook } from '$lib/server/webhooks';
 import { trackSubmission } from '$lib/server/submissionStore';
 import { getSimplyPrintToken, getSimplyPrintUser } from '$lib/server/auth';
+import { resolveWrapperName } from '$lib/server/wrapper';
 import { checkRateLimit } from '$lib/server/rateLimit';
 import type { Job } from '$lib/server/jobManager';
 import crypto from 'crypto';
@@ -56,7 +57,7 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 		return json({ error: 'Invalid JSON' }, { status: 400 });
 	}
 
-	const { changes, images, title, description } = body;
+	const { changes, images, title, description, wrapper } = body;
 
 	if (!changes || !Array.isArray(changes) || changes.length === 0) {
 		return json({ error: 'No changes to submit' }, { status: 400 });
@@ -100,7 +101,8 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 			changes,
 			images: images || {},
 			title,
-			description
+			description,
+			wrapper: resolveWrapperName(wrapper)
 		});
 
 		if (!result.success) {

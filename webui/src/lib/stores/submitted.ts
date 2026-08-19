@@ -122,6 +122,85 @@ function createSubmittedStore() {
 		},
 
 		/**
+		 * Merge in-review submissions restored from an account-backed overlay (the
+		 * SimplyPrint embed). Unlike {@link archive}, this preserves the original
+		 * submission time, never overwrites an entry already tracked locally, and
+		 * gives the entry a far-future expiry — an in-review PR can easily outlive
+		 * the default 7-day TTL, and here the SimplyPrint account (plus the server
+		 * reconciler) own pruning once the PR merges/closes. Without this rehydrate,
+		 * a fresh browser/device or an expired local entry leaves the submitted set
+		 * empty, so the next embed autosave would post an empty overlay and wipe the
+		 * account draft. Returns true if anything new was added.
+		 */
+		importInReview(
+			entries: Array<{
+				prNumber?: number;
+				prUrl?: string;
+				submittedAt?: string;
+				changes?: EntityChange[];
+			}>
+		): boolean {
+			if (!browser || !Array.isArray(entries)) return false;
+			let added = false;
+			const FAR_FUTURE_DAYS = 3650;
+
+			update((buffer) => {
+				// PRs already tracked locally (possibly under a different uuid, e.g. the
+				// random one from the original submit on this device) — never duplicate.
+				const trackedPrNumbers = new Set(
+					Object.values(buffer.entries)
+						.map((x) => x.prNumber)
+						.filter((n) => n > 0)
+				);
+
+				for (const e of entries) {
+					const changes = Array.isArray(e?.changes) ? e.changes : [];
+					if (!changes.length) continue;
+
+					const prNumber = Number(e?.prNumber) || 0;
+					if (prNumber > 0 && trackedPrNumbers.has(prNumber)) continue;
+
+					// Stable id per PR so re-restoring the same draft is idempotent.
+					const uuid =
+						prNumber > 0
+							? `acct-pr-${prNumber}`
+							: `acct-${e?.submittedAt ?? ''}-${changes.length}`;
+					if (buffer.entries[uuid]) continue; // already tracked locally
+
+					const submittedAt = e?.submittedAt || new Date().toISOString();
+					const lightChanges = changes.map((c) => ({
+						entity: c.entity,
+						operation: c.operation,
+						data: c.data,
+						timestamp: c.timestamp,
+						description: c.description
+					}));
+
+					buffer.entries[uuid] = {
+						uuid,
+						prUrl: e?.prUrl || '',
+						prNumber,
+						submittedAt,
+						expiresAt: new Date(
+							Date.now() + FAR_FUTURE_DAYS * 24 * 60 * 60 * 1000
+						).toISOString(),
+						changes: lightChanges,
+						paths: lightChanges.map((c) => c.entity.path)
+					};
+					if (prNumber > 0) trackedPrNumbers.add(prNumber);
+					added = true;
+				}
+				if (added) {
+					rebuildIndex(buffer);
+					persist(buffer);
+				}
+				return buffer;
+			});
+
+			return added;
+		},
+
+		/**
 		 * Reconcile tracked submissions against GitHub's real PR state.
 		 * Asks the server for the current status of each tracked PR (which checks
 		 * GitHub for anything the merge webhook may have missed) and drops entries
