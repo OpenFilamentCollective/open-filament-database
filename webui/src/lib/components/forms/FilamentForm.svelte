@@ -14,8 +14,11 @@
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
+	import { FixHint } from '$lib/components/ui';
 	import { formDrafts } from '$lib/stores/formDrafts';
 	import { generateSlug } from '$lib/services/entityService';
+	import { looksLikeProductPage } from '$lib/utils/urlSanitizer';
+	import { checkNameWhitespace, checkPlaceholderEntries } from '$lib/utils/dataQuality';
 
 	interface Props {
 		filament?: any;
@@ -119,6 +122,53 @@
 		return null;
 	});
 
+	// Stray whitespace in a name is invisible in review and survives into every
+	// downstream consumer — #460 shipped a filament literally named "Silk ".
+	let nameWhitespace = $derived(checkNameWhitespace(String(formData?.name ?? '')));
+
+	function fixNameWhitespace() {
+		if (nameWhitespace) formData.name = nameWhitespace.suggestion;
+	}
+
+	// `certifications: [""]` (#453) reads downstream as a certification with a blank
+	// name; an empty list says the true thing.
+	let blankCertifications = $derived(checkPlaceholderEntries(formData?.certifications));
+
+	function fixBlankCertifications() {
+		const drop = new Set(blankCertifications);
+		formData.certifications = (formData.certifications as string[]).filter(
+			(_, index) => !drop.has(index)
+		);
+	}
+
+	/**
+	 * `data_sheet_url` and `safety_sheet_url` are meant to reach a TDS and an SDS — two
+	 * different documents. 3dhojor's merged filament (#461) has both pointing at the same
+	 * Shopify product page, which answers neither question and carries a colour-specific
+	 * `?variant=` selector on a field describing the whole filament.
+	 *
+	 * Non-blocking: a few manufacturers really do publish specs only on the product page.
+	 */
+	let sheetIssue = $derived.by(() => {
+		const dataSheet: string = formData?.data_sheet_url || '';
+		const safetySheet: string = formData?.safety_sheet_url || '';
+
+		if (dataSheet && safetySheet && dataSheet === safetySheet) {
+			return 'The datasheet and safety datasheet are the same link. These are normally two different documents (TDS and SDS) — link each one, or leave the one you do not have blank.';
+		}
+
+		const productPages = [
+			dataSheet && looksLikeProductPage(dataSheet) ? 'datasheet' : null,
+			safetySheet && looksLikeProductPage(safetySheet) ? 'safety datasheet' : null
+		].filter(Boolean);
+
+		if (productPages.length > 0) {
+			return `The ${productPages.join(' and ')} link${productPages.length > 1 ? 's point' : ' points'} at a shop product page rather than a document. Link the PDF if the manufacturer publishes one, or leave it blank.`;
+		}
+
+		return null;
+	});
+
 	// Slicer toggle state
 	let slicerEnabled = $state<Record<SlicerKey, boolean>>(
 		initialDraft?.slicerEnabled ?? initializeSlicerEnabled(filament?.slicer_settings)
@@ -219,13 +269,42 @@
 		<p class="text-muted-foreground">Loading form...</p>
 	</div>
 {:else}
+{#if nameWhitespace}
+	<FixHint
+		level="error"
+		fixLabel="Fix"
+		onFix={fixNameWhitespace}
+		fixTitle="Trim the name to “{nameWhitespace.suggestion}”"
+		class="mb-4"
+	>
+		The name {nameWhitespace.reason}. It will look identical to
+		<strong>{nameWhitespace.suggestion}</strong> everywhere but count as a different filament.
+	</FixHint>
+{/if}
+{#if blankCertifications.length > 0}
+	<FixHint
+		level="error"
+		fixLabel={blankCertifications.length === 1 ? 'Remove it' : 'Remove them'}
+		onFix={fixBlankCertifications}
+		fixTitle="Drop the blank certification entries"
+		class="mb-4"
+	>
+		{blankCertifications.length === 1 ? 'A certification entry is' : 'Some certification entries are'}
+		blank. A blank entry reads downstream as a certification with no name — remove
+		{blankCertifications.length === 1 ? 'it' : 'them'}, or fill
+		{blankCertifications.length === 1 ? 'it' : 'them'} in.
+	</FixHint>
+{/if}
+{#if sheetIssue}
+	<FixHint message={sheetIssue} class="mb-4" />
+{/if}
 {#if idDrift}
-	<div class="rounded-md bg-amber-500/10 border border-amber-500/30 p-3 text-sm mb-4 text-amber-700 dark:text-amber-400">
+	<FixHint class="mb-4">
 		This filament's folder id is <strong>{idDrift.currentId}</strong> but its name suggests
 		<strong>{idDrift.expected}</strong> — a stray token (likely a colour) is baked into the id.
 		Renaming the folder moves every colour variant, so fix it by recreating the filament with a
 		clean name or renaming the <code>{idDrift.currentId}</code> directory in a PR.
-	</div>
+	</FixHint>
 {/if}
 <SchemaForm
 	schema={preparedSchema}

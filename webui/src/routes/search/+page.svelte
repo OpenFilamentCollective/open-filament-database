@@ -9,7 +9,7 @@
 	import { changes, changesList } from '$lib/stores/changes';
 	import { submittedStore, submittedCount } from '$lib/stores/submitted';
 	import { useChangeTracking } from '$lib/stores/environment';
-	import { getChildChangeProps, type ChangeProps } from '$lib/utils/deletedStubs';
+	import { getChildChangeProps, NO_CHANGES, type ChangeProps } from '$lib/utils/deletedStubs';
 
 	const PAGE_SIZE = 24;
 
@@ -20,14 +20,6 @@
 		{ label: 'Filaments', value: 'filament' },
 		{ label: 'Stores', value: 'store' }
 	];
-
-	const NO_CHANGES: ChangeProps = {
-		hasLocalChanges: false,
-		localChangeType: undefined,
-		hasDescendantChanges: false,
-		hasSubmittedChanges: false,
-		submittedChangeType: undefined
-	};
 
 	let baseRecords: SearchRecord[] = $state([]);
 	let loading = $state(true);
@@ -187,6 +179,7 @@
 					hasDescendantChanges={cp.hasDescendantChanges}
 					hasSubmittedChanges={cp.hasSubmittedChanges}
 					submittedChangeType={cp.submittedChangeType}
+					submittedPrNumber={cp.submittedPrNumber}
 				/>
 			{/each}
 		</div>

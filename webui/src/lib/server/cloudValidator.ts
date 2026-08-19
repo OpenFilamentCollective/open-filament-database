@@ -8,6 +8,8 @@ import { SAFE_SEGMENT, cleanEntityData } from './saveUtils';
 import type { Job } from './jobManager';
 import { validateLogoDimensions } from './imageValidation';
 import { MAX_IMAGE_SIZE_BYTES, ALLOWED_IMAGE_EXTENSIONS } from '$lib/config/imageConfig';
+import { isStorefrontRoot } from '$lib/utils/urlSanitizer';
+import { checkNameWhitespace, checkPlaceholderEntries, findRedundantSizes } from '$lib/utils/dataQuality';
 
 // --- Types ---
 
@@ -70,12 +72,15 @@ async function prefetchSchemas(): Promise<void> {
 
 // --- Store ID cache (for cross-reference validation) ---
 
-let storeIdsCache: { ids: Set<string>; fetchedAt: number } | null = null;
+/** Known store id/slug -> that store's storefront URL (null when the store has none). */
+type KnownStores = Map<string, string | null>;
+
+let storeIdsCache: { stores: KnownStores; fetchedAt: number } | null = null;
 const STORE_IDS_TTL_MS = 30 * 60 * 1000; // 30 minutes
 
-async function fetchKnownStoreIds(): Promise<Set<string>> {
+async function fetchKnownStores(): Promise<KnownStores> {
 	if (storeIdsCache && Date.now() - storeIdsCache.fetchedAt < STORE_IDS_TTL_MS) {
-		return storeIdsCache.ids;
+		return storeIdsCache.stores;
 	}
 
 	const url = `${API_BASE}/api/v1/stores/index.json`;
@@ -90,18 +95,19 @@ async function fetchKnownStoreIds(): Promise<Set<string>> {
 	// rewritten to slugs before submission (see normalizeCloudVariant in api.ts /
 	// cloudProxy.ts), but legacy data may still reference UUIDs — index both forms
 	// so cross-reference validation accepts either.
-	const ids = new Set<string>();
+	const known: KnownStores = new Map();
 	const stores = Array.isArray(data) ? data : data?.stores;
 	if (Array.isArray(stores)) {
 		for (const store of stores) {
 			if (!store) continue;
-			if (typeof store.id === 'string') ids.add(store.id);
-			if (typeof store.slug === 'string') ids.add(store.slug);
+			const storefront = typeof store.storefront_url === 'string' ? store.storefront_url : null;
+			if (typeof store.id === 'string') known.set(store.id, storefront);
+			if (typeof store.slug === 'string') known.set(store.slug, storefront);
 		}
 	}
 
-	storeIdsCache = { ids, fetchedAt: Date.now() };
-	return ids;
+	storeIdsCache = { stores: known, fetchedAt: Date.now() };
+	return known;
 }
 
 // --- Ajv setup ---
@@ -343,17 +349,83 @@ function isValidGtin(gtin: string): boolean {
 	return checkDigit === expected;
 }
 
+/** The field holding an entity's human-facing display name. */
+const NAME_FIELD: Record<string, string> = {
+	brand: 'name',
+	material: 'material',
+	filament: 'name',
+	variant: 'name',
+	store: 'name'
+};
+
+/**
+ * Data-quality checks on an entity, mirroring `ofd/validation/data_quality.py`.
+ *
+ * The forms surface these as inline "Fix" hints, but those live in Svelte components:
+ * a changeset POSTed straight at `/api/anon/submit` never sees them. This is the same
+ * rule set at the submission gate.
+ */
+function validateEntityQuality(
+	entityType: string,
+	entityPath: string,
+	data: Record<string, unknown>
+): ValidationError[] {
+	const errors: ValidationError[] = [];
+
+	const nameField = NAME_FIELD[entityType];
+	const name = nameField ? data[nameField] : undefined;
+	if (typeof name === 'string') {
+		const whitespace = checkNameWhitespace(name);
+		if (whitespace) {
+			errors.push({
+				category: 'Data quality',
+				level: 'ERROR',
+				message: `Name '${name}' ${whitespace.reason}. Did you mean '${whitespace.suggestion}'?`,
+				path: entityPath
+			});
+		}
+	}
+
+	for (const [key, value] of Object.entries(data)) {
+		if (!Array.isArray(value)) continue;
+		const blanks = checkPlaceholderEntries(value);
+		if (blanks.length > 0) {
+			errors.push({
+				category: 'Data quality',
+				level: 'ERROR',
+				message: `'${key}' contains ${blanks.length} blank ${blanks.length === 1 ? 'entry' : 'entries'}. Remove ${blanks.length === 1 ? 'it' : 'them'}, or use an empty list.`,
+				path: entityPath
+			});
+		}
+	}
+
+	return errors;
+}
+
 /**
  * Validate store ID cross-references and GTIN checksums in sizes data.
  */
 function validateSizesData(
 	sizesData: unknown,
 	entityPath: string,
-	knownStoreIds: Set<string>,
+	knownStores: KnownStores,
 	newStoreIds: Set<string>
 ): ValidationError[] {
 	const errors: ValidationError[] = [];
 	if (!Array.isArray(sizesData)) return errors;
+
+	// A row that says nothing an earlier row doesn't renders as the same size listed
+	// twice (#453). Spool identity is (filament_weight, diameter) — see size_dedupe_key.
+	for (const { index, duplicateOf } of findRedundantSizes(
+		sizesData as Array<Record<string, unknown>>
+	)) {
+		errors.push({
+			category: 'Data quality',
+			level: 'ERROR',
+			message: `Size #${index + 1} adds nothing over size #${duplicateOf + 1}. Merge them, or give it the SKU, GTIN or purchase link that tells them apart.`,
+			path: entityPath
+		});
+	}
 
 	for (let si = 0; si < sizesData.length; si++) {
 		const size = sizesData[si];
@@ -382,11 +454,29 @@ function validateSizesData(
 				const storeId = linkObj.store_id;
 
 				if (typeof storeId === 'string' && storeId.length > 0) {
-					if (!knownStoreIds.has(storeId) && !newStoreIds.has(storeId)) {
+					if (!knownStores.has(storeId) && !newStoreIds.has(storeId)) {
 						errors.push({
 							category: 'Store IDs',
 							level: 'ERROR',
 							message: `Unknown store_id '${storeId}' in purchase_links (size #${si + 1}, link #${li + 1})`,
+							path: entityPath
+						});
+					}
+				}
+
+				// A shop homepage identifies neither the filament nor the colour. #454 arrived
+				// with `https://store.bambulab.com/` and a maintainer had to find the real
+				// product page by hand. The webui refuses these at the field; this is the same
+				// rule for payloads posted straight at the submission endpoint.
+				const linkUrl = linkObj.url;
+				if (typeof linkUrl === 'string' && linkUrl.length > 0) {
+					const storefront =
+						typeof storeId === 'string' ? (knownStores.get(storeId) ?? null) : null;
+					if (isStorefrontRoot(linkUrl, storefront)) {
+						errors.push({
+							category: 'Purchase links',
+							level: 'ERROR',
+							message: `Purchase link points at the shop homepage rather than a product page: '${linkUrl}' (size #${si + 1}, link #${li + 1})`,
 							path: entityPath
 						});
 					}
@@ -476,11 +566,11 @@ export async function runCloudValidation(
 			return;
 		}
 
-		let knownStoreIds = new Set<string>();
+		let knownStores: KnownStores = new Map();
 		try {
-			knownStoreIds = await fetchKnownStoreIds();
+			knownStores = await fetchKnownStores();
 		} catch {
-			// Non-fatal: store ID cross-referencing will be skipped
+			// Non-fatal: store cross-referencing and the storefront-root check are skipped
 		}
 
 		// --- Validate entity paths and operations ---
@@ -618,6 +708,9 @@ export async function runCloudValidation(
 				errors.push(folderError);
 			}
 
+			// Data-quality rules mirrored from ofd/validation/data_quality.py
+			errors.push(...validateEntityQuality(entity.type, entity.path, cleaned));
+
 			// Validate sizes: schema + GTIN checksums + store ID cross-references
 			if (sizesData !== undefined) {
 				try {
@@ -636,7 +729,7 @@ export async function runCloudValidation(
 					});
 				}
 
-				errors.push(...validateSizesData(sizesData, entity.path, knownStoreIds, newStoreIds));
+				errors.push(...validateSizesData(sizesData, entity.path, knownStores, newStoreIds));
 			}
 		}
 

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import type { Store } from '$lib/types/database';
-	import { Button } from '$lib/components/ui';
+	import { Button, FixHint } from '$lib/components/ui';
 	import UrlField from './UrlField.svelte';
 	import { INPUT_XS_CLASSES, LABEL_COMPACT_CLASSES } from '$lib/styles/formStyles';
-	import { getHost, rewriteHost } from '$lib/utils/urlSanitizer';
+	import { getHost, rewriteHost, isStorefrontRoot } from '$lib/utils/urlSanitizer';
 
 	interface Props {
 		storeId: string;
@@ -59,11 +59,18 @@
 		if (match) storeId = match.slug ?? match.id;
 	});
 
+	let selectedStore = $derived(stores.find((s) => (s.slug ?? s.id) === storeId));
+
 	// Canonical host from the selected store's storefront URL.
-	let canonicalHost = $derived.by(() => {
-		const store = stores.find((s) => (s.slug ?? s.id) === storeId);
-		return store?.storefront_url ? getHost(store.storefront_url) : null;
-	});
+	let canonicalHost = $derived(
+		selectedStore?.storefront_url ? getHost(selectedStore.storefront_url) : null
+	);
+
+	// A homepage identifies neither the filament nor the colour. #454 was submitted as
+	// `https://store.bambulab.com/` and a maintainer had to find the product page by hand.
+	let storefrontRoot = $derived(
+		!!url && isStorefrontRoot(url, selectedStore?.storefront_url ?? null)
+	);
 	let linkHost = $derived(getHost(url));
 
 	// Warn only on subdomain drift (same base domain, different host) — the case the Fix can
@@ -121,33 +128,22 @@
 				placeholder="store.com/product/..."
 				compact
 			/>
-			{#if hostMismatch}
-				<div class="mt-1.5 flex items-center justify-between gap-2 rounded bg-amber-500/10 border border-amber-500/30 px-2 py-1.5 text-xs">
-					<span class="text-amber-700 dark:text-amber-400">
-						Link uses <strong>{linkHost}</strong> but this store is <strong>{canonicalHost}</strong>.
-					</span>
-					<div class="flex shrink-0 items-center gap-1">
-						<a
-							href={url}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="rounded px-1.5 py-0.5 text-primary hover:underline"
-							title="Open the current link in a new tab to verify"
-						>
-							Open ↗
-						</a>
-						<Button
-							type="button"
-							variant="outline"
-							size="sm"
-							onclick={fixHost}
-							class="h-6 border-amber-500/40 px-2 text-xs"
-							title="Rewrite the link host to {canonicalHost}"
-						>
-							Fix → {canonicalHost}
-						</Button>
-					</div>
-				</div>
+			{#if storefrontRoot}
+				<FixHint level="error" compact href={url} class="mt-1.5">
+					That's the shop homepage, not a product page. Link the page for this specific
+					product — or leave this blank until you have one.
+				</FixHint>
+			{:else if hostMismatch}
+				<FixHint
+					compact
+					href={url}
+					fixLabel="Fix → {canonicalHost}"
+					onFix={fixHost}
+					fixTitle="Rewrite the link host to {canonicalHost}"
+					class="mt-1.5"
+				>
+					Link uses <strong>{linkHost}</strong> but this store is <strong>{canonicalHost}</strong>.
+				</FixHint>
 			{/if}
 		</div>
 	</div>

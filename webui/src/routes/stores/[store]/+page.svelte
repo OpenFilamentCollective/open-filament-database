@@ -7,7 +7,7 @@
 	import { StoreForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { EntityDetails, Logo } from '$lib/components/entity';
+	import { EntityDetails, Logo, SubmittedBanner } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
@@ -211,8 +211,8 @@
 
 			{#if entityState.hasLocalChanges}
 				<MessageBanner type="info" message="Local changes - export to save" />
-			{:else if entityState.hasSubmittedChanges}
-				<MessageBanner type="info" message="Submitted - awaiting merge" />
+			{:else if entityState.submittedEntry}
+				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
 
 			{#if messageHandler.message}

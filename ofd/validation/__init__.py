@@ -87,13 +87,25 @@ class ValidationOrchestrator:
             result.add_error(error)
         return result
 
+    def validate_data_quality(self) -> ValidationResult:
+        """Report the recurring data-quality defects reviewers fixed by hand.
+
+        This is a native (non-Rust) check; see data_quality.py for the rules.
+        """
+        from ofd.validation.data_quality import check_data_quality
+
+        result = ValidationResult()
+        for error in check_data_quality(self.data_dir):
+            result.add_error(error)
+        return result
+
     def validate_all(self, changes_json: str | None = None) -> ValidationResult:
         """Run all validations, optionally with pending changes applied.
 
-        Includes the native cross-variant fiber-consistency check, except under a
-        changes overlay: that check reads on-disk data and can't see pending edits,
-        so running it there could report stale conflicts (the webui enforces the
-        rule pre-export).
+        Includes the native fiber-consistency and data-quality checks, except under a
+        changes overlay: those read on-disk data and can't see pending edits, so
+        running them there could report stale findings (the webui enforces the same
+        rules pre-export).
         """
         if changes_json and _validate_all_with_changes is not None:
             return _validate_all_with_changes(
@@ -107,6 +119,7 @@ class ValidationOrchestrator:
         result = _validate_all(self.data_dir, self.stores_dir, max_workers=self.max_workers)
         if not changes_json:
             result.merge(self.validate_fiber_consistency())
+            result.merge(self.validate_data_quality())
         return result
 
 

@@ -14,6 +14,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const mocks = vi.hoisted(() => ({
 	isAnonBotEnabled: vi.fn(() => true),
 	createAnonPR: vi.fn(),
+	amendAnonPR: vi.fn(),
+	getSubmission: vi.fn(),
 	runCloudValidation: vi.fn(),
 	sendWebhook: vi.fn(),
 	trackSubmission: vi.fn(),
@@ -24,13 +26,17 @@ const mocks = vi.hoisted(() => ({
 
 vi.mock('$lib/server/anonBot', () => ({
 	isAnonBotEnabled: mocks.isAnonBotEnabled,
-	createAnonPR: mocks.createAnonPR
+	createAnonPR: mocks.createAnonPR,
+	amendAnonPR: mocks.amendAnonPR
 }));
 vi.mock('$lib/server/cloudValidator', () => ({
 	runCloudValidation: mocks.runCloudValidation
 }));
 vi.mock('$lib/server/webhooks', () => ({ sendWebhook: mocks.sendWebhook }));
-vi.mock('$lib/server/submissionStore', () => ({ trackSubmission: mocks.trackSubmission }));
+vi.mock('$lib/server/submissionStore', () => ({
+	trackSubmission: mocks.trackSubmission,
+	getSubmission: mocks.getSubmission
+}));
 vi.mock('$lib/server/auth', () => ({
 	getSimplyPrintToken: mocks.getSimplyPrintToken,
 	getSimplyPrintUser: mocks.getSimplyPrintUser
@@ -71,6 +77,173 @@ describe('POST /api/anon/submit', () => {
 			success: true,
 			prNumber: 42,
 			prUrl: 'https://github.com/foo/bar/pull/42'
+		});
+		mocks.amendAnonPR.mockResolvedValue({
+			success: true,
+			amended: true,
+			prNumber: 459,
+			prUrl: 'https://github.com/foo/bar/pull/459'
+		});
+	});
+
+	// --- Amending an open submission ---------------------------------------------------
+	//
+	// Contributors submit, keep editing, and submit again minutes later. Without this the
+	// second batch opens a competing PR on the same paths (#459/#460/#461 merged out of order
+	// and left an orphan filament in `main`).
+
+	const OPEN_SUBMISSION = {
+		uuid: 'sub-459',
+		prNumber: 459,
+		prUrl: 'https://github.com/foo/bar/pull/459',
+		createdAt: new Date().toISOString(),
+		status: 'open' as const,
+		email: 'u@example.com',
+		changeData: JSON.stringify({ changes: [{ entity: { path: 'brands/3dhojor' } }] })
+	};
+
+	describe('amendUuid', () => {
+		it('adds to the open PR instead of creating a new one', async () => {
+			mocks.getSubmission.mockReturnValue(OPEN_SUBMISSION);
+
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c2' }], amendUuid: 'sub-459' })
+			);
+
+			expect(res.status).toBe(200);
+			expect(res.body.amended).toBe(true);
+			expect(res.body.prNumber).toBe(459);
+			expect(res.body.uuid).toBe('sub-459');
+			expect(mocks.createAnonPR).not.toHaveBeenCalled();
+			expect(mocks.amendAnonPR).toHaveBeenCalledOnce();
+		});
+
+		it('passes earlier batches through so the PR body describes the whole submission', async () => {
+			mocks.getSubmission.mockReturnValue(OPEN_SUBMISSION);
+
+			await POST(makeEvent({ changes: [{ id: 'c2' }], amendUuid: 'sub-459' }));
+
+			const arg = mocks.amendAnonPR.mock.calls[0][0];
+			expect(arg.changes).toEqual([{ id: 'c2' }]);
+			expect(arg.allChanges).toEqual([{ entity: { path: 'brands/3dhojor' } }, { id: 'c2' }]);
+			expect(arg.prNumber).toBe(459);
+		});
+
+		it('re-records the submission with the combined change set', async () => {
+			mocks.getSubmission.mockReturnValue(OPEN_SUBMISSION);
+
+			await POST(makeEvent({ changes: [{ id: 'c2' }], amendUuid: 'sub-459' }));
+
+			const [uuid, prNumber, , changeData] = mocks.trackSubmission.mock.calls[0];
+			expect(uuid).toBe('sub-459');
+			expect(prNumber).toBe(459);
+			expect(JSON.parse(changeData).changes).toHaveLength(2);
+		});
+
+		it('still validates the new batch before touching the branch', async () => {
+			mocks.getSubmission.mockReturnValue(OPEN_SUBMISSION);
+			mocks.runCloudValidation.mockImplementation(async (job: any) => {
+				job.status = 'complete';
+				job.result = { is_valid: false, errors: [{ message: 'bad' }] };
+			});
+
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c2' }], amendUuid: 'sub-459' })
+			);
+
+			expect(res.status).toBe(422);
+			expect(mocks.amendAnonPR).not.toHaveBeenCalled();
+		});
+
+		it('returns 404 for an unknown submission', async () => {
+			mocks.getSubmission.mockReturnValue(undefined);
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c' }], amendUuid: 'nope' })
+			);
+			expect(res.status).toBe(404);
+			expect(mocks.amendAnonPR).not.toHaveBeenCalled();
+		});
+
+		it('refuses to amend another account’s submission', async () => {
+			// A submission UUID is printed in the PR body, so it is not a secret.
+			mocks.getSubmission.mockReturnValue({ ...OPEN_SUBMISSION, email: 'someone@else.com' });
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c' }], amendUuid: 'sub-459' })
+			);
+			expect(res.status).toBe(403);
+			expect(mocks.amendAnonPR).not.toHaveBeenCalled();
+		});
+
+		it('refuses to amend when the caller has no email to match against', async () => {
+			mocks.getSimplyPrintUser.mockResolvedValue({ id: 1, email: null });
+			mocks.getSubmission.mockReturnValue(OPEN_SUBMISSION);
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c' }], amendUuid: 'sub-459' })
+			);
+			expect(res.status).toBe(403);
+		});
+
+		it('opens a new PR when the submission has already merged', async () => {
+			// Same fallback as when `amendAnonPR` discovers the merge one layer down: the
+			// contributor's work lands either way, so a dead-end error would be gratuitous.
+			mocks.getSubmission.mockReturnValue({ ...OPEN_SUBMISSION, status: 'merged' });
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c' }], amendUuid: 'sub-459' })
+			);
+			expect(res.status).toBe(200);
+			expect(mocks.amendAnonPR).not.toHaveBeenCalled();
+			expect(mocks.createAnonPR).toHaveBeenCalledOnce();
+			expect(res.body.amended).toBe(false);
+			expect(res.body.amendFellBackFrom).toBe('sub-459');
+		});
+
+		it('allows amending a submission with changes requested', async () => {
+			mocks.getSubmission.mockReturnValue({ ...OPEN_SUBMISSION, status: 'changes_requested' });
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c' }], amendUuid: 'sub-459' })
+			);
+			expect(res.status).toBe(200);
+			expect(mocks.amendAnonPR).toHaveBeenCalledOnce();
+		});
+
+		it('falls back to a new PR when the branch is gone by the time we push', async () => {
+			// The PR can merge between the client's last status poll and this request.
+			mocks.getSubmission.mockReturnValue(OPEN_SUBMISSION);
+			mocks.amendAnonPR.mockResolvedValue({
+				success: false,
+				retryAsNew: true,
+				error: 'That submission is no longer open.'
+			});
+
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c2' }], amendUuid: 'sub-459' })
+			);
+
+			expect(res.status).toBe(200);
+			expect(res.body.amended).toBe(false);
+			expect(res.body.prNumber).toBe(42);
+			expect(res.body.amendFellBackFrom).toBe('sub-459');
+			expect(res.body.uuid).not.toBe('sub-459');
+			expect(mocks.createAnonPR).toHaveBeenCalledOnce();
+		});
+
+		it('does not fall back on an ordinary amend failure', async () => {
+			mocks.getSubmission.mockReturnValue(OPEN_SUBMISSION);
+			mocks.amendAnonPR.mockResolvedValue({ success: false, error: 'GitHub is down' });
+
+			const res: any = await POST(
+				makeEvent({ changes: [{ id: 'c2' }], amendUuid: 'sub-459' })
+			);
+
+			expect(res.status).toBe(500);
+			expect(mocks.createAnonPR).not.toHaveBeenCalled();
+		});
+
+		it('ignores an empty amendUuid and submits normally', async () => {
+			const res: any = await POST(makeEvent({ changes: [{ id: 'c' }], amendUuid: '' }));
+			expect(res.status).toBe(200);
+			expect(res.body.amended).toBe(false);
+			expect(mocks.createAnonPR).toHaveBeenCalledOnce();
 		});
 	});
 

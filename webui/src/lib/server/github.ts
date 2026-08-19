@@ -325,6 +325,31 @@ export async function createPullRequest(
 }
 
 /**
+ * Update an existing pull request's title and/or body.
+ *
+ * Used when a contributor adds a second batch of changes to a submission that is still in
+ * review: the new commit goes on the same branch, and the PR body's `## Changes` list is
+ * rewritten to cover everything. See `amendAnonPR` in `anonBot.ts`.
+ */
+export async function updatePullRequest(
+	token: string,
+	owner: string,
+	repo: string,
+	prNumber: number,
+	fields: { title?: string; body?: string }
+): Promise<{ number: number; html_url: string }> {
+	const response = await ghFetch(token, `/repos/${owner}/${repo}/pulls/${prNumber}`, {
+		method: 'PATCH',
+		body: JSON.stringify(fields)
+	});
+
+	if (!response.ok) throw await ghError(response, 'Failed to update PR');
+
+	const pr = await response.json();
+	return { number: pr.number, html_url: pr.html_url };
+}
+
+/**
  * Get a pull request's current state from GitHub.
  * `token` is optional — the upstream repo is public, so an unauthenticated
  * request works (subject to a lower rate limit); pass an installation/user
@@ -335,7 +360,16 @@ export async function getPullRequest(
 	owner: string,
 	repo: string,
 	prNumber: number
-): Promise<{ number: number; state: 'open' | 'closed'; merged: boolean; html_url: string } | null> {
+): Promise<{
+	number: number;
+	state: 'open' | 'closed';
+	merged: boolean;
+	/** ISO timestamp of the merge, or null when the PR is not merged. */
+	merged_at: string | null;
+	html_url: string;
+	/** Head branch name, so callers can tell an amendable branch from a deleted one. */
+	head_ref: string | null;
+} | null> {
 	const path = `/repos/${owner}/${repo}/pulls/${prNumber}`;
 	const response = token
 		? await ghFetch(token, path)
@@ -349,7 +383,9 @@ export async function getPullRequest(
 		number: pr.number,
 		state: pr.state,
 		merged: pr.merged === true,
-		html_url: pr.html_url
+		merged_at: pr.merged_at ?? null,
+		html_url: pr.html_url,
+		head_ref: pr.head?.ref ?? null
 	};
 }
 

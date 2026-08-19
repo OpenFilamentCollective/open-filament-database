@@ -9,6 +9,7 @@
 	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
 	import { toggleSetItem } from '$lib/utils/setHelpers';
 	import { detectSuggestedTraits } from '$lib/utils/fiberTraitSuggestions';
+	import { checkNameCasing, checkNameWhitespace, findRedundantSizes } from '$lib/utils/dataQuality';
 	import {
 		fibersFromTraitKeys,
 		checkFiberConflict,
@@ -16,10 +17,10 @@
 		FIBER_LABEL,
 		type FiberKind
 	} from '$lib/utils/fiberConflict';
-	import { Button } from '$lib/components/ui';
+	import { Button, FixHint } from '$lib/components/ui';
 	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
-	import { stripTrackersDeep } from '$lib/utils/urlSanitizer';
+	import { stripTrackersDeep, isStorefrontRoot } from '$lib/utils/urlSanitizer';
 	import { isValidColorHex } from '$lib/utils/colorHex';
 	import type { SchemaFormConfig } from './schemaFormTypes';
 	import { formDrafts } from '$lib/stores/formDrafts';
@@ -42,9 +43,15 @@
 		 * fiber across its variants — this variant can't take the opposite fiber.
 		 */
 		siblingFibers?: FiberKind[];
+		/**
+		 * Display names of the OTHER variants of this filament. Casing is a house style
+		 * rather than a hard rule, so the Title Case nudge only fires when the siblings
+		 * establish the convention — which is how #451 and #452 were caught in review.
+		 */
+		siblingNames?: string[];
 	}
 
-	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType, siblingFibers = [] }: Props = $props();
+	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType, siblingFibers = [], siblingNames = [] }: Props = $props();
 
 	type ColorStandards = {
 		ral: string;
@@ -352,6 +359,32 @@
 		return null;
 	});
 
+	// Stray whitespace in a name is invisible in review and survives into every
+	// downstream consumer — #460 shipped a filament literally named "Silk ".
+	let nameWhitespace = $derived(checkNameWhitespace(String(formData?.name ?? '')));
+
+	function fixNameWhitespace() {
+		if (nameWhitespace) formData.name = nameWhitespace.suggestion;
+	}
+
+	// A lowercase colour name beside Title Case siblings (#451, #452).
+	let nameCasing = $derived(
+		checkNameCasing(String(formData?.name ?? ''), siblingNames)
+	);
+
+	function fixNameCasing() {
+		if (nameCasing) formData.name = nameCasing.suggestion;
+	}
+
+	// Spool rows that add nothing over an earlier row (#453).
+	let redundantSizes = $derived(findRedundantSizes(sizes.map((s) => s.value)));
+
+	/** Drop every row that duplicates an earlier one, keeping the more detailed row. */
+	function fixRedundantSizes() {
+		const drop = new Set(redundantSizes.map((d) => d.index));
+		sizes = sizes.filter((_, index) => !drop.has(index));
+	}
+
 	/** Remove the redundant material-type word(s) from the colour name. */
 	function fixName() {
 		if (!formData.name) return;
@@ -506,6 +539,18 @@
 						: 'Add a URL for each purchase link (a link has a store but no URL).';
 					return;
 				}
+
+				// A shop homepage identifies neither the filament nor the colour — #454 shipped
+				// `https://store.bambulab.com/` and had to be fixed by hand after review.
+				if (hasUrl) {
+					const store = stores.find((st) => (st.slug ?? st.id) === pl.value.store_id);
+					if (isStorefrontRoot(pl.value.url, store?.storefront_url ?? null)) {
+						validationError =
+							'A purchase link points at the shop homepage instead of a product page. ' +
+							'Link the specific product, or remove the link.';
+						return;
+					}
+				}
 			}
 		}
 
@@ -598,14 +643,34 @@
 		<p class="text-muted-foreground">Loading form...</p>
 	</div>
 {:else}
-{#if validationError}<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive mb-4">{validationError}</div>{/if}
+{#if validationError}<FixHint level="error" message={validationError} class="mb-4" />{/if}
 {#if nameMaterialToken}
-	<div class="rounded-md bg-amber-500/10 border border-amber-500/30 p-3 text-sm mb-4 flex items-start justify-between gap-3">
-		<span class="text-amber-700 dark:text-amber-400">
-			Material type <strong>{nameMaterialToken}</strong> is redundant in the colour name — the material is already set separately. Consider removing it.
-		</span>
-		<Button variant="outline" size="sm" onclick={fixName} class="shrink-0 border-amber-500/40">Fix</Button>
-	</div>
+	<FixHint fixLabel="Fix" onFix={fixName} fixTitle="Remove the material type from the colour name" class="mb-4">
+		Material type <strong>{nameMaterialToken}</strong> is redundant in the colour name — the material is already set separately. Consider removing it.
+	</FixHint>
+{/if}
+{#if nameWhitespace}
+	<FixHint
+		level="error"
+		fixLabel="Fix"
+		onFix={fixNameWhitespace}
+		fixTitle="Trim the name to “{nameWhitespace.suggestion}”"
+		class="mb-4"
+	>
+		The name {nameWhitespace.reason}. It will look identical to
+		<strong>{nameWhitespace.suggestion}</strong> everywhere but count as a different colour.
+	</FixHint>
+{/if}
+{#if nameCasing}
+	<FixHint
+		fixLabel="Fix"
+		onFix={fixNameCasing}
+		fixTitle="Rename to “{nameCasing.suggestion}”"
+		class="mb-4"
+	>
+		Other colours of this filament use Title Case (e.g. <strong>{nameCasing.example}</strong>).
+		Rename to <strong>{nameCasing.suggestion}</strong> so it reads consistently.
+	</FixHint>
 {/if}
 <SchemaForm
 	schema={preparedSchema}
@@ -658,13 +723,9 @@
 
 			<!-- Fiber conflict guard: a filament can't mix carbon fiber and glass fiber -->
 			{#if fiberConflict}
-				<div class="mb-3 rounded-md bg-destructive/10 border border-destructive/30 p-2.5 text-xs text-destructive">
-					{fiberConflict.message}
-				</div>
+				<FixHint level="error" compact message={fiberConflict.message} class="mb-3" />
 			{:else if blockedFiberNote}
-				<div class="mb-3 rounded-md bg-amber-500/10 border border-amber-500/30 p-2.5 text-xs text-amber-700 dark:text-amber-400">
-					{blockedFiberNote}
-				</div>
+				<FixHint compact message={blockedFiberNote} class="mb-3" />
 			{/if}
 
 			<!-- Suggested traits detected from the name (fiber / high-flow) -->
@@ -795,11 +856,28 @@
 		</div>
 
 		<div class="flex-1 overflow-y-auto space-y-4 pr-1 min-h-0">
+			{#if redundantSizes.length > 0}
+				<FixHint
+					level="error"
+					compact
+					fixLabel={redundantSizes.length === 1 ? 'Remove it' : 'Remove them'}
+					onFix={fixRedundantSizes}
+					fixTitle="Drop the duplicate size rows, keeping the more detailed one"
+				>
+					{redundantSizes.length === 1 ? 'Size' : 'Sizes'}
+					{redundantSizes.map((d) => `#${d.index + 1}`).join(', ')}
+					{redundantSizes.length === 1 ? 'adds' : 'add'} nothing over an earlier row. Give
+					{redundantSizes.length === 1 ? 'it' : 'them'} a SKU, GTIN or purchase link, or remove
+					{redundantSizes.length === 1 ? 'it' : 'them'}.
+				</FixHint>
+			{/if}
 			{#if showLinkNudge}
-				<div class="rounded-md bg-amber-500/10 border border-amber-500/30 p-2.5 text-xs flex items-center justify-between gap-2">
-					<span class="text-amber-700 dark:text-amber-400">No purchase links yet — add one so people can find where to buy this.</span>
-					<Button variant="outline" size="sm" onclick={() => addPurchaseLink(0)} class="shrink-0 border-amber-500/40">Add link</Button>
-				</div>
+				<FixHint
+					compact
+					message="No purchase links yet — add one so people can find where to buy this."
+					fixLabel="Add link"
+					onFix={() => addPurchaseLink(0)}
+				/>
 			{/if}
 			{#if sizes.length > 0}
 				{#each sizes as size, sizeIndex (size.id)}

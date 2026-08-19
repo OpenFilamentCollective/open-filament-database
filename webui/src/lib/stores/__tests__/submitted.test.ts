@@ -473,6 +473,245 @@ describe('Submitted Store', () => {
 		});
 	});
 
+	describe('reconcile', () => {
+		function mockStatus(statuses: Record<number, string>, mergedAt: Record<number, string> = {}) {
+			return vi.fn(async () => ({
+				ok: true,
+				json: async () => ({ statuses, mergedAt })
+			})) as unknown as typeof fetch;
+		}
+
+		beforeEach(() => {
+			vi.unstubAllGlobals();
+		});
+
+		it('drops a closed submission immediately', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			vi.stubGlobal('fetch', mockStatus({ 1: 'closed' }));
+
+			await submittedStore.reconcile();
+
+			expect(submittedStore.has('brands/acme')).toBe(false);
+		});
+
+		it('keeps a merged submission until the nightly rebuild has published it', async () => {
+			// The bug this guards: PR #459 merged, the overlay dropped it, the upstream API
+			// (rebuilt once a day) still lacked it, so the contributor re-created the filament
+			// in #460. A merged entry must stay visible until the next build has run.
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/459',
+				prNumber: 459,
+				changes: [makeChange('brands/3dhojor', '3dhojor')]
+			});
+			const justMerged = new Date().toISOString();
+			vi.stubGlobal('fetch', mockStatus({ 459: 'merged' }, { 459: justMerged }));
+
+			await submittedStore.reconcile();
+
+			expect(submittedStore.has('brands/3dhojor')).toBe(true);
+			const entry = submittedStore.getEntries()[0];
+			expect(entry.status).toBe('merged');
+			expect(entry.mergedAt).toBe(justMerged);
+		});
+
+		it('evicts a merged submission once the rebuild window has passed', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			// Merged two days ago — at least two nightly builds have run since.
+			const longAgo = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString();
+			vi.stubGlobal('fetch', mockStatus({ 1: 'merged' }, { 1: longAgo }));
+
+			await submittedStore.reconcile();
+
+			expect(submittedStore.has('brands/acme')).toBe(false);
+		});
+
+		it('falls back to now when GitHub gives no merge timestamp', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			vi.stubGlobal('fetch', mockStatus({ 1: 'merged' }));
+
+			await submittedStore.reconcile();
+
+			// Still present (the fallback is "just now"), and stamped so it can age out later.
+			expect(submittedStore.has('brands/acme')).toBe(true);
+			expect(submittedStore.getEntries()[0].mergedAt).toBeTruthy();
+		});
+
+		it('records changes_requested without dropping the entry', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			vi.stubGlobal('fetch', mockStatus({ 1: 'changes_requested' }));
+
+			await submittedStore.reconcile();
+
+			expect(submittedStore.has('brands/acme')).toBe(true);
+			expect(submittedStore.getEntries()[0].status).toBe('changes_requested');
+		});
+
+		it('leaves entries alone when the status endpoint fails', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			vi.stubGlobal('fetch', vi.fn(async () => ({ ok: false })) as unknown as typeof fetch);
+
+			await submittedStore.reconcile();
+
+			expect(submittedStore.has('brands/acme')).toBe(true);
+		});
+
+		it('ignores an unknown status', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			vi.stubGlobal('fetch', mockStatus({ 1: 'unknown' }));
+
+			await submittedStore.reconcile();
+
+			expect(submittedStore.has('brands/acme')).toBe(true);
+			expect(submittedStore.getEntries()[0].status).toBe('open');
+		});
+	});
+
+	describe('openEntries / findOverlap', () => {
+		it('treats an entry with no recorded status as open', () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			expect(submittedStore.openEntries().map((e) => e.uuid)).toEqual(['sub-1']);
+		});
+
+		it('excludes merged entries from the amend candidates', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			vi.stubGlobal(
+				'fetch',
+				vi.fn(async () => ({
+					ok: true,
+					json: async () => ({
+						statuses: { 1: 'merged' },
+						mergedAt: { 1: new Date().toISOString() }
+					})
+				})) as unknown as typeof fetch
+			);
+			await submittedStore.reconcile();
+
+			// Still layered over API data, but no longer something to amend.
+			expect(submittedStore.has('brands/acme')).toBe(true);
+			expect(submittedStore.openEntries()).toHaveLength(0);
+			expect(submittedStore.findOverlap(['brands/acme'])).toEqual([]);
+		});
+
+		it('finds an exact path overlap', () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/459',
+				prNumber: 459,
+				changes: [makeChange('brands/3dhojor/materials/PLA/filaments/silk', 'silk', 'filament')]
+			});
+
+			const overlap = submittedStore.findOverlap([
+				'brands/3dhojor/materials/PLA/filaments/silk'
+			]);
+			expect(overlap).toHaveLength(1);
+			expect(overlap[0].entry.prNumber).toBe(459);
+		});
+
+		it('finds a descendant of an in-flight path', () => {
+			// #461 added a variant under the filament #459 had just created.
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/459',
+				prNumber: 459,
+				changes: [makeChange('brands/3dhojor/materials/PLA/filaments/silk', 'silk', 'filament')]
+			});
+
+			const overlap = submittedStore.findOverlap([
+				'brands/3dhojor/materials/PLA/filaments/silk/variants/silk_blue_green'
+			]);
+			expect(overlap).toHaveLength(1);
+		});
+
+		it('finds an ancestor of an in-flight path', () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [
+					makeChange(
+						'brands/elegoo/materials/PLA/filaments/pla_metallic/variants/metallic_blue',
+						'metallic_blue',
+						'variant'
+					)
+				]
+			});
+
+			const overlap = submittedStore.findOverlap([
+				'brands/elegoo/materials/PLA/filaments/pla_metallic'
+			]);
+			expect(overlap).toHaveLength(1);
+		});
+
+		it('does not match an unrelated sibling with a shared prefix', () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+
+			// "brands/acme_two" starts with "brands/acme" as a string but is a different brand.
+			expect(submittedStore.findOverlap(['brands/acme_two'])).toEqual([]);
+		});
+
+		it('reports only the overlapping paths, not the whole change set', () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+
+			const overlap = submittedStore.findOverlap(['brands/acme', 'brands/other']);
+			expect(overlap[0].paths).toEqual(['brands/acme']);
+		});
+
+		it('returns nothing for an empty path list', () => {
+			expect(submittedStore.findOverlap([])).toEqual([]);
+		});
+	});
+
 	describe('localStorage error handling', () => {
 		it('survives a corrupted localStorage entry', async () => {
 			vi.resetModules();

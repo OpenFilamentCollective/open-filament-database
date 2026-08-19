@@ -112,15 +112,19 @@ export function createEntityState(config: EntityStateConfig) {
 		return treeHasDescendantChanges(node);
 	});
 
-	// Check if entity has submitted (pending-merge) changes
-	const hasSubmittedChanges = $derived.by(() => {
-		if (!trackingEnabled) return false;
+	// The submission this entity is part of, if any — carries the PR number and URL so the
+	// page can point at the review rather than just saying "submitted".
+	const submittedEntry = $derived.by(() => {
+		if (!trackingEnabled) return undefined;
 		// Access submittedVersion to trigger reactivity on store changes
 		void submittedVersion;
 		const path = config.getEntityPath();
-		if (!path) return false;
-		return submittedStore.has(path);
+		if (!path) return undefined;
+		return submittedStore.getChange(path)?.entry;
 	});
+
+	// Check if entity has submitted (pending-merge) changes
+	const hasSubmittedChanges = $derived(!!submittedEntry);
 
 	// Check if entity was locally created (for delete modal messaging)
 	const isLocalCreate = $derived.by(() => {
@@ -187,6 +191,9 @@ export function createEntityState(config: EntityStateConfig) {
 		},
 		get hasSubmittedChanges() {
 			return hasSubmittedChanges;
+		},
+		get submittedEntry() {
+			return submittedEntry;
 		},
 
 		// Duplicate/Paste/Compare modal states

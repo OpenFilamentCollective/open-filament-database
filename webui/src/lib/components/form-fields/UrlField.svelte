@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import Tooltip from './Tooltip.svelte';
-	import { Button } from '$lib/components/ui';
+	import { FixHint } from '$lib/components/ui';
 	import { LABEL_CLASSES, REQUIRED_INDICATOR } from '$lib/styles/formStyles';
 	import { stripTrackingParams, hasTrackingParams } from '$lib/utils/urlSanitizer';
 
@@ -140,15 +140,13 @@
 	{#if cleanedNotice}
 		<p class="mt-1 text-xs text-green-600 dark:text-green-500">Tracking parameters removed.</p>
 	{:else if hasTracker}
-		<Button
-			type="button"
-			variant="outline"
-			size="sm"
-			onclick={cleanTracking}
-			title="Strip tracking/affiliate parameters from this link"
-			class="mt-1 h-6 self-start border-amber-500/40 px-2 text-xs text-amber-700 dark:text-amber-400"
-		>
-			Remove trackers
-		</Button>
+		<FixHint
+			compact
+			message="This link carries tracking parameters."
+			fixLabel="Remove trackers"
+			onFix={cleanTracking}
+			fixTitle="Strip tracking/affiliate parameters from this link"
+			class="mt-1"
+		/>
 	{/if}
 </div>

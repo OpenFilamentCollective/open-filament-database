@@ -4,7 +4,9 @@ import {
 	hasTrackingParams,
 	getHost,
 	rewriteHost,
-	stripTrackersDeep
+	stripTrackersDeep,
+	isStorefrontRoot,
+	looksLikeProductPage
 } from '../urlSanitizer';
 
 describe('stripTrackingParams', () => {
@@ -164,5 +166,139 @@ describe('stripTrackersDeep', () => {
 		expect(out.website).toBe('https://brand.com/');
 		expect(out.data_sheet_url).toBe('https://x.com/ds.pdf');
 		expect(out.name).toBe('Brand');
+	});
+});
+
+describe('SimplyPrint recommender params', () => {
+	// These reached `main` on 3dhojor's datasheet URLs (#461) because nothing matched them.
+	const suRec =
+		'https://3dhojor.com/products/3dprinting-silk-pla-dual-tri-color-filament' +
+		'?_su_rec=tHGijyqxpJgrAXISK1V6KIs&_su_rec_id=76ac0788-67aa-4a2e-bed7&variant=44298583081060';
+
+	it('strips _su_rec and _su_rec_id but keeps the product variant selector', () => {
+		expect(stripTrackingParams(suRec)).toBe(
+			'https://3dhojor.com/products/3dprinting-silk-pla-dual-tri-color-filament?variant=44298583081060'
+		);
+	});
+
+	it('matches any _su_ prefixed key', () => {
+		expect(hasTrackingParams('https://shop.com/p?_su_anything=1')).toBe(true);
+	});
+});
+
+describe('isStorefrontRoot', () => {
+	it('rejects a bare origin — the #454 case', () => {
+		expect(isStorefrontRoot('https://store.bambulab.com/')).toBe(true);
+		expect(isStorefrontRoot('https://store.bambulab.com')).toBe(true);
+	});
+
+	it('rejects a lone landing segment', () => {
+		expect(isStorefrontRoot('https://example.com/shop')).toBe(true);
+		expect(isStorefrontRoot('https://example.com/store/')).toBe(true);
+	});
+
+	it('accepts a real product URL', () => {
+		expect(isStorefrontRoot('https://eu.store.bambulab.com/products/pla-cmyk-lithophane')).toBe(
+			false
+		);
+		// Single-segment product paths are legitimate on some shops (e.g. alza.cz).
+		expect(isStorefrontRoot('https://www.alza.cz/alzament-abs-1-kg-black-d13015343.htm')).toBe(
+			false
+		);
+	});
+
+	it('rejects a URL equal to the selected store’s storefront, however deep', () => {
+		expect(isStorefrontRoot('https://example.com/eu/shop', 'https://example.com/eu/shop')).toBe(
+			true
+		);
+		expect(
+			isStorefrontRoot('https://example.com/eu/shop/products/x', 'https://example.com/eu/shop')
+		).toBe(false);
+	});
+
+	it('rejects a URL equal to the brand website', () => {
+		expect(isStorefrontRoot('https://brand.com/en/', null, 'https://brand.com/en')).toBe(true);
+	});
+
+	it('ignores tracking query params and fragments when comparing', () => {
+		expect(isStorefrontRoot('https://store.bambulab.com/?utm_source=x#top')).toBe(true);
+	});
+
+	it('accepts a product identified by the query string rather than the path', () => {
+		// Older shop software (OpenCart, PrestaShop) routes products through `index.php`.
+		expect(
+			isStorefrontRoot('https://shop.example.com/index.php?route=product/product&product_id=123')
+		).toBe(false);
+		expect(isStorefrontRoot('https://example.com/shop?p=4711')).toBe(false);
+		// Including when the path is exactly the store's own front page.
+		expect(
+			isStorefrontRoot('https://example.com/eu/shop?product_id=9', 'https://example.com/eu/shop')
+		).toBe(false);
+	});
+
+	it('is false for an unparseable value', () => {
+		expect(isStorefrontRoot('')).toBe(false);
+		expect(isStorefrontRoot('not a url at all')).toBe(false);
+	});
+});
+
+describe('looksLikeProductPage', () => {
+	it('flags a shop product path', () => {
+		expect(looksLikeProductPage('https://3dhojor.com/products/silk-pla')).toBe(true);
+		expect(looksLikeProductPage('https://www.amazon.de/-/da/dp/B0FB93XQLM')).toBe(true);
+	});
+
+	it('flags any URL carrying a variant selector', () => {
+		expect(looksLikeProductPage('https://primacreator.com/x?variant=48794154')).toBe(true);
+	});
+
+	it('accepts a document URL', () => {
+		expect(looksLikeProductPage('https://brand.com/docs/pla-tds.pdf')).toBe(false);
+		expect(looksLikeProductPage('https://brand.com/support/technical-data-sheets')).toBe(false);
+	});
+
+	it('does not flag a PDF that happens to sit under /products/', () => {
+		expect(looksLikeProductPage('https://brand.com/products/pla/tds.pdf')).toBe(false);
+	});
+
+	it('is false for empty input', () => {
+		expect(looksLikeProductPage('')).toBe(false);
+	});
+});
+
+describe('Amazon /ref= path breadcrumb', () => {
+	// #408 shipped this and a maintainer shortened it by hand in review.
+	const dirty =
+		'https://www.amazon.de/-/da/AzureFilm-PLA-filament-3D-printer-praecision-prototyper/dp/B0FB93XQLM/ref=sr_1_6';
+
+	it('truncates the path at the /ref= segment', () => {
+		expect(stripTrackingParams(dirty)).toBe(
+			'https://www.amazon.de/-/da/AzureFilm-PLA-filament-3D-printer-praecision-prototyper/dp/B0FB93XQLM'
+		);
+		expect(hasTrackingParams(dirty)).toBe(true);
+	});
+
+	it('is idempotent', () => {
+		const once = stripTrackingParams(dirty);
+		expect(stripTrackingParams(once)).toBe(once);
+	});
+
+	it('strips the breadcrumb and the query together', () => {
+		expect(
+			stripTrackingParams('https://www.amazon.com/x/dp/B01/ref=sr_1_1?qid=1&sr=8-1')
+		).toBe('https://www.amazon.com/x/dp/B01');
+	});
+
+	it('leaves non-Amazon hosts alone', () => {
+		// Only Amazon uses `/ref=` this way; elsewhere it could be a real path.
+		expect(stripTrackingParams('https://shop.x.com/ref=partner')).toBe(
+			'https://shop.x.com/ref=partner'
+		);
+	});
+
+	it('leaves an Amazon URL with no breadcrumb untouched', () => {
+		expect(stripTrackingParams('https://www.amazon.de/-/da/dp/B0FB93XQLM')).toBe(
+			'https://www.amazon.de/-/da/dp/B0FB93XQLM'
+		);
 	});
 });
