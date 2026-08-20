@@ -1,0 +1,15 @@
+{
+  "id": "light_khaki",
+  "name": "PLA Matte",
+  "diameter_tolerance": 0.02,
+  "density": 1.17,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "min_nozzle_diameter": 0.4,
+  "data_sheet_url": "https://3dhojor.com/products/3dprinting-matte-pla-filament?variant=44277136851044",
+  "safety_sheet_url": "https://3dhojor.com/products/3dprinting-matte-pla-filament?variant=44277136851044",
+  "discontinued": false
+}
