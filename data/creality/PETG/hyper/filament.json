@@ -1,0 +1,9 @@
+{
+  "id": "hyper",
+  "name": "Hyper PETG-CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "discontinued": false
+}
