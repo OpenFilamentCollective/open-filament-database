@@ -1,0 +1,18 @@
+{
+  "id": "petg_2_0",
+  "name": "PETG 2.0",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "shore_hardness_d": 80,
+  "max_dry_temperature": 65,
+  "min_print_temperature": 230,
+  "max_print_temperature": 240,
+  "preheat_temperature": 180,
+  "min_bed_temperature": 75,
+  "max_bed_temperature": 80,
+  "min_chamber_temperature": 0,
+  "max_chamber_temperature": 59,
+  "chamber_temperature": 0,
+  "min_nozzle_diameter": 0.4,
+  "discontinued": false
+}
