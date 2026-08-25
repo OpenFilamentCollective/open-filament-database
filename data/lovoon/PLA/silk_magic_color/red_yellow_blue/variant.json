@@ -1,0 +1,10 @@
+{
+  "id": "red_yellow_blue",
+  "name": "Red-Yellow-Blue",
+  "color_hex": [
+    "#FF0000",
+    "#FFF700",
+    "#2B00FF"
+  ],
+  "discontinued": false
+}
