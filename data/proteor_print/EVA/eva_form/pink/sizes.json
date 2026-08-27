@@ -1,6 +1,5 @@
 [
   {
-    "uuid": "c898e652-83ac-40bc-a27a-1a363304dc39",
     "filament_weight": 4310,
     "diameter": 2.85,
     "spool_refill": false,
@@ -10,7 +9,7 @@
     "purchase_links": [
       {
         "store_id": "proteorprint",
-        "url": "https://www.proteordigital.com/product-page/evaplus"
+        "url": "https://www.proteordigital.com/product-page/eva-form"
       }
     ]
   }

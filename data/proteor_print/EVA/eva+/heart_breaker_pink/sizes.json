@@ -3,7 +3,15 @@
     "uuid": "18393fec-f209-45dd-81fa-ea8cb7deb1fd",
     "filament_weight": 4310,
     "diameter": 2.85,
+    "spool_refill": false,
     "empty_spool_weight": 810,
-    "spool_core_diameter": 50
+    "spool_core_diameter": 50,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "proteorprint",
+        "url": "https://www.proteordigital.com/product-page/evaplus"
+      }
+    ]
   }
 ]
