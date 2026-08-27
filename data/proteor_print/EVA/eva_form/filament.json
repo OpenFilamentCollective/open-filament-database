@@ -1,0 +1,11 @@
+{
+  "id": "eva_form",
+  "name": "EVA-FORM",
+  "diameter_tolerance": 0.1,
+  "density": 0.92,
+  "max_print_temperature": 240,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://acrobat.adobe.com/id/urn:aaid:sc:US:ce6e9f14-ea68-4fab-a04e-c76793ea0fca",
+  "safety_sheet_url": "https://acrobat.adobe.com/id/urn:aaid:sc:US:d1a12dac-2ee6-4c43-9a89-c25310991933?viewer%21megaVerb=group-discover",
+  "discontinued": false
+}
