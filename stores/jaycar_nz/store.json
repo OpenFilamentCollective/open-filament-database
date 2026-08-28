@@ -1,0 +1,12 @@
+{
+  "id": "jaycar_nz",
+  "name": "Jaycar NZ",
+  "storefront_url": "https://www.jaycar.co.nz/",
+  "logo": "logo.png",
+  "ships_from": [
+    "NZ"
+  ],
+  "ships_to": [
+    "NZ"
+  ]
+}
