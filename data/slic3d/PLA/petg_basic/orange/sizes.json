@@ -1,0 +1,18 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 115,
+    "spool_core_diameter": 100,
+    "gtin": "9319236826089",
+    "article_number": "TL6453",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "jaycar_nz",
+        "url": "https://www.jaycar.co.nz/slic3d-petg-filament-orange-1-75mm-1kg/p/TL6453"
+      }
+    ]
+  }
+]

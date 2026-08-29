@@ -1,0 +1,17 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "empty_spool_weight": 0,
+    "spool_core_diameter": 100,
+    "article_number": "TL6474",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "jaycar_nz",
+        "url": "https://www.jaycar.co.nz/slic3d-pla-spool-less-white-1-75mm-1kg-filament/p/TL6474"
+      }
+    ]
+  }
+]
