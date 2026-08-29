@@ -1,0 +1,11 @@
+{
+  "id": "asa",
+  "name": "ASA",
+  "diameter_tolerance": 0.03,
+  "density": 1.06,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "discontinued": false
+}

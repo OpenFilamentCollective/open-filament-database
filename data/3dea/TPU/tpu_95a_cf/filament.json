@@ -1,0 +1,11 @@
+{
+  "id": "tpu_95a_cf",
+  "name": "TPU 95A CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "min_print_temperature": 215,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 90,
+  "discontinued": false
+}

@@ -1,0 +1,12 @@
+{
+  "id": "tpe_85a",
+  "name": "TPE 85A",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "discontinued": false
+}
