@@ -1,0 +1,12 @@
+{
+  "id": "3dea",
+  "name": "3DEA",
+  "storefront_url": "https://www.3dea.co.nz/",
+  "logo": "logo.png",
+  "ships_from": [
+    "NZ"
+  ],
+  "ships_to": [
+    "NZ"
+  ]
+}

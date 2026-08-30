@@ -1,0 +1,12 @@
+{
+  "id": "pp",
+  "name": "PP",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "min_print_temperature": 225,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 75,
+  "max_bed_temperature": 85,
+  "chamber_temperature": 45,
+  "discontinued": false
+}
