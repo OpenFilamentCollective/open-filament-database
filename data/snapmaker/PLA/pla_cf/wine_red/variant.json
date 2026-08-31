@@ -1,0 +1,10 @@
+{
+  "id": "wine_red",
+  "name": "Wine Red",
+  "color_hex": "#823F2E",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

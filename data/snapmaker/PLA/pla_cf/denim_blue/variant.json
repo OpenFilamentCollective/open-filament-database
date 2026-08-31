@@ -1,0 +1,10 @@
+{
+  "id": "denim_blue",
+  "name": "Denim Blue",
+  "color_hex": "#49799D",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}
