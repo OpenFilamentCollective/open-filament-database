@@ -3,5 +3,9 @@
   "id": "pet_cf15",
   "name": "PET CF15",
   "diameter_tolerance": 0.02,
-  "density": 1.4
+  "density": 1.4,
+  "min_print_temperature": 245,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70
 }

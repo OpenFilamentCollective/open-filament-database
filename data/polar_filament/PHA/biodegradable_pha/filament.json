@@ -3,5 +3,9 @@
   "id": "biodegradable_pha",
   "name": "Biodegradable Pha",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.24,
+  "min_print_temperature": 195,
+  "max_print_temperature": 210,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 0
 }

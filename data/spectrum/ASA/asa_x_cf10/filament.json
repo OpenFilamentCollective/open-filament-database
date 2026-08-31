@@ -3,5 +3,9 @@
   "id": "asa_x_cf10",
   "name": "ASA-X CF10",
   "diameter_tolerance": 0.02,
-  "density": 1.1
+  "density": 1.1,
+  "min_print_temperature": 235,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110
 }

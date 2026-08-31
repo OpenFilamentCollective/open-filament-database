@@ -3,5 +3,9 @@
   "id": "pctg_cf10",
   "name": "PCTG CF10",
   "diameter_tolerance": 0.02,
-  "density": 1.28
+  "density": 1.28,
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 50
 }

@@ -3,5 +3,9 @@
   "id": "copa",
   "name": "PA6 CoPa",
   "diameter_tolerance": 0.02,
-  "density": 1.12
+  "density": 1.12,
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 50
 }

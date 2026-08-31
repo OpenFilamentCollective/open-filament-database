@@ -3,5 +3,9 @@
   "id": "thermatech_pa",
   "name": "ThermaTech PA",
   "diameter_tolerance": 0.02,
-  "density": 1.3
+  "density": 1.3,
+  "min_print_temperature": 250,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80
 }
