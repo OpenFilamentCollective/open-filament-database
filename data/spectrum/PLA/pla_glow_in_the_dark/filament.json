@@ -3,5 +3,9 @@
   "id": "pla_glow_in_the_dark",
   "name": "PLA Glow in the Dark",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.24,
+  "min_print_temperature": 185,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45
 }

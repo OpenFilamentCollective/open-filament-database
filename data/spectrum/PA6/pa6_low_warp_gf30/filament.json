@@ -3,5 +3,9 @@
   "id": "pa6_low_warp_gf30",
   "name": "PA6 Low Warp GF30",
   "diameter_tolerance": 0.02,
-  "density": 1.34
+  "density": 1.34,
+  "min_print_temperature": 250,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 80
 }

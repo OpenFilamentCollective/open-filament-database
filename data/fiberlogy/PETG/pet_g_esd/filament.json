@@ -3,5 +3,9 @@
   "id": "pet_g_esd",
   "name": "PET-G ESD",
   "diameter_tolerance": 0.02,
-  "density": 1.3
+  "density": 1.3,
+  "min_print_temperature": 250,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 85,
+  "max_bed_temperature": 85
 }

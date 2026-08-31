@@ -4,5 +4,9 @@
   "name": "PLA Matte",
   "diameter_tolerance": 0.03,
   "density": 1.26,
-  "max_dry_temperature": 50
+  "max_dry_temperature": 50,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 65
 }

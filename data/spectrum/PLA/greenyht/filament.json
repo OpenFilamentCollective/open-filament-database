@@ -4,6 +4,10 @@
   "name": "PLA GreenyHT",
   "diameter_tolerance": 0.02,
   "density": 1.54,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45,
   "slicer_settings": {
     "prusaslicer": {
       "profile_name": "Spectrum GreenyHT"

@@ -3,5 +3,9 @@
   "id": "pla_nature",
   "name": "PLA Nature",
   "diameter_tolerance": 0.02,
-  "density": 1.25
+  "density": 1.25,
+  "min_print_temperature": 185,
+  "max_print_temperature": 215,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45
 }

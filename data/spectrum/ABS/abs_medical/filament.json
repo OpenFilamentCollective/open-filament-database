@@ -3,5 +3,9 @@
   "id": "abs_medical",
   "name": "ABS Medical",
   "diameter_tolerance": 0.02,
-  "density": 1.06
+  "density": 1.06,
+  "min_print_temperature": 235,
+  "max_print_temperature": 255,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 100
 }

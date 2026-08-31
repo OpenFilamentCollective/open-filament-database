@@ -3,5 +3,9 @@
   "id": "petg_fr_v0",
   "name": "PETG FR V0",
   "diameter_tolerance": 0.02,
-  "density": 1.26
+  "density": 1.26,
+  "min_print_temperature": 230,
+  "max_print_temperature": 255,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80
 }

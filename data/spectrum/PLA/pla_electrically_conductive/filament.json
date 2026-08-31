@@ -3,5 +3,9 @@
   "id": "pla_electrically_conductive",
   "name": "PLA Electrically Conductive",
   "diameter_tolerance": 0.02,
-  "density": 1.35
+  "density": 1.35,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 50
 }

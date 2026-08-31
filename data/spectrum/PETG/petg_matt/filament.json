@@ -4,6 +4,10 @@
     "name": "PETG MATT",
     "diameter_tolerance": 0.02,
     "density": 1.35,
+    "min_print_temperature": 230,
+    "max_print_temperature": 255,
+    "min_bed_temperature": 60,
+    "max_bed_temperature": 80,
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Spectrum PETG Matt"
