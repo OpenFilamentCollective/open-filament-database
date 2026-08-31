@@ -1,0 +1,10 @@
+{
+  "id": "violet_purple",
+  "name": "Violet Purple",
+  "color_hex": "#725E7C",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

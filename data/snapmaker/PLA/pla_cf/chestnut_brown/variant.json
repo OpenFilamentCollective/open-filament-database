@@ -1,0 +1,10 @@
+{
+  "id": "chestnut_brown",
+  "name": "Chestnut Brown",
+  "color_hex": "#9B7C56",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

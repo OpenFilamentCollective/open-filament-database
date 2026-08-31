@@ -1,0 +1,10 @@
+{
+  "id": "graphite_gray",
+  "name": "Graphite Gray",
+  "color_hex": "#54555B",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}
