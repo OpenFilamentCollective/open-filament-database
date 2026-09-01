@@ -1,0 +1,10 @@
+{
+  "id": "silk",
+  "name": "Silk",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "certifications": [
+    "NA"
+  ],
+  "discontinued": false
+}
