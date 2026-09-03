@@ -1,41 +1,41 @@
 {
-  "uuid": "be5595d0-1505-4733-82a1-743f76bd7c4d",
-  "id": "pla_cf",
-  "name": "PLA-CF",
-  "diameter_tolerance": 0.03,
-  "density": 1.29,
-  "max_dry_temperature": 55,
-  "min_print_temperature": 200,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 35,
-  "max_bed_temperature": 70,
-  "min_chamber_temperature": 25,
-  "max_chamber_temperature": 45,
-  "min_nozzle_diameter": 0.4,
-  "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+PLA-CF+Technical+Data+Sheet+V1.0.0.pdf",
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Snapmaker PLA-CF"
-    },
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "17021473250",
-      "profile_name": "Snapmaker PLA-CF"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "17021473250",
-      "profile_name": "Snapmaker PLA-CF"
-    },
-    "crealityprint": {
-      "generic_id": "GFL99",
-      "id": "3864371306",
-      "profile_name": "Snapmaker PLA-CF"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL99",
-      "id": "3864371306",
-      "profile_name": "Snapmaker PLA-CF"
+    "uuid": "be5595d0-1505-4733-82a1-743f76bd7c4d",
+    "id": "pla_cf",
+    "name": "PLA-CF",
+    "diameter_tolerance": 0.03,
+    "density": 1.29,
+    "max_dry_temperature": 55,
+    "min_print_temperature": 200,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 70,
+    "min_chamber_temperature": 25,
+    "max_chamber_temperature": 45,
+    "min_nozzle_diameter": 0.4,
+    "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+PLA-CF+Technical+Data+Sheet+V1.0.0.pdf",
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Snapmaker PLA-CF"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "17021473250",
+            "profile_name": "Snapmaker PLA-CF"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "17021473250",
+            "profile_name": "Snapmaker PLA-CF"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "3864371306",
+            "profile_name": "Snapmaker PLA-CF"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "3864371306",
+            "profile_name": "Snapmaker PLA-CF"
+        }
     }
-  }
 }
