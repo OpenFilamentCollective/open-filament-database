@@ -7,6 +7,11 @@
  * carries `contains_glass_fiber`. This module is the single source of truth for
  * that rule on the webui side; the equivalent server/CI check lives in
  * `ofd/validation/fiber_consistency.py`.
+ *
+ * The guard is reactive, not pre-emptive: the editor leaves every trait selectable
+ * and reports a conflict once the selection creates one. An earlier version also hid
+ * the opposite fiber from the trait picker, which needed a standing note on the form
+ * explaining an absence — confusing, and for a case almost no contributor hits.
  */
 
 export const CARBON_FIBER_TRAIT = 'contains_carbon_fiber';
@@ -132,22 +137,4 @@ export function checkFiberConflict(
 		return { kind: 'glass', conflictsWith: 'carbon', sameVariant: false, message: conflictMessage('glass', 'carbon', false) };
 	}
 	return null;
-}
-
-/**
- * Fiber trait keys that must NOT be added to the current variant because doing so
- * would make the filament (siblings + this variant) contain both CF and GF.
- * A fiber already selected on this variant is never "blocked" — removing it is
- * how the user resolves a conflict.
- */
-export function blockedFiberTraitKeys(
-	currentFibers: Set<FiberKind>,
-	siblingFibers: Set<FiberKind>
-): Set<string> {
-	const present = new Set<FiberKind>([...currentFibers, ...siblingFibers]);
-	const blocked = new Set<FiberKind>();
-	if (present.has('carbon')) blocked.add('glass');
-	if (present.has('glass')) blocked.add('carbon');
-	for (const kind of currentFibers) blocked.delete(kind);
-	return new Set([...blocked].map((k) => FIBER_TRAIT[k]));
 }

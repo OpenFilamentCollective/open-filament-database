@@ -5,8 +5,7 @@ import {
 	fibersFromTraits,
 	fibersFromTraitKeys,
 	collectSiblingFibers,
-	checkFiberConflict,
-	blockedFiberTraitKeys
+	checkFiberConflict
 } from '../fiberConflict';
 
 const cf = (extra: Record<string, unknown> = {}) => ({ [CARBON_FIBER_TRAIT]: true, ...extra });
@@ -104,27 +103,5 @@ describe('checkFiberConflict', () => {
 		expect(conflict!.conflictsWith).toBe('glass');
 		// But a carbon variant among only-carbon siblings is fine.
 		expect(checkFiberConflict(new Set(['carbon']), new Set(['carbon']))).toBeNull();
-	});
-});
-
-describe('blockedFiberTraitKeys', () => {
-	it('blocks the opposite fiber once one is established by siblings', () => {
-		expect([...blockedFiberTraitKeys(new Set(), new Set(['glass']))]).toEqual([CARBON_FIBER_TRAIT]);
-		expect([...blockedFiberTraitKeys(new Set(), new Set(['carbon']))]).toEqual([GLASS_FIBER_TRAIT]);
-	});
-
-	it('blocks the opposite fiber once one is selected on this variant', () => {
-		expect([...blockedFiberTraitKeys(new Set(['carbon']), new Set())]).toEqual([GLASS_FIBER_TRAIT]);
-	});
-
-	it('never blocks a fiber already selected on this variant', () => {
-		// In a conflict state the user must be able to remove carbon, so carbon is not blocked.
-		const blocked = blockedFiberTraitKeys(new Set(['carbon']), new Set(['glass']));
-		expect(blocked.has(CARBON_FIBER_TRAIT)).toBe(false);
-		expect(blocked.has(GLASS_FIBER_TRAIT)).toBe(true);
-	});
-
-	it('blocks nothing when no fiber is present', () => {
-		expect([...blockedFiberTraitKeys(new Set(), new Set())]).toEqual([]);
 	});
 });

@@ -1,0 +1,70 @@
+name: Feature Request
+description: Suggest an improvement to the editor, the CLI, the API or the project tooling
+title: '[FEATURE] '
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For adding data — a brand, a filament, a store — please use one of the request
+        templates instead. This one is for the software: the cloud editor, the `ofd` CLI,
+        the published API, the docs and CI.
+
+        For a new or changed field in the JSON schemas, use the **Schema Change** template.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - WebUI / cloud editor
+        - CLI & validation (`ofd validate`, `ofd script`)
+        - Static API & exports (JSON, NDJSON, SQLite, CSV)
+        - Data & schemas
+        - Docs & contributor experience
+        - CI / GitHub workflows
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem?
+      description: >
+        Describe the situation you hit, not the solution. What were you trying to do,
+        and what got in the way?
+      placeholder: >
+        When I add a colour to a filament that already has 20 variants, I have to retype
+        the same traits every time…
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to happen?
+      description: Your proposed solution, if you have one in mind.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or workarounds
+      description: Anything you tried, or other approaches you considered and rejected.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else?
+      description: >
+        Screenshots, links to affected pages on openfilamentdatabase.org, related issues
+        or PRs. Drag images straight into this box.
+
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I'm willing to open the PR for this

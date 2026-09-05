@@ -3,9 +3,11 @@ import type {
 	SearchRecord,
 	SearchEntityType,
 	SearchResult,
-	SearchIndexFile
+	SearchIndexFile,
+	GtinIndexFile
 } from '$lib/types/search';
 import { apiFetch, apiError } from '$lib/utils/api';
+import { normalizeGtin, looksLikeBarcode } from '$lib/utils/gtin';
 import { parsePath } from '$lib/utils/changePaths';
 
 /**
@@ -16,6 +18,11 @@ import { parsePath } from '$lib/utils/changePaths';
  * paginates entirely client-side. The contributor's staged edits are layered on
  * top via {@link layerChanges} so locally created/renamed/deleted entities still
  * appear in search.
+ *
+ * Barcodes are handled separately. The name index carries no variants or sizes, so a
+ * scanned GTIN/EAN/UPC is resolved against a second file (/api/gtin-index) that is
+ * only fetched when a query actually looks like a barcode — it is a few hundred KB,
+ * and an ordinary name search must not pay for it (#479).
  */
 
 // ============================================
@@ -44,9 +51,73 @@ export async function loadSearchIndex(): Promise<SearchRecord[]> {
 	return indexPromise;
 }
 
+let gtinCache: GtinIndexFile | null = null;
+let gtinPromise: Promise<GtinIndexFile> | null = null;
+
+/**
+ * Load the barcode index. Separate from {@link loadSearchIndex} and lazy on purpose:
+ * call it only when {@link looksLikeBarcode} says the query warrants it.
+ */
+export async function loadGtinIndex(): Promise<GtinIndexFile> {
+	if (gtinCache) return gtinCache;
+	if (gtinPromise) return gtinPromise;
+
+	gtinPromise = (async () => {
+		try {
+			const response = await apiFetch('/api/gtin-index');
+			if (!response.ok) throw await apiError(response, 'Failed to load barcode index');
+			const data: GtinIndexFile = await response.json();
+			gtinCache = data?.codes ? data : { count: 0, codes: {} };
+			return gtinCache;
+		} finally {
+			gtinPromise = null;
+		}
+	})();
+
+	return gtinPromise;
+}
+
 export function clearSearchCache(): void {
 	indexCache = null;
 	indexPromise = null;
+	gtinCache = null;
+	gtinPromise = null;
+}
+
+/**
+ * Variant records for a barcode query, or `[]` when it isn't one / doesn't match.
+ *
+ * A code can cover more than one size (a spool and its refill), and those may sit on
+ * different variants, so this can legitimately return several records; duplicates
+ * pointing at the same variant are collapsed since the extra sizes add nothing to a
+ * result list.
+ */
+export function gtinRecordsFor(index: GtinIndexFile | null, query: string): SearchRecord[] {
+	const code = looksLikeBarcode(query) ? normalizeGtin(query) : null;
+	if (!code || !index?.codes) return [];
+
+	const seen = new Set<string>();
+	const records: SearchRecord[] = [];
+	for (const entry of index.codes[code] ?? []) {
+		const path = `brands/${entry.brand_slug}/materials/${entry.material_slug}/filaments/${entry.filament_slug}/variants/${entry.variant_slug}`;
+		if (seen.has(path)) continue;
+		seen.add(path);
+		records.push({
+			type: 'variant',
+			name: entry.variant_name,
+			href: `/brands/${entry.brand_slug}/${entry.material_slug}/${entry.filament_slug}/${entry.variant_slug}`,
+			brandName: entry.brand_name,
+			brandSlug: entry.brand_slug,
+			materialType: entry.material_slug,
+			filamentName: entry.filament_name,
+			gtin: entry.gtin,
+			// Both spellings, so the record matches whether the user typed the code as
+			// stored or in its padded 14-digit form.
+			keywords: `${entry.filament_name} ${entry.gtin} ${code}`,
+			path
+		});
+	}
+	return records;
 }
 
 // ============================================
@@ -58,10 +129,19 @@ const TYPE_PRIORITY: Record<SearchEntityType, number> = {
 	brand: 0,
 	material: 1,
 	filament: 2,
-	store: 3
+	// Variants only ever reach a result list via an exact barcode match, which the
+	// caller prepends — this rank only settles ties among them.
+	variant: 3,
+	store: 4
 };
 
-const COVERED_TYPES = new Set<SearchEntityType>(['brand', 'store', 'material', 'filament']);
+const COVERED_TYPES = new Set<SearchEntityType>([
+	'brand',
+	'store',
+	'material',
+	'filament',
+	'variant'
+]);
 
 function haystack(r: SearchRecord): string {
 	return `${r.name} ${r.brandName ?? ''} ${r.materialType ?? ''} ${r.keywords ?? ''}`.toLowerCase();
@@ -73,8 +153,11 @@ function matches(r: SearchRecord, terms: string[]): boolean {
 	return terms.every((t) => hay.includes(t));
 }
 
-/** Lower score sorts first. Exact name → name startsWith → name contains → other-field only. */
+/** Lower score sorts first. Barcode hit → exact name → startsWith → contains → other. */
 function rankScore(r: SearchRecord, firstTerm: string): number {
+	// A barcode is an exact product identifier; nothing matched by name should
+	// outrank it. Only records from the GTIN index carry `gtin`.
+	if (r.gtin) return -1;
 	const name = r.name.toLowerCase();
 	if (name === firstTerm) return 0;
 	if (name.startsWith(firstTerm)) return 1;

@@ -38,7 +38,14 @@ data/
 - `/.github/workflows/` - CI/CD automation
 - `/Taskfile.yml` - Task runner targets (validate, build, test, lint, etc.) backed by `uv`
 
-## UUID / UID Derivation (READ THIS BEFORE REVIEWING UUID-RELATED CODE)
+## Reviewer Myths — READ BEFORE FILING A REVIEW COMMENT
+
+Each of the beliefs below has been asserted in a real review on this repository, and each
+is wrong. They are collected here because a confidently-worded false claim costs a
+volunteer contributor a round trip — and in the worst case talks them into deleting good
+data. If you are about to write a review comment that depends on one of these, don't.
+
+### Myth 1: "Filament UUIDs come from the display `name`"
 
 UUIDs for entities in this database are derived using **UUIDv5** (RFC 4122 §4.3) from per-entity namespace UUIDs combined with stable identifying inputs. The OFD-canonical rule is:
 
@@ -52,6 +59,59 @@ This applies to brands, materials, filaments, variants, sizes, and stores. In pa
 - Implementation lives in `ofd/builder/utils.py` (`generate_*_id` / `generate_*_uuid` helpers, namespace constants, `_derive_uuid`). The OFD UUID derivation spec is documented at https://specs.openprinttag.org/#/nfc_data_format?id=_321-uuid-derivation-algorithm.
 
 If you see code, comments, or PR descriptions claiming the filament UUID is derived from `name`, that is incorrect — flag it as a bug, do not "fix" the canonical id-based derivation to use name instead.
+
+### Myth 2: "A filament with no variants is unreachable / orphaned / must be removed"
+
+> Seen verbatim in a review: *"This filament directory has no variant subfolders. The
+> validator flags this as an orphan filament (unreachable in the UI). Add at least one
+> variant …, or remove the filament entry."*
+
+The "unreachable" half is false, and it led a contributor toward deleting their own data.
+**An entity does not need children to exist, to be addressable, or to be valid.** The facts:
+
+- `data/` currently contains **141 filaments with no variants, 12 materials with no
+  filaments, and 8 brands with no materials**. These are normal: a brand's catalogue is
+  filled in over many PRs, and the skeleton lands first.
+- **The static API emits them.** A childless filament still gets its own
+  `api/v1/brands/<b>/materials/<m>/filaments/<f>/index.json`; the same is true one level
+  up for childless materials and brands. Nothing in `ofd/builder/` skips an entity for
+  having an empty child list.
+- **The WebUI renders them.** The filament detail page loads the filament and its variants
+  with two independent calls (`db.getFilament()` / `db.loadVariants()`) and only errors
+  when the *filament itself* is missing — an empty variant list renders an empty
+  "Variants" panel, not a 404. Same pattern on the brand and material pages.
+- The `orphan_filament` rule in `ofd/validation/data_quality.py` is a
+  `ValidationLevel.Warning`, **not** an error. Warnings never fail validation:
+  `ofd validate` exits 0 and prints "All validations passed (N warnings)". It means
+  *incomplete*, not *broken* and not *unreachable*.
+
+So: it is fine to mention that a filament has no colours yet. It is not fine to describe it
+as unreachable, to call it a validation failure, or to suggest removing the entry.
+
+The same reasoning applies to the other "it has no children" variants of this claim —
+a brand with no materials, a material with no filaments, a variant whose `sizes.json`
+lists a single spool.
+
+### Myth 3: "`ean` is the field to use / this file should have `ean` instead of `gtin`"
+
+`gtin` is the canonical field. `ean` is a **deprecated source-only alias**, kept so old
+data files keep validating. The crawler folds `ean` into `gtin` and drops the `ean` key
+(`ofd/builder/crawler.py`, `_create_size`), so `ean` never appears in any published
+artifact — not the API, not `all.json`, not the SQLite or CSV exports.
+
+Do not ask a contributor to add `ean`, and do not flag a file for using `gtin`. New data
+should always use `gtin`.
+
+### Myth 4: "`id` and `name` should match"
+
+They are deliberately allowed to diverge. `id` is the slug and matches the on-disk folder
+name (strict `^[a-z0-9+]+(_[a-z0-9+]+)*$`); `name` is human-readable display text and
+carries the manufacturer's own casing and punctuation. Renaming a folder to chase a
+display-name change **breaks the entity's UUID** (see Myth 1), which is exactly why the
+WebUI surfaces id/name drift as an advisory with no auto-fix rather than correcting it.
+
+Flag a `name` that is obviously wrong (a slug leaked into the display field, stray
+whitespace). Do not ask for the two to be brought into agreement as a matter of style.
 
 ## Build, Test & Validation Commands
 
@@ -332,17 +392,31 @@ The repository includes structured templates for community contributions:
 - `brand-request.md` - For requesting new brand additions
 - `filament-request.md` - For requesting new filament additions  
 - `store-request.md` - For requesting new store/retailer additions
+- `schema-change.yml` - Structured form for adding/changing/deprecating a JSON schema field or trait
+- `feature-request.yml` - Structured form for software changes (editor, CLI, API, docs, CI)
+- `config.yml` - Template chooser config: keeps blank issues enabled, links the cloud editor, API docs and contributor guides
 
 **Pull Request Templates** (`.github/PULL_REQUEST_TEMPLATE/`):
 - `data-addition.md` - For data contribution PRs
 - `webui-changes.md` - For WebUI/code changes
 
-## Trust These Instructions
+## Using These Instructions
 
-These instructions are comprehensive and tested. Only search the codebase if:
-- You encounter errors not mentioned in the "Known Issues" sections
-- You need to understand specific business logic beyond data validation/WebUI development
-- The information here appears outdated or incorrect
-- You're implementing entirely new functionality not covered above
+This file is a shortcut for the routine mechanics — setup, commands, directory layout,
+CI behaviour. For those, follow it directly rather than re-deriving them.
 
-For routine data validation, WebUI development, or build processes, follow these instructions directly without additional exploration.
+It is **not** a substitute for reading the code, and it goes stale. The "Reviewer Myths"
+section above exists because wrong claims propagate: this file once justified the
+orphan-filament warning with "not reachable in the UI", and that phrase came back as a
+review comment telling a contributor to delete their data.
+
+So, before you assert something about behaviour in a review comment, a commit message, or
+a PR description — **check it in the code**. Specifically:
+
+- Any claim that something is invalid, unreachable, broken, or blocks CI. Open the rule
+  and check its `ValidationLevel`; a `Warning` never fails a build.
+- Any claim about what a published artifact contains. Check the exporter, or build and
+  look — several source fields are renamed or dropped on the way out.
+- Any claim that starts "the validator flags" or "the UI requires". Grep for it.
+
+If what you find contradicts this file, the code wins — fix this file in the same PR.

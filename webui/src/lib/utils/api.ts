@@ -13,11 +13,13 @@ import { apiCache, getTTLForPath, isCacheEnabled } from './cache';
 export function buildApiUrl(path: string): string {
 	const baseUrl = get(apiBaseUrl);
 
-	// The global search index is always served by our own /api/search-index
-	// endpoint (relative). In cloud mode that endpoint serves the dedicated CDN
-	// file, falling back to building a lean index from json/all.json, so the
-	// browser always gets the small envelope from the same origin.
-	if (path === '/api/search-index') {
+	// The flat index endpoints are always served by our own routes (relative). In
+	// cloud mode those routes fetch the dedicated CDN file and normalize it — the
+	// search index falls back to building a lean one from json/all.json, and the
+	// barcode index falls back to an empty table — so the browser always gets the
+	// small envelope from the same origin. Without these, the mapping below would
+	// send them to `${baseUrl}/api/<name>` and 404.
+	if (path === '/api/search-index' || path === '/api/gtin-index') {
 		return path;
 	}
 

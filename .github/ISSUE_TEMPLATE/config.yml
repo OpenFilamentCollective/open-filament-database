@@ -1,0 +1,13 @@
+blank_issues_enabled: true
+contact_links:
+  - name: ✍️ Add or correct data yourself
+    url: https://openfilamentdatabase.org/
+    about: >
+      The cloud editor opens a pull request for you — no install, no GitHub account
+      required. Faster than filing a request for most data changes.
+  - name: 🔌 API documentation
+    url: https://api.openfilamentdatabase.org/
+    about: Endpoint shapes, bulk downloads (JSON / NDJSON / SQLite / CSV) and examples.
+  - name: 📚 Contributor guides
+    url: https://github.com/OpenFilamentCollective/open-filament-database/tree/main/docs
+    about: Editing locally, validation, manual JSON editing, and the git workflow.

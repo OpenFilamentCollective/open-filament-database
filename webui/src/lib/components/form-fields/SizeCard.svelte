@@ -40,6 +40,8 @@
 		onRemove: () => void;
 		onAddLink: () => void;
 		onRemoveLink: (linkIndex: number) => void;
+		/** Other colours of this filament already using a given URL. */
+		sharedWith?: (url: string) => string[];
 	}
 
 	let {
@@ -50,7 +52,8 @@
 		canRemove,
 		onRemove,
 		onAddLink,
-		onRemoveLink
+		onRemoveLink,
+		sharedWith
 	}: Props = $props();
 </script>
 
@@ -162,5 +165,6 @@
 		sizeIndex={index}
 		{onAddLink}
 		{onRemoveLink}
+		{sharedWith}
 	/>
 </div>

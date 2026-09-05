@@ -15,6 +15,13 @@
 		searchPlaceholder?: string;
 		filteredCount?: number;
 		children: Snippet;
+		/**
+		 * Advisory rendered inside the panel, above the search bar — for a nudge that
+		 * is about the list as a whole (e.g. a purchase link shared across colours).
+		 * Kept in here rather than beside the panel so it reads as part of the list
+		 * instead of claiming its own column in the page grid.
+		 */
+		banner?: Snippet;
 		/** Callback for paste action */
 		onPaste?: () => void;
 		/** Entity type for clipboard compatibility check */
@@ -33,6 +40,7 @@
 		searchPlaceholder = 'Search...',
 		filteredCount,
 		children,
+		banner,
 		onPaste,
 		childEntityType
 	}: Props = $props();
@@ -63,6 +71,10 @@
 			</Button>
 		</div>
 	</div>
+
+	{#if banner}
+		{@render banner()}
+	{/if}
 
 	{#if onSearch && itemCount > 0}
 		<div class="mb-4">

@@ -12,8 +12,8 @@
  * render it as `{#if issue}`. None of them mutate the value — the caller applies the
  * suggested fix only when the user presses the button.
  *
- * Fiber-trait detection is not repeated here: `fiberTraitSuggestions.ts` already
- * mirrors the same Python detector and is wired into `VariantForm`.
+ * Name-derived trait detection is not repeated here: `traitSuggestions.ts` reads the
+ * shared `x-trait-rules` table out of the variant schema and is wired into `VariantForm`.
  */
 
 /** Words that legitimately stay lowercase inside a title-cased display name. */
@@ -73,6 +73,55 @@ export function checkNameCasing(
 	const suggestion = toTitleCase(name);
 	if (suggestion === name) return null;
 	return { suggestion, example };
+}
+
+/**
+ * Whether a character is a lowercase *cased* letter — the JS equivalent of Python's
+ * `str.islower()`. A caseless character (a digit, CJK, punctuation) is neither.
+ */
+function isLowerCased(ch: string): boolean {
+	return ch === ch.toLowerCase() && ch !== ch.toUpperCase();
+}
+
+/** As {@link isLowerCased}, for uppercase (Python's `str.isupper()`). */
+function isUpperCased(ch: string): boolean {
+	return ch === ch.toUpperCase() && ch !== ch.toLowerCase();
+}
+
+/**
+ * A display name that starts with a lowercase letter.
+ *
+ * Narrower and more certain than {@link checkNameCasing}: that one needs Title Case
+ * siblings to establish a convention, so it stays silent on the first colour of a new
+ * filament — which is exactly when a name typed straight off a product page ("yellow",
+ * "glass fiber black", "kexcelled") lands in the tree. 126 names in the current data
+ * start lowercase this way.
+ *
+ * A leading capital is not house style, it is how the field is read everywhere it is
+ * displayed, so this fires on its own. Only the first letter is changed: Title Casing
+ * the rest would mangle manufacturer names like "PLA+ eSilk".
+ *
+ * Deliberately silent on intercapped names — `eSUN 3D`, `iSANMATE`, `rPLA pro`,
+ * `rPETG`, `ePAHT-CF`. A lowercase letter immediately followed by an uppercase one is
+ * a brand's own styling, and there are 18 of them in the tree that must be left alone.
+ */
+export function checkNameLeadingCase(name: string): { suggestion: string } | null {
+	if (!name) return null;
+	// Find the first letter; a name may legitimately open with a digit or symbol
+	// ("3D Gold", "+PLA"), and those say nothing about casing. `\p{L}` rather than
+	// [a-zA-Z]: "Über ABS" is already capitalised, and treating Ü as a non-letter
+	// would find the "b" and "fix" a real filament into "ÜBer ABS". `search` returns
+	// a UTF-16 index, which is what the slices below need.
+	const index = name.search(/\p{L}/u);
+	if (index === -1) return null;
+	// Take the whole code point, so an astral letter isn't split at its surrogate.
+	const first = String.fromCodePoint(name.codePointAt(index)!);
+	if (!isLowerCased(first)) return null;
+	// eSUN / rPLA / iSANMATE — the manufacturer's own styling.
+	const after = index + first.length;
+	const next = after < name.length ? String.fromCodePoint(name.codePointAt(after)!) : '';
+	if (next && isUpperCased(next)) return null;
+	return { suggestion: name.slice(0, index) + first.toUpperCase() + name.slice(after) };
 }
 
 /**
@@ -169,4 +218,99 @@ export function findRedundantSizes(
 		}
 	}
 	return found;
+}
+
+/**
+ * Traits that every sibling colour of a filament carries but this variant does not.
+ *
+ * Traits are a property of the product line far more often than of the individual
+ * colour: if the other colours of a filament are all silk, or all carbon-filled, or
+ * all industrially compostable, this one almost certainly is too. Measured against
+ * the current tree by leave-one-out over the 1,167 filaments with three or more
+ * colours, a trait held by every sibling is held by the held-out variant
+ * 7,412/7,461 = 99.3% of the time — the strongest signal available at entry time,
+ * and stronger than anything derivable from the name.
+ *
+ * That is why reviewers keep writing this comment by hand ("all existing
+ * `kingroon/PLA/silk_pla/*` variants include `traits.silk: true`, so omitting it here
+ * makes the variant inconsistent"). This turns it into a suggestion at entry time.
+ *
+ * Unanimity is required deliberately: a trait on some-but-not-all siblings is what a
+ * genuinely per-colour trait looks like (glitter on two of twelve colours), and
+ * suggesting those would train contributors to dismiss the panel.
+ *
+ * @param siblingTraitSets one entry per sibling variant, listing its true traits
+ * @param own              traits already selected on the variant being edited
+ * @param minSiblings      below this many siblings there is no consensus to read
+ * @returns trait keys every sibling has and this variant lacks, in first-seen order
+ */
+export function suggestTraitsFromSiblings(
+	siblingTraitSets: string[][],
+	own: Set<string> | ReadonlySet<string>,
+	minSiblings = 2
+): string[] {
+	if (siblingTraitSets.length < minSiblings) return [];
+
+	const [first, ...rest] = siblingTraitSets;
+	const suggestions: string[] = [];
+	for (const key of first) {
+		if (own.has(key) || suggestions.includes(key)) continue;
+		if (rest.every((set) => set.includes(key))) suggestions.push(key);
+	}
+	return suggestions;
+}
+
+/** The shape `findSharedPurchaseLinks` needs off a variant — nothing more. */
+export interface VariantWithLinks {
+	id?: string;
+	slug?: string;
+	name?: string;
+	sizes?: Array<{ purchase_links?: Array<{ url?: string }> | null } | null> | null;
+}
+
+/**
+ * Purchase-link URLs copied across several colours of the same filament.
+ *
+ * A link shared by three or more colours is almost always the filament's generic
+ * product page pasted onto every variant, rather than the colour-specific page a
+ * buyer needs — the same thing the Rust validator's DuplicateLink rule reports.
+ *
+ * Unlike the other checks here there is no safe auto-fix: only the contributor can
+ * know whether a colour-specific page exists, so callers surface this and let the
+ * user navigate. That is also why this returns the offending URLs and who shares
+ * them rather than a bare count — the count alone cannot point anyone at the problem.
+ *
+ * @param threshold how many colours must share a URL before it is worth reporting
+ * @returns one entry per shared URL, each listing the variant ids and names sharing it
+ */
+export function findSharedPurchaseLinks(
+	variants: VariantWithLinks[],
+	threshold = 3
+): Array<{ url: string; variantIds: string[]; variantNames: string[] }> {
+	const byUrl = new Map<string, Map<string, string>>();
+
+	for (const variant of variants) {
+		const id = variant?.slug ?? variant?.id;
+		if (!id) continue;
+		for (const size of variant.sizes ?? []) {
+			for (const link of size?.purchase_links ?? []) {
+				const url = link?.url;
+				if (!url) continue;
+				if (!byUrl.has(url)) byUrl.set(url, new Map());
+				// A colour counts once however many spool sizes repeat the link.
+				byUrl.get(url)!.set(id, variant.name ?? id);
+			}
+		}
+	}
+
+	const shared: Array<{ url: string; variantIds: string[]; variantNames: string[] }> = [];
+	for (const [url, owners] of byUrl) {
+		if (owners.size < threshold) continue;
+		shared.push({
+			url,
+			variantIds: [...owners.keys()],
+			variantNames: [...owners.values()]
+		});
+	}
+	return shared;
 }

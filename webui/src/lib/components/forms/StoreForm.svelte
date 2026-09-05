@@ -6,6 +6,8 @@
 	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
 	import type { SchemaFormConfig } from './schemaFormTypes';
 	import { LOGO_REQUIRED_ERROR, LOGO_UPDATE_SUCCESS } from '$lib/config/messages';
+	import { FixHint } from '$lib/components/ui';
+	import { checkNameLeadingCase } from '$lib/utils/dataQuality';
 	import { formDrafts } from '$lib/stores/formDrafts';
 
 	interface Props {
@@ -96,7 +98,27 @@
 
 	// Check if form can be submitted (name is required)
 	let canSubmit = $derived(!!formData.name);
+
+	// A display name that starts with a lowercase letter. Only the first letter is
+	// changed — Title Casing the rest would rewrite manufacturer styling.
+	let nameLeadingCase = $derived(checkNameLeadingCase(String(formData?.name ?? '')));
+
+	function fixNameLeadingCase() {
+		if (nameLeadingCase) formData.name = nameLeadingCase.suggestion;
+	}
 </script>
+
+{#if nameLeadingCase}
+	<FixHint
+		fixLabel="Fix"
+		onFix={fixNameLeadingCase}
+		fixTitle="Rename to “{nameLeadingCase.suggestion}”"
+		class="mb-4"
+	>
+		Store names are shown capitalised everywhere they appear. Rename to
+		<strong>{nameLeadingCase.suggestion}</strong>.
+	</FixHint>
+{/if}
 
 <SchemaForm
 	schema={preparedSchema}

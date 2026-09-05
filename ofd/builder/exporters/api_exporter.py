@@ -65,7 +65,9 @@ def export_schemas(
                 logo_schemas[schema_file.name] = json.load(f)
 
     if schemas_dir.exists():
-        for schema_file in sorted(schemas_dir.glob("*.json")):
+        # `*_schema.json` only: schemas/ also holds shared lookup tables (trait_rules.json)
+        # that are not JSON Schema documents and must not appear in the schemas index.
+        for schema_file in sorted(schemas_dir.glob("*_schema.json")):
             # Check if there's a corresponding logo schema
             logo_schema_name = schema_file.stem + "_logo_schema.json"
 
@@ -313,6 +315,7 @@ def export_api(
 
     # Export schemas if directory provided
     schemas_count = 0
+    trait_rules_written = False
     if schemas_dir:
         schemas_path = Path(schemas_dir)
         builder_schemas_path = Path(builder_schemas_dir) if builder_schemas_dir else None
@@ -320,6 +323,15 @@ def export_api(
             api_path, schemas_path, builder_schemas_path, version, generated_at
         )
         print(f"  Written: {schemas_count} schemas")
+
+        # Shared name -> trait rule table. Published so the webui (and any other
+        # consumer) reads the same rules the validator and backfill script do. Copied
+        # verbatim, and kept out of the schemas index because it is not a schema.
+        trait_rules_src = schemas_path / "trait_rules.json"
+        if trait_rules_src.exists():
+            shutil.copy2(trait_rules_src, api_path / "trait-rules.json")
+            trait_rules_written = True
+            print(f"  Written: {api_path / 'trait-rules.json'}")
 
     # Export brand and store logos (get logo ID mappings)
     data_path = Path(data_dir)
@@ -358,9 +370,13 @@ def export_api(
         "badges": "badges/",
         "all": "../json/all.json",
         "search_index": "search-index.json",
+        "gtin_index": "gtin-index.json",
     }
     if schemas_count > 0:
         endpoints["schemas"] = "schemas/index.json"
+    # Only advertised when actually written, so the index can never point at a 404.
+    if trait_rules_written:
+        endpoints["trait_rules"] = "trait-rules.json"
 
     index = {
         "version": version,
@@ -392,6 +408,14 @@ def export_api(
         store_logo_id_mapping,
     )
     print(f"  Written: {api_path / 'search-index.json'} ({search_count} records)")
+
+    # Barcode lookup: GTIN/EAN/UPC -> the size(s) carrying it (#479). Kept out of the
+    # search index because it is an order of magnitude larger and only needed when a
+    # query actually looks like a barcode, so consumers fetch it on demand.
+    from .gtin_index_exporter import export_gtin_index
+
+    gtin_count = export_gtin_index(db, api_path / "gtin-index.json", version, generated_at)
+    print(f"  Written: {api_path / 'gtin-index.json'} ({gtin_count} codes)")
 
     # Brands index
     brands_path = api_path / "brands"

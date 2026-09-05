@@ -2,8 +2,15 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import type { SearchRecord, SearchEntityType } from '$lib/types/search';
-	import { loadSearchIndex, layerChanges, searchRecords } from '$lib/services/searchIndex';
+	import type { SearchRecord, SearchEntityType, GtinIndexFile } from '$lib/types/search';
+	import {
+		loadSearchIndex,
+		loadGtinIndex,
+		gtinRecordsFor,
+		layerChanges,
+		searchRecords
+	} from '$lib/services/searchIndex';
+	import { looksLikeBarcode } from '$lib/utils/gtin';
 	import { EntityCard } from '$lib/components/entity';
 	import { BackButton } from '$lib/components';
 	import { changes, changesList } from '$lib/stores/changes';
@@ -19,9 +26,14 @@
 		{ label: 'Materials', value: 'material' },
 		{ label: 'Filaments', value: 'filament' },
 		{ label: 'Stores', value: 'store' }
+		// No 'variant' chip: the name index holds no variants, so variant records only
+		// ever arrive as barcode hits — where every result is already a variant. The
+		// filter could only ever return nothing, or everything.
 	];
 
 	let baseRecords: SearchRecord[] = $state([]);
+	// Only ever populated for a barcode query — see the $effect below.
+	let gtinIndex: GtinIndexFile | null = $state(null);
 	let loading = $state(true);
 	let error: string | null = $state(null);
 
@@ -40,8 +52,25 @@
 		$useChangeTracking ? layerChanges(baseRecords, $changesList, submittedChanges) : baseRecords
 	);
 
+	// A scanned GTIN/EAN/UPC resolves through a second index the name index doesn't
+	// cover. Fetched only when the query looks like a barcode, so an ordinary search
+	// never pays for it. The hits are searched alongside everything else (their
+	// keywords carry both spellings of the code) and rank first by construction.
+	$effect(() => {
+		if (looksLikeBarcode(query) && !gtinIndex) {
+			loadGtinIndex()
+				.then((index) => (gtinIndex = index))
+				// A missing or unpublished index just means no barcode matches.
+				.catch(() => (gtinIndex = { count: 0, codes: {} }));
+		}
+	});
+
+	let barcodeHits = $derived(gtinRecordsFor(gtinIndex, query));
+
+	let searchable = $derived(barcodeHits.length > 0 ? [...barcodeHits, ...layered] : layered);
+
 	let result = $derived(
-		searchRecords(layered, query, {
+		searchRecords(searchable, query, {
 			page: currentPage,
 			pageSize: PAGE_SIZE,
 			types: typeFilter ? [typeFilter] : undefined
@@ -99,6 +128,12 @@
 				return r.brandName ?? 'Material';
 			case 'filament':
 				return [r.brandName, r.materialType].filter(Boolean).join(' · ');
+			case 'variant':
+				// Reached by barcode: the colour name alone doesn't identify the product,
+				// and a shared code can land on two different filaments of one brand.
+				return [r.brandName, r.filamentName, r.gtin && `GTIN ${r.gtin}`]
+					.filter(Boolean)
+					.join(' · ');
 		}
 	}
 

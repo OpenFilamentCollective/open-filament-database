@@ -19,6 +19,8 @@
 	import { prepareDuplicateData } from '$lib/services/clipboardService';
 	import { formDrafts } from '$lib/stores/formDrafts';
 	import { collectSiblingFibers, checkFiberConflict, fibersFromTraits } from '$lib/utils/fiberConflict';
+	import { trueTraitKeys } from '$lib/utils/traitSuggestions';
+	import { findSharedPurchaseLinks } from '$lib/utils/dataQuality';
 	import { colorHexList, colorSwatchStyle, formatColorHex } from '$lib/utils/colorHex';
 
 	let brandId: string = $derived($page.params.brand!);
@@ -51,6 +53,31 @@
 		siblingVariants.filter((v) => (v.slug ?? v.id) !== variantSlug).map((v) => v.name)
 	);
 	let newVariantSiblingNames = $derived(siblingVariants.map((v) => v.name));
+
+	// Traits carried by each sibling, for the "every other colour has this" suggestion.
+	// Same edit/new split again.
+	let editSiblingTraits = $derived(
+		siblingVariants.filter((v) => (v.slug ?? v.id) !== variantSlug).map(trueTraitKeys)
+	);
+	let newVariantSiblingTraits = $derived(siblingVariants.map(trueTraitKeys));
+
+	// Purchase links this filament reuses across three or more colours, mapped to the
+	// OTHER colours using each one. Same detector the filament page's banner uses, so
+	// the in-form hint never disagrees with the list it was reached from.
+	function ownersExcluding(exclude?: string): Record<string, string[]> {
+		const owners: Record<string, string[]> = {};
+		for (const link of findSharedPurchaseLinks(siblingVariants)) {
+			const others = link.variantIds
+				.map((id, i) => ({ id, name: link.variantNames[i] }))
+				.filter((v) => v.id !== exclude)
+				.map((v) => v.name);
+			if (others.length > 0) owners[link.url] = others;
+		}
+		return owners;
+	}
+
+	let editSharedLinkOwners = $derived(ownersExcluding(variantSlug));
+	let newVariantSharedLinkOwners = $derived(ownersExcluding());
 
 	// Which filament's siblings are currently loaded, so we fetch at most once per page.
 	let siblingsLoadedFor: string | null = null;
@@ -428,7 +455,7 @@
 <Modal show={entityState.showEditModal} title="Edit Variant" onClose={entityState.closeEdit} maxWidth="5xl">
 	{#if variant}
 		<div class="h-[70vh]">
-			<VariantForm {variant} draftKey={variantEditDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...editSiblingFibers]} siblingNames={editSiblingNames} onSubmit={handleSubmit} saving={entityState.saving} />
+			<VariantForm {variant} draftKey={variantEditDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...editSiblingFibers]} siblingNames={editSiblingNames} siblingTraits={editSiblingTraits} sharedLinkOwners={editSharedLinkOwners} onSubmit={handleSubmit} saving={entityState.saving} />
 		</div>
 	{/if}
 </Modal>
@@ -452,7 +479,7 @@
 	{/if}
 	{#if entityState.duplicateData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} siblingNames={newVariantSiblingNames} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.duplicateData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} siblingNames={newVariantSiblingNames} siblingTraits={newVariantSiblingTraits} sharedLinkOwners={newVariantSharedLinkOwners} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>
@@ -464,7 +491,7 @@
 	{/if}
 	{#if entityState.pasteData}
 		<div class="h-[70vh]">
-			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} siblingNames={newVariantSiblingNames} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
+			<VariantForm variant={entityState.pasteData} draftKey={variantCreateDraftKey} filamentName={filamentId} {materialType} siblingFibers={[...newVariantSiblingFibers]} siblingNames={newVariantSiblingNames} siblingTraits={newVariantSiblingTraits} sharedLinkOwners={newVariantSharedLinkOwners} onSubmit={handleDuplicateVariantSubmit} saving={entityState.creating} />
 		</div>
 	{/if}
 </Modal>

@@ -18,9 +18,11 @@
 		sizeIndex: number;
 		onAddLink: () => void;
 		onRemoveLink: (linkIndex: number) => void;
+		/** Other colours of this filament already using a given URL. */
+		sharedWith?: (url: string) => string[];
 	}
 
-	let { links = $bindable([]), stores, sizeId, sizeIndex, onAddLink, onRemoveLink }: Props = $props();
+	let { links = $bindable([]), stores, sizeId, sizeIndex, onAddLink, onRemoveLink, sharedWith }: Props = $props();
 </script>
 
 <div class="border-t pt-2 mt-2">
@@ -47,6 +49,7 @@
 				{sizeId}
 				linkId={link.id}
 				onRemove={() => onRemoveLink(linkIndex)}
+				sharedWithVariants={sharedWith?.(link.value.url) ?? []}
 			/>
 		{/each}
 	{:else}
