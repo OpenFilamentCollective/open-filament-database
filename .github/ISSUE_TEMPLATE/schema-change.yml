@@ -14,22 +14,6 @@ body:
         request templates instead — that needs no schema change.
 
   - type: dropdown
-    id: schema
-    attributes:
-      label: Which schema?
-      options:
-        - schemas/brand_schema.json
-        - schemas/material_schema.json
-        - schemas/filament_schema.json
-        - schemas/variant_schema.json (includes traits)
-        - schemas/sizes_schema.json
-        - schemas/store_schema.json
-        - schemas/material_types_schema.json
-        - More than one / not sure
-    validations:
-      required: true
-
-  - type: dropdown
     id: kind
     attributes:
       label: Kind of change
@@ -43,30 +27,6 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: field
-    attributes:
-      label: Field / trait key
-      description: The snake_case key as it would appear in the JSON.
-      placeholder: e.g. spool_material, contains_hemp
-    validations:
-      required: true
-
-  - type: textarea
-    id: definition
-    attributes:
-      label: Proposed definition
-      description: Type, constraints, whether it is required, and the description text.
-      render: json
-      placeholder: |
-        "spool_material": {
-          "type": "string",
-          "enum": ["cardboard", "plastic", "metal"],
-          "description": "What the spool itself is made of"
-        }
-    validations:
-      required: true
-
   - type: textarea
     id: rationale
     attributes:
@@ -76,40 +36,6 @@ body:
         products help a lot — link to a manufacturer page if you have one.
     validations:
       required: true
-
-  - type: textarea
-    id: existing-data
-    attributes:
-      label: Effect on existing data
-      description: >
-        Roughly how many existing entries would carry this field? Can it be backfilled
-        automatically (from names, from an external source), or only by hand over time?
-        For a rename or removal, say what happens to files that still use the old key.
-    validations:
-      required: true
-
-  - type: checkboxes
-    id: surfaces
-    attributes:
-      label: Surfaces that need updating
-      description: Best guess is fine — maintainers will fill in the rest.
-      options:
-        - label: JSON schema in `schemas/`
-        - label: WebUI form field (`webui/src/lib/components/forms/`)
-        - label: Static API output (`ofd/builder/`)
-        - label: SQLite DDL (`ofd/builder/exporters/sqlite_exporter.py`)
-        - label: CSV column order (`ofd/builder/exporters/csv_exporter.py`)
-        - label: Validation rule (`ofd/validation/`)
-        - label: Docs (`docs/`, `README.md`)
-        - label: OpenPrintTag spec (external — https://specs.openprinttag.org/)
-
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives considered
-      description: >
-        Could an existing field carry this? Would a trait do instead of a new field
-        (or vice versa)? Say why they don't fit.
 
   - type: checkboxes
     id: contribute
