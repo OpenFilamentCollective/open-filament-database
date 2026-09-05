@@ -18,9 +18,12 @@ export type OutboundMessage =
 
 const HOST_ORIGIN_RE = /^https:\/\/([a-z0-9-]+\.)*simplyprint\.io$/i;
 
+// The dev panel, over plain http. The local stack gives each workspace its own hostname
+// under `.localhost` (http://web.localhost), so bare `localhost` is not enough.
+const DEV_ORIGIN_RE = /^http:\/\/([a-z0-9-]+\.)*(localhost|127\.0\.0\.1)(:\d+)?$/i;
+
 function isTrustedOrigin(origin: string): boolean {
-	// Allow the dev panel over http://localhost as well.
-	return HOST_ORIGIN_RE.test(origin) || origin === 'http://localhost' || origin.startsWith('http://localhost:');
+	return HOST_ORIGIN_RE.test(origin) || DEV_ORIGIN_RE.test(origin);
 }
 
 /** Send a message to the host window (no-op when not framed). */

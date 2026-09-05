@@ -98,10 +98,28 @@ if (process.env.ANON_BOT_ENABLED === 'true') {
 
 // Hosts allowed to embed the app in an iframe (the SimplyPrint panel modal).
 // Extra origins can be added via EMBED_FRAME_ANCESTORS (space-separated).
+//
+// Outside production the local SimplyPrint stack is allowed too, or a developer cannot
+// open the embed against a local OFD at all. The stack serves each workspace on its own
+// hostname under `.localhost` (http://web.localhost), which `http://localhost:*` does
+// NOT match - a CSP host-source matches that exact host, not its subdomains. This
+// mirrors what embedBridge.isTrustedOrigin() permits for inbound postMessages.
+const LOCAL_FRAME_ANCESTORS =
+	process.env.NODE_ENV === 'production'
+		? []
+		: [
+				'http://localhost:*',
+				'http://127.0.0.1:*',
+				// Bare form matches port 80, which is where the stack's gateway sits.
+				'http://*.localhost',
+				'http://*.localhost:*'
+			];
+
 const FRAME_ANCESTORS = [
 	"'self'",
 	'https://simplyprint.io',
 	'https://*.simplyprint.io',
+	...LOCAL_FRAME_ANCESTORS,
 	...(process.env.EMBED_FRAME_ANCESTORS?.trim().split(/\s+/).filter(Boolean) ?? [])
 ].join(' ');
 
