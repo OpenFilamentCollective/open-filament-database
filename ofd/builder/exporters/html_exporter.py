@@ -146,6 +146,27 @@ def build_abstract_file_tree(db: Database) -> str:
     )
     lines.append(li_dir("sqlite", sqlite_files))
 
+    # OrcaSlicer filament presets
+    orca_bundles = li_dir(
+        "bundles",
+        li_placeholder("{brand-slug}.zip")
+        + "\n"
+        + li_file("all.zip", "orcaslicer/bundles/all.zip"),
+    )
+    orca_brands = li_dir(
+        "brands",
+        li_placeholder("{brand-slug}/materials/{MATERIAL}/filaments/{filament-slug}.json"),
+    )
+    orca_files = "\n".join(
+        [
+            orca_brands,
+            orca_bundles,
+            li_file("README.txt", "orcaslicer/README.txt"),
+            li_file("index.json", "orcaslicer/index.json"),
+        ]
+    )
+    lines.append(li_dir("orcaslicer", orca_files))
+
     # Root files
     lines.append(li_file("manifest.json", "manifest.json"))
 

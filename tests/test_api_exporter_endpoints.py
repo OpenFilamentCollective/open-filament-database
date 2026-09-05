@@ -76,7 +76,9 @@ def test_every_advertised_relative_endpoint_resolves(tmp_path):
     out = export(tmp_path, schemas)
     api_v1 = out / "api" / "v1"
     for name, target in read_index(out)["endpoints"].items():
-        # `all` points outside api/v1 into the JSON export, written by another step.
-        if name == "all" or target.endswith("/"):
+        # Only endpoints `export_api` itself writes are in scope. A `../` target is a
+        # different build step's artifact (`all` -> the JSON export, `orcaslicer` ->
+        # export_orca), and a trailing slash is a directory listing.
+        if target.startswith("../") or target.endswith("/"):
             continue
         assert (api_v1 / target).exists(), f"endpoint {name!r} points at a missing {target}"

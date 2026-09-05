@@ -21,7 +21,8 @@
 		CertificationsDisplay,
 		ChildListPanel,
 		SubmittedBanner,
-		InFlightHint
+		InFlightHint,
+		OrcaDownloadButton
 	} from '$lib/components/entity';
 	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
@@ -53,6 +54,7 @@
 	} from '$lib/utils/fiberConflict';
 	import { trueTraitKeys } from '$lib/utils/traitSuggestions';
 	import { findSharedPurchaseLinks } from '$lib/utils/dataQuality';
+	import { orcaProfileUrl } from '$lib/utils/orcaLinks';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -397,6 +399,10 @@
 {#snippet slicerSettingsRender(settings: Record<string, any>)}
 	<SlicerSettingsDisplay {settings} />
 {/snippet}
+{#snippet orcaDownloadRender()}
+	<OrcaDownloadButton brand={brandId} material={materialType} filament={filamentId}
+		filamentName={filament?.name ?? ''} />
+{/snippet}
 
 <svelte:head>
 	<title>{filament ? `${filament.name}` : 'Filament Not Found'}</title>
@@ -483,6 +489,13 @@
 							label: 'Slicer Settings',
 							hide: (v) => !v || Object.keys(v).length === 0,
 							customRender: slicerSettingsRender,
+							fullWidth: true
+						},
+						{
+							key: 'orcaslicer_download',
+							label: 'OrcaSlicer',
+							hide: () => !orcaProfileUrl(brandId, materialType, filamentId, filamentData.name),
+							customRender: orcaDownloadRender,
 							fullWidth: true
 						},
 						{ key: 'data_sheet_url', label: 'Data Sheet', type: 'link', hide: (v) => !v },
