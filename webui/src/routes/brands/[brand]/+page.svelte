@@ -45,6 +45,10 @@
 	let duplicateBrandError: string | null = $state(null);
 	let prefillMaterialData: Material | null = $state(null);
 
+	// Material types this brand actually sells, for the OrcaSlicer bundle gate:
+	// the exporter writes no zip for a brand whose materials it all skips.
+	let brandMaterialTypes = $derived(materials.map((m) => m.materialType ?? m.material ?? '').filter(Boolean));
+
 	let displayMaterials = $derived.by(() => withDeletedStubs({
 		changes: $changes,
 		submitted: submittedStore,
@@ -346,7 +350,7 @@
 </script>
 
 {#snippet orcaBundleRender()}
-	<OrcaDownloadButton brand={brandId} />
+	<OrcaDownloadButton brand={brandId} materials={brandMaterialTypes} />
 {/snippet}
 
 <svelte:head>
@@ -387,7 +391,7 @@
 						{ key: 'website', type: 'link' },
 						{ key: 'origin', format: (v: string) => getCountryName(v) },
 						{ key: 'logo', type: 'logo', logoType: 'brand', logoEntityId: brandData.slug ?? brandData.id },
-						{ key: 'orcaslicer_bundle', label: 'OrcaSlicer', hide: () => !orcaBundleUrl(brandId), customRender: orcaBundleRender }
+						{ key: 'orcaslicer_bundle', label: 'OrcaSlicer', hide: () => !orcaBundleUrl(brandId, brandMaterialTypes), customRender: orcaBundleRender }
 					]}
 				>
 					{#snippet actions()}

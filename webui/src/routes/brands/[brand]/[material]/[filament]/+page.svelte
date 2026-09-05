@@ -361,7 +361,7 @@
 						{ key: 'min_nozzle_diameter', label: 'Min Nozzle Diameter', format: (v) => `${v} mm`, hide: (v) => !v },
 						{ key: 'certifications', label: 'Certifications', hide: (v) => !v || v.length === 0, customRender: certificationsRender, fullWidth: true },
 						{ key: 'slicer_settings', label: 'Slicer Settings', hide: (v) => !v || Object.keys(v).length === 0, customRender: slicerSettingsRender, fullWidth: true },
-						{ key: 'orcaslicer_download', label: 'OrcaSlicer', hide: () => !orcaProfileUrl(brandId, materialType, filamentId), customRender: orcaDownloadRender, fullWidth: true },
+						{ key: 'orcaslicer_download', label: 'OrcaSlicer', hide: () => !orcaProfileUrl(brandId, materialType, filamentId, filamentData.name), customRender: orcaDownloadRender, fullWidth: true },
 						{ key: 'data_sheet_url', label: 'Data Sheet', type: 'link', hide: (v) => !v },
 						{ key: 'safety_sheet_url', label: 'Safety Sheet', type: 'link', hide: (v) => !v }
 					]}>

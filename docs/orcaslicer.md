@@ -223,9 +223,14 @@ That ✕ only appears for user presets, so it is a reliable way to tell an impor
 **All at once.** Close OrcaSlicer, delete the `*(OFD).json` files from the filament folder listed under [Manual install](#manual-install), and start it again:
 
 ```bash
-# Linux — preview first, then drop the "echo" to actually delete
-find ~/.config/OrcaSlicer/user/default/filament -name '*(OFD).json' -print
+# Linux/macOS — list what would go, and check it is only (OFD) files
+find ~/.config/OrcaSlicer/user/default/filament -name '*(OFD).json'
+
+# Then delete them
+find ~/.config/OrcaSlicer/user/default/filament -name '*(OFD).json' -delete
 ```
+
+Substitute the folder for your OS from the table under [Manual install](#manual-install).
 
 ---
 

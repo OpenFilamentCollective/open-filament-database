@@ -325,3 +325,22 @@ def test_preset_filenames_survive_a_slash_in_the_product_name(tmp_path):
 
     with zipfile.ZipFile(tmp_path / "orcaslicer/bundles/acme.zip") as z:
         assert "Acme PLA_PHA Blend (OFD).json" in z.namelist()
+
+
+# ---------------------------------------------------------------------------
+# WebUI mirror
+# ---------------------------------------------------------------------------
+
+
+def test_webui_material_mirror_is_in_sync():
+    """
+    The WebUI decides whether to offer a download link from a generated mirror of
+    the rules above (webui/src/lib/utils/orcaMaterials.generated.ts). If it drifts
+    the UI starts linking presets the exporter never wrote, so fail here instead.
+    """
+    import argparse
+
+    from ofd.scripts.generate_orca_materials import GenerateOrcaMaterialsScript
+
+    result = GenerateOrcaMaterialsScript().run(argparse.Namespace(check=True))
+    assert result.success, result.message

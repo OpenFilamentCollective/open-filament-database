@@ -163,6 +163,26 @@ _REFINEMENTS: tuple[tuple[re.Pattern[str], dict[str, str]], ...] = (
     ),
 )
 
+# Exportability, as the WebUI needs to see it. A download link must only be
+# offered for a filament the exporter actually writes, so these two constants are
+# mirrored into webui/src/lib/utils/orcaMaterials.generated.ts by
+# `ofd script generate_orca_materials`; tests/test_orca_exporter.py fails if the
+# mirror drifts.
+
+# Materials exportable on the material type alone.
+BASE_MATERIALS: frozenset[str] = frozenset(ORCA_BASE_BY_MATERIAL)
+
+# (regex source, materials) for materials that have no default base and only
+# become exportable when the filament name matches — PPA reaching PPA-CF/PPA-GF.
+# Patterns are mirrored verbatim into JavaScript, so keep them to syntax both
+# engines read the same way (no named groups, no possessive quantifiers).
+NAME_ONLY_MATERIAL_RULES: tuple[tuple[str, frozenset[str]], ...] = tuple(
+    (pattern.pattern, frozenset(m for m in by_material if m not in ORCA_BASE_BY_MATERIAL))
+    for pattern, by_material in _REFINEMENTS
+    if any(m not in ORCA_BASE_BY_MATERIAL for m in by_material)
+)
+
+
 # OFD material -> OrcaSlicer filament_type. Only types OrcaSlicer itself
 # recognises are listed; for anything else the inherited base's type stands.
 ORCA_FILAMENT_TYPE_BY_MATERIAL: dict[str, str] = {

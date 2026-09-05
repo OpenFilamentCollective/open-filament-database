@@ -10,8 +10,11 @@
 		material?: string;
 		/** Filament slug. Omit for the brand-wide zip bundle. */
 		filament?: string;
-		/** Filament display name — only used to name the downloaded file. */
+		/** Filament display name. Names the downloaded file, and decides
+		 * exportability for materials that only reach a base through their name. */
 		filamentName?: string;
+		/** The brand's material types. Bundle only; decides whether a zip exists. */
+		materials?: readonly string[];
 		class?: string;
 	}
 
@@ -21,15 +24,19 @@
 		material,
 		filament,
 		filamentName = '',
+		materials = [],
 		class: className = ''
 	}: Props = $props();
 
 	const isBundle = $derived(!material || !filament);
 
 	// Null whenever PUBLIC_API_BASE_URL is unset — in local editor mode the
-	// filament has not been published to the API yet, so there is nothing to link.
+	// filament has not been published to the API yet, so there is nothing to link
+	// — and null for anything the exporter skips, which would otherwise 404.
 	const href = $derived(
-		isBundle ? orcaBundleUrl(brand) : orcaProfileUrl(brand, material!, filament!)
+		isBundle
+			? orcaBundleUrl(brand, materials)
+			: orcaProfileUrl(brand, material!, filament!, filamentName)
 	);
 
 	const download = $derived(
