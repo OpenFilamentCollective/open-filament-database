@@ -314,3 +314,59 @@ export function findSharedPurchaseLinks(
 	}
 	return shared;
 }
+
+/**
+ * Order-insensitive identity of a display name, mirroring `_word_multiset` in
+ * `ofd/validation/data_quality.py` — so `PLA CF` and `CF PLA` land on one key, which is
+ * what `ofd/scripts/deduplicate_data.py` would offer to merge.
+ */
+function wordMultiset(slug: string): string {
+	return slug.split('_').filter(Boolean).sort().join('_');
+}
+
+/** The shape {@link findDuplicateName} needs off an existing entity — nothing more. */
+export interface NamedEntry {
+	name: string;
+	/** Folder id, when known. Falls back to the slugified name. */
+	slug?: string;
+}
+
+/**
+ * A name already taken by another filament of the same brand.
+ *
+ * #281: filament names should be unique *within a brand*, not merely within a material.
+ * #280 shipped a PLA-CF filament that had snuck into the PETG material beside the real
+ * one — two folders, one product, and nothing in the tree said so. The folder id is the
+ * unit of comparison rather than the display name, because that is what actually
+ * collides on disk: `PLA+` and `PLA` both slugify to `pla`.
+ *
+ * `word-order` matches are the near-duplicates the Python rule warns about
+ * (`cf_pla` vs `pla_cf`); an `exact` match in the *same* material cannot be created at
+ * all, so the caller words that case more strongly.
+ *
+ * Normalisation mirrors `generateSlug` in `entityService`; kept inline so this module
+ * stays dependency-free and pure.
+ */
+export function findDuplicateName<T extends NamedEntry>(
+	name: string,
+	existing: T[]
+): { match: T; kind: 'exact' | 'word-order' } | null {
+	const slugify = (value: string) =>
+		value
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '_')
+			.replace(/^_|_$/g, '');
+
+	const slug = slugify(name);
+	if (!slug) return null;
+	const words = wordMultiset(slug);
+
+	let wordOrder: T | null = null;
+	for (const entry of existing) {
+		const otherSlug = slugify(entry.slug || entry.name || '');
+		if (!otherSlug) continue;
+		if (otherSlug === slug) return { match: entry, kind: 'exact' };
+		if (!wordOrder && wordMultiset(otherSlug) === words) wordOrder = entry;
+	}
+	return wordOrder ? { match: wordOrder, kind: 'word-order' } : null;
+}

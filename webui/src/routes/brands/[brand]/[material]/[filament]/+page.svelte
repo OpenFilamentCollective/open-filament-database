@@ -616,6 +616,9 @@
 			<FilamentForm
 				{filament}
 				draftKey={filamentEditDraftKey}
+				{brandId}
+				{materialType}
+				selfPath="brands/{brandId}/materials/{materialType}/filaments/{filamentId}"
 				onSubmit={handleSubmit}
 				saving={entityState.saving}
 			/>
@@ -664,6 +667,8 @@
 			<FilamentForm
 				filament={entityState.duplicateData}
 				draftKey={filamentCreateDraftKey}
+				{brandId}
+				{materialType}
 				onSubmit={handleDuplicateFilamentSubmit}
 				saving={entityState.creating}
 			/>
@@ -682,6 +687,8 @@
 			<FilamentForm
 				filament={entityState.pasteData}
 				draftKey={filamentCreateDraftKey}
+				{brandId}
+				{materialType}
 				onSubmit={handleDuplicateFilamentSubmit}
 				saving={entityState.creating}
 			/>
