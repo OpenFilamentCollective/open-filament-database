@@ -433,6 +433,7 @@
 	{#if createError}<MessageBanner type="error" message={createError} />{/if}
 	<InFlightHint path="brands/{brandId}/materials/{materialType}" label="material" />
 	<div class="h-[70vh]">
-		<FilamentForm filament={prefillFilamentData ?? undefined} draftKey={filamentCreateDraftKey} onSubmit={handleCreateFilament} saving={entityState.creating} />
+		<FilamentForm filament={prefillFilamentData ?? undefined} draftKey={filamentCreateDraftKey}
+			{brandId} {materialType} onSubmit={handleCreateFilament} saving={entityState.creating} />
 	</div>
 </Modal>

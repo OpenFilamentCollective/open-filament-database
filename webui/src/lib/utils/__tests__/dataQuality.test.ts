@@ -13,7 +13,8 @@ import {
 	checkPlaceholderEntries,
 	findSharedPurchaseLinks,
 	suggestTraitsFromSiblings,
-	findRedundantSizes
+	findRedundantSizes,
+	findDuplicateName
 } from '../dataQuality';
 
 describe('isTitleCased', () => {
@@ -374,5 +375,56 @@ describe('findSharedPurchaseLinks', () => {
 				2
 			)
 		).toHaveLength(1);
+	});
+});
+
+
+describe('findDuplicateName', () => {
+	const existing = [
+		{ name: 'PLA Matte', slug: 'pla_matte', materialType: 'PLA' },
+		{ name: 'PLA CF', slug: 'pla_cf', materialType: 'PLA' },
+		{ name: 'Silk', slug: 'silk', materialType: 'PLA' }
+	];
+
+	it('flags a name already used elsewhere in the brand (#280)', () => {
+		// The PLA-CF that snuck into PETG beside the real one.
+		expect(findDuplicateName('PLA CF', existing)).toEqual({
+			match: existing[1],
+			kind: 'exact'
+		});
+	});
+
+	it('matches on the folder id, so punctuation does not hide a clash', () => {
+		expect(findDuplicateName('PLA-CF', existing)?.kind).toBe('exact');
+		expect(findDuplicateName('pla cf', existing)?.kind).toBe('exact');
+	});
+
+	it('flags a word-order duplicate', () => {
+		expect(findDuplicateName('CF PLA', existing)).toEqual({
+			match: existing[1],
+			kind: 'word-order'
+		});
+	});
+
+	it('prefers an exact match over a word-order one', () => {
+		const entries = [
+			{ name: 'CF PLA', slug: 'cf_pla' },
+			{ name: 'PLA CF', slug: 'pla_cf' }
+		];
+		expect(findDuplicateName('PLA CF', entries)).toEqual({ match: entries[1], kind: 'exact' });
+	});
+
+	it('stays silent on a distinct name', () => {
+		expect(findDuplicateName('PLA HF', existing)).toBeNull();
+	});
+
+	it('falls back to the name when no slug is recorded', () => {
+		expect(findDuplicateName('Silk', [{ name: 'Silk' }])?.kind).toBe('exact');
+	});
+
+	it('says nothing about an empty or punctuation-only name', () => {
+		expect(findDuplicateName('', existing)).toBeNull();
+		expect(findDuplicateName('  ', existing)).toBeNull();
+		expect(findDuplicateName('Silk', [{ name: '' }, { name: '---' }])).toBeNull();
 	});
 });

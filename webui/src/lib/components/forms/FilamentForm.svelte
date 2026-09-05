@@ -21,8 +21,14 @@
 	import {
 		checkNameLeadingCase,
 		checkNameWhitespace,
-		checkPlaceholderEntries
+		checkPlaceholderEntries,
+		findDuplicateName
 	} from '$lib/utils/dataQuality';
+	import { loadSearchIndex, layerChanges } from '$lib/services/searchIndex';
+	import type { SearchRecord } from '$lib/types/search';
+	import { changesList } from '$lib/stores/changes';
+	import { submittedStore, submittedCount } from '$lib/stores/submitted';
+	import { useChangeTracking } from '$lib/stores/environment';
 
 	interface Props {
 		filament?: any;
@@ -31,9 +37,31 @@
 		saving?: boolean;
 		/** Optional key for in-memory draft preservation across modal close/reopen */
 		draftKey?: string;
+		/**
+		 * Owning brand's slug. Supplying it turns on the duplicate-name nudge (#281):
+		 * the form checks the typed name against every other filament of this brand.
+		 */
+		brandId?: string;
+		/** Owning material's type (e.g. PLA) — lets the nudge say where the clash sits. */
+		materialType?: string;
+		/**
+		 * Change-tree path of the filament being edited, excluded from the duplicate
+		 * scan so an edit doesn't flag itself. Left unset when creating (a duplicate,
+		 * a paste and a fresh filament all still have to clear the existing names).
+		 */
+		selfPath?: string;
 	}
 
-	let { filament = null, schema: externalSchema, onSubmit, saving = false, draftKey }: Props = $props();
+	let {
+		filament = null,
+		schema: externalSchema,
+		onSubmit,
+		saving = false,
+		draftKey,
+		brandId,
+		materialType,
+		selfPath
+	}: Props = $props();
 
 	type FilamentDraft = {
 		formData: Record<string, any>;
@@ -141,6 +169,60 @@
 	function fixNameLeadingCase() {
 		if (nameLeadingCase) formData.name = nameLeadingCase.suggestion;
 	}
+
+	/**
+	 * A name already used by another filament of this brand (#281).
+	 *
+	 * Filaments are stored per material, so nothing on disk stops the same product from
+	 * being entered twice under two materials — #280 shipped a PLA-CF that had landed in
+	 * PETG beside the real one. The search index is the only brand-wide view of the tree
+	 * the form can reach, so the check reads from it, with the contributor's staged edits
+	 * layered on so a filament they created locally counts too.
+	 *
+	 * Non-blocking: it is a nudge, not a gate. Two genuinely different products can share
+	 * a slug once punctuation is dropped, and the contributor is the one who knows.
+	 */
+	let brandRecords = $state<SearchRecord[]>([]);
+
+	onMount(async () => {
+		if (!brandId) return;
+		try {
+			brandRecords = await loadSearchIndex();
+		} catch {
+			// The index is optional context — losing it just means no nudge.
+		}
+	});
+
+	const submittedChanges = $derived.by(() => {
+		void $submittedCount;
+		return submittedStore.getEntries().flatMap((e) => e.changes);
+	});
+
+	let brandFilaments = $derived.by(() => {
+		if (!brandId) return [];
+		const records = $useChangeTracking
+			? layerChanges(brandRecords, $changesList, submittedChanges)
+			: brandRecords;
+		const brand = brandId.toLowerCase();
+		const self = selfPath?.toLowerCase();
+		return records
+			.filter(
+				(r) =>
+					r.type === 'filament' &&
+					(r.brandSlug ?? '').toLowerCase() === brand &&
+					r.path.toLowerCase() !== self
+			)
+			.map((r) => ({
+				name: r.name,
+				// The folder id, which is what actually collides — the display name only
+				// slugifies back to it when the two were never allowed to drift.
+				slug: r.path.split('/').pop() ?? '',
+				materialType: r.materialType ?? '',
+				href: r.href
+			}));
+	});
+
+	let nameDuplicate = $derived(findDuplicateName(String(formData?.name ?? ''), brandFilaments));
 
 	// `certifications: [""]` (#453) reads downstream as a certification with a blank
 	// name; an empty list says the true thing.
@@ -302,6 +384,34 @@
 	>
 		Filament names are shown capitalised everywhere they appear. Rename to
 		<strong>{nameLeadingCase.suggestion}</strong>.
+	</FixHint>
+{/if}
+{#if nameDuplicate}
+	{@const dup = nameDuplicate.match}
+	{@const sameMaterial =
+		!!materialType && dup.materialType.toLowerCase() === materialType.toLowerCase()}
+	{@const where = dup.materialType || 'another material'}
+	<FixHint
+		level={sameMaterial && nameDuplicate.kind === 'exact' ? 'error' : 'warn'}
+		href={dup.href}
+		hrefLabel="Open it ↗"
+		class="mb-4"
+	>
+		{#if nameDuplicate.kind === 'word-order'}
+			This brand already has <strong>{dup.name}</strong>{sameMaterial
+				? ''
+				: ` under ${where}`} — the same words in a different order. These are almost
+			always the same product under two names.
+		{:else if sameMaterial}
+			This material already has a filament named <strong>{dup.name}</strong>. Add what is
+			different about this one as a colour variant of it, or give it a name that tells the two
+			apart.
+		{:else}
+			This brand already has a filament named <strong>{dup.name}</strong> under
+			<strong>{where}</strong>. A filament name should identify one product across the
+			whole brand — if this is that product, add the missing colours there instead of entering it
+			again here.
+		{/if}
 	</FixHint>
 {/if}
 {#if blankCertifications.length > 0}
