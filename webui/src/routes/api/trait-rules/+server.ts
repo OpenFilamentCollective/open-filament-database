@@ -20,17 +20,17 @@ import { IS_CLOUD, API_BASE } from '$lib/server/cloudProxy';
 
 const EMPTY = { version: 0, rules: [] };
 
-let cloudCache: unknown = null;
+let cloudCache: unknown | null = null;
 
 export async function GET() {
 	try {
 		if (IS_CLOUD) {
-			if (!cloudCache) {
+			if (cloudCache === null) {
 				const res = await fetch(`${API_BASE}/api/v1/trait-rules.json`);
 				// Not published yet on an older dataset build.
-				cloudCache = res.ok ? await res.json() : EMPTY;
+				cloudCache = res.ok ? await res.json() : null;
 			}
-			return json(cloudCache);
+			return json(cloudCache ?? EMPTY);
 		}
 		return json(JSON.parse(await fs.readFile(`${SCHEMA_DIR}/trait_rules.json`, 'utf-8')));
 	} catch (error) {

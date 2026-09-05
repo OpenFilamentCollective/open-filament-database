@@ -13,7 +13,7 @@
  * suggested fix only when the user presses the button.
  *
  * Name-derived trait detection is not repeated here: `traitSuggestions.ts` reads the
- * shared `x-trait-rules` table out of the variant schema and is wired into `VariantForm`.
+ * shared `schemas/trait_rules.json` table (via `/api/trait-rules`) and is wired into `VariantForm`.
  */
 
 /** Words that legitimately stay lowercase inside a title-cased display name. */

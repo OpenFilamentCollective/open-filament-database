@@ -61,7 +61,7 @@
 			loadGtinIndex()
 				.then((index) => (gtinIndex = index))
 				// A missing or unpublished index just means no barcode matches.
-				.catch(() => (gtinIndex = { count: 0, codes: {} }));
+				.catch(() => (gtinIndex = null));
 		}
 	});
 
