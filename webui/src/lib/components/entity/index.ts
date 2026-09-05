@@ -6,3 +6,4 @@ export { default as CertificationsDisplay } from './CertificationsDisplay.svelte
 export { default as ChildListPanel } from './ChildListPanel.svelte';
 export { default as SubmittedBanner } from './SubmittedBanner.svelte';
 export { default as InFlightHint } from './InFlightHint.svelte';
+export { default as OrcaDownloadButton } from './OrcaDownloadButton.svelte';

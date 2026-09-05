@@ -357,6 +357,7 @@ def export_api(
         "store_logos": "stores/logo/index.json",
         "badges": "badges/",
         "all": "../json/all.json",
+        "orcaslicer": "../../orcaslicer/index.json",
         "search_index": "search-index.json",
     }
     if schemas_count > 0:

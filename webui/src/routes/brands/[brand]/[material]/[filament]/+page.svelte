@@ -5,7 +5,7 @@
 	import { Modal, MessageBanner, DeleteEntityModal, Button, EntityActionDropdown, CloudCompareModal, DuplicateOptionsModal } from '$lib/components/ui';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { EntityDetails, EntityCard, SlicerSettingsDisplay, CertificationsDisplay, ChildListPanel, SubmittedBanner, InFlightHint } from '$lib/components/entity';
+	import { EntityDetails, EntityCard, SlicerSettingsDisplay, CertificationsDisplay, ChildListPanel, SubmittedBanner, InFlightHint, OrcaDownloadButton } from '$lib/components/entity';
 	import { FilamentForm, VariantForm } from '$lib/components/forms';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
@@ -22,6 +22,7 @@
 	import { duplicateFilamentChildren, loadFilamentChildren, pasteFilamentChildren } from '$lib/services/duplicateService';
 	import { formDrafts } from '$lib/stores/formDrafts';
 	import { collectSiblingFibers, checkFiberConflict, fibersFromTraits } from '$lib/utils/fiberConflict';
+	import { orcaProfileUrl } from '$lib/utils/orcaLinks';
 
 	let brandId: string = $derived($page.params.brand!);
 	let materialType: string = $derived($page.params.material!);
@@ -310,6 +311,10 @@
 {#snippet slicerSettingsRender(settings: Record<string, any>)}
 	<SlicerSettingsDisplay {settings} />
 {/snippet}
+{#snippet orcaDownloadRender()}
+	<OrcaDownloadButton brand={brandId} material={materialType} filament={filamentId}
+		filamentName={filament?.name ?? ''} />
+{/snippet}
 
 <svelte:head>
 	<title>{filament ? `${filament.name}` : 'Filament Not Found'}</title>
@@ -356,6 +361,7 @@
 						{ key: 'min_nozzle_diameter', label: 'Min Nozzle Diameter', format: (v) => `${v} mm`, hide: (v) => !v },
 						{ key: 'certifications', label: 'Certifications', hide: (v) => !v || v.length === 0, customRender: certificationsRender, fullWidth: true },
 						{ key: 'slicer_settings', label: 'Slicer Settings', hide: (v) => !v || Object.keys(v).length === 0, customRender: slicerSettingsRender, fullWidth: true },
+						{ key: 'orcaslicer_download', label: 'OrcaSlicer', hide: () => !orcaProfileUrl(brandId, materialType, filamentId), customRender: orcaDownloadRender, fullWidth: true },
 						{ key: 'data_sheet_url', label: 'Data Sheet', type: 'link', hide: (v) => !v },
 						{ key: 'safety_sheet_url', label: 'Safety Sheet', type: 'link', hide: (v) => !v }
 					]}>

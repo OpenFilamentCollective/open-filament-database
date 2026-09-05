@@ -7,7 +7,8 @@
 	import { BrandForm, MaterialForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { Logo, EntityDetails, EntityCard, ChildListPanel, SubmittedBanner, InFlightHint } from '$lib/components/entity';
+	import { Logo, EntityDetails, EntityCard, ChildListPanel, SubmittedBanner, InFlightHint, OrcaDownloadButton } from '$lib/components/entity';
+	import { orcaBundleUrl } from '$lib/utils/orcaLinks';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
@@ -344,6 +345,10 @@
 	}
 </script>
 
+{#snippet orcaBundleRender()}
+	<OrcaDownloadButton brand={brandId} />
+{/snippet}
+
 <svelte:head>
 	<title>{brand ? `${brand.name}` : 'Brand Not Found'}</title>
 </svelte:head>
@@ -381,7 +386,8 @@
 						{ key: 'name' },
 						{ key: 'website', type: 'link' },
 						{ key: 'origin', format: (v: string) => getCountryName(v) },
-						{ key: 'logo', type: 'logo', logoType: 'brand', logoEntityId: brandData.slug ?? brandData.id }
+						{ key: 'logo', type: 'logo', logoType: 'brand', logoEntityId: brandData.slug ?? brandData.id },
+						{ key: 'orcaslicer_bundle', label: 'OrcaSlicer', hide: () => !orcaBundleUrl(brandId), customRender: orcaBundleRender }
 					]}
 				>
 					{#snippet actions()}

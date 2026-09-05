@@ -42,6 +42,8 @@ The full dataset is published as a static REST API, with bulk JSON / NDJSON / SQ
 
 Address entities by **path**, e.g. `/api/v1/brands/{brand}/materials/{MATERIAL}/filaments/{filament}/variants/{variant}.json`.
 
+Filaments are also published as **ready-to-import [OrcaSlicer presets](docs/orcaslicer.md)** — per filament, or per brand as a zip. Download one and import it with File → Import → Import Configs.
+
 > ℹ️ UUID-based lookups are still supported for integrations that need stable opaque identifiers (NFC tags, slicer profiles), but path-based addressing is what we recommend for everyone else — it's human-readable and stable across cosmetic renames.
 
 ---
@@ -49,6 +51,7 @@ Address entities by **path**, e.g. `/api/v1/brands/{brand}/materials/{MATERIAL}/
 ## 📚 More documentation
 
 - [WebUI guide](docs/webui.md) — features, modes, configuration
+- [OrcaSlicer guide](docs/orcaslicer.md) — downloading and importing the generated filament presets
 - [Manual editing guide](docs/manual.md) — editing JSON files by hand
 - [Validation guide](docs/validation.md) — running the validator, understanding errors
 - [Local contributing guide](docs/contributing-locally.md) — full fork → clone → PR walkthrough
