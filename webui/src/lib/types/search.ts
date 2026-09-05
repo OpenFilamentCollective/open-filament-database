@@ -10,7 +10,7 @@
  * (see $lib/services/searchIndex.ts).
  */
 
-export type SearchEntityType = 'brand' | 'store' | 'material' | 'filament';
+export type SearchEntityType = 'brand' | 'store' | 'material' | 'filament' | 'variant';
 
 export interface SearchRecord {
 	type: SearchEntityType;
@@ -28,6 +28,17 @@ export interface SearchRecord {
 	materialType?: string;
 	/** Extra free-text the matcher tokenizes (origin, website, etc.). */
 	keywords?: string;
+	/**
+	 * Owning filament's display name — `variant` records only, where the colour name
+	 * alone ("Purple") does not identify the product.
+	 */
+	filamentName?: string;
+	/**
+	 * The barcode this record was resolved from. Only set on `variant` records, which
+	 * come from the GTIN index rather than the name index — it is what the result card
+	 * shows instead of a brand/material subtitle.
+	 */
+	gtin?: string;
 	/** Change-tree key, used to layer local edits and to dedupe: e.g. brands/acme/materials/PLA/filaments/foo. */
 	path: string;
 }
@@ -49,4 +60,41 @@ export interface SearchResult {
 	page: number;
 	/** Total number of pages (at least 1). */
 	pageCount: number;
+}
+
+/**
+ * One size carrying a barcode, as published in `/api/v1/gtin-index.json`.
+ *
+ * Enough to render and link a result without a second request — see
+ * `ofd/builder/exporters/gtin_index_exporter.py`, which writes this shape.
+ */
+export interface GtinEntry {
+	/** The code as stored, so the UI can echo the spelling the contributor used. */
+	gtin: string;
+	brand_name: string;
+	brand_slug: string;
+	/** The material's type ("PETG"); also its path segment in both API and app. */
+	material_slug: string;
+	filament_name: string;
+	filament_slug: string;
+	variant_name: string;
+	variant_slug: string;
+	filament_weight?: number;
+	diameter?: number;
+	/** Path of the variant's JSON file in the static API. */
+	href: string;
+	variant_uuid?: string;
+	size_uuid?: string;
+}
+
+/**
+ * Barcode index envelope. Keyed by the 14-digit GTIN form, so a UPC-A, an EAN-13 and
+ * a GTIN-14 for one product share an entry. Values are always arrays — a barcode is a
+ * product identifier, not a primary key, and some codes cover a spool and its refill.
+ */
+export interface GtinIndexFile {
+	version?: string;
+	generated_at?: string;
+	count: number;
+	codes: Record<string, GtinEntry[]>;
 }

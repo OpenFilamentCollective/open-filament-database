@@ -124,7 +124,7 @@
 				<div class="w-full max-w-md">
 					<SearchBar
 						value={headerQuery}
-						placeholder="Search filaments, brands…"
+						placeholder="Search filaments, brands, or scan a barcode…"
 						captureKeystrokes={false}
 						oninput={(v) => (headerQuery = v)}
 						onEnter={submitSearch}

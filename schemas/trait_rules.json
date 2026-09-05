@@ -1,0 +1,182 @@
+{
+    "$comment": "Name-derived trait rules: which traits an entity's name implies. Read by the WebUI suggestion panel (webui/src/lib/utils/traitSuggestions.ts), the fiber_trait_missing validator (ofd/validation/data_quality.py) and `ofd script apply_fiber_traits`, so the detection logic exists once instead of in three hand-synced copies. Deliberately its own file rather than an extension of variant_schema.json: a rule maps a name to trait keys and says nothing about which entity carries them, so it stays correct if traits move to the filament. Patterns are matched against the lowercased material / filament / variant name parts joined by ' / ', so a token can only match within one part, and must parse in BOTH Python re and JS RegExp: no lookbehind, no named groups. 'applies_to' controls who acts on a rule -- 'suggest' offers it in the editor, 'validate' reports it as a warning, 'backfill' lets the script write it. Only rules that are true by definition get the latter two. Trait keys must exist in the schema that defines traits (currently variant_schema.json).",
+    "version": 1,
+    "rules": [
+        {
+            "id": "carbon_fiber",
+            "code": "CF",
+            "pattern": "(?:^|[^a-z])cf(?![a-z])|carbon[\\s_+-]?fib",
+            "traits": [
+                "contains_carbon_fiber",
+                "abrasive"
+            ],
+            "applies_to": [
+                "suggest",
+                "validate",
+                "backfill"
+            ],
+            "note": "Carbon-fiber composites need a hardened nozzle, hence abrasive. 410/411 matching variants already carry both."
+        },
+        {
+            "id": "glass_fiber",
+            "code": "GF",
+            "pattern": "(?:^|[^a-z])gf(?![a-z])|glass[\\s_+-]?fib",
+            "traits": [
+                "contains_glass_fiber",
+                "abrasive"
+            ],
+            "applies_to": [
+                "suggest",
+                "validate",
+                "backfill"
+            ],
+            "note": "147/147 matching variants already carry both."
+        },
+        {
+            "id": "high_flow",
+            "code": "HF",
+            "pattern": "(?:^|[^a-z])hf(?![a-z])|high[\\s_+-]?flow|high[\\s_+-]?speed",
+            "traits": [
+                "high_flow"
+            ],
+            "applies_to": [
+                "suggest",
+                "validate",
+                "backfill"
+            ],
+            "note": "Often marketed as high-speed. 719/720 matching variants already carry it."
+        },
+        {
+            "id": "bicolor",
+            "pattern": "bi[\\s_+-]?colou?r",
+            "traits": [
+                "coextruded"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "148/148 matching variants already carry it. Deliberately narrow: 'dual colour' and 'two tone' also describe gradients and multi-hue prints, so they are not included."
+        },
+        {
+            "id": "thermochromic",
+            "pattern": "thermochromic|temp(?:erature)?[\\s_+-]?colou?r[\\s_+-]?chang",
+            "traits": [
+                "temperature_color_change"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "27/27 matching variants already carry it."
+        },
+        {
+            "id": "glow_in_the_dark",
+            "pattern": "glow[\\s_+-]?in[\\s_+-]?the[\\s_+-]?dark|(?:^|[^a-z])gitd(?![a-z])",
+            "traits": [
+                "glow"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "True by definition. Only 29/54 matching variants carry it today -- the other 25 are gaps this rule exists to close."
+        },
+        {
+            "id": "recycled",
+            "pattern": "(?:^|[^a-z])recycled(?![a-z])",
+            "traits": [
+                "recycled"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "54/58."
+        },
+        {
+            "id": "fluorescent",
+            "pattern": "fluoresc",
+            "traits": [
+                "neon"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "59/68. 'neon' covers fluorescent/UV-reactive colours in this schema."
+        },
+        {
+            "id": "glitter",
+            "pattern": "(?:^|[^a-z])glitter",
+            "traits": [
+                "glitter"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "121/149."
+        },
+        {
+            "id": "glow",
+            "pattern": "(?:^|[^a-z])glow(?![a-z])",
+            "traits": [
+                "glow"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "166/207."
+        },
+        {
+            "id": "neon",
+            "pattern": "(?:^|[^a-z])neon(?![a-z])",
+            "traits": [
+                "neon"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "146/188."
+        },
+        {
+            "id": "silk",
+            "pattern": "(?:^|[^a-z])silk",
+            "traits": [
+                "silk"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "1175/1581. Some 'silk' lines are named for the sheen of a matte finish, so this is a suggestion only."
+        },
+        {
+            "id": "matte",
+            "pattern": "(?:^|[^a-z])matte?(?![a-z])",
+            "traits": [
+                "matte"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "763/1034."
+        },
+        {
+            "id": "marble",
+            "pattern": "(?:^|[^a-z])marble",
+            "traits": [
+                "imitates_marble"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "95/137. A colour merely named 'Marble White' need not be a marble-effect filament, hence suggestion only."
+        },
+        {
+            "id": "translucent",
+            "pattern": "translucent|(?:^|[^a-z])crystal(?![a-z])",
+            "traits": [
+                "translucent"
+            ],
+            "applies_to": [
+                "suggest"
+            ],
+            "note": "186/268."
+        }
+    ]
+}

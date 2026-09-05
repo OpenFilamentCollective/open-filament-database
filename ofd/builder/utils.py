@@ -365,3 +365,25 @@ def ensure_list(value) -> list:
     if isinstance(value, list):
         return value
     return [value]
+
+
+def normalize_gtin(value: str | None) -> str | None:
+    """Normalize a barcode to its 14-digit GTIN form, or ``None`` if it isn't one.
+
+    UPC-A (12 digits), EAN-13 and GTIN-14 are the same number written at different
+    widths — a UPC-A scanned off a spool is the EAN-13 with a leading zero. Padding
+    everything to 14 makes those three spellings a single lookup key, which is the
+    whole point of the barcode index: a scanner app should not have to guess which
+    width the contributor happened to type.
+
+    Separators are tolerated because real-world data carries them ("0 12345 67890 5").
+    Anything that isn't 8-14 digits after stripping is rejected rather than padded —
+    a truncated or free-text value would otherwise collide with a real code.
+    """
+    if not value:
+        return None
+    digits = "".join(ch for ch in str(value) if ch.isdigit())
+    # GTIN-8 is the shortest legal form; longer than 14 is not a GTIN at all.
+    if not 8 <= len(digits) <= 14:
+        return None
+    return digits.zfill(14)

@@ -4,8 +4,8 @@ Data-quality validation.
 Rules for the small, repetitive defects that reviewers kept fixing by hand on webui
 submissions after PR #405: placeholder values, duplicated spool rows, casing that
 diverges from a filament's own siblings, fiber traits missing from variants whose
-names announce the fiber, filaments left with no variants, and near-duplicate sibling
-names that differ only by word order.
+names announce the fiber, display names that start lowercase, filaments left with no
+variants, and near-duplicate sibling names that differ only by word order.
 
 This is the authoritative, server-side enforcement; the webui mirrors the rules in
 ``webui/src/lib/utils/dataQuality.ts`` and surfaces each as an inline "Fix" hint at
@@ -21,8 +21,12 @@ restating it:
 Levels are chosen so a rule only blocks a merge when the data is genuinely wrong:
 ``placeholder_value``, ``duplicate_size_entry``, ``name_whitespace`` and
 ``purchase_link_storefront_root`` are ERRORs; the judgement calls
-(``name_casing``, ``fiber_trait_missing``, ``orphan_filament``,
-``sibling_near_duplicate``) are WARNINGs.
+(``name_casing``, ``name_leading_case``, ``fiber_trait_missing``,
+``orphan_filament``, ``sibling_near_duplicate``) are WARNINGs.
+
+A WARNING here is advice, not a failure: ``ofd validate`` still exits 0 and reports
+"All validations passed (N warnings)". Reviewers should not describe a warning as
+something that breaks the build or makes data unreachable.
 """
 
 import json
@@ -249,6 +253,52 @@ def _check_sibling_casing(names: list[tuple[str, Path]], base: Path) -> list[Val
     ]
 
 
+# --- Rule: name starts lowercase ----------------------------------------------
+
+
+def _check_name_leading_case(data, file_path: Path, base: Path) -> list[ValidationError]:
+    """A display name that starts with a lowercase letter.
+
+    Narrower and more certain than ``_check_sibling_casing``: that rule needs Title
+    Case siblings to establish a convention, so it stays silent on the first colour
+    of a new filament — which is exactly when a name pasted off a product page
+    ("yellow", "glass fiber black") lands in the tree. 126 names in the current data
+    start lowercase this way.
+
+    Only the first letter is at issue; Title Casing the rest would rewrite
+    manufacturer styling like "PLA+ eSilk". Intercapped names are left alone —
+    "eSUN 3D", "iSANMATE", "rPLA pro", "rPETG", "ePAHT-CF" are the brand's own
+    styling, and there are 18 such names in the tree.
+
+    Mirrors ``checkNameLeadingCase`` in ``webui/src/lib/utils/dataQuality.ts``.
+    """
+    field = _NAME_FIELDS.get(file_path.name)
+    if not field or not isinstance(data, dict):
+        return []
+    name = data.get(field)
+    if not isinstance(name, str) or not name:
+        return []
+
+    # A name may legitimately open with a digit or symbol ("3D Gold", "+PLA"); those
+    # say nothing about casing, so look at the first letter wherever it is.
+    index = next((i for i, ch in enumerate(name) if ch.isalpha()), None)
+    if index is None or not name[index].islower():
+        return []
+    # eSUN / rPLA / iSANMATE.
+    if index + 1 < len(name) and name[index + 1].isupper():
+        return []
+
+    suggestion = name[:index] + name[index].upper() + name[index + 1 :]
+    return [
+        _err(
+            ValidationLevel.Warning,
+            f"Name {name!r} starts with a lowercase letter; display names are shown "
+            f"capitalised. Use {suggestion!r}.",
+            _rel(file_path, base),
+        )
+    ]
+
+
 # --- Rule: fiber traits missing -----------------------------------------------
 
 
@@ -294,9 +344,19 @@ def _check_fiber_traits(
 def _check_orphan_filament(filament_dir: Path, base: Path) -> list[ValidationError]:
     """A filament directory with no variants under it.
 
-    A filament with no colours is not reachable in the UI and buys nothing. #461
+    This flags an *incomplete* filament, not a broken one. Childless entities are
+    valid, addressable and rendered: the API emits an ``index.json`` for them and
+    the webui's filament page loads the filament independently of its variants, so
+    a filament with no colours shows an empty Variants panel rather than a 404.
+    There are ~140 of them in the tree at any time, most of them brand skeletons
+    waiting on a follow-up PR.
+
+    It is worth reporting because it is also what a botched edit looks like: #461
     left ``data/3dhojor/PLA/silk_blue_green/`` behind this way, by deleting and
     re-creating a filament that a still-open PR was also editing.
+
+    Hence WARNING, and hence the wording below leads with adding colours rather
+    than with deletion — do not restate this rule as "unreachable in the UI".
     """
     has_variant = any(
         child.is_dir() and (child / "variant.json").exists() for child in filament_dir.iterdir()
@@ -306,7 +366,8 @@ def _check_orphan_filament(filament_dir: Path, base: Path) -> list[ValidationErr
     return [
         _err(
             ValidationLevel.Warning,
-            "Filament has no variants. Add at least one colour, or remove the filament.",
+            "Filament has no colours yet. Add at least one variant when you have the "
+            "data; if this folder is a leftover from an edit, remove it.",
             _rel(filament_dir, base),
         )
     ]
@@ -365,6 +426,7 @@ def check_data_quality(data_dir) -> list[ValidationError]:
         if isinstance(brand_data, dict):
             errors.extend(_check_placeholders(brand_data, brand_file, base))
             errors.extend(_check_name_whitespace(brand_data, brand_file, base))
+            errors.extend(_check_name_leading_case(brand_data, brand_file, base))
 
         for material_dir in sorted(p for p in brand_dir.iterdir() if p.is_dir()):
             material_file = material_dir / "material.json"
@@ -372,6 +434,7 @@ def check_data_quality(data_dir) -> list[ValidationError]:
             if isinstance(material_data, dict):
                 errors.extend(_check_placeholders(material_data, material_file, base))
                 errors.extend(_check_name_whitespace(material_data, material_file, base))
+                errors.extend(_check_name_leading_case(material_data, material_file, base))
 
             filament_names: list[tuple[str, Path]] = []
             filament_ids: list[tuple[str, Path]] = []
@@ -384,6 +447,7 @@ def check_data_quality(data_dir) -> list[ValidationError]:
 
                 errors.extend(_check_placeholders(filament_data, filament_file, base))
                 errors.extend(_check_name_whitespace(filament_data, filament_file, base))
+                errors.extend(_check_name_leading_case(filament_data, filament_file, base))
                 errors.extend(_check_orphan_filament(filament_dir, base))
 
                 name = filament_data.get("name")
@@ -402,6 +466,7 @@ def check_data_quality(data_dir) -> list[ValidationError]:
 
                     errors.extend(_check_placeholders(variant_data, variant_file, base))
                     errors.extend(_check_name_whitespace(variant_data, variant_file, base))
+                    errors.extend(_check_name_leading_case(variant_data, variant_file, base))
 
                     # Fiber codes can come from any level of the path, matching
                     # apply_fiber_traits.py's scan.

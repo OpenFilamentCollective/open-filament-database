@@ -14,6 +14,14 @@
 		sizeId: number;
 		linkId: number;
 		onRemove: () => void;
+		/**
+		 * Names of the OTHER colours of this filament that already use this exact URL.
+		 * Shown last of the link hints: it is advice only a human can act on, so it
+		 * must not displace the storefront-root error or the one-click host fix.
+		 * Passed down from the filament's variant list; empty when the siblings aren't
+		 * loaded or the link is colour-specific.
+		 */
+		sharedWithVariants?: string[];
 	}
 
 	let {
@@ -23,7 +31,8 @@
 		index,
 		sizeId,
 		linkId,
-		onRemove
+		onRemove,
+		sharedWithVariants = []
 	}: Props = $props();
 
 	/** Registrable-ish base domain: the last two labels (shop.x.com & us.x.com → x.com). */
@@ -143,6 +152,14 @@
 					class="mt-1.5"
 				>
 					Link uses <strong>{linkHost}</strong> but this store is <strong>{canonicalHost}</strong>.
+				</FixHint>
+			{:else if sharedWithVariants.length > 0}
+				{@const shown = sharedWithVariants.slice(0, 3)}
+				{@const extra = sharedWithVariants.length - shown.length}
+				<FixHint compact href={url} class="mt-1.5">
+					This link is also used by <strong>{shown.join(', ')}</strong>{extra > 0
+						? ` and ${extra} other colour${extra === 1 ? '' : 's'}`
+						: ''}. Prefer this colour's own product page if the shop has one.
 				</FixHint>
 			{/if}
 		</div>

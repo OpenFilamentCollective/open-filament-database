@@ -163,18 +163,21 @@ describe('API Utils', () => {
 				);
 			});
 
-			it('keeps /api/search-index relative (served by our own endpoint)', () => {
-				// Cloud mode still routes through our endpoint, which serves the CDN
-				// file or builds a lean index from all.json.
+			it('keeps the flat index endpoints relative (served by our own routes)', () => {
+				// Cloud mode still routes through our endpoints, which serve the CDN
+				// file or fall back (a lean index from all.json; an empty barcode table).
+				// Falling through to the mapping below would produce a 404.
 				expect(buildApiUrl('/api/search-index')).toBe('/api/search-index');
+				expect(buildApiUrl('/api/gtin-index')).toBe('/api/gtin-index');
 			});
 		});
 
 		describe('Local mode search index', () => {
-			it('should keep /api/search-index relative', () => {
+			it('should keep the flat index endpoints relative', () => {
 				envMocks.mockIsLocalMode.set(true);
 				envMocks.mockApiBaseUrl.set('');
 				expect(buildApiUrl('/api/search-index')).toBe('/api/search-index');
+				expect(buildApiUrl('/api/gtin-index')).toBe('/api/gtin-index');
 			});
 		});
 	});

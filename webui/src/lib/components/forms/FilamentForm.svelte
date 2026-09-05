@@ -18,7 +18,11 @@
 	import { formDrafts } from '$lib/stores/formDrafts';
 	import { generateSlug } from '$lib/services/entityService';
 	import { looksLikeProductPage } from '$lib/utils/urlSanitizer';
-	import { checkNameWhitespace, checkPlaceholderEntries } from '$lib/utils/dataQuality';
+	import {
+		checkNameLeadingCase,
+		checkNameWhitespace,
+		checkPlaceholderEntries
+	} from '$lib/utils/dataQuality';
 
 	interface Props {
 		filament?: any;
@@ -128,6 +132,14 @@
 
 	function fixNameWhitespace() {
 		if (nameWhitespace) formData.name = nameWhitespace.suggestion;
+	}
+
+	// A display name that starts with a lowercase letter. Only the first letter is
+	// changed — Title Casing the rest would rewrite manufacturer styling.
+	let nameLeadingCase = $derived(checkNameLeadingCase(String(formData?.name ?? '')));
+
+	function fixNameLeadingCase() {
+		if (nameLeadingCase) formData.name = nameLeadingCase.suggestion;
 	}
 
 	// `certifications: [""]` (#453) reads downstream as a certification with a blank
@@ -279,6 +291,17 @@
 	>
 		The name {nameWhitespace.reason}. It will look identical to
 		<strong>{nameWhitespace.suggestion}</strong> everywhere but count as a different filament.
+	</FixHint>
+{/if}
+{#if nameLeadingCase}
+	<FixHint
+		fixLabel="Fix"
+		onFix={fixNameLeadingCase}
+		fixTitle="Rename to “{nameLeadingCase.suggestion}”"
+		class="mb-4"
+	>
+		Filament names are shown capitalised everywhere they appear. Rename to
+		<strong>{nameLeadingCase.suggestion}</strong>.
 	</FixHint>
 {/if}
 {#if blankCertifications.length > 0}

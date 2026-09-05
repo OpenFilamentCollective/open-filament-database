@@ -8,13 +8,21 @@
 	import { TRAIT_CATEGORIES, findTraitByKey } from '$lib/config/traitConfig';
 	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
 	import { toggleSetItem } from '$lib/utils/setHelpers';
-	import { detectSuggestedTraits } from '$lib/utils/fiberTraitSuggestions';
-	import { checkNameCasing, checkNameWhitespace, findRedundantSizes } from '$lib/utils/dataQuality';
+	import {
+		detectSuggestedTraits,
+		loadTraitRules,
+		type TraitRule
+	} from '$lib/utils/traitSuggestions';
+	import {
+		checkNameCasing,
+		checkNameLeadingCase,
+		checkNameWhitespace,
+		findRedundantSizes,
+		suggestTraitsFromSiblings
+	} from '$lib/utils/dataQuality';
 	import {
 		fibersFromTraitKeys,
 		checkFiberConflict,
-		blockedFiberTraitKeys,
-		FIBER_LABEL,
 		type FiberKind
 	} from '$lib/utils/fiberConflict';
 	import { Button, FixHint } from '$lib/components/ui';
@@ -49,9 +57,22 @@
 		 * establish the convention — which is how #451 and #452 were caught in review.
 		 */
 		siblingNames?: string[];
+		/**
+		 * Traits carried by each of the OTHER variants of this filament, one entry per
+		 * sibling. A trait every sibling has is suggested for this one — see
+		 * `suggestTraitsFromSiblings`. Empty when the siblings haven't been loaded.
+		 */
+		siblingTraits?: string[][];
+		/**
+		 * Purchase-link URLs already shared across three or more colours of this filament,
+		 * mapped to the OTHER colours using them. Computed by the route with
+		 * `findSharedPurchaseLinks`, so the in-form hint and the filament page's banner
+		 * always agree on what counts as shared.
+		 */
+		sharedLinkOwners?: Record<string, string[]>;
 	}
 
-	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType, siblingFibers = [], siblingNames = [] }: Props = $props();
+	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType, siblingFibers = [], siblingNames = [], siblingTraits = [], sharedLinkOwners = {} }: Props = $props();
 
 	type ColorStandards = {
 		ral: string;
@@ -113,6 +134,8 @@
 		} catch (e) {
 			console.error('Failed to load data:', e);
 		}
+		// Shared name -> trait rules (resolves to [] if unavailable, never throws).
+		traitRules = await loadTraitRules();
 		// Load material-type tokens for the redundant-name guard (best effort).
 		try {
 			const res = await fetch('/api/schemas/material_types');
@@ -260,52 +283,70 @@
 		selectedTraits = new Set(selectedTraits);
 	}
 
-	// Add trait from dropdown. Fiber traits that would make this filament mix
-	// carbon fiber and glass fiber are refused (see the fiber-conflict guard below).
+	// Add trait from dropdown.
 	function addTrait(key: string) {
-		if (blockedFiberTraits.has(key)) return;
 		selectedTraits.add(key);
 		selectedTraits = new Set(selectedTraits);
 	}
 
 	// ==================== FIBER CONFLICT GUARD ====================
-	// A filament can't mix carbon fiber and glass fiber across its variants. If a
-	// sibling variant already establishes one fiber, this variant may not take the
-	// other; likewise a single variant may not carry both. This blocks the offending
-	// trait at add-time, hides it from suggestions/dropdown, and prevents submit.
+	// A filament can't mix carbon fiber and glass fiber across its variants. The guard
+	// is deliberately reactive rather than pre-emptive: every trait stays selectable,
+	// and a conflict is only raised once the selection actually creates one. Hiding the
+	// opposite fiber from the picker needed a standing explanation on the form for a
+	// case almost nobody hits, which cost every contributor more than it saved.
+	// The server-side equivalent is ofd/validation/fiber_consistency.py.
 
 	let siblingFiberSet = $derived(new Set<FiberKind>(siblingFibers));
 	let selectedFiberSet = $derived(fibersFromTraitKeys(selectedTraits));
-	// Trait keys that must not be added because they'd create a CF/GF mix.
-	let blockedFiberTraits = $derived(blockedFiberTraitKeys(selectedFiberSet, siblingFiberSet));
-	// Non-null when the current selection already conflicts (e.g. both fibers picked).
+	// Non-null when the current selection conflicts (both fibers picked, or the
+	// opposite fiber to one a sibling already establishes).
 	let fiberConflict = $derived(checkFiberConflict(selectedFiberSet, siblingFiberSet));
-	// When one fiber is established and the other is locked out, explain why (no active conflict).
-	let blockedFiberNote = $derived.by(() => {
-		if (fiberConflict || blockedFiberTraits.size === 0) return null;
-		const present = new Set<FiberKind>([...selectedFiberSet, ...siblingFiberSet]);
-		const establishedKind: FiberKind = present.has('carbon') ? 'carbon' : 'glass';
-		const otherKind: FiberKind = establishedKind === 'carbon' ? 'glass' : 'carbon';
-		return `This filament is ${FIBER_LABEL[establishedKind]}, so ${FIBER_LABEL[otherKind]} is unavailable — its variants can't mix the two.`;
-	});
 
 	// ==================== TRAIT SUGGESTIONS ====================
-	// Suggest carbon-fiber / glass-fiber / high-flow traits detected from the
-	// material, filament and colour names (mirrors `ofd script apply_fiber_traits`).
+	// Two independent signals, shown as one list:
+	//   - the name (silk_pla, PA6-CF, "Glow in the Dark Green"), via the shared
+	//     `x-trait-rules` table in the variant schema; and
+	//   - the siblings — a trait every other colour of this filament carries is
+	//     almost certainly right for this one too (99.3% across the current tree).
 	// Like the other form nudges, the banner disappears once the suggested traits
-	// are added (or the name no longer matches) — there is no dismiss.
+	// are added (or the reason no longer holds) — there is no dismiss.
+
+	// The shared rule table, fetched once per session and cached in the module. Empty
+	// until it resolves, which just delays the banner.
+	let traitRules: TraitRule[] = $state([]);
 
 	// Trait keys suggested by the current name context.
-	let suggestedTraitKeys = $derived(detectSuggestedTraits(materialType, filamentName, formData?.name));
+	let nameSuggestions = $derived(
+		detectSuggestedTraits(traitRules, materialType, filamentName, formData?.name)
+	);
 
-	// Suggestions still worth showing: not already selected, and not a fiber that
-	// would conflict with the rest of the filament.
+	// Trait keys every sibling colour carries and this variant doesn't.
+	let siblingSuggestions = $derived(suggestTraitsFromSiblings(siblingTraits, selectedTraits));
+
+	/** Why a trait is being suggested — shown on the chip so the nudge is arguable. */
+	let suggestionReasons = $derived.by(() => {
+		const reasons = new Map<string, string>();
+		for (const key of siblingSuggestions) {
+			reasons.set(
+				key,
+				`all ${siblingTraits.length} other colour${siblingTraits.length === 1 ? '' : 's'} have this`
+			);
+		}
+		// The name is the more specific reason, so it wins where both apply.
+		for (const key of nameSuggestions) reasons.set(key, 'the name says so');
+		return reasons;
+	});
+
+	// Suggestions still worth showing: whatever isn't already selected. Name
+	// suggestions lead — they are the more specific signal.
 	let pendingSuggestions = $derived(
-		suggestedTraitKeys.filter((k) => !selectedTraits.has(k) && !blockedFiberTraits.has(k))
+		[...nameSuggestions, ...siblingSuggestions.filter((k) => !nameSuggestions.includes(k))].filter(
+			(k) => !selectedTraits.has(k)
+		)
 	);
 
 	function addSuggestion(key: string) {
-		if (blockedFiberTraits.has(key)) return;
 		selectedTraits.add(key);
 		selectedTraits = new Set(selectedTraits);
 	}
@@ -313,6 +354,11 @@
 	function addAllSuggestions() {
 		for (const key of pendingSuggestions) selectedTraits.add(key);
 		selectedTraits = new Set(selectedTraits);
+	}
+
+	/** Other colours of this filament using this exact URL — drives the per-link hint. */
+	function sharedWith(url: string): string[] {
+		return (url && sharedLinkOwners[url]) || [];
 	}
 
 	// ==================== SIZES HANDLING ====================
@@ -374,6 +420,17 @@
 
 	function fixNameCasing() {
 		if (nameCasing) formData.name = nameCasing.suggestion;
+	}
+
+	// A name that simply starts lowercase. Unlike the nudge above this needs no
+	// siblings to compare against, so it also covers the first colour of a filament.
+	// Suppressed while the sibling nudge is showing, to avoid two hints on one field.
+	let nameLeadingCase = $derived(
+		nameCasing ? null : checkNameLeadingCase(String(formData?.name ?? ''))
+	);
+
+	function fixNameLeadingCase() {
+		if (nameLeadingCase) formData.name = nameLeadingCase.suggestion;
 	}
 
 	// Spool rows that add nothing over an earlier row (#453).
@@ -661,6 +718,17 @@
 		<strong>{nameWhitespace.suggestion}</strong> everywhere but count as a different colour.
 	</FixHint>
 {/if}
+{#if nameLeadingCase}
+	<FixHint
+		fixLabel="Fix"
+		onFix={fixNameLeadingCase}
+		fixTitle="Rename to “{nameLeadingCase.suggestion}”"
+		class="mb-4"
+	>
+		Colour names are shown capitalised everywhere they appear. Rename to
+		<strong>{nameLeadingCase.suggestion}</strong>.
+	</FixHint>
+{/if}
 {#if nameCasing}
 	<FixHint
 		fixLabel="Fix"
@@ -724,26 +792,30 @@
 			<!-- Fiber conflict guard: a filament can't mix carbon fiber and glass fiber -->
 			{#if fiberConflict}
 				<FixHint level="error" compact message={fiberConflict.message} class="mb-3" />
-			{:else if blockedFiberNote}
-				<FixHint compact message={blockedFiberNote} class="mb-3" />
 			{/if}
 
-			<!-- Suggested traits detected from the name (fiber / high-flow) -->
+			<!-- Suggested traits, from the name and from the filament's other colours -->
 			{#if pendingSuggestions.length > 0}
 				<div class="mb-3 flex flex-col gap-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
-					<span class="text-xs text-foreground">Based on the name, this variant likely needs:</span>
+					<span class="text-xs text-foreground">This variant likely needs:</span>
 					<div class="flex flex-wrap gap-1.5">
 						{#each pendingSuggestions as key (key)}
 							{@const info = findTraitByKey(key)}
+							{@const reason = suggestionReasons.get(key)}
 							<Button
 								variant="outline"
 								size="sm"
 								onclick={() => addSuggestion(key)}
 								class="h-7 rounded-full border-primary/40 px-3 text-xs"
-								title={info?.description}
+								title={[info?.description, reason && `Suggested because ${reason}.`]
+									.filter(Boolean)
+									.join(' ')}
 							>
 								<PlusIcon class="h-3 w-3" />
 								{info?.label || key}
+								{#if reason}
+									<span class="ml-1 text-muted-foreground">— {reason}</span>
+								{/if}
 							</Button>
 						{/each}
 						{#if pendingSuggestions.length > 1}
@@ -801,7 +873,7 @@
 
 					<div class="overflow-y-auto flex-1 p-1">
 						{#each Object.entries(filteredCategories) as [catKey, category]}
-							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key) && !blockedFiberTraits.has(t.key))}
+							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key))}
 							{#if unselectedTraits.length > 0}
 								<div class="mb-1">
 									<Button
@@ -890,6 +962,7 @@
 						onRemove={() => removeSize(sizeIndex)}
 						onAddLink={() => addPurchaseLink(sizeIndex)}
 						onRemoveLink={(linkIndex) => removePurchaseLink(sizeIndex, linkIndex)}
+						{sharedWith}
 					/>
 				{/each}
 			{:else}

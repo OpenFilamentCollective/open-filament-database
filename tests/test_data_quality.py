@@ -378,19 +378,79 @@ def test_a_plain_name_needs_no_fiber_traits(tmp_path):
     assert messages(check_data_quality(data), "traits are not set") == []
 
 
+# --- name_leading_case --------------------------------------------------------
+
+
+def test_lowercase_leading_name_warns(tmp_path):
+    data = build(tmp_path / "data", variants=[{"id": "yellow", "name": "yellow"}])
+    found = messages(check_data_quality(data), "starts with a lowercase letter")
+    assert len(found) == 1
+    assert found[0].level.value == "WARNING"
+    assert "'Yellow'" in found[0].message
+
+
+def test_only_the_first_letter_is_changed(tmp_path):
+    # Title-casing the rest would rewrite the manufacturer's own styling.
+    data = build(tmp_path / "data", variants=[{"id": "easy_petg", "name": "easy PETG"}])
+    found = messages(check_data_quality(data), "starts with a lowercase letter")
+    assert len(found) == 1
+    assert "'Easy PETG'" in found[0].message
+
+
+def test_intercapped_brand_styling_is_left_alone(tmp_path):
+    for name in ("eSUN 3D", "iSANMATE", "rPLA pro", "rPETG", "ePAHT-CF"):
+        data = build(tmp_path / name.replace(" ", "_"), variants=[{"id": "x", "name": name}])
+        assert messages(check_data_quality(data), "starts with a lowercase letter") == []
+
+
+def test_leading_digit_is_skipped_to_reach_the_first_letter(tmp_path):
+    data = build(tmp_path / "data", variants=[{"id": "3d_gold", "name": "3d gold"}])
+    found = messages(check_data_quality(data), "starts with a lowercase letter")
+    assert len(found) == 1
+    assert "'3D gold'" in found[0].message
+
+
+def test_non_ascii_capitalised_name_is_left_alone(tmp_path):
+    """data/ambrosia/ABS/uber is really named "Über ABS".
+
+    Mirrors the webui check: an ASCII-only letter test would skip the "Ü", find the
+    "b" and "fix" a real filament into "ÜBer ABS".
+    """
+    for name in ("Über ABS", "Ökofil", "Éclat Silk"):
+        data = build(tmp_path / name.replace(" ", "_"), variants=[{"id": "x", "name": name}])
+        assert messages(check_data_quality(data), "starts with a lowercase letter") == []
+
+
+def test_genuinely_lowercase_non_ascii_name_still_warns(tmp_path):
+    data = build(tmp_path / "data", variants=[{"id": "uber", "name": "über abs"}])
+    found = messages(check_data_quality(data), "starts with a lowercase letter")
+    assert len(found) == 1
+    assert "'Über abs'" in found[0].message
+
+
+def test_caseless_leading_character_is_no_evidence(tmp_path):
+    data = build(tmp_path / "data", variants=[{"id": "tokyo", "name": "東京 Black"}])
+    assert messages(check_data_quality(data), "starts with a lowercase letter") == []
+
+
+def test_capitalised_name_is_clean(tmp_path):
+    data = build(tmp_path / "data", variants=[{"id": "black", "name": "Galaxy Black"}])
+    assert messages(check_data_quality(data), "starts with a lowercase letter") == []
+
+
 # --- orphan_filament (#461) ---------------------------------------------------
 
 
 def test_filament_with_no_variants_warns(tmp_path):
     data = build(tmp_path / "data", filament="silk_blue_green", variants=[])
-    found = messages(check_data_quality(data), "has no variants")
+    found = messages(check_data_quality(data), "has no colours yet")
     assert len(found) == 1
     assert found[0].level.value == "WARNING"
 
 
 def test_filament_with_a_variant_is_clean(tmp_path):
     data = build(tmp_path / "data", variants=[{"id": "black", "name": "Black"}])
-    assert messages(check_data_quality(data), "has no variants") == []
+    assert messages(check_data_quality(data), "has no colours yet") == []
 
 
 # --- sibling_near_duplicate ---------------------------------------------------
@@ -425,3 +485,41 @@ def test_genuinely_different_siblings_are_not_duplicates(tmp_path):
         ],
     )
     assert messages(check_data_quality(data), "word-order duplicate") == []
+
+
+# --- shared trait-rule table --------------------------------------------------
+
+
+def test_trait_rules_load_and_reference_real_traits():
+    """`schemas/trait_rules.json` is decoupled from the schema defining traits.
+
+    That decoupling is deliberate — a rule maps a name to trait keys and says nothing
+    about which entity carries them, so it survives traits moving to the filament —
+    but it means nothing structurally stops a typo'd key from silently suggesting a
+    trait that does not exist. This is that check.
+    """
+    import json
+    from pathlib import Path
+
+    from ofd.scripts.apply_fiber_traits import SCHEMAS_DIR, load_trait_rules
+
+    rules = load_trait_rules()
+    assert rules, "trait_rules.json should load"
+
+    schema = json.loads((Path(SCHEMAS_DIR) / "variant_schema.json").read_text(encoding="utf-8"))
+    known = set(schema["properties"]["traits"]["properties"])
+    for rule in rules:
+        for trait in rule.traits:
+            assert trait in known, f"rule {rule.id!r} names unknown trait {trait!r}"
+
+
+def test_only_definitional_rules_are_enforced():
+    """The soft appearance rules must stay suggestion-only.
+
+    They sit at 70-85% precision, which is fine for a chip the user clicks and wrong
+    for a validation warning or an automatic write.
+    """
+    from ofd.scripts.apply_fiber_traits import VALIDATE, load_trait_rules
+
+    enforced = [r.id for r in load_trait_rules() if VALIDATE in r.applies_to]
+    assert enforced == ["carbon_fiber", "glass_fiber", "high_flow"]

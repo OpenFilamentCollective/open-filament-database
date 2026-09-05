@@ -6,6 +6,7 @@ from .api_exporter import export_api
 from .badge_exporter import export_badges
 from .csv_exporter import export_csv
 from .directory_listing_exporter import export_directory_listings
+from .gtin_index_exporter import export_gtin_index
 from .html_exporter import export_html
 from .json_exporter import export_all_json, export_json, export_ndjson, export_per_brand_json
 from .orca_exporter import export_orca
@@ -25,6 +26,7 @@ __all__ = [
     "export_api",
     "export_orca",
     "export_search_index",
+    "export_gtin_index",
     "export_uuid_index",
     "export_html",
     "export_directory_listings",
