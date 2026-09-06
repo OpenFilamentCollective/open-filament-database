@@ -1,0 +1,12 @@
+{
+  "id": "levemaker",
+  "name": "Levemaker",
+  "storefront_url": "https://levemaker.com/collections/3d-filaments",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": [
+    "US"
+  ]
+}

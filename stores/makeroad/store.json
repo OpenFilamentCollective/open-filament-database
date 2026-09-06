@@ -1,0 +1,12 @@
+{
+  "id": "makeroad",
+  "name": "Makeroad",
+  "storefront_url": "https://store.makeroad.com/collections/filament-1",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": [
+    "US"
+  ]
+}
