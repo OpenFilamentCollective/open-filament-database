@@ -1,0 +1,15 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "article_number": "CA-EL-3D-PEB10",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/dp/B0D41ZMR4G"
+      }
+    ]
+  }
+]
