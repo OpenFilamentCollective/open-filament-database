@@ -1,0 +1,13 @@
+{
+  "material": "TPU",
+  "material_class": "FFF",
+  "default_slicer_settings": {
+    "orcaslicer": {
+      "bed_temp": 55,
+      "first_layer_bed_temp": 55,
+      "first_layer_nozzle_temp": 200,
+      "nozzle_temp": 200,
+      "profile_name": "GIANTARM TPU 95A"
+    }
+  }
+}
