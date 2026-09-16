@@ -1,7 +1,14 @@
 {
   "uuid": "4db219e5-b26e-4474-9583-3ebd19a802e7",
   "id": "polysupport_for_pla",
-  "name": "PVA PolySupport for PLA",
+  "name": "PolySupport for PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.22
+  "density": 1.22,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 220,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://wiki.polymaker.com/polymaker-products/polymaker-filaments/specialty-filament/polysupport-tm-for-pla",
+  "discontinued": false
 }

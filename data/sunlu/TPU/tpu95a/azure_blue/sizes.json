@@ -1,0 +1,18 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 220,
+    "spool_core_diameter": 100,
+    "gtin": "6933582320201",
+    "article_number": "TPU95A-1000-AZURE",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://sunlu.com/products/moq-3kg-tpu-3d-printer-filament-1kg?currency=USD&country=US&variant=51049980854554&stkn=98fc28031836&gad_campaignid=23655271870&gbraid=0AAAAArE_T9DmpiMAczfuvI4TOa1NLRkhX"
+      }
+    ]
+  }
+]
