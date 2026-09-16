@@ -1,0 +1,16 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "amazon",
+        "url": "https://iiidmax.com/collections/all-products/products/iiid-max-classic-pla?variant=46608148889754"
+      }
+    ]
+  }
+]
