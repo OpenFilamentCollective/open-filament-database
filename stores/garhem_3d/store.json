@@ -1,0 +1,12 @@
+{
+  "id": "garhem_3d",
+  "name": "Garhem 3d",
+  "storefront_url": "https://shop.garhem3d.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "ES"
+  ],
+  "ships_to": [
+    "ES"
+  ]
+}
