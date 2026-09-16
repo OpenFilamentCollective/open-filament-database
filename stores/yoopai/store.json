@@ -1,0 +1,10 @@
+{
+  "id": "yoopai",
+  "name": "YooPai",
+  "storefront_url": "https://www.yoopai.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": []
+}
