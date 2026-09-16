@@ -2,7 +2,11 @@
   "uuid": "ad02181c-ed3b-4c66-afb7-f3fc80e5150f",
   "id": "ultramarine_blue",
   "name": "Ultramarine Blue",
-  "color_hex": "#2B3B61",
+  "color_hex": "#2B3B60",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "#313D64"
+  },
   "traits": {
     "translucent": true
   }

@@ -3,6 +3,15 @@
     "uuid": "d9f3f4b8-4006-4be0-972d-631171a2f80a",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675209"
+    "spool_refill": false,
+    "empty_spool_weight": 200,
+    "gtin": "8594173675209",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-ultramarine-blue-1kg-nfc/?country=US&currency=usd&gad_campaignid=913289002&gbraid=0AAAAADkiZoNHVaW4b_n-tiffhP6sX95yw"
+      }
+    ]
   }
 ]
