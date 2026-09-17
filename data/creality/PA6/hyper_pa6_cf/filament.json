@@ -1,0 +1,12 @@
+{
+  "id": "hyper_pa6_cf",
+  "name": "Hyper PA6-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
+  "max_dry_temperature": 80,
+  "min_print_temperature": 280,
+  "max_print_temperature": 300,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 80,
+  "discontinued": false
+}
