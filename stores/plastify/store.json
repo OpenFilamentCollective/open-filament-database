@@ -1,0 +1,12 @@
+{
+  "id": "plastify",
+  "name": "Plastify",
+  "storefront_url": "https://plastify.es/",
+  "logo": "logo.png",
+  "ships_from": [
+    "ES"
+  ],
+  "ships_to": [
+    "ES"
+  ]
+}
