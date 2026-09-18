@@ -1,0 +1,40 @@
+{
+  "id": "marswork",
+  "name": "MarsWork",
+  "storefront_url": "https://www.marswork3d.com",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": [
+    "US",
+    "DE",
+    "AT",
+    "BE",
+    "BG",
+    "HR",
+    "CY",
+    "DK",
+    "EE",
+    "FI",
+    "FR",
+    "GR",
+    "HU",
+    "IE",
+    "IT",
+    "LV",
+    "LT",
+    "LU",
+    "MT",
+    "NL",
+    "PL",
+    "PT",
+    "RO",
+    "SK",
+    "SI",
+    "ES",
+    "SE",
+    "CZ"
+  ],
+  "source": "Company"
+}
