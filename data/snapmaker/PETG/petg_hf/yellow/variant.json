@@ -1,0 +1,9 @@
+{
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FBE95C",
+  "discontinued": false,
+  "traits": {
+    "high_flow": true
+  }
+}
