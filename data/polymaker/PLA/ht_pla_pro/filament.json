@@ -1,0 +1,14 @@
+{
+  "id": "ht_pla_pro",
+  "name": "HT PLA PRO",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 60,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 65,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_Polymaker_HT-PLA_Pro_V1.2_2026-7-15_EN.pdf?v=1784193805",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/PL-XC-2026-US-008_2.pdf?v=1784194062",
+  "discontinued": false
+}
