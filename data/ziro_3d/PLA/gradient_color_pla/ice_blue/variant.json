@@ -1,0 +1,9 @@
+{
+  "id": "ice_blue",
+  "name": "Ice Blue",
+  "color_hex": "#99C5C4",
+  "discontinued": false,
+  "traits": {
+    "silk": true
+  }
+}
