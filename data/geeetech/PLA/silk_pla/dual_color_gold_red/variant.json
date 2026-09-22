@@ -1,11 +1,12 @@
 {
   "uuid": "590b2dc9-adf1-4901-8a21-1db139bdd238",
   "id": "dual_color_gold_red",
-  "name": "Dual Color Gold Red",
+  "name": "Gold + Red",
   "color_hex": [
     "#D4A017",
-    "#CC0000"
+    "#FF0000"
   ],
+  "discontinued": false,
   "traits": {
     "silk": true,
     "iridescent": true,
