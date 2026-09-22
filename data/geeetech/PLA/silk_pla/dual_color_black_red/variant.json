@@ -1,11 +1,12 @@
 {
   "uuid": "dbdfc7ad-026f-4b0f-b0bf-2acd0649cc59",
   "id": "dual_color_black_red",
-  "name": "Dual Color Black Red",
+  "name": "Black + Red",
   "color_hex": [
     "#000000",
-    "#AB2614"
+    "#FF0000"
   ],
+  "discontinued": false,
   "traits": {
     "silk": true,
     "iridescent": true,
