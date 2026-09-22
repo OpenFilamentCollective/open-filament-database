@@ -1,0 +1,13 @@
+{
+  "id": "blue_purale_black",
+  "name": "Blue + Purale + Black",
+  "color_hex": [
+    "#0000FF",
+    "#800080",
+    "#000000"
+  ],
+  "discontinued": false,
+  "traits": {
+    "silk": true
+  }
+}
