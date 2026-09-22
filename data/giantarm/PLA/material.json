@@ -1,5 +1,6 @@
 {
   "uuid": "f0f85c7c-b710-45f5-9f78-48fd990194dc",
   "material": "PLA",
-  "material_class": "FFF"
+  "material_class": "FFF",
+  "default_max_dry_temperature": 45
 }
