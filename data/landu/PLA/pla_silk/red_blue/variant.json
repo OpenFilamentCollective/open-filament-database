@@ -1,0 +1,12 @@
+{
+  "id": "red_blue",
+  "name": "Red + Blue",
+  "color_hex": [
+    "#FF0000",
+    "#0080FF"
+  ],
+  "discontinued": false,
+  "traits": {
+    "silk": true
+  }
+}
