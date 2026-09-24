@@ -1,0 +1,14 @@
+{
+  "material": "PEBA",
+  "material_class": "FFF",
+  "default_max_dry_temperature": 80,
+  "default_slicer_settings": {
+    "bambustudio": {
+      "bed_temp": 40,
+      "first_layer_bed_temp": 40,
+      "first_layer_nozzle_temp": 230,
+      "nozzle_temp": 230,
+      "profile_name": "PEBA 90A"
+    }
+  }
+}
