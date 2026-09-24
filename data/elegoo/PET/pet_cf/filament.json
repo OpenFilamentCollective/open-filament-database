@@ -15,11 +15,11 @@
     "discontinued": false,
     "slicer_settings": {
         "orcaslicer": {
-            "id": "OEPETGB0",
+            "id": "EPETGB00",
             "profile_name": "Elegoo PET-CF"
         },
         "elegooslicer": {
-            "id": "OEPETGB0",
+            "id": "EPETGB00",
             "profile_name": "Elegoo PET-CF"
         }
     }
