@@ -1,0 +1,10 @@
+{
+  "id": "4d_lab",
+  "name": "4D-Lab",
+  "storefront_url": "https://4dlab.co/",
+  "logo": "logo.png",
+  "ships_from": "CO",
+  "ships_to": [
+    "CO"
+  ]
+}

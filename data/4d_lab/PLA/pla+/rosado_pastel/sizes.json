@@ -1,0 +1,16 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_core_diameter": 82,
+    "container_outer_diameter": 198,
+    "container_hole_diameter": 54,
+    "article_number": "CFIX1PLA-RP-LAB",
+    "purchase_links": [
+      {
+        "store_id": "4d_lab",
+        "url": "https://4dlab.co/products/pla?variant=42581544435872"
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#E5B602",
+  "traits": {
+    "glow": true
+  }
+}
