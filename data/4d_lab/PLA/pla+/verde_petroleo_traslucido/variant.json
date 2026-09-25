@@ -1,0 +1,8 @@
+{
+  "id": "verde_petroleo_traslucido",
+  "name": "Verde Petróleo Traslúcido",
+  "color_hex": "#249D5B",
+  "traits": {
+    "translucent": true
+  }
+}
