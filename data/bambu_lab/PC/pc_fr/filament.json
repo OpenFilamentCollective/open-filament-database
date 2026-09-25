@@ -26,6 +26,11 @@
             "generic_id": "GFC99",
             "id": "GFC01",
             "profile_name": "Bambu PC FR"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu PC FR",
+            "id": "GFC01",
+            "generic_id": "GFC99"
         }
     }
 }

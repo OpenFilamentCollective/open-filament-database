@@ -26,6 +26,11 @@
             "generic_id": "GFL96",
             "id": "GFA06",
             "profile_name": "Bambu PLA Silk+"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu PLA Silk+",
+            "id": "GFA06",
+            "generic_id": "GFL96"
         }
     }
 }

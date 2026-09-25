@@ -26,6 +26,11 @@
             "generic_id": "GFB98",
             "id": "GFB51",
             "profile_name": "Bambu ASA-CF"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu ASA-CF",
+            "id": "GFB51",
+            "generic_id": "GFB98"
         }
     }
 }

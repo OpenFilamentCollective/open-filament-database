@@ -24,6 +24,11 @@
             "generic_id": "GFL99",
             "id": "GFSNL03",
             "profile_name": "SUNLU PLA+"
+        },
+        "crealityprint": {
+            "profile_name": "SUNLU PLA+",
+            "id": "GFSNL03",
+            "generic_id": "GFL99"
         }
     }
 }

@@ -26,6 +26,11 @@
             "generic_id": "GFL99",
             "id": "GFA16",
             "profile_name": "Bambu PLA Wood"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu PLA Wood",
+            "id": "GFA16",
+            "generic_id": "GFL99"
         }
     }
 }

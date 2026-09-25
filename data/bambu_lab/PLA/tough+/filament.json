@@ -21,6 +21,11 @@
             "generic_id": "GFL99",
             "id": "GFA10",
             "profile_name": "Bambu PLA Tough+"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu PLA Tough+",
+            "id": "GFA10",
+            "generic_id": "GFL99"
         }
     }
 }

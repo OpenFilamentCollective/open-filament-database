@@ -26,6 +26,11 @@
             "generic_id": "GFU99",
             "id": "GFU02",
             "profile_name": "Bambu TPU for AMS"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu TPU for AMS",
+            "id": "GFU02",
+            "generic_id": "GFU99"
         }
     }
 }

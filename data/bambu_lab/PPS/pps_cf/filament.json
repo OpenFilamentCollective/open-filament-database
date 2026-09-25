@@ -24,6 +24,10 @@
         "anycubicslicer": {
             "id": "GFT02",
             "profile_name": "Bambu PPS-CF"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu PPS-CF",
+            "id": "GFT02"
         }
     }
 }

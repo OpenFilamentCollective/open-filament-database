@@ -26,6 +26,11 @@
             "generic_id": "GFG99",
             "id": "GFG02",
             "profile_name": "Bambu PETG HF"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu PETG HF",
+            "id": "GFG02",
+            "generic_id": "GFG99"
         }
     }
 }

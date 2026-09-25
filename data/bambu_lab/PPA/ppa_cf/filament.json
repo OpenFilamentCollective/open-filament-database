@@ -22,6 +22,10 @@
         "anycubicslicer": {
             "id": "GFN06",
             "profile_name": "Bambu PPA-CF"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu PPA-CF",
+            "id": "GFN06"
         }
     }
 }

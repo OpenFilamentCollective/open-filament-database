@@ -24,6 +24,11 @@
             "generic_id": "GFL96",
             "id": "GFSNL05",
             "profile_name": "SUNLU Silk PLA+"
+        },
+        "crealityprint": {
+            "profile_name": "SUNLU Silk PLA+",
+            "id": "GFSNL05",
+            "generic_id": "GFL96"
         }
     }
 }

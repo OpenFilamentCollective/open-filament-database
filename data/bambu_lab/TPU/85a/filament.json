@@ -26,6 +26,11 @@
             "generic_id": "GFU99",
             "id": "GFU04",
             "profile_name": "Bambu TPU 85A"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu TPU 85A",
+            "id": "GFU04",
+            "generic_id": "GFU99"
         }
     }
 }

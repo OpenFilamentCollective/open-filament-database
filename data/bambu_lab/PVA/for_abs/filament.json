@@ -26,6 +26,11 @@
             "generic_id": "GFS99",
             "id": "GFS06",
             "profile_name": "Bambu Support for ABS"
+        },
+        "crealityprint": {
+            "profile_name": "Bambu Support for ABS",
+            "id": "GFS06",
+            "generic_id": "GFS99"
         }
     }
 }
