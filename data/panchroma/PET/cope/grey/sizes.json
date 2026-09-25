@@ -3,6 +3,11 @@
     "uuid": "6aded2bb-f2bc-4899-b838-f144b53a9d4a",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",

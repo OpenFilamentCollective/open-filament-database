@@ -3,6 +3,11 @@
     "uuid": "03981db9-a238-4868-b060-4aff36d6d746",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -14,6 +19,10 @@
     "uuid": "09b5b7db-b0d8-44ce-ac41-f28f98f55a3a",
     "filament_weight": 3000,
     "diameter": 1.75,
+    "empty_spool_weight": 425,
+    "container_width": 117,
+    "container_outer_diameter": 250,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -25,6 +34,11 @@
     "uuid": "77836c29-2456-43dd-b627-1bd6d59adcbc",
     "filament_weight": 1000,
     "diameter": 2.85,
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -36,6 +50,10 @@
     "uuid": "f1be67e2-1e77-4eb6-9e2b-3fc95cc65047",
     "filament_weight": 3000,
     "diameter": 2.85,
+    "empty_spool_weight": 425,
+    "container_width": 117,
+    "container_outer_diameter": 250,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",
