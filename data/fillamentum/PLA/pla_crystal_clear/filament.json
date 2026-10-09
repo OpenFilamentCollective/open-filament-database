@@ -1,0 +1,14 @@
+{
+  "id": "pla_crystal_clear",
+  "name": "PLA Crystal Clear",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 50,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 55,
+  "data_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_PLA-Crystal-Clear_03012019.pdf",
+  "safety_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/MSDS_PLA-Crystal-Clear_EN_07122018.pdf",
+  "discontinued": false
+}
