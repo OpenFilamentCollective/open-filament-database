@@ -1,0 +1,12 @@
+{
+  "id": "liniya3d",
+  "name": "Liniya3D",
+  "storefront_url": "https://liniya3d.uz/",
+  "logo": "logo.png",
+  "ships_from": [
+    "UZ"
+  ],
+  "ships_to": [
+    "UZ"
+  ]
+}
