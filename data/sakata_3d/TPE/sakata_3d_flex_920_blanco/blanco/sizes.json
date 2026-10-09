@@ -1,12 +1,13 @@
 [
   {
+    "uuid": "09b0d8f5-62f0-4c8f-8d3e-5b6acaf2da6e",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
     "gtin": "8436618231536",
-    "article_number": " 307011",
+    "article_number": "307011",
     "discontinued": false,
     "purchase_links": [
       {
