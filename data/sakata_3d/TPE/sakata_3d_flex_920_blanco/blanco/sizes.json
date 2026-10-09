@@ -1,0 +1,18 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "8436618231536",
+    "article_number": " 307011",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "garhem_3d",
+        "url": "https://shop.garhem3d.com/producto/sakata-x-920-flexible-white-1kg"
+      }
+    ]
+  }
+]
