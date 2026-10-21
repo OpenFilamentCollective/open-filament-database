@@ -167,6 +167,16 @@ def build_abstract_file_tree(db: Database) -> str:
     )
     lines.append(li_dir("orcaslicer", orca_files))
 
+    # Spoolman external filament catalog
+    spoolman_files = "\n".join(
+        [
+            li_file("filaments.json", "spoolman/filaments.json"),
+            li_file("materials.json", "spoolman/materials.json"),
+            li_file("README.txt", "spoolman/README.txt"),
+        ]
+    )
+    lines.append(li_dir("spoolman", spoolman_files))
+
     # Root files
     lines.append(li_file("manifest.json", "manifest.json"))
 
