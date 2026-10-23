@@ -3,11 +3,11 @@
     "id": "abs",
     "name": "ABS",
     "diameter_tolerance": 0.02,
-    "density": 1.04,
-    "min_print_temperature": 230,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 90,
-    "max_bed_temperature": 110,
+    "density": 1.03,
+    "min_print_temperature": 220,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 120,
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Push Plastic ABS"
