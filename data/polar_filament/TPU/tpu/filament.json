@@ -3,9 +3,10 @@
   "id": "tpu",
   "name": "TPU",
   "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
+  "density": 1.25,
+  "shore_hardness_d": 60,
+  "min_print_temperature": 220,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 60,
   "max_bed_temperature": 60
 }
