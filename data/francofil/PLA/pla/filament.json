@@ -6,6 +6,7 @@
   "density": 1.24,
   "min_print_temperature": 190,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://francofil.fr/wp-content/uploads/2023/12/Fiche-technique-PLA.pdf"
 }
