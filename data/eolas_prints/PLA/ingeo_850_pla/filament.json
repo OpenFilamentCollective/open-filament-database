@@ -2,10 +2,11 @@
   "uuid": "a0228422-073c-459c-a129-a4d06bcf0149",
   "id": "ingeo_850_pla",
   "name": "Ingeo 850 PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_print_temperature": 195,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 50,
+  "data_sheet_url": "https://cdnm.heyzine.com/files/uploaded/v2/c7620d54b7f598d058897512c35fe2f2cadae6a5-1.pdf"
 }
