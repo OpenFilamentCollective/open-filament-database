@@ -1,0 +1,9 @@
+{
+  "id": "stepped_on_orange",
+  "name": "Stepped On Orange",
+  "color_hex": "#FF8F1C",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "1495 C"
+  }
+}

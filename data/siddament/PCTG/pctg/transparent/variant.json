@@ -1,0 +1,9 @@
+{
+  "id": "transparent",
+  "name": "Transparent",
+  "color_hex": "#FFFFFF",
+  "discontinued": false,
+  "traits": {
+    "transparent": true
+  }
+}

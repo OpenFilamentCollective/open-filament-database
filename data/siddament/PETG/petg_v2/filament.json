@@ -1,0 +1,36 @@
+{
+  "id": "petg_v2",
+  "name": "PETG v2",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "shore_hardness_d": 75,
+  "max_dry_temperature": 60,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250,
+  "preheat_temperature": 170,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 75,
+  "min_chamber_temperature": 0,
+  "max_chamber_temperature": 40,
+  "min_print_speed": 20,
+  "max_print_speed": 150,
+  "chamber_temperature": 30,
+  "min_nozzle_diameter": 0.2,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/PETG_TDS_Siddament.pdf?v=1745839600",
+  "discontinued": false,
+  "slicer_settings": {
+    "bambustudio": {
+      "bed_temp": 70,
+      "first_layer_bed_temp": 75,
+      "first_layer_nozzle_temp": 240,
+      "nozzle_temp": 240,
+      "profile_name": "Siddament PETG v2"
+    },
+    "generic": {
+      "bed_temp": 70,
+      "first_layer_bed_temp": 75,
+      "first_layer_nozzle_temp": 240,
+      "nozzle_temp": 240
+    }
+  }
+}

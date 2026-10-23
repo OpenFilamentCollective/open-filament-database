@@ -1,0 +1,9 @@
+{
+  "id": "tool_red",
+  "name": "Tool Red",
+  "color_hex": "#C8102E",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "186 C"
+  }
+}

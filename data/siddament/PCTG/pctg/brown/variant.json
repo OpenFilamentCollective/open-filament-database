@@ -1,0 +1,9 @@
+{
+  "id": "brown",
+  "name": "Brown",
+  "color_hex": "#623E2A",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "477 C"
+  }
+}
