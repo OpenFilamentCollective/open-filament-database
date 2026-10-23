@@ -2,10 +2,10 @@
   "uuid": "832370dd-7550-476c-9579-4e0eaeb417bf",
   "id": "cf_pa6",
   "name": "PA6 CF",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.14,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
+  "min_print_temperature": 260,
+  "max_print_temperature": 280,
   "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 80
 }

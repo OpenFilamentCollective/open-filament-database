@@ -2,10 +2,10 @@
   "uuid": "fd791687-4b6a-4738-a584-5af2c3d788b5",
   "id": "pa6",
   "name": "PA6",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.04,
   "density": 1.14,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
+  "min_print_temperature": 220,
+  "max_print_temperature": 280,
   "min_bed_temperature": 80,
   "max_bed_temperature": 100
 }

@@ -2,10 +2,10 @@
   "uuid": "858aac2c-13da-44a2-890e-6ba105e0c314",
   "id": "small_spool_flexible_tpu",
   "name": "Small Spool Flexible TPU",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
+  "min_print_temperature": 195,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 40,
   "max_bed_temperature": 60
 }

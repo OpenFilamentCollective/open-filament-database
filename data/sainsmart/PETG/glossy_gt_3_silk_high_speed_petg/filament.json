@@ -2,10 +2,10 @@
   "uuid": "f2f77171-9d61-436b-bc21-ec3571bcfca8",
   "id": "glossy_gt_3_silk_high_speed_petg",
   "name": "Glossy Gt 3 Silk High Speed PETG",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.04,
   "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
+  "min_print_temperature": 240,
+  "max_print_temperature": 280,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 80
 }

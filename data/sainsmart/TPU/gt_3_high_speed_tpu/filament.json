@@ -2,10 +2,10 @@
   "uuid": "0e1d7a1e-60d5-4ff7-8d72-9eee19927429",
   "id": "gt_3_high_speed_tpu",
   "name": "Gt 3 High Speed TPU",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.04,
   "density": 1.21,
-  "min_print_temperature": 210,
+  "min_print_temperature": 220,
   "max_print_temperature": 240,
   "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 50
 }

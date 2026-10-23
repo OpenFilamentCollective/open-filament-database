@@ -2,10 +2,10 @@
   "uuid": "0379702f-3185-4b03-83c6-dcd0feec8807",
   "id": "mango_mojito",
   "name": "TPU Mango Mojito",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
+  "min_print_temperature": 195,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 40,
   "max_bed_temperature": 60
 }
