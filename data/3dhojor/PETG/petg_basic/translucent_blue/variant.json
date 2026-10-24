@@ -1,0 +1,9 @@
+{
+  "id": "translucent_blue",
+  "name": "Translucent Blue",
+  "color_hex": "#031DD5",
+  "discontinued": false,
+  "traits": {
+    "translucent": true
+  }
+}

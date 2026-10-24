@@ -1,0 +1,9 @@
+{
+  "id": "translucent_orange",
+  "name": "Translucent Orange",
+  "color_hex": "#FF8040",
+  "discontinued": false,
+  "traits": {
+    "translucent": true
+  }
+}
