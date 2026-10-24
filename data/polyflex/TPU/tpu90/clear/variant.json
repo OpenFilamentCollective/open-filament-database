@@ -1,6 +1,12 @@
 {
   "uuid": "1aeaf0d9-97c9-46f3-a5f9-177c3d3db5b2",
+  "moved_from": [
+    "feca99ed-6261-46ba-befb-df1b6c0cd2bb"
+  ],
   "id": "clear",
   "name": "Clear",
-  "color_hex": "#DBD5D6"
+  "color_hex": "#DBD5D6",
+  "traits": {
+    "transparent": true
+  }
 }

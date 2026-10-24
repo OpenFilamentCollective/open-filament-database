@@ -1,5 +1,8 @@
 {
   "uuid": "a760e36f-868a-4e4b-bafb-f97763661131",
+  "moved_from": [
+    "29c8089e-493e-4402-aa3b-d3a3b5e71618"
+  ],
   "id": "orange",
   "name": "Orange",
   "color_hex": "#FF9E1B"

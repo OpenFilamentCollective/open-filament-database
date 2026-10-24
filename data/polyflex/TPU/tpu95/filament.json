@@ -1,9 +1,13 @@
 {
   "uuid": "23cfd108-0038-4eb8-824e-ba2bb5174b1d",
+  "moved_from": [
+    "d9bae387-64b9-4162-ac88-a7b49e547732"
+  ],
   "id": "tpu95",
   "name": "TPU95",
   "diameter_tolerance": 0.02,
   "density": 1.22,
+  "shore_hardness_a": 95,
   "min_print_temperature": 210,
   "max_print_temperature": 230,
   "min_bed_temperature": 25,

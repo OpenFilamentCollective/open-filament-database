@@ -1,24 +1,26 @@
 [
   {
     "uuid": "5d3acc30-9205-467b-a160-5d3b6ffb2bef",
-    "filament_weight": 750,
+    "moved_from": [
+      "53d8896d-6942-43d4-a356-a1977987907e"
+    ],
+    "filament_weight": 1000,
     "diameter": 1.75,
+    "gtin": "6938936711643",
+    "article_number": "PD03003",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polyflex-tpu95-hf"
+        "url": "https://us.polymaker.com/products/polyflex-tpu95-hf?variant=39574341845049"
       }
     ]
   },
   {
     "uuid": "20e8d47e-d394-4bde-8561-0f5c0f5d26a5",
-    "filament_weight": 750,
+    "filament_weight": 1000,
     "diameter": 2.85,
-    "purchase_links": [
-      {
-        "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polyflex-tpu95-hf"
-      }
-    ]
+    "gtin": "6938936711926",
+    "article_number": "PD03006",
+    "discontinued": true
   }
 ]

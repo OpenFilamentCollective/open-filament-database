@@ -1,9 +1,13 @@
 {
   "uuid": "7f056d54-e74c-4592-bbef-5f5c44da442e",
+  "moved_from": [
+    "cd82b213-7be0-4185-8791-478d7fe25f30"
+  ],
   "id": "clear",
   "name": "Clear",
   "color_hex": "#DBD5D6",
   "traits": {
-    "high_flow": true
+    "high_flow": true,
+    "transparent": true
   }
 }
