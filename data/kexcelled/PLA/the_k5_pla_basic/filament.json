@@ -1,0 +1,14 @@
+{
+  "id": "the_k5_pla_basic",
+  "name": "THE K5™ PLA (Basic)",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "min_print_temperature": 200,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 55,
+  "max_print_speed": 300,
+  "min_fan_speed": 50,
+  "max_fan_speed": 100,
+  "discontinued": false
+}
