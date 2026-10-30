@@ -4,7 +4,7 @@ What still doesn't work, found by dry-running the review on the 19 open data PRs
 
 ## Review accuracy
 
-- **Script-built shops are still only partly readable.** The review now hands the model the data a script-built page renders from (inline JSON, or same-site `*data*.js` files such as Add-North's `/initial-data.js`). The model still struggles to tie a record in a multi-megabyte catalogue to the right product: on #818 it caught 1 of the 11 drying temperatures that disagree with Add-North's data (ESD PETG, 65 °C instead of 50), and only said the rest "need a check". Shops that render through an API call rather than a data file aren't covered at all.
+- **Script-built shops are still only partly readable.** The review now hands the model the data a script-built page renders from (inline JSON, or same-site `*data*.js` files such as Add-North's `/initial-data.js`). Matching a record in a multi-megabyte catalogue to the right product is still hit and miss: on #818 it catches 6 of the 11 drying temperatures that disagree with Add-North's data, all six correctly, and misses the other five. Shops that render through an API call rather than a data file aren't covered at all.
 - **The model sometimes still says it couldn't read something.** The guidelines tell it not to, and the script now lists unreadable sources itself, but Haiku occasionally adds a sentence anyway (#818, #820). It no longer turns that into findings.
 - **Sources behind bot protection** (HTTP 403 or 429 without a Wayback copy) are listed as unreadable for a maintainer. Nothing gets around them, deliberately.
 - **Large PRs get a light review.** On PRs with more than ~70 values (#815, #816) the model spot-checks rather than checking every value.

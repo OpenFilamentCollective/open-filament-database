@@ -11,6 +11,7 @@ Pages behind bot protection fail too. Those are reported in the PR as "could not
 verify" for a human to check, rather than trusted.
 """
 
+import http.client
 import io
 import json
 import logging
@@ -168,45 +169,81 @@ def normalize(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+@dataclass
+class Download:
+    """A URL as served: the bytes and how to read them, or why it failed."""
+
+    ok: bool
+    data: bytes = b""
+    content_type: str = ""
+    charset: str = "utf-8"
+    final_url: str = ""
+    error: str = ""
+
+    def text(self) -> str:
+        try:
+            return self.data.decode(self.charset, errors="replace")
+        except LookupError:  # a charset Python doesn't know ("utf8mb4")
+            return self.data.decode("utf-8", errors="replace")
+
+
 class Fetcher:
     """Fetch each URL once per run."""
 
     def __init__(self):
         self._cache: dict[str, Page] = {}
+        self._downloads: dict[str, Download] = {}
 
     def get(self, url: str) -> Page:
         if url not in self._cache:
             self._cache[url] = self._fetch(url)
         return self._cache[url]
 
-    def _fetch(self, url: str) -> Page:
-        if not url.startswith("https://"):
-            return Page(url, False, error="not an https URL")
-        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-        try:
-            with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
-                data = response.read(MAX_BYTES)
-                content_type = response.headers.get("Content-Type", "")
-                charset = response.headers.get_content_charset() or "utf-8"
-                final_url = response.geturl()
-        except urllib.error.HTTPError as exc:
-            return Page(url, False, error=f"HTTP {exc.code}")
-        except (urllib.error.URLError, TimeoutError, OSError) as exc:
-            return Page(url, False, error=str(getattr(exc, "reason", exc)))
+    def download(self, url: str) -> Download:
+        """The raw response, cached; never raises."""
+        if url not in self._downloads:
+            self._downloads[url] = self._download(url)
+        return self._downloads[url]
 
-        if "pdf" in content_type or data.startswith(b"%PDF"):
+    def _download(self, url: str) -> Download:
+        if not url.startswith("https://"):
+            return Download(False, error="not an https URL")
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
+                return Download(
+                    True,
+                    response.read(MAX_BYTES),
+                    response.headers.get("Content-Type", ""),
+                    response.headers.get_content_charset() or "utf-8",
+                    response.geturl(),
+                )
+        except urllib.error.HTTPError as exc:
+            return Download(False, error=f"HTTP {exc.code}")
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            return Download(False, error=str(getattr(exc, "reason", exc)))
+        # InvalidURL (a ValueError), IncompleteRead and other http.client errors.
+        except (ValueError, http.client.HTTPException) as exc:
+            return Download(False, error=f"{type(exc).__name__}: {exc}")
+
+    def _fetch(self, url: str) -> Page:
+        got = self.download(url)
+        if not got.ok:
+            return Page(url, False, error=got.error)
+        if "pdf" in got.content_type or got.data.startswith(b"%PDF"):
             try:
-                return Page(url, True, normalize(pdf_text(data)), is_pdf=True, final_url=final_url)
+                text = normalize(pdf_text(got.data))
+                return Page(url, True, text, is_pdf=True, final_url=got.final_url)
             except ImportError:
                 return Page(url, False, is_pdf=True, error="pypdf is not installed")
             except Exception as exc:  # pypdf raises many kinds on broken files
                 return Page(url, False, is_pdf=True, error=f"unreadable PDF ({exc})")
-        text, main, title = html_parts(data.decode(charset, errors="replace"))
+        text, main, title = html_parts(got.text())
         return Page(
             url,
             True,
             normalize(text),
-            final_url=final_url,
+            final_url=got.final_url,
             title=normalize(title),
             main=normalize(main),
         )

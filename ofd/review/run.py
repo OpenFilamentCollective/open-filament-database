@@ -34,7 +34,7 @@ from ofd.review.render import (
     summary,
     verdict_map,
 )
-from ofd.review.sources import SOURCES_DIR, collect_urls, commit_messages, fetch_sources
+from ofd.review.sources import SOURCES_PREFIX, collect_urls, commit_messages, fetch_sources
 from ofd.review.sources import context_section as sources_section
 from ofd.review.suggest import build_suggestions
 from ofd.review.sustainability import (
@@ -191,6 +191,7 @@ def review(
             leaves=leaves,
             fetcher=fetcher,
             base_tree=base_tree,
+            head_tree=head_tree,
         )
         result["spent_usd"] += (result["model"] or {}).get("cost_usd", 0)
     result["sustainability"]["gate"] = gate(touch, result["model"])
@@ -289,17 +290,24 @@ def gate_from_result(result: dict, override: str | None = None) -> dict:
     return gate(touch, result.get("model"), override)
 
 
-def _fetch_sources(result, repo_dir, pr, changes, workdir, fetcher, base_tree) -> list:
-    """Fetch the PR's sources into ``workdir`` and record them in ``result["sources"]``."""
+def _fetch_sources(result, repo_dir, pr, changes, out_dir, workdir, fetcher, trees) -> list:
+    """Fetch the PR's sources into ``out_dir`` and record them in ``result["sources"]``.
+
+    Brand websites come from the PR's head first, so a new brand's shop links count;
+    this only decides what the model gets to read, never what counts as proof.
+    """
     brands = {c.path.split("/")[1] for c in changes if c.path.count("/") >= 1}
-    sites = {b: brand_site(base_tree, f"data/{b}/x") if base_tree else None for b in brands}
+    sites = {
+        b: next((site for t in trees if t and (site := brand_site(t, f"data/{b}/x"))), None)
+        for b in brands
+    }
     urls = collect_urls(
         pr.get("body") or "",
         commit_messages(repo_dir, result["base_sha"], result["head_sha"]),
         changes,
         sites,
     )
-    sources = fetch_sources(urls, workdir, fetcher or Fetcher())
+    sources = fetch_sources(urls, out_dir, workdir, fetcher or Fetcher())
     result["sources"] = [s.to_dict() for s in sources]
     unread = sum(1 for s in sources if not s.ok)
     log(f"#{result['pr']}: {len(sources)} sources fetched for the model, {unread} unreadable")
@@ -322,6 +330,7 @@ def _model_pass(
     leaves=(),
     fetcher=None,
     base_tree=None,
+    head_tree=None,
 ) -> None:
     number = result["pr"]
     if not available():
@@ -343,17 +352,20 @@ def _model_pass(
         )
 
     def run_in(workdir: Path):
-        sources = _fetch_sources(result, repo_dir, pr, changes, workdir, fetcher, base_tree)
-        return run_model(context + "\n" + sources_section(sources), workdir, model, budget_usd)
+        # A fresh, unguessable folder: a PR can't plant files the model would take for
+        # fetched sources, and nothing is left behind in a --head-dir checkout.
+        out_dir = Path(tempfile.mkdtemp(prefix=SOURCES_PREFIX, dir=workdir))
+        try:
+            sources = _fetch_sources(
+                result, repo_dir, pr, changes, out_dir, workdir, fetcher, (head_tree, base_tree)
+            )
+            return run_model(context + "\n" + sources_section(sources), workdir, model, budget_usd)
+        finally:
+            shutil.rmtree(out_dir, ignore_errors=True)
 
     try:
         if head_dir:
-            created = not (Path(head_dir) / SOURCES_DIR).exists()
-            try:
-                model_result = run_in(Path(head_dir))
-            finally:
-                if created:
-                    shutil.rmtree(Path(head_dir) / SOURCES_DIR, ignore_errors=True)
+            model_result = run_in(Path(head_dir))
         else:
             with head_worktree(repo_dir, head) as path:
                 model_result = run_in(path)

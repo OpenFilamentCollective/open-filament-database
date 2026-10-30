@@ -99,13 +99,20 @@ def values_section(leaves) -> str:
     check. The model only proposes sources for the first list; it must not research
     the second.
     """
-    from ofd.automerge.proof import PROVABLE, classify
+    from ofd.automerge.proof import OFFICIAL_WIKIS, PROVABLE, classify
 
     provable = [leaf for leaf in leaves if classify(leaf) == PROVABLE]
     human = [leaf for leaf in leaves if classify(leaf) != PROVABLE]
     if not leaves:
         return ""
-    lines = ["## Values to prove", ""]
+    lines = [
+        "## Values to prove",
+        "",
+        "Brand wikis that count as the brand's own site: "
+        + ", ".join(f"`{w}`" for w in sorted(OFFICIAL_WIKIS))
+        + ".",
+        "",
+    ]
     if provable:
         lines += [
             f"- `{leaf.path}` `{leaf.pointer}` = `{json.dumps(leaf.after, ensure_ascii=False)}`"

@@ -173,8 +173,9 @@ For each one, try to find ONE page on the brand's own website (or its own datash
 that states exactly that value for exactly this product, and return it in `proofs` with
 the page URL and a verbatim quote from that page containing the value. Rules:
 
-- The page must be the brand's own site (its official wiki or help centre counts). No
-  retailers, forums, community pages, marketplaces or review sites.
+- The page must be the brand's own site. No retailers, forums, community pages or wikis,
+  marketplaces or review sites; the only wikis that count are the brand wikis the
+  context lists under "Values to prove".
 - The quote must be copied verbatim and name the product (or colour, for colour-level
   values), with the number in it. Copy the page's own words only: for a spec table, join
   the label and value with a single space exactly as they read ("Print Temp 240-270
@@ -232,8 +233,8 @@ search and fetch the web (`WebSearch`, `WebFetch`). You cannot run commands or e
 files.
 
 **Sources.** The context's "Sources the script fetched" section lists the PR's own
-sources (links in the body, the commit messages and the changed files) as text files in
-`.ofd-sources/`, PDFs included. Read and `Grep` those first; they are what the
+sources (links in the body, the commit messages and the changed files) as text files,
+PDFs included. Read and `Grep` those first; they are what the
 contributor read. Use `WebFetch` only for pages not listed there.
 
 **When you can't read a source, say nothing about it.** The script already tells the
