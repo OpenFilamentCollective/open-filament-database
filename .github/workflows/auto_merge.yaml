@@ -55,8 +55,10 @@ permissions:
 jobs:
   evaluate:
     name: Evaluate
+    # Without the repo bot's credentials there is nothing to post with: skip, not fail.
     if: >-
-      vars.OFD_AUTOMERGE == 'shadow' || vars.OFD_AUTOMERGE == 'on'
+      (vars.OFD_AUTOMERGE == 'shadow' || vars.OFD_AUTOMERGE == 'on') &&
+      vars.OFD_REPO_BOT_APP_ID != ''
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     # Not for the sweep: schedule, or a dispatch without a PR number.
@@ -130,6 +132,7 @@ jobs:
     name: Merge sweep
     if: >-
       (vars.OFD_AUTOMERGE == 'shadow' || vars.OFD_AUTOMERGE == 'on') &&
+      vars.OFD_REPO_BOT_APP_ID != '' &&
       (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.pr == ''))
     runs-on: ubuntu-24.04
     timeout-minutes: 45

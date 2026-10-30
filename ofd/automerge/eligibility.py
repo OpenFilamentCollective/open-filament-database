@@ -30,11 +30,13 @@ _DATA_PATH = re.compile(
     r"^data/[^/]+/[^/]+/[^/]+/(?:filament\.json|[^/]+/(?:variant|sizes)\.json)$"
 )
 
-# Required on top of whatever the ruleset requires: a missing one fails, too.
+# Required on top of whatever the ruleset requires: a missing one fails, too. Not the
+# "AI review" job's own check: a re-review started by hand or by `/review` reports it on
+# main, not on the PR's head. E3 and E13 already require a completed review of the head,
+# and a failing "AI review" run on the head still blocks through E16's "others".
 REQUIRED_CONTEXTS = (
     "Brand sign-off",
     "Sustainability sources",
-    "AI review",
     "Validate data - json-files",
     "Validate data - folder-names",
     "Validate data - store-ids",

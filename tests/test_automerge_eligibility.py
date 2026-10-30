@@ -122,6 +122,16 @@ def test_a_missing_required_check_blocks():
     assert "E16" in [i.id for i in evaluate(snapshot).failures]
 
 
+def test_a_re_review_started_by_hand_counts():
+    """A dispatched or `/review` run puts its "AI review" check on main, not the head;
+    the review artifact for the head (E3, E13) is what counts."""
+    snapshot = green()
+    snapshot.checks.pop("AI review", None)
+    assert evaluate(snapshot).eligible
+    snapshot.checks["AI review"] = "failure"
+    assert "E16" in [i.id for i in evaluate(snapshot).failures]
+
+
 def test_a_pending_unrelated_check_blocks_but_our_own_does_not():
     snapshot = green()
     snapshot.checks["Auto-merge"] = "pending"
