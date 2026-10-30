@@ -5,10 +5,16 @@
     "diameter": 1.75,
     "empty_spool_weight": 170,
     "spool_core_diameter": 54,
+    "article_number": "PLA-HS-MATTE-1K-GREY",
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://store.sunlu.com/collections/matte-pla/products/moq-6kg-high-speed-matte-pla-3d-printer-filament-1kg"
+        "url": "https://sunlu.com/collections/matte-pla/products/moq-6kg-high-speed-matte-pla-3d-printer-filament-1kg"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/dp/B0F6V23V65"
       }
     ]
   }

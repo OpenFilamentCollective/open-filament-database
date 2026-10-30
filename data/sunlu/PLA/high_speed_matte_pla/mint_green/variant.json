@@ -1,0 +1,16 @@
+{
+  "id": "mint_green",
+  "name": "Mint Green",
+  "color_hex": "#00C7B1",
+  "transmission_distance": 2.5,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "6027",
+    "ncs": "S 1050-B90G",
+    "pantone": "3252 U"
+  },
+  "traits": {
+    "matte": true,
+    "high_flow": true
+  }
+}
