@@ -1,0 +1,12 @@
+{
+  "id": "best_buy",
+  "name": "Best Buy",
+  "storefront_url": "https://www.bestbuy.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": [
+    "US"
+  ]
+}
