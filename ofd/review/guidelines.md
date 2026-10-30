@@ -173,14 +173,18 @@ For each one, try to find ONE page on the brand's own website (or its own datash
 that states exactly that value for exactly this product, and return it in `proofs` with
 the page URL and a verbatim quote from that page containing the value. Rules:
 
-- The page must be the brand's own site. No retailers, forums, community or wiki pages,
-  marketplaces or review sites.
+- The page must be the brand's own site (its official wiki or help centre counts). No
+  retailers, forums, community pages, marketplaces or review sites.
 - The quote must be copied verbatim and name the product (or colour, for colour-level
   values), with the number in it. Copy the page's own words only: for a spec table, join
   the label and value with a single space exactly as they read ("Print Temp 240-270
   degrees"), never with "/", "|", ":" or other characters you add yourself. The
-  script compares your quote to the page's text, so anything not on the page fails. For a range like "190-230 °C", quote the whole range;
-  `min_*` is the lower end and `max_*` the upper.
+  script compares your quote to the page's text, so anything not on the page fails.
+  In a table row, quote every cell between the product and the value
+  ("CA14013 Panchroma CoPE Aqua Blue #5EBDDB 2.3"), or skip cells with "…"
+  ("CA14013 Panchroma CoPE Aqua Blue … 2.3"); never drop a cell silently.
+  For a range like "190-230 °C", quote the whole range; `min_*` is the lower end and
+  `max_*` the upper.
 - If you can't find such a page, leave the value out of `proofs`. Never guess, never
   reuse a page about a different product or colour, never "prove" a value with a page
   that says something else. A script re-fetches every proof and rejects anything that
@@ -227,15 +231,33 @@ compare against siblings, other filaments of the brand, `stores/` and `schemas/`
 search and fetch the web (`WebSearch`, `WebFetch`). You cannot run commands or edit
 files.
 
+**Sources.** The context's "Sources the script fetched" section lists the PR's own
+sources (links in the body, the commit messages and the changed files) as text files in
+`.ofd-sources/`, PDFs included. Read and `Grep` those first; they are what the
+contributor read. Use `WebFetch` only for pages not listed there.
+
+**When you can't read a source, say nothing about it.** The script already tells the
+maintainer which sources it couldn't read. Never write a finding, or a sentence in the
+summary, about a page you couldn't load, a PDF you couldn't decode or a value you
+"couldn't confirm", and never hold the PR back for that alone. Write a finding only for
+something you actually saw that is wrong or missing. A value you couldn't check is
+simply left out of `proofs`.
+
 ## Output
 
 Return one JSON object matching the provided schema:
 
 - `summary`: 1-3 sentences for the maintainer: what the PR does and whether it looks
-  ready to merge. Plain and short.
-- `findings`: problems a human should act on, each anchored to a file (and a JSON
-  pointer where possible). `error` = wrong data that should not merge as is;
-  `warning` = very likely wrong, needs a fix or a source; `note` = worth a look.
+  ready to merge. Plain and short. Count things exactly ("9 new colours, 2 updated"),
+  and say only what you checked. Never call a value "proven" or "verified": a script
+  decides that after you answer, and its verdict is shown next to your summary.
+- `findings`: problems a human should act on, each one something you saw on a source or
+  in the repository. Before saying something is missing from a page, search the whole
+  page text for it (article numbers, or the product under an older name). Before saying
+  a value is wrong, check it isn't stated elsewhere on the same page or datasheet. A
+  note that only repeats what the PR body already says is noise; leave it out.
+  Anchor each to a file (and a JSON pointer where possible). `error` = wrong data that
+  should not merge as is; `warning` = very likely wrong, needs a fix or a source; `note` = worth a look.
   Write messages to the contributor: friendly, concrete, one or two sentences,
   saying what to change. No praise, no restating what the diff does. Never suggest
   removing a field the schema requires (a filament's `density` and

@@ -359,9 +359,32 @@ def verify_sourced(
     return entry.errors, entry.warnings
 
 
+MARKETPLACES = {
+    "amazon",
+    "aliexpress",
+    "bestbuy",
+    "ebay",
+    "facebook",
+    "hobbylobby",
+    "instagram",
+    "jaycar",
+    "microcenter",
+    "walmart",
+}
+
+
 def brand_site_name(website: str | None) -> str | None:
-    host = (urlsplit(website).hostname or "").lower() if isinstance(website, str) else ""
-    return site_name(host) if host else None
+    if not isinstance(website, str) or not website.strip():
+        return None
+    website = website.strip()
+    # Some brand.json files say "bambulab.com"; without a scheme urlsplit finds no host.
+    if "://" not in website:
+        website = "https://" + website
+    host = (urlsplit(website).hostname or "").lower()
+    # A marketplace search or a social page is not the brand's own site.
+    if not host or site_name(host) in MARKETPLACES:
+        return None
+    return site_name(host)
 
 
 def brand_site(tree: TreeReader, path: str) -> str | None:

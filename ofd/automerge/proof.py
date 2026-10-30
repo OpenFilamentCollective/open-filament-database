@@ -51,6 +51,8 @@ SHEETS = {"data_sheet_url", "safety_sheet_url"}
 
 # Brand-domain pages written by users, not the brand.
 UGC_SUBDOMAIN = re.compile(r"^(?:forum|forums|community|wiki|reviews?|answers|support-community)\.")
+# Wikis the brand itself writes (Polymaker's TD and hex tables live on its wiki).
+OFFICIAL_WIKIS = {"wiki.polymaker.com", "wiki.bambulab.com"}
 
 MAX_QUOTE_GAP = 300
 
@@ -235,7 +237,7 @@ def _on_brand_site(url: str, ctx: Context) -> str | None:
     host = (urlsplit(url).hostname or "").lower()
     if not ctx.brand_site:
         return "the brand has no website on record"
-    if UGC_SUBDOMAIN.match(host):
+    if UGC_SUBDOMAIN.match(host) and host not in OFFICIAL_WIKIS:
         return f"{host} is a user-written section of the site"
     if site_name(host) != ctx.brand_site:
         return f"{host} is not the brand's own site"

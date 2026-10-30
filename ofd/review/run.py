@@ -7,6 +7,7 @@ the two as separate steps (and upload the document as an artifact), while a loca
 """
 
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -33,12 +34,15 @@ from ofd.review.render import (
     summary,
     verdict_map,
 )
+from ofd.review.sources import SOURCES_DIR, collect_urls, commit_messages, fetch_sources
+from ofd.review.sources import context_section as sources_section
 from ofd.review.suggest import build_suggestions
 from ofd.review.sustainability import (
     OVERRIDE_LABEL,
     STATUS_CONTEXT,
     Entry,
     Touch,
+    brand_site,
     context_section,
     find_touches,
     gate,
@@ -158,6 +162,7 @@ def review(
         "proofs": {},
         "finding_verdicts": [],
         "superseded": False,
+        "sources": [],
     }
     use_model = ai == "always" or (ai == "auto" and touch.any)
     remaining = PR_BUDGET_USD - result["spent_usd"]
@@ -284,6 +289,23 @@ def gate_from_result(result: dict, override: str | None = None) -> dict:
     return gate(touch, result.get("model"), override)
 
 
+def _fetch_sources(result, repo_dir, pr, changes, workdir, fetcher, base_tree) -> list:
+    """Fetch the PR's sources into ``workdir`` and record them in ``result["sources"]``."""
+    brands = {c.path.split("/")[1] for c in changes if c.path.count("/") >= 1}
+    sites = {b: brand_site(base_tree, f"data/{b}/x") if base_tree else None for b in brands}
+    urls = collect_urls(
+        pr.get("body") or "",
+        commit_messages(repo_dir, result["base_sha"], result["head_sha"]),
+        changes,
+        sites,
+    )
+    sources = fetch_sources(urls, workdir, fetcher or Fetcher())
+    result["sources"] = [s.to_dict() for s in sources]
+    unread = sum(1 for s in sources if not s.ok)
+    log(f"#{result['pr']}: {len(sources)} sources fetched for the model, {unread} unreadable")
+    return sources
+
+
 def _model_pass(
     result,
     repo_dir,
@@ -319,12 +341,22 @@ def _model_pass(
             )
             + "\n"
         )
+
+    def run_in(workdir: Path):
+        sources = _fetch_sources(result, repo_dir, pr, changes, workdir, fetcher, base_tree)
+        return run_model(context + "\n" + sources_section(sources), workdir, model, budget_usd)
+
     try:
         if head_dir:
-            model_result = run_model(context, head_dir, model, budget_usd)
+            created = not (Path(head_dir) / SOURCES_DIR).exists()
+            try:
+                model_result = run_in(Path(head_dir))
+            finally:
+                if created:
+                    shutil.rmtree(Path(head_dir) / SOURCES_DIR, ignore_errors=True)
         else:
             with head_worktree(repo_dir, head) as path:
-                model_result = run_model(context, path, model, budget_usd)
+                model_result = run_in(path)
     except ModelError as exc:
         log(f"#{number}: {exc}")
         result["model"] = {"error": str(exc)}

@@ -125,6 +125,13 @@ def ai_section(result: dict) -> str:
         return "\n".join(lines + [AI_END])
 
     lines += [quiet(model.get("summary", "").strip()), ""]
+    unread = [s for s in result.get("sources", []) if not s.get("ok")]
+    if unread:
+        lines += [
+            "Sources the bot couldn't read (a maintainer should check these by hand): "
+            + ", ".join(f"<{s['url']}> ({quiet(s['error'])})" for s in unread),
+            "",
+        ]
     if result.get("not_placed"):
         lines += ["**Other findings**", ""]
         verdicts = verdict_map(result)

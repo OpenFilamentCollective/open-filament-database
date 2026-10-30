@@ -276,3 +276,12 @@ def test_a_real_comparison_page_still_needs_the_name_in_the_quote():
         verify_proof(leaf(), proof(quote="PLA Basic Print Temp 190-220 °C"), fetcher, CTX, STORES)
         is None
     )
+
+
+def test_an_official_brand_wiki_counts_but_other_wikis_do_not():
+    """Polymaker publishes its TD and hex tables on wiki.polymaker.com."""
+    wiki = "https://wiki.polymaker.com/tds"
+    ctx = Context("polymaker", "PLA Basic", [])
+    assert check(leaf(), proof(url=wiki), {wiki: PAGE}, ctx=ctx) is None
+    community = "https://wiki.acme.example/pla"
+    assert "user-written" in check(leaf(), proof(url=community), {community: PAGE})

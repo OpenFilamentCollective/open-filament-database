@@ -12,6 +12,7 @@ from ofd.review.gitdata import TreeReader, changed_files
 from ofd.review.render import summary
 from ofd.review.sustainability import (
     Entry,
+    brand_site_name,
     check_quote,
     find_touches,
     gate,
@@ -140,6 +141,15 @@ def test_primary_source_off_the_brand_site_warns():
     errors, warnings = errors_for("recycled_content", data, FakeFetcher({other: PAGE}))
     assert errors == []
     assert any("not on the brand's own site" in w for w in warnings)
+
+
+def test_brand_site_without_a_scheme_or_on_a_marketplace():
+    assert brand_site_name("bambulab.com") == "bambulab"
+    assert brand_site_name("https://www.mosaicmfg.com") == "mosaicmfg"
+    # A marketplace page as "website" must not make every listing there first-party.
+    assert brand_site_name("https://www.amazon.com/stores/XZN/page/1") is None
+    assert brand_site_name("https://www.microcenter.com/search/search_results.aspx") is None
+    assert brand_site_name("") is None
 
 
 def test_quote_too_short_around_the_number():
