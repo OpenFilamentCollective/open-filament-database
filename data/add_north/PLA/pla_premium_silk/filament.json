@@ -9,6 +9,8 @@
     "max_print_temperature": 245,
     "min_bed_temperature": 0,
     "max_bed_temperature": 60,
+    "dry_temperature": 45,
+    "dry_time": 4,
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFL96",

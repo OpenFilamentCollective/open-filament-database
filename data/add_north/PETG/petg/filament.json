@@ -9,6 +9,8 @@
     "max_print_temperature": 260,
     "min_bed_temperature": 0,
     "max_bed_temperature": 80,
+    "dry_temperature": 50,
+    "dry_time": 4,
     "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/petg_tds_rev11_ulRIZ3.pdf",
     "slicer_settings": {
         "prusaslicer": {

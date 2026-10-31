@@ -7,5 +7,7 @@
   "max_dry_temperature": 70,
   "min_print_temperature": 245,
   "max_print_temperature": 270,
+  "dry_temperature": 60,
+  "dry_time": 6,
   "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/Adura_TDS_KRM71m.pdf"
 }

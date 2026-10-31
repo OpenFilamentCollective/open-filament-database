@@ -9,6 +9,8 @@
     "max_print_temperature": 265,
     "min_bed_temperature": 0,
     "max_bed_temperature": 80,
+    "dry_temperature": 60,
+    "dry_time": 6,
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFG99",
