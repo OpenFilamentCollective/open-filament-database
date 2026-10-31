@@ -1,0 +1,16 @@
+{
+  "id": "white",
+  "name": "White",
+  "color_hex": "#FFFFF9",
+  "transmission_distance": 3.3,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "9003",
+    "ncs": "S 0502-Y",
+    "pantone": "11-0601 TPG"
+  },
+  "traits": {
+    "matte": true,
+    "high_flow": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "sky_blue",
+  "name": "Sky Blue",
+  "color_hex": "#AEEAFF",
+  "transmission_distance": 3.4,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "5024",
+    "ncs": "S 0520-B10G",
+    "pantone": "297 U"
+  },
+  "traits": {
+    "matte": true,
+    "high_flow": true
+  }
+}

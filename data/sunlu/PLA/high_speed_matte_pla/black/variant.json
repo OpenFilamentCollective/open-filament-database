@@ -2,7 +2,14 @@
   "uuid": "cd25af88-f481-4263-a468-57fd8a19f63e",
   "id": "black",
   "name": "Black",
-  "color_hex": "#000000",
+  "color_hex": "#1F2123",
+  "transmission_distance": 0.2,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "9005",
+    "ncs": "S 8500-N",
+    "pantone": "6 U"
+  },
   "traits": {
     "matte": true,
     "high_flow": true

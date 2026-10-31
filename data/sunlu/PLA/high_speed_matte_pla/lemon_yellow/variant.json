@@ -1,0 +1,16 @@
+{
+  "id": "lemon_yellow",
+  "name": "Lemon Yellow",
+  "color_hex": "#F2F0A1",
+  "transmission_distance": 4,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "1016",
+    "ncs": "S 0520-Y10R",
+    "pantone": "600 U"
+  },
+  "traits": {
+    "matte": true,
+    "high_flow": true
+  }
+}
