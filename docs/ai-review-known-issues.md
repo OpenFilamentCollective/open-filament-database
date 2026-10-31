@@ -20,6 +20,14 @@ Maintainer notes on the first 40 live PRs led to these changes:
   - The `missing_purchase_links`, `trait_from_name` and `sibling_trait_parity` checks are now research leads for the model, not posted notes.
 - **Suggestions are checked by a script** with the `ofd enrich` rules: the page loads, the quote is on it, the GTIN's check digit holds, and the store exists. Each suggestion now needs a `source_quote`. A suggestion that has been committed can then be proven like any other value.
 - **Applying the bot's own suggestions doesn't buy another model pass.** When every new commit is a "Commit suggestion" commit (`ofd/review/applied.py`), the free checks run on the new head and the last AI review is carried forward.
+- **Code-only PRs no longer get a review.** Editing `ai_review.yaml` (or any other sustainability rule file) used to count as touching sustainability data. On #833 that triggered a model pass on a PR with no data, a comment and a failed gate. Rule changes alone now skip the model, and the gate passes them when a maintainer opened the PR.
+- **Shorter comments.** The summary is now:
+  - what the PR does;
+  - its problems;
+  - one auto-merge line;
+  - a link to [automated-review.md](automated-review.md) for the reasons.
+
+  Proof tables are folded away, and rejected suggestions are only kept in `review.json`.
 - **The brand sign-off relay failed on every PR review.** A `#` in its unquoted `run:` line started a YAML comment, and the failed `relay` check blocked auto-merge (E16). Fixed on main ("Fix formatting in workflow").
 
 ## Proofs and auto-merge

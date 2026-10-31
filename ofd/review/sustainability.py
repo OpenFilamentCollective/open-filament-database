@@ -136,9 +136,16 @@ class Touch:
 
     @property
     def any(self) -> bool:
-        return bool(
-            self.entries or self.removed or self.traits or self.rule_paths or self.log_changed
-        )
+        return bool(self.data or self.rule_paths or self.log_changed)
+
+    @property
+    def data(self) -> bool:
+        """Sustainability data itself changed, which only the model pass can check.
+
+        A change to the rules or the source log alone has nothing to check against a
+        source: it needs a maintainer's eyes, not a model pass (#833).
+        """
+        return bool(self.entries or self.removed or self.traits)
 
 
 def find_touches(changes: list[ChangedFile], all_paths: list[str]) -> Touch:
@@ -406,7 +413,7 @@ def verify_all(touch: Touch, head: TreeReader, fetcher: Fetcher | None = None) -
 
 def model_problems(touch: Touch, model: dict | None) -> list[str]:
     """Why the AI pass doesn't count as having checked every touched entry."""
-    if not touch.any:
+    if not touch.data:
         return []
     if not model:
         return ["the AI review did not run; sustainability changes always need one"]

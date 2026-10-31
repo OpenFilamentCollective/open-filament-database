@@ -323,9 +323,9 @@ def test_summary_shows_the_gate(repo):
         },
     }
     text = summary(result)
-    assert "🌱 Sustainability data ❌" in text
+    assert "🌱 **Sustainability blocked**" in text
     assert "quote text not found" in text
-    assert "**Blocked.**" in text
+    assert "docs/automated-review.md#sustainability-data" in text
 
 
 def test_reviewer_never_suggests_sustainability_values(repo):
@@ -488,7 +488,8 @@ def test_summary_tables_proven_and_unproven_values():
     assert "Changed values: 1 of 3 proven" in text
     assert "| ✅ | [brand page](" in text
     assert "quote not on the page" in text
-    assert "1 change to existing data (names" in text
+    assert "needs a maintainer: 1 change to existing data" in text
+    assert "1 changed value unproven" in text
     assert "https://github.com/o/r/pull/1/checks" in text
 
 
@@ -500,7 +501,7 @@ def test_findings_are_tagged_by_script_verdict():
         "pointer": "/x",
         "evidence": {"source_url": URL, "quote": "q", "value": 1},
     }
-    assert "verified against" in finding_tag(finding, {("p", "/x"): {"verdict": "verified"}})
+    assert "verified on the brand's site" in finding_tag(finding, {("p", "/x"): {"verdict": "verified"}})
     assert "unverified: off-site" in finding_tag(
         finding, {("p", "/x"): {"verdict": "unverified", "reason": "off-site"}}
     )
@@ -555,3 +556,42 @@ def test_only_script_verified_contradictions_become_fixes(monkeypatch, repo):
     assert [f["value"] for f in fixes] == [210]
     assert [v["verdict"] for v in result["finding_verdicts"]] == ["verified", "unverified"]
     assert result["proofs"] == {"k": {"ok": False}}
+
+
+# --- rule files on a code-only PR (#833) ---------------------------------------------
+
+
+def test_a_rule_change_alone_needs_no_model_pass():
+    from ofd.review.sustainability import Touch, model_problems
+
+    touch = Touch(rule_paths=[".github/workflows/ai_review.yaml"])
+    assert touch.any and not touch.data
+    assert model_problems(touch, None) == []
+    assert gate(touch, None)["state"] == "failure"  # still needs a maintainer's eyes
+
+
+def _rule_only_result(author="coffandro", **sus):
+    return {
+        "pr": 833,
+        "author": author,
+        "labels": [],
+        "sustainability": {
+            "rule_paths": [".github/workflows/ai_review.yaml"],
+            "entries": [],
+            "removed": [],
+            "traits": [],
+            "touched": True,
+            **sus,
+        },
+    }
+
+
+def test_a_maintainers_own_rule_change_passes_the_gate(monkeypatch):
+    from ofd.review import github, run
+
+    monkeypatch.setattr(github, "can_write", lambda repo, login: login == "coffandro")
+    assert run.resolve_override("o/r", _rule_only_result(), False).startswith("@coffandro")
+    assert run.resolve_override("o/r", _rule_only_result(author="stranger"), False) is None
+    # Sustainability data in the same PR still needs the label.
+    data = _rule_only_result(traits=["`x`: `recycled` None → True"])
+    assert run.resolve_override("o/r", data, False) is None

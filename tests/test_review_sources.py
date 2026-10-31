@@ -158,6 +158,6 @@ def test_unreadable_sources_are_listed_by_the_script_in_the_comment():
         ],
     }
     text = ai_section(result)
-    assert "Sources the bot couldn't read" in text
+    assert "Couldn't read, check by hand" in text
     assert "<https://acme.example/pla> (HTTP 429; no archived copy)" in text
     assert "tds.pdf" not in text

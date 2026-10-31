@@ -336,7 +336,7 @@ def test_summary_keeps_the_previous_ai_section_on_a_free_rerun():
         {"pr": 1, "head_sha": "c" * 40, "findings": [], "model": None}, extract_ai_section(rerun)
     )
     assert again.count("**Outdated:**") == 1
-    assert "Covers `ccccccc`" in again
+    assert "**Automated review** of `ccccccc`" in again
 
 
 def test_model_text_cannot_ping_people():

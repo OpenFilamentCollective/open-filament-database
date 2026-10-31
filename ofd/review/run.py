@@ -155,6 +155,7 @@ def review(
         "base_sha": base,
         "head_sha": head,
         "labels": [label["name"] for label in pr.get("labels", [])],
+        "author": (pr.get("user") or {}).get("login", ""),
         # Any data/ or stores/ change gets a comment, logos included.
         "has_data": any(p.startswith(("data/", "stores/")) for p in all_paths),
         "findings": [f.to_dict() for f in findings],
@@ -178,19 +179,19 @@ def review(
         "superseded": False,
         "sources": [],
     }
-    use_model = ai == "always" or (ai == "auto" and touch.any)
+    use_model = (ai == "always" or (ai == "auto" and touch.data)) and bool(changes or touch.data)
     remaining = PR_BUDGET_USD - result["spent_usd"]
-    if carry_from and not touch.any:
+    if carry_from and not touch.data:
         _carry(result, carry_from, changes, leaves, fetcher, base_tree, repo_dir)
-    elif use_model and (changes or touch.any) and head_moved(repo, number, head):
+    elif use_model and head_moved(repo, number, head):
         result["superseded"] = True
         log(f"#{number}: the head moved on; skipping the model pass, the new head's run does it")
-    elif use_model and (changes or touch.any) and remaining < MIN_PASS_USD:
+    elif use_model and remaining < MIN_PASS_USD:
         result["model"] = {
             "error": f"this PR has used its ${PR_BUDGET_USD:.2f} review budget; "
             "a maintainer can raise OFD_REVIEW_PR_BUDGET_USD"
         }
-    elif use_model and (changes or touch.any):
+    elif use_model:
         _model_pass(
             result,
             repo_dir,
@@ -486,9 +487,9 @@ def resolve_override(repo: str, result: dict, drop: bool) -> str | None:
     ``drop`` (set by the workflow on pushes) removes the label when the PR touches
     sustainability data, so an override never carries over to commits nobody checked.
     """
-    if OVERRIDE_LABEL not in result.get("labels", []):
-        return None
     number = result["pr"]
+    if OVERRIDE_LABEL not in result.get("labels", []):
+        return _maintainers_rule_change(repo, result)
     if drop and result["sustainability"]["touched"]:
         github.remove_label(repo, number, OVERRIDE_LABEL)
         log(f"#{number}: new commits touch sustainability data; removed `{OVERRIDE_LABEL}`")
@@ -498,6 +499,21 @@ def resolve_override(repo: str, result: dict, drop: bool) -> str | None:
         log(f"#{number}: `{OVERRIDE_LABEL}` was not added by a maintainer; ignoring it")
         return None
     return f"@{actor}"
+
+
+def _maintainers_rule_change(repo: str, result: dict) -> str | None:
+    """A maintainer's own change to the rules, with no sustainability data in it.
+
+    The gate fails on rule changes so that a maintainer looks at them; when one wrote
+    the PR, that has happened (#833).
+    """
+    sus = result["sustainability"]
+    author = result.get("author") or ""
+    if not sus.get("rule_paths") or sus.get("entries") or sus.get("removed") or sus.get("traits"):
+        return None
+    if not author or not github.can_write(repo, author):
+        return None
+    return f"@{author} (a maintainer's own rule change)"
 
 
 def post(repo: str, result: dict, drop_override: bool = False) -> int:
@@ -530,7 +546,8 @@ def post(repo: str, result: dict, drop_override: bool = False) -> int:
         return 1 if sus["gate"]["state"] != "success" else 0
 
     existing = github.find_marker_comment(repo, number, MARKER)
-    if result.get("has_data") or sus["touched"] or existing:
+    # Code-only PRs get a comment only when the gate has something to say.
+    if result.get("has_data") or sus["gate"]["state"] != "success" or existing:
         github.upsert_comment(
             repo, number, existing, render(result, (existing or {}).get("body", ""))
         )

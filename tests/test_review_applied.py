@@ -183,9 +183,9 @@ def test_a_carried_review_says_so_and_keeps_its_commit():
         "model": {**review_of(REVIEWED)["model"], "cost_usd": 0, "carried_from": REVIEWED},
     }
     text = summary(result)
-    assert f"Covers `{HEAD[:7]}`" in text
+    assert f"**Automated review** of `{HEAD[:7]}`" in text
     assert f"<!-- ofd-ai-review:sha={REVIEWED} -->" in text
-    assert f"The commits since `{REVIEWED[:7]}` only apply the suggestions" in text
+    assert f"AI review of `{REVIEWED[:7]}`, carried over" in text
     assert "Outdated" not in text
 
 
