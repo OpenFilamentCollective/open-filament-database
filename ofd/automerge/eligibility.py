@@ -1,5 +1,10 @@
 """
-Whether a PR may merge without a maintainer: the E1-E21 checklist.
+Whether a PR may merge without a maintainer: the E1-E22 checklist.
+
+The bar depends on what the PR does. New data (whole new files, appended spool
+rows) only has to pass the validators and the AI review without a 🔴 finding.
+Changes to existing values must each be proven against the brand's site. Deletions,
+renames and anything structural always wait for a maintainer.
 
 ``evaluate(snapshot)`` is pure: it decides only from facts the script collected or
 verified itself, never from the model's opinion. ``collect()`` gathers those facts
@@ -11,7 +16,7 @@ import re
 from dataclasses import dataclass, field
 from datetime import datetime
 
-from ofd.automerge.proof import PROVABLE, classify
+from ofd.automerge.proof import HUMAN, NEW, PROVABLE, classify
 from ofd.brand_claims import brands_touched, latest_review_states
 
 HOLD_LABEL = "hold"
@@ -29,6 +34,9 @@ DELAY_MINUTES = 60
 _DATA_PATH = re.compile(
     r"^data/[^/]+/[^/]+/[^/]+/(?:filament\.json|[^/]+/(?:variant|sizes)\.json)$"
 )
+# Any new file under these may be added: brands, materials, filaments, colours,
+# spools, stores and their logos. The validators check what they are.
+_NEW_PATH = re.compile(r"^(?:data|stores)/")
 
 # Required on top of whatever the ruleset requires: a missing one fails, too. Not the
 # "AI review" job's own check: a re-review started by hand or by `/review` reports it on
@@ -130,39 +138,51 @@ def evaluate(s: Snapshot, at_merge: bool = False) -> Eligibility:
     )
 
     paths = [row[3] for row in s.raw_diff]
-    outside = [p for p in paths if not _DATA_PATH.match(p)]
+    outside = [
+        r[3]
+        for r in s.raw_diff
+        if not (_DATA_PATH.match(r[3]) or (r[0] == "A" and _NEW_PATH.match(r[3])))
+    ]
     check(
         "E6",
         paths and not outside,
-        "only filament, colour and spool files" if not outside else f"also changes {outside[0]}",
+        "only data files" if not outside else f"also changes {outside[0]}",
     )
-    odd = [r for r in s.raw_diff if r[0] != "M" or r[1] != "100644" or r[2] != "100644"]
+    odd = [
+        r
+        for r in s.raw_diff
+        if not (r[0] == "M" and r[1] == r[2] == "100644" or r[0] == "A" and r[2] == "100644")
+    ]
     check(
         "E7",
         not odd,
-        "only edits to existing files" if not odd else f"{odd[0][3]} is added, removed or renamed",
+        "only additions and edits" if not odd else f"{odd[0][3]} is removed, renamed or re-moded",
     )
     brands = brands_touched(paths)
     check(
         "E8",
-        len(paths) <= MAX_FILES and len(s.leaves) <= MAX_LEAVES and len(brands) == 1,
+        len(paths) <= MAX_FILES and len(s.leaves) <= MAX_LEAVES and len(brands) <= 1,
         f"{len(paths)} files, {len(s.leaves)} values, {len(brands)} brand(s)",
     )
-    human = [leaf for leaf in s.leaves if classify(leaf) != PROVABLE]
+    kinds = [classify(leaf) for leaf in s.leaves]
+    human = [leaf for leaf, kind in zip(s.leaves, kinds, strict=True) if kind == HUMAN]
+    has_new = NEW in kinds
     check(
         "E9",
-        s.leaves and not human,
-        "every changed value can be proven"
+        (s.leaves or paths) and not human,
+        "every change is new data or can be proven"
         if not human
         else f"{len(human)} change(s) need a maintainer, e.g. `{human[0].path}` `{human[0].pointer or '(whole file)'}`",
     )
     unproven = [k for k, v in s.proofs.items() if not v.get("ok")]
     missing = [
-        leaf.key for leaf in s.leaves if classify(leaf) == PROVABLE and leaf.key not in s.proofs
+        leaf.key
+        for leaf, kind in zip(s.leaves, kinds, strict=True)
+        if kind == PROVABLE and leaf.key not in s.proofs
     ]
     check(
         "E10",
-        not unproven and not missing and s.proofs,
+        not unproven and not missing,
         "every changed value is proven by the brand's site"
         if not unproven and not missing
         else f"{len(unproven) + len(missing)} value(s) unproven",
@@ -221,6 +241,14 @@ def evaluate(s: Snapshot, at_merge: bool = False) -> Eligibility:
             and (s.now - s.eligible_since).total_seconds() >= DELAY_MINUTES * 60
         )
         check("E20", waited, f"eligible since {s.eligible_since}")
+    ai_errors = [f for f in model.get("findings") or [] if f.get("severity") == "error"]
+    check(
+        "E22",
+        not (has_new and ai_errors),
+        "no 🔴 AI finding on new data"
+        if not (has_new and ai_errors)
+        else f"{len(ai_errors)} 🔴 AI finding(s), e.g. `{ai_errors[0].get('path', '')}`",
+    )
     author = (s.pr.get("user") or {}).get("login", "")
     check("E21", author.lower() not in {u.lower() for u in s.blocked_users}, f"author {author}")
 

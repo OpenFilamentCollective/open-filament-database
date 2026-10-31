@@ -171,6 +171,7 @@ def test_trait_hint_from_name(repo):
     _, findings = review(repo, base, head)
     assert rules(findings) == ["trait_from_name"]
     assert "silk" in findings[0].message
+    assert findings[0].level == "hint"  # a research lead for the model, never posted
 
 
 def test_material_stats_ignore_small_samples(repo):

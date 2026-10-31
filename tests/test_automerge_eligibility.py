@@ -14,6 +14,8 @@ from ofd.automerge.proof import Leaf
 
 SHA = "a" * 40
 FIL = "data/acme/PLA/basic/filament.json"
+NEW_VARIANT = "data/acme/PLA/basic/red/variant.json"
+NEW_SIZES = "data/acme/PLA/basic/red/sizes.json"
 NOW = datetime(2026, 10, 28, 12, tzinfo=timezone.utc)
 
 
@@ -81,7 +83,7 @@ BREAKS = {
         ["raw_diff"],
         [("M", "100644", "100644", FIL), ("M", "100644", "100644", "data/acme/logo.png")],
     ),
-    "E7": _set(["raw_diff"], [("A", "000000", "100644", FIL)]),
+    "E7": _set(["raw_diff"], [("D", "100644", "000000", FIL)]),
     "E8": _set(
         ["raw_diff"],
         [
@@ -104,6 +106,11 @@ BREAKS = {
     "E19": _set(["merged_tree_errors"], ["`ofd validate`: 1 error"]),
     "E20": _set(["eligible_since"], NOW - timedelta(minutes=30)),
     "E21": _set(["blocked_users"], {"Contributor"}),
+    "E22": lambda s: (
+        s.leaves.append(Leaf(NEW_VARIANT, "", "add", None, {"name": "Red"}, "variant", "A")),
+        s.raw_diff.append(("A", "000000", "100644", NEW_VARIANT)),
+        s.review["model"].update(findings=[{"path": NEW_VARIANT, "severity": "error"}]),
+    ),
 }
 
 
@@ -145,3 +152,82 @@ def test_merge_time_conditions_are_only_checked_at_merge():
     snapshot.eligible_since = None
     assert evaluate(snapshot).eligible
     assert not evaluate(snapshot, at_merge=True).eligible
+
+
+# --- additions: a lower bar ----------------------------------------------------------
+
+
+def additions(*files: tuple[str, str]) -> Snapshot:
+    """A green snapshot whose PR only adds ``(path, kind)`` files."""
+    snapshot = green()
+    snapshot.raw_diff = [("A", "000000", "100644", path) for path, _ in files]
+    snapshot.leaves = [
+        Leaf(path, "", "add", None, {}, kind, "A") for path, kind in files if path.endswith(".json")
+    ]
+    snapshot.proofs = {}
+    return snapshot
+
+
+@pytest.mark.parametrize(
+    "files",
+    [
+        [(NEW_VARIANT, "variant"), (NEW_SIZES, "sizes")],
+        [("stores/best_buy/store.json", "store"), ("stores/best_buy/logo.png", "")],
+        [
+            ("data/newbrand/brand.json", "brand"),
+            ("data/newbrand/logo.png", ""),
+            ("data/newbrand/PLA/material.json", "material"),
+            ("data/newbrand/PLA/basic/filament.json", "filament"),
+        ],
+    ],
+    ids=["new colour", "new store", "new brand"],
+)
+def test_an_add_only_pr_is_eligible(files):
+    result = evaluate(additions(*files), at_merge=True)
+    assert result.eligible, [(i.id, i.detail) for i in result.failures]
+
+
+def test_an_appended_spool_row_is_eligible():
+    snapshot = green()
+    sizes = "data/acme/PLA/basic/black/sizes.json"
+    snapshot.raw_diff = [("M", "100644", "100644", sizes)]
+    snapshot.leaves = [Leaf(sizes, "/1", "add", None, {"filament_weight": 3000}, "sizes", "M")]
+    snapshot.proofs = {}
+    assert evaluate(snapshot, at_merge=True).eligible
+
+
+def test_additions_with_a_proven_change_are_eligible_and_an_unproven_one_blocks():
+    snapshot = green()
+    snapshot.raw_diff.append(("A", "000000", "100644", NEW_VARIANT))
+    snapshot.leaves.append(Leaf(NEW_VARIANT, "", "add", None, {}, "variant", "A"))
+    assert evaluate(snapshot, at_merge=True).eligible
+    snapshot.proofs = {}
+    assert "E10" in [i.id for i in evaluate(snapshot, at_merge=True).failures]
+    snapshot = additions((NEW_VARIANT, "variant"))
+    snapshot.raw_diff.append(("M", "100644", "100644", FIL))
+    snapshot.leaves.append(Leaf(FIL, "/name", "modify", "A", "B", "filament", "M"))
+    assert "E9" in [i.id for i in evaluate(snapshot, at_merge=True).failures]
+
+
+def test_a_deletion_or_rename_alongside_additions_blocks():
+    snapshot = additions((NEW_VARIANT, "variant"))
+    snapshot.raw_diff.append(("D", "100644", "000000", "data/acme/PLA/basic/blue/variant.json"))
+    assert "E7" in [i.id for i in evaluate(snapshot).failures]
+
+
+def test_only_ai_errors_block_new_data_and_never_a_pure_change():
+    snapshot = additions((NEW_VARIANT, "variant"))
+    snapshot.review["model"]["findings"] = [
+        {"path": NEW_VARIANT, "severity": "warning"},
+        {"path": NEW_VARIANT, "severity": "note"},
+    ]
+    assert evaluate(snapshot, at_merge=True).eligible
+    snapshot = green()
+    snapshot.review["model"]["findings"] = [{"path": FIL, "severity": "error"}]
+    assert evaluate(snapshot, at_merge=True).eligible
+
+
+def test_a_new_file_outside_data_and_stores_blocks():
+    snapshot = additions((NEW_VARIANT, "variant"))
+    snapshot.raw_diff.append(("A", "000000", "100644", "scripts/evil.py"))
+    assert "E6" in [i.id for i in evaluate(snapshot).failures]

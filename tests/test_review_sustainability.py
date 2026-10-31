@@ -488,7 +488,7 @@ def test_summary_tables_proven_and_unproven_values():
     assert "Changed values: 1 of 3 proven" in text
     assert "| ✅ | [brand page](" in text
     assert "quote not on the page" in text
-    assert "1 change (names" in text
+    assert "1 change to existing data (names" in text
     assert "https://github.com/o/r/pull/1/checks" in text
 
 

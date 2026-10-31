@@ -49,6 +49,7 @@ def build_context(
     findings: list[Finding],
     flipflops: list[FlipFlop],
     gaps: list[dict],
+    hints: list[Finding] = (),
 ) -> str:
     parts = [
         f"# Pull request #{pr.get('number')}",
@@ -69,6 +70,13 @@ def build_context(
     parts += [
         f"- `{g['path']}` {g['pointer'] or '(root)'}: {', '.join(g['missing'])}" for g in gaps
     ] or ["- none"]
+    if hints:
+        parts += [
+            "",
+            "## Research leads (check the product page; propose what holds, never report)",
+            "",
+        ]
+        parts += [f"- `{h.path}` {h.pointer or '(root)'}: {h.message}" for h in hints]
     if others:
         parts += ["", "## Other changed files (not JSON entities)", ""]
         parts += [f"- `{p}`" for p in others]
@@ -99,10 +107,10 @@ def values_section(leaves) -> str:
     check. The model only proposes sources for the first list; it must not research
     the second.
     """
-    from ofd.automerge.proof import OFFICIAL_WIKIS, PROVABLE, classify
+    from ofd.automerge.proof import HUMAN, OFFICIAL_WIKIS, PROVABLE, classify
 
     provable = [leaf for leaf in leaves if classify(leaf) == PROVABLE]
-    human = [leaf for leaf in leaves if classify(leaf) != PROVABLE]
+    human = [leaf for leaf in leaves if classify(leaf) == HUMAN]
     if not leaves:
         return ""
     lines = [

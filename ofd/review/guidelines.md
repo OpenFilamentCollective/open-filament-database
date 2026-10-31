@@ -41,6 +41,41 @@ is wrong. In short:
 - `gtin` is the canonical barcode field; `ean` is a deprecated alias. Never ask for
   `ean`, never flag `gtin`.
 - `id` and `name` are allowed to differ; don't ask for them to match.
+- A single colour may be `"#RRGGBB"` or `["#RRGGBB"]`. Both are valid; switching
+  between them is not a finding.
+- The exact hex is the maker's choice. Don't second-guess a plausible shade ("this
+  doesn't read as gold"); only flag a hex that is clearly another colour (a grey
+  "Camo Green").
+- A TDS (or SDS) beats a product or store page: when they disagree, the TDS value is
+  the right one. Don't ask which to use.
+- A datasheet with the maker's own typo in it (an ABS sheet headed "ASA"), a page
+  title that omits a finish word ("HIPS" for the Matte HIPS line), or a distributor
+  page used as `website` because the brand has no site of its own is not a reason to
+  hold a PR.
+- A value that differs from what the PR body says is not a finding when the value
+  itself is reasonable.
+- Tracking parameters in links are stripped automatically when the PR merges. Never
+  mention them.
+
+## Fill it in or say nothing
+
+Maintainers answer every "please add" or "please confirm" by hand, so these never
+reach the PR as findings:
+
+- **An empty field is your job, not the contributor's.** GTIN, article number,
+  purchase links, drying values, enclosure, datasheets, traits, transmission
+  distance: research it and propose it in `enrichments`. If you find nothing, say
+  nothing. Not in a finding, and not in the summary either ("the spools have no GTIN
+  yet" is noise).
+- **Do the checking yourself.** Never ask anyone to "confirm", "check" or "verify"
+  something. If you suspect a link or value is wrong, fetch the page. When it is
+  wrong and you find the right value or URL, propose the replacement in
+  `enrichments` (an existing value may be replaced). When the page is dead (404, or
+  a site that doesn't exist), that is a finding. Otherwise say nothing.
+- **Added data has a lower bar than changed data.** On entries this PR creates, don't
+  flag a plausible value for lacking a source. Flag only values that are physically
+  impossible or contradicted by a page you read. Changed values are checked in
+  "Proof mode" below; deletions always go to a maintainer.
 
 ## What contributors most often get wrong
 
@@ -61,10 +96,13 @@ first. Check every changed file against it.
    marble, wood lines → the matching trait; dual/tri-colour → `coextruded`; gradient or
    rainbow → `gradual_color_change`; colourless clear → `transparent`, not
    `translucent`. A new colour should usually carry the traits all its siblings have.
+   Don't ask for traits: look the product up and propose them in `enrichments`
+   (`/traits/silk` = `true`), with the quote that shows them.
 4. **Purchase links.** Must reach the specific product and colour, not a shop's front
    page or a search page. Two colours must not share the same `?variant=` link. A size
-   with no link when its siblings have one is worth a note. `store_id` must be an
-   existing `stores/` folder.
+   with no link is a research lead: find the colour's page and propose it. `store_id`
+   must be an existing `stores/` folder. Before calling a link wrong, open it: the
+   product name in the slug or on the page may well match.
 5. **Multi-colour variants.** Dual, tri, gradient and "ColorMorph" variants need
    `color_hex` as an array of every colour, not one value and not `hex_variants`. Never
    shrink an existing array.
@@ -102,7 +140,9 @@ first. Check every changed file against it.
 The context you are given already contains the results of the deterministic checks
 and of the flip-flop history scan. Don't repeat those findings; build on them (for
 example, if a flip-flop is reported, look for the authoritative source and say which
-value it supports).
+value it supports). "Research leads" there are hints from scripts (likely traits,
+missing links): check them on the product page and propose what holds; never
+report them.
 
 ## Newer fields (#767)
 
@@ -213,11 +253,16 @@ to fill them, and to replace template values, from authoritative sources:
 - **Never guess.** Every value needs a `source_url` you actually fetched and saw the
   value on. Never invent or compute a GTIN, never "round" a temperature range,
   never copy a value from a different product or material.
+- Give `source_quote`: verbatim text from the source page containing the value (the
+  same quoting rules as for proofs). A script re-fetches the page and drops any value
+  whose quote or number isn't on it, so a suggestion without a quote is wasted.
+  Purchase links and datasheet URLs need no quote; the script opens the link itself.
 - Use `confidence: "high"` only when the source states the exact value for this exact
   product. Otherwise `"medium"`, and say why in `note`. If you are unsure, leave it
   out: an empty field is better than a wrong one.
 - Purchase links: link the exact colour/size page, without tracking parameters. Only
-  use a `store_id` that exists under `stores/`.
+  use a `store_id` that exists under `stores/`. To fix a wrong link, set the whole
+  array again (`/0/purchase_links`).
 - Use JSON types the schema expects (numbers as numbers, `color_hex` as `"#RRGGBB"`).
 - A proposed value must target a file the PR changes. The `pointer` is a JSON pointer
   into that file: `/max_dry_temperature` in a filament.json, `/0/gtin` for the first
@@ -257,8 +302,10 @@ Return one JSON object matching the provided schema:
   page text for it (article numbers, or the product under an older name). Before saying
   a value is wrong, check it isn't stated elsewhere on the same page or datasheet. A
   note that only repeats what the PR body already says is noise; leave it out.
-  Anchor each to a file (and a JSON pointer where possible). `error` = wrong data that
-  should not merge as is; `warning` = very likely wrong, needs a fix or a source; `note` = worth a look.
+  Anchor each to a file (and a JSON pointer where possible). `error` = wrong data you
+  saw contradicted, or physically impossible, that should not merge as is (an `error`
+  holds a PR that adds data from auto-merging, so a suspicion is never an `error`);
+  `warning` = very likely wrong, needs a fix; `note` = worth a look.
   Write messages to the contributor: friendly, concrete, one or two sentences,
   saying what to change. No praise, no restating what the diff does. Never suggest
   removing a field the schema requires (a filament's `density` and

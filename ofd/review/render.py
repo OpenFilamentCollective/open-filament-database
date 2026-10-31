@@ -119,7 +119,14 @@ def ai_section(result: dict) -> str:
     model = result.get("model")
     if not model:
         return ""
-    lines = [AI_START, f"<!-- ofd-ai-review:sha={result['head_sha']} -->", "### AI review", ""]
+    reviewed = model.get("carried_from") or result["head_sha"]
+    lines = [AI_START, f"<!-- ofd-ai-review:sha={reviewed} -->", "### AI review", ""]
+    if model.get("carried_from"):
+        lines += [
+            f"The commits since `{reviewed[:7]}` only apply the suggestions below, so this "
+            "review of that commit still applies. Comment `/review` for a fresh one.",
+            "",
+        ]
     if model.get("error"):
         lines += [f"The model pass did not complete: {quiet(model['error'])}", ""]
         return "\n".join(lines + [AI_END])
@@ -172,7 +179,7 @@ def ai_section(result: dict) -> str:
 
     lines.append(
         f"<sub>{model.get('model')} · ${model.get('cost_usd', 0):.2f} · reviewed "
-        f"{result['head_sha'][:7]}</sub>"
+        f"{reviewed[:7]}</sub>"
     )
     return "\n".join(lines + [AI_END])
 
@@ -183,19 +190,23 @@ def verdict_map(result: dict) -> dict:
 
 def proofs_section(result: dict) -> list[str]:
     """Which changed values a script proved against the brand's site."""
-    from ofd.automerge.proof import PROVABLE, Leaf, classify
+    from ofd.automerge.proof import NEW, PROVABLE, Leaf, classify
 
     leaves = [Leaf(**d) for d in result.get("leaves") or []]
     if not leaves:
         return []
-    provable = [leaf for leaf in leaves if classify(leaf) == PROVABLE]
-    human = len(leaves) - len(provable)
+    added = [leaf for leaf in leaves if classify(leaf) == NEW]
+    changed = [leaf for leaf in leaves if classify(leaf) != NEW]
+    provable = [leaf for leaf in changed if classify(leaf) == PROVABLE]
+    human = len(changed) - len(provable)
     proofs = result.get("proofs") or {}
     proven = sum(1 for leaf in provable if (proofs.get(leaf.key) or {}).get("ok"))
-    lines = [
-        f"### Changed values: {proven} of {len(leaves)} proven",
-        "",
-    ]
+    heading = []
+    if changed:
+        heading.append(f"Changed values: {proven} of {len(changed)} proven")
+    if added:
+        heading.append(f"{len(added)} new entr{'ies' if len(added) != 1 else 'y'}")
+    lines = [f"### {' · '.join(heading)}", ""]
     if provable:
         lines += ["| Value | | Source |", "|---|---|---|"]
         for leaf in provable:
@@ -212,9 +223,15 @@ def proofs_section(result: dict) -> list[str]:
         lines.append("")
     if human:
         lines.append(
-            f"{human} change{'s' if human != 1 else ''} (names, colours, new or removed "
-            "entries, sustainability, density and similar) can't be proven by a script and "
-            "need a maintainer."
+            f"{human} change{'s' if human != 1 else ''} to existing data (names, colours, "
+            "removed entries, sustainability, density and similar) can't be proven by a "
+            "script and need a maintainer."
+        )
+        lines.append("")
+    if added:
+        lines.append(
+            "New entries have nothing to contradict: the validators and the AI review "
+            "check them instead of a proof."
         )
         lines.append("")
     return lines
@@ -230,9 +247,10 @@ def automerge_section(result: dict) -> list[str]:
         "### Auto-merge",
         "",
         f"The {check} decides, not this comment. A PR auto-merges after an hour (add the "
-        "`hold` label to stop it) only if every changed value is proven above, nothing "
-        "contradicts the brand, the brand isn't claimed, no sustainability data is touched "
-        "and every check is green. Anything else waits for a maintainer.",
+        "`hold` label to stop it) when every check is green, the brand isn't claimed and "
+        "no sustainability data is touched, and: new entries have no 🔴 AI finding, "
+        "every changed value is proven above with nothing contradicting the brand, and "
+        "nothing is deleted or renamed. Anything else waits for a maintainer.",
         "",
     ]
 

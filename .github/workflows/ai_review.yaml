@@ -12,6 +12,9 @@ name: AI review
 #                  tries to prove the contributor's values (see ofd/automerge/).
 #   drafts         free checks only, unless sustainability data is touched: that
 #                  always gets the model pass.
+#   applied        a push that only commits the review's own ```suggestion``` blocks
+#   suggestions    skips the model: free checks on the new head, last AI review
+#                  carried forward (ofd/review/applied.py).
 #   new pushes     always win. The job waits OFD_REVIEW_SETTLE_SECONDS (default 20),
 #                  then stops without posting anything if the PR head moved on; a
 #                  push also cancels a review still running for an older commit.
@@ -95,6 +98,8 @@ jobs:
       # spend is capped by --max-budget-usd). Other triggers queue.
       cancel-in-progress: ${{ github.event_name == 'pull_request_target' && github.event.action == 'synchronize' }}
     permissions:
+      # actions: read lists earlier runs' review artifacts to carry one forward.
+      actions: read
       contents: read
       issues: write
       pull-requests: write
@@ -195,13 +200,32 @@ jobs:
         if: steps.pr.outputs.proceed == 'true'
         run: pip install -r requirements.txt
 
+      # A push that only commits the review's own suggestions (the "Commit suggestion"
+      # button) needs no new model pass: the free checks run on the new head and the
+      # last AI review is carried forward, so the gate and auto-merge still see it.
+      # Any doubt means a full review (ofd/review/applied.py).
+      - name: Only the review's own suggestions applied?
+        id: applied
+        if: >-
+          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never' &&
+          github.event.action == 'synchronize'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD: ${{ steps.pr.outputs.head }}
+        run: python -m ofd review applied --pr "$PR" --head "$HEAD" >> "$GITHUB_OUTPUT"
+
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        if: steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never'
+        if: >-
+          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never' &&
+          steps.applied.outputs.carry == ''
         with:
           node-version: '22'
 
       - name: Install Claude Code
-        if: steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never'
+        if: >-
+          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never' &&
+          steps.applied.outputs.carry == ''
         run: npm install -g @anthropic-ai/claude-code@2.1.306
 
       - name: Review
@@ -215,7 +239,11 @@ jobs:
           OFD_REVIEW_MODEL: ${{ vars.OFD_REVIEW_MODEL || 'claude-haiku-5-5' }}
           OFD_REVIEW_BUDGET_USD: ${{ vars.OFD_REVIEW_BUDGET_USD || '2' }}
           OFD_REVIEW_PR_BUDGET_USD: ${{ vars.OFD_REVIEW_PR_BUDGET_USD || '6' }}
-        run: python -m ofd review run --pr "$PR" --ai "$AI" --output "$RUNNER_TEMP/review.json"
+          CARRY: ${{ steps.applied.outputs.carry }}
+        run: |
+          flags=()
+          [ -n "$CARRY" ] && flags+=(--carry-from "$CARRY")
+          python -m ofd review run --pr "$PR" --ai "$AI" "${flags[@]}" --output "$RUNNER_TEMP/review.json"
 
       # Exits 1 when the sustainability gate fails, so this job shows red too.
       - name: Post

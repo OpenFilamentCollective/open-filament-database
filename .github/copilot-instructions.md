@@ -117,6 +117,27 @@ WebUI surfaces id/name drift as an advisory with no auto-fix rather than correct
 Flag a `name` that is obviously wrong (a slug leaked into the display field, stray
 whitespace). Do not ask for the two to be brought into agreement as a matter of style.
 
+### Myth 5: "A single colour must be `["#RRGGBB"]`" (or must be `"#RRGGBB"`)
+
+`color_hex` takes either a string or an array of strings (`schemas/variant_schema.json`).
+For one colour both are valid, and changing one into the other is not a finding (#820,
+#831). Only multi-colour spools need the array, and an existing array must not shrink.
+
+### Myth 6: "The contributor should add the missing GTIN / link / drying values / traits"
+
+Empty optional fields are not mistakes. The AI review researches them and proposes the
+values as suggestions; if it finds nothing, it says nothing (#827, #829). Never ask a
+contributor to "please add" a field, or to "confirm" or "check" a page: open it yourself.
+Tracking parameters in purchase links are stripped automatically on merge
+(`ofd/scripts/style_data.py`), so don't ask for that either.
+
+### Myth 7: "Added data needs the same proof as changed data"
+
+Additions (a new colour, spool, store, filament or brand) have a lower bar than edits to
+existing values, and deletions the highest. Don't flag a plausible value on a new entry
+for lacking a source, and don't second-guess the maker's choice of hex shade (#829). When
+a TDS and a product or store page disagree, the TDS wins (#801).
+
 ## Build, Test & Validation Commands
 
 ### Environment Setup

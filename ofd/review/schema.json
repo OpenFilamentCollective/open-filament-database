@@ -83,6 +83,9 @@
           "source_url": {
             "type": "string"
           },
+          "source_quote": {
+            "type": "string"
+          },
           "confidence": {
             "enum": [
               "high",

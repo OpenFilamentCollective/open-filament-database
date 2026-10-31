@@ -6,10 +6,15 @@ Nothing here trusts that: a proof counts only when this script fetches the page
 itself and finds it on the brand's own site, about this exact product, with the
 quote on it and the value in the quote, at the right end of any range.
 
-Only fields with a rule in ``RULES`` can be proven at all. Everything else (names,
-ids, colours, traits, density, purchase links, sustainability, new or deleted files,
-anything structural) needs a maintainer, so a PR touching it never auto-merges.
-That table is deliberately the only way to widen what can merge unseen.
+Only fields with a rule in ``RULES`` can be proven at all. Changes to anything else
+in an existing file (names, ids, colours, traits, density, purchase links,
+sustainability, removals, anything structural) need a maintainer, so a PR touching
+them never auto-merges. That table is deliberately the only way to widen which
+*changes* can merge unseen.
+
+New data has a lower bar: a whole new file, or a spool row appended to an existing
+list, is ``NEW``. It has nothing to contradict, so the validators and the AI review
+judge it instead of a proof (see ``ofd.automerge.eligibility``).
 """
 
 import re
@@ -58,7 +63,7 @@ MAX_QUOTE_GAP = 300
 
 _RANGE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(?:-|–|—|~|to)\s*(\d+(?:[.,]\d+)?)")
 
-PROVABLE, HUMAN = "provable", "human"
+PROVABLE, HUMAN, NEW = "provable", "human", "new"
 
 
 @dataclass
@@ -137,25 +142,49 @@ def diff_leaves(change: ChangedFile) -> list[Leaf]:
         return [Leaf(change.path, "", op, change.before, change.after, change.kind, change.status)]
     before, after = change.before, change.after
     if change.kind == "sizes":
+        # Existing spools keep their place and identity; new ones may only be appended.
         if (
             not isinstance(before, list)
             or not isinstance(after, list)
-            or len(before) != len(after)
+            or len(before) > len(after)
             or any(
-                _size_identity(a) != _size_identity(b) for a, b in zip(before, after, strict=True)
+                _size_identity(a) != _size_identity(b)
+                for a, b in zip(before, after[: len(before)], strict=True)
             )
         ):
             return [Leaf(change.path, "", "structural", before, after, change.kind, change.status)]
         leaves = []
-        for index, (a, b) in enumerate(zip(before, after, strict=True)):
+        for index, (a, b) in enumerate(zip(before, after[: len(before)], strict=True)):
             leaves += _compare(change, a, b, f"/{index}")
+        for index in range(len(before), len(after)):
+            leaves.append(
+                Leaf(
+                    change.path, f"/{index}", "add", None, after[index], change.kind, change.status
+                )
+            )
         return leaves
     if not isinstance(before, dict) or not isinstance(after, dict):
         return [Leaf(change.path, "", "structural", before, after, change.kind, change.status)]
     return _compare(change, before, after)
 
 
+def is_new_entry(leaf: Leaf) -> bool:
+    """A whole new file, or a whole spool row appended to an existing sizes.json."""
+    if leaf.op != "add":
+        return False
+    if leaf.file_status == "A":
+        return leaf.pointer == ""
+    return (
+        leaf.file_status == "M"
+        and leaf.kind == "sizes"
+        and re.fullmatch(r"/\d+", leaf.pointer) is not None
+        and isinstance(leaf.after, dict)
+    )
+
+
 def classify(leaf: Leaf) -> str:
+    if is_new_entry(leaf):
+        return NEW
     if leaf.file_status != "M" or leaf.op not in ("add", "modify"):
         return HUMAN
     parts = leaf.pointer.strip("/").split("/")

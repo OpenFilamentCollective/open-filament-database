@@ -72,8 +72,14 @@ ENRICHABLE = {
         "data_sheet_url",
         "safety_sheet_url",
     ),
+    "variant": ("transmission_distance",),
     "sizes": ("gtin", "article_number", "purchase_links", "empty_spool_weight"),
 }
+
+
+# Something worth researching, not a mistake: it goes to the model as a lead for
+# `enrichments` and is never posted or counted against the PR.
+HINT = "hint"
 
 
 @dataclass
@@ -324,9 +330,9 @@ def check_variant(change: ChangedFile, head: TreeReader) -> list[Finding]:
         findings.append(
             Finding(
                 "trait_from_name",
-                "note",
+                HINT,
                 change.path,
-                f"The name suggests these traits, which are not set: {', '.join(hinted)}.",
+                f"the name suggests these traits, which are not set: {', '.join(hinted)}",
                 "/traits",
             )
         )
@@ -341,10 +347,10 @@ def check_variant(change: ChangedFile, head: TreeReader) -> list[Finding]:
             findings.append(
                 Finding(
                     "sibling_trait_parity",
-                    "note",
+                    HINT,
                     change.path,
-                    f"Every other colour of this filament has {', '.join(missing)}; this one "
-                    f"doesn't. Add them if they describe the whole product line.",
+                    f"every other colour of this filament has {', '.join(missing)}; "
+                    f"this one doesn't",
                     "/traits",
                 )
             )
@@ -428,9 +434,9 @@ def check_sizes(change: ChangedFile, head: TreeReader) -> list[Finding]:
         findings.append(
             Finding(
                 "missing_purchase_links",
-                "note",
+                HINT,
                 change.path,
-                "Every other colour of this filament has a purchase link; this one has none.",
+                "every other colour of this filament has a purchase link; this one has none",
             )
         )
     return findings

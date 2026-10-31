@@ -21,7 +21,16 @@ from pathlib import Path
 
 from ofd.automerge import record
 from ofd.automerge.eligibility import Eligibility, Snapshot, evaluate
-from ofd.automerge.proof import Leaf, context_for, diff_leaves, verify_all, verify_finding
+from ofd.automerge.proof import (
+    NEW,
+    PROVABLE,
+    Leaf,
+    classify,
+    context_for,
+    diff_leaves,
+    verify_all,
+    verify_finding,
+)
 from ofd.brand_claims import CLAIMS_FILE, brands_touched, load_claims
 from ofd.enrich.verify import Fetcher
 from ofd.review import github
@@ -274,6 +283,23 @@ def evaluate_pr(
     return result
 
 
+def _merge_reason(snapshot: Snapshot, repo_dir: Path) -> str:
+    """One line for the LGTM comment: what made this PR safe to merge unseen."""
+    kinds = [classify(leaf) for leaf in snapshot.leaves]
+    provable = [leaf for leaf, kind in zip(snapshot.leaves, kinds, strict=True) if kind == PROVABLE]
+    added = kinds.count(NEW)
+    parts = []
+    if added:
+        parts.append(
+            f"{added} new entr{'ies' if added != 1 else 'y'} passed the validators and the AI review"
+        )
+    if provable:
+        site = context_for(provable[0], TreeReader(repo_dir, "HEAD")).brand_site
+        site = site or "the brand's site"
+        parts.append(f"every changed value was verified against {site}")
+    return "; ".join(parts or ["every check passed"]) + "; see the Auto-merge check."
+
+
 def _merge_one(repo: str, repo_dir: Path, pr: dict, cfg: dict, dry_run: bool) -> str:
     number, sha = pr["number"], pr["head"]["sha"]
     previous = record.latest(repo, sha, cfg["app_id"])
@@ -299,17 +325,10 @@ def _merge_one(repo: str, repo_dir: Path, pr: dict, cfg: dict, dry_run: bool) ->
         )
     except github.GitHubError as exc:
         return f"GitHub refused the merge: {exc}"
-    site = None
-    if snapshot.leaves:
-        site = context_for(snapshot.leaves[0], TreeReader(repo_dir, "HEAD")).brand_site
-    brand_site = site or "the brand's site"
     github.api(
         f"repos/{repo}/issues/{number}/comments",
         "POST",
-        {
-            "body": f"{LGTM_MESSAGE}\n\n<sub>Auto-merged: every changed value was verified "
-            f"against {brand_site}; see the Auto-merge check.</sub>"
-        },
+        {"body": f"{LGTM_MESSAGE}\n\n<sub>Auto-merged: {_merge_reason(snapshot, repo_dir)}</sub>"},
     )
     return "merged"
 

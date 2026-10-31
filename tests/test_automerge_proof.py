@@ -9,6 +9,7 @@ from pathlib import Path
 
 from ofd.automerge.proof import (
     HUMAN,
+    NEW,
     PROVABLE,
     Context,
     Leaf,
@@ -85,9 +86,11 @@ def test_diff_leaves_and_classification():
     assert classify(leaves["/name"]) == HUMAN
 
 
-def test_new_deleted_and_removed_values_always_need_a_human():
+def test_new_files_are_new_data_but_deletions_and_removals_need_a_human():
     new = ChangedFile("A", FIL, after={"id": "basic"})
-    assert [classify(lf) for lf in diff_leaves(new)] == [HUMAN]
+    assert [classify(lf) for lf in diff_leaves(new)] == [NEW]
+    deleted = ChangedFile("D", FIL, before={"id": "basic"})
+    assert [classify(lf) for lf in diff_leaves(deleted)] == [HUMAN]
     gone = ChangedFile("M", FIL, before={"max_print_temperature": 230}, after={})
     assert [lf.op for lf in diff_leaves(gone)] == ["remove"]
     assert classify(diff_leaves(gone)[0]) == HUMAN
@@ -100,6 +103,18 @@ def test_sizes_compare_per_spool_only_when_the_spools_are_the_same():
     assert lf.pointer == "/0/gtin" and classify(lf) == PROVABLE
     reordered = ChangedFile("M", SIZES, before=[spool], after=[{**spool, "filament_weight": 500}])
     assert [lf.op for lf in diff_leaves(reordered)] == ["structural"]
+
+
+def test_an_appended_spool_is_new_data():
+    spool = {"uuid": "u1", "filament_weight": 1000, "diameter": 1.75}
+    big = {"filament_weight": 3000, "diameter": 1.75}
+    appended = ChangedFile("M", SIZES, before=[spool], after=[spool, big])
+    assert [(lf.pointer, classify(lf)) for lf in diff_leaves(appended)] == [("/1", NEW)]
+    # Inserted in front: the old spool moved, which is structural.
+    inserted = ChangedFile("M", SIZES, before=[spool], after=[big, spool])
+    assert [lf.op for lf in diff_leaves(inserted)] == ["structural"]
+    shrunk = ChangedFile("M", SIZES, before=[spool, big], after=[spool])
+    assert [lf.op for lf in diff_leaves(shrunk)] == ["structural"]
 
 
 def test_uuid_changes_are_seen():

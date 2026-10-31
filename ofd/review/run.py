@@ -20,7 +20,7 @@ from ofd.automerge.proof import verify_all as verify_proofs
 from ofd.brand_claims import CLAIMS_FILE, brands_touched, load_claims
 from ofd.enrich.verify import Fetcher
 from ofd.review import github
-from ofd.review.checks import enrichment_gaps, run_checks
+from ofd.review.checks import HINT, Finding, enrichment_gaps, run_checks
 from ofd.review.context import build_context, values_section
 from ofd.review.flipflop import detect
 from ofd.review.gitdata import TreeReader, changed_files, git
@@ -47,6 +47,12 @@ from ofd.review.sustainability import (
     find_touches,
     gate,
     verify_all,
+)
+from ofd.review.triage import (
+    clean_summary,
+    filter_findings,
+    proof_candidates,
+    verify_enrichments,
 )
 
 # Every model pass on one PR together, across pushes (kept in the comment's
@@ -109,6 +115,7 @@ def review(
     model: str = DEFAULT_MODEL,
     budget_usd: float = DEFAULT_BUDGET_USD,
     head_dir: Path | None = None,
+    carry_from: str | None = None,
 ) -> dict:
     """Review one PR.
 
@@ -116,6 +123,10 @@ def review(
     data). Whatever it says, sustainability changes are always verified against their
     sources, and the ``Sustainability sources`` gate fails unless the model also checked
     them, so ``never`` on such a PR yields a failing gate rather than a silent pass.
+
+    ``carry_from`` is a reviewed commit whose model pass still applies because the new
+    commits only apply its suggestions (``ofd.review.applied``): its AI review is
+    carried forward instead of running the model again.
     """
     pr = github.pull_request(repo, number)
     base, head, history = fetch_pr(repo_dir, repo, pr)
@@ -125,6 +136,8 @@ def review(
     all_paths = git(repo_dir, "diff", "--name-only", "--no-renames", base, head).splitlines()
     base_tree, head_tree = TreeReader(repo_dir, base), TreeReader(repo_dir, head)
     findings = run_checks(changes, base_tree, head_tree)
+    hints = [f for f in findings if f.level == HINT]
+    findings = [f for f in findings if f.level != HINT]
     flipflops = detect(repo_dir, history, changes)
 
     touch = find_touches(changes, all_paths)
@@ -145,6 +158,7 @@ def review(
         # Any data/ or stores/ change gets a comment, logos included.
         "has_data": any(p.startswith(("data/", "stores/")) for p in all_paths),
         "findings": [f.to_dict() for f in findings],
+        "hints": [f.to_dict() for f in hints],
         "flipflops": [ff.to_dict() for ff in flipflops],
         "sustainability": {
             "touched": touch.any,
@@ -166,7 +180,9 @@ def review(
     }
     use_model = ai == "always" or (ai == "auto" and touch.any)
     remaining = PR_BUDGET_USD - result["spent_usd"]
-    if use_model and (changes or touch.any) and head_moved(repo, number, head):
+    if carry_from and not touch.any:
+        _carry(result, carry_from, changes, leaves, fetcher, base_tree, repo_dir)
+    elif use_model and (changes or touch.any) and head_moved(repo, number, head):
         result["superseded"] = True
         log(f"#{number}: the head moved on; skipping the model pass, the new head's run does it")
     elif use_model and (changes or touch.any) and remaining < MIN_PASS_USD:
@@ -196,6 +212,37 @@ def review(
         result["spent_usd"] += (result["model"] or {}).get("cost_usd", 0)
     result["sustainability"]["gate"] = gate(touch, result["model"])
     return result
+
+
+# What a carried-forward review keeps from the reviewed commit's result.
+CARRIED_KEYS = ("not_placed", "suggestion_count", "suggestions", "manual", "rejected", "sources")
+
+
+def _carry(result, sha, changes, leaves, fetcher, base_tree, repo_dir) -> None:
+    """Reuse the model pass of ``sha`` for this head, re-checking its claims here."""
+    from ofd.automerge.merge import download_review
+
+    number = result["pr"]
+    try:
+        previous = download_review(result["repo"], number, sha)
+    except github.GitHubError as exc:
+        previous = None
+        log(f"#{number}: {exc}")
+    model = (previous or {}).get("model") or {}
+    if not model or model.get("error"):
+        log(f"#{number}: no completed review of {sha[:7]} to carry forward")
+        return
+    reviewed = model.get("carried_from") or previous["head_sha"]
+    result["model"] = {**model, "cost_usd": 0, "carried_from": reviewed}
+    result.update({k: previous[k] for k in CARRIED_KEYS if k in previous})
+    # The applied suggestions are values the model sourced; offering them as proofs
+    # lets a script prove them now that they are in the PR.
+    claims = {
+        "findings": model.get("findings", []),
+        "proofs": model.get("proofs", []) + proof_candidates(model.get("enrichments", [])),
+    }
+    _check_model_claims(result, claims, changes, leaves, fetcher, base_tree, repo_dir)
+    log(f"#{number}: carried the AI review of {reviewed[:7]} forward")
 
 
 def head_moved(repo: str, number: int, head: str) -> bool:
@@ -337,7 +384,10 @@ def _model_pass(
         result["model"] = {"error": "the `claude` CLI is not installed"}
         return
 
-    context = build_context(pr, changes, others, findings, flipflops, enrichment_gaps(changes))
+    hints = [Finding(**h) for h in result.get("hints", [])]
+    context = build_context(
+        pr, changes, others, findings, flipflops, enrichment_gaps(changes), hints
+    )
     context += "\n" + values_section(leaves)
     context += "\n" + context_section(touch)
     if result["claimed_brands"]:
@@ -376,7 +426,13 @@ def _model_pass(
 
     ai = model_result.review
     fixes = _check_model_claims(result, ai, changes, leaves, fetcher, base_tree, repo_dir)
-    outcome = build_suggestions(ai.get("enrichments", []) + fixes, changes)
+    kept, dropped = filter_findings(ai.get("findings", []), changes)
+    ai = {**ai, "findings": kept, "summary": clean_summary(ai.get("summary", ""))}
+    enrichments, unverified = verify_enrichments(
+        ai.get("enrichments", []), fetcher or Fetcher(), repo_dir / "stores"
+    )
+    outcome = build_suggestions(enrichments + fixes, changes)
+    outcome.rejected = unverified + outcome.rejected
     comments, not_placed = inline_comments(ai, outcome, changes, verdict_map(result))
     result.update(
         model={
@@ -388,6 +444,7 @@ def _model_pass(
             "sustainability": ai.get("sustainability"),
             "proofs": ai.get("proofs", []),
         },
+        dropped_findings=dropped,
         comments=comments,
         not_placed=not_placed,
         suggestion_count=len(outcome.suggestions),
@@ -396,7 +453,8 @@ def _model_pass(
         rejected=outcome.rejected,
     )
     log(
-        f"#{number}: model ${model_result.cost_usd:.2f}, {len(ai.get('findings', []))} findings, "
+        f"#{number}: model ${model_result.cost_usd:.2f}, {len(kept)} findings "
+        f"({len(dropped)} dropped), "
         f"{len(outcome.suggestions)} suggestions, {len(outcome.rejected)} rejected"
     )
 

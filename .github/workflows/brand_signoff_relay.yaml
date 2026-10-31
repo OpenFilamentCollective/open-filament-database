@@ -14,4 +14,7 @@ jobs:
   relay:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "Review on PR #${{ github.event.pull_request.number }} - brand sign-off re-evaluates in its own run."
+      # A block scalar: unquoted, YAML would read " #..." as a comment and hand bash an
+      # unterminated string, failing this job (and so auto-merge's E16) on every review.
+      - run: |
+          echo "Review on PR #${{ github.event.pull_request.number }} - brand sign-off re-evaluates in its own run."

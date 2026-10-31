@@ -7,6 +7,9 @@ Sub-actions:
                             PR N and print the summary comment it would post
     ofd review post --input FILE
                             Post a result written by ``run --output``
+    ofd review applied --pr N --head SHA [--since SHA]
+                            Whether the commits since the last AI review only apply
+                            its own suggestions (prints carry=<sha> for CI)
 
 See ofd/review/__init__.py for what each tier does, and
 .github/workflows/ai_review.yaml for how CI runs it.
@@ -18,7 +21,7 @@ import os
 import sys
 from pathlib import Path
 
-from ofd.review import github
+from ofd.review import applied, github
 from ofd.review.model import DEFAULT_BUDGET_USD, DEFAULT_MODEL
 from ofd.review.run import post, render, review
 
@@ -64,6 +67,12 @@ Examples:
     p_run.add_argument(
         "--head-dir", type=Path, help="Existing checkout of the PR head for the model to read"
     )
+    p_run.add_argument(
+        "--carry-from",
+        metavar="SHA",
+        help="Carry the AI review of this commit forward instead of a model pass "
+        "(see `review applied`)",
+    )
     p_run.add_argument("--output", type=Path, help="Write the result JSON here")
     p_run.add_argument("--post", action="store_true", help="Post to the pull request")
     p_run.add_argument(
@@ -83,6 +92,17 @@ Examples:
     )
     p_post.set_defaults(func=run_post)
 
+    p_applied = actions.add_parser(
+        "applied", help="Do the new commits only apply the review's own suggestions?"
+    )
+    p_applied.add_argument("--pr", type=int, required=True, help="Pull request number")
+    p_applied.add_argument("--repo", default=repo_default, help="owner/name (default: %(default)s)")
+    p_applied.add_argument("--head", required=True, help="The PR's head commit")
+    p_applied.add_argument(
+        "--since", help="The reviewed commit (default: from the summary comment)"
+    )
+    p_applied.set_defaults(func=run_applied)
+
 
 def run_review(args: argparse.Namespace) -> int:
     try:
@@ -94,6 +114,7 @@ def run_review(args: argparse.Namespace) -> int:
             model=args.model,
             budget_usd=args.budget,
             head_dir=args.head_dir,
+            carry_from=args.carry_from,
         )
     except github.GitHubError as exc:
         print(f"Error: {exc}", file=sys.stderr)
@@ -120,3 +141,14 @@ def run_post(args: argparse.Namespace) -> int:
     except github.GitHubError as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
+
+
+def run_applied(args: argparse.Namespace) -> int:
+    """Prints ``carry=<sha>`` (empty for a full review), for $GITHUB_OUTPUT."""
+    sha, reason = applied.check(args.repo, args.pr, args.head, args.since)
+    print(
+        f"#{args.pr}: {'carry the review forward' if sha else 'full review'}: {reason}",
+        file=sys.stderr,
+    )
+    print(f"carry={sha or ''}")
+    return 0

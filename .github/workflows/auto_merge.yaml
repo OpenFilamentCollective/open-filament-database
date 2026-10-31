@@ -1,20 +1,26 @@
 name: Auto-merge
 
-# Merges data PRs without a maintainer, but only when a script has proven every value
-# the PR changes against the brand's own website, and nothing else needs a human. All
-# logic is in ofd/automerge/; locally: `python -m ofd automerge evaluate --pr <N>`.
+# Merges data PRs without a maintainer when nothing in them needs a human: new data
+# that the validators and the AI review accept, and changed values a script has
+# proven against the brand's own website. All logic is in ofd/automerge/; locally:
+# `python -m ofd automerge evaluate --pr <N>`.
 #
-# HOW A PR QUALIFIES (the full E1-E21 checklist is in ofd/automerge/eligibility.py and
+# HOW A PR QUALIFIES (the full E1-E22 checklist is in ofd/automerge/eligibility.py and
 # on every PR's `Auto-merge` check)
 #
-#   - only existing filament / colour / spool files change, in one brand, no deletions,
-#     renames, new files, names, ids, colours, traits, links or sustainability data;
-#   - every changed value is a field with a proof rule (temperatures, drying, fan,
-#     flow, enclosure, datasheets, TD, GTIN, article number), and the page the AI
-#     review cited for it was re-fetched here: on the brand's own site, about this
-#     product, quote on the page, value in the quote, the right end of any range;
-#   - no proven contradiction, no check finding or flip-flop, every required check
-#     green, brand not claimed (ofd/brand_claims.json), no changes requested;
+#   - additions have the lowest bar: new files anywhere under data/ or stores/ (brands,
+#     materials, filaments, colours, spools, stores, logos) and spool rows appended to
+#     an existing sizes.json qualify as long as the AI review has no 🔴 error on them;
+#   - changes must be proven: every changed value in an existing file is a field with
+#     a proof rule (temperatures, drying, fan, flow, enclosure, datasheets, TD, GTIN,
+#     article number), and the page the AI review cited for it was re-fetched here: on
+#     the brand's own site, about this product, quote on the page, value in the
+#     quote, the right end of any range. Names, ids, colours, traits, links and
+#     sustainability data in existing files still need a maintainer;
+#   - deletions and renames never auto-merge;
+#   - at most one brand; no proven contradiction, no check finding or flip-flop, every
+#     required check green, brand not claimed (ofd/brand_claims.json), no sustainability
+#     data, no changes requested;
 #   - it stayed eligible at the same commit for an hour. A `hold` label, a push, or
 #     marking the PR as a draft stops the clock.
 #
