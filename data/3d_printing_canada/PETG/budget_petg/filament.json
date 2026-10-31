@@ -2,7 +2,12 @@
   "uuid": "f3f20549-e2f4-4155-a1fb-3c81bbcefa0d",
   "id": "budget_petg",
   "name": "Budget PETG",
-  "diameter_tolerance": 0.03,
+  "diameter_tolerance": 0.05,
   "density": 1.27,
-  "max_dry_temperature": 65
+  "max_dry_temperature": 65,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/2719/6506/files/3DPC_Budget_PETG_1.75mm_TDS.pdf"
 }
