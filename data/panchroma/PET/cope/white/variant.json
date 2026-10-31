@@ -5,5 +5,6 @@
   ],
   "id": "white",
   "name": "White",
-  "color_hex": "#E2DEDB"
+  "color_hex": "#E2DEDB",
+  "transmission_distance": 3
 }

@@ -6,6 +6,7 @@
   "id": "magenta",
   "name": "Magenta",
   "color_hex": "#D93B90",
+  "transmission_distance": 7.8,
   "traits": {
     "translucent": true,
     "industrially_compostable": true

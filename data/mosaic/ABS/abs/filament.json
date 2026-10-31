@@ -2,10 +2,14 @@
   "uuid": "8df1c549-a8a1-45dd-825c-7a8342308fba",
   "id": "abs",
   "name": "ABS",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.12,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
+  "min_print_temperature": 275,
+  "max_print_temperature": 275,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_bed_temperature": 110,
+  "dry_temperature": 70,
+  "dry_time": 6,
+  "enclosure": "recommended",
+  "data_sheet_url": "https://mosaicmfg.com/wp-content/uploads/2026/01/MMTDS-ABS.pdf"
 }

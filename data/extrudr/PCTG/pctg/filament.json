@@ -8,6 +8,9 @@
   "max_print_temperature": 270,
   "min_bed_temperature": 90,
   "max_bed_temperature": 110,
+  "max_volumetric_speed": 9,
+  "min_fan_speed": 20,
+  "max_fan_speed": 50,
   "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/pctg-TDS-en.pdf",
   "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/pctg-MSDS-en.pdf"
 }

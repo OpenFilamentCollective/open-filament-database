@@ -11,6 +11,9 @@
     "max_print_temperature": 280,
     "min_bed_temperature": 100,
     "max_bed_temperature": 110,
+    "min_fan_speed": 0,
+    "max_fan_speed": 30,
+    "enclosure": "recommended",
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Spectrum PETG HT100"

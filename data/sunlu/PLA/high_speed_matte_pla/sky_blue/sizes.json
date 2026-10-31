@@ -1,0 +1,23 @@
+[
+  {
+    "uuid": "6246bfb9-86d5-46fb-ba70-60bdaffca809",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "plastic",
+    "empty_spool_weight": 220,
+    "spool_core_diameter": 100,
+    "gtin": "6933582315399",
+    "article_number": "PLA-HS-MATTE-1K-S.BLU",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://sunlu.com/products/moq-6kg-high-speed-matte-pla-3d-printer-filament-1kg?currency=USD&country=US&variant=50254063599898&stkn=98fc28031836&gad_campaignid=22241037338&gbraid=0AAAAAobnryW6zyPRQGhSm6VEY161KGaoI"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/dp/B0F6TKLT6K"
+      }
+    ]
+  }
+]

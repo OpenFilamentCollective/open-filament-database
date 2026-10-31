@@ -3,5 +3,6 @@
   "id": "stone_blue",
   "name": "Stone Blue",
   "color_hex": "#487BA2",
+  "transmission_distance": 0.3,
   "discontinued": false
 }

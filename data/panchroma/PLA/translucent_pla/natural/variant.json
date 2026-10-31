@@ -6,6 +6,7 @@
   "id": "natural",
   "name": "Natural",
   "color_hex": "#E8E6D0",
+  "transmission_distance": 21,
   "traits": {
     "transparent": true,
     "industrially_compostable": true

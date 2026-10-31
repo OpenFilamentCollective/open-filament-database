@@ -4,12 +4,17 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 216,
-    "container_outer_diameter": 200,
-    "container_hole_diameter": 55,
+    "gtin": "6933582315337",
+    "article_number": "PLA-HS-MATTE-1K-BLK",
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://store.sunlu.com/collections/matte-pla/products/moq-6kg-high-speed-matte-pla-3d-printer-filament-1kg"
+        "url": "https://sunlu.com/products/moq-6-rolls-high-speed-pla-filament-1kg?currency=USD&country=US&variant=47651103998234&stkn=98fc28031836&gad_campaignid=22471804735&gbraid=0AAAAAobnryV3yN4k3OG5q_aGjZps9DHSS"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/dp/B0F6SLPLGH"
       }
     ]
   }

@@ -2,5 +2,6 @@
   "uuid": "aa21c8ab-06d6-4b21-ad23-e480f628e0e0",
   "id": "magenta",
   "name": "Magenta",
-  "color_hex": "#990050"
+  "color_hex": "#990050",
+  "transmission_distance": 2.1
 }

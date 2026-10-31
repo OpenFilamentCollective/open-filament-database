@@ -6,6 +6,7 @@
   "id": "cyan",
   "name": "Cyan",
   "color_hex": "#08ABFB",
+  "transmission_distance": 8,
   "traits": {
     "translucent": true,
     "industrially_compostable": true

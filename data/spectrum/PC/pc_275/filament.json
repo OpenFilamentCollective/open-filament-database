@@ -8,6 +8,10 @@
   "max_print_temperature": 290,
   "min_bed_temperature": 90,
   "max_bed_temperature": 130,
+  "min_fan_speed": 0,
+  "max_fan_speed": 20,
+  "dry_temperature": 120,
+  "dry_time": 5,
   "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2023/10/en_tds_spectrum_pc_275.pdf",
   "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2023/11/en_msds_pc275.pdf"
 }

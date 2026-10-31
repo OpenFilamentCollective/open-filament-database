@@ -2,5 +2,6 @@
   "uuid": "2150fa4c-a2a7-41ac-964c-d40bff48defd",
   "id": "white",
   "name": "White",
-  "color_hex": "#D9D8D7"
+  "color_hex": "#D9D8D7",
+  "transmission_distance": 4.2
 }

@@ -1,0 +1,17 @@
+{
+  "uuid": "dd19b28d-9751-450a-bee3-0ded8a4832ec",
+  "id": "chocolate",
+  "name": "Chocolate",
+  "color_hex": "#906557",
+  "transmission_distance": 1,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "8002",
+    "ncs": "S 4020-Y70R",
+    "pantone": "7522 U"
+  },
+  "traits": {
+    "matte": true,
+    "high_flow": true
+  }
+}

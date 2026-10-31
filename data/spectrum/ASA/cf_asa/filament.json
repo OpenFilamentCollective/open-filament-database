@@ -7,5 +7,8 @@
   "min_print_temperature": 235,
   "max_print_temperature": 260,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_bed_temperature": 110,
+  "min_fan_speed": 0,
+  "max_fan_speed": 20,
+  "enclosure": "required"
 }

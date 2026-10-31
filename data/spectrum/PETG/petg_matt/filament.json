@@ -8,6 +8,9 @@
     "max_print_temperature": 255,
     "min_bed_temperature": 60,
     "max_bed_temperature": 80,
+    "min_fan_speed": 75,
+    "max_fan_speed": 100,
+    "enclosure": "not_needed",
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Spectrum PETG Matt"

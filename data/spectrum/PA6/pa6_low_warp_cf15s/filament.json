@@ -8,6 +8,10 @@
   "max_print_temperature": 280,
   "min_bed_temperature": 80,
   "max_bed_temperature": 80,
+  "min_fan_speed": 0,
+  "max_fan_speed": 30,
+  "dry_temperature": 80,
+  "dry_time": 12,
   "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/10/en_tds_spectrum_pa6_low_warp_cf15s.pdf",
   "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/10/en_msds_spectrum_pa6_lowwarp_cf15s.pdf"
 }

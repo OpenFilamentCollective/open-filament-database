@@ -8,6 +8,9 @@
     "max_print_temperature": 270,
     "min_bed_temperature": 80,
     "max_bed_temperature": 100,
+    "min_fan_speed": 0,
+    "max_fan_speed": 25,
+    "enclosure": "not_needed",
     "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/10/en_tds_spectrum_asa_kevlar.pdf",
     "slicer_settings": {
         "prusaslicer": {

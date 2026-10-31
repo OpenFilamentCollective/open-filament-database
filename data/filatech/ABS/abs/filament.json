@@ -2,11 +2,11 @@
     "uuid": "c475cf95-968a-4ee2-9643-3e150fa9dab4",
     "id": "abs",
     "name": "ABS",
-    "diameter_tolerance": 0.02,
+    "diameter_tolerance": 0.03,
     "density": 1.04,
     "min_print_temperature": 230,
     "max_print_temperature": 260,
-    "min_bed_temperature": 90,
+    "min_bed_temperature": 80,
     "max_bed_temperature": 110,
     "slicer_settings": {
         "prusaslicer": {

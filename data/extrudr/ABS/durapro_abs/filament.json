@@ -8,6 +8,10 @@
   "max_print_temperature": 250,
   "min_bed_temperature": 100,
   "max_bed_temperature": 110,
+  "max_volumetric_speed": 16,
+  "min_fan_speed": 0,
+  "max_fan_speed": 50,
+  "enclosure": "required",
   "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/durapro-abs-TDS-en.pdf",
   "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/durapro-abs-MSDS-en.pdf"
 }

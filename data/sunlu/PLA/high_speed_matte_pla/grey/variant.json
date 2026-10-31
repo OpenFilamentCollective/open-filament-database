@@ -2,9 +2,14 @@
   "uuid": "6d65faae-8438-4f9d-914c-9456ce123096",
   "id": "grey",
   "name": "Grey",
-  "color_hex": [
-    "#808080"
-  ],
+  "color_hex": "#63666A",
+  "transmission_distance": 2.2,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "7012",
+    "ncs": "S 6000-N",
+    "pantone": "10 U"
+  },
   "traits": {
     "matte": true,
     "high_flow": true

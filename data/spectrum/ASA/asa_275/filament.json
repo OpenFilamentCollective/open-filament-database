@@ -8,6 +8,8 @@
     "max_print_temperature": 240,
     "min_bed_temperature": 40,
     "max_bed_temperature": 60,
+    "min_fan_speed": 0,
+    "max_fan_speed": 20,
     "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_asa_275.pdf",
     "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_asa275.pdf",
     "slicer_settings": {

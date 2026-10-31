@@ -8,6 +8,8 @@
   "max_print_temperature": 225,
   "min_bed_temperature": 0,
   "max_bed_temperature": 45,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
   "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pla_glow_in_the_dark.pdf",
   "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_pla_glow_in_the_dark.pdf"
 }

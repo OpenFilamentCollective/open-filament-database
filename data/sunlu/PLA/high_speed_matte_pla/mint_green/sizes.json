@@ -1,0 +1,23 @@
+[
+  {
+    "uuid": "e03398a1-1cdb-4c2d-88b3-5d7f585fa5df",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "plastic",
+    "empty_spool_weight": 220,
+    "spool_core_diameter": 100,
+    "gtin": "6933582309015",
+    "article_number": "PLA-HS-MATTE-1K-M.GRN",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://sunlu.com/products/moq-6-rolls-high-speed-pla-filament-1kg?currency=USD&country=US&variant=53031858176282&stkn=98fc28031836&gad_campaignid=23655271870&gbraid=0AAAAArE_T9CFzIGFFMbBqRwvUfjhLMKJq"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/dp/B0F6SKVF57"
+      }
+    ]
+  }
+]

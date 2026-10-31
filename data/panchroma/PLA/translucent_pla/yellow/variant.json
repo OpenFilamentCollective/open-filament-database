@@ -6,6 +6,7 @@
   "id": "yellow",
   "name": "Yellow",
   "color_hex": "#F9ED3D",
+  "transmission_distance": 14,
   "traits": {
     "translucent": true,
     "industrially_compostable": true

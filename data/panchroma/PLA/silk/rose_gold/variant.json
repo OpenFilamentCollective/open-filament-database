@@ -2,5 +2,6 @@
   "uuid": "5e83858c-ae78-47f6-bb23-279d05c913ba",
   "id": "rose_gold",
   "name": "Rose Gold",
-  "color_hex": "#A56F6B"
+  "color_hex": "#A56F6B",
+  "transmission_distance": 2.2
 }

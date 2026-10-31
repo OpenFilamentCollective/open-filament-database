@@ -5,5 +5,6 @@
   ],
   "id": "olive_drab_green",
   "name": "Olive Drab Green",
-  "color_hex": "#575B54"
+  "color_hex": "#575B54",
+  "transmission_distance": 0.5
 }

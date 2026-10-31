@@ -2,5 +2,6 @@
   "uuid": "4f20ce8c-d562-4f56-8491-c1bee823e9d2",
   "id": "yellow",
   "name": "Yellow",
-  "color_hex": "#F7C603"
+  "color_hex": "#F7C603",
+  "transmission_distance": 3.9
 }

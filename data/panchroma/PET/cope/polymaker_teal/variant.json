@@ -5,5 +5,6 @@
   ],
   "id": "polymaker_teal",
   "name": "Polymaker Teal",
-  "color_hex": "#4CC0C7"
+  "color_hex": "#4CC0C7",
+  "transmission_distance": 1.1
 }

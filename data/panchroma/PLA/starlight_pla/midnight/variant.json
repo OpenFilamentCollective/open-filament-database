@@ -3,5 +3,6 @@
   "id": "midnight",
   "name": "Midnight",
   "color_hex": "#475A64",
+  "transmission_distance": 0.7,
   "discontinued": false
 }

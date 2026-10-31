@@ -2,5 +2,6 @@
   "uuid": "dbb0f4ed-779f-4b4e-abf9-e788ef3fd2b4",
   "id": "brass",
   "name": "Brass",
-  "color_hex": "#89713c"
+  "color_hex": "#89713c",
+  "transmission_distance": 0.8
 }

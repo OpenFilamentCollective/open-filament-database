@@ -6,6 +6,7 @@
   "id": "grey",
   "name": "Grey",
   "color_hex": "#9199A4",
+  "transmission_distance": 11.5,
   "traits": {
     "translucent": true,
     "industrially_compostable": true

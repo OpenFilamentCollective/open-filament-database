@@ -8,6 +8,9 @@
   "max_print_temperature": 240,
   "min_bed_temperature": 20,
   "max_bed_temperature": 60,
+  "min_fan_speed": 30,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
   "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/flax-TDS-en.pdf",
   "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/flax-MSDS-en.pdf"
 }

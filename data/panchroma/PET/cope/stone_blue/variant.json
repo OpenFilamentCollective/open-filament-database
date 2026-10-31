@@ -5,5 +5,6 @@
   ],
   "id": "stone_blue",
   "name": "Stone Blue",
-  "color_hex": "#477BA2"
+  "color_hex": "#477BA2",
+  "transmission_distance": 0.5
 }

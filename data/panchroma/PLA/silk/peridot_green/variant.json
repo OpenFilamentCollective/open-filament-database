@@ -2,5 +2,6 @@
   "uuid": "7dda6630-2c65-43dc-9e26-faa59c2c16e9",
   "id": "peridot_green",
   "name": "Peridot Green",
-  "color_hex": "#687151"
+  "color_hex": "#687151",
+  "transmission_distance": 0.1
 }

@@ -1,0 +1,10 @@
+{
+  "uuid": "52b75257-d627-49d1-8d6e-2ec4bfe2b44d",
+  "id": "gioiello_purple",
+  "name": "Gioiello Purple",
+  "color_hex": "#593F78",
+  "discontinued": false,
+  "traits": {
+    "high_flow": true
+  }
+}

@@ -5,5 +5,6 @@
   ],
   "id": "cream",
   "name": "Cream",
-  "color_hex": "#EED1A8"
+  "color_hex": "#EED1A8",
+  "transmission_distance": 2.8
 }

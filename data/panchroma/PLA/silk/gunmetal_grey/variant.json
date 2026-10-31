@@ -2,5 +2,6 @@
   "uuid": "86febe9d-409a-41bb-be63-1ca2a13da73f",
   "id": "gunmetal_grey",
   "name": "Gunmetal Grey",
-  "color_hex": "#676B6A"
+  "color_hex": "#676B6A",
+  "transmission_distance": 0.5
 }

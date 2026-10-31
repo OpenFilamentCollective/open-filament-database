@@ -8,5 +8,7 @@
   "max_print_temperature": 230,
   "min_bed_temperature": 0,
   "max_bed_temperature": 60,
+  "dry_temperature": 50,
+  "dry_time": 6,
   "data_sheet_url": "https://drive.google.com/file/d/1lMZzndGU3eidKYi9jWhx-IDMQcEBbeH1/view"
 }

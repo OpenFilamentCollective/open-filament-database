@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "440b3c05-977b-4476-b2c3-c20e2eef5306",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 140,
+    "gtin": "6922572224728",
+    "article_number": "PLA-Basic175O-AQ1P1",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "esun3d",
+        "url": "https://esun3dstore.com/products/epla"
+      }
+    ]
+  }
+]

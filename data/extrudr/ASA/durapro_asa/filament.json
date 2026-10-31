@@ -8,6 +8,10 @@
     "max_print_temperature": 270,
     "min_bed_temperature": 100,
     "max_bed_temperature": 110,
+    "max_volumetric_speed": 15,
+    "min_fan_speed": 0,
+    "max_fan_speed": 30,
+    "enclosure": "required",
     "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/durapro-asa-TDS-en.pdf",
     "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/durapro-asa-MSDS-en.pdf",
     "slicer_settings": {

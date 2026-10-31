@@ -8,6 +8,9 @@
   "max_print_temperature": 270,
   "min_bed_temperature": 60,
   "max_bed_temperature": 100,
+  "min_fan_speed": 75,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
   "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pctg.pdf",
   "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_msds_spectrum_pctg_premium.pdf"
 }
