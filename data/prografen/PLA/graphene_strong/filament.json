@@ -3,5 +3,8 @@
   "id": "graphene_strong",
   "name": "PLA Graphene Strong",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 240,
+  "enclosure": "not_needed"
 }
