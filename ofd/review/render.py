@@ -56,7 +56,8 @@ def _value_line(e: dict) -> str:
 
 
 def suggestion_body(suggestion) -> str:
-    lines = [_value_line(e) for e in suggestion.enrichments]
+    lines = ["Found by the bot; check the source before committing:"]
+    lines += [_value_line(e) for e in suggestion.enrichments]
     lines += ["", "```suggestion", *suggestion.replacement, "```"]
     return "\n".join(lines)
 
@@ -181,17 +182,19 @@ def verdict_map(result: dict) -> dict:
 
 def proofs_section(result: dict) -> list[str]:
     """The changed values a script checked on the brand's site, folded away."""
-    from ofd.automerge.proof import HUMAN, PROVABLE, Leaf, classify
+    from ofd.automerge.proof import PROVABLE, Leaf, classify
 
-    leaves = [Leaf(**d) for d in result.get("leaves") or []]
-    changed = [leaf for leaf in leaves if classify(leaf) in (PROVABLE, HUMAN)]
-    provable = [leaf for leaf in changed if classify(leaf) == PROVABLE]
+    provable = [
+        leaf
+        for leaf in (Leaf(**d) for d in result.get("leaves") or [])
+        if classify(leaf) == PROVABLE
+    ]
     if not provable:
         return []
     proofs = result.get("proofs") or {}
     proven = sum(1 for leaf in provable if (proofs.get(leaf.key) or {}).get("ok"))
     lines = [
-        f"<details><summary>Changed values: {proven} of {len(changed)} proven</summary>",
+        f"<details><summary>Changed values: {proven} of {len(provable)} proven</summary>",
         "",
         "| Value | | Source |",
         "|---|---|---|",
@@ -209,48 +212,37 @@ def proofs_section(result: dict) -> list[str]:
 
 
 def automerge_section(result: dict) -> list[str]:
-    """One line: can this merge on its own, and if not, what holds it."""
-    from ofd.automerge.proof import HUMAN, NEW, PROVABLE, Leaf, classify
+    """One line: what in this PR holds auto-merge back, from the checklist itself.
+
+    Only the content conditions are known here; GitHub state (other checks, labels,
+    the hour's wait) is the Auto-merge check's to report.
+    """
+    from ofd.automerge.eligibility import content_items
+    from ofd.automerge.proof import Leaf
 
     leaves = [Leaf(**d) for d in result.get("leaves") or []]
     if not leaves:
         return []
-    kinds = [classify(leaf) for leaf in leaves]
-    proofs = result.get("proofs") or {}
-    human = [leaf for leaf, kind in zip(leaves, kinds, strict=True) if kind == HUMAN]
-    unproven = [
-        leaf
-        for leaf, kind in zip(leaves, kinds, strict=True)
-        if kind == PROVABLE and not (proofs.get(leaf.key) or {}).get("ok")
-    ]
-    model = result.get("model") or {}
-    holds = []
-    if human:
-        first = human[0]
-        holds.append(
-            f"{len(human)} change{'s' if len(human) != 1 else ''} to existing data "
-            f"(e.g. `{first.path}` `{first.pointer or first.op}`)"
-        )
-    if unproven:
-        holds.append(f"{len(unproven)} changed value{'s' if len(unproven) != 1 else ''} unproven")
-    if NEW in kinds and any(f.get("severity") == "error" for f in model.get("findings") or []):
-        holds.append("a 🔴 AI finding")
-    if any(f.get("level") in ("error", "warning") for f in result.get("findings") or []):
-        holds.append("the checks above")
-    if result.get("flipflops"):
-        holds.append("values going back and forth")
-    if (result.get("sustainability") or {}).get("touched"):
-        holds.append("sustainability data")
-    if result.get("claimed_brands"):
-        holds.append("a claimed brand")
-
+    gate = (result.get("sustainability") or {}).get("gate") or {}
+    items = content_items(
+        result,
+        leaves,
+        result.get("proofs") or {},
+        result.get("finding_verdicts") or [],
+        claimed=sorted(result.get("claimed_brands") or {}),
+        gate_green=gate.get("state", "success") == "success",
+    )
+    holds = [quiet(i.detail) for i in items if not i.ok]
     repo = result.get("repo") or ""
     link = f"https://github.com/{repo}/pull/{result['pr']}/checks" if repo else ""
     check = f"[Auto-merge check]({link})" if link else "Auto-merge check"
     if holds:
-        verdict = f"needs a maintainer: {'; '.join(holds)}."
+        verdict = f"held back: {'; '.join(holds)}."
     else:
-        verdict = "can merge on its own an hour after every check is green (`hold` stops it)."
+        verdict = (
+            "nothing in the content holds it, so it can merge on its own an hour after "
+            "every check is green (`hold` stops it)."
+        )
     return [f"**Auto-merge:** {verdict} The {check} decides.", ""]
 
 
@@ -268,22 +260,11 @@ def sustainability_section(result: dict) -> list[str]:
     if gate.get("state") == "success":
         return [f"- 🌱 Sustainability: {gate.get('description')}."]
 
-    model_checked = {
-        (c.get("path"), c.get("pointer")): c
-        for c in ((result.get("model") or {}).get("sustainability") or {}).get("checked") or []
-    }
     lines = [f"- 🌱 **Sustainability blocked** {why}:"]
+    lines += [f"  - 🔴 {quiet(f)}" for f in gate.get("failures") or []]
     for entry in sus.get("entries", []):
         where = f"`{entry['path']}` `{entry['pointer']}`"
-        lines += [f"  - 🔴 {where}: {quiet(e)}" for e in entry["errors"]]
         lines += [f"  - 🟡 {where}: {quiet(w)}" for w in entry["warnings"]]
-        ai = model_checked.get((entry["path"], entry["pointer"]))
-        if ai is None:
-            lines.append(f"  - 🔴 {where}: not confirmed by the AI review")
-        elif ai.get("verdict") != "ok":
-            lines.append(f"  - 🔴 {where}: {quiet(ai.get('note') or ai.get('verdict'))}")
-    lines += [f"  - 🔴 `{e['path']}` `{e['pointer']}` removed" for e in sus.get("removed", [])]
-    lines += [f"  - 🔴 `{p}` changes the rules" for p in sus.get("rule_paths", [])]
     return lines
 
 

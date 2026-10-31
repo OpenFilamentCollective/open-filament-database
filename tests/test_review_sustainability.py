@@ -319,7 +319,11 @@ def test_summary_shows_the_gate(repo):
             "removed": [],
             "traits": [],
             "rule_paths": [],
-            "gate": {"state": "failure", "description": "1 problem", "failures": ["x"]},
+            "gate": {
+                "state": "failure",
+                "description": "1 problem",
+                "failures": [f"`{entry.path}` `{entry.pointer}`: {entry.errors[0]}"],
+            },
         },
     }
     text = summary(result)
@@ -485,11 +489,11 @@ def _proof_result():
 
 def test_summary_tables_proven_and_unproven_values():
     text = summary(_proof_result())
-    assert "Changed values: 1 of 3 proven" in text
+    assert "Changed values: 1 of 2 proven" in text
     assert "| ✅ | [brand page](" in text
     assert "quote not on the page" in text
-    assert "needs a maintainer: 1 change to existing data" in text
-    assert "1 changed value unproven" in text
+    assert "held back: 1 change(s) to existing data" in text
+    assert "1 changed value(s) unproven" in text
     assert "https://github.com/o/r/pull/1/checks" in text
 
 
@@ -501,7 +505,9 @@ def test_findings_are_tagged_by_script_verdict():
         "pointer": "/x",
         "evidence": {"source_url": URL, "quote": "q", "value": 1},
     }
-    assert "verified on the brand's site" in finding_tag(finding, {("p", "/x"): {"verdict": "verified"}})
+    assert "verified on the brand's site" in finding_tag(
+        finding, {("p", "/x"): {"verdict": "verified"}}
+    )
     assert "unverified: off-site" in finding_tag(
         finding, {("p", "/x"): {"verdict": "unverified", "reason": "off-site"}}
     )
@@ -570,28 +576,94 @@ def test_a_rule_change_alone_needs_no_model_pass():
     assert gate(touch, None)["state"] == "failure"  # still needs a maintainer's eyes
 
 
-def _rule_only_result(author="coffandro", **sus):
+def _rule_only_result(**sus):
     return {
         "pr": 833,
-        "author": author,
         "labels": [],
         "sustainability": {
             "rule_paths": [".github/workflows/ai_review.yaml"],
             "entries": [],
             "removed": [],
             "traits": [],
+            "log_changed": False,
             "touched": True,
             **sus,
         },
     }
 
 
-def test_a_maintainers_own_rule_change_passes_the_gate(monkeypatch):
+def test_a_rule_change_written_only_by_maintainers_passes_the_gate(monkeypatch):
     from ofd.review import github, run
 
+    commits = [{"author": {"login": "coffandro"}}]
+    monkeypatch.setattr(github, "api_list", lambda path: commits)
     monkeypatch.setattr(github, "can_write", lambda repo, login: login == "coffandro")
     assert run.resolve_override("o/r", _rule_only_result(), False).startswith("@coffandro")
-    assert run.resolve_override("o/r", _rule_only_result(author="stranger"), False) is None
-    # Sustainability data in the same PR still needs the label.
+    # Sustainability data, or the source log, in the same PR still needs the label.
     data = _rule_only_result(traits=["`x`: `recycled` None → True"])
     assert run.resolve_override("o/r", data, False) is None
+    assert run.resolve_override("o/r", _rule_only_result(log_changed=True), False) is None
+    # A commit by anyone else, or by an account GitHub can't name, fails it again.
+    commits.append({"author": {"login": "stranger"}})
+    assert run.resolve_override("o/r", _rule_only_result(), False) is None
+    commits[-1] = {"author": None}
+    assert run.resolve_override("o/r", _rule_only_result(), False) is None
+
+
+def test_a_dropped_label_still_lets_maintainers_rule_change_pass(monkeypatch):
+    from ofd.review import github, run
+
+    monkeypatch.setattr(github, "api_list", lambda path: [{"author": {"login": "coffandro"}}])
+    monkeypatch.setattr(github, "can_write", lambda repo, login: True)
+    monkeypatch.setattr(github, "remove_label", lambda *a: None)
+    result = {**_rule_only_result(), "labels": ["sustainability-verified"]}
+    assert run.resolve_override("o/r", result, True).startswith("@coffandro")
+
+
+def test_a_source_log_change_still_needs_the_model():
+    from ofd.review.sustainability import Touch, model_problems
+
+    touch = Touch(log_changed=True)
+    assert touch.data
+    assert model_problems(touch, None) == [
+        "the AI review did not run; sustainability changes always need one"
+    ]
+
+
+def test_the_automerge_line_follows_the_checklist():
+    """It used to promise a merge the checklist then refused (no AI pass, E13)."""
+    new = {
+        "path": f"{PLA}/basic/red/variant.json",
+        "pointer": "",
+        "op": "add",
+        "before": None,
+        "after": {"name": "Red"},
+        "kind": "variant",
+        "file_status": "A",
+    }
+    base = {**_result("a" * 40), "repo": "o/r", "leaves": [new], "proofs": {}}
+    assert "no completed AI review of this commit" in summary({**base, "model": None})
+    reviewed = {**base, "model": {"model": "m", "cost_usd": 0, "summary": "", "findings": []}}
+    assert "can merge on its own" in summary(reviewed)
+    red = {"path": new["path"], "severity": "error", "message": "Wrong colour."}
+    reviewed["model"] = {**reviewed["model"], "findings": [red]}
+    assert "1 🔴 AI finding(s)" in summary(reviewed)
+
+
+def test_a_failing_gate_lists_every_failure():
+    result = {
+        "head_sha": "a" * 40,
+        "sustainability": {
+            "touched": True,
+            "entries": [],
+            "removed": [],
+            "traits": ["`x`: `recycled` None → True"],
+            "rule_paths": [],
+            "gate": {
+                "state": "failure",
+                "description": "1 problem",
+                "failures": ["the AI review did not run; sustainability changes always need one"],
+            },
+        },
+    }
+    assert "the AI review did not run" in summary(result)

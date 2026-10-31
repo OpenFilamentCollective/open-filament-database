@@ -136,16 +136,16 @@ class Touch:
 
     @property
     def any(self) -> bool:
-        return bool(self.data or self.rule_paths or self.log_changed)
+        return bool(self.data or self.rule_paths)
 
     @property
     def data(self) -> bool:
-        """Sustainability data itself changed, which only the model pass can check.
+        """Sustainability data or its source log changed: the model pass must check it.
 
-        A change to the rules or the source log alone has nothing to check against a
-        source: it needs a maintainer's eyes, not a model pass (#833).
+        A change to the rules alone has nothing to check against a source: it needs a
+        maintainer's eyes, not a model pass (#833).
         """
-        return bool(self.entries or self.removed or self.traits)
+        return bool(self.entries or self.removed or self.traits or self.log_changed)
 
 
 def find_touches(changes: list[ChangedFile], all_paths: list[str]) -> Touch:

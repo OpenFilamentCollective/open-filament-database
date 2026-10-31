@@ -155,7 +155,6 @@ def review(
         "base_sha": base,
         "head_sha": head,
         "labels": [label["name"] for label in pr.get("labels", [])],
-        "author": (pr.get("user") or {}).get("login", ""),
         # Any data/ or stores/ change gets a comment, logos included.
         "has_data": any(p.startswith(("data/", "stores/")) for p in all_paths),
         "findings": [f.to_dict() for f in findings],
@@ -179,6 +178,7 @@ def review(
         "superseded": False,
         "sources": [],
     }
+    # touch.data without changes: only the sustainability source log changed.
     use_model = (ai == "always" or (ai == "auto" and touch.data)) and bool(changes or touch.data)
     remaining = PR_BUDGET_USD - result["spent_usd"]
     if carry_from and not touch.data:
@@ -482,14 +482,19 @@ def render(result: dict, previous_body: str = "") -> str:
 
 
 def resolve_override(repo: str, result: dict, drop: bool) -> str | None:
-    """The maintainer behind a valid ``sustainability-verified`` label, if any.
+    """Who lets a failing gate pass: a maintainer's ``sustainability-verified`` label,
+    or, for a change to the rules alone, the maintainers who wrote every commit.
 
     ``drop`` (set by the workflow on pushes) removes the label when the PR touches
     sustainability data, so an override never carries over to commits nobody checked.
     """
-    number = result["pr"]
+    return _label_override(repo, result, drop) or _maintainers_rule_change(repo, result)
+
+
+def _label_override(repo: str, result: dict, drop: bool) -> str | None:
     if OVERRIDE_LABEL not in result.get("labels", []):
-        return _maintainers_rule_change(repo, result)
+        return None
+    number = result["pr"]
     if drop and result["sustainability"]["touched"]:
         github.remove_label(repo, number, OVERRIDE_LABEL)
         log(f"#{number}: new commits touch sustainability data; removed `{OVERRIDE_LABEL}`")
@@ -502,18 +507,25 @@ def resolve_override(repo: str, result: dict, drop: bool) -> str | None:
 
 
 def _maintainers_rule_change(repo: str, result: dict) -> str | None:
-    """A maintainer's own change to the rules, with no sustainability data in it.
+    """A change to the rules alone, every commit of it written by a maintainer.
 
-    The gate fails on rule changes so that a maintainer looks at them; when one wrote
-    the PR, that has happened (#833).
+    The gate fails on rule changes so that a maintainer looks at them; when maintainers
+    wrote all of it, that has happened (#833). Checked per commit, not per PR author,
+    so a later push by anyone else to the branch fails the gate again.
     """
     sus = result["sustainability"]
-    author = result.get("author") or ""
-    if not sus.get("rule_paths") or sus.get("entries") or sus.get("removed") or sus.get("traits"):
+    if not sus.get("rule_paths") or any(
+        sus.get(k) for k in ("entries", "removed", "traits", "log_changed")
+    ):
         return None
-    if not author or not github.can_write(repo, author):
+    try:
+        commits = github.api_list(f"repos/{repo}/pulls/{result['pr']}/commits?per_page=100")
+    except github.GitHubError:
         return None
-    return f"@{author} (a maintainer's own rule change)"
+    authors = {(c.get("author") or {}).get("login") for c in commits}
+    if not commits or None in authors or not all(github.can_write(repo, a) for a in authors):
+        return None
+    return f"{', '.join('@' + a for a in sorted(authors))} (maintainers' own rule change)"
 
 
 def post(repo: str, result: dict, drop_override: bool = False) -> int:
