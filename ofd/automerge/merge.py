@@ -28,6 +28,7 @@ from ofd.review import github
 from ofd.review.gitdata import TreeReader, changed_files, git
 from ofd.review.jsonlines import resolve
 from ofd.review.run import fetch_pr
+from ofd.uuids import find_lost_uuids, iter_entities
 
 # Kept identical to webui/src/lib/config/reviewMessages.ts (a test checks).
 LGTM_MESSAGE = (
@@ -122,8 +123,26 @@ def raw_diff(repo_dir: Path, base: str, head: str) -> list[tuple[str, str, str, 
     return rows
 
 
+def _extract(repo_dir: Path, treeish: str, dest: Path) -> tuple[Path, Path]:
+    """``data/`` and ``stores/`` as they are at ``treeish``, written under ``dest``."""
+    archive = subprocess.run(
+        ["git", "archive", "--format=tar", treeish, "data", "stores"],
+        cwd=repo_dir,
+        capture_output=True,
+        check=True,
+    )
+    with tarfile.open(fileobj=io.BytesIO(archive.stdout)) as tar:
+        tar.extractall(dest, filter="data")
+    return dest / "data", dest / "stores"
+
+
 def merged_tree_errors(repo_dir: Path, main_ref: str, head: str) -> list[str]:
-    """Validate the PR as merged onto main, using main's own validators (E19)."""
+    """Validate the PR as merged onto main, using main's own validators (E19).
+
+    The merged tree is a plain folder, not a git checkout, so UUID continuity is
+    compared against main's tree extracted the same way rather than through
+    ``ofd uuid continuity``, which needs the data to live in a repository.
+    """
     proc = subprocess.run(
         ["git", "merge-tree", "--write-tree", main_ref, head],
         cwd=repo_dir,
@@ -134,27 +153,24 @@ def merged_tree_errors(repo_dir: Path, main_ref: str, head: str) -> list[str]:
         return ["does not merge cleanly onto main"]
     tree = proc.stdout.split()[0]
     with tempfile.TemporaryDirectory(prefix="ofd-automerge-") as tmp:
-        archive = subprocess.run(
-            ["git", "archive", "--format=tar", tree, "data", "stores"],
-            cwd=repo_dir,
-            capture_output=True,
-            check=True,
-        )
-        with tarfile.open(fileobj=io.BytesIO(archive.stdout)) as tar:
-            tar.extractall(tmp, filter="data")
-        dirs = ["--data-dir", f"{tmp}/data", "--stores-dir", f"{tmp}/stores"]
+        data, stores = _extract(repo_dir, tree, Path(tmp, "merged"))
+        base_data, base_stores = _extract(repo_dir, main_ref, Path(tmp, "main"))
+        dirs = ["--data-dir", str(data), "--stores-dir", str(stores)]
         errors = []
-        for args in (
-            ["validate", *dirs],
-            ["uuid", "check", "--allow-missing-uuids", *dirs],
-            ["uuid", "continuity", "--base", main_ref, *dirs],
-        ):
+        for args in (["validate", *dirs], ["uuid", "check", "--allow-missing-uuids", *dirs]):
             run = subprocess.run(
                 [sys.executable, "-m", "ofd", *args], cwd=repo_dir, capture_output=True, text=True
             )
             if run.returncode != 0:
-                tail = (run.stdout + run.stderr).strip().splitlines()[-1:] or ["failed"]
+                # stdout ends with the verdict; stderr only with progress lines.
+                tail = (run.stdout.strip() or run.stderr.strip()).splitlines()[-1:] or ["failed"]
                 errors.append(f"`ofd {' '.join(args[:2])}`: {tail[0][:200]}")
+        lost = find_lost_uuids(iter_entities(base_data, base_stores), iter_entities(data, stores))
+        if lost:
+            errors.append(
+                f"`ofd uuid continuity`: {len(lost)} UUID(s) on main no longer resolve, "
+                f"e.g. {lost[0].raw_uuid} ({lost[0].entity_type})"
+            )
     return errors
 
 

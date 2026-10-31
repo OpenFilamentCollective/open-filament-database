@@ -6,6 +6,8 @@ cases cover the ways a merge must still not happen at the last moment.
 
 import json
 import re
+import shutil
+import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -142,3 +144,36 @@ def test_lgtm_text_matches_the_webui():
     ts = (ROOT / "webui/src/lib/config/reviewMessages.ts").read_text(encoding="utf-8")
     quoted = re.search(r'LGTM_MESSAGE\s*=\s*"((?:[^"\\]|\\.)*)"', ts).group(1)
     assert json.loads(f'"{quoted}"') == merge.LGTM_MESSAGE
+
+
+# --- E19: the merged tree -------------------------------------------------------
+
+ROOT = Path(__file__).parent.parent
+
+
+def _git(cwd, *args):
+    subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True)
+
+
+def test_merged_tree_is_validated_outside_a_checkout(tmp_path, monkeypatch):
+    """The merged tree is extracted to a plain folder; continuity once failed there on
+    every PR ("not a git repository"), so nothing could ever merge (#798)."""
+    shutil.copytree(ROOT / "data" / "3dfox", tmp_path / "data" / "3dfox")
+    shutil.copytree(ROOT / "stores", tmp_path / "stores")
+    shutil.copytree(ROOT / "schemas", tmp_path / "schemas")  # validate reads them from cwd
+    _git(tmp_path, "init", "-q", "-b", "main")
+    _git(tmp_path, "-c", "user.name=t", "-c", "user.email=t@t", "add", ".")
+    _git(tmp_path, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "main")
+    monkeypatch.setenv("PYTHONPATH", str(ROOT))
+
+    fil = tmp_path / "data/3dfox/PLA/pla_refill/filament.json"
+    doc = json.loads(fil.read_text())
+    doc["max_print_temperature"] = 235
+    fil.write_text(json.dumps(doc, indent=2) + "\n")
+    _git(tmp_path, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qam", "edit")
+    assert merge.merged_tree_errors(tmp_path, "main~1", "HEAD") == []
+
+    shutil.rmtree(tmp_path / "data/3dfox/PLA/pla_refill/blue")
+    _git(tmp_path, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qam", "drop")
+    errors = merge.merged_tree_errors(tmp_path, "main~2", "HEAD")
+    assert any(e.startswith("`ofd uuid continuity`") for e in errors), errors
