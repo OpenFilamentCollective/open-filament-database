@@ -8,5 +8,6 @@
   "min_print_temperature": 265,
   "max_print_temperature": 285,
   "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 100,
+  "dry_temperature": 70
 }
