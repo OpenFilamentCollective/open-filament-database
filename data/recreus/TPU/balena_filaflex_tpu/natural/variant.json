@@ -3,7 +3,21 @@
   "id": "natural",
   "name": "Natural",
   "color_hex": "#F9F3E5",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": null,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://web.archive.org/web/20250911011024/https://recreus.com/en/products/balena-filaflex",
+      "source_quote": "Composition: Bio-based flexible material",
+      "retrieved": "2026-11-03",
+      "notes": "Archived (Wayback) copy of the brand's own product page; the live page is 404. No percentage given by the brand."
+    }
+  },
   "traits": {
-    "without_pigments": true
+    "without_pigments": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }
