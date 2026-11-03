@@ -3,6 +3,7 @@
     "uuid": "aea38724-e91a-496c-ac7f-4213aa26c58a",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "empty_spool_weight": 145,
     "spool_core_diameter": 100,
     "container_width": 66,
