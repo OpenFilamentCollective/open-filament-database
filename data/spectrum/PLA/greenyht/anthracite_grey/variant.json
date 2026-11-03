@@ -2,5 +2,9 @@
   "uuid": "758c49d4-3e81-4fe2-8f17-cade92e3a077",
   "id": "anthracite_grey",
   "name": "Anthracite Grey",
-  "color_hex": "#7A8889"
+  "color_hex": "#7A8889",
+  "traits": {
+    "industrially_compostable": true,
+    "bio_based": true
+  }
 }
