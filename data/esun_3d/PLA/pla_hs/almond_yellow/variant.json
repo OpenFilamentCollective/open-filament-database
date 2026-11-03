@@ -4,6 +4,7 @@
   "name": "Almond Yellow",
   "color_hex": "#E2D69A",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

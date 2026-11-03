@@ -4,6 +4,7 @@
   "name": "Light Khaki",
   "color_hex": "#C9C3AB",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

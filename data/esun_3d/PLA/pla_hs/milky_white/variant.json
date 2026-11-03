@@ -4,6 +4,7 @@
   "name": "Milky White",
   "color_hex": "#D4D3CF",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

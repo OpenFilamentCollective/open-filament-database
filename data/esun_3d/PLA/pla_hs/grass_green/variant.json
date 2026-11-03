@@ -4,6 +4,7 @@
   "name": "Grass Green",
   "color_hex": "#019537",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

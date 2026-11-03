@@ -4,6 +4,7 @@
   "name": "Coral Orange",
   "color_hex": "#FD6C03",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

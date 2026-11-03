@@ -4,6 +4,7 @@
   "name": "Baby Pink",
   "color_hex": "#CE8A87",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

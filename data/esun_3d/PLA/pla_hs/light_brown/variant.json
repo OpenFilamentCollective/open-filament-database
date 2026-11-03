@@ -4,6 +4,7 @@
   "name": "Light Brown",
   "color_hex": "#B47F5F",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

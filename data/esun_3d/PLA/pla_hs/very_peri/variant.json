@@ -4,6 +4,7 @@
   "name": "Very Peri",
   "color_hex": "#867EC9",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

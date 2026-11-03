@@ -4,6 +4,7 @@
   "name": "Peak Green",
   "color_hex": "#7AC163",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

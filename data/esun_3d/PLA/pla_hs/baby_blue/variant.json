@@ -4,6 +4,7 @@
   "name": "Baby Blue",
   "color_hex": "#269EAC",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

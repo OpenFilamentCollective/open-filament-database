@@ -4,6 +4,7 @@
   "name": "Holly Green",
   "color_hex": "#023933",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Mustard Green",
   "color_hex": "#B7BA5F",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

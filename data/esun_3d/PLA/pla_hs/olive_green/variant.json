@@ -4,6 +4,7 @@
   "name": "Olive Green",
   "color_hex": "#6D6B5E",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Pink",
   "color_hex": "#FF7083",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

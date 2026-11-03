@@ -4,6 +4,7 @@
   "name": "Yellow",
   "color_hex": "#FAD900",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

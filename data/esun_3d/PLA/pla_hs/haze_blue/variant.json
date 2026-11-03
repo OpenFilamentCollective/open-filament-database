@@ -4,6 +4,7 @@
   "name": "Haze Blue",
   "color_hex": "#508AB8",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }
