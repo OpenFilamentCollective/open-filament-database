@@ -3,6 +3,16 @@
     "uuid": "fb58a8a7-bc3c-4cf3-b42a-56a0370b16bb",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [],
+      "notes": "Brand says scrap is reused to make the recyclable spool (a paper reel per the same page); no percentage given.",
+      "source_type": "primary",
+      "source_url": "https://esun3dstore.com/products/epla-matte",
+      "source_quote": "Scrap is reused to produce recyclable spool and packaging box.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 140,
     "purchase_links": [
       {
