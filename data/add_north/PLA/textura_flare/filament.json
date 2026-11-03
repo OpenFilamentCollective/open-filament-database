@@ -9,5 +9,7 @@
   "max_print_temperature": 220,
   "min_bed_temperature": 60,
   "max_bed_temperature": 60,
+  "dry_temperature": 45,
+  "dry_time": 6,
   "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/Textura_Flare_SDS_QX0Mzh.pdf"
 }
