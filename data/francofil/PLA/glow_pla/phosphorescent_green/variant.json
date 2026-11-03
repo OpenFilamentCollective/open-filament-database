@@ -4,6 +4,8 @@
   "name": "Phosphorescent Green",
   "color_hex": "#8CFF96",
   "traits": {
-    "glow": true
+    "glow": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }
