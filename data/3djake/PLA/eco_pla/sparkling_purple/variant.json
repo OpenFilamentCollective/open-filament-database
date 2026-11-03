@@ -4,6 +4,7 @@
   "name": "Sparkling Purple",
   "color_hex": "#6000B0",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

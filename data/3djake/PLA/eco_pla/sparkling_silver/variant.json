@@ -4,6 +4,7 @@
   "name": "Sparkling Silver",
   "color_hex": "#848484",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

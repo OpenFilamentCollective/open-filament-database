@@ -4,6 +4,7 @@
   "name": "Sparkling Blue",
   "color_hex": "#375680",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

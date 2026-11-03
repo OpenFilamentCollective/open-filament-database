@@ -5,6 +5,7 @@
   "color_hex": "#FF520E",
   "traits": {
     "translucent": true,
-    "neon": true
+    "neon": true,
+    "bio_based": true
   }
 }
