@@ -3,6 +3,18 @@
     "uuid": "13202517-b694-41d9-bb61-198f71a42c29",
     "filament_weight": 2000,
     "diameter": 1.75,
+    "container_details": {
+      "recycled_pct": null,
+      "pct_qualifier": "exact",
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "The FSC certification applies to the cardboard core, which is made from recycled materials. The plastic sides are 100% recycled polycarbonate. recycled_pct for the whole spool is not stated. Source: a brand-wide spool statement in the PLA Recycled launch post.",
+      "source_type": "primary",
+      "source_url": "https://blog.prusa3d.com/introducing-prusament-pla-recycled_59116/",
+      "source_quote": "The cardboard we use is FSC certified , it is made from recycled materials and can be further recycled. … This Summer, we started manufacturing the plastic spool sides from a 100% recycled polycarbonate (PC).",
+      "retrieved": "2026-11-03"
+    },
     "purchase_links": [
       {
         "store_id": "prusa3d",
