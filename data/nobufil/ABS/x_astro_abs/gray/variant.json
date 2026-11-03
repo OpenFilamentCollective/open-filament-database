@@ -4,6 +4,7 @@
   "name": "Gray",
   "color_hex": "#516580",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

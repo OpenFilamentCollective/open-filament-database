@@ -4,6 +4,7 @@
   "name": "Purple",
   "color_hex": "#8846AE",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }
