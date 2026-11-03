@@ -5,6 +5,7 @@
   "color_hex": "#b19870",
   "traits": {
     "imitates_wood": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

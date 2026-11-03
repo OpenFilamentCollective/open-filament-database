@@ -2,5 +2,8 @@
   "uuid": "9fafd12d-a3c4-419d-be64-dde1b683ff7f",
   "id": "marble_brick_red",
   "name": "Marble Brick Red",
-  "color_hex": "#a5472c"
+  "color_hex": "#a5472c",
+  "traits": {
+    "bio_based": true
+  }
 }

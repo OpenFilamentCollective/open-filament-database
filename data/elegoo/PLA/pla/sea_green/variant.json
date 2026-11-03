@@ -4,6 +4,7 @@
   "name": "Sea Green",
   "color_hex": "#08b690",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Beige",
   "color_hex": "#f4e0b8",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }
