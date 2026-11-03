@@ -7,5 +7,18 @@
   "min_print_temperature": 255,
   "max_print_temperature": 270,
   "min_bed_temperature": 100,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 100,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://fiberlogy.com/en/filaments/nylon-en/rnylon-en/",
+      "source_quote": "Fiberlogy rNylon is an innovative 3D printing filament made from 100% recycled nylon (PA12).",
+      "retrieved": "2026-11-03",
+      "notes": "The brand page describes rNylon as recycled PA12, but the database files it under PA6."
+    }
+  }
 }
