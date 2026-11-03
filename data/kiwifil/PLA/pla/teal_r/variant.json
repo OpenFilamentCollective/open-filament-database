@@ -3,8 +3,31 @@
   "id": "teal_r",
   "name": "Teal r",
   "color_hex": "#0099E6",
+  "sustainability": {
+    "carbon_footprints": [
+      {
+        "value_kg_co2e": 0.5,
+        "declared_unit": "per_spool_as_sold",
+        "boundary": "filament_cradle_to_gate",
+        "packaging_included": "yes",
+        "biogenic_carbon": "unknown",
+        "recycled_allocation": "unknown",
+        "method": "declaration",
+        "standard": null,
+        "tool": null,
+        "verification": "none",
+        "publicly_available": true,
+        "source_type": "primary",
+        "source_url": "https://kiwifil.com/pages/kiwifil-and-the-environment",
+        "source_quote": "To make a 1 kg spool of recycled KiwiFil rPLA pro filament (including the box and all-paper spool), the CO2 equivalent footprint is approximately 0.5 kg.",
+        "retrieved": "2026-11-03",
+        "notes": "Brand's own approximate estimate (no LCA study): 0.1 kg raw-material sea transport + 0.2 kg electricity (2 kWh NZ mix) + 0.1 kg spool/box; excludes delivery to customer. No burden assigned to the recycled PLA itself. Value stated as 'approximately'."
+      }
+    ]
+  },
   "traits": {
     "recycled": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }
