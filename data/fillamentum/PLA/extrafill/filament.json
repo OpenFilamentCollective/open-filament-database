@@ -8,5 +8,17 @@
   "max_print_temperature": 210,
   "min_bed_temperature": 0,
   "max_bed_temperature": 55,
-  "data_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_PLA-Extrafill_03012019.pdf"
+  "data_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_PLA-Extrafill_03012019.pdf",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://shop.fillamentum.com/collections/pla-extrafill-filament/products/pla-extrafill-traffic-black-1kg",
+      "source_quote": "Biodegradable in an industrial composter Made of natural ingredients (100% bio-based) Safe to use in electrical and electronic equipment",
+      "retrieved": "2026-11-03",
+      "notes": "Brand marketing declaration on the PLA Extrafill product page; no test method (ASTM D6866 / EN 16785) named."
+    }
+  }
 }
