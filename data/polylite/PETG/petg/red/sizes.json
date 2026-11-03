@@ -3,6 +3,17 @@
     "uuid": "d6cf09eb-eb9c-4060-92e6-67b004bf8a52",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide Polymaker announcement covering the whole Polymaker range (PolyLite included); not a PolyLite product-page statement. Figure covers spool and box cardboard.",
+      "source_type": "primary",
+      "source_url": "https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/",
+      "source_quote": "The cardboard used to make the spool and box comes from 100% recycled sources.",
+      "retrieved": "2026-11-03"
+    },
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -36,6 +47,17 @@
     "uuid": "0645ce35-b4bf-4a05-8636-dea4f16ebe0e",
     "filament_weight": 1000,
     "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide Polymaker announcement covering the whole Polymaker range (PolyLite included); not a PolyLite product-page statement. Figure covers spool and box cardboard.",
+      "source_type": "primary",
+      "source_url": "https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/",
+      "source_quote": "The cardboard used to make the spool and box comes from 100% recycled sources.",
+      "retrieved": "2026-11-03"
+    },
     "purchase_links": [
       {
         "store_id": "polymaker",
