@@ -3,6 +3,17 @@
     "uuid": "632ea0d9-d93a-4411-b771-026cde22099a",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide 2021 announcement (Polymaker Switches All Products to 100% Recycled Spools) covering spool and box.",
+      "source_type": "primary",
+      "source_url": "https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/",
+      "source_quote": "The cardboard used to make the spool and box comes from 100% recycled sources.",
+      "retrieved": "2026-11-03"
+    },
     "purchase_links": [
       {
         "store_id": "polymaker",
