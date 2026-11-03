@@ -3,6 +3,19 @@
   "id": "reciflex_black",
   "name": "Reciflex Black",
   "color_hex": "#000000",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://recreus.com/en/products/reciflex",
+      "source_quote": "Recycled TPU filament, 100% from recycled origin. … RECIFLEX is an innovative TPU filament made entirely from recycled materials sourced from the footwear industry and Recreus' production processes.",
+      "retrieved": "2026-11-03",
+      "notes": "Feedstock is footwear-industry waste plus Recreus' own production scrap, so post_industrial. The blog (https://recreus.com/en/blogs/learn-with-recreus-1/reciflex) also says \"Reciflex is 100% recycled materials consisting of waste from the footwear industry and from Recreus' own internal production processes.\" and \"Discover how we're transforming industrial waste into premium quality 3D printing material\". Black pigment is added after the recycled colours are mixed. traits.recycled is already true."
+    }
+  },
   "traits": {
     "recycled": true
   }
