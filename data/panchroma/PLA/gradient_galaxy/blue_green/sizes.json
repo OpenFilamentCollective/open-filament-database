@@ -4,7 +4,6 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
-    "container_material": "cardboard",
     "empty_spool_weight": 145,
     "spool_core_diameter": 100,
     "container_width": 66,
