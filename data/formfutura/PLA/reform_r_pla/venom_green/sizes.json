@@ -2,6 +2,18 @@
   {
     "uuid": "b7cade66-77b0-4442-8576-b4fda5c17c76",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpla",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools",
+      "retrieved": "2026-11-03"
+    }
   }
 ]
