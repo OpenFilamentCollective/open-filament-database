@@ -9,6 +9,7 @@
   "traits": {
     "glow": true,
     "illuminescent_color_change": true,
+    "recycled": true,
     "abrasive": true,
     "filtration_recommended": true
   }
