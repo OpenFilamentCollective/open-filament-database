@@ -3,5 +3,9 @@
   "id": "red",
   "name": "Red",
   "color_hex": "#CC000D",
-  "discontinued": false
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
 }

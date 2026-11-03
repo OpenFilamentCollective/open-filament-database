@@ -3,5 +3,9 @@
   "id": "silver",
   "name": "Silver",
   "color_hex": "#DEDEDE",
-  "discontinued": false
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
 }

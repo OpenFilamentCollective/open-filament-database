@@ -3,5 +3,9 @@
   "id": "frost_white",
   "name": "Frost White",
   "color_hex": "#FAFAFA",
-  "discontinued": false
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
 }
