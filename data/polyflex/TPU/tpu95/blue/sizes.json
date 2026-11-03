@@ -6,6 +6,17 @@
     ],
     "filament_weight": 750,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide Polymaker announcement (all filaments moved to 100% recycled cardboard spools); PolyFlex is a Polymaker line. A follow-up Polymaker post (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/) states 'The cardboard used to make the spool and box comes from 100% recycled sources.' No certification named.",
+      "source_type": "primary",
+      "source_url": "https://polymaker.com/polymaker-transitions-all-filaments-onto-100-recycled-cardboard-spools/",
+      "source_quote": "Moving forward, Polymaker will produce all filaments on a 100% recycled cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "gtin": "6938936710639",
     "article_number": "PD01005",
     "purchase_links": [
@@ -19,6 +30,17 @@
     "uuid": "577b74db-8ed8-48ab-9166-699b7df1d650",
     "filament_weight": 750,
     "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide Polymaker announcement (all filaments moved to 100% recycled cardboard spools); PolyFlex is a Polymaker line. A follow-up Polymaker post (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/) states 'The cardboard used to make the spool and box comes from 100% recycled sources.' No certification named.",
+      "source_type": "primary",
+      "source_url": "https://polymaker.com/polymaker-transitions-all-filaments-onto-100-recycled-cardboard-spools/",
+      "source_quote": "Moving forward, Polymaker will produce all filaments on a 100% recycled cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "gtin": "6938936711834",
     "article_number": "PD01011",
     "discontinued": true,
