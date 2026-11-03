@@ -5,5 +5,17 @@
   "diameter_tolerance": 0.02,
   "density": 1.05,
   "min_print_temperature": 220,
-  "max_print_temperature": 250
+  "max_print_temperature": 250,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://fiberlogy.com/en/filaments/pp-en/rpp-en/",
+      "source_quote": "…3D printing filament made from 100% recycled polypropylene (PP) sourced from carefully selected suppliers.",
+      "retrieved": "2026-11-03"
+    }
+  }
 }
