@@ -3,6 +3,7 @@
     "uuid": "66be8b24-498b-41c9-b8ed-d6360bcde8c5",
     "filament_weight": 750,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "ean": "6975337038283",
     "article_number": "76100",
     "purchase_links": [
@@ -16,6 +17,7 @@
     "uuid": "2572f116-7ca7-4167-8912-a792a7fa3797",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "article_number": "76100"
   }
 ]
