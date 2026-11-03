@@ -28,7 +28,7 @@ Maintainer notes on the first 40 live PRs led to these changes:
   - a link to [automated-review.md](automated-review.md) for the reasons.
 
   Proof tables are folded away, and rejected suggestions are only kept in `review.json`.
-- **The brand sign-off relay failed on every PR review.** A `#` in its unquoted `run:` line started a YAML comment, and the failed `relay` check blocked auto-merge (E16). Fixed on main ("Fix formatting in workflow").
+- **The brand sign-off relay failed on every PR review.** A `#` in its unquoted `run:` line started a YAML comment, and the failed `relay` check blocked auto-merge (E16). Fixed on main ("Fix formatting in workflow"). A review runs the relay from the PR's test-merge commit, so older PRs (#827) kept failing, and re-running a failed relay replays the same broken copy. The relay step now has no `#` or `${{ }}` in its script, and auto-merge ignores the relay check: the `Brand sign-off` status it triggers is what counts.
 
 ## Proofs and auto-merge
 

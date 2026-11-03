@@ -10,9 +10,15 @@ on:
 
 permissions: {}
 
+# A review runs this file as it is in the PR's test-merge commit, so a PR branched
+# before a fix here keeps the old copy. Keep the step trivial: no `#`, no `${{ }}` in
+# the script. Auto-merge ignores this check (eligibility.IGNORED_CONTEXTS): a failed
+# relay still triggers the real `Brand sign-off` evaluation, which is what counts.
 jobs:
   relay:
     runs-on: ubuntu-24.04
     steps:
-      # Quoted: unquoted, YAML would read " #..." as a comment and truncate the command.
-      - run: 'echo "Review on PR #${{ github.event.pull_request.number }} - brand sign-off re-evaluates in its own run."'
+      - name: Relay
+        env:
+          PR: ${{ github.event.pull_request.number }}
+        run: echo "Review on PR ${PR}; brand sign-off re-evaluates in its own run."
