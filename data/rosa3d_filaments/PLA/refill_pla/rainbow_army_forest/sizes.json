@@ -3,6 +3,7 @@
     "uuid": "9a0bcfd9-b27a-4992-b358-4fb5b05de355",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "refill",
     "gtin": "5907753135568"
   }
 ]
