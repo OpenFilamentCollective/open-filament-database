@@ -5,6 +5,8 @@
   "color_hex": "#232323",
   "traits": {
     "glitter": true,
-    "imitates_metal": true
+    "imitates_metal": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

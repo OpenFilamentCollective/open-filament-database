@@ -2,5 +2,9 @@
   "uuid": "4d689f35-cbef-4905-b088-6c738f39d29a",
   "id": "orange_ral_2003",
   "name": "Orange RAL 2003",
-  "color_hex": "#F55928"
+  "color_hex": "#F55928",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }

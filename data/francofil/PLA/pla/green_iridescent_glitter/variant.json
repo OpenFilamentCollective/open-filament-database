@@ -4,6 +4,8 @@
   "name": "Green Iridescent Glitter",
   "color_hex": "#84D18B",
   "traits": {
-    "iridescent": true
+    "iridescent": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

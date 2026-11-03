@@ -4,6 +4,8 @@
   "name": "Bois - Co-produced",
   "color_hex": "#DC9C43",
   "traits": {
+    "recyclable": true,
+    "bio_based": true,
     "contains_wood": true
   }
 }

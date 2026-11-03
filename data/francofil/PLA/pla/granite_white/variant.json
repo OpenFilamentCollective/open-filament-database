@@ -4,6 +4,8 @@
   "name": "Granite White",
   "color_hex": "#ECEFED",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

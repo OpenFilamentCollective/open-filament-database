@@ -2,5 +2,9 @@
   "uuid": "21e7fcbe-d6b5-432f-9ce9-af3be78a0907",
   "id": "terre_battue_coproduced",
   "name": "Terre Battue - Coproduced",
-  "color_hex": "#A54830"
+  "color_hex": "#A54830",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }

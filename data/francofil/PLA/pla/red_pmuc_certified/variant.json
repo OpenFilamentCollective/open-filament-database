@@ -2,5 +2,9 @@
   "uuid": "6ce60be4-1842-436c-83ec-895825e41c68",
   "id": "red_pmuc_certified",
   "name": "Red | PMUC Certified",
-  "color_hex": "#EC0000"
+  "color_hex": "#EC0000",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }

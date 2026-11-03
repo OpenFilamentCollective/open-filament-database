@@ -4,6 +4,8 @@
   "name": "Gold",
   "color_hex": "#CE8D00",
   "traits": {
-    "imitates_metal": true
+    "imitates_metal": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

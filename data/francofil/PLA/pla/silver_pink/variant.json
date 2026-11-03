@@ -4,6 +4,8 @@
   "name": "Silver Pink",
   "color_hex": "#C9C1C8",
   "traits": {
-    "iridescent": true
+    "iridescent": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

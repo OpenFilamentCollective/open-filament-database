@@ -2,5 +2,9 @@
   "uuid": "3a70f481-a735-4237-ac33-7d77b609fee7",
   "id": "pastel_yellow_lemon_meringue",
   "name": "Pastel Yellow - Lemon Meringue",
-  "color_hex": "#FCE575"
+  "color_hex": "#FCE575",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }

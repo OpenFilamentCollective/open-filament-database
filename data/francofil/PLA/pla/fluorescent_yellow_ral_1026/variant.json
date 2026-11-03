@@ -4,6 +4,8 @@
   "name": "Fluorescent Yellow RAL 1026",
   "color_hex": "#FFFC25",
   "traits": {
-    "neon": true
+    "neon": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

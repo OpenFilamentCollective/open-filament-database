@@ -2,5 +2,9 @@
   "uuid": "cf847e24-6b5d-43cd-93f3-294d6e826941",
   "id": "saint_jacques_coproduced",
   "name": "Saint-Jacques - Coproduced",
-  "color_hex": "#EFE8D8"
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }
