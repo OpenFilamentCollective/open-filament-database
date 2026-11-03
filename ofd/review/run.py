@@ -15,7 +15,7 @@ from contextlib import contextmanager
 from dataclasses import asdict
 from pathlib import Path
 
-from ofd.automerge.proof import context_for, diff_leaves, verify_finding
+from ofd.automerge.proof import Leaf, context_for, diff_leaves, verify_finding
 from ofd.automerge.proof import verify_all as verify_proofs
 from ofd.brand_claims import CLAIMS_FILE, brands_touched, load_claims
 from ofd.enrich.verify import Fetcher
@@ -23,7 +23,7 @@ from ofd.review import github
 from ofd.review.checks import HINT, Finding, enrichment_gaps, run_checks
 from ofd.review.context import build_context, values_section
 from ofd.review.flipflop import detect
-from ofd.review.gitdata import TreeReader, changed_files, git
+from ofd.review.gitdata import TreeReader, changed_files, git, raw_diff
 from ofd.review.jsonlines import resolve
 from ofd.review.model import DEFAULT_BUDGET_USD, DEFAULT_MODEL, ModelError, available, run_model
 from ofd.review.render import (
@@ -124,9 +124,10 @@ def review(
     sources, and the ``Sustainability sources`` gate fails unless the model also checked
     them, so ``never`` on such a PR yields a failing gate rather than a silent pass.
 
-    ``carry_from`` is a reviewed commit whose model pass still applies because the new
-    commits only apply its suggestions (``ofd.review.applied``): its AI review is
-    carried forward instead of running the model again.
+    ``carry_from`` is a reviewed commit whose model pass still applies: the head itself
+    (a reopen or a label change), or one whose suggestions the new commits only apply
+    (``ofd.review.applied``). Its AI review is carried forward instead of running the
+    model again; with nothing to carry, the model runs as ``ai`` says.
     """
     pr = github.pull_request(repo, number)
     base, head, history = fetch_pr(repo_dir, repo, pr)
@@ -173,6 +174,7 @@ def review(
         "comments": [],
         "spent_usd": previous_spend(repo, number),
         "leaves": [leaf.to_dict() for leaf in leaves],
+        "raw_diff": raw_diff(repo_dir, base, head),
         "proofs": {},
         "finding_verdicts": [],
         "superseded": False,
@@ -181,8 +183,12 @@ def review(
     # touch.data without changes: only the sustainability source log changed.
     use_model = (ai == "always" or (ai == "auto" and touch.data)) and bool(changes or touch.data)
     remaining = PR_BUDGET_USD - result["spent_usd"]
-    if carry_from and not touch.data:
-        _carry(result, carry_from, changes, leaves, fetcher, base_tree, repo_dir)
+    if (
+        carry_from
+        and not touch.data
+        and _carry(result, carry_from, changes, leaves, fetcher, base_tree, repo_dir)
+    ):
+        pass
     elif use_model and head_moved(repo, number, head):
         result["superseded"] = True
         log(f"#{number}: the head moved on; skipping the model pass, the new head's run does it")
@@ -219,8 +225,12 @@ def review(
 CARRIED_KEYS = ("not_placed", "suggestion_count", "suggestions", "manual", "rejected", "sources")
 
 
-def _carry(result, sha, changes, leaves, fetcher, base_tree, repo_dir) -> None:
-    """Reuse the model pass of ``sha`` for this head, re-checking its claims here."""
+def _carry(result, sha, changes, leaves, fetcher, base_tree, repo_dir) -> bool:
+    """Reuse the model pass of ``sha`` for this head, re-checking its claims here.
+
+    ``sha`` may be the head itself: a reopen or a label change needs no new pass.
+    False when there is nothing to carry; the caller then runs the model as usual.
+    """
     from ofd.automerge.merge import download_review
 
     number = result["pr"]
@@ -232,7 +242,7 @@ def _carry(result, sha, changes, leaves, fetcher, base_tree, repo_dir) -> None:
     model = (previous or {}).get("model") or {}
     if not model or model.get("error"):
         log(f"#{number}: no completed review of {sha[:7]} to carry forward")
-        return
+        return False
     reviewed = model.get("carried_from") or previous["head_sha"]
     result["model"] = {**model, "cost_usd": 0, "carried_from": reviewed}
     result.update({k: previous[k] for k in CARRIED_KEYS if k in previous})
@@ -244,6 +254,7 @@ def _carry(result, sha, changes, leaves, fetcher, base_tree, repo_dir) -> None:
     }
     _check_model_claims(result, claims, changes, leaves, fetcher, base_tree, repo_dir)
     log(f"#{number}: carried the AI review of {reviewed[:7]} forward")
+    return True
 
 
 def head_moved(repo: str, number: int, head: str) -> bool:
@@ -528,6 +539,36 @@ def _maintainers_rule_change(repo: str, result: dict) -> str | None:
     return f"{', '.join('@' + a for a in sorted(authors))} (maintainers' own rule change)"
 
 
+def automerge_status(repo: str, result: dict, pr: dict) -> dict:
+    """The Auto-merge checklist as it stands for this review, from ``evaluate`` itself.
+
+    Same snapshot the Auto-merge check builds, from what the review already has; only
+    ``eligibility.LATER`` (other checks, mergeability, merge-time checks) is left out.
+    """
+    # Imported here: ofd.automerge.merge imports this module.
+    from ofd.automerge.eligibility import Snapshot, review_items
+    from ofd.automerge.merge import settings
+
+    cfg = settings()
+    snapshot = Snapshot(
+        mode=cfg["mode"],
+        has_token=cfg["has_token"],
+        pr=pr,
+        raw_diff=[tuple(row) for row in result.get("raw_diff") or []],
+        review=result,
+        leaves=[Leaf(**d) for d in result.get("leaves") or []],
+        proofs=result.get("proofs") or {},
+        finding_verdicts=result.get("finding_verdicts") or [],
+        claims=result.get("claimed_brands") or {},
+        checks={"Sustainability sources": result["sustainability"]["gate"]["state"]},
+        ruleset_contexts=[],
+        reviews=github.api_list(f"repos/{repo}/pulls/{result['pr']}/reviews?per_page=100"),
+        blocked_users=cfg["blocked"],
+    )
+    items = review_items(snapshot)
+    return {"mode": cfg["mode"], "items": [asdict(i) for i in items]}
+
+
 def post(repo: str, result: dict, drop_override: bool = False) -> int:
     """Post the comment, inline review and gate status. Returns 1 if the gate fails."""
     number = result["pr"]
@@ -556,6 +597,13 @@ def post(repo: str, result: dict, drop_override: bool = False) -> int:
             f"#{number}: head moved to {current['head']['sha'][:7]} during the review; not commenting"
         )
         return 1 if sus["gate"]["state"] != "success" else 0
+
+    try:
+        result["automerge"] = automerge_status(repo, result, current)
+    except github.GitHubError as exc:
+        # No line beats a wrong one: the comment then just points at the check.
+        log(f"#{number}: couldn't evaluate auto-merge for the comment: {exc}")
+        result["automerge"] = None
 
     existing = github.find_marker_comment(repo, number, MARKER)
     # Code-only PRs get a comment only when the gate has something to say.

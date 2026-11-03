@@ -168,7 +168,7 @@ def test_merged_tree_is_validated_outside_a_checkout(tmp_path, monkeypatch):
 
     fil = tmp_path / "data/3dfox/PLA/pla_refill/filament.json"
     doc = json.loads(fil.read_text())
-    doc["max_print_temperature"] = 235
+    doc["max_print_temperature"] += 1  # a real edit whatever the data says
     fil.write_text(json.dumps(doc, indent=2) + "\n")
     _git(tmp_path, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qam", "edit")
     assert merge.merged_tree_errors(tmp_path, "main~1", "HEAD") == []

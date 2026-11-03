@@ -15,6 +15,9 @@ name: AI review
 #   applied        a push that only commits the review's own ```suggestion``` blocks
 #   suggestions    skips the model: free checks on the new head, last AI review
 #                  carried forward (ofd/review/applied.py).
+#   same commit    a reopen or a label change (other than `ai-review`) carries the
+#                  last completed AI review of that commit over; only without one
+#                  does the model run again.
 #   new pushes     always win. The job waits OFD_REVIEW_SETTLE_SECONDS (default 20),
 #                  then stops without posting anything if the PR head moved on; a
 #                  push also cancels a review still running for an older commit.
@@ -140,11 +143,17 @@ jobs:
           fi
           draft=$(jq -r .draft "$RUNNER_TEMP/pr.json")
           # always / auto (only when sustainability data is touched) / never.
+          # reuse: the commit didn't change, so a completed AI review of it is carried
+          # over instead of paying for a new one (and auto-merge's E13 still sees it).
           drop=false
+          reuse=false
+          normal=$([ "$draft" = true ] && echo auto || echo always)
           case "$EVENT/$ACTION" in
-            pull_request_target/synchronize) ai=$([ "$draft" = true ] && echo auto || echo always); drop=true ;;
-            pull_request_target/labeled)     ai=$([ "$LABEL" = ai-review ] && echo always || echo never) ;;
-            pull_request_target/unlabeled)   ai=auto ;;
+            pull_request_target/synchronize) ai=$normal; drop=true ;;
+            pull_request_target/labeled)     ai=$([ "$LABEL" = ai-review ] && echo always || echo never)
+                                             [ "$LABEL" = ai-review ] || reuse=true ;;
+            pull_request_target/unlabeled)   ai=$normal; reuse=true ;;
+            pull_request_target/reopened)    ai=$normal; reuse=true ;;
             pull_request_target/*)           ai=$([ "$draft" = true ] && echo auto || echo always) ;;
             workflow_dispatch/*)             ai=$([ "$NO_AI_INPUT" = true ] && echo never || echo always) ;;
             *)                               ai=always ;;
@@ -154,7 +163,7 @@ jobs:
             ai=never
           fi
           {
-            echo "proceed=true"; echo "ai=$ai"; echo "drop=$drop"
+            echo "proceed=true"; echo "ai=$ai"; echo "drop=$drop"; echo "reuse=$reuse"
             echo "head=$head"
           } >> "$GITHUB_OUTPUT"
 
@@ -217,15 +226,13 @@ jobs:
 
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         if: >-
-          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never' &&
-          steps.applied.outputs.carry == ''
+          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never'
         with:
           node-version: '22'
 
       - name: Install Claude Code
         if: >-
-          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never' &&
-          steps.applied.outputs.carry == ''
+          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never'
         run: npm install -g @anthropic-ai/claude-code@2.1.306
 
       - name: Review
@@ -240,8 +247,11 @@ jobs:
           OFD_REVIEW_BUDGET_USD: ${{ vars.OFD_REVIEW_BUDGET_USD || '2' }}
           OFD_REVIEW_PR_BUDGET_USD: ${{ vars.OFD_REVIEW_PR_BUDGET_USD || '6' }}
           CARRY: ${{ steps.applied.outputs.carry }}
+          REUSE: ${{ steps.pr.outputs.reuse }}
+          HEAD: ${{ steps.pr.outputs.head }}
         run: |
           flags=()
+          [ -z "$CARRY" ] && [ "$REUSE" = true ] && CARRY=$HEAD
           [ -n "$CARRY" ] && flags+=(--carry-from "$CARRY")
           python -m ofd review run --pr "$PR" --ai "$AI" "${flags[@]}" --output "$RUNNER_TEMP/review.json"
 
@@ -252,6 +262,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           OFD_WEBUI_URL: ${{ vars.OFD_WEBUI_URL }}
           DROP: ${{ steps.pr.outputs.drop }}
+          # The comment's "Auto-merge:" line runs the Auto-merge check's own checklist.
+          OFD_AUTOMERGE: ${{ vars.OFD_AUTOMERGE }}
+          OFD_AUTOMERGE_APP_ID: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          OFD_AUTOMERGE_BLOCKED_USERS: ${{ vars.OFD_AUTOMERGE_BLOCKED_USERS }}
         run: |
           flags=()
           [ "$DROP" = true ] && flags+=(--drop-override)

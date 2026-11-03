@@ -9,6 +9,7 @@ from pathlib import Path
 
 from ofd.automerge.proof import (
     HUMAN,
+    JUDGED,
     NEW,
     PROVABLE,
     Context,
@@ -83,7 +84,7 @@ def test_diff_leaves_and_classification():
     assert set(leaves) == {"/name", "/max_print_temperature", "/dry_time"}
     assert classify(leaves["/max_print_temperature"]) == PROVABLE
     assert classify(leaves["/dry_time"]) == PROVABLE  # an added field
-    assert classify(leaves["/name"]) == HUMAN
+    assert classify(leaves["/name"]) == JUDGED
 
 
 def test_new_files_are_new_data_but_deletions_and_removals_need_a_human():
@@ -120,6 +121,8 @@ def test_an_appended_spool_is_new_data():
 def test_uuid_changes_are_seen():
     change = ChangedFile("M", FIL, before={"uuid": "a"}, after={"uuid": "b"})
     assert [(lf.pointer, classify(lf)) for lf in diff_leaves(change)] == [("/uuid", HUMAN)]
+    for pointer in ("/id", "/slicer_ids/orca", "/0/uuid"):
+        assert classify(Leaf(FIL, pointer, "modify", "a", "b", "filament", "M")) == HUMAN
 
 
 # --- what counts as a proof -----------------------------------------------------

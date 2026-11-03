@@ -107,9 +107,10 @@ def values_section(leaves) -> str:
     check. The model only proposes sources for the first list; it must not research
     the second.
     """
-    from ofd.automerge.proof import HUMAN, OFFICIAL_WIKIS, PROVABLE, classify
+    from ofd.automerge.proof import HUMAN, JUDGED, OFFICIAL_WIKIS, PROVABLE, classify
 
     provable = [leaf for leaf in leaves if classify(leaf) == PROVABLE]
+    judged = [leaf for leaf in leaves if classify(leaf) == JUDGED]
     human = [leaf for leaf in leaves if classify(leaf) == HUMAN]
     if not leaves:
         return ""
@@ -130,6 +131,22 @@ def values_section(leaves) -> str:
             lines.append(f"- ... and {len(provable) - MAX_PROOF_LINES} more (skip them)")
     else:
         lines.append("- none: leave `proofs` empty")
+    if judged:
+        lines += [
+            "",
+            "## Judged by you alone",
+            "",
+            "No script can prove these, so like new data they merge unless you raise an "
+            "`error` finding on one: check them against the brand's site where you can, "
+            "and raise one on any that is wrong.",
+            "",
+        ]
+        lines += [
+            f"- `{leaf.path}` `{leaf.pointer}` = `{json.dumps(leaf.after, ensure_ascii=False)}`"
+            for leaf in judged[:MAX_PROOF_LINES]
+        ]
+        if len(judged) > MAX_PROOF_LINES:
+            lines.append(f"- ... and {len(judged) - MAX_PROOF_LINES} more")
     if human:
         lines += ["", "## Needs a maintainer (don't research these)", ""]
         lines += [

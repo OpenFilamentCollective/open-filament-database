@@ -11,14 +11,15 @@ name: Auto-merge
 #   - additions have the lowest bar: new files anywhere under data/ or stores/ (brands,
 #     materials, filaments, colours, spools, stores, logos) and spool rows appended to
 #     an existing sizes.json qualify as long as the AI review has no 🔴 error on them;
-#   - changes must be proven: every changed value in an existing file is a field with
-#     a proof rule (temperatures, drying, fan, flow, enclosure, datasheets, TD, GTIN,
-#     article number), and the page the AI review cited for it was re-fetched here: on
-#     the brand's own site, about this product, quote on the page, value in the
-#     quote, the right end of any range. Names, ids, colours, traits, links and
-#     sustainability data in existing files still need a maintainer;
-#   - deletions and renames never auto-merge;
-#   - at most one brand; no proven contradiction, no check finding or flip-flop, every
+#   - a changed value with a proof rule (temperatures, drying, fan, flow, enclosure,
+#     datasheets, TD, GTIN, article number) must be proven: the page the AI review
+#     cited for it was re-fetched here: on the brand's own site, about this product,
+#     quote on the page, value in the quote, the right end of any range;
+#   - any other changed value (names, colours, traits, links...) has the same bar as
+#     additions: no 🔴 error from the AI review;
+#   - deletions, renames, removed values and changed ids, uuids or slicer_ids never
+#     auto-merge, nor does sustainability data;
+#   - no proven contradiction, no check finding or flip-flop, every
 #     required check green, brand not claimed (ofd/brand_claims.json), no sustainability
 #     data, no changes requested;
 #   - it stayed eligible at the same commit for an hour. A `hold` label, a push, or

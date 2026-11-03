@@ -133,7 +133,8 @@ def ai_section(result: dict) -> str:
     if model.get("error"):
         lines += [f"_The AI review didn't complete: {quiet(model['error'])}_", ""]
         return "\n".join(lines + [AI_END])
-    if model.get("carried_from"):
+    # Reused on the same commit (a reopen, a label change): nothing to explain.
+    if model.get("carried_from") and reviewed != result["head_sha"]:
         lines += [
             f"_AI review of `{reviewed[:7]}`, carried over: the new commits only apply its "
             "suggestions._",
@@ -212,36 +213,30 @@ def proofs_section(result: dict) -> list[str]:
 
 
 def automerge_section(result: dict) -> list[str]:
-    """One line: what in this PR holds auto-merge back, from the checklist itself.
+    """One line: whether auto-merge would take this PR, from the checklist itself.
 
-    Only the content conditions are known here; GitHub state (other checks, labels,
-    the hour's wait) is the Auto-merge check's to report.
+    ``result["automerge"]`` is ``ofd.review.run.automerge_status``: every condition the
+    Auto-merge check evaluates except the ones that can't be judged yet
+    (``eligibility.LATER``), so this line can't promise a merge the check won't do.
     """
-    from ofd.automerge.eligibility import content_items
-    from ofd.automerge.proof import Leaf
-
-    leaves = [Leaf(**d) for d in result.get("leaves") or []]
-    if not leaves:
+    status = result.get("automerge")
+    if not status or not result.get("has_data"):
         return []
-    gate = (result.get("sustainability") or {}).get("gate") or {}
-    items = content_items(
-        result,
-        leaves,
-        result.get("proofs") or {},
-        result.get("finding_verdicts") or [],
-        claimed=sorted(result.get("claimed_brands") or {}),
-        gate_green=gate.get("state", "success") == "success",
-    )
-    holds = [quiet(i.detail) for i in items if not i.ok]
     repo = result.get("repo") or ""
     link = f"https://github.com/{repo}/pull/{result['pr']}/checks" if repo else ""
     check = f"[Auto-merge check]({link})" if link else "Auto-merge check"
+    holds = [f"{i['id']} {quiet(i['detail'])}" for i in status["items"] if not i["ok"]]
     if holds:
         verdict = f"held back: {'; '.join(holds)}."
+    elif status.get("mode") != "on":
+        verdict = (
+            f"nothing holds it, but auto-merge is in {status.get('mode')} mode, "
+            "so a maintainer merges it."
+        )
     else:
         verdict = (
-            "nothing in the content holds it, so it can merge on its own an hour after "
-            "every check is green (`hold` stops it)."
+            "nothing holds it now, so it can merge on its own an hour after every other "
+            "check is green and GitHub reports no conflicts (`hold` stops it)."
         )
     return [f"**Auto-merge:** {verdict} The {check} decides.", ""]
 

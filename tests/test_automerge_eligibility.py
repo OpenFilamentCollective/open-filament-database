@@ -9,7 +9,7 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from ofd.automerge.eligibility import REQUIRED_CONTEXTS, Snapshot, evaluate
+from ofd.automerge.eligibility import LATER, REQUIRED_CONTEXTS, Snapshot, evaluate, review_items
 from ofd.automerge.proof import Leaf
 
 SHA = "a" * 40
@@ -84,14 +84,7 @@ BREAKS = {
         [("M", "100644", "100644", FIL), ("M", "100644", "100644", "data/acme/logo.png")],
     ),
     "E7": _set(["raw_diff"], [("D", "100644", "000000", FIL)]),
-    "E8": _set(
-        ["raw_diff"],
-        [
-            ("M", "100644", "100644", FIL),
-            ("M", "100644", "100644", "data/other/PLA/x/filament.json"),
-        ],
-    ),
-    "E9": lambda s: s.leaves.append(Leaf(FIL, "/name", "modify", "A", "B", "filament", "M")),
+    "E9": lambda s: s.leaves.append(Leaf(FIL, "/uuid", "modify", "a", "b", "filament", "M")),
     "E10": _set(["proofs"], {f"{FIL}#/max_print_temperature": {"ok": False, "reason": "no proof"}}),
     "E11": _set(["finding_verdicts"], [{"verdict": "verified"}]),
     "E12": _set(["review", "flipflops"], [{"path": FIL}]),
@@ -121,6 +114,49 @@ def test_each_condition_alone_blocks(item):
     result = evaluate(snapshot, at_merge=True)
     assert not result.eligible
     assert item in [i.id for i in result.failures]
+
+
+@pytest.mark.parametrize("item", sorted(set(BREAKS) - set(LATER), key=lambda k: int(k[1:])))
+def test_each_condition_alone_shows_in_the_review_comment(item):
+    """The comment's "Auto-merge:" line comes from ``review_items``: it must never say
+    "nothing holds it" while the check would hold the PR (#835)."""
+    snapshot = copy.deepcopy(green())
+    BREAKS[item](snapshot)
+    assert item in [i.id for i in review_items(snapshot) if not i.ok]
+
+
+def test_every_condition_is_tested_or_left_to_the_check():
+    ids = {i.id for i in evaluate(green(), at_merge=True).items}
+    assert ids == set(BREAKS)
+    assert set(LATER) <= ids
+
+
+@pytest.mark.parametrize(
+    "path",
+    ["data/acme/brand.json", "data/acme/PLA/material.json", "stores/shop/store.json"],
+)
+def test_any_entity_file_may_be_edited(path):
+    """E6 lets the edit through; each changed value still has to clear E9/E10."""
+    snapshot = green()
+    snapshot.raw_diff.append(("M", "100644", "100644", path))
+    assert "E6" not in [i.id for i in evaluate(snapshot).failures]
+
+
+def test_many_files_and_brands_are_fine():
+    snapshot = green()
+    snapshot.raw_diff += [
+        ("A", "000000", "100644", f"data/brand{i}/PLA/x/red/variant.json") for i in range(60)
+    ]
+    assert evaluate(snapshot, at_merge=True).eligible
+
+
+def test_a_failed_brand_signoff_relay_does_not_block():
+    """#827: the relay broke on an old branch; the `Brand sign-off` status still counts."""
+    snapshot = green()
+    snapshot.checks["relay"] = "failure"
+    assert evaluate(snapshot, at_merge=True).eligible
+    snapshot.checks["Brand sign-off"] = "failure"
+    assert "E16" in [i.id for i in evaluate(snapshot).failures]
 
 
 def test_a_missing_required_check_blocks():
@@ -205,8 +241,18 @@ def test_additions_with_a_proven_change_are_eligible_and_an_unproven_one_blocks(
     assert "E10" in [i.id for i in evaluate(snapshot, at_merge=True).failures]
     snapshot = additions((NEW_VARIANT, "variant"))
     snapshot.raw_diff.append(("M", "100644", "100644", FIL))
-    snapshot.leaves.append(Leaf(FIL, "/name", "modify", "A", "B", "filament", "M"))
+    snapshot.leaves.append(Leaf(FIL, "/uuid", "modify", "a", "b", "filament", "M"))
     assert "E9" in [i.id for i in evaluate(snapshot, at_merge=True).failures]
+
+
+def test_a_change_no_script_can_prove_is_judged_by_the_ai_review():
+    snapshot = green()
+    snapshot.leaves.append(Leaf(FIL, "/name", "modify", "A", "B", "filament", "M"))
+    assert evaluate(snapshot, at_merge=True).eligible
+    snapshot.review["model"]["findings"] = [{"path": FIL, "severity": "error"}]
+    assert "E22" in [i.id for i in evaluate(snapshot, at_merge=True).failures]
+    snapshot.review["model"] = {}
+    assert "E13" in [i.id for i in evaluate(snapshot, at_merge=True).failures]
 
 
 def test_a_deletion_or_rename_alongside_additions_blocks():

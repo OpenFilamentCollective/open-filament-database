@@ -4,6 +4,8 @@ The gate must fail closed: these pin every way a sustainability change can get p
 review, so a regression shows up here before it shows up in consumer marketing.
 """
 
+import copy
+
 import pytest
 from test_review import PLA, Repo, filament
 
@@ -381,6 +383,11 @@ class FakeGitHub:
     def find_marker_comment(self, *args):
         return None
 
+    def api_list(self, path):
+        return []
+
+    from ofd.review.github import GitHubError
+
 
 def _result(head):
     return {
@@ -442,6 +449,27 @@ def test_head_change_before_the_model_pass_skips_it(monkeypatch, repo):
     assert result["superseded"] is True
 
 
+@pytest.mark.parametrize(("carried", "model_runs"), [(True, False), (False, True)])
+def test_a_reopen_reuses_the_review_of_the_same_commit(monkeypatch, repo, carried, model_runs):
+    """#820 paid for a second pass on a plain reopen; with nothing to reuse (E13: a
+    label change used to leave no AI review at all), the model runs as usual."""
+    from ofd.review import run
+
+    repo.write(f"{PLA}/basic/filament.json", filament())
+    base = repo.commit()
+    repo.write(f"{PLA}/basic/filament.json", filament(min_print_temperature=200))
+    head = repo.commit()
+
+    calls = []
+    monkeypatch.setattr(run, "fetch_pr", lambda *a: (base, head, base))
+    monkeypatch.setattr(run, "github", FakeGitHub(head=head))
+    monkeypatch.setattr(run, "previous_spend", lambda *a: 0.0)
+    monkeypatch.setattr(run, "_carry", lambda *a: carried)
+    monkeypatch.setattr(run, "_model_pass", lambda *a, **k: calls.append(a))
+    run.review(repo.path, "o/r", 1, ai="always", carry_from=head)
+    assert bool(calls) is model_runs
+
+
 # --- proof mode ---------------------------------------------------------------------
 
 
@@ -487,12 +515,42 @@ def _proof_result():
     return {**_result("a" * 40), "repo": "o/r", "leaves": leaves, "proofs": proofs}
 
 
-def test_summary_tables_proven_and_unproven_values():
-    text = summary(_proof_result())
+def _judged(monkeypatch, result: dict) -> dict:
+    """``result`` with the Auto-merge checklist ``post`` adds before rendering."""
+    from ofd.review import run
+
+    monkeypatch.setenv("OFD_AUTOMERGE", "on")
+    monkeypatch.setenv("OFD_AUTOMERGE_APP_ID", "1")
+    monkeypatch.setenv("GH_TOKEN", "t")
+    monkeypatch.setattr(run, "github", FakeGitHub(result["head_sha"]))
+    result = copy.deepcopy(result)
+    added = {leaf["path"] for leaf in result["leaves"] if leaf["file_status"] == "A"}
+    result.setdefault(
+        "raw_diff",
+        [
+            ("A", "000000", "100644", p) if p in added else ("M", "100644", "100644", p)
+            for p in dict.fromkeys(leaf["path"] for leaf in result["leaves"])
+        ],
+    )
+    result["sustainability"]["gate"] = run.gate_from_result(result)
+    pr = {
+        "state": "open",
+        "draft": False,
+        "base": {"ref": "main", "repo": {"default_branch": "main"}},
+        "head": {"sha": result["head_sha"]},
+        "labels": [],
+        "user": {"login": "contributor"},
+    }
+    result["automerge"] = run.automerge_status("o/r", result, pr)
+    return result
+
+
+def test_summary_tables_proven_and_unproven_values(monkeypatch):
+    text = summary(_judged(monkeypatch, _proof_result()))
     assert "Changed values: 1 of 2 proven" in text
     assert "| ✅ | [brand page](" in text
     assert "quote not on the page" in text
-    assert "held back: 1 change(s) to existing data" in text
+    assert "held back: " in text
     assert "1 changed value(s) unproven" in text
     assert "https://github.com/o/r/pull/1/checks" in text
 
@@ -630,7 +688,7 @@ def test_a_source_log_change_still_needs_the_model():
     ]
 
 
-def test_the_automerge_line_follows_the_checklist():
+def test_the_automerge_line_follows_the_checklist(monkeypatch):
     """It used to promise a merge the checklist then refused (no AI pass, E13)."""
     new = {
         "path": f"{PLA}/basic/red/variant.json",
@@ -642,12 +700,13 @@ def test_the_automerge_line_follows_the_checklist():
         "file_status": "A",
     }
     base = {**_result("a" * 40), "repo": "o/r", "leaves": [new], "proofs": {}}
-    assert "no completed AI review of this commit" in summary({**base, "model": None})
+    unreviewed = _judged(monkeypatch, {**base, "model": None})
+    assert "no completed AI review of this commit" in summary(unreviewed)
     reviewed = {**base, "model": {"model": "m", "cost_usd": 0, "summary": "", "findings": []}}
-    assert "can merge on its own" in summary(reviewed)
+    assert "can merge on its own" in summary(_judged(monkeypatch, reviewed))
     red = {"path": new["path"], "severity": "error", "message": "Wrong colour."}
     reviewed["model"] = {**reviewed["model"], "findings": [red]}
-    assert "1 🔴 AI finding(s)" in summary(reviewed)
+    assert "1 🔴 AI finding(s)" in summary(_judged(monkeypatch, reviewed))
 
 
 def test_a_failing_gate_lists_every_failure():

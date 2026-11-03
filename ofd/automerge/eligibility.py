@@ -2,9 +2,10 @@
 Whether a PR may merge without a maintainer: the E1-E22 checklist.
 
 The bar depends on what the PR does. New data (whole new files, appended spool
-rows) only has to pass the validators and the AI review without a 🔴 finding.
-Changes to existing values must each be proven against the brand's site. Deletions,
-renames and anything structural always wait for a maintainer.
+rows) and changes to values no script can prove (names, colours, traits, links...)
+only have to pass the validators and the AI review without a 🔴 finding. Changes to
+values a script can prove (temperatures, TD, GTIN...) must each be proven against the
+brand's site. Removals, renames and anything structural always wait for a maintainer.
 
 ``evaluate(snapshot)`` is pure: it decides only from facts the script collected or
 verified itself, never from the model's opinion. ``collect()`` gathers those facts
@@ -16,8 +17,9 @@ import re
 from dataclasses import dataclass, field
 from datetime import datetime
 
-from ofd.automerge.proof import HUMAN, NEW, PROVABLE, classify
+from ofd.automerge.proof import HUMAN, JUDGED, NEW, PROVABLE, classify
 from ofd.brand_claims import brands_touched, latest_review_states
+from ofd.review.gitdata import ENTITY_FILES
 
 HOLD_LABEL = "hold"
 OVERRIDE_LABELS = (
@@ -26,14 +28,11 @@ OVERRIDE_LABELS = (
     "brand-signoff-waived",
     "ai-review",
 )
-MAX_FILES = 25
-MAX_LEAVES = 40
 DELAY_MINUTES = 60
 
-# Only these files can change: an existing filament, colour or spool list.
-_DATA_PATH = re.compile(
-    r"^data/[^/]+/[^/]+/[^/]+/(?:filament\.json|[^/]+/(?:variant|sizes)\.json)$"
-)
+# Existing files that may be edited: any brand, material, filament, colour, spool list
+# or store. Each changed value in them still has to clear E9/E10.
+_EDITABLE = ENTITY_FILES | {"store.json"}
 # Any new file under these may be added: brands, materials, filaments, colours,
 # spools, stores and their logos. The validators check what they are.
 _NEW_PATH = re.compile(r"^(?:data|stores)/")
@@ -55,6 +54,14 @@ REQUIRED_CONTEXTS = (
     "Validate data - uuid continuity",
 )
 SELF_CONTEXT = "Auto-merge"
+# Checks that never block. The brand sign-off relay's job only wakes brand_signoff.yaml,
+# which runs whatever the relay's outcome and posts the required `Brand sign-off`
+# status itself; a relay broken on an old PR branch (#827) must not hold a PR forever.
+IGNORED_CONTEXTS = ("relay",)
+# Judged only by the Auto-merge check: the other checks are still running when the
+# review comment is posted, GitHub computes mergeability lazily, and E19/E20 are
+# merge-time only. The comment shows every other condition, from ``evaluate`` itself.
+LATER = ("E16", "E18", "E19", "E20")
 
 
 @dataclass
@@ -141,7 +148,7 @@ def evaluate(s: Snapshot, at_merge: bool = False) -> Eligibility:
     outside = [
         r[3]
         for r in s.raw_diff
-        if not (_DATA_PATH.match(r[3]) or (r[0] == "A" and _NEW_PATH.match(r[3])))
+        if not _NEW_PATH.match(r[3]) or (r[0] != "A" and r[3].rsplit("/", 1)[-1] not in _EDITABLE)
     ]
     check(
         "E6",
@@ -159,11 +166,6 @@ def evaluate(s: Snapshot, at_merge: bool = False) -> Eligibility:
         "only additions and edits" if not odd else f"{odd[0][3]} is removed, renamed or re-moded",
     )
     brands = brands_touched(paths)
-    check(
-        "E8",
-        len(paths) <= MAX_FILES and len(s.leaves) <= MAX_LEAVES and len(brands) <= 1,
-        f"{len(paths)} files, {len(s.leaves)} values, {len(brands)} brand(s)",
-    )
     items += content_items(
         review,
         s.leaves,
@@ -178,7 +180,9 @@ def evaluate(s: Snapshot, at_merge: bool = False) -> Eligibility:
     others = [
         c
         for c, state in s.checks.items()
-        if c != SELF_CONTEXT and state not in ("success", "neutral", "skipped")
+        if c != SELF_CONTEXT
+        and c not in IGNORED_CONTEXTS
+        and state not in ("success", "neutral", "skipped")
     ]
     bad = sorted(set(not_green) | set(others))
     check("E16", not bad, "all checks green" if not bad else f"not green: {', '.join(bad[:4])}")
@@ -211,6 +215,11 @@ def evaluate(s: Snapshot, at_merge: bool = False) -> Eligibility:
     return Eligibility(all(i.ok for i in items), head, items)
 
 
+def review_items(s: Snapshot) -> list[Item]:
+    """Every condition ``evaluate`` checks except ``LATER``: what the review comment shows."""
+    return [i for i in evaluate(s).items if i.id not in LATER]
+
+
 def content_items(
     review: dict,
     leaves: list,
@@ -222,8 +231,7 @@ def content_items(
 ) -> list[Item]:
     """E9-E15 and E22: what the PR's content and its review say, without GitHub state.
 
-    Shared with the review comment (``ofd.review.render``), so the line it shows about
-    auto-merge can't drift from what this checklist decides.
+    Part of ``evaluate``; the review comment goes through ``review_items``, never here.
     """
     items: list[Item] = []
 
@@ -235,9 +243,9 @@ def content_items(
     check(
         "E9",
         has_changes and not human,
-        "every change is new data or can be proven"
+        "no removals or structural changes"
         if not human
-        else f"{len(human)} change(s) to existing data need a maintainer, e.g. "
+        else f"{len(human)} removal(s) or structural change(s) need a maintainer, e.g. "
         f"`{human[0].path}` `{human[0].pointer or '(whole file)'}`",
     )
     unproven = [k for k, v in proofs.items() if not v.get("ok")]
@@ -281,11 +289,11 @@ def content_items(
         "no sustainability data, gate green" if not touched else "touches sustainability data",
     )
     ai_errors = [f for f in model.get("findings") or [] if f.get("severity") == "error"]
-    blocked = NEW in kinds and ai_errors
+    blocked = (NEW in kinds or JUDGED in kinds) and ai_errors
     check(
         "E22",
         not blocked,
-        "no 🔴 AI finding on new data"
+        "no 🔴 AI finding on new or AI-judged data"
         if not blocked
         else f"{len(ai_errors)} 🔴 AI finding(s), e.g. `{ai_errors[0].get('path', '')}`",
     )

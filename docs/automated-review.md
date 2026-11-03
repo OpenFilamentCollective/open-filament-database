@@ -21,10 +21,11 @@ The **Auto-merge** check decides, after an hour with every check green. Adding t
 | The PR... | Bar |
 |---|---|
 | **adds** data: a new brand, filament, colour, spool, store or logo | Merges unless the AI review raises a 🔴 error on it. |
-| **changes** existing values | Every changed value must be proven by a script on the brand's own site (temperatures, drying, fan, flow, enclosure, datasheets, TD, GTIN, article number). Anything else, such as a name, colour, trait or link, needs a maintainer. |
-| **deletes** or renames anything | Always needs a maintainer. |
+| **changes** a value a script can check (temperatures, drying, fan, flow, enclosure, datasheets, TD, GTIN, article number) | The value must be proven by a script on the brand's own site. |
+| **changes** any other value, such as a name, colour, trait or link | Merges unless the AI review raises a 🔴 error on it, like new data. |
+| **deletes**, renames or removes anything, or changes an `id`, `uuid` or `slicer_ids` | Always needs a maintainer. |
 
-It never auto-merges claimed brands (their representative signs off), sustainability data, or PRs spanning several brands. The full checklist (E1–E22) is in [`ofd/automerge/eligibility.py`](../ofd/automerge/eligibility.py) and on each PR's Auto-merge check.
+It never auto-merges claimed brands (their representative signs off), or sustainability data. The full checklist (E1–E22) is in [`ofd/automerge/eligibility.py`](../ofd/automerge/eligibility.py) and on each PR's Auto-merge check.
 
 ## Sustainability data
 

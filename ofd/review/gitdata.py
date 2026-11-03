@@ -112,6 +112,17 @@ class ChangedFile:
         return str(PurePosixPath(self.path).parent)
 
 
+def raw_diff(repo: Path, base: str, head: str) -> list[tuple[str, str, str, str]]:
+    """(status, old mode, new mode, path) for every file ``base..head`` touches."""
+    rows = []
+    for line in git(repo, "diff", "--raw", "--no-renames", base, head).splitlines():
+        meta, _, path = line.partition("\t")
+        fields = meta.lstrip(":").split()
+        if len(fields) >= 5:
+            rows.append((fields[4][0], fields[0], fields[1], path))
+    return rows
+
+
 def _commentable_lines(repo: Path, base: str, head: str, path: str) -> set[int]:
     """Head-side lines inside the diff hunks GitHub shows (3 lines of context)."""
     lines: set[int] = set()

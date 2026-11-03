@@ -6,11 +6,11 @@ Nothing here trusts that: a proof counts only when this script fetches the page
 itself and finds it on the brand's own site, about this exact product, with the
 quote on it and the value in the quote, at the right end of any range.
 
-Only fields with a rule in ``RULES`` can be proven at all. Changes to anything else
-in an existing file (names, ids, colours, traits, density, purchase links,
-sustainability, removals, anything structural) need a maintainer, so a PR touching
-them never auto-merges. That table is deliberately the only way to widen which
-*changes* can merge unseen.
+Only fields with a rule in ``RULES`` can be proven, and a changed value of one of
+them must be (``PROVABLE``). Any other added or changed value in an existing file
+(names, colours, traits, density, purchase links...) is ``JUDGED``: it gets the same
+bar as new data. Identities (``IDENTITY``), removals and structural changes are
+``HUMAN``: a maintainer's call.
 
 New data has a lower bar: a whole new file, or a spool row appended to an existing
 list, is ``NEW``. It has nothing to contradict, so the validators and the AI review
@@ -54,6 +54,9 @@ RULES: dict[str, dict[str, str]] = {
 
 SHEETS = {"data_sheet_url", "safety_sheet_url"}
 
+# What other data, slicers and uuid continuity point at: never changed unseen.
+IDENTITY = {"id", "uuid", "slicer_ids"}
+
 # Brand-domain pages written by users, not the brand.
 UGC_SUBDOMAIN = re.compile(r"^(?:forum|forums|community|wiki|reviews?|answers|support-community)\.")
 # Wikis the brand itself writes (Polymaker's TD and hex tables live on its wiki).
@@ -63,7 +66,7 @@ MAX_QUOTE_GAP = 300
 
 _RANGE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(?:-|–|—|~|to)\s*(\d+(?:[.,]\d+)?)")
 
-PROVABLE, HUMAN, NEW = "provable", "human", "new"
+PROVABLE, JUDGED, HUMAN, NEW = "provable", "judged", "human", "new"
 
 
 @dataclass
@@ -188,12 +191,10 @@ def classify(leaf: Leaf) -> str:
     if leaf.file_status != "M" or leaf.op not in ("add", "modify"):
         return HUMAN
     parts = leaf.pointer.strip("/").split("/")
-    if leaf.kind == "sizes":
-        if len(parts) != 2 or not parts[0].isdigit():
-            return HUMAN
-    elif len(parts) != 1:
+    if IDENTITY & set(parts):
         return HUMAN
-    return PROVABLE if parts[-1] in RULES.get(leaf.kind, {}) else HUMAN
+    top_level = len(parts) == 2 and parts[0].isdigit() if leaf.kind == "sizes" else len(parts) == 1
+    return PROVABLE if top_level and parts[-1] in RULES.get(leaf.kind, {}) else JUDGED
 
 
 # --- product context ----------------------------------------------------------

@@ -22,6 +22,7 @@ from pathlib import Path
 from ofd.automerge import record
 from ofd.automerge.eligibility import Eligibility, Snapshot, evaluate
 from ofd.automerge.proof import (
+    JUDGED,
     NEW,
     PROVABLE,
     Leaf,
@@ -34,7 +35,7 @@ from ofd.automerge.proof import (
 from ofd.brand_claims import CLAIMS_FILE, brands_touched, load_claims
 from ofd.enrich.verify import Fetcher
 from ofd.review import github
-from ofd.review.gitdata import TreeReader, changed_files, git
+from ofd.review.gitdata import TreeReader, changed_files, raw_diff
 from ofd.review.jsonlines import resolve
 from ofd.review.run import fetch_pr
 from ofd.uuids import find_lost_uuids, iter_entities
@@ -120,16 +121,6 @@ def ruleset_contexts(repo: str, branch: str) -> list[str]:
             for check in (rule.get("parameters") or {}).get("required_status_checks", []):
                 contexts.append(check.get("context"))
     return [c for c in contexts if c]
-
-
-def raw_diff(repo_dir: Path, base: str, head: str) -> list[tuple[str, str, str, str]]:
-    rows = []
-    for line in git(repo_dir, "diff", "--raw", "--no-renames", base, head).splitlines():
-        meta, _, path = line.partition("\t")
-        fields = meta.lstrip(":").split()
-        if len(fields) >= 5:
-            rows.append((fields[4][0], fields[0], fields[1], path))
-    return rows
 
 
 def _extract(repo_dir: Path, treeish: str, dest: Path) -> tuple[Path, Path]:
@@ -288,11 +279,14 @@ def _merge_reason(snapshot: Snapshot, repo_dir: Path) -> str:
     kinds = [classify(leaf) for leaf in snapshot.leaves]
     provable = [leaf for leaf, kind in zip(snapshot.leaves, kinds, strict=True) if kind == PROVABLE]
     added = kinds.count(NEW)
+    judged = kinds.count(JUDGED)
     parts = []
     if added:
         parts.append(
             f"{added} new entr{'ies' if added != 1 else 'y'} passed the validators and the AI review"
         )
+    if judged:
+        parts.append(f"{judged} changed value(s) passed the AI review")
     if provable:
         site = context_for(provable[0], TreeReader(repo_dir, "HEAD")).brand_site
         site = site or "the brand's site"
