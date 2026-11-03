@@ -4,6 +4,7 @@
   "name": "Cool White",
   "color_hex": "#e3e3e5",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

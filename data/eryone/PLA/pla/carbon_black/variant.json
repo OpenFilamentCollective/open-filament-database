@@ -4,6 +4,7 @@
   "name": "Carbon Black",
   "color_hex": "#2c2c2c",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

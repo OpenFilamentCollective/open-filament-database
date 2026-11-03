@@ -4,6 +4,7 @@
   "name": "Signal Gray",
   "color_hex": "#b9b3ae",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

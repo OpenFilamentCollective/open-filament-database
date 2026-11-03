@@ -4,6 +4,7 @@
   "name": "Dark purple",
   "color_hex": "#7e4cc8",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

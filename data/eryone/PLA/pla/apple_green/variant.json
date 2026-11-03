@@ -4,6 +4,7 @@
   "name": "Apple Green",
   "color_hex": "#8bcc60",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

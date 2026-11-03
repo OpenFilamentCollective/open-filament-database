@@ -4,6 +4,7 @@
   "name": "Mango Yellow",
   "color_hex": "#dca324",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

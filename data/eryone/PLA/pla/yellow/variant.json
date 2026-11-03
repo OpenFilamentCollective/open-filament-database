@@ -4,6 +4,7 @@
   "name": "Yellow",
   "color_hex": "#ffdf0d",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }
