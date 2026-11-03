@@ -4,16 +4,6 @@
     "filament_weight": 750,
     "diameter": 1.75,
     "container_material": "cardboard",
-    "container_details": {
-      "recycled_pct": 100,
-      "pct_qualifier": "exact",
-      "certifications": [],
-      "notes": "Brand-wide Polymaker announcement dated 2021-08-15 covering all Polymaker filaments (it also states that \"filament production has ceased on all plastic spools\"); PolyMide is a Polymaker line. Not product-specific: the CoPA product page lists 0.75kg spools but does not state the spool material or its recycled share.",
-      "source_type": "primary",
-      "source_url": "https://polymaker.com/polymaker-transitions-all-filaments-onto-100-recycled-cardboard-spools/",
-      "source_quote": "Moving forward, Polymaker will produce all filaments on a 100% recycled cardboard spools.",
-      "retrieved": "2026-11-03"
-    },
     "purchase_links": [
       {
         "store_id": "polymaker",
@@ -26,16 +16,6 @@
     "filament_weight": 750,
     "diameter": 2.85,
     "container_material": "cardboard",
-    "container_details": {
-      "recycled_pct": 100,
-      "pct_qualifier": "exact",
-      "certifications": [],
-      "notes": "Brand-wide Polymaker announcement dated 2021-08-15 covering all Polymaker filaments (it also states that \"filament production has ceased on all plastic spools\"); PolyMide is a Polymaker line. Not product-specific: the CoPA product page lists 0.75kg spools but does not state the spool material or its recycled share.",
-      "source_type": "primary",
-      "source_url": "https://polymaker.com/polymaker-transitions-all-filaments-onto-100-recycled-cardboard-spools/",
-      "source_quote": "Moving forward, Polymaker will produce all filaments on a 100% recycled cardboard spools.",
-      "retrieved": "2026-11-03"
-    },
     "purchase_links": [
       {
         "store_id": "polymaker",
