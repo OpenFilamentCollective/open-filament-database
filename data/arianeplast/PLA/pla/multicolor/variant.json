@@ -10,6 +10,7 @@
     "#8D65C7"
   ],
   "traits": {
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "bio_based": true
   }
 }

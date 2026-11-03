@@ -4,6 +4,7 @@
   "name": "Translucent Yellow",
   "color_hex": "#E4FF33",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "bio_based": true
   }
 }

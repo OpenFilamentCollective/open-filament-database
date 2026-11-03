@@ -2,5 +2,8 @@
   "uuid": "c44f806e-36af-435a-bdd9-73d77608e3d9",
   "id": "coral",
   "name": "Coral",
-  "color_hex": "#F47D59"
+  "color_hex": "#F47D59",
+  "traits": {
+    "bio_based": true
+  }
 }

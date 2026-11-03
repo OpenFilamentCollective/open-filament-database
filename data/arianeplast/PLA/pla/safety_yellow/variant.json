@@ -2,5 +2,8 @@
   "uuid": "cd810252-088b-4fdf-b5b7-f400c6218f82",
   "id": "safety_yellow",
   "name": "Safety Yellow",
-  "color_hex": "#F8CC00"
+  "color_hex": "#F8CC00",
+  "traits": {
+    "bio_based": true
+  }
 }

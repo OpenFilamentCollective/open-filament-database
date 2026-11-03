@@ -2,5 +2,8 @@
   "uuid": "900c3ec9-b105-4abf-b234-8d0aff5605e8",
   "id": "yellow_pantone_116u",
   "name": "Yellow Pantone 116U",
-  "color_hex": "#E8BD00"
+  "color_hex": "#E8BD00",
+  "traits": {
+    "bio_based": true
+  }
 }

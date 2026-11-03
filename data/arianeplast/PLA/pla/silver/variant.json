@@ -2,5 +2,8 @@
   "uuid": "e08f48f1-dbc6-4bd5-aa0b-0ad0534d5212",
   "id": "silver",
   "name": "Silver",
-  "color_hex": "#949597"
+  "color_hex": "#949597",
+  "traits": {
+    "bio_based": true
+  }
 }

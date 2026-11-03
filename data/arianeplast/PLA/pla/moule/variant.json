@@ -2,5 +2,8 @@
   "uuid": "ea36beb0-c5b3-4033-b9f7-ca927c8a0822",
   "id": "moule",
   "name": "Moule",
-  "color_hex": "#E6D1BD"
+  "color_hex": "#E6D1BD",
+  "traits": {
+    "bio_based": true
+  }
 }

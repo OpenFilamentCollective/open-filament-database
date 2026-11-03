@@ -4,6 +4,7 @@
   "name": "Translucent Green",
   "color_hex": "#62E480",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "bio_based": true
   }
 }

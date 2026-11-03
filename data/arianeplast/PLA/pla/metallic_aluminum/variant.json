@@ -4,6 +4,7 @@
   "name": "Metallic Aluminum",
   "color_hex": "#AEB8C1",
   "traits": {
+    "bio_based": true,
     "contains_aluminium": true
   }
 }

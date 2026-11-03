@@ -2,5 +2,8 @@
   "uuid": "b26a9959-eaef-45e7-9d46-cab305e9570f",
   "id": "oyster",
   "name": "Oyster",
-  "color_hex": "#EFE8D8"
+  "color_hex": "#EFE8D8",
+  "traits": {
+    "bio_based": true
+  }
 }
