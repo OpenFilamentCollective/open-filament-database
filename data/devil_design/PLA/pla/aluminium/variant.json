@@ -2,5 +2,8 @@
   "uuid": "07628635-ca1a-4407-90da-75bc34073453",
   "id": "aluminium",
   "name": "ALUMINIUM",
-  "color_hex": "#999596"
+  "color_hex": "#999596",
+  "traits": {
+    "bio_based": true
+  }
 }

@@ -4,6 +4,7 @@
   "name": "GRAYSTONE",
   "color_hex": "#8E8D71",
   "traits": {
-    "imitates_stone": true
+    "imitates_stone": true,
+    "bio_based": true
   }
 }

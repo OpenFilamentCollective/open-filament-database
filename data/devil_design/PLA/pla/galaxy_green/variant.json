@@ -4,6 +4,7 @@
   "name": "GALAXY GREEN",
   "color_hex": "#144F3B",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

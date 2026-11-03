@@ -2,5 +2,8 @@
   "uuid": "e896e720-48d1-4342-9a42-58d3cd7cd103",
   "id": "dark_brown",
   "name": "DARK BROWN",
-  "color_hex": "#724E3D"
+  "color_hex": "#724E3D",
+  "traits": {
+    "bio_based": true
+  }
 }

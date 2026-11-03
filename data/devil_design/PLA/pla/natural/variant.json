@@ -5,6 +5,7 @@
   "color_hex": "#DFDFD3",
   "traits": {
     "transparent": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "bio_based": true
   }
 }
