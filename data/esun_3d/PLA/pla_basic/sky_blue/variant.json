@@ -2,5 +2,8 @@
   "uuid": "ee9dc664-3bd0-4c56-8b3b-c1982b2be19c",
   "id": "sky_blue",
   "name": "Sky Blue",
-  "color_hex": "#63D0F9"
+  "color_hex": "#63D0F9",
+  "traits": {
+    "bio_based": true
+  }
 }

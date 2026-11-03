@@ -3,5 +3,8 @@
   "id": "aqua",
   "name": "Aqua",
   "color_hex": "#45DBEA",
-  "discontinued": false
+  "discontinued": false,
+  "traits": {
+    "bio_based": true
+  }
 }
