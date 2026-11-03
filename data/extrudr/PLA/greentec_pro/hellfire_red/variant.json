@@ -10,6 +10,7 @@
     "ral": "3024"
   },
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }
