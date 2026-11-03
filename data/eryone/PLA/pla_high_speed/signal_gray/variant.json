@@ -4,6 +4,7 @@
   "name": "Signal Gray",
   "color_hex": "#aaafb0",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }
