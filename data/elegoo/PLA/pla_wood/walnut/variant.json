@@ -4,5 +4,8 @@
   "name": "Walnut",
   "color_hex": [
     "#773F1A"
-  ]
+  ],
+  "traits": {
+    "bio_based": true
+  }
 }
