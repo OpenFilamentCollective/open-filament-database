@@ -1,5 +1,8 @@
 {
   "uuid": "21f03390-3531-4eb7-959d-393b5dc7e55a",
+  "moved_from": [
+    "9a7db5d5-8517-46e5-908e-8ea52438a9a6"
+  ],
   "id": "navy_blue",
   "name": "Navy Blue",
   "color_hex": "#0353BA",
@@ -7,6 +10,7 @@
     "ral": "5003"
   },
   "traits": {
+    "matte": true,
     "industrially_compostable": true
   }
 }

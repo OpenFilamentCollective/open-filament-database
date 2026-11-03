@@ -1,5 +1,8 @@
 {
   "uuid": "cf7fb049-fbcf-4753-9b89-49ce194a818c",
+  "moved_from": [
+    "52caf63a-dac9-4a44-b210-a7350ddb7ea6"
+  ],
   "id": "greentec_pla",
   "name": "GreenTEC PLA",
   "diameter_tolerance": 0.02,
