@@ -5,5 +5,8 @@
   ],
   "id": "red",
   "name": "Red",
-  "color_hex": "#6F0616"
+  "color_hex": "#6F0616",
+  "traits": {
+    "recycled": true
+  }
 }

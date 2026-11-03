@@ -5,5 +5,8 @@
   ],
   "id": "blue",
   "name": "Blue",
-  "color_hex": "#2080CD"
+  "color_hex": "#2080CD",
+  "traits": {
+    "recycled": true
+  }
 }
