@@ -5,6 +5,7 @@
   "color_hex": "#DB3E14",
   "traits": {
     "matte": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }
