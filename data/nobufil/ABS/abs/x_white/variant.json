@@ -4,6 +4,7 @@
   "name": "x White",
   "color_hex": "#FFFFFF",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

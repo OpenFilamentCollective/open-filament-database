@@ -4,6 +4,7 @@
   "name": "x Bright Magenta",
   "color_hex": "#C80181",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

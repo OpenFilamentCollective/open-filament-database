@@ -4,6 +4,7 @@
   "name": "x Stainless Steel",
   "color_hex": "#55657C",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }
