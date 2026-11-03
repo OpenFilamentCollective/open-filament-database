@@ -3,6 +3,16 @@
     "uuid": "990eacfe-09db-4ce1-a3f1-6bce713e2286",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [],
+      "notes": "Brand says scrap is reused to make the recyclable paper spool; no percentage given.",
+      "source_type": "primary",
+      "source_url": "https://esun3dstore.com/products/epla-lite",
+      "source_quote": "Scrap is reused to produce recyclable paper spool & packaging box.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 140,
     "purchase_links": [
       {
