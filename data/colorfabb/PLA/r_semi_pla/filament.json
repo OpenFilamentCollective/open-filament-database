@@ -7,5 +7,18 @@
   "min_print_temperature": 195,
   "max_print_temperature": 220,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 60,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://colorfabb.com/recycled-pla-filament",
+      "source_quote": "colorFabb rPLA is made from 100% recycled PLA and has a stylisch semi-matte finish.",
+      "retrieved": "2026-11-03",
+      "notes": "rPLA Semi-Matte; page does not say whether the recycled PLA is post-industrial or post-consumer."
+    }
+  }
 }
