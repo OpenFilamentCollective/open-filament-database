@@ -12,5 +12,18 @@
   "max_fan_speed": 100,
   "enclosure": "not_needed",
   "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_rpetg.pdf",
-  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_msds_spectrum_rpetg.pdf"
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_msds_spectrum_rpetg.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://spectrumfilaments.com/en/filament/r-petg/",
+      "source_quote": "The filament is created by reusing the recycled extrusion residual waste stream. The raw material is collected, shredded, re-mixed and homogenised into a high-grade and easy-to-print recycled PETG filament … As it is a fully recycled material, Spectrum rPETG may not be available",
+      "retrieved": "2026-11-03",
+      "notes": "Source calls it 'a fully recycled material' made from extrusion residual waste (manufacturing scrap) but gives no percentage, so pct is null."
+    }
+  }
 }
