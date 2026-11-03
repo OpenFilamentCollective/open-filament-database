@@ -4,6 +4,7 @@
   "name": "Beige",
   "color_hex": "#EADAC2",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

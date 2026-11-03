@@ -4,6 +4,7 @@
   "name": "Brown",
   "color_hex": "#6E4325",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

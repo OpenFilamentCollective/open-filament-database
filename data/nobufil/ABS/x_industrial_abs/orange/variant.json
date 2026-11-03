@@ -4,6 +4,7 @@
   "name": "Orange",
   "color_hex": "#FA8423",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

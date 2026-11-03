@@ -4,6 +4,7 @@
   "name": "Turquoise",
   "color_hex": "#67D8BC",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }
