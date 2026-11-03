@@ -3,6 +3,19 @@
   "id": "re",
   "name": "Re",
   "color_hex": "#000000",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://shop.filament-pm.com/repetg-1-75-mm-1-kg/p253",
+      "source_quote": "We produce recycled filaments after chopping filaments that do not pass a strict exit inspection. … 100% RECYCLED AND EVEN CHEAPER!",
+      "retrieved": "2026-11-03",
+      "notes": "Recycled feedstock is the brand's own PETG filament that failed exit inspection (production scrap), hence post_industrial."
+    }
+  },
   "traits": {
     "recycled": true
   }
