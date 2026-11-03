@@ -3,6 +3,7 @@
     "uuid": "03e36c69-f85d-4908-9655-0cf46faf4160",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "empty_spool_weight": 140,
     "gtin": "6922572205567",
     "article_number": "PLA-CM175O-TB1P1",
