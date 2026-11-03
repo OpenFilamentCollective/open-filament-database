@@ -4,6 +4,7 @@
   "name": "Ocean Blue",
   "color_hex": "#0069A4",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

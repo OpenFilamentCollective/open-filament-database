@@ -5,6 +5,7 @@
   "color_hex": "#4CC573",
   "traits": {
     "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Snow White",
   "color_hex": "#F2F2ED",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

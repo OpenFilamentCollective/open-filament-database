@@ -4,6 +4,7 @@
   "name": "Daffodil Yellow",
   "color_hex": "#FFC02C",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

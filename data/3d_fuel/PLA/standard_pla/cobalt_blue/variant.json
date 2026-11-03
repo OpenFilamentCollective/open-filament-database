@@ -4,6 +4,7 @@
   "name": "Cobalt Blue",
   "color_hex": "#0C3681",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }
