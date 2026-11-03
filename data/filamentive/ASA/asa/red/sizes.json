@@ -4,6 +4,7 @@
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
     "article_number": "ASA-RD075-175",
