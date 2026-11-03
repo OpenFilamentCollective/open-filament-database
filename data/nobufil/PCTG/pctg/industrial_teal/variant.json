@@ -2,5 +2,8 @@
   "uuid": "8d4f3db7-e901-4a7b-be40-f6461c022557",
   "id": "industrial_teal",
   "name": "Industrial Teal",
-  "color_hex": "#0079A7"
+  "color_hex": "#0079A7",
+  "traits": {
+    "recycled": true
+  }
 }

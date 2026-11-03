@@ -4,6 +4,7 @@
   "name": "Candy Red",
   "color_hex": "#B7293E",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "recycled": true
   }
 }
