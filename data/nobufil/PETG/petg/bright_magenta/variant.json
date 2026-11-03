@@ -2,5 +2,8 @@
   "uuid": "23decf43-31e0-4c62-bc79-aa99ba2910fc",
   "id": "bright_magenta",
   "name": "Bright Magenta",
-  "color_hex": "#DB3FA9"
+  "color_hex": "#DB3FA9",
+  "traits": {
+    "recycled": true
+  }
 }

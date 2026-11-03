@@ -2,5 +2,8 @@
   "uuid": "339dbfc5-6da1-405a-a040-f144412e0daa",
   "id": "candy_blue",
   "name": "Candy Blue",
-  "color_hex": "#2C3294"
+  "color_hex": "#2C3294",
+  "traits": {
+    "recycled": true
+  }
 }

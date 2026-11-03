@@ -2,5 +2,8 @@
   "uuid": "97db4801-fa74-4fcb-a89e-473a5a4af202",
   "id": "industrial_blue",
   "name": "Industrial Blue",
-  "color_hex": "#0E21AE"
+  "color_hex": "#0E21AE",
+  "traits": {
+    "recycled": true
+  }
 }
