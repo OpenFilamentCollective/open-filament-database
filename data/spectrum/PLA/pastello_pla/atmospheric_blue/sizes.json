@@ -18,6 +18,7 @@
     "uuid": "45359fe2-3561-4e38-9360-615f00097bb9",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "gtin": "5903175654915",
     "article_number": "80711",
     "purchase_links": [
@@ -31,6 +32,7 @@
     "uuid": "fbe0aa67-1463-4579-9ed5-389cd89d6a1c",
     "filament_weight": 250,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "purchase_links": [
       {
         "store_id": "spectrum",
