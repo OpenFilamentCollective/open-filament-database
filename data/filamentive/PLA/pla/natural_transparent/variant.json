@@ -5,6 +5,8 @@
   "color_hex": "#F9F3E5",
   "traits": {
     "transparent": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "recycled": true,
+    "recyclable": true
   }
 }

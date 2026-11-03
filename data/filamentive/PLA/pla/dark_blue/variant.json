@@ -2,5 +2,9 @@
   "uuid": "d85b010d-9534-48c4-bcd0-e15f6a735e24",
   "id": "dark_blue",
   "name": "Dark Blue",
-  "color_hex": "#0353BA"
+  "color_hex": "#0353BA",
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
 }
