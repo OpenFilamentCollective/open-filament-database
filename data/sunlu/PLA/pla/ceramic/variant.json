@@ -2,5 +2,8 @@
   "uuid": "2657e9ac-4396-48b6-9069-6ea51980d204",
   "id": "ceramic",
   "name": "Ceramic",
-  "color_hex": "#F4F9FF"
+  "color_hex": "#F4F9FF",
+  "traits": {
+    "bio_based": true
+  }
 }

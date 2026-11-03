@@ -2,5 +2,8 @@
   "uuid": "b8de4c7a-0bd9-4195-b0f9-5a023df3785a",
   "id": "beige",
   "name": "Beige",
-  "color_hex": "#EAD8AB"
+  "color_hex": "#EAD8AB",
+  "traits": {
+    "bio_based": true
+  }
 }

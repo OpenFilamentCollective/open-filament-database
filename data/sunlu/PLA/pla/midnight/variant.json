@@ -2,5 +2,8 @@
   "uuid": "4bddbcc0-79d3-4782-abdd-1735399f8505",
   "id": "midnight",
   "name": "Midnight",
-  "color_hex": "#191970"
+  "color_hex": "#191970",
+  "traits": {
+    "bio_based": true
+  }
 }

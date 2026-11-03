@@ -4,6 +4,7 @@
   "name": "Sunny Orange",
   "color_hex": "#FF8A00",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }
