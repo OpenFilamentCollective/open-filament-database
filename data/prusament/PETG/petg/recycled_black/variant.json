@@ -3,6 +3,39 @@
   "id": "recycled_black",
   "name": "Recycled Black",
   "color_hex": "#000000",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "supplier_declaration",
+      "source_type": "primary",
+      "source_url": "https://www.prusa3d.com/product/prusament-petg-recycled-black-2kg-nfc/",
+      "source_quote": "100 % of the material consists of recycled Prusament PETG materials, so every batch has a different color. … Waste produced during our in-house production of Prusament PETG is recycled and used as a base for Prusament PETG Recycled.",
+      "retrieved": "2026-11-03"
+    },
+    "carbon_footprints": [
+      {
+        "value_kg_co2e": 2.55,
+        "declared_unit": "per_kg_filament",
+        "boundary": "filament_cradle_to_gate",
+        "packaging_included": "unknown",
+        "biogenic_carbon": "unknown",
+        "recycled_allocation": "unknown",
+        "method": "lca",
+        "tool": "SimaPro 9.3.0.2",
+        "practitioner": "Ing. Marie Tichá",
+        "verification": "none",
+        "publicly_available": false,
+        "published": "2022-03-17",
+        "source_type": "primary",
+        "source_url": "https://blog.prusa3d.com/introducing-prusament-petg-recycled-with-calculated-life-cycle-assessment_65806/",
+        "source_quote": "whereas 1 kg of Prusament PETG Recycled comes with only 2.55 kg CO 2 emissions thanks to leaving out the transportation and production of new granulate",
+        "retrieved": "2026-11-03",
+        "notes": "LCA by Ing. Marie Tichá in SimaPro 9.3.0.2, covering stages 'to packing the filament into the box'. The blog says a detailed LCA overview would be prepared for download, but it is not confirmed as published. No allocation method is named for the recycled input."
+      }
+    ]
+  },
   "traits": {
     "recycled": true
   }
