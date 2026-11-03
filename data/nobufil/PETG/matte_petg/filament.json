@@ -7,5 +7,18 @@
   "min_print_temperature": 220,
   "max_print_temperature": 250,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 90,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://www.nobufil.com/product-page/petg-filament-matt-black",
+      "source_quote": "Nobufil PETG Filamente sind unser eigenes, vollständig nachhaltiges Material für den 3D Druck, das im eigenen Haus aus 100 % recyceltem Kunststoffabfall hergestellt wird.",
+      "retrieved": "2026-11-03",
+      "notes": "Same page: 'Das PETG-Filament von Nobufil wird aus recycelten Produktionsabfällen hergestellt'."
+    }
+  }
 }

@@ -4,6 +4,7 @@
   "name": "Matt Black",
   "color_hex": "#000000",
   "traits": {
-    "matte": true
+    "matte": true,
+    "recycled": true
   }
 }
