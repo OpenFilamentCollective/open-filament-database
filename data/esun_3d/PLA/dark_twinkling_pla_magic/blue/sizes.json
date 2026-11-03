@@ -3,6 +3,7 @@
     "uuid": "b87b04e5-07be-4013-8298-b598c043593a",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "empty_spool_weight": 140,
     "gtin": "6922572205529",
     "article_number": "PLA-MG175O-DTU1P1",
