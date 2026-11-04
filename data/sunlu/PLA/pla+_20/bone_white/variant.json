@@ -2,5 +2,7 @@
   "uuid": "4d660387-8c64-4996-8540-18f1c7c62bfe",
   "id": "bone_white",
   "name": "Bone White",
-  "color_hex": "#FFFFFF"
+  "color_hex": "#EEE7D4",
+  "transmission_distance": 1.7,
+  "discontinued": false
 }
