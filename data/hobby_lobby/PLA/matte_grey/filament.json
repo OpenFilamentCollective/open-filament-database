@@ -1,0 +1,9 @@
+{
+  "id": "matte_grey",
+  "name": "Matte Grey",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "discontinued": false
+}
