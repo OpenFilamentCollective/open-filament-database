@@ -1,0 +1,16 @@
+[
+  {
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "article_number": "TPU-95A-BLACK",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/stores/ACESAY/page/861F2177-57A5-44FB-9983-374FBD3E36C4"
+      }
+    ]
+  }
+]
