@@ -1,6 +1,10 @@
 {
   "uuid": "f51c06e5-5457-4164-9eeb-a47408008197",
+  "moved_from": [
+    "33fd2c0e-e3d6-4aa5-8040-9513a500cd9b"
+  ],
   "id": "magenta",
   "name": "Magenta",
-  "color_hex": "#A80DD1"
+  "color_hex": "#C52E79",
+  "discontinued": false
 }

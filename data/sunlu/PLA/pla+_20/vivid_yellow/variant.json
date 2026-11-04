@@ -1,6 +1,10 @@
 {
   "uuid": "d06b53a2-44c8-475c-a0e9-e6a4af36f45b",
+  "moved_from": [
+    "40632ae4-9a47-416a-817a-99aea278bafc"
+  ],
   "id": "vivid_yellow",
   "name": "Vivid Yellow",
-  "color_hex": "#FFE500"
+  "color_hex": "#EAC642",
+  "discontinued": false
 }
