@@ -23,12 +23,12 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFL00",
+            "id": "GFL99",
             "profile_name": "PolyLite PLA"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFL00",
+            "id": "GFL99",
             "profile_name": "PolyLite PLA"
         },
         "crealityprint": {
@@ -38,7 +38,7 @@
         },
         "anycubicslicer": {
             "generic_id": "GFL99",
-            "id": "GFL00",
+            "id": "GFL99",
             "profile_name": "PolyLite PLA"
         }
     }

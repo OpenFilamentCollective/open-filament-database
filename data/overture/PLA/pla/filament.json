@@ -20,7 +20,7 @@
         },
         "orcaslicer": {
             "generic_id": "GFL99",
-            "id": "OGFL04",
+            "id": "GFB99",
             "profile_name": "Overture PLA"
         },
         "superslicer": {
@@ -28,7 +28,7 @@
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "OGFL04",
+            "id": "GFB99",
             "profile_name": "Overture PLA"
         },
         "crealityprint": {
@@ -38,7 +38,7 @@
         },
         "anycubicslicer": {
             "generic_id": "GFL99",
-            "id": "GFL04",
+            "id": "GFB99",
             "profile_name": "Overture PLA"
         }
     }
