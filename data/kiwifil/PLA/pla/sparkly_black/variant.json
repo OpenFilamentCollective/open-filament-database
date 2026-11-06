@@ -4,6 +4,7 @@
   "name": "Sparkly Black",
   "color_hex": "#373737",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

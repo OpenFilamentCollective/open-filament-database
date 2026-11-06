@@ -4,6 +4,7 @@
   "name": "Sparkly Purple",
   "color_hex": "#6C47B2",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

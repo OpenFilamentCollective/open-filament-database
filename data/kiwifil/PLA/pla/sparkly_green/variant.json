@@ -4,6 +4,7 @@
   "name": "Sparkly Green",
   "color_hex": "#15817B",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

@@ -8,6 +8,7 @@
   ],
   "traits": {
     "gradual_color_change": true,
-    "recycled": true
+    "recycled": true,
+    "bio_based": true
   }
 }

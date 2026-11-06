@@ -2,28 +2,5 @@
   "uuid": "a4451673-464f-40ce-aee8-5fb09c4aee62",
   "id": "jet_black",
   "name": "Jet Black",
-  "color_hex": "#292B2B",
-  "sustainability": {
-    "carbon_footprints": [
-      {
-        "value_kg_co2e": 5.85,
-        "declared_unit": "per_kg_filament",
-        "boundary": "filament_cradle_to_gate",
-        "packaging_included": "unknown",
-        "biogenic_carbon": "unknown",
-        "recycled_allocation": "not_applicable",
-        "method": "lca",
-        "tool": "SimaPro 9.3.0.2",
-        "practitioner": "Ing. Marie Tichá",
-        "verification": "none",
-        "publicly_available": false,
-        "published": "2022-03-17",
-        "source_type": "primary",
-        "source_url": "https://blog.prusa3d.com/introducing-prusament-petg-recycled-with-calculated-life-cycle-assessment_65806/",
-        "source_quote": "The results show 5.85 kg of CO 2 with 1kg of pure Prusament PETG",
-        "retrieved": "2026-11-03",
-        "notes": "Virgin ('pure') Prusament PETG. LCA by Ing. Marie Tichá in SimaPro 9.3.0.2, covering stages 'to packing the filament into the box'. The detailed study is not confirmed as published."
-      }
-    ]
-  }
+  "color_hex": "#292B2B"
 }

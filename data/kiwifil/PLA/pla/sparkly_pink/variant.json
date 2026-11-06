@@ -5,6 +5,7 @@
   "color_hex": "#FF72B6",
   "traits": {
     "translucent": true,
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

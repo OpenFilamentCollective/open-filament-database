@@ -197,6 +197,7 @@
         "carbon_footprints": {
             "type": "array",
             "title": "Carbon Footprints",
+            "description": "On a variant, this array replaces the filament's. An empty array means the filament's figure doesn't apply to this variant.",
             "items": {
                 "type": "object",
                 "title": "Carbon Footprint",
@@ -410,8 +411,7 @@
                     "source_quote",
                     "retrieved"
                 ]
-            },
-            "minItems": 1
+            }
         },
         "relative_claims": {
             "type": "array",

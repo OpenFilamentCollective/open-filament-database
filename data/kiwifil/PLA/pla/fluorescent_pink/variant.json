@@ -4,6 +4,7 @@
   "name": "Fluorescent Pink",
   "color_hex": "#FF0078",
   "traits": {
-    "neon": true
+    "neon": true,
+    "bio_based": true
   }
 }

@@ -3,6 +3,9 @@
   "id": "r_algae_pigment",
   "name": "r Algae Pigment",
   "color_hex": "#674B42",
+  "sustainability": {
+    "carbon_footprints": []
+  },
   "traits": {
     "recycled": true,
     "contains_algae": true

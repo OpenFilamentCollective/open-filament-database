@@ -36,6 +36,7 @@
     ]
   },
   "traits": {
-    "recycled": true
+    "recycled": true,
+    "bio_based": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Sparkly Red",
   "color_hex": "#BB264D",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }
