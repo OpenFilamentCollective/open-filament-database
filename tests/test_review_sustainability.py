@@ -19,6 +19,7 @@ from ofd.review.sustainability import (
     find_touches,
     gate,
     verify_all,
+    verify_entry,
     verify_sourced,
 )
 
@@ -726,3 +727,26 @@ def test_a_failing_gate_lists_every_failure():
         },
     }
     assert "the AI review did not run" in summary(result)
+
+
+def _primary_warnings(url, site, parent=None):
+    entry = Entry(
+        "data/x/y/z/filament.json",
+        "/sustainability/recycled_content",
+        "recycled_content",
+        recycled(source_url=url),
+    )
+    verify_entry(entry, FakeFetcher({url: PAGE}), site, parent)
+    return entry.warnings
+
+
+def test_a_known_alias_counts_as_the_brands_own_site():
+    url = "https://blog.prusa3d.com/some-post"
+    assert not any("not on the brand's own site" in w for w in _primary_warnings(url, "prusament"))
+    assert any("not on the brand's own site" in w for w in _primary_warnings(url, "acme"))
+
+
+def test_the_parent_brands_site_counts_as_the_brands_own():
+    url = "https://wiki.polymaker.com/page"
+    warnings = _primary_warnings(url, "polyflex", "polymaker")
+    assert not any("not on the brand's own site" in w for w in warnings)

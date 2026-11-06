@@ -71,6 +71,13 @@ BANNED = re.compile(
     r"|net[\s-]?zero|eco[\s-]?friendly|most sustainable|tree[\s-]?planting|plant(?:ing|s)? (?:a )?trees?"
 )
 
+# Sites a brand publishes on besides the one in its brand.json, by that site's name.
+SITE_ALIASES = {
+    "esun3d": ("esun3dstore",),
+    "protopasta": ("proto-pasta",),
+    "prusament": ("prusa3d",),
+}
+
 # A fragment around a number must carry enough words to show what the number is.
 MIN_CONTEXT = 15
 MIN_FRAGMENT = 8
@@ -229,8 +236,18 @@ def _on_page(text: str, page: Page) -> bool:
     return normalize(text) in page.text
 
 
-def verify_entry(entry: Entry, fetcher: Fetcher, brand_site: str | None) -> None:
-    """Fill ``entry.errors`` and ``entry.warnings``."""
+def own_sites(*sites: str | None) -> set[str]:
+    """The given site names plus their known aliases."""
+    return {s for site in sites if site for s in (site, *SITE_ALIASES.get(site, ()))}
+
+
+def verify_entry(
+    entry: Entry, fetcher: Fetcher, brand_site: str | None, parent_site: str | None = None
+) -> None:
+    """Fill ``entry.errors`` and ``entry.warnings``.
+
+    A source on the parent brand's site or a known alias counts as the brand's own.
+    """
     data = entry.data
     url = data.get("source_url") or ""
     quote = data.get("source_quote") or ""
@@ -345,11 +362,12 @@ def verify_entry(entry: Entry, fetcher: Fetcher, brand_site: str | None) -> None
 
     host_site = site_name((urlsplit(url).hostname or "").lower())
     if brand_site:
-        if data.get("source_type") == "primary" and host_site != brand_site:
+        own = own_sites(brand_site, parent_site)
+        if data.get("source_type") == "primary" and host_site not in own:
             entry.warnings.append(
                 f"`source_type: primary` but the source is not on the brand's own site ({brand_site})"
             )
-        if data.get("source_type") == "secondary" and host_site == brand_site:
+        if data.get("source_type") == "secondary" and host_site in own:
             entry.warnings.append("`source_type: secondary` but the source is the brand's own site")
 
 
@@ -402,10 +420,20 @@ def brand_site(tree: TreeReader, path: str) -> str | None:
     return brand_site_name(brand.get("website") if isinstance(brand, dict) else None)
 
 
+def parent_site(tree: TreeReader, path: str) -> str | None:
+    """The parent brand's site name, for a brand whose brand.json names a parent."""
+    parts = PurePosixPath(path).parts
+    if len(parts) < 2 or parts[0] != "data":
+        return None
+    brand = tree.json(f"data/{parts[1]}/brand.json") or {}
+    parent = brand.get("parent_brand") if isinstance(brand, dict) else None
+    return brand_site(tree, f"data/{parent}/x") if isinstance(parent, str) and parent else None
+
+
 def verify_all(touch: Touch, head: TreeReader, fetcher: Fetcher | None = None) -> None:
     fetcher = fetcher or Fetcher()
     for entry in touch.entries:
-        verify_entry(entry, fetcher, brand_site(head, entry.path))
+        verify_entry(entry, fetcher, brand_site(head, entry.path), parent_site(head, entry.path))
 
 
 # --- the gate -----------------------------------------------------------------
