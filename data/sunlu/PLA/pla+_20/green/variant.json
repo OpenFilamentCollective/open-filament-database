@@ -1,6 +1,10 @@
 {
   "uuid": "d0cc7f24-0390-403e-aaac-e8fc0727da1e",
+  "moved_from": [
+    "b3dbd583-1373-4bb1-ae40-de7ecaa7185c"
+  ],
   "id": "green",
   "name": "Green",
-  "color_hex": "#05AA3D"
+  "color_hex": "#1DAA27",
+  "discontinued": false
 }

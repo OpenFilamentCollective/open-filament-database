@@ -1,6 +1,10 @@
 {
   "uuid": "b34353d5-a628-4e6e-b9c6-37e40aaf3d51",
+  "moved_from": [
+    "99d55eda-a3f6-409b-af4d-35728d6a493f"
+  ],
   "id": "midnight",
   "name": "Midnight",
-  "color_hex": "#191970"
+  "color_hex": "#28334A",
+  "discontinued": false
 }

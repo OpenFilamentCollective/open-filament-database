@@ -2,72 +2,89 @@
   {
     "uuid": "412e975a-4ca0-47aa-9535-6d5dd8aa98b7",
     "filament_weight": 250,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "discontinued": false
   },
   {
     "uuid": "443057fb-28a6-4fcf-aec8-236a51c2222b",
     "filament_weight": 500,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "discontinued": false
   },
   {
     "uuid": "76011805-f9c2-4414-a651-426b9f77d0a0",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "empty_spool_weight": 220,
     "gtin": "6933582314842",
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://store.sunlu.com/products/moq-6kg-pla-2-0-upgraded-pla-pla-plus-3d-printer-filament-1kg"
+        "url": "https://store.sunlu.com/products/moq-6kg-pla-2-0-upgraded-pla-pla-plus-3d-printer-filament-1kg?variant=51575137501466"
       },
       {
         "store_id": "3djake",
         "url": "https://www.3djake.com/sunlu/pla-20-sunny-orange"
+      },
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/SUNLU-PLA-Filament-1-75mm-Dimensional/dp/B0F6CJN3RJ"
       }
     ]
   },
   {
     "uuid": "db51c83a-a39b-4603-870e-71e1cbc1cf6e",
     "filament_weight": 2000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "discontinued": false
   },
   {
     "uuid": "622ed0b0-c977-4991-b52a-af523758ed4c",
     "filament_weight": 3000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "discontinued": false
   },
   {
     "uuid": "65b84095-8926-45ca-a94f-45287c41cdf7",
     "filament_weight": 5000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "discontinued": false
   },
   {
     "uuid": "c03e2a45-1526-44b8-9a1e-555f938136fb",
     "filament_weight": 250,
-    "diameter": 2.85
+    "diameter": 2.85,
+    "discontinued": false
   },
   {
     "uuid": "edc8b6ed-d4d6-48bb-8822-5b40bf3e0ae3",
     "filament_weight": 500,
-    "diameter": 2.85
+    "diameter": 2.85,
+    "discontinued": false
   },
   {
     "uuid": "7f43f95d-2374-4bb4-8796-f843fc31992f",
     "filament_weight": 1000,
-    "diameter": 2.85
+    "diameter": 2.85,
+    "discontinued": false
   },
   {
     "uuid": "a70661ed-7399-4d8f-8ad1-1971fa10cde4",
     "filament_weight": 2000,
-    "diameter": 2.85
+    "diameter": 2.85,
+    "discontinued": false
   },
   {
     "uuid": "495fa216-187c-4dc1-bd69-c2154e0e4edf",
     "filament_weight": 3000,
-    "diameter": 2.85
+    "diameter": 2.85,
+    "discontinued": false
   },
   {
     "uuid": "f8c8e492-daf3-450c-96bc-bff83b2b3c8c",
     "filament_weight": 5000,
-    "diameter": 2.85
+    "diameter": 2.85,
+    "discontinued": false
   }
 ]

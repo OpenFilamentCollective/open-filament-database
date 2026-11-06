@@ -2,5 +2,6 @@
   "uuid": "5407b9ec-d1ff-410c-8eae-56add16dce12",
   "id": "cyan",
   "name": "Cyan",
-  "color_hex": "#65FDFD"
+  "color_hex": "#00A3E0",
+  "discontinued": false
 }

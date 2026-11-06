@@ -1,6 +1,7 @@
 {
   "uuid": "11987f2f-79af-432e-8e99-89d983acadbe",
   "id": "yellow",
-  "name": "Yellow",
-  "color_hex": "#FFC347"
+  "name": "Lemon Yellow",
+  "color_hex": "#FFF13F",
+  "discontinued": false
 }
