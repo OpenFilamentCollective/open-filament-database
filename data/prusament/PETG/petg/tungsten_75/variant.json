@@ -3,6 +3,9 @@
   "id": "tungsten_75",
   "name": "Tungsten 75%",
   "color_hex": "#545252",
+  "sustainability": {
+    "carbon_footprints": []
+  },
   "traits": {
     "abrasive": true,
     "radiation_shielding": true
