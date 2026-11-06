@@ -3,6 +3,18 @@
   "id": "recycled_black",
   "name": "Recycled Black",
   "color_hex": "#000000",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "supplier_declaration",
+      "source_type": "primary",
+      "source_url": "https://www.prusa3d.com/product/prusament-petg-recycled-black-2kg-nfc/",
+      "source_quote": "100 % of the material consists of recycled Prusament PETG materials, so every batch has a different color. … Waste produced during our in-house production of Prusament PETG is recycled and used as a base for Prusament PETG Recycled.",
+      "retrieved": "2026-11-03"
+    }
+  },
   "traits": {
     "recycled": true
   }

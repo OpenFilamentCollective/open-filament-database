@@ -9,6 +9,19 @@
     "min_bed_temperature": 40,
     "max_bed_temperature": 60,
     "data_sheet_url": "https://storage.googleapis.com/prusa3d-content-prod-14e8-wordpress-prusament-prod/2023/11/0eaa8597-prusament-rpla-natural-pigments-technical-data-sheet.pdf",
+    "sustainability": {
+        "recycled_content": {
+            "pct": null,
+            "pct_qualifier": "exact",
+            "type": "post_industrial",
+            "evidence": "supplier_declaration",
+            "source_type": "primary",
+            "source_url": "https://www.prusa3d.com/product/prusament-rpla-corn-pigment-1kg/",
+            "source_quote": "Prusament rPLA Natural Pigments is our own in-house recycled PLA filament with natural pigment additives. The filament is made of PLA parts manufacturing waste provided by our external supplier.",
+            "retrieved": "2026-11-03",
+            "notes": "No percentage published; product page also says 'The filament is made of recycled PLA from industrial waste.'"
+        }
+    },
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Prusament rPLA"

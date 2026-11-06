@@ -3,6 +3,16 @@
     "uuid": "42b7ae19-7bca-4dea-a6b3-36f08fe0b570",
     "filament_weight": 2000,
     "diameter": 1.75,
+    "container_details": {
+      "recycled_pct": null,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Core from recycled cardboard, sides from recycled polycarbonate; no percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.prusa3d.com/product/prusament-petg-recycled/",
+      "source_quote": "The latest iteration features a core from recycled cardboard and lightweight sides from recycled polycarbonate.",
+      "retrieved": "2026-11-03"
+    },
     "gtin": "8594173675674",
     "purchase_links": [
       {
