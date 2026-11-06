@@ -4,6 +4,8 @@
   "name": "Translucent Blue",
   "color_hex": "#183681",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

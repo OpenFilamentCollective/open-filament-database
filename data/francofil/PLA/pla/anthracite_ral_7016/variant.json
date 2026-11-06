@@ -2,5 +2,9 @@
   "uuid": "c23dff4e-9e0b-4396-b2c9-988fffe7d58e",
   "id": "anthracite_ral_7016",
   "name": "Anthracite RAL 7016",
-  "color_hex": "#3F4647"
+  "color_hex": "#3F4647",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }

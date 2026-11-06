@@ -2,5 +2,9 @@
   "uuid": "c989283d-1c99-4fe8-baf3-1344049695e8",
   "id": "bleu_pastel_le_glacier",
   "name": "Bleu Pastel - Le Glacier",
-  "color_hex": "#BED9EB"
+  "color_hex": "#BED9EB",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }

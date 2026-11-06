@@ -4,6 +4,8 @@
   "name": "Granite Vanilla",
   "color_hex": "#F1E6B2",
   "traits": {
-    "imitates_stone": true
+    "imitates_stone": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

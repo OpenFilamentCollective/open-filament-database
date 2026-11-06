@@ -2,5 +2,9 @@
   "uuid": "033e4541-8f7c-41d1-845f-a1456b3bb093",
   "id": "pastel_violet_lilac",
   "name": "Pastel Violet - Lilac",
-  "color_hex": "#D3C6FF"
+  "color_hex": "#D3C6FF",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }

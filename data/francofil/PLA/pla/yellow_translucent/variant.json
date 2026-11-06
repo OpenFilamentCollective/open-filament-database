@@ -4,6 +4,8 @@
   "name": "Yellow Translucent",
   "color_hex": "#C7B91F",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

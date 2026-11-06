@@ -4,6 +4,8 @@
   "name": "Granite Yellow",
   "color_hex": "#F2B70A",
   "traits": {
-    "imitates_stone": true
+    "imitates_stone": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

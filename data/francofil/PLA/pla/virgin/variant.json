@@ -5,6 +5,8 @@
   "color_hex": "#FADCA4",
   "traits": {
     "transparent": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

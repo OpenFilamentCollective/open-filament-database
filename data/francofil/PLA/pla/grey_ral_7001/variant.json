@@ -2,5 +2,9 @@
   "uuid": "a22df795-e47d-41f6-8cee-8abb121589b1",
   "id": "grey_ral_7001",
   "name": "Grey RAL 7001",
-  "color_hex": "#7D8EAA"
+  "color_hex": "#7D8EAA",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }

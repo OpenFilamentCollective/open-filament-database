@@ -4,6 +4,8 @@
   "name": "Granite Red",
   "color_hex": "#CB4726",
   "traits": {
-    "imitates_stone": true
+    "imitates_stone": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

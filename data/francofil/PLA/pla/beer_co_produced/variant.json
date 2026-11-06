@@ -2,5 +2,9 @@
   "uuid": "0502b67f-ef33-4dfd-874c-e034f0b8852b",
   "id": "beer_co_produced",
   "name": "Beer - Co-produced",
-  "color_hex": "#A54830"
+  "color_hex": "#A54830",
+  "traits": {
+    "recyclable": true,
+    "bio_based": true
+  }
 }
