@@ -7,5 +7,16 @@
   "min_print_temperature": 190,
   "max_print_temperature": 220,
   "min_bed_temperature": 55,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 70,
+  "sustainability": {
+    "bio_based_content": {
+      "pct": null,
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://eryone3d.com/products/pla-high-speed-filament",
+      "source_quote": "High purity raw materials, corn.",
+      "retrieved": "2026-11-06",
+      "notes": "The brand names corn as the raw material. No bio-based percentage or test method is published."
+    }
+  }
 }

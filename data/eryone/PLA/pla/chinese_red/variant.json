@@ -2,5 +2,19 @@
   "uuid": "eddad56f-fe7c-4414-9b44-1b12c335ef07",
   "id": "chinese_red",
   "name": "Chinese Red",
-  "color_hex": "#da1628"
+  "color_hex": "#da1628",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": null,
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://eryone3d.com/products/pla-filament",
+      "source_quote": "High purity raw materials, corn.",
+      "retrieved": "2026-11-06",
+      "notes": "The brand names corn as the raw material. No bio-based percentage or test method is published."
+    }
+  },
+  "traits": {
+    "bio_based": true
+  }
 }

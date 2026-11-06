@@ -3,6 +3,17 @@
   "id": "white_jade",
   "name": "White Jade",
   "color_hex": "#e9e9e7",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": null,
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://eryone3d.com/products/1-75mm-pla-filament",
+      "source_quote": "High purity raw materials, corn.",
+      "retrieved": "2026-11-06",
+      "notes": "The brand names corn as the raw material. No bio-based percentage or test method is published."
+    }
+  },
   "traits": {
     "bio_based": true
   }
