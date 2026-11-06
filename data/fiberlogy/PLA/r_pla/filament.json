@@ -6,5 +6,17 @@
   "density": 1.24,
   "min_print_temperature": 210,
   "max_print_temperature": 230,
-  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_RPLA_TDS.pdf"
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_RPLA_TDS.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://fiberlogy.com/en/filaments/pla-en/rpla-en/",
+      "source_quote": "This innovative filament is made from 100% recycled material sourced exclusively from verified and carefully selected sources.",
+      "retrieved": "2026-11-03"
+    }
+  }
 }
