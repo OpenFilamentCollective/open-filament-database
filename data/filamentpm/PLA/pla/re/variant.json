@@ -3,7 +3,20 @@
   "id": "re",
   "name": "Re",
   "color_hex": "#5B4C49",
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://shop.filament-pm.com/stranka/sustainability-92",
+      "source_quote": "We do not throw away filaments that do not meet the highest quality standards, but after granulating them, we subsequently create recycled filaments in the form of RePLA, RePLA+ and RePETG.",
+      "retrieved": "2026-11-03",
+      "notes": "No percentage published. Recycled input is the brand's own filament that failed quality checks (production scrap). The RePLA product page (https://shop.filament-pm.com/repla-1-75-mm-1-kg/p356) also says: 'thanks to its recycled origin from shredded PLA filament'."
+    }
+  },
   "traits": {
+    "recycled": true,
     "industrially_compostable": true
   }
 }

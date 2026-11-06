@@ -2,6 +2,18 @@
   {
     "uuid": "0988bf37-b2a4-4b1b-bfc0-3c744b73c19c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [
+        "Plastic Second Life"
+      ],
+      "notes": "Brand-wide statement: plastic spools made from 100% recycled material, returnable through the Recycle with PM program (CZ/SK only).",
+      "source_type": "primary",
+      "source_url": "https://shop.filament-pm.com/stranka/sustainability-92",
+      "source_quote": "The filaments are wound on 100% recycled spools, which can be returned as part of the Recycle with PM program. … Our spools are 100% recycled and certified Plastic Second Life®.",
+      "retrieved": "2026-11-03"
+    }
   }
 ]
