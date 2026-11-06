@@ -2,5 +2,8 @@
   "uuid": "47353bfb-ccab-41f2-988e-8bd4c828b993",
   "id": "rose_mtallis",
   "name": "Rose métallisé",
-  "color_hex": "#B13566"
+  "color_hex": "#B13566",
+  "traits": {
+    "bio_based": true
+  }
 }

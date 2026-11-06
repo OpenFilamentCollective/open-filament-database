@@ -4,6 +4,7 @@
   "name": "Vert Fluo",
   "color_hex": "#69EE00",
   "traits": {
-    "neon": true
+    "neon": true,
+    "bio_based": true
   }
 }

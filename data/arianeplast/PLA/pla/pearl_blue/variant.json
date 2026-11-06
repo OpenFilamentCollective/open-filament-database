@@ -2,5 +2,8 @@
   "uuid": "2e8f1819-0a72-463c-a47d-b32e709db1f9",
   "id": "pearl_blue",
   "name": "Pearl Blue",
-  "color_hex": "#0378D0"
+  "color_hex": "#0378D0",
+  "traits": {
+    "bio_based": true
+  }
 }

@@ -2,5 +2,8 @@
   "uuid": "e15d4510-34d6-45ae-ab96-feae38a18ded",
   "id": "vert_pantone_3268c",
   "name": "Vert Pantone 3268C",
-  "color_hex": "#98FBCB"
+  "color_hex": "#98FBCB",
+  "traits": {
+    "bio_based": true
+  }
 }

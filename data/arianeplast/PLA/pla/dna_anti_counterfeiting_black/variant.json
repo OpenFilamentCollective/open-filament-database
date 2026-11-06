@@ -2,5 +2,8 @@
   "uuid": "2a03c360-a7ad-4fbf-a44f-d5f7498e496f",
   "id": "dna_anti_counterfeiting_black",
   "name": "DNA Anti-counterfeiting Black",
-  "color_hex": "#000000"
+  "color_hex": "#000000",
+  "traits": {
+    "bio_based": true
+  }
 }

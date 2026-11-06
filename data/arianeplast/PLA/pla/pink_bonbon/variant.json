@@ -2,5 +2,8 @@
   "uuid": "483824ef-1d07-4ee2-a2e6-8ac577bbaa85",
   "id": "pink_bonbon",
   "name": "Pink Bonbon",
-  "color_hex": "#F0C7E7"
+  "color_hex": "#F0C7E7",
+  "traits": {
+    "bio_based": true
+  }
 }

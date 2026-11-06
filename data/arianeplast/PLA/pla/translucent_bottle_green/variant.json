@@ -4,6 +4,7 @@
   "name": "Translucent Bottle Green",
   "color_hex": "#41A840",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "bio_based": true
   }
 }

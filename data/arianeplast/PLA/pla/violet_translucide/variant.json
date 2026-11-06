@@ -4,6 +4,7 @@
   "name": "Violet translucide",
   "color_hex": "#6459EB",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "bio_based": true
   }
 }
