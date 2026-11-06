@@ -2,7 +2,7 @@
 Build command - Builds database exports.
 
 This command wraps the builder module functionality to generate
-JSON, SQLite, CSV, API, OrcaSlicer preset, and HTML exports.
+JSON, SQLite, CSV, API, OrcaSlicer preset, Spoolman catalog, and HTML exports.
 """
 
 import argparse
@@ -22,6 +22,7 @@ from ofd.builder.exporters import (
     export_html,
     export_json,
     export_orca,
+    export_spoolman,
     export_sqlite,
     export_sqlite_stores,
     export_uuid_index,
@@ -80,7 +81,7 @@ def register_subcommand(subparsers: argparse._SubParsersAction) -> None:
     """Register the build subcommand."""
     parser = subparsers.add_parser(
         "build",
-        help="Build database exports (JSON, SQLite, CSV, API, OrcaSlicer presets, HTML)",
+        help="Build database exports (JSON, SQLite, CSV, API, OrcaSlicer presets, Spoolman catalog, HTML)",
         description="Build all database exports from the data and stores directories.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
@@ -89,6 +90,7 @@ Examples:
   ofd build -o output              Build to custom output directory
   ofd build --skip-sqlite          Skip SQLite export
   ofd build --skip-orca            Skip OrcaSlicer filament presets
+  ofd build --skip-spoolman        Skip Spoolman external filament catalog
   ofd build --skip-json --skip-csv Only build API and HTML
         """,
     )
@@ -117,6 +119,11 @@ Examples:
     skip_group.add_argument("--skip-api", action="store_true", help="Skip static API export")
     skip_group.add_argument(
         "--skip-orca", action="store_true", help="Skip OrcaSlicer filament preset export"
+    )
+    skip_group.add_argument(
+        "--skip-spoolman",
+        action="store_true",
+        help="Skip Spoolman external filament catalog export",
     )
     skip_group.add_argument(
         "--skip-html", action="store_true", help="Skip HTML landing page export"
@@ -175,41 +182,41 @@ def run_build(args: argparse.Namespace) -> int:
     build_result = BuildResult()
 
     # Step 1: Crawl data
-    print("\n[1/11] Crawling data...")
+    print("\n[1/12] Crawling data...")
     db, crawl_result = crawl_data(str(data_dir), str(stores_dir))
     build_result.merge(crawl_result)
 
     # Step 2: Export JSON
     if not args.skip_json:
-        print("\n[2/11] Exporting JSON...")
+        print("\n[2/12] Exporting JSON...")
         export_json(db, str(output_dir), version, generated_at)
     else:
-        print("\n[2/11] Skipping JSON export")
+        print("\n[2/12] Skipping JSON export")
 
     # Step 3: Export SQLite (filaments)
     if not args.skip_sqlite:
-        print("\n[3/11] Exporting SQLite (filaments)...")
+        print("\n[3/12] Exporting SQLite (filaments)...")
         export_sqlite(db, str(output_dir), version, generated_at)
     else:
-        print("\n[3/11] Skipping SQLite export")
+        print("\n[3/12] Skipping SQLite export")
 
     # Step 4: Export SQLite (stores)
     if not args.skip_sqlite:
-        print("\n[4/11] Exporting SQLite (stores)...")
+        print("\n[4/12] Exporting SQLite (stores)...")
         export_sqlite_stores(db, str(output_dir), version, generated_at)
     else:
-        print("\n[4/11] Skipping SQLite stores export")
+        print("\n[4/12] Skipping SQLite stores export")
 
     # Step 5: Export CSV
     if not args.skip_csv:
-        print("\n[5/11] Exporting CSV...")
+        print("\n[5/12] Exporting CSV...")
         export_csv(db, str(output_dir), version, generated_at)
     else:
-        print("\n[5/11] Skipping CSV export")
+        print("\n[5/12] Skipping CSV export")
 
     # Step 6: Export Static API
     if not args.skip_api:
-        print("\n[6/11] Exporting Static API...")
+        print("\n[6/12] Exporting Static API...")
         export_api(
             db,
             str(output_dir),
@@ -223,20 +230,29 @@ def run_build(args: argparse.Namespace) -> int:
             reference_dir=str(reference_dir),
         )
     else:
-        print("\n[6/11] Skipping Static API export")
+        print("\n[6/12] Skipping Static API export")
 
     # Step 7: Export OrcaSlicer filament presets. Consumes the same crawled data
     # as the static API and mirrors its path shape, so it runs right after it,
     # and well before the directory listings, which need to cover the new tree.
     if not args.skip_orca:
-        print("\n[7/11] Exporting OrcaSlicer filament presets...")
+        print("\n[7/12] Exporting OrcaSlicer filament presets...")
         export_orca(db, str(output_dir), version, generated_at)
     else:
-        print("\n[7/11] Skipping OrcaSlicer preset export")
+        print("\n[7/12] Skipping OrcaSlicer preset export")
 
-    # Step 8: Export UUID redirect index (former UUID -> current UUID). Emitted
+    # Step 8: Export the Spoolman external filament catalog. Like the OrcaSlicer
+    # presets it is a static tree consumed from the published site, so it runs
+    # before the directory listings, which need to cover it.
+    if not args.skip_spoolman:
+        print("\n[8/12] Exporting Spoolman external filament catalog...")
+        export_spoolman(db, str(output_dir), version, generated_at)
+    else:
+        print("\n[8/12] Skipping Spoolman catalog export")
+
+    # Step 9: Export UUID redirect index (former UUID -> current UUID). Emitted
     # regardless of --skip-api so a moved/deleted UUID stays resolvable offline.
-    print("\n[8/11] Exporting UUID redirect index...")
+    print("\n[9/12] Exporting UUID redirect index...")
     export_uuid_index(
         str(data_dir),
         str(stores_dir),
@@ -245,26 +261,26 @@ def run_build(args: argparse.Namespace) -> int:
         generated_at,
     )
 
-    # Step 9: Export HTML landing page
+    # Step 10: Export HTML landing page
     if not args.skip_html:
-        print("\n[9/11] Exporting HTML landing page...")
+        print("\n[10/12] Exporting HTML landing page...")
         templates_dir = Path(__file__).parent.parent / "builder" / "templates"
         config_dir = project_root / "config"
         export_html(db, str(output_dir), version, generated_at, str(templates_dir), str(config_dir))
     else:
-        print("\n[9/11] Skipping HTML export")
+        print("\n[10/12] Skipping HTML export")
 
-    # Step 10: Export badges
-    print("\n[10/11] Exporting badges...")
+    # Step 11: Export badges
+    print("\n[11/12] Exporting badges...")
     export_badges(db, str(output_dir))
 
-    # Step 11: Generate directory listings (must run last so all dirs are covered)
+    # Step 12: Generate directory listings (must run last so all dirs are covered)
     if not args.skip_html:
-        print("\n[11/11] Generating directory listings...")
+        print("\n[12/12] Generating directory listings...")
         templates_dir = Path(__file__).parent.parent / "builder" / "templates"
         export_directory_listings(str(output_dir), str(templates_dir))
     else:
-        print("\n[11/11] Skipping directory listings")
+        print("\n[12/12] Skipping directory listings")
 
     # Calculate checksums and write manifest
     print("\nGenerating checksums and manifest...")
