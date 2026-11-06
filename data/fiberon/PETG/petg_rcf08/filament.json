@@ -13,6 +13,19 @@
     "dry_temperature": 65,
     "dry_time": 3,
     "data_sheet_url": "https://fiberon.polymaker.com/wp-content/uploads/TDS_FIBERON-PETG-rCF08_V1.0_EN-1.pdf",
+    "sustainability": {
+        "recycled_content": {
+            "pct": 8,
+            "pct_qualifier": "exact",
+            "type": "unknown",
+            "evidence": "marketing",
+            "source_type": "primary",
+            "source_url": "https://us.polymaker.com/products/fiberon-petg-rcf08",
+            "source_quote": "Fiberon™ PETG-rCF08 is a high-quality 3D printing filament made from PETG (polyethylene terephthalate glycol) reinforced with 8% recycled carbon fiber.",
+            "retrieved": "2026-11-03",
+            "notes": "The 8% is the recycled carbon fibre share of the filament; the PETG matrix is not stated to be recycled. Origin of the recycled fibre (post-industrial/post-consumer) is not stated."
+        }
+    },
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "GFG99",
