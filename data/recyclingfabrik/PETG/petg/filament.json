@@ -7,5 +7,18 @@
   "min_print_temperature": 230,
   "max_print_temperature": 250,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 80
+  "max_bed_temperature": 80,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "supplier_declaration",
+      "source_type": "primary",
+      "source_url": "https://www.recyclingfabrik.com/products/gute-nacht-schwarz-petg",
+      "source_quote": "Das Filament besteht zu 100% aus recyceltem PETG!",
+      "retrieved": "2026-11-03",
+      "notes": "The same sentence appears on the rPETG colour pages in the repo. The source does not say whether the recycled material is post-industrial or post-consumer."
+    }
+  }
 }

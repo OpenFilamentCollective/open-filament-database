@@ -7,5 +7,18 @@
   "min_print_temperature": 190,
   "max_print_temperature": 245,
   "min_bed_temperature": 55,
-  "max_bed_temperature": 65
+  "max_bed_temperature": 65,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "supplier_declaration",
+      "source_type": "primary",
+      "source_url": "https://www.recyclingfabrik.com/products/dunkler-efeu",
+      "source_quote": "Das Filament besteht zu 100% aus recyceltem PLA!",
+      "retrieved": "2026-11-03",
+      "notes": "The same sentence (or 'Das Filament besteht aus 100% recyceltem PLA') appears on every rPLA colour page in the repo's line. The source does not say whether the recycled material is post-industrial or post-consumer."
+    }
+  }
 }
