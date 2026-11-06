@@ -3,5 +3,8 @@
   "id": "white",
   "name": "White",
   "color_hex": "#F1F0ED",
-  "discontinued": false
+  "discontinued": false,
+  "traits": {
+    "bio_based": true
+  }
 }
