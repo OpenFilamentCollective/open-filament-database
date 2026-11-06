@@ -257,3 +257,7 @@ def test_csv_has_sustainability_columns(tmp_path):
     assert json.loads(row["sustainability"])["carbon_footprints"][0]["tool"] == "SimaPro 9.3.0.2"
     with open(next(csv_dir.glob("size*.csv")), encoding="utf-8") as f:
         assert "container_details" in next(csv.DictReader(f))
+
+
+def test_a_variant_can_clear_inherited_footprints():
+    assert error_messages("filament", filament(carbon_footprints=[])) == []

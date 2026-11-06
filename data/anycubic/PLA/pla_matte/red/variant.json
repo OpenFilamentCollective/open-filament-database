@@ -4,6 +4,7 @@
   "name": "Red",
   "color_hex": "#ff0000",
   "traits": {
-    "matte": true
+    "matte": true,
+    "bio_based": true
   }
 }

@@ -192,7 +192,7 @@ Sustainability figures are used to calculate the CO₂ footprint of prints, and 
 `ofd validate` enforces rules 2, 6 and the number-in-quote part of rule 1, and rejects percentages outside 0–100 and dates in the future.
 
 ### Where it goes
-`sustainability` can sit on `filament.json` and on `variant.json`. A variant overrides the filament **per field**: if a variant sets `recycled_content`, that replaces the filament's `recycled_content`; if it sets `carbon_footprints`, that array replaces the filament's array as a whole. Fields the variant doesn't set are inherited. Spool and packaging details go on each size in `sizes.json` as `container_details`.
+`sustainability` can sit on `filament.json` and on `variant.json`. A variant overrides the filament **per field**: if a variant sets `recycled_content`, that replaces the filament's `recycled_content`; if it sets `carbon_footprints`, that array replaces the filament's array as a whole. Fields the variant doesn't set are inherited. If the filament's footprint doesn't apply to a variant and there is no figure for it (a composite colour, say), set `"carbon_footprints": []` on the variant to clear it. Spool and packaging details go on each size in `sizes.json` as `container_details`.
 
 ```json
 "sustainability": {

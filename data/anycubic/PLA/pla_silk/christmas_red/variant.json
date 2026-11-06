@@ -2,5 +2,8 @@
   "uuid": "0f313afa-9988-4d1b-be87-3162622c96dd",
   "id": "christmas_red",
   "name": "Christmas Red",
-  "color_hex": "#D22630"
+  "color_hex": "#D22630",
+  "traits": {
+    "bio_based": true
+  }
 }

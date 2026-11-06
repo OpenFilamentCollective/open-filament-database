@@ -2,5 +2,8 @@
   "uuid": "65065a86-f246-4dec-bf54-647be5027273",
   "id": "christmas_green",
   "name": "Christmas Green",
-  "color_hex": "#008755"
+  "color_hex": "#008755",
+  "traits": {
+    "bio_based": true
+  }
 }
