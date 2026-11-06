@@ -18,6 +18,7 @@
     "uuid": "05320b97-ef43-4c26-a75f-3ee7ca3601a0",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "gtin": "5903175654861",
     "article_number": "80706",
     "purchase_links": [

@@ -11,5 +11,18 @@
   "max_fan_speed": 100,
   "enclosure": "not_needed",
   "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2023/10/en_tds_spectrum_pla_pastello.pdf",
-  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2023/10/en_msds_spectrum_pla_pastello.pdf"
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2023/10/en_msds_spectrum_pla_pastello.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://spectrumfilaments.com/en/filament/pastello-pla/",
+      "source_quote": "Additionally, Pastello PLA incorporates recycled material, making your projects a real contribution to protecting our planet.",
+      "retrieved": "2026-11-03",
+      "notes": "Partial recycled content; no share or origin stated."
+    }
+  }
 }
