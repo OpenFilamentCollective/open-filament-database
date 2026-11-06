@@ -4,6 +4,7 @@
   "name": "Purple",
   "color_hex": "#603ba0",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

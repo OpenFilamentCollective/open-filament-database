@@ -4,5 +4,8 @@
   "name": "Tan Birch",
   "color_hex": [
     "#DFD1C4"
-  ]
+  ],
+  "traits": {
+    "bio_based": true
+  }
 }

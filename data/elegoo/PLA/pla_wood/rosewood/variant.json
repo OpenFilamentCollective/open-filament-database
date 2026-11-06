@@ -4,5 +4,8 @@
   "name": "Rosewood",
   "color_hex": [
     "#60433F"
-  ]
+  ],
+  "traits": {
+    "bio_based": true
+  }
 }

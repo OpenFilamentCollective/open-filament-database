@@ -4,5 +4,8 @@
   "name": "Teak",
   "color_hex": [
     "#624133"
-  ]
+  ],
+  "traits": {
+    "bio_based": true
+  }
 }
