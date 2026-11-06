@@ -4,6 +4,7 @@
   "name": "Red",
   "color_hex": "#FE4A3B",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Pine Green",
   "color_hex": "#43634E",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

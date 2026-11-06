@@ -4,6 +4,7 @@
   "name": "Grey",
   "color_hex": "#7E8190",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

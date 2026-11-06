@@ -4,6 +4,7 @@
   "name": "Lilac",
   "color_hex": "#B368A9",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

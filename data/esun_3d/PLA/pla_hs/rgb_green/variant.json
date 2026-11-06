@@ -4,6 +4,7 @@
   "name": "RGB Green",
   "color_hex": "#4ED471",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

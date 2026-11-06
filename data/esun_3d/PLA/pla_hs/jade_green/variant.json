@@ -4,6 +4,7 @@
   "name": "Jade Green",
   "color_hex": "#03CAAD",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

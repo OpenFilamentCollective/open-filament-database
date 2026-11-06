@@ -4,6 +4,7 @@
   "name": "RGB Red",
   "color_hex": "#D81B00",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

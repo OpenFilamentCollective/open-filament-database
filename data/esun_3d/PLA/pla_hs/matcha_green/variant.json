@@ -4,6 +4,7 @@
   "name": "Matcha Green",
   "color_hex": "#656E1D",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

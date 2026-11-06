@@ -4,6 +4,7 @@
   "name": "Fire Engine Red",
   "color_hex": "#A40F15",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

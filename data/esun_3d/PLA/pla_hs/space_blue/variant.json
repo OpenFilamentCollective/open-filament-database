@@ -4,6 +4,7 @@
   "name": "Space Blue",
   "color_hex": "#5CB5DF",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

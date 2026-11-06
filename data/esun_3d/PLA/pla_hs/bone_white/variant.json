@@ -4,6 +4,7 @@
   "name": "Bone White",
   "color_hex": "#A88567",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

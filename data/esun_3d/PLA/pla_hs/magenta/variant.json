@@ -4,6 +4,7 @@
   "name": "Magenta",
   "color_hex": "#ED5973",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

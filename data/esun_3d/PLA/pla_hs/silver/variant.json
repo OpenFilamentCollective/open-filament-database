@@ -4,6 +4,7 @@
   "name": "Silver",
   "color_hex": "#757376",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

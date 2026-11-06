@@ -4,6 +4,7 @@
   "name": "Cold White",
   "color_hex": "#EFEEF3",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

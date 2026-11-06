@@ -4,6 +4,7 @@
   "name": "Purple",
   "color_hex": "#3B1D4F",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

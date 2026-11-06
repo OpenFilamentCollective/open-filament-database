@@ -4,6 +4,7 @@
   "name": "Peach Pink",
   "color_hex": "#C89496",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

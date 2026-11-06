@@ -2,5 +2,8 @@
   "uuid": "bb1c5344-ad99-4b23-a180-727ae3a91d98",
   "id": "cold_white",
   "name": "Cold White",
-  "color_hex": "#FFFFFF"
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "bio_based": true
+  }
 }

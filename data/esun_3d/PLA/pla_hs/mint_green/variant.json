@@ -4,6 +4,7 @@
   "name": "Mint Green",
   "color_hex": "#85CFAA",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

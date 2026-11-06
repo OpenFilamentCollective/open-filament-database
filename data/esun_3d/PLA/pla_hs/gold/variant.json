@@ -4,6 +4,7 @@
   "name": "Gold",
   "color_hex": "#E39D3E",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }

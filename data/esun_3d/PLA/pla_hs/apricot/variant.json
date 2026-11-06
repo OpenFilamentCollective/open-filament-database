@@ -4,6 +4,7 @@
   "name": "Apricot",
   "color_hex": "#E7923F",
   "traits": {
+    "bio_based": true,
     "high_flow": true
   }
 }
