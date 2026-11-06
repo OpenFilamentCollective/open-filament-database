@@ -1,6 +1,6 @@
 # Spoolman External Filament Catalog
 
-The Open Filament Database is published in the format [Spoolman](https://github.com/Donkie/Spoolman) reads for its **external filament database**. Point Spoolman at it and most filaments in the database appear in Spoolman's "add filament" dropdown, with density, diameter, weight and colour filled in, and temperatures and spool weight where the database records them. Discontinued products and rows missing a density, net weight or diameter are left out, and about a third of the entries have no temperatures and most have no empty-spool weight, because the database does not have them for every filament.
+The Open Filament Database is published in the format [Spoolman](https://github.com/Donkie/Spoolman) reads for its **external filament database**. Point Spoolman at it and most filaments in the database appear in Spoolman's "add filament" dropdown, with density, diameter, weight and colour filled in, and temperatures and spool weight where the database records them. Discontinued products and rows missing a density, net weight or diameter are left out, and some entries have no temperatures or empty-spool weight, because the database does not have them for every filament.
 
 ---
 
@@ -29,21 +29,21 @@ One record per purchasable spool: every size of every colour of every filament b
 | --- | --- |
 | `id` | `ofd_` + the size's canonical `uuid` from `sizes.json`. The uuid is OFD's stable identifier (it survives renames and typo fixes), and Spoolman installs link to these ids, so the scheme will not change. |
 | `manufacturer` | `brand.json` → `name` |
-| `name` | The filament name plus the variant (colour) name, with a leading brand name and a bare material name removed. `PETG+` and `PLA Matte` are product lines and are kept. Refill sizes get a ` (refill)` suffix. |
+| `name` | The filament name plus the variant (colour) name, with a leading brand name and a bare material name removed. `PETG+` and `PLA Matte` are product lines and are kept. Refill sizes (`container_material: "refill"`, or the deprecated `spool_refill`) get a ` (refill)` suffix. |
 | `material` | `filament.json` → `material` |
 | `density` | `filament.json` → `density` |
 | `weight` | `sizes.json` → `filament_weight` |
 | `diameter` | `sizes.json` → `diameter` |
-| `spool_weight` | `sizes.json` → `empty_spool_weight`, otherwise `null` |
+| `spool_weight` | `sizes.json` → `empty_spool_weight` (a recorded `0` stays `0`), otherwise `null` |
 | `color_hex` | `variant.json` → `color_hex`, lowercased without `#`; `null` if malformed, or for multi-colour variants (see below) |
 | `color_hexes`, `multi_color_direction` | Multi-colour variants only; see below |
-| `extruder_temp`, `bed_temp` | The midpoint of the recommended min/max range. A bound of `0` is ignored rather than averaged. |
+| `extruder_temp`, `bed_temp` | Resolved the same way as the OrcaSlicer presets (`resolve_temps`): the filament's generic `nozzle_temp` / `bed_temp`, else its brand material's, else the midpoint of the recommended range rounded to the nearest 5 °C (a bound of `0`, which the database uses for "unheated is fine", is ignored rather than averaged), else `null`. |
 | `finish` | `matte` trait → `matte` |
 | `pattern` | `imitates_marble` trait → `marble`, `glitter` trait → `sparkle` |
 | `translucent` | `translucent` or `transparent` trait |
 | `glow` | `glow` trait |
 
-Where the database has no value the field is `null`; nothing is guessed. `spool_type` is always `null`.
+Where the database has no value the field is `null`; nothing is guessed. The one exception is values the build's crawler already defaults when a source file omits them (density `1.24`, diameter `1.75`, colour black); the schema requires a density and a colour, so on validated data this does not occur. `spool_type` is always `null`.
 
 **Multi-colour filaments** follow SpoolmanDB's convention: they carry `color_hexes` (every colour, in order) and a `null` `color_hex`. Spoolman refuses a multi-colour filament without a `multi_color_direction`, so one is emitted only when the database says how the colours are laid out: `coextruded` gives `coaxial` and `gradual_color_change` gives `longitudinal`. Otherwise (neither trait, or both) the variant is exported as **single-colour** with its first colour in `color_hex` and `color_hexes` and `multi_color_direction` both `null`. The reason is that the database uses a colour list for more than multi-colour spools: glow colours, temperature-change colours, iridescent angle shifts and speckle are stored the same way, and without a direction trait the exporter cannot tell which one it is looking at, so it does not guess. If fewer than two colours are valid after checking, the variant is also single-colour. This relies on the `color_hexes` variant key, which the build produces from `color_hex` arrays (see `tests/test_multicolor_variants.py`).
 
@@ -53,7 +53,7 @@ Where the database has no value the field is `null`; nothing is guessed. `spool_
 
 **Retired uuids.** When data is merged, a retired uuid is recorded in the survivor's `moved_from` (see the [manual](manual.md#moved--former-uuids-moved_from)). Spoolman has no alias concept, so a Spoolman filament linked to a retired id will not follow it automatically; [`api/v1/uuid-index.json`](https://api.openfilamentdatabase.org/api/v1/uuid-index.json) maps former uuids to current ones.
 
-**`materials.json`** holds one entry per material type. The database does not record per-material defaults, so density and temperatures are the **median across the exported (non-discontinued) filaments of that material that record the value**. Temperature medians ignore zero bounds like the per-filament midpoints do, midpoints use Python's round-half-even, and a temperature is `null` where no filament of the material records one.
+**`materials.json`** holds one entry per material type. The database does not record per-material defaults, so density and temperatures are the **median across the exported (non-discontinued) filaments of that material that record the value**. Temperatures are the per-filament resolved values above, medians use Python's round-half-even, and a temperature is `null` where no filament of the material records one.
 
 Output is sorted by `id`, so rebuilding unchanged data gives byte-identical files.
 

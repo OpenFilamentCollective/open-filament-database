@@ -14,7 +14,7 @@ from pathlib import Path
 from ..models import Database
 
 
-def build_abstract_file_tree(db: Database) -> str:
+def build_abstract_file_tree(db: Database, output_dir: Path | None = None) -> str:
     """Build an abstract file tree showing the layout structure, not every file."""
 
     # Helper to create nested structure
@@ -167,7 +167,10 @@ def build_abstract_file_tree(db: Database) -> str:
     )
     lines.append(li_dir("orcaslicer", orca_files))
 
-    # Spoolman external filament catalog
+    # Spoolman external filament catalog; omitted when this build did not write it
+    # (--skip-spoolman), so the landing page never links to files that 404. Without
+    # an output directory to check, it is listed.
+    spoolman_built = output_dir is None or (output_dir / "spoolman" / "filaments.json").exists()
     spoolman_files = "\n".join(
         [
             li_file("filaments.json", "spoolman/filaments.json"),
@@ -175,7 +178,8 @@ def build_abstract_file_tree(db: Database) -> str:
             li_file("README.txt", "spoolman/README.txt"),
         ]
     )
-    lines.append(li_dir("spoolman", spoolman_files))
+    if spoolman_built:
+        lines.append(li_dir("spoolman", spoolman_files))
 
     # Root files
     lines.append(li_file("manifest.json", "manifest.json"))
@@ -211,7 +215,7 @@ def process_template(
 ) -> str:
     """Process the template and replace all placeholders."""
     # Build abstract file tree
-    file_tree_html = build_abstract_file_tree(db)
+    file_tree_html = build_abstract_file_tree(db, output_dir)
 
     # Generate stats HTML
     stats_html = generate_stats_html(db)

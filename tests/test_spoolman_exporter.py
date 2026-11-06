@@ -188,3 +188,14 @@ def test_long_names_are_shortened_in_output(tmp_path):
     db.variants[0]["name"] = "Neon Yellow " + "Very Long Colour Name " * 4 + "(Edition)"
     _, filaments, _ = run(tmp_path, db)
     assert filaments and all(len(f["name"]) <= 64 for f in filaments)
+
+
+def test_landing_page_lists_spoolman_only_when_built(tmp_path):
+    from pathlib import Path
+
+    from ofd.builder.exporters.html_exporter import build_abstract_file_tree
+
+    db = make_db()
+    assert "spoolman/filaments.json" not in build_abstract_file_tree(db, tmp_path)
+    run(tmp_path)
+    assert "spoolman/filaments.json" in build_abstract_file_tree(db, Path(tmp_path))

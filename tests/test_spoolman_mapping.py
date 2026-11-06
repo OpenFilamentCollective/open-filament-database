@@ -15,7 +15,6 @@ from ofd.builder.spoolman_mapping import (
     display_name,
     norm,
     norm_hex,
-    pick_temp,
     shorten_long_names,
     shorten_name,
 )
@@ -92,18 +91,24 @@ def test_norm_hex_discards_malformed():
     assert norm_hex(None) is None
 
 
-def test_pick_temp_midpoint():
-    assert pick_temp(190, 220) == 205
-    assert pick_temp(200, 200) == 200
+def test_temps_use_generic_settings_before_range():
+    """Same resolution order as the OrcaSlicer presets, so both exports agree."""
+    fil = filament(
+        min_bed_temperature=65,
+        max_bed_temperature=70,
+        slicer_settings={"generic": {"bed_temp": 80, "nozzle_temp": 215}},
+    )
+    record = build(fil=fil)
+    assert record["bed_temp"] == 80
+    assert record["extruder_temp"] == 215
 
 
-def test_pick_temp_ignores_zero_bound():
-    """A bed minimum of 0 means 'unheated is fine'; averaging it would give nonsense."""
-    assert pick_temp(0, 60) == 60
-    assert pick_temp(50, 0) == 50
-    assert pick_temp(0, 0) is None
-    assert pick_temp(None, None) is None
-    assert pick_temp(None, 70) == 70
+def test_temps_fall_back_to_material_generic_then_range():
+    mat = {"default_slicer_settings": {"generic": {"nozzle_temp": 230}}}
+    fil = filament(min_print_temperature=None, max_print_temperature=None)
+    record = build_filament(BRAND, fil, variant(), size(), mat)
+    assert record["extruder_temp"] == 230
+    assert record["bed_temp"] == 55  # range midpoint, nothing generic
 
 
 # ---------------------------------------------------------------------------
@@ -317,12 +322,16 @@ def test_no_invented_values():
 
 def test_spool_weight_from_empty_spool_weight():
     assert build(siz=size(empty_spool_weight=216))["spool_weight"] == 216.0
-    assert build(siz=size(empty_spool_weight=0))["spool_weight"] is None
+    # A recorded 0 means "no spool", which is not the same as unknown.
+    assert build(siz=size(empty_spool_weight=0))["spool_weight"] == 0.0
+    assert build(siz=size())["spool_weight"] is None
 
 
 def test_refill_suffix():
     assert build(siz=size(spool_refill=True))["name"] == "Black (refill)"
     assert build(siz=size(spool_refill=False))["name"] == "Black"
+    assert build(siz=size(container_material="refill"))["name"] == "Black (refill)"
+    assert build(siz=size(container_material="cardboard"))["name"] == "Black"
 
 
 def test_density_required():
@@ -384,6 +393,15 @@ def test_materials_are_medians_of_ofd_filaments():
     assert materials[0]["bed_temp"] == 55
 
 
+def test_materials_use_brand_material_generic_temps():
+    filaments = [
+        filament(id="a", material_id="m1", min_print_temperature=None, max_print_temperature=None)
+    ]
+    mats = {"m1": {"default_slicer_settings": {"generic": {"nozzle_temp": 225, "bed_temp": 70}}}}
+    pla = build_materials(filaments, mats)[0]
+    assert (pla["extruder_temp"], pla["bed_temp"]) == (225, 70)
+
+
 def test_materials_empty():
     assert build_materials([]) == []
 
@@ -434,6 +452,19 @@ def test_trailing_parenthetical_dropped_when_it_fits_and_is_unique():
     assert changes == [
         ("a", long_name, "PLA Silk High-Speed Quadruple Twilight Glow", "parenthetical")
     ]
+
+
+def test_same_name_siblings_do_not_collide_with_themselves():
+    """Sizes that differ only by GTIN share a name; both still get the parenthetical dropped."""
+    long_name = "PLA Silk High-Speed Quadruple Twilight Glow (Black & Red & Dark Purple & Gold)"
+    records = [named("a", long_name), named("b", long_name)]
+    shorten_long_names(records)
+    assert [r["name"] for r in records] == ["PLA Silk High-Speed Quadruple Twilight Glow"] * 2
+
+
+def test_zero_range_bound_is_ignored_not_averaged():
+    record = build(fil=filament(min_bed_temperature=0, max_bed_temperature=60))
+    assert record["bed_temp"] == 60
 
 
 def test_parenthetical_not_dropped_when_it_would_collide():

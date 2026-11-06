@@ -24,6 +24,8 @@ import statistics
 from collections.abc import Iterable
 from typing import Any
 
+from .orca_mapping import resolve_temps
+
 # Spoolman installs link to a record by its id, so the id must survive rebuilds
 # and data edits. It is "ofd_" + the size's stored canonical ``uuid`` — never the
 # derived ``id`` (a uuid5 of names, weight, gtin, array index, ...), which changes
@@ -73,19 +75,6 @@ def norm_hex(value: str | None) -> str | None:
     return cleaned if _HEX_RE.match(cleaned) else None
 
 
-def pick_temp(low: int | None, high: int | None) -> int | None:
-    """Collapse an OFD min/max range into Spoolman's single temperature.
-
-    Uses the midpoint when both ends are real. OFD often records a bed minimum of
-    0 meaning "unheated is fine", which would drag a midpoint to nonsense, so a
-    zero end is ignored rather than averaged.
-    """
-    ends = [t for t in (low, high) if t]
-    if not ends:
-        return None
-    return round(sum(ends) / len(ends))
-
-
 def display_name(filament_name: str, brand_name: str, material: str, colour: str) -> str:
     """Build a Spoolman-style name: product line + colour, minus brand and bare material.
 
@@ -133,6 +122,32 @@ def _colours(variant: dict, traits: set[str]) -> tuple[str | None, list[str] | N
     return (valid[0] if valid else norm_hex(variant.get("color_hex"))), None, None
 
 
+_TEMP_RANGE_KEYS = (
+    "min_print_temperature",
+    "max_print_temperature",
+    "min_bed_temperature",
+    "max_bed_temperature",
+)
+
+
+def resolve_spoolman_temps(filament: dict, material: dict | None = None) -> dict[str, int]:
+    """
+    :func:`resolve_temps` (generic settings first, then the range midpoint), with a
+    range bound of 0 treated as absent.
+
+    OFD often records a bed minimum of 0 meaning "unheated is fine"; averaged into a
+    midpoint it would give a nonsense 30 for a 0-60 range, so the zero bound is
+    dropped before the midpoint is taken. Generic settings are never altered.
+    """
+    cleaned = {k: (None if filament.get(k) == 0 else filament.get(k)) for k in _TEMP_RANGE_KEYS}
+    return resolve_temps({**filament, **cleaned}, material)
+
+
+def is_refill(size: dict) -> bool:
+    """A refill is flagged by ``container_material: "refill"`` or the deprecated ``spool_refill``."""
+    return bool(size.get("spool_refill") or size.get("container_material") == "refill")
+
+
 def is_discontinued(filament: dict, variant: dict, size: dict) -> bool:
     """A size is discontinued if it, its variant or its filament is."""
     return bool(
@@ -145,6 +160,7 @@ def build_filament(
     filament: dict,
     variant: dict,
     size: dict,
+    material: dict | None = None,
     include_discontinued: bool = False,
 ) -> dict[str, Any] | None:
     """
@@ -153,7 +169,13 @@ def build_filament(
     Returns None when the row cannot be represented honestly: discontinued
     (unless asked for), or missing the size's canonical uuid (the id is never
     derived from anything else), density, net weight or diameter — the last three
-    are required by Spoolman and none may be guessed.
+    are required by Spoolman and none may be guessed. (``ofd build``'s crawler fills
+    in a density of 1.24 and a diameter of 1.75 when a source file omits them, and
+    the schema requires a density, so on real builds this only trips for callers
+    that bypass the crawler.)
+
+    ``material`` is the brand's OFD material entity; its generic temperatures are a
+    fallback for the filament's own, exactly as for the OrcaSlicer export.
     """
     if not include_discontinued and is_discontinued(filament, variant, size):
         return None
@@ -165,10 +187,11 @@ def build_filament(
     traits = {key for key, enabled in (variant.get("traits") or {}).items() if enabled}
 
     name = display_name(filament["name"], brand["name"], filament["material"], variant["name"])
-    if size.get("spool_refill"):
+    if is_refill(size):
         name += " (refill)"
 
     empty_spool_weight = size.get("empty_spool_weight")
+    temps = resolve_spoolman_temps(filament, material)
     color_hex, color_hexes, multi_color_direction = _colours(variant, traits)
 
     return {
@@ -178,18 +201,14 @@ def build_filament(
         "material": filament["material"],
         "density": float(filament["density"]),
         "weight": float(size["filament_weight"]),
-        "spool_weight": float(empty_spool_weight) if empty_spool_weight else None,
+        "spool_weight": float(empty_spool_weight) if empty_spool_weight is not None else None,
         "spool_type": None,
         "diameter": float(size["diameter"]),
         "color_hex": color_hex,
         "color_hexes": color_hexes,
         "multi_color_direction": multi_color_direction,
-        "extruder_temp": pick_temp(
-            filament.get("min_print_temperature"), filament.get("max_print_temperature")
-        ),
-        "bed_temp": pick_temp(
-            filament.get("min_bed_temperature"), filament.get("max_bed_temperature")
-        ),
+        "extruder_temp": temps.get("nozzle"),
+        "bed_temp": temps.get("bed"),
         "finish": _first_match(traits, FINISH_BY_TRAIT),
         "pattern": _first_match(traits, PATTERN_BY_TRAIT),
         "translucent": bool(traits & TRANSLUCENT_TRAITS),
@@ -201,15 +220,19 @@ def _median_int(values: list[int]) -> int | None:
     return round(statistics.median(values)) if values else None
 
 
-def build_materials(filaments: Iterable[dict]) -> list[dict[str, Any]]:
+def build_materials(
+    filaments: Iterable[dict], materials_by_id: dict[str, dict] | None = None
+) -> list[dict[str, Any]]:
     """
     Build Spoolman ``ExternalMaterial`` records, one per material type.
 
-    OFD's material entities carry no density or temperatures, so the per-material
-    defaults Spoolman wants are the **median across OFD's own filaments** of that
-    material type: density, and the midpoint temperatures from :func:`pick_temp`.
-    Temperature medians ignore zero bounds (see :func:`pick_temp`) and use Python's
-    round-half-even; a temperature no filament of the material records stays None. Spoolman only
+    OFD's material entities carry no density, and their generic temperatures are
+    per brand, so the per-material defaults Spoolman wants are the **median across
+    OFD's own filaments** of that material type: density, and the temperatures each
+    filament resolves to (the same :func:`resolve_temps` the OrcaSlicer export uses,
+    so the filament's and its brand material's generic temperatures win over the
+    range midpoint). Medians use Python's round-half-even; a temperature no
+    filament of the material records stays None. Spoolman only
     uses these to pre-fill a form for a material that has no filament picked, so
     a statistical default is acceptable there; change the policy here and nowhere
     else.
@@ -217,7 +240,9 @@ def build_materials(filaments: Iterable[dict]) -> list[dict[str, Any]]:
     ``filaments`` should be the OFD filaments that actually produced records, so
     materials.json never describes a material filaments.json does not contain.
     Only filaments with a density are considered (Spoolman requires it).
+    ``materials_by_id`` maps a filament's ``material_id`` to its OFD material entity.
     """
+    materials_by_id = materials_by_id or {}
     by_material: dict[str, list[dict]] = {}
     for filament in filaments:
         if filament.get("density"):
@@ -225,16 +250,11 @@ def build_materials(filaments: Iterable[dict]) -> list[dict[str, Any]]:
 
     materials = []
     for material, group in sorted(by_material.items()):
-        extruder = [
-            t
-            for f in group
-            if (t := pick_temp(f.get("min_print_temperature"), f.get("max_print_temperature")))
+        resolved = [
+            resolve_spoolman_temps(f, materials_by_id.get(f.get("material_id"))) for f in group
         ]
-        bed = [
-            t
-            for f in group
-            if (t := pick_temp(f.get("min_bed_temperature"), f.get("max_bed_temperature")))
-        ]
+        extruder = [t["nozzle"] for t in resolved if "nozzle" in t]
+        bed = [t["bed"] for t in resolved if "bed" in t]
         materials.append(
             {
                 "material": material,
@@ -335,13 +355,16 @@ def shorten_long_names(records: list[dict[str, Any]]) -> list[tuple[str, str, st
     def stripped(name: str) -> str:
         return _TRAILING_PARENTHETICAL_RE.sub("", name)
 
-    in_use: dict[tuple[Any, ...], int] = {}
+    # candidate key -> the distinct original names that would take it. Sizes that
+    # share an original name (e.g. differing only by GTIN) must not collide with
+    # themselves, so they count once.
+    in_use: dict[tuple[Any, ...], set[str]] = {}
     for record in records:
         name = record["name"]
         candidate = stripped(name) if len(name) > NAME_MAX_LENGTH else name
         if len(name) > NAME_MAX_LENGTH and len(candidate) > NAME_MAX_LENGTH:
             continue
-        in_use[key(record, candidate)] = in_use.get(key(record, candidate), 0) + 1
+        in_use.setdefault(key(record, candidate), set()).add(name)
 
     changes: list[tuple[str, str, str, str]] = []
     to_elide: list[dict[str, Any]] = []
@@ -356,7 +379,7 @@ def shorten_long_names(records: list[dict[str, Any]]) -> list[tuple[str, str, st
             candidate
             and candidate != original
             and len(candidate) <= NAME_MAX_LENGTH
-            and in_use[key(record, candidate)] == 1
+            and in_use[key(record, candidate)] == {original}
         ):
             record["name"] = candidate
             owners[key(record, candidate)] = original

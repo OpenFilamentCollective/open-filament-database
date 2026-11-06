@@ -47,10 +47,14 @@ uuid, so they stay stable across rebuilds and edits. Spoolman has no alias
 concept: if a uuid is ever retired (recorded as "moved_from" on its survivor),
 links to the old id will not follow; api/v1/uuid-index.json maps old to current.
 
-Values the database does not record (spool weight, colour, temperatures, ...) are
-null rather than guessed. Discontinued or incomplete products (no density, weight
-or diameter) are left out. Extruder and bed temperature are the midpoint of the
-recommended range, ignoring a bound of 0.
+Values the database does not record (spool weight, temperatures, ...) are null
+rather than guessed. Discontinued or incomplete products (no density, weight or
+diameter) are left out. Extruder and bed temperature are resolved the same way as
+for the OrcaSlicer presets: the generic temperature of the filament, else of its
+brand's material, else the midpoint of the recommended range rounded to 5 degrees
+(a range bound of 0 is ignored, not averaged).
+Where the build's own defaults stand in for an omitted value (density 1.24,
+diameter 1.75, colour black) the default is exported.
 
 Colours: a filament is exported as multi-colour (color_hexes, null color_hex) only
 when the database lists two or more colours AND says how they are laid out:
@@ -89,6 +93,7 @@ def export_spoolman(
     brands = {brand["id"]: brand for brand in db.brands}
     filaments = {filament["id"]: filament for filament in db.filaments}
     variants = {variant["id"]: variant for variant in db.variants}
+    materials_by_id = {material["id"]: material for material in db.materials}
 
     records: list[dict] = []
     exported_filament_ids: set[str] = set()
@@ -107,7 +112,9 @@ def export_spoolman(
             no_uuid += 1
             continue
 
-        record = build_filament(brand, filament, variant, size)
+        record = build_filament(
+            brand, filament, variant, size, materials_by_id.get(filament.get("material_id"))
+        )
         if record is None:
             continue
         records.append(record)
@@ -115,7 +122,9 @@ def export_spoolman(
 
     records.sort(key=lambda record: record["id"])
     renamed = shorten_long_names(records)
-    materials = build_materials(filaments[fid] for fid in sorted(exported_filament_ids))
+    materials = build_materials(
+        (filaments[fid] for fid in sorted(exported_filament_ids)), materials_by_id
+    )
 
     # Compact separators: Spoolman downloads these on every sync.
     for name, payload in (("filaments.json", records), ("materials.json", materials)):
