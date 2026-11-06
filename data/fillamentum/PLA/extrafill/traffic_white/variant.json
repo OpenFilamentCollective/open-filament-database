@@ -2,5 +2,8 @@
   "uuid": "e305f1f9-095a-431a-9a81-da7e99dda8d6",
   "id": "traffic_white",
   "name": "Traffic White",
-  "color_hex": "#F6F6F6"
+  "color_hex": "#F6F6F6",
+  "traits": {
+    "bio_based": true
+  }
 }

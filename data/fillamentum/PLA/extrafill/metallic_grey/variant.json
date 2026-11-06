@@ -2,5 +2,8 @@
   "uuid": "7013c53d-a526-4bef-9502-58a392c29fde",
   "id": "metallic_grey",
   "name": "Metallic Grey",
-  "color_hex": "#878A8D"
+  "color_hex": "#878A8D",
+  "traits": {
+    "bio_based": true
+  }
 }

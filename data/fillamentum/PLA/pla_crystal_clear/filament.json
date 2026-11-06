@@ -11,5 +11,17 @@
   "max_bed_temperature": 55,
   "data_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_PLA-Crystal-Clear_03012019.pdf",
   "safety_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/MSDS_PLA-Crystal-Clear_EN_07122018.pdf",
-  "discontinued": false
+  "discontinued": false,
+  "sustainability": {
+    "bio_based_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://shop.fillamentum.com/collections/pla-extrafill-filament/products/pla-crystal-clear",
+      "source_quote": "Made of natural ingredients (100% bio-based)",
+      "retrieved": "2026-11-03",
+      "notes": "Brand marketing declaration on the PLA Crystal Clear product page; no test method named."
+    }
+  }
 }
