@@ -21,6 +21,7 @@
     ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "plastic",
     "ean": "5905991405085",
     "article_number": "TF-24001",
     "purchase_links": [
@@ -34,12 +35,14 @@
     "uuid": "4dc5e91e-b4e7-4256-8629-24784b5a3ecd",
     "filament_weight": 3000,
     "diameter": 1.75,
+    "container_material": "plastic",
     "gtin": "5907138400915"
   },
   {
     "uuid": "713b9cba-67b1-461b-bdb1-515340aa577a",
     "filament_weight": 5000,
     "diameter": 1.75,
+    "container_material": "plastic",
     "gtin": "5907138400977"
   }
 ]
