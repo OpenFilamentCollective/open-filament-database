@@ -7,6 +7,8 @@
 		label?: string;
 		format?: (value: any) => string;
 		type?: 'text' | 'link' | 'color' | 'logo' | 'custom';
+		/** For a link field with several URLs: reads them from the entity. */
+		values?: (entity: any) => string[];
 		customRender?: Snippet<[any]>;
 		hide?: boolean | ((value: any) => boolean);
 		logoType?: 'brand' | 'store';
@@ -107,20 +109,23 @@
 								<span class="text-sm text-muted-foreground">No logo</span>
 							{/if}
 						{:else if field.type === 'link'}
-							{#if isSafeUrl(entity[field.key])}
-								<a
-									href={entity[field.key]}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="text-primary hover:underline truncate block"
-								>
-									{field.format ? field.format(entity[field.key]) : entity[field.key]}
-								</a>
-							{:else}
-								<span class="text-muted-foreground truncate block">
-									{entity[field.key] || 'No URL'}
-								</span>
-							{/if}
+							{@const urls = field.values?.(entity) ?? []}
+							{#each urls.length ? urls : [entity[field.key]] as url}
+								{#if isSafeUrl(url)}
+									<a
+										href={url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-primary hover:underline truncate block"
+									>
+										{field.format ? field.format(url) : url}
+									</a>
+								{:else}
+									<span class="text-muted-foreground truncate block">
+										{url || 'No URL'}
+									</span>
+								{/if}
+							{/each}
 						{:else if field.type === 'color'}
 							<div class="flex items-center gap-2">
 								<div

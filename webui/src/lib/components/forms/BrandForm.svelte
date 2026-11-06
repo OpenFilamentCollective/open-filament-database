@@ -1,4 +1,6 @@
 <script lang="ts">
+	import TagInput from '$lib/components/form-fields/TagInput.svelte';
+	import { websiteList } from '$lib/utils/websites';
 	import { untrack } from 'svelte';
 	import { SchemaForm } from '$lib/components/forms';
 	import { LogoUpload, CountryCodeSelect } from '$lib/components/form-fields';
@@ -31,6 +33,8 @@
 		hiddenFields: ['id', 'uuid', 'moved_from', 'logo'],
 		fieldOrder: ['name', 'website', 'origin'],
 		typeOverrides: {
+			// The main site keeps a normal URL input; further sites have their own field below.
+			website: 'url',
 			origin: 'custom'
 		}
 	};
@@ -39,10 +43,18 @@
 	let preparedSchema = $derived(removeIdFromSchema(schema));
 
 	// Form data state — restored from draft if one exists for this draftKey
+	function initialFormData(entity: any): Record<string, any> {
+		const [main = '', ...others] = websiteList(entity);
+		return {
+			...initializeFormData(preparedSchema, { ...entity, website: main }, config.hiddenFields),
+			additional_websites: others
+		};
+	}
+
 	let formData = $state<Record<string, any>>(
 		(draftKey && formDrafts.has(draftKey))
 			? formDrafts.get(draftKey) as Record<string, any>
-			: initializeFormData(preparedSchema, brand, config.hiddenFields)
+			: initialFormData(brand)
 	);
 
 	// Origin mode: separate state so switching to 'code' doesn't flip back when origin is empty
@@ -66,7 +78,7 @@
 	$effect(() => {
 		if (brand !== untrack(() => lastEntity)) {
 			lastEntity = brand;
-			formData = initializeFormData(preparedSchema, brand, config.hiddenFields);
+			formData = initialFormData(brand);
 			originMode = (brand.origin && brand.origin !== 'Unknown') ? 'code' : 'unknown';
 			untrack(() => {
 				if (originMode === 'unknown' && !formData.origin) {
@@ -100,6 +112,8 @@
 
 		logoError = null;
 		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, undefined, config.transforms);
+		const others = (data.additional_websites ?? []).filter((url: string) => url && url !== submitData.website);
+		if (others.length) submitData.website = [submitData.website, ...others];
 		// Preserve the canonical UUID on edit; left empty on create for CI to assign.
 		if (brand?.uuid) submitData.uuid = brand.uuid;
 		// Preserve former UUIDs so old references still resolve after a move/merge.
@@ -140,6 +154,14 @@
 	submitDisabled={!canSubmit}
 	onSubmit={handleSubmit}
 >
+	{#snippet afterFields()}
+		<TagInput
+			bind:tags={formData.additional_websites}
+			label="Additional websites"
+			tooltip="Other domains the brand publishes on, such as a separate shop or blog"
+			placeholder="https://..."
+		/>
+	{/snippet}
 	{#snippet customFields(key, fieldSchema, field)}
 		{#if key === 'origin'}
 			<div class="flex flex-col">

@@ -20,7 +20,10 @@ export interface Brand {
 	moved_from?: string[];
 	slug?: string;
 	name: string;
-	website: string;
+	/** One URL, or a list with the main site first. */
+	website: string | string[];
+	/** The full list, in the built dataset, when a brand has more than one site. */
+	websites?: string[];
 	logo: string;
 	origin: string;
 }

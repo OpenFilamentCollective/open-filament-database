@@ -19,6 +19,7 @@ _KEY_ORDER = {
         "name",
         "slug",
         "website",
+        "websites",
         "logo_name",
         "origin",
         "source",

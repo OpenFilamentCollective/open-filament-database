@@ -23,10 +23,10 @@ from pathlib import Path, PurePosixPath
 from urllib.parse import urlsplit
 
 from ofd.enrich import verify as rules
-from ofd.enrich.verify import normalize, number_in, quote_on_page, site_name
+from ofd.enrich.verify import as_sites, normalize, number_in, quote_on_page, site_name
 from ofd.review.gitdata import ChangedFile, TreeReader
 from ofd.review.jsonlines import escape
-from ofd.review.sustainability import brand_site_name
+from ofd.review.sustainability import brand_site_names
 
 # (file kind) -> {field: product anchor}. A field not listed here is never provable.
 RULES: dict[str, dict[str, str]] = {
@@ -204,11 +204,14 @@ def classify(leaf: Leaf) -> str:
 class Context:
     """What the base branch says about the product a leaf belongs to."""
 
-    brand_site: str | None
+    brand_site: tuple[str, ...]
     filament_name: str = ""
     sibling_filaments: list[str] = field(default_factory=list)
     variant_name: str = ""
     sibling_variants: list[str] = field(default_factory=list)
+
+    def __post_init__(self):
+        self.brand_site = as_sites(self.brand_site)
 
 
 def context_for(leaf: Leaf, base: TreeReader) -> Context:
@@ -229,7 +232,7 @@ def context_for(leaf: Leaf, base: TreeReader) -> Context:
         if p != f"{filament_dir}/filament.json"
     ]
     ctx = Context(
-        brand_site_name(brand_json.get("website") if isinstance(brand_json, dict) else None),
+        brand_site_names(brand_json.get("website") if isinstance(brand_json, dict) else None),
         str(filament.get("name", "")) if isinstance(filament, dict) else "",
         [s for s in siblings if s],
     )
@@ -269,7 +272,7 @@ def _on_brand_site(url: str, ctx: Context) -> str | None:
         return "the brand has no website on record"
     if UGC_SUBDOMAIN.match(host) and host not in OFFICIAL_WIKIS:
         return f"{host} is a user-written section of the site"
-    if site_name(host) != ctx.brand_site:
+    if site_name(host) not in ctx.brand_site:
         return f"{host} is not the brand's own site"
     return None
 

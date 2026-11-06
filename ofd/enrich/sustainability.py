@@ -30,7 +30,7 @@ def section_of(pointer: str) -> str | None:
 
 
 def verify(
-    enrichment: dict, fetcher: Fetcher, site: str | None, today: date | None = None
+    enrichment: dict, fetcher: Fetcher, site, today: date | None = None
 ) -> tuple[str | None, list[str]]:
     """``(reason, warnings)``: reason is None when every entry in the value is proven.
 

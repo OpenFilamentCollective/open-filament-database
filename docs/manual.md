@@ -68,7 +68,7 @@ When data is merged or moved, one entity's `uuid` can be retired in favour of an
    **Required fields:**
    - `id` — must match the folder name
    - `name` — display name as shown by the manufacturer
-   - `website` — the manufacturer's official site
+   - `website` — the manufacturer's official site. If it also publishes on other domains, such as a separate shop or blog, use a list with the main site first: `["https://prusament.com/", "https://www.prusa3d.com/"]`. Sources on any of them count as the brand's own.
    - `logo` — the logo filename (must be `logo.png`, `logo.jpg`, or `logo.svg`)
    - `origin` — ISO 3166-1 alpha-2 country code (e.g. `US`, `DE`, `CN`), optionally with a region suffix like `US-CA`, **or** the literal string `"Unknown"`. An empty string is **not** valid.
 

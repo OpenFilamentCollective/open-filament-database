@@ -79,7 +79,7 @@ async function buildBrandRecords(brandDir: string): Promise<SearchRecord[]> {
 			brandName,
 			brandSlug: brandDir,
 			logo: brand.logo || undefined,
-			keywords: [brand.origin, brand.website].filter(Boolean).join(' '),
+			keywords: [brand.origin, brand.website].flat().filter(Boolean).join(' '),
 			path: `brands/${brandDir}`
 		}
 	];

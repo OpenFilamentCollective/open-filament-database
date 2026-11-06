@@ -47,11 +47,20 @@
             "$ref": "#/definitions/string_limit"
         },
         "website": {
-            "type": "string",
+            "type": [
+                "string",
+                "array"
+            ],
             "title": "Website",
-            "description": "The manufacturer's official website",
+            "description": "The manufacturer's official website. If it also publishes on other domains, such as a separate shop or blog, a list with the main site first.",
             "x-placeholder": "https://example.com/...",
-            "$ref": "#/definitions/string_limit"
+            "maxLength": 1000,
+            "items": {
+                "type": "string",
+                "maxLength": 1000
+            },
+            "minItems": 1,
+            "uniqueItems": true
         },
         "parent_brand": {
             "type": "string",

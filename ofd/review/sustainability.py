@@ -29,7 +29,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import PurePosixPath
 from urllib.parse import urlsplit
 
-from ofd.enrich.verify import Fetcher, Page, normalize, number_in, site_name
+from ofd.enrich.verify import Fetcher, Page, as_sites, normalize, number_in, site_name
 from ofd.review.gitdata import ChangedFile, TreeReader
 
 STATUS_CONTEXT = "Sustainability sources"
@@ -229,7 +229,7 @@ def _on_page(text: str, page: Page) -> bool:
     return normalize(text) in page.text
 
 
-def verify_entry(entry: Entry, fetcher: Fetcher, brand_site: str | None) -> None:
+def verify_entry(entry: Entry, fetcher: Fetcher, brand_site) -> None:
     """Fill ``entry.errors`` and ``entry.warnings``."""
     data = entry.data
     url = data.get("source_url") or ""
@@ -344,22 +344,22 @@ def verify_entry(entry: Entry, fetcher: Fetcher, brand_site: str | None) -> None
         )
 
     host_site = site_name((urlsplit(url).hostname or "").lower())
-    if brand_site:
-        if data.get("source_type") == "primary" and host_site != brand_site:
+    sites = as_sites(brand_site)
+    if sites:
+        if data.get("source_type") == "primary" and host_site not in sites:
             entry.warnings.append(
-                f"`source_type: primary` but the source is not on the brand's own site ({brand_site})"
+                "`source_type: primary` but the source is not on the brand's own site "
+                f"({', '.join(sites)})"
             )
-        if data.get("source_type") == "secondary" and host_site == brand_site:
+        if data.get("source_type") == "secondary" and host_site in sites:
             entry.warnings.append("`source_type: secondary` but the source is the brand's own site")
 
 
-def verify_sourced(
-    section: str, data: dict, fetcher: Fetcher, site: str | None
-) -> tuple[list[str], list[str]]:
+def verify_sourced(section: str, data: dict, fetcher: Fetcher, site) -> tuple[list[str], list[str]]:
     """``(errors, warnings)`` for one sourced entry, outside a PR.
 
     ``section`` is a key of ``SECTIONS`` or ``"container_details"``; ``site`` is the
-    brand's ``site_name`` (see ``brand_site_name``). Used by ``ofd enrich``.
+    brand's site name or names (see ``brand_site_names``). Used by ``ofd enrich``.
     """
     entry = Entry("", "", section, data)
     verify_entry(entry, fetcher, site)
@@ -394,12 +394,18 @@ def brand_site_name(website: str | None) -> str | None:
     return site_name(host)
 
 
-def brand_site(tree: TreeReader, path: str) -> str | None:
+def brand_site_names(website) -> tuple[str, ...]:
+    """Site names for brand.json's ``website``, which is one URL or a list of them."""
+    urls = website if isinstance(website, list) else [website]
+    return tuple(dict.fromkeys(n for n in map(brand_site_name, urls) if n))
+
+
+def brand_site(tree: TreeReader, path: str) -> tuple[str, ...]:
     parts = PurePosixPath(path).parts
     if len(parts) < 2 or parts[0] != "data":
-        return None
+        return ()
     brand = tree.json(f"data/{parts[1]}/brand.json") or {}
-    return brand_site_name(brand.get("website") if isinstance(brand, dict) else None)
+    return brand_site_names(brand.get("website") if isinstance(brand, dict) else None)
 
 
 def verify_all(touch: Touch, head: TreeReader, fetcher: Fetcher | None = None) -> None:

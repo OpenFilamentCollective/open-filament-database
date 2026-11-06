@@ -23,7 +23,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from ofd.enrich.verify import Fetcher, html_parts, pdf_text, site_name
+from ofd.enrich.verify import Fetcher, as_sites, html_parts, pdf_text, site_name
 from ofd.review.gitdata import ChangedFile, git
 
 SOURCES_PREFIX = ".ofd-sources-"
@@ -70,14 +70,14 @@ def _urls_in(text: str) -> list[str]:
     return [u.rstrip(_URL_TAIL) for u in _URL.findall(text or "")]
 
 
-def _walk_urls(doc, brand_site: str | None, out: list[str]) -> None:
+def _walk_urls(doc, brand_site: tuple[str, ...], out: list[str]) -> None:
     if isinstance(doc, dict):
         for key, value in doc.items():
             if key in _SHEET_KEYS and isinstance(value, str):
                 out.append(value)
             elif key == "url" and isinstance(value, str) and brand_site:
                 # Purchase links only when they are the brand's own shop.
-                if site_name((urlsplit(value).hostname or "").lower()) == brand_site:
+                if site_name((urlsplit(value).hostname or "").lower()) in brand_site:
                     out.append(value)
             else:
                 _walk_urls(value, brand_site, out)
@@ -90,7 +90,7 @@ def collect_urls(
     body: str,
     commit_messages: str,
     changes: list[ChangedFile],
-    brand_sites: dict[str, str | None],
+    brand_sites: dict,
 ) -> list[str]:
     """Source URLs, deduplicated and capped: the changed files' datasheets and brand-shop
     links first (a body full of links must not push them out), then body and commits."""
@@ -98,7 +98,7 @@ def collect_urls(
     for change in changes:
         if change.after is not None:
             parts = change.path.split("/")
-            brand = brand_sites.get(parts[1]) if len(parts) > 1 else None
+            brand = as_sites(brand_sites.get(parts[1])) if len(parts) > 1 else ()
             _walk_urls(change.after, brand, found)
     found += _urls_in(body) + _urls_in(commit_messages)
     urls: list[str] = []

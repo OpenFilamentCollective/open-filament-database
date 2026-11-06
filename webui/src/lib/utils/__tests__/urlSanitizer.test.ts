@@ -155,6 +155,11 @@ describe('stripTrackersDeep', () => {
 		expect(entity.sizes[0].purchase_links[0].url).toContain('tag=aff');
 	});
 
+	it('strips each URL when website is a list', () => {
+		const out = stripTrackersDeep({ website: ['https://a.com/?utm_source=x', 'https://b.com/'] });
+		expect(out.website).toEqual(['https://a.com/', 'https://b.com/']);
+	});
+
 	it('strips top-level url fields (storefront_url, website, data_sheet_url)', () => {
 		const out = stripTrackersDeep({
 			storefront_url: 'https://shop.x.com/?ref=nav',
