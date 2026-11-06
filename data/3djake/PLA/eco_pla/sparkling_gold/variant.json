@@ -4,6 +4,7 @@
   "name": "Sparkling Gold",
   "color_hex": "#8C6000",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

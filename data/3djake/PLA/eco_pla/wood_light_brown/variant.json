@@ -4,6 +4,7 @@
   "name": "Wood Light Brown",
   "color_hex": "#D8C094",
   "traits": {
+    "bio_based": true,
     "contains_wood": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Wood Dark Brown",
   "color_hex": "#CCA482",
   "traits": {
+    "bio_based": true,
     "contains_wood": true
   }
 }

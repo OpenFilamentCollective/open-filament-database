@@ -2,5 +2,8 @@
   "uuid": "a6cf8dd9-08e7-45bd-b570-a60180b441b4",
   "id": "dark_blue",
   "name": "Dark Blue",
-  "color_hex": "#1F2761"
+  "color_hex": "#1F2761",
+  "traits": {
+    "bio_based": true
+  }
 }

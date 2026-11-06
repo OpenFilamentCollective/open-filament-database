@@ -4,6 +4,7 @@
   "name": "Transparent",
   "color_hex": "#F2ECE9",
   "traits": {
-    "transparent": true
+    "transparent": true,
+    "bio_based": true
   }
 }
