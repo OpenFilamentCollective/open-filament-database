@@ -2,6 +2,16 @@
   {
     "uuid": "0ee29c2f-79ba-4a74-8163-8bc1404005b8",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [],
+      "notes": "Cardboard spool made from recycled cardboard; no percentage given.",
+      "source_type": "primary",
+      "source_url": "https://colorfabb.com/vibers-pla-white",
+      "source_quote": "This filament comes on a cardboard spool made from recycled cardboard to further minimize the use of single use plastic.",
+      "retrieved": "2026-11-03"
+    }
   }
 ]

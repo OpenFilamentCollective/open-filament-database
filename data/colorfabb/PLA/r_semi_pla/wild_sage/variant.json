@@ -4,6 +4,7 @@
   "name": "Wild Sage",
   "color_hex": "#B4C8A2",
   "traits": {
+    "recycled": true,
     "industrially_compostable": true
   }
 }

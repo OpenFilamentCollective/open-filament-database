@@ -3,6 +3,19 @@
   "id": "regrind",
   "name": "Regrind",
   "color_hex": "#6A6C6E",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://colorfabb.com/pla-regrind",
+      "source_quote": "colorFabb PLA Regrind is produced from 100% post-filament extrusion waste from colorFabb premium 3D printing filaments.",
+      "retrieved": "2026-11-03",
+      "notes": "In-house out-of-spec filament waste; colour varies per batch."
+    }
+  },
   "traits": {
     "recycled": true,
     "industrially_compostable": true

@@ -3,7 +3,19 @@
   "id": "all_white",
   "name": "all White",
   "color_hex": "#FFFFFF",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://colorfabb.com/allpha-white",
+      "source_quote": "100% biobased, created by naturally occurring fermentation process.",
+      "retrieved": "2026-11-03"
+    }
+  },
   "traits": {
-    "home_compostable": true
+    "home_compostable": true,
+    "bio_based": true
   }
 }
