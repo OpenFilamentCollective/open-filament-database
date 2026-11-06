@@ -51,6 +51,8 @@ Where the database has no value the field is `null`; nothing is guessed. The one
 
 **Left out:** any size without a density, net weight or diameter (Spoolman requires all three), and any size without a `uuid` (the id is never derived from anything else).
 
+**Identical names.** One record is exported per size, so sizes that differ only by GTIN, article number or container (for example a retail SKU variant of the same spool) produce records with the same manufacturer, name, material, weight and diameter under different ids. Spoolman's dropdown then shows indistinguishable entries, and which one a user picks is arbitrary. In a build of current data about 76 such groups exist (roughly 150 records); in most of them the size rows are identical apart from the GTIN or article number. Names are not changed to tell them apart, because a suffix derived from a GTIN or article number would make names unstable.
+
 **Retired uuids.** When data is merged, a retired uuid is recorded in the survivor's `moved_from` (see the [manual](manual.md#moved--former-uuids-moved_from)). Spoolman has no alias concept, so a Spoolman filament linked to a retired id will not follow it automatically; [`api/v1/uuid-index.json`](https://api.openfilamentdatabase.org/api/v1/uuid-index.json) maps former uuids to current ones.
 
 **`materials.json`** holds one entry per material type. The database does not record per-material defaults, so density and temperatures are the **median across the exported filaments of that material that record the value**. Temperatures are the per-filament resolved values above, medians use Python's round-half-even, and a temperature is `null` where no filament of the material records one.
