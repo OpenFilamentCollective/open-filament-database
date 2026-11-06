@@ -7,5 +7,32 @@
   "min_print_temperature": 220,
   "max_print_temperature": 250,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 90,
+  "sustainability": {
+    "carbon_footprints": [
+      {
+        "value_kg_co2e": 6.27,
+        "declared_unit": "unknown",
+        "boundary": "unknown",
+        "packaging_included": "unknown",
+        "biogenic_carbon": "unknown",
+        "recycled_allocation": "not_applicable",
+        "method": "lca",
+        "standard": null,
+        "tool": null,
+        "practitioner": "Greenly",
+        "verification": "none",
+        "verifier": null,
+        "epd_registration_number": null,
+        "publicly_available": false,
+        "reference_year": null,
+        "published": "2023-02-22",
+        "source_type": "secondary",
+        "source_url": "https://www.armor-group.com/en/actualites/provide-more-sustainable-alternatives",
+        "source_quote": "The LCA of Kimya PETG recycled 3D filament shows an emission of 4.08 kgCO2 compared to 6.27 kgCO2 for Kimya PETG standard filament.",
+        "retrieved": "2026-11-03",
+        "notes": "Published in the newsroom of ARMOR GROUP, Kimya's parent company. kimya.fr and kimya.com are unreachable because the brand was discontinued. The figure is for Kimya standard (virgin) PETG. The declared unit (per kg or per spool) is not stated. The same page says the LCA was 'conducted in collaboration with the Greenly firm and based on the ADEME (Environmental and Energy Management Agency) methodology'. The page gives only a general definition of LCA and does not state this study's system boundary. Only the headline results were published; the full report was not found and no independent review is stated."
+      }
+    ]
+  }
 }
