@@ -4,6 +4,7 @@
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
     "article_number": "PETG-FW23-175",

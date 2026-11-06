@@ -14,5 +14,18 @@
   "chamber_temperature": 55,
   "data_sheet_url": "https://filamentive.com/wp-content/uploads/2019/06/TDS_ASA.pdf",
   "safety_sheet_url": "https://filamentive.com/wp-content/uploads/2019/06/ASA-MSDS-min.pdf",
-  "discontinued": false
+  "discontinued": false,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 0,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "supplier_declaration",
+      "source_type": "primary",
+      "source_url": "https://www.filamentive.com/wp-content/uploads/2025/07/Filamentive-ASA-Sustainability-Profile.pdf",
+      "source_quote": "Recycled content: 0% (percentage by weight; based on supplier material declarations)",
+      "retrieved": "2026-11-03",
+      "notes": "Profile states base polymer is 'Virgin fossil-derived ASA'. ASA is not listed in the ISO 14021 declaration ('products not listed were not produced from recycled material')."
+    }
+  }
 }

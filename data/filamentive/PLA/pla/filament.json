@@ -8,5 +8,18 @@
   "max_print_temperature": 215,
   "min_bed_temperature": 0,
   "max_bed_temperature": 60,
-  "data_sheet_url": "https://www.filamentive.com/wp-content/uploads/2025/04/rPLA-TDS.pdf"
+  "data_sheet_url": "https://www.filamentive.com/wp-content/uploads/2025/04/rPLA-TDS.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 50,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "iso_14021",
+      "source_type": "primary",
+      "source_url": "https://www.filamentive.com/wp-content/uploads/2026/03/ISO-14021-Recycled-Content-Certification-Letter-March-2026.pdf",
+      "source_quote": "PLA (including ReFill) … PLA (Polylactic Acid) biopolymer … 50% recycled PLA polymer … by weight (post-industrial); … remaining 50% virgin PLA",
+      "retrieved": "2026-11-03",
+      "notes": "Self-declared under ISO 14021 (Type II), dated 16 March 2026; footnote: based on the average of all colours as of declaration date. The rPLA category page says 'up to 50% recycled material', so individual colours may be lower. Sustainability Profile (July 2025) also states 'Recycled content: 50% (percentage by weight; based on supplier material declarations)'."
+    }
+  }
 }

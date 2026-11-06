@@ -3,5 +3,9 @@
   "id": "green",
   "name": "Green",
   "color_hex": "#D1FF41",
-  "discontinued": false
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
 }

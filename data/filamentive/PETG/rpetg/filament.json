@@ -14,5 +14,18 @@
   "chamber_temperature": 45,
   "data_sheet_url": "https://www.filamentive.com/wp-content/uploads/2025/02/Filamentive_TDS_rPETg.pdf",
   "safety_sheet_url": "https://www.filamentive.com/wp-content/uploads/2025/04/rPETg-MSDS.pdf",
-  "discontinued": false
+  "discontinued": false,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "iso_14021",
+      "source_type": "primary",
+      "source_url": "https://www.filamentive.com/wp-content/uploads/2026/03/ISO-14021-Recycled-Content-Certification-Letter-March-2026.pdf",
+      "source_quote": "PETg (including … 100% Thermoplastic PETg … 100% recycled PETg … polymer by weight … (post-industrial)",
+      "retrieved": "2026-11-03",
+      "notes": "Type set to unknown because sources conflict: the ISO 14021 declaration (March 2026) and PETg Sustainability Profile say post-industrial, while the rPETg TDS (Feb 2025) says 'Filamentive rPETg is made from recycled PET waste streams, such as plastic food containers and drinks bottles' (post-consumer). Self-declared ISO 14021 Type II; average of all colours."
+    }
+  }
 }

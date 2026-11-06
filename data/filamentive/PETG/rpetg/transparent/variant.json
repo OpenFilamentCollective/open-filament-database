@@ -3,5 +3,9 @@
   "id": "transparent",
   "name": "Transparent",
   "color_hex": "#FFFFFF",
-  "discontinued": false
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
 }
