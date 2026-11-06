@@ -344,14 +344,11 @@ def test_weight_and_diameter_required():
     assert build(siz=size(diameter=None)) is None
 
 
-def test_discontinued_skipped_by_default_at_every_level():
-    assert build(siz=size(discontinued=True)) is None
-    assert build(var=variant(discontinued=True)) is None
-    assert build(fil=filament(discontinued=True)) is None
-
-
-def test_discontinued_kept_on_request():
-    assert build(siz=size(discontinued=True), include_discontinued=True) is not None
+def test_discontinued_is_kept_at_every_level():
+    """Dropping a discontinued colour would orphan a spool already linked to its id."""
+    assert build(siz=size(discontinued=True)) is not None
+    assert build(var=variant(discontinued=True)) is not None
+    assert build(fil=filament(discontinued=True)) is not None
 
 
 def test_traits_map_to_spoolman_enums():

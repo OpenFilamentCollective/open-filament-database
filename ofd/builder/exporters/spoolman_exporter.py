@@ -48,8 +48,8 @@ concept: if a uuid is ever retired (recorded as "moved_from" on its survivor),
 links to the old id will not follow; api/v1/uuid-index.json maps old to current.
 
 Values the database does not record (spool weight, temperatures, ...) are null
-rather than guessed. Discontinued or incomplete products (no density, weight or
-diameter) are left out. Extruder and bed temperature are resolved the same way as
+rather than guessed. Incomplete products (no density, weight or diameter) are left
+out; discontinued products are kept so that existing Spoolman links stay valid. Extruder and bed temperature are resolved the same way as
 for the OrcaSlicer presets: the generic temperature of the filament, else of its
 brand's material, else the midpoint of the recommended range rounded to 5 degrees
 (a range bound of 0 is ignored, not averaged).
@@ -69,7 +69,7 @@ a trailing parenthetical is dropped if the rest is still unique for that
 manufacturer, material, weight and diameter, otherwise the middle is elided.
 
 materials.json holds, per material type, the median density and temperatures
-across the exported (non-discontinued) filaments of that material that record
+across the exported filaments of that material that record
 the value.
 
 Found a wrong number? Corrections are welcome at
@@ -138,7 +138,7 @@ def export_spoolman(
     print(f"  Written: {len(records)} Spoolman filaments, {len(materials)} materials")
     if skipped:
         print(
-            f"  Skipped: {skipped} sizes (discontinued, or missing density/weight/diameter"
+            f"  Skipped: {skipped} sizes (missing density/weight/diameter"
             + (f"; {dangling} dangling references" if dangling else "")
             + (f"; {no_uuid} without a uuid" if no_uuid else "")
             + ")"

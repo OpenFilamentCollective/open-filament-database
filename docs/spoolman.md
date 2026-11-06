@@ -1,6 +1,6 @@
 # Spoolman External Filament Catalog
 
-The Open Filament Database is published in the format [Spoolman](https://github.com/Donkie/Spoolman) reads for its **external filament database**. Point Spoolman at it and most filaments in the database appear in Spoolman's "add filament" dropdown, with density, diameter, weight and colour filled in, and temperatures and spool weight where the database records them. Discontinued products and rows missing a density, net weight or diameter are left out, and some entries have no temperatures or empty-spool weight, because the database does not have them for every filament.
+The Open Filament Database is published in the format [Spoolman](https://github.com/Donkie/Spoolman) reads for its **external filament database**. Point Spoolman at it and most filaments in the database appear in Spoolman's "add filament" dropdown, with density, diameter, weight and colour filled in, and temperatures and spool weight where the database records them. Rows missing a density, net weight or diameter are left out, discontinued products are kept (so a spool already linked to one keeps its catalog entry), and some entries have no temperatures or empty-spool weight, because the database does not have them for every filament.
 
 ---
 
@@ -49,11 +49,11 @@ Where the database has no value the field is `null`; nothing is guessed. The one
 
 **Long names.** Spoolman limits a filament name to 64 characters. Longer names are shortened deterministically: a trailing parenthetical such as `(Blue & White)` is dropped if what remains still fits and is unique for that manufacturer, material, weight and diameter; otherwise the middle is elided with `…`, keeping the start and the last words (usually the colour). The build prints how many names were shortened.
 
-**Left out:** discontinued products, any size without a density, net weight or diameter (Spoolman requires all three), and any size without a `uuid` (the id is never derived from anything else).
+**Left out:** any size without a density, net weight or diameter (Spoolman requires all three), and any size without a `uuid` (the id is never derived from anything else).
 
 **Retired uuids.** When data is merged, a retired uuid is recorded in the survivor's `moved_from` (see the [manual](manual.md#moved--former-uuids-moved_from)). Spoolman has no alias concept, so a Spoolman filament linked to a retired id will not follow it automatically; [`api/v1/uuid-index.json`](https://api.openfilamentdatabase.org/api/v1/uuid-index.json) maps former uuids to current ones.
 
-**`materials.json`** holds one entry per material type. The database does not record per-material defaults, so density and temperatures are the **median across the exported (non-discontinued) filaments of that material that record the value**. Temperatures are the per-filament resolved values above, medians use Python's round-half-even, and a temperature is `null` where no filament of the material records one.
+**`materials.json`** holds one entry per material type. The database does not record per-material defaults, so density and temperatures are the **median across the exported filaments of that material that record the value**. Temperatures are the per-filament resolved values above, medians use Python's round-half-even, and a temperature is `null` where no filament of the material records one.
 
 Output is sorted by `id`, so rebuilding unchanged data gives byte-identical files.
 

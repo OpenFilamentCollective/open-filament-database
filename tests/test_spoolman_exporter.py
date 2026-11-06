@@ -30,7 +30,7 @@ def make_db() -> Database:
             "name": "No Density PLA",
             "material": "PLA",
         },
-        # Has a density, but every size is discontinued: must not influence materials.json.
+        # Has a density and every size is discontinued: still exported, so its ids stay valid.
         {
             "id": "f3",
             "brand_id": "b1",
@@ -143,10 +143,10 @@ def test_writes_the_files_spoolman_fetches(tmp_path):
     ]
 
 
-def test_skips_discontinued_missing_density_and_dangling(tmp_path):
+def test_keeps_discontinued_skips_missing_density_and_dangling(tmp_path):
     count, filaments, _ = run(tmp_path)
-    assert count == len(filaments) == 2
-    assert {f["id"] for f in filaments} == {"ofd_u-bbb", "ofd_u-ccc"}
+    assert count == len(filaments) == 4
+    assert {f["id"] for f in filaments} == {"ofd_u-bbb", "ofd_u-ccc", "ofd_u-ddd", "ofd_u-g1"}
 
 
 def test_size_without_uuid_is_not_exported(tmp_path):
@@ -156,7 +156,7 @@ def test_size_without_uuid_is_not_exported(tmp_path):
 
 def test_sorted_by_id(tmp_path):
     _, filaments, _ = run(tmp_path)
-    assert [f["id"] for f in filaments] == ["ofd_u-bbb", "ofd_u-ccc"]
+    assert [f["id"] for f in filaments] == ["ofd_u-bbb", "ofd_u-ccc", "ofd_u-ddd", "ofd_u-g1"]
 
 
 def test_output_is_deterministic(tmp_path):
@@ -170,9 +170,12 @@ def test_output_is_deterministic(tmp_path):
         ).read_bytes()
 
 
-def test_materials_derived_from_exported_filaments_only(tmp_path):
+def test_materials_derived_from_exported_filaments(tmp_path):
     _, _, materials = run(tmp_path)
-    assert materials == [{"material": "PLA", "density": 1.24, "extruder_temp": 205, "bed_temp": 60}]
+    assert materials == [
+        {"material": "ABS", "density": 1.04, "extruder_temp": 240, "bed_temp": None},
+        {"material": "PLA", "density": 1.24, "extruder_temp": 205, "bed_temp": 60},
+    ]
 
 
 def test_refill_and_ids_in_output(tmp_path):

@@ -148,28 +148,21 @@ def is_refill(size: dict) -> bool:
     return bool(size.get("spool_refill") or size.get("container_material") == "refill")
 
 
-def is_discontinued(filament: dict, variant: dict, size: dict) -> bool:
-    """A size is discontinued if it, its variant or its filament is."""
-    return bool(
-        size.get("discontinued") or variant.get("discontinued") or filament.get("discontinued")
-    )
-
-
 def build_filament(
     brand: dict,
     filament: dict,
     variant: dict,
     size: dict,
     material: dict | None = None,
-    include_discontinued: bool = False,
 ) -> dict[str, Any] | None:
     """
     Build one Spoolman ``ExternalFilament`` record from an OFD size row.
 
-    Returns None when the row cannot be represented honestly: discontinued
-    (unless asked for), or missing the size's canonical uuid (the id is never
-    derived from anything else), density, net weight or diameter — the last three
-    are required by Spoolman and none may be guessed. (``ofd build``'s crawler fills
+    Returns None when the row cannot be represented honestly: it has no canonical
+    uuid (the id is never derived from anything else), or no density, net weight or
+    diameter — the last three are required by Spoolman and none may be guessed.
+    Discontinued products are kept, so an ``ofd_<uuid>`` id that a Spoolman spool
+    already links to never disappears from the catalog. (``ofd build``'s crawler fills
     in a density of 1.24 and a diameter of 1.75 when a source file omits them, and
     the schema requires a density, so on real builds this only trips for callers
     that bypass the crawler.)
@@ -177,8 +170,6 @@ def build_filament(
     ``material`` is the brand's OFD material entity; its generic temperatures are a
     fallback for the filament's own, exactly as for the OrcaSlicer export.
     """
-    if not include_discontinued and is_discontinued(filament, variant, size):
-        return None
     if not size.get("uuid"):
         return None
     if not filament.get("density") or not size.get("filament_weight") or not size.get("diameter"):
