@@ -4,7 +4,6 @@
   "name": "Black",
   "color_hex": "#0F0F0F",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

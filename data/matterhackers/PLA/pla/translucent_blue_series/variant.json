@@ -4,7 +4,6 @@
   "name": "Translucent Blue Series",
   "color_hex": "#2E56F1",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

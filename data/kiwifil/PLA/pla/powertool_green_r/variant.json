@@ -4,7 +4,6 @@
   "name": "\"Powertool Green\" r",
   "color_hex": "#E4FF33",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

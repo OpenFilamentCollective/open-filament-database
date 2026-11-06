@@ -2,8 +2,5 @@
   "uuid": "9e57ff1a-464e-4713-a01c-3affae7d3b35",
   "id": "simply_green",
   "name": "Simply Green",
-  "color_hex": "#70A641",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#70A641"
 }

@@ -4,7 +4,6 @@
   "name": "steelFill",
   "color_hex": "#6A6C6E",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_steel": true
   }

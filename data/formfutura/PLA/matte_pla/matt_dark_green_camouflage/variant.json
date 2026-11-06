@@ -4,7 +4,6 @@
   "name": "Matt Dark Green Camouflage",
   "color_hex": "#757D65",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

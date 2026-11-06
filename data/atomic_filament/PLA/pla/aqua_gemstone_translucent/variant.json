@@ -4,7 +4,6 @@
   "name": "Aqua Gemstone Translucent",
   "color_hex": "#36DBE7",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

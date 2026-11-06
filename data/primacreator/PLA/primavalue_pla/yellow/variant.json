@@ -2,8 +2,5 @@
   "uuid": "a5e5f4b0-cb53-4005-88dc-631829c0c00f",
   "id": "yellow",
   "name": "Yellow",
-  "color_hex": "#FAD61B",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FAD61B"
 }

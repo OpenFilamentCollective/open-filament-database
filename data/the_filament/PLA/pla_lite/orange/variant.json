@@ -5,8 +5,5 @@
   ],
   "id": "orange",
   "name": "Orange",
-  "color_hex": "#feda00",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#feda00"
 }

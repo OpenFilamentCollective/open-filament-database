@@ -4,7 +4,6 @@
   "name": "Dark",
   "color_hex": "#A2AAAD",
   "traits": {
-    "imitates_stone": true,
-    "industrially_compostable": true
+    "imitates_stone": true
   }
 }

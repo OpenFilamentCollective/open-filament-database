@@ -2,8 +2,5 @@
   "uuid": "5752e289-5bec-46bf-bdc7-19ca72463727",
   "id": "magenta",
   "name": "Magenta",
-  "color_hex": "#F14147",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#F14147"
 }

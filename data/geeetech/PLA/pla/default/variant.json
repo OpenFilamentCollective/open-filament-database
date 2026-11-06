@@ -2,8 +2,5 @@
   "uuid": "fe75058d-b6bf-4943-9957-d4d0e54a3409",
   "id": "default",
   "name": "Default",
-  "color_hex": "#EADAC2",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#EADAC2"
 }

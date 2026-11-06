@@ -4,7 +4,6 @@
   "name": "Glorious Gold",
   "color_hex": "#f9e768",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

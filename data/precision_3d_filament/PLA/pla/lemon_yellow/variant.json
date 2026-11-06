@@ -2,8 +2,5 @@
   "uuid": "51bedf47-de41-4ba5-9f0a-227f16739b3f",
   "id": "lemon_yellow",
   "name": "Lemon Yellow",
-  "color_hex": "#EFDC4C",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#EFDC4C"
 }

@@ -4,7 +4,6 @@
   "name": "Blue",
   "color_hex": "#0353BA",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

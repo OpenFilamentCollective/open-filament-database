@@ -2,8 +2,5 @@
   "uuid": "ef7a0eef-da88-4205-8f4d-df137e1eb546",
   "id": "perfect_yellow",
   "name": "Perfect Yellow",
-  "color_hex": "#FBE200",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FBE200"
 }

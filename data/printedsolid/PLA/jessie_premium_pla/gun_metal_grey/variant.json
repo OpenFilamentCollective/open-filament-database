@@ -2,8 +2,5 @@
   "uuid": "b6726c95-e9bf-4d3b-99d2-48bd7d2b2202",
   "id": "gun_metal_grey",
   "name": "Gun Metal Grey",
-  "color_hex": "#6F727E",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#6F727E"
 }

@@ -4,7 +4,6 @@
   "name": "Coral",
   "color_hex": "#EE8881",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

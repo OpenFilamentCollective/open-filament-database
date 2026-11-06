@@ -4,7 +4,6 @@
   "name": "Iceland Blue",
   "color_hex": "#82E3EC",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

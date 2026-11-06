@@ -2,8 +2,5 @@
   "uuid": "4f9d5262-fe63-4d97-9cd5-5c93b5b15ea1",
   "id": "primaselect",
   "name": "PrimaSelect",
-  "color_hex": "#EBFF57",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#EBFF57"
 }

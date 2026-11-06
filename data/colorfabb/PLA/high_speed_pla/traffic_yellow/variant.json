@@ -4,7 +4,6 @@
   "name": "Traffic Yellow",
   "color_hex": "#FFC946",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

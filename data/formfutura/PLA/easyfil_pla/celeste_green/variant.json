@@ -2,8 +2,5 @@
   "uuid": "9d157db1-c0c4-4bf8-8079-1467cf6fec0d",
   "id": "celeste_green",
   "name": "Celeste Green",
-  "color_hex": "#A5EEEE",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#A5EEEE"
 }

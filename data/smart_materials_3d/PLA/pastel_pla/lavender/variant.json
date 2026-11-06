@@ -2,8 +2,5 @@
   "uuid": "3abcc595-303d-4615-88d9-3e6546a586f2",
   "id": "lavender",
   "name": "Lavender",
-  "color_hex": "#CAC2DA",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#CAC2DA"
 }

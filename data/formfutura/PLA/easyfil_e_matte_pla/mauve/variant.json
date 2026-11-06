@@ -4,7 +4,6 @@
   "name": "Mauve",
   "color_hex": "#DECAE3",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

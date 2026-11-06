@@ -4,7 +4,6 @@
   "name": "Bright Yellow",
   "color_hex": "#FAD61B",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

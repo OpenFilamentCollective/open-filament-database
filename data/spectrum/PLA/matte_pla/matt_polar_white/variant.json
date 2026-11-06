@@ -4,7 +4,6 @@
   "name": "MATT Polar White",
   "color_hex": "#EFEFEF",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

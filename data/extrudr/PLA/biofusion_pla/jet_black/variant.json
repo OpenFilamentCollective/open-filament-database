@@ -8,7 +8,6 @@
   },
   "traits": {
     "recyclable": true,
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

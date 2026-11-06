@@ -7,7 +7,6 @@
     "#FF4F4D"
   ],
   "traits": {
-    "temperature_color_change": true,
-    "industrially_compostable": true
+    "temperature_color_change": true
   }
 }

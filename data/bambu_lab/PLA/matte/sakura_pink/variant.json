@@ -4,7 +4,6 @@
   "name": "Sakura Pink",
   "color_hex": "#E8AFCF",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

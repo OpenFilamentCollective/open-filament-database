@@ -2,8 +2,5 @@
   "uuid": "2cb17714-b383-439e-96fb-634b9cceb963",
   "id": "beige",
   "name": "Beige",
-  "color_hex": "#D8CF8C",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#D8CF8C"
 }

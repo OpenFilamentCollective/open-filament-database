@@ -4,7 +4,6 @@
   "name": "Bamboo Wood",
   "color_hex": "#BAA679",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Tropical Green",
   "color_hex": "#345d35",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

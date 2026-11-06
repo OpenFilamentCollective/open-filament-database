@@ -2,8 +2,5 @@
   "uuid": "fdccca9f-d14d-42ae-9110-a0bed60cef4d",
   "id": "regulation_gray",
   "name": "Regulation Gray",
-  "color_hex": "#949A9E",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#949A9E"
 }

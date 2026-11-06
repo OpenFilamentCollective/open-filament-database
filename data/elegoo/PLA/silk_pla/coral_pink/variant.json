@@ -4,7 +4,6 @@
   "name": "Coral Pink",
   "color_hex": "#FC8397",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

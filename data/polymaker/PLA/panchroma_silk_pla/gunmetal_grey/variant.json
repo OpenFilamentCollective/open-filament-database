@@ -4,7 +4,6 @@
   "name": "Gunmetal Grey",
   "color_hex": "#828E88",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

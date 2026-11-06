@@ -2,8 +2,5 @@
   "uuid": "395d192f-a729-4b10-b342-86a125716523",
   "id": "pink",
   "name": "Pink",
-  "color_hex": "#F2306E",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#F2306E"
 }

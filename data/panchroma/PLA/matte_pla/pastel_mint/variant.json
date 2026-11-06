@@ -8,7 +8,6 @@
   "color_hex": "#BEC9A5",
   "transmission_distance": 2.9,
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

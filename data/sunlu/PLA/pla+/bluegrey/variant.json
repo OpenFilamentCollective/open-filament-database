@@ -2,8 +2,5 @@
   "uuid": "153e9413-7339-4b49-a221-acfd3c35c75c",
   "id": "bluegrey",
   "name": "Bluegrey",
-  "color_hex": "#6299DF",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#6299DF"
 }

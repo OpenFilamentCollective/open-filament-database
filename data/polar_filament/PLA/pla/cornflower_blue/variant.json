@@ -2,8 +2,5 @@
   "uuid": "401d5967-89f7-45a9-8525-04887880e5c4",
   "id": "cornflower_blue",
   "name": "Cornflower Blue",
-  "color_hex": "#4F7BBB",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#4F7BBB"
 }

@@ -2,8 +2,5 @@
   "uuid": "c73bd692-34cb-49c0-8a83-fdf175d254bc",
   "id": "black_mh_build_series",
   "name": "Black MH Build Series",
-  "color_hex": "#000000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#000000"
 }

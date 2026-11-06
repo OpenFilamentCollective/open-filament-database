@@ -4,7 +4,6 @@
   "name": "Dark Grey",
   "color_hex": "#5A696C",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

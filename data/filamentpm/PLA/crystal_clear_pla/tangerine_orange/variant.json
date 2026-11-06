@@ -4,7 +4,6 @@
   "name": "Tangerine Orange",
   "color_hex": "#FFB031",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

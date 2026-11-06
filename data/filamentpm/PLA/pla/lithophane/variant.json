@@ -4,7 +4,6 @@
   "name": "Lithophane",
   "color_hex": "#DFDFD3",
   "traits": {
-    "lithophane": true,
-    "industrially_compostable": true
+    "lithophane": true
   }
 }

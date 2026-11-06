@@ -4,7 +4,6 @@
   "name": "Amethyst Violet Gemstone Translucent",
   "color_hex": "#C80181",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

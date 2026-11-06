@@ -4,7 +4,6 @@
   "name": "Cool Lithophane Gray",
   "color_hex": "#EFEFEF",
   "traits": {
-    "lithophane": true,
-    "industrially_compostable": true
+    "lithophane": true
   }
 }

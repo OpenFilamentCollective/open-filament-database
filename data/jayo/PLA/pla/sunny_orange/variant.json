@@ -2,8 +2,5 @@
   "uuid": "ecdfa703-b976-4a81-be20-fb0d6b417b3f",
   "id": "sunny_orange",
   "name": "Sunny Orange",
-  "color_hex": "#FF5F2E",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FF5F2E"
 }

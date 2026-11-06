@@ -3,8 +3,5 @@
   "id": "pure_orange",
   "name": "Pure Orange",
   "color_hex": "#F55928",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

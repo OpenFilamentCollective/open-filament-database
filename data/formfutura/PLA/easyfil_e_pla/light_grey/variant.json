@@ -3,8 +3,5 @@
   "id": "light_grey",
   "name": "Light Grey",
   "color_hex": "#C3CCD5",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

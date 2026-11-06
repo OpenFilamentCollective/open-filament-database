@@ -4,7 +4,6 @@
   "name": "Caramel",
   "color_hex": "#ae835b",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

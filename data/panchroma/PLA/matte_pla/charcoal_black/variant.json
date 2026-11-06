@@ -9,7 +9,6 @@
   "transmission_distance": 0.1,
   "discontinued": false,
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

@@ -2,8 +2,5 @@
   "uuid": "54c12e30-a27f-4906-8432-170b3385a5de",
   "id": "digital_blue",
   "name": "Digital Blue",
-  "color_hex": "#0099E6",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#0099E6"
 }

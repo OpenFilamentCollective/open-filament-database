@@ -4,7 +4,6 @@
   "name": "Metallic Copper",
   "color_hex": "#894D3F",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

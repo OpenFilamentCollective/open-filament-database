@@ -4,7 +4,6 @@
   "name": "Light Gray",
   "color_hex": "#BCBFC2",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Bronze",
   "color_hex": "#C79114",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

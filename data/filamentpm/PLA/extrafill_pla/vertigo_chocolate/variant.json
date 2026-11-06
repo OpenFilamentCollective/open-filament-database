@@ -4,7 +4,6 @@
   "name": "Vertigo Chocolate",
   "color_hex": "#6E4325",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

@@ -2,8 +2,5 @@
   "uuid": "459eeee6-61d5-433b-a98a-e2ca4a5bb3e0",
   "id": "army_green",
   "name": "Army Green",
-  "color_hex": "#515234",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#515234"
 }

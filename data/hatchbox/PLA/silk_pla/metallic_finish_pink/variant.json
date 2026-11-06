@@ -4,7 +4,6 @@
   "name": "Metallic Finish Pink",
   "color_hex": "#FFC8C9",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

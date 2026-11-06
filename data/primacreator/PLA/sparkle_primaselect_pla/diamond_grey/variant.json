@@ -4,7 +4,6 @@
   "name": "Diamond Grey",
   "color_hex": "#45444A",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

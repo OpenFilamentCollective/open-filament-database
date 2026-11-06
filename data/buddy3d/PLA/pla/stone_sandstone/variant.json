@@ -4,7 +4,6 @@
   "name": "Stone Sandstone",
   "color_hex": "#F1E6B2",
   "traits": {
-    "imitates_stone": true,
-    "industrially_compostable": true
+    "imitates_stone": true
   }
 }

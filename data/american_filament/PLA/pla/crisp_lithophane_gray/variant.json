@@ -4,7 +4,6 @@
   "name": "Crisp Lithophane Gray",
   "color_hex": "#C5C5BF",
   "traits": {
-    "lithophane": true,
-    "industrially_compostable": true
+    "lithophane": true
   }
 }

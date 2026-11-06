@@ -2,8 +2,5 @@
   "uuid": "0a2bbfd0-83cd-40ff-b208-facbba499795",
   "id": "surf_green",
   "name": "Surf Green",
-  "color_hex": "#67D8BC",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#67D8BC"
 }

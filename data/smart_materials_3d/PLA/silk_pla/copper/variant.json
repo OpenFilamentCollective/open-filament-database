@@ -4,7 +4,6 @@
   "name": "Copper",
   "color_hex": "#904029",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

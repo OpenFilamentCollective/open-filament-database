@@ -2,8 +2,5 @@
   "uuid": "f010db49-d22d-4d7f-a77c-f3703875a812",
   "id": "green_bay_green",
   "name": "Green Bay Green",
-  "color_hex": "#0B6A2F",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#0B6A2F"
 }

@@ -2,8 +2,5 @@
   "uuid": "9a0a9f4c-cc70-44e7-8f6e-0ed467694a7b",
   "id": "deep_space",
   "name": "Deep Space",
-  "color_hex": "#253F56",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#253F56"
 }

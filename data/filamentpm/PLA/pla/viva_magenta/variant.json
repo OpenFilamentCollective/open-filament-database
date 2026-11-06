@@ -2,8 +2,5 @@
   "uuid": "dd46acdf-23cb-4374-945b-f644effe5582",
   "id": "viva_magenta",
   "name": "Viva Magenta",
-  "color_hex": "#BB264D",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#BB264D"
 }

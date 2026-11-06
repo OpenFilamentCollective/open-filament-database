@@ -2,8 +2,5 @@
   "uuid": "5c9bf3de-a380-4483-b9ac-4205da55a662",
   "id": "desert_beige",
   "name": "Desert Beige",
-  "color_hex": "#D8C094",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#D8C094"
 }

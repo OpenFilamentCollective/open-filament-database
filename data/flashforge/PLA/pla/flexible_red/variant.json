@@ -2,8 +2,5 @@
   "uuid": "997cc129-cd38-4286-a9ec-c16d9a240dd8",
   "id": "flexible_red",
   "name": "Flexible Red",
-  "color_hex": "#C01616",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#C01616"
 }

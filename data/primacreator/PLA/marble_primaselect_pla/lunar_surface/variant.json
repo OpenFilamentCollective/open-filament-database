@@ -4,7 +4,6 @@
   "name": "Lunar Surface",
   "color_hex": "#CCD6E2",
   "traits": {
-    "imitates_marble": true,
-    "industrially_compostable": true
+    "imitates_marble": true
   }
 }

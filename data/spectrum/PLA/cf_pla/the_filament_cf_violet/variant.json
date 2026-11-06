@@ -4,7 +4,6 @@
   "name": "The Filament CF Violet",
   "color_hex": "#C80181",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

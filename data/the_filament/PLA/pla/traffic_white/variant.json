@@ -5,8 +5,5 @@
   ],
   "id": "traffic_white",
   "name": "Traffic White",
-  "color_hex": "#f2f3ee",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#f2f3ee"
 }

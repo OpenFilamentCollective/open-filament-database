@@ -4,7 +4,6 @@
   "name": "Iridescent Bubblegum",
   "color_hex": "#FF5786",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "iridescent": true
   }
 }

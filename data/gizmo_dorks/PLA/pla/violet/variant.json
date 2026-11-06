@@ -2,8 +2,5 @@
   "uuid": "35a17981-163a-4192-af84-b37fce908435",
   "id": "violet",
   "name": "Violet",
-  "color_hex": "#D6ABFF",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#D6ABFF"
 }

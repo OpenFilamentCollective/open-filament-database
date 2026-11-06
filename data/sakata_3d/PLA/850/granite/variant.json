@@ -4,7 +4,6 @@
   "name": "Granite",
   "color_hex": "#E6DDDB",
   "traits": {
-    "imitates_marble": true,
-    "industrially_compostable": true
+    "imitates_marble": true
   }
 }

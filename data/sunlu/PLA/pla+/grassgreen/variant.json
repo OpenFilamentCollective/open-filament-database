@@ -3,8 +3,5 @@
   "id": "grassgreen",
   "name": "GrassGreen",
   "color_hex": "#00A594",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

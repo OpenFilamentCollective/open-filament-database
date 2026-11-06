@@ -2,8 +2,5 @@
   "uuid": "9a50cdcb-2439-4fc2-a288-eb11d4b60c3d",
   "id": "green",
   "name": "Green",
-  "color_hex": "#0CCF81",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#0CCF81"
 }

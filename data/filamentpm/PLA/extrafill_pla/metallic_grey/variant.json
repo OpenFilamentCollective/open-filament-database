@@ -4,7 +4,6 @@
   "name": "Metallic Grey",
   "color_hex": "#C5C5BF",
   "traits": {
-    "imitates_metal": true,
-    "industrially_compostable": true
+    "imitates_metal": true
   }
 }

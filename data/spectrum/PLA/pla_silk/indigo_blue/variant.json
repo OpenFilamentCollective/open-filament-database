@@ -4,7 +4,6 @@
   "name": "Indigo Blue",
   "color_hex": "#5e84c0",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

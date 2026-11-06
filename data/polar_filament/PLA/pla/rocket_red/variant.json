@@ -2,8 +2,5 @@
   "uuid": "3cf7e1df-c965-4560-a714-e48ee733c61a",
   "id": "rocket_red",
   "name": "Rocket Red",
-  "color_hex": "#E60000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#E60000"
 }

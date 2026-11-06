@@ -4,7 +4,6 @@
   "name": "Silver",
   "color_hex": "#A1A4AB",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

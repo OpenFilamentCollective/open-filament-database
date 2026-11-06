@@ -4,7 +4,6 @@
   "name": "The Filament HS Energy Green",
   "color_hex": "#9AED51",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

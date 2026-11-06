@@ -2,8 +2,5 @@
   "uuid": "86a2d776-482a-4d61-9706-c542ebafef27",
   "id": "bone_brown",
   "name": "Bone Brown",
-  "color_hex": "#A47C48",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#A47C48"
 }

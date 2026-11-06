@@ -5,8 +5,5 @@
   ],
   "id": "machinery_orange",
   "name": "Machinery Orange",
-  "color_hex": "#f8db11",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#f8db11"
 }

@@ -2,8 +2,5 @@
   "uuid": "747310d6-bace-48eb-8494-a26acb8df329",
   "id": "light_orange",
   "name": "Light Orange",
-  "color_hex": "#FD9106",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FD9106"
 }

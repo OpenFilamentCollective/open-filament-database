@@ -2,8 +2,5 @@
   "uuid": "e3ca15a9-cae6-4a0d-a828-5e8315ae704a",
   "id": "banana_split",
   "name": "Banana Split",
-  "color_hex": "#EEEA44",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#EEEA44"
 }

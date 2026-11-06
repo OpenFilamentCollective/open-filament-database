@@ -4,7 +4,6 @@
   "name": "Electric Lemonade",
   "color_hex": "#C2BD5A",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

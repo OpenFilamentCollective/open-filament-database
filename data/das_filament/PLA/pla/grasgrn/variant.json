@@ -2,8 +2,5 @@
   "uuid": "1eb59ee9-1e86-446f-b622-ba247f164719",
   "id": "grasgrn",
   "name": "Grasgrün",
-  "color_hex": "#26A648",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#26A648"
 }

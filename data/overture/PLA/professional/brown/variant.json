@@ -2,8 +2,5 @@
   "uuid": "1b1fa8d3-55e8-4880-b577-88057dac52b5",
   "id": "brown",
   "name": "Brown",
-  "color_hex": "#AB713E",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#AB713E"
 }

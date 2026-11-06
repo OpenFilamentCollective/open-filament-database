@@ -4,7 +4,6 @@
   "name": "Natural",
   "color_hex": "#DEE2DA",
   "traits": {
-    "without_pigments": true,
-    "industrially_compostable": true
+    "without_pigments": true
   }
 }

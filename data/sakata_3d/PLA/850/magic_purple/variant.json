@@ -2,8 +2,5 @@
   "uuid": "5964b7cf-1e88-471f-883c-689b3f668c2c",
   "id": "magic_purple",
   "name": "Magic Purple",
-  "color_hex": "#492972",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#492972"
 }

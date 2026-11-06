@@ -4,7 +4,6 @@
   "name": "Transparent",
   "color_hex": "#DFDFD3",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

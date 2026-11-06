@@ -3,8 +3,5 @@
   "id": "silver",
   "name": "Silver",
   "color_hex": "#BFBFBF",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

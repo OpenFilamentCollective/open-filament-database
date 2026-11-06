@@ -8,7 +8,6 @@
   "color_hex": "#a7b5c6",
   "traits": {
     "matte": true,
-    "gradual_color_change": true,
-    "industrially_compostable": true
+    "gradual_color_change": true
   }
 }

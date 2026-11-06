@@ -4,7 +4,6 @@
   "name": "Black",
   "color_hex": "#4C4E56",
   "traits": {
-    "industrially_compostable": true,
     "foaming": true
   }
 }

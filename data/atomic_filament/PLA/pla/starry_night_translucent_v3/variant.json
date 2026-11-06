@@ -4,7 +4,6 @@
   "name": "Starry Night Translucent v3",
   "color_hex": "#5E1490",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

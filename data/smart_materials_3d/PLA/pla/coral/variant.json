@@ -2,8 +2,5 @@
   "uuid": "40911f91-61f2-46be-897d-a31385c689b9",
   "id": "coral",
   "name": "Coral",
-  "color_hex": "#FC8397",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FC8397"
 }

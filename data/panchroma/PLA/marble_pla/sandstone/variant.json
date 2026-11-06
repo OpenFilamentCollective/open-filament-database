@@ -7,7 +7,6 @@
   "name": "Sandstone",
   "color_hex": "#c5c680",
   "traits": {
-    "imitates_marble": true,
-    "industrially_compostable": true
+    "imitates_marble": true
   }
 }

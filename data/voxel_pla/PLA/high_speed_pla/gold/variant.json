@@ -4,7 +4,6 @@
   "name": "Gold",
   "color_hex": "#E3B145",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "The Filament Urban Grey",
   "color_hex": "#595959",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

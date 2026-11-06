@@ -4,7 +4,6 @@
   "name": "Marine Blue",
   "color_hex": "#0353BA",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

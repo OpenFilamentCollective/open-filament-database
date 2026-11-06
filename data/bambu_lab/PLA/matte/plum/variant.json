@@ -4,7 +4,6 @@
   "name": "Plum",
   "color_hex": "#950051",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

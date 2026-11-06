@@ -2,8 +2,5 @@
   "uuid": "1343f08a-ad24-4f68-8f18-404e737325c5",
   "id": "lavender_violet",
   "name": "Lavender Violet",
-  "color_hex": "#A288B6",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#A288B6"
 }

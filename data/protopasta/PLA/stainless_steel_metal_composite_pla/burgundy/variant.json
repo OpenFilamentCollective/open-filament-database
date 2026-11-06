@@ -4,7 +4,6 @@
   "name": "Burgundy",
   "color_hex": "#863938",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_metal": true
   }

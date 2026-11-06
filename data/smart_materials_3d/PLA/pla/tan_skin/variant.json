@@ -2,8 +2,5 @@
   "uuid": "fb6931f4-cbeb-4482-8332-c093ea212a8b",
   "id": "tan_skin",
   "name": "Tan skin",
-  "color_hex": "#AB713E",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#AB713E"
 }

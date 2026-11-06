@@ -4,7 +4,6 @@
   "name": "Matt Blue Camouflage",
   "color_hex": "#23668C",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

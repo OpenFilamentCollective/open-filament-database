@@ -4,7 +4,6 @@
   "name": "Grass Green",
   "color_hex": "#61C680",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

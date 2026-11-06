@@ -4,7 +4,6 @@
   "name": "Meta White",
   "color_hex": "#FFFFFF",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

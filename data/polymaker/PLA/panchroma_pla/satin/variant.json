@@ -2,8 +2,5 @@
   "uuid": "72918946-267f-42cf-ae00-0edd759aa9c3",
   "id": "satin",
   "name": "Satin",
-  "color_hex": "#FFC946",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FFC946"
 }

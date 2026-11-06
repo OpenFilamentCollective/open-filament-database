@@ -4,7 +4,6 @@
   "name": "Indigo [Translucent]",
   "color_hex": "#09048E",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

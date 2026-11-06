@@ -2,8 +2,5 @@
   "uuid": "033ac67d-9946-4751-afdb-ae49c12d799c",
   "id": "polymax",
   "name": "PolyMax™",
-  "color_hex": "#089A45",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#089A45"
 }

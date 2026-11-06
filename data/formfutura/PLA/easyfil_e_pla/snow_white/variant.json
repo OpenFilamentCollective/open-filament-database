@@ -3,8 +3,5 @@
   "id": "snow_white",
   "name": "Snow White",
   "color_hex": "#F5F5F4",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

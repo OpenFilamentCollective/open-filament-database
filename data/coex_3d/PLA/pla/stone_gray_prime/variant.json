@@ -2,8 +2,5 @@
   "uuid": "a0cb8a3d-08de-47fb-b0ed-7da2ad5ff397",
   "id": "stone_gray_prime",
   "name": "Stone Gray Prime",
-  "color_hex": "#949A9E",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#949A9E"
 }

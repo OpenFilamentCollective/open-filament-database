@@ -4,7 +4,6 @@
   "name": "Neonorange",
   "color_hex": "#FF7A33",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "neon": true
   }
 }

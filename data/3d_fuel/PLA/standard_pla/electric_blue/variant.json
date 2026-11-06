@@ -4,7 +4,6 @@
   "name": "Electric Blue",
   "color_hex": "#56C2D3",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

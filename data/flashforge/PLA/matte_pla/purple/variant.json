@@ -4,7 +4,6 @@
   "name": "Purple",
   "color_hex": "#CAC2DA",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

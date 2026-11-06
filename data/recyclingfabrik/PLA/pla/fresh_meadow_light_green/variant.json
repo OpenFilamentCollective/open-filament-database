@@ -4,7 +4,6 @@
   "name": "Fresh Meadow (Light Green)",
   "color_hex": "#9DBD8B",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

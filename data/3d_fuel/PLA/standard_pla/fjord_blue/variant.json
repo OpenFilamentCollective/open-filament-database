@@ -4,7 +4,6 @@
   "name": "Fjord Blue",
   "color_hex": "#009ECF",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

@@ -7,7 +7,6 @@
   "name": "Aurora",
   "color_hex": "#d5ecc9",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "iridescent": true
   }
 }

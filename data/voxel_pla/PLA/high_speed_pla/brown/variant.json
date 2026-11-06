@@ -4,7 +4,6 @@
   "name": "Brown",
   "color_hex": "#935C34",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

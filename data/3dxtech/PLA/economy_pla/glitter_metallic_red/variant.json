@@ -4,7 +4,6 @@
   "name": "Glitter metallic-red",
   "color_hex": "#8A2D40",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

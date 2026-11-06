@@ -4,7 +4,6 @@
   "name": "Translucent Smoke Black",
   "color_hex": "#000000",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Eggshell",
   "color_hex": "#EADAC2",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

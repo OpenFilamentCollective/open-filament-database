@@ -4,7 +4,6 @@
   "name": "Cosmic Sparkle (Clear w/ Glitter Flakes)",
   "color_hex": "#E4E7E5",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

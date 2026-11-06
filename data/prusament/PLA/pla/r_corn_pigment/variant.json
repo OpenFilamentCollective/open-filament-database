@@ -4,7 +4,6 @@
   "name": "r Corn Pigment",
   "color_hex": "#B37B47",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

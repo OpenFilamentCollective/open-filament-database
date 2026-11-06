@@ -2,8 +2,5 @@
   "uuid": "621f33b6-114a-4aad-91ca-4eddd2fb1b15",
   "id": "black_filament",
   "name": "Black Filament",
-  "color_hex": "#000000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#000000"
 }

@@ -4,7 +4,6 @@
   "name": "Flat Dark Earth",
   "color_hex": "#977B6C",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

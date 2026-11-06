@@ -4,7 +4,6 @@
   "name": "Signal White",
   "color_hex": "#E3DFD9",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

@@ -2,8 +2,5 @@
   "uuid": "989b6027-c0fa-4db9-9e04-df6ec71615a9",
   "id": "concrete_grey",
   "name": "Concrete Grey",
-  "color_hex": "#C5C5BF",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#C5C5BF"
 }

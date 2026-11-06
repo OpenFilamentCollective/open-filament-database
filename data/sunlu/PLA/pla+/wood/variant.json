@@ -2,8 +2,5 @@
   "uuid": "806598a4-6c2a-453f-b917-93e0c3835ebf",
   "id": "wood",
   "name": "Wood",
-  "color_hex": "#CAAC78",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#CAAC78"
 }

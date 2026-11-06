@@ -2,8 +2,5 @@
   "uuid": "a63b31e2-8351-4e22-8dcd-d5698425352d",
   "id": "grenade",
   "name": "Grenade",
-  "color_hex": "#98282F",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#98282F"
 }

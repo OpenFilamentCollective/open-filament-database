@@ -5,8 +5,5 @@
   ],
   "id": "white",
   "name": "White",
-  "color_hex": "#e6e5e1",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#e6e5e1"
 }

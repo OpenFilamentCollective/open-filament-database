@@ -2,8 +2,5 @@
   "uuid": "25c7069c-18e6-4927-8293-999661bb5f48",
   "id": "graphite_black",
   "name": "Graphite black",
-  "color_hex": "#000000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#000000"
 }

@@ -4,7 +4,6 @@
   "name": "Fluorescent Green",
   "color_hex": "#62E480",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "neon": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Liquorice Black",
   "color_hex": "#000000",
   "traits": {
-    "imitates_metal": true,
-    "industrially_compostable": true
+    "imitates_metal": true
   }
 }

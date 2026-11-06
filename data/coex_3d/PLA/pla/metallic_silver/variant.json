@@ -4,7 +4,6 @@
   "name": "Metallic Silver",
   "color_hex": "#818184",
   "traits": {
-    "imitates_metal": true,
-    "industrially_compostable": true
+    "imitates_metal": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Chrome",
   "color_hex": "#91C2CC",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

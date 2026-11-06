@@ -4,7 +4,6 @@
   "name": "Textura™ Cold White",
   "color_hex": "#EAECF5",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

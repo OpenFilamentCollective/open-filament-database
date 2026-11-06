@@ -2,8 +2,5 @@
   "uuid": "4e77eb73-2aff-485b-a73e-df8d2ec63a5b",
   "id": "red",
   "name": "Red",
-  "color_hex": "#E60000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#E60000"
 }

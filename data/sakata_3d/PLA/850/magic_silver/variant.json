@@ -2,8 +2,5 @@
   "uuid": "923bccc6-6049-48d2-8c7d-d9131e951790",
   "id": "magic_silver",
   "name": "Magic Silver",
-  "color_hex": "#9FA4A8",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#9FA4A8"
 }

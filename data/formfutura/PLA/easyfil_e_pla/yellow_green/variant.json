@@ -3,8 +3,5 @@
   "id": "yellow_green",
   "name": "Yellow Green",
   "color_hex": "#06B100",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

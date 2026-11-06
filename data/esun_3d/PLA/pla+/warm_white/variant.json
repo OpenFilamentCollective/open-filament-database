@@ -4,7 +4,6 @@
   "name": "Warm White",
   "color_hex": "#E2DEDB",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

@@ -9,7 +9,6 @@
   ],
   "traits": {
     "matte": true,
-    "coextruded": true,
-    "industrially_compostable": true
+    "coextruded": true
   }
 }

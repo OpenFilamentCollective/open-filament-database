@@ -2,8 +2,5 @@
   "uuid": "30ea722e-f338-43b8-9e79-83839ca9a2fc",
   "id": "purple_series",
   "name": "Purple Series",
-  "color_hex": "#6802BC",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#6802BC"
 }

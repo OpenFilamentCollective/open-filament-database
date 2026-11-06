@@ -4,7 +4,6 @@
   "name": "Elephant Grey",
   "color_hex": "#9F9F9F",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

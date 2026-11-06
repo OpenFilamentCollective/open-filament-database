@@ -4,7 +4,6 @@
   "name": "Topaz",
   "color_hex": "#144F3B",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "iridescent": true
   }
 }

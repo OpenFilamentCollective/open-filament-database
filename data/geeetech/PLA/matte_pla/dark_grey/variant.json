@@ -4,7 +4,6 @@
   "name": "Dark Grey",
   "color_hex": "#A2AAAD",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

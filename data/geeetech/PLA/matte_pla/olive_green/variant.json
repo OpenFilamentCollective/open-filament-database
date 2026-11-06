@@ -4,7 +4,6 @@
   "name": "Olive Green",
   "color_hex": "#6C8C59",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

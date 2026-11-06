@@ -2,8 +2,5 @@
   "uuid": "154a438e-dff1-418d-858f-5f2bfcc02318",
   "id": "pristine_white",
   "name": "Pristine White",
-  "color_hex": "#E6EAEF",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#E6EAEF"
 }

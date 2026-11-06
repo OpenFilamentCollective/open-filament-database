@@ -4,7 +4,6 @@
   "name": "Light",
   "color_hex": "#E0DABB",
   "traits": {
-    "imitates_marble": true,
-    "industrially_compostable": true
+    "imitates_marble": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "The Filament CF Purple",
   "color_hex": "#7142A3",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

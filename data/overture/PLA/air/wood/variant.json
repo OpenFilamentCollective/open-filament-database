@@ -4,7 +4,6 @@
   "name": "Wood",
   "color_hex": "#CAAC78",
   "traits": {
-    "industrially_compostable": true,
     "foaming": true
   }
 }

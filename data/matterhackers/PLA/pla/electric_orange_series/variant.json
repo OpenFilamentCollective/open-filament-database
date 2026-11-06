@@ -2,8 +2,5 @@
   "uuid": "76ec66af-7d3d-4531-9200-68bf432f8027",
   "id": "electric_orange_series",
   "name": "Electric Orange Series",
-  "color_hex": "#E03F26",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#E03F26"
 }

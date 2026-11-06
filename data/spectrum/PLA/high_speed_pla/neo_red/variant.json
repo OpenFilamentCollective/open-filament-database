@@ -4,7 +4,6 @@
   "name": "Neo Red",
   "color_hex": "#FF4F4D",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

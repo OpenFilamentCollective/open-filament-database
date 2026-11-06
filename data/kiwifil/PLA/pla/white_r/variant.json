@@ -4,7 +4,6 @@
   "name": "White r",
   "color_hex": "#F0EBE5",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

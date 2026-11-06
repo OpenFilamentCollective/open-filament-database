@@ -2,8 +2,5 @@
   "uuid": "498efb97-a64b-452c-8474-b4932fa7878f",
   "id": "greenlight_green",
   "name": "Green/Light Green",
-  "color_hex": "#62E480",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#62E480"
 }

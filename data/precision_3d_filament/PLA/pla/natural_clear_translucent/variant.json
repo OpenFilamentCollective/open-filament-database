@@ -4,7 +4,6 @@
   "name": "Natural Clear [Translucent]",
   "color_hex": "#D9D8DE",
   "traits": {
-    "transparent": true,
-    "industrially_compostable": true
+    "transparent": true
   }
 }

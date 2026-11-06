@@ -2,8 +2,5 @@
   "uuid": "302b2424-dc0d-4407-b2e6-5676005f64fc",
   "id": "ivory_white",
   "name": "Ivory White",
-  "color_hex": "#FFFFFF",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FFFFFF"
 }

@@ -2,8 +2,5 @@
   "uuid": "6e482a3c-8946-4d5c-a5ff-1e0838b4c9c1",
   "id": "feuerrot",
   "name": "Feuerrot",
-  "color_hex": "#EC0000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#EC0000"
 }

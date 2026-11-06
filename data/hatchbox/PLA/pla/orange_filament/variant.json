@@ -2,8 +2,5 @@
   "uuid": "79394284-b181-4a3c-ab79-756cf0fef801",
   "id": "orange_filament",
   "name": "Orange Filament",
-  "color_hex": "#FF7A33",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FF7A33"
 }

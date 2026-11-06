@@ -4,7 +4,6 @@
   "name": "Velvet Green",
   "color_hex": "#217165",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

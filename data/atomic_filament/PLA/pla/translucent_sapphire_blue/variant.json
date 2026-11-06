@@ -4,7 +4,6 @@
   "name": "Translucent Sapphire Blue",
   "color_hex": "#0022FF",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

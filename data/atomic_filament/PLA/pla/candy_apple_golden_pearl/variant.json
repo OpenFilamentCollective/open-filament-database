@@ -2,8 +2,5 @@
   "uuid": "20f4b1b5-a128-44a5-9e82-37b17f5828dd",
   "id": "candy_apple_golden_pearl",
   "name": "Candy Apple Golden Pearl",
-  "color_hex": "#98282F",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#98282F"
 }

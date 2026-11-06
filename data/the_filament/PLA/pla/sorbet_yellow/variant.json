@@ -5,8 +5,5 @@
   ],
   "id": "sorbet_yellow",
   "name": "Sorbet Yellow",
-  "color_hex": "#f8db11",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#f8db11"
 }

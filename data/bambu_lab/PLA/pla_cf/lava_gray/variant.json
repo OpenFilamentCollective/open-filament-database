@@ -4,7 +4,6 @@
   "name": "Lava Gray",
   "color_hex": "#4D5054",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

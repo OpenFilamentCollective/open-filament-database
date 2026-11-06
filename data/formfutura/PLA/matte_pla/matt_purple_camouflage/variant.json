@@ -4,7 +4,6 @@
   "name": "Matt Purple Camouflage",
   "color_hex": "#9D7185",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

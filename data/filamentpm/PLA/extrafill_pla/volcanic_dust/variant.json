@@ -4,7 +4,6 @@
   "name": "Volcanic Dust",
   "color_hex": "#6A6C6E",
   "traits": {
-    "imitates_marble": true,
-    "industrially_compostable": true
+    "imitates_marble": true
   }
 }

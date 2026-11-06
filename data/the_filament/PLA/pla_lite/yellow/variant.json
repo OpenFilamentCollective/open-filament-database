@@ -5,8 +5,5 @@
   ],
   "id": "yellow",
   "name": "Yellow",
-  "color_hex": "#feda00",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#feda00"
 }

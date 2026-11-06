@@ -4,7 +4,6 @@
   "name": "Transparent Orange",
   "color_hex": "#F67405",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

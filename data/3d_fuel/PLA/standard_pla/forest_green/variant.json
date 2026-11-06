@@ -4,7 +4,6 @@
   "name": "Forest Green",
   "color_hex": "#306350",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

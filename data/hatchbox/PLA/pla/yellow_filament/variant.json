@@ -2,8 +2,5 @@
   "uuid": "68aadcbf-db1e-478b-a453-c62a5c1c611e",
   "id": "yellow_filament",
   "name": "Yellow Filament",
-  "color_hex": "#FBE200",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FBE200"
 }

@@ -4,7 +4,6 @@
   "name": "Sailor Blue",
   "color_hex": "#4D6383",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

@@ -4,7 +4,6 @@
   "name": "Jeans Blue",
   "color_hex": "#6E88BC",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

@@ -2,8 +2,5 @@
   "uuid": "0d62b721-8845-43aa-97fb-ade4db6ae37e",
   "id": "dijon_yellow",
   "name": "Dijon Yellow",
-  "color_hex": "#FFD342",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FFD342"
 }

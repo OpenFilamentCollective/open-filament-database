@@ -4,7 +4,6 @@
   "name": "Voxel Grey",
   "color_hex": "#C3CCD5",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

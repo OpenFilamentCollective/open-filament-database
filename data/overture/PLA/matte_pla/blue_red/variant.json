@@ -5,7 +5,6 @@
   "color_hex": "#5162a0",
   "traits": {
     "matte": true,
-    "coextruded": true,
-    "industrially_compostable": true
+    "coextruded": true
   }
 }

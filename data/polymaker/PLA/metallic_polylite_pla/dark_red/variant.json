@@ -2,8 +2,5 @@
   "uuid": "292d83d0-1925-49c1-bb11-7124ed751045",
   "id": "dark_red",
   "name": "Dark Red",
-  "color_hex": "#AA0101",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#AA0101"
 }
