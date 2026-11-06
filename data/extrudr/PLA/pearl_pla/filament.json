@@ -12,5 +12,17 @@
   "max_fan_speed": 100,
   "enclosure": "not_needed",
   "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/pearl-TDS-en.pdf",
-  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/pearl-MSDS-en.pdf"
+  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/pearl-MSDS-en.pdf",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/pearl-TDS-en.pdf",
+      "source_quote": "PEARL comes from our BIO design range and impresses with its uniquely supple surface. The material consists of 100% renewable raw materials.",
+      "retrieved": "2026-11-03",
+      "notes": "Brand states '100% renewable raw materials'; taken as declared bio-based share. No measurement method named."
+    }
+  }
 }

@@ -7,6 +7,7 @@
     "ral": "2010"
   },
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "recyclable": true
   }
 }

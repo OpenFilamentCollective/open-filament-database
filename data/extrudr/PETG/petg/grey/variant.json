@@ -5,5 +5,8 @@
   "color_hex": "#A49D8E",
   "color_standards": {
     "ral": "7044"
+  },
+  "traits": {
+    "recyclable": true
   }
 }

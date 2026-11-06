@@ -11,6 +11,7 @@
   },
   "traits": {
     "matte": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

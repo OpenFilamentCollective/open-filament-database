@@ -7,6 +7,7 @@
     "ral": "3003"
   },
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "recyclable": true
   }
 }

@@ -8,6 +8,8 @@
   },
   "traits": {
     "silk": true,
-    "industrially_compostable": true
+    "recyclable": true,
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

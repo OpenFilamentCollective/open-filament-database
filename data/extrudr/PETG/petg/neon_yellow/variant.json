@@ -7,6 +7,7 @@
     "ral": "1026"
   },
   "traits": {
-    "neon": true
+    "neon": true,
+    "recyclable": true
   }
 }

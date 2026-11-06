@@ -16,5 +16,17 @@
   "max_fan_speed": 80,
   "enclosure": "not_needed",
   "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/greentec-TDS-en.pdf",
-  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/greentec-MSDS-en.pdf"
+  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/greentec-MSDS-en.pdf",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/greentec-TDS-en.pdf",
+      "source_quote": "GreenTEC is the ecologically harmless alternative to commonly used industrial materials, consisting of 100% renewable raw materials",
+      "retrieved": "2026-11-03",
+      "notes": "Brand states '100% renewable raw materials' (TDS and product page); taken as declared bio-based share. No measurement method (ASTM D6866 / EN 16785) named."
+    }
+  }
 }
