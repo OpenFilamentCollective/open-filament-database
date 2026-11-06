@@ -4,6 +4,7 @@
   "name": "Teal",
   "color_hex": "#0079A7",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

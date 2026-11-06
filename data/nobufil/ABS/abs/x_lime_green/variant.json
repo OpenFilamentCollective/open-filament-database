@@ -4,6 +4,7 @@
   "name": "x Lime Green",
   "color_hex": "#9AED51",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

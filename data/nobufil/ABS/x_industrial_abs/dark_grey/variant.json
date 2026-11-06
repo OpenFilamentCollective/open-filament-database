@@ -4,6 +4,7 @@
   "name": "Dark Grey",
   "color_hex": "#9FA4A8",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

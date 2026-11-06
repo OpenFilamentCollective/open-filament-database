@@ -4,6 +4,7 @@
   "name": "Neon Pink",
   "color_hex": "#F54053",
   "traits": {
-    "neon": true
+    "neon": true,
+    "recycled": true
   }
 }

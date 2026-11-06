@@ -4,6 +4,7 @@
   "name": "Smoke Grey",
   "color_hex": "#40382D",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

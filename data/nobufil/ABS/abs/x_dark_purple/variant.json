@@ -4,6 +4,7 @@
   "name": "x Dark Purple",
   "color_hex": "#6802BC",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

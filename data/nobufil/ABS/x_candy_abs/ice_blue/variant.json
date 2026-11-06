@@ -5,6 +5,7 @@
   "color_hex": "#5CADBF",
   "traits": {
     "translucent": true,
+    "recycled": true,
     "filtration_recommended": true
   }
 }

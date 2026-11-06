@@ -4,6 +4,7 @@
   "name": "x Silver",
   "color_hex": "#818FA0",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Dark Green",
   "color_hex": "#165158",
   "traits": {
+    "recycled": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

@@ -4,6 +4,7 @@
   "name": "Anthracite",
   "color_hex": "#55555E",
   "traits": {
+    "recycled": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

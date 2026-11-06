@@ -2,5 +2,8 @@
   "uuid": "da5984b2-318a-41b9-bc32-2a73b384e09c",
   "id": "aluminum_gray",
   "name": "Aluminum Gray",
-  "color_hex": "#BFC3C2"
+  "color_hex": "#BFC3C2",
+  "traits": {
+    "recycled": true
+  }
 }

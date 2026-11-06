@@ -8,5 +8,30 @@
   "max_print_temperature": 245,
   "min_bed_temperature": 65,
   "max_bed_temperature": 85,
-  "data_sheet_url": "https://www.nobufil.com/_files/ugd/c9047f_bfc04fd990cb4d21a3805af1e1a2dd78.pdf"
+  "data_sheet_url": "https://www.nobufil.com/_files/ugd/c9047f_bfc04fd990cb4d21a3805af1e1a2dd78.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://www.nobufil.com/gitd",
+      "source_quote": "Nobufil Glow in the dark Filamente sind unser eigenes, vollständig nachhaltiges Material für den 3D Druck, das im eigenen Haus aus 100 % recyceltem Kunststoffabfall hergestellt wird.",
+      "retrieved": "2026-11-03",
+      "notes": "Glow page says '100 % recyceltem Kunststoffabfall' without saying industrial or consumer. The Glow ABS product page (ABSx) says 'Produktionsabfälle', and the PETG TDS says 'recycled industrial waste'. Type is left unknown because this source does not state it."
+    },
+    "relative_claims": [
+      {
+        "reduction_pct": 60,
+        "metric": "gwp",
+        "baseline": "raw materials from primary production",
+        "source_type": "primary",
+        "source_url": "https://www.nobufil.com/_files/ugd/c9047f_bfc04fd990cb4d21a3805af1e1a2dd78.pdf",
+        "source_quote": "This product is made from recycled plastic – approx. 60% of CO2 equivalents can be saved compared to raw materials from primary production.",
+        "retrieved": "2026-11-03",
+        "notes": "Datasheet says \"approx.\" 60%; no study, method, boundary or unit published."
+      }
+    ]
+  }
 }

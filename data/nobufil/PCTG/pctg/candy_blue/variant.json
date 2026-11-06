@@ -4,6 +4,7 @@
   "name": "Candy Blue",
   "color_hex": "#09048E",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "recycled": true
   }
 }

@@ -4,6 +4,7 @@
   "name": "Red",
   "color_hex": "#E72F1D",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

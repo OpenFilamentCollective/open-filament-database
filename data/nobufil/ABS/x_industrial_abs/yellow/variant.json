@@ -4,6 +4,7 @@
   "name": "Yellow",
   "color_hex": "#FBE200",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

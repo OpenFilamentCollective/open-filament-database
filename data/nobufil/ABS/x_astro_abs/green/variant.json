@@ -4,6 +4,7 @@
   "name": "Green",
   "color_hex": "#15817B",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

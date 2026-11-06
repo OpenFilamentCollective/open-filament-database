@@ -4,6 +4,7 @@
   "name": "x Orchid Purple",
   "color_hex": "#C63DBA",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

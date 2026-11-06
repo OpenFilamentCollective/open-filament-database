@@ -4,6 +4,7 @@
   "name": "Dark Blue",
   "color_hex": "#375680",
   "traits": {
+    "recycled": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

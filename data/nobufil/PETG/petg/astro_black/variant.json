@@ -2,5 +2,8 @@
   "uuid": "33eee9d7-600f-44b9-913c-22bcb542e22d",
   "id": "astro_black",
   "name": "Astro Black",
-  "color_hex": "#000000"
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true
+  }
 }

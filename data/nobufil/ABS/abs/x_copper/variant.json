@@ -4,6 +4,7 @@
   "name": "x Copper",
   "color_hex": "#904029",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

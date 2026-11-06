@@ -4,6 +4,7 @@
   "name": "x Arctic White",
   "color_hex": "#EAECF5",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }
