@@ -7,5 +7,18 @@
   "min_print_temperature": 200,
   "max_print_temperature": 230,
   "min_bed_temperature": 40,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 60,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "secondary",
+      "source_url": "https://www.pccomponentes.com/smartfil-pla-recycled-filamento-3d-fabricado-con-pla-reciclado-175mm-1000g-dark-blue",
+      "source_quote": "Filamento de PLA 100% reciclado … En Smart Materials 3D, durante el proceso de fabricación se producen residuos de materiales.",
+      "retrieved": "2026-11-03",
+      "notes": "Brand copy on a PcComponentes marketplace listing ('Vendido y enviado por Smart Materials 3D'). The original page smartmaterials3d.com/pla-recycled returns 403 to automated fetches. Origin is the brand's own manufacturing waste, so post_industrial."
+    }
+  }
 }
