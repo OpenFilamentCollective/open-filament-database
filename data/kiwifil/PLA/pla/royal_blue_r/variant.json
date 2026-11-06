@@ -11,7 +11,7 @@
         "boundary": "filament_cradle_to_gate",
         "packaging_included": "yes",
         "biogenic_carbon": "unknown",
-        "recycled_allocation": "unknown",
+        "recycled_allocation": "burden_free_scrap",
         "method": "declaration",
         "standard": null,
         "tool": null,
