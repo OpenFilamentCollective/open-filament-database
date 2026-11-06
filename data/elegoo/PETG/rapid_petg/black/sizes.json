@@ -20,7 +20,6 @@
     "uuid": "704b80f8-95f8-443f-9009-714b0ebad8fb",
     "filament_weight": 250,
     "diameter": 1.75,
-    "container_material": "cardboard",
     "purchase_links": [
       {
         "store_id": "elegoo",
@@ -32,7 +31,6 @@
     "uuid": "c118cdb4-a5a2-4451-af5c-3503aea7289c",
     "filament_weight": 3000,
     "diameter": 1.75,
-    "container_material": "cardboard",
     "purchase_links": [
       {
         "store_id": "elegoo",
