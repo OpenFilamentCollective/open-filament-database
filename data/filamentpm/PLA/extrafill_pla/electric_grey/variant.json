@@ -2,8 +2,5 @@
   "uuid": "b8f8f579-46fc-47a1-83e5-07349209db5e",
   "id": "electric_grey",
   "name": "Electric Grey",
-  "color_hex": "#C5C5BF",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#C5C5BF"
 }

@@ -2,8 +2,5 @@
   "uuid": "4cf374c6-5160-4052-8cc6-574c90cbabe1",
   "id": "ice_white",
   "name": "Ice White",
-  "color_hex": "#EAECF5",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#EAECF5"
 }

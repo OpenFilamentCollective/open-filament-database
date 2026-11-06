@@ -2,8 +2,5 @@
   "uuid": "cb112244-3724-4799-ab8a-438f118f05fb",
   "id": "scarlet_red",
   "name": "Scarlet Red",
-  "color_hex": "#E60000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#E60000"
 }

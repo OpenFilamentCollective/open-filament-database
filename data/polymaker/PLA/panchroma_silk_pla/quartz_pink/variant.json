@@ -4,7 +4,6 @@
   "name": "Quartz Pink",
   "color_hex": "#FFCCCD",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

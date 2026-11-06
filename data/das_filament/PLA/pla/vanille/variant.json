@@ -2,8 +2,5 @@
   "uuid": "5a2c9179-640f-4354-9943-46bc614143a0",
   "id": "vanille",
   "name": "Vanille",
-  "color_hex": "#FFF5B5",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FFF5B5"
 }

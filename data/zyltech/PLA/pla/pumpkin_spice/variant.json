@@ -2,8 +2,5 @@
   "uuid": "743c4677-7064-4728-9dc8-d0dc591bb33e",
   "id": "pumpkin_spice",
   "name": "Pumpkin Spice",
-  "color_hex": "#FF7A33",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FF7A33"
 }

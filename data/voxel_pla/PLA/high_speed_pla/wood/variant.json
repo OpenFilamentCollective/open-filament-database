@@ -4,7 +4,6 @@
   "name": "Wood",
   "color_hex": "#DBC9AD",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

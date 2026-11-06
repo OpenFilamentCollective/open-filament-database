@@ -4,7 +4,6 @@
   "name": "Metallic GREEN",
   "color_hex": "#244852",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

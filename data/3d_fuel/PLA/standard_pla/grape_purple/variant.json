@@ -4,7 +4,6 @@
   "name": "Grape Purple",
   "color_hex": "#5E528F",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

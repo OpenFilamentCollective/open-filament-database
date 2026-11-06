@@ -2,8 +2,5 @@
   "uuid": "d6f7fcf2-86d9-49f2-9962-5890a627a171",
   "id": "kryptonite_green",
   "name": "Kryptonite Green",
-  "color_hex": "#41A840",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#41A840"
 }

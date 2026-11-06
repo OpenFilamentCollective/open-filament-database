@@ -4,7 +4,6 @@
   "name": "Transluzent-Grün",
   "color_hex": "#97D7D0",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Chocolate Sprinkle Brown",
   "color_hex": "#EFEFEF",
   "traits": {
-    "imitates_marble": true,
-    "industrially_compostable": true
+    "imitates_marble": true
   }
 }

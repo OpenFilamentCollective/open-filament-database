@@ -2,8 +2,5 @@
   "uuid": "d49614d0-04a9-424f-9c60-5d4d512085dd",
   "id": "cement_gray",
   "name": "Cement Gray",
-  "color_hex": "#697272",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#697272"
 }

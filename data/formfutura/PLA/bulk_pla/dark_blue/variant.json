@@ -3,8 +3,5 @@
   "id": "dark_blue",
   "name": "Dark Blue",
   "color_hex": "#2500DB",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

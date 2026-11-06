@@ -4,7 +4,6 @@
   "name": "Composite",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

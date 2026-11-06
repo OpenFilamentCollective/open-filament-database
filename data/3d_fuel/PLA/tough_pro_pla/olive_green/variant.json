@@ -2,8 +2,5 @@
   "uuid": "0895f9d2-9568-4485-b064-3ea15951fc01",
   "id": "olive_green",
   "name": "Olive Green",
-  "color_hex": "#7F9C85",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#7F9C85"
 }

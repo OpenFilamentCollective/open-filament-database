@@ -4,7 +4,6 @@
   "name": "Metal Iron",
   "color_hex": "#272E29",
   "traits": {
-    "industrially_compostable": true,
     "paramagnetic": true,
     "contains_metal": true
   }

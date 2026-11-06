@@ -2,8 +2,5 @@
   "uuid": "7e44fe86-82bd-45c0-9cff-61e733459606",
   "id": "yellowgreen",
   "name": "Yellowgreen",
-  "color_hex": "#9AED51",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#9AED51"
 }

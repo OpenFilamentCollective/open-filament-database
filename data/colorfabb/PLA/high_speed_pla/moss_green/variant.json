@@ -4,7 +4,6 @@
   "name": "Moss green",
   "color_hex": "#2E5448",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

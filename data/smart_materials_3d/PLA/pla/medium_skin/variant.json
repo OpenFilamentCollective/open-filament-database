@@ -2,8 +2,5 @@
   "uuid": "ef2616d0-a6c6-44ba-b649-c86d2d8bef0f",
   "id": "medium_skin",
   "name": "Medium skin",
-  "color_hex": "#E5C7BB",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#E5C7BB"
 }

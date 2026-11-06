@@ -2,8 +2,5 @@
   "uuid": "e42ac896-a58d-4b77-a7dc-aea1ea9ce32e",
   "id": "chalky_blue",
   "name": "Chalky Blue",
-  "color_hex": "#6F9AAA",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#6F9AAA"
 }

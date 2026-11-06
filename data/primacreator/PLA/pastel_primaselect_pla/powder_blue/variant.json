@@ -2,8 +2,5 @@
   "uuid": "1a6a7cba-9c32-40f4-ae6a-9e804869c963",
   "id": "powder_blue",
   "name": "Powder Blue",
-  "color_hex": "#9BCEFE",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#9BCEFE"
 }

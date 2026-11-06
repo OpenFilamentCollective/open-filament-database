@@ -4,7 +4,6 @@
   "name": "Translucent Blood Red Prime",
   "color_hex": "#641501",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

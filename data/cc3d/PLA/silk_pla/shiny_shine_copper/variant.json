@@ -4,7 +4,6 @@
   "name": "Shiny Shine Copper",
   "color_hex": "#C9774B",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

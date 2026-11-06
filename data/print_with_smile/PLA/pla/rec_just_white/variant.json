@@ -4,7 +4,6 @@
   "name": "REC- Just WHITE",
   "color_hex": "#EFEFEF",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

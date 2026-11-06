@@ -2,8 +2,5 @@
   "uuid": "83a2bf1e-7e26-45f7-89ae-a728b6fa27f9",
   "id": "lilac",
   "name": "Lilac",
-  "color_hex": "#C7BCF8",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#C7BCF8"
 }

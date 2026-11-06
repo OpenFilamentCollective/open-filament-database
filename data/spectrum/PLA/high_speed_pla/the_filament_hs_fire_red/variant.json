@@ -4,7 +4,6 @@
   "name": "The Filament HS Fire Red",
   "color_hex": "#F00C00",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

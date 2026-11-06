@@ -4,7 +4,6 @@
   "name": "Matt Desert Sand Camouflage",
   "color_hex": "#AA6500",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

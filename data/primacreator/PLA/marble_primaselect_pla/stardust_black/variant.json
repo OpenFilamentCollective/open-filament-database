@@ -4,7 +4,6 @@
   "name": "Stardust Black",
   "color_hex": "#EAECF5",
   "traits": {
-    "imitates_marble": true,
-    "industrially_compostable": true
+    "imitates_marble": true
   }
 }

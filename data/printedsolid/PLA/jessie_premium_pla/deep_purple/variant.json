@@ -2,8 +2,5 @@
   "uuid": "19a86db0-d9a3-4e28-a651-141c366d4b29",
   "id": "deep_purple",
   "name": "Deep Purple",
-  "color_hex": "#372B74",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#372B74"
 }

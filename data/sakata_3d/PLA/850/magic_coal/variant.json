@@ -2,8 +2,5 @@
   "uuid": "8df21bbe-8468-4e8f-a870-4ce7930f2583",
   "id": "magic_coal",
   "name": "Magic Coal",
-  "color_hex": "#000000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#000000"
 }

@@ -4,7 +4,6 @@
   "name": "Charcoal",
   "color_hex": "#9FA4A8",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

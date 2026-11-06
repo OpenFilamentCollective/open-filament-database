@@ -4,7 +4,6 @@
   "name": "Gold MH Build Series",
   "color_hex": "#F6C500",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

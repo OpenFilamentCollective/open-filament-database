@@ -4,7 +4,6 @@
   "name": "Tanzanite",
   "color_hex": "#395E65",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "iridescent": true
   }
 }

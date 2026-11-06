@@ -4,7 +4,6 @@
   "name": "Red",
   "color_hex": "#E03F26",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Wood Color",
   "color_hex": "#E6BA83",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

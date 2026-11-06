@@ -2,8 +2,5 @@
   "uuid": "2f4baac5-23b9-4672-abf6-5da0380cc46b",
   "id": "rose_red",
   "name": "Rose Red",
-  "color_hex": "#BF7473",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#BF7473"
 }

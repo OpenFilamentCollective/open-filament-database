@@ -2,8 +2,5 @@
   "uuid": "22bdb37d-d6dd-4910-b2a0-7ff7ccb22bc3",
   "id": "lime",
   "name": "Lime",
-  "color_hex": "#9AED51",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#9AED51"
 }

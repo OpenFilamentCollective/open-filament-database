@@ -4,7 +4,6 @@
   "name": "Brown",
   "color_hex": "#AE9D7E",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

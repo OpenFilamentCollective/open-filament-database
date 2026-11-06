@@ -4,7 +4,6 @@
   "name": "Green",
   "color_hex": "#00CC00",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "neon": true
   }
 }

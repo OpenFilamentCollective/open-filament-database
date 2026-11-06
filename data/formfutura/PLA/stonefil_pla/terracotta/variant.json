@@ -4,7 +4,6 @@
   "name": "Terracotta",
   "color_hex": "#CD5A2E",
   "traits": {
-    "industrially_compostable": true,
     "contains_stone": true
   }
 }

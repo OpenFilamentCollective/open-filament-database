@@ -2,8 +2,5 @@
   "uuid": "949afcca-0323-4e0c-9f35-48de0374471d",
   "id": "olive_drab_green",
   "name": "Olive Drab Green",
-  "color_hex": "#606935",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#606935"
 }

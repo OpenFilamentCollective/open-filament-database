@@ -2,8 +2,5 @@
   "uuid": "4320537a-a1f5-4c90-8a6d-47142cff7e03",
   "id": "amethyst_purple",
   "name": "Amethyst Purple",
-  "color_hex": "#6C47B2",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#6C47B2"
 }

@@ -4,7 +4,6 @@
   "name": "Candy Blue",
   "color_hex": "#077fb5",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

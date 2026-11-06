@@ -4,7 +4,6 @@
   "name": "Aquamarine",
   "color_hex": "#99D9C5",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

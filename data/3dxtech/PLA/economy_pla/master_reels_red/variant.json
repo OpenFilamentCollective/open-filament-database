@@ -2,8 +2,5 @@
   "uuid": "d0047eda-33c0-4edc-8d15-346da2d3252f",
   "id": "master_reels_red",
   "name": "Master Reels Red",
-  "color_hex": "#E20010",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#E20010"
 }

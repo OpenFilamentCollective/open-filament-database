@@ -4,7 +4,6 @@
   "name": "Sapelly",
   "color_hex": "#BF4427",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

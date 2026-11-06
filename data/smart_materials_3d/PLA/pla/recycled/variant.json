@@ -4,7 +4,6 @@
   "name": "RECYCLED",
   "color_hex": "#FFFFFF",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

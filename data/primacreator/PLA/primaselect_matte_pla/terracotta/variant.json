@@ -4,7 +4,6 @@
   "name": "Terracotta",
   "color_hex": "#BB6D48",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

@@ -2,8 +2,5 @@
   "uuid": "a37d4581-12da-4ce5-8c8c-10fc1e704f75",
   "id": "satin_yellow",
   "name": "SATIN Yellow",
-  "color_hex": "#F3B400",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#F3B400"
 }

@@ -4,7 +4,6 @@
   "name": "The Filament Jungle Green",
   "color_hex": "#11784F",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

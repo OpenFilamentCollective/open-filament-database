@@ -2,8 +2,5 @@
   "uuid": "a1ff2aef-7074-4b64-aa12-aa6d207fd559",
   "id": "pink_max",
   "name": "Pink Max",
-  "color_hex": "#F54053",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#F54053"
 }

@@ -3,8 +3,5 @@
   "id": "medium_grey",
   "name": "Medium Grey",
   "color_hex": "#7A7A7A",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

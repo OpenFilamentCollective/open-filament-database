@@ -4,7 +4,6 @@
   "name": "Teal Green",
   "color_hex": "#74cdc7",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

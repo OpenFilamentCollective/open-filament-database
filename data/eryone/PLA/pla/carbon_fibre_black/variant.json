@@ -4,7 +4,6 @@
   "name": "Carbon fibre - black",
   "color_hex": "#1D1D1D",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

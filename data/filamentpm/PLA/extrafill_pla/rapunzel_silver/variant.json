@@ -4,7 +4,6 @@
   "name": "Rapunzel Silver",
   "color_hex": "#ABACB0",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

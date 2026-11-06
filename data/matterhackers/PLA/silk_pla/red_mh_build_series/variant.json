@@ -4,7 +4,6 @@
   "name": "Red MH Build Series",
   "color_hex": "#E20010",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

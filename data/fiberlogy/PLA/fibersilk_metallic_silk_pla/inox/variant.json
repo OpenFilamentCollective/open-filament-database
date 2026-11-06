@@ -4,7 +4,6 @@
   "name": "Inox",
   "color_hex": "#BCBFC2",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

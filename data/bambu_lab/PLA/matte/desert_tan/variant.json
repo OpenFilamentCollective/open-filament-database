@@ -4,7 +4,6 @@
   "name": "Desert Tan",
   "color_hex": "#E8DBB7",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Silver Blue",
   "color_hex": "#8997C4",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

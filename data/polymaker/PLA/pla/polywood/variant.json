@@ -4,7 +4,6 @@
   "name": "PolyWood™",
   "color_hex": "#D2A273",
   "traits": {
-    "imitates_wood": true,
-    "industrially_compostable": true
+    "imitates_wood": true
   }
 }

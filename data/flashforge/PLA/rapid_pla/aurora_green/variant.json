@@ -4,7 +4,6 @@
   "name": "Aurora Green",
   "color_hex": "#1D7C6A",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

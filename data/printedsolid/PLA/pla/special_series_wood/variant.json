@@ -4,7 +4,6 @@
   "name": "Special Series- Wood",
   "color_hex": "#8E5850",
   "traits": {
-    "imitates_wood": true,
-    "industrially_compostable": true
+    "imitates_wood": true
   }
 }

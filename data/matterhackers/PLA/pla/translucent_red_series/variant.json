@@ -4,7 +4,6 @@
   "name": "Translucent Red Series",
   "color_hex": "#ED1536",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

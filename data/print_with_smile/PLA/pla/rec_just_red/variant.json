@@ -4,7 +4,6 @@
   "name": "REC- Just RED",
   "color_hex": "#E72F1D",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Periwinkle",
   "color_hex": "#7894F2",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

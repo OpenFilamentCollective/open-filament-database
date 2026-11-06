@@ -2,8 +2,5 @@
   "uuid": "272f64ff-b293-4f29-b41c-bc3dd586947f",
   "id": "pastel_yellow",
   "name": "Pastel Yellow",
-  "color_hex": "#FCE575",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FCE575"
 }

@@ -2,8 +2,5 @@
   "uuid": "50910c3c-726b-463d-b01f-d22676f44548",
   "id": "orange",
   "name": "Orange",
-  "color_hex": "#FF7A33",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FF7A33"
 }

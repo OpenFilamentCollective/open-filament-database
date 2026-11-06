@@ -2,8 +2,5 @@
   "uuid": "34d0f2e0-2d9e-428f-9bc9-7d1655f11e3f",
   "id": "pastel_pink",
   "name": "Pastel Pink",
-  "color_hex": "#FFC8C9",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FFC8C9"
 }

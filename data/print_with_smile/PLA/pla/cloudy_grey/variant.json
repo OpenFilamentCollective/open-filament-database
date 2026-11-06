@@ -2,8 +2,5 @@
   "uuid": "b45f7f77-6bdd-42ca-b851-2ecc0667106a",
   "id": "cloudy_grey",
   "name": "Cloudy Grey",
-  "color_hex": "#B8BAB8",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#B8BAB8"
 }

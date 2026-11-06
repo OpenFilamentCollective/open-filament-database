@@ -2,8 +2,5 @@
   "uuid": "a9eafe68-d3f4-4343-9baa-899cdefa39c6",
   "id": "fortress_gray",
   "name": "Fortress Gray",
-  "color_hex": "#4C5051",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#4C5051"
 }

@@ -2,8 +2,5 @@
   "uuid": "ca1d73b5-6cc2-450e-bc5e-6ab6900d606c",
   "id": "olive_natural",
   "name": "OLIVE Natural",
-  "color_hex": "#724E3D",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#724E3D"
 }

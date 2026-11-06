@@ -4,7 +4,6 @@
   "name": "Banana Yellow",
   "color_hex": "#E8BD00",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

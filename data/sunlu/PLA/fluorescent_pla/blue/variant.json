@@ -4,7 +4,6 @@
   "name": "Blue",
   "color_hex": "#0378D0",
   "traits": {
-    "neon": true,
-    "industrially_compostable": true
+    "neon": true
   }
 }

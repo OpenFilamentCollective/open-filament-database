@@ -4,7 +4,6 @@
   "name": "Ace Light",
   "color_hex": "#E3E0D3",
   "traits": {
-    "imitates_stone": true,
-    "industrially_compostable": true
+    "imitates_stone": true
   }
 }

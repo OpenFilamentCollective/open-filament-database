@@ -2,8 +2,5 @@
   "uuid": "76b399c2-8ed8-4d36-8dd0-42fcd5444d51",
   "id": "black",
   "name": "Black",
-  "color_hex": "#000000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#000000"
 }

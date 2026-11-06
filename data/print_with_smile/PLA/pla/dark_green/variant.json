@@ -2,8 +2,5 @@
   "uuid": "14c64f84-2709-410b-9608-2cfa821f911d",
   "id": "dark_green",
   "name": "Dark GREEN",
-  "color_hex": "#4D5D4C",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#4D5D4C"
 }

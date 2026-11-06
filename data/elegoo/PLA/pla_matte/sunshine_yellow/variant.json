@@ -4,7 +4,6 @@
   "name": "Sunshine Yellow",
   "color_hex": "#f7d863",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

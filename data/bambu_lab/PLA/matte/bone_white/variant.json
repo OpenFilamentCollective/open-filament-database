@@ -4,7 +4,6 @@
   "name": "Bone White",
   "color_hex": "#CBC6B8",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

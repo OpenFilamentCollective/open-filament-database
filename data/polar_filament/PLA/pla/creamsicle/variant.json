@@ -2,8 +2,5 @@
   "uuid": "89372ae9-29d8-4ae1-bedb-7cd0ba749472",
   "id": "creamsicle",
   "name": "Creamsicle",
-  "color_hex": "#FF8B47",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FF8B47"
 }

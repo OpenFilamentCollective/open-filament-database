@@ -4,7 +4,6 @@
   "name": "REC- Low GREY",
   "color_hex": "#C4BCB3",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

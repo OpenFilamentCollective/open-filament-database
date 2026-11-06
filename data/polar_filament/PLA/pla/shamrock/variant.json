@@ -2,8 +2,5 @@
   "uuid": "577cef8a-9601-4654-bf5d-fb117ddb946b",
   "id": "shamrock",
   "name": "Shamrock",
-  "color_hex": "#018E63",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#018E63"
 }

@@ -4,7 +4,6 @@
   "name": "Cream Beige",
   "color_hex": "#F1E6B2",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

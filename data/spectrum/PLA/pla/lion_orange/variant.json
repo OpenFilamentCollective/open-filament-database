@@ -2,8 +2,5 @@
   "uuid": "67a1c264-ec8a-4e8b-a0fc-c679bdf60533",
   "id": "lion_orange",
   "name": "Lion Orange",
-  "color_hex": "#FF8133",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FF8133"
 }

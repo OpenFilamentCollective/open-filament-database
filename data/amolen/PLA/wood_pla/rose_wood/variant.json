@@ -4,7 +4,6 @@
   "name": "Rose Wood",
   "color_hex": "#613B3A",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

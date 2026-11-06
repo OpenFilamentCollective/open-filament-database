@@ -2,8 +2,5 @@
   "uuid": "5e24a58f-e03a-4589-8bb3-a4f779e7f95b",
   "id": "baby_blue",
   "name": "Baby Blue",
-  "color_hex": "#C6F3FD",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#C6F3FD"
 }

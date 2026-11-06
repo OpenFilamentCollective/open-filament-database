@@ -4,7 +4,6 @@
   "name": "Brick Red",
   "color_hex": "#D22D2F",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

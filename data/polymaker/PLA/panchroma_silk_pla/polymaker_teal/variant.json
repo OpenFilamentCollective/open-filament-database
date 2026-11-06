@@ -4,7 +4,6 @@
   "name": "Polymaker Teal",
   "color_hex": "#00B4BC",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

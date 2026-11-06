@@ -4,7 +4,6 @@
   "name": "Skin",
   "color_hex": "#E6BA83",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Pale Peach",
   "color_hex": "#E2D1C0",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

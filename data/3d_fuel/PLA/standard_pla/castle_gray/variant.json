@@ -4,7 +4,6 @@
   "name": "Castle Gray",
   "color_hex": "#73787B",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

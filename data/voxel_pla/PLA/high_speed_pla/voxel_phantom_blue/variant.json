@@ -4,7 +4,6 @@
   "name": "VOXEL Phantom Blue",
   "color_hex": "#003287",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

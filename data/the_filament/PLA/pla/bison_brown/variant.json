@@ -5,8 +5,5 @@
   ],
   "id": "bison_brown",
   "name": "Bison Brown",
-  "color_hex": "#614230",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#614230"
 }

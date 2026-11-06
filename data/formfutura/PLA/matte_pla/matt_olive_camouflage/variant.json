@@ -4,7 +4,6 @@
   "name": "Matt Olive Camouflage",
   "color_hex": "#737254",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

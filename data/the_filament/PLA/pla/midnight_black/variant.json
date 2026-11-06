@@ -5,8 +5,5 @@
   ],
   "id": "midnight_black",
   "name": "Midnight Black",
-  "color_hex": "#0b0e13",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#0b0e13"
 }

@@ -4,7 +4,6 @@
   "name": "Black",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_glass_fiber": true
   }

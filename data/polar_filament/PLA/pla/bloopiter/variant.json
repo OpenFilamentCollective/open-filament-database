@@ -4,7 +4,6 @@
   "name": "Bloopiter",
   "color_hex": "#584E6A",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

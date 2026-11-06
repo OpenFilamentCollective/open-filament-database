@@ -4,7 +4,6 @@
   "name": "Warm Grey",
   "color_hex": "#A49D8E",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

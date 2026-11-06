@@ -4,7 +4,6 @@
   "name": "Green",
   "color_hex": "#656D60",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

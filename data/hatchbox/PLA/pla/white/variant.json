@@ -2,8 +2,5 @@
   "uuid": "c4293f74-7838-47a1-b397-d52b40f3a75d",
   "id": "white",
   "name": "White",
-  "color_hex": "#FFFFFF",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FFFFFF"
 }

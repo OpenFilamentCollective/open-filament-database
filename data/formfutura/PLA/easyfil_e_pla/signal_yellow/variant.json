@@ -3,8 +3,5 @@
   "id": "signal_yellow",
   "name": "Signal Yellow",
   "color_hex": "#FFC946",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

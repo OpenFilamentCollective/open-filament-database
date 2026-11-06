@@ -2,8 +2,5 @@
   "uuid": "529c71f1-2120-4e37-847f-13dcfe160a65",
   "id": "aquamarine",
   "name": "Aquamarine",
-  "color_hex": "#63D6D6",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#63D6D6"
 }

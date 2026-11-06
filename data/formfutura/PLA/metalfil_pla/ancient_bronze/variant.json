@@ -4,7 +4,6 @@
   "name": "Ancient Bronze",
   "color_hex": "#8C7354",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_bronze": true
   }

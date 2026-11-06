@@ -4,7 +4,6 @@
   "name": "Translucent Midnight Blue",
   "color_hex": "#3F017F",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

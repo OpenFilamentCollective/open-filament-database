@@ -4,7 +4,6 @@
   "name": "Sky Blue",
   "color_hex": "#49C0DF",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

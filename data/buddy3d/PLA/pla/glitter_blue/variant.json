@@ -4,7 +4,6 @@
   "name": "Glitter Blue",
   "color_hex": "#0066D9",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

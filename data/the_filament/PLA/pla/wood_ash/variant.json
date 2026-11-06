@@ -5,8 +5,5 @@
   ],
   "id": "wood_ash",
   "name": "Wood Ash",
-  "color_hex": "#e1ccb1",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#e1ccb1"
 }

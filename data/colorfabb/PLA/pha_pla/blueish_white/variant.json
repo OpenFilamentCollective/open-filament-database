@@ -2,8 +2,5 @@
   "uuid": "b775dc97-6b28-4798-b0d4-5db58430726a",
   "id": "blueish_white",
   "name": "Blueish white",
-  "color_hex": "#CCD6E2",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#CCD6E2"
 }

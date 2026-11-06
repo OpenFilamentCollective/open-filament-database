@@ -2,8 +2,5 @@
   "uuid": "95f6e27f-f23f-46e7-aeed-b0aaf9fd0920",
   "id": "bubblegum",
   "name": "Bubblegum",
-  "color_hex": "#F300EA",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#F300EA"
 }

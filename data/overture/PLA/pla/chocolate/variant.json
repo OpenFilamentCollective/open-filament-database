@@ -2,8 +2,5 @@
   "uuid": "e3d16cce-e1eb-4168-b76b-0bd55389c60d",
   "id": "chocolate",
   "name": "Chocolate",
-  "color_hex": "#57361C",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#57361C"
 }

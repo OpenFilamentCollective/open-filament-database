@@ -4,7 +4,6 @@
   "name": "MATT Bahama Yellow",
   "color_hex": "#FADB24",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

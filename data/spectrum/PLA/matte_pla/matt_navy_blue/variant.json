@@ -4,7 +4,6 @@
   "name": "MATT Navy Blue",
   "color_hex": "#0378D0",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Metallic Gold",
   "color_hex": "#C58F4C",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

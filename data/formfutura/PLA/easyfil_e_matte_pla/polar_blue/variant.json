@@ -4,7 +4,6 @@
   "name": "Polar Blue",
   "color_hex": "#BFDFEF",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

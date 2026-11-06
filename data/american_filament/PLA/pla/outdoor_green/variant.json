@@ -2,8 +2,5 @@
   "uuid": "14a130a9-7643-44e2-bc6a-540c110d2709",
   "id": "outdoor_green",
   "name": "Outdoor Green",
-  "color_hex": "#144F3B",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#144F3B"
 }

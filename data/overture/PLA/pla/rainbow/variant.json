@@ -4,7 +4,6 @@
   "name": "Rainbow",
   "color_hex": "#cd2726",
   "traits": {
-    "gradual_color_change": true,
-    "industrially_compostable": true
+    "gradual_color_change": true
   }
 }

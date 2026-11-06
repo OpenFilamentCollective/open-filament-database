@@ -4,7 +4,6 @@
   "name": "Harvest Gold",
   "color_hex": "#F9B247",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

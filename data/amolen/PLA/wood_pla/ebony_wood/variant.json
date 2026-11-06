@@ -4,7 +4,6 @@
   "name": "Ebony Wood",
   "color_hex": "#5E6345",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

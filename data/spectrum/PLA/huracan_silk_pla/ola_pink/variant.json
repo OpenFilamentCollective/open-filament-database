@@ -4,7 +4,6 @@
   "name": "Ola Pink",
   "color_hex": "#EB0075",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

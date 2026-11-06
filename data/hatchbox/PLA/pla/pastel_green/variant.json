@@ -2,8 +2,5 @@
   "uuid": "cdab2549-0ce7-4ecb-99e6-8308fcf51aa8",
   "id": "pastel_green",
   "name": "Pastel Green",
-  "color_hex": "#C0FEAB",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#C0FEAB"
 }

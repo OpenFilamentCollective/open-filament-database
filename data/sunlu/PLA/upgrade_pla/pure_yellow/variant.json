@@ -2,8 +2,5 @@
   "uuid": "a0dceacc-a7a0-46e7-bd5a-c12acb603e28",
   "id": "pure_yellow",
   "name": "Pure Yellow",
-  "color_hex": "#FBE200",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FBE200"
 }

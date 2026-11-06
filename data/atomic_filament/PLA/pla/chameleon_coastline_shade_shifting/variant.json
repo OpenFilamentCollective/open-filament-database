@@ -4,7 +4,6 @@
   "name": "Chameleon Coastline Shade-Shifting",
   "color_hex": "#488D94",
   "traits": {
-    "iridescent": true,
-    "industrially_compostable": true
+    "iridescent": true
   }
 }

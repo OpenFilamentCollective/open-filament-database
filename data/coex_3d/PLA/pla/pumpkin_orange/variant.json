@@ -2,8 +2,5 @@
   "uuid": "49f728a3-50ba-44b3-a47c-595d43567a50",
   "id": "pumpkin_orange",
   "name": "Pumpkin Orange",
-  "color_hex": "#FA8423",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FA8423"
 }

@@ -4,7 +4,6 @@
   "name": "Brown",
   "color_hex": "#9e6a4b",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

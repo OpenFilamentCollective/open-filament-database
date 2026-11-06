@@ -4,7 +4,6 @@
   "name": "White",
   "color_hex": "#F2EFE9",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

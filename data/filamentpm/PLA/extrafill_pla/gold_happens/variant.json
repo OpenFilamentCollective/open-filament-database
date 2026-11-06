@@ -4,7 +4,6 @@
   "name": "Gold Happens",
   "color_hex": "#E3B145",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

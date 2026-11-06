@@ -4,7 +4,6 @@
   "name": "Matt Urban Grey Camouflage",
   "color_hex": "#ACB1BA",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

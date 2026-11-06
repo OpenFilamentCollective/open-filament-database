@@ -2,8 +2,5 @@
   "uuid": "4d15dba1-6bcb-4743-bc8c-bb189bea753f",
   "id": "blue",
   "name": "Blue",
-  "color_hex": "#2E56F1",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#2E56F1"
 }

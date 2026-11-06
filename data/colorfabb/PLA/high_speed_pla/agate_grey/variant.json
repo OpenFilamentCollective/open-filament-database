@@ -4,7 +4,6 @@
   "name": "Agate Grey",
   "color_hex": "#C5C5BF",
   "traits": {
-    "industrially_compostable": true,
     "high_flow": true
   }
 }

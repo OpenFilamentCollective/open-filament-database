@@ -4,7 +4,6 @@
   "name": "Translucent Ice Blue Series",
   "color_hex": "#6299DF",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

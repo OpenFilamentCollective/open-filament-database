@@ -4,7 +4,6 @@
   "name": "Teal MH Build Series",
   "color_hex": "#0099E6",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

@@ -5,7 +5,6 @@
   "color_hex": "#E4FF33",
   "discontinued": false,
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

@@ -4,7 +4,6 @@
   "name": "Dark Green Glitter",
   "color_hex": "#214327",
   "traits": {
-    "glitter": true,
-    "industrially_compostable": true
+    "glitter": true
   }
 }

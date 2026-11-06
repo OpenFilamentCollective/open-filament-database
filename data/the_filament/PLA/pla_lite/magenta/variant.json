@@ -5,8 +5,5 @@
   ],
   "id": "magenta",
   "name": "Magenta",
-  "color_hex": "#ee3a95",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#ee3a95"
 }

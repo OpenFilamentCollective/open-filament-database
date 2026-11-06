@@ -4,7 +4,6 @@
   "name": "Red",
   "color_hex": "#FF0505",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

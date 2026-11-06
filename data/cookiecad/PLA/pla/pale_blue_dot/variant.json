@@ -2,8 +2,5 @@
   "uuid": "c5a466e1-55cd-4cf6-8c35-229d0be21be7",
   "id": "pale_blue_dot",
   "name": "Pale Blue Dot",
-  "color_hex": "#8ED9F9",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#8ED9F9"
 }

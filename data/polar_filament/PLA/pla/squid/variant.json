@@ -2,8 +2,5 @@
   "uuid": "937ea23f-cbb9-4c65-8794-b844ce5116a2",
   "id": "squid",
   "name": "Squid",
-  "color_hex": "#00B4BC",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#00B4BC"
 }

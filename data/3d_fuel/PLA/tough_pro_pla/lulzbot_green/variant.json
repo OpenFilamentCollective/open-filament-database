@@ -2,8 +2,5 @@
   "uuid": "c925ff8a-1c62-4517-bf48-d4f0ace58855",
   "id": "lulzbot_green",
   "name": "LulzBot Green",
-  "color_hex": "#BBDB4B",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#BBDB4B"
 }

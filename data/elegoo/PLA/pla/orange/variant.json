@@ -4,7 +4,6 @@
   "name": "Orange",
   "color_hex": "#fd7c18",
   "traits": {
-    "industrially_compostable": true,
     "bio_based": true
   }
 }

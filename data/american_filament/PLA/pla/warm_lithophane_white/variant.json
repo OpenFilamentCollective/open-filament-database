@@ -4,7 +4,6 @@
   "name": "Warm Lithophane White",
   "color_hex": "#E6DDDB",
   "traits": {
-    "lithophane": true,
-    "industrially_compostable": true
+    "lithophane": true
   }
 }

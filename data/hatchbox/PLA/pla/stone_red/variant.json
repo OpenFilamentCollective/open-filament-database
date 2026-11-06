@@ -4,7 +4,6 @@
   "name": "Stone Red",
   "color_hex": "#C00000",
   "traits": {
-    "imitates_marble": true,
-    "industrially_compostable": true
+    "imitates_marble": true
   }
 }

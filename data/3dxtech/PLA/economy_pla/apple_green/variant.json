@@ -2,8 +2,5 @@
   "uuid": "03b271d3-9055-4fcc-b44b-dd91f16d4049",
   "id": "apple_green",
   "name": "Apple-green",
-  "color_hex": "#9AED51",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#9AED51"
 }

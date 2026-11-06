@@ -4,7 +4,6 @@
   "name": "Pink",
   "color_hex": "#FFE0E1",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

@@ -2,8 +2,5 @@
   "uuid": "65b95635-2220-4c83-a875-4277c5cdbca6",
   "id": "metallic_silver_v2",
   "name": "Metallic Silver V2",
-  "color_hex": "#ABACB0",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#ABACB0"
 }

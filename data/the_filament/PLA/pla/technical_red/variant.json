@@ -5,8 +5,5 @@
   ],
   "id": "technical_red",
   "name": "Technical Red",
-  "color_hex": "#d42a44",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#d42a44"
 }

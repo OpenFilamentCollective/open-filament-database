@@ -2,8 +2,5 @@
   "uuid": "1541bfb4-fcbe-45ef-9572-87c757e9a331",
   "id": "light_blue_series",
   "name": "Light Blue Series",
-  "color_hex": "#1ADAFB",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#1ADAFB"
 }

@@ -2,8 +2,5 @@
   "uuid": "65ed5f83-966f-413e-aa9a-a57d2a749402",
   "id": "lootsef_green_ht",
   "name": "Lootsef Green HT",
-  "color_hex": "#9AED51",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#9AED51"
 }

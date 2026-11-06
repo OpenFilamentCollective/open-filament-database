@@ -4,7 +4,6 @@
   "name": "Rose Gold",
   "color_hex": "#D2AFB5",
   "traits": {
-    "silk": true,
-    "industrially_compostable": true
+    "silk": true
   }
 }

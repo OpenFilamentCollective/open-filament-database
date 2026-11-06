@@ -3,8 +3,5 @@
   "id": "grey_aluminium",
   "name": "Grey Aluminium",
   "color_hex": "#8C9099",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

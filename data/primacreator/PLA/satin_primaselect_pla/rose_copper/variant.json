@@ -2,8 +2,5 @@
   "uuid": "955b8cd7-ce7f-4a37-972f-231dc5384c87",
   "id": "rose_copper",
   "name": "Rose Copper",
-  "color_hex": "#C88582",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#C88582"
 }

@@ -2,8 +2,5 @@
   "uuid": "67d27bb5-f60e-4710-b420-00aa2ebd0f36",
   "id": "desert_tan_prime",
   "name": "Desert Tan Prime",
-  "color_hex": "#A79E82",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#A79E82"
 }

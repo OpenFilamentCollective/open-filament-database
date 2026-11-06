@@ -3,8 +3,5 @@
   "id": "khaki_grey",
   "name": "Khaki Grey",
   "color_hex": "#6F673A",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

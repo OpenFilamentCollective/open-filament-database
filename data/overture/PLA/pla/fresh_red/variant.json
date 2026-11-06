@@ -2,8 +2,5 @@
   "uuid": "af97acf4-15d5-4d02-8ed7-729299665dcb",
   "id": "fresh_red",
   "name": "Fresh Red",
-  "color_hex": "#E31A1F",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#E31A1F"
 }
