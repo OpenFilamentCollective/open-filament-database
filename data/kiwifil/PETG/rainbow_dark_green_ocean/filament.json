@@ -7,5 +7,17 @@
   "min_print_temperature": 240,
   "max_print_temperature": 250,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 85
+  "max_bed_temperature": 85,
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "supplier_declaration",
+      "source_type": "primary",
+      "source_url": "https://kiwifil.com/products/rainbow-dark-green-ocean-rpetg-100-recycled-1-75mm-1kg",
+      "source_quote": "made from 100% recycled plastic. The raw material is post-industrial scrap from the manufacturing of restaurant menu holders, store display cases, and similar products.",
+      "retrieved": "2026-11-03"
+    }
+  }
 }
