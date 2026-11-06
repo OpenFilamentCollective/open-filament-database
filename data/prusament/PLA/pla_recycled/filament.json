@@ -38,7 +38,7 @@
         "source_url": "https://blog.prusa3d.com/introducing-prusament-petg-recycled-with-calculated-life-cycle-assessment_65806/",
         "source_quote": "And with the Prusament PLA Recycled , we managed to lower the CO 2 emissions by 57 %, from 5.76 kg to 2.47 kg.",
         "retrieved": "2026-11-03",
-        "notes": "x"
+        "notes": "LCA by Ing. Marie Tichá in SimaPro 9.3.0.2. The source gives the reduction 'from 5.76 kg to 2.47 kg' without saying per kg of filament or naming the baseline product, so the declared unit is unknown."
       }
     ]
   }
