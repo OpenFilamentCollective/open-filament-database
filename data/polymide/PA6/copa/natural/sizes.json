@@ -3,6 +3,7 @@
     "uuid": "073a60ff-30bb-48b2-8c43-5f6cd72627fe",
     "filament_weight": 750,
     "diameter": 1.75,
+    "container_material": "cardboard",
     "purchase_links": [
       {
         "store_id": "polymaker",
