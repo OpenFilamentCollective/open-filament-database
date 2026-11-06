@@ -2,6 +2,17 @@
   {
     "uuid": "e6c52df3-245a-4704-b0ad-9af58afecfd0",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_material": "plastic",
+    "container_details": {
+      "recycled_pct": null,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Spool described as recycled plastic; no percentage given.",
+      "source_type": "primary",
+      "source_url": "https://polarfilament.com/products/polar-filament-blue-1-75mm-pla-1kg",
+      "source_quote": "AMS-Compatible Recycled Plastic Spool: Designed for seamless use in Bambu Lab AMS Classic and AMS-Lite systems.",
+      "retrieved": "2026-11-03"
+    }
   }
 ]
