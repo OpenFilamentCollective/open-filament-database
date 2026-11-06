@@ -2,7 +2,10 @@
   "uuid": "ea8d5b6b-24ec-447d-b394-e5e212fee090",
   "id": "prusament",
   "name": "Prusament",
-  "website": "https://prusament.com/",
+  "website": [
+    "https://prusament.com/",
+    "https://www.prusa3d.com/"
+  ],
   "logo": "logo.png",
   "origin": "CZ",
   "source": "openprinttag"

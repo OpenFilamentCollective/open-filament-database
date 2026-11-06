@@ -190,7 +190,14 @@ export function stripTrackersDeep<T>(value: T): T {
 	if (value && typeof value === 'object') {
 		const out: Record<string, unknown> = {};
 		for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
-			out[k] = URL_FIELDS.has(k) && typeof v === 'string' ? stripTrackingParams(v) : stripTrackersDeep(v);
+			if (URL_FIELDS.has(k) && typeof v === 'string') {
+				out[k] = stripTrackingParams(v);
+			} else if (URL_FIELDS.has(k) && Array.isArray(v)) {
+				// `website` can be a list of URLs.
+				out[k] = v.map((u) => (typeof u === 'string' ? stripTrackingParams(u) : stripTrackersDeep(u)));
+			} else {
+				out[k] = stripTrackersDeep(v);
+			}
 		}
 		return out as T;
 	}

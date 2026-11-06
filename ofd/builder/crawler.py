@@ -154,6 +154,8 @@ class DataCrawler:
         # Create brand
         brand_id = generate_brand_id(brand_name)
 
+        website = brand_data.get("website", "")
+        websites = website if isinstance(website, list) else [website] if website else []
         brand = {
             **brand_data,
             "id": brand_id,
@@ -165,10 +167,14 @@ class DataCrawler:
             # directory name — NOT from brand_id, which is a generated UUID.
             "slug": slugify(brand_data.get("id", brand_name)),
             "directory_name": brand_name,  # internal, stripped on export
-            "website": brand_data.get("website", ""),
+            # website stays the main site for existing consumers; the full list goes in
+            # websites, the same way color_hex and color_hexes work.
+            "website": websites[0] if websites else "",
             "logo": brand_data.get("logo", ""),
             "origin": brand_data.get("origin", "Unknown"),
         }
+        if len(websites) > 1:
+            brand["websites"] = websites
 
         self.db.brands.append(brand)
         self._brand_cache[brand_name] = brand_id

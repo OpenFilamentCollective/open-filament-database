@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { websiteList } from '$lib/utils/websites';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import type { Brand, Material } from '$lib/types/database';
@@ -388,7 +389,7 @@
 					title="Brand Details"
 					fields={[
 						{ key: 'name' },
-						{ key: 'website', type: 'link' },
+						{ key: 'website', type: 'link', values: websiteList },
 						{ key: 'origin', format: (v: string) => getCountryName(v) },
 						{ key: 'logo', type: 'logo', logoType: 'brand', logoEntityId: brandData.slug ?? brandData.id },
 						{ key: 'orcaslicer_bundle', label: 'OrcaSlicer', hide: () => !orcaBundleUrl(brandId, brandMaterialTypes), customRender: orcaBundleRender }

@@ -310,6 +310,12 @@ def _sanitize_dict(data: dict[str, Any], changes: list[str], prefix: str = "") -
 
     for key, value in data.items():
         if not isinstance(value, str):
+            # brand.json's website can be a list of URLs.
+            if key in URL_FIELDS and isinstance(value, list):
+                cleaned = [strip_tracking_params(v) if isinstance(v, str) else v for v in value]
+                if cleaned != value:
+                    data[key] = cleaned
+                    changes.append(f"{dot}{key}: stripped tracking parameters")
             continue
 
         # Strip whitespace

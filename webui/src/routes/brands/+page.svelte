@@ -230,7 +230,7 @@
 						hoverColor="green"
 						fields={[
 							{ key: 'origin', label: 'Origin', class: 'text-muted-foreground', format: (v: string) => getCountryName(v) },
-							{ key: 'website', class: 'text-primary truncate' }
+							{ key: 'website', class: 'text-primary truncate', format: (v: string | string[]) => (Array.isArray(v) ? v[0] : v) ?? '' }
 						]}
 						hasLocalChanges={changeProps.hasLocalChanges}
 						localChangeType={changeProps.localChangeType}

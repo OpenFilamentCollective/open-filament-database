@@ -288,8 +288,8 @@ def _merge_reason(snapshot: Snapshot, repo_dir: Path) -> str:
     if judged:
         parts.append(f"{judged} changed value(s) passed the AI review")
     if provable:
-        site = context_for(provable[0], TreeReader(repo_dir, "HEAD")).brand_site
-        site = site or "the brand's site"
+        sites = context_for(provable[0], TreeReader(repo_dir, "HEAD")).brand_site
+        site = ", ".join(sites) or "the brand's site"
         parts.append(f"every changed value was verified against {site}")
     return "; ".join(parts or ["every check passed"]) + "; see the Auto-merge check."
 

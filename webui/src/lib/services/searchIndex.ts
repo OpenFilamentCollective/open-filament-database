@@ -233,7 +233,7 @@ function recordFromChange(change: EntityChange, brandNameFor: (slug: string) => 
 				brandName: name,
 				brandSlug: ep.brandId,
 				logo: data.logo || undefined,
-				keywords: [data.origin, data.website].filter(Boolean).join(' '),
+				keywords: [data.origin, data.website].flat().filter(Boolean).join(' '),
 				path: change.entity.path
 			};
 		}

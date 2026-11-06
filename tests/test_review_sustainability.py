@@ -15,6 +15,7 @@ from ofd.review.render import summary
 from ofd.review.sustainability import (
     Entry,
     brand_site_name,
+    brand_site_names,
     check_quote,
     find_touches,
     gate,
@@ -726,3 +727,26 @@ def test_a_failing_gate_lists_every_failure():
         },
     }
     assert "the AI review did not run" in summary(result)
+
+
+def test_website_can_be_a_list_of_sites():
+    assert brand_site_names("https://prusament.com/") == ("prusament",)
+    assert brand_site_names(["https://prusament.com/", "https://www.prusa3d.com/"]) == (
+        "prusament",
+        "prusa3d",
+    )
+    # Duplicates collapse, and a marketplace page is still not the brand's own site.
+    assert brand_site_names(["https://a.com", "https://www.a.com", "https://amazon.com/x"]) == (
+        "a",
+    )
+    assert brand_site_names(None) == ()
+
+
+def test_a_source_on_any_of_the_brands_sites_counts_as_its_own():
+    url = "https://blog.prusa3d.com/post"
+    data = recycled(source_url=url)
+    fetcher = FakeFetcher({url: PAGE})
+    _, warnings = verify_sourced("recycled_content", data, fetcher, ("prusament", "prusa3d"))
+    assert not any("not on the brand's own site" in w for w in warnings)
+    _, warnings = verify_sourced("recycled_content", data, fetcher, ("prusament",))
+    assert any("not on the brand's own site" in w for w in warnings)

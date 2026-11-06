@@ -27,7 +27,7 @@ from ofd.review.gitdata import TreeReader
 from ofd.review.jsonlines import resolve, set_value
 from ofd.review.model import DEFAULT_BUDGET_USD, DEFAULT_MODEL, ModelError, run_model
 from ofd.review.suggest import SCHEMAS_DIR, indent_of, render_json, schema_errors
-from ofd.review.sustainability import brand_site_name
+from ofd.review.sustainability import brand_site_names
 from ofd.scripts.style_data import build_key_order_map, sort_json_keys
 from ofd.validation.data_quality import _check_recycled_trait, _check_sustainability
 
@@ -281,7 +281,7 @@ def enrich_brand(
     report["model"] = {"model": result.model, "cost_usd": result.cost_usd}
     report["not_found"] = result.review.get("not_found", [])
     fetcher = Fetcher()
-    site = brand_site_name(json.loads(brand_file.read_text(encoding="utf-8")).get("website"))
+    site = brand_site_names(json.loads(brand_file.read_text(encoding="utf-8")).get("website"))
     verified = []
     for e in result.review.get("enrichments", []):
         if sustainability.section_of(e["pointer"]):

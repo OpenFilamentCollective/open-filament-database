@@ -2,7 +2,10 @@
   "uuid": "712ffc4a-e3ed-40d8-afc1-910c73ed1e04",
   "id": "protopasta",
   "name": "Protopasta",
-  "website": "https://protopasta.com",
+  "website": [
+    "https://protopasta.com",
+    "https://proto-pasta.com/"
+  ],
   "logo": "logo.png",
   "origin": "US",
   "source": "openprinttag"

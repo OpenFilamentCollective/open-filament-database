@@ -309,6 +309,11 @@ def _host(url: str) -> str:
     return host[4:] if host.startswith("www.") else host
 
 
+def as_sites(sites) -> tuple[str, ...]:
+    """A brand's site names as a tuple, given one name, several or none."""
+    return (sites,) if isinstance(sites, str) else tuple(sites or ())
+
+
 def site_name(host: str) -> str:
     """``amazon`` for amazon.com, www.amazon.co.uk and amazon.de alike.
 
