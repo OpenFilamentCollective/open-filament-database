@@ -8,5 +8,17 @@
   "max_print_temperature": 240,
   "min_bed_temperature": 55,
   "max_bed_temperature": 55,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0717/9095/files/TDS__Translucent_Sparkly_HTPLA_1.0.0.pdf"
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0717/9095/files/TDS__Translucent_Sparkly_HTPLA_1.0.0.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://proto-pasta.com/products/recycled-pla-bla",
+      "source_quote": "We seek to reduce waste in our production … We’ve collected our high-quality waste stream and turned it into high-quality recycled filament. … Made from our very own rescued waste stream",
+      "retrieved": "2026-11-03",
+      "notes": "No percentage published; source is Protopasta's own production waste stream."
+    }
+  }
 }

@@ -7,5 +7,17 @@
   "min_print_temperature": 235,
   "max_print_temperature": 275,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 80
+  "max_bed_temperature": 80,
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://proto-pasta.com/products/black-recycled-petg",
+      "source_quote": "We seek to reduce waste in our production … We’ve collected our high-quality waste stream and turned it into high-quality recycled filament. … Made from our very own rescued waste stream",
+      "retrieved": "2026-11-03",
+      "notes": "No percentage published; source is Protopasta's own production waste stream."
+    }
+  }
 }

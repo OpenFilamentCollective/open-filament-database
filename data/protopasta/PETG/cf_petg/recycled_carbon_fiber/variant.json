@@ -3,6 +3,18 @@
   "id": "recycled_carbon_fiber",
   "name": "Recycled Carbon Fiber",
   "color_hex": "#000000",
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://proto-pasta.com/products/recycled-carbon-fiber-petg",
+      "source_quote": "We’ve collected our high-quality waste stream and turned it into high-quality recycled filament. … From our Carbon Fiber PETG waste stream of short spools",
+      "retrieved": "2026-11-03",
+      "notes": "No percentage published; made from Protopasta's own Carbon Fiber PETG short-spool waste."
+    }
+  },
   "traits": {
     "recycled": true,
     "abrasive": true,
