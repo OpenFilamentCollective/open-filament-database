@@ -6,6 +6,17 @@
     ],
     "filament_weight": 750,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
     "gtin": "6938936710998",
     "article_number": "PD02004",
     "purchase_links": [
@@ -19,6 +30,17 @@
     "uuid": "43a15dcd-2c58-49de-a9a3-d29682fdcf05",
     "filament_weight": 750,
     "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
     "gtin": "6938936711889",
     "article_number": "PD02009",
     "discontinued": true,
