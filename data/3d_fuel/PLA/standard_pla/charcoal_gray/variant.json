@@ -4,6 +4,7 @@
   "name": "Charcoal Gray",
   "color_hex": "#4D545A",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

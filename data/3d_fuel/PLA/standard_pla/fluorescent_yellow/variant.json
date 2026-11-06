@@ -5,6 +5,7 @@
   "color_hex": "#CCDE5D",
   "traits": {
     "neon": true,
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

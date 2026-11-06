@@ -4,6 +4,7 @@
   "name": "Chocolate Brown",
   "color_hex": "#58413B",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

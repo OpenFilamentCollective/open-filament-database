@@ -4,6 +4,7 @@
   "name": "Industrial Gray",
   "color_hex": "#858B8D",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

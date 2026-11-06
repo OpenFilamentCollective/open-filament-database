@@ -4,6 +4,7 @@
   "name": "Pistachio Green",
   "color_hex": "#B4D59C",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

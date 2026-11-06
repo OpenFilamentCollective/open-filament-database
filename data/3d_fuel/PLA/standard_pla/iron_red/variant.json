@@ -4,6 +4,7 @@
   "name": "Iron Red",
   "color_hex": "#8A292A",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

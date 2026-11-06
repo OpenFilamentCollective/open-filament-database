@@ -4,6 +4,7 @@
   "name": "Caribbean Blue",
   "color_hex": "#008FA7",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

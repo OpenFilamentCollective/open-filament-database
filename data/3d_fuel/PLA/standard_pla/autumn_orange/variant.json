@@ -4,6 +4,7 @@
   "name": "Autumn Orange",
   "color_hex": "#D15531",
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }
