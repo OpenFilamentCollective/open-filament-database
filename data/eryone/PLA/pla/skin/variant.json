@@ -2,5 +2,19 @@
   "uuid": "fe53cc7c-fca3-40dd-ba7c-ca440efd1cb0",
   "id": "skin",
   "name": "Skin",
-  "color_hex": "#edc09d"
+  "color_hex": "#edc09d",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": null,
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://eryone3d.com/products/pla-filament",
+      "source_quote": "High purity raw materials, corn.",
+      "retrieved": "2026-11-06",
+      "notes": "The brand names corn as the raw material. No bio-based percentage or test method is published."
+    }
+  },
+  "traits": {
+    "bio_based": true
+  }
 }

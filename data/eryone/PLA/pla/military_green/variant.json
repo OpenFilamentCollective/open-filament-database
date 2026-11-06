@@ -2,5 +2,19 @@
   "uuid": "c01c8d31-df31-4d13-ab9e-a8e802552919",
   "id": "military_green",
   "name": "Military green",
-  "color_hex": "#596e45"
+  "color_hex": "#596e45",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": null,
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://eryone3d.com/products/pla-filament",
+      "source_quote": "High purity raw materials, corn.",
+      "retrieved": "2026-11-06",
+      "notes": "The brand names corn as the raw material. No bio-based percentage or test method is published."
+    }
+  },
+  "traits": {
+    "bio_based": true
+  }
 }

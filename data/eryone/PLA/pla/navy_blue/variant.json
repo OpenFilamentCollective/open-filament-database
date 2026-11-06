@@ -2,5 +2,19 @@
   "uuid": "6a4a722b-c015-43fa-9dfd-8e0292390d17",
   "id": "navy_blue",
   "name": "Navy blue",
-  "color_hex": "#485c7c"
+  "color_hex": "#485c7c",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": null,
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://eryone3d.com/products/pla-filament",
+      "source_quote": "High purity raw materials, corn.",
+      "retrieved": "2026-11-06",
+      "notes": "The brand names corn as the raw material. No bio-based percentage or test method is published."
+    }
+  },
+  "traits": {
+    "bio_based": true
+  }
 }
