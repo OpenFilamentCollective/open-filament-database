@@ -2,5 +2,8 @@
   "uuid": "edab4bb8-66b0-4db4-ab4e-b5ca6203130d",
   "id": "dark_gray",
   "name": "DARK GRAY",
-  "color_hex": "#595959"
+  "color_hex": "#595959",
+  "traits": {
+    "bio_based": true
+  }
 }

@@ -4,6 +4,7 @@
   "name": "GALAXY BLACK",
   "color_hex": "#292824",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

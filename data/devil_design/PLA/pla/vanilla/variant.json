@@ -2,5 +2,8 @@
   "uuid": "532670dd-7080-4739-9753-5ba8dd10b8f3",
   "id": "vanilla",
   "name": "VANILLA",
-  "color_hex": "#FFF5B5"
+  "color_hex": "#FFF5B5",
+  "traits": {
+    "bio_based": true
+  }
 }

@@ -4,6 +4,7 @@
   "name": "GALAXY VIOLET",
   "color_hex": "#413A7A",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

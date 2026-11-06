@@ -2,5 +2,8 @@
   "uuid": "7fa29709-ea0d-48d2-9f0e-acb7008a3032",
   "id": "graphite",
   "name": "GRAPHITE",
-  "color_hex": "#292824"
+  "color_hex": "#292824",
+  "traits": {
+    "bio_based": true
+  }
 }

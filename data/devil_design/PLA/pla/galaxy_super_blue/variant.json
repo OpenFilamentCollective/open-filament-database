@@ -4,6 +4,7 @@
   "name": "GALAXY SUPER BLUE",
   "color_hex": "#0E21AE",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

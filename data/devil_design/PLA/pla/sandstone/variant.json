@@ -4,6 +4,7 @@
   "name": "SANDSTONE",
   "color_hex": "#E2C077",
   "traits": {
-    "imitates_stone": true
+    "imitates_stone": true,
+    "bio_based": true
   }
 }
