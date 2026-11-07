@@ -1,66 +1,66 @@
 {
-  "uuid": "31c10e4c-3674-4940-b661-ca3a0e29be0d",
-  "id": "pla",
-  "name": "PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 205,
-  "max_print_temperature": 225,
-  "preheat_temperature": 170,
-  "min_bed_temperature": 40,
-  "max_bed_temperature": 60,
-  "min_chamber_temperature": 18,
-  "max_chamber_temperature": 40,
-  "chamber_temperature": 20,
-  "sustainability": {
-    "carbon_footprints": [
-      {
-        "value_kg_co2e": 5.76,
-        "declared_unit": "unknown",
-        "boundary": "filament_cradle_to_gate",
-        "packaging_included": "unknown",
-        "biogenic_carbon": "unknown",
-        "recycled_allocation": "not_applicable",
-        "method": "lca",
-        "tool": "SimaPro 9.3.0.2",
-        "practitioner": "Ing. Marie Tichá",
-        "verification": "none",
-        "publicly_available": false,
-        "published": "2022-03-17",
-        "source_type": "primary",
-        "source_url": "https://blog.prusa3d.com/introducing-prusament-petg-recycled-with-calculated-life-cycle-assessment_65806/",
-        "source_quote": "And with the Prusament PLA Recycled , we managed to lower the CO 2 emissions by 57 %, from 5.76 kg to 2.47 kg.",
-        "retrieved": "2026-11-06",
-        "notes": "LCA by Ing. Marie Tichá in SimaPro 9.3.0.2. The source says PLA Recycled lowered emissions 'from 5.76 kg to 2.47 kg' without naming the baseline product or saying per kg of filament, so the declared unit is unknown. Read as virgin Prusament PLA, because the same post compares PETG Recycled with pure Prusament PETG."
-      }
-    ]
-  },
-  "slicer_settings": {
-    "prusaslicer": {
-      "profile_name": "Prusament PLA"
+    "uuid": "31c10e4c-3674-4940-b661-ca3a0e29be0d",
+    "id": "pla",
+    "name": "PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.24,
+    "min_print_temperature": 205,
+    "max_print_temperature": 225,
+    "preheat_temperature": 170,
+    "min_bed_temperature": 40,
+    "max_bed_temperature": 60,
+    "min_chamber_temperature": 18,
+    "max_chamber_temperature": 40,
+    "chamber_temperature": 20,
+    "sustainability": {
+        "carbon_footprints": [
+            {
+                "value_kg_co2e": 5.76,
+                "declared_unit": "unknown",
+                "boundary": "filament_cradle_to_gate",
+                "packaging_included": "unknown",
+                "biogenic_carbon": "unknown",
+                "recycled_allocation": "not_applicable",
+                "method": "lca",
+                "tool": "SimaPro 9.3.0.2",
+                "practitioner": "Ing. Marie Tichá",
+                "verification": "none",
+                "publicly_available": false,
+                "published": "2022-03-17",
+                "source_type": "primary",
+                "source_url": "https://blog.prusa3d.com/introducing-prusament-petg-recycled-with-calculated-life-cycle-assessment_65806/",
+                "source_quote": "And with the Prusament PLA Recycled , we managed to lower the CO 2 emissions by 57 %, from 5.76 kg to 2.47 kg.",
+                "retrieved": "2026-11-06",
+                "notes": "LCA by Ing. Marie Tichá in SimaPro 9.3.0.2. The source says PLA Recycled lowered emissions 'from 5.76 kg to 2.47 kg' without naming the baseline product or saying per kg of filament, so the declared unit is unknown. Read as virgin Prusament PLA, because the same post compares PETG Recycled with pure Prusament PETG."
+            }
+        ]
     },
-    "orcaslicer": {
-      "generic_id": "GFL99",
-      "id": "GFL99",
-      "profile_name": "Prusament PLA"
-    },
-    "superslicer": {
-      "profile_name": "Prusament PLA"
-    },
-    "elegooslicer": {
-      "generic_id": "GFL99",
-      "id": "GFL99",
-      "profile_name": "Prusament PLA"
-    },
-    "crealityprint": {
-      "generic_id": "GFL99",
-      "id": "GFL99_1",
-      "profile_name": "Prusament PLA"
-    },
-    "anycubicslicer": {
-      "generic_id": "GFL99",
-      "id": "GFL99",
-      "profile_name": "Prusament PLA"
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Prusament PLA"
+        },
+        "orcaslicer": {
+            "generic_id": "GFL99",
+            "id": "GFL99",
+            "profile_name": "Prusament PLA"
+        },
+        "superslicer": {
+            "profile_name": "Prusament PLA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFL99",
+            "profile_name": "Prusament PLA"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFL99_1",
+            "profile_name": "Prusament PLA"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "GFL99",
+            "profile_name": "Prusament PLA"
+        }
     }
-  }
 }
