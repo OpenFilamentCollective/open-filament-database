@@ -1,6 +1,10 @@
 {
   "uuid": "ddd234c6-68ea-4077-aa5f-51435ff00f85",
+  "moved_from": [
+    "dc1391ef-246b-4298-a9f0-0b95dac0740b"
+  ],
   "id": "oakwood",
   "name": "Oak(Wood)",
-  "color_hex": "#C7955A"
+  "color_hex": "#C7955A",
+  "discontinued": false
 }

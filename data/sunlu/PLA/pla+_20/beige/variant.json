@@ -1,6 +1,10 @@
 {
   "uuid": "2dbe34e0-5cf1-42a0-b60f-f75d85a0a01a",
+  "moved_from": [
+    "278cbf19-5efc-47d7-b9f9-8e3213aeeb13"
+  ],
   "id": "beige",
   "name": "Beige",
-  "color_hex": "#EAD8AB"
+  "color_hex": "#F0E0D6",
+  "discontinued": false
 }

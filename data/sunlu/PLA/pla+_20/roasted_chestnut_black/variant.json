@@ -1,6 +1,10 @@
 {
   "uuid": "8a47ebcb-12e7-4c6b-a4ed-c101235e49e0",
+  "moved_from": [
+    "1acc1b2d-bb07-4f84-a9dc-a780c5ffd02f"
+  ],
   "id": "roasted_chestnut_black",
   "name": "Roasted Chestnut Black",
-  "color_hex": "#9D8C7C"
+  "color_hex": "#1D0E07",
+  "discontinued": false
 }
