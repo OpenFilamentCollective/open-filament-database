@@ -1,22 +1,22 @@
 {
-    "uuid": "995e172a-b463-43e2-be9d-75f188b143bd",
-    "id": "pro_petg",
-    "name": "Pro PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.27,
-    "min_print_temperature": 245,
-    "max_print_temperature": 265,
-    "min_bed_temperature": 70,
-    "max_bed_temperature": 80,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0027/5339/6848/files/3D_Fuel_Pro_PETG_9-22-25.pdf?v=1758582495",
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "3D-Fuel Pro PETG"
-        },
-        "orcaslicer": {
-            "profile_name": "3D-Fuel Pro PETG",
-            "id": "OFQkDZWR",
-            "generic_id": "OFYPdQJh"
-        }
+  "uuid": "995e172a-b463-43e2-be9d-75f188b143bd",
+  "id": "pro_petg",
+  "name": "Pro PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "min_print_temperature": 245,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0027/5339/6848/files/3D_Fuel_Pro_PETG_9-22-25.pdf?v=1758582495",
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "3D-Fuel Pro PETG"
+    },
+    "orcaslicer": {
+      "generic_id": "OFYPdQJh",
+      "id": "OFQkDZWR",
+      "profile_name": "3D-Fuel Pro PETG"
     }
+  }
 }

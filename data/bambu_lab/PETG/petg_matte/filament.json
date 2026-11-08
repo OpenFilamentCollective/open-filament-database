@@ -1,32 +1,32 @@
 {
-    "uuid": "d6f077b3-698e-4ca2-ad0d-75059fedb2ad",
-    "id": "petg_matte",
-    "name": "PETG Matte",
-    "diameter_tolerance": 0.02,
-    "density": 1.37,
-    "min_print_temperature": 230,
-    "max_print_temperature": 260,
-    "min_bed_temperature": 65,
-    "max_bed_temperature": 75,
-    "max_volumetric_speed": 15,
-    "min_fan_speed": 20,
-    "max_fan_speed": 40,
-    "dry_temperature": 65,
-    "dry_time": 8,
-    "min_nozzle_diameter": 0.2,
-    "data_sheet_url": "https://store.bblcdn.com/s5/default/f235921f9c0e4543a8f99704c577741b/PETG_Matte.pdf",
-    "safety_sheet_url": "https://store.bblcdn.com/s7/default/7cc6d511d4284684855d15c59c824cca/SDS20260701G03_Bambu_PETG_Matte.pdf",
-    "discontinued": false,
-    "slicer_settings": {
-        "bambustudio": {
-            "generic_id": "GFG99",
-            "id": "GFG03",
-            "profile_name": "Bambu PETG Matte"
-        },
-        "orcaslicer": {
-            "profile_name": "Bambu PETG Matte",
-            "id": "OFdyfQvU",
-            "generic_id": "OFYPdQJh"
-        }
+  "uuid": "d6f077b3-698e-4ca2-ad0d-75059fedb2ad",
+  "id": "petg_matte",
+  "name": "PETG Matte",
+  "diameter_tolerance": 0.02,
+  "density": 1.37,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 65,
+  "max_bed_temperature": 75,
+  "max_volumetric_speed": 15,
+  "min_fan_speed": 20,
+  "max_fan_speed": 40,
+  "dry_temperature": 65,
+  "dry_time": 8,
+  "min_nozzle_diameter": 0.2,
+  "data_sheet_url": "https://store.bblcdn.com/s5/default/f235921f9c0e4543a8f99704c577741b/PETG_Matte.pdf",
+  "safety_sheet_url": "https://store.bblcdn.com/s7/default/7cc6d511d4284684855d15c59c824cca/SDS20260701G03_Bambu_PETG_Matte.pdf",
+  "discontinued": false,
+  "slicer_settings": {
+    "bambustudio": {
+      "generic_id": "GFG99",
+      "id": "GFG03",
+      "profile_name": "Bambu PETG Matte"
+    },
+    "orcaslicer": {
+      "generic_id": "OFYPdQJh",
+      "id": "OFdyfQvU",
+      "profile_name": "Bambu PETG Matte"
     }
+  }
 }

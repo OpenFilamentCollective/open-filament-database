@@ -1,18 +1,18 @@
 {
-    "uuid": "690fdb01-4dc9-4654-a71f-5e6d85834f66",
-    "id": "pa6_cf",
-    "name": "PA6-CF",
-    "diameter_tolerance": 0.03,
-    "density": 1.2,
-    "min_print_temperature": 270,
-    "max_print_temperature": 290,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 70,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_PA6-CF_Filament_Technical_Data_Sheet_TDS.pdf",
-    "slicer_settings": {
-        "orcaslicer": {
-            "profile_name": "INSLOGIC PA6-CF",
-            "id": "OFDkHRsW"
-        }
+  "uuid": "690fdb01-4dc9-4654-a71f-5e6d85834f66",
+  "id": "pa6_cf",
+  "name": "PA6-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.2,
+  "min_print_temperature": 270,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_PA6-CF_Filament_Technical_Data_Sheet_TDS.pdf",
+  "slicer_settings": {
+    "orcaslicer": {
+      "id": "OFDkHRsW",
+      "profile_name": "INSLOGIC PA6-CF"
     }
+  }
 }

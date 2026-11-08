@@ -1,20 +1,20 @@
 {
-    "uuid": "1209a30b-8c3e-4beb-9b9f-ed1361f0bc5c",
-    "id": "pla_metal",
-    "name": "PLA Metal",
-    "diameter_tolerance": 0.03,
-    "density": 1.2,
-    "max_dry_temperature": 65,
-    "min_print_temperature": 200,
-    "max_print_temperature": 230,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 60,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0245/5519/2380/files/ANYCUBIC_TDS_PLA_Metal_V3.0.pdf?v=1758525990",
-    "slicer_settings": {
-        "orcaslicer": {
-            "profile_name": "Anycubic PLA Metal",
-            "id": "OF5F0S66",
-            "generic_id": "OFDSrzZ8"
-        }
+  "uuid": "1209a30b-8c3e-4beb-9b9f-ed1361f0bc5c",
+  "id": "pla_metal",
+  "name": "PLA Metal",
+  "diameter_tolerance": 0.03,
+  "density": 1.2,
+  "max_dry_temperature": 65,
+  "min_print_temperature": 200,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0245/5519/2380/files/ANYCUBIC_TDS_PLA_Metal_V3.0.pdf?v=1758525990",
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "OFDSrzZ8",
+      "id": "OF5F0S66",
+      "profile_name": "Anycubic PLA Metal"
     }
+  }
 }

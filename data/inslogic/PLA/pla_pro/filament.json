@@ -1,19 +1,19 @@
 {
-    "uuid": "b0e2a390-4f8a-4a3e-9f1b-1b8cec10b7f2",
-    "id": "pla_pro",
-    "name": "PLA Pro",
-    "diameter_tolerance": 0.02,
-    "density": 1.2,
-    "min_print_temperature": 195,
-    "max_print_temperature": 220,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 60,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_PLA_Pro_Filament_Technical_Data_Sheet_TDS.pdf",
-    "slicer_settings": {
-        "orcaslicer": {
-            "profile_name": "INSLOGIC PLA Pro",
-            "id": "OFvPeNbA",
-            "generic_id": "OFDSrzZ8"
-        }
+  "uuid": "b0e2a390-4f8a-4a3e-9f1b-1b8cec10b7f2",
+  "id": "pla_pro",
+  "name": "PLA Pro",
+  "diameter_tolerance": 0.02,
+  "density": 1.2,
+  "min_print_temperature": 195,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_PLA_Pro_Filament_Technical_Data_Sheet_TDS.pdf",
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "OFDSrzZ8",
+      "id": "OFvPeNbA",
+      "profile_name": "INSLOGIC PLA Pro"
     }
+  }
 }

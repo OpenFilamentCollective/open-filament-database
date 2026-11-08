@@ -1,18 +1,18 @@
 {
-    "uuid": "593fe3d2-9099-4114-a410-967087f5bbb3",
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.27,
-    "min_print_temperature": 220,
-    "max_print_temperature": 250,
-    "min_bed_temperature": 75,
-    "max_bed_temperature": 85,
-    "slicer_settings": {
-        "orcaslicer": {
-            "profile_name": "JAYO PETG",
-            "id": "OF63bToB",
-            "generic_id": "OFYPdQJh"
-        }
+  "uuid": "593fe3d2-9099-4114-a410-967087f5bbb3",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 75,
+  "max_bed_temperature": 85,
+  "slicer_settings": {
+    "orcaslicer": {
+      "generic_id": "OFYPdQJh",
+      "id": "OF63bToB",
+      "profile_name": "JAYO PETG"
     }
+  }
 }
