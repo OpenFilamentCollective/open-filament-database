@@ -1,0 +1,9 @@
+{
+  "id": "rainbow",
+  "name": "Rainbow",
+  "color_hex": "#ECE4E4",
+  "discontinued": false,
+  "traits": {
+    "glow": true
+  }
+}
