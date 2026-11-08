@@ -10,8 +10,8 @@
     "max_bed_temperature": 45,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFU99",
-            "id": "OETPUB00",
+            "generic_id": "OFgbpcy9",
+            "id": "OF30Ftju",
             "profile_name": "Elegoo Rapid TPU 95A"
         },
         "elegooslicer": {

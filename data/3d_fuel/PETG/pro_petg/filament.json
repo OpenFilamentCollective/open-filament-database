@@ -12,6 +12,11 @@
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "3D-Fuel Pro PETG"
+        },
+        "orcaslicer": {
+            "profile_name": "3D-Fuel Pro PETG",
+            "id": "OFQkDZWR",
+            "generic_id": "OFYPdQJh"
         }
     }
 }

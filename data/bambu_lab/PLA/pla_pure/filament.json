@@ -28,6 +28,11 @@
             "generic_id": "GFL99",
             "id": "GFA19",
             "profile_name": "Bambu PLA Pure"
+        },
+        "orcaslicer": {
+            "profile_name": "Bambu PLA Pure",
+            "id": "OFTHDCqA",
+            "generic_id": "OFDSrzZ8"
         }
     }
 }

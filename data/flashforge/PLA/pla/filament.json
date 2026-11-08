@@ -10,8 +10,8 @@
     "max_bed_temperature": 60,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "FFF01",
+            "generic_id": "OFDSrzZ8",
+            "id": "OFDKgoqx",
             "profile_name": "Flashforge PLA"
         },
         "elegooslicer": {

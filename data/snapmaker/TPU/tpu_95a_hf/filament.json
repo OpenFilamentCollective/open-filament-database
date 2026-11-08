@@ -1,14 +1,21 @@
 {
-  "uuid": "b7359f31-4164-41ff-a049-0932642a53d7",
-  "id": "tpu_95a_hf",
-  "name": "TPU 95A HF",
-  "diameter_tolerance": 0.03,
-  "density": 1.216,
-  "shore_hardness_a": 95,
-  "max_dry_temperature": 65,
-  "min_print_temperature": 200,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 25,
-  "max_bed_temperature": 50,
-  "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+TPU+95A+HF+Technical+Data+Sheet+V1.0.2.pdf"
+    "uuid": "b7359f31-4164-41ff-a049-0932642a53d7",
+    "id": "tpu_95a_hf",
+    "name": "TPU 95A HF",
+    "diameter_tolerance": 0.03,
+    "density": 1.216,
+    "shore_hardness_a": 95,
+    "max_dry_temperature": 65,
+    "min_print_temperature": 200,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 25,
+    "max_bed_temperature": 50,
+    "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+TPU+95A+HF+Technical+Data+Sheet+V1.0.2.pdf",
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Snapmaker TPU 95A HF",
+            "id": "OFXSvqOX",
+            "generic_id": "OFgbpcy9"
+        }
+    }
 }

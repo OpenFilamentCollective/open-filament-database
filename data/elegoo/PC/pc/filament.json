@@ -10,8 +10,8 @@
     "max_bed_temperature": 110,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFC99",
-            "id": "OEPCB00",
+            "generic_id": "OFLakOUI",
+            "id": "OFUyDDNv",
             "profile_name": "Elegoo PC"
         },
         "elegooslicer": {

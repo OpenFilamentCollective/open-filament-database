@@ -10,8 +10,8 @@
     "max_bed_temperature": 75,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "OGFE03",
+            "generic_id": "OFYPdQJh",
+            "id": "OFuUuIhR",
             "profile_name": "Elegoo PETG-CF"
         },
         "elegooslicer": {

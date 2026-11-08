@@ -1,12 +1,19 @@
 {
-  "uuid": "729307d3-e6b4-4fef-804a-a24f655f8b2b",
-  "id": "pla_galaxy",
-  "name": "PLA Galaxy",
-  "diameter_tolerance": 0.02,
-  "density": 1.23,
-  "min_print_temperature": 200,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 60,
-  "max_bed_temperature": 65,
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_PLA_Galaxy_Filament_SDS_CANEC25019618101.pdf?v=1758593748"
+    "uuid": "729307d3-e6b4-4fef-804a-a24f655f8b2b",
+    "id": "pla_galaxy",
+    "name": "PLA Galaxy",
+    "diameter_tolerance": 0.02,
+    "density": 1.23,
+    "min_print_temperature": 200,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 60,
+    "max_bed_temperature": 65,
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_PLA_Galaxy_Filament_SDS_CANEC25019618101.pdf?v=1758593748",
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Anycubic PLA Galaxy",
+            "id": "OF80Qbpq",
+            "generic_id": "OFDSrzZ8"
+        }
+    }
 }

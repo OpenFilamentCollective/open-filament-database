@@ -1,12 +1,19 @@
 {
-  "uuid": "bb6d7c6c-06c7-4a4e-8be5-91f33af8b155",
-  "id": "petg_hf",
-  "name": "PETG HF",
-  "diameter_tolerance": 0.02,
-  "density": 1.3,
-  "min_print_temperature": 240,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 60,
-  "max_bed_temperature": 80,
-  "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+PETG+HF+Technical+Data+Sheet+V1.0.0.pdf"
+    "uuid": "bb6d7c6c-06c7-4a4e-8be5-91f33af8b155",
+    "id": "petg_hf",
+    "name": "PETG HF",
+    "diameter_tolerance": 0.02,
+    "density": 1.3,
+    "min_print_temperature": 240,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 60,
+    "max_bed_temperature": 80,
+    "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+PETG+HF+Technical+Data+Sheet+V1.0.0.pdf",
+    "slicer_settings": {
+        "orcaslicer": {
+            "profile_name": "Snapmaker PETG HF",
+            "id": "OFL9aRjN",
+            "generic_id": "OFYPdQJh"
+        }
+    }
 }

@@ -12,6 +12,11 @@
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "3D-Fuel Pro PCTG"
+        },
+        "orcaslicer": {
+            "profile_name": "3D-Fuel Pro PCTG",
+            "id": "OFgpXeqm",
+            "generic_id": "GFG97-01"
         }
     }
 }

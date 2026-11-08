@@ -10,8 +10,8 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "OEPLAB00",
+            "generic_id": "OFDSrzZ8",
+            "id": "OFln72PT",
             "profile_name": "Elegoo PLA-CF"
         },
         "elegooslicer": {
