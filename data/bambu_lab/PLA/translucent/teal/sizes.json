@@ -3,11 +3,16 @@
     "uuid": "84fc2e6c-5d40-4d97-9dfe-512e36d965f5",
     "filament_weight": 1000.0,
     "diameter": 1.75,
+    "gtin": "6977252428439",
     "article_number": "13612",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://eu.store.bambulab.com/products/pla-translucent?id=54345716564316"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-translucent-teal"
       }
     ]
   }

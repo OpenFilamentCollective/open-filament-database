@@ -24,5 +24,19 @@
         "url": "https://3deksperten.dk/products/bambu-lab-pla-tough-grey-1-75mm-1kg-1"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285508577",
+    "article_number": "12105",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-tough-gray?sai=43965"
+      }
+    ]
   }
 ]

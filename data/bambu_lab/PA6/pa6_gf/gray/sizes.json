@@ -3,11 +3,16 @@
     "uuid": "ed279ffb-3007-4f84-adf3-e654104a4da2",
     "filament_weight": 1000.0,
     "diameter": 1.75,
+    "gtin": "6975337037064",
     "article_number": "72103",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-gf?variant=41924135911560"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pa6-gf-gray"
       }
     ]
   }

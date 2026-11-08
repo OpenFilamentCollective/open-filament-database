@@ -3,11 +3,16 @@
     "uuid": "e510399e-75a7-4f39-a5e1-c4390fe1fb55",
     "filament_weight": 1000.0,
     "diameter": 1.75,
+    "gtin": "6977252428491",
     "article_number": "13410",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://eu.store.bambulab.com/products/pla-translucent?id=54407223017820"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-translucent-mellow-yellow"
       }
     ]
   }

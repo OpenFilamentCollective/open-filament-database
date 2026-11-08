@@ -18,7 +18,14 @@
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
+    "gtin": "6937285509710",
     "article_number": "30105",
-    "discontinued": false
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-black-3?sai=42616"
+      }
+    ]
   }
 ]

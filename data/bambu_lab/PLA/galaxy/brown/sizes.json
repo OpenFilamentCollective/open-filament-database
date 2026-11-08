@@ -6,8 +6,8 @@
     ],
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921159956012",
     "article_number": "13203",
+    "barcode_identifier": "921159956012",
     "purchase_links": [
       {
         "store_id": "bblstore",

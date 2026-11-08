@@ -3,11 +3,16 @@
     "uuid": "ce8ad9f5-2368-444c-bcb9-af36b3214c30",
     "filament_weight": 1000.0,
     "diameter": 1.75,
+    "gtin": "6977252428422",
     "article_number": "13711",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://eu.store.bambulab.com/products/pla-translucent?id=54407223116124"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-translucent-lavender"
       }
     ]
   }

@@ -5,12 +5,17 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "gtin": "921087642059",
+    "gtin": "6975337030379",
     "article_number": "40600",
+    "barcode_identifier": "921087642059",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=40475105591432"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/abs-blue-8"
       }
     ]
   }

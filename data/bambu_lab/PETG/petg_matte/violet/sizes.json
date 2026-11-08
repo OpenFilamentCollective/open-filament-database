@@ -6,12 +6,31 @@
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
+    "gtin": "6937285513717",
     "article_number": "35702",
     "discontinued": false,
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://store.bambulab.com/products/petg-matte"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-matte-violet"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285513724",
+    "article_number": "35702",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-matte-violet?sai=47158"
       }
     ]
   }

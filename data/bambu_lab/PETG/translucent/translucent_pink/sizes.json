@@ -5,12 +5,24 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "gtin": "921159956009",
     "article_number": "32200",
+    "barcode_identifier": "921159956009",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42720032653448"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6975337036098",
+    "article_number": "32200",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-translucent-pink"
       }
     ]
   }

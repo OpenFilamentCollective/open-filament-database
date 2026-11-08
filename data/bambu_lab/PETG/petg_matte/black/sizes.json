@@ -6,12 +6,31 @@
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
+    "gtin": "6937285513595",
     "article_number": "35101",
     "discontinued": false,
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://store.bambulab.com/products/petg-matte"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-matte-black-2?sai=47113"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285513601",
+    "article_number": "35101",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-matte-black-2"
       }
     ]
   }

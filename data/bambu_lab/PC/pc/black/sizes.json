@@ -3,12 +3,17 @@
     "uuid": "3f8b9db9-5f22-4bd3-aed5-1531e30f26ee",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921072925223",
+    "gtin": "6975337032205",
     "article_number": "60101",
+    "barcode_identifier": "921072925223",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pc-tpu/products/pc-filament?variant=41135409528968"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pc-black-2"
       }
     ]
   }

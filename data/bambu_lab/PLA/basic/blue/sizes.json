@@ -3,12 +3,16 @@
     "uuid": "cc958c7b-967b-4fc2-a034-6c8b40b213b8",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "6975337032038",
+    "gtin": "6975337032533",
     "article_number": "10601",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=41142110093448"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-basic-blue"
       }
     ]
   },

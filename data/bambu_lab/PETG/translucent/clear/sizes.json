@@ -18,12 +18,16 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "ean": "6975337038016",
+    "gtin": "6975337038023",
     "article_number": "32101",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42479468281992"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-translucent-clear?sai=23549"
       }
     ]
   }

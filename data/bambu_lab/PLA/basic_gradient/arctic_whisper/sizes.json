@@ -3,8 +3,8 @@
     "uuid": "21b8344b-66bf-415d-bf87-55238e877b10",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921086537184",
     "article_number": "10900",
+    "barcode_identifier": "921086537184",
     "purchase_links": [
       {
         "store_id": "bblstore",

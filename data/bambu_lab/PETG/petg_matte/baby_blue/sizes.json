@@ -14,5 +14,19 @@
         "url": "https://store.bambulab.com/products/petg-matte"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285513687",
+    "article_number": "35600",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-matte-baby-blue"
+      }
+    ]
   }
 ]

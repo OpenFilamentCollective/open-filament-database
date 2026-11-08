@@ -3,8 +3,7 @@
     "uuid": "2a8745a2-47fd-4975-b4c4-766f19663734",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "spool_refill": true,
-    "container_material": "refill",
+    "spool_refill": false,
     "ean": "6975337032410",
     "article_number": "11500",
     "purchase_links": [
@@ -20,11 +19,15 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "empty_spool_weight": 6975337030119,
+    "gtin": "6975337030119",
     "purchase_links": [
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-grass-green-1-75mm-1kg-refill"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-matte-grass-green?sai=23834"
       }
     ]
   }
