@@ -15,5 +15,19 @@
         "url": "https://store.bambulab.com/products/pla-pure?id=738891519803023426"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285512536",
+    "article_number": "17100",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/bambu-pla-pure-pure-white?sai=44523"
+      }
+    ]
   }
 ]

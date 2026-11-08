@@ -3,12 +3,17 @@
     "uuid": "1142b59c-65f4-491a-bda9-debf842b8050",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921115333082",
+    "gtin": "6975337033394",
     "article_number": "14700",
+    "barcode_identifier": "921115333082",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=41286543245448"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-cf-iris-purple"
       }
     ]
   }

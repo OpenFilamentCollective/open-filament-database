@@ -3,12 +3,17 @@
     "uuid": "79831b2f-36eb-40b8-8057-b9d1b8c0169d",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921087642070",
+    "gtin": "6975337032953",
     "article_number": "45500",
+    "barcode_identifier": "921087642070",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/asa-filament?variant=41227780751496"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/asa-green-2"
       }
     ]
   }

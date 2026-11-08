@@ -6,14 +6,27 @@
     ],
     "filament_weight": 1000,
     "diameter": 1.75,
-    "spool_refill": true,
-    "container_material": "refill",
+    "spool_refill": false,
     "ean": "6975337032052",
     "article_number": "10603",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=41884192571528"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6975337037385",
+    "article_number": "10603",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-basic-cyan?sai=23675"
       }
     ]
   }

@@ -3,14 +3,27 @@
     "uuid": "eddeb412-3e74-421f-9f27-947d8d44130f",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "spool_refill": true,
-    "container_material": "refill",
+    "spool_refill": false,
     "ean": "6975337032359",
     "article_number": "10203",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=40475106902152"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6975337030249",
+    "article_number": "10203",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-basic-pink?sai=23966"
       }
     ]
   }

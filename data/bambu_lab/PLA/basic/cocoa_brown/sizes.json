@@ -13,5 +13,17 @@
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=43045598724232"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6977252429108",
+    "article_number": "10802",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-basic-cocoa-brown?sai=36238"
+      }
+    ]
   }
 ]

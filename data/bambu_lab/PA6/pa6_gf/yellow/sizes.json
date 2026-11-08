@@ -3,8 +3,8 @@
     "uuid": "46df645a-c761-494f-a029-454f40b381cd",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921170599768",
     "article_number": "72400",
+    "barcode_identifier": "921170599768",
     "purchase_links": [
       {
         "store_id": "bblstore",

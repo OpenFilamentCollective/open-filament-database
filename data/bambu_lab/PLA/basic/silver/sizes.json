@@ -17,12 +17,16 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "ean": "6975337031390",
+    "gtin": "6975337030218",
     "article_number": "10102",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-filament?variant=40475106803848"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-basic-silver"
       }
     ]
   },
@@ -32,7 +36,7 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "gtin": "921032457960",
+    "barcode_identifier": "921032457960",
     "purchase_links": [
       {
         "store_id": "3deksperten",

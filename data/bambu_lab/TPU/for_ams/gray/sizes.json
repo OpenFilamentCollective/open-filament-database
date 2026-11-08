@@ -7,11 +7,16 @@
     ],
     "filament_weight": 1000.0,
     "diameter": 1.75,
+    "gtin": "6977252426220",
     "article_number": "53102",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pc-tpu/products/tpu-for-ams?variant=43059884753032"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/tpu-for-ams-gray"
       }
     ]
   }

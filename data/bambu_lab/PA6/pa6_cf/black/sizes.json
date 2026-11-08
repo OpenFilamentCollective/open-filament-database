@@ -15,12 +15,17 @@
     "uuid": "8a39781e-86a7-406f-a7b3-95dec7908a3d",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921082525998",
+    "gtin": "6975337032984",
     "article_number": "72100",
+    "barcode_identifier": "921082525998",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-cf?variant=41270316630152"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pa6-cf-black"
       }
     ]
   }

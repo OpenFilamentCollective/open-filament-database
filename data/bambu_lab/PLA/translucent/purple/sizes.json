@@ -3,11 +3,16 @@
     "uuid": "d01e0cba-8912-4a72-96d2-d1ecde125094",
     "filament_weight": 1000.0,
     "diameter": 1.75,
+    "gtin": "6977252428477",
     "article_number": "13710",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://eu.store.bambulab.com/products/pla-translucent?id=54345716629852"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-translucent-purple"
       }
     ]
   }

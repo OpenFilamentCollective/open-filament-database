@@ -3,12 +3,17 @@
     "uuid": "a2cc5ca6-f078-43ba-a07d-6c363306c1af",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921072925226",
+    "gtin": "6975337032106",
     "article_number": "13800",
+    "barcode_identifier": "921072925226",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-metal?variant=41150855577736"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-metal-copper-brown"
       }
     ]
   }

@@ -4,6 +4,13 @@
     "filament_weight": 500,
     "diameter": 1.75,
     "empty_spool_weight": 250,
-    "article_number": "65104"
+    "gtin": "6937285500731",
+    "article_number": "65104",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/support-for-pla-white-1"
+      }
+    ]
   }
 ]

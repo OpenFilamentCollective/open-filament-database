@@ -2,15 +2,21 @@
   {
     "uuid": "8fc990f8-539b-4221-bc28-982842c20473",
     "moved_from": [
-      "15fd1690-28d1-4d3a-aab4-61990bc3c928"
+      "15fd1690-28d1-4d3a-aab4-61990bc3c928",
+      "9c65d39b-ec05-4673-9aee-727103ec3305"
     ],
     "filament_weight": 1000.0,
     "diameter": 1.75,
+    "gtin": "6977252427418",
     "article_number": "13405",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-silk-upgrade?variant=43128679792776"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-silk-gold-6"
       }
     ]
   }

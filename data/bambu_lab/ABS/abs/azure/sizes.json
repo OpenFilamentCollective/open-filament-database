@@ -5,8 +5,8 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "gtin": "921128098885",
     "article_number": "40601",
+    "barcode_identifier": "921128098885",
     "purchase_links": [
       {
         "store_id": "bblstore",

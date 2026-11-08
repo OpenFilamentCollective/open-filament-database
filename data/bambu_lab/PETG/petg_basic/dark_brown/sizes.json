@@ -6,7 +6,28 @@
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
+    "gtin": "6937285510044",
     "article_number": "30800",
-    "discontinued": false
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-dark-brown"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285510181",
+    "article_number": "30800",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-dark-brown?sai=42655"
+      }
+    ]
   }
 ]

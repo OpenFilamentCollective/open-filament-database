@@ -3,6 +3,13 @@
     "uuid": "b6c6e9ba-e869-4c27-92d3-d5c5c237e8ba",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "article_number": "51901"
+    "gtin": "6977252429139",
+    "article_number": "51901",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/tpu-90a-blaze"
+      }
+    ]
   }
 ]

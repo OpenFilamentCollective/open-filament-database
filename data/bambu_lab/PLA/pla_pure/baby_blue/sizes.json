@@ -9,5 +9,19 @@
     "gtin": "6937285512581",
     "article_number": "17600",
     "discontinued": false
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285512598",
+    "article_number": "17600",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/bambu-pla-pure-baby-blue?sai=44505"
+      }
+    ]
   }
 ]

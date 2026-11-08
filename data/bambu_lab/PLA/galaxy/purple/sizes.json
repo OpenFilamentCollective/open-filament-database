@@ -6,12 +6,17 @@
     ],
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921159956013",
+    "gtin": "6975337036135",
     "article_number": "13602",
+    "barcode_identifier": "921159956013",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-galaxy?variant=41834260168840"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-galaxy-purple-1"
       }
     ]
   }

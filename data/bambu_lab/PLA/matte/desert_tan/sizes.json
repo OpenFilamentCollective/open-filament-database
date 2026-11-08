@@ -5,12 +5,17 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "gtin": "921139781713",
+    "gtin": "6975337038177",
     "article_number": "11401",
+    "barcode_identifier": "921139781713",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=42259062620296"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-matte-desert-tan"
       }
     ]
   },
@@ -20,7 +25,7 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "gtin": "921188139080",
+    "barcode_identifier": "921188139080",
     "purchase_links": [
       {
         "store_id": "3deksperten",

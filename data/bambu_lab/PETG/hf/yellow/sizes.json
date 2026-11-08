@@ -21,8 +21,8 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "gtin": "921191885732",
     "article_number": "33400",
+    "barcode_identifier": "921191885732",
     "discontinued": true
   }
 ]

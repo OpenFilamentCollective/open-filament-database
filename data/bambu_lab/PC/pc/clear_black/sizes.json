@@ -3,12 +3,17 @@
     "uuid": "9640cdf9-fdd0-4f6a-bcc0-21004aa8c86b",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921042539704",
+    "gtin": "6975337031086",
     "article_number": "60102",
+    "barcode_identifier": "921042539704",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pc-tpu/products/pc-filament?variant=40741214617736"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pc-clear-black"
       }
     ]
   }

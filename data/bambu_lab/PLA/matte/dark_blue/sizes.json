@@ -20,11 +20,16 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "gtin": "921177428102",
+    "gtin": "6975337037347",
+    "barcode_identifier": "921177428102",
     "purchase_links": [
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-dark-blue-1-75mm-1kg-refill"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-matte-dark-blue"
       }
     ]
   }

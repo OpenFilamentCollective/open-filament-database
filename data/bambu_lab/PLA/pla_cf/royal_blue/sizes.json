@@ -3,12 +3,17 @@
     "uuid": "f746c407-88d3-45c1-bd11-028c60df68d6",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "921115332920",
+    "gtin": "6975337033400",
     "article_number": "14601",
+    "barcode_identifier": "921115332920",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-cf?variant=41286543278216"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-cf-royal-blue"
       }
     ]
   }

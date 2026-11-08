@@ -18,12 +18,16 @@
     "diameter": 1.75,
     "spool_refill": true,
     "container_material": "refill",
-    "ean": "6975337032885",
+    "gtin": "6975337030348",
     "article_number": "40100",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=40475105493128"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/abs-white-10"
       }
     ]
   }

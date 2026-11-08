@@ -9,5 +9,19 @@
     "gtin": "6937285512604",
     "article_number": "17300",
     "discontinued": false
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285512611",
+    "article_number": "17300",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/bambu-pla-pure-apricot?sai=44529"
+      }
+    ]
   }
 ]

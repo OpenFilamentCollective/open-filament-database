@@ -3,6 +3,13 @@
     "uuid": "904f8089-8f20-43f8-a717-a0991c503bfd",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "article_number": "51103"
+    "gtin": "6977252428408",
+    "article_number": "51103",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/tpu-90a-black"
+      }
+    ]
   }
 ]

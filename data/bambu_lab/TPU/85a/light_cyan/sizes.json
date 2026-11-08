@@ -3,6 +3,13 @@
     "uuid": "9f5378db-3f5a-4d63-9559-4241b071dd6d",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "article_number": "51500"
+    "gtin": "6977252428507",
+    "article_number": "51500",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/tpu-85a-light-cyan"
+      }
+    ]
   }
 ]
