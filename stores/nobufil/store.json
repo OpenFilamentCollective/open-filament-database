@@ -1,0 +1,10 @@
+{
+  "id": "nobufil",
+  "name": "Nobufil",
+  "storefront_url": "https://www.nobufil.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "AT"
+  ],
+  "ships_to": []
+}

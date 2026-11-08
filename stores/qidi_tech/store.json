@@ -1,0 +1,16 @@
+{
+  "id": "qidi_tech",
+  "name": "QIDI Tech",
+  "storefront_url": "https://qidi3d.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "CN",
+    "US",
+    "GB",
+    "EU",
+    "CA",
+    "AU",
+    "JP"
+  ],
+  "ships_to": []
+}

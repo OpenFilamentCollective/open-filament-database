@@ -1,0 +1,18 @@
+{
+  "id": "siraya_tech",
+  "name": "Siraya Tech",
+  "storefront_url": "https://siraya.tech/",
+  "logo": "logo.png",
+  "ships_from": [],
+  "ships_to": [
+    "US",
+    "CA",
+    "MX",
+    "JP",
+    "AU",
+    "GB",
+    "EU",
+    "NO",
+    "CH"
+  ]
+}

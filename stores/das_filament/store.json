@@ -1,0 +1,10 @@
+{
+  "id": "das_filament",
+  "name": "Das Filament",
+  "storefront_url": "https://dasfilament.de/",
+  "logo": "logo.png",
+  "ships_from": [
+    "DE"
+  ],
+  "ships_to": []
+}
