@@ -1,0 +1,14 @@
+{
+  "id": "fiberlogy",
+  "name": "Fiberlogy",
+  "storefront_url": "https://fiberlogy.com/",
+  "logo": "logo.png",
+  "ships_from": [],
+  "ships_to": [
+    "PL",
+    "EU",
+    "GB",
+    "NO",
+    "CH"
+  ]
+}

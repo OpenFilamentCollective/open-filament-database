@@ -1,0 +1,10 @@
+{
+  "id": "colorfabb",
+  "name": "colorFabb",
+  "storefront_url": "https://colorfabb.com/",
+  "logo": "logo.svg",
+  "ships_from": [
+    "NL"
+  ],
+  "ships_to": []
+}

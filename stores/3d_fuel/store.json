@@ -1,0 +1,10 @@
+{
+  "id": "3d_fuel",
+  "name": "3D Fuel",
+  "storefront_url": "https://3dfuel.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": []
+}

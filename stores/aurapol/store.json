@@ -1,0 +1,32 @@
+{
+  "id": "aurapol",
+  "name": "AURAPOL",
+  "storefront_url": "https://www.aurapol.com/",
+  "logo": "logo.png",
+  "ships_from": [],
+  "ships_to": [
+    "SK",
+    "DE",
+    "AT",
+    "HU",
+    "BE",
+    "DK",
+    "EE",
+    "HR",
+    "IT",
+    "LV",
+    "LT",
+    "NL",
+    "RO",
+    "GR",
+    "PT",
+    "BG",
+    "ES",
+    "FR",
+    "SI",
+    "SE",
+    "FI",
+    "LU",
+    "IE"
+  ]
+}
