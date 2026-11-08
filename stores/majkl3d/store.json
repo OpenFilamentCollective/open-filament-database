@@ -4,6 +4,10 @@
   "name": "Majkl3D",
   "storefront_url": "https://www.majkl3d.eu/",
   "logo": "logo.png",
-  "ships_from": [],
-  "ships_to": []
+  "ships_from": [
+    "CZ"
+  ],
+  "ships_to": [
+    "EU"
+  ]
 }

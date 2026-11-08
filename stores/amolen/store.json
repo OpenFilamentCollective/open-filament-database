@@ -4,6 +4,9 @@
   "name": "Amolen",
   "storefront_url": "https://www.amolen.com/",
   "logo": "logo.jpg",
-  "ships_from": [],
+  "ships_from": [
+    "US",
+    "CN"
+  ],
   "ships_to": []
 }

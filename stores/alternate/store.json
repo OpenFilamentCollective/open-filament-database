@@ -1,0 +1,13 @@
+{
+  "id": "alternate",
+  "name": "ALTERNATE",
+  "storefront_url": "https://www.alternate.de/",
+  "logo": "logo.png",
+  "ships_from": [
+    "DE"
+  ],
+  "ships_to": [
+    "DE",
+    "EU"
+  ]
+}

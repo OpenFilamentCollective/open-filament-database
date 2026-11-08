@@ -1,0 +1,16 @@
+{
+  "id": "filamentworld",
+  "name": "Filamentworld",
+  "storefront_url": "https://www.filamentworld.de/",
+  "logo": "logo.svg",
+  "ships_from": [
+    "DE"
+  ],
+  "ships_to": [
+    "DE",
+    "EU",
+    "CH",
+    "NO",
+    "LI"
+  ]
+}
