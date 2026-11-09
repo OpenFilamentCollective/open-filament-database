@@ -14,6 +14,8 @@
     "uuid": "888c6616-302b-43e4-884b-19c067e90e78",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "refill",
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "prusa3d",
@@ -29,6 +31,18 @@
       {
         "store_id": "prusa3d",
         "url": "https://www.prusa3d.com/product/prusament-pla-pristine-white-2kg-2/"
+      }
+    ]
+  },
+  {
+    "filament_weight": 900,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "8594173676176",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-pla-pristine-white-refill-nfc"
       }
     ]
   }

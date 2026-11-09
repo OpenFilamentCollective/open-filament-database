@@ -14,10 +14,23 @@
     "uuid": "edab02c6-1586-4a6b-a5d8-85fe8099621d",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "refill",
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "prusa3d",
         "url": "https://www.prusa3d.com/product/prusament-pla-galaxy-silver-1kg-refill/"
+      }
+    ]
+  },
+  {
+    "filament_weight": 900,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-pla-galaxy-silver-refill-nfc"
       }
     ]
   }
