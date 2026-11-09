@@ -1,19 +1,19 @@
 {
-  "uuid": "123bf4a3-af48-4f61-979b-fc31d0c870e9",
-  "id": "pla",
-  "name": "PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "max_dry_temperature": 60,
-  "min_print_temperature": 200,
-  "max_print_temperature": 210,
-  "min_bed_temperature": 60,
-  "max_bed_temperature": 80,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "OFDSrzZ8",
-      "id": "OFeUeunN",
-      "profile_name": "JAYO PLA"
+    "uuid": "123bf4a3-af48-4f61-979b-fc31d0c870e9",
+    "id": "pla",
+    "name": "PLA",
+    "diameter_tolerance": 0.02,
+    "density": 1.24,
+    "max_dry_temperature": 60,
+    "min_print_temperature": 200,
+    "max_print_temperature": 210,
+    "min_bed_temperature": 60,
+    "max_bed_temperature": 80,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFeUeunN",
+            "profile_name": "JAYO PLA"
+        }
     }
-  }
 }

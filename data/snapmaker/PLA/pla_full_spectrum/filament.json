@@ -1,22 +1,22 @@
 {
-  "uuid": "003dffb6-3b7f-4c8f-8c92-5303cad1ee3a",
-  "id": "pla_full_spectrum",
-  "name": "PLA Full Spectrum",
-  "diameter_tolerance": 0.02,
-  "density": 1.17,
-  "max_dry_temperature": 55,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 25,
-  "max_bed_temperature": 65,
-  "min_nozzle_diameter": 0.2,
-  "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+PLA+Full+Spectrum+Filament+Bundle+Technical+Data+Sheet+V1.0.0.pdf",
-  "discontinued": false,
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "OFDSrzZ8",
-      "id": "OFOPU1xv",
-      "profile_name": "Snapmaker PLA Full Spectrum"
+    "uuid": "003dffb6-3b7f-4c8f-8c92-5303cad1ee3a",
+    "id": "pla_full_spectrum",
+    "name": "PLA Full Spectrum",
+    "diameter_tolerance": 0.02,
+    "density": 1.17,
+    "max_dry_temperature": 55,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 25,
+    "max_bed_temperature": 65,
+    "min_nozzle_diameter": 0.2,
+    "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+PLA+Full+Spectrum+Filament+Bundle+Technical+Data+Sheet+V1.0.0.pdf",
+    "discontinued": false,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFOPU1xv",
+            "profile_name": "Snapmaker PLA Full Spectrum"
+        }
     }
-  }
 }

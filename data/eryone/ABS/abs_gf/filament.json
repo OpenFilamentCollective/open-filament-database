@@ -1,19 +1,19 @@
 {
-  "uuid": "0fcd99f2-972a-433c-a2ff-1816e99561d2",
-  "id": "abs_gf",
-  "name": "ABS-GF",
-  "diameter_tolerance": 0.05,
-  "density": 1.1,
-  "min_print_temperature": 240,
-  "max_print_temperature": 280,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-ABS-GF-TDS.pdf?v=1747275357",
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "OFY9muEs",
-      "id": "OFenMm2Y",
-      "profile_name": "Eryone ABS-GF"
+    "uuid": "0fcd99f2-972a-433c-a2ff-1816e99561d2",
+    "id": "abs_gf",
+    "name": "ABS-GF",
+    "diameter_tolerance": 0.05,
+    "density": 1.1,
+    "min_print_temperature": 240,
+    "max_print_temperature": 280,
+    "min_bed_temperature": 80,
+    "max_bed_temperature": 100,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-ABS-GF-TDS.pdf?v=1747275357",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFY9muEs",
+            "id": "OFenMm2Y",
+            "profile_name": "Eryone ABS-GF"
+        }
     }
-  }
 }

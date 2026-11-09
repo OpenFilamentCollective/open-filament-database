@@ -1,20 +1,20 @@
 {
-  "uuid": "66321b62-9532-4d94-8e13-626695147481",
-  "id": "pla_marble",
-  "name": "PLA Marble",
-  "diameter_tolerance": 0.02,
-  "density": 1.37,
-  "min_print_temperature": 200,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 55,
-  "max_bed_temperature": 65,
-  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0245/5519/2380/files/ANYCUBIC_TDS_PLA_Marble_V3.0.pdf?v=1758283111",
-  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0245/5519/2380/files/EN_SDS_PLA_Marble_Filament_CANEC25016011301_9c373c94-b849-468a-ad9d-280c151df86b.pdf?v=1758283006",
-  "slicer_settings": {
-    "orcaslicer": {
-      "generic_id": "OFDSrzZ8",
-      "id": "OFCSyK66",
-      "profile_name": "Anycubic PLA Marble"
+    "uuid": "66321b62-9532-4d94-8e13-626695147481",
+    "id": "pla_marble",
+    "name": "PLA Marble",
+    "diameter_tolerance": 0.02,
+    "density": 1.37,
+    "min_print_temperature": 200,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 55,
+    "max_bed_temperature": 65,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0245/5519/2380/files/ANYCUBIC_TDS_PLA_Marble_V3.0.pdf?v=1758283111",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0245/5519/2380/files/EN_SDS_PLA_Marble_Filament_CANEC25016011301_9c373c94-b849-468a-ad9d-280c151df86b.pdf?v=1758283006",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFCSyK66",
+            "profile_name": "Anycubic PLA Marble"
+        }
     }
-  }
 }
