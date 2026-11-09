@@ -26,5 +26,18 @@
         "url": "https://www.3djake.com/esun/pla-matte-peach-pink"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208889",
+    "article_number": "PLA-MT175O-PF1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-peach-pink?sai=24715"
+      }
+    ]
   }
 ]

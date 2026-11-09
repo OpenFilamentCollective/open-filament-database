@@ -26,5 +26,18 @@
         "url": "https://www.3djake.com/esun/pla-matte-morandi-purple"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208841",
+    "article_number": "PLA-MT175MO-Z1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-morandi-purple?sai=24706"
+      }
+    ]
   }
 ]

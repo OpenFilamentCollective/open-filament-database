@@ -10,5 +10,18 @@
         "url": "https://esun3dstore.com/products/pla-pro"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208421",
+    "article_number": "PLA+175O-BG1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-beige-1?sai=24538"
+      }
+    ]
   }
 ]
