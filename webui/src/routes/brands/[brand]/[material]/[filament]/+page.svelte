@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import type { Filament, Variant, Sustainability } from '$lib/types/database';
+	import type { Filament, Variant, Sustainability, MechanicalProperty } from '$lib/types/database';
 	import {
 		Modal,
 		MessageBanner,
@@ -20,6 +20,7 @@
 		SlicerSettingsDisplay,
 		CertificationsDisplay,
 		SustainabilityDisplay,
+		MechanicalDisplay,
 		ChildListPanel,
 		SubmittedBanner,
 		InFlightHint,
@@ -404,6 +405,9 @@
 {#snippet sustainabilityRender(sustainability: Sustainability)}
 	<SustainabilityDisplay {sustainability} />
 {/snippet}
+{#snippet mechanicalRender(mechanical: MechanicalProperty[])}
+	<MechanicalDisplay {mechanical} />
+{/snippet}
 {#snippet certificationsRender(certifications: string[])}
 	<CertificationsDisplay {certifications} />
 {/snippet}
@@ -533,6 +537,13 @@
 							label: 'Sustainability',
 							hide: (v) => !v || Object.keys(v).length === 0,
 							customRender: sustainabilityRender,
+							fullWidth: true
+						},
+						{
+							key: 'mechanical',
+							label: 'Mechanical Properties',
+							hide: (v) => !v || v.length === 0,
+							customRender: mechanicalRender,
 							fullWidth: true
 						},
 						{

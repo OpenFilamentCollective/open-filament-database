@@ -1,0 +1,260 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "./mechanical_schema.json",
+    "title": "Mechanical Properties",
+    "description": "Sourced mechanical properties from the brand's data sheet. Copy, never compute: every value must appear verbatim in source_quote, in the unit the source uses. One entry per value, per print direction and condition.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "title": "Mechanical Property",
+        "description": "One published value, copied verbatim from the source",
+        "properties": {
+            "property": {
+                "type": "string",
+                "title": "Property",
+                "description": "What was measured. heat_deflection_045 / _18 are HDT at 0.45 / 1.8 MPa load.",
+                "enum": [
+                    "tensile_modulus",
+                    "tensile_strength",
+                    "yield_strength",
+                    "elongation_at_break",
+                    "flexural_modulus",
+                    "flexural_strength",
+                    "impact_strength",
+                    "impact_strength_notched",
+                    "heat_deflection_045",
+                    "heat_deflection_18",
+                    "vicat_softening"
+                ]
+            },
+            "direction": {
+                "type": "string",
+                "title": "Direction",
+                "description": "Print direction of the test bars: XY = flat, along the layers; XZ = on edge; Z = upright, across the layers. unknown when the source gives none (always for moulded bars).",
+                "enum": [
+                    "XY",
+                    "XZ",
+                    "Z",
+                    "unknown"
+                ]
+            },
+            "value": {
+                "type": "number",
+                "title": "Value",
+                "description": "The value exactly as published, in unit"
+            },
+            "plus_minus": {
+                "type": [
+                    "number",
+                    "null"
+                ],
+                "minimum": 0,
+                "title": "±",
+                "description": "Spread the source gives as ±, in unit. null when it gives none."
+            },
+            "unit": {
+                "type": "string",
+                "title": "Unit",
+                "description": "Unit as published. Never convert: a sheet in psi stays in psi.",
+                "enum": [
+                    "MPa",
+                    "GPa",
+                    "psi",
+                    "ksi",
+                    "%",
+                    "kJ/m2",
+                    "J/m",
+                    "ft-lb/in",
+                    "°C",
+                    "°F"
+                ]
+            },
+            "standard": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "maxLength": 200,
+                "title": "Standard",
+                "description": "Test standard named by the source, e.g. ISO 527 or ASTM D638. Only if the source names one."
+            },
+            "condition": {
+                "type": "string",
+                "title": "Condition",
+                "description": "Moisture state at test time when the source gives it: dry or conditioned (e.g. 23 °C / 50% RH). Most often given for nylons.",
+                "enum": [
+                    "dry",
+                    "conditioned"
+                ]
+            },
+            "specimen": {
+                "type": "object",
+                "title": "Specimen",
+                "description": "How the test bars were made, as stated by the source. Leave out what the source doesn't say.",
+                "properties": {
+                    "process": {
+                        "type": "string",
+                        "title": "Process",
+                        "description": "printed = 3D printed bars; moulded = injection or compression moulded bars (no print direction)",
+                        "enum": [
+                            "printed",
+                            "moulded",
+                            "unknown"
+                        ]
+                    },
+                    "printer": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 200,
+                        "title": "Printer",
+                        "description": "Printer named by the source"
+                    },
+                    "nozzle_diameter": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "exclusiveMinimum": 0,
+                        "title": "Nozzle Diameter",
+                        "description": "Nozzle diameter in mm"
+                    },
+                    "layer_height": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "exclusiveMinimum": 0,
+                        "title": "Layer Height",
+                        "description": "Layer height in mm"
+                    },
+                    "infill_percent": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "minimum": 0,
+                        "maximum": 100,
+                        "title": "Infill %",
+                        "description": "Infill in percent (0-100)"
+                    },
+                    "perimeters": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "minimum": 0,
+                        "title": "Perimeters",
+                        "description": "Number of walls / shells"
+                    },
+                    "raster_angle": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 100,
+                        "title": "Raster Angle",
+                        "description": "Infill direction as written, e.g. ±45°"
+                    },
+                    "print_temperature": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Print Temperature",
+                        "description": "Nozzle temperature in °C"
+                    },
+                    "bed_temperature": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Bed Temperature",
+                        "description": "Bed temperature in °C"
+                    },
+                    "chamber_temperature": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "title": "Chamber Temperature",
+                        "description": "Chamber temperature in °C"
+                    },
+                    "print_speed": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "exclusiveMinimum": 0,
+                        "title": "Print Speed",
+                        "description": "Print speed in mm/s"
+                    },
+                    "conditioning": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 500,
+                        "title": "Conditioning",
+                        "description": "Drying, annealing or moisture conditioning before the test, as written, e.g. annealed at 80 °C for 12 h"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "source_type": {
+                "type": "string",
+                "title": "Source Type",
+                "description": "primary = the brand's own data sheet (TDS), product page or PDF. secondary = a retailer or press copy of the brand's sheet, only when the original can't be reached.",
+                "enum": [
+                    "primary",
+                    "secondary"
+                ]
+            },
+            "source_url": {
+                "type": "string",
+                "title": "Source URL",
+                "description": "Where the figure is published",
+                "format": "uri",
+                "pattern": "^https?://",
+                "maxLength": 1000,
+                "x-placeholder": "https://example.com/..."
+            },
+            "source_quote": {
+                "type": "string",
+                "title": "Source Quote",
+                "description": "Verbatim text from the source. Must contain the value (and plus_minus, if set) exactly as written.",
+                "minLength": 1,
+                "maxLength": 2000
+            },
+            "retrieved": {
+                "type": "string",
+                "format": "date",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "title": "Retrieved",
+                "description": "Date the source was read (YYYY-MM-DD)"
+            },
+            "notes": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "maxLength": 1000,
+                "title": "Notes",
+                "description": "Caveats, such as a range the source gives, conflicting sheets, or anything a reader needs to interpret the value"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "property",
+            "direction",
+            "value",
+            "unit",
+            "source_type",
+            "source_url",
+            "source_quote",
+            "retrieved"
+        ]
+    },
+    "minItems": 1
+}

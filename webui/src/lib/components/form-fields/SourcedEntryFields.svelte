@@ -1,13 +1,14 @@
 <script lang="ts">
 	/**
-	 * Fields of one sourced sustainability entry (a recycled/bio-based content object,
-	 * a carbon footprint, a relative claim, or a size's container_details), rendered
-	 * from its JSON schema so enums, descriptions and required markers have one source.
+	 * Fields of one sourced entry (a recycled/bio-based content object, a carbon
+	 * footprint, a relative claim, a size's container_details, or a mechanical value),
+	 * rendered from its JSON schema so enums, descriptions and required markers have one
+	 * source.
 	 */
 	import { UrlField, TagInput, Tooltip } from '$lib/components/form-fields';
 	import { FixHint } from '$lib/components/ui';
 	import { INPUT_COMPACT_CLASSES, LABEL_COMPACT_CLASSES } from '$lib/styles/formStyles';
-	import { checkSourcedEntry } from '$lib/utils/dataQuality';
+	import { checkSourcedEntry, type EntryIssue } from '$lib/utils/dataQuality';
 	import { enumLabel, schemaTypes, type Entry, type JsonSchema } from '$lib/utils/sustainability';
 
 	interface Props {
@@ -17,16 +18,35 @@
 		idPrefix: string;
 		/** Numbers the source quote must contain, e.g. ['value_kg_co2e']. */
 		valueFields: string[];
+		/**
+		 * Replaces the default source checks, e.g. a mechanical value's unit and direction
+		 * checks, or `[]` for a nested object that carries no source of its own.
+		 */
+		issues?: EntryIssue[];
+		/** Select labels per field and option, where `enumLabel` would misread them (units). */
+		optionLabels?: Record<string, Record<string, string>>;
 	}
 
-	let { entry = $bindable(), schema, idPrefix, valueFields }: Props = $props();
+	let {
+		entry = $bindable(),
+		schema,
+		idPrefix,
+		valueFields,
+		issues,
+		optionLabels = {}
+	}: Props = $props();
 
 	const WIDE = new Set(['source_quote', 'notes', 'baseline', 'source_url']);
 	const TEXTAREA = new Set(['source_quote', 'notes']);
 
 	let required = $derived(new Set(schema?.required ?? []));
 	let fields = $derived(Object.entries(schema?.properties ?? {}));
-	let problems = $derived(checkSourcedEntry(entry, valueFields));
+	let problems = $derived(
+		issues ??
+			checkSourcedEntry(entry, valueFields).map(
+				(message): EntryIssue => ({ level: 'error', message })
+			)
+	);
 
 	function label(key: string, prop: JsonSchema): string {
 		return prop?.title ?? enumLabel(key);
@@ -64,9 +84,16 @@
 				</label>
 				{#if Array.isArray(prop.enum)}
 					<select {id} bind:value={entry[key]} class={INPUT_COMPACT_CLASSES}>
-						{#if !required.has(key)}<option value={undefined}>Not specified</option>{/if}
+						{#if !required.has(key)}
+							<option value={undefined}>Not specified</option>
+						{:else}
+							<!-- Otherwise the select quietly picks the first option, a guess. -->
+							<option value={undefined} disabled hidden>Choose…</option>
+						{/if}
 						{#each prop.enum as option (option)}
-							<option value={option}>{enumLabel(String(option))}</option>
+							<option value={option}>
+								{optionLabels[key]?.[option] ?? enumLabel(String(option))}
+							</option>
 						{/each}
 					</select>
 				{:else if t.includes('boolean')}
@@ -100,6 +127,11 @@
 	{/each}
 </div>
 
-{#each problems as problem (problem)}
-	<FixHint level="error" message={problem} compact class="mt-2" />
+{#each problems as problem (problem.message)}
+	<FixHint
+		level={problem.level === 'error' ? 'error' : 'warn'}
+		message={problem.message}
+		compact
+		class="mt-2"
+	/>
 {/each}

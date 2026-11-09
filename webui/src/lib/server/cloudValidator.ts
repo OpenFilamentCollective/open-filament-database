@@ -31,7 +31,8 @@ interface ValidationResult {
 // --- Schema cache ---
 
 const SCHEMA_NAMES = ['brand', 'material', 'filament', 'variant', 'store', 'sizes', 'material_types'] as const;
-type SchemaName = (typeof SCHEMA_NAMES)[number] | 'sustainability';
+type SubSchemaName = 'sustainability' | 'mechanical';
+type SchemaName = (typeof SCHEMA_NAMES)[number] | SubSchemaName;
 
 import { ENTITY_CONFIGS, SCHEMA_DIR } from './entityConfig';
 const ALLOWED_ENTITY_TYPES = new Set(Object.keys(ENTITY_CONFIGS));
@@ -150,19 +151,19 @@ function resolveExternalRefs(schema: unknown, refMap: Record<string, object>): u
 }
 
 /**
- * The sustainability sub-schema, never fatal: it is not prefetched, so a deployed API
- * that predates it cannot block every submission. Falls back to the checkout's copy,
- * then to a permissive object (CI's ofd-validator still checks the block in full).
+ * An optional sub-schema (sustainability, mechanical), never fatal: it is not prefetched,
+ * so a deployed API that predates it cannot block every submission. Falls back to the
+ * checkout's copy, then to `permissive` (CI's ofd-validator still checks the data in full).
  */
-async function fetchSustainabilitySchema(): Promise<object> {
+async function fetchSubSchema(name: SubSchemaName, permissive: object): Promise<object> {
 	try {
-		return await fetchSchema('sustainability');
+		return await fetchSchema(name);
 	} catch {
 		try {
-			const content = await fs.readFile(`${SCHEMA_DIR}/sustainability_schema.json`, 'utf-8');
+			const content = await fs.readFile(`${SCHEMA_DIR}/${name}_schema.json`, 'utf-8');
 			return JSON.parse(content);
 		} catch {
-			return { type: 'object' };
+			return permissive;
 		}
 	}
 }
@@ -171,13 +172,15 @@ async function compileValidator(entityType: SchemaName) {
 	const ajv = createAjvInstance();
 
 	// Inline external $refs so AJV never needs to resolve relative URIs
-	const [materialTypesSchema, sustainabilitySchema] = await Promise.all([
+	const [materialTypesSchema, sustainabilitySchema, mechanicalSchema] = await Promise.all([
 		fetchSchema('material_types'),
-		fetchSustainabilitySchema()
+		fetchSubSchema('sustainability', { type: 'object' }),
+		fetchSubSchema('mechanical', { type: 'array' })
 	]);
 	const refMap: Record<string, object> = {
 		'./material_types_schema.json': materialTypesSchema,
-		'./sustainability_schema.json': sustainabilitySchema
+		'./sustainability_schema.json': sustainabilitySchema,
+		'./mechanical_schema.json': mechanicalSchema
 	};
 
 	const rawSchema = await fetchSchema(entityType);

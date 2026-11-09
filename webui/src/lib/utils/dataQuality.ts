@@ -445,15 +445,23 @@ export function findDuplicateName<T extends NamedEntry>(
 // show it. Mirrors the sustainability rules in `ofd/validation/data_quality.py`.
 
 const SOURCE_FIELDS = ['source_url', 'source_quote', 'retrieved'] as const;
+const PCT_FIELDS = new Set(['pct', 'recycled_pct', 'reduction_pct']);
 
 /**
- * Matches `value` as written in prose: `5.85` or `5,85`, trailing zeros allowed.
- * The digit boundaries stop `5.85` from matching inside `15.85` or `5.851`.
+ * Matches `value` as written in prose: `5.85` or `5,85`, trailing zeros allowed, and
+ * `7250` as `7,250` or `7 250` (thousands grouped by a comma, space, no-break or narrow
+ * no-break space; `.` is always the decimal point). The digit boundaries stop `5.85`
+ * from matching inside `15.85` or `5.851`.
  */
 export function numberPattern(value: number): RegExp {
 	const text = String(value);
 	const [intPart, frac] = text.split('.');
-	const number = frac ? `${intPart}[.,]${frac}0*` : `${intPart}(?:[.,]0+)?`;
+	const head = intPart.length % 3 || 3;
+	const groups = [intPart.slice(0, head)];
+	for (let i = head; i < intPart.length; i += 3) groups.push(intPart.slice(i, i + 3));
+	const separated = groups.slice(1).map((g) => `[, \\u00a0\\u202f]?${g}`);
+	const integer = groups[0] + separated.join('');
+	const number = frac ? `${integer}[.,]${frac}0*` : `${integer}(?:[.,]0+)?`;
 	return new RegExp(`(?<![\\d.,])${number}(?!\\d)`);
 }
 
@@ -461,10 +469,14 @@ function todayIso(): string {
 	return new Date().toISOString().slice(0, 10);
 }
 
+/** One problem with a sourced entry, shown as an inline hint. */
+export type EntryIssue = { level: 'error' | 'warning'; message: string };
+
 /**
  * Problems with one sourced entry (a recycled/bio-based content object, a carbon
- * footprint, a relative claim, or a size's container_details): missing sources, a
- * percentage outside 0-100, a date in the future, or a number absent from the quote.
+ * footprint, a relative claim, a size's container_details, or a mechanical value):
+ * missing sources, a percentage outside 0-100, a date in the future, or a number
+ * absent from the quote.
  */
 export function checkSourcedEntry(
 	entry: Record<string, unknown> | null | undefined,
@@ -485,7 +497,7 @@ export function checkSourcedEntry(
 	for (const field of valueFields) {
 		const value = entry[field];
 		if (typeof value !== 'number' || Number.isNaN(value)) continue;
-		if (field !== 'value_kg_co2e' && (value < 0 || value > 100)) {
+		if (PCT_FIELDS.has(field) && (value < 0 || value > 100)) {
 			problems.push(`${field} is ${value}; a percentage must be between 0 and 100.`);
 		}
 		if (quote.trim() && !numberPattern(value).test(quote)) {
@@ -550,4 +562,95 @@ export function checkRecycledTrait(
 		};
 	}
 	return null;
+}
+
+// --- Mechanical properties ----------------------------------------------------
+//
+// Each value is copied from the maker's data sheet in the unit it is published in, so
+// the sourced-entry checks above apply to every entry, plus a unit that fits the
+// property. Mirrors the mechanical rules in `ofd/validation/data_quality.py`.
+
+const STRESS_UNITS = ['MPa', 'GPa', 'psi', 'ksi'];
+const IMPACT_UNITS = ['kJ/m2', 'J/m', 'ft-lb/in'];
+const TEMPERATURE_UNITS = ['°C', '°F'];
+
+/** The units each property can be published in. */
+export const MECHANICAL_UNITS: Record<string, string[]> = {
+	tensile_modulus: STRESS_UNITS,
+	tensile_strength: STRESS_UNITS,
+	yield_strength: STRESS_UNITS,
+	flexural_modulus: STRESS_UNITS,
+	flexural_strength: STRESS_UNITS,
+	elongation_at_break: ['%'],
+	impact_strength: IMPACT_UNITS,
+	impact_strength_notched: IMPACT_UNITS,
+	heat_deflection_045: TEMPERATURE_UNITS,
+	heat_deflection_18: TEMPERATURE_UNITS,
+	vicat_softening: TEMPERATURE_UNITS
+};
+
+/** The numbers a mechanical entry's source quote must contain. */
+export const MECHANICAL_VALUE_FIELDS = ['value', 'plus_minus'];
+
+const PRINT_DIRECTIONS = new Set(['XY', 'XZ', 'Z']);
+
+/**
+ * Problems with one mechanical entry: the sourced-entry errors, a unit that does not
+ * fit the property, and a print direction on moulded test bars (a warning).
+ */
+export function checkMechanicalEntry(
+	entry: Record<string, unknown> | null | undefined,
+	today: string = todayIso()
+): EntryIssue[] {
+	if (!entry || typeof entry !== 'object') return [];
+	const issues: EntryIssue[] = checkSourcedEntry(entry, MECHANICAL_VALUE_FIELDS, today).map(
+		(message) => ({ level: 'error', message })
+	);
+
+	const { property, unit, direction } = entry;
+	const units = typeof property === 'string' ? MECHANICAL_UNITS[property] : undefined;
+	if (units && typeof unit === 'string' && unit && !units.includes(unit)) {
+		issues.push({
+			level: 'error',
+			message: `${unit} is not a unit for ${property}; use ${units.join(', ')}.`
+		});
+	}
+
+	const specimen = entry.specimen as { process?: unknown } | null | undefined;
+	if (
+		specimen?.process === 'moulded' &&
+		typeof direction === 'string' &&
+		PRINT_DIRECTIONS.has(direction)
+	) {
+		issues.push({
+			level: 'warning',
+			message: `Moulded test bars have no print direction, but direction is ${direction}. Set it to unknown.`
+		});
+	}
+
+	return issues;
+}
+
+/**
+ * Entries that repeat an earlier entry's property, direction, condition, standard and
+ * unit, as a map from the repeat's index to the first one's index.
+ */
+export function findDuplicateMechanical(
+	entries: Array<Record<string, unknown> | null | undefined>
+): Map<number, number> {
+	const first = new Map<string, number>();
+	const duplicates = new Map<number, number>();
+	entries.forEach((entry, i) => {
+		if (!entry || typeof entry !== 'object') return;
+		const key = JSON.stringify(
+			['property', 'direction', 'condition', 'standard', 'unit'].map((f) => {
+				const v = entry[f];
+				return typeof v === 'string' ? v.trim() || null : (v ?? null);
+			})
+		);
+		const earlier = first.get(key);
+		if (earlier === undefined) first.set(key, i);
+		else duplicates.set(i, earlier);
+	});
+	return duplicates;
 }

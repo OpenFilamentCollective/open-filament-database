@@ -121,6 +121,7 @@ A filament represents a **product line** (e.g. "Silk PLA", "Glow PLA"), **not a 
    - Lifecycle: `discontinued` (boolean)
    - Slicer integration: `slicer_ids` (PrusaSlicer / BambuStudio / OrcaSlicer / Cura native IDs) and `slicer_settings` (per-slicer profile names, IDs, and temperature overrides)
    - Sustainability: `sustainability` — sourced recycled / bio-based content, carbon footprints and relative claims. See [🌱 Sustainability data](#-sustainability-data); every figure needs a source.
+   - Mechanical data: `mechanical` — sourced tensile, flexural, impact and heat deflection values from the data sheet, per print direction. See [🔩 Mechanical data](#-mechanical-data); every value needs a source.
 
 ## 🎨 Adding a Variant
 A variant represents a single colour or finish of a filament.
@@ -252,6 +253,56 @@ Sustainability figures are used to calculate the CO₂ footprint of prints, and 
 - ❌ Anything from the "never store" list above
 
 Checked a brand and found nothing? Record that in [`docs/sustainability-sources.md`](sustainability-sources.md). A negative result is useful too.
+
+## 🔩 Mechanical data
+Data sheets give stiffness, strength, impact and heat values, often **per print direction**: a part is weaker across its layers than along them. `mechanical` keeps those values with their source, so CAD, simulation and slicer tools can use them.
+
+### The rules
+1. **Copy, never compute.** Enter each value in the unit the sheet uses: a sheet in psi stays in psi, and `3.86 GPa` is never entered as `3860 MPa`. Never average, convert or estimate.
+2. **Every entry needs a source**: `source_url`, `source_quote` and `retrieved`, as for [sustainability data](#-sustainability-data). The quote is the sheet's row, verbatim, and must contain the value (and `plus_minus`, if set). `5.85` matches `5,85`, and `7250` matches `7,250`.
+3. **Primary sources first**: the brand's own data sheet (TDS) or product page. Mark a retailer copy `source_type: "secondary"`.
+4. **One entry per value**: one for X-Y, one for Z, one for dry and one for conditioned. If the sheet gives a range or a footnote, quote it and explain it in `notes`.
+5. **No generic values in `data/`.** Typical values for a material type (PLA, PETG...) are not a brand's data.
+
+`ofd validate` checks the sources, the value in the quote, dates in the future and that the unit fits the property (errors). It warns about a print direction on moulded bars and about repeated entries.
+
+### Where it goes
+`mechanical` is an array on `filament.json`. Variants don't override it: a data sheet covers the product line.
+
+```json
+"mechanical": [
+  {
+    "property": "tensile_modulus", "direction": "XY",
+    "value": 3860, "plus_minus": 230, "unit": "MPa",
+    "standard": "ISO 527", "condition": "dry",
+    "specimen": {"process": "printed", "infill_percent": 100, "print_temperature": 290,
+                 "conditioning": "annealed and dried at 80 °C for 12 h"},
+    "source_type": "primary",
+    "source_url": "https://store.bblcdn.com/7166b20bc68f4c87b32c972b856eeb4b.pdf",
+    "source_quote": "Young's Modulus (X-Y) ISO 527, GB/T 1040 3860 ± 230 MPa",
+    "retrieved": "2026-11-08"
+  }
+]
+```
+
+The sheet's Z row (`2180 ± 130 MPa`) is a second entry with `"direction": "Z"` and its own quote.
+
+### Field guide
+| Field | Values | Meaning |
+|---|---|---|
+| `property` | `tensile_modulus`, `tensile_strength`, `yield_strength`, `elongation_at_break`, `flexural_modulus`, `flexural_strength`, `impact_strength`, `impact_strength_notched`, `heat_deflection_045`, `heat_deflection_18`, `vicat_softening` | What was measured. `heat_deflection_045` / `_18` are HDT at 0.45 / 1.8 MPa. Young's modulus is `tensile_modulus` |
+| `direction` | `XY`, `XZ`, `Z`, `unknown` | `XY`: bars printed flat (along the layers). `XZ`: on edge. `Z`: upright (across the layers). `unknown` when the sheet gives none, and for moulded bars |
+| `value`, `plus_minus` | numbers | As written. `plus_minus` is the "±" spread, or `null` |
+| `unit` | `MPa`, `GPa`, `psi`, `ksi`, `%`, `kJ/m2`, `J/m`, `ft-lb/in`, `°C`, `°F` | Must fit the property: moduli and strengths in `MPa`, `GPa`, `psi` or `ksi`; elongation in `%`; impact in `kJ/m2` (ISO 179 / 180), `J/m` or `ft-lb/in` (ASTM D256); heat in `°C` or `°F` |
+| `standard` | free text or `null` | **Only** when the sheet names one, e.g. "ISO 527" or "ASTM D638" |
+| `condition` | `dry`, `conditioned` | Moisture state at test time, when the sheet gives it (common for nylons) |
+| `specimen` | object | How the bars were made: `process` (`printed`, `moulded`, `unknown`), `printer`, `nozzle_diameter`, `layer_height`, `infill_percent`, `perimeters`, `raster_angle`, `print_temperature`, `bed_temperature`, `chamber_temperature`, `print_speed`, `conditioning` (e.g. "annealed at 80 °C for 12 h"). Leave out what the sheet doesn't say |
+
+### Valid sources
+- ✅ The brand's technical data sheet (TDS) or product page
+- ✅ A retailer copy of the brand's sheet, **only** when the original is gone (`source_type: "secondary"`)
+- ❌ Your own test results, or values from a review or forum
+- ❌ Values you converted, averaged or read off a chart
 
 ## 🏪 Adding a Store
 Stores are referenced by `purchase_links[].store_id` and live under `/stores`.

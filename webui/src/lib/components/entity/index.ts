@@ -8,3 +8,4 @@ export { default as SubmittedBanner } from './SubmittedBanner.svelte';
 export { default as InFlightHint } from './InFlightHint.svelte';
 export { default as OrcaDownloadButton } from './OrcaDownloadButton.svelte';
 export { default as SustainabilityDisplay } from './SustainabilityDisplay.svelte';
+export { default as MechanicalDisplay } from './MechanicalDisplay.svelte';

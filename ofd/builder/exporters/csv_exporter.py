@@ -56,6 +56,7 @@ _KEY_ORDER = {
         "enclosure",
         "discontinued",
         "sustainability",
+        "mechanical",
     ],
     "variant": [
         "id",
