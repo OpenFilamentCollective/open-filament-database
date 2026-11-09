@@ -4,8 +4,8 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
-    "gtin": "6922572211766",
-    "article_number": "PLA+CMYK175W1R1",
+    "gtin": "6922572206014",
+    "article_number": "PLA+CMYK175W1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
@@ -13,7 +13,20 @@
       },
       {
         "store_id": "3djake",
-        "url": "https://www.3djake.com/esun/pla-cmyk-white"
+        "url": "https://www.3djake.com/esun/pla-cmyk-white?sai=34660"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572211766",
+    "article_number": "PLA+CMYK175W1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-cmyk-white?sai=24844"
       }
     ]
   }

@@ -4,8 +4,8 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
-    "gtin": "6922572211506",
-    "article_number": "PLA-Basic175Q-H1R1",
+    "gtin": "6922572210967",
+    "article_number": "PLA-Basic175Q-H1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
@@ -13,7 +13,20 @@
       },
       {
         "store_id": "3djake",
-        "url": "https://www.3djake.com/esun/pla-basic-light-grey"
+        "url": "https://www.3djake.com/esun/pla-basic-light-grey?sai=34342"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572211506",
+    "article_number": "PLA-Basic175Q-H1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-basic-light-grey?sai=24259"
       }
     ]
   }
