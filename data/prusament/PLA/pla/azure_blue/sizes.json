@@ -14,6 +14,7 @@
     "uuid": "496a2005-10e7-4d07-bacb-c3699a8bbeb8",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "refill",
     "purchase_links": [
       {
         "store_id": "prusa3d",
@@ -29,6 +30,18 @@
       {
         "store_id": "prusa3d",
         "url": "https://www.prusa3d.com/product/prusament-pla-azure-blue-2kg/"
+      }
+    ]
+  },
+  {
+    "filament_weight": 900,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "8594173676183",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-pla-azure-blue-refill-nfc"
       }
     ]
   }

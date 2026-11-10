@@ -22,5 +22,16 @@
         "url": "https://www.prusa3d.com/product/prusament-petg-jet-black-2kg-nfc/"
       }
     ]
+  },
+  {
+    "filament_weight": 900,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-petg-jet-black-refill-nfc"
+      }
+    ]
   }
 ]

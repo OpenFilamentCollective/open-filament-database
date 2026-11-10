@@ -14,6 +14,8 @@
     "uuid": "aa0db131-e774-4dcb-b9cf-b1e625792ff7",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "refill",
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "prusa3d",
@@ -29,6 +31,17 @@
       {
         "store_id": "prusa3d",
         "url": "https://www.prusa3d.com/product/prusament-pla-prusa-galaxy-black-2kg/"
+      }
+    ]
+  },
+  {
+    "filament_weight": 900,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-pla-prusa-galaxy-black-refill-nfc"
       }
     ]
   }
