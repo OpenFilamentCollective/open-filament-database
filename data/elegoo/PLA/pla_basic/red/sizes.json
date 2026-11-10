@@ -15,5 +15,16 @@
         "url": "https://eu.elegoo.com/products/pla-basic-filament-1-75mm-colored-1kg"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "elegoo",
+        "url": "https://eu.elegoo.com/products/pla-basic-filament-1-75mm-colored-1kg?variant=50531769188628"
+      }
+    ]
   }
 ]
