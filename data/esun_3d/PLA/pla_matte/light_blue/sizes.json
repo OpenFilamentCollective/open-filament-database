@@ -11,5 +11,18 @@
         "url": "https://www.3djake.com/esun/pla-matte-light-blue-1"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208803",
+    "article_number": "PLA-MT175Q-U1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-light-blue-1?sai=24697"
+      }
+    ]
   }
 ]

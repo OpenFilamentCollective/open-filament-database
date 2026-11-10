@@ -10,5 +10,18 @@
         "url": "https://esun3dstore.com/products/epla"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572211490",
+    "article_number": "PLA-Basic175H1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-basic-grey?sai=24247"
+      }
+    ]
   }
 ]

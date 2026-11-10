@@ -16,5 +16,18 @@
         "url": "https://www.3djake.com/esun/petg-basic-clear"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572226630",
+    "article_number": "PETG-Basic175T1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/petg-basic-clear?sai=44403"
+      }
+    ]
   }
 ]

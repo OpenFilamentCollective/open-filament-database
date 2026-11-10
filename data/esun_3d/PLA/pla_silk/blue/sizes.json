@@ -16,5 +16,18 @@
         "url": "https://www.3djake.com/esun/pla-silk-blue-3"
       }
     ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208681",
+    "article_number": "PLA-SK175U1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-blue-3?sai=24625"
+      }
+    ]
   }
 ]
