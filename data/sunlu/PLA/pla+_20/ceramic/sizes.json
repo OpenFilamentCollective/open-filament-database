@@ -69,5 +69,16 @@
     "uuid": "4ef955e4-6996-440a-b5b3-387c257f2fc7",
     "filament_weight": 5000,
     "diameter": 2.85
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/sunlu-refill-filament-pla-pla-2-0-compatible-with-2025-sunlu-third-generation-reusable-spool-bambulab-reusable-spool-spool-free-filament?variant=53379449684250"
+      }
+    ]
   }
 ]
