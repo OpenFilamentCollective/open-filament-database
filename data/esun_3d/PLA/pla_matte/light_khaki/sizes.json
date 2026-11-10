@@ -14,8 +14,8 @@
       "retrieved": "2026-11-03"
     },
     "empty_spool_weight": 140,
-    "gtin": "6922572208865",
-    "article_number": "PLA-MT175Q-K1R1",
+    "gtin": "6922572202092",
+    "article_number": "PLA-MT175Q-K1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
@@ -23,7 +23,20 @@
       },
       {
         "store_id": "3djake",
-        "url": "https://www.3djake.com/esun/pla-matte-light-khaki"
+        "url": "https://www.3djake.com/esun/pla-matte-light-khaki?sai=11783"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208865",
+    "article_number": "PLA-MT175Q-K1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-light-khaki?sai=24709"
       }
     ]
   }
