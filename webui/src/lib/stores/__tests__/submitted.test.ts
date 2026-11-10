@@ -31,7 +31,14 @@ Object.defineProperty(globalThis, 'localStorage', {
 
 // Import after the localStorage mock is in place so the module's load-from-storage
 // path uses our stubbed implementation.
-import { submittedStore, submittedCount, hasSubmitted } from '../submitted';
+import {
+	submittedStore,
+	submittedCount,
+	hasSubmitted,
+	submissionEntries,
+	submissionsNeedingChanges,
+	needsChanges
+} from '../submitted';
 import { STORAGE_KEY_SUBMITTED } from '$lib/config/storageKeys';
 
 function makeChange(path: string, id: string, type: EntityChange['entity']['type'] = 'brand'): EntityChange {
@@ -497,6 +504,59 @@ describe('Submitted Store', () => {
 			await submittedStore.reconcile();
 
 			expect(submittedStore.has('brands/acme')).toBe(false);
+		});
+
+		it('drops a rejected submission like a closed one', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/1',
+				prNumber: 1,
+				changes: [makeChange('brands/acme', 'acme')]
+			});
+			vi.stubGlobal('fetch', mockStatus({ 1: 'rejected' }));
+
+			await submittedStore.reconcile();
+
+			expect(submittedStore.getEntries()).toEqual([]);
+		});
+
+		it('lists entries newest first and flags the ones needing changes (navbar)', async () => {
+			submittedStore.archive({ uuid: 'a', prUrl: '', prNumber: 1, changes: [makeChange('brands/a', 'a')] });
+			await new Promise((r) => setTimeout(r, 5));
+			submittedStore.archive({ uuid: 'b', prUrl: '', prNumber: 2, changes: [makeChange('brands/b', 'b')] });
+			vi.stubGlobal('fetch', mockStatus({ 1: 'returned', 2: 'open' }));
+
+			await submittedStore.reconcile();
+
+			expect(get(submissionEntries).map((e) => e.prNumber)).toEqual([2, 1]);
+			expect(get(submissionsNeedingChanges).map((e) => e.prNumber)).toEqual([1]);
+			expect(needsChanges({ status: 'changes_requested' } as any)).toBe(true);
+			expect(needsChanges({ status: 'open' } as any)).toBe(false);
+		});
+
+		it('keeps a returned submission listed for 30 days, but no longer overlaid', async () => {
+			submittedStore.archive({
+				uuid: 'sub-1',
+				prUrl: 'https://example.com/pr/827',
+				prNumber: 827,
+				changes: [makeChange('brands/insignia', 'insignia')]
+			});
+			vi.stubGlobal('fetch', mockStatus({ 827: 'returned' }));
+
+			await submittedStore.reconcile();
+
+			// The PR is closed, so its data is not coming: the editor must not show it as pending.
+			expect(submittedStore.has('brands/insignia')).toBe(false);
+			const [entry] = submittedStore.getEntries();
+			expect(entry.status).toBe('returned');
+			const days = (new Date(entry.expiresAt).getTime() - Date.now()) / 86_400_000;
+			expect(days).toBeGreaterThan(29);
+			expect(submittedStore.openEntries()).toEqual([]);
+
+			// A later reconcile doesn't keep pushing the window out.
+			const expiresAt = entry.expiresAt;
+			await submittedStore.reconcile();
+			expect(submittedStore.getEntries()[0].expiresAt).toBe(expiresAt);
 		});
 
 		it('keeps a merged submission until the nightly rebuild has published it', async () => {

@@ -276,7 +276,13 @@ def claims_section(result: dict) -> list[str]:
     ]
 
 
-def summary(result: dict, previous_ai: str = "", run_url: str = "", merge_url: str = "") -> str:
+def summary(
+    result: dict,
+    previous_ai: str = "",
+    run_url: str = "",
+    merge_url: str = "",
+    editor_url: str = "",
+) -> str:
     lines = [
         MARKER,
         f"<!-- ofd-ai-review:spent={result.get('spent_usd', 0):.2f} -->",
@@ -308,6 +314,10 @@ def summary(result: dict, previous_ai: str = "", run_url: str = "", merge_url: s
     footer = []
     if merge_url:
         footer.append(f"**Maintainers:** [✅ LGTM & merge]({merge_url})")
+    if editor_url:
+        # The web editor's feedback page: loads the PR with its review comments, for the
+        # contributor (or a maintainer) to fix there. See webui/src/routes/submissions.
+        footer.append(f"[✏️ Fix in the web editor]({editor_url})")
     if run_url:
         footer.append(f"<sub>[workflow run]({run_url})</sub>")
     if footer:

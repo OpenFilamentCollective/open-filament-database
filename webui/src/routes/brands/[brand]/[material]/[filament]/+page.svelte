@@ -21,7 +21,7 @@
 		CertificationsDisplay,
 		SustainabilityDisplay,
 		ChildListPanel,
-		SubmittedBanner,
+		SubmittedBanner, FeedbackBanner,
 		InFlightHint,
 		OrcaDownloadButton
 	} from '$lib/components/entity';
@@ -443,6 +443,7 @@
 			{:else if entityState.submittedEntry}
 				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
+			<FeedbackBanner entityPath={entityState.entityPath} data={entityState.entity} />
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
 			{/if}

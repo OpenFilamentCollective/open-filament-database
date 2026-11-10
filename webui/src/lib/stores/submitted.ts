@@ -10,6 +10,8 @@ import { STORAGE_KEY_SUBMITTED } from '$lib/config/storageKeys';
 import { datasetVisibleAfter } from '$lib/config/datasetSchedule';
 
 const DEFAULT_TTL_DAYS = 7;
+/** How long a returned submission stays listed, so its contributor can come back to fix it. */
+const RETURNED_TTL_DAYS = 30;
 
 function createEmptyBuffer(): SubmittedBuffer {
 	return { entries: {}, version: 1 };
@@ -50,6 +52,8 @@ function buildIndex(
 	);
 
 	for (const entry of sorted) {
+		// A returned PR is closed: its data is not coming, so it must not overlay anything.
+		if (entry.status === 'returned' || entry.status === 'rejected') continue;
 		for (const change of entry.changes) {
 			index.set(change.entity.path, { change, entry });
 		}
@@ -211,9 +215,21 @@ function createSubmittedStore() {
 					const status = statuses[entry.prNumber] as SubmissionStatus | 'unknown' | undefined;
 					if (!status || status === 'unknown') continue;
 
-					if (status === 'closed') {
+					if (status === 'closed' || status === 'rejected') {
 						delete buffer.entries[entry.uuid];
 						changed = true;
+						continue;
+					}
+
+					if (status === 'returned') {
+						// Keep it listed (with a "Fix" link) long enough to come back to.
+						// The window starts when it is first seen returned, not on every reconcile.
+						if (entry.status !== 'returned') {
+							const keepUntil = Date.now() + RETURNED_TTL_DAYS * 24 * 60 * 60 * 1000;
+							entry.status = 'returned';
+							entry.expiresAt = new Date(Math.max(keepUntil, new Date(entry.expiresAt).getTime())).toISOString();
+							changed = true;
+						}
 						continue;
 					}
 
@@ -387,3 +403,18 @@ export const submittedCount = derived(submittedStore, () =>
 );
 
 export const hasSubmitted = derived(submittedCount, ($count) => $count > 0);
+
+/** Every tracked submission, newest first (the navbar button and /submissions). */
+export const submissionEntries = derived(submittedStore, ($buffer) =>
+	Object.values($buffer.entries).sort((a, b) => b.submittedAt.localeCompare(a.submittedAt))
+);
+
+/** True when a submission's contributor has something to fix: returned, or changes requested. */
+export function needsChanges(entry: SubmittedEntry): boolean {
+	return entry.status === 'returned' || entry.status === 'changes_requested';
+}
+
+/** Submissions waiting on the contributor. */
+export const submissionsNeedingChanges = derived(submissionEntries, ($entries) =>
+	$entries.filter(needsChanges)
+);

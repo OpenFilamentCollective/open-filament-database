@@ -377,3 +377,14 @@ def test_model_findings_go_inline_only_on_diff_lines(repo):
     comments, not_placed = inline_comments(review_out, None, changes)
     assert [(c["path"], c["line"]) for c in comments] == [(f"{PLA}/basic/filament.json", 3)]
     assert [f["message"] for f in not_placed] == ["Elsewhere"]
+
+
+def test_footer_links_the_merge_page_and_the_editor():
+    text = summary(
+        {"pr": 7, "head_sha": "a" * 40, "findings": []},
+        merge_url="https://editor.example/review/merge/7",
+        editor_url="https://editor.example/submissions/7",
+    )
+    assert "[✅ LGTM & merge](https://editor.example/review/merge/7)" in text
+    assert "[✏️ Fix in the web editor](https://editor.example/submissions/7)" in text
+    assert "Fix in the web editor" not in summary({"pr": 7, "head_sha": "a" * 40, "findings": []})

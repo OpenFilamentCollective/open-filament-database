@@ -1,10 +1,15 @@
 import { json } from '@sveltejs/kit';
 import { spawn } from 'node:child_process';
 import path from 'node:path';
-import { activeJobs, type Job, tryAcquireValidationLock, releaseValidationLock } from '$lib/server/jobManager';
+import {
+	activeJobs,
+	type Job,
+	tryAcquireValidationLock,
+	releaseValidationLock
+} from '$lib/server/jobManager';
 import { IS_CLOUD } from '$lib/server/cloudProxy';
 import { runCloudValidation } from '$lib/server/cloudValidator';
-import { tryRustValidate } from '$lib/server/rustValidator';
+import { tryRustValidate, splitVariantSizes } from '$lib/server/rustValidator';
 
 const ALLOWED_TYPES = new Set(['full', 'json_files', 'logo_files', 'folder_names', 'store_ids']);
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -33,11 +38,7 @@ export async function POST({ request }) {
 
 // --- Cloud mode: in-process ajv validation with per-session jobs ---
 
-function handleCloudValidation(
-	changes: any,
-	images: any,
-	sessionId: string | undefined
-): Response {
+function handleCloudValidation(changes: any, images: any, sessionId: string | undefined): Response {
 	// Validate sessionId format (must be a UUID from the client)
 	if (!sessionId || typeof sessionId !== 'string' || !UUID_REGEX.test(sessionId)) {
 		return json({ error: 'Missing or invalid sessionId (expected UUID)' }, { status: 400 });
@@ -152,7 +153,10 @@ async function handleLocalValidation(type: string, changes: any, images: any): P
 		const hasChanges = changes && Array.isArray(changes) && changes.length > 0;
 		let changesPayload: string | null = null;
 		if (hasChanges) {
-			changesPayload = JSON.stringify({ changes, images: images || {} });
+			// The overlay would write a variant's embedded spools into variant.json; on disk they
+			// are sizes.json (see splitVariantSizes). Submitting validates them in full.
+			const { changes: overlayChanges } = splitVariantSizes(changes, repoRoot);
+			changesPayload = JSON.stringify({ changes: overlayChanges, images: images || {} });
 			args.push('--apply-changes', '-');
 		}
 

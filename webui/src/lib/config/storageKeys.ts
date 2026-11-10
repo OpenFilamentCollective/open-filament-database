@@ -5,6 +5,8 @@ export const STORAGE_KEY_THEME = 'ofd_theme';
 export const STORAGE_KEY_USER_PREFS = 'ofd_user_prefs';
 export const STORAGE_KEY_SUBMITTED = 'ofd_submitted_changes';
 export const STORAGE_KEY_WELCOME_DISMISSED = 'ofd_welcome_dismissed';
+/** The PR currently loaded into the editor for revision (see stores/revision.ts). */
+export const STORAGE_KEY_ACTIVE_REVISION = 'ofd_active_revision';
 
 /**
  * localStorage keys that hold user settings/preferences rather than working

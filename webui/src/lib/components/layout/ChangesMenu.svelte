@@ -7,11 +7,14 @@
 	import { Button, Modal, LoadingSpinner } from '$lib/components/ui';
 	import { TwoColumnLayout } from '$lib/components/form-fields';
 	import SubmissionWizard from './SubmissionWizard.svelte';
+	import ValueEditor from '$lib/components/feedback/ValueEditor.svelte';
 	import { db } from '$lib/services/database';
 	import { generateChangeTitle } from '$lib/utils/changeTitleGenerator';
-	import { authStore } from '$lib/stores/auth';
+	import { authStore, isAuthenticated } from '$lib/stores/auth';
 	import { userPrefs } from '$lib/stores/userPrefs';
 	import { STORAGE_KEY_REOPEN_WIZARD } from '$lib/config/storageKeys';
+	import { revisionStore } from '$lib/stores/revision';
+	import { submitRequest } from '$lib/stores/submitRequest';
 	import { onMount, onDestroy } from 'svelte';
 
 	let menuOpen = $state(false);
@@ -201,8 +204,12 @@
 	function clearAllChanges() {
 		if (confirm('Are you sure you want to clear all pending changes? This cannot be undone.')) {
 			changeStore.clear();
+			// Without its changes a loaded contribution has nothing left to fix: stop fixing it,
+			// rather than leave its feedback looking addressed.
+			revisionStore.clear();
 			closeMenu();
-			window.location.reload();
+			// Back to the start: the page you were on may only exist in the cleared changes.
+			window.location.href = '/';
 		}
 	}
 
@@ -214,6 +221,16 @@
 			startValidation();
 		}
 	}
+
+	// "Send fixes" on the submission page (and anything else) opens the same dialog.
+	let lastSubmitRequest = 0;
+	const unsubscribeSubmitRequest = submitRequest.subscribe((n) => {
+		if (n > lastSubmitRequest) {
+			lastSubmitRequest = n;
+			openSubmitModal();
+		}
+	});
+	onDestroy(unsubscribeSubmitRequest);
 
 	function cleanupValidationStream() {
 		if (validationEventSource) {
@@ -402,6 +419,7 @@
 			if (result.success) {
 				saveResult = { success: true, message: result.message || 'Changes saved successfully' };
 				changeStore.clear();
+				revisionStore.clear();
 				window.location.reload();
 			} else {
 				saveResult = {
@@ -461,6 +479,7 @@
 			});
 			userPrefs.addSubmission(result.uuid!, result.prUrl || '', result.prNumber || 0);
 			changeStore.clear();
+			revisionStore.clear();
 			return {
 				success: true,
 				message: result.amended
@@ -529,6 +548,7 @@
 			});
 			userPrefs.addSubmission(uuid, result.prUrl || '', result.prNumber || 0);
 			changeStore.clear();
+			revisionStore.clear();
 			return {
 				success: true,
 				message: `PR #${result.prNumber} created successfully!`,
@@ -540,6 +560,77 @@
 				message: result.error || 'Failed to create PR'
 			};
 		}
+	}
+
+	/**
+	 * Submit the editor's changes as a revision of the loaded pull request (stores/revision.ts):
+	 * pushed onto it when open, or as a new PR replacing it when it was returned.
+	 */
+	async function submitRevisionForWizard(description: string): Promise<{
+		success: boolean;
+		message: string;
+		uuid?: string;
+		prUrl?: string;
+		revised?: 'amend' | 'resubmit';
+	}> {
+		const revision = revisionStore.get();
+		if (!revision) return { success: false, message: 'There is no contribution open for fixing.' };
+
+		const exportData = await changeStore.exportChanges();
+		const imagesWithPaths: Record<string, any> = {};
+		const cs = $changeStore;
+		for (const [imageId, imageData] of Object.entries(exportData.images)) {
+			const ref = cs.images[imageId];
+			imagesWithPaths[imageId] = { ...imageData, entityPath: ref?.entityPath || '' };
+		}
+
+		let result: any;
+		try {
+			const response = await fetch(`/api/submissions/${revision.prNumber}/revise`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					changes: exportData.changes,
+					images: imagesWithPaths,
+					expectedHeadSha: revision.headSha,
+					description: description || undefined,
+					// The contributor's comments on fields, posted on those lines of the PR.
+					notes: revisionStore.notesList()
+				})
+			});
+			result = await response.json();
+		} catch {
+			return { success: false, message: 'Could not reach the server.' };
+		}
+
+		if (!result.success) {
+			return { success: false, message: result.error || 'Failed to submit the revision' };
+		}
+
+		// The submitted overlay now holds the revised set under the PR it went to.
+		for (const entry of Object.values($submittedStore.entries)) {
+			if (entry.prNumber === revision.prNumber || entry.prNumber === result.prNumber) {
+				submittedStore.remove(entry.uuid);
+			}
+		}
+		const uuid = result.uuid || crypto.randomUUID();
+		submittedStore.archive({
+			uuid,
+			prUrl: result.prUrl || '',
+			prNumber: result.prNumber || 0,
+			changes: exportData.changes
+		});
+		userPrefs.addSubmission(uuid, result.prUrl || '', result.prNumber || 0);
+		changeStore.clear();
+		revisionStore.clear();
+
+		const message =
+			result.mode === 'resubmit'
+				? 'Your fixed version was sent. A reviewer will look at it.'
+				: result.unchanged
+					? 'Nothing had changed, so there was nothing new to send.'
+					: 'Your fixes were sent. The reviewer has been told.';
+		return { success: true, message, uuid, prUrl: result.prUrl, revised: result.mode };
 	}
 
 	function getStoreName(storeId: string): string {
@@ -591,6 +682,21 @@
 		}
 	}
 </script>
+
+<!-- A changed value: lists and objects as nested blocks (not JSON), the rest as text. -->
+{#snippet valueView(value: unknown, textClass: string)}
+	{#if value !== null && typeof value === 'object'}
+		<div
+			class="mt-1 rounded p-1.5 {textClass.includes('destructive')
+				? 'bg-destructive/10 opacity-75'
+				: 'bg-green-500/10'}"
+		>
+			<ValueEditor {value} readOnly compact />
+		</div>
+	{:else}
+		<pre class={textClass}>{formatValue(value)}</pre>
+	{/if}
+{/snippet}
 
 <svelte:window
 	onkeydown={(e) => {
@@ -740,26 +846,26 @@
 													>
 													{#if propChange.oldValue === undefined}
 														<span class="ml-1 text-green-600 dark:text-green-400">added</span>
-														<pre
-															class="mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(
-																propChange.newValue
-															)}</pre>
+														{@render valueView(
+															propChange.newValue,
+															'mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400'
+														)}
 													{:else if propChange.newValue === undefined}
 														<span class="ml-1 text-destructive">removed</span>
-														<pre
-															class="mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(
-																propChange.oldValue
-															)}</pre>
+														{@render valueView(
+															propChange.oldValue,
+															'mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through'
+														)}
 													{:else}
 														<div class="mt-1 grid gap-1">
-															<pre
-																class="overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(
-																	propChange.oldValue
-																)}</pre>
-															<pre
-																class="overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(
-																	propChange.newValue
-																)}</pre>
+															{@render valueView(
+																propChange.oldValue,
+																'overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through'
+															)}
+															{@render valueView(
+																propChange.newValue,
+																'overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400'
+															)}
 														</div>
 													{/if}
 												</div>
@@ -813,17 +919,43 @@
 										<span class="text-xs text-muted-foreground">
 											{formatTimestamp(new Date(entry.submittedAt).getTime())}
 										</span>
+										{#if entry.status === 'returned'}
+											<span
+												class="rounded bg-warning-surface px-1.5 py-0.5 text-xs font-medium text-warning-foreground"
+											>
+												Returned
+											</span>
+										{:else if entry.status === 'changes_requested'}
+											<span
+												class="rounded bg-warning-surface px-1.5 py-0.5 text-xs font-medium text-warning-foreground"
+											>
+												Changes requested
+											</span>
+										{/if}
 									</div>
-									{#if entry.prUrl}
-										<a
-											href={entry.prUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="text-xs text-primary hover:underline"
-										>
-											View PR
-										</a>
-									{/if}
+									<div class="flex items-center gap-3">
+										{#if entry.prNumber > 0 && entry.status !== 'merged'}
+											<a
+												href="/submissions/{entry.prNumber}"
+												onclick={closeMenu}
+												class="text-xs font-medium text-primary hover:underline"
+											>
+												{entry.status === 'returned' || entry.status === 'changes_requested'
+													? 'Fix'
+													: 'Feedback'}
+											</a>
+										{/if}
+										{#if entry.prUrl}
+											<a
+												href={entry.prUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="text-xs text-primary hover:underline"
+											>
+												View PR
+											</a>
+										{/if}
+									</div>
 								</div>
 								<p class="mt-1 text-xs text-muted-foreground">
 									{entry.changes.length}
@@ -862,6 +994,19 @@
 						</svg>
 						{$isLocalMode ? 'Save Changes' : 'Submit Changes'}
 					</Button>
+				</div>
+			{/if}
+
+			{#if $isCloudMode && $isAuthenticated}
+				<!-- Maintainers can load any pull request into the editor; the page checks access. -->
+				<div class="border-t px-4 py-2 text-right">
+					<a
+						href="/review/prs"
+						onclick={closeMenu}
+						class="text-xs text-muted-foreground hover:text-primary hover:underline"
+					>
+						Maintainers: load a pull request…
+					</a>
 				</div>
 			{/if}
 		</div>
@@ -1032,6 +1177,8 @@
 							onSubmitSimplyPrint={submitSimplyPrintForWizard}
 							onSubmitGitHub={createPRForWizard}
 							overlap={submissionOverlap}
+							revision={$revisionStore?.preview ? null : $revisionStore}
+							onSubmitRevision={submitRevisionForWizard}
 							onClose={() => {
 								submitModalOpen = false;
 								reopenedAfterAuth = false;
@@ -1136,26 +1283,26 @@
 											<span class="font-medium">{formatPropertyLabel(propChange.property)}</span>
 											{#if propChange.oldValue === undefined}
 												<span class="ml-1 text-green-600 dark:text-green-400">added</span>
-												<pre
-													class="mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(
-														propChange.newValue
-													)}</pre>
+												{@render valueView(
+													propChange.newValue,
+													'mt-1 overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400'
+												)}
 											{:else if propChange.newValue === undefined}
 												<span class="ml-1 text-destructive">removed</span>
-												<pre
-													class="mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(
-														propChange.oldValue
-													)}</pre>
+												{@render valueView(
+													propChange.oldValue,
+													'mt-1 overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through'
+												)}
 											{:else}
 												<div class="mt-1 grid gap-1">
-													<pre
-														class="overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through">{formatValue(
-															propChange.oldValue
-														)}</pre>
-													<pre
-														class="overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400">{formatValue(
-															propChange.newValue
-														)}</pre>
+													{@render valueView(
+														propChange.oldValue,
+														'overflow-x-auto rounded bg-destructive/10 p-1.5 text-destructive line-through'
+													)}
+													{@render valueView(
+														propChange.newValue,
+														'overflow-x-auto rounded bg-green-500/10 p-1.5 text-green-700 dark:text-green-400'
+													)}
 												</div>
 											{/if}
 										</div>

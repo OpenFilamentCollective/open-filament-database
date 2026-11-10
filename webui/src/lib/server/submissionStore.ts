@@ -8,12 +8,18 @@
  */
 import { getPool, ensureTablesOnce } from './db';
 
+/**
+ * `returned` / `rejected`: closed by a maintainer with feedback to fix, or rejected outright
+ * (see closeOutcome.ts). `open` again after an amend or a reopen.
+ */
+export type SubmissionRecordStatus = 'open' | 'merged' | 'closed' | 'changes_requested' | 'returned' | 'rejected';
+
 export interface SubmissionRecord {
 	uuid: string;
 	prNumber: number;
 	prUrl: string;
 	createdAt: string; // ISO 8601
-	status: 'open' | 'merged' | 'closed' | 'changes_requested';
+	status: SubmissionRecordStatus;
 	changeData?: string; // Serialized ChangeExport JSON for deflation
 	email?: string; // Submitter email for notifications
 }
@@ -63,12 +69,11 @@ export async function getEmailByUuidFromDb(uuid: string): Promise<string | undef
 	return result.rows[0]?.email || undefined;
 }
 
-export function updateStatus(uuid: string, status: 'merged' | 'closed' | 'changes_requested'): void {
+export function updateStatus(uuid: string, status: SubmissionRecordStatus): void {
 	const record = submissions.get(uuid);
-	if (record) {
-		record.status = status;
-		persistStatus(uuid, status).catch((err) => console.warn('Failed to persist status:', err));
-	}
+	if (record) record.status = status;
+	// Persist even when this process hasn't cached the record: the row may still exist.
+	persistStatus(uuid, status).catch((err) => console.warn('Failed to persist status:', err));
 }
 
 // --- Postgres persistence ---

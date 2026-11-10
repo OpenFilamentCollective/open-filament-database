@@ -195,6 +195,14 @@ export function createEntityState(config: EntityStateConfig) {
 		get submittedEntry() {
 			return submittedEntry;
 		},
+		/** This entity's change-tracking path, for the review feedback banner. */
+		get entityPath() {
+			return config.getEntityPath();
+		},
+		/** The entity as the page shows it, pending changes applied. */
+		get entity() {
+			return config.getEntity();
+		},
 
 		// Duplicate/Paste/Compare modal states
 		get showDuplicateModal() {

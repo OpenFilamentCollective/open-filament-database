@@ -7,7 +7,7 @@
 	import { BrandForm, MaterialForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { Logo, EntityDetails, EntityCard, ChildListPanel, SubmittedBanner, InFlightHint, OrcaDownloadButton } from '$lib/components/entity';
+	import { Logo, EntityDetails, EntityCard, ChildListPanel, SubmittedBanner, FeedbackBanner, InFlightHint, OrcaDownloadButton } from '$lib/components/entity';
 	import { orcaBundleUrl } from '$lib/utils/orcaLinks';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
@@ -377,6 +377,7 @@
 			{:else if entityState.submittedEntry}
 				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
+			<FeedbackBanner entityPath={entityState.entityPath} data={entityState.entity} />
 
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />

@@ -97,7 +97,12 @@ export interface ImageReference {
  * A single submitted (PR-created) change set, preserved for visual overlay
  * until the entry expires (TTL-based).
  */
-export type SubmissionStatus = 'open' | 'merged' | 'closed' | 'changes_requested';
+/**
+ * `returned`: a maintainer closed it with feedback to fix (see /submissions/[pr]); kept so the
+ * contributor can find it again, but no longer overlaid on the data. `rejected` is dropped
+ * like `closed`.
+ */
+export type SubmissionStatus = 'open' | 'merged' | 'closed' | 'changes_requested' | 'returned' | 'rejected';
 
 export interface SubmittedEntry {
 	uuid: string;

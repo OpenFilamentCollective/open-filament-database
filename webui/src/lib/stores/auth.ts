@@ -57,7 +57,12 @@ function createAuthStore() {
 			}
 		},
 
-		ghLogin() {
+		/** Sign in with GitHub. Without `returnTo` the submission wizard reopens afterwards. */
+		ghLogin(returnTo?: string) {
+			if (returnTo) {
+				window.location.href = `/api/auth/github/login?returnTo=${encodeURIComponent(returnTo)}`;
+				return;
+			}
 			localStorage.setItem(STORAGE_KEY_REOPEN_WIZARD, 'github');
 			window.location.href = '/api/auth/github/login';
 		},
@@ -83,7 +88,12 @@ function createAuthStore() {
 			}
 		},
 
-		spLogin() {
+		/** Sign in with SimplyPrint. Without `returnTo` the submission wizard reopens afterwards. */
+		spLogin(returnTo?: string) {
+			if (returnTo) {
+				window.location.href = `/api/auth/simplyprint/login?returnTo=${encodeURIComponent(returnTo)}`;
+				return;
+			}
 			localStorage.setItem(STORAGE_KEY_REOPEN_WIZARD, 'simplyprint');
 			window.location.href = '/api/auth/simplyprint/login';
 		},

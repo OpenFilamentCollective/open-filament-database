@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import type { Variant, Store, Filament } from '$lib/types/database';
 	import { Modal, MessageBanner, DeleteEntityModal, Button, EntityActionDropdown, CloudCompareModal } from '$lib/components/ui';
-	import { SubmittedBanner, SustainabilityDisplay } from '$lib/components/entity';
+	import { SubmittedBanner, FeedbackBanner, SustainabilityDisplay } from '$lib/components/entity';
 	import { VariantForm } from '$lib/components/forms';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
@@ -112,7 +112,8 @@
 	const entityState = createEntityState({
 		getEntityPath: () =>
 			variant
-				? `brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug}`
+				? // A pending create has no `slug` (filterToSchema drops it), so fall back to the route's.
+					`brands/${brandId}/materials/${materialType}/filaments/${filamentId}/variants/${variant.slug ?? variantSlug}`
 				: null,
 		getEntity: () => variant
 	});
@@ -327,6 +328,7 @@
 			{:else if entityState.submittedEntry}
 				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
+			<FeedbackBanner entityPath={entityState.entityPath} data={entityState.entity} />
 
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />

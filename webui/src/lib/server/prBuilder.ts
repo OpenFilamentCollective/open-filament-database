@@ -64,6 +64,79 @@ export function entityPathToRepoPath(entityPath: string): string | null {
 	return null;
 }
 
+/** The entity a repository file belongs to, plus where the file sits inside the entity. */
+export interface RepoFileEntity {
+	/** Editor entity path, e.g. `brands/sunlu/materials/PLA/filaments/x/variants/black`. */
+	entityPath: string;
+	type: 'store' | 'brand' | 'material' | 'filament' | 'variant';
+	/**
+	 * JSON pointer prefix of this file's contents inside the entity's editor data. Empty for
+	 * the entity's own JSON file; `/sizes` for a variant's `sizes.json`, which the editor
+	 * keeps as the variant's `sizes` array.
+	 */
+	pointerPrefix: string;
+	/** True for a JSON file the editor edits; false for anything else (logos, stray files). */
+	isEntityJson: boolean;
+}
+
+/**
+ * Inverse of `entityPathToRepoPath`: which editor entity a repository file belongs to.
+ *
+ * Non-JSON files (a brand's logo, say) map to the entity whose folder holds them, with
+ * `isEntityJson: false`. Returns null for anything outside `data/` and `stores/`, or deeper
+ * than a variant folder.
+ */
+export function repoPathToEntityPath(repoPath: string): RepoFileEntity | null {
+	const parts = repoPath.split('/');
+	for (const part of parts) {
+		if (!SAFE_SEGMENT.test(part)) return null;
+	}
+	const file = parts[parts.length - 1];
+	const dirs = parts.slice(0, -1);
+
+	if (dirs[0] === 'stores' && dirs.length === 2) {
+		return {
+			entityPath: `stores/${dirs[1]}`,
+			type: 'store',
+			pointerPrefix: '',
+			isEntityJson: file === 'store.json'
+		};
+	}
+	if (dirs[0] !== 'data' || dirs.length < 2 || dirs.length > 5) return null;
+
+	const [, brand, material, filament, variant] = dirs;
+	if (dirs.length === 2) {
+		return {
+			entityPath: `brands/${brand}`,
+			type: 'brand',
+			pointerPrefix: '',
+			isEntityJson: file === 'brand.json'
+		};
+	}
+	if (dirs.length === 3) {
+		return {
+			entityPath: `brands/${brand}/materials/${material}`,
+			type: 'material',
+			pointerPrefix: '',
+			isEntityJson: file === 'material.json'
+		};
+	}
+	if (dirs.length === 4) {
+		return {
+			entityPath: `brands/${brand}/materials/${material}/filaments/${filament}`,
+			type: 'filament',
+			pointerPrefix: '',
+			isEntityJson: file === 'filament.json'
+		};
+	}
+	return {
+		entityPath: `brands/${brand}/materials/${material}/filaments/${filament}/variants/${variant}`,
+		type: 'variant',
+		pointerPrefix: file === 'sizes.json' ? '/sizes' : '',
+		isEntityJson: file === 'variant.json' || file === 'sizes.json'
+	};
+}
+
 /**
  * Build a lookup from image IDs to their actual filenames
  */

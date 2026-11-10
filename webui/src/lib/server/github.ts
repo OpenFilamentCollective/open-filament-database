@@ -259,14 +259,15 @@ export async function createCommit(
 	repo: string,
 	message: string,
 	treeSha: string,
-	parentSha: string
+	/** One parent for a normal commit; two (`[branchHead, mainHead]`) for a merge commit. */
+	parentSha: string | string[]
 ): Promise<string> {
 	const response = await ghFetch(token, `/repos/${owner}/${repo}/git/commits`, {
 		method: 'POST',
 		body: JSON.stringify({
 			message,
 			tree: treeSha,
-			parents: [parentSha]
+			parents: Array.isArray(parentSha) ? parentSha : [parentSha]
 		})
 	});
 
@@ -602,3 +603,315 @@ export async function mergePullRequest(
 	});
 	if (!response.ok) throw await ghError(response, 'Failed to merge');
 }
+
+// --- Feedback & revisions (src/lib/server/feedback.ts, prChanges.ts, revision.ts) ---
+
+/** GET that works without a token: the upstream repo is public. */
+async function ghGet(token: string | null, path: string): Promise<Response> {
+	return token
+		? ghFetch(token, path)
+		: fetch(`${API_BASE}${path}`, { headers: { Accept: 'application/vnd.github+json' } });
+}
+
+/**
+ * Run a GraphQL query. GitHub's GraphQL API always needs a token, unlike REST on a public
+ * repo. Throws on transport errors and on a response carrying `errors`.
+ */
+export async function githubGraphQL<T = any>(
+	token: string,
+	query: string,
+	variables: Record<string, unknown>
+): Promise<T> {
+	const response = await ghFetch(token, '/graphql', {
+		method: 'POST',
+		body: JSON.stringify({ query, variables })
+	});
+	if (!response.ok) throw await ghError(response, 'GraphQL request failed');
+	const body = await response.json();
+	if (body.errors?.length) {
+		throw new Error(`GraphQL error: ${body.errors.map((e: any) => e.message).join('; ')}`);
+	}
+	return body.data as T;
+}
+
+/** Everything the feedback and revision code needs about a PR. */
+export interface PullRequestDetails {
+	number: number;
+	title: string;
+	body: string;
+	html_url: string;
+	state: 'open' | 'closed';
+	merged: boolean;
+	draft: boolean;
+	author: string;
+	author_type: string;
+	updated_at: string;
+	closed_at: string | null;
+	head_sha: string;
+	head_ref: string;
+	/** null when the head repository (a fork) has been deleted. */
+	head_owner: string | null;
+	head_repo: string | null;
+	base_ref: string;
+	base_sha: string;
+	maintainer_can_modify: boolean;
+}
+
+export async function getPullRequestDetails(
+	token: string | null,
+	owner: string,
+	repo: string,
+	prNumber: number
+): Promise<PullRequestDetails | null> {
+	const response = await ghGet(token, `/repos/${owner}/${repo}/pulls/${prNumber}`);
+	if (response.status === 404) return null;
+	if (!response.ok) throw await ghError(response, 'Failed to get PR');
+	const pr = await response.json();
+	return {
+		number: pr.number,
+		title: pr.title ?? '',
+		body: pr.body ?? '',
+		html_url: pr.html_url,
+		state: pr.state,
+		merged: pr.merged === true,
+		draft: pr.draft === true,
+		author: pr.user?.login ?? 'ghost',
+		author_type: pr.user?.type ?? 'User',
+		updated_at: pr.updated_at,
+		closed_at: pr.closed_at ?? null,
+		head_sha: pr.head.sha,
+		head_ref: pr.head.ref,
+		head_owner: pr.head.repo?.owner?.login ?? null,
+		head_repo: pr.head.repo?.name ?? null,
+		base_ref: pr.base.ref,
+		base_sha: pr.base.sha,
+		maintainer_can_modify: pr.maintainer_can_modify === true
+	};
+}
+
+export interface PullRequestFile {
+	filename: string;
+	status: 'added' | 'removed' | 'modified' | 'renamed' | 'copied' | 'changed' | 'unchanged';
+	previous_filename?: string;
+}
+
+/** The files a PR changes (GitHub caps this listing at 3000 files). */
+export async function getPullRequestFiles(
+	token: string | null,
+	owner: string,
+	repo: string,
+	prNumber: number
+): Promise<PullRequestFile[]> {
+	const files: PullRequestFile[] = [];
+	for (let page = 1; page <= 30; page++) {
+		const response = await ghGet(
+			token,
+			`/repos/${owner}/${repo}/pulls/${prNumber}/files?per_page=100&page=${page}`
+		);
+		if (!response.ok) throw await ghError(response, 'Failed to list PR files');
+		const batch = await response.json();
+		for (const f of batch) {
+			files.push({ filename: f.filename, status: f.status, previous_filename: f.previous_filename });
+		}
+		if (batch.length < 100) break;
+	}
+	return files;
+}
+
+/** The merge base of two commits, which is what a PR's diff is measured against. */
+export async function getMergeBase(
+	token: string | null,
+	owner: string,
+	repo: string,
+	base: string,
+	head: string
+): Promise<string> {
+	const response = await ghGet(
+		token,
+		`/repos/${owner}/${repo}/compare/${encodeURIComponent(base)}...${encodeURIComponent(head)}?per_page=1`
+	);
+	if (!response.ok) throw await ghError(response, 'Failed to compare commits');
+	const body = await response.json();
+	return body.merge_base_commit.sha;
+}
+
+export interface IssueComment {
+	id: number;
+	body: string;
+	author: string;
+	author_type: string;
+	created_at: string;
+}
+
+export async function listIssueComments(
+	token: string | null,
+	owner: string,
+	repo: string,
+	issueNumber: number
+): Promise<IssueComment[]> {
+	const comments: IssueComment[] = [];
+	for (let page = 1; page <= 10; page++) {
+		const response = await ghGet(
+			token,
+			`/repos/${owner}/${repo}/issues/${issueNumber}/comments?per_page=100&page=${page}`
+		);
+		if (!response.ok) throw await ghError(response, 'Failed to list comments');
+		const batch = await response.json();
+		for (const c of batch) {
+			comments.push({
+				id: c.id,
+				body: c.body ?? '',
+				author: c.user?.login ?? 'ghost',
+				author_type: c.user?.type ?? 'User',
+				created_at: c.created_at
+			});
+		}
+		if (batch.length < 100) break;
+	}
+	return comments;
+}
+
+/**
+ * Create or update a "sticky" comment identified by an HTML-comment `marker`.
+ *
+ * Only the newest marked comment written by a bot is edited, the same rule as the brand
+ * sign-off comment (`ofd/commands/claims.py`), so a human quoting the marker can't make the
+ * bot overwrite their comment.
+ */
+export async function upsertMarkedComment(
+	token: string,
+	owner: string,
+	repo: string,
+	issueNumber: number,
+	marker: string,
+	body: string
+): Promise<void> {
+	const comments = await listIssueComments(token, owner, repo, issueNumber);
+	const existing = comments
+		.filter((c) => c.author_type === 'Bot' && c.body.includes(marker))
+		.at(-1);
+	const fullBody = body.includes(marker) ? body : `${marker}\n${body}`;
+	if (!existing) {
+		await createIssueComment(token, owner, repo, issueNumber, fullBody);
+		return;
+	}
+	const response = await ghFetch(token, `/repos/${owner}/${repo}/issues/comments/${existing.id}`, {
+		method: 'PATCH',
+		body: JSON.stringify({ body: fullBody })
+	});
+	if (!response.ok) throw await ghError(response, 'Failed to update comment');
+}
+
+/** Read a binary blob as base64 (logos). Returns null when the blob is gone. */
+export async function getBlobBase64(
+	token: string | null,
+	owner: string,
+	repo: string,
+	sha: string
+): Promise<string | null> {
+	const response = await ghGet(token, `/repos/${owner}/${repo}/git/blobs/${sha}`);
+	if (response.status === 404) return null;
+	if (!response.ok) throw await ghError(response, 'Failed to get blob');
+	const blob = await response.json();
+	if (typeof blob.content !== 'string' || blob.encoding !== 'base64') return null;
+	return blob.content.replace(/\n/g, '');
+}
+
+export interface PullRequestListItem {
+	number: number;
+	title: string;
+	html_url: string;
+	state: 'open' | 'closed';
+	merged: boolean;
+	author: string;
+	head_ref: string;
+	head_owner: string | null;
+	updated_at: string;
+	closed_at: string | null;
+	maintainer_can_modify: boolean;
+}
+
+/**
+ * List pull requests, newest-updated first. `state: 'closed'` also returns merged ones
+ * (`merged: true`). Stops after `limit` results.
+ */
+export async function listPullRequests(
+	token: string | null,
+	owner: string,
+	repo: string,
+	state: 'open' | 'closed',
+	limit = 100
+): Promise<PullRequestListItem[]> {
+	const out: PullRequestListItem[] = [];
+	for (let page = 1; out.length < limit && page <= 10; page++) {
+		const response = await ghGet(
+			token,
+			`/repos/${owner}/${repo}/pulls?state=${state}&sort=updated&direction=desc&per_page=100&page=${page}`
+		);
+		if (!response.ok) throw await ghError(response, 'Failed to list PRs');
+		const batch = await response.json();
+		for (const pr of batch) {
+			out.push({
+				number: pr.number,
+				title: pr.title ?? '',
+				html_url: pr.html_url,
+				state: pr.state,
+				merged: pr.merged_at != null,
+				author: pr.user?.login ?? 'ghost',
+				head_ref: pr.head?.ref ?? '',
+				head_owner: pr.head?.repo?.owner?.login ?? null,
+				updated_at: pr.updated_at,
+				closed_at: pr.closed_at ?? null,
+				maintainer_can_modify: pr.maintainer_can_modify === true
+			});
+		}
+		if (batch.length < 100) break;
+	}
+	return out.slice(0, limit);
+}
+
+/** A file's text at a commit, or null when it doesn't exist there. */
+export async function getFileTextAtRef(
+	token: string | null,
+	owner: string,
+	repo: string,
+	filePath: string,
+	ref: string
+): Promise<string | null> {
+	const encodedPath = filePath.split('/').map(encodeURIComponent).join('/');
+	const response = await ghGet(
+		token,
+		`/repos/${owner}/${repo}/contents/${encodedPath}?ref=${encodeURIComponent(ref)}`
+	);
+	if (response.status === 404) return null;
+	if (!response.ok) throw await ghError(response, 'Failed to get file');
+	const body = await response.json();
+	if (typeof body.content !== 'string' || body.encoding !== 'base64') return null;
+	return Buffer.from(body.content, 'base64').toString('utf-8');
+}
+
+/**
+ * Post a COMMENT review: a body plus comments on lines of the PR's diff, at `commitSha`.
+ * GitHub refuses the whole review (422) if any line is outside the diff.
+ */
+export async function createReview(
+	token: string,
+	owner: string,
+	repo: string,
+	prNumber: number,
+	commitSha: string,
+	body: string,
+	comments: { path: string; line: number; body: string }[]
+): Promise<void> {
+	const response = await ghFetch(token, `/repos/${owner}/${repo}/pulls/${prNumber}/reviews`, {
+		method: 'POST',
+		body: JSON.stringify({
+			commit_id: commitSha,
+			event: 'COMMENT',
+			body,
+			comments: comments.map((c) => ({ ...c, side: 'RIGHT' }))
+		})
+	});
+	if (!response.ok) throw await ghError(response, 'Failed to post review');
+}
+

@@ -465,6 +465,11 @@ def merge_url(number: int) -> str:
     return f"{base}/review/merge/{number}" if base else ""
 
 
+def editor_url(number: int) -> str:
+    base = os.environ.get("OFD_WEBUI_URL", "").rstrip("/")
+    return f"{base}/submissions/{number}" if base else ""
+
+
 def run_url() -> str:
     server, repo, run = (
         os.environ.get(k) for k in ("GITHUB_SERVER_URL", "GITHUB_REPOSITORY", "GITHUB_RUN_ID")
@@ -478,6 +483,7 @@ def render(result: dict, previous_body: str = "") -> str:
         previous_ai=extract_ai_section(previous_body),
         run_url=run_url(),
         merge_url=merge_url(result["pr"]),
+        editor_url=editor_url(result["pr"]),
     )
 
 

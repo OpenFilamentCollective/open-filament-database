@@ -2,5 +2,5 @@ argcomplete~=3.5.0
 jsonschema~=4.23.0
 markdown~=3.7
 pypdf~=6.19.0
-ofd-validator>=0.5.3
+ofd-validator>=0.5.4
 referencing~=0.35.0

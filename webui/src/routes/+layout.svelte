@@ -1,9 +1,10 @@
 <script lang="ts">
 	import './layout.css';
-	import { ChangesMenu, Footer, WelcomeModal, DebugOverlay } from '$lib/components/layout';
+	import { ChangesMenu, Footer, WelcomeModal, DebugOverlay, RevisionBanner } from '$lib/components/layout';
 	import { Button, SearchBar } from '$lib/components/ui';
 	import { isCloudMode } from '$lib/stores/environment';
 	import { authStore } from '$lib/stores/auth';
+	import { submissionEntries, submissionsNeedingChanges } from '$lib/stores/submitted';
 	import { theme } from '$lib/stores/theme';
 	import { db } from '$lib/services/database';
 	import { clearSearchCache } from '$lib/services/searchIndex';
@@ -117,6 +118,34 @@
 					>
 						API
 					</a>
+					{#if $submissionEntries.length > 0}
+						<!-- The contributor's own submissions; a warning sign when one needs changes. -->
+						<a
+							href="/submissions"
+							title={$submissionsNeedingChanges.length > 0
+								? `${$submissionsNeedingChanges.length} submission${$submissionsNeedingChanges.length === 1 ? ' needs' : 's need'} changes from you`
+								: 'Your submissions'}
+							class="inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium transition-colors {$page.url.pathname.startsWith('/submissions') ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}"
+						>
+							Submissions
+							{#if $submissionsNeedingChanges.length > 0}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+									class="h-4 w-4 text-warning"
+									aria-label="Needs changes"
+									role="img"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							{/if}
+						</a>
+					{/if}
 				</nav>
 			</div>
 			<!-- Center: Global search -->
@@ -233,6 +262,8 @@
 			</div>
 		</div>
 	</header>
+
+	<RevisionBanner />
 
 	<main class="flex-1">
 		{@render children()}

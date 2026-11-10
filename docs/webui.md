@@ -196,7 +196,40 @@ Light, dark, and system-follow themes via the header dropdown.  Preference is st
 ### GitHub Integration
 
 - **Authenticated PRs**: Users sign in via GitHub OAuth, and the editor forks the upstream repo, creates a branch, builds a commit from changes, and opens a pull request — all through the GitHub API.
-- **Anonymous PRs**: When enabled, users can submit changes without a GitHub account.  A bot account creates the PR on their behalf.  Submissions are tracked by UUID, and lifecycle events (submitted, merged, closed) fire webhooks.
+- **SimplyPrint (bot) PRs**: When enabled, users sign in with SimplyPrint instead of GitHub and the submission bot (a GitHub App) opens the PR on their behalf. Submissions are tracked by UUID, and lifecycle events (submitted, merged, closed, changes requested, returned) fire webhooks and email the contributor.
+- **Adding to an open submission**: submitting again over paths an open bot submission already covers offers to add to that PR instead of opening a competing one.
+
+### Review feedback
+
+Maintainers review web-editor PRs on GitHub as usual. The editor turns that review into something the contributor can act on without GitHub.
+
+**What counts as feedback** (`src/lib/server/feedback.ts`):
+
+- Every human comment on the PR: conversation comments, review bodies and inline review comments.
+- The inline findings of the **latest** AI review run. Earlier runs and the AI summary comment don't count.
+- Never: a comment starting with **"Note"** (any case, e.g. "Note to self:"), anything in a **resolved** thread, the PR author's own comments, slash commands, dismissed reviews, other bots.
+- To drop a single item, resolve its thread on GitHub. A "Note" reply hides only itself, not the comment it replies to.
+
+Inline comments are mapped to the entity and field they are about (e.g. *Night Saphire › name*), so the editor can show them on the right page.
+
+**Closing a PR** (web-editor PRs only, i.e. branches `ofd-anon-*` and `ofd-changes-*`):
+
+| How it was closed | Outcome | What happens |
+|---|---|---|
+| By a maintainer, after a comment starting with **"Reject"** (e.g. "Rejected: duplicate of #800") | `rejected` | A plain close. Bot-PR contributors get an email with the rest of that comment as the reason. |
+| By a maintainer, with at least one feedback item and no "Reject" comment | `returned` | The feedback goes back to the contributor: by email for bot PRs, by an @mention in a "Returned for changes" comment for fork PRs. The comment also says whether a bot-PR contributor could be reached. |
+| By the PR author, by a bot, or with no feedback | `closed` | A plain close, as before. |
+
+**Fixing it** (`/submissions/[pr]`, linked from the email, the PR comment, the Changes menu and the AI review footer):
+
+1. "Fix in the editor" loads the PR's changes into the editor, rebased onto current `main`, with a banner on every page it touches listing the feedback for that entity. Items whose field you have changed since loading are marked.
+2. Submitting from the Changes menu then either pushes the fix onto the PR (still open) or opens a new PR replacing it (returned), linked both ways.
+
+**Finding it again**: a **Submissions** link appears in the navbar once this browser has submitted anything, with a ⚠ when one needs changes (returned, or changes requested). It opens `/submissions`, the list of this browser's submissions. Emails link the submission page with a button.
+
+**Trying it locally** (development only): open `/api/dev/preview/827` to see #827, from a snapshot in `src/lib/server/devFixtures/`, as a returned submission from its contributor's side: it adds the PR to this browser's submissions and opens its page, and from there everything (navbar warning, "Fix in the editor", the banners) is the normal flow. `?remove` undoes it; `?email=returned` (or `changes_requested`, `rejected`, `merged`, `closed`) shows the email it would send. It affects only your browser, needs no GitHub credentials, and can't be submitted or saved to disk.
+
+**Who can revise**: the submitter (the same SimplyPrint account for bot PRs; the PR author's GitHub account for fork PRs) and maintainers (write access). Maintainers can push to bot PRs and to fork PRs that allow maintainer edits, and have a PR picker at `/review/prs`. A returned PR is for its contributor to resubmit; a maintainer who wants to fix it reopens it first.
 
 ### Logo Management
 
@@ -634,11 +667,11 @@ Create a GitHub pull request from pending changes.  Requires GitHub OAuth authen
 
 ---
 
-### Anonymous Submissions
+### SimplyPrint (bot) submissions
 
 #### POST `/api/anon/submit`
 
-Submit changes anonymously via a bot account.  Only available when the anonymous bot feature is enabled.
+Submit changes through the submission bot (a GitHub App), for contributors without a GitHub account. Only available when `ANON_BOT_ENABLED=true`, and requires a SimplyPrint sign-in.
 
 - **Request body**:
 
@@ -648,33 +681,58 @@ Submit changes anonymously via a bot account.  Only available when the anonymous
     "images": { ... },
     "title": "Optional",
     "description": "Optional",
-    "email": "Optional, never stored by webui"
+    "amendUuid": "Optional: add these changes to this open submission instead of opening a new PR"
   }
   ```
 
-- **Response**: `{ "success": true, "uuid": "...", "prUrl": "...", "prNumber": 123 }`
+- **Response**: `{ "success": true, "uuid": "...", "prUrl": "...", "prNumber": 123, "amended": false }`
+- **Error 401**: Not signed in with SimplyPrint, or the session expired.
+- **Error 403**: `amendUuid` belongs to a different SimplyPrint account.
 - **Error 422**: Validation errors found — includes `validation` object.
 - **Error 429**: Rate limited — includes `Retry-After` header.
 - **Rate limit**: Per-IP sliding window, default 5 submissions per hour.
-- **Privacy**: Email is only forwarded in the outgoing webhook and is never persisted.
+- **Branch and body**: the bot pushes `ofd-anon-<uuid>` to upstream; the PR body starts with `<!-- ofd-submission-uuid: <uuid> -->`.
+- **Privacy**: The SimplyPrint account's email is stored (Postgres `submissions` table) only to notify the contributor about their submission (merged, closed, changes requested, returned).
 
-#### GET `/api/anon/status/[uuid]`
+Fork PRs from `POST /api/github/create-pr` carry the same UUID marker and are tracked the same way (without an email).
 
-Check the status of an anonymous submission.
+---
 
-- **Response**:
+### Submissions & review feedback
 
-  ```json
-  {
-    "uuid": "...",
-    "status": "open | merged | closed",
-    "prUrl": "...",
-    "prNumber": 123,
-    "createdAt": "2025-01-15T10:30:00Z"
-  }
-  ```
+See [Review feedback](#review-feedback) for how these fit together.
 
-- **Error 404**: Feature disabled or submission not found.
+#### GET `/api/submissions/[pr]`
+
+A submission's status and its review feedback. Readable by anyone (the PR is public); the visitor's own permission to revise it is included.
+
+- **Response**: `{ pr, status, outcome, items, truncated, access }`, where `status` is `open | feedback | merged | returned | rejected | closed`, `items` are feedback items (author, text, link, and for inline comments the entity path and JSON pointer they are about), and `access` says whether the visitor may revise it (`allowed`, `as: submitter | maintainer`, `mode: amend | resubmit`, or a `reason` and the `signIn` that would help).
+
+#### GET `/api/submissions/[pr]/changes`
+
+The PR's changes rebuilt as an editor change set, for loading into the editor. Only for visitors who may revise it.
+
+- Read from the PR itself (its files at the head, the merge base and current `main`), so maintainer suggestion commits are included and untracked PRs work.
+- Each entity is rebased onto current `main` with a 3-way JSON merge; when both sides changed a value, the PR wins and the field is listed in `conflicts`.
+- **Response**: `{ prNumber, headSha, kind, changes, images, conflicts, otherFiles, feedback, access, ... }`
+
+#### POST `/api/submissions/[pr]/revise`
+
+Submit a revision from the editor.
+
+- **Request body**: `{ changes, images, expectedHeadSha, title?, description? }`, where `changes` is the editor's whole change set for this PR.
+- **Open PR**: commits `main` + the change set onto the PR's branch as a merge of the branch head and `main`, so the PR's diff equals the change set (anything dropped in the editor reverts). Files the editor doesn't model are carried over. **409** if the branch moved since `expectedHeadSha`.
+- **Returned PR**: opens a new PR ("Resubmission of #N") and comments "Resubmitted as #M" on the old one.
+- Pushes through the bot for bot PRs, and with the visitor's own GitHub token for fork PRs and maintainers.
+- Validated like a first submission; rate-limited like `/api/anon/submit`.
+
+#### POST `/api/submissions/status`
+
+Reconcile the browser's submitted list against GitHub. Body `{ prNumbers }`; returns `{ statuses, mergedAt }` with `open | merged | closed | changes_requested | returned | rejected | unknown`.
+
+#### GET `/api/review/prs`
+
+The maintainer PR picker's list: open PRs plus PRs returned in the last 30 days, with feedback counts and whether the signed-in maintainer can push to each. Requires a GitHub sign-in with write access.
 
 ---
 
@@ -685,8 +743,11 @@ Check the status of an anonymous submission.
 Receives incoming GitHub webhook events for PR lifecycle tracking.
 
 - **Headers**: `x-hub-signature-256` (HMAC-SHA256), `x-github-event`
-- **Supported events**: `pull_request` with action `closed`
-- **Behaviour**: Verifies the signature, extracts the submission UUID from the PR body, updates the submission status to `merged` or `closed`, and fires outgoing webhooks.
+- **Supported events**: `pull_request` (`closed`, `reopened`) and `pull_request_review` (`submitted` with state `changes_requested`)
+- **Merged**: marks the submission merged, fires the `merged` webhook, emails the contributor.
+- **Closed without merging (web-editor PRs)**: after `OFD_CLOSE_SETTLE_MS`, classifies the close as returned, rejected or closed (see [Review feedback](#review-feedback)), records it in `pr_outcomes`, emails bot-PR contributors, and posts the "Returned for changes" comment.
+- **Changes requested**: marks the submission, fires the `changes_requested` webhook, and emails the contributor every open feedback item with the fix link.
+- `ofd-anon-*` branches are deleted on close; the PR's commits stay reachable through `refs/pull/<n>/head`, which is what loading a returned PR reads.
 - **Error 401**: Invalid signature.
 
 ---
@@ -722,24 +783,33 @@ All configuration is via environment variables.  See `.env.example` for the full
 | `GITHUB_UPSTREAM_OWNER` | For PRs | Upstream repo owner (default: `OpenFilamentCollective`) |
 | `GITHUB_UPSTREAM_REPO` | For PRs | Upstream repo name (default: `open-filament-database`) |
 
-### Anonymous Bot
+### Submission bot (GitHub App)
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `PUBLIC_ANON_BOT_ENABLED` | No | `false` | Enable anonymous submissions (client flag) |
-| `ANON_BOT_ENABLED` | No | `false` | Enable anonymous submissions (server flag) |
-| `ANON_BOT_GITHUB_PAT` | When enabled | — | Bot account personal access token (`public_repo` scope) |
-| `ANON_BOT_GITHUB_USERNAME` | When enabled | — | Bot GitHub username |
+| `ANON_BOT_ENABLED` | No | `false` | Enable SimplyPrint (bot) submissions |
+| `GITHUB_APP_ID` | When enabled | — | The bot's GitHub App ID |
+| `GITHUB_APP_PRIVATE_KEY` | When enabled | — | The App's private key (PEM, `\n`-escaped) |
+| `GITHUB_APP_INSTALLATION_ID` | When enabled | — | The App's installation on the upstream repo (Contents and Pull requests: read & write) |
+| `DATABASE_URL` | Recommended | — | Postgres for submission records and PR outcomes; in-memory only without it |
 
 ### Webhooks
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `WEBHOOK_URL_SUBMITTED` | No | URL called when an anonymous PR is created |
+| `WEBHOOK_URL_SUBMITTED` | No | URL called when a bot PR is created |
 | `WEBHOOK_URL_MERGED` | No | URL called when a PR is merged |
-| `WEBHOOK_URL_CLOSED` | No | URL called when a PR is closed without merge |
+| `WEBHOOK_URL_CLOSED` | No | URL called when a PR is closed without merge (`reason` set when rejected) |
+| `WEBHOOK_URL_CHANGES_REQUESTED` | No | URL called when changes are requested or a PR is returned for changes |
 | `WEBHOOK_SECRET` | No | HMAC-SHA256 secret for signing outgoing webhook payloads |
 | `GITHUB_WEBHOOK_SECRET` | When bot enabled | Secret for validating incoming GitHub webhook signatures |
+| `OFD_CLOSE_SETTLE_MS` | No | Delay before classifying a close (default `5000`) |
+
+### Review feedback
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `OFD_WEBUI_URL` | Recommended | Public URL of this editor, for "Fix it in the web editor" links in emails and PR comments. Same value as the `OFD_WEBUI_URL` repository variable the AI review uses. |
 
 ### Rate Limiting
 

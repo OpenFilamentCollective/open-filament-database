@@ -2,8 +2,9 @@
 	import { Button, LoadingSpinner, FixHint } from '$lib/components/ui';
 	import { isAuthenticated, currentUser, isSpAuthenticated, currentSpUser, authStore } from '$lib/stores/auth';
 	import type { SubmittedEntry } from '$lib/types/changes';
+	import type { ActiveRevision } from '$lib/stores/revision';
 
-	type Step = 'method' | 'details' | 'success';
+	type Step = 'method' | 'details' | 'revision' | 'success';
 	type SubmitMethod = 'simplyprint' | 'github';
 
 	interface Props {
@@ -22,6 +23,14 @@
 		 * wizard offers to add to the newest one instead of opening a competing PR.
 		 */
 		overlap?: Array<{ entry: SubmittedEntry; paths: string[] }>;
+		/**
+		 * A pull request loaded for revision (stores/revision.ts). When set, the wizard has one
+		 * target: update that PR, or resubmit it if it was returned.
+		 */
+		revision?: ActiveRevision | null;
+		onSubmitRevision?: (
+			description: string
+		) => Promise<{ success: boolean; message: string; uuid?: string; prUrl?: string; revised?: 'amend' | 'resubmit' }>;
 	}
 
 	let {
@@ -33,10 +42,12 @@
 		onSubmitGitHub,
 		onClose,
 		initialMethod,
-		overlap = []
+		overlap = [],
+		revision = null,
+		onSubmitRevision
 	}: Props = $props();
 
-	let step = $state<Step>(initialMethod ? 'details' : 'method');
+	let step = $state<Step>(revision ? 'revision' : initialMethod ? 'details' : 'method');
 	let method = $state<SubmitMethod>(initialMethod ?? 'simplyprint');
 	let submitting = $state(false);
 	let result = $state<{
@@ -45,7 +56,14 @@
 		uuid?: string;
 		prUrl?: string;
 		amended?: boolean;
+		revised?: 'amend' | 'resubmit';
 	} | null>(null);
+
+	// A revision pushes through the bot for a SimplyPrint submitter, and with the visitor's
+	// own GitHub token otherwise (fork authors, maintainers).
+	let revisionNeedsSp = $derived(revision?.via === 'bot' && revision?.as === 'submitter');
+	let revisionSignedIn = $derived(revisionNeedsSp ? $isSpAuthenticated : $isAuthenticated);
+	let revisionNote = $state('');
 
 	// The submission to add to. Amending is only wired up for the SimplyPrint/anon path —
 	// GitHub submissions go to a fork on a per-submission branch, which the bot doesn't own.
@@ -76,7 +94,9 @@
 		result = null;
 
 		try {
-			if (method === 'simplyprint') {
+			if (revision && onSubmitRevision) {
+				result = await onSubmitRevision(revisionNote);
+			} else if (method === 'simplyprint') {
 				result = await onSubmitSimplyPrint(
 					canAmend && addToExisting ? amendTarget!.uuid : undefined
 				);
@@ -104,7 +124,78 @@
 </script>
 
 <div class="flex h-full flex-col">
-	{#if step === 'method'}
+	{#if step === 'revision' && revision}
+		<!-- Revising a loaded pull request: one target, no method choice. -->
+		<div class="flex flex-1 flex-col">
+			<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+				Send your fixes
+			</h4>
+
+			{#if hasValidationErrors}
+				<div class="mb-4 rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+					Please fix validation errors before submitting.
+				</div>
+			{/if}
+
+			<div class="flex-1 space-y-3 text-sm">
+				<p class="text-muted-foreground">
+					Your fixed version goes back to the reviewer, together with any comments you wrote.
+					{#if revision.as === 'maintainer'}You are fixing someone else's contribution as a maintainer.{/if}
+				</p>
+
+				{#if revision.mode === 'resubmit'}
+					<div>
+						<label for="wizard-revision-note" class="mb-1 block text-sm font-medium">
+							What did you change? <span class="font-normal text-muted-foreground">(optional, for the reviewer)</span>
+						</label>
+						<textarea
+							id="wizard-revision-note"
+							bind:value={revisionNote}
+							rows="3"
+							class="w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+							placeholder="Fixed the colour name and the datasheet link…"
+						></textarea>
+					</div>
+				{/if}
+
+				{#if !revisionSignedIn}
+					<p class="text-muted-foreground">
+						{revisionNeedsSp
+							? 'Sign in with the SimplyPrint account that made this submission.'
+							: 'Sign in with GitHub to push your changes.'}
+					</p>
+					<Button onclick={() => (revisionNeedsSp ? authStore.spLogin() : authStore.ghLogin())} variant="primary" size="md">
+						Sign in with {revisionNeedsSp ? 'SimplyPrint' : 'GitHub'}
+					</Button>
+				{:else}
+					<p class="text-xs text-muted-foreground">
+						Signed in as {revisionNeedsSp ? $currentSpUser?.name : `@${$currentUser?.login}`}.
+					</p>
+				{/if}
+			</div>
+
+			{#if revisionSignedIn}
+				<div class="mt-4 shrink-0 space-y-3">
+					{#if result && !result.success}
+						<div class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+							{result.message}
+						</div>
+					{/if}
+					<Button onclick={handleSubmit} variant="primary" size="md" class="w-full" disabled={submitting || hasValidationErrors}>
+						{#if submitting}
+							<LoadingSpinner />
+							Submitting...
+						{:else if revision.mode === 'amend'}
+							Send fixes
+						{:else}
+							Send fixed version
+						{/if}
+					</Button>
+				</div>
+			{/if}
+		</div>
+
+	{:else if step === 'method'}
 		<!-- Step 1: Choose submission method -->
 		<div class="flex flex-1 flex-col">
 			<h4 class="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">How would you like to submit?</h4>
@@ -381,10 +472,16 @@
 			</div>
 
 			<h3 class="mb-2 text-lg font-semibold">
-				{result?.amended ? 'Your changes were added to your open submission!' : 'Your changes have been submitted!'}
+				{result?.revised === 'amend'
+					? 'Your fixes were sent!'
+					: result?.revised === 'resubmit'
+						? 'Your fixed version was sent!'
+						: result?.amended
+							? 'Your changes were added to your open submission!'
+							: 'Your changes have been submitted!'}
 			</h3>
 			<p class="mb-6 text-sm text-muted-foreground">
-				A maintainer will review and merge your changes.
+				{result?.revised ? result.message : 'A maintainer will review and merge your changes.'}
 			</p>
 
 			<!-- Flow diagram -->
@@ -405,7 +502,7 @@
 				<div class="rounded-full bg-muted px-3 py-1 text-muted-foreground">Live</div>
 			</div>
 
-			{#if result?.uuid}
+			{#if result?.uuid && !result?.revised}
 				<div class="mb-4 flex items-center gap-2 rounded-md bg-muted px-3 py-2 text-xs">
 					<span class="text-muted-foreground">Reference:</span>
 					<code class="font-mono">{result.uuid}</code>

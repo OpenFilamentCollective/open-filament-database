@@ -1,0 +1,178 @@
+{
+	"capturedAt": "2026-11-03T16:31:06.336Z",
+	"pr": {
+		"number": 827,
+		"title": "Add Night Saphire variant to insignia Glitter PLA",
+		"url": "https://github.com/OpenFilamentCollective/open-filament-database/pull/827",
+		"state": "open",
+		"merged": false,
+		"author": "ofd-anon-pr-bot",
+		"authorIsBot": true,
+		"headRef": "ofd-anon-4df9035c-eff0-4bfc-b4df-4c109ec197cc",
+		"headSha": "e94e311279b0b336e2ff64e9fb8343be5c4529a7",
+		"headOwner": "OpenFilamentCollective",
+		"headRepo": "open-filament-database",
+		"maintainerCanModify": false,
+		"kind": "bot",
+		"updatedAt": "2026-11-03T16:04:27Z",
+		"closedAt": null
+	},
+	"items": [
+		{
+			"id": "t4429183923",
+			"kind": "inline",
+			"source": "ai",
+			"author": "github-actions",
+			"body": "🟡 The colour name is misspelled. The Best Buy product URL in this PR spells it \"Night Sapphire\", so the name should be \"Night Sapphire\". Since the variant is new, rename the id and folder too (night_saphire → night_sapphire) before merging. _(unverified: AI opinion)_",
+			"url": "https://github.com/OpenFilamentCollective/open-filament-database/pull/827#discussion_r4429183923",
+			"createdAt": "2026-10-30T22:58:45Z",
+			"outdated": false,
+			"location": {
+				"repoPath": "data/insignia/PLA/glitter_pla/night_saphire/variant.json",
+				"line": 3,
+				"entityPath": "brands/insignia/materials/PLA/filaments/glitter_pla/variants/night_saphire",
+				"entityType": "variant",
+				"pointer": "/name",
+				"label": "name"
+			}
+		},
+		{
+			"id": "t4429183928",
+			"kind": "inline",
+			"source": "ai",
+			"author": "github-actions",
+			"body": "🟡 A 25 °C minimum bed temperature is unusually low for PLA (the usual range is about 50–70 °C). Please check the Insignia spool label or product page and correct it, or confirm the source. _(unverified: AI opinion)_",
+			"url": "https://github.com/OpenFilamentCollective/open-filament-database/pull/827#discussion_r4429183928",
+			"createdAt": "2026-10-30T22:58:45Z",
+			"outdated": false,
+			"location": {
+				"repoPath": "data/insignia/PLA/glitter_pla/filament.json",
+				"line": 8,
+				"entityPath": "brands/insignia/materials/PLA/filaments/glitter_pla",
+				"entityType": "filament",
+				"pointer": "/min_bed_temperature",
+				"label": "min bed temperature"
+			}
+		},
+		{
+			"id": "t4429183931",
+			"kind": "inline",
+			"source": "ai",
+			"author": "github-actions",
+			"body": "🔵 max_print_speed 300 is high for PLA and has no visible source. Confirm it or remove it. _(unverified: AI opinion)_",
+			"url": "https://github.com/OpenFilamentCollective/open-filament-database/pull/827#discussion_r4429183931",
+			"createdAt": "2026-10-30T22:58:45Z",
+			"outdated": false,
+			"location": {
+				"repoPath": "data/insignia/PLA/glitter_pla/filament.json",
+				"line": 10,
+				"entityPath": "brands/insignia/materials/PLA/filaments/glitter_pla",
+				"entityType": "filament",
+				"pointer": "/max_print_speed",
+				"label": "max print speed"
+			}
+		},
+		{
+			"id": "t4431463049",
+			"kind": "inline",
+			"source": "maintainer",
+			"author": "coffandro",
+			"body": "This is a link to the store listing, not the datasheet.",
+			"url": "https://github.com/OpenFilamentCollective/open-filament-database/pull/827#discussion_r4431463049",
+			"createdAt": "2026-10-31T10:53:21Z",
+			"outdated": false,
+			"location": {
+				"repoPath": "data/insignia/PLA/glitter_pla/filament.json",
+				"line": 11,
+				"entityPath": "brands/insignia/materials/PLA/filaments/glitter_pla",
+				"entityType": "filament",
+				"pointer": "/data_sheet_url",
+				"label": "data sheet url"
+			}
+		},
+		{
+			"id": "t4431464133",
+			"kind": "inline",
+			"source": "maintainer",
+			"author": "coffandro",
+			"body": "Bar is lower for addition only PR's but I do concur",
+			"url": "https://github.com/OpenFilamentCollective/open-filament-database/pull/827#discussion_r4431464133",
+			"createdAt": "2026-10-31T10:53:47Z",
+			"outdated": false,
+			"context": {
+				"author": "github-actions",
+				"excerpt": "🔵 max_print_speed 300 is high for PLA and has no visible source. Confirm it or remove it. _(unverified: AI opinion)_"
+			},
+			"location": {
+				"repoPath": "data/insignia/PLA/glitter_pla/filament.json",
+				"line": 10,
+				"entityPath": "brands/insignia/materials/PLA/filaments/glitter_pla",
+				"entityType": "filament",
+				"pointer": "/max_print_speed",
+				"label": "max print speed"
+			}
+		}
+	],
+	"changes": {
+		"prNumber": 827,
+		"headSha": "e94e311279b0b336e2ff64e9fb8343be5c4529a7",
+		"mergeBaseSha": "7713b99319be555c8853e27836495e851e1d20ca",
+		"mainSha": "7713b99319be555c8853e27836495e851e1d20ca",
+		"kind": "bot",
+		"changes": [
+			{
+				"entity": {
+					"type": "filament",
+					"path": "brands/insignia/materials/PLA/filaments/glitter_pla",
+					"id": "glitter_pla"
+				},
+				"operation": "create",
+				"data": {
+					"id": "glitter_pla",
+					"name": "Glitter PLA",
+					"diameter_tolerance": 0.02,
+					"density": 1.24,
+					"min_print_temperature": 190,
+					"max_print_temperature": 230,
+					"min_bed_temperature": 25,
+					"max_bed_temperature": 60,
+					"max_print_speed": 300,
+					"data_sheet_url": "https://www.bestbuy.com/product/insignia-pla-glitter-1-75mm-filament-night-sapphire/J2FPJK9VS3",
+					"discontinued": false
+				},
+				"originalData": null
+			},
+			{
+				"entity": {
+					"type": "variant",
+					"path": "brands/insignia/materials/PLA/filaments/glitter_pla/variants/night_saphire",
+					"id": "night_saphire"
+				},
+				"operation": "create",
+				"data": {
+					"id": "night_saphire",
+					"name": "Night Saphire",
+					"color_hex": "#24266B",
+					"discontinued": false,
+					"traits": {
+						"glitter": true
+					},
+					"sizes": [
+						{
+							"filament_weight": 1000,
+							"diameter": 1.75,
+							"container_material": "cardboard",
+							"empty_spool_weight": 250,
+							"spool_core_diameter": 100,
+							"discontinued": false
+						}
+					]
+				},
+				"originalData": null
+			}
+		],
+		"images": [],
+		"conflicts": [],
+		"otherFiles": []
+	}
+}

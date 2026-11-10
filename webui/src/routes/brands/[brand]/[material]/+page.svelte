@@ -8,7 +8,7 @@
 	import { fetchEntitySchema } from '$lib/services/schemaService';
 	import { BackButton } from '$lib/components/actions';
 	import { DataDisplay } from '$lib/components/layout';
-	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel, SubmittedBanner, InFlightHint } from '$lib/components/entity';
+	import { EntityDetails, EntityCard, SlicerSettingsDisplay, ChildListPanel, SubmittedBanner, FeedbackBanner, InFlightHint } from '$lib/components/entity';
 	import { createMessageHandler } from '$lib/utils/messageHandler.svelte';
 	import { createEntityState } from '$lib/utils/entityState.svelte';
 	import { createDeleteFlow } from '$lib/utils/useDeleteFlow.svelte';
@@ -322,6 +322,7 @@
 			{:else if entityState.submittedEntry}
 				<SubmittedBanner entry={entityState.submittedEntry} />
 			{/if}
+			<FeedbackBanner entityPath={entityState.entityPath} data={entityState.entity} />
 			{#if messageHandler.message}
 				<MessageBanner type={messageHandler.type} message={messageHandler.message} />
 			{/if}

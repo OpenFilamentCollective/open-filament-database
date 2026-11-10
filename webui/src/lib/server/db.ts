@@ -54,6 +54,21 @@ export async function ensureTables(): Promise<void> {
 	await p.query(`
 		ALTER TABLE submissions ADD COLUMN IF NOT EXISTS email TEXT
 	`);
+
+	// How a web-editor PR ended up (returned for changes, rejected, …), keyed by PR number
+	// so fork PRs without a submission record are covered too. See prOutcomes.ts.
+	await p.query(`
+		CREATE TABLE IF NOT EXISTS pr_outcomes (
+			pr_number INTEGER PRIMARY KEY,
+			outcome TEXT NOT NULL,
+			reason TEXT,
+			closed_by TEXT,
+			feedback_count INTEGER NOT NULL DEFAULT 0,
+			notified TEXT,
+			superseded_by INTEGER,
+			updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+		)
+	`);
 }
 
 let tablesReady = false;

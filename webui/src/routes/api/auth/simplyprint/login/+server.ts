@@ -3,11 +3,12 @@ import type { RequestHandler } from './$types';
 import { env } from '$env/dynamic/public';
 import { env as privateEnv } from '$env/dynamic/private';
 import { dev } from '$app/environment';
-import { SP_AUTHORIZE_URL } from '$lib/server/auth';
+import { SP_AUTHORIZE_URL, safeReturnPath } from '$lib/server/auth';
 import crypto from 'crypto';
 
 const STATE_COOKIE = 'ofd_sp_oauth_state';
 const VERIFIER_COOKIE = 'ofd_sp_oauth_verifier';
+const RETURN_COOKIE = 'ofd_sp_oauth_return';
 
 const base64url = (buf: Buffer) =>
 	buf.toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -33,6 +34,10 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 	};
 	cookies.set(STATE_COOKIE, state, cookieOpts);
 	cookies.set(VERIFIER_COOKIE, codeVerifier, cookieOpts);
+
+	// e.g. a submission's feedback page (/submissions/<n>), linked from the "returned" email.
+	const returnTo = safeReturnPath(url.searchParams.get('returnTo'));
+	if (returnTo) cookies.set(RETURN_COOKIE, returnTo, cookieOpts);
 
 	const redirectUri =
 		privateEnv.SIMPLYPRINT_REDIRECT_URI || url.origin + '/api/auth/simplyprint/callback';

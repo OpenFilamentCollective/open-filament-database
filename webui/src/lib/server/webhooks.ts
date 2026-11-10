@@ -31,6 +31,8 @@ interface WebhookPayloadClosed {
 	uuid: string;
 	prNumber: number;
 	timestamp: string;
+	/** Set when a maintainer rejected the submission with a "Reject: …" comment. */
+	reason?: string;
 }
 
 interface WebhookPayloadChangesRequested {

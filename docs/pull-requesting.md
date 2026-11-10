@@ -56,3 +56,14 @@ When creating a pull request, you can use one of our templates to help structure
   - For developers modifying the WebUI application
 
 To use a template, look for the "Choose a template" option when creating your PR, or find them in the `.github/PULL_REQUEST_TEMPLATE/` folder.
+
+## Submitted from the web editor?
+
+If you submitted through the [web editor](webui.md) (with GitHub or SimplyPrint), you don't need to touch GitHub to fix review feedback:
+
+1. Open your submission's page: the "Fix" link in the editor's Changes menu, the link in the email, or the "Fix in the web editor" link on the pull request.
+2. Click **Fix in the editor**. Your changes load back into the editor, and every page they touch shows the reviewer's feedback for it.
+3. Make the fixes, then **Submit Changes** from the Changes menu as usual.
+
+If the pull request is still open, your fix is added to it. If a maintainer closed it and sent it back to you ("Returned for changes"), submitting opens a new pull request linked to the old one.
+

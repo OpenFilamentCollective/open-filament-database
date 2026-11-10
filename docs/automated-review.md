@@ -40,4 +40,15 @@ A PR that changes the rules themselves (the schemas, `ofd/review/sustainability.
 - `ai-review` label: the same.
 - `hold` label: stop auto-merge.
 
+## Feedback to web-editor contributors
+
+Web-editor contributors (often without a GitHub account) see the PR's review comments in the editor, next to the fields they are about. See [Review feedback](webui.md#review-feedback) for the details. As a maintainer:
+
+- **Everything you write counts**, as do the inline findings of the latest AI run.
+- **Start a comment with "Note"** ("Note to self: …", "Note: this is fine") to keep it between maintainers.
+- **Resolve a thread** to drop it, e.g. an AI finding that is wrong.
+- **Close the PR** to hand it back: the contributor is sent the feedback and a link to fix it in the editor, and resubmitting opens a new PR.
+- **Close with a comment starting "Reject"** ("Rejected: duplicate of #800") to turn it down instead; the rest of the comment is sent as the reason.
+- **"Fix in the web editor"** in the AI summary footer loads the PR into the editor for you too, to push a fix yourself.
+
 Known gaps are listed in [ai-review-known-issues.md](ai-review-known-issues.md).

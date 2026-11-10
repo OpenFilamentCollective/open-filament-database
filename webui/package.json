@@ -52,12 +52,13 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
-		"@openfilamentcollective/ofd-validator": "^0.5.2",
+		"@openfilamentcollective/ofd-validator": "^0.5.4",
 		"@sjsf/ajv8-validator": "^3.2.0",
 		"@sjsf/form": "^3.2.0",
 		"ajv": "^8.17.1",
 		"clsx": "^2.1.1",
 		"dotenv": "^17.3.1",
+		"jsonc-parser": "3.3.1",
 		"pg": "^8.20.0",
 		"tailwind-merge": "^3.0.2",
 		"zeptomail": "^7.0.2"

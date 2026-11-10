@@ -8,6 +8,7 @@ import type {
 	ChangeExport
 } from '$lib/types/changes';
 import type { TreeChangeSet } from '$lib/types/changeTree';
+import type { LoadedChange, LoadedImage } from '$lib/types/feedback';
 import { parsePath } from '$lib/utils/changePaths';
 import {
 	createEmptyChangeSet,
@@ -719,6 +720,40 @@ function createChangeStore() {
 			newChangeSet.lastModified = Date.now();
 			set(newChangeSet);
 			persistChangeSet(newChangeSet);
+		},
+
+		/**
+		 * Replace the change set with a pull request's changes, rebuilt by the server
+		 * (GET /api/submissions/[pr]/changes). Each entity goes through the same track* path an
+		 * edit would, so schema filtering, property diffs and descriptions come out identical.
+		 */
+		async loadRevision(changes: LoadedChange[], images: LoadedImage[] = []) {
+			if (!browser) return;
+
+			await imageDb.clearAll().catch(() => {});
+			set(createEmptyChangeSet());
+			localStorage.removeItem(STORAGE_KEY_CHANGES);
+
+			const entityTypes = new Set(changes.map((c) => c.entity.type));
+			await Promise.all([...entityTypes].map((t) => getAllowedKeys(t)));
+
+			for (const change of changes) {
+				const entity: EntityIdentifier = change.entity as EntityIdentifier;
+				if (change.operation === 'create') this.trackCreate(entity, change.data);
+				else if (change.operation === 'update') this.trackUpdate(entity, change.originalData, change.data);
+				else this.trackDelete(entity, change.originalData);
+			}
+
+			for (const image of images) {
+				await this.storeImage(
+					`${image.entityPath}:logo`,
+					image.entityPath,
+					'logo',
+					image.filename,
+					image.mimeType,
+					image.data
+				);
+			}
 		},
 
 		/**

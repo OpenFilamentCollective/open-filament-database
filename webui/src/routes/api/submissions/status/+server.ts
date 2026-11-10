@@ -14,12 +14,14 @@ import { env as privateEnv } from '$env/dynamic/private';
 import { getPullRequest } from '$lib/server/github';
 import { getInstallationToken } from '$lib/server/githubApp';
 import { getUuidByPrNumber, getSubmission, updateStatus } from '$lib/server/submissionStore';
+import { getOutcomes } from '$lib/server/prOutcomes';
+import { enabledPreviews } from '$lib/server/devFixtures';
 
-type Status = 'open' | 'merged' | 'closed' | 'changes_requested' | 'unknown';
+type Status = 'open' | 'merged' | 'closed' | 'changes_requested' | 'returned' | 'rejected' | 'unknown';
 
 const MAX_PRS = 50;
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, cookies }) => {
 	let body: unknown;
 	try {
 		body = await request.json();
@@ -53,6 +55,9 @@ export const POST: RequestHandler = async ({ request }) => {
 		token = null;
 	}
 
+	// How closed web-editor PRs ended (returned for changes / rejected), from the webhook.
+	const outcomes = await getOutcomes(prNumbers).catch(() => new Map());
+
 	const statuses: Record<number, Status> = {};
 	// GitHub's merge timestamps, so the client can tell when the nightly dataset rebuild will
 	// have published a merged submission (see $lib/config/datasetSchedule.ts). The client falls
@@ -60,14 +65,26 @@ export const POST: RequestHandler = async ({ request }) => {
 	// is always asked about upstream even when we already know it merged.
 	const mergedAt: Record<number, string | null> = {};
 
+	// Development previews (/api/dev/preview/<pr>) show their PR as returned for changes.
+	const previews = new Set(enabledPreviews(cookies));
+
 	await Promise.all(
 		prNumbers.map(async (prNumber) => {
+			if (previews.has(prNumber)) {
+				statuses[prNumber] = 'returned';
+				return;
+			}
 			const uuid = getUuidByPrNumber(prNumber);
 			const cached = uuid ? getSubmission(uuid) : undefined;
 			// A locally-recorded 'closed' is the whole answer — nothing else to learn from GitHub.
 			// 'merged' still needs the upstream call for `merged_at`; the store has no such column.
 			if (cached?.status === 'closed') {
 				statuses[prNumber] = 'closed';
+				return;
+			}
+			const outcome = outcomes.get(prNumber)?.outcome;
+			if (outcome === 'returned' || outcome === 'rejected') {
+				statuses[prNumber] = outcome;
 				return;
 			}
 

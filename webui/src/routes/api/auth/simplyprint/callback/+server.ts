@@ -2,10 +2,11 @@ import { redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { env } from '$env/dynamic/public';
 import { env as privateEnv } from '$env/dynamic/private';
-import { exchangeSimplyPrintCode, setSimplyPrintToken } from '$lib/server/auth';
+import { exchangeSimplyPrintCode, setSimplyPrintToken, safeReturnPath } from '$lib/server/auth';
 
 const STATE_COOKIE = 'ofd_sp_oauth_state';
 const VERIFIER_COOKIE = 'ofd_sp_oauth_verifier';
+const RETURN_COOKIE = 'ofd_sp_oauth_return';
 
 export const GET: RequestHandler = async ({ url, cookies }) => {
 	const code = url.searchParams.get('code');
@@ -13,8 +14,11 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 	const storedState = cookies.get(STATE_COOKIE);
 	const codeVerifier = cookies.get(VERIFIER_COOKIE);
 
+	const returnTo = safeReturnPath(cookies.get(RETURN_COOKIE));
+
 	cookies.delete(STATE_COOKIE, { path: '/' });
 	cookies.delete(VERIFIER_COOKIE, { path: '/' });
+	cookies.delete(RETURN_COOKIE, { path: '/' });
 
 	if (!state || !storedState || state !== storedState) {
 		console.error('[SP OAuth] State mismatch:', { state, storedState: storedState ? '(present)' : '(missing)' });
@@ -55,5 +59,5 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 		throw redirect(302, '/?sp_auth_error=exchange_failed');
 	}
 
-	throw redirect(302, '/?sp_auth_success=true');
+	throw redirect(302, returnTo ?? '/?sp_auth_success=true');
 };
