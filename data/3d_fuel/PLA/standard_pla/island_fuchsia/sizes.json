@@ -2,7 +2,9 @@
   {
     "uuid": "fa7880fc-762e-4599-ac7c-3ea8795ec298",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "639302732625",
+    "article_number": "A15E9"
   },
   {
     "uuid": "cec5d69c-645d-4f97-bd00-6a6faad410a4",

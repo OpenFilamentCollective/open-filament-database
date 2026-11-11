@@ -2,5 +2,6 @@
   "uuid": "529c71f1-2120-4e37-847f-13dcfe160a65",
   "id": "aquamarine",
   "name": "Aquamarine",
-  "color_hex": "#63D6D6"
+  "color_hex": "#99D4C0",
+  "transmission_distance": 3.3
 }

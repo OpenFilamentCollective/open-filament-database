@@ -2,7 +2,8 @@
   "uuid": "c5231819-c10f-4f4f-868d-6c72c9a077b2",
   "id": "royal_navy_blue",
   "name": "Royal Navy Blue",
-  "color_hex": "#0099E6",
+  "color_hex": "#2A7B95",
+  "transmission_distance": 0.3,
   "traits": {
     "silk": true
   }

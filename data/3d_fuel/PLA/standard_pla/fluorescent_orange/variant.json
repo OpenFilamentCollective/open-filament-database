@@ -2,7 +2,8 @@
   "uuid": "e5740b6c-2be4-4f6f-9a65-4fe66030d61b",
   "id": "fluorescent_orange",
   "name": "Fluorescent Orange",
-  "color_hex": "#EA7A68",
+  "color_hex": "#E37561",
+  "transmission_distance": 8.0,
   "traits": {
     "neon": true,
     "bio_based": true

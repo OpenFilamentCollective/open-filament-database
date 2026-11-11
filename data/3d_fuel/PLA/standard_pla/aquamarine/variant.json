@@ -2,7 +2,8 @@
   "uuid": "8bf56bf1-c762-4eac-b794-e64be47d5df0",
   "id": "aquamarine",
   "name": "Aquamarine",
-  "color_hex": "#99D9C5",
+  "color_hex": "#97D5C1",
+  "transmission_distance": 3.3,
   "traits": {
     "bio_based": true
   }

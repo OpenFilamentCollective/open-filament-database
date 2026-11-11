@@ -2,7 +2,8 @@
   "uuid": "7f1a061c-62ce-44fa-8436-78b4e5b5033a",
   "id": "electric_blue",
   "name": "Electric Blue",
-  "color_hex": "#56C2D3",
+  "color_hex": "#56C2D1",
+  "transmission_distance": 1.4,
   "traits": {
     "bio_based": true
   }

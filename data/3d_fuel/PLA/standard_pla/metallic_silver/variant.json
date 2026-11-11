@@ -2,7 +2,8 @@
   "uuid": "dfae7baf-aba6-4191-95a9-7f8128aa9506",
   "id": "metallic_silver",
   "name": "Metallic Silver",
-  "color_hex": "#7D8081",
+  "color_hex": "#818485",
+  "transmission_distance": 0.3,
   "traits": {
     "bio_based": true
   }

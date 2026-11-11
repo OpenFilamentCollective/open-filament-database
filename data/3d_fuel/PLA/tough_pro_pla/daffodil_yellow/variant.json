@@ -2,5 +2,6 @@
   "uuid": "4ae22b4b-29f4-4a6a-862a-6bbd70d1647f",
   "id": "daffodil_yellow",
   "name": "Daffodil Yellow",
-  "color_hex": "#F3C102"
+  "color_hex": "#FFC13F",
+  "transmission_distance": 2.6
 }

@@ -2,5 +2,6 @@
   "uuid": "549af894-e50f-46a6-a974-2882d2d85c13",
   "id": "chocolate_brown",
   "name": "Chocolate Brown",
-  "color_hex": "#5D342C"
+  "color_hex": "#563F3A",
+  "transmission_distance": 0.2
 }

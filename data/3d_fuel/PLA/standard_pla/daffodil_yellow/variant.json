@@ -2,7 +2,8 @@
   "uuid": "1feeb517-3246-452c-9a3e-28b392b55b2c",
   "id": "daffodil_yellow",
   "name": "Daffodil Yellow",
-  "color_hex": "#FFC02C",
+  "color_hex": "#FFBE25",
+  "transmission_distance": 3.1,
   "traits": {
     "bio_based": true
   }

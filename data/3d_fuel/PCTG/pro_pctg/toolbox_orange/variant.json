@@ -3,5 +3,6 @@
   "id": "toolbox_orange",
   "name": "Toolbox Orange",
   "color_hex": "#C86744",
+  "transmission_distance": 2.7,
   "discontinued": false
 }

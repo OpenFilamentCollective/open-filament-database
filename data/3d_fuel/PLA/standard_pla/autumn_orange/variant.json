@@ -2,7 +2,8 @@
   "uuid": "3ddea935-59cb-4d48-a950-101f2f3e4132",
   "id": "autumn_orange",
   "name": "Autumn Orange",
-  "color_hex": "#D15531",
+  "color_hex": "#CF5227",
+  "transmission_distance": 5.0,
   "traits": {
     "bio_based": true
   }

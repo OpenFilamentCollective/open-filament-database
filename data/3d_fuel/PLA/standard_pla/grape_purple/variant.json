@@ -2,7 +2,8 @@
   "uuid": "ae42feeb-50cb-4559-9504-828269c181bb",
   "id": "grape_purple",
   "name": "Grape Purple",
-  "color_hex": "#5E528F",
+  "color_hex": "#5E518F",
+  "transmission_distance": 0.5,
   "traits": {
     "bio_based": true
   }

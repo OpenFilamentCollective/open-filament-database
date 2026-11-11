@@ -2,7 +2,8 @@
   "uuid": "2e27e90b-8da0-4255-a84d-7ef05d87e38e",
   "id": "black_hills_gold",
   "name": "Black Hills Gold",
-  "color_hex": "#F5BB91",
+  "color_hex": "#B8897D",
+  "transmission_distance": 2.6,
   "traits": {
     "silk": true
   }

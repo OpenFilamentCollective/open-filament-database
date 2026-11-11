@@ -2,7 +2,8 @@
   "uuid": "48255104-b5ac-4c7c-b8ca-1baa6fc8b90a",
   "id": "fluorescent_green",
   "name": "Fluorescent Green",
-  "color_hex": "#4CC573",
+  "color_hex": "#46BD69",
+  "transmission_distance": 6.6,
   "traits": {
     "neon": true,
     "bio_based": true

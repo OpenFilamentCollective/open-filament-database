@@ -2,7 +2,8 @@
   "uuid": "57c881c5-d34a-43f7-9040-933afae1a6a4",
   "id": "lulzbot_green",
   "name": "LulzBot® Green",
-  "color_hex": "#C8CB18",
+  "color_hex": "#C5C912",
+  "transmission_distance": 4.6,
   "traits": {
     "bio_based": true
   }
