@@ -1,0 +1,8 @@
+{
+  "id": "pla_neon",
+  "name": "PLA Neon",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230
+}

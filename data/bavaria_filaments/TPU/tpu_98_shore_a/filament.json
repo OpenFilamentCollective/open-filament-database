@@ -1,0 +1,11 @@
+{
+  "id": "tpu_98_shore_a",
+  "name": "TPU 98 Shore A",
+  "diameter_tolerance": 0.05,
+  "density": 1.2,
+  "shore_hardness_a": 98,
+  "min_print_temperature": 225,
+  "max_print_temperature": 245,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80
+}

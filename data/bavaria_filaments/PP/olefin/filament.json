@@ -1,0 +1,10 @@
+{
+  "id": "olefin",
+  "name": "Olefin",
+  "diameter_tolerance": 0.1,
+  "density": 0.92,
+  "min_print_temperature": 225,
+  "max_print_temperature": 245,
+  "min_bed_temperature": 85,
+  "max_bed_temperature": 90
+}
