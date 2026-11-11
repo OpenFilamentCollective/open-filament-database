@@ -15,6 +15,305 @@
     "dry_time": 8,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA-CF_Technical_Data_Sheet_V3.pdf",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA-CF_MSDS.pdf",
+    "mechanical": [
+        {
+            "property": "vicat_softening",
+            "direction": "unknown",
+            "value": 69,
+            "unit": "°C",
+            "standard": "ISO 306, GB/T 1633",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Vicar Softening Temperature ISO 306, GB/T 1633 69 °C",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "heat_deflection_18",
+            "direction": "unknown",
+            "value": 54,
+            "unit": "°C",
+            "standard": "ISO 75 1.8 MPa",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Heat Deflection Temperature ISO 75 1.8 MPa 54 °C",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "heat_deflection_045",
+            "direction": "unknown",
+            "value": 55,
+            "unit": "°C",
+            "standard": "ISO 75 0.45 MPa",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Heat Deflection Temperature ISO 75 0.45 MPa 55 °C",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "tensile_modulus",
+            "direction": "XY",
+            "value": 2790,
+            "plus_minus": 120,
+            "unit": "MPa",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Young's Modulus (X-Y) ISO 527, GB/T 1040 2790 ± 120 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "tensile_modulus",
+            "direction": "Z",
+            "value": 2160,
+            "plus_minus": 90,
+            "unit": "MPa",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Young's Modulus (Z) ISO 527, GB/T 1040 2160 ± 90 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "tensile_strength",
+            "direction": "XY",
+            "value": 38,
+            "plus_minus": 4,
+            "unit": "MPa",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Tensile Strength (X-Y) ISO 527, GB/T 1040 38 ± 4 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "tensile_strength",
+            "direction": "Z",
+            "value": 26,
+            "plus_minus": 2,
+            "unit": "MPa",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Tensile Strength (Z) ISO 527, GB/T 1040 26 ± 2 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "elongation_at_break",
+            "direction": "XY",
+            "value": 8.4,
+            "plus_minus": 3.2,
+            "unit": "%",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Breaking Elongation Rate (X-Y) ISO 527, GB/T 1040 8.4 ± 3.2 %",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "elongation_at_break",
+            "direction": "Z",
+            "value": 3.6,
+            "plus_minus": 0.7,
+            "unit": "%",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Breaking Elongation Rate (Z) ISO 527, GB/T 1040 3.6 ± 0.7 %",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "flexural_modulus",
+            "direction": "XY",
+            "value": 3950,
+            "plus_minus": 190,
+            "unit": "MPa",
+            "standard": "ISO 178, GB/T 9341",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Bending Modulus (X-Y) ISO 178, GB/T 9341 3950 ± 190 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "flexural_modulus",
+            "direction": "Z",
+            "value": 2260,
+            "plus_minus": 180,
+            "unit": "MPa",
+            "standard": "ISO 178, GB/T 9341",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Bending Modulus (Z) ISO 178, GB/T 9341 2260 ± 180 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "flexural_strength",
+            "direction": "XY",
+            "value": 89,
+            "plus_minus": 4,
+            "unit": "MPa",
+            "standard": "ISO 178, GB/T 9341",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Bending Strength (X-Y) ISO 178, GB/T 9341 89 ± 4 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "flexural_strength",
+            "direction": "Z",
+            "value": 49,
+            "plus_minus": 3,
+            "unit": "MPa",
+            "standard": "ISO 178, GB/T 9341",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Bending Strength (Z) ISO 178, GB/T 9341 49 ± 3 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "impact_strength",
+            "direction": "XY",
+            "value": 23.2,
+            "plus_minus": 3.7,
+            "unit": "kJ/m2",
+            "standard": "ISO 179, GB/T 1043",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Impact Strength (X-Y) ISO 179, GB/T 1043 23.2 ± 3.7 kJ/m2 ; 7.6 ± 2.6 kJ/m2 (notched)",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "impact_strength_notched",
+            "direction": "XY",
+            "value": 7.6,
+            "plus_minus": 2.6,
+            "unit": "kJ/m2",
+            "standard": "ISO 179, GB/T 1043",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_temperature": 230,
+                "bed_temperature": 35,
+                "print_speed": 180,
+                "conditioning": "annealed and dried at 55 °C for 8 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/842f399d4e274507953a5231126ec8c1.pdf",
+            "source_quote": "Impact Strength (X-Y) ISO 179, GB/T 1043 23.2 ± 3.7 kJ/m2 ; 7.6 ± 2.6 kJ/m2 (notched)",
+            "retrieved": "2026-11-08"
+        }
+    ],
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFL99",
