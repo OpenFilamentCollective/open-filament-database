@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "0df85040-b20d-49fb-a11f-00352df3bf2e",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
@@ -10,6 +11,7 @@
     ]
   },
   {
+    "uuid": "30065db3-fee6-4661-9f63-aa3ce7796cdf",
     "filament_weight": 1000,
     "diameter": 1.75,
     "container_material": "refill",
