@@ -1,0 +1,11 @@
+{
+  "id": "rot",
+  "name": "Rot",
+  "color_hex": "#FF4D00",
+  "color_standards": {
+    "ral": "2005"
+  },
+  "traits": {
+    "neon": true
+  }
+}

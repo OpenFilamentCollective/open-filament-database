@@ -1,0 +1,9 @@
+{
+  "id": "tpu_65_shore_d",
+  "name": "TPU 65 Shore D",
+  "diameter_tolerance": 0.05,
+  "density": 1.2,
+  "shore_hardness_d": 65,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250
+}

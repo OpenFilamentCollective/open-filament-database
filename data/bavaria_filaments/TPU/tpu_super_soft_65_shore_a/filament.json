@@ -1,0 +1,9 @@
+{
+  "id": "tpu_super_soft_65_shore_a",
+  "name": "TPU Super Soft 65 Shore A",
+  "diameter_tolerance": 0.05,
+  "density": 1.2,
+  "shore_hardness_a": 65,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250
+}

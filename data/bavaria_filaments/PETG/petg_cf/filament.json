@@ -1,0 +1,12 @@
+{
+  "id": "petg_cf",
+  "name": "PETG CF",
+  "diameter_tolerance": 0.05,
+  "density": 1.34,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
+  "min_print_speed": 30,
+  "max_print_speed": 200
+}

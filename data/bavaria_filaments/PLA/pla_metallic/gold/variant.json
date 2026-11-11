@@ -1,0 +1,8 @@
+{
+  "id": "gold",
+  "name": "Gold",
+  "color_hex": "#C39557",
+  "traits": {
+    "imitates_metal": true
+  }
+}

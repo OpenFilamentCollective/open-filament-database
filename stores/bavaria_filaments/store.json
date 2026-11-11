@@ -1,0 +1,11 @@
+{
+  "id": "bavaria_filaments",
+  "name": "Bavaria Filaments",
+  "storefront_url": "https://www.bavaria-filaments.com/",
+  "logo": "logo.png",
+  "ships_from": "DE",
+  "ships_to": [
+    "DE",
+    "AT"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "tpu_75_shore_d",
+  "name": "TPU 75 Shore D",
+  "diameter_tolerance": 0.05,
+  "density": 1.2,
+  "shore_hardness_d": 75
+}

@@ -1,0 +1,9 @@
+{
+  "id": "tpu_easy_print_92_shore_a",
+  "name": "TPU Easy Print 92 Shore A",
+  "diameter_tolerance": 0.05,
+  "density": 1.2,
+  "shore_hardness_a": 92,
+  "min_print_temperature": 210,
+  "max_print_temperature": 245
+}

@@ -1,0 +1,10 @@
+{
+  "id": "schwarz",
+  "name": "Schwarz",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}
