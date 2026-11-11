@@ -17,6 +17,7 @@ import {
 	findDuplicateName,
 	containerMaterialOf,
 	numberPattern,
+	plainDecimal,
 	checkSourcedEntry,
 	checkRecycledTrait,
 	effectiveSustainability,
@@ -507,17 +508,53 @@ describe('numberPattern', () => {
 		[100, '100% recycled', true],
 		[100, '1000 spools', false],
 		[2.5, '2.50 kg', true],
-		[7250, '7,250 psi', true],
-		[7250, '7250 psi', true],
-		[7250, '7 250 psi', true],
-		[7250, '7\u00a0250 psi', true],
-		[7250, '7\u202f250 psi', true],
-		[7250, '7.250 psi', false],
-		[7250, '17,250 psi', false],
-		[1234.5, '1,234.5 MPa', true],
-		[3860, '3860 ± 230 MPa', true]
+		[5, '5.85 kg', false],
+		[5, '5,85 kg', false],
+		[5, '5.0 kg', true],
+		[3860, '3860 ± 230 MPa', true],
+		[-5, 'down -5 %', true],
+		// Ungrouped, a comma is a decimal comma: "2,350 GPa" is 2.35, not 2350.
+		[2350, '2,350 GPa', false],
+		[2.35, '2,350 GPa', true],
+		[7, '7,250 psi', false],
+		[250, '7,250 psi', false],
+		[1e21, '1000000000000000000000 kg', true],
+		[1e-7, '0.0000001 kg', true]
 	])('%s in %j -> %s', (value, quote, expected) => {
 		expect(numberPattern(value).test(quote)).toBe(expected);
+	});
+
+	it.each([
+		[7250, '7,250 psi', true],
+		[7250, '7250 psi', true],
+		[7250, '7\u00a0250 psi', true],
+		[7250, '7\u2009250 psi', true],
+		[7250, '7\u202f250 psi', true],
+		// A plain space separates table columns, not thousands.
+		[7250, '7 250 psi', false],
+		[7250, '7.250 psi', false],
+		[7250, '17,250 psi', false],
+		[7, '7,250 psi', false],
+		[250, '7,250 psi', false],
+		[250, '7\u00a0250 psi', false],
+		[7, '7\u202f250 psi', false],
+		[1234.5, '1,234.5 MPa', true],
+		[3860, '3860 ± 230 MPa', true]
+	])('grouped: %s in %j -> %s', (value, quote, expected) => {
+		expect(numberPattern(value, true).test(quote)).toBe(expected);
+	});
+});
+
+describe('plainDecimal', () => {
+	it.each([
+		[1e21, '1000000000000000000000'],
+		[1.5e21, '1500000000000000000000'],
+		[1e-7, '0.0000001'],
+		[-1.25e-7, '-0.000000125'],
+		[7250, '7250'],
+		[5.85, '5.85']
+	])('%s -> %s', (value, expected) => {
+		expect(plainDecimal(value)).toBe(expected);
 	});
 });
 
@@ -619,6 +656,23 @@ describe('checkMechanicalEntry', () => {
 		expect(checkMechanicalEntry({ ...modulus, plus_minus: null }, today)).toEqual([]);
 	});
 
+	it('lets the quote group thousands only for units that reach them', () => {
+		const flexural = {
+			...modulus,
+			property: 'flexural_modulus',
+			value: 2350,
+			plus_minus: null,
+			source_quote: 'Flexural modulus 2,350'
+		};
+		expect(checkMechanicalEntry({ ...flexural, unit: 'MPa' }, today)).toEqual([]);
+		const psi = { ...flexural, value: 7250, unit: 'psi', source_quote: 'Flexural 7,250 psi' };
+		expect(checkMechanicalEntry(psi, today)).toEqual([]);
+		// In GPa the comma is a decimal comma: 2,350 GPa is 2.35.
+		const gpa = checkMechanicalEntry({ ...flexural, unit: 'GPa' }, today);
+		expect(gpa.some((i) => i.message.startsWith('value is 2350'))).toBe(true);
+		expect(checkMechanicalEntry({ ...flexural, value: 2.35, unit: 'GPa' }, today)).toEqual([]);
+	});
+
 	it('flags a unit that does not fit the property', () => {
 		const issues = checkMechanicalEntry(
 			{ ...modulus, property: 'elongation_at_break', value: 3860, unit: 'MPa' },
@@ -664,6 +718,20 @@ describe('findDuplicateMechanical', () => {
 				{ ...base, unit: 'psi' }
 			]).size
 		).toBe(0);
+	});
+
+	it('tells entries apart by specimen, ignoring key order and empty fields', () => {
+		const full = { ...base, specimen: { process: 'printed', infill_percent: 100 } };
+		const sparse = { ...base, specimen: { process: 'printed', infill_percent: 20 } };
+		const reordered = { ...base, specimen: { infill_percent: 100, process: 'printed' } };
+		expect([...findDuplicateMechanical([full, sparse, reordered])]).toEqual([[2, 0]]);
+		const none = [
+			base,
+			{ ...base, specimen: null },
+			{ ...base, specimen: {} },
+			{ ...base, specimen: { printer: '', layer_height: null } }
+		];
+		expect([...findDuplicateMechanical(none).values()]).toEqual([0, 0, 0]);
 	});
 
 	it('treats a blank standard as no standard', () => {

@@ -21,6 +21,10 @@ anything that couldn't be verified, a missing or failed AI pass, removed
 sustainability data and changes to the sustainability rules themselves all fail it.
 Only a maintainer's ``sustainability-verified`` label overrides it, and the review
 workflow drops that label again on every push that touches sustainability data.
+
+Mechanical values (``mechanical`` on filaments) are sourced the same way, from the
+brand's data sheet, so the gate checks them too: the quote must be on the sheet and
+hold the value and its ``±`` as written.
 """
 
 import json
@@ -31,6 +35,7 @@ from urllib.parse import urlsplit
 
 from ofd.enrich.verify import Fetcher, Page, as_sites, normalize, number_in, site_name
 from ofd.review.gitdata import ChangedFile, TreeReader
+from ofd.validation.data_quality import GROUPED_UNITS, MECHANICAL_VALUES, _number_pattern
 
 STATUS_CONTEXT = "Sustainability sources"
 OVERRIDE_LABEL = "sustainability-verified"
@@ -58,6 +63,7 @@ TRAITS = {
 # to look at it.
 RULE_PATHS = (
     "schemas/sustainability_schema.json",
+    "schemas/mechanical_schema.json",
     "schemas/material_defaults_schema.json",
     "reference/",
     "ofd/review/sustainability.py",
@@ -94,9 +100,33 @@ class Entry:
         return asdict(self)
 
 
+def is_sourced_pointer(pointer: str) -> bool:
+    """A JSON pointer into sourced data: sustainability, container_details or mechanical."""
+    return (
+        "sustainability" in pointer
+        or "container_details" in pointer
+        or pointer == "/mechanical"
+        or pointer.startswith("/mechanical/")
+    )
+
+
+def _value_fields(section: str) -> tuple[str, ...]:
+    if section == "container_details":
+        return CONTAINER_VALUES
+    if section == "mechanical":
+        return MECHANICAL_VALUES
+    return SECTIONS[section]
+
+
 def entries_in(doc, kind: str) -> list[tuple[str, str, dict]]:
     """``(pointer, section, entry)`` for every sourced entry in one document."""
     found: list[tuple[str, str, dict]] = []
+    if kind == "filament" and isinstance(doc, dict) and isinstance(doc.get("mechanical"), list):
+        found += [
+            (f"/mechanical/{i}", "mechanical", item)
+            for i, item in enumerate(doc["mechanical"])
+            if isinstance(item, dict)
+        ]
     if kind in ("filament", "variant") and isinstance(doc, dict):
         block = doc.get("sustainability")
         if isinstance(block, dict):
@@ -198,8 +228,12 @@ def _fragments(quote: str) -> list[str]:
     return [f.strip() for f in re.split(r"…|\.\.\.|\[\.\.\.\]", normalize(quote)) if f.strip()]
 
 
-def check_quote(quote: str, values: list, page: Page) -> list[str]:
-    """Errors for a quote that isn't on ``page`` the way the entry uses it."""
+def check_quote(quote: str, values: list, page: Page, number_in=number_in) -> list[str]:
+    """Errors for a quote that isn't on ``page`` the way the entry uses it.
+
+    ``number_in(value, text)`` finds a value in a quote fragment; mechanical entries pass
+    the validator's matcher, which knows the thousands their unit groups (7,250 psi).
+    """
     fragments = _fragments(quote)
     if not fragments:
         return ["source_quote is empty"]
@@ -234,12 +268,9 @@ def verify_entry(entry: Entry, fetcher: Fetcher, brand_site) -> None:
     data = entry.data
     url = data.get("source_url") or ""
     quote = data.get("source_quote") or ""
-    value_fields = (
-        CONTAINER_VALUES if entry.section == "container_details" else SECTIONS[entry.section]
-    )
     values = [
         data[f]
-        for f in value_fields
+        for f in _value_fields(entry.section)
         if isinstance(data.get(f), (int, float)) and not isinstance(data.get(f), bool)
     ]
 
@@ -271,7 +302,13 @@ def verify_entry(entry: Entry, fetcher: Fetcher, brand_site) -> None:
             f"and add the `{OVERRIDE_LABEL}` label if it is right"
         )
         return
-    entry.errors += check_quote(quote, values, page)
+    if entry.section == "mechanical":
+        grouped = data.get("unit") in GROUPED_UNITS
+        entry.errors += check_quote(
+            quote, values, page, lambda v, text: bool(_number_pattern(v, grouped).search(text))
+        )
+    else:
+        entry.errors += check_quote(quote, values, page)
     q = normalize(quote)
 
     # Details that, when given, must come from the source (rule 1: never invent).
@@ -444,9 +481,7 @@ def model_problems(touch: Touch, model: dict | None) -> list[str]:
         problems.append(f"AI: {verdict.get('summary') or verdict.get('verdict')}")
     for finding in model.get("findings") or []:
         pointer = finding.get("pointer") or ""
-        if finding.get("severity") == "error" and (
-            "sustainability" in pointer or "container_details" in pointer
-        ):
+        if finding.get("severity") == "error" and is_sourced_pointer(pointer):
             problems.append(f"AI: `{finding.get('path')}` `{pointer}`: {finding.get('message')}")
     return problems
 
@@ -457,7 +492,9 @@ def gate(touch: Touch, model: dict | None, override: str | None = None) -> dict:
     for entry in touch.entries:
         failures += [f"`{entry.path}` `{entry.pointer}`: {e}" for e in entry.errors]
     failures += [
-        f"`{e.path}` `{e.pointer}`: sustainability data removed; a maintainer must confirm"
+        f"`{e.path}` `{e.pointer}`: "
+        f"{'mechanical' if e.section == 'mechanical' else 'sustainability'} data removed; "
+        "a maintainer must confirm"
         for e in touch.removed
     ]
     failures += [
@@ -501,6 +538,13 @@ def context_section(touch: Touch) -> str:
         "using exactly the path and pointer shown. Fetch each source_url yourself.",
         "",
     ]
+    if any(e.section == "mechanical" for e in touch.entries + touch.removed):
+        lines += [
+            "Entries under `/mechanical/` are values from the brand's data sheet. The same "
+            "rules apply: the quote is on the sheet, and the value, its `±` and unit are as "
+            "printed there, for the print direction and conditions the entry names.",
+            "",
+        ]
     for entry in touch.entries:
         lines.append(f"### `{entry.path}` `{entry.pointer}` ({entry.status})")
         lines.append(f"```json\n{json.dumps(entry.data, indent=2, ensure_ascii=False)}\n```")

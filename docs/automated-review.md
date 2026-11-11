@@ -25,11 +25,13 @@ The **Auto-merge** check decides, after an hour with every check green. Adding t
 | **changes** any other value, such as a name, colour, trait or link | Merges unless the AI review raises a 🔴 error on it, like new data. |
 | **deletes**, renames or removes anything, or changes an `id`, `uuid` or `slicer_ids` | Always needs a maintainer. |
 
-It never auto-merges claimed brands (their representative signs off), or sustainability data. The full checklist (E1–E22) is in [`ofd/automerge/eligibility.py`](../ofd/automerge/eligibility.py) and on each PR's Auto-merge check.
+It never auto-merges claimed brands (their representative signs off), sustainability data or mechanical data. The full checklist (E1–E22) is in [`ofd/automerge/eligibility.py`](../ofd/automerge/eligibility.py) and on each PR's Auto-merge check.
 
 ## Sustainability data
 
 Sustainability figures feed CO2 calculations, so the `Sustainability sources` status fails closed. Every figure must be on its source, verbatim, and confirmed by the AI review. See [the manual](manual.md#-sustainability-data).
+
+Mechanical values (`mechanical` on filaments) go through the same status: each one must be on its data sheet, verbatim, and confirmed by the AI review. See [the manual](manual.md#-mechanical-data).
 
 A maintainer who has checked a figure by hand can add the `sustainability-verified` label. A later push that touches sustainability data removes the label again.
 

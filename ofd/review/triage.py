@@ -25,6 +25,7 @@ from ofd.enrich.verify import Fetcher, normalize, number_in
 from ofd.review.checks import ENRICHABLE
 from ofd.review.gitdata import ChangedFile
 from ofd.review.jsonlines import resolve
+from ofd.review.sustainability import is_sourced_pointer
 
 # A finding that only asks someone else to do the checking.
 _ASKS_TO_CHECK = re.compile(
@@ -68,9 +69,9 @@ def _about_empty_field(finding: dict, change: ChangedFile | None) -> bool:
 def drop_reason(finding: dict, change: ChangedFile | None) -> str | None:
     """Why a model finding shouldn't be posted, or None to keep it."""
     pointer = finding.get("pointer") or ""
-    # Evidence-backed findings are judged by a script, and sustainability findings
-    # feed the gate: neither is ever dropped here.
-    if finding.get("evidence") or "sustainability" in pointer or "container_details" in pointer:
+    # Evidence-backed findings are judged by a script, and sustainability and mechanical
+    # findings feed the gate: neither is ever dropped here.
+    if finding.get("evidence") or is_sourced_pointer(pointer):
         return None
     message = finding.get("message") or ""
     if _TRACKING.search(message):

@@ -40,12 +40,15 @@ describe('MechanicalEditor', () => {
 		await fireEvent.click(screen.getByRole('button', { name: /Mechanical Property/ }));
 		expect(value()[0]).not.toHaveProperty('property');
 		expect(value()[0]).not.toHaveProperty('unit');
+		expect(screen.getByText('Property is required.')).toBeTruthy();
+		expect(screen.getByText('Unit is required.')).toBeTruthy();
 		const unit = document.getElementById('mechanical-0-unit') as HTMLSelectElement;
 		expect(unit.selectedOptions[0].textContent?.trim()).toBe('Choose…');
 		unit.value = 'psi';
 		await fireEvent.change(unit);
 		expect(value()[0]).toMatchObject({ unit: 'psi' });
 		expect(unit.value).toBe('psi');
+		expect(screen.queryByText('Unit is required.')).toBeNull();
 	});
 
 	it('labels the card by property and direction, and units as published', () => {
@@ -64,6 +67,17 @@ describe('MechanicalEditor', () => {
 	it('warns about a duplicate entry', () => {
 		render(Harness, { schema, initial: [{ ...MODULUS }, { ...MODULUS }] });
 		expect(screen.getByText(/Entry 1 already has this property/)).toBeTruthy();
+	});
+
+	it('does not count entries with different specimens as duplicates', () => {
+		render(Harness, {
+			schema,
+			initial: [
+				{ ...MODULUS, specimen: { infill_percent: 100 } },
+				{ ...MODULUS, specimen: { infill_percent: 20 } }
+			]
+		});
+		expect(screen.queryByText(/already has this property/)).toBeNull();
 	});
 
 	it('adds specimen details on request', async () => {

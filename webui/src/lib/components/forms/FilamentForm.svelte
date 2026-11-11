@@ -181,20 +181,17 @@
 	// Form data state - initialized when schema is available
 	let formData = $state<Record<string, any>>(initialDraft?.formData ?? {});
 
-	function cloneSustainability(value: Sustainability | undefined): Sustainability {
-		return value ? JSON.parse(JSON.stringify(value)) : {};
+	// A deep copy of a stored block for its editor, so edits never reach `filament`.
+	function editableCopy<T>(value: T | undefined, empty: T): T {
+		return value ? ($state.snapshot(value) as T) : empty;
 	}
 
 	let sustainability = $state<Sustainability>(
-		initialDraft?.sustainability ?? cloneSustainability(filament?.sustainability)
+		initialDraft?.sustainability ?? editableCopy(filament?.sustainability, {})
 	);
 
-	function cloneMechanical(value: Entry[] | undefined): Entry[] {
-		return value ? JSON.parse(JSON.stringify(value)) : [];
-	}
-
 	let mechanical = $state<Entry[]>(
-		initialDraft?.mechanical ?? cloneMechanical(filament?.mechanical)
+		initialDraft?.mechanical ?? editableCopy(filament?.mechanical, [])
 	);
 
 	// Folder-id drift guard: an existing filament whose folder id carries extra trailing
@@ -378,8 +375,8 @@
 				return;
 			}
 			formData = initializeFormData(preparedSchema, filament, config.hiddenFields);
-			sustainability = cloneSustainability(filament?.sustainability);
-			mechanical = cloneMechanical(filament?.mechanical);
+			sustainability = editableCopy(filament?.sustainability, {});
+			mechanical = editableCopy(filament?.mechanical, []);
 			slicerEnabled = initializeSlicerEnabled(filament?.slicer_settings);
 			slicerForms = initializeSlicerForms();
 			// Pre-create forms for already-enabled slicers

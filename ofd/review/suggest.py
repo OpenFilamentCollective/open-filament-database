@@ -141,6 +141,10 @@ def build_suggestions(enrichments: list[dict], changes: list[ChangedFile]) -> Ou
         ):
             outcome.rejected.append((enrichment, "sustainability data is never suggested"))
             continue
+        # Mechanical values are copied from the data sheet with a quote, never guessed.
+        if pointer == "/mechanical" or pointer.startswith("/mechanical/"):
+            outcome.rejected.append((enrichment, "mechanical data is never suggested"))
+            continue
         grouped.setdefault(enrichment["path"], []).append(enrichment)
 
     key_order = build_key_order_map(SCHEMAS_DIR)

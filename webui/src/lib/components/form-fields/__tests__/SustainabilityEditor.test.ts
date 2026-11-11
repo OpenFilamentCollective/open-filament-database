@@ -15,6 +15,8 @@ describe('SustainabilityEditor', () => {
 		await fireEvent.click(add);
 		expect(screen.getByTestId('value').textContent).toContain('carbon_footprints');
 		expect(screen.getByText(/Carbon Footprints 1/)).toBeTruthy();
+		// The method dropdown starts on "Choose…", and says so before validation does.
+		expect(screen.getByText('Method is required.')).toBeTruthy();
 	});
 
 	it('adds and removes a recycled content section', async () => {

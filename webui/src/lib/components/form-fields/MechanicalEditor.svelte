@@ -51,7 +51,7 @@
 		if (first !== undefined) {
 			found.push({
 				level: 'warning',
-				message: `Entry ${first + 1} already has this property, direction, condition, standard and unit. Remove one, or set what tells them apart.`
+				message: `Entry ${first + 1} already has this property, direction, condition, standard, unit and specimen. Remove one, or set what tells them apart.`
 			});
 		}
 		return found;

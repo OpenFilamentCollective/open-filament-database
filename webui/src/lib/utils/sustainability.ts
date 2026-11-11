@@ -85,6 +85,28 @@ export function newEntry(schema: JsonSchema | undefined, today: string = todayIs
 	return entry;
 }
 
+/** Source fields `checkSourcedEntry` already reports when they are missing. */
+const SOURCE_FIELDS = new Set(['source_url', 'source_quote', 'retrieved']);
+
+/**
+ * "<Title> is required." for each required field left unset (missing, blank or null),
+ * so a dropdown still on "Choose…" is flagged before validation rejects the entry. A
+ * field that may be null (e.g. `pct` when the source gives no number) is saved as null,
+ * so it is never missing.
+ */
+export function missingRequired(
+	entry: Entry | null | undefined,
+	schema: JsonSchema | undefined
+): string[] {
+	const missing: string[] = [];
+	for (const key of schema?.required ?? []) {
+		const prop = schema?.properties?.[key];
+		if (SOURCE_FIELDS.has(key) || schemaTypes(prop).includes('null')) continue;
+		if (isEmpty(entry?.[key])) missing.push(`${prop?.title ?? enumLabel(key)} is required.`);
+	}
+	return missing;
+}
+
 function isEmpty(value: unknown): boolean {
 	return (
 		value === undefined ||

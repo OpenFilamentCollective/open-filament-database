@@ -206,6 +206,12 @@ and sustainability traits (`recycled`, `biodegradable`, `bio_based`, compostable
 added without a source. Set `sustainability.verdict` to `ok` only when every entry is
 `ok`. Never propose sustainability values in `enrichments`; only check what the PR has.
 
+Mechanical values (`/mechanical/<i>` on a filament, manual section "Mechanical data")
+are checked the same way and listed in the same section: fetch the data sheet, and
+return `ok` only if the quote is on it and the value, `plus_minus` and `unit` are as
+printed, for the `direction` (X-Y, Z...) and `condition` the entry names. Units are
+never converted. Never propose mechanical values in `enrichments`.
+
 ## Proof mode: the contributor's values
 
 The context may list "Values to prove": values this PR sets that a script can check.

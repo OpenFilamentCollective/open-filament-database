@@ -84,22 +84,36 @@ export function newMechanicalEntry(
 }
 
 /**
- * Prune every entry and its specimen, dropping a specimen left empty. Returns undefined
- * when there are no entries, so a removed list is wiped on save.
+ * True when a pruned entry holds nothing beyond what a blank entry starts with (any
+ * retrieved date counts as a default), i.e. it was added and never filled in.
+ */
+function isUntouched(entry: Entry, blank: Entry): boolean {
+	return Object.entries(entry).every(
+		([key, value]) => key in blank && (key === 'retrieved' || value === blank[key])
+	);
+}
+
+/**
+ * Prune every entry and its specimen, dropping a specimen left empty and an entry never
+ * filled in, so a stray "+ Mechanical Property" click cannot fail the save. Returns
+ * undefined when no entries are left, so a removed list is wiped on save.
  */
 export function pruneMechanical(
 	value: Entry[] | undefined,
 	mechanicalSchema: JsonSchema | null | undefined
 ): MechanicalProperty[] | undefined {
-	const entries = (value ?? []).map((entry) => {
-		const out = pruneEntry({ ...entry }, itemSchema(mechanicalSchema));
-		if (out.specimen) {
-			const specimen = pruneEntry({ ...out.specimen }, specimenSchema(mechanicalSchema));
-			if (Object.keys(specimen).length) out.specimen = specimen;
-			else delete out.specimen;
-		}
-		return out;
-	});
+	const blank = newMechanicalEntry(mechanicalSchema);
+	const entries = (value ?? [])
+		.map((entry) => {
+			const out = pruneEntry({ ...entry }, itemSchema(mechanicalSchema));
+			if (out.specimen) {
+				const specimen = pruneEntry({ ...out.specimen }, specimenSchema(mechanicalSchema));
+				if (Object.keys(specimen).length) out.specimen = specimen;
+				else delete out.specimen;
+			}
+			return out;
+		})
+		.filter((entry) => !isUntouched(entry, blank));
 	return entries.length ? (entries as MechanicalProperty[]) : undefined;
 }
 

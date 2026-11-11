@@ -9,7 +9,13 @@
 	import { FixHint } from '$lib/components/ui';
 	import { INPUT_COMPACT_CLASSES, LABEL_COMPACT_CLASSES } from '$lib/styles/formStyles';
 	import { checkSourcedEntry, type EntryIssue } from '$lib/utils/dataQuality';
-	import { enumLabel, schemaTypes, type Entry, type JsonSchema } from '$lib/utils/sustainability';
+	import {
+		enumLabel,
+		missingRequired,
+		schemaTypes,
+		type Entry,
+		type JsonSchema
+	} from '$lib/utils/sustainability';
 
 	interface Props {
 		entry: Entry;
@@ -20,7 +26,8 @@
 		valueFields: string[];
 		/**
 		 * Replaces the default source checks, e.g. a mechanical value's unit and direction
-		 * checks, or `[]` for a nested object that carries no source of its own.
+		 * checks, or `[]` for a nested object that carries no source of its own. Unset
+		 * required fields are flagged either way.
 		 */
 		issues?: EntryIssue[];
 		/** Select labels per field and option, where `enumLabel` would misread them (units). */
@@ -41,12 +48,13 @@
 
 	let required = $derived(new Set(schema?.required ?? []));
 	let fields = $derived(Object.entries(schema?.properties ?? {}));
-	let problems = $derived(
-		issues ??
+	let problems = $derived([
+		...missingRequired(entry, schema).map((message): EntryIssue => ({ level: 'error', message })),
+		...(issues ??
 			checkSourcedEntry(entry, valueFields).map(
 				(message): EntryIssue => ({ level: 'error', message })
-			)
-	);
+			))
+	]);
 
 	function label(key: string, prop: JsonSchema): string {
 		return prop?.title ?? enumLabel(key);

@@ -259,12 +259,14 @@ Data sheets give stiffness, strength, impact and heat values, often **per print 
 
 ### The rules
 1. **Copy, never compute.** Enter each value in the unit the sheet uses: a sheet in psi stays in psi, and `3.86 GPa` is never entered as `3860 MPa`. Never average, convert or estimate.
-2. **Every entry needs a source**: `source_url`, `source_quote` and `retrieved`, as for [sustainability data](#-sustainability-data). The quote is the sheet's row, verbatim, and must contain the value (and `plus_minus`, if set). `5.85` matches `5,85`, and `7250` matches `7,250`.
+2. **Every entry needs a source**: `source_url`, `source_quote` and `retrieved`, as for [sustainability data](#-sustainability-data). The quote is the sheet's row, verbatim, and must contain the value (and `plus_minus`, if set). `5.85` matches `5,85`. In `MPa`, `psi`, `ksi` and `J/m`, where values of 1000 and up are common, `7250` also matches `7,250`; in other units a comma is a decimal comma, so `2,350 GPa` is `2.35`.
 3. **Primary sources first**: the brand's own data sheet (TDS) or product page. Mark a retailer copy `source_type: "secondary"`.
 4. **One entry per value**: one for X-Y, one for Z, one for dry and one for conditioned. If the sheet gives a range or a footnote, quote it and explain it in `notes`.
 5. **No generic values in `data/`.** Typical values for a material type (PLA, PETG...) are not a brand's data.
 
-`ofd validate` checks the sources, the value in the quote, dates in the future and that the unit fits the property (errors). It warns about a print direction on moulded bars and about repeated entries.
+`ofd validate` checks the sources, the value in the quote, dates in the future and that the unit fits the property (errors). It warns about a print direction on moulded bars and about repeated entries (same property, direction, condition, standard, unit and specimen).
+
+On a pull request, the `Sustainability sources` check also checks every new or changed mechanical value against its source, and a PR that touches mechanical data never merges automatically. See [automated review](automated-review.md#sustainability-data).
 
 ### Where it goes
 `mechanical` is an array on `filament.json`. Variants don't override it: a data sheet covers the product line.

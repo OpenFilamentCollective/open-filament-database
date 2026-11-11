@@ -61,6 +61,15 @@ describe('pruneMechanical', () => {
 		expect(pruneMechanical(undefined, schema)).toBeUndefined();
 	});
 
+	it('drops an entry that was added and never filled in', () => {
+		const blank = newMechanicalEntry(schema, '2026-11-01');
+		expect(pruneMechanical([blank], schema)).toBeUndefined();
+		expect(pruneMechanical([{ ...blank, specimen: {} }, value({})], schema)).toEqual([value({})]);
+		// Anything the contributor set keeps the entry, so validation can say what's missing.
+		expect(pruneMechanical([{ ...blank, property: 'tensile_modulus' }], schema)).toHaveLength(1);
+		expect(pruneMechanical([{ ...blank, source_type: 'secondary' }], schema)).toHaveLength(1);
+	});
+
 	it('drops empty fields and an empty specimen', () => {
 		const out = pruneMechanical(
 			[{ ...value({}), plus_minus: null, standard: ' ', notes: '', specimen: { printer: '' } }],

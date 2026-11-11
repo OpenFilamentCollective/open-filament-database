@@ -944,3 +944,32 @@ def test_mechanical_same_property_other_standard_is_not_a_repeat(tmp_path):
     iso = modulus_xy(standard="ISO 527")
     astm = modulus_xy(standard="ASTM D638")
     assert messages(mechanical_errors(tmp_path, iso, astm), "repeats") == []
+
+
+def test_mechanical_value_never_matches_inside_a_grouped_number(tmp_path):
+    for value in (7, 250):
+        entry = mech("tensile_strength", "XY", value, "psi", "Tensile Strength 7,250 psi")
+        found = messages(mechanical_errors(tmp_path, entry), "does not contain that number")
+        assert len(found) == 1, value
+
+
+def test_mechanical_comma_in_gpa_is_a_decimal_comma(tmp_path):
+    # "2,350 GPa" is 2.35 GPa: a value 1000x too large must not pass.
+    wrong = mech("tensile_modulus", "XY", 2350, "GPa", "Tensile modulus 2,350 GPa")
+    assert len(messages(mechanical_errors(tmp_path, wrong), "does not contain that number")) == 1
+    right = mech("tensile_modulus", "XY", 2.35, "GPa", "Tensile modulus 2,350 GPa")
+    assert mechanical_errors(tmp_path / "ok", right) == []
+
+
+def test_value_never_matches_the_start_of_a_decimal(tmp_path):
+    entry = mech("elongation_at_break", "XY", 5, "%", "Elongation at break 5.85 %")
+    found = messages(mechanical_errors(tmp_path, entry), "does not contain that number")
+    assert len(found) == 1
+
+
+def test_mechanical_same_property_other_specimen_is_not_a_repeat(tmp_path):
+    full = modulus_xy(specimen={"process": "printed", "infill_percent": 100})
+    sparse = modulus_xy(specimen={"infill_percent": 20, "process": "printed"})
+    assert messages(mechanical_errors(tmp_path, full, sparse), "repeats") == []
+    same = modulus_xy(specimen={"infill_percent": 100, "process": "printed"})
+    assert len(messages(mechanical_errors(tmp_path / "b", full, same), "repeats")) == 1

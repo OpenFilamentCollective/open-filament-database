@@ -212,3 +212,10 @@ def test_style_strips_tracking_from_source_url():
     data, changes = sanitize_data(filament(entry), "filament")
     assert data["mechanical"][0]["source_url"] == PAHT_CF_SHEET
     assert any("mechanical[0]" in c for c in changes)
+
+
+def test_style_cleans_the_specimen():
+    entry = {**PAHT_CF_MODULUS_XY, "specimen": {"printer": "  Bambu X1C ", "conditioning": ""}}
+    data, changes = sanitize_data(filament(entry), "filament")
+    assert data["mechanical"][0]["specimen"] == {"printer": "Bambu X1C"}
+    assert "mechanical[0].specimen.conditioning: removed empty string" in changes

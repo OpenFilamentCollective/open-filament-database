@@ -310,8 +310,16 @@ def _sanitize_mechanical(mechanical: Any, changes: list[str]) -> None:
     if not isinstance(mechanical, list):
         return
     for i, item in enumerate(mechanical):
-        if isinstance(item, dict):
-            _sanitize_dict(item, changes, f"mechanical[{i}]")
+        if not isinstance(item, dict):
+            continue
+        _sanitize_dict(item, changes, f"mechanical[{i}]")
+        specimen = item.get("specimen")
+        if isinstance(specimen, dict):
+            _sanitize_dict(specimen, changes, f"mechanical[{i}].specimen")
+            # Every specimen field is optional: an empty one says nothing.
+            for key in [k for k, v in specimen.items() if v == ""]:
+                del specimen[key]
+                changes.append(f"mechanical[{i}].specimen.{key}: removed empty string")
 
 
 def _sanitize_dict(data: dict[str, Any], changes: list[str], prefix: str = "") -> None:
