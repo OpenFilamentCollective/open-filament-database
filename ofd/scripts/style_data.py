@@ -255,6 +255,7 @@ def sanitize_data(data: Any, schema_name: str) -> tuple[Any, list[str]]:
     - sizes: default sizes[].diameter from 0 to 1.75; sanitize nested
       purchase_links and container_details dicts.
     - filament/variant: sanitize the sourced entries inside ``sustainability``.
+    - filament: sanitize each sourced entry in ``mechanical``.
     """
     changes: list[str] = []
 
@@ -285,6 +286,7 @@ def sanitize_data(data: Any, schema_name: str) -> tuple[Any, list[str]]:
 
         _sanitize_dict(data, changes)
         _sanitize_sustainability(data.get("sustainability"), changes)
+        _sanitize_mechanical(data.get("mechanical"), changes)
         return data, changes
 
     return data, changes
@@ -301,6 +303,23 @@ def _sanitize_sustainability(sustainability: Any, changes: list[str]) -> None:
             for i, item in enumerate(value):
                 if isinstance(item, dict):
                     _sanitize_dict(item, changes, f"sustainability.{section}[{i}]")
+
+
+def _sanitize_mechanical(mechanical: Any, changes: list[str]) -> None:
+    """Sanitize each sourced entry in a filament's ``mechanical`` array."""
+    if not isinstance(mechanical, list):
+        return
+    for i, item in enumerate(mechanical):
+        if not isinstance(item, dict):
+            continue
+        _sanitize_dict(item, changes, f"mechanical[{i}]")
+        specimen = item.get("specimen")
+        if isinstance(specimen, dict):
+            _sanitize_dict(specimen, changes, f"mechanical[{i}].specimen")
+            # Every specimen field is optional: an empty one says nothing.
+            for key in [k for k, v in specimen.items() if v == ""]:
+                del specimen[key]
+                changes.append(f"mechanical[{i}].specimen.{key}: removed empty string")
 
 
 def _sanitize_dict(data: dict[str, Any], changes: list[str], prefix: str = "") -> None:

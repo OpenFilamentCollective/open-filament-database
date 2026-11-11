@@ -1,7 +1,13 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { entrySchema, newEntry, pruneEntry, pruneSustainability } from '../sustainability';
+import {
+	entrySchema,
+	missingRequired,
+	newEntry,
+	pruneEntry,
+	pruneSustainability
+} from '../sustainability';
 
 // The real schema, so these tests break if the schema and the editor drift apart.
 const schema = JSON.parse(
@@ -55,5 +61,35 @@ describe('pruneSustainability', () => {
 			schema
 		);
 		expect(out?.relative_claims?.[0]).toMatchObject({ reduction_pct: 78, metric: 'gwp' });
+	});
+});
+
+describe('missingRequired', () => {
+	it('names required fields left unset, such as a dropdown still on Choose…', () => {
+		const entry = newEntry(entrySchema(schema, 'carbon_footprints'), '2026-10-26');
+		const missing = missingRequired(entry, entrySchema(schema, 'carbon_footprints'));
+		expect(missing).toContain('Method is required.');
+		expect(missing).toContain('kg CO2e is required.');
+		// Defaults a blank entry starts with are set.
+		expect(missing).not.toContain('System Boundary is required.');
+	});
+
+	it('leaves the source fields to checkSourcedEntry', () => {
+		const missing = missingRequired({}, entrySchema(schema, 'relative_claims'));
+		expect(missing).toContain('Source Type is required.');
+		expect(missing).not.toContain('Source URL is required.');
+		expect(missing).not.toContain('Source Quote is required.');
+		expect(missing).not.toContain('Retrieved is required.');
+	});
+
+	it('counts blank text as unset, and never flags a field that may be null', () => {
+		const missing = missingRequired(
+			{ baseline: '  ', metric: 'gwp', reduction_pct: 78, source_type: 'primary' },
+			entrySchema(schema, 'relative_claims')
+		);
+		expect(missing).toEqual(['Baseline is required.']);
+		const recycled = entrySchema(schema, 'recycled_content');
+		const noPct = { type: 'unknown', evidence: 'marketing', source_type: 'primary' };
+		expect(missingRequired(noPct, recycled)).toEqual([]);
 	});
 });

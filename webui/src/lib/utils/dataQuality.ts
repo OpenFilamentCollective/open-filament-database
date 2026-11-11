@@ -445,31 +445,80 @@ export function findDuplicateName<T extends NamedEntry>(
 // show it. Mirrors the sustainability rules in `ofd/validation/data_quality.py`.
 
 const SOURCE_FIELDS = ['source_url', 'source_quote', 'retrieved'] as const;
+const PCT_FIELDS = new Set(['pct', 'recycled_pct', 'reduction_pct']);
+
+// Thousands separators a sheet may group digits with (`grouped` only). A plain space is
+// not one: table rows put their columns side by side with spaces.
+const GROUP_SPACES = '\\u00a0\\u2009\\u202f';
+const GROUP_SEPARATORS = `,${GROUP_SPACES}`;
 
 /**
- * Matches `value` as written in prose: `5.85` or `5,85`, trailing zeros allowed.
- * The digit boundaries stop `5.85` from matching inside `15.85` or `5.851`.
+ * `value` in plain decimal digits, as Python's repr would give them but never with an
+ * exponent: 1e21 -> "1000000000000000000000", 1e-7 -> "0.0000001".
  */
-export function numberPattern(value: number): RegExp {
+export function plainDecimal(value: number): string {
 	const text = String(value);
-	const [intPart, frac] = text.split('.');
-	const number = frac ? `${intPart}[.,]${frac}0*` : `${intPart}(?:[.,]0+)?`;
-	return new RegExp(`(?<![\\d.,])${number}(?!\\d)`);
+	const match = /^(-?)(\d+)(?:\.(\d+))?e([+-]\d+)$/.exec(text);
+	if (!match) return text;
+	const [, sign, int, frac = '', exp] = match;
+	const digits = int + frac;
+	const point = int.length + Number(exp);
+	let plain: string;
+	if (point <= 0) plain = `0.${'0'.repeat(-point)}${digits}`;
+	else if (point >= digits.length) plain = digits + '0'.repeat(point - digits.length);
+	else plain = `${digits.slice(0, point)}.${digits.slice(point)}`;
+	if (plain.includes('.')) plain = plain.replace(/0+$/, '').replace(/\.$/, '');
+	return sign + plain;
+}
+
+/**
+ * Matches `value` as written in prose: `5.85` or `5,85`, trailing zeros allowed. The
+ * boundaries stop `5.85` from matching inside `15.85` or `5.851`, and `5` from matching
+ * the start of `5.85`. With `grouped`, thousands may be grouped by a comma or a no-break,
+ * thin or narrow space, as sheets in psi do: `7250` matches `7,250`, and `7` or `250`
+ * don't match inside it. Mirrors `_number_pattern` in `ofd/validation/data_quality.py`.
+ */
+export function numberPattern(value: number, grouped = false): RegExp {
+	const text = plainDecimal(value);
+	const [sign, digits] = text.startsWith('-') ? ['-', text.slice(1)] : ['', text];
+	const [intPart, frac] = digits.split('.');
+	let intRe = intPart;
+	if (grouped) {
+		const head = intPart.length % 3 || 3;
+		const groups = [intPart.slice(0, head)];
+		for (let i = head; i < intPart.length; i += 3) groups.push(intPart.slice(i, i + 3));
+		const separated = groups.slice(1).map((g) => `[${GROUP_SEPARATORS}]?${g}`);
+		intRe = groups[0] + separated.join('');
+	}
+	const escapedSign = sign ? '\\-' : '';
+	const number = escapedSign + intRe + (frac ? `[.,]${frac}0*` : '(?:[.,]0+)?');
+	let behind = '(?<![\\d.,])';
+	let ahead = '(?![.,]?\\d)';
+	if (grouped) {
+		behind += `(?<!\\d[${GROUP_SPACES}])`;
+		ahead += `(?![${GROUP_SPACES}]\\d)`;
+	}
+	return new RegExp(behind + number + ahead);
 }
 
 function todayIso(): string {
 	return new Date().toISOString().slice(0, 10);
 }
 
+/** One problem with a sourced entry, shown as an inline hint. */
+export type EntryIssue = { level: 'error' | 'warning'; message: string };
+
 /**
  * Problems with one sourced entry (a recycled/bio-based content object, a carbon
- * footprint, a relative claim, or a size's container_details): missing sources, a
- * percentage outside 0-100, a date in the future, or a number absent from the quote.
+ * footprint, a relative claim, a size's container_details, or a mechanical value):
+ * missing sources, a percentage outside 0-100, a date in the future, or a number
+ * absent from the quote. `grouped` lets the quote group thousands (see `numberPattern`).
  */
 export function checkSourcedEntry(
 	entry: Record<string, unknown> | null | undefined,
 	valueFields: string[],
-	today: string = todayIso()
+	today: string = todayIso(),
+	grouped = false
 ): string[] {
 	if (!entry || typeof entry !== 'object') return [];
 	const problems: string[] = [];
@@ -485,10 +534,10 @@ export function checkSourcedEntry(
 	for (const field of valueFields) {
 		const value = entry[field];
 		if (typeof value !== 'number' || Number.isNaN(value)) continue;
-		if (field !== 'value_kg_co2e' && (value < 0 || value > 100)) {
+		if (PCT_FIELDS.has(field) && (value < 0 || value > 100)) {
 			problems.push(`${field} is ${value}; a percentage must be between 0 and 100.`);
 		}
-		if (quote.trim() && !numberPattern(value).test(quote)) {
+		if (quote.trim() && !numberPattern(value, grouped).test(quote)) {
 			problems.push(
 				`${field} is ${value}, but the quote does not contain that number. Copy the figure exactly as the source writes it.`
 			);
@@ -550,4 +599,123 @@ export function checkRecycledTrait(
 		};
 	}
 	return null;
+}
+
+// --- Mechanical properties ----------------------------------------------------
+//
+// Each value is copied from the maker's data sheet in the unit it is published in, so
+// the sourced-entry checks above apply to every entry, plus a unit that fits the
+// property. Mirrors the mechanical rules in `ofd/validation/data_quality.py`.
+
+const STRESS_UNITS = ['MPa', 'GPa', 'psi', 'ksi'];
+const IMPACT_UNITS = ['kJ/m2', 'J/m', 'ft-lb/in'];
+const TEMPERATURE_UNITS = ['°C', '°F'];
+
+/** The units each property can be published in. */
+export const MECHANICAL_UNITS: Record<string, string[]> = {
+	tensile_modulus: STRESS_UNITS,
+	tensile_strength: STRESS_UNITS,
+	yield_strength: STRESS_UNITS,
+	flexural_modulus: STRESS_UNITS,
+	flexural_strength: STRESS_UNITS,
+	elongation_at_break: ['%'],
+	impact_strength: IMPACT_UNITS,
+	impact_strength_notched: IMPACT_UNITS,
+	heat_deflection_045: TEMPERATURE_UNITS,
+	heat_deflection_18: TEMPERATURE_UNITS,
+	vicat_softening: TEMPERATURE_UNITS
+};
+
+/** The numbers a mechanical entry's source quote must contain. */
+export const MECHANICAL_VALUE_FIELDS = ['value', 'plus_minus'];
+
+/**
+ * Units whose values often reach 1000 and up, so sheets group their thousands (7,250
+ * psi). Elsewhere a comma is a decimal comma: 2,350 GPa is 2.35, not 2350.
+ */
+export const GROUPED_UNITS = new Set(['MPa', 'psi', 'ksi', 'J/m']);
+
+const PRINT_DIRECTIONS = new Set(['XY', 'XZ', 'Z']);
+
+/**
+ * Problems with one mechanical entry: the sourced-entry errors, a unit that does not
+ * fit the property, and a print direction on moulded test bars (a warning).
+ */
+export function checkMechanicalEntry(
+	entry: Record<string, unknown> | null | undefined,
+	today: string = todayIso()
+): EntryIssue[] {
+	if (!entry || typeof entry !== 'object') return [];
+	const { property, unit, direction } = entry;
+	const grouped = typeof unit === 'string' && GROUPED_UNITS.has(unit);
+	const issues: EntryIssue[] = checkSourcedEntry(
+		entry,
+		MECHANICAL_VALUE_FIELDS,
+		today,
+		grouped
+	).map((message) => ({ level: 'error', message }));
+
+	const units = typeof property === 'string' ? MECHANICAL_UNITS[property] : undefined;
+	if (units && typeof unit === 'string' && unit && !units.includes(unit)) {
+		issues.push({
+			level: 'error',
+			message: `${unit} is not a unit for ${property}; use ${units.join(', ')}.`
+		});
+	}
+
+	const specimen = entry.specimen as { process?: unknown } | null | undefined;
+	if (
+		specimen?.process === 'moulded' &&
+		typeof direction === 'string' &&
+		PRINT_DIRECTIONS.has(direction)
+	) {
+		issues.push({
+			level: 'warning',
+			message: `Moulded test bars have no print direction, but direction is ${direction}. Set it to unknown.`
+		});
+	}
+
+	return issues;
+}
+
+function blankToNull(value: unknown): unknown {
+	return typeof value === 'string' ? value.trim() || null : (value ?? null);
+}
+
+/**
+ * A specimen as a stable key: its stated fields in sorted order, or null when it states
+ * nothing (missing, null, {} or only empty fields, as it is saved after pruning).
+ */
+function specimenKey(specimen: unknown): string | null {
+	if (!specimen || typeof specimen !== 'object') return null;
+	const stated = Object.entries(specimen)
+		.map(([k, v]) => [k, blankToNull(v)] as const)
+		.filter(([, v]) => v !== null)
+		.sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
+	return stated.length ? JSON.stringify(stated) : null;
+}
+
+/**
+ * Entries that repeat an earlier entry's property, direction, condition, standard, unit
+ * and specimen (sheets list a property once per specimen, e.g. 100% vs 20% infill), as a
+ * map from the repeat's index to the first one's index.
+ */
+export function findDuplicateMechanical(
+	entries: Array<Record<string, unknown> | null | undefined>
+): Map<number, number> {
+	const first = new Map<string, number>();
+	const duplicates = new Map<number, number>();
+	entries.forEach((entry, i) => {
+		if (!entry || typeof entry !== 'object') return;
+		const key = JSON.stringify([
+			...['property', 'direction', 'condition', 'standard', 'unit'].map((f) =>
+				blankToNull(entry[f])
+			),
+			specimenKey(entry.specimen)
+		]);
+		const earlier = first.get(key);
+		if (earlier === undefined) first.set(key, i);
+		else duplicates.set(i, earlier);
+	});
+	return duplicates;
 }

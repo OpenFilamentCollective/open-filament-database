@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, untrack } from 'svelte';
 	import { SchemaForm, SlicerConfigPanel } from '$lib/components/forms';
-	import { FormSection, SustainabilityEditor } from '$lib/components/form-fields';
+	import { FormSection, SustainabilityEditor, MechanicalEditor } from '$lib/components/form-fields';
 	import {
 		SLICER_KEYS,
 		initializeSlicerForm,
@@ -19,7 +19,8 @@
 	import { generateSlug } from '$lib/services/entityService';
 	import { useSettledField } from '$lib/utils/settledField.svelte';
 	import { looksLikeProductPage, stripTrackersDeep } from '$lib/utils/urlSanitizer';
-	import { pruneSustainability } from '$lib/utils/sustainability';
+	import { pruneSustainability, type Entry, type JsonSchema } from '$lib/utils/sustainability';
+	import { pruneMechanical } from '$lib/utils/mechanical';
 	import type { Sustainability } from '$lib/types/database';
 	import {
 		checkNameLeadingCase,
@@ -72,6 +73,7 @@
 		slicerEnabled: Record<SlicerKey, boolean>;
 		slicerData: Record<string, any>;
 		sustainability?: Sustainability;
+		mechanical?: Entry[];
 	};
 
 	// Internal schema state (loaded if not provided externally)
@@ -92,13 +94,27 @@
 		sustainabilitySchema = await fetchEntitySchema('sustainability');
 	});
 
+	// `mechanical` is the same: a cross-file $ref edited by MechanicalEditor.
+	let mechanicalSchema: JsonSchema | null = $state(null);
+	onMount(async () => {
+		mechanicalSchema = await fetchEntitySchema('mechanical');
+	});
+
 	// Config for filament form - labels, tooltips, and placeholders come from schema
 	const config: SchemaFormConfig = {
 		splitAfterKey: 'discontinued',
 		leftWidth: '2/3',
 		leftSpacing: 'sm',
 		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
-		hiddenFields: ['id', 'uuid', 'moved_from', 'slicer_settings', 'slicer_ids', 'sustainability'],
+		hiddenFields: [
+			'id',
+			'uuid',
+			'moved_from',
+			'slicer_settings',
+			'slicer_ids',
+			'sustainability',
+			'mechanical'
+		],
 		fieldOrder: [
 			'name',
 			'density',
@@ -165,12 +181,17 @@
 	// Form data state - initialized when schema is available
 	let formData = $state<Record<string, any>>(initialDraft?.formData ?? {});
 
-	function cloneSustainability(value: Sustainability | undefined): Sustainability {
-		return value ? JSON.parse(JSON.stringify(value)) : {};
+	// A deep copy of a stored block for its editor, so edits never reach `filament`.
+	function editableCopy<T>(value: T | undefined, empty: T): T {
+		return value ? ($state.snapshot(value) as T) : empty;
 	}
 
 	let sustainability = $state<Sustainability>(
-		initialDraft?.sustainability ?? cloneSustainability(filament?.sustainability)
+		initialDraft?.sustainability ?? editableCopy(filament?.sustainability, {})
+	);
+
+	let mechanical = $state<Entry[]>(
+		initialDraft?.mechanical ?? editableCopy(filament?.mechanical, [])
 	);
 
 	// Folder-id drift guard: an existing filament whose folder id carries extra trailing
@@ -354,7 +375,8 @@
 				return;
 			}
 			formData = initializeFormData(preparedSchema, filament, config.hiddenFields);
-			sustainability = cloneSustainability(filament?.sustainability);
+			sustainability = editableCopy(filament?.sustainability, {});
+			mechanical = editableCopy(filament?.mechanical, []);
 			slicerEnabled = initializeSlicerEnabled(filament?.slicer_settings);
 			slicerForms = initializeSlicerForms();
 			// Pre-create forms for already-enabled slicers
@@ -374,7 +396,8 @@
 			formData,
 			slicerEnabled,
 			slicerData: buildSlicerSettings(slicerEnabled, slicerForms),
-			sustainability: $state.snapshot(sustainability)
+			sustainability: $state.snapshot(sustainability),
+			mechanical: $state.snapshot(mechanical)
 		});
 	});
 
@@ -410,6 +433,13 @@
 				: undefined;
 		} else if (filament?.sustainability) {
 			submitData.sustainability = filament.sustainability;
+		}
+
+		if (mechanicalSchema) {
+			const mechanicalData = pruneMechanical($state.snapshot(mechanical), mechanicalSchema);
+			submitData.mechanical = mechanicalData ? stripTrackersDeep(mechanicalData) : undefined;
+		} else if (filament?.mechanical) {
+			submitData.mechanical = filament.mechanical;
 		}
 
 		// Preserve the canonical UUID on edit; left empty on create for CI to assign.
@@ -544,6 +574,15 @@
 					bind:value={sustainability}
 					schema={sustainabilitySchema}
 					idPrefix="filament-sustainability"
+				/>
+			</FormSection>
+		{/if}
+		{#if mechanicalSchema}
+			<FormSection title="Mechanical Properties" tooltip={mechanicalSchema.description}>
+				<MechanicalEditor
+					bind:value={mechanical}
+					schema={mechanicalSchema}
+					idPrefix="filament-mechanical"
 				/>
 			</FormSection>
 		{/if}

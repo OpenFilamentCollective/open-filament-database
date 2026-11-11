@@ -80,6 +80,7 @@ export interface Filament {
 	slicer_ids?: any;
 	slicer_settings?: any;
 	sustainability?: Sustainability;
+	mechanical?: MechanicalProperty[];
 	brandId?: string;
 	materialType?: string;
 	filamentDir?: string;
@@ -157,6 +158,66 @@ export interface Sustainability {
 	bio_based_content?: BioBasedContent;
 	carbon_footprints?: CarbonFootprint[];
 	relative_claims?: RelativeClaim[];
+}
+
+// --- Mechanical properties (schemas/mechanical_schema.json) -------------------
+// One value per property, print direction and condition, copied verbatim from the
+// maker's data sheet in the unit it is published in.
+
+export type MechanicalPropertyName =
+	| 'tensile_modulus'
+	| 'tensile_strength'
+	| 'yield_strength'
+	| 'elongation_at_break'
+	| 'flexural_modulus'
+	| 'flexural_strength'
+	| 'impact_strength'
+	| 'impact_strength_notched'
+	| 'heat_deflection_045'
+	| 'heat_deflection_18'
+	| 'vicat_softening';
+
+/** XY = flat, XZ = on edge, Z = upright; unknown when the source gives none. */
+export type PrintDirection = 'XY' | 'XZ' | 'Z' | 'unknown';
+
+export type MechanicalUnit =
+	| 'MPa'
+	| 'GPa'
+	| 'psi'
+	| 'ksi'
+	| '%'
+	| 'kJ/m2'
+	| 'J/m'
+	| 'ft-lb/in'
+	| '°C'
+	| '°F';
+
+/** How the test bars were made, as stated by the source. */
+export interface MechanicalSpecimen {
+	process?: 'printed' | 'moulded' | 'unknown';
+	printer?: string | null;
+	nozzle_diameter?: number | null;
+	layer_height?: number | null;
+	infill_percent?: number | null;
+	perimeters?: number | null;
+	raster_angle?: string | null;
+	print_temperature?: number | null;
+	bed_temperature?: number | null;
+	chamber_temperature?: number | null;
+	print_speed?: number | null;
+	conditioning?: string | null;
+}
+
+export interface MechanicalProperty extends SourcedEntry {
+	property: MechanicalPropertyName;
+	direction: PrintDirection;
+	/** As published, in `unit`; must appear in source_quote. */
+	value: number;
+	plus_minus?: number | null;
+	unit: MechanicalUnit;
+	standard?: string | null;
+	condition?: 'dry' | 'conditioned';
+	specimen?: MechanicalSpecimen;
 }
 
 export interface ContainerDetails extends SourcedEntry {

@@ -359,6 +359,130 @@ def test_reviewer_never_suggests_sustainability_values(repo):
     assert outcome.rejected[0][1] == "sustainability data is never suggested"
 
 
+# --- mechanical values ---------------------------------------------------------------
+
+SHEET_URL = "https://acme3d.com/tds/pla.pdf"
+SHEET = (
+    "Acme PLA technical data sheet. Tensile modulus (X-Y) ISO 527 2,350 ± 120 MPa. "
+    "Tensile strength (X-Y) ASTM D638 7,250 psi. Elongation at break (Z) 2.6 %."
+)
+
+
+def mech(**extra):
+    return {
+        "property": "tensile_modulus",
+        "direction": "XY",
+        "value": 2350,
+        "plus_minus": 120,
+        "unit": "MPa",
+        "standard": "ISO 527",
+        "source_type": "primary",
+        "source_url": SHEET_URL,
+        "source_quote": "Tensile modulus (X-Y) ISO 527 2,350 ± 120 MPa",
+        "retrieved": "2026-11-08",
+        **extra,
+    }
+
+
+def mech_touches(repo, before, after):
+    repo.write(f"{PLA}/basic/filament.json", filament(**before))
+    base = repo.commit()
+    repo.write(f"{PLA}/basic/filament.json", filament(**after))
+    changes, _ = changed_files(repo.path, base, repo.commit())
+    touch = find_touches(changes, [c.path for c in changes])
+    verify_all(touch, TreeReader(repo.path, "HEAD"), FakeFetcher({SHEET_URL: SHEET}))
+    return touch
+
+
+def test_mechanical_entries_go_through_the_gate(repo):
+    touch = mech_touches(repo, {}, {"mechanical": [mech()]})
+    assert [(e.pointer, e.section) for e in touch.entries] == [("/mechanical/0", "mechanical")]
+    assert touch.entries[0].errors == []
+    # Like sustainability data, a mechanical value never passes without the model's check.
+    assert gate(touch, None)["state"] == "failure"
+    assert gate(touch, ok_model(touch))["state"] == "success"
+
+
+def test_mechanical_value_not_on_the_sheet_fails(repo):
+    wrong = mech(value=2530, source_quote="Tensile modulus (X-Y) ISO 527 2,530 ± 120 MPa")
+    touch = mech_touches(repo, {}, {"mechanical": [wrong]})
+    assert any("not found" in e for e in touch.entries[0].errors)
+    assert gate(touch, ok_model(touch))["state"] == "failure"
+
+
+def test_mechanical_thousands_only_group_in_their_units(repo):
+    psi = mech(
+        property="tensile_strength",
+        value=7250,
+        plus_minus=None,
+        unit="psi",
+        standard="ASTM D638",
+        source_quote="Tensile strength (X-Y) ASTM D638 7,250 psi",
+    )
+    touch = mech_touches(repo, {}, {"mechanical": [psi]})
+    assert touch.entries[0].errors == []
+
+    # In GPa a comma is a decimal comma: "2,350" is 2.35, never 2350.
+    gpa = mech(unit="GPa", plus_minus=None, source_quote="Tensile modulus (X-Y) ISO 527 2,350")
+    touch = mech_touches(repo, {}, {"mechanical": [gpa]})
+    assert any("2350 is not in source_quote" in e for e in touch.entries[0].errors)
+
+
+def test_removed_mechanical_value_needs_a_maintainer(repo):
+    touch = mech_touches(repo, {"mechanical": [mech()]}, {})
+    assert [e.pointer for e in touch.removed] == ["/mechanical/0"]
+    failures = gate(touch, ok_model(touch))["failures"]
+    assert any("mechanical data removed" in f for f in failures)
+
+
+def test_mechanical_schema_is_a_rule_file():
+    touch = find_touches([], ["schemas/mechanical_schema.json"])
+    assert touch.rule_paths == ["schemas/mechanical_schema.json"]
+
+
+def test_reviewer_never_suggests_mechanical_values(repo):
+    from ofd.review.suggest import build_suggestions
+
+    repo.write(f"{PLA}/basic/filament.json", filament())
+    base = repo.commit()
+    repo.write(f"{PLA}/basic/filament.json", filament(min_print_temperature=200))
+    changes, _ = changed_files(repo.path, base, repo.commit())
+    outcome = build_suggestions(
+        [
+            {
+                "path": f"{PLA}/basic/filament.json",
+                "pointer": "/mechanical/0/value",
+                "value": 2350,
+                "source_url": SHEET_URL,
+                "confidence": "high",
+            },
+        ],
+        changes,
+    )
+    assert outcome.suggestions == []
+    assert outcome.rejected[0][1] == "mechanical data is never suggested"
+
+
+def test_mechanical_findings_are_never_dropped_and_count_for_the_gate():
+    from ofd.review.sustainability import is_sourced_pointer, model_problems
+    from ofd.review.triage import drop_reason
+
+    finding = {
+        "pointer": "/mechanical/0/value",
+        "severity": "error",
+        "message": "please check the value on the sheet",
+        "path": f"{PLA}/basic/filament.json",
+    }
+    assert is_sourced_pointer("/mechanical/0/value")
+    assert not is_sourced_pointer("/max_print_temperature")
+    assert drop_reason(finding, None) is None
+    touch = find_touches([], [])
+    touch.entries.append(Entry(finding["path"], "/mechanical/0", "mechanical", mech()))
+    model = ok_model(touch)
+    model["findings"] = [finding]
+    assert any("/mechanical/0/value" in p for p in model_problems(touch, model))
+
+
 # --- a new push always wins ------------------------------------------------------
 
 

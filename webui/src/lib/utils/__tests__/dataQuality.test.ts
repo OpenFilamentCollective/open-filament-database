@@ -17,10 +17,13 @@ import {
 	findDuplicateName,
 	containerMaterialOf,
 	numberPattern,
+	plainDecimal,
 	checkSourcedEntry,
 	checkRecycledTrait,
 	effectiveSustainability,
-	findInvertedRanges
+	findInvertedRanges,
+	checkMechanicalEntry,
+	findDuplicateMechanical
 } from '../dataQuality';
 import type { RecycledContent } from '$lib/types/database';
 
@@ -504,9 +507,54 @@ describe('numberPattern', () => {
 		[5.85, '5.851 kg', false],
 		[100, '100% recycled', true],
 		[100, '1000 spools', false],
-		[2.5, '2.50 kg', true]
+		[2.5, '2.50 kg', true],
+		[5, '5.85 kg', false],
+		[5, '5,85 kg', false],
+		[5, '5.0 kg', true],
+		[3860, '3860 ± 230 MPa', true],
+		[-5, 'down -5 %', true],
+		// Ungrouped, a comma is a decimal comma: "2,350 GPa" is 2.35, not 2350.
+		[2350, '2,350 GPa', false],
+		[2.35, '2,350 GPa', true],
+		[7, '7,250 psi', false],
+		[250, '7,250 psi', false],
+		[1e21, '1000000000000000000000 kg', true],
+		[1e-7, '0.0000001 kg', true]
 	])('%s in %j -> %s', (value, quote, expected) => {
 		expect(numberPattern(value).test(quote)).toBe(expected);
+	});
+
+	it.each([
+		[7250, '7,250 psi', true],
+		[7250, '7250 psi', true],
+		[7250, '7\u00a0250 psi', true],
+		[7250, '7\u2009250 psi', true],
+		[7250, '7\u202f250 psi', true],
+		// A plain space separates table columns, not thousands.
+		[7250, '7 250 psi', false],
+		[7250, '7.250 psi', false],
+		[7250, '17,250 psi', false],
+		[7, '7,250 psi', false],
+		[250, '7,250 psi', false],
+		[250, '7\u00a0250 psi', false],
+		[7, '7\u202f250 psi', false],
+		[1234.5, '1,234.5 MPa', true],
+		[3860, '3860 ± 230 MPa', true]
+	])('grouped: %s in %j -> %s', (value, quote, expected) => {
+		expect(numberPattern(value, true).test(quote)).toBe(expected);
+	});
+});
+
+describe('plainDecimal', () => {
+	it.each([
+		[1e21, '1000000000000000000000'],
+		[1.5e21, '1500000000000000000000'],
+		[1e-7, '0.0000001'],
+		[-1.25e-7, '-0.000000125'],
+		[7250, '7250'],
+		[5.85, '5.85']
+	])('%s -> %s', (value, expected) => {
+		expect(plainDecimal(value)).toBe(expected);
 	});
 });
 
@@ -554,5 +602,147 @@ describe('checkRecycledTrait', () => {
 	it('is silent for the trait alone until a sustainability block exists', () => {
 		expect(checkRecycledTrait(undefined, undefined, true)).toBeNull();
 		expect(checkRecycledTrait({ relative_claims: [] }, undefined, true)?.level).toBe('warning');
+	});
+});
+
+describe('checkMechanicalEntry', () => {
+	const today = '2026-11-09';
+	// Bambu Lab PLA Basic TDS (store.bblcdn.com), the schema's own example.
+	const modulus = {
+		property: 'tensile_modulus',
+		direction: 'XY',
+		value: 3860,
+		plus_minus: 230,
+		unit: 'MPa',
+		standard: 'ISO 527',
+		condition: 'dry',
+		specimen: { process: 'printed', infill_percent: 100 },
+		source_type: 'primary',
+		source_url: 'https://store.bblcdn.com/7166b20bc68f4c87b32c972b856eeb4b.pdf',
+		source_quote: "Young's Modulus (X-Y) ISO 527, GB/T 1040 3860 ± 230 MPa",
+		retrieved: '2026-11-08'
+	};
+
+	it('accepts a value and spread copied from the sheet', () => {
+		expect(checkMechanicalEntry(modulus, today)).toEqual([]);
+	});
+
+	it('does not treat a modulus as a percentage', () => {
+		const issues = checkMechanicalEntry(modulus, today);
+		expect(issues.some((i) => i.message.includes('between 0 and 100'))).toBe(false);
+	});
+
+	it('flags missing sources and a future retrieved date', () => {
+		const issues = checkMechanicalEntry(
+			{ ...modulus, source_url: ' ', retrieved: '2999-01-01' },
+			today
+		);
+		expect(issues.every((i) => i.level === 'error')).toBe(true);
+		expect(issues.some((i) => i.message.startsWith('Missing source_url'))).toBe(true);
+		expect(issues.some((i) => i.message.includes('in the future'))).toBe(true);
+	});
+
+	it('flags a malformed retrieved date', () => {
+		const issues = checkMechanicalEntry({ ...modulus, retrieved: '08/11/2026' }, today);
+		expect(issues.some((i) => i.message.includes('YYYY-MM-DD'))).toBe(true);
+	});
+
+	it('flags a value or spread missing from the quote, e.g. a converted figure', () => {
+		const converted = checkMechanicalEntry({ ...modulus, value: 3.86, unit: 'GPa' }, today);
+		expect(converted.filter((i) => i.message.includes('does not contain'))).toHaveLength(1);
+		const spread = checkMechanicalEntry({ ...modulus, plus_minus: 23 }, today);
+		expect(spread.some((i) => i.message.startsWith('plus_minus is 23'))).toBe(true);
+		// No spread published: nothing to look for.
+		expect(checkMechanicalEntry({ ...modulus, plus_minus: null }, today)).toEqual([]);
+	});
+
+	it('lets the quote group thousands only for units that reach them', () => {
+		const flexural = {
+			...modulus,
+			property: 'flexural_modulus',
+			value: 2350,
+			plus_minus: null,
+			source_quote: 'Flexural modulus 2,350'
+		};
+		expect(checkMechanicalEntry({ ...flexural, unit: 'MPa' }, today)).toEqual([]);
+		const psi = { ...flexural, value: 7250, unit: 'psi', source_quote: 'Flexural 7,250 psi' };
+		expect(checkMechanicalEntry(psi, today)).toEqual([]);
+		// In GPa the comma is a decimal comma: 2,350 GPa is 2.35.
+		const gpa = checkMechanicalEntry({ ...flexural, unit: 'GPa' }, today);
+		expect(gpa.some((i) => i.message.startsWith('value is 2350'))).toBe(true);
+		expect(checkMechanicalEntry({ ...flexural, value: 2.35, unit: 'GPa' }, today)).toEqual([]);
+	});
+
+	it('flags a unit that does not fit the property', () => {
+		const issues = checkMechanicalEntry(
+			{ ...modulus, property: 'elongation_at_break', value: 3860, unit: 'MPa' },
+			today
+		);
+		expect(issues).toEqual([
+			{ level: 'error', message: 'MPa is not a unit for elongation_at_break; use %.' }
+		]);
+		const hdt = {
+			...modulus,
+			property: 'heat_deflection_045',
+			value: 57,
+			plus_minus: null,
+			unit: '°C',
+			source_quote: 'Heat Deflection Temperature (0.45 MPa) ISO 75 57 °C'
+		};
+		expect(checkMechanicalEntry(hdt, today)).toEqual([]);
+	});
+
+	it('warns when moulded bars carry a print direction', () => {
+		const issues = checkMechanicalEntry({ ...modulus, specimen: { process: 'moulded' } }, today);
+		expect(issues).toHaveLength(1);
+		expect(issues[0].level).toBe('warning');
+		const moulded = { ...modulus, direction: 'unknown', specimen: { process: 'moulded' } };
+		expect(checkMechanicalEntry(moulded, today)).toEqual([]);
+	});
+});
+
+describe('findDuplicateMechanical', () => {
+	const base = { property: 'tensile_strength', direction: 'XY', unit: 'MPa', standard: 'ISO 527' };
+
+	it('maps a repeat to the first entry', () => {
+		const dups = findDuplicateMechanical([base, { ...base, direction: 'Z' }, { ...base }]);
+		expect([...dups]).toEqual([[2, 0]]);
+	});
+
+	it('tells entries apart by condition, standard and unit', () => {
+		expect(
+			findDuplicateMechanical([
+				base,
+				{ ...base, condition: 'conditioned' },
+				{ ...base, standard: 'ASTM D638' },
+				{ ...base, unit: 'psi' }
+			]).size
+		).toBe(0);
+	});
+
+	it('tells entries apart by specimen, ignoring key order and empty fields', () => {
+		const full = { ...base, specimen: { process: 'printed', infill_percent: 100 } };
+		const sparse = { ...base, specimen: { process: 'printed', infill_percent: 20 } };
+		const reordered = { ...base, specimen: { infill_percent: 100, process: 'printed' } };
+		expect([...findDuplicateMechanical([full, sparse, reordered])]).toEqual([[2, 0]]);
+		const none = [
+			base,
+			{ ...base, specimen: null },
+			{ ...base, specimen: {} },
+			{ ...base, specimen: { printer: '', layer_height: null } }
+		];
+		expect([...findDuplicateMechanical(none).values()]).toEqual([0, 0, 0]);
+	});
+
+	it('treats a blank standard as no standard', () => {
+		const dups = findDuplicateMechanical([
+			{ ...base, standard: undefined },
+			{ ...base, standard: null },
+			{ ...base, standard: ' ' }
+		]);
+		expect([...dups]).toEqual([
+			[1, 0],
+			[2, 0]
+		]);
 	});
 });

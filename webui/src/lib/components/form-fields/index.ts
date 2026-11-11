@@ -20,3 +20,4 @@ export { default as PurchaseLinksSection } from './PurchaseLinksSection.svelte';
 export { default as SizeCard } from './SizeCard.svelte';
 export { default as SourcedEntryFields } from './SourcedEntryFields.svelte';
 export { default as SustainabilityEditor } from './SustainabilityEditor.svelte';
+export { default as MechanicalEditor } from './MechanicalEditor.svelte';

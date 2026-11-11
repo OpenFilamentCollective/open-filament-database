@@ -286,7 +286,9 @@ def content_items(
     check(
         "E15",
         not touched and gate_green,
-        "no sustainability data, gate green" if not touched else "touches sustainability data",
+        "no sustainability or mechanical data, gate green"
+        if not touched
+        else "touches sustainability or mechanical data",
     )
     ai_errors = [f for f in model.get("findings") or [] if f.get("severity") == "error"]
     blocked = (NEW in kinds or JUDGED in kinds) and ai_errors

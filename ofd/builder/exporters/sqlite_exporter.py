@@ -93,7 +93,8 @@ CREATE TABLE IF NOT EXISTS filament (
     safety_sheet_url TEXT,
     discontinued INTEGER NOT NULL DEFAULT 0,
     slicer_settings TEXT,  -- JSON
-    sustainability TEXT  -- JSON (see schemas/sustainability_schema.json)
+    sustainability TEXT,  -- JSON (see schemas/sustainability_schema.json)
+    mechanical TEXT  -- JSON (see schemas/mechanical_schema.json)
 );
 CREATE INDEX IF NOT EXISTS ix_filament_brand ON filament(brand_id);
 CREATE INDEX IF NOT EXISTS ix_filament_material ON filament(material_id);

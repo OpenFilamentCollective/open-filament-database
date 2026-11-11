@@ -850,3 +850,126 @@ def test_container_details_are_checked(tmp_path):
     errors = sustainability_errors(tmp_path, sizes=sizes)
     found = messages(errors, "container_details.recycled_pct is 90")
     assert len(found) == 1
+
+
+# --- Mechanical data --------------------------------------------------------------
+#
+# Values from a brand's data sheet follow the same sourcing rules: copy, never compute.
+
+SHEET = {
+    "source_type": "primary",
+    "source_url": "https://store.bblcdn.com/7166b20bc68f4c87b32c972b856eeb4b.pdf",
+    "retrieved": "2026-11-08",
+}
+
+
+def mech(prop, direction, value, unit, quote, **extra):
+    return {
+        "property": prop,
+        "direction": direction,
+        "value": value,
+        "unit": unit,
+        **SHEET,
+        "source_quote": quote,
+        **extra,
+    }
+
+
+def modulus_xy(**extra):
+    quote = "Young's Modulus (X-Y) ISO 527, GB/T 1040 3860 ± 230 MPa"
+    return mech("tensile_modulus", "XY", 3860, "MPa", quote, plus_minus=230, **extra)
+
+
+def mechanical_errors(tmp_path, *entries):
+    data = build(
+        tmp_path / "data",
+        filament_extra={"mechanical": list(entries)},
+        variants=[{"id": "black", "name": "Black"}],
+    )
+    return check_data_quality(data)
+
+
+def test_sourced_mechanical_entry_passes(tmp_path):
+    quote = "Young's Modulus (Z) ISO 527, GB/T 1040 2180 ± 130 MPa"
+    z = mech("tensile_modulus", "Z", 2180, "MPa", quote, plus_minus=130)
+    assert mechanical_errors(tmp_path, modulus_xy(), z) == []
+
+
+def test_mechanical_value_missing_from_quote_is_an_error(tmp_path):
+    entry = modulus_xy(source_quote="Young's Modulus (X-Y) 3.86 GPa")
+    found = messages(mechanical_errors(tmp_path, entry), "does not contain that number")
+    assert len(found) == 2  # value and plus_minus
+    assert found[0].level.value == "ERROR"
+
+
+def test_mechanical_psi_with_thousands_separator_passes(tmp_path):
+    entry = mech("tensile_strength", "XY", 7250, "psi", "Tensile Strength ASTM D638 7,250 psi")
+    assert mechanical_errors(tmp_path, entry) == []
+
+
+def test_mechanical_missing_source_is_an_error(tmp_path):
+    entry = modulus_xy()
+    del entry["source_url"]
+    found = messages(mechanical_errors(tmp_path, entry), "is missing source_url")
+    assert len(found) == 1
+    assert "Every mechanical figure" in found[0].message
+
+
+def test_mechanical_future_retrieved_is_an_error(tmp_path):
+    errors = mechanical_errors(tmp_path, modulus_xy(retrieved="2999-01-01"))
+    assert len(messages(errors, "is in the future")) == 1
+
+
+def test_mechanical_unit_that_does_not_fit_is_an_error(tmp_path):
+    entry = mech("elongation_at_break", "XY", 2.6, "MPa", "Elongation at Break (X-Y) 2.6 MPa")
+    found = messages(mechanical_errors(tmp_path, entry), "does not fit elongation_at_break")
+    assert len(found) == 1
+    assert found[0].level.value == "ERROR"
+
+
+def test_mechanical_direction_on_moulded_bars_warns(tmp_path):
+    entry = modulus_xy(specimen={"process": "moulded"})
+    found = messages(mechanical_errors(tmp_path, entry), "moulded bars have no print direction")
+    assert len(found) == 1
+    assert found[0].level.value == "WARNING"
+
+
+def test_mechanical_repeat_warns(tmp_path):
+    found = messages(mechanical_errors(tmp_path, modulus_xy(), modulus_xy()), "repeats")
+    assert len(found) == 1
+    assert found[0].level.value == "WARNING"
+
+
+def test_mechanical_same_property_other_standard_is_not_a_repeat(tmp_path):
+    iso = modulus_xy(standard="ISO 527")
+    astm = modulus_xy(standard="ASTM D638")
+    assert messages(mechanical_errors(tmp_path, iso, astm), "repeats") == []
+
+
+def test_mechanical_value_never_matches_inside_a_grouped_number(tmp_path):
+    for value in (7, 250):
+        entry = mech("tensile_strength", "XY", value, "psi", "Tensile Strength 7,250 psi")
+        found = messages(mechanical_errors(tmp_path, entry), "does not contain that number")
+        assert len(found) == 1, value
+
+
+def test_mechanical_comma_in_gpa_is_a_decimal_comma(tmp_path):
+    # "2,350 GPa" is 2.35 GPa: a value 1000x too large must not pass.
+    wrong = mech("tensile_modulus", "XY", 2350, "GPa", "Tensile modulus 2,350 GPa")
+    assert len(messages(mechanical_errors(tmp_path, wrong), "does not contain that number")) == 1
+    right = mech("tensile_modulus", "XY", 2.35, "GPa", "Tensile modulus 2,350 GPa")
+    assert mechanical_errors(tmp_path / "ok", right) == []
+
+
+def test_value_never_matches_the_start_of_a_decimal(tmp_path):
+    entry = mech("elongation_at_break", "XY", 5, "%", "Elongation at break 5.85 %")
+    found = messages(mechanical_errors(tmp_path, entry), "does not contain that number")
+    assert len(found) == 1
+
+
+def test_mechanical_same_property_other_specimen_is_not_a_repeat(tmp_path):
+    full = modulus_xy(specimen={"process": "printed", "infill_percent": 100})
+    sparse = modulus_xy(specimen={"infill_percent": 20, "process": "printed"})
+    assert messages(mechanical_errors(tmp_path, full, sparse), "repeats") == []
+    same = modulus_xy(specimen={"infill_percent": 100, "process": "printed"})
+    assert len(messages(mechanical_errors(tmp_path / "b", full, same), "repeats")) == 1

@@ -326,6 +326,11 @@
             "title": "Sustainability",
             "description": "Sourced sustainability data (recycled and bio-based content, carbon footprints, relative claims). Every number must be copied verbatim from a cited source."
         },
+        "mechanical": {
+            "$ref": "./mechanical_schema.json",
+            "title": "Mechanical Properties",
+            "description": "Sourced mechanical properties (tensile, flexural, impact, heat deflection) per print direction, from the brand's data sheet. Every value must be copied verbatim from a cited source."
+        },
         "slicer_ids": {
             "type": "object",
             "title": "Slicer IDs",

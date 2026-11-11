@@ -163,7 +163,8 @@ export const SCHEMA_NAMES = {
 	variant: 'variant_schema.json',
 	store: 'store_schema.json',
 	materialTypes: 'material_types_schema.json',
-	sustainability: 'sustainability_schema.json'
+	sustainability: 'sustainability_schema.json',
+	mechanical: 'mechanical_schema.json'
 } as const;
 
 /**
@@ -177,7 +178,8 @@ export const ENTITY_ROUTES = {
 	variant: 'variant',
 	store: 'store',
 	materialTypes: 'material_types',
-	sustainability: 'sustainability'
+	sustainability: 'sustainability',
+	mechanical: 'mechanical'
 } as const;
 
 export type SchemaName = keyof typeof SCHEMA_NAMES;

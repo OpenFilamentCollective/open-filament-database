@@ -33,6 +33,11 @@ ERRORs: a missing source field, a percentage outside 0-100, a ``retrieved`` /
 ``traits.recycled`` with no recycled content only WARNs, and only once the filament
 or variant has a sustainability block.
 
+Mechanical data (``mechanical`` on filaments) follows the same sourcing rules: a
+missing source field, a value or ``plus_minus`` absent from its ``source_quote``, a
+``retrieved`` date in the future and a unit that does not fit the property are
+ERRORs. A print direction on moulded test bars and a repeated entry only WARN.
+
 A WARNING here is advice, not a failure: ``ofd validate`` still exits 0 and reports
 "All validations passed (N warnings)". Reviewers should not describe a warning as
 something that breaks the build or makes data unreachable.
@@ -42,6 +47,7 @@ import json
 import re
 from collections import Counter, defaultdict
 from datetime import date
+from decimal import Decimal
 from pathlib import Path
 from urllib.parse import parse_qsl, urlsplit
 
@@ -689,15 +695,37 @@ def _sourced_entries(sustainability) -> list[tuple[str, dict, tuple[str, ...]]]:
     return entries
 
 
-def _number_pattern(value) -> re.Pattern:
+# Thousands separators a sheet may group digits with (``grouped`` only). A plain space is
+# not one: table rows put their columns side by side with spaces.
+_GROUP_SEPARATORS = ",\u00a0\u2009\u202f"
+
+
+def _number_pattern(value, grouped: bool = False) -> re.Pattern:
     """Match ``value`` as written in prose: ``5.85`` or ``5,85``, trailing zeros allowed.
 
-    The digit boundaries stop ``5.85`` from matching inside ``15.85`` or ``5.851``.
+    The boundaries stop ``5.85`` from matching inside ``15.85`` or ``5.851``, and ``5``
+    from matching the start of ``5.85``. With ``grouped``, thousands may be grouped by a
+    comma or a no-break, thin or narrow space, as sheets in psi do: ``7250`` matches
+    ``7,250``, and ``7`` or ``250`` don't match inside it.
     """
-    text = repr(float(value)).rstrip("0").rstrip(".")
-    int_part, _, frac = text.partition(".")
-    number = re.escape(int_part) + (f"[.,]{frac}0*" if frac else r"(?:[.,]0+)?")
-    return re.compile(rf"(?<![\d.,]){number}(?!\d)")
+    text = format(Decimal(repr(float(value))), "f")  # no exponent: 1e21 -> 1000...
+    if "." in text:
+        text = text.rstrip("0").rstrip(".")
+    sign, digits = ("-", text[1:]) if text.startswith("-") else ("", text)
+    int_part, _, frac = digits.partition(".")
+    if grouped:
+        head = len(int_part) % 3 or 3
+        groups = [int_part[:head]] + [int_part[i : i + 3] for i in range(head, len(int_part), 3)]
+        int_re = groups[0] + "".join(f"[{_GROUP_SEPARATORS}]?{g}" for g in groups[1:])
+    else:
+        int_re = int_part
+    number = re.escape(sign) + int_re + (f"[.,]{frac}0*" if frac else r"(?:[.,]0+)?")
+    behind, ahead = r"(?<![\d.,])", r"(?![.,]?\d)"
+    if grouped:
+        spaces = _GROUP_SEPARATORS[1:]
+        behind += rf"(?<!\d[{spaces}])"
+        ahead += rf"(?![{spaces}]\d)"
+    return re.compile(behind + number + ahead)
 
 
 def _parse_date(value):
@@ -708,7 +736,13 @@ def _parse_date(value):
 
 
 def _check_sourced_entry(
-    path: str, entry: dict, value_fields: tuple[str, ...], file_path: Path, base: Path
+    path: str,
+    entry: dict,
+    value_fields: tuple[str, ...],
+    file_path: Path,
+    base: Path,
+    kind: str = "sustainability",
+    grouped: bool = False,
 ) -> list[ValidationError]:
     """One sourced entry: sources present, percentages in range, dates not in the
     future, and every number present verbatim in ``source_quote``."""
@@ -722,7 +756,7 @@ def _check_sourced_entry(
         errors.append(
             _err(
                 ValidationLevel.Error,
-                f"{path} is missing {', '.join(missing)}. Every sustainability figure "
+                f"{path} is missing {', '.join(missing)}. Every {kind} figure "
                 "needs a source URL, a verbatim quote and the date it was retrieved.",
                 rel,
             )
@@ -741,7 +775,11 @@ def _check_sourced_entry(
                 )
             )
         quote = entry.get("source_quote")
-        if isinstance(quote, str) and quote.strip() and not _number_pattern(value).search(quote):
+        if (
+            isinstance(quote, str)
+            and quote.strip()
+            and not _number_pattern(value, grouped).search(quote)
+        ):
             errors.append(
                 _err(
                     ValidationLevel.Error,
@@ -845,6 +883,115 @@ def _check_recycled_trait(
     return []
 
 
+# --- Rules: mechanical data ---------------------------------------------------
+#
+# Mechanical values are copied from the brand's data sheet like sustainability figures:
+# in the unit the sheet uses, with the quote that shows them. See
+# docs/manual.md#-mechanical-data.
+
+_PRESSURE_UNITS = frozenset({"MPa", "GPa", "psi", "ksi"})
+_IMPACT_UNITS = frozenset({"kJ/m2", "J/m", "ft-lb/in"})
+_TEMPERATURE_UNITS = frozenset({"°C", "°F"})
+# Units whose values often reach 1000 and up, so sheets group their thousands
+# (7,250 psi). Elsewhere a comma is a decimal comma: 2,350 GPa is 2.35, not 2350.
+GROUPED_UNITS = frozenset({"MPa", "psi", "ksi", "J/m"})
+
+# Units that fit each property.
+_MECHANICAL_UNITS = {
+    "tensile_modulus": _PRESSURE_UNITS,
+    "tensile_strength": _PRESSURE_UNITS,
+    "yield_strength": _PRESSURE_UNITS,
+    "flexural_modulus": _PRESSURE_UNITS,
+    "flexural_strength": _PRESSURE_UNITS,
+    "elongation_at_break": frozenset({"%"}),
+    "impact_strength": _IMPACT_UNITS,
+    "impact_strength_notched": _IMPACT_UNITS,
+    "heat_deflection_045": _TEMPERATURE_UNITS,
+    "heat_deflection_18": _TEMPERATURE_UNITS,
+    "vicat_softening": _TEMPERATURE_UNITS,
+}
+
+_PRINT_DIRECTIONS = {"XY", "XZ", "Z"}
+
+# Numbers a mechanical entry's source_quote must contain.
+MECHANICAL_VALUES = ("value", "plus_minus")
+
+
+def _check_mechanical(data: dict, file_path: Path, base: Path) -> list[ValidationError]:
+    """Every entry in a filament's ``mechanical`` array: sourced like a sustainability
+    figure, a unit that fits the property, no print direction on moulded bars, and no
+    repeats."""
+    entries = data.get("mechanical")
+    if not isinstance(entries, list):
+        return []
+    rel = _rel(file_path, base)
+    errors: list[ValidationError] = []
+    seen: dict[tuple, int] = {}
+    for i, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            continue
+        path = f"mechanical[{i}]"
+        prop, unit = entry.get("property"), entry.get("unit")
+        errors.extend(
+            _check_sourced_entry(
+                path,
+                entry,
+                MECHANICAL_VALUES,
+                file_path,
+                base,
+                kind="mechanical",
+                grouped=unit in GROUPED_UNITS,
+            )
+        )
+
+        allowed = _MECHANICAL_UNITS.get(prop)
+        if allowed and isinstance(unit, str) and unit not in allowed:
+            errors.append(
+                _err(
+                    ValidationLevel.Error,
+                    f"{path}.unit is {unit!r}, which does not fit {prop}; use one of "
+                    f"{', '.join(sorted(allowed))}, as the source writes it.",
+                    rel,
+                )
+            )
+
+        specimen = entry.get("specimen")
+        process = specimen.get("process") if isinstance(specimen, dict) else None
+        direction = entry.get("direction")
+        if process == "moulded" and direction in _PRINT_DIRECTIONS:
+            errors.append(
+                _err(
+                    ValidationLevel.Warning,
+                    f"{path}.direction is {direction}, but the test bars were moulded; "
+                    "moulded bars have no print direction (use unknown).",
+                    rel,
+                )
+            )
+
+        standard = entry.get("standard")
+        standard = standard.strip() or None if isinstance(standard, str) else standard
+        # Sheets list a property once per specimen (100 % vs 20 % infill, annealed or not).
+        stated = (
+            {k: v for k, v in specimen.items() if v not in (None, "")}
+            if isinstance(specimen, dict)
+            else {}
+        )
+        specimen_key = json.dumps(stated, sort_keys=True) if stated else None
+        key = (prop, direction, entry.get("condition"), standard, unit, specimen_key)
+        if key in seen:
+            errors.append(
+                _err(
+                    ValidationLevel.Warning,
+                    f"{path} repeats mechanical[{seen[key]}] (same property, direction, "
+                    "condition, standard, unit and specimen).",
+                    rel,
+                )
+            )
+        else:
+            seen[key] = i
+    return errors
+
+
 # --- Entry point --------------------------------------------------------------
 
 
@@ -888,6 +1035,7 @@ def check_data_quality(data_dir) -> list[ValidationError]:
                 errors.extend(_check_inverted_ranges(filament_data, filament_file, base))
                 errors.extend(_check_orphan_filament(filament_dir, base))
                 errors.extend(_check_sustainability(filament_data, filament_file, base))
+                errors.extend(_check_mechanical(filament_data, filament_file, base))
 
                 name = filament_data.get("name")
                 if isinstance(name, str) and name:
