@@ -1,0 +1,11 @@
+{
+  "id": "blueberry_bubblegum",
+  "name": "Blueberry Bubblegum",
+  "color_hex": [
+    "#E1B89B",
+    "#AB8188"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

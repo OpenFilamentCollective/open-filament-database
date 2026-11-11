@@ -1,0 +1,8 @@
+{
+  "id": "cream",
+  "name": "Cream",
+  "color_hex": "#CFC1AB",
+  "traits": {
+    "high_flow": true
+  }
+}

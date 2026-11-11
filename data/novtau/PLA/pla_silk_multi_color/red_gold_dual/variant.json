@@ -1,0 +1,12 @@
+{
+  "id": "red_gold_dual",
+  "name": "Red-Gold Dual",
+  "color_hex": [
+    "#BB3E28",
+    "#F28F60"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

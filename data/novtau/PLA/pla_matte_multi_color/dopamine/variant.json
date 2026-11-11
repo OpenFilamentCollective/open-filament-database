@@ -1,0 +1,12 @@
+{
+  "id": "dopamine",
+  "name": "Dopamine",
+  "color_hex": [
+    "#A1CDEA",
+    "#B398B1"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

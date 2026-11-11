@@ -1,0 +1,12 @@
+{
+  "id": "phantom_blue",
+  "name": "Phantom Blue",
+  "color_hex": [
+    "#91CBE7",
+    "#388EBA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

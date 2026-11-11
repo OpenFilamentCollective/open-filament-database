@@ -1,0 +1,12 @@
+{
+  "id": "neon_city",
+  "name": "Neon City",
+  "color_hex": [
+    "#90DCC3",
+    "#2CAA92"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "macaron",
+  "name": "Macaron",
+  "color_hex": [
+    "#DFD1A7",
+    "#84CFBE"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

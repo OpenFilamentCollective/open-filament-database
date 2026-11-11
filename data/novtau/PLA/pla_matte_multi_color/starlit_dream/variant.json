@@ -1,0 +1,12 @@
+{
+  "id": "starlit_dream",
+  "name": "Starlit Dream",
+  "color_hex": [
+    "#B5D2E2",
+    "#8099B2"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

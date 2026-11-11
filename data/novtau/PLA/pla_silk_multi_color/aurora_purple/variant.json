@@ -1,0 +1,12 @@
+{
+  "id": "aurora_purple",
+  "name": "Aurora Purple",
+  "color_hex": [
+    "#D2B9B1",
+    "#6CB7B7"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

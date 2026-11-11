@@ -1,0 +1,8 @@
+{
+  "id": "rosewood",
+  "name": "Rosewood",
+  "color_hex": "#794737",
+  "traits": {
+    "contains_wood": true
+  }
+}

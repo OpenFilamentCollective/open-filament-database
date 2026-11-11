@@ -1,0 +1,9 @@
+{
+  "id": "jeans_blue",
+  "name": "Jeans Blue",
+  "color_hex": "#2550AE",
+  "traits": {
+    "contains_carbon_fiber": true,
+    "abrasive": true
+  }
+}

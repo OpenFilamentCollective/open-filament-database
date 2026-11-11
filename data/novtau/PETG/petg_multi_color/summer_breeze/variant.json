@@ -1,0 +1,11 @@
+{
+  "id": "summer_breeze",
+  "name": "Summer Breeze",
+  "color_hex": [
+    "#ADD5E3",
+    "#65ABCF"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "lake_blue",
+  "name": "Lake Blue",
+  "color_hex": "#0A86E9",
+  "traits": {
+    "high_flow": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "yellow_green_dual",
+  "name": "Yellow-Green Dual",
+  "color_hex": [
+    "#5CA546",
+    "#BFD667"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

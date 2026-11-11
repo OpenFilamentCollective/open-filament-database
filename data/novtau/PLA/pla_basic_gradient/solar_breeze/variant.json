@@ -1,0 +1,11 @@
+{
+  "id": "solar_breeze",
+  "name": "Solar Breeze",
+  "color_hex": [
+    "#5ABED3",
+    "#CFC1D0"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}
