@@ -1,8 +1,13 @@
 {
   "id": "crystal_rainbow_red_yellow_blue",
   "name": "Crystal Rainbow (Red-Yellow-Blue)",
-  "color_hex": "#E4CAA2",
+  "color_hex": [
+    "#F3AE7E",
+    "#F5D991",
+    "#92CCDD"
+  ],
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "gradual_color_change": true
   }
 }

@@ -1,8 +1,12 @@
 {
   "id": "crystal_rainbow_blue_green",
   "name": "Crystal Rainbow (Blue-Green)",
-  "color_hex": "#6AD3D1",
+  "color_hex": [
+    "#5EC8DA",
+    "#6BDBCC"
+  ],
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "gradual_color_change": true
   }
 }
