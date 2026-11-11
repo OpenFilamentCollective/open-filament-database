@@ -1,0 +1,9 @@
+{
+  "id": "fluorescent_orange",
+  "name": "Fluorescent Orange",
+  "color_hex": "#E77863",
+  "transmission_distance": 9.9,
+  "traits": {
+    "neon": true
+  }
+}

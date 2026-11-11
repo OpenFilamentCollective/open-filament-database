@@ -1,0 +1,9 @@
+{
+  "id": "transparent_ruby_red",
+  "name": "Transparent Ruby Red",
+  "color_hex": "#6E2C34",
+  "transmission_distance": 11.9,
+  "traits": {
+    "transparent": true
+  }
+}

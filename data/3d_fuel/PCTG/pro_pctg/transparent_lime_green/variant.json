@@ -1,0 +1,9 @@
+{
+  "id": "transparent_lime_green",
+  "name": "Transparent Lime Green",
+  "color_hex": "#96A22A",
+  "transmission_distance": 96.3,
+  "traits": {
+    "transparent": true
+  }
+}

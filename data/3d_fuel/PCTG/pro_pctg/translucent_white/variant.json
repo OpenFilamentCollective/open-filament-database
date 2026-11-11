@@ -1,0 +1,9 @@
+{
+  "id": "translucent_white",
+  "name": "Translucent White",
+  "color_hex": "#D5D9DC",
+  "transmission_distance": 7.5,
+  "traits": {
+    "translucent": true
+  }
+}

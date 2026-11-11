@@ -1,0 +1,9 @@
+{
+  "id": "translucent_cyan",
+  "name": "Translucent Cyan",
+  "color_hex": "#0094BE",
+  "transmission_distance": 5.4,
+  "traits": {
+    "translucent": true
+  }
+}
