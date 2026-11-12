@@ -15,6 +15,325 @@
   "dry_time": 8,
   "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_ASA_Aero_Technical_Data_Sheet.pdf?v=1712823163",
   "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_ASA_Aero.pdf?v=1712721417",
+  "mechanical": [
+    {
+      "property": "vicat_softening",
+      "direction": "unknown",
+      "value": 80,
+      "unit": "°C",
+      "standard": "ISO 306, GB/T 1633",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Vicar Softening Temperature ISO 306, GB/T 1633 80 ° C",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "heat_deflection_18",
+      "direction": "unknown",
+      "value": 78,
+      "unit": "°C",
+      "standard": "ISO 75 1.8 MPa",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Heat Deflection Temperature ISO 75 1.8 MPa 78 ° C",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "heat_deflection_045",
+      "direction": "unknown",
+      "value": 85,
+      "unit": "°C",
+      "standard": "ISO 75 0.45 MPa",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Heat Deflection Temperature ISO 75 0.45 MPa 85 ° C",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "tensile_modulus",
+      "direction": "XY",
+      "value": 2010,
+      "plus_minus": 260,
+      "unit": "MPa",
+      "standard": "ISO 527, GB/T 1040",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Young's Modulus (X-Y) ISO 527, GB/T 1040 2010 ± 260 MPa",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "tensile_modulus",
+      "direction": "Z",
+      "value": 1180,
+      "plus_minus": 210,
+      "unit": "MPa",
+      "standard": "ISO 527, GB/T 1040",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Young's Modulus (Z) ISO 527, GB/T 1040 1180 ± 210",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "tensile_strength",
+      "direction": "XY",
+      "value": 32,
+      "plus_minus": 4,
+      "unit": "MPa",
+      "standard": "ISO 527, GB/T 1040",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Tensile Strength (X-Y) ISO 527, GB/T 1040 32 ± 4 MPa",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "tensile_strength",
+      "direction": "Z",
+      "value": 21,
+      "plus_minus": 4,
+      "unit": "MPa",
+      "standard": "ISO 527, GB/T 1040",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Tensile Strength (Z) ISO 527, GB/T 1040 21 ± 4 MPa",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "elongation_at_break",
+      "direction": "XY",
+      "value": 5.1,
+      "plus_minus": 1.6,
+      "unit": "%",
+      "standard": "ISO 527, GB/T 1040",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Breaking Elongation Rate (X-Y) ISO 527, GB/T 1040 5.1% ± 1.6%",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "elongation_at_break",
+      "direction": "Z",
+      "value": 2.3,
+      "plus_minus": 0.9,
+      "unit": "%",
+      "standard": "ISO 527, GB/T 1040",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Breaking Elongation Rate (Z) ISO 527, GB/T 1040 2.3% ± 0.9%",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "flexural_modulus",
+      "direction": "XY",
+      "value": 1510,
+      "plus_minus": 120,
+      "unit": "MPa",
+      "standard": "ISO 178, GB/T 9341",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Bending Modulus (X-Y) ISO 178, GB/T 9341 1510 ± 120 MPa",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "flexural_modulus",
+      "direction": "Z",
+      "value": 1220,
+      "plus_minus": 110,
+      "unit": "MPa",
+      "standard": "ISO 178, GB/T 9341",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Bending Modulus (Z) ISO 178, GB/T 9341 1220 ± 110 MPa",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "flexural_strength",
+      "direction": "XY",
+      "value": 58,
+      "plus_minus": 6,
+      "unit": "MPa",
+      "standard": "ISO 178, GB/T 9341",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Bending Strength (X-Y) ISO 178, GB/T 9341 58 ± 6 MPa",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "flexural_strength",
+      "direction": "Z",
+      "value": 24,
+      "plus_minus": 3,
+      "unit": "MPa",
+      "standard": "ISO 178, GB/T 9341",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Bending Strength (Z) ISO 178, GB/T 9341 24 ± 3 MPa",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "impact_strength",
+      "direction": "XY",
+      "value": 32.0,
+      "plus_minus": 2.5,
+      "unit": "kJ/m2",
+      "standard": "ISO 179, GB/T 1043",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Impact Strength (X-Y) ISO 179, GB/T 1043 32.0 ± 2.5 kJ/m² ; 8.2 ± 1.6 kJ/m² (notched)",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "impact_strength_notched",
+      "direction": "XY",
+      "value": 8.2,
+      "plus_minus": 1.6,
+      "unit": "kJ/m2",
+      "standard": "ISO 179, GB/T 1043",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Impact Strength (X-Y) ISO 179, GB/T 1043 32.0 ± 2.5 kJ/m² ; 8.2 ± 1.6 kJ/m² (notched)",
+      "retrieved": "2026-11-08"
+    },
+    {
+      "property": "impact_strength",
+      "direction": "Z",
+      "value": 3.4,
+      "plus_minus": 0.5,
+      "unit": "kJ/m2",
+      "standard": "ISO 179, GB/T 1043",
+      "specimen": {
+        "process": "printed",
+        "infill_percent": 100,
+        "print_temperature": 225,
+        "bed_temperature": 85,
+        "print_speed": 100,
+        "conditioning": "annealed and dried at 80 °C for 12 h"
+      },
+      "source_type": "primary",
+      "source_url": "https://store.bblcdn.com/s1/default/02b005fdf02d450084e3128f7cf0c36f/Bambu_ASA_Aero_Technical_Data_Sheet.pdf",
+      "source_quote": "Impact Strength (Z) ISO 179，GB/T 1043 3.4 ± 0.5 kJ/m²",
+      "retrieved": "2026-11-08"
+    }
+  ],
   "slicer_settings": {
     "bambustudio": {
       "generic_id": "GFB98",

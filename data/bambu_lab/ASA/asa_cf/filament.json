@@ -15,6 +15,293 @@
     "dry_time": 8,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambus_ASA-CF_Technical_Data_Sheet.pdf?v=1726741601",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_ASA-CF_MSDS.pdf?v=1726741602",
+    "mechanical": [
+        {
+            "property": "vicat_softening",
+            "direction": "unknown",
+            "value": 108,
+            "unit": "°C",
+            "standard": "ISO 306, GB/T 1633",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Vicar Softening Temperature ISO 306, GB/T 1633 108 °C",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "heat_deflection_18",
+            "direction": "unknown",
+            "value": 102,
+            "unit": "°C",
+            "standard": "ISO 75 1.8 MPa",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Heat Deflection Temperature ISO 75 1.8 MPa 102 ° C",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "heat_deflection_045",
+            "direction": "unknown",
+            "value": 110,
+            "unit": "°C",
+            "standard": "ISO 75 0.45 MPa",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Heat Deflection Temperature ISO 75 0.45 MPa 110 °C",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "tensile_modulus",
+            "direction": "XY",
+            "value": 4200,
+            "plus_minus": 270,
+            "unit": "MPa",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Young's Modulus (X-Y) ISO 527, GB/T 1040 4200 ± 270 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "tensile_modulus",
+            "direction": "Z",
+            "value": 2290,
+            "plus_minus": 260,
+            "unit": "MPa",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Young's Modulus (Z) ISO 527, GB/T 1040 2290 ± 260",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "tensile_strength",
+            "direction": "XY",
+            "value": 34,
+            "plus_minus": 3,
+            "unit": "MPa",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Tensile Strength (X-Y) ISO 527, GB/T 1040 34 ± 3 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "tensile_strength",
+            "direction": "Z",
+            "value": 30,
+            "plus_minus": 4,
+            "unit": "MPa",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Tensile Strength (Z) ISO 527, GB/T 1040 30 ± 4 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "elongation_at_break",
+            "direction": "XY",
+            "value": 9.6,
+            "plus_minus": 1.4,
+            "unit": "%",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Breaking Elongation Rate (X-Y) ISO 527, GB/T 1040 9.6 ± 1.4 %",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "elongation_at_break",
+            "direction": "Z",
+            "value": 4.4,
+            "plus_minus": 0.8,
+            "unit": "%",
+            "standard": "ISO 527, GB/T 1040",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Breaking Elongation Rate (Z) ISO 527, GB/T 1040 4.4 ± 0.8 %",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "flexural_modulus",
+            "direction": "XY",
+            "value": 3740,
+            "plus_minus": 130,
+            "unit": "MPa",
+            "standard": "ISO 178, GB/T 9341",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Bending Modulus (X-Y) ISO 178, GB/T 9341 3740 ± 130 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "flexural_modulus",
+            "direction": "Z",
+            "value": 1350,
+            "plus_minus": 120,
+            "unit": "MPa",
+            "standard": "ISO 178, GB/T 9341",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Bending Modulus (Z) ISO 178, GB/T 9341 1350 ± 120 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "flexural_strength",
+            "direction": "XY",
+            "value": 72,
+            "plus_minus": 5,
+            "unit": "MPa",
+            "standard": "ISO 178, GB/T 9341",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Bending Strength (X-Y) ISO 178, GB/T 9341 72 ± 5 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "flexural_strength",
+            "direction": "Z",
+            "value": 33,
+            "plus_minus": 3,
+            "unit": "MPa",
+            "standard": "ISO 178, GB/T 9341",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Bending Strength (Z) ISO 178, GB/T 9341 33 ± 3 MPa",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "impact_strength",
+            "direction": "XY",
+            "value": 14.0,
+            "plus_minus": 2.2,
+            "unit": "kJ/m2",
+            "standard": "ISO 179, GB/T 1043",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Impact Strength (X-Y) ISO 179, GB/T 1043 14.0 ± 2.2 kJ/m²； 6.2 ± 1.4 kJ/m²（notched）",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "impact_strength_notched",
+            "direction": "XY",
+            "value": 6.2,
+            "plus_minus": 1.4,
+            "unit": "kJ/m2",
+            "standard": "ISO 179, GB/T 1043",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Impact Strength (X-Y) ISO 179, GB/T 1043 14.0 ± 2.2 kJ/m²； 6.2 ± 1.4 kJ/m²（notched）",
+            "retrieved": "2026-11-08"
+        },
+        {
+            "property": "impact_strength",
+            "direction": "Z",
+            "value": 9.4,
+            "plus_minus": 0.6,
+            "unit": "kJ/m2",
+            "standard": "ISO 179, GB/T 1043",
+            "specimen": {
+                "process": "printed",
+                "infill_percent": 100,
+                "print_speed": 200,
+                "conditioning": "annealed and dried at 80 °C for 12 h"
+            },
+            "source_type": "primary",
+            "source_url": "https://store.bblcdn.com/s7/default/44b0a48ab1d84e819647c980eb179ae9/Bambus_ASA-CF_Technical_Data_Sheet.pdf",
+            "source_quote": "Impact Strength (Z) ISO 179，GB/T 1043 9.4 ± 0.6 kJ/m²",
+            "retrieved": "2026-11-08"
+        }
+    ],
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFB98",
