@@ -2,5 +2,6 @@
   "uuid": "08f28bfc-0a69-4011-a662-9d3ad55b8966",
   "id": "ocean_blue",
   "name": "Ocean Blue",
-  "color_hex": "#0266BB"
+  "color_hex": "#0266BB",
+  "transmission_distance": 0.6
 }

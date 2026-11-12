@@ -2,5 +2,6 @@
   "uuid": "e6942197-1ac5-451c-b14a-9fd76321dfb5",
   "id": "industrial_gray",
   "name": "Industrial Gray",
-  "color_hex": "#91A0B6"
+  "color_hex": "#7D8487",
+  "transmission_distance": 0.4
 }

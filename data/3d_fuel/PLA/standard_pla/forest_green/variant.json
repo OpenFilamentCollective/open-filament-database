@@ -2,7 +2,8 @@
   "uuid": "56b4d4c2-9c54-446b-a1c6-4f408061320a",
   "id": "forest_green",
   "name": "Forest Green",
-  "color_hex": "#306350",
+  "color_hex": "#2C644F",
+  "transmission_distance": 2.5,
   "traits": {
     "bio_based": true
   }

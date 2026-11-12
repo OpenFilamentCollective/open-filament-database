@@ -2,5 +2,6 @@
   "uuid": "cc3f13f1-5612-46da-ba32-a85675b8a138",
   "id": "grass_green",
   "name": "Grass Green",
-  "color_hex": "#62E480"
+  "color_hex": "#4C9F5A",
+  "transmission_distance": 1.4
 }

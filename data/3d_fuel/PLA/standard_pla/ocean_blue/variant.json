@@ -2,7 +2,8 @@
   "uuid": "b0c29b78-d193-49c7-8938-529037e54f5f",
   "id": "ocean_blue",
   "name": "Ocean Blue",
-  "color_hex": "#0069A4",
+  "color_hex": "#0068A4",
+  "transmission_distance": 1.0,
   "traits": {
     "bio_based": true
   }

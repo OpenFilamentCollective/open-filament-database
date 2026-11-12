@@ -2,5 +2,6 @@
   "uuid": "d751014b-819b-4e8d-b554-ad0d9af54e2f",
   "id": "flat_dark_earth",
   "name": "Flat Dark Earth",
-  "color_hex": "#B38F6E"
+  "color_hex": "#947768",
+  "transmission_distance": 0.5
 }

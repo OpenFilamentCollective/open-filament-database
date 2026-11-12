@@ -2,7 +2,8 @@
   "uuid": "3a9b98d0-1461-4304-9af7-a791aaf75266",
   "id": "castle_gray",
   "name": "Castle Gray",
-  "color_hex": "#73787B",
+  "color_hex": "#72787B",
+  "transmission_distance": 0.3,
   "traits": {
     "bio_based": true
   }

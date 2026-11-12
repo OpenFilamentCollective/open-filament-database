@@ -2,7 +2,8 @@
   "uuid": "8d05cec7-9e3c-41af-98d6-7e18865332ed",
   "id": "desert_tan",
   "name": "Desert Tan",
-  "color_hex": "#C1AC98",
+  "color_hex": "#C0AB97",
+  "transmission_distance": 0.8,
   "traits": {
     "bio_based": true
   }

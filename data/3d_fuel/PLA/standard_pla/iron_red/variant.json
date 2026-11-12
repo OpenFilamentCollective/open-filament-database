@@ -2,7 +2,8 @@
   "uuid": "ce98eec8-b015-4b95-aa85-769448118d30",
   "id": "iron_red",
   "name": "Iron Red",
-  "color_hex": "#8A292A",
+  "color_hex": "#892324",
+  "transmission_distance": 3.0,
   "traits": {
     "bio_based": true
   }

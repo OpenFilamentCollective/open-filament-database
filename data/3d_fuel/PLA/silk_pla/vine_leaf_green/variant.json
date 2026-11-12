@@ -2,7 +2,8 @@
   "uuid": "10397965-e4b6-4e4b-a7ae-d84d6378c3cb",
   "id": "vine_leaf_green",
   "name": "Vine Leaf Green",
-  "color_hex": "#67D8BC",
+  "color_hex": "#5F997E",
+  "transmission_distance": 1.1,
   "traits": {
     "silk": true
   }

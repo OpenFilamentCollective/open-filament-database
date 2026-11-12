@@ -2,7 +2,8 @@
   "uuid": "a4a01d0a-5ec2-400b-be72-94ae09dbf9ee",
   "id": "fluorescent_yellow",
   "name": "Fluorescent Yellow",
-  "color_hex": "#E4FF33",
+  "color_hex": "#C5D668",
+  "transmission_distance": 4.3,
   "traits": {
     "neon": true
   }

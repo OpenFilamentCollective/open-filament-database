@@ -2,5 +2,6 @@
   "uuid": "330eda33-03e4-4adf-8507-4d2943647321",
   "id": "desert_tan",
   "name": "Desert Tan",
-  "color_hex": "#A79E82"
+  "color_hex": "#BBA794",
+  "transmission_distance": 1.9
 }

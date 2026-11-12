@@ -2,5 +2,6 @@
   "uuid": "53e53b93-7774-4149-b023-4c3f274efdb4",
   "id": "midnight_black",
   "name": "Midnight Black",
-  "color_hex": "#000000"
+  "color_hex": "#333333",
+  "transmission_distance": 0.1
 }

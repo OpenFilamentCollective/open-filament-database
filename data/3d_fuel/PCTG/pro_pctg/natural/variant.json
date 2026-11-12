@@ -2,7 +2,8 @@
   "uuid": "1c060fbc-d7bb-43ea-89c7-f79910b22de1",
   "id": "natural",
   "name": "Natural",
-  "color_hex": "#DFDFD3",
+  "color_hex": "#A9A9A6",
+  "transmission_distance": 100.0,
   "traits": {
     "translucent": true,
     "without_pigments": true

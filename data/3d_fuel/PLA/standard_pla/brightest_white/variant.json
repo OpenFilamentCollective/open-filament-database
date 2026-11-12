@@ -2,7 +2,8 @@
   "uuid": "6a4aca76-2377-4a53-bbb7-12b318399fd6",
   "id": "brightest_white",
   "name": "Brightest White",
-  "color_hex": "#EBECEA",
+  "color_hex": "#EAEBE9",
+  "transmission_distance": 2.9,
   "traits": {
     "bio_based": true
   }

@@ -2,7 +2,8 @@
   "uuid": "39ca34fd-88a6-460f-9c62-1237250eac5e",
   "id": "matte_black",
   "name": "Matte Black",
-  "color_hex": "#000000",
+  "color_hex": "#434443",
+  "transmission_distance": 0.3,
   "traits": {
     "matte": true
   }

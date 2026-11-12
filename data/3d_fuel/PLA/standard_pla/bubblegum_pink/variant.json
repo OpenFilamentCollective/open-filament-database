@@ -2,7 +2,8 @@
   "uuid": "b3fbef42-0929-4dd8-8545-e6ce4b08a236",
   "id": "bubblegum_pink",
   "name": "Bubblegum Pink",
-  "color_hex": "#EAAAB6",
+  "color_hex": "#E9AAB5",
+  "transmission_distance": 1.9,
   "traits": {
     "bio_based": true
   }
