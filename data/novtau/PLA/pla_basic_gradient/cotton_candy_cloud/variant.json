@@ -1,0 +1,11 @@
+{
+  "id": "cotton_candy_cloud",
+  "name": "Cotton Candy Cloud",
+  "color_hex": [
+    "#F2BDC8",
+    "#A3DFF3"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}
