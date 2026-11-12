@@ -1,9 +1,10 @@
 {
+  "uuid": "843e604c-f352-4ea9-8875-afe818ee09ed",
   "id": "brick_red",
   "name": "Brick Red",
   "color_hex": "#A94030",
   "traits": {
-    "contains_carbon_fiber": true,
-    "abrasive": true
+    "abrasive": true,
+    "contains_carbon_fiber": true
   }
 }
