@@ -1,7 +1,7 @@
 [
   {
     "uuid": "a58b80c1-ae4b-480f-8bb7-40392d872578",
-    "filament_weight": 1000,
+    "filament_weight": 800,
     "diameter": 1.75,
     "container_material": "cardboard",
     "container_details": {
@@ -13,6 +13,7 @@
       "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
       "source_quote": "Polymaker has switched all products to 100% recycled spools",
       "retrieved": "2026-11-06"
-    }
+    },
+    "article_number": "PA08010"
   }
 ]
