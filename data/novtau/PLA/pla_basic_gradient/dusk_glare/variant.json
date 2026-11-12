@@ -1,0 +1,11 @@
+{
+  "id": "dusk_glare",
+  "name": "Dusk Glare",
+  "color_hex": [
+    "#F69E6A",
+    "#D36743"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

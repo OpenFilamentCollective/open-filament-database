@@ -1,0 +1,12 @@
+{
+  "id": "gilded_rose",
+  "name": "Gilded Rose",
+  "color_hex": [
+    "#E6A3A9",
+    "#B15864"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

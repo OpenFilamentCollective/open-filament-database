@@ -1,0 +1,12 @@
+{
+  "id": "south_beach",
+  "name": "South Beach",
+  "color_hex": [
+    "#D3B9B1",
+    "#6FAFBD"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "autumn_blaze",
+  "name": "Autumn Blaze",
+  "color_hex": [
+    "#F89355",
+    "#D1452C"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "ocean_to_meadow",
+  "name": "Ocean to Meadow",
+  "color_hex": [
+    "#2A9FD1",
+    "#2FC2A9"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

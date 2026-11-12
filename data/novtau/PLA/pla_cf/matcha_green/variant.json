@@ -1,0 +1,9 @@
+{
+  "id": "matcha_green",
+  "name": "Matcha Green",
+  "color_hex": "#186B4F",
+  "traits": {
+    "contains_carbon_fiber": true,
+    "abrasive": true
+  }
+}

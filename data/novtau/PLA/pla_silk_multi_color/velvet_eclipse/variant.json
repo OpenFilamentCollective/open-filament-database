@@ -1,0 +1,12 @@
+{
+  "id": "velvet_eclipse",
+  "name": "Velvet Eclipse",
+  "color_hex": [
+    "#BBA3D9",
+    "#8A6EAF"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

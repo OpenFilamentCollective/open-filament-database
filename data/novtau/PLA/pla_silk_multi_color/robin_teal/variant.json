@@ -1,0 +1,12 @@
+{
+  "id": "robin_teal",
+  "name": "Robin Teal",
+  "color_hex": [
+    "#2DA4A3",
+    "#8AD3CA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

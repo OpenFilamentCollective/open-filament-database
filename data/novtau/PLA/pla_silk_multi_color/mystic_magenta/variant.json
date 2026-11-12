@@ -1,0 +1,12 @@
+{
+  "id": "mystic_magenta",
+  "name": "Mystic Magenta",
+  "color_hex": [
+    "#F29EC8",
+    "#D5639A"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

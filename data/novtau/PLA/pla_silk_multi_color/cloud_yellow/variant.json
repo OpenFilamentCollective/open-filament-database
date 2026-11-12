@@ -1,0 +1,12 @@
+{
+  "id": "cloud_yellow",
+  "name": "Cloud Yellow",
+  "color_hex": [
+    "#D6B723",
+    "#F3E16D"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

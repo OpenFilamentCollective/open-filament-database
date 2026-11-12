@@ -1,0 +1,11 @@
+{
+  "id": "pink_citrus",
+  "name": "Pink Citrus",
+  "color_hex": [
+    "#1EC98C",
+    "#A1E164"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

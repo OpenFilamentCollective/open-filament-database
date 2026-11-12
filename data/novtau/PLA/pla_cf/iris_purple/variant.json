@@ -1,0 +1,9 @@
+{
+  "id": "iris_purple",
+  "name": "Iris Purple",
+  "color_hex": "#874CAF",
+  "traits": {
+    "contains_carbon_fiber": true,
+    "abrasive": true
+  }
+}

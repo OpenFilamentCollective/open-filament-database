@@ -1,0 +1,11 @@
+{
+  "id": "spring_bloom",
+  "name": "Spring Bloom",
+  "color_hex": [
+    "#B0DD73",
+    "#36BB6E"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

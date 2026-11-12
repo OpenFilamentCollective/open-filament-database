@@ -1,0 +1,8 @@
+{
+  "id": "red_granite",
+  "name": "Red Granite",
+  "color_hex": "#A53E2C",
+  "traits": {
+    "imitates_marble": true
+  }
+}

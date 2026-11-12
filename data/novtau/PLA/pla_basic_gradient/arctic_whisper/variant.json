@@ -1,0 +1,11 @@
+{
+  "id": "arctic_whisper",
+  "name": "Arctic Whisper",
+  "color_hex": [
+    "#AEB4E4",
+    "#4BAEDC"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

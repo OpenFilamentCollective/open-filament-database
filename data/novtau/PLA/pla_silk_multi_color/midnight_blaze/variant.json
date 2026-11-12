@@ -1,0 +1,12 @@
+{
+  "id": "midnight_blaze",
+  "name": "Midnight Blaze",
+  "color_hex": [
+    "#492B7B",
+    "#BD5CA7"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

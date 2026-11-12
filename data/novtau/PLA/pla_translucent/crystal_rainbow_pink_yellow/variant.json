@@ -1,0 +1,12 @@
+{
+  "id": "crystal_rainbow_pink_yellow",
+  "name": "Crystal Rainbow (Pink-Yellow)",
+  "color_hex": [
+    "#EC9087",
+    "#F0A875"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

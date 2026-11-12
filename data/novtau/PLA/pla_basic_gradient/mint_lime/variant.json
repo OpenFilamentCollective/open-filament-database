@@ -1,0 +1,11 @@
+{
+  "id": "mint_lime",
+  "name": "Mint Lime",
+  "color_hex": [
+    "#DDC693",
+    "#74C8B6"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

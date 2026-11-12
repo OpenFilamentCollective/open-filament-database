@@ -1,0 +1,11 @@
+{
+  "id": "winter_glow",
+  "name": "Winter Glow",
+  "color_hex": [
+    "#A7BAF1",
+    "#6886C8"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

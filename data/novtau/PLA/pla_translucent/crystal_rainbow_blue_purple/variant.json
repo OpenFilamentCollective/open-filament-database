@@ -1,0 +1,12 @@
+{
+  "id": "crystal_rainbow_blue_purple",
+  "name": "Crystal Rainbow (Blue-Purple)",
+  "color_hex": [
+    "#93A3E6",
+    "#A188CB"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

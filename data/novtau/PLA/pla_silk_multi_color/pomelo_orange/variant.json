@@ -1,0 +1,12 @@
+{
+  "id": "pomelo_orange",
+  "name": "Pomelo Orange",
+  "color_hex": [
+    "#E6C19F",
+    "#D19965"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

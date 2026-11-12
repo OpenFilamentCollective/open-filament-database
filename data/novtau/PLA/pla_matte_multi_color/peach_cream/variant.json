@@ -1,0 +1,12 @@
+{
+  "id": "peach_cream",
+  "name": "Peach Cream",
+  "color_hex": [
+    "#F0C8B4",
+    "#B77A64"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

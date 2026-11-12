@@ -1,0 +1,12 @@
+{
+  "id": "blue_hawaii",
+  "name": "Blue Hawaii",
+  "color_hex": [
+    "#13629B",
+    "#62BBCC"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

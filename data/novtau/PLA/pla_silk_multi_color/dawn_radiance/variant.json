@@ -1,0 +1,12 @@
+{
+  "id": "dawn_radiance",
+  "name": "Dawn Radiance",
+  "color_hex": [
+    "#DBA7B4",
+    "#D16A73"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

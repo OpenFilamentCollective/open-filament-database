@@ -1,0 +1,8 @@
+{
+  "id": "iridescent_glaze",
+  "name": "Iridescent Glaze",
+  "color_hex": "#E0BB8F",
+  "traits": {
+    "translucent": true
+  }
+}
