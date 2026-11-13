@@ -4,7 +4,6 @@
   "color_hex": "#1D2229",
   "transmission_distance": 13.0,
   "traits": {
-    "transparent": true,
-    "bio_based": true
+    "transparent": true
   }
 }

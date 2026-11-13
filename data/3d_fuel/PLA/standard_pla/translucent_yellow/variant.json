@@ -4,7 +4,6 @@
   "color_hex": "#FCDC1D",
   "transmission_distance": 6.1,
   "traits": {
-    "translucent": true,
-    "bio_based": true
+    "translucent": true
   }
 }
