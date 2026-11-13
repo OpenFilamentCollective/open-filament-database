@@ -1,0 +1,9 @@
+{
+  "id": "translucent_magenta",
+  "name": "Translucent Magenta",
+  "color_hex": "#B42562",
+  "transmission_distance": 4.9,
+  "traits": {
+    "translucent": true
+  }
+}

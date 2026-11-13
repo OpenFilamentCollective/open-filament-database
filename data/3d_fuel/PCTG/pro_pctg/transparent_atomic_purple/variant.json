@@ -1,0 +1,9 @@
+{
+  "id": "transparent_atomic_purple",
+  "name": "Transparent Atomic Purple",
+  "color_hex": "#967B9F",
+  "transmission_distance": 66.9,
+  "traits": {
+    "transparent": true
+  }
+}

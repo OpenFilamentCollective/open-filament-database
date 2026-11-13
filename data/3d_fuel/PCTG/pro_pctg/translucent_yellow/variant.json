@@ -1,0 +1,9 @@
+{
+  "id": "translucent_yellow",
+  "name": "Translucent Yellow",
+  "color_hex": "#E1C54B",
+  "transmission_distance": 6.9,
+  "traits": {
+    "translucent": true
+  }
+}

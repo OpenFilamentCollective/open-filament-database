@@ -1,0 +1,9 @@
+{
+  "id": "transparent_ice_blue",
+  "name": "Transparent Ice Blue",
+  "color_hex": "#6EB5BE",
+  "transmission_distance": 100.0,
+  "traits": {
+    "transparent": true
+  }
+}

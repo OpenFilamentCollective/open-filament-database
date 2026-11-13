@@ -1,0 +1,9 @@
+{
+  "id": "transparent_ultramarine_blue",
+  "name": "Transparent Ultramarine Blue",
+  "color_hex": "#143661",
+  "transmission_distance": 15.1,
+  "traits": {
+    "transparent": true
+  }
+}

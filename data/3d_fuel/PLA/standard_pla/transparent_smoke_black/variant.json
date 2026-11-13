@@ -1,0 +1,9 @@
+{
+  "id": "transparent_smoke_black",
+  "name": "Transparent Smoke Black",
+  "color_hex": "#1D2229",
+  "transmission_distance": 13.0,
+  "traits": {
+    "transparent": true
+  }
+}
