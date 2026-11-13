@@ -1,11 +1,13 @@
 [
   {
+    "uuid": "4e1c85a7-68a8-40f1-bc07-fa2dc9a51df5",
     "filament_weight": 1000,
     "diameter": 1.75,
     "gtin": "793897737523",
     "article_number": "E4568"
   },
   {
+    "uuid": "db15f313-2657-4e00-847b-f7736636f54e",
     "filament_weight": 4000,
     "diameter": 1.75,
     "gtin": "793897745238",
