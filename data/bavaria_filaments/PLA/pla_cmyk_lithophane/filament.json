@@ -1,0 +1,10 @@
+{
+  "id": "pla_cmyk_lithophane",
+  "name": "PLA CMYK Lithophane",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 195,
+  "max_print_temperature": 235,
+  "min_print_speed": 30,
+  "max_print_speed": 200
+}
