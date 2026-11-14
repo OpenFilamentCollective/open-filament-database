@@ -1,0 +1,8 @@
+{
+  "id": "glow_natural",
+  "name": "Glow Natural",
+  "color_hex": "#CDD1BE",
+  "traits": {
+    "glow": true
+  }
+}

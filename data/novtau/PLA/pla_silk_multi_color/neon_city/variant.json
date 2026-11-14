@@ -1,10 +1,9 @@
 {
-  "uuid": "8c7aaa99-122b-4c7e-a924-f8f5f1968258",
   "id": "neon_city",
   "name": "Neon City",
   "color_hex": [
-    "#90DCC3",
-    "#2CAA92"
+    "#90DBC2",
+    "#2DA890"
   ],
   "traits": {
     "silk": true,

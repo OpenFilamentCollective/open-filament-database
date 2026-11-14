@@ -1,8 +1,7 @@
 {
-  "uuid": "b94d73ad-3ee0-40df-9da9-1c87c3383d2d",
   "id": "marble",
   "name": "Marble",
-  "color_hex": "#AEAEB1",
+  "color_hex": "#B0B0B2",
   "traits": {
     "imitates_marble": true
   }

@@ -1,0 +1,12 @@
+{
+  "id": "tri_pink_yellow_blue",
+  "name": "Tri Pink-Yellow-Blue",
+  "color_hex": [
+    "#E3BD95",
+    "#678FA0"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

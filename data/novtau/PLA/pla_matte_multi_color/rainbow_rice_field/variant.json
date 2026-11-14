@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_rice_field",
+  "name": "Rainbow Rice Field",
+  "color_hex": [
+    "#5FB761",
+    "#BDDE6A"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

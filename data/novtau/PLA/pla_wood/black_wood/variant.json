@@ -1,0 +1,8 @@
+{
+  "id": "black_wood",
+  "name": "Black Wood",
+  "color_hex": "#404040",
+  "traits": {
+    "contains_wood": true
+  }
+}

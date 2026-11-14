@@ -1,0 +1,8 @@
+{
+  "id": "mahogany",
+  "name": "Mahogany",
+  "color_hex": "#C16C5D",
+  "traits": {
+    "contains_wood": true
+  }
+}

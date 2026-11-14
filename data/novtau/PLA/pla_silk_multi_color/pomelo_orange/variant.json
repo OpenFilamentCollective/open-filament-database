@@ -1,10 +1,9 @@
 {
-  "uuid": "aca39c96-047d-4412-91de-f0171005738b",
   "id": "pomelo_orange",
   "name": "Pomelo Orange",
   "color_hex": [
-    "#E6C19F",
-    "#D19965"
+    "#E5C09D",
+    "#C99361"
   ],
   "traits": {
     "silk": true,

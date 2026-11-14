@@ -1,10 +1,9 @@
 {
-  "uuid": "c9e8f4be-c4e8-418b-b420-1d0cb158b293",
   "id": "mystic_magenta",
   "name": "Mystic Magenta",
   "color_hex": [
-    "#F29EC8",
-    "#D5639A"
+    "#F09CC6",
+    "#CE6195"
   ],
   "traits": {
     "silk": true,

@@ -1,0 +1,12 @@
+{
+  "id": "black_red_dual",
+  "name": "Black-Red Dual",
+  "color_hex": [
+    "#5E181F",
+    "#CC5864"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

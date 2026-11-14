@@ -1,0 +1,11 @@
+{
+  "id": "rainbow_mist",
+  "name": "Rainbow Mist",
+  "color_hex": [
+    "#7CBBE3",
+    "#256F92"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "rainbow_summer",
+  "name": "Rainbow Summer",
+  "color_hex": [
+    "#75D4A9",
+    "#49B480"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

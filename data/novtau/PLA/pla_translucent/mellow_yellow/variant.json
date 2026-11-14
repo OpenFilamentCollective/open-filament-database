@@ -1,8 +1,7 @@
 {
-  "uuid": "9469eef5-8c58-49cb-b54c-13ce11aef0a7",
   "id": "mellow_yellow",
   "name": "Mellow Yellow",
-  "color_hex": "#E8C33E",
+  "color_hex": "#E7C33E",
   "traits": {
     "translucent": true
   }

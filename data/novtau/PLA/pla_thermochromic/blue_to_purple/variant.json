@@ -1,0 +1,8 @@
+{
+  "id": "blue_to_purple",
+  "name": "Blue to Purple",
+  "color_hex": "#786CC8",
+  "traits": {
+    "temperature_color_change": true
+  }
+}

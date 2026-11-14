@@ -1,10 +1,9 @@
 {
-  "uuid": "8931b825-cdd1-425b-af98-eb8a45e1287c",
   "id": "velvet_eclipse",
   "name": "Velvet Eclipse",
   "color_hex": [
-    "#BBA3D9",
-    "#8A6EAF"
+    "#BCA4D9",
+    "#8A70AE"
   ],
   "traits": {
     "silk": true,

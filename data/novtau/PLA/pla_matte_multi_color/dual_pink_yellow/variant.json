@@ -1,0 +1,12 @@
+{
+  "id": "dual_pink_yellow",
+  "name": "Dual Pink-Yellow",
+  "color_hex": [
+    "#F2A494",
+    "#3E2526"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "matte_dopamine",
+  "name": "Matte Dopamine",
+  "color_hex": [
+    "#AEC7E1",
+    "#8987A4"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

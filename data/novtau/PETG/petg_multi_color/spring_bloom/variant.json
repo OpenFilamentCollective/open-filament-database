@@ -1,10 +1,9 @@
 {
-  "uuid": "877c0b9e-cd1c-4346-a788-cdbc5306856c",
   "id": "spring_bloom",
   "name": "Spring Bloom",
   "color_hex": [
-    "#B0DD73",
-    "#36BB6E"
+    "#B0DC73",
+    "#38B96C"
   ],
   "traits": {
     "coextruded": true

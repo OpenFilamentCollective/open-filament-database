@@ -1,0 +1,12 @@
+{
+  "id": "black_blue_purple_tri",
+  "name": "Black-Blue-Purple Tri",
+  "color_hex": [
+    "#22327F",
+    "#7687DD"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "gold_rose_red_dual",
+  "name": "Gold-Rose Red Dual",
+  "color_hex": [
+    "#BD3B34",
+    "#F39B7B"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "gold_silver_copper_tri",
+  "name": "Gold-Silver-Copper Tri",
+  "color_hex": [
+    "#95663A",
+    "#D2AF80"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

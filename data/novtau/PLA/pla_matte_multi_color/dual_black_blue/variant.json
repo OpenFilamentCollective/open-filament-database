@@ -1,0 +1,12 @@
+{
+  "id": "dual_black_blue",
+  "name": "Dual Black-Blue",
+  "color_hex": [
+    "#1E5CBD",
+    "#1A315C"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

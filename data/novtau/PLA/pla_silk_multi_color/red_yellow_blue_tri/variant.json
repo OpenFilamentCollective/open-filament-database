@@ -1,0 +1,12 @@
+{
+  "id": "red_yellow_blue_tri",
+  "name": "Red-Yellow-Blue Tri",
+  "color_hex": [
+    "#C07D43",
+    "#3D7C9D"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

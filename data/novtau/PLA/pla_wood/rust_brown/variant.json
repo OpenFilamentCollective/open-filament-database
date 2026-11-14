@@ -1,0 +1,8 @@
+{
+  "id": "rust_brown",
+  "name": "Rust Brown",
+  "color_hex": "#B46031",
+  "traits": {
+    "contains_wood": true
+  }
+}

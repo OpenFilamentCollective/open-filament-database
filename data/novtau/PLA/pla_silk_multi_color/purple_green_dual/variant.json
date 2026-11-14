@@ -1,0 +1,12 @@
+{
+  "id": "purple_green_dual",
+  "name": "Purple-Green Dual",
+  "color_hex": [
+    "#5B6260",
+    "#A5B2A2"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

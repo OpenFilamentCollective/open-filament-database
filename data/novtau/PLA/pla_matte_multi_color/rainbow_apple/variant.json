@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_apple",
+  "name": "Rainbow Apple",
+  "color_hex": [
+    "#C2B0A4",
+    "#524446"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

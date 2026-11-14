@@ -1,0 +1,12 @@
+{
+  "id": "dual_purple_yellow",
+  "name": "Dual Purple-Yellow",
+  "color_hex": [
+    "#795882",
+    "#DDB76B"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

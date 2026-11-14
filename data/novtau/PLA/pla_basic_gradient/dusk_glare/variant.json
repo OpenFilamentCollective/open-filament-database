@@ -1,10 +1,9 @@
 {
-  "uuid": "5ed969b8-62bc-44da-accc-0c8734544c15",
   "id": "dusk_glare",
   "name": "Dusk Glare",
   "color_hex": [
-    "#F69E6A",
-    "#D36743"
+    "#F49B67",
+    "#C76140"
   ],
   "traits": {
     "gradual_color_change": true

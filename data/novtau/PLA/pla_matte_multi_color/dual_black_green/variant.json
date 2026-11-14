@@ -1,0 +1,12 @@
+{
+  "id": "dual_black_green",
+  "name": "Dual Black-Green",
+  "color_hex": [
+    "#1F4939",
+    "#478F74"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

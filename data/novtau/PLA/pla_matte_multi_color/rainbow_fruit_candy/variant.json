@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_fruit_candy",
+  "name": "Rainbow Fruit Candy",
+  "color_hex": [
+    "#B35798",
+    "#2856B5"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

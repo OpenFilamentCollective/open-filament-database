@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_deep_sea",
+  "name": "Rainbow Deep Sea",
+  "color_hex": [
+    "#1689B4",
+    "#6F9ED6"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

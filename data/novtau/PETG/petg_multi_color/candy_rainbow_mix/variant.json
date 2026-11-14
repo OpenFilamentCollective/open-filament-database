@@ -1,0 +1,11 @@
+{
+  "id": "candy_rainbow_mix",
+  "name": "Candy Rainbow Mix",
+  "color_hex": [
+    "#DCB7AF",
+    "#68A19C"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

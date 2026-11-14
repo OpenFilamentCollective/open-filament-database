@@ -1,0 +1,12 @@
+{
+  "id": "blue_purple_green_tri",
+  "name": "Blue-Purple-Green Tri",
+  "color_hex": [
+    "#265C80",
+    "#79B6D1"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

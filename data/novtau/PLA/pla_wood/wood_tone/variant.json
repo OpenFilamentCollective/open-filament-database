@@ -1,0 +1,8 @@
+{
+  "id": "wood_tone",
+  "name": "Wood Tone",
+  "color_hex": "#B99677",
+  "traits": {
+    "contains_wood": true
+  }
+}

@@ -1,10 +1,9 @@
 {
-  "uuid": "945f604c-1da7-4234-a138-052c81c5dfce",
   "id": "candy_rainbow",
   "name": "Candy Rainbow",
   "color_hex": [
-    "#5CA5C1",
-    "#EDBA78"
+    "#5BA3BF",
+    "#E9B777"
   ],
   "traits": {
     "coextruded": true

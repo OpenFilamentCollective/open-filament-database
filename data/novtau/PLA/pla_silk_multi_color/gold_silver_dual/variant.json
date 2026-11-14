@@ -1,0 +1,12 @@
+{
+  "id": "gold_silver_dual",
+  "name": "Gold-Silver Dual",
+  "color_hex": [
+    "#84793C",
+    "#D0C680"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

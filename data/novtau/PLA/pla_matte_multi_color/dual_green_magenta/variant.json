@@ -1,0 +1,12 @@
+{
+  "id": "dual_green_magenta",
+  "name": "Dual Green-Magenta",
+  "color_hex": [
+    "#AEA8A6",
+    "#79656E"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "gold_copper_dual",
+  "name": "Gold-Copper Dual",
+  "color_hex": [
+    "#C04D24",
+    "#F1B866"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

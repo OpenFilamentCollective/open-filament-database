@@ -1,8 +1,7 @@
 {
-  "uuid": "52f987c8-c203-41e1-8248-9531b0b8d9a2",
   "id": "gold",
   "name": "Gold",
-  "color_hex": "#E7AE13",
+  "color_hex": "#E5AD14",
   "traits": {
     "silk": true
   }

@@ -1,0 +1,12 @@
+{
+  "id": "dual_blue_red",
+  "name": "Dual Blue-Red",
+  "color_hex": [
+    "#3063BD",
+    "#964052"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

@@ -1,13 +1,8 @@
 {
-  "uuid": "d443c4bf-c4e8-4147-9301-57678a8e200c",
   "id": "crystal_rainbow_pink_yellow",
   "name": "Crystal Rainbow (Pink-Yellow)",
-  "color_hex": [
-    "#EC9087",
-    "#F0A875"
-  ],
+  "color_hex": "#F3A688",
   "traits": {
-    "translucent": true,
-    "gradual_color_change": true
+    "translucent": true
   }
 }

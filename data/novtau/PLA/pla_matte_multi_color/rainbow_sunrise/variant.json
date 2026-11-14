@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_sunrise",
+  "name": "Rainbow Sunrise",
+  "color_hex": [
+    "#E39852",
+    "#779A89"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

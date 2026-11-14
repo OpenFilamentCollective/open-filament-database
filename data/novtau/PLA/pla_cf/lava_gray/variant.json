@@ -1,10 +1,9 @@
 {
-  "uuid": "1f4ced26-011c-4242-9349-92b77e97e970",
   "id": "lava_gray",
   "name": "Lava Gray",
   "color_hex": "#797D81",
   "traits": {
-    "abrasive": true,
-    "contains_carbon_fiber": true
+    "contains_carbon_fiber": true,
+    "abrasive": true
   }
 }

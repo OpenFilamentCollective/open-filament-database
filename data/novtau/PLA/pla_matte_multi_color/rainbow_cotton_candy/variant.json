@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_cotton_candy",
+  "name": "Rainbow Cotton Candy",
+  "color_hex": [
+    "#CCA5A9",
+    "#4C3A3D"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

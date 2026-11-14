@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_light_blue_yellow",
+  "name": "Rainbow Light Blue-Yellow",
+  "color_hex": [
+    "#51C3AE",
+    "#B7EBA2"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

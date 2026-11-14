@@ -1,13 +1,8 @@
 {
-  "uuid": "7ae39da5-c4c0-4348-8d3b-4c0841786957",
   "id": "crystal_rainbow_blue_green",
   "name": "Crystal Rainbow (Blue-Green)",
-  "color_hex": [
-    "#5EC8DA",
-    "#6BDBCC"
-  ],
+  "color_hex": "#68D1CF",
   "traits": {
-    "translucent": true,
-    "gradual_color_change": true
+    "translucent": true
   }
 }

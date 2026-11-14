@@ -1,0 +1,12 @@
+{
+  "id": "purple_orange_teal_tri",
+  "name": "Purple-Orange-Teal Tri",
+  "color_hex": [
+    "#865666",
+    "#B2A9AB"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

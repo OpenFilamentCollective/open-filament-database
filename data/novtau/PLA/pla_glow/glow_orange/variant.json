@@ -1,0 +1,8 @@
+{
+  "id": "glow_orange",
+  "name": "Glow Orange",
+  "color_hex": "#EAAA6F",
+  "traits": {
+    "glow": true
+  }
+}
