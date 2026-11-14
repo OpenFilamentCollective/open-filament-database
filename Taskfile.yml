@@ -7,10 +7,9 @@ tasks:
     desc: Install Python dependencies
     # keep this task idempotent and without rules, it should instead depend on other smaller tasks to
     # make things ready for development. Ideally `task test` should just work after running this
-    deps: [.setup-python]
+    deps: [.setup-python, .setup-sample-files]
 
   .setup-python:
-    internal: true
     cmds:
       - uv sync --frozen --extra dev
     sources:
@@ -18,6 +17,12 @@ tasks:
       - uv.lock
     generates:
       - .venv/pyvenv.cfg
+
+  .setup-sample-files:
+    desc: Seed local dotfiles from samples/, leaving any existing files untouched
+    cmds:
+      - test -f .envrc || cp samples/envrc .envrc
+      - test -f .env || cp samples/default.env .env
 
   # ── Python CLI ───────────────────────────────────────────────────────────
 
