@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_cosmos",
+  "name": "Rainbow Cosmos",
+  "color_hex": [
+    "#3D6897",
+    "#A699A9"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

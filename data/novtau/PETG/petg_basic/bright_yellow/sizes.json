@@ -1,12 +1,12 @@
 [
   {
-    "uuid": "b59cb3a4-4897-46ba-82f4-7f8197bd4ca1",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "container_material": "plastic",
     "empty_spool_weight": 145,
-    "container_width": 66,
+    "container_material": "plastic",
     "container_outer_diameter": 200,
-    "container_hole_diameter": 54
+    "container_hole_diameter": 54,
+    "container_width": 66,
+    "uuid": "b59cb3a4-4897-46ba-82f4-7f8197bd4ca1"
   }
 ]

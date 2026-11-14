@@ -1,0 +1,12 @@
+{
+  "id": "blue_purple_dual",
+  "name": "Blue-Purple Dual",
+  "color_hex": [
+    "#3946B4",
+    "#8D90EA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

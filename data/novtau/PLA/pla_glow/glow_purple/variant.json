@@ -1,0 +1,8 @@
+{
+  "id": "glow_purple",
+  "name": "Glow Purple",
+  "color_hex": "#9878DC",
+  "traits": {
+    "glow": true
+  }
+}

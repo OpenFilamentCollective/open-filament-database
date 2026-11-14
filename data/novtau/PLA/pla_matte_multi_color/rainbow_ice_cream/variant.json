@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_ice_cream",
+  "name": "Rainbow Ice Cream",
+  "color_hex": [
+    "#B5D1D0",
+    "#869494"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

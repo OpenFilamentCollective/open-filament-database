@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_mini",
+  "name": "Rainbow Mini",
+  "color_hex": [
+    "#C2C187",
+    "#54AAAB"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

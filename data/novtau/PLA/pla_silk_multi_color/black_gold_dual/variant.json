@@ -1,0 +1,12 @@
+{
+  "id": "black_gold_dual",
+  "name": "Black-Gold Dual",
+  "color_hex": [
+    "#695023",
+    "#D9B654"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

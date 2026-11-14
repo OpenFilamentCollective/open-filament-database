@@ -1,0 +1,8 @@
+{
+  "id": "dual_purple_green_to_pink_yellow",
+  "name": "Dual Purple-Green to Pink-Yellow",
+  "color_hex": "#EEB78A",
+  "traits": {
+    "temperature_color_change": true
+  }
+}

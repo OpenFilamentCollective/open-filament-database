@@ -1,0 +1,8 @@
+{
+  "id": "yellow_to_green",
+  "name": "Yellow to Green",
+  "color_hex": "#8BC03D",
+  "traits": {
+    "temperature_color_change": true
+  }
+}

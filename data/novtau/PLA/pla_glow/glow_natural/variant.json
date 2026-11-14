@@ -1,0 +1,9 @@
+{
+  "id": "glow_natural",
+  "name": "Glow Natural",
+  "color_hex": "#CDD1BE",
+  "traits": {
+    "glow": true
+  },
+  "uuid": "2e2f9d14-92e3-4142-bfc6-7e65df6f7dd0"
+}

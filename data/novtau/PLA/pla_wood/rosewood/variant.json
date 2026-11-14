@@ -1,9 +1,9 @@
 {
-  "uuid": "da57cba2-91cb-445a-904b-3d94f8529193",
   "id": "rosewood",
   "name": "Rosewood",
-  "color_hex": "#794737",
+  "color_hex": "#7A5243",
   "traits": {
     "contains_wood": true
-  }
+  },
+  "uuid": "a190bc59-eebe-42a7-a626-d9ee39f0714a"
 }

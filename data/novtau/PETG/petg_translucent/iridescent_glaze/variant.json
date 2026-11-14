@@ -1,9 +1,9 @@
 {
-  "uuid": "c20c139d-7acc-49bd-b784-64bd70c32273",
   "id": "iridescent_glaze",
   "name": "Iridescent Glaze",
-  "color_hex": "#E0BB8F",
+  "color_hex": "#DAB88D",
   "traits": {
     "translucent": true
-  }
+  },
+  "uuid": "c20c139d-7acc-49bd-b784-64bd70c32273"
 }

@@ -1,0 +1,12 @@
+{
+  "id": "teal_orange_red_light_yellow_tri",
+  "name": "Teal-Orange Red-Light Yellow Tri",
+  "color_hex": [
+    "#CF9052",
+    "#319B6F"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

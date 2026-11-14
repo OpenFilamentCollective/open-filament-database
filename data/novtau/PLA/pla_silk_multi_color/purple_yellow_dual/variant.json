@@ -1,0 +1,12 @@
+{
+  "id": "purple_yellow_dual",
+  "name": "Purple-Yellow Dual",
+  "color_hex": [
+    "#5B546C",
+    "#B7BA86"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

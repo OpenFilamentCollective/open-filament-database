@@ -1,0 +1,9 @@
+{
+  "id": "glow_yellow",
+  "name": "Glow Yellow",
+  "color_hex": "#E3F160",
+  "traits": {
+    "glow": true
+  },
+  "uuid": "c5ece567-0bcc-47f6-a562-04046aff3d52"
+}

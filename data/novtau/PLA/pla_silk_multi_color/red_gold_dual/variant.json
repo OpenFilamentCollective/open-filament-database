@@ -1,13 +1,13 @@
 {
-  "uuid": "c920a2b6-1002-4634-9070-38d15204e214",
   "id": "red_gold_dual",
   "name": "Red-Gold Dual",
   "color_hex": [
-    "#BB3E28",
-    "#F28F60"
+    "#B73E27",
+    "#EF8D60"
   ],
   "traits": {
     "silk": true,
     "coextruded": true
-  }
+  },
+  "uuid": "c920a2b6-1002-4634-9070-38d15204e214"
 }

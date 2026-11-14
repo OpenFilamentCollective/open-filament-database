@@ -1,12 +1,12 @@
 {
-  "uuid": "a69608dd-d8c6-4cb9-9eb8-acd10708d858",
   "id": "winter_glow",
   "name": "Winter Glow",
   "color_hex": [
-    "#A7BAF1",
-    "#6886C8"
+    "#A7B9EF",
+    "#6886C3"
   ],
   "traits": {
     "coextruded": true
-  }
+  },
+  "uuid": "a69608dd-d8c6-4cb9-9eb8-acd10708d858"
 }

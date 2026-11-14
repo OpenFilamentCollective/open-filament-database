@@ -1,10 +1,10 @@
 {
-  "uuid": "38595b14-5dbf-4f68-8b1a-e49f3088b425",
   "id": "jeans_blue",
   "name": "Jeans Blue",
-  "color_hex": "#2550AE",
+  "color_hex": "#224683",
   "traits": {
-    "abrasive": true,
-    "contains_carbon_fiber": true
-  }
+    "contains_carbon_fiber": true,
+    "abrasive": true
+  },
+  "uuid": "38595b14-5dbf-4f68-8b1a-e49f3088b425"
 }

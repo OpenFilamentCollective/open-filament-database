@@ -1,0 +1,11 @@
+{
+  "id": "classic_rainbow",
+  "name": "Classic Rainbow",
+  "color_hex": [
+    "#E2A78B",
+    "#799CAA"
+  ],
+  "traits": {
+    "gradual_color_change": true
+  }
+}

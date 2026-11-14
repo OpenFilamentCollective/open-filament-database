@@ -1,0 +1,12 @@
+{
+  "id": "orange_blue_green_tri",
+  "name": "Orange-Blue-Green Tri",
+  "color_hex": [
+    "#2A7177",
+    "#BBA554"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

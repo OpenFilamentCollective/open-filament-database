@@ -1,10 +1,10 @@
 {
-  "uuid": "a9110fa2-fbe9-402a-b0aa-811af26c59a1",
   "id": "iris_purple",
   "name": "Iris Purple",
   "color_hex": "#874CAF",
   "traits": {
-    "abrasive": true,
-    "contains_carbon_fiber": true
-  }
+    "contains_carbon_fiber": true,
+    "abrasive": true
+  },
+  "uuid": "a9110fa2-fbe9-402a-b0aa-811af26c59a1"
 }

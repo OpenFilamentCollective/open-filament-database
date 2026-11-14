@@ -1,0 +1,12 @@
+{
+  "id": "deep_purple_teal_dual",
+  "name": "Deep Purple-Teal Dual",
+  "color_hex": [
+    "#25497D",
+    "#64ADD0"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

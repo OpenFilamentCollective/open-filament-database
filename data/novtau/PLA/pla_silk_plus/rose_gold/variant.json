@@ -1,9 +1,9 @@
 {
-  "uuid": "30b21c3a-dd41-4f46-a6eb-aff957057d9a",
   "id": "rose_gold",
   "name": "Rose Gold",
   "color_hex": "#B15E44",
   "traits": {
     "silk": true
-  }
+  },
+  "uuid": "30b21c3a-dd41-4f46-a6eb-aff957057d9a"
 }

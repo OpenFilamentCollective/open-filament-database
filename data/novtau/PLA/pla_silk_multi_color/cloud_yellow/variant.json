@@ -1,13 +1,13 @@
 {
-  "uuid": "d4900f01-4f1a-4f03-8e8f-8bcba6ebc2cb",
   "id": "cloud_yellow",
   "name": "Cloud Yellow",
   "color_hex": [
-    "#D6B723",
-    "#F3E16D"
+    "#D1B321",
+    "#F1DF68"
   ],
   "traits": {
     "silk": true,
     "coextruded": true
-  }
+  },
+  "uuid": "d4900f01-4f1a-4f03-8e8f-8bcba6ebc2cb"
 }

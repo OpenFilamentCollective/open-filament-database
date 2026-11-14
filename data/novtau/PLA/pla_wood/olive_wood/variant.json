@@ -1,0 +1,8 @@
+{
+  "id": "olive_wood",
+  "name": "Olive Wood",
+  "color_hex": "#706D50",
+  "traits": {
+    "contains_wood": true
+  }
+}
