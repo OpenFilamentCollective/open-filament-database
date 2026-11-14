@@ -74,3 +74,4 @@ MIT. See [`LICENSE`](LICENSE). The data is free to use, redistribute, and embed 
 - [OpenPrintTag spec](https://specs.openprinttag.org/) — NFC data format that consumes OFD UUIDs
 - [`slicer-profiles-db`](https://github.com/SimplyPrint/slicer-profiles-db) — separate repo mapping OFD filaments to slicer profiles
 - [SimplyPrint](https://simplyprint.io/) — 3D printer management platform; facilitator of the Open Filament Collective
+- [Stellio](https://github.com/stellio-app/stellio) — Local-first 3D printing library and filament manager natively integrating OFD
