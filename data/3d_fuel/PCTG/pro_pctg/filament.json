@@ -4,10 +4,14 @@
     "name": "Pro PCTG",
     "diameter_tolerance": 0.02,
     "density": 1.23,
-    "min_print_temperature": 250,
+    "max_dry_temperature": 70,
+    "min_print_temperature": 260,
     "max_print_temperature": 280,
-    "min_bed_temperature": 80,
+    "min_bed_temperature": 70,
     "max_bed_temperature": 80,
+    "dry_temperature": 60,
+    "dry_time": 8,
+    "enclosure": "not_needed",
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0027/5339/6848/files/3D-Fuel_Pro_PCTG_TDS_9-2-25.pdf?v=1756827548",
     "slicer_settings": {
         "prusaslicer": {
