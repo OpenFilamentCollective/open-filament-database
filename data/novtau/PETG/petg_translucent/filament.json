@@ -2,5 +2,6 @@
   "id": "petg_translucent",
   "name": "PETG Translucent",
   "diameter_tolerance": 0.02,
-  "density": 1.27
+  "density": 1.27,
+  "uuid": "5e7c3fbf-c6ce-4951-8747-c8a37692a3b4"
 }

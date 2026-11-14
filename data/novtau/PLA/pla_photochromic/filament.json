@@ -2,5 +2,6 @@
   "id": "pla_photochromic",
   "name": "PLA Photochromic",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.24,
+  "uuid": "9cdfa40f-f6df-4443-99ec-8a3c14ff64a6"
 }

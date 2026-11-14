@@ -2,5 +2,6 @@
   "id": "petg_metal",
   "name": "PETG Metallic",
   "diameter_tolerance": 0.02,
-  "density": 1.27
+  "density": 1.27,
+  "uuid": "7388ca46-9e34-46bf-b628-9673c1786c43"
 }

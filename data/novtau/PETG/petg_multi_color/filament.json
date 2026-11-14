@@ -2,5 +2,6 @@
   "id": "petg_multi_color",
   "name": "PETG Multi-Color",
   "diameter_tolerance": 0.02,
-  "density": 1.27
+  "density": 1.27,
+  "uuid": "6cabcd1e-11ae-4b3a-83df-9e4f7019e3fd"
 }

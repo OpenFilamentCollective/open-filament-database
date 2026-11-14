@@ -2,5 +2,6 @@
   "id": "petg_basic",
   "name": "PETG Basic",
   "diameter_tolerance": 0.02,
-  "density": 1.27
+  "density": 1.27,
+  "uuid": "099eafe4-c315-49a1-8257-b0940349180f"
 }
