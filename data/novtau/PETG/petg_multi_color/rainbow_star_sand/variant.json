@@ -2,8 +2,9 @@
   "id": "rainbow_star_sand",
   "name": "Rainbow Star Sand",
   "color_hex": [
-    "#C3DA7B",
-    "#50C192"
+    "#D4C33A",
+    "#3FCFA0",
+    "#97CD76"
   ],
   "traits": {
     "coextruded": true

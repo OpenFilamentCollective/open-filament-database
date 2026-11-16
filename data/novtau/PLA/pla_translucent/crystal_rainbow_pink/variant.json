@@ -1,8 +1,12 @@
 {
   "id": "crystal_rainbow_pink",
   "name": "Crystal Rainbow Pink",
-  "color_hex": "#F6A9AE",
+  "color_hex": [
+    "#F47E96",
+    "#FAD2D8"
+  ],
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "gradual_color_change": true
   }
 }

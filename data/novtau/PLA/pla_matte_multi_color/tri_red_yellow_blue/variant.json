@@ -2,8 +2,9 @@
   "id": "tri_red_yellow_blue",
   "name": "Tri Red-Yellow-Blue",
   "color_hex": [
-    "#DE733B",
-    "#355592"
+    "#E83523",
+    "#1E65D1",
+    "#E0C051"
   ],
   "traits": {
     "matte": true,

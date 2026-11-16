@@ -1,8 +1,13 @@
 {
   "id": "crystal_rainbow_blue_phantom",
   "name": "Crystal Rainbow Blue Phantom",
-  "color_hex": "#9DB1E2",
+  "color_hex": [
+    "#63B1E0",
+    "#B384D0",
+    "#8C98DF"
+  ],
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "gradual_color_change": true
   }
 }

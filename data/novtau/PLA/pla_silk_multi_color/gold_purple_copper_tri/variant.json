@@ -2,8 +2,9 @@
   "id": "gold_purple_copper_tri",
   "name": "Gold-Purple-Copper Tri",
   "color_hex": [
-    "#733044",
-    "#CE8E93"
+    "#D4A146",
+    "#64316E",
+    "#A65A38"
   ],
   "traits": {
     "silk": true,

@@ -2,8 +2,9 @@
   "id": "rainbow_lollipop",
   "name": "Rainbow Lollipop",
   "color_hex": [
-    "#CFB6A5",
-    "#71635A"
+    "#EAA479",
+    "#94CBC3",
+    "#A1B37A"
   ],
   "traits": {
     "matte": true,

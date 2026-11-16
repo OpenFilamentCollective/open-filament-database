@@ -2,8 +2,9 @@
   "id": "teal_orange_red_light_yellow_tri",
   "name": "Teal-Orange Red-Light Yellow Tri",
   "color_hex": [
-    "#CF9052",
-    "#319B6F"
+    "#08A089",
+    "#DF5327",
+    "#EDE068"
   ],
   "traits": {
     "silk": true,

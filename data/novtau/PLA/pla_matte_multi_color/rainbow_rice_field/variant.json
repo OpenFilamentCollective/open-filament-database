@@ -2,8 +2,9 @@
   "id": "rainbow_rice_field",
   "name": "Rainbow Rice Field",
   "color_hex": [
-    "#5FB761",
-    "#BDDE6A"
+    "#95C446",
+    "#45C291",
+    "#E0D353"
   ],
   "traits": {
     "matte": true,

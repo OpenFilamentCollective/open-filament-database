@@ -2,8 +2,10 @@
   "id": "rainbow_apple",
   "name": "Rainbow Apple",
   "color_hex": [
-    "#C2B0A4",
-    "#524446"
+    "#E478A2",
+    "#65C5A1",
+    "#CDDA71",
+    "#AD89C3"
   ],
   "traits": {
     "matte": true,

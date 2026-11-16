@@ -1,8 +1,14 @@
 {
   "id": "glow_rainbow_no_6",
   "name": "Glow Rainbow No.6",
-  "color_hex": "#97A78B",
+  "color_hex": [
+    "#26A5BB",
+    "#ED7E74",
+    "#93DD63",
+    "#45B771"
+  ],
   "traits": {
-    "glow": true
+    "glow": true,
+    "gradual_color_change": true
   }
 }

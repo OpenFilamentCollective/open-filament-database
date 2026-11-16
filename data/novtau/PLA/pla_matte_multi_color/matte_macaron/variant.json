@@ -1,13 +1,13 @@
 {
+  "uuid": "1635e6cc-16fa-444e-918b-187c22afc350",
   "id": "matte_macaron",
   "name": "Matte Macaron",
   "color_hex": [
-    "#DCCFA5",
-    "#83CEBD"
+    "#E1C08D",
+    "#6ACFC9"
   ],
   "traits": {
     "matte": true,
     "coextruded": true
-  },
-  "uuid": "1635e6cc-16fa-444e-918b-187c22afc350"
+  }
 }

@@ -2,8 +2,9 @@
   "id": "rainbow_mist",
   "name": "Rainbow Mist",
   "color_hex": [
-    "#7CBBE3",
-    "#256F92"
+    "#46A6CF",
+    "#8C9CDF",
+    "#779EDA"
   ],
   "traits": {
     "coextruded": true

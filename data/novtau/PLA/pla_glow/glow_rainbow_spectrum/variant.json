@@ -1,8 +1,14 @@
 {
   "id": "glow_rainbow_spectrum",
   "name": "Glow Rainbow Spectrum",
-  "color_hex": "#84B3A8",
+  "color_hex": [
+    "#178DD2",
+    "#F8C666",
+    "#40A44C",
+    "#20D4C2"
+  ],
   "traits": {
-    "glow": true
+    "glow": true,
+    "gradual_color_change": true
   }
 }
