@@ -1,0 +1,11 @@
+{
+  "uuid": "a27cc5c1-96c4-4004-8f43-c9c7387594cf",
+  "id": "royal_blue",
+  "name": "Royal Blue",
+  "color_hex": "#2550AF",
+  "discontinued": true,
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}
