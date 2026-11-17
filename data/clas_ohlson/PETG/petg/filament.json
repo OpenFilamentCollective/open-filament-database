@@ -2,5 +2,7 @@
   "name": "PETG",
   "diameter_tolerance": 0.02,
   "density": 1.27,
-  "id": "petg"
+  "id": "petg",
+  "min_print_temperature": 220,
+  "max_print_temperature": 245
 }
