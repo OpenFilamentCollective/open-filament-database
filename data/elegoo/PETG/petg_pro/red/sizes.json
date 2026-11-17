@@ -4,6 +4,7 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "container_material": "cardboard",
+    "empty_spool_weight": 153,
     "gtin": "6932704901519",
     "article_number": "50.203.0264",
     "purchase_links": [

@@ -3,6 +3,8 @@
     "uuid": "a8201f52-b489-4376-81a3-db4ba1072cc7",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 153,
     "gtin": "6932704922767",
     "article_number": "50.203.0234",
     "purchase_links": [
@@ -16,6 +18,7 @@
     "uuid": "2d00cddc-e004-446e-885e-f4eb35107c8d",
     "filament_weight": 250,
     "diameter": 1.75,
+    "empty_spool_weight": 60,
     "purchase_links": [
       {
         "store_id": "elegoo",
