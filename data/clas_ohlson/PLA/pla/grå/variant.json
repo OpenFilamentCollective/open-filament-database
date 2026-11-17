@@ -1,0 +1,10 @@
+{
+  "id": "grå",
+  "name": "Grå",
+  "color_hex": [
+    "#7a7a7a"
+  ],
+  "traits": {
+    "industrially_compostable": true
+  }
+}

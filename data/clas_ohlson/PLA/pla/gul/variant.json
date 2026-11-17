@@ -1,0 +1,10 @@
+{
+  "id": "gul",
+  "name": "Gul",
+  "color_hex": [
+    "#fffc41"
+  ],
+  "traits": {
+    "industrially_compostable": true
+  }
+}

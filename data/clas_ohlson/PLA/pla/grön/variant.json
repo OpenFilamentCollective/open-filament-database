@@ -1,0 +1,10 @@
+{
+  "id": "grön",
+  "name": "Grön",
+  "color_hex": [
+    "#00f900"
+  ],
+  "traits": {
+    "industrially_compostable": true
+  }
+}

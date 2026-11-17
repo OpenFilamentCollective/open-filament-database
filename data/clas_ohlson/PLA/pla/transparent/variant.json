@@ -1,0 +1,11 @@
+{
+  "id": "transparent",
+  "name": "Transparent",
+  "color_hex": [
+    "#ebebeb"
+  ],
+  "traits": {
+    "industrially_compostable": true,
+    "transparent": true
+  }
+}
