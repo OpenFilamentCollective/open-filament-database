@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "1e217608-ca71-43af-b197-7980d2026a9c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936716907",
+    "article_number": "CA19013",
+    "discontinued": false
+  }
+]

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "e79c5a76-389f-4131-80e5-658945126bff",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/fluorescent-trans-uv-reactive-neon-green"
+      }
+    ]
   }
 ]

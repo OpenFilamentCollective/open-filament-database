@@ -1,9 +1,9 @@
 {
+  "uuid": "dcdf2559-398c-4c40-a28f-264b23e0fe10",
   "id": "cherry",
   "name": "Cherry",
   "color_hex": "#BF8C81",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

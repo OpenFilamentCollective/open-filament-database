@@ -1,7 +1,10 @@
 [
   {
+    "uuid": "265a2c18-9b96-480e-befc-b6cce4cd94d9",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
     "ean": "5905991406013",
     "article_number": "TF-24048",
     "purchase_links": [
@@ -12,14 +15,19 @@
     ]
   },
   {
+    "uuid": "59513fba-90ef-452e-b953-c33d881ec6ee",
+    "moved_from": [
+      "51800dfd-1ce1-4502-90cd-561ed1374ef4"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "plastic",
     "ean": "5905991405146",
     "article_number": "TF-24007",
     "purchase_links": [
       {
         "store_id": "spectrum",
-        "url": "https://shop.spectrumfilaments.com/product-eng-2605-The-Filament-PLA-1-75mm-SILVER-ALUMINIUM-1kg.html"
+        "url": "https://shop.spectrumfilaments.com/product-eng-2606-The-Filament-PLA-1-75mm-CIRCUIT-GREEN-1kg.html"
       }
     ]
   }

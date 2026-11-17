@@ -1,5 +1,14 @@
 {
-    "id": "purple_pink_translucent",
-    "name": "Purple-Pink-Translucent",
-    "color_hex": "#cb80b0"
+  "uuid": "8db7702b-08fb-4cf6-adcf-2eaaf300bb59",
+  "moved_from": [
+    "e98009bd-b440-4e55-9225-6a4ed7588480"
+  ],
+  "id": "purple_pink_translucent",
+  "name": "Purple-Pink-Translucent",
+  "color_hex": "#cb80b0",
+  "traits": {
+    "translucent": true,
+    "temperature_color_change": true,
+    "gradual_color_change": true
+  }
 }

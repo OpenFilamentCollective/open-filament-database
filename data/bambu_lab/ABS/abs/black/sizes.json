@@ -1,8 +1,10 @@
 [
   {
+    "uuid": "44354dc1-3acf-4a9c-b640-eb0309a01963",
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "ean": "6975337032878",
+    "article_number": "40101",
     "purchase_links": [
       {
         "store_id": "bblstore",
@@ -11,14 +13,21 @@
     ]
   },
   {
+    "uuid": "2187e743-9a54-47d0-8fa5-412e985f5f5f",
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "spool_refill": true,
-    "ean": "6975337032878",
+    "container_material": "refill",
+    "gtin": "6975337030331",
+    "article_number": "40101",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=40475105460360"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/abs-black-13"
       }
     ]
   }

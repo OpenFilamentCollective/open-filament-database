@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "fe7ff6ea-ffd5-4c37-93ba-c6f7c9acffa1",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460511",
+    "article_number": "PCTG-R-602-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/pctg-lime-green"
+      }
+    ]
   }
 ]

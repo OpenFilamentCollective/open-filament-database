@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "d08cb31e-1bef-4ce4-b9ee-06498e71326d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.077",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-black-petg-v2"
+      }
+    ]
+  }
+]

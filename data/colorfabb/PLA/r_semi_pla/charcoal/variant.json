@@ -1,8 +1,9 @@
 {
+  "uuid": "5ab83113-c10b-4260-9751-36e69c193abc",
   "id": "charcoal",
   "name": "Charcoal",
   "color_hex": "#9FA4A8",
   "traits": {
-    "industrially_compostable": true
+    "recycled": true
   }
 }

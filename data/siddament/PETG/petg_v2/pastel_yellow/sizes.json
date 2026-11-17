@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "eeb52e2c-3994-48ac-8bc3-7aea9b17bd03",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.024",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pastel-yellow-petg"
+      }
+    ]
+  }
+]

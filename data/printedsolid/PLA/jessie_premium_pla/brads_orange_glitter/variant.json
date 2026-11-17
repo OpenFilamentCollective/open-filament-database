@@ -1,9 +1,9 @@
 {
+  "uuid": "d28410ee-8db8-43b2-9607-3b085a960cca",
   "id": "brads_orange_glitter",
   "name": "Brads Orange Glitter",
   "color_hex": "#F67405",
   "traits": {
-    "industrially_compostable": true,
     "glitter": true
   }
 }

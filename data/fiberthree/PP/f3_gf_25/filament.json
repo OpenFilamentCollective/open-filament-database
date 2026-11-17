@@ -1,10 +1,12 @@
 {
+  "uuid": "57ab7f37-f679-49d1-a6b3-0b29dde365ee",
   "id": "f3_gf_25",
   "name": "F3 GF 25",
   "diameter_tolerance": 0.02,
-  "density": 0.9,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
+  "density": 1.09,
+  "min_print_temperature": 230,
+  "max_print_temperature": 230,
   "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 80,
+  "data_sheet_url": "http://fiberthree.com/downloads/tdb/filaments/TDS_F3_PP_GF25_English_vers12_2024.pdf"
 }

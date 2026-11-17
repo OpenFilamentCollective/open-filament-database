@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "5e36ff51-c88a-49e1-ada4-3225340606d1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.008",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/orange-tpu-95a-hf"
+      }
+    ]
+  }
+]

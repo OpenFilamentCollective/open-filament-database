@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "2666c99e-4e37-45da-8d64-e4e72250812d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/matte-pla-filament?variant=42943040323746"
+      }
+    ]
+  }
+]

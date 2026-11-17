@@ -1,9 +1,9 @@
 {
+  "uuid": "ad24646d-f8c1-4e62-8702-a76ee33f57fe",
   "id": "scarlet_red",
   "name": "Scarlet Red",
   "color_hex": "#DE4343",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

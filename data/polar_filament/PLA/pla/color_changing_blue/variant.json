@@ -1,11 +1,9 @@
 {
+  "uuid": "07122a85-e426-45cb-ab97-4035874eac11",
   "id": "color_changing_blue",
   "name": "Color Changing Blue",
   "color_hex": [
     "#0353BA",
     "#F0EBE5"
-  ],
-  "traits": {
-    "industrially_compostable": true
-  }
+  ]
 }

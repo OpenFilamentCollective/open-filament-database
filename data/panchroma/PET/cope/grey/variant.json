@@ -1,5 +1,10 @@
 {
-    "id": "grey",
-    "name": "Grey",
-    "color_hex": "#8C9099"
+  "uuid": "af98dc3b-4c63-4597-8574-bd90b20a857d",
+  "moved_from": [
+    "3df88a28-5ad4-4845-8176-39a594dd911c"
+  ],
+  "id": "grey",
+  "name": "Grey",
+  "color_hex": "#8C9099",
+  "transmission_distance": 0.2
 }

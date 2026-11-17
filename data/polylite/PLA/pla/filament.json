@@ -1,8 +1,17 @@
 {
+    "uuid": "f7df0fc5-5e8c-46c2-bf0b-bf1fd6c23c46",
     "id": "pla",
     "name": "PLA",
     "diameter_tolerance": 0.02,
-    "density": 1.19,
+    "density": 1.17,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 25,
+    "max_bed_temperature": 60,
+    "dry_temperature": 55,
+    "dry_time": 6,
+    "enclosure": "not_needed",
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/PolyLite_PLA_TDS_EN_V5.4.pdf",
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "PolyLite PLA"
@@ -13,13 +22,23 @@
             "profile_name": "PolyLite PLA"
         },
         "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "GFL00",
+            "generic_id": "OFDSrzZ8",
+            "id": "OF5CgdDq",
             "profile_name": "PolyLite PLA"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
+            "id": "GFL99",
+            "profile_name": "PolyLite PLA"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
             "id": "GFL00",
+            "profile_name": "PolyLite PLA"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "GFL99",
             "profile_name": "PolyLite PLA"
         }
     }

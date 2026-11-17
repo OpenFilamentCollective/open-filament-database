@@ -1,10 +1,12 @@
 {
+  "uuid": "636624f7-f68c-4572-ba54-35420b94e9e8",
   "id": "flexible_89a_pla",
   "name": "Flexible 89A PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.24,
+  "shore_hardness_a": 89,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_print_temperature": 210,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 40
 }

@@ -1,8 +1,18 @@
 {
+    "uuid": "6ad3d77b-0d9f-46c7-8955-139740c874cd",
     "id": "tough+",
     "name": "PLA Tough+",
     "diameter_tolerance": 0.03,
-    "density": 1.22,
+    "density": 1.21,
+    "min_print_temperature": 220,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 65,
+    "max_volumetric_speed": 18,
+    "min_fan_speed": 100,
+    "max_fan_speed": 100,
+    "dry_temperature": 55,
+    "dry_time": 8,
     "data_sheet_url": "https://store.bblcdn.eu/s8/default/f0d6e1c73b9e42c3abeb9540f3433225/new_Bambu_PLA_Tough_Technical_Data_Sheet.pdf",
     "safety_sheet_url": "https://store.bblcdn.eu/s8/default/fa69ce6fe3a9411988e30bd8d44b29c0/Bambu_PLA_Tough_MSDS.pdf",
     "slicer_settings": {
@@ -12,6 +22,16 @@
             "profile_name": "Bambu PLA Tough+"
         },
         "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OF342jVN",
+            "profile_name": "Bambu PLA Tough+"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA10",
+            "profile_name": "Bambu PLA Tough+"
+        },
+        "crealityprint": {
             "generic_id": "GFL99",
             "id": "GFA10",
             "profile_name": "Bambu PLA Tough+"

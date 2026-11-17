@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "144044a4-61ab-4993-a6bf-7c631d0be276",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847050632",
     "article_number": "PLAE-175LIVO-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "a139fd4e-2c4c-40c2-9fde-aa8012cb0249",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847051172",
     "article_number": "PLAE-175LIVO-02300",
     "discontinued": false,
     "purchase_links": [

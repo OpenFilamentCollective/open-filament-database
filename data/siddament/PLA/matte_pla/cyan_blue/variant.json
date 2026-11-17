@@ -1,0 +1,13 @@
+{
+  "uuid": "cd6078f3-26c8-4dfd-9d3c-c820d198b338",
+  "id": "cyan_blue",
+  "name": "Cyan Blue",
+  "color_hex": "#01C7FF",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "312 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

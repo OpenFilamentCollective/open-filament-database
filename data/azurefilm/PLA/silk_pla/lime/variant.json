@@ -1,9 +1,10 @@
 {
+  "uuid": "9526cf1f-8352-4fd1-bad7-c9f15deb23df",
   "id": "lime",
   "name": "Lime",
   "color_hex": "#cef157",
   "traits": {
-    "recyclable": true,
-    "silk": true
+    "silk": true,
+    "recyclable": true
   }
 }

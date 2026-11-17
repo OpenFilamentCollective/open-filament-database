@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "6608fe3d-66fa-4517-95af-601f4b421c76",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 165,
+    "gtin": "8720629069982",
+    "article_number": "HPLA-175REDC-00750",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/high-gloss-pla"
+      }
+    ]
+  }
+]

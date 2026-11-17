@@ -1,0 +1,10 @@
+{
+  "uuid": "42cbe337-ff62-4390-9148-d2163e1c7142",
+  "id": "metallic_blue",
+  "name": "Metallic Blue",
+  "color_hex": "#2C3449",
+  "traits": {
+    "imitates_metal": true,
+    "high_flow": true
+  }
+}

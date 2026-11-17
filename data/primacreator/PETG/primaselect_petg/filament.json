@@ -1,10 +1,12 @@
 {
+  "uuid": "76e9c233-dfbf-45d9-a48b-fb640f3298ad",
   "id": "primaselect_petg",
   "name": "Primaselect PETG",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
+  "min_print_temperature": 225,
+  "max_print_temperature": 245,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/2424/8853/files/TDS_2025_Select_PETG.pdf?v=1744205199"
 }

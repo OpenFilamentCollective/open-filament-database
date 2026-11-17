@@ -1,8 +1,10 @@
 {
+  "uuid": "8710aed6-9c38-4b68-ab48-a091a60cd5a8",
   "id": "island_fuchsia",
   "name": "Island Fuchsia",
-  "color_hex": "#C80181",
+  "color_hex": "#B6558C",
+  "transmission_distance": 2.6,
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

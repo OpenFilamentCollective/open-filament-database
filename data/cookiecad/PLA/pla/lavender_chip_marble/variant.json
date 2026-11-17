@@ -1,9 +1,9 @@
 {
+  "uuid": "c5476cd8-c798-4fb0-bbf7-4981ded2bef4",
   "id": "lavender_chip_marble",
   "name": "Lavender Chip Marble",
   "color_hex": "#E65FE2",
   "traits": {
-    "industrially_compostable": true,
     "imitates_marble": true
   }
 }

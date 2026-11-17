@@ -1,10 +1,10 @@
 {
+  "uuid": "7dc039e6-36a0-4a7d-a148-7019117b2a30",
   "id": "mint_star_stuff",
   "name": "Mint Star Stuff",
   "color_hex": "#98FBCB",
   "traits": {
     "translucent": true,
-    "industrially_compostable": true,
     "glitter": true
   }
 }

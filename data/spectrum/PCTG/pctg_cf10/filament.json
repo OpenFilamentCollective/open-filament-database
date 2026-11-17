@@ -1,6 +1,15 @@
 {
-    "id": "pctg_cf10",
-    "name": "PCTG CF10",
-    "diameter_tolerance": 0.02,
-    "density": 1.28
+  "uuid": "3c18b819-cefb-4fe7-9983-c1a3b8786c08",
+  "id": "pctg_cf10",
+  "name": "PCTG CF10",
+  "diameter_tolerance": 0.02,
+  "density": 1.28,
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 50,
+  "min_fan_speed": 50,
+  "max_fan_speed": 85,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/10/en_tds_spectrum_pctg_cf10.pdf"
 }

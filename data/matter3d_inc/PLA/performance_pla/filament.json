@@ -1,10 +1,11 @@
 {
+  "uuid": "f06e0367-16c6-49d0-82ae-097f0b8597d9",
   "id": "performance_pla",
   "name": "Performance PLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
-  "min_print_temperature": 190,
+  "min_print_temperature": 215,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 65,
+  "max_bed_temperature": 65
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3730de77-c9e3-4fe0-a4d5-cb3c2d2b1cf4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.023",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/light-yellow-petg"
+      }
+    ]
+  }
+]

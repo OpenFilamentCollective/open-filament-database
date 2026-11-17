@@ -1,5 +1,13 @@
 {
-    "id": "army_beige",
-    "name": "Army Beige",
-    "color_hex": "#CCA897"
+  "uuid": "8b6f667e-881f-4986-9295-c0e94f6f175b",
+  "moved_from": [
+    "41209a11-5d76-4e63-8168-de9a757148a8"
+  ],
+  "id": "army_beige",
+  "name": "Army Beige",
+  "color_hex": "#CCA897",
+  "transmission_distance": 0.7,
+  "traits": {
+    "matte": true
+  }
 }

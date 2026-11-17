@@ -1,6 +1,12 @@
 {
-    "id": "pla_classic",
-    "name": "PLA Classic",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "e765583a-17bc-4a62-a27b-3ab71a40e9da",
+  "id": "pla_classic",
+  "name": "PLA Classic",
+  "diameter_tolerance": 0.02,
+  "density": 1.36,
+  "min_print_temperature": 200,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260327/77e4c81e-dcaa-46ce-8eee-e8d892150c71.pdf?filename=TDS"
 }

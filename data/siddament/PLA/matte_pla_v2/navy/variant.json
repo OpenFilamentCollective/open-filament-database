@@ -1,0 +1,10 @@
+{
+  "uuid": "d85b9598-9c08-4b1e-8252-ced242ba16ba",
+  "id": "navy",
+  "name": "Navy",
+  "color_hex": "#14213D",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

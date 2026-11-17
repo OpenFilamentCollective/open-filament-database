@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "f3eca532-2a52-4923-94dd-3107da9ce6a5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.055",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/saddle-brown-asa-v2"
+      }
+    ]
+  }
+]

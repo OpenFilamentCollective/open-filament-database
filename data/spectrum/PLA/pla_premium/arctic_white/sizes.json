@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "1c56b1a0-d282-41cd-ba71-834ae3800073",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5903175657954",
@@ -10,5 +11,13 @@
         "url": "https://shop.spectrumfilaments.com/product-eng-550-Filament-Spectrum-PLA-Premium-1-75mm-ARCTIC-WHITE-1kg.html"
       }
     ]
+  },
+  {
+    "uuid": "9f68f320-2229-4402-86cd-4df0ce99373f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "5905991404361"
   }
 ]

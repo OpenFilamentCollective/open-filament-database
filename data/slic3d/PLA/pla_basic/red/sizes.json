@@ -1,0 +1,20 @@
+[
+  {
+    "uuid": "7b5389a5-e175-42a6-b436-bec99d69baa3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 0,
+    "spool_core_diameter": 100,
+    "gtin": "9319236826300",
+    "article_number": "TL6476",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "jaycar_nz",
+        "url": "https://www.jaycar.co.nz/slic3d-pla-spool-less-red-1-75mm-1kg-filament/p/TL6476"
+      }
+    ]
+  }
+]

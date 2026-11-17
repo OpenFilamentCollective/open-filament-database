@@ -1,0 +1,13 @@
+{
+  "uuid": "c32c0c59-e563-4c35-ae7c-48e134facd35",
+  "id": "petg_matte",
+  "name": "PETG-Matte",
+  "diameter_tolerance": 0.02,
+  "density": 1.35,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PETG-Matte/PETG-Matte_TDS.pdf",
+  "discontinued": false
+}

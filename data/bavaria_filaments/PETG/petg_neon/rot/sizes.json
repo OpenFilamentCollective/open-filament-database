@@ -1,0 +1,25 @@
+[
+  {
+    "uuid": "adfabd4e-4711-4760-ad36-3a51faaf88e8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/petg-neon-filament?variant=56403913179519"
+      }
+    ]
+  },
+  {
+    "uuid": "c8c16f99-9d43-4b86-a7b4-652cc0fb77b3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/petg-neon-filament?variant=56810188341631"
+      }
+    ]
+  }
+]

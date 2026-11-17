@@ -1,13 +1,19 @@
 [
   {
+    "uuid": "3fe37323-dec5-4903-9cd0-be04ed57f8e7",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 125,
     "spool_core_diameter": 52,
+    "gtin": "6974662352484",
     "purchase_links": [
       {
         "store_id": "anycubic",
         "url": "https://store.anycubic.com/products/pla-plus-filament?variant=45339835990205"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/anycubic/pla-brown-6"
       }
     ]
   }

@@ -1,9 +1,9 @@
 {
+  "uuid": "9c33cf99-b25c-49a1-894d-ddfd40377d21",
   "id": "lemon_drop",
   "name": "Lemon Drop",
   "color_hex": "#EEEA44",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

@@ -1,6 +1,12 @@
 {
-    "id": "refill_easy_pet_g",
-    "name": "Refill Easy PET-G",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "887bf6c7-6a23-4b62-b12b-59777dfa185a",
+  "id": "refill_easy_pet_g",
+  "name": "Refill Easy PET-G",
+  "diameter_tolerance": 0.02,
+  "density": 1.29,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_EASYPETG_TDS.pdf"
 }

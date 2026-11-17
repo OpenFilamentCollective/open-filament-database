@@ -1,8 +1,12 @@
 {
+  "uuid": "857af8a1-2ade-4ce9-a94b-345c601a82ae",
   "id": "pink_gold",
   "name": "Pink Gold",
   "color_hex": [
     "#ff40ff",
     "#D4AF37"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

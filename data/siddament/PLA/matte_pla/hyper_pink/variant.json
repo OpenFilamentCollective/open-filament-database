@@ -1,0 +1,13 @@
+{
+  "uuid": "b6c6ce90-58e8-4120-b09d-a507dc593226",
+  "id": "hyper_pink",
+  "name": "Hyper Pink",
+  "color_hex": "#FE016D",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "213 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

@@ -1,6 +1,36 @@
 [
   {
+    "uuid": "acf34827-1175-4ec1-9725-1d8aa0b54f06",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "8718924471838"
+  },
+  {
+    "uuid": "b1b754d2-d6a1-47ea-adcd-12c9520a0d6c",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "gtin": "8718924473016",
+    "article_number": "PPLA-175OCBU-02300"
+  },
+  {
+    "uuid": "05ff6ad2-da74-4a59-aa15-ad05f86a6faf",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574295863",
+    "article_number": "PPLA-285OCBU-00250"
+  },
+  {
+    "uuid": "b6798b5c-6734-422f-b004-ecfe9fc76c60",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "8718924472026",
+    "article_number": "PPLA-285OCBU-01000"
+  },
+  {
+    "uuid": "2173d328-410e-4bd4-b57a-089aa3072dd1",
+    "filament_weight": 2300,
+    "diameter": 2.85,
+    "gtin": "8718924473023",
+    "article_number": "PPLA-285OCBU-02300"
   }
 ]

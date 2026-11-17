@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "9ae31bdd-54e7-4c4e-9e69-c61358625b4a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/1-kg-dark-cherry-red-pla-filament"
+      }
+    ]
   }
 ]

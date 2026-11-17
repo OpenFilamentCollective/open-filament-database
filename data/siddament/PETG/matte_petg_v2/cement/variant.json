@@ -1,0 +1,14 @@
+{
+  "uuid": "bb6804e2-6fa2-4ea3-8a4e-53f95b2c9744",
+  "id": "cement",
+  "name": "Cement",
+  "color_hex": "#8A8780",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Warm Gray 8 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b0fa5013-2308-4871-8a79-92bffdb31484",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.014",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-chocolate-pla-v2"
+      }
+    ]
+  }
+]

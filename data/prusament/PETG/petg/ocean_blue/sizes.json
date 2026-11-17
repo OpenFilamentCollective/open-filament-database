@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "d78fe963-80f3-418f-973b-f67d1b46ea7c",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675445"
+    "gtin": "8594173675445",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-ocean-blue-1kg-nfc/"
+      }
+    ]
   }
 ]

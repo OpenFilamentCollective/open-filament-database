@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "6c85863a-c2ca-4f39-81b3-20c522376e6c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460771",
+    "article_number": "PETG-R-711-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-stainless-steel"
+      }
+    ]
   }
 ]

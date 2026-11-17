@@ -1,10 +1,12 @@
 {
+  "uuid": "66fa6d39-e5f2-42e8-b6c6-55223f261414",
   "id": "mint",
   "name": "Mint",
   "color_hex": [
     "#B0C0C4"
   ],
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

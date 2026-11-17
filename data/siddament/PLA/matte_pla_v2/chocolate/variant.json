@@ -1,0 +1,10 @@
+{
+  "uuid": "133892b3-7887-48ec-a765-e36312825c8f",
+  "id": "chocolate",
+  "name": "Chocolate",
+  "color_hex": "#3A2618",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

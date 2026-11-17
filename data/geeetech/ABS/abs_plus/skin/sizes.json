@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "0c5bd645-d16c-44e5-a0e5-1ffd76f4635a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994175195",
+    "article_number": "700-001-1734",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/abs-skin"
+      }
+    ]
   }
 ]

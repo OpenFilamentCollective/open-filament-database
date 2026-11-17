@@ -1,9 +1,12 @@
 [
   {
+    "uuid": "6ef81600-4f67-48a5-ac85-7066bac88a1f",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629068299",
     "article_number": "PGFR-175TBLK-B0500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +17,13 @@
     ]
   },
   {
+    "uuid": "23bac242-9a86-472e-b071-b4851dd751fa",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629068282",
     "article_number": "PGFR-175TBLK-B1000",
     "discontinued": false,
     "purchase_links": [

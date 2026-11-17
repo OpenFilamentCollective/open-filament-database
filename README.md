@@ -8,119 +8,69 @@
 </div>
 
 # Open Filament Database
-The Open Filament Database, hosted by the new "Open Filament Collective" group, currently facilitated by SimplyPrint.
 
-## ✅ Contributing: how to add to the database
-The beautiful thing about the database is that it's open source so anyone can contribute, whether you're a hobbyist, print farm or brand.
+An open, community-maintained database of 3D-printing filaments — brands, materials, filament product lines, colour variants, spool sizes, and the stores that sell them. Hosted by the **Open Filament Collective**, currently facilitated by SimplyPrint.
 
-The steps to contribute to the database are simple but may get technical at times depending on how you want to do it, don't worry if you don't all understand terms, we'll guide you through it.
+The data is free to use under MIT — slicers, print farm software, NFC spool tags ([OpenPrintTag](https://specs.openprinttag.org/)), inventory apps, and price-comparison tools can all read it directly.
 
-### So what are the steps?
-1. **Create a GitHub account**
-2. **Create a copy of the database** (called "forking" this repository)
-3. **Install a few small applications** (Git, Python, Node.js)
-4. **Download your copy of the database** (called "cloning" it).
-5. **Use either our simple web editor or use the manual method**
-6. **Check if your data has errors**
-7. **Upload your data and make what's called a pull request**
+---
 
-## Let's do it!
+## ✍️ Contributing
 
-### 1. Sign up for a GitHub Account
-If you don’t have one already, [create a free GitHub account](https://github.com/join).
+The fastest way to add, fix, or correct data is the cloud editor — no install required:
 
-### 2. Fork the Project (Two-Click)
-Click the **Fork** button in the top right of this page, a guide is [available here if needed](docs/forking.md)
-![Fork button getting pressed](docs/img/forking01.png)
-### 3. Install our requirements
-If you don't have Git installed, [follow this guide](docs/installing-software.md#git). The OFD wrapper script will help you install Python and Node.js automatically (see step 5).
+> 👉 **<http://openfilamentdatabase.org/>**
 
-### 4. Download the database
-Download the database using either [this guide](docs/cloning.md) or by just using the command below, with `YOUR_USERNAME` replaced ofc!
-```bash
-git clone https://github.com/YOUR_USERNAME/open-filament-database.git
-cd open-filament-database
-```
-### 5. Make your changes!
-Use the web editor (recommended) or edit files manually:
+Browse brands → materials → filaments → variants → sizes, edit fields, upload logos, and submit your changes as a pull request straight from the browser. The editor validates schema, logos, and store references in-page before submitting, so most mistakes are caught up front.
 
-**Using the OFD Wrapper (Recommended - handles setup automatically):**
+You can sign in two ways:
 
-Linux/macOS:
-```bash
-./ofd.sh webui
-```
+- **GitHub** — your edits become a pull request opened **from your own fork**, attributed to you on your GitHub profile.
+- **SimplyPrint** — your edits become a pull request opened by our **bot account**, with attribution back to you in the PR body. No GitHub account needed. Rate-limited per IP (default 5 submissions/hour).
 
-Windows:
-```cmd
-ofd.bat webui
-```
+### Editing locally instead
 
-On first run, the wrapper will:
-- Check if Python 3.10+ and Node.js are installed (and help install them if not)
-- Create a Python virtual environment
-- Install all required dependencies
-- Start the WebUI development server
+If you'd rather work from a clone — for offline edits, running the Python validator against your own data, bulk imports, or developing the WebUI itself — see [docs/contributing-locally.md](docs/contributing-locally.md). For editing JSON files by hand without the WebUI, see the [manual editing guide](docs/manual.md).
 
-Then access it in your browser at http://localhost:5173
+---
 
-The WebUI includes built-in validation and data sorting features to help ensure your changes are correct. [Full WebUI guide](docs/webui.md)
+## 🔌 Using the data (API)
 
-**Manual setup:** If you prefer to set things up manually, [install our requirements](docs/installing-software.md) and then:
-```bash
-cd webui
-npm ci
-npm run dev
-```
+The full dataset is published as a static REST API, with bulk JSON / NDJSON / SQLite / CSV downloads alongside it. The landing page documents the URL shape, endpoints, and examples:
 
-**Manual editing:** If you prefer to edit files directly, [follow this guide](docs/manual.md)
+> 👉 **<https://api.openfilamentdatabase.org/>**
 
-### 6. Validate and sort your changes
-The WebUI can validate and sort your data automatically:
+Address entities by **path**, e.g. `/api/v1/brands/{brand}/materials/{MATERIAL}/filaments/{filament}/variants/{variant}.json`.
 
-1. Click the "Validate" button in the top-right corner to check for errors
-2. Click the "Sort Data" button to organize your JSON files consistently
-3. Fix any validation errors that appear (they'll be highlighted in red)
+Filaments are also published as **ready-to-import [OrcaSlicer presets](docs/orcaslicer.md)** — per filament, or per brand as a zip. Download one and import it with File → Import → Import Configs.
 
-Alternatively, you can use the command-line validation scripts ([see guide](docs/validation.md)):
+For [Spoolman](https://github.com/Donkie/Spoolman) users there is a **[ready-made external filament catalog](docs/spoolman.md)** — set `EXTERNAL_DB_URL` and most filaments show up in Spoolman's dropdown.
 
-Linux/macOS:
-```bash
-./ofd.sh validate                 # Run all validations
-./ofd.sh validate --folder-names  # Validate folder names
-./ofd.sh validate --json-files    # Validate JSON files against schemas
-./ofd.sh validate --logos         # Validate logo files (size, naming, format)
-./ofd.sh validate --store-ids     # Validate store IDs in purchase links
-./ofd.sh validate --gtin          # Validate GTIN/EAN fields
-```
+> ℹ️ UUID-based lookups are still supported for integrations that need stable opaque identifiers (NFC tags, slicer profiles), but path-based addressing is what we recommend for everyone else — it's human-readable and stable across cosmetic renames.
 
-Windows:
-```cmd
-ofd.bat validate                  # Run all validations
-ofd.bat validate --folder-names   # Validate folder names
-ofd.bat validate --json-files     # Validate JSON files against schemas
-ofd.bat validate --logos          # Validate logo files (size, naming, format)
-ofd.bat validate --store-ids      # Validate store IDs in purchase links
-ofd.bat validate --gtin           # Validate GTIN/EAN fields
-```
-### 7. Submit your changes
-Before submitting, make sure your data is sorted consistently:
-- **In the WebUI:** Click the "Sort Data" button in the top-right corner
-- **Or via command line:** Run `./ofd.sh script style_data` (Linux/macOS) or `ofd.bat script style_data` (Windows)
+---
 
-Then add your changes:
-```bash
-git add .
-```
+## 📚 More documentation
 
-Create a commit with a descriptive message (e.g., "Added Elegoo Red PLA variant"):
-```bash
-git commit -m "COMMIT_MESSAGE"
-```
+- [WebUI guide](docs/webui.md) — features, modes, configuration
+- [OrcaSlicer guide](docs/orcaslicer.md) — downloading and importing the generated filament presets
+- [Spoolman guide](docs/spoolman.md) — using the database as Spoolman's external filament catalog
+- [Manual editing guide](docs/manual.md) — editing JSON files by hand
+- [Validation guide](docs/validation.md) — running the validator, understanding errors
+- [Local contributing guide](docs/contributing-locally.md) — full fork → clone → PR walkthrough
+- [Pull request guide](docs/pull-requesting.md) — opening a PR from your fork
+- [Software installation](docs/installing-software.md) — Git, Python, Node.js setup (local route only)
 
-Upload your changes to GitHub:
-```bash
-git push -u origin YOUR_BRANCHNAME
-```
+---
 
-Finally, make a pull request [using this guide](docs/pull-requesting.md)
+## 📜 License
+
+MIT. See [`LICENSE`](LICENSE). The data is free to use, redistribute, and embed in commercial products; attribution is appreciated but not required.
+
+---
+
+## 🔗 Related projects
+
+- [OpenPrintTag spec](https://specs.openprinttag.org/) — NFC data format that consumes OFD UUIDs
+- [`slicer-profiles-db`](https://github.com/SimplyPrint/slicer-profiles-db) — separate repo mapping OFD filaments to slicer profiles
+- [SimplyPrint](https://simplyprint.io/) — 3D printer management platform; facilitator of the Open Filament Collective

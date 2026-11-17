@@ -1,5 +1,13 @@
 {
+  "uuid": "e26b6367-a079-4724-af34-e490f43e9675",
+  "moved_from": [
+    "8d308094-32a1-43ae-898f-6ae66e19c63d"
+  ],
   "id": "cyan",
   "name": "Cyan",
-  "color_hex": "#08ABFB"
+  "color_hex": "#08ABFB",
+  "transmission_distance": 8,
+  "traits": {
+    "translucent": true
+  }
 }

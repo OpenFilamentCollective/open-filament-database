@@ -1,8 +1,9 @@
 {
-    "id": "purple",
-    "name": "Purple",
-    "color_hex": "#6F1AAF",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "376ae002-7f02-4d7c-af48-91d40fbf0cae",
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": "#6F1AAF",
+  "traits": {
+    "recyclable": true
+  }
 }

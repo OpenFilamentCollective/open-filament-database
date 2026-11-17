@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "c3db581b-5ff1-4ec3-8bdd-68e266fb946f",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994171081",
+    "article_number": "700-001-1547",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/abs-orange-8"
+      }
+    ]
   }
 ]

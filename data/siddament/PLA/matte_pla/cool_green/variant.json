@@ -1,0 +1,13 @@
+{
+  "uuid": "cd5b3fdb-a9c4-4a2a-9e10-f1e5ef9086c4",
+  "id": "cool_green",
+  "name": "Cool Green",
+  "color_hex": "#00FE74",
+  "discontinued": true,
+  "color_standards": {
+    "pantone": "339 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

@@ -1,10 +1,12 @@
 {
+  "uuid": "5a04c396-3b00-474a-9af8-d6a09018d85f",
   "id": "abs",
   "name": "ABS",
   "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "density": 1.02,
+  "min_print_temperature": 250,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260327/499dacc6-a1e4-4f81-b1ae-8bf1b8e424ec.pdf?filename=TDS"
 }

@@ -1,0 +1,17 @@
+{
+    "uuid": "be5046e7-7e06-4de4-98c1-a30664de0583",
+    "id": "durapro_asa_gf",
+    "name": "DuraPro ASA GF",
+    "diameter_tolerance": 0.02,
+    "density": 1.18,
+    "min_print_temperature": 230,
+    "max_print_temperature": 270,
+    "min_bed_temperature": 110,
+    "max_bed_temperature": 110,
+    "max_volumetric_speed": 12,
+    "min_fan_speed": 0,
+    "max_fan_speed": 30,
+    "enclosure": "required",
+    "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/durapro-asa-gf-TDS-en.pdf",
+    "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-de/durapro-asa-gf-MSDS-de.pdf"
+}

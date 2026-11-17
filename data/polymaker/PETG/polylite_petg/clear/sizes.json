@@ -1,6 +1,41 @@
 [
   {
+    "uuid": "b1fd13e0-f53f-4d90-a99a-4e51f011f34e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936710134",
+    "article_number": "PB01011",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-translucent-petg?variant=40303029813305"
+      }
+    ]
+  },
+  {
+    "uuid": "5f9ac975-14f8-4e30-8048-bffb8180715a",
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "gtin": "6938936707288",
+    "article_number": "PB01044"
+  },
+  {
+    "uuid": "1d33e45c-543d-4f14-b518-c2670faadd05",
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "gtin": "6938936712947",
+    "article_number": "PM70987",
+    "discontinued": true
   }
 ]

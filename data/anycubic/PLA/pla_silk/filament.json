@@ -1,17 +1,27 @@
 {
+    "uuid": "64340390-c9c2-4264-be8c-2f71f8a93473",
     "id": "pla_silk",
     "name": "PLA Silk",
     "diameter_tolerance": 0.02,
-    "density": 1.23,
-    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/ANYCUBIC_TDS_PETG_V3.0.pdf?v=1757557068",
-    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0685/7578/9245/files/EN_SDS_PETG_Filament_CANEC25014244301_SZP25-029821_-Final.pdf?v=1757556999",
+    "density": 1.22,
+    "min_print_temperature": 210,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 55,
+    "max_bed_temperature": 65,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0245/5519/2380/files/ANYCUBIC_TDS_PLA_silk_V3.0.pdf?v=1758526566",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0245/5519/2380/files/EN_SDS_PLA_Silk_Filament_CANEC25014243401_SZP25-029821_-Final_8be6b64f-95cd-4353-953e-daa864fa7c97.pdf?v=1758526608",
     "slicer_settings": {
         "orcaslicer": {
+            "generic_id": "OFesA6rF",
+            "id": "OFFwJWea",
+            "profile_name": "Anycubic PLA Silk"
+        },
+        "elegooslicer": {
             "generic_id": "GFL96",
             "id": "GFL99",
             "profile_name": "Anycubic PLA Silk"
         },
-        "elegooslicer": {
+        "anycubicslicer": {
             "generic_id": "GFL96",
             "id": "GFL99",
             "profile_name": "Anycubic PLA Silk"

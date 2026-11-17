@@ -1,0 +1,10 @@
+{
+  "uuid": "c5fa4c4d-4296-4e1a-b860-e7f4788e9078",
+  "id": "light_red",
+  "name": "Light Red",
+  "color_hex": "#FE9999",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "1775 C"
+  }
+}

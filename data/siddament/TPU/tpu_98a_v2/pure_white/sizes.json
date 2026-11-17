@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "503ce7b0-43d8-4bef-bdd2-e7828e23ebf9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.073",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pure-white-tpu-98a"
+      }
+    ]
+  }
+]

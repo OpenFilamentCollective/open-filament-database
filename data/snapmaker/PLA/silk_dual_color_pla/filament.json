@@ -1,0 +1,14 @@
+{
+  "uuid": "53d38ad2-54a1-40dd-83fd-35749b7ee5af",
+  "id": "silk_dual_color_pla",
+  "name": "Silk Dual-Color PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 70,
+  "min_chamber_temperature": 25,
+  "max_chamber_temperature": 45,
+  "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+Silk+Dual-Color+PLA+Technical+Data+Sheet.pdf"
+}

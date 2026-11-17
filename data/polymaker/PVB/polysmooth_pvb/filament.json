@@ -1,10 +1,26 @@
 {
-  "id": "polysmooth_pvb",
-  "name": "Polysmooth PVB",
-  "diameter_tolerance": 0.02,
-  "density": 1.08,
-  "min_print_temperature": 190,
-  "max_print_temperature": 220,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 75
+    "uuid": "6a38db7a-b398-4842-8e1e-1b1c7f4439b0",
+    "moved_from": [
+        "d17a5d26-bfb4-484a-8af9-0d7736f3d094"
+    ],
+    "id": "polysmooth_pvb",
+    "name": "PolySmooth",
+    "diameter_tolerance": 0.02,
+    "density": 1.1,
+    "min_print_temperature": 190,
+    "max_print_temperature": 220,
+    "min_bed_temperature": 25,
+    "max_bed_temperature": 70,
+    "dry_temperature": 50,
+    "dry_time": 12,
+    "enclosure": "not_needed",
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/PolySmooth_TDS_EN_V5.4.pdf",
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "PolyMaker PolySmooth"
+        },
+        "superslicer": {
+            "profile_name": "PolyMaker PolySmooth"
+        }
+    }
 }

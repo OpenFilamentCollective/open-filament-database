@@ -1,5 +1,12 @@
 {
-    "id": "silver_steel",
-    "name": "Silver Steel",
-    "color_hex": "#4A4947"
+  "uuid": "ca9fbae7-4a1d-40f5-8376-089e03127cfa",
+  "moved_from": [
+    "dd638296-288c-43f2-adf1-e215f9d8740e"
+  ],
+  "id": "silver_steel",
+  "name": "Silver Steel",
+  "color_hex": "#4A4947",
+  "traits": {
+    "high_temperature": true
+  }
 }

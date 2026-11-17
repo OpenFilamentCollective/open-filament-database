@@ -1,0 +1,11 @@
+{
+  "uuid": "410b4748-f487-4ee7-9f51-722e81906523",
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FFFF00",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

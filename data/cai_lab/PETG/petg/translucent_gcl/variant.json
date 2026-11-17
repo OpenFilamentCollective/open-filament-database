@@ -1,0 +1,9 @@
+{
+  "uuid": "4552851b-aa01-45ce-8843-80b4bfe91630",
+  "id": "translucent_gcl",
+  "name": "Translucent GCL",
+  "color_hex": "#C8C8C8",
+  "traits": {
+    "translucent": true
+  }
+}

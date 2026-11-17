@@ -1,5 +1,13 @@
 {
-    "id": "lavender_purple",
-    "name": "Lavender Purple",
-    "color_hex": "#8A68B5"
+  "uuid": "3734ab74-64c1-4a3e-a016-9699c51d74bd",
+  "moved_from": [
+    "a5f5f86b-b2a0-4d29-a745-48cb49e97d67"
+  ],
+  "id": "lavender_purple",
+  "name": "Lavender Purple",
+  "color_hex": "#8A68B5",
+  "transmission_distance": 0.6,
+  "traits": {
+    "matte": true
+  }
 }

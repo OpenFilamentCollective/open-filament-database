@@ -1,9 +1,9 @@
 {
+  "uuid": "8486aeda-ddc2-4685-947f-426cd4957676",
   "id": "bamboo_wood",
   "name": "Bamboo Wood",
   "color_hex": "#BAA679",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

@@ -1,0 +1,17 @@
+{
+  "uuid": "5e74688a-ce24-4d85-b067-777ae630bfab",
+  "id": "sakura_pink",
+  "name": "Sakura Pink",
+  "color_hex": "#FFE0E8",
+  "transmission_distance": 2.2,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "3015",
+    "ncs": "S 0510-R10B",
+    "pantone": "691 U"
+  },
+  "traits": {
+    "matte": true,
+    "high_flow": true
+  }
+}

@@ -1,10 +1,10 @@
 {
+  "uuid": "965f3767-7593-448b-926f-162d6a6f9776",
   "id": "performance_blue",
   "name": "Performance Blue",
   "color_hex": "#0066D9",
   "traits": {
-    "industrially_compostable": true,
-    "self_extinguishing": true,
-    "silk": true
+    "silk": true,
+    "self_extinguishing": true
   }
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "f7aed441-a58d-42ea-8c4a-3af237b61f25",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.037",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-boot-green-pla-v2"
+      }
+    ]
+  }
+]

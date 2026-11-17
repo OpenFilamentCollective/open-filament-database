@@ -1,0 +1,10 @@
+{
+  "uuid": "1f45b22e-86bb-44f1-8561-efc9349c05e1",
+  "id": "dark_blue",
+  "name": "Dark Blue",
+  "color_hex": "#193153",
+  "discontinued": false,
+  "traits": {
+    "translucent": true
+  }
+}

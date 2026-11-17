@@ -6,11 +6,15 @@ from .api_exporter import export_api
 from .badge_exporter import export_badges
 from .csv_exporter import export_csv
 from .directory_listing_exporter import export_directory_listings
-from .docs_exporter import export_docs
+from .gtin_index_exporter import export_gtin_index
 from .html_exporter import export_html
 from .json_exporter import export_all_json, export_json, export_ndjson, export_per_brand_json
+from .orca_exporter import export_orca
+from .search_index_exporter import export_search_index
+from .spoolman_exporter import export_spoolman
 from .sqlite_exporter import export_sqlite
 from .sqlite_stores_exporter import export_sqlite_stores
+from .uuid_index_exporter import export_uuid_index
 
 __all__ = [
     "export_json",
@@ -21,8 +25,12 @@ __all__ = [
     "export_sqlite_stores",
     "export_csv",
     "export_api",
+    "export_orca",
+    "export_spoolman",
+    "export_search_index",
+    "export_gtin_index",
+    "export_uuid_index",
     "export_html",
     "export_directory_listings",
     "export_badges",
-    "export_docs",
 ]

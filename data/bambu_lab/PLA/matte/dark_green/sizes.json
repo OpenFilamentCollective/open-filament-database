@@ -1,9 +1,12 @@
 [
   {
+    "uuid": "a7a79c57-0bb7-4a36-831f-3d91852cbe3c",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "ean": "6975337031864",
+    "article_number": "11501",
     "purchase_links": [
       {
         "store_id": "bblstore",
@@ -12,14 +15,21 @@
     ]
   },
   {
+    "uuid": "cb125455-62e2-480d-a147-bb7922b893f6",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
-    "gtin": "921177428101",
+    "container_material": "refill",
+    "gtin": "6975337037330",
+    "barcode_identifier": "921177428101",
     "purchase_links": [
       {
         "store_id": "3deksperten",
         "url": "https://3deksperten.dk/products/bambu-lab-pla-matte-dark-green-1-75mm-1kg-refill"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-matte-dark-green"
       }
     ]
   }

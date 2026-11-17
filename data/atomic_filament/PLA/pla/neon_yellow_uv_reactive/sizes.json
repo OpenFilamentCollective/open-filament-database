@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "88f83235-5019-4594-8dad-1bd1b6c8c9de",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/neon-yellow-uv-reactive-pla-filament"
+      }
+    ]
   }
 ]

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "246afd8f-5d4c-4a00-b579-bb12291c2847",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/golden-blood-diamond-translucent-pla"
+      }
+    ]
   }
 ]

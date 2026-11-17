@@ -1,0 +1,10 @@
+{
+  "uuid": "c4888af7-047e-42f0-a688-ff12024f01ea",
+  "id": "petrol",
+  "name": "Petrol",
+  "color_hex": "#0C3B3C",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

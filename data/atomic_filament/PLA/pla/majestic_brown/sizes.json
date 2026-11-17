@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "2d630860-97da-4558-bc87-506ee72e0b74",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/majestic-brown-pla-filament"
+      }
+    ]
   }
 ]

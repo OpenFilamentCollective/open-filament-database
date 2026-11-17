@@ -1,12 +1,13 @@
 {
+    "uuid": "377c48ba-bd7a-421e-bf96-67c8eb5f80e2",
     "id": "tpu",
     "name": "TPU",
     "diameter_tolerance": 0.03,
     "density": 1.21,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFU99",
-            "id": "EFL95",
+            "generic_id": "OFgbpcy9",
+            "id": "OFhUjPA5",
             "profile_name": "Eryone TPU"
         },
         "elegooslicer": {

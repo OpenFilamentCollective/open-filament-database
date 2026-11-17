@@ -1,9 +1,9 @@
 {
+  "uuid": "c382b246-dd4f-4a48-abe3-7891cf8edf32",
   "id": "amethyst_violet",
   "name": "Amethyst Violet",
   "color_hex": "#4a489f",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

@@ -1,0 +1,14 @@
+{
+  "uuid": "ac072764-4aff-4e04-bc4d-44aef95e3506",
+  "id": "pla_go_blue",
+  "name": "PLA GO",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 65,
+  "min_nozzle_diameter": 0.4,
+  "discontinued": false
+}

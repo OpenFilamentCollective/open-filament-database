@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "23c84eaf-19eb-45a1-93c3-f68dc39a709c",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8719956556418",
     "article_number": "PKCF-175CRBK-00500",
     "discontinued": false,
     "purchase_links": [

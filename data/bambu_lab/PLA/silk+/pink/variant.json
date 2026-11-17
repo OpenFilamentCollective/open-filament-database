@@ -1,5 +1,9 @@
 {
-    "id": "pink",
-    "name": "Pink",
-    "color_hex": "#F7ADA6"
+  "uuid": "88c9e670-9f14-4388-b75c-91833276e392",
+  "moved_from": [
+    "3775999f-2680-4ae6-bc10-806a91210de6"
+  ],
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#F7ADA6"
 }

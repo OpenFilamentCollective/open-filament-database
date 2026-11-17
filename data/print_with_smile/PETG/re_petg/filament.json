@@ -1,10 +1,11 @@
 {
+  "uuid": "85fcdbc6-ab06-4355-a911-c35fa479c23e",
   "id": "re_petg",
   "name": "RE PETG",
   "diameter_tolerance": 0.02,
   "density": 1.27,
   "min_print_temperature": 220,
   "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80
 }

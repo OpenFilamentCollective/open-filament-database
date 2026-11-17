@@ -28,18 +28,24 @@ CREATE TABLE IF NOT EXISTS meta (
 -- Brand table
 CREATE TABLE IF NOT EXISTS brand (
     id TEXT PRIMARY KEY,
+    uuid TEXT,  -- canonical UUID (slug-independent); NULL until assigned by CI
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
     website TEXT NOT NULL,
     logo_name TEXT NOT NULL,
     origin TEXT NOT NULL,
-    source TEXT
+    source TEXT,
+    parent_brand TEXT,  -- parent's source id (directory name)
+    parent_brand_id TEXT  -- parent's brand.id; no FK so brand rows insert in any order
 );
 CREATE INDEX IF NOT EXISTS ix_brand_name ON brand(name);
+CREATE INDEX IF NOT EXISTS ix_brand_uuid ON brand(uuid);
+CREATE INDEX IF NOT EXISTS ix_brand_parent ON brand(parent_brand_id);
 
 -- Material table (at brand level)
 CREATE TABLE IF NOT EXISTS material (
     id TEXT PRIMARY KEY,
+    uuid TEXT,  -- canonical UUID (slug-independent); NULL until assigned by CI
     brand_id TEXT NOT NULL REFERENCES brand(id) ON DELETE CASCADE,
     material TEXT NOT NULL,
     slug TEXT,
@@ -49,10 +55,12 @@ CREATE TABLE IF NOT EXISTS material (
 );
 CREATE INDEX IF NOT EXISTS ix_material_brand ON material(brand_id);
 CREATE INDEX IF NOT EXISTS ix_material_type ON material(material);
+CREATE INDEX IF NOT EXISTS ix_material_uuid ON material(uuid);
 
 -- Filament table
 CREATE TABLE IF NOT EXISTS filament (
     id TEXT PRIMARY KEY,
+    uuid TEXT,  -- canonical UUID (slug-independent); NULL until assigned by CI
     brand_id TEXT NOT NULL REFERENCES brand(id) ON DELETE CASCADE,
     material_id TEXT NOT NULL REFERENCES material(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
@@ -72,40 +80,58 @@ CREATE TABLE IF NOT EXISTS filament (
     min_chamber_temperature INTEGER,
     max_chamber_temperature INTEGER,
     chamber_temperature INTEGER,
+    min_print_speed REAL,
+    max_print_speed REAL,
+    max_volumetric_speed REAL,
+    min_fan_speed INTEGER,
+    max_fan_speed INTEGER,
+    dry_temperature INTEGER,
+    dry_time REAL,
+    enclosure TEXT,  -- required | recommended | not_needed
     min_nozzle_diameter REAL,
     data_sheet_url TEXT,
     safety_sheet_url TEXT,
     discontinued INTEGER NOT NULL DEFAULT 0,
-    slicer_settings TEXT  -- JSON
+    slicer_settings TEXT,  -- JSON
+    sustainability TEXT,  -- JSON (see schemas/sustainability_schema.json)
+    mechanical TEXT  -- JSON (see schemas/mechanical_schema.json)
 );
 CREATE INDEX IF NOT EXISTS ix_filament_brand ON filament(brand_id);
 CREATE INDEX IF NOT EXISTS ix_filament_material ON filament(material_id);
 CREATE INDEX IF NOT EXISTS ix_filament_slug ON filament(slug);
+CREATE INDEX IF NOT EXISTS ix_filament_uuid ON filament(uuid);
 
 -- Variant table
 CREATE TABLE IF NOT EXISTS variant (
     id TEXT PRIMARY KEY,
+    uuid TEXT,  -- canonical UUID (slug-independent); NULL until assigned by CI
     filament_id TEXT NOT NULL REFERENCES filament(id) ON DELETE CASCADE,
     slug TEXT NOT NULL,
     name TEXT NOT NULL,
     color_hex TEXT NOT NULL,
     hex_variants TEXT,  -- JSON array
+    transmission_distance REAL,  -- mm
     color_standards TEXT,  -- JSON
     traits TEXT,  -- JSON
-    discontinued INTEGER NOT NULL DEFAULT 0
+    discontinued INTEGER NOT NULL DEFAULT 0,
+    sustainability TEXT  -- JSON; per-field override of the filament's
 );
 CREATE INDEX IF NOT EXISTS ix_variant_filament ON variant(filament_id);
 CREATE INDEX IF NOT EXISTS ix_variant_slug ON variant(slug);
 CREATE INDEX IF NOT EXISTS ix_variant_name ON variant(name);
+CREATE INDEX IF NOT EXISTS ix_variant_uuid ON variant(uuid);
 
 -- Size table (spool size/SKU)
 CREATE TABLE IF NOT EXISTS size (
     id TEXT PRIMARY KEY,
+    uuid TEXT,  -- canonical UUID (slug-independent); NULL until assigned by CI
     variant_id TEXT NOT NULL REFERENCES variant(id) ON DELETE CASCADE,
     filament_weight INTEGER NOT NULL,
     diameter REAL NOT NULL,
     empty_spool_weight INTEGER,
     spool_core_diameter REAL,
+    container_material TEXT,  -- plastic | cardboard | mixed | refill
+    container_details TEXT,  -- JSON
     gtin TEXT,
     article_number TEXT,
     barcode_identifier TEXT,
@@ -116,10 +142,12 @@ CREATE TABLE IF NOT EXISTS size (
 CREATE INDEX IF NOT EXISTS ix_size_variant ON size(variant_id);
 CREATE INDEX IF NOT EXISTS ix_size_gtin ON size(gtin);
 CREATE INDEX IF NOT EXISTS ix_size_weight ON size(filament_weight);
+CREATE INDEX IF NOT EXISTS ix_size_uuid ON size(uuid);
 
 -- Store table
 CREATE TABLE IF NOT EXISTS store (
     id TEXT PRIMARY KEY,
+    uuid TEXT,  -- canonical UUID (slug-independent); NULL until assigned by CI
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
     storefront_url TEXT NOT NULL,
@@ -128,6 +156,7 @@ CREATE TABLE IF NOT EXISTS store (
     ships_to TEXT NOT NULL  -- JSON array
 );
 CREATE INDEX IF NOT EXISTS ix_store_name ON store(name);
+CREATE INDEX IF NOT EXISTS ix_store_uuid ON store(uuid);
 
 -- Purchase link table
 CREATE TABLE IF NOT EXISTS purchase_link (

@@ -1,9 +1,9 @@
 {
+  "uuid": "1596f5d0-2f50-41bf-9c3f-bd4f38c021ea",
   "id": "m_black",
   "name": "M Black",
   "color_hex": "#000000",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

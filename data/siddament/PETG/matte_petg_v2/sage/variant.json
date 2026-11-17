@@ -1,0 +1,14 @@
+{
+  "uuid": "af5696f9-4ad3-4814-bb55-7bcd3d0c56a2",
+  "id": "sage",
+  "name": "Sage",
+  "color_hex": "#9CA487",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "5793 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "914115a5-a262-4e64-b805-41a40cbbb398",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847050977",
     "article_number": "PLAE-175ATGY-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "4a8ba5fd-27ce-4809-ae63-ef0656ee335d",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847051516",
     "article_number": "PLAE-175ATGY-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "5cfe0753-6f31-47ae-b1f9-84ebbf7ed691",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847052056",
     "article_number": "PLAE-175ATGY-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "68239393-b7cc-431e-8aec-3c3f83b6bfd3",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847052599",
     "article_number": "PLAE-175ATGY-08000",
     "discontinued": false,
     "purchase_links": [

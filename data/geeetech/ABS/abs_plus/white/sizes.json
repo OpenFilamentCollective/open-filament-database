@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "d74b82a2-2d18-438b-9767-7df9595cc09b",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170190",
+    "article_number": "700-001-0350",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/abs-white-5"
+      }
+    ]
   }
 ]

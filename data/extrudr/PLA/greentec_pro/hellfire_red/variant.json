@@ -1,0 +1,15 @@
+{
+  "uuid": "f5f6af0b-c477-4896-835b-408026332ae1",
+  "moved_from": [
+    "526b897f-fa7d-4ab2-a884-91c096b101a6"
+  ],
+  "id": "hellfire_red",
+  "name": "Hellfire Red",
+  "color_hex": "#C05447",
+  "color_standards": {
+    "ral": "3024"
+  },
+  "traits": {
+    "bio_based": true
+  }
+}

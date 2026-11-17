@@ -1,0 +1,14 @@
+{
+  "uuid": "aa399b4a-a1b0-4613-96c0-7760f0765f22",
+  "id": "petrol",
+  "name": "Petrol",
+  "color_hex": "#0C3B3C",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "5467 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

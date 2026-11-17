@@ -1,9 +1,12 @@
 [
   {
+    "uuid": "03e152ab-f852-45fb-a354-e19bdade0e0a",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720847069924",
     "article_number": "AXFO-175WHTE-B0500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +17,13 @@
     ]
   },
   {
+    "uuid": "2c743b22-a220-4e48-9180-ef55d1533321",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720847069917",
     "article_number": "AXFO-175WHTE-B1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +34,12 @@
     ]
   },
   {
+    "uuid": "deae0cca-4e22-4ecc-8ad6-51c94c8fca84",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847069931",
     "article_number": "AXFO-175WHTE-02300",
     "discontinued": false,
     "purchase_links": [

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "ff2aedce-e6d4-4986-be74-c522bc5fd7f4",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/neon-green-uv-reactive-asa-ams-compatible"
+      }
+    ]
   }
 ]

@@ -1,6 +1,17 @@
 {
-    "id": "galaxy_pla",
-    "name": "Galaxy PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "48e71d00-6da1-4c29-b083-74c958c8e04e",
+  "moved_from": [
+    "2a0be41f-8fe1-42c8-99a6-ac6c55e923b3"
+  ],
+  "id": "galaxy_pla",
+  "name": "Galaxy PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_PANCHROMA_V2.pdf"
 }

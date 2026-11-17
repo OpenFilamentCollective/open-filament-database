@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "dd1b5572-f388-4130-ae7a-5e70a4ee836f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.022",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/vanilla-asa-v2"
+      }
+    ]
+  }
+]

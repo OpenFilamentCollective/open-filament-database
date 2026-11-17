@@ -1,8 +1,12 @@
 {
+  "uuid": "b811bd65-aa39-498c-b733-4a09ed09f465",
   "id": "turquoise",
   "name": "Turquoise",
   "color_hex": "#3292B2",
   "color_standards": {
     "ral": "5018"
+  },
+  "traits": {
+    "recyclable": true
   }
 }

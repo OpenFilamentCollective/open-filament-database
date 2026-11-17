@@ -1,10 +1,11 @@
 {
+  "uuid": "3e4fd2e2-3232-4bc8-9351-5e966f7b4c58",
   "id": "luvocom_3f_9581_natural",
   "name": "Natural",
   "color_hex": "#DFDFD3",
   "discontinued": false,
   "traits": {
-    "low_outgassing": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "low_outgassing": true
   }
 }

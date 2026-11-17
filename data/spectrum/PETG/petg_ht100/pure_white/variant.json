@@ -1,5 +1,12 @@
 {
-    "id": "pure_white",
-    "name": "Pure White",
-    "color_hex": "#C8C8C6"
+  "uuid": "b731eb7e-61fd-4fc5-94ab-afd8b81fa25f",
+  "moved_from": [
+    "975a444a-048c-45e4-9b9f-12565eba957c"
+  ],
+  "id": "pure_white",
+  "name": "Pure White",
+  "color_hex": "#C8C8C6",
+  "traits": {
+    "high_temperature": true
+  }
 }

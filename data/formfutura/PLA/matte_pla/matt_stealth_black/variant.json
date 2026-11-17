@@ -1,9 +1,9 @@
 {
+  "uuid": "25b4facb-9499-4a8a-a909-4fe373f110f7",
   "id": "matt_stealth_black",
   "name": "Matt Stealth Black",
   "color_hex": "#000000",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

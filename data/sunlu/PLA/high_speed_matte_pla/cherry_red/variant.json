@@ -1,0 +1,17 @@
+{
+  "uuid": "17bb0baf-1edf-43ee-b7a8-f1ceeb2c1fe7",
+  "id": "cherry_red",
+  "name": "Cherry Red",
+  "color_hex": "#FD404B",
+  "transmission_distance": 1.8,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "3018",
+    "ncs": "S 0580-Y90R",
+    "pantone": "1788 U"
+  },
+  "traits": {
+    "matte": true,
+    "high_flow": true
+  }
+}

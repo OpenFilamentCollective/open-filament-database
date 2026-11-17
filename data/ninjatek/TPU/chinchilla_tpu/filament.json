@@ -1,10 +1,12 @@
 {
+  "uuid": "aa82dc7d-b380-4597-a23b-6ca1a804aef0",
   "id": "chinchilla_tpu",
   "name": "Chinchilla TPU",
   "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "density": 1.13,
+  "min_print_temperature": 225,
+  "max_print_temperature": 235,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 40,
+  "data_sheet_url": "https://ninjatek.com/wp-content/uploads/Chinchilla-TDS.pdf"
 }

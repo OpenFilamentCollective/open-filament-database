@@ -1,9 +1,9 @@
 {
+  "uuid": "bc9fc432-f27d-483f-9572-4c91761a3e7b",
   "id": "quartz_white",
   "name": "Quartz White",
   "color_hex": "#FFFFFF",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

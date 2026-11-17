@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "a7cdc24c-808b-4ca8-95e0-c0f3344152b1",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572210868",
+    "article_number": "ASA+175W-W1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/easa"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/asa-warm-white"
       }
     ]
   }

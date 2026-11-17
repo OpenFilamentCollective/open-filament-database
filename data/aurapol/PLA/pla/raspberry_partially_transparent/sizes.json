@@ -1,6 +1,16 @@
 [
   {
+    "uuid": "4e3624c3-7449-4cb8-999e-f20b9cba2198",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "748367684760",
+    "article_number": "PLA684760"
+  },
+  {
+    "uuid": "0f7c5fbd-51e9-45f8-a00f-f13ed3c2d807",
+    "filament_weight": 2500,
+    "diameter": 1.75,
+    "gtin": "731093606632",
+    "article_number": "PLA606632"
   }
 ]

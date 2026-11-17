@@ -1,6 +1,42 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "f84bd3b7-32ab-4a17-8580-55956fb7df80",
+    "moved_from": [
+      "a913a359-2efa-4131-b3c9-5156ff05ccc4"
+    ],
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936710530"
+  },
+  {
+    "uuid": "0b9d9442-acc4-4ba8-8170-f0f471cd476f",
+    "moved_from": [
+      "d41cdd14-78ce-4f5d-a782-8525be303696"
+    ],
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936711759"
   }
 ]

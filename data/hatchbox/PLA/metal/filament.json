@@ -1,6 +1,9 @@
 {
+  "uuid": "677f450a-e209-4efa-985f-a3aa69bc3b02",
   "id": "metal",
   "name": "PLA Metal",
   "diameter_tolerance": 0.03,
-  "density": 1.25
+  "density": 1.25,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230
 }

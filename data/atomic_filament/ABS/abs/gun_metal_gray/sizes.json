@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "81043d6d-771e-4600-a7c3-ba1cbc59f223",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/gun-metal-gray-abs-filament"
+      }
+    ]
   }
 ]

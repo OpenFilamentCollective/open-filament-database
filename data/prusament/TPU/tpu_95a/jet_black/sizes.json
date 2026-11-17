@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "65474bf0-187e-4756-8efa-4a4d34ad4a07",
     "filament_weight": 500,
     "diameter": 1.75,
-    "gtin": "8594173676411"
+    "gtin": "8594173676411",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-tpu-95a-jet-black-500g-nfc/"
+      }
+    ]
   }
 ]

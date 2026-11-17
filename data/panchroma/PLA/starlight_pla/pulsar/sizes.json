@@ -1,0 +1,22 @@
+[
+  {
+    "uuid": "d1a8f505-e47f-4fb9-8c0b-b5f82ea594f3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936716563",
+    "article_number": "CA02043",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/panchroma-starlight?variant=44835174842425"
+      }
+    ]
+  }
+]

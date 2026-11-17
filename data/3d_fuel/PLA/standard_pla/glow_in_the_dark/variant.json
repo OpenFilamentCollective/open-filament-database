@@ -1,11 +1,13 @@
 {
+  "uuid": "8e12576f-401d-470f-bee7-1582d0acd61d",
   "id": "glow_in_the_dark",
   "name": "Glow in the Dark",
   "color_hex": "#000000",
+  "transmission_distance": 29.6,
   "traits": {
     "glow": true,
-    "industrially_compostable": true,
-    "abrasive": true,
-    "illuminescent_color_change": true
+    "illuminescent_color_change": true,
+    "bio_based": true,
+    "abrasive": true
   }
 }

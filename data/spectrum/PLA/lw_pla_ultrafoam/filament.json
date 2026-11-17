@@ -1,6 +1,14 @@
 {
-    "id": "lw_pla_ultrafoam",
-    "name": "LW-PLA UltraFoam",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "6bb80bf6-df6c-47e8-8c46-3ec0decb4387",
+  "id": "lw_pla_ultrafoam",
+  "name": "LW-PLA UltraFoam",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 50,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2025/09/en_tds_spectrum_lw-pla_ultrafoam.pdf"
 }

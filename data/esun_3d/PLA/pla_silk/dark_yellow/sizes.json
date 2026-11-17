@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "451adf73-2d6d-4dc8-b782-678bb9310f2d",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204102",
+    "article_number": "PLA-SK175D-Y1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-silk"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-dark-yellow"
       }
     ]
   }

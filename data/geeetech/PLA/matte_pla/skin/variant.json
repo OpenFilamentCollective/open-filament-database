@@ -1,9 +1,9 @@
 {
+  "uuid": "6df0ce64-e353-4833-8193-a68565792f69",
   "id": "skin",
   "name": "Skin",
   "color_hex": "#E6BA83",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

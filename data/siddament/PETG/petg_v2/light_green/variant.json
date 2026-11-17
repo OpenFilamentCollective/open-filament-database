@@ -1,0 +1,10 @@
+{
+  "uuid": "6662d5b2-acb6-41c5-a74b-cd8c04674192",
+  "id": "light_green",
+  "name": "Light Green",
+  "color_hex": "#A1FF99",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "358 C"
+  }
+}

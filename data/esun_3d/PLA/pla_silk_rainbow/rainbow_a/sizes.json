@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "289221a1-6bf2-4f59-a232-36064ee7eb3a",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572258150",
+    "article_number": "PLA-SKRB175RB-A1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-silk-rainbow"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-rainbow-multicolor"
       }
     ]
   }

@@ -1,6 +1,18 @@
 [
   {
+    "uuid": "e46632e6-f5db-49c1-8176-c36769ea11de",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6933582309954",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/petg-transparent-red-3"
+      },
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-6kg-bundle-sale-petg-3d-printer-filament-1-75mm-1kg-roll"
+      }
+    ]
   }
 ]

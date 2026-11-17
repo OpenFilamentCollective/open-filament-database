@@ -1,9 +1,9 @@
 {
+  "uuid": "39ca3d38-2ad4-4edb-a99e-f453ce33e483",
   "id": "mint_chip_marble",
   "name": "Mint Chip Marble",
   "color_hex": "#98FBCB",
   "traits": {
-    "industrially_compostable": true,
     "imitates_marble": true
   }
 }

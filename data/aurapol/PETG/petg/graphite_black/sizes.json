@@ -1,6 +1,22 @@
 [
   {
+    "uuid": "6c3506b3-f885-43b9-8fb6-be116b9075ff",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "712221718472",
+    "article_number": "PETG718472"
+  },
+  {
+    "uuid": "013ad53b-b832-4de8-bab0-6d89e170e3b0",
+    "filament_weight": 2500,
+    "diameter": 1.75,
+    "gtin": "731093606700",
+    "article_number": "PETG606700"
+  },
+  {
+    "uuid": "3e880138-c043-49a1-9ffd-87025f4b8b04",
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "gtin": "0739988436623"
   }
 ]

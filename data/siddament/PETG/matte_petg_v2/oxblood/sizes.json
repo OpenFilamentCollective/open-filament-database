@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "e7a668a9-51fc-4f0c-99b4-f5730e54c51d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.058",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-oxblood-petg-v2"
+      }
+    ]
+  }
+]

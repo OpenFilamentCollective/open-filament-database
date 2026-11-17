@@ -1,5 +1,13 @@
 {
-    "id": "summer",
-    "name": "Summer",
-    "color_hex": "#7cd268"
+  "uuid": "cd627ee0-3cdf-4c1d-b73f-ee8a7d18496c",
+  "moved_from": [
+    "15c897cb-628b-4223-9225-e68612a333eb"
+  ],
+  "id": "summer",
+  "name": "Summer",
+  "color_hex": "#7cd268",
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
 }

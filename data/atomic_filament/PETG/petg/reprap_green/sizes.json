@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "6b99cfab-6cdf-46fb-95a5-30c6b058e405",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/reprap-green-petg-pro"
+      }
+    ]
   }
 ]

@@ -1,0 +1,57 @@
+name: UUID continuity
+# `ofd uuid check` (validate_data.yaml) only sees the PR's own tree, so it cannot
+# notice a canonical UUID that disappeared — e.g. an entity deleted and re-created
+# under a new folder, which drops its uuid and every child's (PR #636). This compares
+# the PR against its base: every uuid on the base must still be live, or recorded in
+# some entity's `moved_from`.
+#
+# A genuine deletion with no replacement legitimately loses its uuids; a maintainer
+# accepts that by adding the `uuid-removal-ok` label, which re-runs this check.
+# Separate from validate_data.yaml so label changes don't re-run every validator.
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened, labeled, unlabeled ]
+    paths:
+      - 'data/**'
+      - 'stores/**'
+      - 'schemas/**'
+      - 'ofd/**'
+      - 'requirements.txt'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uuid-continuity-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  uuid_continuity:
+    runs-on: ubuntu-24.04
+    name: Validate data - uuid continuity
+    env:
+      ACCEPTED: ${{ contains(github.event.pull_request.labels.*.name, 'uuid-removal-ok') }}
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+    steps:
+      - name: Accepted by maintainer
+        if: env.ACCEPTED == 'true'
+        run: echo "::notice::'uuid-removal-ok' label set — UUID removals in this PR are accepted."
+      # The default checkout is the PR merge commit, so UUIDs assigned on the base
+      # after the branch was cut are present here too — only real removals differ.
+      - name: Checkout
+        if: env.ACCEPTED != 'true'
+        uses: actions/checkout@v4
+      - name: Fetch base commit
+        if: env.ACCEPTED != 'true'
+        run: git fetch --no-tags --depth=1 origin "$BASE_SHA"
+      - name: Set up Python
+        if: env.ACCEPTED != 'true'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        if: env.ACCEPTED != 'true'
+        run: pip install -r requirements.txt
+      - name: Check no canonical UUID was lost
+        if: env.ACCEPTED != 'true'
+        run: python -m ofd uuid continuity --base "$BASE_SHA"

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "0868a263-3b62-4c7a-a5f9-5d596942e554",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.047",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/blue-abs-v2"
+      }
+    ]
+  }
+]

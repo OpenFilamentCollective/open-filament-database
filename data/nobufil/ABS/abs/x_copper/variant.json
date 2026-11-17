@@ -1,8 +1,10 @@
 {
+  "uuid": "053928bb-42fa-4864-9c38-587ddf4f5632",
   "id": "x_copper",
   "name": "x Copper",
   "color_hex": "#904029",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

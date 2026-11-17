@@ -1,0 +1,13 @@
+{
+  "uuid": "e00a71e1-b176-4ba8-95eb-bea425fbca07",
+  "id": "pastel_yellow",
+  "name": "Pastel Yellow",
+  "color_hex": "#FFFFBA",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "100 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

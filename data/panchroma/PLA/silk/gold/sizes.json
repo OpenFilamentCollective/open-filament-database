@@ -1,11 +1,22 @@
 [
   {
+    "uuid": "6300b931-92b5-4c69-bf1c-f67408cdc1a6",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936715535",
+    "article_number": "CA03006",
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-silk?"
+        "url": "https://us.polymaker.com/products/panchroma-silk"
       }
     ]
   }

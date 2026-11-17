@@ -1,5 +1,13 @@
 {
-    "id": "earth_brown",
-    "name": "Earth Brown",
-    "color_hex": "#7C594A"
+  "uuid": "1b45fb87-216a-49d7-b803-c7083e41399f",
+  "moved_from": [
+    "9cd9575a-8d10-4dbe-a355-2e52a0ce48d9"
+  ],
+  "id": "earth_brown",
+  "name": "Earth Brown",
+  "color_hex": "#7C594A",
+  "transmission_distance": 0.2,
+  "traits": {
+    "matte": true
+  }
 }

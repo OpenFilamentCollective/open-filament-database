@@ -1,0 +1,31 @@
+[
+  {
+    "uuid": "d0625194-b0d0-4695-bcdc-414ba26ed881",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 153,
+    "spool_core_diameter": 100,
+    "gtin": "6932704920701",
+    "article_number": "50.203.0762",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "elegoo",
+        "url": "https://eu.elegoo.com/products/pla-basic-filament-1-75mm-colored-1kg"
+      }
+    ]
+  },
+  {
+    "uuid": "7e2ce4a9-a0b7-4491-9fd4-0d52bac1bc8c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "elegoo",
+        "url": "https://eu.elegoo.com/products/pla-basic-filament-1-75mm-colored-1kg?variant=50531769549076"
+      }
+    ]
+  }
+]

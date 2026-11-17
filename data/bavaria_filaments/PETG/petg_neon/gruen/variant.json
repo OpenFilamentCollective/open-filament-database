@@ -1,0 +1,12 @@
+{
+  "uuid": "1d4edb01-c286-4e3a-bbbe-1eea2fb68bbb",
+  "id": "gruen",
+  "name": "Grün",
+  "color_hex": "#00B72C",
+  "color_standards": {
+    "ral": "6038"
+  },
+  "traits": {
+    "neon": true
+  }
+}

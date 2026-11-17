@@ -1,9 +1,10 @@
 {
+  "uuid": "9456ec6d-cc05-4646-ac01-18050a333fd5",
   "id": "lw_natural",
   "name": "LW Natural",
   "color_hex": "#DFDFD3",
   "traits": {
-    "foaming": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "foaming": true
   }
 }

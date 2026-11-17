@@ -1,9 +1,9 @@
 {
+  "uuid": "98d9805e-43bd-4f48-948d-b83e7a12d914",
   "id": "mint",
   "name": "Mint",
   "color_hex": "#ADEBB3",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

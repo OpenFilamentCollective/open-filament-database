@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "a252f751-e474-4720-90e0-ede7dbc50d4e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461402",
+    "article_number": "PETG-F-301-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-cf-dark-burgundy"
+      }
+    ]
   }
 ]

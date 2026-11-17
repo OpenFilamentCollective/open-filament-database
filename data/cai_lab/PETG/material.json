@@ -1,0 +1,11 @@
+{
+  "uuid": "75f1b834-e266-44fd-8292-676b23169055",
+  "material": "PETG",
+  "material_class": "FFF",
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 80,
+      "nozzle_temp": 250
+    }
+  }
+}

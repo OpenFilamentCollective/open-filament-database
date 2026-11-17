@@ -1,13 +1,29 @@
 [
   {
+    "uuid": "abfeb141-1950-4801-9248-fd307e360f9f",
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "spool_refill": true,
-    "gtin": "921072925238",
+    "container_material": "refill",
+    "article_number": "40300",
+    "barcode_identifier": "921072925238",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=42512931750024"
+      }
+    ]
+  },
+  {
+    "uuid": "ff213834-171a-4806-afbe-1d8bef405e7d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6975337032168",
+    "article_number": "40300",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/abs-orange-7"
       }
     ]
   }

@@ -48,6 +48,9 @@ class DataCrawler:
         # Crawl main data directory (brands/materials/products/variants)
         self._crawl_data_directory()
 
+        # Needs every brand crawled, since a parent can sort after its sub-brands
+        self._resolve_parent_brands()
+
         # Print summary
         print("\nCrawl complete!")
         print(f"  Brands: {len(self.db.brands)}")
@@ -101,8 +104,11 @@ class DataCrawler:
         store = {
             **data,
             "id": store_id,
+            # Canonical UUID stored in source JSON, independent of slug/id. None
+            # when unassigned (stripped on export); assigned by CI on merge.
+            "uuid": data.get("uuid") or None,
             "name": data.get("name", store_dir.name),
-            "slug": slugify(data.get("name", store_dir.name)),
+            "slug": slugify(data.get("id", store_dir.name)),
             "directory_name": store_dir.name,  # internal, stripped on export
             "storefront_url": data.get("storefront_url", ""),
             "logo": data.get("logo", ""),
@@ -148,16 +154,27 @@ class DataCrawler:
         # Create brand
         brand_id = generate_brand_id(brand_name)
 
+        website = brand_data.get("website", "")
+        websites = website if isinstance(website, list) else [website] if website else []
         brand = {
             **brand_data,
             "id": brand_id,
+            "uuid": brand_data.get("uuid") or None,
             "name": brand_data.get("name", brand_name),
-            "slug": slugify(brand_name),
+            # Slug must match the on-disk directory so cloud paths round-trip back
+            # to the repo (PR building maps brands/<slug> -> data/<slug>/). Mirror
+            # the store convention: derive from the source id, falling back to the
+            # directory name — NOT from brand_id, which is a generated UUID.
+            "slug": slugify(brand_data.get("id", brand_name)),
             "directory_name": brand_name,  # internal, stripped on export
-            "website": brand_data.get("website", ""),
+            # website stays the main site for existing consumers; the full list goes in
+            # websites, the same way color_hex and color_hexes work.
+            "website": websites[0] if websites else "",
             "logo": brand_data.get("logo", ""),
             "origin": brand_data.get("origin", "Unknown"),
         }
+        if len(websites) > 1:
+            brand["websites"] = websites
 
         self.db.brands.append(brand)
         self._brand_cache[brand_name] = brand_id
@@ -170,6 +187,30 @@ class DataCrawler:
                 continue
 
             self._process_material_directory(material_dir, brand_id)
+
+    def _resolve_parent_brands(self):
+        """Add ``parent_brand_id``: the generated id of the brand ``parent_brand`` names.
+
+        ``parent_brand`` holds the parent's source id (its directory name), while brand
+        ``id`` in the built database is a generated UUID, so consumers join on this.
+        """
+        ids_by_name = {b["directory_name"]: b["id"] for b in self.db.brands}
+        for brand in self.db.brands:
+            parent = brand.get("parent_brand")
+            if not parent:
+                continue
+            brand_json = self.data_dir / brand["directory_name"] / "brand.json"
+            parent_id = ids_by_name.get(parent)
+            if parent_id is None:
+                self._result.add_warning(
+                    "Invalid Reference", f"parent_brand '{parent}' is not a known brand", brand_json
+                )
+            elif parent_id == brand["id"]:
+                self._result.add_warning(
+                    "Invalid Reference", "parent_brand names the brand itself", brand_json
+                )
+            else:
+                brand["parent_brand_id"] = parent_id
 
     def _process_material_directory(self, material_dir: Path, brand_id: str):
         """Process a material directory under a brand."""
@@ -194,9 +235,10 @@ class DataCrawler:
             material = {
                 **material_data,
                 "id": material_id,
+                "uuid": material_data.get("uuid") or None,
                 "brand_id": brand_id,
                 "material": material_data.get("material", material_name),
-                "slug": slugify(material_name),
+                "slug": material_data.get("material", material_name),
                 "material_class": material_data.get("material_class", "FFF"),
             }
 
@@ -229,18 +271,22 @@ class DataCrawler:
             self._result.add_warning("JSON Parse", f"Failed to parse: {e}", filament_json)
             return
 
-        # Generate filament ID using OFD standard algorithm
+        # Use source "id" for UUID generation (matches directory name, preserves UUIDs)
+        filament_source_id = filament_data.get("id", filament_dir.name)
         filament_name = filament_data.get("name", filament_dir.name)
-        filament_id = generate_filament_id(brand_id, material_id, filament_name)
+
+        # Generate filament ID using OFD standard algorithm
+        filament_id = generate_filament_id(brand_id, material_id, filament_source_id)
 
         # All source fields pass through via **filament_data
         filament = {
             **filament_data,
             "id": filament_id,
+            "uuid": filament_data.get("uuid") or None,
             "brand_id": brand_id,
             "material_id": material_id,
             "name": filament_name,
-            "slug": slugify(filament_name),
+            "slug": slugify(filament_source_id),
             "material": material_name,
             "density": filament_data.get("density", 1.24),
             "diameter_tolerance": filament_data.get("diameter_tolerance", 0.02),
@@ -284,8 +330,12 @@ class DataCrawler:
         color_hex_raw = variant_data.get("color_hex", "#000000")
         if isinstance(color_hex_raw, list):
             color_hex = normalize_color_hex(color_hex_raw[0]) if color_hex_raw else "#000000"
+            # color_hex stays the first colour for existing consumers; the full
+            # ordered list is kept separately when there really are several.
+            color_hexes = [n for n in map(normalize_color_hex, color_hex_raw) if n]
         else:
             color_hex = normalize_color_hex(color_hex_raw) or "#000000"
+            color_hexes = []
 
         # Normalize hex variants if present
         hex_variants = variant_data.get("hex_variants")
@@ -296,6 +346,7 @@ class DataCrawler:
         variant = {
             **variant_data,
             "id": variant_id,
+            "uuid": variant_data.get("uuid") or None,
             "filament_id": filament_id,
             "slug": slugify(variant_source_id),
             "name": color_name,
@@ -304,6 +355,8 @@ class DataCrawler:
         }
         if hex_variants:
             variant["hex_variants"] = hex_variants
+        if len(color_hexes) > 1:
+            variant["color_hexes"] = color_hexes
 
         self.db.variants.append(variant)
 
@@ -353,6 +406,7 @@ class DataCrawler:
         size = {
             **size_entry,
             "id": size_id,
+            "uuid": size_entry.get("uuid") or None,
             "variant_id": variant_id,
             "filament_weight": int(weight),
             "diameter": float(diameter),
@@ -368,11 +422,20 @@ class DataCrawler:
         self.db.sizes.append(size)
 
         # Process purchase links
+        is_refill = bool(
+            size_entry.get("spool_refill") or size_entry.get("container_material") == "refill"
+        )
         for pl_idx, pl_entry in enumerate(purchase_links_data):
-            self._create_purchase_link(pl_entry, size_id, index, pl_idx, sizes_json)
+            self._create_purchase_link(pl_entry, size_id, index, pl_idx, sizes_json, is_refill)
 
     def _create_purchase_link(
-        self, pl_entry: dict, size_id: str, size_index: int, link_index: int, sizes_json: Path
+        self,
+        pl_entry: dict,
+        size_id: str,
+        size_index: int,
+        link_index: int,
+        sizes_json: Path,
+        is_refill: bool = False,
     ):
         """Create a purchase link entity."""
         original_store_id = pl_entry.get("store_id")
@@ -405,7 +468,7 @@ class DataCrawler:
             "size_id": size_id,
             "store_id": store_uuid,
             "url": url,
-            "spool_refill": pl_entry.get("spool_refill", False),
+            "spool_refill": is_refill or pl_entry.get("spool_refill", False),
         }
         # Normalize ships_from/ships_to if present
         if purchase_link.get("ships_from"):

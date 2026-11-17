@@ -1,7 +1,10 @@
 [
   {
+    "uuid": "525e3c7d-7999-44c7-a155-743f02869bff",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
     "ean": "5905991405948",
     "article_number": "TF-24041",
     "purchase_links": [
@@ -12,8 +15,13 @@
     ]
   },
   {
+    "uuid": "5dfcc9d1-ed46-4178-84fd-52091f82b4ef",
+    "moved_from": [
+      "56235a5e-420a-42ea-8d99-347d57b8739b"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "plastic",
     "ean": "5905991405078",
     "article_number": "TF-24000",
     "purchase_links": [
@@ -22,5 +30,19 @@
         "url": "https://shop.spectrumfilaments.com/product-eng-2577-The-Filament-PLA-1-75mm-MIDNIGHT-BLACK-1kg.html"
       }
     ]
+  },
+  {
+    "uuid": "a9424ed7-73dc-4a77-8ecb-eed1ac2af2a4",
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "container_material": "plastic",
+    "gtin": "5907138400908"
+  },
+  {
+    "uuid": "dc572f29-3f58-4ebb-84e5-a05fe5d05f34",
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "container_material": "plastic",
+    "gtin": "5907138400960"
   }
 ]

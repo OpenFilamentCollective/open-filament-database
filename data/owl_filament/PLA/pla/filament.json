@@ -1,0 +1,15 @@
+{
+  "uuid": "c637467d-0640-4228-a8bc-42223a91b39e",
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 200,
+  "max_print_temperature": 215,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "min_print_speed": 50,
+  "max_print_speed": 60,
+  "data_sheet_url": "https://owl-filament.de/info/temperatur-und-druckprofile.html",
+  "discontinued": false
+}

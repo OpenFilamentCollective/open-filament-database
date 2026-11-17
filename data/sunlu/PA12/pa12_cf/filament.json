@@ -1,6 +1,12 @@
 {
-    "id": "pa12_cf",
-    "name": "PA12-CF",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "770096df-07b1-46f8-90a4-b1645c7a9ad9",
+  "id": "pa12_cf",
+  "name": "PA12-CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.08,
+  "min_print_temperature": 260,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/93d827f4-50e9-45b4-8b24-bf5ddaf8273f.pdf?filename=TDS"
 }

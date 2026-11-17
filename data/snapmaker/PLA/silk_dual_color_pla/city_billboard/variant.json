@@ -1,0 +1,13 @@
+{
+  "uuid": "e07d602b-fa6d-46d9-9ffb-3bdfcffbfb60",
+  "id": "city_billboard",
+  "name": "City Billboard",
+  "color_hex": [
+    "#CBF914",
+    "#D623AA"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

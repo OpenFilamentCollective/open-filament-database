@@ -1,6 +1,7 @@
 {
-    "id": "pla+_military",
-    "name": "PLA+ Military",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "75ae1c63-30f1-432a-9084-1831a8476d87",
+  "id": "pla+_military",
+  "name": "PLA+ Military",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

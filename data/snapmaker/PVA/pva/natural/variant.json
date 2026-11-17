@@ -1,0 +1,9 @@
+{
+  "uuid": "f6221f43-392e-4716-b8ed-924dcf26a96a",
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#F5F0DC",
+  "traits": {
+    "water_soluble": true
+  }
+}

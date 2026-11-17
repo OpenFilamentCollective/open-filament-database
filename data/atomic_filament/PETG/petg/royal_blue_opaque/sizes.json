@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "2108a82e-1d79-48e7-bfe1-3ed84f665d83",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/royal-blue-petg-pro"
+      }
+    ]
   }
 ]

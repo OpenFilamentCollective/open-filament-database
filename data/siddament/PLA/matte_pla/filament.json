@@ -1,0 +1,35 @@
+{
+  "uuid": "c7db18e1-312e-442d-9627-5bb5ff075802",
+  "moved_from": [
+    "937c1b4a-9f60-48b3-8ffd-37f11d84e326"
+  ],
+  "id": "matte_pla",
+  "name": "Matte PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 45,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_PLA_Datasheet_a648ea82-cfd4-4a84-b071-e15356a46dbf.pdf?v=1777571417",
+  "discontinued": false,
+  "slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Siddament Matte PLA (all versions)"
+    },
+    "orcaslicer": {
+      "overrides": {
+        "filament_flow_ratio": 0.95,
+        "filament_max_volumetric_speed": 22
+      },
+      "profile_name": "Siddament Matte PLA (all versions)"
+    },
+    "generic": {
+      "bed_temp": 60,
+      "first_layer_bed_temp": 60,
+      "first_layer_nozzle_temp": 220,
+      "nozzle_temp": 220
+    }
+  }
+}

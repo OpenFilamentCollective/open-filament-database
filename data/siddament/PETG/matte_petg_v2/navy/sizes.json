@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "dde138c6-4b20-4565-842e-e8b0116409e3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.071",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-navy-petg-v2"
+      }
+    ]
+  }
+]

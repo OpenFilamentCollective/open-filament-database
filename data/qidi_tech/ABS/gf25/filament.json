@@ -1,10 +1,11 @@
 {
+  "uuid": "7ed11a1d-24b1-40d3-85d1-cb9637918210",
   "id": "gf25",
   "name": "ABS-GF25",
   "diameter_tolerance": 0.02,
-  "density": 1.3,
-  "min_print_temperature": 240,
-  "max_print_temperature": 280,
+  "density": 1.15,
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
   "min_bed_temperature": 100,
   "max_bed_temperature": 110
 }

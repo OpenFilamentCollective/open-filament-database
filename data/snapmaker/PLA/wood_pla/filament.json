@@ -1,0 +1,14 @@
+{
+  "uuid": "5a8d393b-ab60-4d2f-9663-fdc9652226f1",
+  "id": "wood_pla",
+  "name": "Wood PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.17,
+  "min_print_temperature": 195,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 65,
+  "min_chamber_temperature": 25,
+  "max_chamber_temperature": 45,
+  "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+Wood+PLA+Technical+Data+Sheet+V1.0.0.pdf"
+}

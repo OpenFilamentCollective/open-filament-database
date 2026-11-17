@@ -1,13 +1,26 @@
 {
+  "uuid": "5a3f3dc8-3fe5-45c0-9692-d9df8c24c983",
   "id": "reform_r_pet",
   "name": "ReForm - rPET",
   "diameter_tolerance": 0.02,
-  "density": 1.23,
+  "density": 1.27,
   "min_print_temperature": 230,
   "max_print_temperature": 255,
   "min_bed_temperature": 60,
   "max_bed_temperature": 80,
   "data_sheet_url": "https://www.formfutura.com/web/content/256630?download=true",
   "safety_sheet_url": "https://www.formfutura.com/web/content/256629?download=true",
-  "discontinued": false
+  "discontinued": false,
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "FormFutura rPET filament is made up entirely from recycled post-industrial PETG content sourced from the waste streams that arise during the extrusion or our HDglass filaments.",
+      "retrieved": "2026-11-03",
+      "notes": "Page says 'made up entirely from recycled' but gives no percentage, so pct is null."
+    }
+  }
 }

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "89ec761c-0427-445f-a86f-270328d4f700",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8718924475829",
     "article_number": "EWOD-175PINE-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "40b1c971-f1cf-4745-9994-2364d7a7fc69",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477922",
     "article_number": "EWOD-175PINE-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "5f5ad95d-7296-4b85-8751-67f2f7d6b1dc",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720629063300",
     "article_number": "EWOD-175PINE-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "c5a797de-9169-43e7-9c23-d6a862dd5486",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720629063317",
     "article_number": "EWOD-175PINE-08000",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +64,12 @@
     ]
   },
   {
+    "uuid": "dad4aa77-5a00-4079-a6a3-ff6671b1104a",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477939",
     "article_number": "EWOD-285PINE-02300",
     "discontinued": false,
     "purchase_links": [

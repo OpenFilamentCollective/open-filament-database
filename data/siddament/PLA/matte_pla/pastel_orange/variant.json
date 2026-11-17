@@ -1,0 +1,13 @@
+{
+  "uuid": "f2511214-9c93-4b3f-a2ae-696069867620",
+  "id": "pastel_orange",
+  "name": "Pastel Orange",
+  "color_hex": "#FFDFBA",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "100 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

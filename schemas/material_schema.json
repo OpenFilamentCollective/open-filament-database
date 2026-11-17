@@ -68,6 +68,15 @@
                 "elegooslicer": {
                     "$ref": "#/definitions/specific_slicer_settings"
                 },
+                "crealityprint": {
+                    "$ref": "#/definitions/specific_slicer_settings"
+                },
+                "anycubicslicer": {
+                    "$ref": "#/definitions/specific_slicer_settings"
+                },
+                "kirimoto": {
+                    "$ref": "#/definitions/specific_slicer_settings"
+                },
                 "generic": {
                     "type": "object",
                     "description": "Generic options that will automatically be mapped to the correct config definition for each slicer. Slicer specific settings are applied first, then these are applied on top",
@@ -91,6 +100,23 @@
         }
     },
     "properties": {
+        "uuid": {
+            "type": "string",
+            "title": "UUID",
+            "description": "Canonical UUID (UUIDv4), assigned automatically by CI on merge. Leave empty when creating.",
+            "readOnly": true,
+            "pattern": "^$|^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "moved_from": {
+            "type": "array",
+            "title": "Moved From",
+            "description": "Former canonical UUIDv4(s) this entity previously had (before a merge or move). Lets old UUID references resolve here. Managed by tooling/CI — leave empty when creating.",
+            "readOnly": true,
+            "items": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+        },
         "material": {
             "title": "Material Type",
             "description": "The type of material (e.g., PLA, PETG, ABS). This determines the base properties and recommended settings.",
@@ -99,9 +125,12 @@
         "material_class": {
             "type": "string",
             "title": "Material Class",
-            "enum": ["FFF", "SLA"],
+            "enum": [
+                "FFF",
+                "SLA"
+            ],
             "default": "FFF",
-            "description": "The manufacturing process class. FFF (Fused Filament Fabrication) for standard filament printing, SLA for resin-based printing."
+            "description": "FFF (Fused Filament Fabrication) for standard filament printing, SLA (Stereolithography) for resin-based printing. Leave as FFF if you're unsure."
         },
         "default_max_dry_temperature": {
             "type": "integer",

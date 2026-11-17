@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "3b640d36-467d-4c7c-8107-c1bd7ba8e3e1",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572216358",
+    "article_number": "PLA-Basic175O-BG1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-basic-beige-1"
       }
     ]
   }

@@ -1,5 +1,12 @@
 {
-    "id": "yellow",
-    "name": "Yellow",
-    "color_hex": "#fbec07"
+  "uuid": "68e138c2-579c-4e13-b8fe-dcde0947739c",
+  "moved_from": [
+    "91653779-d1c2-4136-9ed4-f5182192021f"
+  ],
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#fbec07",
+  "traits": {
+    "high_flow": true
+  }
 }

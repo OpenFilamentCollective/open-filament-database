@@ -1,12 +1,13 @@
 [
-    {
-      "filament_weight": 1000,
-      "diameter": 1.75,
-      "purchase_links": [
-        {
-          "store_id": "overture3d",
-          "url": "https://overture3d.com/collections/all/products/overture-asa-filament-1-75mm"
-        }
-      ]
-    }
-  ]
+  {
+    "uuid": "65d6d4be-8f9d-4474-9d7e-8dafcf98ed81",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "overture3d",
+        "url": "https://overture3d.com/collections/all/products/overture-asa-filament-1-75mm"
+      }
+    ]
+  }
+]

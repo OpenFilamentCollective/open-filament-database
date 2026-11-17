@@ -1,13 +1,17 @@
 [
-    {
-        "filament_weight": 1000.0,
-        "diameter": 1.75,
-        "spool_refill": true,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939518600"
-            }
-        ]
-    }
+  {
+    "uuid": "b6ae8c6d-341a-45be-b39c-5d69d8e155ee",
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "article_number": "33500",
+    "discontinued": true,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/petg/products/petg-hf?variant=42735939518600"
+      }
+    ]
+  }
 ]

@@ -13,6 +13,11 @@ Commands:
     build       - Build database exports (JSON, SQLite, CSV, API)
     serve       - Start development server with CORS
     script      - Run utility scripts (style_data, etc.)
+    uuid        - Manage canonical UUIDs (new, assign, find, check, list)
+    claims      - Brand claims: representative sign-off (validate, check)
+    review      - Automated review of a data pull request
+    enrich      - Research and fill missing data for existing brands
+    automerge   - Proof-based auto-merge for data PRs
 
 Examples:
     uv run -m ofd validate                    # Run all validations
@@ -34,7 +39,18 @@ import argcomplete
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from ofd.commands import build, script, serve, validate, webui  # noqa: E402
+from ofd.commands import (  # noqa: E402
+    automerge,
+    build,
+    claims,
+    enrich,
+    review,
+    script,
+    serve,
+    uuid,
+    validate,
+    webui,
+)
 
 
 class CommandHelpFormatter(argparse.RawDescriptionHelpFormatter):
@@ -70,6 +86,11 @@ Command Details:
   serve      [-d DIR] [-p PORT] [--host HOST]
   script     [--list] <script_name> [script_args...]
   webui      [-p PORT] [--host HOST] [--open] [--install]
+  uuid       <new|assign|find|check|list> [options]
+  claims     <validate|check> [options]
+  review     <run|post> [options]
+  enrich     <run|gaps> --brand ID [options]
+  automerge  <evaluate|sweep> [options]
 
 Examples:
   ofd validate                     Run all data validations
@@ -82,6 +103,9 @@ Examples:
   ofd script style_data --dry-run  Preview sorting changes
   ofd webui                        Start the WebUI on port 5173
   ofd webui --open                 Start WebUI and open browser
+  ofd uuid new                     Print a fresh canonical UUID
+  ofd uuid assign                  Assign UUIDs to entities missing one
+  ofd uuid find <uuid>             Find the file for a canonical UUID
         """,
     )
 
@@ -97,6 +121,11 @@ Examples:
     serve.register_subcommand(subparsers)
     script.register_subcommand(subparsers)
     webui.register_subcommand(subparsers)
+    uuid.register_subcommand(subparsers)
+    claims.register_subcommand(subparsers)
+    review.register_subcommand(subparsers)
+    enrich.register_subcommand(subparsers)
+    automerge.register_subcommand(subparsers)
 
     return parser
 

@@ -1,0 +1,10 @@
+{
+  "uuid": "d6f6d5a0-d4f7-4425-8850-e8ad4a499655",
+  "id": "sandy",
+  "name": "Sandy",
+  "color_hex": "#BF9474",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "4655 C"
+  }
+}

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "373a1695-2630-45f2-a8d6-95bd47f73714",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847053336",
     "article_number": "PTGE-175TRNS-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,13 @@
     ]
   },
   {
+    "uuid": "8c90de64-5c61-4601-95d3-a13fa89c8c1c",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629068442",
     "article_number": "PTGE-175TRNS-B1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,12 @@
     ]
   },
   {
+    "uuid": "ecfda6f4-af2b-4cf1-9ad8-07dd91bb17ca",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847053671",
     "article_number": "PTGE-175TRNS-02300",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +49,12 @@
     ]
   },
   {
+    "uuid": "ce4cfa17-ad84-4b35-a773-f37b762ae7a3",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847054012",
     "article_number": "PTGE-175TRNS-04500",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +65,12 @@
     ]
   },
   {
+    "uuid": "27d64b09-1d41-4eb4-90c8-07f77ea58197",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847054357",
     "article_number": "PTGE-175TRNS-08000",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +81,12 @@
     ]
   },
   {
+    "uuid": "a0b2cec6-61e9-4469-a213-828abd00deba",
     "filament_weight": 1000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847057730",
     "article_number": "PTGE-285TRNS-01000",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +97,12 @@
     ]
   },
   {
+    "uuid": "db3b38ef-634a-4e19-9783-3bfb12579194",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847058072",
     "article_number": "PTGE-285TRNS-02300",
     "discontinued": false,
     "purchase_links": [
@@ -98,10 +113,12 @@
     ]
   },
   {
+    "uuid": "ab5b3bd4-afa8-4575-88ae-7a6bb48af9e8",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847058416",
     "article_number": "PTGE-285TRNS-04500",
     "discontinued": false,
     "purchase_links": [
@@ -112,10 +129,12 @@
     ]
   },
   {
+    "uuid": "50de18c7-36cf-42b2-8c20-ef1892bfe9b7",
     "filament_weight": 8000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847058751",
     "article_number": "PTGE-285TRNS-08000",
     "discontinued": false,
     "purchase_links": [
@@ -124,5 +143,19 @@
         "url": "https://www.formfutura.com/easyfil-epetg"
       }
     ]
+  },
+  {
+    "uuid": "da8aaa02-cdf3-4360-87e6-81a6ca271e29",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720847052995",
+    "article_number": "PTGE-175TRNS-00250"
+  },
+  {
+    "uuid": "fb4fd199-3c84-4d9f-b504-3527c31761a1",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720847057396",
+    "article_number": "PTGE-285TRNS-00250"
   }
 ]

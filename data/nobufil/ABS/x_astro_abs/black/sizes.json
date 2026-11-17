@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "b41304cf-a595-4b23-ab37-2cdd3b53f359",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460399",
+    "article_number": "ABS-B-901-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-astro-black"
+      }
+    ]
   }
 ]

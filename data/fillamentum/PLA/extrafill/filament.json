@@ -1,4 +1,5 @@
 {
+  "uuid": "a79b207b-98d6-415e-98ed-969a62378aea",
   "id": "extrafill",
   "name": "PLA Extrafill",
   "diameter_tolerance": 0.05,
@@ -8,5 +9,16 @@
   "min_bed_temperature": 50,
   "max_bed_temperature": 60,
   "data_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_PLA-Extrafill_03012019.pdf",
-  "safety_sheet_url": "http://www.fillamentum.com/wp-content/uploads/2020/10/MSDS_PLA-Extrafill_EN_07012019.pdf"
+  "sustainability": {
+    "bio_based_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://shop.fillamentum.com/collections/pla-extrafill-filament/products/pla-extrafill-traffic-black-1kg",
+      "source_quote": "Made of natural ingredients (100% bio-based)",
+      "retrieved": "2026-11-03",
+      "notes": "Brand marketing declaration on the PLA Extrafill product page; no test method (ASTM D6866 / EN 16785) named."
+    }
+  }
 }

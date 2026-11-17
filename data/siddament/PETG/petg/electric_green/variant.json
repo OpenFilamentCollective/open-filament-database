@@ -1,0 +1,10 @@
+{
+  "uuid": "bb30d108-8970-4be2-bd49-4f4b6feb7919",
+  "id": "electric_green",
+  "name": "Electric Green",
+  "color_hex": "#33FF00",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "802 C"
+  }
+}

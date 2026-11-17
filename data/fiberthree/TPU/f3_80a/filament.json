@@ -1,10 +1,14 @@
 {
+  "uuid": "ff990e86-39f1-4826-8919-15197d8e94d7",
   "id": "f3_80a",
   "name": "TPU F3 80A",
   "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
+  "density": 1.09,
+  "shore_hardness_a": 80,
+  "shore_hardness_d": 37,
+  "min_print_temperature": 220,
   "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 0,
+  "data_sheet_url": "http://fiberthree.com/downloads/tdb/filaments/TDS_F3_TPU_80A_English_vers_12_2024.pdf"
 }

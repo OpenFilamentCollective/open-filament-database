@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "c4a1accd-724e-48fc-ba7d-737aa61ffbfc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.071",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-cement-petg-v2"
+      }
+    ]
+  }
+]

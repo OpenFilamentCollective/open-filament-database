@@ -1,5 +1,9 @@
 {
+  "uuid": "949364b7-d197-41ff-aa31-047d779b0459",
   "id": "footwearology_edition_azure",
   "name": "Footwearology Edition Azure",
-  "color_hex": "#C4CFC8"
+  "color_hex": "#C4CFC8",
+  "traits": {
+    "foaming": true
+  }
 }

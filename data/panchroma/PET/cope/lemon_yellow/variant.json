@@ -1,5 +1,10 @@
 {
-    "id": "lemon_yellow",
-    "name": "Lemon Yellow",
-    "color_hex": "#EED231"
+  "uuid": "2a59c74a-538d-43c4-bb3a-86e7763b444d",
+  "moved_from": [
+    "6a90863c-1f40-4ec3-9688-aca228cf968a"
+  ],
+  "id": "lemon_yellow",
+  "name": "Lemon Yellow",
+  "color_hex": "#EED231",
+  "transmission_distance": 4.6
 }

@@ -1,0 +1,14 @@
+{
+  "uuid": "e5e4b55f-a4eb-4b9f-a01f-75c4672ab59f",
+  "id": "coral",
+  "name": "Coral",
+  "color_hex": "#FF6F5E",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "178 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

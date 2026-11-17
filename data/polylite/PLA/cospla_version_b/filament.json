@@ -1,6 +1,15 @@
 {
-    "id": "cospla_version_b",
-    "name": "CosPLA Version B",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "5cc4f567-66dd-42aa-afcc-39edc5274165",
+  "id": "cospla_version_b",
+  "name": "CosPLA Version B",
+  "diameter_tolerance": 0.02,
+  "density": 1.22,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/cospla_A_and_B_TDS_5.4.pdf"
 }

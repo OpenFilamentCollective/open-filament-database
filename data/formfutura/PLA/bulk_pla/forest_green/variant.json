@@ -1,9 +1,7 @@
 {
+  "uuid": "b6a1a025-f9ad-453d-b37e-af594912a44b",
   "id": "forest_green",
   "name": "Forest Green",
   "color_hex": "#167E1D",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

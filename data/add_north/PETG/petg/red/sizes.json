@@ -1,13 +1,21 @@
 [
   {
+    "uuid": "3a8c70d5-12d4-44f2-87d0-b58c6a30cab4",
     "filament_weight": 750,
     "diameter": 1.75,
     "empty_spool_weight": 207,
-    "spool_core_diameter": 53,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "a89e98cc-cf7a-4186-b5a9-1e5316d63fc4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182903847",
+    "article_number": "ANPE14RED",
     "purchase_links": [
       {
         "store_id": "add_north",
-        "url": "https://addnorth.com/product/PETG/PETG%20-%201.75mm%20-%20750g%20-%20Red"
+        "url": "https://addnorth.com/product/PETG/PETG%20-%201.75mm%20-%201000g%20-%20Red"
       }
     ]
   }

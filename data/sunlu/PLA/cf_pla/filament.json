@@ -1,10 +1,12 @@
 {
+  "uuid": "b6ecdebc-448d-4b0c-b1a7-99474621449d",
   "id": "cf_pla",
   "name": "PLA CF",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "density": 1.23,
+  "min_print_temperature": 215,
+  "max_print_temperature": 245,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/75a39c51-7d4c-40c4-839d-58f88cbbbf94.pdf?filename=TDS"
 }

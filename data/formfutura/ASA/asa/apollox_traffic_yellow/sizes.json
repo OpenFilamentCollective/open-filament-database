@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "b7b9c72e-1b3e-4eb5-906f-b4ab30a8da6f",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847060587",
     "article_number": "APOX-175TYLW-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "65697d41-b2e7-40e3-8af1-0f8a1d0c532b",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847060686",
     "article_number": "APOX-285TYLW-00750",
     "discontinued": false,
     "purchase_links": [

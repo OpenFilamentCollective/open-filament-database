@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "11300af2-8189-4d61-9adb-c114fafe5592",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847053060",
     "article_number": "PTGE-175LIVO-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "4440d63e-c232-4e62-8bc8-25891aead515",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847053404",
     "article_number": "PTGE-175LIVO-02300",
     "discontinued": false,
     "purchase_links": [

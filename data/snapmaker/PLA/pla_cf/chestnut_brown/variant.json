@@ -1,0 +1,11 @@
+{
+  "uuid": "a6e4834d-2cfd-40b9-8652-6d64988e89fa",
+  "id": "chestnut_brown",
+  "name": "Chestnut Brown",
+  "color_hex": "#9B7C56",
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

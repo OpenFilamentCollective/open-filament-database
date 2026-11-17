@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "b982462c-ad8c-424b-a46c-947c3ed80638",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/perfect-purple-pla-filament"
+      }
+    ]
   }
 ]

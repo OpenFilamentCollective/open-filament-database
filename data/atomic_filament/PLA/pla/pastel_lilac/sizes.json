@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "84c6598a-deec-4cfe-ab02-0e17768bf03a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/pastel-lilac-pla-filament"
+      }
+    ]
   }
 ]

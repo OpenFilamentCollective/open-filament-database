@@ -1,9 +1,9 @@
 {
+  "uuid": "bdaf0f63-2839-4c68-b063-50f7645ea67d",
   "id": "burgundy",
   "name": "Burgundy",
   "color_hex": "#833F4D",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

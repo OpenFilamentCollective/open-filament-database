@@ -1,6 +1,32 @@
 {
+    "uuid": "d39da8c2-70bd-43c6-bd18-1c35931c426b",
     "id": "pla",
     "name": "PLA",
     "diameter_tolerance": 0.02,
-    "density": 1.23
+    "density": 1.23,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 30,
+    "max_bed_temperature": 60,
+    "dry_temperature": 55,
+    "dry_time": 6,
+    "enclosure": "not_needed",
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/PolySonic_PLA_TDS_EN_V5.4.pdf",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OF66KUAN",
+            "profile_name": "PolySonic PLA"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "P1004",
+            "profile_name": "PolySonic PLA"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "P1004",
+            "profile_name": "PolySonic PLA"
+        }
+    }
 }

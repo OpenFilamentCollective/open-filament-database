@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a85e609e-a417-4aa5-95db-593b724bfc02",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "5.078",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-radiant-violet-pla"
+      }
+    ]
+  }
+]

@@ -1,10 +1,10 @@
 {
+  "uuid": "86ef8aa8-28e6-484f-b657-c9a17299a752",
   "id": "champagne",
   "name": "Champagne",
   "color_hex": "#DAC7A0",
   "traits": {
-    "industrially_compostable": true,
-    "contains_wood": true,
-    "imitates_wood": true
+    "imitates_wood": true,
+    "contains_wood": true
   }
 }

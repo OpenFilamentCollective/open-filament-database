@@ -1,6 +1,23 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "e63acb4e-7c07-4e3d-ace3-6bf84e252fb1",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720629062020",
+    "article_number": "HPPL-175NTRL-00250"
+  },
+  {
+    "uuid": "6cab50e0-c7fd-47bd-b3c8-6d97cecdf43c",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8720629061788",
+    "article_number": "HPPL-175NTRL-00750"
+  },
+  {
+    "uuid": "8a6ab649-eabc-44cd-8476-8a7cacea6481",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "gtin": "8720629061900",
+    "article_number": "HPPL-285NTRL-00750"
   }
 ]

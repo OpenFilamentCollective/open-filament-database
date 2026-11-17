@@ -1,12 +1,18 @@
 {
+    "uuid": "9efb9267-732d-442b-9dae-27f6cfa2e8a1",
     "id": "petg_cf",
     "name": "PETG-CF",
     "diameter_tolerance": 0.03,
     "density": 1.25,
+    "min_print_temperature": 230,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 75,
+    "max_bed_temperature": 80,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-PETG-CF-TDS.pdf?v=1747274371",
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "EFL43",
+            "generic_id": "OFYPdQJh",
+            "id": "OFNstOna",
             "profile_name": "Eryone PETG-CF"
         },
         "elegooslicer": {

@@ -1,8 +1,14 @@
 {
+    "uuid": "9e8b96ef-5ee9-4f41-b665-cfbf1303f682",
     "id": "petg_v0",
     "name": "PETG V0",
     "diameter_tolerance": 0.02,
     "density": 1.27,
+    "min_print_temperature": 220,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 90,
+    "data_sheet_url": "https://prusament.com/wp-content/uploads/2023/07/PETG_V0_ENG.pdf",
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Prusament PETG V0"

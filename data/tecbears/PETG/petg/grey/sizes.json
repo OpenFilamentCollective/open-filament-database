@@ -1,13 +1,14 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "article_number": "B0FGTSNC9S",
-        "purchase_links": [
-            {
-                "store_id": "tecbears",
-                "url": "https://www.amazon.ca/TECBEARS-Filament-Transparent-Toughness-Dimensional/dp/B0FGTSNC9S?th=1"
-            }
-        ]
-    }
+  {
+    "uuid": "e6192f23-d4ea-4e8c-b654-7269860e1e0e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "B0FGTSNC9S",
+    "purchase_links": [
+      {
+        "store_id": "tecbears",
+        "url": "https://www.amazon.ca/TECBEARS-Filament-Transparent-Toughness-Dimensional/dp/B0FGTSNC9S"
+      }
+    ]
+  }
 ]

@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "cc48a22e-ec91-4cce-abcb-25d0f7998c56",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 34,
+    "spool_core_diameter": 87,
+    "article_number": "RPET-BL1-175",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/wp-content/uploads/2025/04/rPETg-MSDS.pdf"
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "bb5cfa47-cb6c-4420-ace1-369f109de68e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.056",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/indigo-blue-pla"
+      }
+    ]
+  }
+]

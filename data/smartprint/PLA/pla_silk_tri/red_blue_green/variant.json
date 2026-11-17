@@ -1,9 +1,13 @@
 {
+  "uuid": "3be203f7-bd7d-4fc8-9e0d-9464ae966f17",
   "id": "red_blue_green",
   "name": "Red Blue Green",
   "color_hex": [
     "#ff2600",
     "#00fdff",
     "#00f900"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

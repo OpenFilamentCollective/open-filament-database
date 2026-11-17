@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "85120575-550f-4a49-ad16-7fd62037876d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6933582326159",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-galaxy-stardust-purple"
+      }
+    ]
+  }
+]

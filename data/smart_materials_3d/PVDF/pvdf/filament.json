@@ -1,6 +1,11 @@
 {
+  "uuid": "f435282d-dedf-46f7-a8f8-54cfcd8f5766",
   "id": "pvdf",
   "name": "PVDF",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.24,
+  "min_print_temperature": 220,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 90
 }

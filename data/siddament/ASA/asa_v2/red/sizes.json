@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "bca346b2-790e-4512-bfbc-9713a4d3b65b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.060",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/red-asa-v2"
+      }
+    ]
+  }
+]

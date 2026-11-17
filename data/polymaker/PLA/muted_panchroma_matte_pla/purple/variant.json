@@ -1,9 +1,10 @@
 {
+  "uuid": "ac002e73-f10a-4c9a-9c9c-2b4fb201f0b2",
   "id": "purple",
   "name": "Purple",
   "color_hex": "#7C5577",
   "traits": {
     "matte": true,
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

@@ -1,8 +1,18 @@
 {
+    "uuid": "9526a623-ee2a-4c99-8088-7b8d282bf4d4",
     "id": "sparkle",
     "name": "PLA Sparkle",
     "diameter_tolerance": 0.03,
     "density": 1.26,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 45,
+    "max_volumetric_speed": 12,
+    "min_fan_speed": 100,
+    "max_fan_speed": 100,
+    "dry_temperature": 55,
+    "dry_time": 8,
     "data_sheet_url": "https://cdn.shopifycdn.net/s/files/1/0584/7236/6216/files/Bambu_PLA_Sparkle-Technical_Data_Sheet.pdf",
     "safety_sheet_url": "https://cdn.shopifycdn.net/s/files/1/0617/5798/0835/files/Bambu_PLA_Sparkle_MSDS.pdf?v=1696924498",
     "slicer_settings": {
@@ -12,11 +22,21 @@
             "profile_name": "Bambu PLA Sparkle"
         },
         "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFDxfPgH",
+            "profile_name": "Bambu PLA Sparkle"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GFA08",
             "profile_name": "Bambu PLA Sparkle"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFA08",
+            "profile_name": "Bambu PLA Sparkle"
+        },
+        "anycubicslicer": {
             "generic_id": "GFL99",
             "id": "GFA08",
             "profile_name": "Bambu PLA Sparkle"

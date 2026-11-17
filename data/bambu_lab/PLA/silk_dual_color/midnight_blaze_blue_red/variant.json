@@ -1,8 +1,15 @@
 {
-    "id": "midnight_blaze_blue_red",
-    "name": "Midnight Blaze (Blue-Red)",
-    "color_hex": [
-        "#0047BB",
-        "#7D1B49"
-    ]
+  "uuid": "f7670ae5-d14e-40aa-8498-1b9901ee358a",
+  "moved_from": [
+    "15096f75-e9b5-4153-a061-23ef1961518b"
+  ],
+  "id": "midnight_blaze_blue_red",
+  "name": "Midnight Blaze (Blue-Red)",
+  "color_hex": [
+    "#0047BB",
+    "#7D1B49"
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

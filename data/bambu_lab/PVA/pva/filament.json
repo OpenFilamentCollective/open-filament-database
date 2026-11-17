@@ -1,12 +1,17 @@
 {
+    "uuid": "78301251-ceb8-4c84-88fe-7a3d82a8e769",
     "id": "pva",
     "name": "PVA",
     "diameter_tolerance": 0.03,
     "density": 1.27,
-    "min_print_temperature": 180,
-    "max_print_temperature": 210,
-    "min_bed_temperature": 50,
-    "max_bed_temperature": 60,
+    "min_print_temperature": 220,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 45,
+    "max_volumetric_speed": 6,
+    "min_fan_speed": 100,
+    "max_fan_speed": 100,
+    "dry_temperature": 80,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0651/1555/4032/files/Bambu_PVA_Technical_Data_Sheet.pdf?v=1715140818",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_PVA.pdf?v=1710243141",
     "slicer_settings": {
@@ -16,11 +21,21 @@
             "profile_name": "Bambu PVA"
         },
         "orcaslicer": {
+            "generic_id": "OFDvXujf",
+            "id": "OFzyIxba",
+            "profile_name": "Bambu PVA"
+        },
+        "elegooslicer": {
             "generic_id": "GFS99",
             "id": "GFS04",
             "profile_name": "Bambu PVA"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFS99",
+            "id": "GFS04",
+            "profile_name": "Bambu PVA"
+        },
+        "anycubicslicer": {
             "generic_id": "GFS99",
             "id": "GFS04",
             "profile_name": "Bambu PVA"

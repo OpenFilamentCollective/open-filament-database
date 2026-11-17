@@ -1,9 +1,9 @@
 {
+  "uuid": "92dba0ce-ee86-44ec-9ff3-f99cbe899f12",
   "id": "taffy_pink",
   "name": "Taffy Pink",
   "color_hex": "#e296cf",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

@@ -1,0 +1,14 @@
+{
+  "uuid": "21263d95-bb5d-4e25-9a06-2775fdd8d996",
+  "id": "rust",
+  "name": "Rust",
+  "color_hex": "#8B3A1B",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "7526 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

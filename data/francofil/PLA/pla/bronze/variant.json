@@ -1,8 +1,11 @@
 {
+  "uuid": "5206cc8b-dc49-4269-b485-ee2362a87dad",
   "id": "bronze",
   "name": "Bronze",
   "color_hex": "#B26E3E",
   "traits": {
-    "imitates_metal": true
+    "imitates_metal": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

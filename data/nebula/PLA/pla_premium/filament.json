@@ -1,8 +1,13 @@
 {
+  "uuid": "9a227cc0-7fb5-4d55-9f93-f00b4401fa68",
   "id": "pla_premium",
   "name": "PLA Premium",
   "diameter_tolerance": 0.03,
   "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 60,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2024/12/TDS-PLA.pdf",
   "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2024/12/Karta-charakterystyki-msds-PLA-Nebula-1.pdf"
 }

@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "70db372d-3b1d-4fc6-82b6-07da9bc0c449",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
@@ -7,6 +8,20 @@
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/pla-pro"
+      }
+    ]
+  },
+  {
+    "uuid": "4f2f122c-f917-4a58-87d2-65f1140a8d81",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208131",
+    "article_number": "PLA+175O-BW1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-bone-white?sai=24523"
       }
     ]
   }

@@ -1,5 +1,10 @@
 {
-    "id": "lime_green",
-    "name": "Lime Green",
-    "color_hex": "#D7D602"
+  "uuid": "4a0ae2c0-224c-4f05-89c7-e7814ff7fd89",
+  "moved_from": [
+    "7e393e23-d6c5-4c36-9f7c-58ad11fa1215"
+  ],
+  "id": "lime_green",
+  "name": "Lime Green",
+  "color_hex": "#D7D602",
+  "transmission_distance": 3
 }

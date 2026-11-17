@@ -1,9 +1,9 @@
 {
+  "uuid": "3be429cf-388f-4951-810b-b9ab00dede0d",
   "id": "light_marble",
   "name": "Light Marble",
   "color_hex": "#ECEFED",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "imitates_marble": true
   }

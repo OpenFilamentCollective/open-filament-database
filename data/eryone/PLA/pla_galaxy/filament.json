@@ -1,6 +1,12 @@
 {
-    "id": "pla_galaxy",
-    "name": "PLA Galaxy",
-    "diameter_tolerance": 0.03,
-    "density": 1.23
+  "uuid": "384870ab-ebd4-46a8-ad08-1df560d216c9",
+  "id": "pla_galaxy",
+  "name": "PLA Galaxy",
+  "diameter_tolerance": 0.03,
+  "density": 1.23,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-PLA_Galaxy-TDS.pdf?v=1747276803"
 }

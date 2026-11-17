@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "6568c9a6-d32c-4a27-aec1-21543d92184f",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/neon-green-uv-reactive-abs-filament"
+      }
+    ]
   }
 ]

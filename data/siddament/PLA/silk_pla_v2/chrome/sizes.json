@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "819cee41-819f-4b28-b490-45c9c2153869",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.003",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-chrome-pla-v2"
+      }
+    ]
+  }
+]

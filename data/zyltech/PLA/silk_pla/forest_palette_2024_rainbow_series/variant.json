@@ -1,4 +1,5 @@
 {
+  "uuid": "4df290ee-700b-4433-b658-f3e799f4a6fc",
   "id": "forest_palette_2024_rainbow_series",
   "name": "Forest Palette 2024 Rainbow Series",
   "color_hex": [
@@ -8,7 +9,6 @@
     "#BBA0DA"
   ],
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "gradual_color_change": true
   }

@@ -1,5 +1,13 @@
 {
+  "uuid": "6ab8ff5d-a886-448c-ae7e-9e2a6b446761",
+  "moved_from": [
+    "9c2f7f6a-8028-4326-b1b6-8662382056c3"
+  ],
   "id": "bronze",
   "name": "Bronze",
-  "color_hex": "#926043"
+  "color_hex": "#926043",
+  "traits": {
+    "glitter": true,
+    "imitates_metal": true
+  }
 }

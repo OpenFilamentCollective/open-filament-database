@@ -1,24 +1,43 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6937285500687",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://eu.store.bambulab.com/products/pla-tough-upgrade?id=624496486489088030"
-            }
-        ]
-    },
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6937285500700",
-        "purchase_links": [
-            {
-                "store_id": "3deksperten",
-                "url": "https://3deksperten.dk/products/bambu-lab-pla-tough-grey-1-75mm-1kg-1"
-            }
-        ]
-    }
+  {
+    "uuid": "658b3802-3835-445b-90ae-c73e0ff133fc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6937285500687",
+    "article_number": "12105",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://eu.store.bambulab.com/products/pla-tough-upgrade?id=624496486489088030"
+      }
+    ]
+  },
+  {
+    "uuid": "749f1ae4-630c-460c-bc10-735459a8d5b1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6937285500700",
+    "article_number": "12105",
+    "purchase_links": [
+      {
+        "store_id": "3deksperten",
+        "url": "https://3deksperten.dk/products/bambu-lab-pla-tough-grey-1-75mm-1kg-1"
+      }
+    ]
+  },
+  {
+    "uuid": "62f04745-f2f5-472a-8b2d-44c9f3f3e2ca",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285508577",
+    "article_number": "12105",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-tough-gray?sai=43965"
+      }
+    ]
+  }
 ]

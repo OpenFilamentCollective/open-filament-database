@@ -1,4 +1,5 @@
 {
+  "uuid": "c650fd4e-4ddb-4147-a2e5-f20b32bed8c3",
   "id": "tidal_turquoise_multicolor_ht",
   "name": "Tidal Turquoise Multicolor HT",
   "color_hex": [
@@ -6,8 +7,7 @@
     "#39B9DB"
   ],
   "traits": {
-    "industrially_compostable": true,
-    "high_temperature": true,
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "high_temperature": true
   }
 }

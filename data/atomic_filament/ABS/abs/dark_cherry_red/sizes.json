@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "54d4aed0-7e03-4040-b081-49a57148d9f4",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/dark-cherry-red-abs-filament"
+      }
+    ]
   }
 ]

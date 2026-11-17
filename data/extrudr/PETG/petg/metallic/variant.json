@@ -1,8 +1,12 @@
 {
+  "uuid": "40d6feb2-fd04-405d-a7a2-48e0a1e136e6",
   "id": "metallic",
   "name": "Metallic",
   "color_hex": "#45444A",
   "color_standards": {
     "ral": "9023"
+  },
+  "traits": {
+    "recyclable": true
   }
 }

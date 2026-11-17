@@ -1,8 +1,9 @@
 {
-    "id": "bblstore",
-    "name": "Bambu Lab Store",
-    "storefront_url": "https://store.bambulab.com",
-    "logo": "logo.svg",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "ae7de37e-f8a9-4a98-a9d4-a8a09ce92e7a",
+  "id": "bblstore",
+  "name": "Bambu Lab Store",
+  "storefront_url": "https://store.bambulab.com",
+  "logo": "logo.svg",
+  "ships_from": [],
+  "ships_to": []
 }

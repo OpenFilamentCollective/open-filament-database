@@ -1,7 +1,18 @@
 [
   {
+    "uuid": "4240ec2f-b5e3-4318-9460-443d522de61b",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936715900",
+    "article_number": "CA04052",
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "polymaker",

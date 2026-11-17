@@ -1,5 +1,9 @@
 {
-    "id": "midnight_black",
-    "name": "Midnight Black",
-    "color_hex": "#0b0e13"
+  "uuid": "72c2200d-112e-46e6-9b4d-856978c0303b",
+  "moved_from": [
+    "6a4e6ad1-2190-4cf8-bd26-2e5b6b0ffe05"
+  ],
+  "id": "midnight_black",
+  "name": "Midnight Black",
+  "color_hex": "#0b0e13"
 }

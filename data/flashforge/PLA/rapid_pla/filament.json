@@ -1,10 +1,11 @@
 {
+  "uuid": "30020292-ed15-4c21-968c-7cb4be698e5d",
   "id": "rapid_pla",
   "name": "Rapid PLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_print_temperature": 240,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60
 }

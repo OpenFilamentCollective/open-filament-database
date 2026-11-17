@@ -1,0 +1,13 @@
+{
+  "uuid": "14158b6e-4254-4458-a2ec-27fd366a16a1",
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": "#0037FF",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "2728 C"
+  },
+  "traits": {
+    "high_flow": true
+  }
+}

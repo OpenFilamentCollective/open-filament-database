@@ -1,8 +1,13 @@
 {
+  "uuid": "e3b5a01e-1eea-4e4f-b8af-5a15486c37f8",
+  "moved_from": [
+    "d34bc9e6-9d74-4f9c-b18b-c7a3146209b2"
+  ],
   "id": "orange",
   "name": "Orange",
-  "color_hex": "#FF8E24",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#FE8E1B",
+  "hex_variants": [
+    "#FF9940",
+    "#FF8E24"
+  ]
 }

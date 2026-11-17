@@ -1,10 +1,11 @@
 {
-    "id": "light_blue",
-    "name": "Light Blue",
-    "color_hex": [
-        "#a1e1ea"
-    ],
-    "traits": {
-        "matte": true
-    }
+  "uuid": "8ef8ff98-0bac-4a88-bd55-3c0e114d07b5",
+  "id": "light_blue",
+  "name": "Light Blue",
+  "color_hex": [
+    "#a1e1ea"
+  ],
+  "traits": {
+    "matte": true
+  }
 }

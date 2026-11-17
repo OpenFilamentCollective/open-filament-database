@@ -1,5 +1,10 @@
 {
-    "id": "dark_grey",
-    "name": "Dark Grey",
-    "color_hex": "#474648"
+  "uuid": "bff2911b-9511-4350-8487-feff2bf4b1b0",
+  "moved_from": [
+    "20dc830c-60e2-4a3b-a892-58e0a60b491c"
+  ],
+  "id": "dark_grey",
+  "name": "Dark Grey",
+  "color_hex": "#474648",
+  "transmission_distance": 0.1
 }

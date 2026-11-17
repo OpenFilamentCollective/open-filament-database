@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "d1dae488-8eb6-4b25-abae-7361e5b247e2",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.055",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/mustard-yellow-pla"
+      }
+    ]
+  }
+]

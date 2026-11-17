@@ -1,7 +1,9 @@
 {
+  "uuid": "67179de5-4fb3-4054-af38-4dde6eaaae68",
   "id": "jessie",
   "name": "Jessie",
   "website": "https://www.printedsolid.com/",
+  "parent_brand": "printedsolid",
   "logo": "logo.png",
   "origin": "US"
 }

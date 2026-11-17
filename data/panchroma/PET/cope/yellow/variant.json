@@ -1,5 +1,10 @@
 {
-    "id": "yellow",
-    "name": "Yellow",
-    "color_hex": "#F3B400"
+  "uuid": "3421bf83-37a0-4c02-9de9-4bdf067ccb0b",
+  "moved_from": [
+    "f823c62f-8aad-46aa-9c5b-05b14b022e85"
+  ],
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#F3B400",
+  "transmission_distance": 3.5
 }

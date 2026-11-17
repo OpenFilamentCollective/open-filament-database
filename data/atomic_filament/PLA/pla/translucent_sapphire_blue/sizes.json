@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "4b277511-5e67-4d06-b1ea-e432a37f838c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/translucent-sapphire-blue-pla-filament"
+      }
+    ]
   }
 ]

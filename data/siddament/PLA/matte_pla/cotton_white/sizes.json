@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "21902855-7187-494c-bcb2-47e0da268a5e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "8.046",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-cotton-white-pla"
+      }
+    ]
+  }
+]

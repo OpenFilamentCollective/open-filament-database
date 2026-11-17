@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "4bb0750a-34ed-4236-86a9-e4cc2841d75e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.041",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pure-yellow-pla"
+      }
+    ]
+  }
+]

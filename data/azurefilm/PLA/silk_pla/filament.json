@@ -1,6 +1,11 @@
 {
-    "id": "silk_pla",
-    "name": "Silk PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "32a93073-b832-42b6-8d50-9b13b24d5a22",
+  "id": "silk_pla",
+  "name": "Silk PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 80
 }

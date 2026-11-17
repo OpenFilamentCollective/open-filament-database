@@ -1,9 +1,9 @@
 {
+  "uuid": "f787c255-558a-4ef0-86ee-bbadbfb1c5cb",
   "id": "textura_flare_rocky_grey",
   "name": "Textura™ Flare Rocky Grey",
   "color_hex": "#697272",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

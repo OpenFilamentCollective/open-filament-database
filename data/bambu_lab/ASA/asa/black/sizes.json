@@ -1,8 +1,10 @@
 [
   {
+    "uuid": "4c74cbcd-9d43-4feb-ad62-07d1a939653f",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "6975337032915",
+    "article_number": "45101",
     "purchase_links": [
       {
         "store_id": "bblstore",

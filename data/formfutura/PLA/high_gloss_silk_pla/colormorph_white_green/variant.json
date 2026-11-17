@@ -1,12 +1,13 @@
 {
+  "uuid": "0f1c3ad4-1047-4445-a585-6f520d136692",
   "id": "colormorph_white_green",
   "name": "ColorMorph White & Green",
   "color_hex": [
-    "#4E7642",
-    "#F5F5F4"
+    "#FFFFFF",
+    "#4E7642"
   ],
+  "discontinued": true,
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "iridescent": true
   }

@@ -1,13 +1,18 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "gtin": "921159956012",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-galaxy?variant=41834260037768"
-            }
-        ]
-    }
+  {
+    "uuid": "8a4a00b2-e6e2-40b3-8335-5da00e78c70e",
+    "moved_from": [
+      "81edd1e4-b03e-4882-9fd0-912365b0b43c"
+    ],
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "13203",
+    "barcode_identifier": "921159956012",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-galaxy?variant=41834260037768"
+      }
+    ]
+  }
 ]

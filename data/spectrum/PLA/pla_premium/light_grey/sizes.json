@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "59ac452e-f774-403e-baeb-f54d4ea284d4",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5903175651006",
@@ -10,5 +11,13 @@
         "url": "https://shop.spectrumfilaments.com/product-eng-631-Filament-Spectrum-PLA-Premium-1-75mm-LIGHT-GREY-1kg.html"
       }
     ]
+  },
+  {
+    "uuid": "8fb541b1-2227-4070-bbd1-f95751195143",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "5905991404477"
   }
 ]

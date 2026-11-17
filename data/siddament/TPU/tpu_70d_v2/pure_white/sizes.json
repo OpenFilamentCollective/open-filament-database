@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "15ea657e-a708-4b59-a8cd-75254bb97321",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.079",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pure-white-tpu-70d"
+      }
+    ]
+  }
+]

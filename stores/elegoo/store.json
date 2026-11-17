@@ -1,16 +1,17 @@
 {
-    "id": "elegoo",
-    "name": "ELEGOO",
-    "storefront_url": "https://elegoo.com/",
-    "logo": "logo.png",
-    "ships_from": [
-        "EU",
-        "US",
-        "CN"
-    ],
-    "ships_to": [
-        "EU",
-        "US",
-        "CN"
-    ]
+  "uuid": "536673ea-a967-4c57-b5e4-6f2d8cb0f1dd",
+  "id": "elegoo",
+  "name": "ELEGOO",
+  "storefront_url": "https://elegoo.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "EU",
+    "US",
+    "CN"
+  ],
+  "ships_to": [
+    "EU",
+    "US",
+    "CN"
+  ]
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b4530f66-9e84-4e90-9a6a-04ea021f3855",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.022",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/yellow-petg-v2"
+      }
+    ]
+  }
+]

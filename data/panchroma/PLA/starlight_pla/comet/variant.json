@@ -1,5 +1,12 @@
 {
+  "uuid": "cc13e4dc-4489-4d93-9399-26e12a63a418",
+  "moved_from": [
+    "f4e39599-b167-45b1-9b5a-ab99b9dd3284"
+  ],
   "id": "comet",
   "name": "Comet",
-  "color_hex": "#89a5a6"
+  "color_hex": "#89a5a6",
+  "traits": {
+    "glitter": true
+  }
 }

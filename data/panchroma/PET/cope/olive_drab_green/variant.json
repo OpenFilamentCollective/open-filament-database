@@ -1,5 +1,10 @@
 {
-    "id": "olive_drab_green",
-    "name": "Olive Drab Green",
-    "color_hex": "#575B54"
+  "uuid": "9bd83380-07b7-4270-bd4e-4cdd34e069f8",
+  "moved_from": [
+    "20822a55-7ece-4916-b6b2-1fcf55f7d634"
+  ],
+  "id": "olive_drab_green",
+  "name": "Olive Drab Green",
+  "color_hex": "#575B54",
+  "transmission_distance": 0.5
 }

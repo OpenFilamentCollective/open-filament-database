@@ -1,0 +1,10 @@
+{
+  "uuid": "743b9b25-2c6e-48c1-9768-04b25c1a2c35",
+  "id": "cartridge_red",
+  "name": "Cartridge Red",
+  "color_hex": "#C7382E",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b17e51ae-808d-4be6-adc9-8031a230905e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.073",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-mocha-petg-v2"
+      }
+    ]
+  }
+]

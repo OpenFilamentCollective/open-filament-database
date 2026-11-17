@@ -1,9 +1,9 @@
 {
+  "uuid": "7232c810-5eb1-486e-baa4-bda6c12d3931",
   "id": "vertigo_grey",
   "name": "Vertigo Grey",
   "color_hex": "#4C4E56",
   "traits": {
-    "industrially_compostable": true,
     "glitter": true
   }
 }

@@ -1,0 +1,10 @@
+{
+  "uuid": "be5ff4b1-b96f-4d20-8d47-40969049febe",
+  "id": "transparent_signal_orange",
+  "name": "Transparent Signal Orange",
+  "color_hex": "#B94E2C",
+  "transmission_distance": 32.2,
+  "traits": {
+    "transparent": true
+  }
+}

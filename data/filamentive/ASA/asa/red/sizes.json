@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "5e018f20-a3d9-4a90-8e83-d85f1224c429",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "article_number": "ASA-RD075-175",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/red-asa-3d-printer-filament/?attribute_diameter=1.75mm"
+      }
+    ]
+  }
+]

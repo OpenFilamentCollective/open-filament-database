@@ -1,0 +1,1096 @@
+<script lang="ts">
+	import { onMount, untrack, tick } from 'svelte';
+	import { db } from '$lib/services/database';
+	import type {
+		Store,
+		VariantSize,
+		PurchaseLink,
+		Sustainability,
+		ContainerDetails,
+		ContainerMaterial
+	} from '$lib/types/database';
+	import { SchemaForm } from '$lib/components/forms';
+	import {
+		Tooltip,
+		SizeCard,
+		TextField,
+		FormFieldRow,
+		SustainabilityEditor
+	} from '$lib/components/form-fields';
+	import { pruneEntry, pruneSustainability } from '$lib/utils/sustainability';
+	import { fetchEntitySchema } from '$lib/services/schemaService';
+	import { TRAIT_CATEGORIES, findTraitByKey } from '$lib/config/traitConfig';
+	import { PlusIcon, CloseIcon, CubeIcon, ChevronDownIcon } from '$lib/components/icons';
+	import { toggleSetItem } from '$lib/utils/setHelpers';
+	import {
+		detectSuggestedTraits,
+		loadTraitRules,
+		type TraitRule
+	} from '$lib/utils/traitSuggestions';
+	import {
+		checkNameCasing,
+		checkNameLeadingCase,
+		checkNameWhitespace,
+		checkRecycledTrait,
+		containerMaterialOf,
+		findRedundantSizes,
+		suggestTraitsFromSiblings
+	} from '$lib/utils/dataQuality';
+	import {
+		fibersFromTraitKeys,
+		checkFiberConflict,
+		type FiberKind
+	} from '$lib/utils/fiberConflict';
+	import { Button, FixHint } from '$lib/components/ui';
+	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
+	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
+	import { stripTrackersDeep, isStorefrontRoot } from '$lib/utils/urlSanitizer';
+	import { isValidColorHex } from '$lib/utils/colorHex';
+	import type { SchemaFormConfig } from './schemaFormTypes';
+	import { formDrafts } from '$lib/stores/formDrafts';
+	import { generateSlug } from '$lib/services/entityService';
+	import { useSettledField } from '$lib/utils/settledField.svelte';
+
+	interface Props {
+		variant?: any;
+		schema?: any;
+		onSubmit: (data: any) => void;
+		saving?: boolean;
+		/** Optional key for in-memory draft preservation across modal close/reopen */
+		draftKey?: string;
+		/** Parent filament name/slug — used to suggest fiber/high-flow traits from the name. */
+		filamentName?: string;
+		/** Parent material type (e.g. PLA) — extra context for trait suggestions. */
+		materialType?: string;
+		/**
+		 * Fiber kinds ('carbon' / 'glass') already established by the OTHER variants of
+		 * this filament. Used to guard against a filament mixing carbon fiber and glass
+		 * fiber across its variants — this variant can't take the opposite fiber.
+		 */
+		siblingFibers?: FiberKind[];
+		/**
+		 * Display names of the OTHER variants of this filament. Casing is a house style
+		 * rather than a hard rule, so the Title Case nudge only fires when the siblings
+		 * establish the convention — which is how #451 and #452 were caught in review.
+		 */
+		siblingNames?: string[];
+		/**
+		 * Traits carried by each of the OTHER variants of this filament, one entry per
+		 * sibling. A trait every sibling has is suggested for this one — see
+		 * `suggestTraitsFromSiblings`. Empty when the siblings haven't been loaded.
+		 */
+		siblingTraits?: string[][];
+		/**
+		 * Purchase-link URLs already shared across three or more colours of this filament,
+		 * mapped to the OTHER colours using them. Computed by the route with
+		 * `findSharedPurchaseLinks`, so the in-form hint and the filament page's banner
+		 * always agree on what counts as shared.
+		 */
+		/**
+		 * The parent filament's sustainability block. A variant's block overrides it per
+		 * field, so the recycled-trait check reads the effective value.
+		 */
+		filamentSustainability?: Sustainability;
+		sharedLinkOwners?: Record<string, string[]>;
+	}
+
+	let { variant = null, schema: externalSchema, onSubmit, saving = false, draftKey, filamentName, materialType, siblingFibers = [], siblingNames = [], siblingTraits = [], sharedLinkOwners = {}, filamentSustainability }: Props = $props();
+
+	type ColorStandards = {
+		ral: string;
+		ncs: string;
+		pantone: string;
+		bs: string;
+		munsell: string;
+	};
+
+	type VariantDraft = {
+		formData: Record<string, any>;
+		sizes: SizeWithId[];
+		nextSizeId: number;
+		nextLinkId: number;
+		selectedTraits: string[];
+		colorStandards: ColorStandards;
+		sustainability?: Sustainability;
+	};
+
+	const COLOR_STANDARD_FIELDS: Array<{ key: keyof ColorStandards; label: string; placeholder: string }> = [
+		{ key: 'ral', label: 'RAL', placeholder: 'e.g., 3001' },
+		{ key: 'ncs', label: 'NCS', placeholder: 'e.g., S 1080-Y70R' },
+		{ key: 'pantone', label: 'Pantone', placeholder: 'e.g., 18-1664 TPX' },
+		{ key: 'bs', label: 'BS', placeholder: 'e.g., 04D45' },
+		{ key: 'munsell', label: 'Munsell', placeholder: 'e.g., 5R 4/14' }
+	];
+
+	function initializeColorStandards(source: any): ColorStandards {
+		return {
+			ral: source?.ral ?? '',
+			ncs: source?.ncs ?? '',
+			pantone: source?.pantone ?? '',
+			bs: source?.bs ?? '',
+			munsell: source?.munsell ?? ''
+		};
+	}
+
+	// Stores list for purchase link dropdowns
+	let stores: Store[] = $state([]);
+
+	// Uppercased material-type tokens (e.g. PLA, PETG) for the redundant-name guard.
+	let materialTypes = $state<Set<string>>(new Set());
+
+	// Validation error message for form submission
+	let validationError = $state<string | null>(null);
+
+	// Internal schema state (loaded if not provided externally)
+	let internalSchema: any = $state(null);
+	let schema = $derived(externalSchema || internalSchema);
+
+	// Load schema and stores on mount
+	onMount(async () => {
+		try {
+			const [schemaData, storesData] = await Promise.all([
+				externalSchema ? Promise.resolve(null) : fetchEntitySchema('variant'),
+				db.loadStores()
+			]);
+			if (schemaData) internalSchema = schemaData;
+			stores = storesData;
+		} catch (e) {
+			console.error('Failed to load data:', e);
+		}
+		// Shared name -> trait rules (resolves to [] if unavailable, never throws).
+		traitRules = await loadTraitRules();
+		// Load material-type tokens for the redundant-name guard (best effort).
+		try {
+			const res = await fetch('/api/schemas/material_types');
+			if (res.ok) {
+				const schemaJson = await res.json();
+				const values: string[] = schemaJson?.enum ?? [];
+				materialTypes = new Set(values.map((v) => v.toUpperCase()));
+			}
+		} catch {
+			// Non-fatal: without the list we simply skip the material-name warning.
+		}
+		// Don't reinitialize sizes from variant if a draft was restored.
+		if (sizes.length === 0) initializeSizes();
+	});
+
+	// Config for variant form - labels, tooltips, and placeholders come from schema
+	const config: SchemaFormConfig = {
+		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
+		hiddenFields: [
+			'id',
+			'uuid',
+			'moved_from',
+			'traits',
+			'sizes',
+			'hex_variants',
+			'color_standards',
+			'sustainability'
+		],
+		fieldOrder: ['name', 'color_hex', 'transmission_distance', 'discontinued'],
+		typeOverrides: {
+			color_hex: 'color'
+		},
+		steps: {
+			transmission_distance: 0.1
+		}
+	};
+
+	// Tooltips for custom sections (not from schema since these are custom UI sections)
+	const SECTION_TOOLTIPS = {
+		traits: 'Select traits that describe this filament variant. Click to add/remove traits.',
+		sizes: 'Different spool sizes and configurations available for this variant.',
+		colorStandards: 'Optional color standards references — fill in any that apply to this variant.'
+	};
+
+	// Prepare schema - remove id field
+	let preparedSchema = $derived(schema ? removeIdFromSchema(schema) : null);
+
+	// Restore from draft if one exists for this draftKey
+	const initialDraft = draftKey ? formDrafts.get<VariantDraft>(draftKey) : undefined;
+
+	// Form data state - initialized when schema is available
+	let formData = $state<Record<string, any>>(initialDraft?.formData ?? {});
+
+	// Track entity and schema changes to reinitialize form data
+	// NOTE: must be plain variables, NOT $state — proxy identity breaks !== comparisons.
+	let lastEntity: any = variant;
+	let lastSchema: any = null;
+	// If we restored from a draft, treat the current schema/entity as the baseline
+	// so the first $effect.pre run doesn't clobber the restored draft.
+	let draftRestored = !!initialDraft;
+
+	// Use $effect.pre to ensure formData is initialized before DOM renders
+	$effect.pre(() => {
+		const prevEntity = untrack(() => lastEntity);
+		const prevSchema = untrack(() => lastSchema);
+		if (preparedSchema && (preparedSchema !== prevSchema || variant !== prevEntity)) {
+			lastEntity = variant;
+			lastSchema = preparedSchema;
+			if (draftRestored) {
+				draftRestored = false;
+				return;
+			}
+			formData = initializeFormData(preparedSchema, variant, config.hiddenFields, config.fieldMappings, config.typeOverrides);
+			initializeSizes();
+			selectedTraits = new Set(
+				variant?.traits
+					? Object.entries(variant.traits)
+							.filter(([_, v]) => v === true)
+							.map(([k]) => k)
+					: []
+			);
+			colorStandards = initializeColorStandards(variant?.color_standards);
+			sustainability = cloneSustainability(variant?.sustainability);
+		}
+	});
+
+	// ==================== TRAITS HANDLING ====================
+
+	// Traits state - set of selected trait keys (restored from draft if present)
+	let selectedTraits = $state<Set<string>>(
+		new Set(
+			initialDraft?.selectedTraits ??
+			(variant?.traits
+				? Object.entries(variant.traits)
+						.filter(([_, v]) => v === true)
+						.map(([k]) => k)
+				: [])
+		)
+	);
+
+	// ==================== COLOR STANDARDS HANDLING ====================
+
+	// Color standards state — restored from draft if present, else from variant
+	let colorStandards = $state<ColorStandards>(
+		initialDraft?.colorStandards ?? initializeColorStandards(variant?.color_standards)
+	);
+
+	// ==================== SUSTAINABILITY ====================
+
+	// `sustainability` is a cross-file $ref, edited by SustainabilityEditor rather than
+	// SchemaForm. Each field set here overrides the filament's field of the same name.
+	let sustainabilitySchema: any = $state(null);
+	onMount(async () => {
+		sustainabilitySchema = await fetchEntitySchema('sustainability');
+	});
+
+	function cloneSustainability(value: Sustainability | undefined): Sustainability {
+		return value ? JSON.parse(JSON.stringify(value)) : {};
+	}
+
+	let sustainability = $state<Sustainability>(
+		initialDraft?.sustainability ?? cloneSustainability(variant?.sustainability)
+	);
+
+	let recycledTraitIssue = $derived(
+		checkRecycledTrait(filamentSustainability, sustainability, selectedTraits.has('recycled'))
+	);
+
+	function containerDetailsSchema(): any {
+		return sizesSchema?.items?.properties?.container_details;
+	}
+
+	// sizes_schema.json, for the container_details sub-form and its pruning.
+	let sizesSchema: any = $state(null);
+	onMount(async () => {
+		try {
+			const res = await fetch('/api/schemas/sizes');
+			if (res.ok) sizesSchema = await res.json();
+		} catch {
+			// Non-fatal: container details are then left as entered.
+		}
+	});
+
+	// Trait search/filter
+	let traitSearch = $state('');
+	let expandedCategories = $state<Set<string>>(new Set(['appearance']));
+
+	// Dropdown state for traits
+	let showTraitDropdown = $state(false);
+	let addButtonRef = $state<HTMLSpanElement | null>(null);
+	let dropdownPosition = $state({ top: 0, right: 0 });
+
+	// Filter traits by search
+	let filteredCategories = $derived.by(() => {
+		if (!traitSearch.trim()) return TRAIT_CATEGORIES;
+
+		const search = traitSearch.toLowerCase();
+		const filtered: typeof TRAIT_CATEGORIES = {};
+
+		for (const [catKey, category] of Object.entries(TRAIT_CATEGORIES)) {
+			const matchingTraits = category.traits.filter(
+				(t) => t.label.toLowerCase().includes(search) || t.description.toLowerCase().includes(search)
+			);
+			if (matchingTraits.length > 0) {
+				filtered[catKey] = { ...category, traits: matchingTraits };
+			}
+		}
+		return filtered;
+	});
+
+	// Toggle category expansion
+	function toggleCategory(catKey: string) {
+		expandedCategories = toggleSetItem(expandedCategories, catKey);
+	}
+
+	// Toggle dropdown
+	function toggleTraitDropdown(event: MouseEvent) {
+		if (!showTraitDropdown && addButtonRef) {
+			const rect = addButtonRef.getBoundingClientRect();
+			dropdownPosition = {
+				top: rect.bottom + 4,
+				right: window.innerWidth - rect.right
+			};
+		}
+		showTraitDropdown = !showTraitDropdown;
+		if (showTraitDropdown) {
+			traitSearch = '';
+		}
+	}
+
+	// Remove trait
+	function removeTrait(key: string) {
+		selectedTraits.delete(key);
+		selectedTraits = new Set(selectedTraits);
+	}
+
+	// Add trait from dropdown.
+	function addTrait(key: string) {
+		selectedTraits.add(key);
+		selectedTraits = new Set(selectedTraits);
+	}
+
+	// ==================== FIBER CONFLICT GUARD ====================
+	// A filament can't mix carbon fiber and glass fiber across its variants. The guard
+	// is deliberately reactive rather than pre-emptive: every trait stays selectable,
+	// and a conflict is only raised once the selection actually creates one. Hiding the
+	// opposite fiber from the picker needed a standing explanation on the form for a
+	// case almost nobody hits, which cost every contributor more than it saved.
+	// The server-side equivalent is ofd/validation/fiber_consistency.py.
+
+	let siblingFiberSet = $derived(new Set<FiberKind>(siblingFibers));
+	let selectedFiberSet = $derived(fibersFromTraitKeys(selectedTraits));
+	// Non-null when the current selection conflicts (both fibers picked, or the
+	// opposite fiber to one a sibling already establishes).
+	let fiberConflict = $derived(checkFiberConflict(selectedFiberSet, siblingFiberSet));
+
+	// ==================== TRAIT SUGGESTIONS ====================
+	// Two independent signals, shown as one list:
+	//   - the name (silk_pla, PA6-CF, "Glow in the Dark Green"), via the shared
+	//     `x-trait-rules` table in the variant schema; and
+	//   - the siblings — a trait every other colour of this filament carries is
+	//     almost certainly right for this one too (99.3% across the current tree).
+	// Like the other form nudges, the banner disappears once the suggested traits
+	// are added (or the reason no longer holds) — there is no dismiss.
+
+	// The shared rule table, fetched once per session and cached in the module. Empty
+	// until it resolves, which just delays the banner.
+	let traitRules: TraitRule[] = $state([]);
+
+	// Trait keys suggested by the current name context.
+	let nameSuggestions = $derived(
+		detectSuggestedTraits(traitRules, materialType, filamentName, formData?.name)
+	);
+
+	// Trait keys every sibling colour carries and this variant doesn't.
+	let siblingSuggestions = $derived(suggestTraitsFromSiblings(siblingTraits, selectedTraits));
+
+	/** Why a trait is being suggested — shown on the chip so the nudge is arguable. */
+	let suggestionReasons = $derived.by(() => {
+		const reasons = new Map<string, string>();
+		for (const key of siblingSuggestions) {
+			reasons.set(
+				key,
+				`all ${siblingTraits.length} other colour${siblingTraits.length === 1 ? '' : 's'} have this`
+			);
+		}
+		// The name is the more specific reason, so it wins where both apply.
+		for (const key of nameSuggestions) reasons.set(key, 'the name says so');
+		return reasons;
+	});
+
+	// Suggestions still worth showing: whatever isn't already selected. Name
+	// suggestions lead — they are the more specific signal.
+	let pendingSuggestions = $derived(
+		[...nameSuggestions, ...siblingSuggestions.filter((k) => !nameSuggestions.includes(k))].filter(
+			(k) => !selectedTraits.has(k)
+		)
+	);
+
+	function addSuggestion(key: string) {
+		selectedTraits.add(key);
+		selectedTraits = new Set(selectedTraits);
+	}
+
+	function addAllSuggestions() {
+		for (const key of pendingSuggestions) selectedTraits.add(key);
+		selectedTraits = new Set(selectedTraits);
+	}
+
+	/** Other colours of this filament using this exact URL — drives the per-link hint. */
+	function sharedWith(url: string): string[] {
+		return (url && sharedLinkOwners[url]) || [];
+	}
+
+	// ==================== SIZES HANDLING ====================
+
+	// Internal size type with ID for keying
+	interface SizeWithId {
+		id: number;
+		value: {
+			// Canonical UUID of an existing spool, preserved across edits (assigned by
+			// CI on merge). Undefined for spools added in this session.
+			uuid?: string;
+			// Former UUID(s) of an existing spool, preserved so old references still resolve.
+			moved_from?: string[];
+			filament_weight: number | undefined;
+			diameter: number;
+			empty_spool_weight?: number;
+			spool_core_diameter?: number;
+			gtin?: string;
+			article_number?: string;
+			discontinued?: boolean;
+			container_material?: ContainerMaterial;
+			container_details?: ContainerDetails;
+			purchase_links: Array<{ id: number; value: { store_id: string; url: string } }>;
+		};
+	}
+
+	// Sizes state — restored from draft if present
+	let sizes = $state<SizeWithId[]>(initialDraft?.sizes ?? []);
+	let nextSizeId = $state(initialDraft?.nextSizeId ?? 1);
+	let nextLinkId = $state(initialDraft?.nextLinkId ?? 1);
+
+	// ==================== DATA-QUALITY GUARDS ====================
+
+	// The name hints below read this rather than formData.name, so they wait until the
+	// contributor pauses or leaves the field instead of flashing up mid-word.
+	const settledName = useSettledField(() => String(formData?.name ?? ''), 'name');
+
+	// Material type embedded in the colour name (redundant with the material folder).
+	let nameMaterialToken = $derived.by(() => {
+		const name = settledName.value;
+		if (!name || materialTypes.size === 0) return null;
+		const tokens = new Set([
+			...String(name).split(/[^a-zA-Z0-9]+/),
+			...generateSlug(String(name)).split('_')
+		]);
+		for (const t of tokens) {
+			if (t && materialTypes.has(t.toUpperCase())) return t.toUpperCase();
+		}
+		return null;
+	});
+
+	// Stray whitespace in a name is invisible in review and survives into every
+	// downstream consumer — #460 shipped a filament literally named "Silk ".
+	let nameWhitespace = $derived(
+		// A trailing space is normal mid-typing ("Test " on the way to "Test Blue").
+		checkNameWhitespace(settledName.editing ? settledName.value.trimEnd() : settledName.value)
+	);
+
+	function fixNameWhitespace() {
+		if (nameWhitespace) formData.name = nameWhitespace.suggestion;
+	}
+
+	// A lowercase colour name beside Title Case siblings (#451, #452).
+	let nameCasing = $derived(
+		checkNameCasing(settledName.value, siblingNames)
+	);
+
+	function fixNameCasing() {
+		if (nameCasing) formData.name = nameCasing.suggestion;
+	}
+
+	// A name that simply starts lowercase. Unlike the nudge above this needs no
+	// siblings to compare against, so it also covers the first colour of a filament.
+	// Suppressed while the sibling nudge is showing, to avoid two hints on one field.
+	let nameLeadingCase = $derived(
+		nameCasing ? null : checkNameLeadingCase(settledName.value)
+	);
+
+	function fixNameLeadingCase() {
+		if (nameLeadingCase) formData.name = nameLeadingCase.suggestion;
+	}
+
+	// Spool rows that add nothing over an earlier row (#453).
+	let redundantSizes = $derived(findRedundantSizes(sizes.map((s) => s.value)));
+
+	/** Drop every row that duplicates an earlier one, keeping the more detailed row. */
+	function fixRedundantSizes() {
+		const drop = new Set(redundantSizes.map((d) => d.index));
+		sizes = sizes.filter((_, index) => !drop.has(index));
+	}
+
+	/** Remove the redundant material-type word(s) from the colour name. */
+	function fixName() {
+		if (!formData.name) return;
+		formData.name = String(formData.name)
+			.split(/\s+/)
+			.filter((w) => !materialTypes.has(w.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()))
+			.join(' ')
+			.replace(/\s+/g, ' ')
+			.trim();
+	}
+
+	// Nudge: sizes exist but no purchase links anywhere.
+	let showLinkNudge = $derived(
+		sizes.length > 0 && !sizes.some((s) => (s.value.purchase_links?.length ?? 0) > 0)
+	);
+
+	// Initialize sizes from variant data
+	function initializeSizes() {
+		if (variant?.sizes && Array.isArray(variant.sizes) && variant.sizes.length > 0) {
+			sizes = variant.sizes.map((s: VariantSize, index: number) => ({
+				id: index + 1,
+				value: {
+					uuid: s.uuid,
+					moved_from: s.moved_from,
+					filament_weight: s.filament_weight,
+					diameter: s.diameter || 1.75,
+					empty_spool_weight: s.empty_spool_weight,
+					spool_core_diameter: s.spool_core_diameter,
+					gtin: s.gtin || '',
+					article_number: s.article_number || '',
+					discontinued: s.discontinued || false,
+					container_material: containerMaterialOf(s),
+					container_details: s.container_details
+						? JSON.parse(JSON.stringify(s.container_details))
+						: undefined,
+					purchase_links: (s.purchase_links || []).map((pl: PurchaseLink, plIndex: number) => ({
+						id: plIndex + 1,
+						value: { store_id: pl.store_id || '', url: pl.url || '' }
+					}))
+				}
+			}));
+			nextSizeId = sizes.length + 1;
+			let maxLinkId = 0;
+			sizes.forEach((s) => {
+				s.value.purchase_links.forEach((pl) => {
+					if (pl.id > maxLinkId) maxLinkId = pl.id;
+				});
+			});
+			nextLinkId = maxLinkId + 1;
+		} else {
+			sizes = [
+				{
+					id: 1,
+					value: {
+						filament_weight: 1000,
+						diameter: 1.75,
+						empty_spool_weight: 250,
+						spool_core_diameter: 100,
+						gtin: '',
+						article_number: '',
+						discontinued: false,
+						purchase_links: []
+					}
+				}
+			];
+			nextSizeId = 2;
+		}
+	}
+
+	// Add new size
+	function addSize() {
+		sizes = [
+			...sizes,
+			{
+				id: nextSizeId++,
+				value: {
+					filament_weight: 1000,
+					diameter: 1.75,
+					empty_spool_weight: undefined,
+					spool_core_diameter: undefined,
+					gtin: '',
+					article_number: '',
+					discontinued: false,
+					purchase_links: []
+				}
+			}
+		];
+	}
+
+	// Remove size
+	function removeSize(index: number) {
+		sizes = sizes.filter((_, i) => i !== index);
+	}
+
+	// Add purchase link to a size, then focus the new link's URL text field so the user can
+	// paste a link immediately (id matches the input rendered by UrlField in PurchaseLinkCard).
+	async function addPurchaseLink(sizeIndex: number) {
+		const linkId = nextLinkId++;
+		const newLink = {
+			id: linkId,
+			value: { store_id: '', url: '' }
+		};
+		sizes[sizeIndex].value.purchase_links = [...sizes[sizeIndex].value.purchase_links, newLink];
+		await tick();
+		document.getElementById(`size-${sizes[sizeIndex].id}-link-${linkId}-url`)?.focus();
+	}
+
+	// Remove purchase link from a size
+	function removePurchaseLink(sizeIndex: number, linkIndex: number) {
+		sizes[sizeIndex].value.purchase_links = sizes[sizeIndex].value.purchase_links.filter((_, i) => i !== linkIndex);
+	}
+
+	// ==================== FORM SUBMISSION ====================
+
+	function handleSubmit(data: any) {
+		validationError = null;
+
+		// Validate required fields. `color_hex` may hold several colours (multi-colour
+		// variants) — every one of them has to be a complete hex value.
+		if (!data.name || !isValidColorHex(data.color_hex)) {
+			validationError = 'Name and color are required fields, and every color must be a full 6-digit hex.';
+			return;
+		}
+
+		// A filament can't mix carbon fiber and glass fiber across its variants.
+		if (fiberConflict) {
+			validationError = fiberConflict.message;
+			return;
+		}
+
+		if (sizes.length === 0) {
+			validationError = 'At least one size must be added.';
+			return;
+		}
+
+		// Check that at least one size has required fields
+		const validSizes = sizes.filter((s) => s.value.filament_weight !== undefined && s.value.diameter !== undefined);
+
+		if (validSizes.length === 0) {
+			validationError = 'At least one size must have filament weight and diameter filled in.';
+			return;
+		}
+
+		// Reject partially-filled purchase links so data isn't silently dropped on save
+		// (e.g. a URL entered without picking a store).
+		for (const s of validSizes) {
+			for (const pl of s.value.purchase_links) {
+				const hasStore = !!pl.value.store_id;
+				const hasUrl = !!pl.value.url;
+				if (hasStore !== hasUrl) {
+					validationError = hasUrl
+						? 'Select a store for each purchase link (a link has a URL but no store).'
+						: 'Add a URL for each purchase link (a link has a store but no URL).';
+					return;
+				}
+
+				// A shop homepage identifies neither the filament nor the colour — #454 shipped
+				// `https://store.bambulab.com/` and had to be fixed by hand after review.
+				if (hasUrl) {
+					const store = stores.find((st) => (st.slug ?? st.id) === pl.value.store_id);
+					if (isStorefrontRoot(pl.value.url, store?.storefront_url ?? null)) {
+						validationError =
+							'A purchase link points at the shop homepage instead of a product page. ' +
+							'Link the specific product, or remove the link.';
+						return;
+					}
+				}
+			}
+		}
+
+		// Build sizes array for submission (strip internal IDs)
+		const sizesData = validSizes.map((s) => {
+			const sizeValue: any = {
+				filament_weight: s.value.filament_weight,
+				diameter: s.value.diameter
+			};
+
+			// Preserve an existing spool's canonical UUID; new spools get one from CI on merge.
+			if (s.value.uuid) sizeValue.uuid = s.value.uuid;
+			// Preserve former UUIDs so old references still resolve after a move/merge.
+			if (s.value.moved_from) sizeValue.moved_from = s.value.moved_from;
+			if (s.value.empty_spool_weight != null) sizeValue.empty_spool_weight = s.value.empty_spool_weight;
+			if (s.value.spool_core_diameter != null) sizeValue.spool_core_diameter = s.value.spool_core_diameter;
+			if (s.value.gtin) sizeValue.gtin = s.value.gtin;
+			if (s.value.article_number) sizeValue.article_number = s.value.article_number;
+			sizeValue.discontinued = s.value.discontinued ?? false;
+			if (s.value.container_material) sizeValue.container_material = s.value.container_material;
+			if (s.value.container_details) {
+				const details = containerDetailsSchema()
+					? pruneEntry(s.value.container_details, containerDetailsSchema())
+					: s.value.container_details;
+				if (Object.keys(details).length > 0) sizeValue.container_details = details;
+			}
+
+			const validLinks = s.value.purchase_links
+				.filter((pl) => pl.value.store_id && pl.value.url)
+				.map((pl) => ({ store_id: pl.value.store_id, url: pl.value.url }));
+
+			if (validLinks.length > 0) {
+				sizeValue.purchase_links = validLinks;
+			}
+
+			return sizeValue;
+		});
+
+		// Build traits object (only include true values)
+		const traitsData: Record<string, boolean> = {};
+		for (const trait of selectedTraits) {
+			traitsData[trait] = true;
+		}
+
+		// Build submit data using utility (handles field mappings automatically)
+		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, config.fieldMappings, config.transforms);
+
+		// Add custom fields not handled by schema
+		submitData.sizes = sizesData;
+		if (Object.keys(traitsData).length > 0) {
+			submitData.traits = traitsData;
+		}
+
+		// Include only color standards with non-empty values. Set to undefined when all
+		// blank so the spread in the parent page wipes any previously saved standards.
+		const colorStandardsData: Record<string, string> = {};
+		for (const { key } of COLOR_STANDARD_FIELDS) {
+			const value = colorStandards[key]?.trim();
+			if (value) colorStandardsData[key] = value;
+		}
+		submitData.color_standards =
+			Object.keys(colorStandardsData).length > 0 ? colorStandardsData : undefined;
+
+		// Undefined when empty so the spread in the parent page wipes a removed block.
+		// Without the schema the editor is hidden, so keep the stored value untouched.
+		submitData.sustainability = sustainabilitySchema
+			? pruneSustainability($state.snapshot(sustainability), sustainabilitySchema)
+			: variant?.sustainability;
+
+		// Preserve the variant's canonical UUID on edit; left empty on create for CI to assign.
+		if (variant?.uuid) submitData.uuid = variant.uuid;
+		// Preserve former UUIDs so old references still resolve after a move/merge.
+		if (variant?.moved_from) submitData.moved_from = variant.moved_from;
+
+		// Mandatory: strip tracking params from all purchase-link URLs before staging the change.
+		onSubmit(stripTrackersDeep(submitData));
+	}
+
+	// Check if form can be submitted
+	let canSubmit = $derived(
+		!!formData.name && isValidColorHex(formData.color_hex) && sizes.length > 0 && !fiberConflict
+	);
+
+	// Persist form state to the in-memory draft store on every change.
+	$effect(() => {
+		if (!draftKey) return;
+		formDrafts.set(draftKey, {
+			formData,
+			sizes,
+			nextSizeId,
+			nextLinkId,
+			selectedTraits: [...selectedTraits],
+			colorStandards,
+			sustainability: $state.snapshot(sustainability)
+		});
+	});
+</script>
+
+<svelte:window onkeydown={(e) => { if (e.key === 'Escape' && showTraitDropdown) { e.stopImmediatePropagation(); showTraitDropdown = false; } }} />
+
+{#if !preparedSchema}
+	<div class="flex items-center justify-center h-32">
+		<p class="text-muted-foreground">Loading form...</p>
+	</div>
+{:else}
+{#if validationError}<FixHint level="error" message={validationError} class="mb-4" />{/if}
+{#if nameMaterialToken}
+	<FixHint fixLabel="Fix" onFix={fixName} fixTitle="Remove the material type from the colour name" class="mb-4">
+		Material type <strong>{nameMaterialToken}</strong> is redundant in the colour name — the material is already set separately. Consider removing it.
+	</FixHint>
+{/if}
+{#if nameWhitespace}
+	<FixHint
+		level="error"
+		fixLabel="Fix"
+		onFix={fixNameWhitespace}
+		fixTitle="Trim the name to “{nameWhitespace.suggestion}”"
+		class="mb-4"
+	>
+		The name {nameWhitespace.reason}. It will look identical to
+		<strong>{nameWhitespace.suggestion}</strong> everywhere but count as a different colour.
+	</FixHint>
+{/if}
+{#if nameLeadingCase}
+	<FixHint
+		fixLabel="Fix"
+		onFix={fixNameLeadingCase}
+		fixTitle="Rename to “{nameLeadingCase.suggestion}”"
+		class="mb-4"
+	>
+		Colour names are shown capitalised everywhere they appear. Rename to
+		<strong>{nameLeadingCase.suggestion}</strong>.
+	</FixHint>
+{/if}
+{#if nameCasing}
+	<FixHint
+		fixLabel="Fix"
+		onFix={fixNameCasing}
+		fixTitle="Rename to “{nameCasing.suggestion}”"
+		class="mb-4"
+	>
+		Other colours of this filament use Title Case (e.g. <strong>{nameCasing.example}</strong>).
+		Rename to <strong>{nameCasing.suggestion}</strong> so it reads consistently.
+	</FixHint>
+{/if}
+<SchemaForm
+	schema={preparedSchema}
+	bind:data={formData}
+	{config}
+	{saving}
+	submitLabel={variant?.id ? 'Update Variant' : 'Create Variant'}
+	submitDisabled={!canSubmit}
+	onSubmit={handleSubmit}
+>
+	{#snippet afterFields()}
+		<!-- Color Standards Section -->
+		<div class="border-t pt-4 mt-2">
+			<h3 class="text-sm font-medium text-foreground flex items-center mb-3">
+				Color Standards
+				<Tooltip text={SECTION_TOOLTIPS.colorStandards} />
+			</h3>
+			<FormFieldRow columns={3} gap="sm">
+				{#each COLOR_STANDARD_FIELDS as field (field.key)}
+					<TextField
+						bind:value={colorStandards[field.key]}
+						id="color-standard-{field.key}"
+						label={field.label}
+						placeholder={field.placeholder}
+						maxLength={1000}
+					/>
+				{/each}
+			</FormFieldRow>
+		</div>
+
+		<!-- Traits Section -->
+		<div class="border-t pt-4 mt-2">
+			<div class="flex items-center justify-between mb-3">
+				<h3 class="text-sm font-medium text-foreground flex items-center">
+					Traits
+					<Tooltip text={SECTION_TOOLTIPS.traits} />
+				</h3>
+				<span bind:this={addButtonRef}>
+					<Button
+						variant="outline"
+						size="sm"
+						onclick={toggleTraitDropdown}
+						class="border-dashed"
+					>
+						<PlusIcon class="h-3 w-3" />
+						Add
+					</Button>
+				</span>
+			</div>
+
+			<!-- Fiber conflict guard: a filament can't mix carbon fiber and glass fiber -->
+			{#if fiberConflict}
+				<FixHint level="error" compact message={fiberConflict.message} class="mb-3" />
+			{/if}
+
+			<!-- Suggested traits, from the name and from the filament's other colours -->
+			{#if pendingSuggestions.length > 0}
+				<div class="mb-3 flex flex-col gap-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
+					<span class="text-xs text-foreground">This variant likely needs:</span>
+					<div class="flex flex-wrap gap-1.5">
+						{#each pendingSuggestions as key (key)}
+							{@const info = findTraitByKey(key)}
+							{@const reason = suggestionReasons.get(key)}
+							<Button
+								variant="outline"
+								size="sm"
+								onclick={() => addSuggestion(key)}
+								class="h-7 rounded-full border-primary/40 px-3 text-xs"
+								title={[info?.description, reason && `Suggested because ${reason}.`]
+									.filter(Boolean)
+									.join(' ')}
+							>
+								<PlusIcon class="h-3 w-3" />
+								{info?.label || key}
+								{#if reason}
+									<span class="ml-1 text-muted-foreground">— {reason}</span>
+								{/if}
+							</Button>
+						{/each}
+						{#if pendingSuggestions.length > 1}
+							<Button
+								variant="secondary"
+								size="sm"
+								onclick={addAllSuggestions}
+								class="h-7 rounded-full px-3 text-xs"
+							>
+								Add all
+							</Button>
+						{/if}
+					</div>
+				</div>
+			{/if}
+
+			<!-- Selected traits as tiles -->
+			<div class="flex flex-wrap gap-1.5">
+				{#each [...selectedTraits] as traitKey}
+					{@const traitInfo = findTraitByKey(traitKey)}
+					<Button
+						variant="secondary"
+						size="sm"
+						onclick={() => removeTrait(traitKey)}
+						class="h-7 rounded-full px-3 text-xs"
+						title="Click to remove: {traitInfo?.description}"
+					>
+						{traitInfo?.label || traitKey}
+						<CloseIcon class="h-3 w-3" />
+					</Button>
+				{/each}
+				{#if selectedTraits.size === 0}
+					<span class="text-xs text-muted-foreground">No traits selected</span>
+				{/if}
+			</div>
+
+			<!-- Dropdown menu -->
+			{#if showTraitDropdown}
+				<!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
+				<div class="fixed inset-0 z-[99]" onclick={() => (showTraitDropdown = false)}></div>
+				<div
+					class="fixed w-72 bg-popover border border-border rounded-lg shadow-lg z-100 max-h-80 overflow-hidden flex flex-col"
+					style="top: {dropdownPosition.top}px; right: {dropdownPosition.right}px;"
+					role="listbox"
+					aria-label="Select traits"
+				>
+					<div class="p-2 border-b border-border">
+						<input
+							type="text"
+							bind:value={traitSearch}
+							placeholder="Search traits..."
+							class="w-full px-2 py-1.5 text-sm bg-background text-foreground border border-border rounded focus:ring-1 focus:ring-ring focus:border-ring"
+						/>
+					</div>
+
+					<div class="overflow-y-auto flex-1 p-1">
+						{#each Object.entries(filteredCategories) as [catKey, category]}
+							{@const unselectedTraits = category.traits.filter((t) => !selectedTraits.has(t.key))}
+							{#if unselectedTraits.length > 0}
+								<div class="mb-1">
+									<Button
+										variant="ghost"
+										size="sm"
+										onclick={() => toggleCategory(catKey)}
+										class="w-full h-auto justify-between px-2 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground"
+									>
+										<span>{category.label}</span>
+										<ChevronDownIcon
+											class="h-3 w-3 transition-transform {expandedCategories.has(catKey) ? 'rotate-180' : ''}"
+										/>
+									</Button>
+									{#if expandedCategories.has(catKey)}
+										<div class="pl-2 py-1 space-y-0.5">
+											{#each unselectedTraits as trait}
+												<Button
+													variant="ghost"
+													size="sm"
+													onclick={() => addTrait(trait.key)}
+													class="w-full h-auto justify-start px-2 py-1 text-xs hover:bg-primary/10"
+													title={trait.description}
+												>
+													<PlusIcon class="h-3 w-3 text-muted-foreground" />
+													{trait.label}
+												</Button>
+											{/each}
+										</div>
+									{/if}
+								</div>
+							{/if}
+						{/each}
+
+						{#if Object.keys(filteredCategories).length === 0}
+							<div class="text-center py-4 text-sm text-muted-foreground">No traits found</div>
+						{/if}
+					</div>
+				</div>
+			{/if}
+		</div>
+
+		<!-- Sustainability Section -->
+		{#if sustainabilitySchema}
+			<div class="border-t pt-4 mt-4">
+				<h3 class="text-sm font-medium text-foreground flex items-center mb-3">
+					Sustainability
+					<Tooltip text={sustainabilitySchema.description} />
+				</h3>
+				{#if recycledTraitIssue}
+					<FixHint
+						level={recycledTraitIssue.level === 'error' ? 'error' : 'warn'}
+						message={recycledTraitIssue.message}
+						compact
+						class="mb-3"
+					/>
+				{/if}
+				<SustainabilityEditor
+					bind:value={sustainability}
+					schema={sustainabilitySchema}
+					idPrefix="variant-sustainability"
+					note="Anything set here replaces the filament's value for that field; leave a section empty to use the filament's."
+				/>
+			</div>
+		{/if}
+	{/snippet}
+
+	{#snippet rightColumnContent()}
+		<div class="flex items-center justify-between mb-3 shrink-0">
+			<h3 class="text-sm font-medium text-foreground flex items-center">
+				Sizes <span class="text-destructive ml-1">*</span>
+				<Tooltip text={SECTION_TOOLTIPS.sizes} />
+			</h3>
+			<Button size="sm" onclick={addSize}>
+				+ Add Size
+			</Button>
+		</div>
+
+		<div class="flex-1 overflow-y-auto space-y-4 pr-1 min-h-0">
+			{#if redundantSizes.length > 0}
+				<FixHint
+					level="error"
+					compact
+					fixLabel={redundantSizes.length === 1 ? 'Remove it' : 'Remove them'}
+					onFix={fixRedundantSizes}
+					fixTitle="Drop the duplicate size rows, keeping the more detailed one"
+				>
+					{redundantSizes.length === 1 ? 'Size' : 'Sizes'}
+					{redundantSizes.map((d) => `#${d.index + 1}`).join(', ')}
+					{redundantSizes.length === 1 ? 'adds' : 'add'} nothing over an earlier row. Give
+					{redundantSizes.length === 1 ? 'it' : 'them'} a SKU, GTIN or purchase link, or remove
+					{redundantSizes.length === 1 ? 'it' : 'them'}.
+				</FixHint>
+			{/if}
+			{#if showLinkNudge}
+				<FixHint
+					compact
+					message="No purchase links yet — add one so people can find where to buy this."
+					fixLabel="Add link"
+					onFix={() => addPurchaseLink(0)}
+				/>
+			{/if}
+			{#if sizes.length > 0}
+				{#each sizes as size, sizeIndex (size.id)}
+					<SizeCard
+						id={size.id}
+						bind:value={size.value}
+						index={sizeIndex}
+						{stores}
+						canRemove={sizes.length > 1}
+						onRemove={() => removeSize(sizeIndex)}
+						onAddLink={() => addPurchaseLink(sizeIndex)}
+						onRemoveLink={(linkIndex) => removePurchaseLink(sizeIndex, linkIndex)}
+						{sharedWith}
+						containerDetailsSchema={containerDetailsSchema()}
+					/>
+				{/each}
+			{:else}
+				<div class="flex flex-col items-center justify-center h-full text-center p-4">
+					<CubeIcon class="h-12 w-12 text-muted-foreground mb-3" />
+					<p class="text-sm text-muted-foreground">No sizes added yet. Click "Add Size" to add spool configurations.</p>
+				</div>
+			{/if}
+		</div>
+	{/snippet}
+</SchemaForm>
+{/if}

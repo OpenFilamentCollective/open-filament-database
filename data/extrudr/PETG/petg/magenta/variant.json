@@ -1,8 +1,12 @@
 {
+  "uuid": "fa0fe2fc-8fe8-4550-b36b-e848fecb3a3f",
   "id": "magenta",
   "name": "Magenta",
   "color_hex": "#C80181",
   "color_standards": {
     "ral": "4010"
+  },
+  "traits": {
+    "recyclable": true
   }
 }

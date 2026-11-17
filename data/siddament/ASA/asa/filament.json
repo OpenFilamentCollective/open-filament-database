@@ -1,0 +1,32 @@
+{
+  "uuid": "c32e0d2d-96b0-4ae9-919e-26558fecfc20",
+  "id": "asa",
+  "name": "ASA",
+  "diameter_tolerance": 0.02,
+  "density": 1.1,
+  "max_dry_temperature": 70,
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_ASA_Datasheet_bc8ed3cf-8f6d-400c-af26-d80b46dfacad.pdf?v=1777571377",
+  "discontinued": true,
+  "slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Siddament ASA (all versions)"
+    },
+    "orcaslicer": {
+      "overrides": {
+        "filament_flow_ratio": 0.92,
+        "filament_max_volumetric_speed": 21
+      },
+      "profile_name": "Siddament ASA (all versions)"
+    },
+    "generic": {
+      "bed_temp": 110,
+      "first_layer_bed_temp": 110,
+      "first_layer_nozzle_temp": 280,
+      "nozzle_temp": 290
+    }
+  }
+}

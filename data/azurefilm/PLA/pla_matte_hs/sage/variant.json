@@ -1,10 +1,12 @@
 {
+  "uuid": "dc21271f-b979-40ae-a4d3-8177c11422ef",
   "id": "sage",
   "name": "Sage",
   "color_hex": [
     "#A1A397"
   ],
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

@@ -1,12 +1,33 @@
 [
   {
+    "uuid": "4b047841-2421-4fe0-b705-e700c04ff404",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572217324",
+    "article_number": "PETG-Basic175T-O1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/petg-basic"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/petg-basic-translucent-orange"
+      }
+    ]
+  },
+  {
+    "uuid": "221dcd08-b031-4474-815f-ea4c4aa7447b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572226609",
+    "article_number": "PETG-Basic175T-O1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/petg-basic-translucent-orange?sai=44430"
       }
     ]
   }

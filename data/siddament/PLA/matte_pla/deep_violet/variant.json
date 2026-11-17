@@ -1,0 +1,13 @@
+{
+  "uuid": "fac95f96-9d77-479a-aed3-799e678f74e0",
+  "id": "deep_violet",
+  "name": "Deep Violet",
+  "color_hex": "#9901FA",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "2587 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "uuid": "4e944ecf-7cae-4679-9315-fe7277b9d317",
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": "#193153",
+  "discontinued": false,
+  "traits": {
+    "translucent": true
+  }
+}

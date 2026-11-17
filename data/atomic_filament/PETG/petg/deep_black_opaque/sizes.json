@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "1ba03951-2b9c-4e3c-b03e-48c660b8506c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/deep-black-opaque-petg-pro"
+      }
+    ]
   }
 ]

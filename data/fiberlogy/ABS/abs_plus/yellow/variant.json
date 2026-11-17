@@ -1,8 +1,9 @@
 {
-    "id": "yellow",
-    "name": "Yellow",
-    "color_hex": "#FFD700",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "f13f30b1-e3d6-473a-9821-3cac0ddbcbdf",
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FFD700",
+  "traits": {
+    "recyclable": true
+  }
 }

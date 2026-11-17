@@ -1,6 +1,12 @@
 {
-    "id": "pla_wood",
-    "name": "PLA-Wood",
-    "diameter_tolerance": 0.03,
-    "density": 1.1
+  "uuid": "27527c7a-020d-41d9-8fd3-be0e29eeca4b",
+  "id": "pla_wood",
+  "name": "PLA-Wood",
+  "diameter_tolerance": 0.03,
+  "density": 1.1,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Wood/eSUN_Wood_Filament_TDS_V4.0.pdf"
 }

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "786becc7-e0c4-42c1-9fdf-d447822b6e65",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720629067742",
     "article_number": "ATAX-175TBLK-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,13 @@
     ]
   },
   {
+    "uuid": "1fa2103e-65ef-41a0-afe9-8d0206ee008d",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629067780",
     "article_number": "ATAX-175TBLK-C1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,13 @@
     ]
   },
   {
+    "uuid": "81dccc60-2719-4fb6-ad2f-c46b59aa178c",
     "filament_weight": 2000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 40,
+    "gtin": "8720629067797",
     "article_number": "ATAX-175TBLK-C2000",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +50,12 @@
     ]
   },
   {
+    "uuid": "aa409ea4-aa2f-4117-bdf7-e71f8b1f516e",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720629067759",
     "article_number": "ATAX-175TBLK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +66,12 @@
     ]
   },
   {
+    "uuid": "83e5df95-8ecc-462e-9c17-be7bb435ad3b",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720629067766",
     "article_number": "ATAX-175TBLK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +82,12 @@
     ]
   },
   {
+    "uuid": "cb7a2def-19a0-4d60-b5cf-992b636bd548",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720629067773",
     "article_number": "ATAX-175TBLK-08000",
     "discontinued": false,
     "purchase_links": [

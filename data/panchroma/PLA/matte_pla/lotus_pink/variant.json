@@ -1,5 +1,13 @@
 {
-    "id": "lotus_pink",
-    "name": "Lotus Pink",
-    "color_hex": "#DD76C0"
+  "uuid": "3705374b-38a3-4bdc-a867-a7cf579f6dfe",
+  "moved_from": [
+    "e6f5ca01-bd70-4d4d-a854-92d02a719de7"
+  ],
+  "id": "lotus_pink",
+  "name": "Lotus Pink",
+  "color_hex": "#DD76C0",
+  "transmission_distance": 2,
+  "traits": {
+    "matte": true
+  }
 }

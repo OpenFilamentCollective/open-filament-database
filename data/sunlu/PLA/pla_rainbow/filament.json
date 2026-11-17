@@ -1,6 +1,12 @@
 {
-    "id": "pla_rainbow",
-    "name": "PLA Rainbow",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "6ade1338-00ea-43d3-8b57-49b65eb35cd3",
+  "id": "pla_rainbow",
+  "name": "PLA Rainbow",
+  "diameter_tolerance": 0.02,
+  "density": 1.21,
+  "min_print_temperature": 185,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/bbd3e778-b424-49b7-b203-058327f2f6fc.pdf?filename=TDS"
 }

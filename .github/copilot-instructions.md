@@ -38,7 +38,18 @@ data/
 - `/.github/workflows/` - CI/CD automation
 - `/Taskfile.yml` - Task runner targets (validate, build, test, lint, etc.) backed by `uv`
 
-## UUID / UID Derivation (READ THIS BEFORE REVIEWING UUID-RELATED CODE)
+## Reviewer Myths — READ BEFORE FILING A REVIEW COMMENT
+
+(The automated PR reviewer, `.github/workflows/ai_review.yaml`, is told to read this
+section too; its own checklist of common contributor mistakes is
+`ofd/review/guidelines.md`.)
+
+Each of the beliefs below has been asserted in a real review on this repository, and each
+is wrong. They are collected here because a confidently-worded false claim costs a
+volunteer contributor a round trip — and in the worst case talks them into deleting good
+data. If you are about to write a review comment that depends on one of these, don't.
+
+### Myth 1: "Filament UUIDs come from the display `name`"
 
 UUIDs for entities in this database are derived using **UUIDv5** (RFC 4122 §4.3) from per-entity namespace UUIDs combined with stable identifying inputs. The OFD-canonical rule is:
 
@@ -52,6 +63,80 @@ This applies to brands, materials, filaments, variants, sizes, and stores. In pa
 - Implementation lives in `ofd/builder/utils.py` (`generate_*_id` / `generate_*_uuid` helpers, namespace constants, `_derive_uuid`). The OFD UUID derivation spec is documented at https://specs.openprinttag.org/#/nfc_data_format?id=_321-uuid-derivation-algorithm.
 
 If you see code, comments, or PR descriptions claiming the filament UUID is derived from `name`, that is incorrect — flag it as a bug, do not "fix" the canonical id-based derivation to use name instead.
+
+### Myth 2: "A filament with no variants is unreachable / orphaned / must be removed"
+
+> Seen verbatim in a review: *"This filament directory has no variant subfolders. The
+> validator flags this as an orphan filament (unreachable in the UI). Add at least one
+> variant …, or remove the filament entry."*
+
+The "unreachable" half is false, and it led a contributor toward deleting their own data.
+**An entity does not need children to exist, to be addressable, or to be valid.** The facts:
+
+- `data/` currently contains **141 filaments with no variants, 12 materials with no
+  filaments, and 8 brands with no materials**. These are normal: a brand's catalogue is
+  filled in over many PRs, and the skeleton lands first.
+- **The static API emits them.** A childless filament still gets its own
+  `api/v1/brands/<b>/materials/<m>/filaments/<f>/index.json`; the same is true one level
+  up for childless materials and brands. Nothing in `ofd/builder/` skips an entity for
+  having an empty child list.
+- **The WebUI renders them.** The filament detail page loads the filament and its variants
+  with two independent calls (`db.getFilament()` / `db.loadVariants()`) and only errors
+  when the *filament itself* is missing — an empty variant list renders an empty
+  "Variants" panel, not a 404. Same pattern on the brand and material pages.
+- The `orphan_filament` rule in `ofd/validation/data_quality.py` is a
+  `ValidationLevel.Warning`, **not** an error. Warnings never fail validation:
+  `ofd validate` exits 0 and prints "All validations passed (N warnings)". It means
+  *incomplete*, not *broken* and not *unreachable*.
+
+So: it is fine to mention that a filament has no colours yet. It is not fine to describe it
+as unreachable, to call it a validation failure, or to suggest removing the entry.
+
+The same reasoning applies to the other "it has no children" variants of this claim —
+a brand with no materials, a material with no filaments, a variant whose `sizes.json`
+lists a single spool.
+
+### Myth 3: "`ean` is the field to use / this file should have `ean` instead of `gtin`"
+
+`gtin` is the canonical field. `ean` is a **deprecated source-only alias**, kept so old
+data files keep validating. The crawler folds `ean` into `gtin` and drops the `ean` key
+(`ofd/builder/crawler.py`, `_create_size`), so `ean` never appears in any published
+artifact — not the API, not `all.json`, not the SQLite or CSV exports.
+
+Do not ask a contributor to add `ean`, and do not flag a file for using `gtin`. New data
+should always use `gtin`.
+
+### Myth 4: "`id` and `name` should match"
+
+They are deliberately allowed to diverge. `id` is the slug and matches the on-disk folder
+name (strict `^[a-z0-9+]+(_[a-z0-9+]+)*$`); `name` is human-readable display text and
+carries the manufacturer's own casing and punctuation. Renaming a folder to chase a
+display-name change **breaks the entity's UUID** (see Myth 1), which is exactly why the
+WebUI surfaces id/name drift as an advisory with no auto-fix rather than correcting it.
+
+Flag a `name` that is obviously wrong (a slug leaked into the display field, stray
+whitespace). Do not ask for the two to be brought into agreement as a matter of style.
+
+### Myth 5: "A single colour must be `["#RRGGBB"]`" (or must be `"#RRGGBB"`)
+
+`color_hex` takes either a string or an array of strings (`schemas/variant_schema.json`).
+For one colour both are valid, and changing one into the other is not a finding (#820,
+#831). Only multi-colour spools need the array, and an existing array must not shrink.
+
+### Myth 6: "The contributor should add the missing GTIN / link / drying values / traits"
+
+Empty optional fields are not mistakes. The AI review researches them and proposes the
+values as suggestions; if it finds nothing, it says nothing (#827, #829). Never ask a
+contributor to "please add" a field, or to "confirm" or "check" a page: open it yourself.
+Tracking parameters in purchase links are stripped automatically on merge
+(`ofd/scripts/style_data.py`), so don't ask for that either.
+
+### Myth 7: "Added data needs the same proof as changed data"
+
+Additions (a new colour, spool, store, filament or brand) have a lower bar than edits to
+existing values, and deletions the highest. Don't flag a plausible value on a new entry
+for lacking a source, and don't second-guess the maker's choice of hex shade (#829). When
+a TDS and a product or store page disagree, the TDS wins (#801).
 
 ## Build, Test & Validation Commands
 
@@ -175,6 +260,11 @@ The repository runs these workflows:
 
 4. **Style Data** (`style_data.yaml`):
    - Auto-runs `ofd script style_data` to keep JSON files sorted and normalized
+   - Commits the result back to `main`, so it must not race itself: runs are
+     serialized by a `concurrency` group, a run that starts on a commit that is no
+     longer the branch tip skips cleanly, and a push rejected mid-run re-syncs and
+     restyles before retrying. Styling is whole-tree and idempotent, which is what
+     makes skipping and restyling safe.
 
 5. **Profile Updates** (`update_profiles.yaml`):
    - Scheduled daily at midnight UTC
@@ -204,6 +294,79 @@ The repository runs these workflows:
 - Ensure all required JSON files exist at each hierarchy level
 - Use illegal character list: `#%&{}\\<>*?/$!'":@+\`|=` (see `ofd/validation/validators.py`)
 
+## WebUI Architecture Patterns
+
+### Entity Actions (Copy/Duplicate/Paste/Delete)
+
+All entity actions (copy, duplicate, paste, delete) are centralized through **shared composables** in `webui/src/lib/utils/useEntityActions.svelte.ts`. These ensure that both detail-page dropdowns AND list-view card menus go through the exact same code path.
+
+**Key composables:**
+- `createCopyAction(entityType, loadChildrenFn?)` - Handles copy with optional "with/without children" modal
+- `createDuplicateAction(entityType, hasChildren, openFormFn)` - Handles duplicate with optional children modal
+- `createPasteHandler(entityType, openFormFn, hasConflict?)` - Handles paste with conflict-aware name suffixing
+
+**Critical rule:** Never create inline copy/duplicate/paste handlers directly in page components. Always use these composables to avoid action inconsistencies between detail-page dropdowns and list-view card menus.
+
+**Clipboard service** (`webui/src/lib/services/clipboardService.ts`):
+- Uses localStorage as primary store, system clipboard as secondary
+- `ClipboardEntry` includes optional `children` field for nested data
+- `prepareDuplicateData()` clears identity fields and appends "(Copy)" to names
+- Uses `JSON.parse(JSON.stringify())` instead of `structuredClone` (Svelte 5 proxies can't be structuredCloned)
+
+**Duplicate service** (`webui/src/lib/services/duplicateService.ts`):
+- `loadXxxChildren()` - loads nested children into clipboard-compatible structure
+- `pasteXxxChildren()` - creates children from clipboard data under a new parent
+- `duplicateXxxChildren()` - duplicates children from one parent to another via DB
+
+### Schema Filtering & Supplementary Keys
+
+The change store (`webui/src/lib/stores/changes.ts`) filters entity data through JSON schemas via `filterToSchema()`. Fields not in the schema are stripped. For fields that are needed for change tracking but aren't in the schema (like `materialType` for materials, `sizes` for variants), add them to `SUPPLEMENTARY_KEYS`:
+
+```typescript
+const SUPPLEMENTARY_KEYS: Partial<Record<EntityType, string[]>> = {
+    variant: ['sizes'],
+    material: ['id', 'materialType']
+};
+```
+
+**Warning:** If you add a field to entity data that needs to survive change tracking but isn't in the JSON schema, you MUST add it to `SUPPLEMENTARY_KEYS` or it will be silently stripped.
+
+### Submitted Changes Buffer (Pending Merge)
+
+When a user submits changes (creating a PR), the changes are archived into a **submitted buffer** (`webui/src/lib/stores/submitted.ts`) before being cleared from the pending change store. This keeps submitted entities visible in the UI with a purple "Submitted" badge until the buffer entries expire (7-day TTL).
+
+**Key files:**
+- `webui/src/lib/stores/submitted.ts` - Submitted store (localStorage-backed, key `ofd_submitted_changes`)
+- `webui/src/lib/types/changes.ts` - `SubmittedEntry` and `SubmittedBuffer` types
+
+**Data layering precedence:** pending changes > submitted changes > API data. The `DatabaseService` applies submitted changes via `layerSubmittedChanges()` before `layerChanges()`.
+
+**Visual indicators:** Submitted entities show `border-l-4 border-l-purple-500` border and a purple "Submitted" badge on EntityCards. Detail pages show a "Submitted - awaiting merge" info banner.
+
+**Integration points:** The `getChildChangeProps()` function in `deletedStubs.ts` accepts an optional `submitted` parameter. All list pages pass `submittedStore` to this function and to `withDeletedStubs()`. The `entityState` composable exposes `hasSubmittedChanges` for detail pages.
+
+### Entity Detail Page Structure
+
+Each entity detail page follows this pattern:
+1. **Shared action composables** at the top (via `createCopyAction`, `createDuplicateAction`, `createPasteHandler`)
+2. **Data loading** via `$effect` watching route params
+3. **Edit/Delete/Duplicate/Paste handlers** as async functions
+4. **Template** with `EntityDetails` (showing fields + Edit button + `EntityActionDropdown`) and `ChildListPanel` (showing child cards with actions)
+5. **Modals** at the bottom: Edit, Delete, DuplicateOptions, CopyOptions, Duplicate form, Paste form, CloudCompare
+
+### UI Components
+
+- `DropdownMenu.svelte` - Reusable kebab dropdown (auto-strips empty separators)
+- `ContextMenu.svelte` - Right-click menu positioned at pointer
+- `EntityActionDropdown.svelte` - Entity-specific dropdown with Duplicate/Copy/Paste/View/Delete
+- `DuplicateOptionsModal.svelte` - "With children" / "Without children" / "Cancel" chooser
+- `CloudCompareModal.svelte` - Side-by-side JSON diff (cloud mode only)
+- `EntityCard.svelte` - Cards with inline dropdown + right-click context menu
+
+### Form Create vs Update Detection
+
+Forms determine their submit button label ("Create X" vs "Update X") by checking `entity?.id`. Since `prepareDuplicateData()` strips `id`, duplicate/paste forms correctly show "Create". If you add a new form, use `?.id` for this check, not just truthiness of the entity prop.
+
 ## Critical Configuration Files
 
 **Root Level:**
@@ -219,8 +382,8 @@ The repository runs these workflows:
 **WebUI Configuration:**
 - `webui/package.json` - npm scripts and dependencies
 - `webui/svelte.config.js` - SvelteKit configuration
-- `webui/vite.config.js` - Vite build configuration (Tailwind 4 is configured here via `@tailwindcss/vite`, no separate `tailwind.config.js`)
-- `webui/playwright.config.js` - Test configuration (baseURL: localhost:4173)
+- `webui/vite.config.ts` - Vite build configuration (Tailwind 4 is configured here via `@tailwindcss/vite`, no separate `tailwind.config.js`)
+- `webui/playwright.config.ts` - E2E test configuration (baseURL: localhost:4173)
 
 **Validation Schemas:**
 - `schemas/brand_schema.json` - Brand metadata validation
@@ -254,17 +417,31 @@ The repository includes structured templates for community contributions:
 - `brand-request.md` - For requesting new brand additions
 - `filament-request.md` - For requesting new filament additions  
 - `store-request.md` - For requesting new store/retailer additions
+- `schema-change.yml` - Structured form for adding/changing/deprecating a JSON schema field or trait
+- `feature-request.yml` - Structured form for software changes (editor, CLI, API, docs, CI)
+- `config.yml` - Template chooser config: keeps blank issues enabled, links the cloud editor, API docs and contributor guides
 
 **Pull Request Templates** (`.github/PULL_REQUEST_TEMPLATE/`):
 - `data-addition.md` - For data contribution PRs
 - `webui-changes.md` - For WebUI/code changes
 
-## Trust These Instructions
+## Using These Instructions
 
-These instructions are comprehensive and tested. Only search the codebase if:
-- You encounter errors not mentioned in the "Known Issues" sections
-- You need to understand specific business logic beyond data validation/WebUI development
-- The information here appears outdated or incorrect
-- You're implementing entirely new functionality not covered above
+This file is a shortcut for the routine mechanics — setup, commands, directory layout,
+CI behaviour. For those, follow it directly rather than re-deriving them.
 
-For routine data validation, WebUI development, or build processes, follow these instructions directly without additional exploration.
+It is **not** a substitute for reading the code, and it goes stale. The "Reviewer Myths"
+section above exists because wrong claims propagate: this file once justified the
+orphan-filament warning with "not reachable in the UI", and that phrase came back as a
+review comment telling a contributor to delete their data.
+
+So, before you assert something about behaviour in a review comment, a commit message, or
+a PR description — **check it in the code**. Specifically:
+
+- Any claim that something is invalid, unreachable, broken, or blocks CI. Open the rule
+  and check its `ValidationLevel`; a `Warning` never fails a build.
+- Any claim about what a published artifact contains. Check the exporter, or build and
+  look — several source fields are renamed or dropped on the way out.
+- Any claim that starts "the validator flags" or "the UI requires". Grep for it.
+
+If what you find contradicts this file, the code wins — fix this file in the same PR.

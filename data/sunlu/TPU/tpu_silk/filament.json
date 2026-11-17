@@ -1,10 +1,14 @@
 {
+  "uuid": "b7f1ab13-a649-4905-86a5-65b2bf155e1e",
   "id": "tpu_silk",
   "name": "TPU Silk",
   "diameter_tolerance": 0.02,
-  "density": 1.07,
+  "density": 1.21,
+  "shore_hardness_a": 98,
   "min_print_temperature": 210,
   "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/04545ebf-ef5c-4fd9-b425-42a06d39c7c0.pdf?filename=TDS",
+  "discontinued": false
 }

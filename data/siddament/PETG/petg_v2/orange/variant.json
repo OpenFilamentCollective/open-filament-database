@@ -1,0 +1,10 @@
+{
+  "uuid": "655ad0b9-648f-48d5-811c-c8e4d52cf193",
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#FF4D06",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "1655 C"
+  }
+}

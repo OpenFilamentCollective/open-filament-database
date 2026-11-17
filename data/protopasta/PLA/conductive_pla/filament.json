@@ -1,10 +1,12 @@
 {
+  "uuid": "66e59373-a0e7-4dbc-ad76-569d5625d50e",
   "id": "conductive_pla",
   "name": "Conductive PLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
-  "min_print_temperature": 195,
-  "max_print_temperature": 225,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0717/9095/files/CDP1xxxx_TDS.pdf"
 }

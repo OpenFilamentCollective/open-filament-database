@@ -1,10 +1,11 @@
 [
   {
+    "uuid": "3547d916-5ad7-4445-8cce-3d47fa52ab51",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 220,
     "spool_core_diameter": 55,
-    "ean": "5907138403756",
+    "article_number": "16200",
     "purchase_links": [
       {
         "store_id": "beehive",

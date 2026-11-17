@@ -1,8 +1,9 @@
 {
-    "id": "clear",
-    "name": "Clear",
-    "color_hex": "#FFFFFF",
-    "traits": {
-        "translucent": true
-    }
+  "uuid": "93282e46-e1d0-4bb8-8381-f9bc429f72ea",
+  "id": "clear",
+  "name": "Clear",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "translucent": true
+  }
 }

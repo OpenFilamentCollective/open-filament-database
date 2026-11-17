@@ -1,9 +1,9 @@
 {
+  "uuid": "08138ddf-c937-4211-b077-0868cb7ddcdd",
   "id": "brown",
   "name": "Brown",
   "color_hex": "#AE9D7E",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

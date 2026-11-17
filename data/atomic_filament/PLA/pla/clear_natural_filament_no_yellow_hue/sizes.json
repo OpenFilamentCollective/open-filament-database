@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "1e6a59c6-e5d1-4779-830c-e96252eb184f",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/natural-pla-filament"
+      }
+    ]
   }
 ]

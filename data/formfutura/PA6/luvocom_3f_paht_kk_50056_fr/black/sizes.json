@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "d665aa3f-7d83-4667-a839-e584a74d9033",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720629068213",
     "article_number": "PHKK-175BLCK-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "39ed2a58-3178-4132-b3dd-d48b982db8e5",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720629068220",
     "article_number": "PHKK-175BLCK-02300",
     "discontinued": false,
     "purchase_links": [

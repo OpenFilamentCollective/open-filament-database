@@ -1,10 +1,12 @@
 {
+  "uuid": "c40f562a-654f-47bd-8bb4-9d4d0483062e",
   "id": "abs",
   "name": "ABS",
   "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
+  "density": 1.05,
+  "min_print_temperature": 250,
+  "max_print_temperature": 265,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/07/FIBERLOGY_ABS_TDS.pdf"
 }

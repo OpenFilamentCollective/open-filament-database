@@ -1,9 +1,9 @@
 {
+  "uuid": "bb059c8c-cc34-43c0-ad10-e2411ad26a89",
   "id": "copper",
   "name": "Copper",
   "color_hex": "#863938",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

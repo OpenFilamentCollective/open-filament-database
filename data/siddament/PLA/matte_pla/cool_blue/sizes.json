@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "dd83d504-6be6-4678-a1cb-d8520573f8af",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "5.041",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-cool-blue-pla"
+      }
+    ]
+  }
+]

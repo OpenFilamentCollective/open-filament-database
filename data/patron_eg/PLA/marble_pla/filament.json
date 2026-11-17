@@ -1,0 +1,14 @@
+{
+  "uuid": "84726d32-2158-4cb0-9438-e115f7ee23be",
+  "id": "marble_pla",
+  "name": "Marble PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "dry_temperature": 50,
+  "dry_time": 8,
+  "discontinued": false
+}

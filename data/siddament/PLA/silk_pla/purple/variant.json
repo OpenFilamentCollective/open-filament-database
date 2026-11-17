@@ -1,0 +1,13 @@
+{
+  "uuid": "6472202f-7418-424f-97f9-813b4390674b",
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": "#150074",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Reflex Blue C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

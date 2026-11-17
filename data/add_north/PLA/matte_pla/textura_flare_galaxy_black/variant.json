@@ -1,10 +1,10 @@
 {
+  "uuid": "e7d61013-4bdb-4558-a1f2-5cd460349232",
   "id": "textura_flare_galaxy_black",
   "name": "Textura™ Flare Galaxy Black",
   "color_hex": "#000000",
   "traits": {
     "matte": true,
-    "industrially_compostable": true,
     "glitter": true
   }
 }

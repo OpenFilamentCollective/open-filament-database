@@ -1,9 +1,9 @@
 {
+  "uuid": "05eb94e2-da14-4e3f-8daf-ed72b493da77",
   "id": "blue_ice",
   "name": "Blue Ice",
   "color_hex": "#033877",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

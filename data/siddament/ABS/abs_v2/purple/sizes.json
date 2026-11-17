@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1caf8177-cab9-46d1-ba13-b5ca21d2474e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.048",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/purple-abs-v2"
+      }
+    ]
+  }
+]

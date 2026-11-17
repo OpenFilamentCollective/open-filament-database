@@ -1,0 +1,10 @@
+{
+  "uuid": "c7869e49-f9cc-4cc5-98eb-223e957d8759",
+  "id": "natural",
+  "name": "Natural",
+  "color_hex": "#B8B0A8",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Warm Gray 4 C"
+  }
+}

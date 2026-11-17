@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "c3989204-e3b5-4b54-ab09-322922d12491",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 0,
+    "spool_core_diameter": 100,
+    "article_number": "TL6480",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "jaycar_nz",
+        "url": "https://www.jaycar.co.nz/slic3d-pla-spool-less-green-1-75mm-1kg-filament/p/TL6480"
+      }
+    ]
+  }
+]

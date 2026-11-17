@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "49f19b73-2d46-4e80-935c-ba9b4652e525",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.050",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/jet-black-asa-v2"
+      }
+    ]
+  }
+]

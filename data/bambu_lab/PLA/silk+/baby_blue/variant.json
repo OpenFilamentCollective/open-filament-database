@@ -1,5 +1,9 @@
 {
-    "id": "baby_blue",
-    "name": "Baby Blue",
-    "color_hex": "#A8C6EE"
+  "uuid": "34ecd468-ba56-487f-be9f-06bd3786627c",
+  "moved_from": [
+    "10048b89-c8ae-45e1-96d2-97e08c95c205"
+  ],
+  "id": "baby_blue",
+  "name": "Baby Blue",
+  "color_hex": "#A8C6EE"
 }

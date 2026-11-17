@@ -1,17 +1,22 @@
 {
+    "uuid": "7fac575d-c02f-4781-8139-a06456ffb937",
     "id": "pla_sparkle",
     "name": "PLA Sparkle",
     "diameter_tolerance": 0.02,
     "density": 1.23,
+    "min_print_temperature": 190,
+    "max_print_temperature": 220,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 65,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "EPLAB00",
+            "generic_id": "OFDSrzZ8",
+            "id": "OFhcYzR8",
             "profile_name": "Elegoo PLA Sparkle"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "EPLAB00",
+            "id": "OEPLAB00",
             "profile_name": "Elegoo PLA Sparkle"
         }
     }

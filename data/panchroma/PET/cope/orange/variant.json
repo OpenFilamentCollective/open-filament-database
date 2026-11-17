@@ -1,5 +1,10 @@
 {
-    "id": "orange",
-    "name": "Orange",
-    "color_hex": "#F67405"
+  "uuid": "217bd1b6-59a3-4d61-8440-1c4ad330563f",
+  "moved_from": [
+    "0e888349-b951-416c-8306-075d5438c75b"
+  ],
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#F67405",
+  "transmission_distance": 4.6
 }

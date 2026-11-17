@@ -1,0 +1,18 @@
+{
+  "uuid": "31347be6-2fde-4b8c-9497-405246f81efc",
+  "id": "strawberry_sweetie",
+  "name": "Strawberry Sweetie",
+  "color_hex": [
+    "#F0EDE6",
+    "#3D5A4A",
+    "#6E2E2C",
+    "#C98A8F",
+    "#C9B37A"
+  ],
+  "discontinued": false,
+  "traits": {
+    "translucent": true,
+    "glitter": true,
+    "gradual_color_change": true
+  }
+}

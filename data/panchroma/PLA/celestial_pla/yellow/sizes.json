@@ -1,0 +1,22 @@
+[
+  {
+    "uuid": "504b00be-ac7b-4dc8-bb86-64e8bac557c4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936716549",
+    "article_number": "CA02047",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/celestial-pla?variant=44835197976633"
+      }
+    ]
+  }
+]

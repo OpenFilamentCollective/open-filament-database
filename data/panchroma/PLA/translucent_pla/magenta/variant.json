@@ -1,5 +1,13 @@
 {
+  "uuid": "19530239-1748-42f4-938b-d2ac6d2da8e8",
+  "moved_from": [
+    "77df718e-a887-4b91-9e14-bfc893dace1c"
+  ],
   "id": "magenta",
   "name": "Magenta",
-  "color_hex": "#D93B90"
+  "color_hex": "#D93B90",
+  "transmission_distance": 7.8,
+  "traits": {
+    "translucent": true
+  }
 }

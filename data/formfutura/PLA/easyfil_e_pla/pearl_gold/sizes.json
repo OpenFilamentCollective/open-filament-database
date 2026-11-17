@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "11b6f248-a527-44f4-a9a4-42ed5f57404a",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847050588",
     "article_number": "PLAE-175PGLD-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "e0a8683c-cfb1-45c1-99bc-fdac893a00f8",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847051127",
     "article_number": "PLAE-175PGLD-02300",
     "discontinued": false,
     "purchase_links": [

@@ -1,10 +1,12 @@
 {
+  "uuid": "e84e6672-1290-4b7f-b737-cc0ccd6e249e",
   "id": "static_dissipative_petg",
   "name": "Static Dissipative PETG",
   "diameter_tolerance": 0.02,
   "density": 1.27,
-  "min_print_temperature": 195,
-  "max_print_temperature": 225,
-  "min_bed_temperature": 60,
-  "max_bed_temperature": 80
+  "min_print_temperature": 250,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0717/9095/files/PETGxxxx-ESD_TDS.pdf"
 }

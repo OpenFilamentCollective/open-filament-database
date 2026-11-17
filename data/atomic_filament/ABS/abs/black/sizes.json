@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "405a688e-c184-4834-bd23-117a4cc63a2d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/black-abs-filament"
+      }
+    ]
   }
 ]

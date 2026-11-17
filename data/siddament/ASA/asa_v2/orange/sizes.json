@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b7109e5f-dbbd-4dbf-9a13-be27c95b6826",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.061",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/orange-asa-v2"
+      }
+    ]
+  }
+]

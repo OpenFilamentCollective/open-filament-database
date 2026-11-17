@@ -1,5 +1,13 @@
 {
-    "id": "sapphire_blue",
-    "name": "Sapphire Blue",
-    "color_hex": "#005AA2"
+  "uuid": "32c553f7-6815-4c36-a4a8-3a976e4635d5",
+  "moved_from": [
+    "b3d7af1c-9c48-4abe-b7f5-7ddfd75bce97"
+  ],
+  "id": "sapphire_blue",
+  "name": "Sapphire Blue",
+  "color_hex": "#005AA2",
+  "transmission_distance": 0.5,
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,5 +1,9 @@
 {
+  "uuid": "d8396c34-6d75-44a7-a7d6-d7b7582293a8",
   "id": "upgraded_solid_blue",
   "name": "Upgraded Solid Blue",
-  "color_hex": "#2E56F1"
+  "color_hex": "#2E56F1",
+  "traits": {
+    "high_flow": true
+  }
 }

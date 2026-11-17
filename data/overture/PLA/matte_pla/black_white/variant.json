@@ -1,10 +1,10 @@
 {
+  "uuid": "373edc7a-c153-4434-9964-4610a8c7b2f7",
   "id": "black_white",
   "name": "Black & White",
   "color_hex": "#a6a9a8",
   "traits": {
     "matte": true,
-    "industrially_compostable": true,
     "coextruded": true
   }
 }

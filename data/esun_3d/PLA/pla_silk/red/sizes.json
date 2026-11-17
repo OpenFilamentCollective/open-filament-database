@@ -1,12 +1,33 @@
 [
   {
+    "uuid": "6cc697ac-f255-4944-a2d8-6437fa6a5472",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204188",
+    "article_number": "PLA-SK175R1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-silk"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-red-2"
+      }
+    ]
+  },
+  {
+    "uuid": "2b2edfed-ccda-4ba6-a028-db2ffb91eae8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208629",
+    "article_number": "PLA-SK175R1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-red-2?sai=24610"
       }
     ]
   }

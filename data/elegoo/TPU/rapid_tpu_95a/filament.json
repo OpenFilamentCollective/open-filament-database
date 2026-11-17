@@ -1,18 +1,23 @@
 {
+    "uuid": "992cf1b7-c633-4d06-8bd7-948c34ce5043",
     "id": "rapid_tpu_95a",
     "name": "Rapid TPU 95A",
     "diameter_tolerance": 0.02,
-    "density": 1.16,
+    "density": 1.27,
+    "min_print_temperature": 200,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 30,
+    "max_bed_temperature": 45,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFU99",
-            "id": "ETPUB00",
-            "profile_name": "Elegoo RAPID TPU 95A"
+            "generic_id": "OFgbpcy9",
+            "id": "OF30Ftju",
+            "profile_name": "Elegoo Rapid TPU 95A"
         },
         "elegooslicer": {
             "generic_id": "GFU99",
-            "id": "ETPUB00",
-            "profile_name": "Elegoo RAPID TPU 95A"
+            "id": "OETPUB00",
+            "profile_name": "Elegoo Rapid TPU 95A"
         }
     }
 }

@@ -1,8 +1,19 @@
 {
+    "uuid": "10f2a7f1-c97e-434b-8d44-9315b026d111",
     "id": "95a_hf",
     "name": "TPU 95A HF",
     "diameter_tolerance": 0.03,
     "density": 1.22,
+    "shore_hardness_a": 95,
+    "min_print_temperature": 220,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 30,
+    "max_bed_temperature": 35,
+    "max_volumetric_speed": 12,
+    "min_fan_speed": 100,
+    "max_fan_speed": 100,
+    "dry_temperature": 70,
+    "dry_time": 8,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_TPU_95A_HF_Technical_Data_Sheet.pdf?v=1700101819",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/MSDS_Bambu_TPU_95A_HF.pdf?v=1705372919",
     "slicer_settings": {
@@ -12,11 +23,21 @@
             "profile_name": "Bambu TPU 95A HF"
         },
         "orcaslicer": {
+            "generic_id": "OFgbpcy9",
+            "id": "OFvKUnLh",
+            "profile_name": "Bambu TPU 95A HF"
+        },
+        "elegooslicer": {
             "generic_id": "GFU99",
             "id": "GFU00",
             "profile_name": "Bambu TPU 95A HF"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFU99",
+            "id": "GFU00",
+            "profile_name": "Bambu TPU 95A HF"
+        },
+        "anycubicslicer": {
             "generic_id": "GFU99",
             "id": "GFU00",
             "profile_name": "Bambu TPU 95A HF"

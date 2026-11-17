@@ -1,6 +1,14 @@
 [
   {
+    "uuid": "9062eaf1-8cd7-40ef-ab51-638a2e84ae95",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6933582323295",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-matte-bone-white"
+      }
+    ]
   }
 ]

@@ -1,6 +1,11 @@
 {
-    "id": "asa+",
-    "name": "ASA+",
-    "diameter_tolerance": 0.05,
-    "density": 1.07
+  "uuid": "dde030a9-8680-4262-8f06-21fe4d61210c",
+  "id": "asa+",
+  "name": "ASA+",
+  "diameter_tolerance": 0.05,
+  "density": 1.06,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100
 }

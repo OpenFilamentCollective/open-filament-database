@@ -1,0 +1,14 @@
+{
+  "uuid": "a2231855-bb10-4dd9-a3ba-78495bbb16bf",
+  "id": "grey",
+  "name": "Grey",
+  "color_hex": "#A1A1A0",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Cool Gray 6 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

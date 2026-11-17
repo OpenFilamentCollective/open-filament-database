@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "a6a8732e-7d5a-4da0-92f6-a6ac6fe28a6d",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204874",
+    "article_number": "PETG+HS175B1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epetg-hs"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/petghs-black"
       }
     ]
   }

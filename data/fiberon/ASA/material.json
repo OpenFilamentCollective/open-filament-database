@@ -1,0 +1,15 @@
+{
+  "uuid": "c623d464-b67f-4270-9357-4cf27dfed0a9",
+  "material": "ASA",
+  "material_class": "FFF",
+  "default_max_dry_temperature": 90,
+  "default_slicer_settings": {
+    "bambustudio": {
+      "bed_temp": 90,
+      "first_layer_bed_temp": 90,
+      "first_layer_nozzle_temp": 270,
+      "nozzle_temp": 270,
+      "profile_name": "Fiberon ASA-CF08"
+    }
+  }
+}

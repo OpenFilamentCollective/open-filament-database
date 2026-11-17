@@ -1,0 +1,10 @@
+{
+  "uuid": "8643b7e6-8e5c-4e99-852d-96ac12c928a4",
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#A0A0A0",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Cool Gray 6 C"
+  }
+}

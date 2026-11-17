@@ -1,4 +1,5 @@
 {
+  "uuid": "ceee1d11-7844-470a-bc06-530e41f8b2ba",
   "id": "glowfill",
   "name": "glowFill",
   "color_hex": [
@@ -7,8 +8,8 @@
   ],
   "traits": {
     "glow": true,
+    "illuminescent_color_change": true,
     "home_compostable": true,
-    "abrasive": true,
-    "illuminescent_color_change": true
+    "abrasive": true
   }
 }

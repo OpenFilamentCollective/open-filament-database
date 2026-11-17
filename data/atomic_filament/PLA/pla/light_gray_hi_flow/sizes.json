@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "d1edbfc5-bf0f-417a-9e93-22a6468f733f",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/light-gray-hi-flow-pro-pla-filament"
+      }
+    ]
   }
 ]

@@ -1,5 +1,12 @@
 {
+  "uuid": "434a44f0-ccbe-41d0-b7bb-c0a5a5e94800",
+  "moved_from": [
+    "e62a8ad4-8ac4-4832-99b8-42132b64b126"
+  ],
   "id": "aurora",
   "name": "Aurora",
-  "color_hex": "#d5ecc9"
+  "color_hex": "#d5ecc9",
+  "traits": {
+    "iridescent": true
+  }
 }

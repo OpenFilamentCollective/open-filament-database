@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "d5278a8e-d946-4b73-9d4a-99ee7e6fb722",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/petg-glow-in-the-dark-luminous-3d-printer-filament-1kg"
+      }
+    ]
   }
 ]

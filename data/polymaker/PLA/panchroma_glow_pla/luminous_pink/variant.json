@@ -1,10 +1,10 @@
 {
+  "uuid": "9af4f08a-d6c0-4e66-8586-d10308d80388",
   "id": "luminous_pink",
   "name": "Luminous Pink",
   "color_hex": "#FC8397",
   "traits": {
     "glow": true,
-    "industrially_compostable": true,
     "abrasive": true
   }
 }

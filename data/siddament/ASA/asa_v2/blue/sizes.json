@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b25f7c73-8040-4f3d-8f28-378ce6f01564",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.063",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/blue-asa-v2"
+      }
+    ]
+  }
+]

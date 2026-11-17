@@ -1,7 +1,8 @@
 {
+  "uuid": "e64ea76c-b83a-4dd4-b023-94c3f2f9507b",
   "id": "blend_silk_pla",
   "name": "Blend Silk PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.24,
   "min_print_temperature": 205,
   "max_print_temperature": 225,

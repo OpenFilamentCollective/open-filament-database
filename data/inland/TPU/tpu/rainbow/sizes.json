@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "022105d5-50fc-4fdc-8766-3089af8ad03b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://microcenter.com/product/647840/inland-175mm-tpu-3d-printer-filament-10-kg-(22-lbs)-spool-rainbow"
+      }
+    ]
+  }
+]

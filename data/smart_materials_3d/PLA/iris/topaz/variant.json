@@ -1,9 +1,9 @@
 {
+  "uuid": "c22528c6-39ca-4785-9b32-877e9ca7ceb1",
   "id": "topaz",
   "name": "Topaz",
   "color_hex": "#144F3B",
   "traits": {
-    "industrially_compostable": true,
     "iridescent": true
   }
 }

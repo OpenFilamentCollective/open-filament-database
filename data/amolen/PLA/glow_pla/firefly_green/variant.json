@@ -1,11 +1,11 @@
 {
+  "uuid": "698ca0bc-d694-4427-98c1-0bfd9c625165",
   "id": "firefly_green",
   "name": "Firefly Green",
   "color_hex": "#00CC00",
   "traits": {
+    "glitter": true,
     "glow": true,
-    "industrially_compostable": true,
-    "abrasive": true,
-    "glitter": true
+    "abrasive": true
   }
 }

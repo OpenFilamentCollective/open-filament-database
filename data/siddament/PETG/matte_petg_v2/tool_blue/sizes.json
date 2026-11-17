@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a4d93fc6-a3f7-4acf-954f-a0c96767f593",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.073",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-makeeya-blue-petg-v2"
+      }
+    ]
+  }
+]

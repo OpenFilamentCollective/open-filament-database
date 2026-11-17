@@ -1,10 +1,12 @@
 {
+  "uuid": "34e0cddb-70c2-47b7-8f71-68dd18a13200",
   "id": "3dxstat_esd",
   "name": "ABS 3DXStat ESD",
   "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "density": 1.09,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/3DXSTAT_ESD_ABS_TDS_v3.pdf?v=1723942764"
 }

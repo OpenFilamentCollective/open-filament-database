@@ -1,0 +1,14 @@
+{
+  "uuid": "df9b1444-c1c2-4fee-a7e5-45ab35e7a9c9",
+  "id": "super_violet",
+  "name": "Super Violet",
+  "color_hex": "#5B4B9E",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "7679 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

@@ -1,6 +1,17 @@
 {
-    "id": "translucent_pla",
-    "name": "Translucent PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "dbc6278e-2e6a-4d64-ad48-2ad7b89e5f98",
+  "moved_from": [
+    "c53bc912-3e61-4433-9368-db5903121a68"
+  ],
+  "id": "translucent_pla",
+  "name": "Translucent PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_PANCHROMA_V2.pdf"
 }

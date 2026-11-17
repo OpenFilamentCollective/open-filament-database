@@ -1,10 +1,10 @@
 {
+  "uuid": "e74cea36-4d2d-4662-82d3-2f712823d4aa",
   "id": "viva_la_bronze",
   "name": "Viva La Bronze",
   "color_hex": "#B38E3F",
   "traits": {
-    "industrially_compostable": true,
-    "blend": true,
-    "silk": true
+    "silk": true,
+    "blend": true
   }
 }

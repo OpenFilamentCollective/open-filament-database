@@ -1,10 +1,12 @@
 {
+  "uuid": "29f372c5-da66-49a0-9a4a-779239ef6165",
   "id": "easy",
   "name": "PLA Easy",
   "diameter_tolerance": 0.02,
-  "density": 1.16,
+  "density": 1.2,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_print_temperature": 220,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://overture3d.com/cdn/shop/files/OVERTURE__EASY_PLA_TDS_EN_V5.1_f2df1ff7-e3da-4ae4-8c69-7e90319c05c1.pdf"
 }

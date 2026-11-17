@@ -1,10 +1,12 @@
 {
+  "uuid": "dc45a418-a87e-4740-a043-239471c18df8",
   "id": "a95",
   "name": "TPU A95",
-  "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "diameter_tolerance": 0.05,
+  "density": 1.2,
+  "min_print_temperature": 200,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://3d.nice-cdn.com/upload/file/Technical_Data_Sheet_TPU_A95_V2.pdf"
 }

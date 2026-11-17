@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "eaf8c28e-268e-4673-919c-df723d5ec1e1",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476277",
     "article_number": "APOX-175BLCK-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,13 @@
     ]
   },
   {
+    "uuid": "0aabf170-8f30-4ce2-9ef2-b4da7c625f2d",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629068459",
     "article_number": "APOX-175BLCK-B1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,12 @@
     ]
   },
   {
+    "uuid": "c19e0271-cd01-40f6-adc6-c04be1a59816",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477694",
     "article_number": "APOX-175BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +49,12 @@
     ]
   },
   {
+    "uuid": "4bc77bb4-7f5f-4a37-b4fd-a3aa9279036a",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924477717",
     "article_number": "APOX-175BLCK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +65,12 @@
     ]
   },
   {
+    "uuid": "cde8a7bf-8954-49ed-9cec-969fd31ef5e5",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8718924479445",
     "article_number": "APOX-175BLCK-08000",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +81,12 @@
     ]
   },
   {
+    "uuid": "8ca9f208-e08d-4e3b-af60-241a66b2abc5",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476284",
     "article_number": "APOX-285BLCK-00750",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +97,12 @@
     ]
   },
   {
+    "uuid": "c308c785-d9e5-437c-aa46-b2904f223a5a",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477700",
     "article_number": "APOX-285BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -98,10 +113,12 @@
     ]
   },
   {
+    "uuid": "e6f0ff7d-0594-4e8f-932d-a0ea05bb990d",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924477724",
     "article_number": "APOX-285BLCK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -112,10 +129,12 @@
     ]
   },
   {
+    "uuid": "eed81018-a80f-4c49-8cb7-b74bd430fd1e",
     "filament_weight": 8000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8718924479452",
     "article_number": "APOX-285BLCK-08000",
     "discontinued": false,
     "purchase_links": [
@@ -124,5 +143,12 @@
         "url": "https://www.formfutura.com/apollox"
       }
     ]
+  },
+  {
+    "uuid": "7177410b-6dca-4003-864b-1ff9f1df0a24",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574297881",
+    "article_number": "APOX-285BLCK-00250"
   }
 ]

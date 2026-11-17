@@ -1,6 +1,29 @@
 {
+    "uuid": "644bca46-0925-498d-a541-e789281ea4c2",
     "id": "petg_basic",
     "name": "PETG-Basic",
     "diameter_tolerance": 0.03,
-    "density": 1.27
+    "density": 1.27,
+    "min_print_temperature": 250,
+    "max_print_temperature": 250,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 70,
+    "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PETG-Basic/PETG_Basic_TDS.pdf",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFYPdQJh",
+            "id": "OFFbQscs",
+            "profile_name": "eSUN PETG-Basic"
+        },
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "E2003",
+            "profile_name": "eSUN PETG-Basic"
+        },
+        "crealityprint": {
+            "generic_id": "GFG99",
+            "id": "E2003",
+            "profile_name": "eSUN PETG-Basic"
+        }
+    }
 }

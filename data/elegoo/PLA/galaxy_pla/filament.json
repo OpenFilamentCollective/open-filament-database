@@ -1,6 +1,11 @@
 {
-    "id": "galaxy_pla",
-    "name": "Galaxy PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.21
+  "uuid": "ffbc91ee-1c0e-48eb-bbf6-9a2311a88ccc",
+  "id": "galaxy_pla",
+  "name": "Galaxy PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.21,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 65
 }

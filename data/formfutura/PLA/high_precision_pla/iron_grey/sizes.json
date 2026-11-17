@@ -1,6 +1,23 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "28a86e17-89b1-4664-8dc7-7cfc1098d3b8",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8720629061702",
+    "article_number": "HPPL-175IGRY-00750"
+  },
+  {
+    "uuid": "f631c3bc-edd8-46bf-83f9-4f2a78e56a0c",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720629062068",
+    "article_number": "HPPL-285IGRY-00250"
+  },
+  {
+    "uuid": "7aa46e5d-d5bd-42df-8427-448c618d7879",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "gtin": "8720629061825",
+    "article_number": "HPPL-285IGRY-00750"
   }
 ]

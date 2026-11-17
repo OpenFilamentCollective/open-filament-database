@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "174a1e83-001d-44c5-b074-658290729827",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.013",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-red-pla-v2"
+      }
+    ]
+  }
+]

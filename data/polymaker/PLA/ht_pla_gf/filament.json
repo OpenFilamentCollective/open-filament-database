@@ -1,11 +1,21 @@
 {
+    "uuid": "6d5579c5-cf3a-491c-8caf-5fc22db01db4",
     "id": "ht_pla_gf",
     "name": "HT-PLA-GF",
     "diameter_tolerance": 0.02,
     "density": 1.33,
+    "min_print_temperature": 210,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 25,
+    "max_bed_temperature": 60,
+    "dry_temperature": 60,
+    "dry_time": 6,
+    "enclosure": "not_needed",
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/Polymaker_HT-PLA-GF_TDS_EN_V1.1.pdf",
+    "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/Polymaker_TM_HT-PLAGF_SDS_US_EN_V1.0.pdf",
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFL99",
+            "generic_id": "OFDSrzZ8",
             "id": "GFPM018",
             "profile_name": "Polymaker HT-PLA-GF"
         },

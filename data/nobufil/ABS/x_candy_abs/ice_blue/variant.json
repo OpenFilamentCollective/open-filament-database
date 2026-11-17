@@ -1,9 +1,11 @@
 {
+  "uuid": "17c35cbc-92c1-4eae-bbaf-bb9c3cc7b9bb",
   "id": "ice_blue",
   "name": "Ice Blue",
   "color_hex": "#5CADBF",
   "traits": {
     "translucent": true,
+    "recycled": true,
     "filtration_recommended": true
   }
 }

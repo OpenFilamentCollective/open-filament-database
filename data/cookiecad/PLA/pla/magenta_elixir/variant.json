@@ -1,9 +1,9 @@
 {
+  "uuid": "2ce529f5-d373-4cf8-aad3-96e16bfb4b52",
   "id": "magenta_elixir",
   "name": "Magenta Elixir",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "iridescent": true,
     "gradual_color_change": true
   }

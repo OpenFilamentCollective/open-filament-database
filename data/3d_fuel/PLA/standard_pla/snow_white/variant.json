@@ -1,8 +1,10 @@
 {
+  "uuid": "387baffe-1ae9-4d1d-969e-dd3d894471b3",
   "id": "snow_white",
   "name": "Snow White",
-  "color_hex": "#EFEFEF",
+  "color_hex": "#F1F1EA",
+  "transmission_distance": 3.3,
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

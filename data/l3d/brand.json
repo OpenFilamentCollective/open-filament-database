@@ -1,7 +1,8 @@
 {
-    "id": "l3d",
-    "name": "L3D",
-    "website": "https://shop.lab3d.dk",
-    "logo": "logo.png",
-    "origin": "DK"
+  "uuid": "e6ec1842-00aa-4f90-ba1e-db630b34aae0",
+  "id": "l3d",
+  "name": "L3D",
+  "website": "https://shop.lab3d.dk",
+  "logo": "logo.png",
+  "origin": "DK"
 }

@@ -1,10 +1,11 @@
 {
+  "uuid": "8a67718f-b7ba-4f29-b97d-3d78f71612eb",
   "id": "stonefil_pla",
   "name": "StoneFil PLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "min_print_temperature": 185,
+  "max_print_temperature": 225,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 60
 }

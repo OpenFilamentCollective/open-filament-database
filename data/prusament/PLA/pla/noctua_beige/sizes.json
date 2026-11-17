@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "1f5621c4-4b5b-4625-bc2f-43ea37d818ce",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173676374"
+    "gtin": "8594173676374",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pla-noctua-beige-1kg-nfc/"
+      }
+    ]
   }
 ]

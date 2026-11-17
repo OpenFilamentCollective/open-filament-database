@@ -1,9 +1,9 @@
 {
+  "uuid": "d344c0cc-81e4-4f66-857e-18dc6f4d102c",
   "id": "blue_pearl",
   "name": "Blue Pearl",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "glitter": true
   }
 }

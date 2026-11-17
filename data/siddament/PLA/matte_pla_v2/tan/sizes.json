@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3071f783-19e2-4e9e-bf2f-799189d054ea",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.019",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-tan-pla-v2"
+      }
+    ]
+  }
+]

@@ -1,8 +1,9 @@
 {
-    "id": "graphite",
-    "name": "Graphite",
-    "color_hex": "#53565A",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "c5d3c4f7-b888-4590-9c66-01641a3f8d9c",
+  "id": "graphite",
+  "name": "Graphite",
+  "color_hex": "#53565A",
+  "traits": {
+    "recyclable": true
+  }
 }

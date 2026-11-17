@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "764d54f4-9576-4928-a50c-0aad71fc54a2",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170756",
+    "article_number": "700-001-1310",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/petg-white-7"
+      }
+    ]
   }
 ]

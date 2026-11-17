@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3ff18e0b-5ecd-4b5c-8350-d846e6894e8d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.073",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/natural-asa-v2"
+      }
+    ]
+  }
+]

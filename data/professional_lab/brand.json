@@ -1,7 +1,9 @@
 {
+  "uuid": "b4268e1a-89ca-4d4e-96e2-044fa6a0f6b9",
   "id": "professional_lab",
   "name": "Professional LAB",
   "website": "https://print-imagine.com/",
+  "parent_brand": "smartprint",
   "logo": "logo.png",
   "origin": "PL"
 }

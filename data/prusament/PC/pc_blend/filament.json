@@ -1,21 +1,37 @@
 {
+    "uuid": "92a21a8d-0991-4533-8281-32c623161d27",
     "id": "pc_blend",
     "name": "PC Blend",
     "diameter_tolerance": 0.03,
     "density": 1.22,
+    "min_print_temperature": 265,
+    "max_print_temperature": 285,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 120,
+    "data_sheet_url": "https://prusament.com/wp-content/uploads/2022/10/PCBlend_Prusament_TDS_2022_16_EN.pdf",
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Prusament PC Blend"
         },
         "orcaslicer": {
-            "generic_id": "GFC99",
-            "id": "GFC99",
+            "generic_id": "OFLakOUI",
+            "id": "OFvDbkFq",
             "profile_name": "Prusament PC Blend"
         },
         "superslicer": {
             "profile_name": "Prusament PC Blend"
         },
         "elegooslicer": {
+            "generic_id": "GFC99",
+            "id": "GFC99",
+            "profile_name": "Prusament PC Blend"
+        },
+        "crealityprint": {
+            "generic_id": "GFC99",
+            "id": "GFL99_1",
+            "profile_name": "Prusament PC Blend"
+        },
+        "anycubicslicer": {
             "generic_id": "GFC99",
             "id": "GFC99",
             "profile_name": "Prusament PC Blend"

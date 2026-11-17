@@ -1,6 +1,34 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "b3921c92-4ae6-41f5-a9a6-4fc82e343ab7",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 165,
+    "gtin": "8720574292107",
+    "article_number": "HPLA-175GOLD-00750",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/high-gloss-pla"
+      }
+    ]
+  },
+  {
+    "uuid": "7d0b071c-baa6-418d-90e0-38b13525e648",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 625,
+    "gtin": "8720574292114",
+    "article_number": "HPLA-175GOLD-02300",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/high-gloss-pla"
+      }
+    ]
   }
 ]

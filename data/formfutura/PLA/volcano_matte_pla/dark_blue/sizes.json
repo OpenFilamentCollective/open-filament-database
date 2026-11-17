@@ -1,6 +1,23 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "842e0e91-ecf2-47af-b435-ce69c4f7986d",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8719956554711",
+    "article_number": "VPLA-175DBLU-00750"
+  },
+  {
+    "uuid": "41f8dbb6-60f9-4232-aa79-8ade7f02eaaf",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720629060095",
+    "article_number": "VPLA-285DBLU-00250"
+  },
+  {
+    "uuid": "a98bbd78-0296-477e-9bd1-d0c0b51df886",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "gtin": "8719956554759",
+    "article_number": "VPLA-285DBLU-00750"
   }
 ]

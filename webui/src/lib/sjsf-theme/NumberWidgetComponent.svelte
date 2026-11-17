@@ -1,0 +1,39 @@
+<script lang="ts">
+	import type { Config } from '@sjsf/form';
+
+	let {
+		type,
+		config,
+		value = $bindable(),
+		handlers,
+		errors,
+		uiOption
+	}: {
+		type: 'widget';
+		config: Config;
+		value: number | undefined;
+		handlers: { onblur?: () => void; oninput?: () => void; onchange?: () => void };
+		errors: string[];
+		uiOption: (key: string) => any;
+	} = $props();
+
+	const placeholder = $derived(uiOption('placeholder') ?? '');
+	const readonly = $derived(uiOption('readonly') ?? false);
+	const disabled = $derived(uiOption('disabled') ?? false);
+	const step = $derived(uiOption('step') ?? 'any');
+</script>
+
+<input
+	id={(config.path as any).id}
+	type="number"
+	class="w-full px-3 py-2 bg-background border border-input rounded-md text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+	class:border-destructive={errors.length > 0}
+	bind:value
+	{placeholder}
+	{readonly}
+	{disabled}
+	{step}
+	onblur={handlers.onblur}
+	oninput={handlers.oninput}
+	onchange={handlers.onchange}
+/>

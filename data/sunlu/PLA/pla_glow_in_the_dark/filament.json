@@ -1,6 +1,12 @@
 {
-    "id": "pla_glow_in_the_dark",
-    "name": "PLA Glow In The Dark",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "b05e5084-5387-42e3-99a8-aebb3d7f102f",
+  "id": "pla_glow_in_the_dark",
+  "name": "PLA Glow In The Dark",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "min_print_temperature": 200,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260327/25674e7f-8c9e-4ff2-8bf6-74bae7d6a030.pdf?filename=TDS"
 }

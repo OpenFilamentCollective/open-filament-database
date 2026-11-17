@@ -1,10 +1,12 @@
 {
+  "uuid": "2d1d8818-3534-4e06-8a38-540a4c4468ab",
   "id": "woodfill_pla",
   "name": "WoodFill PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.15,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "density": 1.1,
+  "min_print_temperature": 195,
+  "max_print_temperature": 260,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_WoodFill_PLA_Filament_Technical_Data_Sheet_TDS.pdf"
 }

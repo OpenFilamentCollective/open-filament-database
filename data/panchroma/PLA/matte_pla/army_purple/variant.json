@@ -1,5 +1,13 @@
 {
-    "id": "army_purple",
-    "name": "Army Purple",
-    "color_hex": "#292036"
+  "uuid": "54b1b372-8065-4ce4-b603-e6452eb2235f",
+  "moved_from": [
+    "61be95b4-a7a9-4994-9e7c-d3a6bebb4b92"
+  ],
+  "id": "army_purple",
+  "name": "Army Purple",
+  "color_hex": "#292036",
+  "transmission_distance": 0.2,
+  "traits": {
+    "matte": true
+  }
 }

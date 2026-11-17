@@ -1,0 +1,213 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import {
+	generateSlug,
+	generateMaterialType,
+	hasLocalChanges,
+	isLocallyCreated,
+	deleteEntity,
+	mergeEntityData
+} from '../entityService';
+
+// Mock the stores - helper to build _index Map matching ChangeTreeNode shape
+function buildIndex(changes: Record<string, { operation: string; data?: any }>) {
+	const map = new Map<string, { key: string; path: string; change: { operation: string; data?: any }; children: Record<string, any> }>();
+	for (const [path, change] of Object.entries(changes)) {
+		const key = path.split('/').pop() || path;
+		map.set(path, { key, path, change, children: {} });
+	}
+	return map;
+}
+
+const mockChangeStore = {
+	changes: {} as Record<string, { operation: string; data?: any }>,
+	get _index() {
+		return buildIndex(this.changes);
+	},
+	removeChange: vi.fn()
+};
+
+vi.mock('$lib/stores/changes', () => ({
+	changeStore: {
+		subscribe: (fn: (value: any) => void) => {
+			fn(mockChangeStore);
+			return () => {};
+		},
+		removeChange: (...args: any[]) => mockChangeStore.removeChange(...args)
+	}
+}));
+
+describe('Entity Service', () => {
+	beforeEach(() => {
+		mockChangeStore.changes = {};
+		mockChangeStore.removeChange.mockClear();
+	});
+
+	describe('generateSlug', () => {
+		it('should convert to lowercase', () => {
+			expect(generateSlug('TestBrand')).toBe('testbrand');
+			expect(generateSlug('UPPERCASE')).toBe('uppercase');
+		});
+
+		it('should replace spaces and special chars with underscores', () => {
+			expect(generateSlug('Test Brand')).toBe('test_brand');
+			expect(generateSlug('Test & Brand!')).toBe('test_brand');
+			expect(generateSlug('Test@Brand#Name')).toBe('test_brand_name');
+		});
+
+		it('should remove leading/trailing underscores', () => {
+			expect(generateSlug(' Test Brand ')).toBe('test_brand');
+			expect(generateSlug('--test--')).toBe('test');
+			expect(generateSlug('!Test!')).toBe('test');
+		});
+
+		it('should handle multiple consecutive special chars', () => {
+			expect(generateSlug('Test   Brand')).toBe('test_brand');
+			expect(generateSlug('Test---Brand')).toBe('test_brand');
+			expect(generateSlug('Test   @#$  Brand')).toBe('test_brand');
+		});
+
+		it('should handle numbers', () => {
+			expect(generateSlug('Brand123')).toBe('brand123');
+			expect(generateSlug('123Brand')).toBe('123brand');
+		});
+	});
+
+	describe('generateMaterialType', () => {
+		it('should convert to uppercase', () => {
+			expect(generateMaterialType('pla')).toBe('PLA');
+			expect(generateMaterialType('petg')).toBe('PETG');
+		});
+
+		it('should replace special chars with underscores', () => {
+			expect(generateMaterialType('pla plus')).toBe('PLA_PLUS');
+			expect(generateMaterialType('carbon fiber')).toBe('CARBON_FIBER');
+		});
+
+		it('should handle existing uppercase input', () => {
+			expect(generateMaterialType('PLA')).toBe('PLA');
+			expect(generateMaterialType('PETG')).toBe('PETG');
+		});
+
+		it('should remove leading/trailing underscores', () => {
+			expect(generateMaterialType(' pla ')).toBe('PLA');
+			expect(generateMaterialType('--abs--')).toBe('ABS');
+		});
+	});
+
+	describe('hasLocalChanges', () => {
+		it('should return true for create operation', () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
+
+			expect(hasLocalChanges('brands/test')).toBe(true);
+		});
+
+		it('should return true for update operation', () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'update' } };
+
+			expect(hasLocalChanges('brands/test')).toBe(true);
+		});
+
+		it('should return false for delete operation', () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'delete' } };
+
+			expect(hasLocalChanges('brands/test')).toBe(false);
+		});
+
+		it('should return false for no changes', () => {
+			mockChangeStore.changes = {};
+
+			expect(hasLocalChanges('brands/test')).toBe(false);
+		});
+	});
+
+	describe('isLocallyCreated', () => {
+		it('should return true only for create operation', () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
+
+			expect(isLocallyCreated('brands/test')).toBe(true);
+		});
+
+		it('should return false for updates', () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'update' } };
+
+			expect(isLocallyCreated('brands/test')).toBe(false);
+		});
+	});
+
+	describe('deleteEntity', () => {
+		it('should remove local create without API call', async () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
+			const deleteFn = vi.fn().mockResolvedValue(true);
+
+			const result = await deleteEntity('brands/test', 'Brand', deleteFn);
+
+			expect(result.success).toBe(true);
+			expect(result.isLocalRemoval).toBe(true);
+			expect(mockChangeStore.removeChange).toHaveBeenCalledWith('brands/test');
+			expect(deleteFn).not.toHaveBeenCalled();
+		});
+
+		it('should mark existing entity for deletion', async () => {
+			mockChangeStore.changes = {};
+			const deleteFn = vi.fn().mockResolvedValue(true);
+
+			const result = await deleteEntity('brands/test', 'Brand', deleteFn);
+
+			expect(result.success).toBe(true);
+			expect(result.message).toContain('marked for deletion');
+			expect(deleteFn).toHaveBeenCalled();
+		});
+
+		it('should return isLocalRemoval flag for created entities', async () => {
+			mockChangeStore.changes = { 'brands/test': { operation: 'create' } };
+			const deleteFn = vi.fn();
+
+			const result = await deleteEntity('brands/test', 'Brand', deleteFn);
+
+			expect(result.isLocalRemoval).toBe(true);
+		});
+	});
+
+	describe('mergeEntityData', () => {
+		it('should merge form data over existing', () => {
+			const existing = { id: 'test', name: 'Old Name', website: 'old.com' };
+			const formData = { name: 'New Name', website: 'new.com' };
+
+			const result = mergeEntityData(existing, formData);
+
+			expect(result.name).toBe('New Name');
+			expect(result.website).toBe('new.com');
+		});
+
+		it('should preserve specified fields (id, slug by default)', () => {
+			const existing = { id: 'original-id', slug: 'original-slug', name: 'Old Name' };
+			const formData = { id: 'new-id', slug: 'new-slug', name: 'New Name' };
+
+			const result = mergeEntityData(existing, formData);
+
+			expect(result.id).toBe('original-id');
+			expect(result.slug).toBe('original-slug');
+			expect(result.name).toBe('New Name');
+		});
+
+		it('should handle custom preserve fields', () => {
+			const existing = { id: 'test', name: 'Old', custom: 'preserved' };
+			const formData = { name: 'New', custom: 'changed' };
+
+			const result = mergeEntityData(existing, formData, ['id', 'custom']);
+
+			expect(result.id).toBe('test');
+			expect(result.custom).toBe('preserved');
+			expect(result.name).toBe('New');
+		});
+
+		it('should not preserve fields that are undefined in existing', () => {
+			const existing = { id: 'test', name: 'Name' } as Record<string, unknown>;
+			const formData = { name: 'New Name', slug: 'new-slug' };
+
+			const result = mergeEntityData(existing, formData, ['id', 'slug']);
+
+			expect(result.slug).toBe('new-slug');
+		});
+	});
+});

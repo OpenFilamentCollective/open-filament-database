@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "d05b0247-f0cc-4609-bfa6-6d9134b00aa8",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924473252",
     "article_number": "HDGL-175BWHT-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "dfde2cc6-473d-4116-b2eb-87c047077be2",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477342",
     "article_number": "HDGL-175BWHT-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "f683ce74-d5c0-414e-a58d-405abdc3e9c6",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924477359",
     "article_number": "HDGL-175BWHT-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "e8d56502-61da-437b-b06a-e9ebe54d9e19",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8718924478103",
     "article_number": "HDGL-175BWHT-08000",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +64,12 @@
     ]
   },
   {
+    "uuid": "db475d17-c0ff-4e84-aaa8-172ac4ce2e9d",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924473269",
     "article_number": "HDGL-285BWHT-00750",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +80,12 @@
     ]
   },
   {
+    "uuid": "ca6722b3-e8e9-460f-a19b-26cdc1940ebf",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477311",
     "article_number": "HDGL-285BWHT-02300",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +96,12 @@
     ]
   },
   {
+    "uuid": "9c2c7605-5b10-448c-a22f-70d9f708928c",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924475744",
     "article_number": "HDGL-285BWHT-04500",
     "discontinued": false,
     "purchase_links": [
@@ -98,10 +112,12 @@
     ]
   },
   {
+    "uuid": "ce38b058-8204-4230-93c5-b464de7b29dc",
     "filament_weight": 8000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8718924477465",
     "article_number": "HDGL-285BWHT-08000",
     "discontinued": false,
     "purchase_links": [

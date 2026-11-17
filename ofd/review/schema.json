@@ -1,0 +1,188 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "summary",
+    "findings",
+    "enrichments",
+    "sustainability",
+    "proofs"
+  ],
+  "properties": {
+    "summary": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "severity",
+          "message"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "pointer": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "error",
+              "warning",
+              "note"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_url",
+              "quote",
+              "value"
+            ],
+            "properties": {
+              "source_url": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              },
+              "value": {}
+            }
+          }
+        }
+      }
+    },
+    "enrichments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "pointer",
+          "value",
+          "source_url",
+          "confidence"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "pointer": {
+            "type": "string"
+          },
+          "value": {},
+          "source_url": {
+            "type": "string"
+          },
+          "source_quote": {
+            "type": "string"
+          },
+          "confidence": {
+            "enum": [
+              "high",
+              "medium"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sustainability": {
+      "description": "null when the PR touches no sustainability data; otherwise a verdict for every listed entry.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "verdict",
+        "summary",
+        "checked"
+      ],
+      "properties": {
+        "verdict": {
+          "enum": [
+            "ok",
+            "problems",
+            "unverifiable"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "checked": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "pointer",
+              "verdict",
+              "note"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "pointer": {
+                "type": "string"
+              },
+              "verdict": {
+                "enum": [
+                  "ok",
+                  "problem",
+                  "unverifiable"
+                ]
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "proofs": {
+      "description": "One source per value listed under 'Values to prove'; omit values you couldn't prove.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "pointer",
+          "value",
+          "source_url",
+          "quote"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "pointer": {
+            "type": "string"
+          },
+          "value": {},
+          "source_url": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

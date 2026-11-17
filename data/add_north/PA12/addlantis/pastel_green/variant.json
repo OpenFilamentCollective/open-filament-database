@@ -1,8 +1,9 @@
 {
-    "id": "pastel_green",
-    "name": "Pastel Green",
-    "color_hex": "#C1E1C1",
-    "traits": {
-        "recycled": true
-    }
+  "uuid": "339b4c5d-914e-4ccc-94c7-79311a39d4ed",
+  "id": "pastel_green",
+  "name": "Pastel Green",
+  "color_hex": "#C1E1C1",
+  "traits": {
+    "recycled": true
+  }
 }

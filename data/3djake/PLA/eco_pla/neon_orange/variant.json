@@ -1,9 +1,11 @@
 {
+  "uuid": "04270691-665c-40b2-9c74-86bde0c6ce7f",
   "id": "neon_orange",
   "name": "Neon Orange",
   "color_hex": "#FF520E",
   "traits": {
     "translucent": true,
-    "neon": true
+    "neon": true,
+    "bio_based": true
   }
 }

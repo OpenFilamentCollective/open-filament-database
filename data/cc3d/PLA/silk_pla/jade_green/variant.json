@@ -1,9 +1,9 @@
 {
+  "uuid": "f44d2451-8571-47c5-9abf-b56389567cbb",
   "id": "jade_green",
   "name": "Jade Green",
   "color_hex": "#02A76B",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

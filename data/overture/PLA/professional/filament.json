@@ -1,10 +1,12 @@
 {
+  "uuid": "7f3bc0db-b1dc-4432-a6dd-95cfc49729d9",
   "id": "professional",
   "name": "PLA Professional",
   "diameter_tolerance": 0.02,
-  "density": 1.16,
+  "density": 1.27,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_print_temperature": 220,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://overture3d.com/cdn/shop/files/OVERTURE_PLA_PROFESSIONAL_TDS_EN_V5.1_b6097b34-61cd-4f4c-9f6e-260f44e22ebe.pdf"
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "547af897-595e-46cb-a3aa-cffe967987e7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "8.002",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/carbon-fiber-pla-1-75mm-1kg"
+      }
+    ]
+  }
+]

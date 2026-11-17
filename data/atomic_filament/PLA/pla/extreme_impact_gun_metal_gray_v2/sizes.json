@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "8db69878-220b-40af-88e6-b0058ebe1cf8",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/extreme-impact-gun-metal-gray-pla"
+      }
+    ]
   }
 ]

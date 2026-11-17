@@ -1,5 +1,12 @@
 {
-    "id": "brown",
-    "name": "Brown",
-    "color_hex": "#9e6a4b"
+  "uuid": "52345574-5f5a-4f57-a618-ceef2f3645c4",
+  "moved_from": [
+    "c361e17a-cfb4-4b96-bccf-be07f3ba5710"
+  ],
+  "id": "brown",
+  "name": "Brown",
+  "color_hex": "#9e6a4b",
+  "traits": {
+    "high_flow": true
+  }
 }

@@ -1,9 +1,9 @@
 {
+  "uuid": "fc9f28bc-d3cd-4e31-b282-1b9c580caf42",
   "id": "r_anthracite",
   "name": "R Anthracite",
   "color_hex": "#26272B",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

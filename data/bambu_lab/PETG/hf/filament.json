@@ -1,8 +1,18 @@
 {
+    "uuid": "a12dbbe2-8302-44c2-b7e8-cae6347d5cf3",
     "id": "hf",
     "name": "PETG HF",
     "diameter_tolerance": 0.03,
     "density": 1.28,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 65,
+    "max_bed_temperature": 75,
+    "max_volumetric_speed": 21,
+    "min_fan_speed": 20,
+    "max_fan_speed": 40,
+    "dry_temperature": 65,
+    "dry_time": 8,
     "data_sheet_url": "https://store.bblcdn.com/ce12d65176a94f1086e6aefa238e62e2.pdf",
     "safety_sheet_url": "https://store.bblcdn.com/84de0227cd6c44389be1dfccb5280dcb.pdf",
     "slicer_settings": {
@@ -12,11 +22,21 @@
             "profile_name": "Bambu PETG HF"
         },
         "orcaslicer": {
+            "generic_id": "OFYPdQJh",
+            "id": "OFovEIbw",
+            "profile_name": "Bambu PETG HF"
+        },
+        "elegooslicer": {
             "generic_id": "GFG99",
             "id": "GFG02",
             "profile_name": "Bambu PETG HF"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFG99",
+            "id": "GFG02",
+            "profile_name": "Bambu PETG HF"
+        },
+        "anycubicslicer": {
             "generic_id": "GFG99",
             "id": "GFG02",
             "profile_name": "Bambu PETG HF"

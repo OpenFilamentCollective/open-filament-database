@@ -1,8 +1,11 @@
 {
+  "uuid": "d26c2f1d-b780-49df-81fc-18212867221c",
   "id": "fluorescent_yellow_ral_1026",
   "name": "Fluorescent Yellow RAL 1026",
   "color_hex": "#FFFC25",
   "traits": {
-    "neon": true
+    "neon": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

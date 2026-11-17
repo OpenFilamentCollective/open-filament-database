@@ -1,9 +1,10 @@
 {
+  "uuid": "e360eed2-bf36-45dd-890d-af38b93d25b8",
   "id": "aurora_red",
   "name": "Aurora Red",
   "color_hex": "#98282F",
   "traits": {
-    "industrially_compostable": true,
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }

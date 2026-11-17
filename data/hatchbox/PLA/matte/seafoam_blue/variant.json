@@ -1,8 +1,9 @@
 {
-    "id": "seafoam_blue",
-    "name": "Seafoam Blue",
-    "color_hex": "#B9CFCB",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "6fc616ce-6854-48d1-ae5d-fee93aa317ce",
+  "id": "seafoam_blue",
+  "name": "Seafoam Blue",
+  "color_hex": "#B9CFCB",
+  "traits": {
+    "matte": true
+  }
 }

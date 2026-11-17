@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/Textura%E2%84%A2%20Flare/Textura%E2%84%A2%20Flare%20-%201.75mm%20-%20750g%20-%20Galaxy%20Black"
-            }
-        ]
-    }
+  {
+    "uuid": "9bd27875-3db0-4ae8-9559-85ebea68d52d",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "bf701fed-6649-403b-8a62-51f75114abf4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182904226",
+    "article_number": "ANTF14GBL",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/Textura%E2%84%A2%20Flare/Textura%E2%84%A2%20Flare%20-%201.75mm%20-%201000g%20-%20Galaxy%20Black"
+      }
+    ]
+  }
 ]

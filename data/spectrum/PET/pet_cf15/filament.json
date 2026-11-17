@@ -1,6 +1,16 @@
 {
-    "id": "pet_cf15",
-    "name": "PET CF15",
-    "diameter_tolerance": 0.02,
-    "density": 1.4
+  "uuid": "dbd39dbc-1b94-4e07-963a-b5d0ed0b60a2",
+  "id": "pet_cf15",
+  "name": "PET CF15",
+  "diameter_tolerance": 0.02,
+  "density": 1.4,
+  "min_print_temperature": 245,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "min_fan_speed": 0,
+  "max_fan_speed": 30,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pet_cf15.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_pet_cf15.pdf"
 }

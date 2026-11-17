@@ -1,9 +1,16 @@
 {
+    "uuid": "5274d23e-d86d-4724-9b2b-bc370f8ee753",
     "id": "pla_premium_silk",
     "name": "PLA Premium Silk",
     "diameter_tolerance": 0.02,
     "density": 1.27,
     "max_dry_temperature": 50,
+    "min_print_temperature": 210,
+    "max_print_temperature": 245,
+    "min_bed_temperature": 0,
+    "max_bed_temperature": 60,
+    "dry_temperature": 45,
+    "dry_time": 4,
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFL96",
@@ -11,6 +18,11 @@
             "profile_name": "addnorth PLA Premium Silk"
         },
         "orcaslicer": {
+            "generic_id": "OFesA6rF",
+            "id": "GF_ANPS",
+            "profile_name": "addnorth PLA Premium Silk"
+        },
+        "elegooslicer": {
             "generic_id": "GFL96",
             "id": "GF_ANPS",
             "profile_name": "addnorth PLA Premium Silk"

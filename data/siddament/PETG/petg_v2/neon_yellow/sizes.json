@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ad857f09-783b-4e82-a70c-3b42c62d3db3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.031",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/neon-yellow-petg-v2"
+      }
+    ]
+  }
+]

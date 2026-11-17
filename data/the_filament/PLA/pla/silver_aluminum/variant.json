@@ -1,5 +1,9 @@
 {
-    "id": "silver_aluminum",
-    "name": "Silver Aluminum",
-    "color_hex": "#cad6d2"
+  "uuid": "f60c304f-1916-40d8-a2e9-9f51b39e9167",
+  "moved_from": [
+    "2da08202-3aad-4727-ba5d-f0f7126095a4"
+  ],
+  "id": "silver_aluminum",
+  "name": "Silver Aluminum",
+  "color_hex": "#cad6d2"
 }

@@ -1,0 +1,14 @@
+{
+  "uuid": "5829cf75-a71b-4429-a59a-d01c0cbc995f",
+  "id": "pla+_v2",
+  "name": "PLA+ V2",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "max_dry_temperature": 45,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_V2_PLA_PLUS__MSDS.pdf?v=1779204018",
+  "discontinued": false
+}

@@ -1,0 +1,13 @@
+{
+  "uuid": "822319fe-0038-4bbf-b3bd-f7bc11119315",
+  "id": "fibreheart_tpu_gf",
+  "name": "Fibreheart TPU-GF",
+  "diameter_tolerance": 0.03,
+  "density": 1.32,
+  "shore_hardness_d": 67,
+  "min_print_temperature": 240,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://siraya.tech/pages/fibreheart-tpu-gf-filament-tds"
+}

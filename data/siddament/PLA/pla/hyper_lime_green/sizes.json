@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "d191bead-b6f7-4dfa-8b7d-3f679a8af1be",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.038",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/hyper-lime-green-pla"
+      }
+    ]
+  }
+]

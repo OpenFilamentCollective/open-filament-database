@@ -1,0 +1,12 @@
+{
+  "uuid": "7f7c5d92-b92b-4b37-9837-da0ce8ac3495",
+  "id": "light_gray",
+  "name": "Light Gray",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 75,
+  "max_bed_temperature": 80,
+  "discontinued": false
+}

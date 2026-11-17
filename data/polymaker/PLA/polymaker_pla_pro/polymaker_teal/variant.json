@@ -1,0 +1,12 @@
+{
+  "uuid": "7582c38e-6373-417e-9d4c-b1a5229a815a",
+  "id": "polymaker_teal",
+  "name": "Polymaker Teal",
+  "color_hex": "#94F1F2",
+  "hex_variants": [
+    "#50DAE4"
+  ],
+  "traits": {
+    "high_flow": true
+  }
+}

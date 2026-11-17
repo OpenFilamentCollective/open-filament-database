@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7509569d-04e6-4ed0-82ec-50d5190c3895",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.023",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-coral-pla-v2"
+      }
+    ]
+  }
+]

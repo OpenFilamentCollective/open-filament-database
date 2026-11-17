@@ -1,6 +1,22 @@
 {
+    "uuid": "5ffdcca0-8391-4b1e-932a-3e7bb420f4ff",
     "id": "pps_cf10",
     "name": "PPS-CF10",
     "diameter_tolerance": 0.03,
-    "density": 1.29
+    "density": 1.29,
+    "min_print_temperature": 310,
+    "max_print_temperature": 350,
+    "min_bed_temperature": 80,
+    "max_bed_temperature": 90,
+    "min_fan_speed": 0,
+    "max_fan_speed": 0,
+    "dry_temperature": 100,
+    "dry_time": 10,
+    "data_sheet_url": "https://fiberon.polymaker.com/wp-content/uploads/TDS_FIBERON-PPS-CF10_V1.1_EN-1.pdf",
+    "slicer_settings": {
+        "crealityprint": {
+            "id": "P9001",
+            "profile_name": "Fiberon PPS-CF10"
+        }
+    }
 }

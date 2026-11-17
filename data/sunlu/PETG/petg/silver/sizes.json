@@ -1,6 +1,14 @@
 [
   {
+    "uuid": "7b1dbd47-8504-4514-bf4b-076d8caa1eed",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6933582309848",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/petg-silver-5"
+      }
+    ]
   }
 ]

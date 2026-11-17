@@ -1,10 +1,11 @@
 {
+  "uuid": "8a08af62-3f49-4af2-ba5f-ea8d4e51dabc",
   "id": "hr_870_pla",
   "name": "HR-870 PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "diameter_tolerance": 0.03,
+  "density": 1.22,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
   "min_bed_temperature": 50,
   "max_bed_temperature": 70
 }

@@ -1,10 +1,10 @@
 {
+  "uuid": "888b983b-e1c2-4fb0-9214-1a8c441a0c48",
   "id": "fluorescent_yellow_ht",
   "name": "Fluorescent Yellow HT",
   "color_hex": "#EBFF57",
   "traits": {
-    "industrially_compostable": true,
-    "high_temperature": true,
-    "neon": true
+    "neon": true,
+    "high_temperature": true
   }
 }

@@ -1,0 +1,13 @@
+{
+  "uuid": "0fe2f457-3dc5-4854-8fbb-ab3ac065810b",
+  "id": "green",
+  "name": "Green",
+  "color_hex": "#008C63",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "347 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

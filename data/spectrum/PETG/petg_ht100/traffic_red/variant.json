@@ -1,5 +1,12 @@
 {
-    "id": "traffic_red",
-    "name": "Traffic Red",
-    "color_hex": "#B21A26"
+  "uuid": "c0f76c55-8ba2-4433-9694-9bf0f3dfed6e",
+  "moved_from": [
+    "3ba588a0-fd0c-4409-b5af-349b315a5112"
+  ],
+  "id": "traffic_red",
+  "name": "Traffic Red",
+  "color_hex": "#B21A26",
+  "traits": {
+    "high_temperature": true
+  }
 }

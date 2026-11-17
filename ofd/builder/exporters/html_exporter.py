@@ -14,7 +14,7 @@ from pathlib import Path
 from ..models import Database
 
 
-def build_abstract_file_tree(db: Database) -> str:
+def build_abstract_file_tree(db: Database, output_dir: Path | None = None) -> str:
     """Build an abstract file tree showing the layout structure, not every file."""
 
     # Helper to create nested structure
@@ -90,21 +90,11 @@ def build_abstract_file_tree(db: Database) -> str:
             ]
         ),
     )
-    api_editor = li_dir(
-        "editor",
-        li_placeholder("*.html")
-        + "\n"
-        + li_file("index.html", "api/v1/editor/index.html")
-        + "\n"
-        + li_file("index.json", "api/v1/editor/index.json"),
-    )
     api_v1 = li_dir(
         "v1",
         api_badges
         + "\n"
         + api_brands
-        + "\n"
-        + api_editor
         + "\n"
         + api_stores
         + "\n"
@@ -156,6 +146,41 @@ def build_abstract_file_tree(db: Database) -> str:
     )
     lines.append(li_dir("sqlite", sqlite_files))
 
+    # OrcaSlicer filament presets
+    orca_bundles = li_dir(
+        "bundles",
+        li_placeholder("{brand-slug}.zip")
+        + "\n"
+        + li_file("all.zip", "orcaslicer/bundles/all.zip"),
+    )
+    orca_brands = li_dir(
+        "brands",
+        li_placeholder("{brand-slug}/materials/{MATERIAL}/filaments/{filament-slug}.json"),
+    )
+    orca_files = "\n".join(
+        [
+            orca_brands,
+            orca_bundles,
+            li_file("README.txt", "orcaslicer/README.txt"),
+            li_file("index.json", "orcaslicer/index.json"),
+        ]
+    )
+    lines.append(li_dir("orcaslicer", orca_files))
+
+    # Spoolman external filament catalog; omitted when this build did not write it
+    # (--skip-spoolman), so the landing page never links to files that 404. Without
+    # an output directory to check, it is listed.
+    spoolman_built = output_dir is None or (output_dir / "spoolman" / "filaments.json").exists()
+    spoolman_files = "\n".join(
+        [
+            li_file("filaments.json", "spoolman/filaments.json"),
+            li_file("materials.json", "spoolman/materials.json"),
+            li_file("README.txt", "spoolman/README.txt"),
+        ]
+    )
+    if spoolman_built:
+        lines.append(li_dir("spoolman", spoolman_files))
+
     # Root files
     lines.append(li_file("manifest.json", "manifest.json"))
 
@@ -190,7 +215,7 @@ def process_template(
 ) -> str:
     """Process the template and replace all placeholders."""
     # Build abstract file tree
-    file_tree_html = build_abstract_file_tree(db)
+    file_tree_html = build_abstract_file_tree(db, output_dir)
 
     # Generate stats HTML
     stats_html = generate_stats_html(db)

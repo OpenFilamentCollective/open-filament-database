@@ -1,5 +1,13 @@
 {
-    "id": "electric_indigo",
-    "name": "Electric Indigo",
-    "color_hex": "#764C99"
+  "uuid": "52002f7e-9572-4417-a6dc-8372262df7d3",
+  "moved_from": [
+    "e87657b5-30cf-4b13-a7a0-84ed578d2759"
+  ],
+  "id": "electric_indigo",
+  "name": "Electric Indigo",
+  "color_hex": "#764C99",
+  "transmission_distance": 0.3,
+  "traits": {
+    "matte": true
+  }
 }

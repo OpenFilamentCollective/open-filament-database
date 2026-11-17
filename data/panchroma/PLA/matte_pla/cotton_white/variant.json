@@ -1,5 +1,14 @@
 {
-    "id": "cotton_white",
-    "name": "Cotton White",
-    "color_hex": "#E6DDDB"
+  "uuid": "74b8efb1-d130-4417-be52-8a6e7466ff34",
+  "moved_from": [
+    "2639b21a-a60f-483e-b1ea-d2e22a0b319d"
+  ],
+  "id": "cotton_white",
+  "name": "Cotton White",
+  "color_hex": "#E6DDDB",
+  "transmission_distance": 4.1,
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
 }

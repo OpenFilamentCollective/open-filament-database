@@ -1,9 +1,9 @@
 {
+  "uuid": "a26b3d90-8869-4c7d-af9c-596e8cd4d749",
   "id": "squeezed_lime_light_green",
   "name": "Squeezed lime (light green)",
   "color_hex": "#7AB352",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

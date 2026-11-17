@@ -1,7 +1,9 @@
 [
   {
-    "filament_weight": 1000,
+    "uuid": "b76a3d63-704c-46f9-b040-1d07473580bc",
+    "filament_weight": 750,
     "diameter": 1.75,
+    "gtin": "5903175654946",
     "article_number": "80714",
     "purchase_links": [
       {

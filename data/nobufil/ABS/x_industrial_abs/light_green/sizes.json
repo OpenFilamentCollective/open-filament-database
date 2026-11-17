@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "0f8f9c49-b19a-495e-992a-7a98ea83a4e6",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460962",
+    "article_number": "ABS-R-605-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-industrial-light-green"
+      }
+    ]
   }
 ]

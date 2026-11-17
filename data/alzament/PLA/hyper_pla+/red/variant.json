@@ -1,7 +1,11 @@
 {
+  "uuid": "933eac14-514f-42ca-93ea-5902c869037e",
   "id": "red",
   "name": "Red",
   "color_hex": [
     "#d72e1e"
-  ]
+  ],
+  "traits": {
+    "high_flow": true
+  }
 }

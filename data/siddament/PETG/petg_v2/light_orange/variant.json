@@ -1,0 +1,10 @@
+{
+  "uuid": "af775e15-06fe-4b46-8732-fc4bfd06953a",
+  "id": "light_orange",
+  "name": "Light Orange",
+  "color_hex": "#FFA683",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "1625 C"
+  }
+}

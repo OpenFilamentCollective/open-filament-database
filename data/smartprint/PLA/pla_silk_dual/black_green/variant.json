@@ -1,8 +1,12 @@
 {
+  "uuid": "721c8e98-2c6a-4d70-aeb0-af7b54afb99f",
   "id": "black_green",
   "name": "Black Green",
   "color_hex": [
     "#000000",
     "#96d35f"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

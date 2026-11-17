@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "980aa9ad-d81a-468f-8d58-268c04d1c0f5",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460146",
+    "article_number": "ABS-R-901-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-black"
+      }
+    ]
   }
 ]

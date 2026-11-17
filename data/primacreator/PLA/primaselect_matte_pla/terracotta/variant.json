@@ -1,9 +1,9 @@
 {
+  "uuid": "39fc46e6-3ae8-4dbf-862c-8e037e74475b",
   "id": "terracotta",
   "name": "Terracotta",
   "color_hex": "#BB6D48",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

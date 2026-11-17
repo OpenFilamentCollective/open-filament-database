@@ -1,9 +1,9 @@
 {
+  "uuid": "5ce5f665-5a21-485f-b240-23c9162131f9",
   "id": "aquamarine_blue",
   "name": "Aquamarine Blue",
   "color_hex": "#2A4552",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

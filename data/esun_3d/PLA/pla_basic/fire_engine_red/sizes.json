@@ -1,12 +1,33 @@
 [
   {
+    "uuid": "810666e0-2b69-4c8a-832d-3124561dfdc4",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572210998",
+    "article_number": "PLA-Basic175O-FR1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-basic-fire-engine-red"
+      }
+    ]
+  },
+  {
+    "uuid": "51ae46d6-3e5d-4d4b-885f-3eff10f31486",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572211537",
+    "article_number": "PLA-Basic175O-FR1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-basic-fire-engine-red?sai=24265"
       }
     ]
   }

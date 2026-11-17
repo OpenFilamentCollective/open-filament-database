@@ -1,7 +1,26 @@
 [
   {
+    "uuid": "d0c59346-2669-40d8-8847-9c9c560238de",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675308"
+    "gtin": "8594173675308",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-prusa-galaxy-black-1kg/"
+      }
+    ]
+  },
+  {
+    "uuid": "ba83a95c-6071-489b-86a3-64948597173c",
+    "filament_weight": 900,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-petg-prusa-galaxy-black-refill-nfc"
+      }
+    ]
   }
 ]

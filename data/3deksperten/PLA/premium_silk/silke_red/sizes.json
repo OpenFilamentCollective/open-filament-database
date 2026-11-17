@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "f7e77024-48f0-4f11-92dc-92883a178fcf",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3deksperten",
+        "url": "https://3deksperten.dk/products/silky-red-3de-premium-pla-1-75mm"
+      }
+    ]
+  }
+]

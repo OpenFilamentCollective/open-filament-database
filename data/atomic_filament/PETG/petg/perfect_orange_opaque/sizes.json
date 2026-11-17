@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "8a8d5796-2395-468a-8057-13460195de40",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/perfect-orange-opaque-petg-pro"
+      }
+    ]
   }
 ]

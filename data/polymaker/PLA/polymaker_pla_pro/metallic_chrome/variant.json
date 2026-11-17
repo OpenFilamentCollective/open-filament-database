@@ -1,0 +1,10 @@
+{
+  "uuid": "a57ace8e-79a4-43fd-a479-77023b07857b",
+  "id": "metallic_chrome",
+  "name": "Metallic Chrome",
+  "color_hex": "#505A5D",
+  "traits": {
+    "imitates_metal": true,
+    "high_flow": true
+  }
+}

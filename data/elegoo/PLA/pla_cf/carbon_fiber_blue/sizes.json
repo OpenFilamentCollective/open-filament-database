@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "19f8b8b3-13cc-4214-9057-16d3a17a0dab",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "elegoo",
+        "url": "https://elegoo.com/products/pla-cf-filament-1-75mm-black-1kg?variant=52698750484661"
+      }
+    ]
+  }
+]

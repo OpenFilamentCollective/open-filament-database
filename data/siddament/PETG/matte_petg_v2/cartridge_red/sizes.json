@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "cc75ddc7-2a30-4fd5-ba0e-6232cbe56cda",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.075",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-cartridge-red-petg-v2"
+      }
+    ]
+  }
+]

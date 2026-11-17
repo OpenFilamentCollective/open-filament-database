@@ -1,10 +1,11 @@
 {
+  "uuid": "2346b995-735b-4861-9e4d-e90ce83b187f",
   "id": "petg",
   "name": "PETG",
   "diameter_tolerance": 0.02,
   "density": 1.27,
-  "min_print_temperature": 220,
+  "min_print_temperature": 250,
   "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 80
 }

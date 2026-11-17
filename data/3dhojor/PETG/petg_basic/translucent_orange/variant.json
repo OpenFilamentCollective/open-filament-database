@@ -1,0 +1,10 @@
+{
+  "uuid": "fb2ce23a-2534-495e-b7d3-92d3761e3e42",
+  "id": "translucent_orange",
+  "name": "Translucent Orange",
+  "color_hex": "#FF8040",
+  "discontinued": false,
+  "traits": {
+    "translucent": true
+  }
+}

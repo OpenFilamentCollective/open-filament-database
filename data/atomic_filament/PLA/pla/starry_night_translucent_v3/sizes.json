@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "74c09089-5385-4007-87a1-660904f16ae5",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/translucent-starry-night-pla"
+      }
+    ]
   }
 ]

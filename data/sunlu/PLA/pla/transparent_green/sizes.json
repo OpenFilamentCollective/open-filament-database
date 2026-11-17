@@ -1,6 +1,18 @@
 [
   {
+    "uuid": "d0823168-954d-4b4c-824c-0ba833afda45",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6933582308544",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-transparent-green"
+      },
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-6kg-of-pla-pla-meta-3d-filaments-1kg-2-2lbs-fit-most-of-fdm-printer"
+      }
+    ]
   }
 ]

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "bb8786d5-3cf2-4d32-81fe-1ac2279e78ef",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.080",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/black-tpu-75d"
+      }
+    ]
+  }
+]

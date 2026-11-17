@@ -1,7 +1,11 @@
 {
+  "uuid": "9e887d06-cafe-4320-9bbb-9fa02ff0c5d5",
   "id": "white",
   "name": "White",
   "color_hex": [
     "#ffffff"
-  ]
+  ],
+  "traits": {
+    "high_flow": true
+  }
 }

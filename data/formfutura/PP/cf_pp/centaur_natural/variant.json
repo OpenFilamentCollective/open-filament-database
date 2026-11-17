@@ -1,10 +1,11 @@
 {
+  "uuid": "2460add6-95c5-4366-8430-7bf2829ac12a",
   "id": "centaur_natural",
   "name": "Centaur Natural",
   "color_hex": "#D9D8DE",
   "traits": {
-    "abrasive": true,
     "without_pigments": true,
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

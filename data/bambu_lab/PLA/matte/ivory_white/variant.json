@@ -1,9 +1,9 @@
 {
+  "uuid": "456e1e8e-a355-4122-8489-0dd869543acf",
   "id": "ivory_white",
   "name": "Ivory White",
   "color_hex": "#FFFFFF",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

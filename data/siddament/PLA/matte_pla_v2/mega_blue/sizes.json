@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "f4b97977-b7e4-486d-83f3-cff4a3cb2c61",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.035",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-mega-blue-pla-v2"
+      }
+    ]
+  }
+]

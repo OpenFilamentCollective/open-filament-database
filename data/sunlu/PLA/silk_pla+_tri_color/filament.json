@@ -1,6 +1,12 @@
 {
-    "id": "silk_pla+_tri_color",
-    "name": "Silk PLA+ Tri-Color",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "edf29b8f-49e9-4617-ac85-7f9a7a530984",
+  "id": "silk_pla+_tri_color",
+  "name": "Silk PLA+ Tri-Color",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/5644650b-5633-42fb-b06a-6d1e125c9114.pdf?filename=TDS"
 }

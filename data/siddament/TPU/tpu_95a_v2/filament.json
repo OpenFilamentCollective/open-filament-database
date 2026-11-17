@@ -1,0 +1,33 @@
+{
+  "uuid": "0efa8ffb-fea5-4714-92b2-dc84df042102",
+  "id": "tpu_95a_v2",
+  "name": "TPU 95A V2",
+  "diameter_tolerance": 0.02,
+  "density": 1.09,
+  "shore_hardness_a": 95,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_V2_TPU95A_TDS.pdf?v=1779204094",
+  "discontinued": false,
+  "slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Siddament TPU 95A (non-HF)"
+    },
+    "orcaslicer": {
+      "overrides": {
+        "filament_flow_ratio": 1,
+        "filament_max_volumetric_speed": 3.6
+      },
+      "profile_name": "Siddament TPU 95A (non-HF)"
+    },
+    "generic": {
+      "bed_temp": 35,
+      "first_layer_bed_temp": 35,
+      "first_layer_nozzle_temp": 230,
+      "nozzle_temp": 230
+    }
+  }
+}

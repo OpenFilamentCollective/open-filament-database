@@ -1,0 +1,9 @@
+{
+  "uuid": "8d4eaac7-b1e3-4dfb-9d94-c01790887ce6",
+  "id": "blue_green",
+  "name": "Blue-Green",
+  "color_hex": "#113B41",
+  "traits": {
+    "high_flow": true
+  }
+}

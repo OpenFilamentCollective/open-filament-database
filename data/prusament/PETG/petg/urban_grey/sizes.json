@@ -1,12 +1,38 @@
 [
   {
+    "uuid": "359a17cb-8fb2-4c7a-ab06-70a23fda3806",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675117"
+    "gtin": "8594173675117",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-urban-grey-1kg-nfc/"
+      }
+    ]
   },
   {
+    "uuid": "bbc1bbc4-2314-4dc8-8e5d-42b802ec64dd",
     "filament_weight": 2000,
     "diameter": 1.75,
-    "gtin": "8594173676022"
+    "gtin": "8594173676022",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-urban-grey-2kg-nfc/"
+      }
+    ]
+  },
+  {
+    "uuid": "c9b89504-d4ee-451e-bc1d-6842d059e68e",
+    "filament_weight": 900,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-petg-urban-grey-refill-nfc"
+      }
+    ]
   }
 ]

@@ -1,6 +1,12 @@
 {
-    "id": "pla+_high_speed",
-    "name": "PLA+ High-Speed",
-    "diameter_tolerance": 0.03,
-    "density": 1.23
+  "uuid": "2f5f6a8e-b2bc-4370-98f0-96c4fcbcfa25",
+  "id": "pla+_high_speed",
+  "name": "PLA+ High-Speed",
+  "diameter_tolerance": 0.03,
+  "density": 1.23,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-PLA-plus-_HP-TDS.pdf?v=1747623156"
 }

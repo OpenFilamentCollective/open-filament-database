@@ -1,9 +1,9 @@
 {
+  "uuid": "ad1ba2e9-f584-4dfb-8d65-3c01654861e1",
   "id": "marble_white_blue_stone",
   "name": "Marble White-Blue Stone",
   "color_hex": "#C3CCD5",
   "traits": {
-    "industrially_compostable": true,
     "imitates_marble": true,
     "imitates_stone": true
   }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "77f258ed-8b21-4566-b358-10048f043964",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.056",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/burgundy-asa-v2"
+      }
+    ]
+  }
+]

@@ -1,6 +1,35 @@
 [
   {
+    "uuid": "2cdd1155-7e17-48f0-8472-59b6f096e6fd",
     "filament_weight": 1000,
     "diameter": 1.75
+  },
+  {
+    "uuid": "d4c11a50-0860-4c5e-87b3-17cc491cc52c",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720574298598",
+    "article_number": "MPLA-175GGCM-00250"
+  },
+  {
+    "uuid": "1f94aa29-5119-47da-9bd0-03ad197219ae",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8719956552687",
+    "article_number": "MPLA-175GGCM-00750"
+  },
+  {
+    "uuid": "79261fcd-4c56-43eb-aba2-bac5470447e8",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574298581",
+    "article_number": "MPLA-285GGCM-00250"
+  },
+  {
+    "uuid": "e439b83e-cfc4-4a7c-bd53-39708ff092c2",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "gtin": "8719956552694",
+    "article_number": "MPLA-285GGCM-00750"
   }
 ]

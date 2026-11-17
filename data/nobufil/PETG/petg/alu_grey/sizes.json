@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "0696d2ff-4b87-4544-8249-5e0bf9a99cbd",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460467",
+    "article_number": "PETG-R-751-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-alu-grey"
+      }
+    ]
   }
 ]

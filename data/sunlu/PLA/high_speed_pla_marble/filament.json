@@ -1,6 +1,12 @@
 {
-    "id": "high_speed_pla_marble",
-    "name": "High Speed PLA Marble",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "1ca6e4ce-b686-4eaf-8f53-c825b556a5bd",
+  "id": "high_speed_pla_marble",
+  "name": "High Speed PLA Marble",
+  "diameter_tolerance": 0.02,
+  "density": 1.26,
+  "min_print_temperature": 210,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/02f59eef-2adc-4bae-8b08-bfd1a8a278fe.pdf?filename=TDS"
 }

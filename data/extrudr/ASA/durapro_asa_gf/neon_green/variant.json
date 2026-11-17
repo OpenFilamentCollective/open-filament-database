@@ -1,0 +1,15 @@
+{
+  "uuid": "45f59239-40c2-48aa-9812-f208a172864c",
+  "id": "neon_green",
+  "name": "Neon Green",
+  "color_hex": "#98FA42",
+  "color_standards": {
+    "ral": "6038"
+  },
+  "traits": {
+    "matte": true,
+    "neon": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "36254e1e-21e7-4071-b88a-22bfe4e20bbe",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.032",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-yellow-petg"
+      }
+    ]
+  }
+]

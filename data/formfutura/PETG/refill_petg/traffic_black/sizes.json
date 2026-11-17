@@ -1,9 +1,12 @@
 [
   {
+    "uuid": "08f987b2-82a1-4f16-9e5f-a2e600abdcfe",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629063355",
     "article_number": "RFPE-175TBLK-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +17,13 @@
     ]
   },
   {
+    "uuid": "4f8e06d5-ee8c-479f-9cf9-0ca156d08f3e",
     "filament_weight": 2000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 40,
+    "gtin": "8720847058942",
     "article_number": "RFPE-175TBLK-02000",
     "discontinued": false,
     "purchase_links": [

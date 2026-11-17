@@ -1,5 +1,9 @@
 {
-    "id": "magenta",
-    "name": "Magenta",
-    "color_hex": "#ee3a95"
+  "uuid": "ed605f53-08f9-449f-a3a2-e4390592f34e",
+  "moved_from": [
+    "3c6a313a-0cae-4219-8c1a-85034912b161"
+  ],
+  "id": "magenta",
+  "name": "Magenta",
+  "color_hex": "#ee3a95"
 }

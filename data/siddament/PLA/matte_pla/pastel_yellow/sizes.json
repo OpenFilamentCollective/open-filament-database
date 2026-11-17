@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "55048577-f878-412f-9d48-cccd318c3d47",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.040",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pastel-yellow"
+      }
+    ]
+  }
+]

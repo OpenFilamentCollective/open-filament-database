@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "97166fa7-cd73-4451-8ab4-fc07c37b2b29",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/perfect-blue-pla-filament"
+      }
+    ]
   }
 ]

@@ -1,0 +1,160 @@
+name: Enrich data
+
+# Researches what existing brands are missing (temperatures, datasheets, GTINs,
+# article numbers, purchase links, generic template values) and opens one PR per
+# brand with the values it could prove. All logic is in ofd/enrich/ and runs the
+# same locally: `python -m ofd enrich run --brand <id>`.
+#
+# Every value is re-checked by a script, separately from the model: the source page
+# is fetched, the quote must be on it and the value in the quote. What fails is
+# listed in the PR as "not applied", never written.
+#
+# Manual only: start it from the Actions tab with the brand ids to research.
+#
+# TOKEN: a PR opened with the default GITHUB_TOKEN does not trigger other workflows,
+# so validation and the AI review would not run on it. The PRs are opened as the
+# repo bot instead, a GitHub App shared by the repo's workflows (repo variable
+# OFD_REPO_BOT_APP_ID, secret OFD_REPO_BOT_PRIVATE_KEY; Contents and Pull requests
+# read & write, installed on this repo only). It is deliberately not the webui's
+# ofd-anon-pr-bot: that key stays on the webui server, and this one can be revoked on
+# its own. Without it the PRs are still opened with the default token, with a note;
+# close and reopen one to run the checks.
+#
+# CREDENTIALS: ANTHROPIC_API_KEY or CLAUDE_CODE_OAUTH_TOKEN, as for ai_review.yaml.
+
+on:
+  workflow_dispatch:
+    inputs:
+      brands:
+        description: 'Brand folder ids, separated by spaces or commas (e.g. "jayo kingroon").'
+        required: true
+      limit:
+        description: 'Max gaps researched per brand.'
+        default: '30'
+      budget:
+        description: 'Max USD for the model per brand.'
+        default: '2'
+      sustainability:
+        description: 'Also research sustainability data (#768) and log the brand in docs/sustainability-sources.md.'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: enrich
+  cancel-in-progress: false
+
+jobs:
+  enrich:
+    name: Enrich ${{ inputs.brands }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Check credentials
+        env:
+          HAS_CREDENTIALS: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' || secrets.ANTHROPIC_API_KEY != '' }}
+        run: |
+          if [ "$HAS_CREDENTIALS" != true ]; then
+            echo "::error::Set the ANTHROPIC_API_KEY (or CLAUDE_CODE_OAUTH_TOKEN) secret first."
+            exit 1
+          fi
+
+      - name: App token
+        id: app
+        if: vars.OFD_REPO_BOT_APP_ID != ''
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          private-key: ${{ secrets.OFD_REPO_BOT_PRIVATE_KEY }}
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          token: ${{ steps.app.outputs.token || github.token }}
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code@2.1.306
+
+      - name: Enrich each brand and open a PR
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token || github.token }}
+          USING_APP: ${{ steps.app.outputs.token != '' }}
+          APP_SLUG: ${{ steps.app.outputs.app-slug }}
+          BRANDS: ${{ inputs.brands }}
+          LIMIT: ${{ inputs.limit }}
+          BUDGET: ${{ inputs.budget }}
+          SUSTAINABILITY: ${{ inputs.sustainability }}
+          BASE: ${{ github.event.repository.default_branch }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OFD_REVIEW_MODEL: ${{ vars.OFD_REVIEW_MODEL || 'claude-haiku-5-5' }}
+        run: |
+          # Commit as the app's bot user, so history shows who made the change.
+          if [ "$USING_APP" = true ]; then
+            bot="${APP_SLUG}[bot]"
+            git config user.name "$bot"
+            git config user.email "$(gh api "users/${bot}" -q .id)+${bot}@users.noreply.github.com"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          fi
+          failed=0
+          extra=()
+          [ "$SUSTAINABILITY" = true ] || extra+=(--no-sustainability)
+          # A brand's row in the sustainability log is worth a PR on its own: a "nothing
+          # published" result saves the next person the same search.
+          paths=(data docs/sustainability-sources.md)
+          for brand in $(printf '%s' "$BRANDS" | tr ',' ' '); do
+            if ! printf '%s' "$brand" | grep -Eq '^[a-z0-9+]+(_[a-z0-9+]+)*$'; then
+              echo "::error::'$brand' is not a brand id"; failed=1; continue
+            fi
+            echo "::group::$brand"
+            branch="enrich/${brand}-${GITHUB_RUN_ID}"
+            git checkout -q -B "$branch" "origin/$BASE"
+            if ! python -m ofd enrich run --brand "$brand" --limit "$LIMIT" --budget "$BUDGET" "${extra[@]}" \
+                 --report "$RUNNER_TEMP/$brand.json" --pr-body "$RUNNER_TEMP/$brand.md"; then
+              echo "::error::Enrichment of $brand failed; see the log above."
+              git checkout -q -- . ; failed=1; echo "::endgroup::"; continue
+            fi
+            cat "$RUNNER_TEMP/$brand.md" >> "$GITHUB_STEP_SUMMARY"
+            if git diff --quiet -- "${paths[@]}"; then
+              echo "$brand: nothing verified to change."
+              echo "::endgroup::"; continue
+            fi
+            if [ "$USING_APP" != true ]; then
+              printf '\n> Opened with the default token, so checks did not run. Close and reopen this PR to run them.\n' \
+                >> "$RUNNER_TEMP/$brand.md"
+            fi
+            git add -- "${paths[@]}"
+            git commit -q -m "Enrich $brand with sourced data"
+            git push -q origin "$branch"
+            gh pr create --base "$BASE" --head "$branch" \
+              --title "Enrich $brand: sourced data" --body-file "$RUNNER_TEMP/$brand.md"
+            echo "::endgroup::"
+          done
+          exit $failed
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: enrich-reports
+          path: |
+            ${{ runner.temp }}/*.json
+            ${{ runner.temp }}/*.md
+          if-no-files-found: ignore

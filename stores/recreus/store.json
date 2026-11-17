@@ -1,0 +1,13 @@
+{
+  "uuid": "d3931407-fc56-4bd7-adc5-d8a3e730a820",
+  "id": "recreus",
+  "name": "Recreus",
+  "storefront_url": "https://recreus.com/products/",
+  "logo": "logo.png",
+  "ships_from": [
+    "ES"
+  ],
+  "ships_to": [
+    "GB"
+  ]
+}

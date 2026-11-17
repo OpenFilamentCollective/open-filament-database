@@ -1,10 +1,12 @@
 {
+  "uuid": "a33cde24-9320-4e24-b176-ec0fc2900d18",
   "id": "tpe_83a",
   "name": "TPE-83A",
   "diameter_tolerance": 0.03,
   "density": 1.14,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/TPE-83A/eSUN_TPE-83A_Filament_TDS_V4.0.pdf"
 }

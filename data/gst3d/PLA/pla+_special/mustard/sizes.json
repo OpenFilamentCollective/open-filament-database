@@ -1,12 +1,7 @@
 [
   {
+    "uuid": "73ffb3ac-0bb7-432b-9c7c-3f266dff5fc2",
     "filament_weight": 1000,
-    "diameter": 1.75,
-    "purchase_links": [
-      {
-        "store_id": "gst3d",
-        "url": "https://gst3d.eu/products/pla-special-fluorescent-orange"
-      }
-    ]
+    "diameter": 1.75
   }
 ]

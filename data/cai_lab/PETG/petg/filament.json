@@ -1,0 +1,16 @@
+{
+  "uuid": "4866f865-e216-47ff-b381-def8e0395d59",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "certifications": [
+    "REACH",
+    "ROHS"
+  ],
+  "min_print_temperature": 230,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 80,
+  "discontinued": false
+}

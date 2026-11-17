@@ -1,9 +1,10 @@
 {
+  "uuid": "8614f68b-0c5c-4a6f-b80d-e827c359a0c0",
   "id": "green_gold",
   "name": "Green Gold",
   "color_hex": "#555846",
   "traits": {
-    "iridescent": true,
-    "glitter": true
+    "glitter": true,
+    "iridescent": true
   }
 }

@@ -1,6 +1,12 @@
 {
-    "id": "peek",
-    "name": "PEEK",
-    "diameter_tolerance": 0.02,
-    "density": 1.08
+  "uuid": "2590ac51-0dc6-495a-8c64-a3e68b3c28f9",
+  "id": "peek",
+  "name": "PEEK",
+  "diameter_tolerance": 0.02,
+  "density": 1.1965,
+  "min_print_temperature": 390,
+  "max_print_temperature": 420,
+  "min_bed_temperature": 110,
+  "max_bed_temperature": 120,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260413/ddb6b06d-707f-4226-9c00-cc16ef778873.pdf?filename=TDS"
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3ee7be24-ef79-45f1-b22c-2999ea9471c4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.009",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/space-grey-asa-v2"
+      }
+    ]
+  }
+]

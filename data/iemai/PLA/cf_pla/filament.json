@@ -1,10 +1,11 @@
 {
+  "uuid": "7ac45b1b-a2d8-4240-8e96-95e6110ca114",
   "id": "cf_pla",
   "name": "CF-PLA",
   "diameter_tolerance": 0.05,
-  "density": 1.28,
+  "density": 1.22,
   "min_print_temperature": 190,
   "max_print_temperature": 220,
-  "min_bed_temperature": 50,
+  "min_bed_temperature": 0,
   "max_bed_temperature": 60
 }

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "7faec237-5951-41b8-9c0f-8eddd5d0e261",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720629065465",
     "article_number": "AXCF-175BLCK-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "6546bf53-620f-409d-a923-2e22b4750374",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720629065472",
     "article_number": "AXCF-175BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "ea90c428-2ebb-428b-a705-a7b3249026b4",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720629065489",
     "article_number": "AXCF-175BLCK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "363a58b9-0859-44b9-bc9f-b6e28178e969",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720629065496",
     "article_number": "AXCF-175BLCK-08000",
     "discontinued": false,
     "purchase_links": [
@@ -54,9 +62,5 @@
         "url": "https://www.formfutura.com/apollox-cf10"
       }
     ]
-  },
-  {
-    "filament_weight": 1000,
-    "diameter": 1.75
   }
 ]

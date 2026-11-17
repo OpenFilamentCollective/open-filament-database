@@ -1,0 +1,18 @@
+{
+    "uuid": "d996e6ce-e1c2-4f77-afe6-5b719c7e7dcb",
+    "id": "cpe_hg100",
+    "name": "CPE HG100",
+    "diameter_tolerance": 0.05,
+    "density": 1.25,
+    "min_print_temperature": 255,
+    "max_print_temperature": 275,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 85,
+    "data_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_CPE-HG100_03012019.pdf",
+    "discontinued": false,
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Fillamentum CPE HG100"
+        }
+    }
+}

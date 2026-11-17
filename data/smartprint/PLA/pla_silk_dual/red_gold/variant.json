@@ -1,8 +1,12 @@
 {
+  "uuid": "9e9d9046-bd06-450a-aa45-64a7953f000c",
   "id": "red_gold",
   "name": "Red Gold",
   "color_hex": [
     "#e32400",
     "#D4AF37"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

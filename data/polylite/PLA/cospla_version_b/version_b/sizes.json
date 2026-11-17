@@ -1,21 +1,34 @@
 [
   {
+    "uuid": "9cc2e000-9985-4090-9493-e0c2f30560cd",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-cospla?variant=41068178964537&"
+        "url": "https://us.polymaker.com/products/polylite-cospla?variant=41068178964537"
       }
     ]
   },
   {
+    "uuid": "fd129faf-f092-482b-a5ff-a8e6aa55be1b",
     "filament_weight": 5000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-cospla?variant=41068304367673&"
+        "url": "https://us.polymaker.com/products/polylite-cospla?variant=41068304367673"
       }
     ]
   }

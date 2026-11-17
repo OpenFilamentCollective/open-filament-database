@@ -1,10 +1,34 @@
 [
   {
+    "uuid": "26230c69-2d56-4fce-ac24-f63f464d25b8",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
-    "discontinued": false
+    "gtin": "6937285509734",
+    "article_number": "30107",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-gray-1"
+      }
+    ]
+  },
+  {
+    "uuid": "1e01d827-c103-42fc-99a4-35e17d7b8258",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285509901",
+    "article_number": "30107",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-gray-1?sai=42643"
+      }
+    ]
   }
 ]

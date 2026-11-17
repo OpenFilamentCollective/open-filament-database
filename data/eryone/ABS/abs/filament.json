@@ -1,12 +1,18 @@
 {
+    "uuid": "14c05f65-660c-4a79-b3a8-e36ef73e82d8",
     "id": "abs",
     "name": "ABS",
-    "diameter_tolerance": 0.03,
+    "diameter_tolerance": 0.05,
     "density": 1.04,
+    "min_print_temperature": 230,
+    "max_print_temperature": 270,
+    "min_bed_temperature": 95,
+    "max_bed_temperature": 110,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYOE_--ABS_-TDS_EN.pdf?v=1747275603",
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "EFL91",
+            "generic_id": "OFY9muEs",
+            "id": "OFOzwywz",
             "profile_name": "Eryone ABS"
         },
         "elegooslicer": {

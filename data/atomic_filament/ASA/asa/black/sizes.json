@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "535c0e7e-fd1a-4371-b694-c8d6783f7209",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/black-asa-filament"
+      }
+    ]
   }
 ]

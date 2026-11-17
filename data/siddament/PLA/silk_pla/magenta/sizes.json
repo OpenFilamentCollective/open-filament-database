@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "28f7e97a-30d2-4150-bf88-dbd92d7da651",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.011",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-magenta-pla"
+      }
+    ]
+  }
+]

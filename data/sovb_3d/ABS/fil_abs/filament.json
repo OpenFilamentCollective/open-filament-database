@@ -1,10 +1,11 @@
 {
+  "uuid": "4ed60c5f-704e-4683-8271-f6fad184d93f",
   "id": "fil_abs",
   "name": "Fil ABS",
   "diameter_tolerance": 0.02,
-  "density": 1.04,
+  "density": 1.03,
   "min_print_temperature": 230,
-  "max_print_temperature": 260,
+  "max_print_temperature": 250,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_bed_temperature": 100
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "4fc3f473-8122-43f2-8411-0a13a1cb31e2",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.070",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/yellow-abs-v2"
+      }
+    ]
+  }
+]

@@ -1,11 +1,12 @@
 {
+  "uuid": "5e372782-c665-4dcf-b0cc-f6bdd1cdd067",
   "id": "gf30_natural",
   "name": "Natural",
   "color_hex": "#DFDFD3",
   "discontinued": false,
   "traits": {
-    "abrasive": true,
     "without_pigments": true,
+    "abrasive": true,
     "contains_glass_fiber": true
   }
 }

@@ -1,6 +1,12 @@
 {
-    "id": "petg_cf",
-    "name": "PETG CF",
-    "diameter_tolerance": 0.02,
-    "density": 1.32
+  "uuid": "cb3184b2-7214-4cf2-bcea-738aec111b8e",
+  "id": "petg_cf",
+  "name": "PETG CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.29,
+  "min_print_temperature": 240,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2024/11/eng_tds_the_filament_petg_cf.pdf"
 }

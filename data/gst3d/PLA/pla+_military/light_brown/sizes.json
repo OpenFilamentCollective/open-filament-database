@@ -1,12 +1,7 @@
 [
   {
+    "uuid": "12ddac70-24a8-4bc4-94a6-a1d62b154b9c",
     "filament_weight": 1000,
-    "diameter": 1.75,
-    "purchase_links": [
-      {
-        "store_id": "gst3d",
-        "url": "https://gst3d.eu/products/pla-military-army-green"
-      }
-    ]
+    "diameter": 1.75
   }
 ]

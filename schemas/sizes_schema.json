@@ -8,6 +8,23 @@
     "items": {
         "type": "object",
         "properties": {
+            "uuid": {
+                "type": "string",
+                "title": "UUID",
+                "description": "Canonical UUID (UUIDv4), assigned automatically by CI on merge. Leave empty when creating.",
+                "readOnly": true,
+                "pattern": "^$|^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            },
+            "moved_from": {
+                "type": "array",
+                "title": "Moved From",
+                "description": "Former canonical UUIDv4(s) this entity previously had (before a merge or move). Lets old UUID references resolve here. Managed by tooling/CI — leave empty when creating.",
+                "readOnly": true,
+                "items": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+                }
+            },
             "filament_weight": {
                 "type": "number",
                 "description": "The weight of the filament alone (in grams)",
@@ -20,8 +37,105 @@
             },
             "spool_refill": {
                 "type": "boolean",
-                "description": "Indicates if this size is a refill for a reusable spool (applies to all purchase links)",
+                "description": "(deprecated) Indicates if this size is a refill for a reusable spool. Use container_material: refill instead.",
+                "deprecated": true,
                 "default": false
+            },
+            "container_material": {
+                "type": "string",
+                "description": "The material the filament container is made of (mixed = more than one, e.g. cardboard core with plastic sides), or refill for a spool-less refill",
+                "enum": [
+                    "plastic",
+                    "cardboard",
+                    "mixed",
+                    "refill"
+                ]
+            },
+            "container_details": {
+                "type": "object",
+                "title": "Container Details",
+                "description": "Sourced details about the spool or container of this size",
+                "properties": {
+                    "recycled_pct": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "minimum": 0,
+                        "maximum": 100,
+                        "title": "Recycled %",
+                        "description": "Recycled content of the container in percent (0-100). null when the source gives no number."
+                    },
+                    "pct_qualifier": {
+                        "type": "string",
+                        "title": "Percentage Qualifier",
+                        "description": "How the source qualifies the percentage: exact, up to, or at least",
+                        "enum": [
+                            "exact",
+                            "up_to",
+                            "at_least"
+                        ],
+                        "default": "exact"
+                    },
+                    "certifications": {
+                        "type": "array",
+                        "title": "Certifications",
+                        "description": "Certifications of the container material, e.g. FSC",
+                        "items": {
+                            "type": "string",
+                            "maxLength": 100
+                        },
+                        "uniqueItems": true
+                    },
+                    "notes": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 1000,
+                        "title": "Notes",
+                        "description": "Caveats, conflicting sources, or anything a reader needs to interpret the value"
+                    },
+                    "source_type": {
+                        "type": "string",
+                        "title": "Source Type",
+                        "description": "primary = the brand's own site, PDF, blog or declaration. secondary = a retailer or press copy of brand text, only when the original can't be reached.",
+                        "enum": [
+                            "primary",
+                            "secondary"
+                        ]
+                    },
+                    "source_url": {
+                        "type": "string",
+                        "title": "Source URL",
+                        "description": "Where the figure is published",
+                        "format": "uri",
+                        "pattern": "^https?://",
+                        "maxLength": 1000,
+                        "x-placeholder": "https://example.com/..."
+                    },
+                    "source_quote": {
+                        "type": "string",
+                        "title": "Source Quote",
+                        "description": "Verbatim text from the source. Must contain the number exactly as written.",
+                        "minLength": 1,
+                        "maxLength": 2000
+                    },
+                    "retrieved": {
+                        "type": "string",
+                        "format": "date",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                        "title": "Retrieved",
+                        "description": "Date the source was read (YYYY-MM-DD)"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "source_type",
+                    "source_url",
+                    "source_quote",
+                    "retrieved"
+                ]
             },
             "empty_spool_weight": {
                 "type": "number",
@@ -29,19 +143,19 @@
             },
             "spool_core_diameter": {
                 "type": "number",
-                "description": "The diameter of the core of the spool"
+                "description": "Outer diameter of the spool core: what the filament is wound onto (in mm)"
             },
             "container_width": {
                 "type": "integer",
-                "description": "Width of the filament spool (in mm)"
+                "description": "Width of the filament spool: its height when lying flat on a table (in mm)"
             },
             "container_outer_diameter": {
                 "type": "integer",
-                "description": "Diameter of the spool (in mm)"
+                "description": "Outer diameter of the spool flanges (in mm)"
             },
             "container_hole_diameter": {
                 "type": "integer",
-                "description": "Diameter of the center hole of the spool (in mm)"
+                "description": "Diameter of the spool's center hole (bore), where it sits on a spool holder (in mm)"
             },
             "gtin": {
                 "type": "string",
@@ -88,7 +202,7 @@
                         },
                         "spool_refill": {
                             "type": "boolean",
-                            "description": "(deprecated) Previously indicated a refill per purchase link. Use parent size.spool_refill now.",
+                            "description": "(deprecated) Previously indicated a refill per purchase link. Use parent size.container_material: refill now.",
                             "default": false
                         },
                         "ships_from": {

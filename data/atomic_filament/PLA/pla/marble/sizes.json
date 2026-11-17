@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "4ef513bf-4f2c-4a7b-83ae-1c2d8e43a472",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/marble-pla-filament"
+      }
+    ]
   }
 ]

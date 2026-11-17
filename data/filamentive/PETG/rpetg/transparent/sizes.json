@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "663dcb79-54df-438c-88c1-d3702aaad505",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 34,
+    "spool_core_diameter": 87,
+    "article_number": "RFPET-TR1-175",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/refill-petg-transparent-1-75mm-1-kg/"
+      }
+    ]
+  }
+]

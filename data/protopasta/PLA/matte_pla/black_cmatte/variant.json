@@ -1,9 +1,9 @@
 {
+  "uuid": "3e710ed7-4dcf-4517-8ea9-8c1fdd35f650",
   "id": "black_cmatte",
   "name": "Black cMatte",
   "color_hex": "#000000",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

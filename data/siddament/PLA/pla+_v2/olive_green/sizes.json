@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ef795440-a887-4718-901d-59c1950377a2",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.065",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/olive-green-pla"
+      }
+    ]
+  }
+]

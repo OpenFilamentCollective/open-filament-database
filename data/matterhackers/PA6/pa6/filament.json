@@ -1,10 +1,12 @@
 {
+  "uuid": "6affef48-01d6-4ea7-809c-4aca77193aec",
   "id": "pa6",
   "name": "PA6",
   "diameter_tolerance": 0.02,
   "density": 1.14,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 65,
+  "max_bed_temperature": 65,
+  "data_sheet_url": "https://www.matterhackers.com/r/RczMCr"
 }

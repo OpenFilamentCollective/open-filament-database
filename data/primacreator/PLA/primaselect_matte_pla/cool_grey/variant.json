@@ -1,9 +1,9 @@
 {
+  "uuid": "73f33e9e-751d-431e-b2ff-38c5fc482cb4",
   "id": "cool_grey",
   "name": "Cool Grey",
   "color_hex": "#9F9F9F",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

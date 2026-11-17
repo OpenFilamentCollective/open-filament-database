@@ -1,0 +1,15 @@
+{
+  "uuid": "609b06e6-8fd3-48fd-9704-53a7d76669c5",
+  "id": "fiberlogy",
+  "name": "Fiberlogy",
+  "storefront_url": "https://fiberlogy.com/",
+  "logo": "logo.png",
+  "ships_from": [],
+  "ships_to": [
+    "PL",
+    "EU",
+    "GB",
+    "NO",
+    "CH"
+  ]
+}

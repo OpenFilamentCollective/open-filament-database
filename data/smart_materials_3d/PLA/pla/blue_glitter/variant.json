@@ -1,9 +1,9 @@
 {
+  "uuid": "1432b999-06c2-4d59-81fa-f114257ad570",
   "id": "blue_glitter",
   "name": "Blue Glitter",
   "color_hex": "#0378D0",
   "traits": {
-    "industrially_compostable": true,
     "glitter": true
   }
 }

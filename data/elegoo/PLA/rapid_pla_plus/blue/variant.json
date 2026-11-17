@@ -1,5 +1,12 @@
 {
-    "id": "blue",
-    "name": "Blue",
-    "color_hex": "#2240af"
+  "uuid": "dd79aaf0-3fdf-48c0-a36e-c973ca852857",
+  "moved_from": [
+    "f1782808-13b0-429e-9074-b983e2238cab"
+  ],
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": "#2240af",
+  "traits": {
+    "high_flow": true
+  }
 }

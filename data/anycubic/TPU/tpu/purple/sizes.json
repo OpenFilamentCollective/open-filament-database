@@ -1,12 +1,13 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/tpu-filament?variant=44896641614013"
-            }
-        ]
-    }
+  {
+    "uuid": "7a8c3109-853a-49b8-950a-828f50fc00d5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/tpu-filament?variant=44896641614013"
+      }
+    ]
+  }
 ]

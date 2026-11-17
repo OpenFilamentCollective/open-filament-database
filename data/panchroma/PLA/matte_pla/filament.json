@@ -1,6 +1,23 @@
 {
-    "id": "matte_pla",
-    "name": "Matte PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.37
+  "uuid": "203bb048-7ca1-4d0b-a30a-0da84e0c79ad",
+  "moved_from": [
+    "6aed131e-d76e-4c65-9374-ad08d91dd8a4",
+    "841c872a-4943-428e-b84d-2d20aa6b2ec6",
+    "a9415a0a-4105-47bd-90a7-9ba749f83c4d",
+    "83de7d57-4c35-44df-a533-6cf864645071"
+  ],
+  "id": "matte_pla",
+  "name": "Matte PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.37,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "min_nozzle_diameter": 0.4,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_PANCHROMA_V2.pdf",
+  "discontinued": false
 }

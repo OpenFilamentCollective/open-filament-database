@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "62671338-3f98-4fe1-b246-000913b5fce7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 34,
+    "spool_core_diameter": 87,
+    "article_number": "RPET-SL1-175",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/petg-silver-3d-printer-filament/?attribute_weight=1kg&attribute_diameter=1.75mm"
+      }
+    ]
+  }
+]

@@ -1,9 +1,10 @@
 {
+  "uuid": "38a91892-6e17-488f-be64-b90e5d74d0c0",
   "id": "wood_color",
   "name": "Wood Color",
   "color_hex": "#b19870",
   "traits": {
-    "industrially_compostable": true,
-    "imitates_wood": true
+    "imitates_wood": true,
+    "bio_based": true
   }
 }

@@ -1,6 +1,14 @@
 {
-    "id": "petg_fx120",
-    "name": "PETG FX120",
-    "diameter_tolerance": 0.02,
-    "density": 1.13
+  "uuid": "c19b3d8a-fb0c-435e-8ecb-db07d7f83a89",
+  "id": "petg_fx120",
+  "name": "PETG FX120",
+  "diameter_tolerance": 0.02,
+  "density": 1.13,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 80,
+  "min_fan_speed": 10,
+  "max_fan_speed": 30,
+  "enclosure": "recommended"
 }

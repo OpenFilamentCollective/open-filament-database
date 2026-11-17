@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "9bcec772-ae63-4259-8542-e2d4921e9811",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "isanmate",
+        "url": "https://isanmate.store/products/asa-high-performance-filament-1-75mm-1kg-roll?variant=50912035209533"
+      }
+    ]
   }
 ]

@@ -1,9 +1,23 @@
 [
   {
+    "uuid": "5be5ac6f-b93a-43ec-908f-3fb9f85e896b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 165,
+    "gtin": "8719956553370",
     "article_number": "RPET-175LGRN-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +28,24 @@
     ]
   },
   {
+    "uuid": "b6b83e32-7088-44d7-a13f-e690aec64aaf",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 625,
+    "gtin": "8720574293470",
     "article_number": "RPET-175LGRN-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,9 +56,22 @@
     ]
   },
   {
+    "uuid": "d53980b4-56f7-4e95-93f0-0853e1556e96",
     "filament_weight": 3500,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 705,
     "article_number": "RPET-175LGRN-03500",
     "discontinued": false,
@@ -42,9 +83,22 @@
     ]
   },
   {
+    "uuid": "f2b2d800-4274-4d04-8bc1-6580b21b8f64",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 785,
     "article_number": "RPET-175LGRN-04500",
     "discontinued": false,
@@ -56,10 +110,24 @@
     ]
   },
   {
+    "uuid": "8fad4cc1-804a-498d-a94c-e1994723a2dc",
     "filament_weight": 1000,
     "diameter": 2.85,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 165,
+    "gtin": "8719956553387",
     "article_number": "RPET-285LGRN-01000",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +138,24 @@
     ]
   },
   {
+    "uuid": "b6d6b93e-a495-41c1-bfed-f56d97249742",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 625,
+    "gtin": "8720574293517",
     "article_number": "RPET-285LGRN-02300",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +166,24 @@
     ]
   },
   {
+    "uuid": "aad90ae0-28dc-44fd-be22-e098a6dd08ba",
     "filament_weight": 3500,
     "diameter": 2.85,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 705,
+    "gtin": "8720574297454",
     "article_number": "RPET-285LGRN-03500",
     "discontinued": false,
     "purchase_links": [
@@ -96,5 +192,24 @@
         "url": "https://www.formfutura.com/reform-rpet"
       }
     ]
+  },
+  {
+    "uuid": "6bd3bf6b-0e3d-4984-9eb7-603e0f39003e",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rpet",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
+    "gtin": "8720574293357",
+    "article_number": "RPET-285LGRN-00250"
   }
 ]

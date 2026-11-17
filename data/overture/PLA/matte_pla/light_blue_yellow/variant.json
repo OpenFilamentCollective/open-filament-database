@@ -1,10 +1,10 @@
 {
+  "uuid": "ce3709a2-faeb-428e-afea-237a95de3833",
   "id": "light_blue_yellow",
   "name": "Light Blue-Yellow",
   "color_hex": "#afc592",
   "traits": {
     "matte": true,
-    "industrially_compostable": true,
     "coextruded": true
   }
 }

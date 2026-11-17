@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "6610f0aa-826a-4037-8a13-10034c03625c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.015",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-emerald-pla-v2"
+      }
+    ]
+  }
+]

@@ -1,5 +1,9 @@
 {
-    "id": "silver",
-    "name": "Silver",
-    "color_hex": "#C0CACB"
+  "uuid": "4ca42968-0b4a-4d67-9ea4-ba577929ca8d",
+  "moved_from": [
+    "64f79a98-b1ba-42d6-ba87-becb989a8856"
+  ],
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#C0CACB"
 }

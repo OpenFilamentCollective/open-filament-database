@@ -1,6 +1,16 @@
 [
   {
+    "uuid": "0ea13aa8-83ed-4846-b699-02c21cdc6d38",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "639302732144",
+    "article_number": "A15MG"
+  },
+  {
+    "uuid": "916454ae-5a3c-4fb6-bafc-dce048b0798f",
+    "filament_weight": 4000,
+    "diameter": 1.75,
+    "gtin": "793897627176",
+    "article_number": "A17MG"
   }
 ]

@@ -1,6 +1,26 @@
 [
   {
+    "uuid": "23ffab86-e581-4f6c-90e4-0c101dbca308",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9010241043064"
+  },
+  {
+    "uuid": "37af4847-123c-4e8e-a9bc-02de7d118640",
+    "filament_weight": 2500,
+    "diameter": 1.75,
+    "gtin": "9010241044061"
+  },
+  {
+    "uuid": "8371e04d-1fc7-4557-9e8e-1b896e1e2448",
+    "filament_weight": 10000,
+    "diameter": 1.75,
+    "gtin": "9010241045068"
+  },
+  {
+    "uuid": "2b0d94a0-e0de-4d0a-9be8-41fefbcb052b",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "9010241053063"
   }
 ]

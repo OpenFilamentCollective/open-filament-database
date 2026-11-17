@@ -1,0 +1,9 @@
+{
+  "uuid": "9747d3ce-02f7-4627-8c39-f7d0cd2ad830",
+  "id": "sandstein",
+  "name": "Sandstein",
+  "color_hex": "#CFAC82",
+  "traits": {
+    "imitates_stone": true
+  }
+}

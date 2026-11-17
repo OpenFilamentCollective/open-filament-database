@@ -53,6 +53,16 @@ def merge_dicts(existing: dict, new: dict) -> dict:
     return result
 
 
+def size_dedupe_key(size: dict) -> tuple:
+    """The (filament_weight, diameter) identity used to dedupe/pair spools.
+
+    Single-sourced so :func:`merge_sizes` and :func:`ofd.uuids.record_moved_from`
+    pair spools identically — if they diverged, record_moved_from would attach a
+    deleted spool's UUID to the wrong survivor (or lose it).
+    """
+    return (size.get("filament_weight"), size.get("diameter"))
+
+
 def merge_sizes(existing: list[dict], new: list[dict]) -> list[dict]:
     """Merge sizes arrays, deduplicating by (filament_weight, diameter).
 
@@ -60,9 +70,9 @@ def merge_sizes(existing: list[dict], new: list[dict]) -> list[dict]:
     (weight, diameter) key doesn't already exist.
     """
     result = list(existing)
-    existing_keys = {(s.get("filament_weight"), s.get("diameter")) for s in existing}
+    existing_keys = {size_dedupe_key(s) for s in existing}
     for size in new:
-        key = (size.get("filament_weight"), size.get("diameter"))
+        key = size_dedupe_key(size)
         if key not in existing_keys:
             result.append(size)
             existing_keys.add(key)

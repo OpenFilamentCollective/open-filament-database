@@ -1,9 +1,9 @@
 {
+  "uuid": "940ebc34-c747-4ba1-b3ce-f93329809f99",
   "id": "wood_white_pine",
   "name": "Wood White Pine",
   "color_hex": "#E6D1BD",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

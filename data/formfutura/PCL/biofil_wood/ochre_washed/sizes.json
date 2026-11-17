@@ -1,9 +1,12 @@
 [
   {
+    "uuid": "eaa576e8-4fe7-4d0f-a087-7df00f83b341",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629065830",
     "article_number": "BFWD-175OCHW-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +17,13 @@
     ]
   },
   {
+    "uuid": "fc42c514-7893-419d-93bf-836ea6a2398a",
     "filament_weight": 2000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 40,
+    "gtin": "8720629065847",
     "article_number": "BFWD-175OCHW-02000",
     "discontinued": false,
     "purchase_links": [

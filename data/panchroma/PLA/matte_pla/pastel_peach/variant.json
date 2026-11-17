@@ -1,5 +1,13 @@
 {
-    "id": "pastel_peach",
-    "name": "Pastel Peach",
-    "color_hex": "#F2B67A"
+  "uuid": "e6841125-beee-4a71-a356-9a6dbac972b3",
+  "moved_from": [
+    "22995309-5f6a-4d68-adbf-61416d616653"
+  ],
+  "id": "pastel_peach",
+  "name": "Pastel Peach",
+  "color_hex": "#F2B67A",
+  "transmission_distance": 3.3,
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,62 +1,95 @@
 [
   {
+    "uuid": "3eb745f9-7dba-44e1-a68f-9f4be1ba5114",
     "filament_weight": 250,
     "diameter": 1.75
   },
   {
+    "uuid": "674a62ed-eed0-43e1-8d53-fba6345b1042",
     "filament_weight": 500,
     "diameter": 1.75
   },
   {
+    "uuid": "cb253778-f32d-475b-a933-cb6b47738299",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "gtin": "6933582309879",
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/over-6kg-bundle-sale-petg-3d-printer-filament-1-75mm-1kg-roll?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/over-6kg-bundle-sale-petg-3d-printer-filament-1-75mm-1kg-roll"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/petg-grey-6"
       }
     ]
   },
   {
+    "uuid": "533668ee-91c8-40f3-a4de-6ab0a3a0fce3",
     "filament_weight": 2000,
     "diameter": 1.75
   },
   {
+    "uuid": "056f54f1-61e5-41c9-bdb5-54a3d6f41231",
     "filament_weight": 3000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/petg-filament-3kg-large-spool-3d-printer-filament-3kg"
+      }
+    ]
   },
   {
+    "uuid": "3c7f0202-87af-4408-8ab7-96855fea56f6",
+    "moved_from": [
+      "e3f8eebb-cb33-4b63-a706-e3b6b4cb5b26"
+    ],
     "filament_weight": 5000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/petg-large-spool-3d-printer-filament-5kg?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/petg-large-spool-3d-printer-filament-5kg"
       }
     ]
   },
   {
+    "uuid": "137ddb60-e5c2-4283-8100-a722defc69d5",
     "filament_weight": 250,
     "diameter": 2.85
   },
   {
+    "uuid": "0b64ce01-91ef-4989-9a28-72d226153802",
     "filament_weight": 500,
     "diameter": 2.85
   },
   {
+    "uuid": "fc30d40e-5748-4a91-9964-6d03af357a42",
     "filament_weight": 1000,
     "diameter": 2.85
   },
   {
+    "uuid": "f4c6e176-84b6-4fac-b630-e427df31dbe7",
     "filament_weight": 2000,
     "diameter": 2.85
   },
   {
+    "uuid": "95c34278-3dbb-4412-b151-aaec235e7d31",
     "filament_weight": 3000,
     "diameter": 2.85
   },
   {
-    "filament_weight": 5000,
-    "diameter": 2.85
+    "uuid": "2356744d-bd8e-4599-92b7-1a86b375505a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/sunlu-refill-filament-pla-pla-2-0-compatible-with-2025-sunlu-third-generation-reusable-spool-bambulab-reusable-spool-spool-free-filament?variant=51042641379610"
+      }
+    ]
   }
 ]

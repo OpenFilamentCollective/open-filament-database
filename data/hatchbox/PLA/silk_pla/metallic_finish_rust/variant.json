@@ -1,9 +1,9 @@
 {
+  "uuid": "c99bf46d-0243-450b-8ea5-50f5b788b2b3",
   "id": "metallic_finish_rust",
   "name": "Metallic Finish Rust",
   "color_hex": "#DE6300",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

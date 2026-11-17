@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "da1bb19d-9f9f-4ed1-a42c-76cc2c165423",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/flashforge-pla-silk-dual-color?variant=41341913464910"
+      }
+    ]
   }
 ]

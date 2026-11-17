@@ -1,0 +1,13 @@
+{
+  "uuid": "43138b1f-9ef2-4c14-8409-ff1bc9e36ae6",
+  "id": "light",
+  "name": "Light",
+  "color_hex": "#A69B69",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Warm Gray 8 C"
+  },
+  "traits": {
+    "abrasive": true
+  }
+}

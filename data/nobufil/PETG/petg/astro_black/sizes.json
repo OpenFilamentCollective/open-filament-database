@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "b3617d49-6bd5-4fe8-9a71-963605513c1e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460573",
+    "article_number": "PETG-B-901-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-astro-black"
+      }
+    ]
   }
 ]

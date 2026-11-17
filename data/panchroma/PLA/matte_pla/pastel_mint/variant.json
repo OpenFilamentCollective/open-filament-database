@@ -1,5 +1,13 @@
 {
-    "id": "pastel_mint",
-    "name": "Pastel Mint",
-    "color_hex": "#BEC9A5"
+  "uuid": "c87a444f-4720-44cc-87e7-75d27eabb5df",
+  "moved_from": [
+    "2f64ca0a-b325-4bcd-866e-54ce4786d553"
+  ],
+  "id": "pastel_mint",
+  "name": "Pastel Mint",
+  "color_hex": "#BEC9A5",
+  "transmission_distance": 2.9,
+  "traits": {
+    "matte": true
+  }
 }

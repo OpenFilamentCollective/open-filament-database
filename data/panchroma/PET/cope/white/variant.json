@@ -1,5 +1,10 @@
 {
-    "id": "white",
-    "name": "White",
-    "color_hex": "#E2DEDB"
+  "uuid": "cacef048-68ad-43c7-90aa-9f19daac8e25",
+  "moved_from": [
+    "79c2606b-065f-4f44-9e8c-195d8fce3721"
+  ],
+  "id": "white",
+  "name": "White",
+  "color_hex": "#E2DEDB",
+  "transmission_distance": 3
 }

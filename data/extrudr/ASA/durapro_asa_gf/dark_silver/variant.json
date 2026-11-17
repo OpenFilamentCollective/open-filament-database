@@ -1,0 +1,14 @@
+{
+  "uuid": "85ddbec3-9a62-46c9-a5eb-4c61ce47792a",
+  "id": "dark_silver",
+  "name": "Dark Silver",
+  "color_hex": "#C4C5C7",
+  "color_standards": {
+    "ral": "7047"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

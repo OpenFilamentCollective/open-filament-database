@@ -1,9 +1,9 @@
 {
+  "uuid": "dbadf7f8-7969-49bf-9116-1b220ee58199",
   "id": "midnight_black",
   "name": "Midnight Black",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

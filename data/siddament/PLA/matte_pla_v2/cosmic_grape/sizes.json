@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "9c9176f3-ae83-4b02-ad41-de4be17913e8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.034",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-cosmic-grape-pla-v2"
+      }
+    ]
+  }
+]

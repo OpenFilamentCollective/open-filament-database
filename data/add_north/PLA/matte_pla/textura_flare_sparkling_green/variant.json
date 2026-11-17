@@ -1,9 +1,9 @@
 {
+  "uuid": "12bab0f9-6aba-4765-9d41-952551a9baa3",
   "id": "textura_flare_sparkling_green",
   "name": "Textura™ Flare Sparkling Green",
   "color_hex": "#77A54B",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

@@ -1,8 +1,9 @@
 {
-    "id": "charcoal",
-    "name": "Charcoal",
-    "color_hex": "#36454F",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "62e0c9a2-2724-45df-9c2f-8f813421fa6f",
+  "id": "charcoal",
+  "name": "Charcoal",
+  "color_hex": "#36454F",
+  "traits": {
+    "matte": true
+  }
 }

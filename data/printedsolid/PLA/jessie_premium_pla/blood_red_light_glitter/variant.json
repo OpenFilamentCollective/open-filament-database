@@ -1,9 +1,9 @@
 {
+  "uuid": "cdf94e51-52d4-46ee-bd67-28b998b81adb",
   "id": "blood_red_light_glitter",
   "name": "Blood Red Light Glitter",
   "color_hex": "#C01616",
   "traits": {
-    "industrially_compostable": true,
     "glitter": true
   }
 }

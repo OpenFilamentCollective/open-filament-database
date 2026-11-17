@@ -1,12 +1,43 @@
 [
   {
+    "uuid": "25fd6fa3-d9e2-4eae-8b6d-152ec47f98ed",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [],
+      "notes": "Brand says scrap is reused to make the recyclable spool (a paper reel per the same page); no percentage given.",
+      "source_type": "primary",
+      "source_url": "https://esun3dstore.com/products/epla-matte",
+      "source_quote": "Scrap is reused to produce recyclable spool and packaging box.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 140,
+    "gtin": "6922572203372",
+    "article_number": "PLA-MT175MO-Z1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-matte"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-morandi-purple"
+      }
+    ]
+  },
+  {
+    "uuid": "0f780d89-1742-424d-a6fa-32aac463346c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208841",
+    "article_number": "PLA-MT175MO-Z1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-morandi-purple?sai=24706"
       }
     ]
   }

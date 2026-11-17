@@ -1,9 +1,9 @@
 {
+  "uuid": "564cec35-35c5-4d66-84b7-23a81675ad4b",
   "id": "dark_brown",
   "name": "Dark Brown",
   "color_hex": "#7D6556",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

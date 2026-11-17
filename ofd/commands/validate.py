@@ -88,6 +88,17 @@ Examples:
         "--store-ids", action="store_true", help="Validate store IDs in purchase links"
     )
     scope_group.add_argument("--gtin", action="store_true", help="Validate GTIN/EAN fields")
+    scope_group.add_argument(
+        "--fiber-consistency",
+        action="store_true",
+        help="Validate no filament mixes carbon fiber and glass fiber across its variants",
+    )
+    scope_group.add_argument(
+        "--data-quality",
+        action="store_true",
+        help="Check for placeholder values, duplicate spool rows, name casing/whitespace, "
+        "missing fiber traits, filaments with no variants, and word-order duplicates",
+    )
 
     # Output options
     output_group = parser.add_argument_group("output options")
@@ -166,6 +177,8 @@ def run_validate(args: argparse.Namespace) -> int:
             args.folder_names,
             args.store_ids,
             args.gtin,
+            args.fiber_consistency,
+            args.data_quality,
         ]
     )
 
@@ -173,6 +186,8 @@ def run_validate(args: argparse.Namespace) -> int:
         # Run all validations
         if not args.json and not args.progress:
             print(_bold("Running all validations..."))
+        # validate_all() already includes the native fiber-consistency and
+        # data-quality checks (skipped automatically under a changes overlay).
         result = orchestrator.validate_all(changes_json=changes_json)
     else:
         # Run specific validations
@@ -186,6 +201,31 @@ def run_validate(args: argparse.Namespace) -> int:
             result.merge(orchestrator.validate_store_ids())
         if args.gtin:
             result.merge(orchestrator.validate_gtin())
+        if args.fiber_consistency:
+            # The native check reads on-disk data and can't apply a changes overlay,
+            # so skip it (with a note) rather than report stale conflicts.
+            if changes_json is None:
+                result.merge(orchestrator.validate_fiber_consistency())
+            else:
+                print(
+                    _yellow(
+                        "Skipping fiber-consistency: it runs against on-disk data and "
+                        "cannot apply --apply-changes."
+                    ),
+                    file=sys.stderr,
+                )
+        if args.data_quality:
+            # Same constraint as fiber-consistency: on-disk only.
+            if changes_json is None:
+                result.merge(orchestrator.validate_data_quality())
+            else:
+                print(
+                    _yellow(
+                        "Skipping data-quality: it runs against on-disk data and "
+                        "cannot apply --apply-changes."
+                    ),
+                    file=sys.stderr,
+                )
 
     # Output results
     if args.json:

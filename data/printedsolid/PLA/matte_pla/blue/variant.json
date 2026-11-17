@@ -1,9 +1,9 @@
 {
+  "uuid": "596f9ce9-9337-4463-834c-aeb1f541d82a",
   "id": "blue",
   "name": "Blue",
   "color_hex": "#0353BA",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

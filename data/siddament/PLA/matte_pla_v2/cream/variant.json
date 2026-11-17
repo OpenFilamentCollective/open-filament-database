@@ -1,0 +1,10 @@
+{
+  "uuid": "7757374c-e6a0-4bbd-89b1-b7bb21e6f2bf",
+  "id": "cream",
+  "name": "Cream",
+  "color_hex": "#FBF3C4",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

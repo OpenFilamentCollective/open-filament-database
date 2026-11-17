@@ -1,6 +1,12 @@
 {
-    "id": "petg_magnetite",
-    "name": "PETG Magnetite",
-    "diameter_tolerance": 0.03,
-    "density": 1.82
+  "uuid": "0c278afc-d32b-43a3-a27d-eef1e9fd31d6",
+  "id": "petg_magnetite",
+  "name": "PETG Magnetite",
+  "diameter_tolerance": 0.03,
+  "density": 1.82,
+  "min_print_temperature": 265,
+  "max_print_temperature": 275,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://storage.googleapis.com/prusa3d-content-prod-14e8-wordpress-prusament-prod/2025/01/7cdc9586-technical-data-sheet-2.pdf"
 }

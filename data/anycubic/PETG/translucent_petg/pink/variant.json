@@ -1,8 +1,9 @@
 {
-    "id": "pink",
-    "name": "Pink",
-    "color_hex": "#F8C1B8",
-    "traits": {
-        "translucent": true
-    }
+  "uuid": "84ddf99a-3cce-4b54-9f4b-50dd3796253e",
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#F8C1B8",
+  "traits": {
+    "translucent": true
+  }
 }

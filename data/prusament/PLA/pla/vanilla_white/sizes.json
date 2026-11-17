@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "49cac3b6-b313-4808-8bc0-ca0b753767d1",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
@@ -10,12 +11,14 @@
     ]
   },
   {
-    "filament_weight": 1000,
+    "uuid": "2a460845-d8be-4ec3-a59b-d87ffdcbaa35",
+    "filament_weight": 900,
     "diameter": 1.75,
+    "container_material": "refill",
     "purchase_links": [
       {
-        "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pla-vanilla-white-1kg-refill/"
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-pla-vanilla-white-refill-nfc"
       }
     ]
   }

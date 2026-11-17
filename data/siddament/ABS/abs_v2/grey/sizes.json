@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "193dced5-c310-4078-af6a-ccd7f401991e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.045",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/grey-abs-v2"
+      }
+    ]
+  }
+]

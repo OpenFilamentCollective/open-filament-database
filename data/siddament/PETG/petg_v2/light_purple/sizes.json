@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3ca1f747-f64f-432b-9920-7c201612a80a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.011",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/light-purple-petg"
+      }
+    ]
+  }
+]

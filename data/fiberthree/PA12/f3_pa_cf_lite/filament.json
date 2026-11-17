@@ -1,10 +1,12 @@
 {
+  "uuid": "73724eab-1f96-4965-a3fd-cad8f4304f7c",
   "id": "f3_pa_cf_lite",
   "name": "F3 PA CF Lite",
   "diameter_tolerance": 0.02,
-  "density": 1.01,
-  "min_print_temperature": 240,
-  "max_print_temperature": 270,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "density": 1.24,
+  "min_print_temperature": 290,
+  "max_print_temperature": 310,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "http://fiberthree.com/downloads/tdb/filaments/TDS_F3_PA_CF_Lite_English_vers12_2024.pdf"
 }

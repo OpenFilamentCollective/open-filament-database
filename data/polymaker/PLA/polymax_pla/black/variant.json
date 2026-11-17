@@ -1,8 +1,14 @@
 {
+  "uuid": "b3238c9a-6c6e-4295-910a-a6aaac3edf2a",
+  "moved_from": [
+    "e42e1bf0-9681-4441-a7a3-68ff1d79fc74"
+  ],
   "id": "black",
   "name": "Black",
-  "color_hex": "#000000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#161619",
+  "hex_variants": [
+    "#181718",
+    "#101820",
+    "#000000"
+  ]
 }

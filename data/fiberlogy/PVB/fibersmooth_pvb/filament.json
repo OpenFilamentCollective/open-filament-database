@@ -1,10 +1,12 @@
 {
+  "uuid": "4be35f9d-eb78-452c-952d-9b66ec41cc16",
   "id": "fibersmooth_pvb",
   "name": "Fibersmooth PVB",
   "diameter_tolerance": 0.02,
-  "density": 1.08,
-  "min_print_temperature": 190,
-  "max_print_temperature": 220,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 75
+  "density": 1.1,
+  "min_print_temperature": 215,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 75,
+  "max_bed_temperature": 75,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/07/FIBERLOGY_FIBERSMOOTH_TDS.pdf"
 }

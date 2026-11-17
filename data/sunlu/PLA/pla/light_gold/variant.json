@@ -1,8 +1,9 @@
 {
+  "uuid": "f660edcd-a476-4c68-bfc6-37d08216089e",
   "id": "light_gold",
   "name": "Light Gold",
   "color_hex": "#E3B145",
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

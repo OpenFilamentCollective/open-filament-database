@@ -1,10 +1,11 @@
 {
+  "uuid": "eda0484d-db50-4603-993e-c08e9fb16067",
   "id": "galaxy_petg",
   "name": "Galaxy PETG",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 75,
   "max_bed_temperature": 90
 }

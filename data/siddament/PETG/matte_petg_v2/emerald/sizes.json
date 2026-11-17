@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "96e9e6b0-c5aa-424f-ab9c-bea8b60c56c8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.061",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-emerald-petg-v2"
+      }
+    ]
+  }
+]

@@ -1,4 +1,5 @@
 {
+  "uuid": "90c45c54-3122-459e-b9fd-d87e36a031a2",
   "id": "bluewhite",
   "name": "Bluewhite",
   "color_hex": [
@@ -6,7 +7,6 @@
     "#9AE0DD"
   ],
   "traits": {
-    "industrially_compostable": true,
     "gradual_color_change": true
   }
 }

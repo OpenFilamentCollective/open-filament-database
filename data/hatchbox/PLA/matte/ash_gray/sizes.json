@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "64be5eef-08ff-49a8-aee5-a9f638d3e2b7",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 244,
@@ -8,7 +9,7 @@
     "purchase_links": [
       {
         "store_id": "amazon",
-        "url": "https://www.hatchbox3d.com/products/3d-pla-1kg1-75-mat-agry?srsltid=AfmBOopUcfDuUj8l3D0j6m82OglmGd6BQ7pJ0JvKIMzdLBMdYvoDGGJN"
+        "url": "https://www.hatchbox3d.com/products/3d-pla-1kg1-75-mat-agry"
       }
     ]
   }

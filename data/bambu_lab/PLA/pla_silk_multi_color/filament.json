@@ -1,0 +1,15 @@
+{
+  "uuid": "afcbee11-3e22-4c9a-80b5-2f20ca6355ce",
+  "id": "pla_silk_multi_color",
+  "name": "PLA Silk Multi-Color",
+  "diameter_tolerance": 0.03,
+  "density": 1.32,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 45,
+  "dry_temperature": 55,
+  "dry_time": 8,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Silk_Dual_Color_Technical_Data_Sheet.pdf",
+  "discontinued": false
+}

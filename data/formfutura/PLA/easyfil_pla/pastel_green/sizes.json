@@ -1,6 +1,16 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "8a6a6162-0c27-46c0-9258-8a9d77d101ef",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8719956558108",
+    "article_number": "EPLA-285PSGN-00250"
+  },
+  {
+    "uuid": "1a53bf88-cc29-456d-88d9-37188898a030",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "gtin": "8719956558207",
+    "article_number": "EPLA-285PSGN-00750"
   }
 ]

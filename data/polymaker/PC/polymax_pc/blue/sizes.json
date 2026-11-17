@@ -1,6 +1,66 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "d630ca1d-327f-48fc-900d-60a87fccaa8d",
+    "moved_from": [
+      "220e8d83-e01e-4784-9cee-aef95fab09f9"
+    ],
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936713012"
+  },
+  {
+    "uuid": "e102e209-1f7c-44c5-8735-a57bc4a5c6bb",
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polymax-pc"
+      }
+    ]
+  },
+  {
+    "uuid": "b4533187-3657-4db7-9707-ba86a152fb38",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polymax-pc"
+      }
+    ]
+  },
+  {
+    "uuid": "81a35fdb-7086-41c3-9be6-de0c5401fabd",
+    "filament_weight": 3000,
+    "diameter": 2.85,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polymax-pc"
+      }
+    ]
   }
 ]

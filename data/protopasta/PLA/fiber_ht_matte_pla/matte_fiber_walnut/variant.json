@@ -1,10 +1,10 @@
 {
+  "uuid": "bc951353-d536-4c63-b542-ce8827f62c68",
   "id": "matte_fiber_walnut",
   "name": "Matte Fiber Walnut",
   "color_hex": "#78635A",
   "traits": {
     "matte": true,
-    "industrially_compostable": true,
     "high_temperature": true
   }
 }

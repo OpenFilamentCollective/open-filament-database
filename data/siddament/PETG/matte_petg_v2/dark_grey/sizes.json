@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "5da68a88-3670-448c-80d7-71ee8b652a80",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "13.001",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-dark-grey-petg-v2"
+      }
+    ]
+  }
+]

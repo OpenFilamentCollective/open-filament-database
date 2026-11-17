@@ -1,5 +1,9 @@
 {
-    "id": "cyan",
-    "name": "Cyan",
-    "color_hex": "#0086D6"
+  "uuid": "012444d6-cf4a-4d7f-84de-35cbc3182874",
+  "moved_from": [
+    "18fa0bf6-5c60-4c30-9273-f1d6777fbcd3"
+  ],
+  "id": "cyan",
+  "name": "Cyan",
+  "color_hex": "#0086D6"
 }

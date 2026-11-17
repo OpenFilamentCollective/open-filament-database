@@ -1,15 +1,20 @@
 {
+    "uuid": "e2c35499-180d-4291-bf02-eddc313af1ad",
     "id": "paht_cf",
     "name": "PAHT-CF",
     "diameter_tolerance": 0.02,
-    "density": 1.06,
+    "density": 1.08,
+    "min_print_temperature": 260,
+    "max_print_temperature": 290,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
     "slicer_settings": {
         "orcaslicer": {
-            "id": "EPAHTB00",
+            "id": "OF20kXr5",
             "profile_name": "Elegoo PAHT-CF"
         },
         "elegooslicer": {
-            "id": "EPAHTB00",
+            "id": "OEPAHTB0",
             "profile_name": "Elegoo PAHT-CF"
         }
     }

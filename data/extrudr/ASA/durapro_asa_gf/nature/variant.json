@@ -1,0 +1,14 @@
+{
+  "uuid": "2e88fb39-7d72-4dd0-973a-6c28f1719dec",
+  "id": "nature",
+  "name": "Nature",
+  "color_hex": "#E3D9C6",
+  "color_standards": {
+    "ral": "1013"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

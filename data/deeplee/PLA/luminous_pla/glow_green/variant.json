@@ -1,0 +1,9 @@
+{
+  "uuid": "1b27dff7-c5eb-4205-81d2-00fb4f178b9c",
+  "id": "glow_green",
+  "name": "Glow in the Dark Green",
+  "color_hex": "#8FD87A",
+  "traits": {
+    "glow": true
+  }
+}

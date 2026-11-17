@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "7e570adf-908e-430d-99b6-2c969bfc59c3",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/hs-pla-multicolor?variant=41658893598798"
+      }
+    ]
   }
 ]

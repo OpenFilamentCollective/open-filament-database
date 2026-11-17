@@ -1,10 +1,12 @@
 {
+  "uuid": "9aa1a9f3-0d5b-485a-81b1-29db11eb44d3",
   "id": "f3_pa_pure",
   "name": "F3 PA Pure",
   "diameter_tolerance": 0.02,
   "density": 1.2,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "min_print_temperature": 270,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "http://fiberthree.com/downloads/tdb/filaments/TDS_F3_PA_Pure_Pro_English_vers12_2024.pdf"
 }

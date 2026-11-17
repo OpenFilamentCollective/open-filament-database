@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "2a24c6e1-0a1a-4d1d-b507-e53cd4c0ef19",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.011",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/dark-grey-asa-v2"
+      }
+    ]
+  }
+]

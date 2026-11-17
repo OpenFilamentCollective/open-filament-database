@@ -1,10 +1,12 @@
 {
+  "uuid": "3e26b595-d970-4471-934c-ce53aa2b8e37",
   "id": "pla_silk_magic",
   "name": "PLA-Silk Magic",
   "diameter_tolerance": 0.03,
-  "density": 1.41,
+  "density": 1.256,
   "min_print_temperature": 190,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Silk_Magic/eSUN_PLA-Silk_Magic_Filament_TDS_V4.0.pdf"
 }

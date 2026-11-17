@@ -1,0 +1,14 @@
+{
+  "uuid": "52761e30-5d4d-4023-b9d5-a7eb743b55b8",
+  "id": "asa_cf_n3d",
+  "name": "ASA CF N3D",
+  "diameter_tolerance": 0.02,
+  "density": 1.08,
+  "max_dry_temperature": 70,
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_NATURE3D_ASA_CF_TDS.pdf?v=1777573164",
+  "discontinued": false
+}

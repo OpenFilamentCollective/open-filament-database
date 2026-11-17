@@ -1,6 +1,12 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "4065184d-73dc-4d6f-9064-33f78df5ebdd",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.29,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://azurefilm.com/wp-content/uploads/2023/10/TDS-PETG.pdf"
 }

@@ -1,5 +1,12 @@
 {
-    "id": "iron_grey",
-    "name": "Iron Grey",
-    "color_hex": "#5C6668"
+  "uuid": "8daa55dd-3249-4cb0-9d67-a81c8210a663",
+  "moved_from": [
+    "68a07144-7a5d-4549-bb82-9230b93ad668"
+  ],
+  "id": "iron_grey",
+  "name": "Iron Grey",
+  "color_hex": "#5C6668",
+  "traits": {
+    "high_temperature": true
+  }
 }

@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "74aa820d-6acd-4c68-9450-d00c6a5ca625",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572215597",
+    "article_number": "PLA-UV-CC175UV-G1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/pla-uv-color-change"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-uv-color-change-green"
       }
     ]
   }

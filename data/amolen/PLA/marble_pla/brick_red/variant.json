@@ -1,9 +1,9 @@
 {
+  "uuid": "443a6f4f-42fd-4115-9632-af79ffc0efd8",
   "id": "brick_red",
   "name": "Brick Red",
   "color_hex": "#ED2602",
   "traits": {
-    "industrially_compostable": true,
     "imitates_marble": true
   }
 }

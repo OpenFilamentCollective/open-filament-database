@@ -1,15 +1,10 @@
 [
   {
+    "uuid": "99c9e60b-1db5-45aa-9d5e-763f53e4c763",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "gtin": "6975337032847",
-    "discontinued": false,
-    "purchase_links": [
-      {
-        "store_id": "3deksperten",
-        "url": "https://3deksperten.dk/products/bambu-lab-petg-basic-lime-green-1-75mm-1kg"
-      }
-    ]
+    "discontinued": false
   }
 ]

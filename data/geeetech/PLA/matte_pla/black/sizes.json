@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "b396bf8a-529c-4628-ad0f-9abe58e4979a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170527",
+    "article_number": "700-001-1360",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/matte-pla-black"
+      }
+    ]
   }
 ]

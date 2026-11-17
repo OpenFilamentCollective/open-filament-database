@@ -1,0 +1,14 @@
+[
+  {
+    "uuid": "70a67f09-9aef-40bc-9ae0-aafd99303fe4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/petg-repro-filament?variant=58194696634751"
+      }
+    ]
+  }
+]

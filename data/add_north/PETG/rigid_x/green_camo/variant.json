@@ -1,5 +1,13 @@
 {
-    "id": "green_camo",
-    "name": "Green Camo",
-    "color_hex": "#78866b"
+  "uuid": "aa6f0196-8c4f-4341-9732-88adeae38bd3",
+  "moved_from": [
+    "41641b24-da01-46be-a6a0-e24065da81ff"
+  ],
+  "id": "green_camo",
+  "name": "Green Camo",
+  "color_hex": "#78866b",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
 }

@@ -1,9 +1,9 @@
 {
+  "uuid": "d09165d9-075c-4d19-aa44-3e8bf656d071",
   "id": "acacia",
   "name": "Acacia",
   "color_hex": "#CAAC78",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

@@ -1,6 +1,12 @@
 {
-    "id": "abs_pc",
-    "name": "ABS-PC",
-    "diameter_tolerance": 0.03,
-    "density": 1.05
+  "uuid": "556b12c0-990a-4a6b-a62e-d4414dcb293e",
+  "id": "abs_pc",
+  "name": "ABS-PC",
+  "diameter_tolerance": 0.03,
+  "density": 1.05,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-ABS-PC_Injection_Alloy_Filament-TDS.pdf?v=1751360096"
 }

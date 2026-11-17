@@ -1,0 +1,10 @@
+{
+  "uuid": "735aff1c-7810-40c6-b580-76dff778bf61",
+  "id": "hot_pink",
+  "name": "Hot Pink",
+  "color_hex": "#FF007F",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "213 C"
+  }
+}

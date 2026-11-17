@@ -1,6 +1,21 @@
 [
   {
+    "uuid": "737520b8-9d5d-4cff-b69d-def386a77310",
     "filament_weight": 1000,
     "diameter": 1.75
+  },
+  {
+    "uuid": "3cba8f6c-d211-4ddd-a7fa-885ece8137ac",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "gtin": "8718924478394",
+    "article_number": "STNF-175GRNT-00500"
+  },
+  {
+    "uuid": "1fa61743-dd63-464c-8661-d65a0b0583e0",
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "gtin": "8719956553165",
+    "article_number": "STNF-175GRNT-02000"
   }
 ]

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "ebdc7233-05bb-41aa-b2f6-9abf18b3f1a5",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-6kg-bundle-sales-1-75mm-sunlu-pla-metamacaron-colors-3d-printer-filament-1kg-roll"
+      }
+    ]
   }
 ]

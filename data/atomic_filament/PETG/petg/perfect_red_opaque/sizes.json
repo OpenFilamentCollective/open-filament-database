@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "4a3a60ec-f356-4d58-b5ff-918e1d87bfaf",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/perfect-red-petg-pro"
+      }
+    ]
   }
 ]

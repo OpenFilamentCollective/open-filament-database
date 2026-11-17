@@ -1,10 +1,12 @@
 {
+  "uuid": "2eedbe61-a2cc-43ee-9527-ddc30b1a23af",
   "id": "prime",
   "name": "ABS Prime",
   "diameter_tolerance": 0.02,
   "density": 1.13,
-  "min_print_temperature": 250,
-  "max_print_temperature": 250,
+  "min_print_temperature": 235,
+  "max_print_temperature": 255,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://azurefilm.com/wp-content/uploads/2024/04/TDS-ABS-Prime.pptx.pdf"
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "dc4cbb84-a0b8-40e8-a0d7-1c93946511b3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.044",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silver-abs-v2"
+      }
+    ]
+  }
+]

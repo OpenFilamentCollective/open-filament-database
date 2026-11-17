@@ -1,8 +1,9 @@
 {
+  "uuid": "d3b4a65e-2411-40b6-9a76-3c25fddaba5b",
   "id": "ochre",
   "name": "Ochre",
   "color_hex": "#EA9E3F",
   "traits": {
-    "industrially_compostable": true
+    "recycled": true
   }
 }

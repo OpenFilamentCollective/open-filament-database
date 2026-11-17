@@ -1,0 +1,14 @@
+{
+  "uuid": "e8e12c18-8677-4459-89c3-8dc369372ed8",
+  "id": "khaki",
+  "name": "Khaki",
+  "color_hex": "#5E5B3A",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "5757 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

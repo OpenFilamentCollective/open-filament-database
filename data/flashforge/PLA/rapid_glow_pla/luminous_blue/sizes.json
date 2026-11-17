@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "d596099a-0738-451c-b6bf-48ef2cddee0c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/hs-pla?variant=44617610035278"
+      }
+    ]
   }
 ]

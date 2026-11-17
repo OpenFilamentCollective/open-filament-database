@@ -1,8 +1,15 @@
 {
-    "id": "blue_hawaii_blue_green",
-    "name": "Blue Hawaii (Blue-Green)",
-    "color_hex": [
-        "#60A4E8",
-        "#4CE4A0"
-    ]
+  "uuid": "b8306760-4539-4ca9-ad82-327c192f7399",
+  "moved_from": [
+    "15c7af3e-b6c9-4c06-a81e-43cbaff7e57d"
+  ],
+  "id": "blue_hawaii_blue_green",
+  "name": "Blue Hawaii (Blue-Green)",
+  "color_hex": [
+    "#60A4E8",
+    "#4CE4A0"
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

@@ -1,0 +1,13 @@
+{
+  "uuid": "83d0532b-ab2c-45a4-abce-fbc99192a9e1",
+  "id": "giantarm",
+  "name": "PLA Silk",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 195,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "min_nozzle_diameter": 1.7,
+  "discontinued": false
+}

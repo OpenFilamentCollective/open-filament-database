@@ -1,0 +1,10 @@
+{
+  "uuid": "399d37f4-5238-4d97-a81a-2c461ebdb543",
+  "id": "emerald_green",
+  "name": "Emerald Green",
+  "color_hex": "#537F78",
+  "discontinued": false,
+  "traits": {
+    "high_flow": true
+  }
+}

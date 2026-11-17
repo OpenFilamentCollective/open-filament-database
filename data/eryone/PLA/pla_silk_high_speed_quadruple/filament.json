@@ -1,6 +1,12 @@
 {
-    "id": "pla_silk_high_speed_quadruple",
-    "name": "PLA Silk High-Speed Quadruple",
-    "diameter_tolerance": 0.03,
-    "density": 1.32
+  "uuid": "38686b0c-afdb-4699-aaa8-d5922a6c86d0",
+  "id": "pla_silk_high_speed_quadruple",
+  "name": "PLA Silk High-Speed Quadruple",
+  "diameter_tolerance": 0.03,
+  "density": 1.32,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-HP_Silk_PLA-TDS.pdf?v=1747277768"
 }

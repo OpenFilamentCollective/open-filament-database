@@ -1,6 +1,23 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "b3246d40-95c5-4a37-a40a-c004d00834f9",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574295009",
+    "article_number": "EPLA-285DBLU-00250"
+  },
+  {
+    "uuid": "296a3a75-a945-4375-837b-f580b8ab7a32",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "gtin": "8718924471050",
+    "article_number": "EPLA-285DBLU-00750"
+  },
+  {
+    "uuid": "ba2d9f90-b386-4e4d-b567-2cc912ea9aa5",
+    "filament_weight": 2300,
+    "diameter": 2.85,
+    "gtin": "8718924478561",
+    "article_number": "EPLA-285DBLU-02300"
   }
 ]

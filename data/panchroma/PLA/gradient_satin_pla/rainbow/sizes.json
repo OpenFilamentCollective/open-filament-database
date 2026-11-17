@@ -1,11 +1,18 @@
 [
   {
+    "uuid": "5c0f951c-b2f0-4fab-9e3b-1ab99f443ef9",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-gradient-satin?"
+        "url": "https://us.polymaker.com/products/panchroma-gradient-satin"
       }
     ]
   }

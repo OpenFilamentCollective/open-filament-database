@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "6b518567-b67a-427c-a608-07cf34d18b1a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.002",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-ash-grey-pla"
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "uuid": "a5c3369e-d0d1-4152-8085-b19b316ec781",
+  "id": "yoopai",
+  "name": "YooPai",
+  "storefront_url": "https://www.yoopai.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": []
+}

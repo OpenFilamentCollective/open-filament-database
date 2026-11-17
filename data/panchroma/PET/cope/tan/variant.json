@@ -1,5 +1,10 @@
 {
-    "id": "tan",
-    "name": "Tan",
-    "color_hex": "#A79E82"
+  "uuid": "9c258a80-d8cc-4915-81b3-3562f4d1098b",
+  "moved_from": [
+    "9677087e-0b77-4067-a82d-6d930e9c09ba"
+  ],
+  "id": "tan",
+  "name": "Tan",
+  "color_hex": "#A79E82",
+  "transmission_distance": 0.1
 }

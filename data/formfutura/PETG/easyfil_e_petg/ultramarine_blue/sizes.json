@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "95d7bca9-1956-4820-957b-13e9589f625c",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847053183",
     "article_number": "PTGE-175UBLU-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "a7a262c7-8950-4066-a66c-6427daffc6f2",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847053527",
     "article_number": "PTGE-175UBLU-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "641a8f90-53fd-45de-b4fa-2dcb41d50867",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847053862",
     "article_number": "PTGE-175UBLU-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "6fb270df-a44c-4647-9214-d0037381effe",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847054203",
     "article_number": "PTGE-175UBLU-08000",
     "discontinued": false,
     "purchase_links": [

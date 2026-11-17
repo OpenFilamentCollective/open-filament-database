@@ -1,7 +1,8 @@
 {
+  "uuid": "33c21633-7140-4024-95c1-8073d6b400f5",
   "id": "pla",
   "name": "PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.24,
   "min_print_temperature": 190,
   "max_print_temperature": 230,

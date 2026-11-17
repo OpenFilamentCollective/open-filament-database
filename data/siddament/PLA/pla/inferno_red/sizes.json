@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7a44cb81-e2de-4682-be03-e3dcd110b312",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.047",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/inferno-red-pla"
+      }
+    ]
+  }
+]

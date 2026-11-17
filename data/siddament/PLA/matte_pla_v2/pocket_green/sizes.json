@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1c5c126c-402d-4c94-bade-3a6b0d803ca5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.030",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pocket-green-pla-v2"
+      }
+    ]
+  }
+]

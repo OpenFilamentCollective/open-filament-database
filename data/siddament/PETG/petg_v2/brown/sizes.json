@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "11b53e46-10da-4349-ba80-60e051d61e35",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.038",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/brown-petg"
+      }
+    ]
+  }
+]

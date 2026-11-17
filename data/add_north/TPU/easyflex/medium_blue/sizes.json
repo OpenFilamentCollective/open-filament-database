@@ -1,18 +1,22 @@
 [
   {
+    "uuid": "4adf32c2-519f-46b9-82ce-9fe3edb3d713",
     "filament_weight": 500,
     "diameter": 1.75,
     "empty_spool_weight": 175,
-    "spool_core_diameter": 41,
+    "spool_core_diameter": 41
+  },
+  {
+    "uuid": "e0c27b2e-f597-4089-8251-0701cff2e0e2",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182903007",
+    "article_number": "ANEF14MBL",
     "purchase_links": [
       {
         "store_id": "add_north",
-        "url": "https://addnorth.com/product/EasyFlex/EasyFlex%20-%201.75mm%20-%20500g%20-%20Medium%20Blue"
+        "url": "https://addnorth.com/product/EasyFlex/EasyFlex%20-%201.75mm%20-%201000g%20-%20Medium%20Blue"
       }
     ]
-  },
-  {
-    "filament_weight": 1000,
-    "diameter": 1.75
   }
 ]

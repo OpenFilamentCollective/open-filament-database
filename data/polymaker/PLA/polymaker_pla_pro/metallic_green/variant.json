@@ -1,0 +1,10 @@
+{
+  "uuid": "0b84946e-2113-4086-9c27-ff7fc1f9fa08",
+  "id": "metallic_green",
+  "name": "Metallic Green",
+  "color_hex": "#434D43",
+  "traits": {
+    "imitates_metal": true,
+    "high_flow": true
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "65d59f6d-3be5-4b97-9fdb-9b25f277920a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.066",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-slate-petg-v2"
+      }
+    ]
+  }
+]

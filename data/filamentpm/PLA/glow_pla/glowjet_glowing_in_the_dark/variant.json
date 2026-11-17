@@ -1,4 +1,5 @@
 {
+  "uuid": "b9154aae-f0e1-46ed-9e4b-97eb1dc1ad90",
   "id": "glowjet_glowing_in_the_dark",
   "name": "GlowJet - glowing in the dark",
   "color_hex": [
@@ -7,8 +8,7 @@
   ],
   "traits": {
     "glow": true,
-    "industrially_compostable": true,
-    "abrasive": true,
-    "illuminescent_color_change": true
+    "illuminescent_color_change": true,
+    "abrasive": true
   }
 }

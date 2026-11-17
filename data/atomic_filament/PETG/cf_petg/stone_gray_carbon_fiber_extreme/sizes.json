@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "369a7cfc-b3cb-4c6b-b545-c6addb6b2f08",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/stone-gray-carbon-fiber-extreme-petg-pro"
+      }
+    ]
   }
 ]

@@ -1,10 +1,12 @@
 {
+  "uuid": "47204bf1-f7e8-404d-8e12-0dd5949899dc",
   "id": "f3_pa_cf",
   "name": "F3 PA CF",
   "diameter_tolerance": 0.02,
   "density": 1.25,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "min_print_temperature": 270,
+  "max_print_temperature": 285,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "http://fiberthree.com/downloads/tdb/filaments/TDS_F3_PA_CF_Pro_English_vers12_2024.pdf"
 }

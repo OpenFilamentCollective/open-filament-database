@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "0a957dcb-f119-466a-9984-dc4d7024a2c2",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8719956556531",
     "article_number": "PEI9-175NTRL-00500",
     "discontinued": false,
     "purchase_links": [

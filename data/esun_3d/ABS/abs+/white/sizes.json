@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "207f5335-4db7-456c-89fc-b40bcda0c9cd",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6922572229037",
+    "article_number": "ABS+175W1P1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/abs-white-11"
+      }
+    ]
   }
 ]

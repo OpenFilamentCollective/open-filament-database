@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "cb8e5e79-c8ba-4e2e-ab15-2bc1b9dbbf24",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.024",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-skin-pla-v2"
+      }
+    ]
+  }
+]

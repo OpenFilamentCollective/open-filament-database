@@ -1,5 +1,9 @@
 {
-    "id": "rose_gold",
-    "name": "Rose Gold",
-    "color_hex": "#BA9594"
+  "uuid": "a0d25e44-0ddf-486b-9230-c9a0e9ef82b4",
+  "moved_from": [
+    "c9f7888b-92cd-40d4-83b0-a05b7f6be4e5"
+  ],
+  "id": "rose_gold",
+  "name": "Rose Gold",
+  "color_hex": "#BA9594"
 }

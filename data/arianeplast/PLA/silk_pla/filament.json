@@ -1,10 +1,12 @@
 {
+  "uuid": "0113d256-9258-45ff-b7f8-e9974c99f576",
   "id": "silk_pla",
   "name": "Silk PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.24,
   "min_print_temperature": 190,
   "max_print_temperature": 230,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://www.arianeplast.com/en/index.php?controller=attachment&id_attachment=160"
 }

@@ -1,0 +1,10 @@
+{
+  "uuid": "0b46e4ab-e16e-46f0-961a-3add6916bf57",
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#FF00C8",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "807 C"
+  }
+}

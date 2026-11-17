@@ -1,9 +1,10 @@
 {
+  "uuid": "7767ec62-c0b2-4410-b404-21177a8e7827",
   "id": "natural_high_flow_hf",
   "name": "Natural High Flow (HF)",
   "color_hex": "#DFDFD3",
   "traits": {
-    "industrially_compostable": true,
-    "transparent": true
+    "transparent": true,
+    "high_flow": true
   }
 }

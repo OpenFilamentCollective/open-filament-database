@@ -1,0 +1,13 @@
+{
+  "uuid": "3f652766-8795-478f-8289-c844d721fb3e",
+  "id": "pla_pro_silk_triple_red_blue_green",
+  "name": "PLA+/Pro Silk Triple Red Blue Green",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://www.iboss-3d.com/IBoss-Pla-Plus-Silk-Tri-color-Green-Purple-Copper-Filament-1-75mm-1kg-for-3d-Printer-No-Bubble-PLA-3d-Printing-Filament-pd598709248.html",
+  "discontinued": false
+}

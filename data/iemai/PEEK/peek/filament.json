@@ -1,8 +1,9 @@
 {
+  "uuid": "2aced78b-c603-4614-bcaa-7f0ebcb0db20",
   "id": "peek",
   "name": "PEEK",
   "diameter_tolerance": 0.05,
-  "density": 1.30,
+  "density": 1.3,
   "min_print_temperature": 360,
   "max_print_temperature": 410,
   "min_bed_temperature": 120,

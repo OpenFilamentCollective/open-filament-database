@@ -1,5 +1,12 @@
 {
-    "id": "orange",
-    "name": "Orange",
-    "color_hex": "#fd7c18"
+  "uuid": "fcc8d153-7d4b-4d54-9dd8-a6877dac0cd8",
+  "moved_from": [
+    "b72e1c63-719d-406b-b9e9-5de2b14d625a"
+  ],
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#fd7c18",
+  "traits": {
+    "high_flow": true
+  }
 }

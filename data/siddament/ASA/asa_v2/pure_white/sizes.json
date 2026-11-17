@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1685d4c4-18eb-4616-a575-39f9075b90c4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.014",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pure-white-asa-v2"
+      }
+    ]
+  }
+]

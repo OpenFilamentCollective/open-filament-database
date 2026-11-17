@@ -1,0 +1,13 @@
+{
+  "uuid": "6b41e4f9-4af5-40bf-b0d7-fc1487372827",
+  "id": "neon_yellow",
+  "name": "Neon Yellow",
+  "color_hex": "#DFFF00",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "396 C"
+  },
+  "traits": {
+    "neon": true
+  }
+}

@@ -1,6 +1,21 @@
 [
   {
+    "uuid": "c9480b3a-3253-427e-8796-06f848d442d5",
     "filament_weight": 1000,
     "diameter": 1.75
+  },
+  {
+    "uuid": "f7900619-5089-4430-9f03-581a1e557c62",
+    "filament_weight": 850,
+    "diameter": 1.75,
+    "gtin": "731093606816",
+    "article_number": "ASA606816"
+  },
+  {
+    "uuid": "57a198b0-6ccc-4c7d-848a-861ba91ab9bc",
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "gtin": "731093606878",
+    "article_number": "ASA606878"
   }
 ]

@@ -1,6 +1,66 @@
 [
   {
-    "filament_weight": 1000,
+    "uuid": "fe83c255-e194-4857-8450-8ed4f4e13dae",
+    "moved_from": [
+      "48f1c706-7074-449e-bf03-6802cee5cb95"
+    ],
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936710462",
+    "article_number": "PA06004",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/polymax-pla?variant=39574348496953"
+      }
+    ]
+  },
+  {
+    "uuid": "9ac86990-358d-4170-97ec-a040b1fa559c",
+    "moved_from": [
+      "80fbf1bf-4764-4950-8697-585b0a4d38d4"
+    ],
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936711681",
+    "article_number": "PA06014",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/polymax-pla?variant=39574349643833"
+      }
+    ]
+  },
+  {
+    "uuid": "e985eecd-2327-45c9-8c37-4c687c73e868",
+    "filament_weight": 3000,
     "diameter": 1.75
+  },
+  {
+    "uuid": "b10f9228-dc0b-4772-8ee9-95801527854d",
+    "filament_weight": 3000,
+    "diameter": 2.85
   }
 ]

@@ -1,8 +1,9 @@
 {
-    "id": "vertigo",
-    "name": "Vertigo",
-    "color_hex": "#282828",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "1ea0dfb6-e3fe-4612-8f6c-cf3295b1bdf9",
+  "id": "vertigo",
+  "name": "Vertigo",
+  "color_hex": "#282828",
+  "traits": {
+    "recyclable": true
+  }
 }

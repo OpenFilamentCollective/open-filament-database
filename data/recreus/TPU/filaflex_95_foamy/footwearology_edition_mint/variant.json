@@ -1,5 +1,9 @@
 {
+  "uuid": "4dde0102-806e-4223-be49-93b915726a2e",
   "id": "footwearology_edition_mint",
   "name": "Footwearology Edition Mint",
-  "color_hex": "#C5D5C1"
+  "color_hex": "#C5D5C1",
+  "traits": {
+    "foaming": true
+  }
 }

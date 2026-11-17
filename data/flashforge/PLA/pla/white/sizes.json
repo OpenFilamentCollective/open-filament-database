@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "892fd58f-78cc-4720-a5da-be12faf397e1",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/pla-basic?variant=43187175587918"
+      }
+    ]
   }
 ]

@@ -1,8 +1,9 @@
 {
-    "id": "onyx",
-    "name": "Onyx",
-    "color_hex": "#262626",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "9db6737d-6fe7-4db9-9c79-980fd1193c2c",
+  "id": "onyx",
+  "name": "Onyx",
+  "color_hex": "#262626",
+  "traits": {
+    "recyclable": true
+  }
 }

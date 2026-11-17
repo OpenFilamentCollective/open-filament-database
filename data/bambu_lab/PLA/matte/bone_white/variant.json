@@ -1,9 +1,9 @@
 {
+  "uuid": "74c596b6-cc30-4e59-877b-223cc248bdd1",
   "id": "bone_white",
   "name": "Bone White",
   "color_hex": "#CBC6B8",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

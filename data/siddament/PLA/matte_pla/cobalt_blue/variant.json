@@ -1,0 +1,13 @@
+{
+  "uuid": "37ab84a9-a352-4ac2-9a02-dbf482dbb819",
+  "id": "cobalt_blue",
+  "name": "Cobalt Blue",
+  "color_hex": "#0179FF",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Process Cyan C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

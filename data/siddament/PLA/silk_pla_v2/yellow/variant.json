@@ -1,0 +1,13 @@
+{
+  "uuid": "7029f227-cc8e-4f58-b320-27ae5054d98d",
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#E9C200",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "116 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

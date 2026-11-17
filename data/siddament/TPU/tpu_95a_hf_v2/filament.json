@@ -1,0 +1,15 @@
+{
+  "uuid": "26a66d99-dab9-4426-9776-d9c3fec73f57",
+  "id": "tpu_95a_hf_v2",
+  "name": "TPU 95A HF V2",
+  "diameter_tolerance": 0.03,
+  "density": 1.09,
+  "shore_hardness_a": 95,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_V2_TPU95A_TDS.pdf?v=1779204094",
+  "discontinued": false
+}

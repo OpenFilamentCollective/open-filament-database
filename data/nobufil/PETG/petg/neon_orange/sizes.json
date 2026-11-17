@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "3b85a423-3f03-429b-ab80-7875a9afac45",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460764",
+    "article_number": "PETG-R-202-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-neon-orange-2"
+      }
+    ]
   }
 ]

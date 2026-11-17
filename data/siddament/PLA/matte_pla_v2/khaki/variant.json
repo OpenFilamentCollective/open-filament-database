@@ -1,0 +1,10 @@
+{
+  "uuid": "2d7f812e-5b25-48f4-9ed6-777550af0e16",
+  "id": "khaki",
+  "name": "Khaki",
+  "color_hex": "#5E5B3A",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

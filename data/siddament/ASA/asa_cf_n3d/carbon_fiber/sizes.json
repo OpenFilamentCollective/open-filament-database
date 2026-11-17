@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "f91e25cc-ce24-48e3-8fb0-8e640e2e9a88",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 240,
+    "article_number": "4.057",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/asa-cf-1-75mm-1kg"
+      }
+    ]
+  }
+]

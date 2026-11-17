@@ -1,10 +1,12 @@
 {
+  "uuid": "df899ae7-b7f9-44d9-a49c-6987b0a1021b",
   "id": "easy_petg",
   "name": "Easy PETG",
   "diameter_tolerance": 0.02,
-  "density": 1.27,
+  "density": 1.29,
   "min_print_temperature": 220,
   "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_EASYPETG_TDS.pdf"
 }

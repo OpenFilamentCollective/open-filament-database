@@ -1,0 +1,28 @@
+[
+  {
+    "uuid": "3c4a225f-dccb-4906-81da-8bdfd2b4fbe6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "article_number": "30502",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://store.bambulab.com/products/petg-basic?id=738173299117862943"
+      }
+    ]
+  },
+  {
+    "uuid": "185ff007-691f-40da-84b1-e29ff0d3100f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "article_number": "30502",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://store.bambulab.com/products/petg-basic?id=738173299117862935"
+      }
+    ]
+  }
+]

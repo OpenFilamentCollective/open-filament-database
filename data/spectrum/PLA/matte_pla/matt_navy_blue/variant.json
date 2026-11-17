@@ -1,9 +1,9 @@
 {
+  "uuid": "521a2743-25c8-446b-8f91-fdd2f20b46a0",
   "id": "matt_navy_blue",
   "name": "MATT Navy Blue",
   "color_hex": "#0378D0",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

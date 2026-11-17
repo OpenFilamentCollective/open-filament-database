@@ -1,4 +1,5 @@
 {
+  "uuid": "d8e23950-1d39-4812-8961-cc0b5af08609",
   "id": "gold_silver",
   "name": "Gold-Silver",
   "color_hex": [
@@ -6,7 +7,6 @@
     "#A8B0BD"
   ],
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "coextruded": true
   }

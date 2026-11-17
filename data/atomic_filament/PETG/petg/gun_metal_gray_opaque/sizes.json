@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "edc77681-d85b-4a85-a2b8-5c58133fa569",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/gun-metal-gray-opaque-petg-pro"
+      }
+    ]
   }
 ]

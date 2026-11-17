@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "f6edc552-9765-43b0-9edd-510b5d05c96f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "7.055",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/ox-blue-pctg"
+      }
+    ]
+  }
+]

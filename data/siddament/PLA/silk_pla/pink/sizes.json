@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1df51db1-d3ed-46a2-9821-6a40a762c5c6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.020",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-pink-pla"
+      }
+    ]
+  }
+]

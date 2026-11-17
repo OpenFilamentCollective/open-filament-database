@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ffc5818a-8274-4863-afc5-2e793ae6e0a7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.014",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-grey-petg"
+      }
+    ]
+  }
+]

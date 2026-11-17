@@ -1,9 +1,9 @@
 {
+  "uuid": "634b387a-6f3e-4914-b212-c71b8615d5af",
   "id": "sapelly",
   "name": "Sapelly",
   "color_hex": "#BF4427",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

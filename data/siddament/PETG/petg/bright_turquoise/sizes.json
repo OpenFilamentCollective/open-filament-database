@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "42df21af-e8cb-460d-a14b-417a78e269e6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.021",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/bright-turquoise-petg"
+      }
+    ]
+  }
+]

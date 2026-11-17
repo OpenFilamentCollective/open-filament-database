@@ -1,6 +1,15 @@
 {
-    "id": "pla_thermoactive",
-    "name": "PLA Thermoactive",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "6818908c-443e-40f2-98e6-43c56fc21830",
+  "id": "pla_thermoactive",
+  "name": "PLA Thermoactive",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pla_thermoactive.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_pla_thermoactive.pdf"
 }

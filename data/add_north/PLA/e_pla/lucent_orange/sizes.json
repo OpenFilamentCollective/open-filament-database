@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Lucent%20Orange"
-            }
-        ]
-    }
+  {
+    "uuid": "78ee5793-86a6-4442-a64c-afb593281726",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "e92965c5-2caf-4273-a3f8-91df24e959f9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182902314",
+    "article_number": "ANEP14LOR",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%201000g%20-%20Lucent%20Orange"
+      }
+    ]
+  }
 ]

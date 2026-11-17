@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "02214c68-0276-4159-8cdb-d42b955a69bc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.068",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-frost-cyan-petg-v2"
+      }
+    ]
+  }
+]

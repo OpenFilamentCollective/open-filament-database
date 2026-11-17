@@ -32,6 +32,11 @@
   let cropY = $state(0);
   let cropSize = $state(100);
 
+  // Pad-to-square state
+  let padEnabled = $state(false);
+  let padColor = $state('#ffffff');
+  let isNonSquare = $state(false);
+
   // Drag state
   type DragType = 'move' | 'nw' | 'ne' | 'sw' | 'se';
   let dragType: DragType | null = $state(null);
@@ -69,7 +74,13 @@
       displayScale = scale;
       displayW = Math.round(newImg.width * scale);
       displayH = Math.round(newImg.height * scale);
-      padToSquare();
+      isNonSquare = newImg.width !== newImg.height;
+      padEnabled = isNonSquare;
+      if (padEnabled) {
+        padToSquare();
+      } else {
+        centerCrop();
+      }
       imgLoaded = true;
     };
     newImg.src = imgSrc;
@@ -90,6 +101,15 @@
     cropX = Math.round((WORK_SIZE - minDim) / 2);
     cropY = Math.round((WORK_SIZE - minDim) / 2);
     clampCrop();
+  }
+
+  function togglePad() {
+    padEnabled = !padEnabled;
+    if (padEnabled) {
+      padToSquare();
+    } else {
+      centerCrop();
+    }
   }
 
   function clampCrop() {
@@ -212,6 +232,17 @@
       wrapper.setAttribute('width', String(OUTPUT_SIZE));
       wrapper.setAttribute('height', String(OUTPUT_SIZE));
       wrapper.setAttribute('viewBox', `${origCropX} ${origCropY} ${origCropSize} ${origCropSize}`);
+
+      if (padEnabled) {
+        const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        bg.setAttribute('x', String(origCropX));
+        bg.setAttribute('y', String(origCropY));
+        bg.setAttribute('width', String(origCropSize));
+        bg.setAttribute('height', String(origCropSize));
+        bg.setAttribute('fill', padColor);
+        wrapper.appendChild(bg);
+      }
+
       wrapper.appendChild(originalSvg);
 
       const serializer = new XMLSerializer();
@@ -226,7 +257,12 @@
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      ctx.clearRect(0, 0, OUTPUT_SIZE, OUTPUT_SIZE);
+      if (padEnabled) {
+        ctx.fillStyle = padColor;
+        ctx.fillRect(0, 0, OUTPUT_SIZE, OUTPUT_SIZE);
+      } else {
+        ctx.clearRect(0, 0, OUTPUT_SIZE, OUTPUT_SIZE);
+      }
 
       const s = OUTPUT_SIZE / origCropSize;
       ctx.drawImage(img, -origCropX * s, -origCropY * s, img.width * s, img.height * s);
@@ -266,21 +302,36 @@
         Drag to move the selection, drag corners to resize. The result will be a square image.
       </p>
 
-      <div class="flex gap-2 mb-4">
-        <button
-          type="button"
-          onclick={padToSquare}
-          class="px-4 py-2 text-sm bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white rounded transition-colors"
-        >
-          Pad to Square
-        </button>
-        <button
-          type="button"
-          onclick={centerCrop}
-          class="px-4 py-2 text-sm bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white rounded transition-colors"
-        >
-          Center Crop
-        </button>
+      <div class="flex items-center gap-4 mb-4 flex-wrap">
+        <label class="flex items-center gap-2 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={padEnabled}
+            onchange={togglePad}
+            class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          />
+          <span class="text-sm dark:text-white">Pad to Square</span>
+        </label>
+        {#if padEnabled}
+          <label class="flex items-center gap-2 select-none">
+            <span class="text-sm text-gray-600 dark:text-gray-400">Pad Color:</span>
+            <input
+              type="color"
+              bind:value={padColor}
+              class="w-8 h-8 rounded border border-gray-300 dark:border-gray-600 cursor-pointer p-0"
+            />
+            <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">{padColor}</span>
+          </label>
+        {/if}
+        {#if !padEnabled}
+          <button
+            type="button"
+            onclick={centerCrop}
+            class="px-4 py-2 text-sm bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white rounded transition-colors"
+          >
+            Center Crop
+          </button>
+        {/if}
       </div>
 
       <!-- Work area wrapper (no overflow hidden, so handles can extend outside) -->
@@ -292,12 +343,12 @@
         <div
           class="absolute inset-0 overflow-hidden rounded border border-gray-300 dark:border-gray-600"
           style="
-            background-color: #e8e8e8;
-            background-image:
+            background-color: {padEnabled ? padColor : '#e8e8e8'};
+            {padEnabled ? '' : `background-image:
               linear-gradient(45deg, #d0d0d0 25%, transparent 25%, transparent 75%, #d0d0d0 75%),
               linear-gradient(45deg, #d0d0d0 25%, transparent 25%, transparent 75%, #d0d0d0 75%);
             background-size: 16px 16px;
-            background-position: 0 0, 8px 8px;
+            background-position: 0 0, 8px 8px;`}
           "
         >
           {#if imgLoaded && imgSrc}

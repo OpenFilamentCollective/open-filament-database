@@ -1,8 +1,9 @@
 {
-    "id": "yellow",
-    "name": "Yellow",
-    "color_hex": "#FFEA00",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "81dac391-d0f3-4185-a986-56c2f6c35ae6",
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FFEA00",
+  "traits": {
+    "matte": true
+  }
 }

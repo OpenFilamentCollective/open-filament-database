@@ -1,12 +1,26 @@
 [
   {
+    "uuid": "04e1bc1b-740c-45e2-8d3c-e05f3a56b056",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675704"
+    "gtin": "8594173675704",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pla-blend-my-silverness-1kg-nfc/"
+      }
+    ]
   },
   {
+    "uuid": "51a876be-6a29-4b53-9b44-3ed345182437",
     "filament_weight": 970,
     "diameter": 1.75,
-    "gtin": "8594173675704"
+    "gtin": "8594173675704",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pla-my-silverness-blend-970g/"
+      }
+    ]
   }
 ]

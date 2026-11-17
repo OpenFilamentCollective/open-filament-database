@@ -1,5 +1,9 @@
 {
-    "id": "strawberry_pink",
-    "name": "Strawberry Pink",
-    "color_hex": "#F95F6B"
+  "uuid": "99182ba6-cf34-4620-bfbf-b486b4688f85",
+  "moved_from": [
+    "caa00970-cd0d-403a-92a7-9c49d210bba1"
+  ],
+  "id": "strawberry_pink",
+  "name": "Strawberry Pink",
+  "color_hex": "#F95F6B"
 }

@@ -1,10 +1,12 @@
 {
+  "uuid": "73c84a80-39ac-4d8c-8393-359e84d3fb34",
   "id": "pa6_gf25",
   "name": "PA6-GF25",
-  "diameter_tolerance": 0.02,
-  "density": 1.3,
-  "min_print_temperature": 260,
+  "diameter_tolerance": 0.03,
+  "density": 1.27,
+  "min_print_temperature": 270,
   "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_PA6-GF25_Filament_Technical_Data_Sheet_TDS.pdf"
 }

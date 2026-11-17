@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "185313d8-ede0-4e25-85d6-2df2a811d598",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.035",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-dark-blue-petg-v2"
+      }
+    ]
+  }
+]

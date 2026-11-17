@@ -1,9 +1,10 @@
 {
+  "uuid": "9cc14b01-3ee2-41de-9b6f-ed50d46c0cba",
   "id": "sand",
   "name": "Sand",
   "color_hex": "#d0a85e",
   "traits": {
-    "recyclable": true,
-    "silk": true
+    "silk": true,
+    "recyclable": true
   }
 }

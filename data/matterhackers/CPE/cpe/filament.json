@@ -1,10 +1,12 @@
 {
+  "uuid": "f74696d2-ae8c-4d32-9b26-3a86bed50646",
   "id": "cpe",
   "name": "CPE",
   "diameter_tolerance": 0.02,
-  "density": 1.25,
+  "density": 1.27,
   "min_print_temperature": 240,
-  "max_print_temperature": 270,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_print_temperature": 240,
+  "min_bed_temperature": 65,
+  "max_bed_temperature": 65,
+  "data_sheet_url": "https://www.matterhackers.com/r/Awk9Mv"
 }

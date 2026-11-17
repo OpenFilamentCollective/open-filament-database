@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "e120f98b-dc21-40bc-968b-2bdb9d561890",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.018",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/radiant-blue-petg"
+      }
+    ]
+  }
+]

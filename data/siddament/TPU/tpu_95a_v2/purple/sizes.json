@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "cce87a0c-19c3-485d-a2d7-5c07d206be12",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.064",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/purple-tpu-95a"
+      }
+    ]
+  }
+]

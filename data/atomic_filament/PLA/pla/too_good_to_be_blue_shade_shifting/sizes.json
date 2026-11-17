@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "a0a5b4dc-a051-44dc-bdec-a327b77a8413",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/too-good-to-be-blue-pla-shade-shifting"
+      }
+    ]
   }
 ]

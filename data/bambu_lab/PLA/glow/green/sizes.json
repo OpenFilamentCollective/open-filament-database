@@ -1,13 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337033943",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-glow?variant=41558487859336"
-            }
-        ]
-    }
+  {
+    "uuid": "9c85999d-16b9-436d-bbb6-1019c9e8c2b5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337033943",
+    "article_number": "15500",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-glow?variant=41558487859336"
+      }
+    ]
+  }
 ]

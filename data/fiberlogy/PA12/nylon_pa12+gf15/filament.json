@@ -1,8 +1,12 @@
 {
+    "uuid": "b060a16a-a4a5-4709-9768-8ce3b140b940",
     "id": "nylon_pa12+gf15",
     "name": "Nylon PA12+GF15",
     "diameter_tolerance": 0.02,
     "density": 1.13,
+    "min_print_temperature": 255,
+    "max_print_temperature": 270,
+    "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_NYLONPA12GF15_TDS.pdf",
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Fiberlogy Nylon PA12+GF15"

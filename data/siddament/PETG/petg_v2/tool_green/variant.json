@@ -1,0 +1,10 @@
+{
+  "uuid": "c06b8d23-9a5e-4ca7-9e0a-1458f625decf",
+  "id": "tool_green",
+  "name": "Tool Green",
+  "color_hex": "#CCDA46",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "584 C"
+  }
+}

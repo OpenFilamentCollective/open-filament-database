@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7cae5d7c-214a-498a-9b3f-75a7486232b0",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.003",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/grey-pla"
+      }
+    ]
+  }
+]

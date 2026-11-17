@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "997cf333-de89-4f66-9c8b-dc52d79ec1f7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.072",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-petrol-petg-v2"
+      }
+    ]
+  }
+]

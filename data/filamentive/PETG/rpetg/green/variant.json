@@ -1,0 +1,11 @@
+{
+  "uuid": "24b4ed87-48d1-4562-9603-b320ef9b8141",
+  "id": "green",
+  "name": "Green",
+  "color_hex": "#D1FF41",
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
+}

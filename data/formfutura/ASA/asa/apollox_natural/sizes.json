@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "4f80f0a6-7cc1-4c73-818a-6080254dcb13",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476314",
     "article_number": "APOX-175NTRL-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "39a86706-91b0-40e9-a126-c3503687f577",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477991",
     "article_number": "APOX-175NTRL-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "14cdaa05-a7db-4013-b743-cf28fd62262c",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924478035",
     "article_number": "APOX-175NTRL-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "09555784-3443-4359-9251-2e13f70f9069",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8719956550799",
     "article_number": "APOX-175NTRL-08000",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +64,12 @@
     ]
   },
   {
+    "uuid": "07b008d8-de03-493c-840f-c8350a083412",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476321",
     "article_number": "APOX-285NTRL-00750",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +80,12 @@
     ]
   },
   {
+    "uuid": "ae58a51c-2063-4cfe-a12f-a745687f1b56",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924478004",
     "article_number": "APOX-285NTRL-02300",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +96,12 @@
     ]
   },
   {
+    "uuid": "8a6af68f-6bc1-473b-8ec7-56b2215d8122",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924478042",
     "article_number": "APOX-285NTRL-04500",
     "discontinued": false,
     "purchase_links": [

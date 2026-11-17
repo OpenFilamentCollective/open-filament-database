@@ -9,6 +9,7 @@ UUID Generation follows the OFD standard specification:
 
 import hashlib
 import re
+import subprocess
 import uuid
 from datetime import datetime, timezone
 
@@ -205,7 +206,7 @@ def generate_size_id(variant_id: str, size_entry: dict, index: int = 0) -> str:
         id_parts.append(f"ean:{ean}")
 
     # Add spool_refill flag if it's a refill (distinguishes from regular spools)
-    if size_entry.get("spool_refill"):
+    if size_entry.get("spool_refill") or size_entry.get("container_material") == "refill":
         id_parts.append("refill")
 
     # Add article_number if available (manufacturer SKU)
@@ -238,6 +239,23 @@ def generate_purchase_link_id(size_id: str, store_id: str, url: str) -> str:
     size_uuid = uuid.UUID(size_id)
     store_uuid = uuid.UUID(store_id)
     return str(_derive_uuid(NAMESPACE_PURCHASE_LINK, size_uuid, store_uuid, url))
+
+
+# =============================================================================
+# Canonical UUID Generation (slug-independent)
+# =============================================================================
+
+
+def generate_canonical_uuid() -> str:
+    """Generate a fresh random canonical UUID (UUIDv4).
+
+    Unlike the derived ``generate_*_id`` helpers above, this is NOT a function of
+    any slug, name, or position in the hierarchy. It is a stable, opaque identifier
+    meant to be stored directly in the source JSON (the ``uuid`` field) so an
+    entity keeps the same identity even when its slug/name changes. Assigned by the
+    ``ofd uuid`` command; see ofd/uuids.py.
+    """
+    return str(uuid.uuid4())
 
 
 # =============================================================================
@@ -309,6 +327,16 @@ def get_current_timestamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def get_git_commit() -> str | None:
+    """Get the current git commit hash, or None if not in a git repo."""
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL, text=True
+        ).strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+
+
 # =============================================================================
 # Hash Utilities
 # =============================================================================
@@ -337,3 +365,25 @@ def ensure_list(value) -> list:
     if isinstance(value, list):
         return value
     return [value]
+
+
+def normalize_gtin(value: str | None) -> str | None:
+    """Normalize a barcode to its 14-digit GTIN form, or ``None`` if it isn't one.
+
+    UPC-A (12 digits), EAN-13 and GTIN-14 are the same number written at different
+    widths — a UPC-A scanned off a spool is the EAN-13 with a leading zero. Padding
+    everything to 14 makes those three spellings a single lookup key, which is the
+    whole point of the barcode index: a scanner app should not have to guess which
+    width the contributor happened to type.
+
+    Separators are tolerated because real-world data carries them ("0 12345 67890 5").
+    Anything that isn't 8-14 digits after stripping is rejected rather than padded —
+    a truncated or free-text value would otherwise collide with a real code.
+    """
+    if not value:
+        return None
+    digits = "".join(ch for ch in str(value) if ch.isdigit())
+    # GTIN-8 is the shortest legal form; longer than 14 is not a GTIN at all.
+    if not 8 <= len(digits) <= 14:
+        return None
+    return digits.zfill(14)

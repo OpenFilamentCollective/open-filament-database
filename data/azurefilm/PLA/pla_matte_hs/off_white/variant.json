@@ -1,10 +1,12 @@
 {
+  "uuid": "6dc6fb0a-bf62-41cd-8e50-3d35bc511635",
   "id": "off_white",
   "name": "Off-White",
   "color_hex": [
     "#CFC6BB"
   ],
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

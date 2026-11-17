@@ -1,6 +1,12 @@
 {
+  "uuid": "b0e0190a-0fcf-4dd2-b728-825f662d5f8f",
   "id": "ppe",
   "name": "PPE",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.1,
+  "min_print_temperature": 290,
+  "max_print_temperature": 320,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/THERMAX_PPE_PS_TDS_v1.pdf?v=1723942768"
 }

@@ -1,10 +1,12 @@
 {
+  "uuid": "e228adec-d8ff-4361-a465-8b8a946af8b6",
   "id": "silk_pla",
   "name": "Silk PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "diameter_tolerance": 0.05,
+  "density": 1.23,
+  "min_print_temperature": 225,
+  "max_print_temperature": 245,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://devildesign.com/download/SILK_-_product_card.pdf"
 }

@@ -1,6 +1,7 @@
 {
-    "id": "petg_cf",
-    "name": "PETG-CF",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "806cc811-1ef3-4434-b0ad-714b297bccc7",
+  "id": "petg_cf",
+  "name": "PETG-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

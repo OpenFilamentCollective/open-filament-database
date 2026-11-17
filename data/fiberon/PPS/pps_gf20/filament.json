@@ -1,6 +1,28 @@
 {
+    "uuid": "34cf5103-33f1-4f1f-bf71-2eb517e612d7",
     "id": "pps_gf20",
     "name": "PPS-GF20",
     "diameter_tolerance": 0.03,
-    "density": 1.36
+    "density": 1.36,
+    "min_print_temperature": 310,
+    "max_print_temperature": 350,
+    "min_bed_temperature": 80,
+    "max_bed_temperature": 90,
+    "min_fan_speed": 0,
+    "max_fan_speed": 0,
+    "dry_temperature": 100,
+    "dry_time": 10,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_FIBERON_PPS-GF20_V1.1.pdf?v=1752777698",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "GFT97_01",
+            "id": "OFeVzkSU",
+            "profile_name": "Fiberon PPS-GF20"
+        },
+        "elegooslicer": {
+            "generic_id": "GFT97",
+            "id": "GFL73",
+            "profile_name": "Fiberon PPS-GF20"
+        }
+    }
 }

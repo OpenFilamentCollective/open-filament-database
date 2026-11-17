@@ -1,5 +1,9 @@
 {
-    "id": "bison_brown",
-    "name": "Bison Brown",
-    "color_hex": "#614230"
+  "uuid": "18a997f8-21fd-49a4-814c-1039d82e42c9",
+  "moved_from": [
+    "629d011c-9b1a-4b06-b6d7-956614c8f72c"
+  ],
+  "id": "bison_brown",
+  "name": "Bison Brown",
+  "color_hex": "#614230"
 }

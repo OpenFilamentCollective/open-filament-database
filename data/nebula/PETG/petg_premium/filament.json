@@ -1,8 +1,13 @@
 {
+  "uuid": "0aeea2fc-fa47-4ada-ad7b-9b945b044af0",
   "id": "petg_premium",
   "name": "PETG Premium",
   "diameter_tolerance": 0.03,
   "density": 1.23,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2024/12/TDS-PETG.pdf",
   "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2024/12/Karta-charakterystyki-msds-PET-G-Nebula.pdf"
 }

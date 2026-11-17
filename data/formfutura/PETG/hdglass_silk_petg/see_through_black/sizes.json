@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "b4ea6e71-7b69-45c1-824b-f0c8ea25f988",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924472736",
     "article_number": "HDGL-175STBK-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "e6226da9-718b-4d14-b648-09458049485a",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924472743",
     "article_number": "HDGL-285STBK-00750",
     "discontinued": false,
     "purchase_links": [

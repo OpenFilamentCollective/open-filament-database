@@ -1,10 +1,11 @@
 {
+  "uuid": "ea9242db-d9de-483c-8bd5-432d5330ef2e",
   "id": "hyper_pa6",
   "name": "Hyper PA6",
-  "diameter_tolerance": 0.02,
-  "density": 1.14,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "diameter_tolerance": 0.03,
+  "density": 1.15,
+  "min_print_temperature": 230,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 90
 }

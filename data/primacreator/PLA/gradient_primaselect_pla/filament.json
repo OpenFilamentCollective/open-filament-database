@@ -1,10 +1,12 @@
 {
+  "uuid": "63a9c945-cbe1-4415-9d3d-026a72f3aa06",
   "id": "gradient_primaselect_pla",
   "name": "Gradient PrimaSelect PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.24,
-  "min_print_temperature": 190,
+  "min_print_temperature": 210,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/2424/8853/files/TDS_2025_Select_PLA_Gradient.pdf?v=1744205199"
 }

@@ -1,0 +1,10 @@
+{
+  "uuid": "c618a2ea-b22e-4f7e-9117-8fe447546aba",
+  "id": "tool_red",
+  "name": "Tool Red",
+  "color_hex": "#C8102E",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "186 C"
+  }
+}

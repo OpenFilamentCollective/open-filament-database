@@ -1,5 +1,13 @@
 {
-    "id": "pastel_candy",
-    "name": "Pastel Candy",
-    "color_hex": "#DABCC8"
+  "uuid": "1b75e3d6-5e81-4564-a59b-3234a630ae14",
+  "moved_from": [
+    "8ecf3c9e-9f0d-4af6-91de-eb0e7dc6c8b1"
+  ],
+  "id": "pastel_candy",
+  "name": "Pastel Candy",
+  "color_hex": "#DABCC8",
+  "transmission_distance": 2.9,
+  "traits": {
+    "matte": true
+  }
 }

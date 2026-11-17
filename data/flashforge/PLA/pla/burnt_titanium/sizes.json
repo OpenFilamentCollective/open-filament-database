@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "2dc5909c-86c1-4943-bd51-ef6a427073da",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/pla-multicolor?variant=41632569884750"
+      }
+    ]
   }
 ]

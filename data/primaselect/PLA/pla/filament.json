@@ -1,6 +1,12 @@
 {
-    "id": "pla",
-    "name": "PLA",
-    "diameter_tolerance": 0.05,
-    "density": 1.24
+  "uuid": "2682a14d-6264-45a6-bb02-6f32f9c6195d",
+  "id": "pla",
+  "name": "PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/2424/8853/files/TDS_2025_Select_PLA.pdf?v=1744205199"
 }

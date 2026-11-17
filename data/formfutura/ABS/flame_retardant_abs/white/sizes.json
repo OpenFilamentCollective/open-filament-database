@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "6891026c-cd7a-44fb-97ea-e1a8fe4a8961",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720574293982",
     "article_number": "APFR-175WHTE-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "c64290f8-7830-4e1b-9038-7460a7c98734",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720574293999",
     "article_number": "APFR-175WHTE-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "0543a2e9-f332-42bd-90b2-cfad9a919419",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720574294002",
     "article_number": "APFR-175WHTE-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "17bf12c7-210e-4037-898a-fd95bab49d36",
     "filament_weight": 500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720574294033",
     "article_number": "APFR-285WHTE-00500",
     "discontinued": false,
     "purchase_links": [

@@ -1,4 +1,5 @@
 {
+  "uuid": "eafd2a63-4b79-4cbf-8542-c6cb81f6bb3e",
   "id": "gradient_rainbow_candy",
   "name": "Gradient Rainbow Candy",
   "color_hex": [
@@ -8,7 +9,7 @@
     "#F87FB5"
   ],
   "traits": {
-    "industrially_compostable": true,
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "high_flow": true
   }
 }

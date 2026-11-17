@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "f8c34b99-0dee-4d26-9239-bb1328ada23f",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/army-green-asa-filament-ams-compatible"
+      }
+    ]
   }
 ]

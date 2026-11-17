@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ff76c01d-8fd9-4973-a436-0912cec0863c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.065",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/green-asa-v2"
+      }
+    ]
+  }
+]

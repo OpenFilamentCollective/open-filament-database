@@ -1,0 +1,10 @@
+{
+  "uuid": "be9496e5-4090-4f63-b4d0-c2abfe1d5100",
+  "id": "azure_blue",
+  "name": "Azure Blue",
+  "color_hex": "#0037FF",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "2728 C"
+  }
+}

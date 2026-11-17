@@ -1,0 +1,10 @@
+{
+  "uuid": "0f3736e3-4e8b-4fca-859c-ef8dad495532",
+  "id": "candy_red",
+  "name": "CANDY RED",
+  "color_hex": "#FF0000",
+  "discontinued": false,
+  "traits": {
+    "silk": true
+  }
+}

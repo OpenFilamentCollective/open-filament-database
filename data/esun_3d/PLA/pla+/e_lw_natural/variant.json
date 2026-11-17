@@ -1,10 +1,10 @@
 {
+  "uuid": "23eda2ac-bdb6-498d-b108-42c050fa31d9",
   "id": "e_lw_natural",
   "name": "e-LW Natural",
   "color_hex": "#F2EFE9",
   "traits": {
-    "industrially_compostable": true,
-    "foaming": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "foaming": true
   }
 }

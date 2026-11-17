@@ -1,8 +1,10 @@
 {
+  "uuid": "579829eb-093c-4b2b-a004-699b0f3f4767",
   "id": "mulberry_sparkle",
   "name": "Mulberry Sparkle",
   "color_hex": "#87366B",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "high_flow": true
   }
 }

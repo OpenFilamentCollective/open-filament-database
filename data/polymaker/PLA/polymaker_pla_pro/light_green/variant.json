@@ -1,0 +1,9 @@
+{
+  "uuid": "19fca916-2665-40d1-8ee4-fc537aa18af5",
+  "id": "light_green",
+  "name": "Light Green",
+  "color_hex": "#AEDE9C",
+  "traits": {
+    "high_flow": true
+  }
+}

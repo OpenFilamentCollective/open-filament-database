@@ -1,5 +1,9 @@
 [
   {
+    "uuid": "408d34ed-c766-4775-89d3-ca84b9cd9072",
+    "moved_from": [
+      "8bfd20d5-b9f1-4f3c-8869-cc9c5b7f529d"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5907138402001",

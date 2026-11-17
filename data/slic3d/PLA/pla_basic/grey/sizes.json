@@ -1,0 +1,20 @@
+[
+  {
+    "uuid": "3d7d0b4e-1102-4ac3-9756-af4c348a717b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 0,
+    "spool_core_diameter": 100,
+    "gtin": "9319236826324",
+    "article_number": "TL6475",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "jaycar_nz",
+        "url": "https://www.jaycar.co.nz/slic3d-pla-spool-less-grey-1-75mm-1kg-filament/p/TL6475"
+      }
+    ]
+  }
+]

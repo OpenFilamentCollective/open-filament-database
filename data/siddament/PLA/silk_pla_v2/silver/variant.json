@@ -1,0 +1,13 @@
+{
+  "uuid": "6cdbdd38-6bea-450b-b798-e7b25cf2c086",
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#818C9F",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "877 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

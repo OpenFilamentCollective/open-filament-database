@@ -1,9 +1,0 @@
-{
-  "id": "mint",
-  "name": "Mint",
-  "color_hex": "#98FBCB",
-  "traits": {
-    "industrially_compostable": true,
-    "silk": true
-  }
-}

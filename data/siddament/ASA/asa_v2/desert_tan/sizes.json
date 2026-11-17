@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1c0bc5a5-a352-4355-a78d-8c8f82deac29",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.054",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/desert-tan-asa-v2"
+      }
+    ]
+  }
+]

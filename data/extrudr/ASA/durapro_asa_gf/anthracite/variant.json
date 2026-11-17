@@ -1,0 +1,14 @@
+{
+  "uuid": "49f4b061-64fe-4e31-9633-fa54a5d839d7",
+  "id": "anthracite",
+  "name": "Anthracite",
+  "color_hex": "#383E42",
+  "color_standards": {
+    "ral": "7016"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

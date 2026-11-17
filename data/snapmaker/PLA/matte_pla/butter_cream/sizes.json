@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "902556e1-b7d0-4250-98fb-bc9634072a1d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/matte-pla-filament"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/snapmaker/matte-pla-butter-cream-rfid"
+      }
+    ]
+  }
+]

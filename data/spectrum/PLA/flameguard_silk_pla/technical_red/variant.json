@@ -1,10 +1,10 @@
 {
+  "uuid": "e96a52e7-f4bf-419f-adb1-5cf2e9ee50eb",
   "id": "technical_red",
   "name": "Technical Red",
   "color_hex": "#FF2C29",
   "traits": {
-    "industrially_compostable": true,
-    "self_extinguishing": true,
-    "silk": true
+    "silk": true,
+    "self_extinguishing": true
   }
 }

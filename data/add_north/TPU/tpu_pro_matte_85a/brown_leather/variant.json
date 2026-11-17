@@ -1,8 +1,9 @@
 {
-    "id": "brown_leather",
-    "name": "Brown Leather",
-    "color_hex": "#624a2e",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "8e518c86-deff-40ec-bebe-3a4d6ec17936",
+  "id": "brown_leather",
+  "name": "Brown Leather",
+  "color_hex": "#624a2e",
+  "traits": {
+    "matte": true
+  }
 }

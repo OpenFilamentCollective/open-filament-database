@@ -1,0 +1,10 @@
+{
+  "uuid": "daf2d045-2a41-43c0-89d9-a8d428d7ca41",
+  "id": "brown",
+  "name": "Brown",
+  "color_hex": "#623E2A",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "477 C"
+  }
+}

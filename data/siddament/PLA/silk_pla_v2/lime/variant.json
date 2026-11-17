@@ -1,0 +1,13 @@
+{
+  "uuid": "b1f63104-b14b-4eb5-bc5d-7a109e002f79",
+  "id": "lime",
+  "name": "Lime",
+  "color_hex": "#91C500",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "376 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

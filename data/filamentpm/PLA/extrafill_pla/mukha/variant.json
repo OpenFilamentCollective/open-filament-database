@@ -1,9 +1,9 @@
 {
+  "uuid": "d037b917-2db3-4abd-ae86-627ab648ed20",
   "id": "mukha",
   "name": "Mukha",
   "color_hex": "#CAAC78",
   "traits": {
-    "industrially_compostable": true,
     "imitates_marble": true
   }
 }

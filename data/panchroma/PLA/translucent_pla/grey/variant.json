@@ -1,5 +1,13 @@
 {
+  "uuid": "a52df637-7b9a-443e-b68b-98993c809ac0",
+  "moved_from": [
+    "9c284474-1c4d-4bfa-aa3f-76c500b0021e"
+  ],
   "id": "grey",
   "name": "Grey",
-  "color_hex": "#9199A4"
+  "color_hex": "#9199A4",
+  "transmission_distance": 11.5,
+  "traits": {
+    "translucent": true
+  }
 }

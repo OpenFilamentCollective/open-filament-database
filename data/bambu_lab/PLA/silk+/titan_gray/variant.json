@@ -1,5 +1,9 @@
 {
-    "id": "titan_gray",
-    "name": "Titan Gray",
-    "color_hex": "#5F6367"
+  "uuid": "0ff58ce9-a319-478a-95fb-48f3ac9f2110",
+  "moved_from": [
+    "428af22b-05b9-4139-a75b-ee507c41bb4e"
+  ],
+  "id": "titan_gray",
+  "name": "Titan Gray",
+  "color_hex": "#5F6367"
 }

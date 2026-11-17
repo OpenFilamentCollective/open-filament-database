@@ -1,11 +1,29 @@
 [
   {
+    "uuid": "d999a744-13a2-488d-a66b-61303033ce3f",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "gtin": "6933582308841",
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/over-6kg-bundle-sale-pla-and-pla-plus-pla-meta-macaron-filament1kg-roll?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/over-6kg-bundle-sale-pla-and-pla-plus-pla-meta-macaron-filament1kg-roll"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-transparent-6"
+      }
+    ]
+  },
+  {
+    "uuid": "24acc332-a5fb-4258-8a57-7020866ba070",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/sunlu-refill-filament-pla-pla-2-0-compatible-with-2025-sunlu-third-generation-reusable-spool-bambulab-reusable-spool-spool-free-filament?variant=51042642067738"
       }
     ]
   }

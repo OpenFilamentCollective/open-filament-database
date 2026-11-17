@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "27161e0a-cbaa-4fa3-8f6e-1d5cfcb9b589",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/silky-electric-blue-pla-filament"
+      }
+    ]
   }
 ]

@@ -1,0 +1,14 @@
+{
+  "uuid": "ea0e3c05-a684-42d1-866b-1f595fd45c2f",
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": "#694482",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "268 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

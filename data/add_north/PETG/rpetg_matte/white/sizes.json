@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/rPETG%20Matte/rPETG%20Matte%20-%201.75mm%20-%20750g%20-%20White"
-            }
-        ]
-    }
+  {
+    "uuid": "78a6e53c-99be-46fe-931e-8a47e7f368bb",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "7b9fe49a-b11d-488e-a43f-5f2c20a30434",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182904172",
+    "article_number": "ANRM14WHT",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/rPETG%20Matte/rPETG%20Matte%20-%201.75mm%20-%201000g%20-%20White"
+      }
+    ]
+  }
 ]

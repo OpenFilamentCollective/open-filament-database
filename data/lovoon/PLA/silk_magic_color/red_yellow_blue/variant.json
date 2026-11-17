@@ -1,0 +1,11 @@
+{
+  "uuid": "ba49d825-5c25-4f1b-8a06-f94e1191d929",
+  "id": "red_yellow_blue",
+  "name": "Red-Yellow-Blue",
+  "color_hex": [
+    "#FF0000",
+    "#FFF700",
+    "#2B00FF"
+  ],
+  "discontinued": false
+}

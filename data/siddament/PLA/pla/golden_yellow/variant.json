@@ -1,0 +1,10 @@
+{
+  "uuid": "f5a23cfd-224e-497b-bb1f-812ff70b62cb",
+  "id": "golden_yellow",
+  "name": "Golden Yellow",
+  "color_hex": "#FFDD00",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "611 C"
+  }
+}

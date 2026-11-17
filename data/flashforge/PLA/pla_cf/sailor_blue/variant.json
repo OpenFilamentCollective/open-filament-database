@@ -1,9 +1,9 @@
 {
+  "uuid": "310da057-2127-4969-9d0d-f0fddd01f1d0",
   "id": "sailor_blue",
   "name": "Sailor Blue",
   "color_hex": "#4D6383",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

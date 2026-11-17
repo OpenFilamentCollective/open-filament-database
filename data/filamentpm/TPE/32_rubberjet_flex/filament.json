@@ -1,10 +1,11 @@
 {
+  "uuid": "eea75793-5ed8-4dd1-aee9-341f32dc9560",
   "id": "32_rubberjet_flex",
   "name": "TPE 32 Rubberjet Flex",
-  "diameter_tolerance": 0.02,
-  "density": 1.2,
-  "min_print_temperature": 210,
+  "diameter_tolerance": 0.1,
+  "density": 1.1,
+  "min_print_temperature": 220,
   "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 0
 }

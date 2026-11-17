@@ -1,0 +1,10 @@
+{
+  "uuid": "13fb15b5-3588-4926-a659-64aafaa1a404",
+  "id": "forest",
+  "name": "Forest",
+  "color_hex": "#1B4332",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

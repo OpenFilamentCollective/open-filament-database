@@ -1,10 +1,10 @@
 {
+  "uuid": "c7ea890e-5a13-4590-91a2-90b9b4001e54",
   "id": "summertime_green_ht",
   "name": "Summertime Green HT",
   "color_hex": "#62E480",
   "traits": {
     "translucent": true,
-    "industrially_compostable": true,
     "high_temperature": true
   }
 }

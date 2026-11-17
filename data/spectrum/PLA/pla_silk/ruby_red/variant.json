@@ -1,9 +1,9 @@
 {
+  "uuid": "41b23636-079a-4780-9c83-ee8d39aa1494",
   "id": "ruby_red",
   "name": "Ruby Red",
   "color_hex": "#d83743",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

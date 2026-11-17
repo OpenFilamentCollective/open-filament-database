@@ -1,4 +1,5 @@
 {
+  "uuid": "aaf3693f-2f88-4fa7-afc8-fd970c560cd8",
   "id": "prime_pla",
   "name": "PLA Prime",
   "diameter_tolerance": 0.02,
@@ -6,5 +7,6 @@
   "min_print_temperature": 230,
   "max_print_temperature": 230,
   "min_bed_temperature": 60,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://azurefilm.com/wp-content/uploads/2024/04/TDS-PLA-Prime.pptx.pdf"
 }

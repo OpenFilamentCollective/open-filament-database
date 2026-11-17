@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "f4861d53-1d68-4959-b1d3-67138f5f1945",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720629068237",
     "article_number": "PI50-175GREY-00500",
     "discontinued": false,
     "purchase_links": [

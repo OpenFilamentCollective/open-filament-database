@@ -1,8 +1,19 @@
 {
+    "uuid": "ae228466-d15c-4e04-9ee4-c8b3847c7f83",
     "id": "abs",
     "name": "ABS",
     "diameter_tolerance": 0.02,
-    "density": 1.12,
+    "density": 1.04,
+    "min_print_temperature": 245,
+    "max_print_temperature": 265,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 100,
+    "min_fan_speed": 0,
+    "max_fan_speed": 0,
+    "dry_temperature": 70,
+    "dry_time": 6,
+    "enclosure": "required",
+    "data_sheet_url": "https://polymaker.com/wp-content/uploads/lana-downloads/TDS_Polymaker_PolyLite-ABS_V5.6_2025-12-30_EN.pdf",
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFB99",
@@ -10,13 +21,23 @@
             "profile_name": "PolyLite ABS"
         },
         "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "GFB60",
+            "generic_id": "OFY9muEs",
+            "id": "OFOvv91M",
             "profile_name": "PolyLite ABS"
         },
         "elegooslicer": {
             "generic_id": "GFB99",
+            "id": "GFB99",
+            "profile_name": "PolyLite ABS"
+        },
+        "crealityprint": {
+            "generic_id": "GFB99",
             "id": "GFB60",
+            "profile_name": "PolyLite ABS"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFB99",
+            "id": "GFB99",
             "profile_name": "PolyLite ABS"
         }
     }

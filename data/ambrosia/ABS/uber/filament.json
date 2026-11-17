@@ -1,6 +1,7 @@
 {
+  "uuid": "eb1c58a3-a47a-4183-ac5a-0a08908636fb",
   "id": "uber",
-  "name": "\u00dcber ABS",
+  "name": "Über ABS",
   "diameter_tolerance": 0.03,
   "density": 1.09,
   "min_print_temperature": 225,

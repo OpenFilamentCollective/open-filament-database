@@ -1,11 +1,12 @@
 {
-    "id": "red",
-    "name": "Red",
-    "color_hex": "#A02128",
-    "color_standards": {
-        "ral": "3001"
-    },
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "5f3201cc-7bc9-4560-a385-47c8e18f67cf",
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#A02128",
+  "color_standards": {
+    "ral": "3001"
+  },
+  "traits": {
+    "recyclable": true
+  }
 }

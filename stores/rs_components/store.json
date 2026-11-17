@@ -1,0 +1,14 @@
+{
+  "uuid": "307d73bd-99b8-461f-a00e-88ff01193974",
+  "id": "rs_components",
+  "name": "RS Components",
+  "storefront_url": "https://uk.rs-online.com",
+  "logo": "logo.png",
+  "ships_from": [
+    "GB"
+  ],
+  "ships_to": [
+    "GB"
+  ],
+  "source": "Regular Customer"
+}

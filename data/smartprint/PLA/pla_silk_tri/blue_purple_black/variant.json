@@ -1,9 +1,13 @@
 {
+  "uuid": "cecbac1c-1fad-400a-90dc-b3f9431da2f1",
   "id": "blue_purple_black",
   "name": "Blue Purple Black",
   "color_hex": [
     "#371a94",
     "#942192",
     "#000000"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

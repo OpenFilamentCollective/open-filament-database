@@ -1,10 +1,11 @@
 {
+  "uuid": "8bdc6d12-be34-4483-be92-ba3072414d85",
   "id": "asa",
   "name": "ASA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.07,
-  "min_print_temperature": 235,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
+  "min_print_temperature": 240,
+  "max_print_temperature": 285,
+  "min_bed_temperature": 100,
   "max_bed_temperature": 110
 }

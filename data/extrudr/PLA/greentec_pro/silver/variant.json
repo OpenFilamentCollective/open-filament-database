@@ -1,0 +1,12 @@
+{
+  "uuid": "becc00b3-c0d2-479d-bc4a-64a1f6c340e7",
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#C4C5C6",
+  "color_standards": {
+    "ral": "9006"
+  },
+  "traits": {
+    "bio_based": true
+  }
+}

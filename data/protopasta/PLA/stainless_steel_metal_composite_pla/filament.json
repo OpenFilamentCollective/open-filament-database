@@ -1,10 +1,12 @@
 {
+  "uuid": "f78bbd06-fd28-4eaa-a28a-ada4e56ee5ac",
   "id": "stainless_steel_metal_composite_pla",
   "name": "Stainless Steel Metal Composite PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "density": 2.3,
+  "min_print_temperature": 200,
+  "max_print_temperature": 200,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 55,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0717/9095/files/TDS__Stainless_Steel_PLA_1.0.1.pdf"
 }

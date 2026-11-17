@@ -1,9 +1,9 @@
 {
+  "uuid": "33aeb59a-9dea-4ba9-89d6-3fbabd84b69b",
   "id": "slate_grey",
   "name": "Slate Grey",
   "color_hex": "#969799",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

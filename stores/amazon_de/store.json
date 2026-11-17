@@ -1,0 +1,15 @@
+{
+  "uuid": "aef1ce5e-513f-4b1d-bd54-7f09c821be1e",
+  "id": "amazon_de",
+  "name": "Amazon.de",
+  "storefront_url": "https://amazon.de",
+  "logo": "logo.png",
+  "ships_from": [
+    "DE"
+  ],
+  "ships_to": [
+    "DE",
+    "AT",
+    "CH"
+  ]
+}

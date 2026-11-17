@@ -1,8 +1,21 @@
 {
+  "uuid": "4de63e55-21e9-4a62-93a1-d001781ea597",
   "id": "all_black",
   "name": "all Black",
   "color_hex": "#000000",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://colorfabb.com/allpha-black",
+      "source_quote": "AllPHA is 100% biobased",
+      "retrieved": "2026-11-03"
+    }
+  },
   "traits": {
-    "home_compostable": true
+    "home_compostable": true,
+    "bio_based": true
   }
 }

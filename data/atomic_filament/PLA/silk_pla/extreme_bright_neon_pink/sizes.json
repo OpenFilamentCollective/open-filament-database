@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "be2eb05d-24b4-40c8-9472-c088a28de40b",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/silky-extreme-bright-neon-pink-uv-react-pla"
+      }
+    ]
   }
 ]

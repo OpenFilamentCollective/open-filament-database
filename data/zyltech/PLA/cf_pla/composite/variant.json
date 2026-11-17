@@ -1,9 +1,9 @@
 {
+  "uuid": "cffefb85-6b5f-4c87-9c00-74322a9ffcd0",
   "id": "composite",
   "name": "Composite",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

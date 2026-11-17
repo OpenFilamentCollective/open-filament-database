@@ -1,9 +1,9 @@
 {
+  "uuid": "a57739e0-de78-4bce-91a1-115d29c60400",
   "id": "transparent_yellow",
   "name": "Transparent Yellow",
   "color_hex": "#FBE200",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

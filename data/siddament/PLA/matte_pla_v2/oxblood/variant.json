@@ -1,0 +1,10 @@
+{
+  "uuid": "65bf6caa-c610-4e75-9720-c0e606ca4ccf",
+  "id": "oxblood",
+  "name": "Oxblood",
+  "color_hex": "#6E1414",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

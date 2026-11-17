@@ -1,0 +1,10 @@
+{
+  "uuid": "a54c61a9-663b-413e-a94b-de6d10acbe5c",
+  "id": "translucent_black",
+  "name": "Translucent Black",
+  "color_hex": "#292524",
+  "transmission_distance": 1.2,
+  "traits": {
+    "translucent": true
+  }
+}

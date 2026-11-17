@@ -1,22 +1,48 @@
 [
   {
-    "filament_weight": 750,
+    "uuid": "7a6d75c9-b11f-47a8-8375-58a908256c9a",
+    "moved_from": [
+      "7fc77aa1-1c8e-4ffb-9721-08b250c3f088"
+    ],
+    "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936710677",
+    "article_number": "PD03002",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polyflex-tpu95-hf?"
+        "url": "https://us.polymaker.com/products/polyflex-tpu95-hf?variant=39574341713977"
       }
     ]
   },
   {
-    "filament_weight": 750,
+    "uuid": "41b9e8e7-b674-4030-9b94-e28153b4a7a8",
+    "filament_weight": 1000,
     "diameter": 2.85,
-    "purchase_links": [
-      {
-        "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polyflex-tpu95-hf?"
-      }
-    ]
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936711919",
+    "article_number": "PD03005",
+    "discontinued": true
   }
 ]

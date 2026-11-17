@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "45e2d6a2-06af-4a91-b459-22b2fd87c639",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 200,
+    "gtin": "8720847068897",
     "article_number": "BPTG-175CLEA-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "c1a05a5f-07ac-4f58-98dd-cf5df006e4d2",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847068903",
     "article_number": "BPTG-175CLEA-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "7dbd70c0-43a5-4ebd-9a4c-e59f9f6eeb45",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847068910",
     "article_number": "BPTG-175CLEA-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "23da4703-7394-4cbb-a2c2-ea50052d665b",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847068927",
     "article_number": "BPTG-175CLEA-08000",
     "discontinued": false,
     "purchase_links": [

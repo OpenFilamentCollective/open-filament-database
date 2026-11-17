@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "4467c992-a40f-4864-b229-0567dd130a06",
     "filament_weight": 300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 125,
+    "gtin": "8719956555299",
     "article_number": "BVOH-175NTRL-00300",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "9a9d7b7e-1481-4d0b-bed0-afb629037591",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8719956555312",
     "article_number": "BVOH-175NTRL-00750",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "098cddb1-c050-4910-b688-5ad172cbe8d5",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924474945",
     "article_number": "BVOH-175NTRL-02300",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "c47d1592-e53e-4b77-bdce-c17f4fc57794",
     "filament_weight": 300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 125,
+    "gtin": "8719956555305",
     "article_number": "BVOH-285NTRL-00300",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +64,12 @@
     ]
   },
   {
+    "uuid": "8cc8c315-3fd3-4690-9943-f5dfad6db0af",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8719956555329",
     "article_number": "BVOH-285NTRL-00750",
     "discontinued": false,
     "purchase_links": [

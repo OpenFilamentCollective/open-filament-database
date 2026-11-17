@@ -1,5 +1,9 @@
 {
-    "id": "champagne",
-    "name": "Champagne",
-    "color_hex": "#F3CFB2"
+  "uuid": "0ec023cb-0407-463c-bdeb-15dc964b1e81",
+  "moved_from": [
+    "bbdd396f-0154-4935-8725-58026d19cc0e"
+  ],
+  "id": "champagne",
+  "name": "Champagne",
+  "color_hex": "#F3CFB2"
 }

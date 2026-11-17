@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "2127e183-fbba-4842-a805-6afdd2b47d65",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.025",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/olive-green-asa-v2"
+      }
+    ]
+  }
+]

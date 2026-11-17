@@ -1,9 +1,7 @@
 {
+  "uuid": "ebdff810-a732-4cf3-8560-adc721c8257e",
   "id": "signal_yellow",
   "name": "Signal Yellow",
   "color_hex": "#FFC946",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

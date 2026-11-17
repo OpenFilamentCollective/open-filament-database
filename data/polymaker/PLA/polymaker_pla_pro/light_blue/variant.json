@@ -1,0 +1,9 @@
+{
+  "uuid": "6b3e2676-ef51-45f2-ab0d-cd5554a35304",
+  "id": "light_blue",
+  "name": "Light Blue",
+  "color_hex": "#B2DEEF",
+  "traits": {
+    "high_flow": true
+  }
+}

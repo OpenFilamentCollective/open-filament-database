@@ -1,9 +1,9 @@
 {
+  "uuid": "51cee80a-e436-4170-8043-d89984b892e2",
   "id": "shimmering_crown",
   "name": "Shimmering Crown",
   "color_hex": "#9A8524",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

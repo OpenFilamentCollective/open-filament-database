@@ -1,0 +1,13 @@
+{
+  "uuid": "7377dfff-d279-4824-8c90-ff9139a19039",
+  "id": "dark",
+  "name": "Dark",
+  "color_hex": "#8B7155",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "872 C"
+  },
+  "traits": {
+    "abrasive": true
+  }
+}

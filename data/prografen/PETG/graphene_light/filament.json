@@ -1,6 +1,12 @@
 {
-    "id": "graphene_light",
-    "name": "PETG Graphene Light",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "e13352dd-8705-45bc-979a-77d1b9734770",
+  "id": "graphene_light",
+  "name": "PETG Graphene Light",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 215,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
+  "enclosure": "not_needed"
 }

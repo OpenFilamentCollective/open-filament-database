@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "e8f38f85-f2cb-4458-87df-080cb17b70fc",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/perfect-orange-pla-filament"
+      }
+    ]
   }
 ]

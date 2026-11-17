@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "c425ca68-5d91-4bbc-8c62-25a7335335ec",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "8.007",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-grey-ral9006-pla-1-75mm-1kg"
+      }
+    ]
+  }
+]

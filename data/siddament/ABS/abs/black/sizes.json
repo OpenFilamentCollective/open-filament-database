@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "f4a69bfa-a447-44c8-8e25-42623a8bc933",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "3.029",
+    "discontinued": true,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/black-abs-1-75mm-1kg"
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "a773e70a-2473-422d-baef-777c369b1b03",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/pink-pla-3d-printer-filament/"
+      }
+    ]
+  }
+]

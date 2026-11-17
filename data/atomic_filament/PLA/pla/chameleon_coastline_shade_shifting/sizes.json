@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "3cfb7f0c-aca8-4d98-a9b9-245808873e8e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/chameleon-coastline-pla-filament"
+      }
+    ]
   }
 ]

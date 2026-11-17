@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "be0ff1e6-20d6-485c-ba65-8f0260034b14",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847051059",
     "article_number": "PLAE-175WHAL-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "4aa1cd57-4784-4141-8f57-a99472ace688",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847051592",
     "article_number": "PLAE-175WHAL-02300",
     "discontinued": false,
     "purchase_links": [

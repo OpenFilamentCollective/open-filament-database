@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "d4544214-f28d-4f41-b36a-e0fcaaac63d6",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994171098",
+    "article_number": "700-001-1548",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/abs-purple-5"
+      }
+    ]
   }
 ]

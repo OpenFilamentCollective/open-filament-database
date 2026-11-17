@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PLA%20Premium%20Silk/PLA%20Premium%20Silk%20-%201.75mm%20-%20750g%20-%20Blue"
-            }
-        ]
-    }
+  {
+    "uuid": "328af49e-f49b-4842-8206-1ccbf37187d6",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "b9949676-2dbe-4ab9-b781-02ac8eb7afe1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182904080",
+    "article_number": "ANPS14BLU",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PLA%20Premium%20Silk/PLA%20Premium%20Silk%20-%201.75mm%20-%201000g%20-%20Blue"
+      }
+    ]
+  }
 ]

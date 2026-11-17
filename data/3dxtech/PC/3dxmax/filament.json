@@ -1,10 +1,12 @@
 {
+  "uuid": "b13f469e-c727-4d3f-be4c-0034dd3b6275",
   "id": "3dxmax",
   "name": "PC 3DXMax",
   "diameter_tolerance": 0.02,
   "density": 1.2,
-  "min_print_temperature": 260,
-  "max_print_temperature": 300,
-  "min_bed_temperature": 100,
-  "max_bed_temperature": 120
+  "min_print_temperature": 280,
+  "max_print_temperature": 310,
+  "min_bed_temperature": 110,
+  "max_bed_temperature": 120,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/3DXMAX_PC_TDS_v3.pdf?v=1723942764"
 }

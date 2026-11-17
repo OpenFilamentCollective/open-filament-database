@@ -1,9 +1,10 @@
 {
+  "uuid": "f5fbd90c-86b8-47e1-af17-6260dd14a5bf",
   "id": "transparent_purple",
   "name": "Transparent Purple",
   "color_hex": "#CE8BF0",
   "traits": {
     "translucent": true,
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

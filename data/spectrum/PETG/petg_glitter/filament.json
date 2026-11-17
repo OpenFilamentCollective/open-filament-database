@@ -1,6 +1,14 @@
 {
-    "id": "petg_glitter",
-    "name": "PETG Glitter",
-    "diameter_tolerance": 0.02,
-    "density": 1.27
+  "uuid": "e0aa7095-b6f8-4308-89be-35a4439599e0",
+  "id": "petg_glitter",
+  "name": "PETG Glitter",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "min_print_temperature": 230,
+  "max_print_temperature": 255,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
+  "min_fan_speed": 75,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed"
 }

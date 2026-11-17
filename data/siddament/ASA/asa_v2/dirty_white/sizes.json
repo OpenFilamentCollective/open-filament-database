@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "2339b6d5-221b-45f8-bffb-1249ea96f96e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.021",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/dirty-white-asa-v2"
+      }
+    ]
+  }
+]

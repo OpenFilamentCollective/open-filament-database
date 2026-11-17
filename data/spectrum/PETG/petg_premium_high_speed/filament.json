@@ -1,10 +1,18 @@
 {
+  "uuid": "d0abeb5a-7dca-44ff-8af6-2c7a4798c3e7",
   "id": "petg_premium_high_speed",
   "name": "PETG Premium High Speed",
   "diameter_tolerance": 0.02,
-  "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "density": 1.29,
+  "min_print_temperature": 240,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
+  "min_fan_speed": 75,
+  "max_fan_speed": 100,
+  "dry_temperature": 60,
+  "dry_time": 4,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2024/11/en_tds_spectrum_petg_premium_high_speed.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2024/11/en_msds_spectrum_petg_premium_high_speed.pdf"
 }

@@ -1,9 +1,13 @@
 {
+  "uuid": "9c01eace-6873-47b6-97a8-22e61f7215af",
   "id": "storms_whisper",
   "name": "Storms Whisper",
   "color_hex": [
     "#000000",
     "#371a94",
     "#3a88fe"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

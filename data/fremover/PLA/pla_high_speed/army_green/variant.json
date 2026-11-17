@@ -1,0 +1,10 @@
+{
+  "uuid": "b2097f20-30e9-4cf7-bb27-dfcd0f4bc289",
+  "id": "army_green",
+  "name": "Army Green",
+  "color_hex": "#48513E",
+  "discontinued": false,
+  "traits": {
+    "high_flow": true
+  }
+}

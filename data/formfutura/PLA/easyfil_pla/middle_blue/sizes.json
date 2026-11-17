@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "c89b088d-6848-4b7d-b4aa-ce117bb58761",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8719956558047",
+    "article_number": "EPLA-285MDBU-00250"
   }
 ]

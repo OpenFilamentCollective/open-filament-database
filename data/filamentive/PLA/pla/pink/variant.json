@@ -1,0 +1,11 @@
+{
+  "uuid": "51eef733-80d7-4233-b8d3-2948c30750d9",
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#FF1A8E",
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
+}

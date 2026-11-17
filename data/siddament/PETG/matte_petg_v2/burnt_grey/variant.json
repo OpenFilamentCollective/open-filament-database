@@ -1,0 +1,14 @@
+{
+  "uuid": "c4ab31e6-ade3-4c3b-9bbe-28dfd74cd26a",
+  "id": "burnt_grey",
+  "name": "Burnt Grey",
+  "color_hex": "#4B4F54",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "7540 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

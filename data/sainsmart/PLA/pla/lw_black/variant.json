@@ -1,9 +1,9 @@
 {
+  "uuid": "f06648aa-acc8-4921-9b9b-84927381effa",
   "id": "lw_black",
   "name": "LW- Black",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "foaming": true
   }
 }

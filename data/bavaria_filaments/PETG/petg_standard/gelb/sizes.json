@@ -1,0 +1,25 @@
+[
+  {
+    "uuid": "6e1c8d32-abd4-4fd2-92c0-8ce7c89ad952",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/petg-bavafil?variant=56403844956543"
+      }
+    ]
+  },
+  {
+    "uuid": "fd84b5ff-1fa7-410b-b3a2-db49922a7fa6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/petg-bavafil?variant=56810228318591"
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "uuid": "85af3e1d-e6ba-4668-81cc-e9100f4611e7",
+  "id": "cool_blue",
+  "name": "Cool Blue",
+  "color_hex": "#01A3FF",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "299 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

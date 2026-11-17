@@ -1,0 +1,13 @@
+{
+  "uuid": "90b41b4c-071e-4492-aee9-74c9eae00374",
+  "id": "electric_cyan",
+  "name": "Electric Cyan",
+  "color_hex": "#01E5FE",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "312 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

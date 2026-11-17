@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ad06ce01-b199-41d8-88c6-a20bba42a154",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.037",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-purple-petg-v2"
+      }
+    ]
+  }
+]

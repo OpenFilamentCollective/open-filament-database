@@ -1,0 +1,10 @@
+{
+  "uuid": "d21edb77-c64f-48bd-96d4-e9156fbd2ed1",
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#BF3922",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "1797 C"
+  }
+}

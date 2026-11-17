@@ -1,6 +1,30 @@
 [
   {
+    "uuid": "23dcba0b-0955-4660-8bcf-8592d4744b06",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "639302733608",
+    "article_number": "A3504"
+  },
+  {
+    "uuid": "74fcd2a6-baf3-44ab-a567-54bb5e16f556",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "639302733691",
+    "article_number": "A3604"
+  },
+  {
+    "uuid": "0b2dfe41-3b4e-424f-822f-ee9d9cdf9e5b",
+    "filament_weight": 4000,
+    "diameter": 1.75,
+    "gtin": "639302730799",
+    "article_number": "A3704"
+  },
+  {
+    "uuid": "08c12988-9a51-41a0-b29d-134754c9d71d",
+    "filament_weight": 4000,
+    "diameter": 2.85,
+    "gtin": "639302730300",
+    "article_number": "A3804"
   }
 ]

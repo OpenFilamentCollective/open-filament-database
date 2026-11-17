@@ -1,9 +1,9 @@
 {
+  "uuid": "ff2237fc-876d-484f-8c71-0d26ff72db29",
   "id": "chrome",
   "name": "Chrome",
   "color_hex": "#91C2CC",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

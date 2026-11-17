@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "8223cf08-5bf8-4e5f-8e90-73fc25c32df3",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572274013",
+    "article_number": "TPE-83A175W1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/tpe-83a"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/tpe-83a-white"
       }
     ]
   }

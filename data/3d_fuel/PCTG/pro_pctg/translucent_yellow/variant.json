@@ -1,0 +1,10 @@
+{
+  "uuid": "2e90ca21-8c7f-4ef1-8206-3b7257b1486e",
+  "id": "translucent_yellow",
+  "name": "Translucent Yellow",
+  "color_hex": "#E1C54B",
+  "transmission_distance": 6.9,
+  "traits": {
+    "translucent": true
+  }
+}

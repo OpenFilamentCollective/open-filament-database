@@ -1,0 +1,14 @@
+{
+  "uuid": "2d23bcd3-7933-4541-bc50-d52fa0878fbc",
+  "id": "skin",
+  "name": "Skin",
+  "color_hex": "#E7B89A",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "4685 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

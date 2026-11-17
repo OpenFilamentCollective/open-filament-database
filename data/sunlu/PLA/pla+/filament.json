@@ -1,8 +1,14 @@
 {
+    "uuid": "1738fbf1-62a7-4f02-b08e-aa5dcbca353c",
     "id": "pla+",
     "name": "PLA+",
     "diameter_tolerance": 0.02,
-    "density": 1.26,
+    "density": 1.21,
+    "min_print_temperature": 205,
+    "max_print_temperature": 245,
+    "min_bed_temperature": 50,
+    "max_bed_temperature": 60,
+    "data_sheet_url": "https://media.sunlu.com/prod/20260618/65301701781747847057.pdf?filename=TDS",
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFL99",
@@ -10,11 +16,21 @@
             "profile_name": "SUNLU PLA+"
         },
         "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFMUWNkp",
+            "profile_name": "SUNLU PLA+"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GFSNL03",
             "profile_name": "SUNLU PLA+"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFSNL03",
+            "profile_name": "SUNLU PLA+"
+        },
+        "anycubicslicer": {
             "generic_id": "GFL99",
             "id": "GFSNL03",
             "profile_name": "SUNLU PLA+"

@@ -8,3 +8,5 @@ dist/
 .cache/
 .env
 .task/
+uid_migration.json
+.direnv/

@@ -1,9 +1,9 @@
 {
+  "uuid": "41063073-0fa8-49b4-a515-8393e3190494",
   "id": "vibers_pastel_orange",
   "name": "Vibers Pastel Orange",
   "color_hex": "#FF9C66",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

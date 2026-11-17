@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "6729d1c5-4de5-4368-bb43-52d974d5c292",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/dark-blue-carbon-fiber-extreme-petg"
+      }
+    ]
   }
 ]

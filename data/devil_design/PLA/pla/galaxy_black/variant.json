@@ -1,8 +1,10 @@
 {
+  "uuid": "f2d0c23e-a469-4363-b09c-3c0d3b937abc",
   "id": "galaxy_black",
   "name": "GALAXY BLACK",
   "color_hex": "#292824",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

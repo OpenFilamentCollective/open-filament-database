@@ -1,7 +1,11 @@
 {
+  "uuid": "8c564571-0872-407a-bb5e-514e91959b83",
   "id": "magnetite_40_grey",
   "name": "Magnetite 40% Grey",
   "color_hex": "#272E29",
+  "sustainability": {
+    "carbon_footprints": []
+  },
   "traits": {
     "abrasive": true,
     "contains_magnetite": true

@@ -1,4 +1,5 @@
 {
+    "uuid": "69dca9cc-cf85-40f0-985d-2abd6678281b",
     "id": "pla_cf",
     "name": "PLA-CF",
     "diameter_tolerance": 0.02,
@@ -9,13 +10,18 @@
     "max_bed_temperature": 70,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "EPLAB00",
+            "generic_id": "OFDSrzZ8",
+            "id": "OFln72PT",
             "profile_name": "Elegoo PLA-CF"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "EPLAB00",
+            "id": "OEPLAB00",
+            "profile_name": "Elegoo PLA-CF"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "EPLACFB00",
             "profile_name": "Elegoo PLA-CF"
         }
     }

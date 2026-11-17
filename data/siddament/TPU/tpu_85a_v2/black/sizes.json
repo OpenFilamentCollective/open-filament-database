@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "e499d5ca-84a4-4e19-9a75-d7fc44b01138",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.023",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/black-tpu-85a"
+      }
+    ]
+  }
+]

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "a39310c5-c93a-4918-9ccf-ac30b83b2a83",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/pla-cf?variant=41647737274446"
+      }
+    ]
   }
 ]

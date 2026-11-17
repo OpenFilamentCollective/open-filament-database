@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "c6319106-6538-4081-a585-5ab1b5794447",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170688",
+    "article_number": "700-001-1362",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/matte-pla-blue"
+      }
+    ]
   }
 ]

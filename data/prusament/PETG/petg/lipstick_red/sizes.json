@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "0104ff9a-057a-4bc3-aba4-18c2c9b651df",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675544"
+    "gtin": "8594173675544",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-lipstick-red-1kg-nfc/"
+      }
+    ]
   }
 ]

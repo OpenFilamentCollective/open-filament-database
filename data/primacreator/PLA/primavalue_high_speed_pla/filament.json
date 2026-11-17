@@ -1,10 +1,11 @@
 {
+  "uuid": "6dc3bd30-00f6-47af-86b1-54510a952921",
   "id": "primavalue_high_speed_pla",
   "name": "Primavalue High Speed PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
+  "density": 1.225,
+  "min_print_temperature": 200,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60
 }

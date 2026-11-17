@@ -1,6 +1,12 @@
 {
-    "id": "pla_transparent_rainbow",
-    "name": "PLA Transparent Rainbow",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "3b897b07-2e98-45d6-80b1-53b3e67ddf29",
+  "id": "pla_transparent_rainbow",
+  "name": "PLA Transparent Rainbow",
+  "diameter_tolerance": 0.02,
+  "density": 1.22,
+  "min_print_temperature": 195,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260422/a0dfae00-c521-4292-a3e8-c4525a415d35.pdf?filename=TDS"
 }

@@ -1,11 +1,27 @@
 [
   {
+    "uuid": "390fa1a3-4461-4de7-b4aa-3ef454165991",
+    "moved_from": [
+      "0feb9789-db55-4e0e-97e8-511bd83719c0"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936715313",
+    "article_number": "CA14023",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-cope?"
+        "url": "https://us.polymaker.com/products/panchroma-cope"
+      },
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/cope-filament?variant=44207272263737"
       }
     ]
   }

@@ -1,6 +1,30 @@
 {
+    "uuid": "fe0c31f3-f6db-4ea4-9387-ac7e2b704e09",
     "id": "pa6_gf25",
     "name": "PA6-GF25",
     "diameter_tolerance": 0.02,
-    "density": 1.2
+    "density": 1.2,
+    "min_print_temperature": 280,
+    "max_print_temperature": 300,
+    "min_bed_temperature": 40,
+    "max_bed_temperature": 50,
+    "min_fan_speed": 0,
+    "max_fan_speed": 0,
+    "dry_temperature": 100,
+    "dry_time": 10,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_FIBERON_PA6-GF25_V1.1_EN.pdf?v=1733846089",
+    "slicer_settings": {
+        "orcaslicer": {
+            "id": "OF5B9sUc",
+            "profile_name": "Fiberon PA6-GF25"
+        },
+        "elegooslicer": {
+            "id": "GFL58",
+            "profile_name": "Fiberon PA6-GF25"
+        },
+        "crealityprint": {
+            "id": "P7001",
+            "profile_name": "Fiberon PA6-GF25"
+        }
+    }
 }

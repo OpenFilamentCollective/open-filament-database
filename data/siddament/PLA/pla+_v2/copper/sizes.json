@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "950e7081-8525-40b4-8cd9-bd1ef2ccb1f1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.063",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/copper-pla"
+      }
+    ]
+  }
+]

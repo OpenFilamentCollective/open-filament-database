@@ -1,22 +1,32 @@
 [
   {
+    "uuid": "fe46103a-635a-47ff-8ca7-aba5b826b702",
     "filament_weight": 500,
     "diameter": 1.75,
+    "gtin": "6938936714613",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon-pa6-cf20?"
+        "url": "https://us.polymaker.com/products/fiberon-pa6-cf20"
       }
     ]
   },
   {
+    "uuid": "8d557822-cb2d-417b-b487-549a6348ac9f",
     "filament_weight": 3000,
     "diameter": 1.75,
+    "gtin": "6938936716150",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon-pa6-cf20?"
+        "url": "https://us.polymaker.com/products/fiberon-pa6-cf20"
       }
     ]
+  },
+  {
+    "uuid": "094c4d9a-9d8a-4b39-92d0-556f61e5909e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6938936718369"
   }
 ]

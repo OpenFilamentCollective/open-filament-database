@@ -1,10 +1,12 @@
 {
+  "uuid": "59dfbe48-4f1f-4852-adc5-b6a3935f6e15",
   "id": "glow_pla",
   "name": "Glow PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "min_print_temperature": 200,
+  "max_print_temperature": 235,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://devildesign.com/download/PLA_-_product_card.pdf"
 }

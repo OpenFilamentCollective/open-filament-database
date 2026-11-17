@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "7bdfb2ea-9588-4042-8854-b058b95d4503",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/trans-neon-hot-pink-pla-uvreact"
+      }
+    ]
   }
 ]

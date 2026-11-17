@@ -1,0 +1,32 @@
+{
+  "uuid": "6e912232-ed51-472c-96bc-387867325b33",
+  "id": "abs_v2",
+  "name": "ABS V2",
+  "diameter_tolerance": 0.02,
+  "density": 1.08,
+  "max_dry_temperature": 65,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_V2_ABS_Low-Odour_High-Toughness_TDS.pdf?v=1779204045",
+  "discontinued": false,
+  "slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Siddament ABS (all versions)"
+    },
+    "orcaslicer": {
+      "overrides": {
+        "filament_flow_ratio": 0.92,
+        "filament_max_volumetric_speed": 22
+      },
+      "profile_name": "Siddament ABS (all versions)"
+    },
+    "generic": {
+      "bed_temp": 100,
+      "first_layer_bed_temp": 100,
+      "first_layer_nozzle_temp": 260,
+      "nozzle_temp": 270
+    }
+  }
+}

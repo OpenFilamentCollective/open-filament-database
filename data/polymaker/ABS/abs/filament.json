@@ -1,10 +1,13 @@
 {
+  "uuid": "a55f77c8-6a1c-4e7b-a853-fabc11be9275",
   "id": "abs",
   "name": "ABS",
   "diameter_tolerance": 0.02,
   "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
+  "max_dry_temperature": 70,
+  "min_print_temperature": 245,
+  "max_print_temperature": 265,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_bed_temperature": 100,
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/PolyLite_ABS_SDS_US_EN_V1.pdf?v=1640833042"
 }

@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "8e791272-bac8-4a21-99ef-9f9b7a09ecb4",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204959",
+    "article_number": "PETG+HS175O-FR1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epetg-hs"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/petghs-fire-engine-red"
       }
     ]
   }

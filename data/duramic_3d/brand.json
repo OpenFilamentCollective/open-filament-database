@@ -1,7 +1,8 @@
 {
-    "id": "duramic_3d",
-    "name": "DuramiC 3D",
-    "website": "https://duramic3d.com/collections/all",
-    "logo": "logo.jpg",
-    "origin": "CN"
+  "uuid": "ed8416bf-e9e7-402f-9aee-2e96071b6f00",
+  "id": "duramic_3d",
+  "name": "DuramiC 3D",
+  "website": "https://duramic3d.com/collections/all",
+  "logo": "logo.jpg",
+  "origin": "CN"
 }

@@ -1,8 +1,9 @@
 {
+  "uuid": "33929ba6-ca6e-4918-9613-7e9b568f7b11",
   "id": "turquoise_cyan",
   "name": "Turquoise Cyan",
   "color_hex": "#36DBE7",
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

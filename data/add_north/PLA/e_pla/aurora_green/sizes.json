@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Aurora%20Green"
-            }
-        ]
-    }
+  {
+    "uuid": "79d96976-2c5d-4135-a994-514d21f89dc3",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "6d9fbfa8-eaee-489c-9b5d-03fa03cddb9f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182902017",
+    "article_number": "ANEP14AUB",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%201000g%20-%20Aurora%20Green"
+      }
+    ]
+  }
 ]

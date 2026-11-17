@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "adeb471e-277e-4906-9c7f-b2e73b344a6e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/bright-white-abs-filament"
+      }
+    ]
   }
 ]

@@ -1,8 +1,9 @@
 {
+  "uuid": "d83d6af6-5d0e-4728-893b-96fed3f5060c",
   "id": "flame_retardant_abs",
   "name": "ABSpro Flame Retardant",
   "diameter_tolerance": 0.02,
-  "density": 1.17,
+  "density": 1.18,
   "min_print_temperature": 240,
   "max_print_temperature": 265,
   "min_bed_temperature": 100,

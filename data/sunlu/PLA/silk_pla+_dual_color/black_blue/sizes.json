@@ -1,56 +1,71 @@
 [
   {
+    "uuid": "e853e3c2-b9e7-4300-893e-e52fb52e6652",
     "filament_weight": 250,
     "diameter": 1.75
   },
   {
+    "uuid": "80b41504-e284-42f2-aab7-20702a491517",
     "filament_weight": 500,
     "diameter": 1.75
   },
   {
+    "uuid": "f5fe92ab-192f-4980-8dba-f9ceff5f8f8d",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "gtin": "6933582309350",
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/over-3kg-bundle-sales-1-75mm-sunlu-multi-color-silk-3d-printer-filament-1kg-roll-dual-color-tri-color-silk-filament?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/over-3kg-bundle-sales-1-75mm-sunlu-multi-color-silk-3d-printer-filament-1kg-roll-dual-color-tri-color-silk-filament"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/silk-pla-dual-color-black-blue"
       }
     ]
   },
   {
+    "uuid": "6442b032-edde-4b2f-8627-346226cfceb6",
     "filament_weight": 2000,
     "diameter": 1.75
   },
   {
+    "uuid": "7a90a136-e58f-4d9c-8c8c-ceb9cc81c769",
     "filament_weight": 3000,
     "diameter": 1.75
   },
   {
+    "uuid": "fdf974c1-9717-4f23-a30d-0e15b3c0230f",
+    "moved_from": [
+      "67523468-0474-48e4-b173-cd5f44479d80"
+    ],
     "filament_weight": 5000,
     "diameter": 2.85
   },
   {
+    "uuid": "3d172a73-dbc2-423d-a555-f1c5f3f0483f",
     "filament_weight": 250,
     "diameter": 2.85
   },
   {
+    "uuid": "6bd5beb4-82c7-424b-858e-ed99a11eb85b",
     "filament_weight": 500,
     "diameter": 2.85
   },
   {
+    "uuid": "a2141904-d78b-462c-9539-d96ecc8c94a9",
     "filament_weight": 1000,
     "diameter": 2.85
   },
   {
+    "uuid": "9d49165e-c42b-4b9c-ae4f-cdda5e0ec735",
     "filament_weight": 2000,
     "diameter": 2.85
   },
   {
+    "uuid": "830aacc5-0fea-406e-9357-0659f1e50ce4",
     "filament_weight": 3000,
-    "diameter": 2.85
-  },
-  {
-    "filament_weight": 5000,
     "diameter": 2.85
   }
 ]

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "9e7af40a-b20d-4865-af96-50afc5208431",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.017",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/light-red-petg"
+      }
+    ]
+  }
+]

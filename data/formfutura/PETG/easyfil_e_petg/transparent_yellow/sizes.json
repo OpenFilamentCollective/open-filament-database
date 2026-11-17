@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "95ca1fb8-c3c3-45cf-b5c4-d4858c12f6d2",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847053374",
     "article_number": "PTGE-175TYLL-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "3368a062-bb05-4b9e-909d-2cdf0b7b22d4",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847053718",
     "article_number": "PTGE-175TYLL-02300",
     "discontinued": false,
     "purchase_links": [

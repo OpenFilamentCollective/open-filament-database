@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "c9e53da2-b050-4d8e-83d3-a34967f99ced",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/light-gray-abs-filament"
+      }
+    ]
   }
 ]

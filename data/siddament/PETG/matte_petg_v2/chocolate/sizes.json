@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "800901fb-993b-41aa-ac7d-cc895118f5ab",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.060",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-chocolate-petg-v2"
+      }
+    ]
+  }
+]

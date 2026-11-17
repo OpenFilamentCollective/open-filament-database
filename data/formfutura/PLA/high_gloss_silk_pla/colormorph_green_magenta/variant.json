@@ -1,12 +1,13 @@
 {
+  "uuid": "30d06759-dddd-45b2-b79f-24a908d31327",
   "id": "colormorph_green_magenta",
   "name": "ColorMorph Green & Magenta",
   "color_hex": [
     "#008059",
-    "#C80181"
+    "#FF00FF"
   ],
+  "discontinued": true,
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "iridescent": true,
     "coextruded": true

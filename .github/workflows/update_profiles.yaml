@@ -12,8 +12,22 @@ jobs:
         permissions:
             contents: write
         steps:
+            # Pushes to main go out as the repo bot: it is the bypass actor of the ruleset
+            # that requires `Brand sign-off`, which GitHub Actions' own token cannot bypass.
+            # Unlike GitHub Actions' token, its pushes trigger workflows, hence [skip ci] on
+            # the commit: this run must not restart style_data or the push-triggered checks.
+            -   name: Repo bot token
+                id: bot
+                if: vars.OFD_REPO_BOT_APP_ID != ''
+                uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+                with:
+                    app-id: ${{ vars.OFD_REPO_BOT_APP_ID }}
+                    private-key: ${{ secrets.OFD_REPO_BOT_PRIVATE_KEY }}
+
             -   name: Checkout
                 uses: actions/checkout@v4
+                with:
+                    token: ${{ steps.bot.outputs.token || github.token }}
 
             -   name: Setup Git
                 run: |
@@ -32,4 +46,4 @@ jobs:
             -   name: Commit changes
                 run: |
                     git add data/
-                    git diff --cached --quiet || (git commit -m "Update slicer mappings" && git push)
+                    git diff --cached --quiet || (git commit -m "Update slicer mappings [skip ci]" && git push)

@@ -1,8 +1,11 @@
 {
+  "uuid": "11be9535-23bb-4412-ab54-8b332c634cb8",
   "id": "pla_tech_607",
   "name": "PLA Tech 607",
   "diameter_tolerance": 0.03,
   "density": 1.22,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/TDS-PLA-607.pdf",
   "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/Karta-charakterystyki-msds-PLA-607-Nebula.pdf"
 }

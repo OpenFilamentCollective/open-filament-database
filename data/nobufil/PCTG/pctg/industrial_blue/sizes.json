@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "5933630d-370f-4423-8809-624786781002",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461051",
+    "article_number": "PCTG-R-502-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/pctg-industrial-blue"
+      }
+    ]
   }
 ]

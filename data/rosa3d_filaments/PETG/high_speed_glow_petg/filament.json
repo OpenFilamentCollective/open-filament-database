@@ -1,10 +1,11 @@
 {
+  "uuid": "3ed4b854-088c-42c7-806d-1d26dfdc57d6",
   "id": "high_speed_glow_petg",
   "name": "High Speed Glow PETG",
   "diameter_tolerance": 0.02,
-  "density": 1.27,
+  "density": 1.29,
   "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_print_temperature": 270,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80
 }

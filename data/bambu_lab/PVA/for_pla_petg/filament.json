@@ -1,8 +1,18 @@
 {
+    "uuid": "04adc505-4a61-4b9b-802f-116b9e0fd89e",
     "id": "for_pla_petg",
     "name": "Support for PLA/PETG",
     "diameter_tolerance": 0.05,
     "density": 1.28,
+    "min_print_temperature": 190,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 60,
+    "max_volumetric_speed": 6,
+    "min_fan_speed": 20,
+    "max_fan_speed": 30,
+    "dry_temperature": 75,
+    "dry_time": 8,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_Support_for_PLA_PETG_Technical_Data_Sheet.pdf?v=1721103305",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/Bambu_Support_for_PLA_PETG_MSDS.pdf?v=1718272039",
     "slicer_settings": {
@@ -12,11 +22,21 @@
             "profile_name": "Bambu Support For PLA/PETG"
         },
         "orcaslicer": {
+            "generic_id": "OFDvXujf",
+            "id": "OFIfnzxC",
+            "profile_name": "Bambu Support For PLA/PETG"
+        },
+        "elegooslicer": {
             "generic_id": "GFS99",
             "id": "GFS05",
             "profile_name": "Bambu Support For PLA/PETG"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFS99",
+            "id": "GFS05",
+            "profile_name": "Bambu Support For PLA/PETG"
+        },
+        "anycubicslicer": {
             "generic_id": "GFS99",
             "id": "GFS05",
             "profile_name": "Bambu Support For PLA/PETG"

@@ -1,9 +1,9 @@
 {
+  "uuid": "ea66e4c8-5f46-4bef-8d2d-59421fd89fcb",
   "id": "bright_yellow",
   "name": "Bright Yellow",
   "color_hex": "#FAD61B",
   "traits": {
-    "industrially_compostable": true,
     "foaming": true
   }
 }

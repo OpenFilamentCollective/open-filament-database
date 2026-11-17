@@ -1,5 +1,10 @@
 {
-    "id": "wine_red",
-    "name": "Wine Red",
-    "color_hex": "#D60212"
+  "uuid": "ba24e2b7-81d1-4623-8bbf-0d3302adc321",
+  "moved_from": [
+    "bcec8843-335c-491f-86f2-44eb33bb2a92"
+  ],
+  "id": "wine_red",
+  "name": "Wine Red",
+  "color_hex": "#D60212",
+  "transmission_distance": 2.2
 }

@@ -1,10 +1,11 @@
 {
+  "uuid": "359dffbf-7415-4ed3-ac2c-e2c2d49f03ec",
   "id": "easyfil_e_petg",
   "name": "EasyFil ePETG",
   "diameter_tolerance": 0.02,
   "density": 1.29,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
+  "min_print_temperature": 235,
+  "max_print_temperature": 275,
   "min_bed_temperature": 70,
   "max_bed_temperature": 90,
   "data_sheet_url": "https://www.formfutura.com/web/content/281456?download=true",

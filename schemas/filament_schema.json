@@ -39,25 +39,54 @@
             "type": "object",
             "properties": {
                 "prusaslicer": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "PrusaSlicer",
+                    "x-description": "Settings for PrusaSlicer and derivatives. Profile name references built-in or custom profiles."
                 },
                 "bambustudio": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Bambu Studio",
+                    "x-description": "Settings for Bambu Studio. Compatible with Bambu Lab printers and X1/P1 series."
                 },
                 "orcaslicer": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Orca Slicer",
+                    "x-description": "Settings for Orca Slicer. Fork of Bambu Studio with extended features."
                 },
                 "cura": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Cura",
+                    "x-description": "Settings for Ultimaker Cura. Uses Cura profile naming conventions."
                 },
                 "superslicer": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "SuperSlicer",
+                    "x-description": "Settings for SuperSlicer. Fork of PrusaSlicer with additional features."
                 },
                 "elegooslicer": {
-                    "$ref": "#/definitions/specific_slicer_settings"
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Elegoo Slicer",
+                    "x-description": "Settings for Elegoo Slicer. Compatible with Elegoo FDM printers."
+                },
+                "crealityprint": {
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Creality Print",
+                    "x-description": "Settings for Creality Print. Compatible with Creality FDM printers."
+                },
+                "anycubicslicer": {
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "AnyCubic Slicer",
+                    "x-description": "Settings for AnyCubic Slicer. Compatible with AnyCubic FDM printers."
+                },
+                "kirimoto": {
+                    "$ref": "#/definitions/specific_slicer_settings",
+                    "x-label": "Kirimoto",
+                    "x-description": "Settings for Kirimoto. Compatible with Kirimoto FDM printers."
                 },
                 "generic": {
                     "type": "object",
+                    "x-label": "Generic",
+                    "x-description": "Generic temperature settings that apply across all slicers without profile references.",
                     "description": "Generic options that will automatically be mapped to the correct config definition for each slicer. Slicer specific settings are applied first, then these are applied on top.",
                     "properties": {
                         "first_layer_bed_temp": {
@@ -87,6 +116,23 @@
         }
     },
     "properties": {
+        "uuid": {
+            "type": "string",
+            "title": "UUID",
+            "description": "Canonical UUID (UUIDv4), assigned automatically by CI on merge. Leave empty when creating.",
+            "readOnly": true,
+            "pattern": "^$|^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "moved_from": {
+            "type": "array",
+            "title": "Moved From",
+            "description": "Former canonical UUIDv4(s) this entity previously had (before a merge or move). Lets old UUID references resolve here. Managed by tooling/CI — leave empty when creating.",
+            "readOnly": true,
+            "items": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+        },
         "id": {
             "type": "string",
             "title": "ID",
@@ -102,7 +148,8 @@
         "diameter_tolerance": {
             "type": "number",
             "title": "Diameter Tolerance (mm)",
-            "description": "The diameter tolerance of the filament in mm (e.g., ±0.02)"
+            "description": "The diameter tolerance of the filament in mm (e.g., ±0.02)",
+            "default": 0.02
         },
         "density": {
             "type": "number",
@@ -179,6 +226,70 @@
             "description": "Maximum recommended chamber temperature (°C)",
             "x-placeholder": "e.g., 60"
         },
+        "min_print_speed": {
+            "type": "number",
+            "title": "Min Print Speed (mm/s)",
+            "description": "Minimum recommended print speed (mm/s)",
+            "x-placeholder": "e.g., 30"
+        },
+        "max_print_speed": {
+            "type": "number",
+            "title": "Max Print Speed (mm/s)",
+            "description": "Maximum recommended print speed (mm/s)",
+            "x-placeholder": "e.g., 60"
+        },
+        "max_volumetric_speed": {
+            "type": "number",
+            "minimum": 0,
+            "title": "Max Volumetric Speed (mm³/s)",
+            "description": "Maximum recommended volumetric flow rate (mm³/s)",
+            "x-placeholder": "e.g., 21"
+        },
+        "min_fan_speed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "title": "Min Fan Speed (%)",
+            "description": "Minimum recommended part cooling fan speed (%)",
+            "x-placeholder": "e.g., 80"
+        },
+        "max_fan_speed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "title": "Max Fan Speed (%)",
+            "description": "Maximum recommended part cooling fan speed (%)",
+            "x-placeholder": "e.g., 100"
+        },
+        "dry_temperature": {
+            "type": "integer",
+            "minimum": 0,
+            "title": "Dry Temp (°C)",
+            "description": "Recommended drying temperature (°C), as opposed to the maximum in max_dry_temperature",
+            "x-placeholder": "e.g., 55"
+        },
+        "dry_time": {
+            "type": "number",
+            "minimum": 0,
+            "title": "Dry Time (h)",
+            "description": "Recommended drying time at the drying temperature (hours)",
+            "x-placeholder": "e.g., 8"
+        },
+        "enclosure": {
+            "type": "string",
+            "enum": [
+                "required",
+                "recommended",
+                "not_needed"
+            ],
+            "x-enum-labels": {
+                "required": "Required",
+                "recommended": "Recommended",
+                "not_needed": "Not needed"
+            },
+            "title": "Enclosure",
+            "description": "Whether printing this filament requires an enclosed printer"
+        },
         "chamber_temperature": {
             "type": "integer",
             "title": "Chamber Temp (°C)",
@@ -209,6 +320,16 @@
             "type": "boolean",
             "title": "Discontinued",
             "description": "Mark if this filament has been discontinued by the manufacturer"
+        },
+        "sustainability": {
+            "$ref": "./sustainability_schema.json",
+            "title": "Sustainability",
+            "description": "Sourced sustainability data (recycled and bio-based content, carbon footprints, relative claims). Every number must be copied verbatim from a cited source."
+        },
+        "mechanical": {
+            "$ref": "./mechanical_schema.json",
+            "title": "Mechanical Properties",
+            "description": "Sourced mechanical properties (tensile, flexural, impact, heat deflection) per print direction, from the brand's data sheet. Every value must be copied verbatim from a cited source."
         },
         "slicer_ids": {
             "type": "object",

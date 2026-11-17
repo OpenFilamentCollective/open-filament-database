@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "5fc95a8a-d8c3-42c6-a8dc-b4a8406dbe6b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.030",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/cool-blue-pla"
+      }
+    ]
+  }
+]

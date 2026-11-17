@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "cb67508e-bb35-403e-a852-ac827c0ebbeb",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/bronze-metallic-petg-pro"
+      }
+    ]
   }
 ]

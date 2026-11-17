@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "d1821778-7814-4eb2-80ef-0187f914f5a6",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461174",
+    "article_number": "PETG-R-403-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-neon-pink"
+      }
+    ]
   }
 ]

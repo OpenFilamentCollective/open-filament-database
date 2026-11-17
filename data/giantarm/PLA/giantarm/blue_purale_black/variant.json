@@ -1,0 +1,14 @@
+{
+  "uuid": "9fb78cf3-570f-4fd1-af1b-6ecfc7de2805",
+  "id": "blue_purale_black",
+  "name": "Blue + Purale + Black",
+  "color_hex": [
+    "#0000FF",
+    "#800080",
+    "#000000"
+  ],
+  "discontinued": false,
+  "traits": {
+    "silk": true
+  }
+}

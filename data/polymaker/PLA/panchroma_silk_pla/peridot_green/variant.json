@@ -1,9 +1,9 @@
 {
+  "uuid": "0850959c-4b9b-4a92-a7b5-036a1a33381b",
   "id": "peridot_green",
   "name": "Peridot Green",
   "color_hex": "#849662",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

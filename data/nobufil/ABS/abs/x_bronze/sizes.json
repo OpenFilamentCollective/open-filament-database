@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "4f8759a6-41f7-43a8-a97e-fb8c198a4aeb",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460351",
+    "article_number": "ABS-R-210-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-bronze"
+      }
+    ]
   }
 ]

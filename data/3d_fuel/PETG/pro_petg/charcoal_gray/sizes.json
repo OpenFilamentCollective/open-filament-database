@@ -1,6 +1,9 @@
 [
   {
+    "uuid": "d2231bce-0efe-4eef-91b3-d141782b91ab",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "793897792676",
+    "article_number": "E15A2"
   }
 ]

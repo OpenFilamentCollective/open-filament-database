@@ -1,13 +1,18 @@
 {
+    "uuid": "ae3d591e-60a9-49cd-b3da-9e664077007f",
     "id": "asa_basic",
     "name": "ASA Basic",
     "diameter_tolerance": 0.02,
     "density": 1.08,
     "max_dry_temperature": 80,
+    "min_print_temperature": 240,
+    "max_print_temperature": 270,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 120,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFB98",
-            "id": "GFB99",
+            "generic_id": "OFLPAxz3",
+            "id": "OFFFg2Pf",
             "profile_name": "Flashforge ASA Basic"
         },
         "elegooslicer": {

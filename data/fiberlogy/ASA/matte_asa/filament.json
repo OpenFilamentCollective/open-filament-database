@@ -1,10 +1,12 @@
 {
+  "uuid": "11a26e20-8b06-4256-b5e7-8813c1cb4e72",
   "id": "matte_asa",
   "name": "Matte ASA",
   "diameter_tolerance": 0.02,
   "density": 1.07,
-  "min_print_temperature": 235,
-  "max_print_temperature": 260,
+  "min_print_temperature": 255,
+  "max_print_temperature": 270,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_MATTEASA_TDS.pdf"
 }

@@ -1,0 +1,10 @@
+{
+  "uuid": "ea9d20cc-543b-4fa2-b4ac-ec43cb78a5d2",
+  "id": "pure_yellow",
+  "name": "Pure Yellow",
+  "color_hex": "#FFFF00",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "610 C"
+  }
+}

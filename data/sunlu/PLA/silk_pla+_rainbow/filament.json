@@ -1,6 +1,12 @@
 {
-    "id": "silk_pla+_rainbow",
-    "name": "Silk PLA+ Rainbow",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "4c430114-7ea8-46f7-8c75-76f63bf32c4c",
+  "id": "silk_pla+_rainbow",
+  "name": "Silk PLA+ Rainbow",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "min_print_temperature": 205,
+  "max_print_temperature": 235,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/5156fe91-c7a8-48bd-9d1a-e753bf9c53a1.pdf?filename=TDS"
 }

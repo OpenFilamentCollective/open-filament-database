@@ -1,0 +1,13 @@
+{
+  "uuid": "a6285823-48ad-4c18-8292-b026135a204b",
+  "id": "cotton_white",
+  "name": "Cotton White",
+  "color_hex": "#E6DDDB",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Cool Gray 2 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

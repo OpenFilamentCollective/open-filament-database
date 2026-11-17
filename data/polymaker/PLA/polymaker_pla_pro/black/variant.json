@@ -1,0 +1,13 @@
+{
+  "uuid": "c208a0e2-de5a-445c-a317-cec812db2e38",
+  "id": "black",
+  "name": "Black",
+  "color_hex": "#0A0A0A",
+  "hex_variants": [
+    "#0C0E0C"
+  ],
+  "discontinued": false,
+  "traits": {
+    "high_flow": true
+  }
+}

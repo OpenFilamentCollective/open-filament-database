@@ -1,0 +1,14 @@
+{
+  "uuid": "4759ce1a-95ae-4f98-ae78-7081b94b9859",
+  "id": "boot_green",
+  "name": "Boot Green",
+  "color_hex": "#0E7A3A",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "356 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

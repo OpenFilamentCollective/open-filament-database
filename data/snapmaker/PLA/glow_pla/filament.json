@@ -1,0 +1,11 @@
+{
+  "uuid": "66d1991b-1cc7-4987-a186-1f5f3db6fba8",
+  "id": "glow_pla",
+  "name": "Glow-in-the-dark PLA",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60
+}

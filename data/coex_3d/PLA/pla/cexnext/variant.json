@@ -1,9 +1,9 @@
 {
+  "uuid": "c3bbf5b0-0918-49f0-bcd5-e8b9520011bb",
   "id": "cexnext",
   "name": "C♻EXNext",
   "color_hex": "#949A9E",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

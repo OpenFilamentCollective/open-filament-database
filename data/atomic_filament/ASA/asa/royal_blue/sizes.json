@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "8595376d-1d04-4181-b910-f4d751b54d22",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/royal-blue-asa-filament-ams-compatible"
+      }
+    ]
   }
 ]

@@ -1,0 +1,32 @@
+{
+  "uuid": "e5c09ce9-c5e1-4f03-ac9c-af16f84c2d25",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "max_dry_temperature": 60,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_PETG_Datasheet_6d5961c9-850a-4f4f-a603-9268ed02ab7b.pdf?v=1777571362",
+  "discontinued": false,
+  "slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Siddament PETG (all versions)"
+    },
+    "orcaslicer": {
+      "overrides": {
+        "filament_flow_ratio": 0.95,
+        "filament_max_volumetric_speed": 22
+      },
+      "profile_name": "Siddament PETG (all versions)"
+    },
+    "generic": {
+      "bed_temp": 70,
+      "first_layer_bed_temp": 70,
+      "first_layer_nozzle_temp": 255,
+      "nozzle_temp": 255
+    }
+  }
+}

@@ -1,10 +1,29 @@
 {
-  "id": "pla_silk",
-  "name": "PLA-Silk",
-  "diameter_tolerance": 0.03,
-  "density": 1.21,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+    "uuid": "bac9702c-4e18-4b1e-ac88-cabb332ae391",
+    "id": "pla_silk",
+    "name": "PLA-Silk",
+    "diameter_tolerance": 0.03,
+    "density": 1.21,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 45,
+    "max_bed_temperature": 60,
+    "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Silk/PLA-Silk_TDS_2025.06.19.pdf",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFesA6rF",
+            "id": "OFIRUqWi",
+            "profile_name": "eSUN PLA-Silk"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL96",
+            "id": "E1002",
+            "profile_name": "eSUN PLA-Silk"
+        },
+        "crealityprint": {
+            "generic_id": "GFL96",
+            "id": "E1002",
+            "profile_name": "eSUN PLA-Silk"
+        }
+    }
 }

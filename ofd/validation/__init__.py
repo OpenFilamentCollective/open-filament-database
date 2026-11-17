@@ -75,8 +75,38 @@ class ValidationOrchestrator:
         """Validate GTIN/EAN rules."""
         return _validate_gtin_ean(self.data_dir)
 
+    def validate_fiber_consistency(self) -> ValidationResult:
+        """Ensure no filament mixes carbon fiber and glass fiber across its variants.
+
+        This is a native (non-Rust) check; see fiber_consistency.py for the rule.
+        """
+        from ofd.validation.fiber_consistency import check_fiber_consistency
+
+        result = ValidationResult()
+        for error in check_fiber_consistency(self.data_dir):
+            result.add_error(error)
+        return result
+
+    def validate_data_quality(self) -> ValidationResult:
+        """Report the recurring data-quality defects reviewers fixed by hand.
+
+        This is a native (non-Rust) check; see data_quality.py for the rules.
+        """
+        from ofd.validation.data_quality import check_data_quality
+
+        result = ValidationResult()
+        for error in check_data_quality(self.data_dir):
+            result.add_error(error)
+        return result
+
     def validate_all(self, changes_json: str | None = None) -> ValidationResult:
-        """Run all validations, optionally with pending changes applied."""
+        """Run all validations, optionally with pending changes applied.
+
+        Includes the native fiber-consistency and data-quality checks, except under a
+        changes overlay: those read on-disk data and can't see pending edits, so
+        running them there could report stale findings (the webui enforces the same
+        rules pre-export).
+        """
         if changes_json and _validate_all_with_changes is not None:
             return _validate_all_with_changes(
                 self.data_dir, self.stores_dir, changes_json, max_workers=self.max_workers
@@ -86,7 +116,11 @@ class ValidationOrchestrator:
                 "validate_all_with_changes not available in ofd_validator; "
                 "falling back to validation without pending changes applied"
             )
-        return _validate_all(self.data_dir, self.stores_dir, max_workers=self.max_workers)
+        result = _validate_all(self.data_dir, self.stores_dir, max_workers=self.max_workers)
+        if not changes_json:
+            result.merge(self.validate_fiber_consistency())
+            result.merge(self.validate_data_quality())
+        return result
 
 
 __all__ = [

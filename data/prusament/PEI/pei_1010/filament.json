@@ -1,6 +1,12 @@
 {
-    "id": "pei_1010",
-    "name": "PEI 1010",
-    "diameter_tolerance": 0.05,
-    "density": 1.27
+  "uuid": "3fd13f81-85d8-44c6-8d39-2455250959cb",
+  "id": "pei_1010",
+  "name": "PEI 1010",
+  "diameter_tolerance": 0.05,
+  "density": 1.27,
+  "min_print_temperature": 400,
+  "max_print_temperature": 420,
+  "min_bed_temperature": 140,
+  "max_bed_temperature": 160,
+  "data_sheet_url": "https://storage.googleapis.com/prusa3d-content-prod-14e8-wordpress-prusament-prod/2024/09/53ee8f5e-tds_prusament_pei-1010_en.pdf"
 }

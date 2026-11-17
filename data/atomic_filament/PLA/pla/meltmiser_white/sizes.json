@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "c410edcf-879b-46a4-8b2c-bf1624fa1dd8",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/meltmiser-white-pla"
+      }
+    ]
   }
 ]

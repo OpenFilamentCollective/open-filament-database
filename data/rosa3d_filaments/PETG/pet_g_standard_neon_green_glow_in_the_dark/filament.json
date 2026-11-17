@@ -1,10 +1,11 @@
 {
+  "uuid": "9d802f25-cd47-446f-a2a8-4743bf7139ca",
   "id": "pet_g_standard_neon_green_glow_in_the_dark",
   "name": "PET-G Standard Neon Green Glow in the Dark",
   "diameter_tolerance": 0.02,
-  "density": 1.27,
+  "density": 1.29,
   "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_print_temperature": 270,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80
 }

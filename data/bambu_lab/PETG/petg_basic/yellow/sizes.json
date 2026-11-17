@@ -1,10 +1,34 @@
 [
   {
+    "uuid": "7b3e502f-080e-4a6b-98fd-932cfa3ed4a8",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
-    "discontinued": false
+    "gtin": "6937285509758",
+    "article_number": "30402",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-yellow-1"
+      }
+    ]
+  },
+  {
+    "uuid": "1325c255-c6d2-444c-bdaa-73569c772bd9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285510150",
+    "article_number": "30402",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-yellow-1?sai=42649"
+      }
+    ]
   }
 ]

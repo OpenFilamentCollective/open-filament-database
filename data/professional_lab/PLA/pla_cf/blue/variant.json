@@ -1,8 +1,10 @@
 {
+  "uuid": "68702ba1-4be0-43b6-9a51-1a26e7bc29bd",
   "id": "blue",
   "name": "Blue",
   "color_hex": "#0042aa",
   "traits": {
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

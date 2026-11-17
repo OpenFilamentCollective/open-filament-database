@@ -1,16 +1,17 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "empty_spool_weight": 149,
-        "spool_core_diameter": 52,
-        "ean": "8770620000309",
-        "purchase_links": [
-            {
-                "store_id": "3dprintingcanada",
-                "url": "https://3dprintingcanada.com/products/latte-budget-pla-filament-1-75mm-1kg",
-                "ships_from": "CA"
-            }
-        ]
-    }
+  {
+    "uuid": "3093d2d3-40cf-4da1-90a0-9d6f43b645bc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 149,
+    "spool_core_diameter": 52,
+    "ean": "8770620000309",
+    "purchase_links": [
+      {
+        "store_id": "3dprintingcanada",
+        "url": "https://3dprintingcanada.com/products/latte-budget-pla-filament-1-75mm-1kg",
+        "ships_from": "CA"
+      }
+    ]
+  }
 ]

@@ -1,6 +1,14 @@
 [
   {
+    "uuid": "405222b5-9c60-497f-aebf-c76058dd892c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "article_number": "50.203.0653",
+    "purchase_links": [
+      {
+        "store_id": "elegoo",
+        "url": "https://eu.elegoo.com/products/pla-wood"
+      }
+    ]
   }
 ]

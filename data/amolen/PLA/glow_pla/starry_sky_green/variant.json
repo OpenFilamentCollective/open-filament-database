@@ -1,12 +1,12 @@
 {
+  "uuid": "785869bd-d4e3-472c-94ac-988e13d4dbb1",
   "id": "starry_sky_green",
   "name": "Starry Sky Green",
   "color_hex": "#00CC00",
   "traits": {
-    "glow": true,
-    "industrially_compostable": true,
-    "abrasive": true,
     "glitter": true,
-    "illuminescent_color_change": true
+    "glow": true,
+    "illuminescent_color_change": true,
+    "abrasive": true
   }
 }

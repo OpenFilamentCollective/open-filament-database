@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "dd007e65-1614-44ef-b127-ee5c6e353588",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-3kg-bundle-sale-1-75mm-sunlu-glow-in-the-darkluminous-3d-printer-filament-1kg-roll"
+      }
+    ]
   }
 ]

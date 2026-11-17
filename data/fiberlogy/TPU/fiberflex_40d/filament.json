@@ -1,18 +1,20 @@
 {
-    "id": "fiberflex_40d",
-    "name": "TPU FiberFlex 40D",
-    "diameter_tolerance": 0.05,
-    "density": 1.16,
-    "min_print_temperature": 210,
-    "max_print_temperature": 240,
-    "min_bed_temperature": 30,
-    "max_bed_temperature": 60,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Fiberlogy FiberFlex 40D"
-        },
-        "superslicer": {
-            "profile_name": "Fiberlogy FiberFlex 40D"
-        }
+  "uuid": "37dee8c3-1bc4-4138-bcf4-b1d85c8884b3",
+  "id": "fiberflex_40d",
+  "name": "TPU FiberFlex 40D",
+  "diameter_tolerance": 0.05,
+  "density": 1.16,
+  "min_print_temperature": 200,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_FIBERFLEX40D_TDS.pdf",
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Fiberlogy FiberFlex 40D"
+    },
+    "superslicer": {
+      "profile_name": "Fiberlogy FiberFlex 40D"
     }
+  }
 }

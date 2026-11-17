@@ -1,9 +1,9 @@
 {
+  "uuid": "084755da-6ff6-4b03-9283-32e291d8ca40",
   "id": "holly_green",
   "name": "Holly Green",
   "color_hex": "#1D7C6A",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

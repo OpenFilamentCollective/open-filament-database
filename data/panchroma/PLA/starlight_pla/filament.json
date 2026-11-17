@@ -1,6 +1,17 @@
 {
-    "id": "starlight_pla",
-    "name": "Starlight PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "451eee6e-b7ec-4155-a9cb-0e0c4b408a18",
+  "moved_from": [
+    "c9db9598-38ad-4038-b017-cd400e1b96a3"
+  ],
+  "id": "starlight_pla",
+  "name": "Starlight PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_PANCHROMA_V2.pdf"
 }

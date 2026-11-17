@@ -1,10 +1,11 @@
 {
+  "uuid": "48e51b66-7046-431f-9f8a-08831909bb16",
   "id": "luminous_high_speed_glow_tpu",
   "name": "Luminous High Speed Glow TPU",
   "diameter_tolerance": 0.02,
   "density": 1.21,
-  "min_print_temperature": 210,
+  "min_print_temperature": 200,
   "max_print_temperature": 240,
-  "min_bed_temperature": 30,
+  "min_bed_temperature": 25,
   "max_bed_temperature": 60
 }

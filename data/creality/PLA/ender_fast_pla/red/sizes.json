@@ -1,12 +1,7 @@
 [
   {
+    "uuid": "4e09fec3-54f2-4198-92ec-0462b844b4f9",
     "filament_weight": 1000,
-    "diameter": 1.75,
-    "purchase_links": [
-      {
-        "store_id": "crealitystore",
-        "url": "https://store.creality.com/products/ender-fast-1-75mm-pla-3d-printing-filament"
-      }
-    ]
+    "diameter": 1.75
   }
 ]

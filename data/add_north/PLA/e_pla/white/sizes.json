@@ -1,26 +1,29 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20White"
-            }
-        ]
-    },
-    {
-        "filament_weight": 2300,
-        "diameter": 1.75,
-        "empty_spool_weight": 600,
-        "spool_core_diameter": 103,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%202300g%20-%20White"
-            }
-        ]
-    }
+  {
+    "uuid": "f44a1847-be90-4655-a356-25f20ec02c2c",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "948af100-870f-4f57-8550-1581b7e6d43a",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "empty_spool_weight": 600,
+    "spool_core_diameter": 103
+  },
+  {
+    "uuid": "43c04c00-c5c3-4e79-addc-1b5f6d4f9608",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182902758",
+    "article_number": "ANEP14WHI",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%201000g%20-%20White"
+      }
+    ]
+  }
 ]

@@ -1,9 +1,9 @@
 {
+  "uuid": "7e051de1-c798-42f2-81d9-989984346a2f",
   "id": "maple",
   "name": "Maple",
   "color_hex": "#ECCEA7",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

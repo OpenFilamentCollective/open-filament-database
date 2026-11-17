@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "cca76948-a5c6-4a42-9396-4acffe1a501e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.023",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/sandy-asa-v2"
+      }
+    ]
+  }
+]

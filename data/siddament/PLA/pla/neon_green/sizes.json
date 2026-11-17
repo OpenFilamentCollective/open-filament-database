@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "6aaf1041-2766-493d-858b-842508c93e6e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.039",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/neon-green-pla"
+      }
+    ]
+  }
+]

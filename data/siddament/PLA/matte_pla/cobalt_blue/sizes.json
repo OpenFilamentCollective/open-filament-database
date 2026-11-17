@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "94b4ba05-4eda-4203-aae3-255306b132d6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "5.040",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-cobalt-blue-pla"
+      }
+    ]
+  }
+]

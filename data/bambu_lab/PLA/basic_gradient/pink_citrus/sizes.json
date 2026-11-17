@@ -1,13 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337036500",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-gradient?variant=43158301278344"
-            }
-        ]
-    }
+  {
+    "uuid": "f3ee8bee-38cd-4286-bc30-e4efcc70459e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337036500",
+    "article_number": "10903",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-basic-gradient?variant=43158301278344"
+      }
+    ]
+  }
 ]

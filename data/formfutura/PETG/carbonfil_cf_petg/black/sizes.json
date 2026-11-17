@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "a79fa147-ea93-48fd-b51f-b46f7e1f3638",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8718924473092",
     "article_number": "CRBF-175BLCK-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "25ec5531-5c2b-41dc-ac50-4cf794e4c4e8",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477915",
     "article_number": "CRBF-175BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "cfcf272b-8ba7-4ad3-9761-928dea051b53",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8719956550928",
     "article_number": "CRBF-175BLCK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "41b4202f-f912-4281-bde2-692addddeeb8",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8719956550935",
     "article_number": "CRBF-175BLCK-08000",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +64,12 @@
     ]
   },
   {
+    "uuid": "4bc0d15c-afff-492a-ad45-383e8296b60f",
     "filament_weight": 500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8718924473108",
     "article_number": "CRBF-285BLCK-00500",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +80,12 @@
     ]
   },
   {
+    "uuid": "24aeb520-a0e7-44a6-a9c2-7e8b9038fd01",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477380",
     "article_number": "CRBF-285BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -82,5 +94,12 @@
         "url": "https://www.formfutura.com/carbonfil"
       }
     ]
+  },
+  {
+    "uuid": "8ae3d177-ef8e-4ed2-866b-396df2cf6807",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720574298017",
+    "article_number": "CRBF-175BLCK-00250"
   }
 ]

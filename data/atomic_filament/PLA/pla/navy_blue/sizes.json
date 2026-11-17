@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "0aaf614a-4451-4328-b6f3-c9dcaffa0e24",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/1-kg-navy-blue-pla-filament"
+      }
+    ]
   }
 ]

@@ -1,6 +1,11 @@
 {
+  "uuid": "01ec249b-8d5a-4a8b-b3be-69dee718ed64",
   "id": "pha",
   "name": "PHA",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.24,
+  "min_print_temperature": 195,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60
 }

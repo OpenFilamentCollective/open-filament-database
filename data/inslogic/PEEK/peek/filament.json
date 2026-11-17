@@ -1,10 +1,12 @@
 {
+  "uuid": "842f9068-3a67-4cf6-b12c-51dcec773d1f",
   "id": "peek",
   "name": "PEEK",
-  "diameter_tolerance": 0.02,
-  "density": 1.3,
-  "min_print_temperature": 380,
+  "diameter_tolerance": 0.03,
+  "density": 1.1965,
+  "min_print_temperature": 390,
   "max_print_temperature": 420,
-  "min_bed_temperature": 120,
-  "max_bed_temperature": 160
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 120,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_PEEK_Filament_Technical_Data_Sheet_TDS.pdf"
 }

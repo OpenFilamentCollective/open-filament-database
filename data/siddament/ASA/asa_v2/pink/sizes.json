@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "63ca15e4-9c4b-4d0a-a31a-3584198eeb30",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.066",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pink-asa-v2"
+      }
+    ]
+  }
+]

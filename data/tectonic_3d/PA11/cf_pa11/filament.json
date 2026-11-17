@@ -1,10 +1,12 @@
 {
+  "uuid": "ba0c1330-4779-49fa-b8d1-2237477fe6a3",
   "id": "cf_pa11",
   "name": "PA11 CF",
   "diameter_tolerance": 0.02,
-  "density": 1.03,
+  "density": 1.12,
   "min_print_temperature": 240,
   "max_print_temperature": 270,
   "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://cdn.prod.website-files.com/68a2e0ec473c03217f7e1bb9/6968e61997d491d567c8fdcf_KRATIR%20PA11%20CF%20(02-2025).pdf"
 }

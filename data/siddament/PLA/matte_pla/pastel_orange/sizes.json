@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "cec56a96-12e5-469f-bfba-0a630941e4e6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.041",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pastel-orange"
+      }
+    ]
+  }
+]

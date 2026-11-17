@@ -1,9 +1,9 @@
 {
+  "uuid": "5a2d881d-431a-4b6a-b168-a70567cb4ddc",
   "id": "metallic_silver",
   "name": "Metallic Silver",
   "color_hex": "#818184",
   "traits": {
-    "industrially_compostable": true,
     "imitates_metal": true
   }
 }

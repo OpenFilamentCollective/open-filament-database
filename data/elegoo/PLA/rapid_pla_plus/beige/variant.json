@@ -1,5 +1,12 @@
 {
-    "id": "beige",
-    "name": "Beige",
-    "color_hex": "#f4e0b8"
+  "uuid": "39da8420-a711-4858-b766-f6925983dd6e",
+  "moved_from": [
+    "c269923f-aa04-441a-ac98-918c292ada5d"
+  ],
+  "id": "beige",
+  "name": "Beige",
+  "color_hex": "#f4e0b8",
+  "traits": {
+    "high_flow": true
+  }
 }

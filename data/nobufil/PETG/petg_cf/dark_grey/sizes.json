@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "9de0e523-ce47-415c-a504-440ad8ff7858",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461433",
+    "article_number": "PETG-F-701-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-cf-dark-grey"
+      }
+    ]
   }
 ]

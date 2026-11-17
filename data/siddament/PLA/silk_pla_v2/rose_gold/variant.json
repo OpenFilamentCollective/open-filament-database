@@ -1,0 +1,13 @@
+{
+  "uuid": "04e53a5d-b66d-4f82-ac60-da190539d421",
+  "id": "rose_gold",
+  "name": "Rose Gold",
+  "color_hex": "#A56F6B",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Warm Gray 8 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

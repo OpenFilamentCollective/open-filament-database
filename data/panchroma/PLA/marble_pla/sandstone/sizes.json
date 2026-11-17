@@ -1,11 +1,25 @@
 [
   {
+    "uuid": "a113d649-8097-401b-8713-e6358c1c2b37",
+    "moved_from": [
+      "6c0103c0-063e-4171-af20-4dbafca156a0"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-marble?"
+        "url": "https://us.polymaker.com/products/panchroma-marble"
+      },
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/marble-pla?variant=43631399010361"
       }
     ]
   }

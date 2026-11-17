@@ -1,10 +1,11 @@
 {
+  "uuid": "438e9d54-3a78-4e48-a24c-6d4e2c74e9b6",
   "id": "pet_g_mdt",
   "name": "PET-G MDT",
   "diameter_tolerance": 0.02,
   "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80
 }

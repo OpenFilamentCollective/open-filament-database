@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "75c144e2-cb38-40d7-8b22-30ceac38843e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/asa?variant=42120698036302"
+      }
+    ]
   }
 ]

@@ -1,10 +1,12 @@
 {
+  "uuid": "31948557-1c26-4d05-beb0-3f16ff69f71d",
   "id": "glow_pla",
   "name": "Glow PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "density": 1.23,
+  "min_print_temperature": 200,
+  "max_print_temperature": 240,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260327/25674e7f-8c9e-4ff2-8bf6-74bae7d6a030.pdf?filename=TDS"
 }

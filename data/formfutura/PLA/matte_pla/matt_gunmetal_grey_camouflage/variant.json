@@ -1,9 +1,9 @@
 {
+  "uuid": "e41e6f4c-9441-4c9f-b511-9b715876439a",
   "id": "matt_gunmetal_grey_camouflage",
   "name": "Matt Gunmetal Grey Camouflage",
   "color_hex": "#828E88",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

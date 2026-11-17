@@ -1,0 +1,14 @@
+{
+  "uuid": "38756d9c-f82e-4ee2-b2ae-7feaf6dd96ef",
+  "id": "petg_hf_v2",
+  "name": "PETG HF V2",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "max_dry_temperature": 60,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_V2_PETG_PLUS__TDS.pdf?v=1779204062",
+  "discontinued": false
+}

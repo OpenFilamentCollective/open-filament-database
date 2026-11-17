@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "85e3aaa7-a977-4c62-8cb6-56189c1b2978",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720629068077",
     "article_number": "KPC1-175BLCK-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "77cdfdb4-b4bd-4458-a92e-08f3003c956d",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720629068084",
     "article_number": "KPC1-175BLCK-01000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "a66293fb-b214-4e27-a9f2-81c557bd981b",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720629068091",
     "article_number": "KPC1-175BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "7abd1410-cea1-468f-9295-57a4a31f9f72",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720629068107",
     "article_number": "KPC1-175BLCK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +64,12 @@
     ]
   },
   {
+    "uuid": "9aafd370-5664-40fc-b18b-35d03dc0ee03",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720629068114",
     "article_number": "KPC1-175BLCK-08000",
     "discontinued": false,
     "purchase_links": [

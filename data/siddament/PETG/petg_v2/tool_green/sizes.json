@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7213142c-23ba-4fd6-aaef-ed8005bfb6a6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.030",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/why-obi-green-petg"
+      }
+    ]
+  }
+]

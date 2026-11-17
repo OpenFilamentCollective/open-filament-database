@@ -1,0 +1,9 @@
+{
+  "uuid": "2e3c917e-627d-4704-8cb4-62d63a856c42",
+  "id": "light_yellow",
+  "name": "Light Yellow",
+  "color_hex": "#EEE96F",
+  "traits": {
+    "high_flow": true
+  }
+}

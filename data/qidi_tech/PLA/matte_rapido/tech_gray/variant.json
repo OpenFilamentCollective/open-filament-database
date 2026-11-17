@@ -1,8 +1,10 @@
 {
+  "uuid": "d05deda0-a307-4eee-b3cb-bef625f7b296",
   "id": "tech_gray",
   "name": "Tech Gray",
   "color_hex": "#C1C1C1",
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

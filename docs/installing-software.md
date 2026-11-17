@@ -1,5 +1,7 @@
 # Software Installation Guide
-This guide will walk you through installing the required software for contributing to the database.
+This guide will walk you through installing the required software for contributing to the database **locally**.
+
+> If you just want to add or correct entries, you almost certainly don't need any of this — the hosted WebUI at <http://openfilamentdatabase.org/> runs entirely in the browser and submits your changes as a GitHub pull request. Only follow this guide if you want to run the validator or WebUI from a local clone (e.g. for offline work or WebUI development).
 
 ## Automatic Setup (Recommended)
 

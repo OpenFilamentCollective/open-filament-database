@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "211149c8-4249-4469-ac2f-d4b062e91bf6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "13.008",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-purple-petg-v2"
+      }
+    ]
+  }
+]

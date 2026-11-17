@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "af7cad9e-e465-46b6-bf5a-db97eb4efd9b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.031",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/cyan-blue-pla"
+      }
+    ]
+  }
+]

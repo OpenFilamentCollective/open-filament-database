@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "abda22bd-ff4c-4e08-9b8e-6c43424255f8",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847050748",
     "article_number": "PLAE-175TRRD-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,13 @@
     ]
   },
   {
+    "uuid": "fdc1de22-106c-483c-bf3c-1a95a531a43c",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629068367",
     "article_number": "PLAE-175TRRD-B1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,12 @@
     ]
   },
   {
+    "uuid": "40a8cf3a-ef20-4cee-875d-0b38d00d642e",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847051288",
     "article_number": "PLAE-175TRRD-02300",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +49,12 @@
     ]
   },
   {
+    "uuid": "d777255a-5786-4441-b750-dcbb06e72b2e",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847051820",
     "article_number": "PLAE-175TRRD-04500",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +65,12 @@
     ]
   },
   {
+    "uuid": "bdd18941-85fa-4b32-a7a2-1d4b51c6d243",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847052360",
     "article_number": "PLAE-175TRRD-08000",
     "discontinued": false,
     "purchase_links": [

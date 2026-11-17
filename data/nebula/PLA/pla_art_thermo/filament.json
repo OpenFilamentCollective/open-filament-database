@@ -1,8 +1,13 @@
 {
+  "uuid": "62b83efe-d8fa-4acf-8b8d-04f46e8aa896",
   "id": "pla_art_thermo",
   "name": "PLA Art Thermo",
   "diameter_tolerance": 0.03,
   "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 60,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/TDS-PLA-THERMOACTIVE.pdf",
   "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/Karta-charakterystyki-msds-PLA-THERMOAKTIV-Nebula.pdf"
 }

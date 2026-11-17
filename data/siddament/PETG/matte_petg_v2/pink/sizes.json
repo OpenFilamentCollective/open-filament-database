@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "031f9cd4-f2b7-401f-9a4b-e9b95a59c70d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "13.009",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pink-petg-v2"
+      }
+    ]
+  }
+]

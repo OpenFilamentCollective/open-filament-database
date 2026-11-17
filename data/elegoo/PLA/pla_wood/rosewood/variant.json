@@ -1,7 +1,11 @@
 {
+  "uuid": "8fb5717f-36df-401e-a686-fb9011a9dad3",
   "id": "rosewood",
   "name": "Rosewood",
   "color_hex": [
     "#60433F"
-  ]
+  ],
+  "traits": {
+    "bio_based": true
+  }
 }

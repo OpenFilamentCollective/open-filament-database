@@ -1,5 +1,9 @@
 {
-    "id": "mint",
-    "name": "Mint",
-    "color_hex": "#96DCB9"
+  "uuid": "a374daf3-0b9b-4349-a266-0ab9f91ac104",
+  "moved_from": [
+    "d24f43ff-d261-4740-8046-a4e2f1c1684d"
+  ],
+  "id": "mint",
+  "name": "Mint",
+  "color_hex": "#96DCB9"
 }

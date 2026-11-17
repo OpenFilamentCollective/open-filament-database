@@ -1,7 +1,8 @@
 {
+  "uuid": "414cff17-bee0-415d-aaf3-2d2d10526d8b",
   "id": "luminous_high_speed_glow_pla",
   "name": "Luminous High Speed Glow PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.24,
   "min_print_temperature": 190,
   "max_print_temperature": 230,

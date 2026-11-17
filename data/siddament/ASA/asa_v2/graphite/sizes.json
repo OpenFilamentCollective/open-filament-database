@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "dc0ce895-0e62-4a7a-befd-092c17d3a231",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.051",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/graphite-asa-v2"
+      }
+    ]
+  }
+]

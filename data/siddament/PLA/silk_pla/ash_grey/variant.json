@@ -1,0 +1,13 @@
+{
+  "uuid": "01ccb153-3b52-4064-941e-d52b41114a9f",
+  "id": "ash_grey",
+  "name": "Ash Grey",
+  "color_hex": "#454343",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Black 7 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

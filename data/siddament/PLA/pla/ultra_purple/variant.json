@@ -1,0 +1,10 @@
+{
+  "uuid": "97dd94e4-eeee-4db7-acd8-42c7711bdb12",
+  "id": "ultra_purple",
+  "name": "Ultra Purple",
+  "color_hex": "#D200FE",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Rhodamine Red C"
+  }
+}

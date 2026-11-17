@@ -1,4 +1,5 @@
 {
+  "uuid": "d9dceacb-1977-4b06-92fe-9015670e8d51",
   "id": "redwhite",
   "name": "Redwhite",
   "color_hex": [
@@ -6,7 +7,6 @@
     "#FF5F2E"
   ],
   "traits": {
-    "industrially_compostable": true,
     "gradual_color_change": true
   }
 }

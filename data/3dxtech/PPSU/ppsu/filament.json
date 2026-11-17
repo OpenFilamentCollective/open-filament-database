@@ -1,6 +1,12 @@
 {
+  "uuid": "6b417470-bd56-4420-a4d1-9c08100ea5dd",
   "id": "ppsu",
   "name": "PPSU",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.28,
+  "min_print_temperature": 360,
+  "max_print_temperature": 390,
+  "min_bed_temperature": 140,
+  "max_bed_temperature": 160,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/THERMAX_PPSU_TDS_v3.pdf?v=1723942766"
 }

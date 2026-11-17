@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ee1027a2-1e01-46e9-adce-fea10916d7ea",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "13.005",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-yellow-petg-v2"
+      }
+    ]
+  }
+]

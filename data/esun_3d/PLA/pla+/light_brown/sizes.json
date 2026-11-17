@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "56a01866-d19d-44cb-ae13-bf4e63a97306",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
@@ -7,6 +8,20 @@
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/pla-pro"
+      }
+    ]
+  },
+  {
+    "uuid": "e2747ac8-25bb-4e0b-aea2-8bc41b2508f3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208452",
+    "article_number": "PLA+175Q-C1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-light-brown-1?sai=24544"
       }
     ]
   }

@@ -1,5 +1,13 @@
 {
-    "id": "transparent_blue",
-    "name": "Transparent Blue",
-    "color_hex": "#072B89"
+  "uuid": "93c1fd2b-6b9a-4d72-9681-e2f073c4e216",
+  "moved_from": [
+    "d4c5da27-2878-4f4f-89a1-f51a4e196c28"
+  ],
+  "id": "transparent_blue",
+  "name": "Transparent Blue",
+  "color_hex": "#072B89",
+  "traits": {
+    "translucent": true,
+    "high_temperature": true
+  }
 }

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "8500ff70-10e6-4853-b620-071b4c9b8271",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460016",
+    "article_number": "PETG-R-951-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-white-8"
+      }
+    ]
   }
 ]

@@ -1,8 +1,19 @@
 {
+    "uuid": "5af70275-d631-42ed-8635-72079abb3483",
     "id": "asa",
     "name": "ASA",
     "diameter_tolerance": 0.02,
     "density": 1.13,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 75,
+    "max_bed_temperature": 95,
+    "min_fan_speed": 0,
+    "max_fan_speed": 0,
+    "dry_temperature": 70,
+    "dry_time": 7,
+    "enclosure": "required",
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/PolyLite_ASA_TDS_EN_V5.4.pdf",
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFB98",
@@ -10,11 +21,21 @@
             "profile_name": "PolyLite ASA"
         },
         "orcaslicer": {
+            "generic_id": "OFLPAxz3",
+            "id": "OFvrXuV7",
+            "profile_name": "PolyLite ASA"
+        },
+        "elegooslicer": {
             "generic_id": "GFB98",
             "id": "GFB61",
             "profile_name": "PolyLite ASA"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFB98",
+            "id": "GFB61",
+            "profile_name": "PolyLite ASA"
+        },
+        "anycubicslicer": {
             "generic_id": "GFB98",
             "id": "GFB61",
             "profile_name": "PolyLite ASA"

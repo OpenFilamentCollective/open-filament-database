@@ -1,6 +1,7 @@
 {
-    "id": "nylonpower",
-    "name": "PA6 NylonPower",
-    "diameter_tolerance": 0.05,
-    "density": 1
+  "uuid": "4c89059d-c3b8-4fd8-9142-304216052c40",
+  "id": "nylonpower",
+  "name": "PA6 NylonPower",
+  "diameter_tolerance": 0.05,
+  "density": 1
 }

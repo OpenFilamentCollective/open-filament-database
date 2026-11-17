@@ -1,6 +1,12 @@
 {
-    "id": "petg_glow_in_the_dark_filament",
-    "name": "PETG Glow In The Dark Filament",
-    "diameter_tolerance": 0.05,
-    "density": 1.24
+  "uuid": "d118415a-79d1-4f35-b57b-45e21054751a",
+  "id": "petg_glow_in_the_dark_filament",
+  "name": "PETG Glow In The Dark Filament",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260422/52217877-b2d6-44ab-b8f6-d0cc638de94f.pdf?filename=TDS"
 }

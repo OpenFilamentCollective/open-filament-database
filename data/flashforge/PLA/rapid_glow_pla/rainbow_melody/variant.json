@@ -1,4 +1,5 @@
 {
+  "uuid": "c4fc2f91-4b70-46f2-a4b7-045684d6653b",
   "id": "rainbow_melody",
   "name": "Rainbow Melody",
   "color_hex": [
@@ -10,7 +11,7 @@
   ],
   "traits": {
     "glow": true,
-    "industrially_compostable": true,
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "high_flow": true
   }
 }

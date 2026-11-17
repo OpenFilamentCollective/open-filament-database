@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "7c686cca-cbe3-4e0b-8af4-e06b73473780",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/perfect-orange-abs-filament"
+      }
+    ]
   }
 ]

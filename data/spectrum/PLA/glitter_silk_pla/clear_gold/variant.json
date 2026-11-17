@@ -1,9 +1,9 @@
 {
+  "uuid": "f4e6b061-c69f-48a6-957c-444f73bec093",
   "id": "clear_gold",
   "name": "Clear Gold",
   "color_hex": "#D0BD93",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "glitter": true
   }

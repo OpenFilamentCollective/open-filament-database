@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "97da1869-4efe-409f-9cba-d7b55349fa84",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572201491",
+    "article_number": "PLA-LW175B1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-lw"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-lw-black-1"
       }
     ]
   }

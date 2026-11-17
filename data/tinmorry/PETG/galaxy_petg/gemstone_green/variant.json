@@ -1,9 +1,10 @@
 {
+  "uuid": "dd95e096-eb89-4515-95af-d091473967f8",
   "id": "gemstone_green",
   "name": "Gemstone Green",
   "color_hex": "#1E5A4F",
   "traits": {
-    "iridescent": true,
-    "glitter": true
+    "glitter": true,
+    "iridescent": true
   }
 }

@@ -1,0 +1,12 @@
+{
+  "uuid": "b04eeba9-c3a7-4d36-87c6-f5cfd49b8808",
+  "id": "esd_petg",
+  "name": "ESD PETG",
+  "diameter_tolerance": 0.05,
+  "density": 1.32,
+  "min_print_temperature": 270,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 90,
+  "discontinued": false
+}

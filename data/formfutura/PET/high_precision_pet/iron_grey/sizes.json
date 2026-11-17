@@ -1,6 +1,23 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "bab0786c-1d4a-4b62-9d97-8158d2f7400b",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8720629061221",
+    "article_number": "HPPE-175IGRY-00750"
+  },
+  {
+    "uuid": "e27cf95f-1026-42a4-b00c-41bfd7ae258a",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720629061467",
+    "article_number": "HPPE-175IGRY-00250"
+  },
+  {
+    "uuid": "fc090666-db0a-4a68-abbd-a9f4480e5b84",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "gtin": "8720629061344",
+    "article_number": "HPPE-285IGRY-00750"
   }
 ]

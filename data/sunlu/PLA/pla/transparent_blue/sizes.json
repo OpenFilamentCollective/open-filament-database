@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "e1a9a719-15eb-442a-a40a-0d27f54d1ec5",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-6kg-of-pla-pla-meta-3d-filaments-1kg-2-2lbs-fit-most-of-fdm-printer"
+      }
+    ]
   }
 ]

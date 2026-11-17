@@ -1,10 +1,12 @@
 {
+  "uuid": "f7e8eb17-fddb-45bf-a3ef-f19408daccef",
   "id": "eco_matte_pla",
   "name": "eco Matte PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "diameter_tolerance": 0.05,
+  "density": 1.38,
+  "min_print_temperature": 205,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://3d.nice-cdn.com/upload/file/TDS_ecoPLA_Matt.pdf"
 }

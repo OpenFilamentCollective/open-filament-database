@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "c4a57fa8-0b99-47a7-b70e-4570f6d95d37",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.033",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/ice-blue-pla"
+      }
+    ]
+  }
+]

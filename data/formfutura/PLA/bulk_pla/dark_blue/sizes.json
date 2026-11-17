@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "e0b2859b-d3c7-40f3-b454-22dc588386f1",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 200,
+    "gtin": "8720847069214",
     "article_number": "BPLA-175DBLU-01000",
     "discontinued": false,
     "purchase_links": [
@@ -12,5 +14,12 @@
         "url": "https://www.formfutura.com/bulk-pla"
       }
     ]
+  },
+  {
+    "uuid": "25e4a3bc-b08f-4c88-8a3a-c11cb4d78f7f",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "gtin": "8720847069221",
+    "article_number": "BPLA-175DBLU-02300"
   }
 ]

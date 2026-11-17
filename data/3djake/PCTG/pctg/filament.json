@@ -1,10 +1,12 @@
 {
+  "uuid": "57935fbf-8340-458a-8d00-22de65130b09",
   "id": "pctg",
   "name": "PCTG",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.23,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://3d.nice-cdn.com/upload/file/Technical_Data_Sheet_PCTG_V2.pdf"
 }

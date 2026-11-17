@@ -1,5 +1,13 @@
 {
-    "id": "sky_blue",
-    "name": "Sky Blue",
-    "color_hex": "#1AC5FC"
+  "uuid": "3126e56c-d6be-45ac-ad09-13b8d1ca7c7d",
+  "moved_from": [
+    "4be67138-ce99-442a-bb3a-61a6c965f3be"
+  ],
+  "id": "sky_blue",
+  "name": "Sky Blue",
+  "color_hex": "#1AC5FC",
+  "transmission_distance": 1.3,
+  "traits": {
+    "matte": true
+  }
 }

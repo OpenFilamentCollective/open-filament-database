@@ -1,6 +1,12 @@
 {
-    "id": "pla_silk_high_speed_dual_color",
-    "name": "PLA Silk High-Speed Dual-Color",
-    "diameter_tolerance": 0.03,
-    "density": 1.32
+  "uuid": "0f6ae6d6-8a53-4d39-ad35-088792224fa0",
+  "id": "pla_silk_high_speed_dual_color",
+  "name": "PLA Silk High-Speed Dual-Color",
+  "diameter_tolerance": 0.03,
+  "density": 1.32,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-HP_Silk_PLA-TDS.pdf?v=1747277768"
 }

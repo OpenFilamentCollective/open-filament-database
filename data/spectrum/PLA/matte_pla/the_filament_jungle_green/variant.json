@@ -1,9 +1,9 @@
 {
+  "uuid": "23287551-dc32-49c3-accc-896394ae0171",
   "id": "the_filament_jungle_green",
   "name": "The Filament Jungle Green",
   "color_hex": "#11784F",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

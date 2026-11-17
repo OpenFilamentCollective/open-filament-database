@@ -1,10 +1,17 @@
 {
+  "uuid": "739eca51-63d7-4416-b5b4-f8bb0c384162",
   "id": "durapro_pbt_pc",
   "name": "DuraPro PBT PC",
   "diameter_tolerance": 0.02,
   "density": 1.2,
   "min_print_temperature": 260,
-  "max_print_temperature": 300,
-  "min_bed_temperature": 100,
-  "max_bed_temperature": 120
+  "max_print_temperature": 290,
+  "min_bed_temperature": 110,
+  "max_bed_temperature": 110,
+  "max_volumetric_speed": 18,
+  "min_fan_speed": 0,
+  "max_fan_speed": 30,
+  "enclosure": "required",
+  "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/durapro-pc-pbt-TDS-en.pdf",
+  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/durapro-pc-pbt-MSDS-en.pdf"
 }

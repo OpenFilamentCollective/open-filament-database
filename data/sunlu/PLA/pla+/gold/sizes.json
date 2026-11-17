@@ -1,21 +1,35 @@
 [
   {
+    "uuid": "65ed61f1-8ded-40d2-8552-5c4fde7cfef5",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/over-6kg-bundle-sale-pla-and-pla-plus-pla-meta-macaron-filament1kg-roll?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/over-6kg-bundle-sale-pla-and-pla-plus-pla-meta-macaron-filament1kg-roll"
       }
     ]
   },
   {
+    "uuid": "3f61d6a5-136c-4e69-a9f5-48f7b05daddd",
     "filament_weight": 5000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/5kg-large-spool-pla-abs-petg-and-pla-3d-printer-filament?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/5kg-large-spool-pla-abs-petg-and-pla-3d-printer-filament"
+      }
+    ]
+  },
+  {
+    "uuid": "20d9ec61-603f-43a9-9931-9c3929836546",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/sunlu-refill-filament-pla-pla-2-0-compatible-with-2025-sunlu-third-generation-reusable-spool-bambulab-reusable-spool-spool-free-filament?variant=51042640822554"
       }
     ]
   }

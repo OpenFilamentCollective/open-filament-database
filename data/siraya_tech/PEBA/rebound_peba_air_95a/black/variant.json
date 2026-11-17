@@ -1,0 +1,9 @@
+{
+  "uuid": "0eaca629-f382-459b-9b6c-2ae99d4b7cd4",
+  "id": "black",
+  "name": "Black",
+  "color_hex": "#000000",
+  "traits": {
+    "foaming": true
+  }
+}

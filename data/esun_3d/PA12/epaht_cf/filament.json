@@ -1,6 +1,11 @@
 {
-    "id": "epaht_cf",
-    "name": "ePAHT-CF",
-    "diameter_tolerance": 0.03,
-    "density": 1.4
+  "uuid": "2a9448f1-cdca-4804-ba57-fa5c67a63fc2",
+  "id": "epaht_cf",
+  "name": "ePAHT-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.4,
+  "min_print_temperature": 260,
+  "max_print_temperature": 300,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 90
 }

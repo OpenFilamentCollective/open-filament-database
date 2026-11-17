@@ -1,8 +1,10 @@
 {
+  "uuid": "b433b015-811f-41f8-97ee-33e7cb810642",
   "id": "sparkling_silver",
   "name": "Sparkling Silver",
   "color_hex": "#848484",
   "traits": {
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

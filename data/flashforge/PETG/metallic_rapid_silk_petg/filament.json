@@ -1,10 +1,11 @@
 {
+  "uuid": "05e36209-3853-47c8-aaeb-e741c4c4bce9",
   "id": "metallic_rapid_silk_petg",
   "name": "Metallic Rapid Silk PETG",
   "diameter_tolerance": 0.02,
   "density": 1.27,
   "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_print_temperature": 270,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 60
 }

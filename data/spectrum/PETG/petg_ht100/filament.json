@@ -1,8 +1,19 @@
 {
+    "uuid": "0d735e76-7acc-4f15-929d-20c3cfb74384",
+    "moved_from": [
+        "77ba3d27-2da9-4ed5-ba0c-aa3e915043c7"
+    ],
     "id": "petg_ht100",
     "name": "PETG HT100",
     "diameter_tolerance": 0.02,
     "density": 1.18,
+    "min_print_temperature": 250,
+    "max_print_temperature": 280,
+    "min_bed_temperature": 100,
+    "max_bed_temperature": 110,
+    "min_fan_speed": 0,
+    "max_fan_speed": 30,
+    "enclosure": "recommended",
     "slicer_settings": {
         "prusaslicer": {
             "profile_name": "Spectrum PETG HT100"

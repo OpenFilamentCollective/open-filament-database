@@ -1,13 +1,19 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337030324",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-metal?variant=41002960552072"
-            }
-        ]
-    }
+  {
+    "uuid": "f1710c31-c270-44d0-8a91-102cdcd11933",
+    "moved_from": [
+      "786b71e4-4a16-4739-9da7-76402a6df858"
+    ],
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337030324",
+    "article_number": "13500",
+    "barcode_identifier": "921059315609",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-metal?variant=41002960552072"
+      }
+    ]
+  }
 ]

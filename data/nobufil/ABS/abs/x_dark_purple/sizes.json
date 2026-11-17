@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "7b6910dc-206a-4f1d-a5f6-21995d1030df",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461488",
+    "article_number": "ABS-R-405-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-dark-purple"
+      }
+    ]
   }
 ]

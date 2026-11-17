@@ -1,9 +1,12 @@
 [
   {
+    "uuid": "ad1b06f2-bcbb-4c59-80ff-abafd0480419",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629067872",
     "article_number": "ATCF-175BLCK-C0500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +17,12 @@
     ]
   },
   {
+    "uuid": "5c1a769f-3a2f-4f07-841d-8a88942656c0",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720629067865",
     "article_number": "ATCF-175BLCK-01000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,13 @@
     ]
   },
   {
+    "uuid": "1eddfe6b-56b4-4781-97a2-590358a672bd",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629067889",
     "article_number": "ATCF-175BLCK-C1000",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +50,13 @@
     ]
   },
   {
+    "uuid": "689fc652-1e4f-42fd-bb84-a08864285999",
     "filament_weight": 2000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 40,
+    "gtin": "8720629067896",
     "article_number": "ATCF-175BLCK-C2000",
     "discontinued": false,
     "purchase_links": [

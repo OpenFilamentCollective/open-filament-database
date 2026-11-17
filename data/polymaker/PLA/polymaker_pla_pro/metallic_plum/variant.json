@@ -1,0 +1,10 @@
+{
+  "uuid": "f2fc0130-462e-488b-9af6-9aca8c3ffba0",
+  "id": "metallic_plum",
+  "name": "Metallic Plum",
+  "color_hex": "#81417E",
+  "traits": {
+    "imitates_metal": true,
+    "high_flow": true
+  }
+}

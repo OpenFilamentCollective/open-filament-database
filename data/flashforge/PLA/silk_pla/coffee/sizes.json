@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "d0602f85-9042-4c87-a33b-e23782166d3a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://eu.flashforge.com/products/pla-silk?variant=50006228074801"
+      }
+    ]
   }
 ]

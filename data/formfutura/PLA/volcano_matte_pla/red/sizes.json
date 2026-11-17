@@ -1,6 +1,16 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "67ee89bd-0641-44a8-a656-b929a1fb3495",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8719956554704",
+    "article_number": "VPLA-175REDC-00750"
+  },
+  {
+    "uuid": "68f6ebbc-86d1-4b1d-9220-5b47eaaaf483",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720629060170",
+    "article_number": "VPLA-285REDC-00250"
   }
 ]

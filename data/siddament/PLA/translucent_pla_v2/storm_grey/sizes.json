@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "8e9d0a0b-984a-478a-8940-196dd7323bb7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.034",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-storm-grey-pla-v2"
+      }
+    ]
+  }
+]

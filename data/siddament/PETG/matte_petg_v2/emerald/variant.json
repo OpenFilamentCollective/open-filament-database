@@ -1,0 +1,14 @@
+{
+  "uuid": "41cdb7af-b450-49f9-a96c-9cc57e92f55b",
+  "id": "emerald",
+  "name": "Emerald",
+  "color_hex": "#1F8A70",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "3295 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

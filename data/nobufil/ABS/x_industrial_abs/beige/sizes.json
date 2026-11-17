@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "6b78ed0c-4d72-4f37-8866-349d12eb8ad5",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461273",
+    "article_number": "ABS-R-104-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-industrial-beige"
+      }
+    ]
   }
 ]

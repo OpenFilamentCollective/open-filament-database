@@ -1,0 +1,10 @@
+{
+  "uuid": "6242d7c8-b78d-466e-bef9-328ff42ad270",
+  "id": "slate",
+  "name": "Slate",
+  "color_hex": "#51606E",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

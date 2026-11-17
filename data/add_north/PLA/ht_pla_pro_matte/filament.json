@@ -1,11 +1,17 @@
 {
+    "uuid": "2d351b56-8d36-4b60-8c75-6e6a3a85679f",
     "id": "ht_pla_pro_matte",
     "name": "HT-PLA Pro Matte",
     "diameter_tolerance": 0.02,
-    "density": 1.24,
+    "density": 1.4,
     "max_dry_temperature": 50,
+    "min_print_temperature": 205,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 70,
+    "max_bed_temperature": 75,
+    "dry_temperature": 45,
+    "dry_time": 4,
     "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/TDS_htplapromatte_-qP4pe.pdf",
-    "safety_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/MSDS_HTPLA_W-_Rjk.pdf",
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFL99",
@@ -13,6 +19,11 @@
             "profile_name": "addnorth PLA HT-PLA PRO Matte"
         },
         "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "GF_ANHTP",
+            "profile_name": "addnorth PLA HT-PLA PRO Matte"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GF_ANHTP",
             "profile_name": "addnorth PLA HT-PLA PRO Matte"

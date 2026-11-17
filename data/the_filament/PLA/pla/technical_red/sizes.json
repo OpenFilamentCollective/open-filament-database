@@ -1,7 +1,10 @@
 [
   {
+    "uuid": "915c2911-683b-48f4-a164-619049661669",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
     "ean": "5905991405993",
     "article_number": "TF-24046",
     "purchase_links": [
@@ -12,8 +15,13 @@
     ]
   },
   {
+    "uuid": "78815180-6721-48b6-b25c-36222b106906",
+    "moved_from": [
+      "b1175c42-c9f6-44ac-8a54-957d8f411e33"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "plastic",
     "ean": "5905991405122",
     "article_number": "TF-24005",
     "purchase_links": [

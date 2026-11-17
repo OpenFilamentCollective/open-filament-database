@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "3821d8c5-0af7-4693-b60e-c88f715305e4",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924472712",
     "article_number": "HDGL-175STRD-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "961299f8-4e05-411f-9cc7-0d09c4558290",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924472729",
     "article_number": "HDGL-285STRD-00750",
     "discontinued": false,
     "purchase_links": [
@@ -26,5 +30,12 @@
         "url": "https://www.formfutura.com/hdglass"
       }
     ]
+  },
+  {
+    "uuid": "9a287323-910a-4475-96db-e38889a4b0f3",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574295344",
+    "article_number": "HDGL-285STRD-00250"
   }
 ]

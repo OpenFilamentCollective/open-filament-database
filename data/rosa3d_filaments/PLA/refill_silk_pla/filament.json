@@ -1,10 +1,11 @@
 {
+  "uuid": "c26a57a3-0386-4afd-b947-09d530b489ba",
   "id": "refill_silk_pla",
   "name": "ReFill Silk PLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_print_temperature": 195,
+  "max_print_temperature": 235,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60
 }

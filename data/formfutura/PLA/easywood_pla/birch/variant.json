@@ -1,10 +1,10 @@
 {
+  "uuid": "aa9bba00-7aac-4f54-aa20-adf404ad422d",
   "id": "birch",
   "name": "Birch",
   "color_hex": "#C9C6A7",
   "discontinued": false,
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

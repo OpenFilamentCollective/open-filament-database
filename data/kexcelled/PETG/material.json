@@ -1,0 +1,15 @@
+{
+  "uuid": "a6add435-d79d-46ce-8041-638b3f3600e3",
+  "material": "PETG",
+  "material_class": "FFF",
+  "default_max_dry_temperature": 60,
+  "default_slicer_settings": {
+    "bambustudio": {
+      "bed_temp": 70,
+      "first_layer_bed_temp": 70,
+      "first_layer_nozzle_temp": 260,
+      "nozzle_temp": 260,
+      "profile_name": "Kexcelled PETG Rapid"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "38108877-b803-4be5-89f1-0e390b6a1696",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.017",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/why-obi-green-asa-v2"
+      }
+    ]
+  }
+]

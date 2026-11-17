@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "8dbd8eca-a2cb-4e05-8213-210a33472b23",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/khaki-pla-filament"
+      }
+    ]
   }
 ]

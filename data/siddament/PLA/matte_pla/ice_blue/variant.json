@@ -1,0 +1,13 @@
+{
+  "uuid": "3b956074-6d1b-4755-bfe1-63d7f9ba27fd",
+  "id": "ice_blue",
+  "name": "Ice Blue",
+  "color_hex": "#00F3F6",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "311 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

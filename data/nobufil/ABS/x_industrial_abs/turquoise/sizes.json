@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "10396e6b-d082-4061-b911-207033fc6d0d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460979",
+    "article_number": "ABS-R-606-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-industrial-turquoise"
+      }
+    ]
   }
 ]

@@ -1,8 +1,9 @@
 {
-    "id": "alien_green",
-    "name": "Alien Green",
-    "color_hex": "#1A564B",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "2b40a8f1-ace1-4719-ae27-4c4eb12e5204",
+  "id": "alien_green",
+  "name": "Alien Green",
+  "color_hex": "#1A564B",
+  "traits": {
+    "recyclable": true
+  }
 }

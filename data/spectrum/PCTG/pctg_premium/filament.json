@@ -1,10 +1,16 @@
 {
+  "uuid": "2a5de861-11a6-4487-981d-3b1a262beda0",
   "id": "pctg_premium",
   "name": "PCTG Premium",
   "diameter_tolerance": 0.02,
   "density": 1.23,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 100,
+  "min_fan_speed": 75,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pctg.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_msds_spectrum_pctg_premium.pdf"
 }

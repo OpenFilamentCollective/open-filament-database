@@ -1,8 +1,13 @@
 {
+  "uuid": "619dde72-d397-401c-b414-cf35913e5eb5",
   "id": "petg_art_chameleon",
   "name": "PETG Art Chameleon",
   "diameter_tolerance": 0.03,
   "density": 1.23,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2024/12/TDS-PETG-CHAMELEON.pdf",
   "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2024/12/Karta-charakterystyki-msds-PET-G-CHAMELEON-Nebula.pdf"
 }

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "5ce2466e-e708-4ceb-bf21-6dc7d5c4c75a",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847051066",
     "article_number": "PLAE-175GALU-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,13 @@
     ]
   },
   {
+    "uuid": "c47ef13e-9877-4980-96b5-da6a5bb08c2e",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629068411",
     "article_number": "PLAE-175GALU-B1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,12 @@
     ]
   },
   {
+    "uuid": "0c11b3cb-4153-4bfa-a975-9f95d58236e4",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847051608",
     "article_number": "PLAE-175GALU-02300",
     "discontinued": false,
     "purchase_links": [

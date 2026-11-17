@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "68b36c32-c4e5-4b05-b19d-4a380c5148c0",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.032",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-dark-blue-pla-v2"
+      }
+    ]
+  }
+]

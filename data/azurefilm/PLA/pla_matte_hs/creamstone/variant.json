@@ -1,10 +1,12 @@
 {
+  "uuid": "67907e2e-8f84-443a-87e5-94300b3b07ca",
   "id": "creamstone",
   "name": "Creamstone",
   "color_hex": [
     "#D2CAAE"
   ],
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

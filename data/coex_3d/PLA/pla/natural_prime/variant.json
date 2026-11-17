@@ -1,9 +1,9 @@
 {
+  "uuid": "c0093786-6f4e-403e-9a27-6454775893d3",
   "id": "natural_prime",
   "name": "Natural Prime",
   "color_hex": "#DFDFD3",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

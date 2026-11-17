@@ -1,9 +1,9 @@
 {
+  "uuid": "d14107b9-2e31-4513-8f28-022a9924aa0d",
   "id": "light_blue",
   "name": "Light Blue",
   "color_hex": "#99FFFA",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

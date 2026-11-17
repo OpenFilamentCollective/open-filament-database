@@ -1,8 +1,9 @@
 {
+  "uuid": "2594ea52-73af-44e0-afd9-2b03d6e29bdc",
   "id": "cf_pps",
   "name": "CF-PPS",
   "diameter_tolerance": 0.05,
-  "density": 1.45,
+  "density": 1.26,
   "min_print_temperature": 300,
   "max_print_temperature": 340,
   "min_bed_temperature": 120,

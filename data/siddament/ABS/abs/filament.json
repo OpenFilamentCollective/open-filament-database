@@ -1,0 +1,32 @@
+{
+  "uuid": "8de6f4b1-024e-457d-bdf5-a8b25dc2425c",
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.08,
+  "max_dry_temperature": 65,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0685/9168/1815/files/SIDDAMENT_ABS_Datasheet_a8510213-d60b-4d0e-8ae1-48c76183c473.pdf?v=1777571390",
+  "discontinued": true,
+  "slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Siddament ABS (all versions)"
+    },
+    "orcaslicer": {
+      "overrides": {
+        "filament_flow_ratio": 0.92,
+        "filament_max_volumetric_speed": 22
+      },
+      "profile_name": "Siddament ABS (all versions)"
+    },
+    "generic": {
+      "bed_temp": 100,
+      "first_layer_bed_temp": 100,
+      "first_layer_nozzle_temp": 260,
+      "nozzle_temp": 270
+    }
+  }
+}

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "ea5e8414-fe36-4016-82b8-9981687ed78b",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/translucent-midnight-blue-pla"
+      }
+    ]
   }
 ]

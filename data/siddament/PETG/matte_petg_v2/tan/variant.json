@@ -1,0 +1,14 @@
+{
+  "uuid": "5daec9bf-6405-4fdc-87d6-9b9c4d42d7ed",
+  "id": "tan",
+  "name": "Tan",
+  "color_hex": "#A9763F",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "7569 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

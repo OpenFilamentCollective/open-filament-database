@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "55229277-bdea-47fe-abd4-bb832d0ecd57",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460887",
+    "article_number": "ABS-R-701-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-industrial-light-grey"
+      }
+    ]
   }
 ]

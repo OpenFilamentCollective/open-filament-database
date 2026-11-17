@@ -1,0 +1,185 @@
+name: Auto-merge
+
+# Merges data PRs without a maintainer when nothing in them needs a human: new data
+# that the validators and the AI review accept, and changed values a script has
+# proven against the brand's own website. All logic is in ofd/automerge/; locally:
+# `python -m ofd automerge evaluate --pr <N>`.
+#
+# HOW A PR QUALIFIES (the full E1-E22 checklist is in ofd/automerge/eligibility.py and
+# on every PR's `Auto-merge` check)
+#
+#   - additions have the lowest bar: new files anywhere under data/ or stores/ (brands,
+#     materials, filaments, colours, spools, stores, logos) and spool rows appended to
+#     an existing sizes.json qualify as long as the AI review has no 🔴 error on them;
+#   - a changed value with a proof rule (temperatures, drying, fan, flow, enclosure,
+#     datasheets, TD, GTIN, article number) must be proven: the page the AI review
+#     cited for it was re-fetched here: on the brand's own site, about this product,
+#     quote on the page, value in the quote, the right end of any range;
+#   - any other changed value (names, colours, traits, links...) has the same bar as
+#     additions: no 🔴 error from the AI review;
+#   - deletions, renames, removed values and changed ids, uuids or slicer_ids never
+#     auto-merge, nor does sustainability data;
+#   - no proven contradiction, no check finding or flip-flop, every
+#     required check green, brand not claimed (ofd/brand_claims.json), no sustainability
+#     data, no changes requested;
+#   - it stayed eligible at the same commit for an hour. A `hold` label, a push, or
+#     marking the PR as a draft stops the clock.
+#
+# Nothing from a PR is checked out or run: the base branch runs, the PR head is read
+# as git objects, and the merged result is validated with main's own validators.
+#
+# MODES: repo variable OFD_AUTOMERGE = off (default) | shadow | on. Shadow posts the
+# check ("Would auto-merge after ...") and never merges; run it for a few weeks first.
+#
+# TOKEN: the repo bot (vars.OFD_REPO_BOT_APP_ID, secrets.OFD_REPO_BOT_PRIVATE_KEY),
+# which needs Contents, Pull requests, Checks and Issues write and Actions read. It is
+# a bypass actor of the main ruleset, so GitHub won't stop its merges on a red check:
+# the script does instead, re-reading every required check (E16) and validating the
+# merged tree (E19) right before merging at the pinned commit. GITHUB_TOKEN can't be
+# used: its merges don't trigger style_data.yaml, so new entities would get no UUIDs.
+
+on:
+  workflow_run:
+    workflows: [ AI review ]
+    types: [ completed ]
+  pull_request_target:
+    types: [ labeled, unlabeled, converted_to_draft, ready_for_review ]
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Pull request to evaluate; leave empty to run the merge sweep.'
+        required: false
+      dry_run:
+        description: 'Sweep only: report what would merge, change nothing.'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    name: Evaluate
+    # Without the repo bot's credentials there is nothing to post with: skip, not fail.
+    if: >-
+      (vars.OFD_AUTOMERGE == 'shadow' || vars.OFD_AUTOMERGE == 'on') &&
+      vars.OFD_REPO_BOT_APP_ID != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    # Not for the sweep: schedule, or a dispatch without a PR number.
+    # (Filtered in the first step, so the job-level `if` stays readable.)
+    concurrency:
+      group: "auto-merge-eval-${{ github.event.pull_request.number || inputs.pr || github.event.workflow_run.id }}"
+      cancel-in-progress: true
+    steps:
+      - name: Which pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          PR_EVENT: ${{ github.event.pull_request.number }}
+          PR_INPUT: ${{ inputs.pr }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          stop() { echo "$1"; echo "proceed=false" >> "$GITHUB_OUTPUT"; exit 0; }
+          case "$EVENT" in
+            schedule) stop "Sweep run." ;;
+            workflow_dispatch) [ -n "$PR_INPUT" ] || stop "Sweep run."; pr="$PR_INPUT" ;;
+            pull_request_target) pr="$PR_EVENT" ;;
+            workflow_run)
+              # pull_request_target runs carry no PR number; the review's artifact does.
+              pr=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/artifacts" \
+                     --jq '[.artifacts[].name | select(startswith("ai-review-"))][0] // "" | ltrimstr("ai-review-")')
+              [ -n "$pr" ] || stop "That AI review run has no review artifact." ;;
+          esac
+          printf '%s' "$pr" | grep -Eq '^[0-9]+$' || stop "No PR number."
+          { echo "proceed=true"; echo "pr=$pr"; } >> "$GITHUB_OUTPUT"
+
+      - name: App token
+        id: app
+        if: steps.pr.outputs.proceed == 'true'
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          private-key: ${{ secrets.OFD_REPO_BOT_PRIVATE_KEY }}
+          permission-checks: write
+          permission-pull-requests: read
+          permission-contents: read
+          permission-actions: read
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.pr.outputs.proceed == 'true'
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        if: steps.pr.outputs.proceed == 'true'
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        if: steps.pr.outputs.proceed == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Evaluate and record
+        if: steps.pr.outputs.proceed == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          PR: ${{ steps.pr.outputs.pr }}
+          OFD_AUTOMERGE: ${{ vars.OFD_AUTOMERGE }}
+          OFD_AUTOMERGE_APP_ID: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          OFD_AUTOMERGE_BLOCKED_USERS: ${{ vars.OFD_AUTOMERGE_BLOCKED_USERS }}
+        run: python -m ofd automerge evaluate --pr "$PR" --post
+
+  sweep:
+    name: Merge sweep
+    if: >-
+      (vars.OFD_AUTOMERGE == 'shadow' || vars.OFD_AUTOMERGE == 'on') &&
+      vars.OFD_REPO_BOT_APP_ID != '' &&
+      (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.pr == ''))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    concurrency:
+      group: auto-merge-sweep
+      cancel-in-progress: false
+    steps:
+      - name: App token
+        id: app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          private-key: ${{ secrets.OFD_REPO_BOT_PRIVATE_KEY }}
+          permission-checks: write
+          permission-contents: write
+          permission-pull-requests: write
+          permission-issues: write
+          permission-actions: read
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Sweep
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          OFD_AUTOMERGE: ${{ vars.OFD_AUTOMERGE }}
+          OFD_AUTOMERGE_APP_ID: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          OFD_AUTOMERGE_BLOCKED_USERS: ${{ vars.OFD_AUTOMERGE_BLOCKED_USERS }}
+        run: |
+          flags=()
+          [ "$DRY_RUN" = true ] && flags+=(--dry-run)
+          python -m ofd automerge sweep "${flags[@]}" | tee -a "$GITHUB_STEP_SUMMARY"

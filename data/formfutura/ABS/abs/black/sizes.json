@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "83ebdab8-b59a-41f3-a05e-a98ee2f1a1a0",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
@@ -14,10 +15,12 @@
     ]
   },
   {
+    "uuid": "797dcd14-20ba-44a8-a452-3d0de163b616",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8719956555350",
     "article_number": "APRO-175BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -26,5 +29,12 @@
         "url": "https://www.formfutura.com/abspro"
       }
     ]
+  },
+  {
+    "uuid": "2c8699e2-0d4e-42ea-8039-2c733bd91ac5",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574297799",
+    "article_number": "APRO-285BLCK-00250"
   }
 ]

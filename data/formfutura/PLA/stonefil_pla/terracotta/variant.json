@@ -1,9 +1,9 @@
 {
+  "uuid": "8ea6fd6d-9dd0-40c7-9d60-8b7a2a99ac46",
   "id": "terracotta",
   "name": "Terracotta",
   "color_hex": "#CD5A2E",
   "traits": {
-    "industrially_compostable": true,
     "contains_stone": true
   }
 }

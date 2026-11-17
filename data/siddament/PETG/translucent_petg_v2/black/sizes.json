@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ceb6ab6b-2fd1-4330-b594-c7a96c32fe3d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.031",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-black-petg-v2"
+      }
+    ]
+  }
+]

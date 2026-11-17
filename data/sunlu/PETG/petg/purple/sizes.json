@@ -1,6 +1,14 @@
 [
   {
+    "uuid": "f9a299a8-be34-432a-9979-e8a89d716b73",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6933582309831",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/petg-purple-3"
+      }
+    ]
   }
 ]

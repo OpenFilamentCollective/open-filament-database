@@ -1,8 +1,9 @@
 {
-    "id": "3dstoredk",
-    "name": "3DStore.dk",
-    "storefront_url": "https://3dstore.dk/",
-    "logo": "logo.png",
-    "ships_from": "DK",
-    "ships_to": []
+  "uuid": "e898c8fe-92f6-43b7-a866-0f924409a9c6",
+  "id": "3dstoredk",
+  "name": "3DStore.dk",
+  "storefront_url": "https://3dstore.dk/",
+  "logo": "logo.png",
+  "ships_from": "DK",
+  "ships_to": []
 }

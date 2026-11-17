@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "35db927b-264a-4ff9-bf74-450019e3d2cd",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675377"
+    "gtin": "8594173675377",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-pistachio-green-1kg-nfc/"
+      }
+    ]
   }
 ]

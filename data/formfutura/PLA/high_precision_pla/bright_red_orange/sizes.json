@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "bab2eec7-36e0-4c42-ab0c-a623eafaf192",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8720629061719",
+    "article_number": "HPPL-175RDOR-00750"
   }
 ]

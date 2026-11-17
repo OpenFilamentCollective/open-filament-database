@@ -1,8 +1,18 @@
 {
+    "uuid": "faa650cd-45bc-490f-a93e-f3deed007d4b",
     "id": "silk+",
     "name": "PLA Silk+",
     "diameter_tolerance": 0.03,
     "density": 1.27,
+    "min_print_temperature": 210,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 45,
+    "max_volumetric_speed": 12,
+    "min_fan_speed": 100,
+    "max_fan_speed": 100,
+    "dry_temperature": 55,
+    "dry_time": 8,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Silk__Technical_Data_Sheet.pdf?v=1733472353",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Silk_MSDS.pdf",
     "slicer_settings": {
@@ -12,11 +22,21 @@
             "profile_name": "Bambu PLA Silk+"
         },
         "orcaslicer": {
+            "generic_id": "OFesA6rF",
+            "id": "OFUanySo",
+            "profile_name": "Bambu PLA Silk+"
+        },
+        "elegooslicer": {
             "generic_id": "GFL96",
             "id": "GFA06",
             "profile_name": "Bambu PLA Silk+"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFL96",
+            "id": "GFA06",
+            "profile_name": "Bambu PLA Silk+"
+        },
+        "anycubicslicer": {
             "generic_id": "GFL96",
             "id": "GFA06",
             "profile_name": "Bambu PLA Silk+"

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "7730b0b8-fba8-4685-980d-2a52fd11e4d2",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/1-kg-neon-orange-uv-reactive-pla-filament"
+      }
+    ]
   }
 ]

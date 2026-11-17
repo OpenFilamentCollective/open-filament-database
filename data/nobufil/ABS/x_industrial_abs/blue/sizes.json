@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "b840bd9a-12f8-4b48-8872-4993a57c422d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460917",
+    "article_number": "ABS-R-502-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-industrial-blue"
+      }
+    ]
   }
 ]

@@ -1,0 +1,31 @@
+{
+  "uuid": "8d746415-10ba-4e80-81c5-c89de19401b6",
+  "id": "translucent_pla_v2",
+  "name": "Translucent PLA V2",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "max_dry_temperature": 45,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "discontinued": false,
+  "slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Siddament PLA Normal - Translucent"
+    },
+    "orcaslicer": {
+      "overrides": {
+        "filament_flow_ratio": 0.98,
+        "filament_max_volumetric_speed": 22
+      },
+      "profile_name": "Siddament PLA Normal - Translucent"
+    },
+    "generic": {
+      "bed_temp": 60,
+      "first_layer_bed_temp": 60,
+      "first_layer_nozzle_temp": 225,
+      "nozzle_temp": 225
+    }
+  }
+}

@@ -1,6 +1,12 @@
 {
-    "id": "ht_pla",
-    "name": "HT-PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "365b4b51-d17c-4f9f-bb20-df1394a1f06f",
+  "id": "ht_pla",
+  "name": "HT-PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.2,
+  "min_print_temperature": 195,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 50,
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2025/09/en_tds_the_filament_ht_pla.pdf"
 }

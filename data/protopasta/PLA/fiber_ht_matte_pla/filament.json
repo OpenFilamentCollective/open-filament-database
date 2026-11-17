@@ -1,10 +1,12 @@
 {
+  "uuid": "98b0a0e4-1e3f-4cc1-a092-2b49fea2afe9",
   "id": "fiber_ht_matte_pla",
   "name": "Fiber HT Matte PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "density": 1.14,
+  "min_print_temperature": 200,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 55,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0717/9095/files/TDS__Matte_Fiber_HTPLA_1.0.0.pdf"
 }

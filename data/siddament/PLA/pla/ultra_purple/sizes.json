@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "11e88289-0c47-44bb-be7b-61736856173e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.053",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/ultra-purple-pla"
+      }
+    ]
+  }
+]

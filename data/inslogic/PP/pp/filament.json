@@ -1,10 +1,12 @@
 {
+  "uuid": "f7694a64-8cab-4ef2-9db9-7be550bd4907",
   "id": "pp",
   "name": "PP",
-  "diameter_tolerance": 0.02,
-  "density": 0.91,
+  "diameter_tolerance": 0.03,
+  "density": 0.9,
   "min_print_temperature": 210,
   "max_print_temperature": 230,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_PP_Polypropylene_Filament_Technical_Data_Sheet_TDS.pdf"
 }

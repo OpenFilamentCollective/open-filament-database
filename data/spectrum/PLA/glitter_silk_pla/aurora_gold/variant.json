@@ -1,9 +1,9 @@
 {
+  "uuid": "2c129edb-aee5-4811-887f-f588b508be6a",
   "id": "aurora_gold",
   "name": "Aurora Gold",
   "color_hex": "#686751",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "glitter": true
   }

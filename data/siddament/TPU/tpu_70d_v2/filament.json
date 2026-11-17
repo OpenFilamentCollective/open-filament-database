@@ -1,0 +1,13 @@
+{
+  "uuid": "864632aa-4344-46f6-9b59-045da991ec1c",
+  "id": "tpu_70d_v2",
+  "name": "TPU 70D V2",
+  "diameter_tolerance": 0.02,
+  "density": 1.09,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "discontinued": false
+}

@@ -1,4 +1,5 @@
 {
+  "uuid": "0d348685-269c-4de9-a67b-2d6f23cb35a5",
   "id": "apollox_flame_retardant",
   "name": "ASA ApolloX Flame Retardant",
   "diameter_tolerance": 0.02,
@@ -7,7 +8,7 @@
   "max_print_temperature": 280,
   "min_bed_temperature": 90,
   "max_bed_temperature": 110,
-  "min_nozzle_diameter": 0.2,
+  "min_nozzle_diameter": 0.15,
   "data_sheet_url": "https://www.formfutura.com/web/content/256472?download=true",
   "safety_sheet_url": "https://www.formfutura.com/web/content/256471?download=true",
   "discontinued": false

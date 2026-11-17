@@ -1,10 +1,11 @@
 {
-    "id": "purple",
-    "name": "Purple",
-    "color_hex": [
-        "#a54dcf"
-    ],
-    "traits": {
-        "matte": true
-    }
+  "uuid": "8899c8ce-bbc3-442f-94d4-fd36fb55320d",
+  "id": "purple",
+  "name": "Purple",
+  "color_hex": [
+    "#a54dcf"
+  ],
+  "traits": {
+    "matte": true
+  }
 }

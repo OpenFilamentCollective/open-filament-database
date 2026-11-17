@@ -1,11 +1,25 @@
 [
   {
+    "uuid": "d5c01ca6-328b-4df5-a861-8349e43dcc21",
+    "moved_from": [
+      "d1e7f626-a94f-4adb-9767-8b0d176abf70"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-starlight?"
+        "url": "https://us.polymaker.com/products/panchroma-starlight"
+      },
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/starlight-pla?variant=43631529099321"
       }
     ]
   }

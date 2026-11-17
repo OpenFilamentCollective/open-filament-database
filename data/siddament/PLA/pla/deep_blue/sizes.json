@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a1de14dd-e06d-4f4d-b062-6768380f3566",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.027",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/deep-blue-pla"
+      }
+    ]
+  }
+]

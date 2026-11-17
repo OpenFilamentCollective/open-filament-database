@@ -1,9 +1,9 @@
 {
+  "uuid": "c466adfd-2925-43f5-b924-b77462d0423a",
   "id": "volcano_grey",
   "name": "Volcano Grey",
   "color_hex": "#3F4647",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "glitter": true
   }

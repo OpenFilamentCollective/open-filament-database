@@ -1,10 +1,11 @@
 {
+  "uuid": "84834005-7039-49bf-9165-3719e19e7313",
   "id": "5kevlar",
   "name": "ASA 5Kevlar",
   "diameter_tolerance": 0.02,
   "density": 1.07,
-  "min_print_temperature": 235,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
+  "min_print_temperature": 250,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 70,
   "max_bed_temperature": 110
 }

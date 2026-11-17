@@ -1,8 +1,9 @@
 {
-    "id": "copper",
-    "name": "Copper",
-    "color_hex": "#8A4730",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "8b80bd27-5064-4362-a0df-3423eb90bc5b",
+  "id": "copper",
+  "name": "Copper",
+  "color_hex": "#8A4730",
+  "traits": {
+    "recyclable": true
+  }
 }

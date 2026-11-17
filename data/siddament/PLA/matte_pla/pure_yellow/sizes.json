@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "accbca95-b4ab-4795-9e02-996c7d8db8ee",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "5.064",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pure-yellow-pla"
+      }
+    ]
+  }
+]

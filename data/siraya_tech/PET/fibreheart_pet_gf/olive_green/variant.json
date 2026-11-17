@@ -1,0 +1,10 @@
+{
+  "uuid": "88449bf2-4f9d-479d-9d45-6d37501ce5c9",
+  "id": "olive_green",
+  "name": "Olive Green",
+  "color_hex": "#6B7A3A",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

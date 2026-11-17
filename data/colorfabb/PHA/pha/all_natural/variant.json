@@ -1,9 +1,22 @@
 {
+  "uuid": "fd6a4cb9-3500-465f-916a-0a499cf41778",
   "id": "all_natural",
   "name": "all Natural",
   "color_hex": "#F2EFE9",
+  "sustainability": {
+    "bio_based_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "method": "declared",
+      "source_type": "primary",
+      "source_url": "https://colorfabb.com/allpha-natural",
+      "source_quote": "AllPHA is 100% biobased",
+      "retrieved": "2026-11-03"
+    }
+  },
   "traits": {
+    "without_pigments": true,
     "home_compostable": true,
-    "without_pigments": true
+    "bio_based": true
   }
 }

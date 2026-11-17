@@ -1,0 +1,17 @@
+{
+  "uuid": "535e5d13-bb1f-4190-835b-3f9f5c5dad61",
+  "id": "sunny_orange",
+  "name": "Sunny Orange",
+  "color_hex": "#FF8C54",
+  "transmission_distance": 7,
+  "discontinued": false,
+  "color_standards": {
+    "ral": "2003",
+    "ncs": "S 0570-Y60R",
+    "pantone": "1575 U"
+  },
+  "traits": {
+    "matte": true,
+    "high_flow": true
+  }
+}

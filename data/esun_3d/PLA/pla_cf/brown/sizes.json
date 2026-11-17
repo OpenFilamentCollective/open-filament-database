@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "d4bf24bd-7270-47cb-b83a-dfb7f0e77537",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204706",
+    "article_number": "PLA-CF175C1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-cf"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-cf-brown"
       }
     ]
   }

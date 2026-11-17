@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "5c86a3fb-c496-44b5-9b19-403c2ab64300",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460665",
+    "article_number": "ABS-R-711-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-stainless-steel"
+      }
+    ]
   }
 ]

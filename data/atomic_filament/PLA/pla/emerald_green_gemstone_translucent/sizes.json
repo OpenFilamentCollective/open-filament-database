@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "b5c4eda5-e796-4514-ac07-d6c232aa4486",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/emerald-green-gemstone-translucent-pla"
+      }
+    ]
   }
 ]

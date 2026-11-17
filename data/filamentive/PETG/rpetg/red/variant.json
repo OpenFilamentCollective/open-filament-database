@@ -1,0 +1,11 @@
+{
+  "uuid": "0bb6e531-a7bd-4477-a4c5-cf6e63c66cea",
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#CC000D",
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
+}

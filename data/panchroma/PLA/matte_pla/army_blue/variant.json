@@ -1,5 +1,13 @@
 {
-    "id": "army_blue",
-    "name": "Army Blue",
-    "color_hex": "#062B4D"
+  "uuid": "0ce546c9-2198-4a26-83b7-d691f4421914",
+  "moved_from": [
+    "1d97cba4-b1fb-41f7-89c2-d2ff4afe0058"
+  ],
+  "id": "army_blue",
+  "name": "Army Blue",
+  "color_hex": "#062B4D",
+  "transmission_distance": 0.1,
+  "traits": {
+    "matte": true
+  }
 }

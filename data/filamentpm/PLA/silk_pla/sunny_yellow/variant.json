@@ -1,9 +1,9 @@
 {
+  "uuid": "b9ed2009-24f4-4899-8acd-9121a46c4c35",
   "id": "sunny_yellow",
   "name": "Sunny Yellow",
   "color_hex": "#EBFF57",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

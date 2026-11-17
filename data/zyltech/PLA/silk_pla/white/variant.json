@@ -1,9 +1,9 @@
 {
+  "uuid": "7f210e7e-06eb-43de-8257-8f7642789c70",
   "id": "white",
   "name": "White New Made In USA Premium Composite",
   "color_hex": "#FFFFFF",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

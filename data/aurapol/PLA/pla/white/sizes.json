@@ -1,6 +1,35 @@
 [
   {
+    "uuid": "f1481fa2-6060-461e-b226-209252f32463",
     "filament_weight": 1000,
     "diameter": 1.75
+  },
+  {
+    "uuid": "adc92d99-81a4-4e31-9d0d-5d6d78fb5acd",
+    "filament_weight": 2500,
+    "diameter": 1.75,
+    "gtin": "731093606625",
+    "article_number": "PLA606625"
+  },
+  {
+    "uuid": "8cd97c9c-e0b0-4cc4-8d6c-32728aae5b43",
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "gtin": "0739988436654",
+    "article_number": "PLA436654"
+  },
+  {
+    "uuid": "8468e328-a3d2-4ca2-855a-72695f7380c8",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "0739988436487",
+    "article_number": "PLA436487"
+  },
+  {
+    "uuid": "5cb8ce05-b55f-4933-a940-fc84d5b4f4b3",
+    "filament_weight": 2500,
+    "diameter": 2.85,
+    "gtin": "0739988436494",
+    "article_number": "PLA436494"
   }
 ]

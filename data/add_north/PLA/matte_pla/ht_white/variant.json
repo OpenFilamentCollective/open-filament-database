@@ -1,10 +1,10 @@
 {
+  "uuid": "77119f2d-36be-4c0c-a330-4062e9860ce5",
   "id": "ht_white",
   "name": "HT- White",
   "color_hex": "#FFFFFF",
   "traits": {
     "matte": true,
-    "industrially_compostable": true,
     "high_temperature": true
   }
 }

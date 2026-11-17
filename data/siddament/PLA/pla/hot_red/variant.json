@@ -1,0 +1,10 @@
+{
+  "uuid": "0c1b9c18-8de8-404e-8767-79ea7ed0c8b1",
+  "id": "hot_red",
+  "name": "Hot Red",
+  "color_hex": "#FE2B02",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "172 C"
+  }
+}

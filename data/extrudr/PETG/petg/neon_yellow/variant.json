@@ -1,4 +1,5 @@
 {
+  "uuid": "f208210a-a36e-4d05-93ac-eb4779aef860",
   "id": "neon_yellow",
   "name": "Neon Yellow",
   "color_hex": "#FFFB00",
@@ -6,6 +7,7 @@
     "ral": "1026"
   },
   "traits": {
-    "neon": true
+    "neon": true,
+    "recyclable": true
   }
 }

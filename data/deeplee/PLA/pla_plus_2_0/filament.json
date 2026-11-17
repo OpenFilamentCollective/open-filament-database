@@ -1,0 +1,11 @@
+{
+  "uuid": "90996b1e-792b-46cf-bf49-79a0b0499a24",
+  "id": "pla_plus_2_0",
+  "name": "PLA+ 2.0",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 45
+}

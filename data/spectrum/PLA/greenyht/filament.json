@@ -1,11 +1,19 @@
 {
-    "id": "greenyht",
-    "name": "PLA GreenyHT",
-    "diameter_tolerance": 0.02,
-    "density": 1.54,
-    "slicer_settings": {
-        "prusaslicer": {
-            "profile_name": "Spectrum GreenyHT"
-        }
+  "uuid": "7ffded7e-18e4-477c-84ec-42fd95fc8677",
+  "id": "greenyht",
+  "name": "PLA GreenyHT",
+  "diameter_tolerance": 0.02,
+  "density": 1.54,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/10/en_tds_spectrum_greenyht.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/10/en_msds_spectrum_greenyht.pdf",
+  "slicer_settings": {
+    "prusaslicer": {
+      "profile_name": "Spectrum GreenyHT"
     }
+  }
 }

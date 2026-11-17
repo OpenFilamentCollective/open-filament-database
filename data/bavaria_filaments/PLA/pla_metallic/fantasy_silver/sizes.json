@@ -1,0 +1,25 @@
+[
+  {
+    "uuid": "81af5cbb-967b-4a95-841a-01e5f21a3629",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/metallic-pla-filament-fur-3d-drucker?variant=56386216493439"
+      }
+    ]
+  },
+  {
+    "uuid": "c118de61-8aba-465c-b482-faf3621359df",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/metallic-pla-filament-fur-3d-drucker?variant=56826027803007"
+      }
+    ]
+  }
+]

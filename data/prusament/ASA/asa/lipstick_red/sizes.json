@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "56801e58-3447-484d-a0a9-9770194e6c03",
     "filament_weight": 850,
     "diameter": 1.75,
     "purchase_links": [
@@ -10,8 +11,15 @@
     ]
   },
   {
+    "uuid": "b12a005b-de60-4393-9812-530af6efb13a",
     "filament_weight": 800,
     "diameter": 1.75,
-    "gtin": "8594173675698"
+    "gtin": "8594173675698",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-asa-lipstick-red-800g-nfc/"
+      }
+    ]
   }
 ]

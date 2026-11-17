@@ -1,10 +1,16 @@
 {
+  "uuid": "cc1f1040-d70a-4012-bf7b-2fae09775d68",
   "id": "flax_pla",
   "name": "Flax PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "density": 1.45,
+  "min_print_temperature": 180,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 20,
+  "max_bed_temperature": 60,
+  "min_fan_speed": 30,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/flax-TDS-en.pdf",
+  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/flax-MSDS-en.pdf"
 }

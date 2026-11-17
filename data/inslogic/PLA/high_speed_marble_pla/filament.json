@@ -1,10 +1,12 @@
 {
+  "uuid": "b9a93abf-70a0-4eb2-a6a5-9749b99e0014",
   "id": "high_speed_marble_pla",
   "name": "High Speed Marble PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.26,
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
+  "max_print_temperature": 260,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_High_Speed_Marble_PLA_Filament_Technical_Data_Sheet_TDS.pdf"
 }

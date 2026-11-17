@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "e01c6fac-0fe7-443b-a518-c4194828baf9",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461082",
+    "article_number": "PCTG-R-203-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/pctg-industrial-orange"
+      }
+    ]
   }
 ]

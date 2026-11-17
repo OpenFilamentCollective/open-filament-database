@@ -1,8 +1,10 @@
 [
   {
+    "uuid": "ed180008-b713-4d70-8bf9-f520ff42f8b1",
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "ean": "6975337032885",
+    "article_number": "40100",
     "purchase_links": [
       {
         "store_id": "bblstore",
@@ -11,14 +13,21 @@
     ]
   },
   {
+    "uuid": "2d5b80eb-41c1-4236-923a-70569c9e8cf1",
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "spool_refill": true,
-    "ean": "6975337032885",
+    "container_material": "refill",
+    "gtin": "6975337030348",
+    "article_number": "40100",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/asa-abs/products/abs-filament?variant=40475105493128"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/abs-white-10"
       }
     ]
   }

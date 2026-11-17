@@ -1,6 +1,12 @@
 {
-    "id": "tpu95a",
-    "name": "TPU95A",
-    "diameter_tolerance": 0.02,
-    "density": 1.07
+  "uuid": "cefa58b0-830a-4fbb-b303-9e4478621a96",
+  "id": "tpu95a",
+  "name": "TPU95A",
+  "diameter_tolerance": 0.02,
+  "density": 1.21,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/e8b9c06a-4b93-46cb-9532-d9deb185a7c8.pdf?filename=TDS"
 }

@@ -1,9 +1,9 @@
 {
+  "uuid": "d96d49a9-fd96-4440-bbf6-66ddf3f1d8da",
   "id": "metallic_finish_gray",
   "name": "Metallic Finish Gray",
   "color_hex": "#ACB1BA",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "imitates_metal": true
   }

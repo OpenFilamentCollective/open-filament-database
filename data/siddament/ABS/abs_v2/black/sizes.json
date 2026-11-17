@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "08dffae3-6572-4770-88c5-9bb704fac695",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.022",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/black-abs-v2"
+      }
+    ]
+  }
+]

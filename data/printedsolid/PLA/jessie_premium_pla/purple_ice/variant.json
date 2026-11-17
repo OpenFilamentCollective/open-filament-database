@@ -1,9 +1,9 @@
 {
+  "uuid": "c8703d36-2a1c-4a62-a2cc-3f819b24fbe3",
   "id": "purple_ice",
   "name": "Purple Ice",
   "color_hex": "#8846AE",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

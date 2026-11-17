@@ -1,10 +1,12 @@
 {
+  "uuid": "def26d8a-1434-4c66-912e-21dda35693bb",
   "id": "galaxy_petg",
   "name": "Galaxy PETG",
-  "diameter_tolerance": 0.02,
-  "density": 1.27,
+  "diameter_tolerance": 0.05,
+  "density": 1.23,
   "min_print_temperature": 220,
   "max_print_temperature": 250,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://devildesign.com/download/PET-G_-_product_card.pdf"
 }

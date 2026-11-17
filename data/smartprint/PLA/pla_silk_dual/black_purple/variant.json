@@ -1,8 +1,12 @@
 {
+  "uuid": "80dafe95-a779-4b8b-b39e-b45f5e31b0a4",
   "id": "black_purple",
   "name": "Black Purple",
   "color_hex": [
     "#000000",
     "#800080"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

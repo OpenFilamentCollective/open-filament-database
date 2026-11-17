@@ -1,12 +1,13 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/silk-pla-filament?variant=45219527131325"
-            }
-        ]
-    }
+  {
+    "uuid": "da583e38-0049-4eeb-8ccc-aab386ee97d8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/silk-pla-filament?variant=45219527131325"
+      }
+    ]
+  }
 ]

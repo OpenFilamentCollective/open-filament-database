@@ -1,10 +1,17 @@
 {
+  "uuid": "0eb7ced3-98e7-4d49-82c8-4b53f1a607b0",
   "id": "flex_semisoft_tpu",
   "name": "FLEX Semisoft TPU",
   "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "density": 1.18,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 90,
+  "max_volumetric_speed": 2.8,
+  "min_fan_speed": 0,
+  "max_fan_speed": 30,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/flex-semisoft-TDS-en.pdf",
+  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/flex-semisoft-MSDS-en.pdf"
 }

@@ -1,8 +1,18 @@
 {
+    "uuid": "efc5b62f-748a-4f43-ad0a-ad2528b7fafa",
     "id": "marble",
     "name": "PLA Marble",
     "diameter_tolerance": 0.03,
     "density": 1.22,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 45,
+    "max_volumetric_speed": 12,
+    "min_fan_speed": 100,
+    "max_fan_speed": 100,
+    "dry_temperature": 55,
+    "dry_time": 8,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0645/5876/0155/files/Bambu_PLA_Marble_Technical_Data_Sheet.pdf",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Marble_MSDS.pdf",
     "slicer_settings": {
@@ -12,11 +22,21 @@
             "profile_name": "Bambu PLA Marble"
         },
         "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OF9OlTWH",
+            "profile_name": "Bambu PLA Marble"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GFA07",
             "profile_name": "Bambu PLA Marble"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFA07",
+            "profile_name": "Bambu PLA Marble"
+        },
+        "anycubicslicer": {
             "generic_id": "GFL99",
             "id": "GFA07",
             "profile_name": "Bambu PLA Marble"

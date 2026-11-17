@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PLA%20Premium%20Silk/PLA%20Premium%20Silk%20-%201.75mm%20-%20750g%20-%20Red"
-            }
-        ]
-    }
+  {
+    "uuid": "0c775207-484a-45b8-9f54-50891bc7b0e6",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "cb4227a7-8813-4259-948f-d7e324991d72",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182904110",
+    "article_number": "ANPS14RED",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PLA%20Premium%20Silk/PLA%20Premium%20Silk%20-%201.75mm%20-%201000g%20-%20Red"
+      }
+    ]
+  }
 ]

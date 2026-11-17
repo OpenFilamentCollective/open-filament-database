@@ -1,0 +1,11 @@
+{
+  "uuid": "5426c94e-e64a-427e-8d28-d835d8924b0f",
+  "id": "4d_lab",
+  "name": "4D-Lab",
+  "storefront_url": "https://4dlab.co/",
+  "logo": "logo.png",
+  "ships_from": "CO",
+  "ships_to": [
+    "CO"
+  ]
+}

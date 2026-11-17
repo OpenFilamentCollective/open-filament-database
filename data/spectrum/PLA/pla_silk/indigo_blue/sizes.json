@@ -1,7 +1,10 @@
 [
   {
+    "uuid": "1bf16ae9-2c05-453f-a636-fdd21a020242",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
     "ean": "5905991403814",
     "article_number": "81314",
     "purchase_links": [
@@ -12,6 +15,7 @@
     ]
   },
   {
+    "uuid": "5b2187c4-df87-44f9-8799-67c6084ba44c",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5903175652218",
@@ -24,10 +28,9 @@
     ]
   },
   {
+    "uuid": "061fc2e3-75ff-453c-8a2a-15c9b32ed23f",
     "filament_weight": 250,
     "diameter": 1.75,
-    "ean": "5903175655462",
-    "article_number": "80750",
     "purchase_links": [
       {
         "store_id": "spectrum",

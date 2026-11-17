@@ -1,5 +1,9 @@
 {
-    "id": "basalt_grey",
-    "name": "Basalt Grey",
-    "color_hex": "#505A5C"
+  "uuid": "f6835903-df40-4ae5-a04b-633cd1f70d8c",
+  "moved_from": [
+    "a637d94f-81a0-407a-8a47-3461579dfbca"
+  ],
+  "id": "basalt_grey",
+  "name": "Basalt Grey",
+  "color_hex": "#505A5C"
 }

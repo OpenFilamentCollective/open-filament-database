@@ -1,10 +1,13 @@
 {
+  "uuid": "ca1116e0-2034-4442-91bb-dff530e2efe5",
   "id": "r_algae_pigment",
   "name": "r Algae Pigment",
   "color_hex": "#674B42",
+  "sustainability": {
+    "carbon_footprints": []
+  },
   "traits": {
     "recycled": true,
-    "industrially_compostable": true,
     "contains_algae": true
   }
 }

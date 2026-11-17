@@ -1,0 +1,12 @@
+{
+  "uuid": "6e1f740e-2d8f-4883-89f3-b9a30be9f84c",
+  "id": "shimmer_pla",
+  "name": "Shimmer PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "discontinued": false
+}

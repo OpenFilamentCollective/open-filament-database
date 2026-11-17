@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "df5862ab-9438-4404-a2ec-1ba93f905211",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173676114"
+    "gtin": "8594173676114",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-magnetite-40-grey-1kg-nfc/"
+      }
+    ]
   }
 ]

@@ -1,10 +1,12 @@
 {
+  "uuid": "22a07cdc-d3ea-4123-9d0b-0732aa632193",
   "id": "wearx_wear_resistant_nylon_filament_pa6",
   "name": "Wearx Wear Resistant Nylon Filament PA6",
   "diameter_tolerance": 0.02,
-  "density": 1.14,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
+  "density": 1.18,
+  "min_print_temperature": 260,
+  "max_print_temperature": 275,
   "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 95,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/wearx_tds_FW_PA6_Copolymer_v1.0.pdf?v=1728481558"
 }

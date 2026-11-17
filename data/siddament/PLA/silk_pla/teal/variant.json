@@ -1,0 +1,13 @@
+{
+  "uuid": "947e3316-ae24-4a16-9db3-360a36d97340",
+  "id": "teal",
+  "name": "Teal",
+  "color_hex": "#009FA8",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "320 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

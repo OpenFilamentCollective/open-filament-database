@@ -1,8 +1,10 @@
 {
+  "uuid": "45d90785-573c-48c3-8cdd-4315eea7640a",
   "id": "neon_green",
   "name": "Neon Green",
   "color_hex": "#70FA00",
   "traits": {
-    "neon": true
+    "neon": true,
+    "high_flow": true
   }
 }

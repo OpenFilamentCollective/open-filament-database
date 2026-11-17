@@ -1,6 +1,12 @@
 {
-    "id": "high_speed_abs",
-    "name": "High Speed ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "21f2f47b-7997-4681-a24f-d8fdb5ded46e",
+  "id": "high_speed_abs",
+  "name": "High Speed ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.046,
+  "min_print_temperature": 260,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260416/ef443c43-b15b-4242-8884-dcce385e8f02.pdf?filename=TDS"
 }

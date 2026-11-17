@@ -1,4 +1,5 @@
 {
+  "uuid": "74b3bfd5-68f2-4ab7-bedc-4df4b96605e2",
   "id": "flex_medium_tpu",
   "name": "FLEX Medium TPU",
   "diameter_tolerance": 0.02,
@@ -6,5 +7,11 @@
   "min_print_temperature": 210,
   "max_print_temperature": 240,
   "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 60,
+  "max_volumetric_speed": 3.2,
+  "min_fan_speed": 0,
+  "max_fan_speed": 30,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/flex-medium-TDS-en.pdf",
+  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/flex-medium-MSDS-en.pdf"
 }

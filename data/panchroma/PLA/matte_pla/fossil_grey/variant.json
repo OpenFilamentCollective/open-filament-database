@@ -1,5 +1,13 @@
 {
-    "id": "fossil_grey",
-    "name": "Fossil Grey",
-    "color_hex": "#6F727E"
+  "uuid": "be28ea42-f4cb-4395-9603-0b11006872b1",
+  "moved_from": [
+    "0c5bb403-ef8d-480e-a176-b4e654c0834e"
+  ],
+  "id": "fossil_grey",
+  "name": "Fossil Grey",
+  "color_hex": "#6F727E",
+  "transmission_distance": 0.4,
+  "traits": {
+    "matte": true
+  }
 }

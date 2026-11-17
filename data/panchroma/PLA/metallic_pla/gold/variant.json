@@ -1,5 +1,13 @@
 {
+  "uuid": "1a85c105-212a-4aa3-95b9-35bffc60ec2c",
+  "moved_from": [
+    "fc431cbe-6c29-4d7b-a3dc-d63b2020d45a"
+  ],
   "id": "gold",
   "name": "Gold",
-  "color_hex": "#cd7a12"
+  "color_hex": "#cd7a12",
+  "traits": {
+    "glitter": true,
+    "imitates_metal": true
+  }
 }

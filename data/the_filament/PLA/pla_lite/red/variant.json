@@ -1,5 +1,9 @@
 {
-    "id": "red",
-    "name": "Red",
-    "color_hex": "#ed4d48"
+  "uuid": "3cef6000-a8dd-4f75-a509-24a7a69f4ead",
+  "moved_from": [
+    "2182dc9e-cd8e-47f3-9576-cfe3ce9b7009"
+  ],
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#ed4d48"
 }

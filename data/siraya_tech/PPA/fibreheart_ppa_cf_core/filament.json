@@ -1,0 +1,12 @@
+{
+  "uuid": "ed032a7c-da51-4c90-8913-25f96dbdae67",
+  "id": "fibreheart_ppa_cf_core",
+  "name": "Fibreheart PPA-CF Core",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "min_print_temperature": 280,
+  "max_print_temperature": 320,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://siraya.tech/pages/siraya-tech-fibreheart-ppa-cf-core-tds"
+}

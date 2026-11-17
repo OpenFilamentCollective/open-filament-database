@@ -1,0 +1,15 @@
+{
+  "uuid": "e2bc15a8-b0c4-453b-b183-80d67f5c7cf3",
+  "id": "neon_yellow",
+  "name": "Neon Yellow",
+  "color_hex": "#F1F02D",
+  "color_standards": {
+    "ral": "1026"
+  },
+  "traits": {
+    "matte": true,
+    "neon": true,
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

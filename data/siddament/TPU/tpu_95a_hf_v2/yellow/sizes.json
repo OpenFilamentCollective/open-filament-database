@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "5e0a426e-d0ed-4cc2-875e-2da0c229701f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.009",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/yellow-tpu-95a-hf"
+      }
+    ]
+  }
+]

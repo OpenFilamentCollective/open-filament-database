@@ -1,9 +1,16 @@
 {
+    "uuid": "e314c1be-c27f-4394-95d8-343feb5f1816",
     "id": "rpla_re_add",
     "name": "rPLA RE-ADD",
     "diameter_tolerance": 0.02,
     "density": 1.25,
     "max_dry_temperature": 50,
+    "min_print_temperature": 215,
+    "max_print_temperature": 245,
+    "min_bed_temperature": 0,
+    "max_bed_temperature": 60,
+    "dry_temperature": 45,
+    "dry_time": 6,
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFL99",
@@ -11,6 +18,11 @@
             "profile_name": "addnorth PLA rPLA RE-ADD"
         },
         "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "GF_ANRPL",
+            "profile_name": "addnorth PLA rPLA RE-ADD"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GF_ANRPL",
             "profile_name": "addnorth PLA rPLA RE-ADD"

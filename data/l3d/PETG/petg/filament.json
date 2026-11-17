@@ -1,7 +1,8 @@
 {
-    "id": "petg",
-    "name": "PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.27,
-    "max_dry_temperature": 50
+  "uuid": "e04df465-a003-41c4-89bb-3142d94c8d78",
+  "id": "petg",
+  "name": "PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.27,
+  "max_dry_temperature": 50
 }

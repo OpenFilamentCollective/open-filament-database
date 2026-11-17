@@ -1,6 +1,12 @@
 {
-    "id": "abs_fr",
-    "name": "ABS-FR",
-    "diameter_tolerance": 0.02,
-    "density": 1.1
+  "uuid": "dfcb0aa3-84d4-4938-8067-da8c3f3a8457",
+  "id": "abs_fr",
+  "name": "ABS-FR",
+  "diameter_tolerance": 0.02,
+  "density": 1.15,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/48f9a499-b97a-4844-be4b-35ca349b5b64.pdf?filename=TDS"
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "bcc6a58d-b590-44e9-9fe0-c630817162fc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.040",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/bright-yellow-pla"
+      }
+    ]
+  }
+]

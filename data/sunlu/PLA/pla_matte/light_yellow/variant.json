@@ -1,9 +1,9 @@
 {
+  "uuid": "9ce89351-cdb7-4cfa-9875-bed942463e6f",
   "id": "light_yellow",
   "name": "Light Yellow",
   "color_hex": "#EBFF57",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

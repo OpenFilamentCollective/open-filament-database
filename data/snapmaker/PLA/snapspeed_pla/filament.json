@@ -1,0 +1,12 @@
+{
+  "uuid": "90f0f8d9-024f-4ad8-b67d-9f71db15888d",
+  "id": "snapspeed_pla",
+  "name": "SnapSpeed PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60
+}

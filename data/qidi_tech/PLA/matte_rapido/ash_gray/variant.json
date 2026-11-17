@@ -1,8 +1,10 @@
 {
+  "uuid": "25d78e44-13c6-4b54-a732-226ce1d3201c",
   "id": "ash_gray",
   "name": "Ash Gray",
   "color_hex": "#313335",
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

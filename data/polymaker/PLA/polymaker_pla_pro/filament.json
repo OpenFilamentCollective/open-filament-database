@@ -1,0 +1,18 @@
+{
+  "uuid": "70c09a57-3fa6-4c44-ae1c-5921a4075142",
+  "id": "polymaker_pla_pro",
+  "name": "Polymaker™ PLA Pro",
+  "diameter_tolerance": 0.02,
+  "density": 1.237,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_Polymaker_PLA_Pro_v6.0_2026-01-26_EN.pdf",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/Polymaker_PLA_Pro-USA-SDS_20260122.pdf",
+  "discontinued": false
+}

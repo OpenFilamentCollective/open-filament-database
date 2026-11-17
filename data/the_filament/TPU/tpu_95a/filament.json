@@ -1,6 +1,27 @@
 {
-    "id": "tpu_95a",
-    "name": "TPU-95A",
-    "diameter_tolerance": 0.02,
-    "density": 1.21
+  "uuid": "c07ced2d-90dc-498d-bae9-957d1b8f160e",
+  "moved_from": [
+    "c0cfa8f8-79a7-48ab-81a3-5f2c0e1d2a46"
+  ],
+  "id": "tpu_95a",
+  "name": "TPU-95A",
+  "diameter_tolerance": 0.02,
+  "density": 1.21,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 80,
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://spectrumfilaments.com/en/filament/the-filament-tpu-95a/",
+      "source_quote": "Notably, the filament contains recycled materials, which helps reduce its carbon footprint without compromising performance or mechanical properties.",
+      "retrieved": "2026-11-03",
+      "notes": "No percentage or recycled-material type stated."
+    }
+  }
 }

@@ -1,7 +1,10 @@
 [
   {
+    "uuid": "7d214935-994d-48ab-9282-69862c779fc8",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
     "ean": "5905991403586",
     "article_number": "81291",
     "purchase_links": [
@@ -12,8 +15,11 @@
     ]
   },
   {
+    "uuid": "45359fe2-3561-4e38-9360-615f00097bb9",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "gtin": "5903175654915",
     "article_number": "80711",
     "purchase_links": [
       {
@@ -23,10 +29,9 @@
     ]
   },
   {
+    "uuid": "fbe0aa67-1463-4579-9ed5-389cd89d6a1c",
     "filament_weight": 250,
     "diameter": 1.75,
-    "ean": "5903175659545",
-    "article_number": "80892",
     "purchase_links": [
       {
         "store_id": "spectrum",

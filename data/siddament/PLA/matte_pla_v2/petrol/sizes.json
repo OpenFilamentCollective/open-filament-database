@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "0ba9e903-dcec-4bda-88e0-9f3b3f20799d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.073",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-petrol-pla-v2"
+      }
+    ]
+  }
+]

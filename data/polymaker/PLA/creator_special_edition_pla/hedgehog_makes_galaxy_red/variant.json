@@ -1,8 +1,7 @@
 {
+  "uuid": "bed2719c-1039-4a3c-8876-9ecbf895bb1c",
   "id": "hedgehog_makes_galaxy_red",
   "name": "Hedgehog Makes Galaxy Red",
   "color_hex": "#EC0000",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

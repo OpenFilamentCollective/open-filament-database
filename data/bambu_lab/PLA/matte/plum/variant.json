@@ -1,11 +1,9 @@
 {
+  "uuid": "34604987-63a7-4f56-95ba-8f98a0ed6396",
   "id": "plum",
   "name": "Plum",
-  "color_hex": [
-    "#9b3a5f"
-  ],
+  "color_hex": "#950051",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

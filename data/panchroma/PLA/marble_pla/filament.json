@@ -1,6 +1,17 @@
 {
-    "id": "marble_pla",
-    "name": "Marble PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.31
+  "uuid": "30d12277-70a5-4ab3-b9c1-f0b379194dc8",
+  "moved_from": [
+    "77d57c03-4df4-4c6e-8e09-c20746347766"
+  ],
+  "id": "marble_pla",
+  "name": "Marble PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.31,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_PANCHROMA_V2.pdf"
 }

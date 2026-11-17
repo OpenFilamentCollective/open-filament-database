@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a1b2efb5-8d87-447f-9e27-438b78da7889",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.016",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-khaki-pla-v2"
+      }
+    ]
+  }
+]

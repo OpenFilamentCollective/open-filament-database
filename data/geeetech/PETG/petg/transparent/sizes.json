@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "00e59f86-2372-40d2-96ec-d972cfb0b092",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170268",
+    "article_number": "700-001-1311",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/petg-transparent-5"
+      }
+    ]
   }
 ]

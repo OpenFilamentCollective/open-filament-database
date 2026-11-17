@@ -1,17 +1,22 @@
 {
+    "uuid": "f2741b05-b61a-4dae-a803-f0dadff8d457",
     "id": "petg_cf",
     "name": "PETG-CF",
     "diameter_tolerance": 0.02,
     "density": 1.29,
+    "min_print_temperature": 240,
+    "max_print_temperature": 270,
+    "min_bed_temperature": 65,
+    "max_bed_temperature": 75,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFG99",
-            "id": "EPETGB00",
+            "generic_id": "OFYPdQJh",
+            "id": "OFuUuIhR",
             "profile_name": "Elegoo PETG-CF"
         },
         "elegooslicer": {
             "generic_id": "GFG99",
-            "id": "EPETGB00",
+            "id": "OEPETGB0",
             "profile_name": "Elegoo PETG-CF"
         }
     }

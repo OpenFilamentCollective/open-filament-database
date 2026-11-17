@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3fb276ef-c145-4a90-9f7b-3c2b687ffdb8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.007",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-blue-pla"
+      }
+    ]
+  }
+]

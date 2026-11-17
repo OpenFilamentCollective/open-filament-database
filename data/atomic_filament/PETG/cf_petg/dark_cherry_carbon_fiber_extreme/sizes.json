@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "7c978128-7c77-4332-9d53-276aef3e286a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/dark-cherry-carbon-fiber-extreme-petg"
+      }
+    ]
   }
 ]

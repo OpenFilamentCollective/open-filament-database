@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "21757ec5-cb7e-4c65-81cc-8c3b7e78a38a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.020",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-slate-pla-v2"
+      }
+    ]
+  }
+]

@@ -1,7 +1,10 @@
 [
   {
+    "uuid": "83097b25-202e-4707-8b89-8223850441b4",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
     "ean": "5905991403654",
     "article_number": "81298",
     "purchase_links": [
@@ -12,8 +15,11 @@
     ]
   },
   {
+    "uuid": "3415ecde-6453-45df-90d2-21cbf0e2139a",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "gtin": "5903175654908",
     "article_number": "80710",
     "purchase_links": [
       {

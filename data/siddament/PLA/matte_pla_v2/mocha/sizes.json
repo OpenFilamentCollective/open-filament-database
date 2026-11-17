@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "28211219-72d0-477f-9b8a-77868e56f928",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.027",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-mocha-pla-v2"
+      }
+    ]
+  }
+]

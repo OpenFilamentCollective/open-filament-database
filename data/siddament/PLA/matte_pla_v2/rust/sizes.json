@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "9a60d88b-39a4-403b-8e81-b97ea6f0eb49",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.018",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-rust-pla-v2"
+      }
+    ]
+  }
+]

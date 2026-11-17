@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a9be6976-7052-44f8-a9d6-727117bdae7d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.036",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-storm-grey-petg-v2"
+      }
+    ]
+  }
+]

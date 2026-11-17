@@ -1,8 +1,9 @@
 {
-    "id": "ivory_white",
-    "name": "Ivory White",
-    "color_hex": "#FFFFF0",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "94dad6c5-26d1-4d32-8ef3-ab208c2f5a41",
+  "id": "ivory_white",
+  "name": "Ivory White",
+  "color_hex": "#FFFFF0",
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,6 +1,57 @@
 [
   {
+    "uuid": "50c8f490-3d6c-4e11-96cf-3f505710f6fb",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "8718924471814"
+  },
+  {
+    "uuid": "7bb5e16e-a6c4-4f62-ae84-f7e93318abb7",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "gtin": "8718924472279",
+    "article_number": "PPLA-175SBLK-02300"
+  },
+  {
+    "uuid": "f79ec1d9-d033-4d87-845a-9d356732f622",
+    "filament_weight": 4500,
+    "diameter": 1.75,
+    "gtin": "8718924477496",
+    "article_number": "PPLA-175SBLK-04500"
+  },
+  {
+    "uuid": "5adcf9c9-f363-4202-a22f-be67b2035942",
+    "filament_weight": 8000,
+    "diameter": 1.75,
+    "gtin": "8718924477519",
+    "article_number": "PPLA-175SBLK-08000"
+  },
+  {
+    "uuid": "7000d951-22a6-42a4-ac81-7f1a201fa191",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "8718924472002",
+    "article_number": "PPLA-285SBLK-01000"
+  },
+  {
+    "uuid": "22b2ed2e-9554-477a-b1f4-3be85d62630e",
+    "filament_weight": 2300,
+    "diameter": 2.85,
+    "gtin": "8718924472309",
+    "article_number": "PPLA-285SBLK-02300"
+  },
+  {
+    "uuid": "dc80194a-9cee-4164-9fcf-a6ead410349e",
+    "filament_weight": 4500,
+    "diameter": 2.85,
+    "gtin": "8718924475676",
+    "article_number": "PPLA-285SBLK-04500"
+  },
+  {
+    "uuid": "4f8e9327-b846-4de4-abb7-a53d40239f18",
+    "filament_weight": 8000,
+    "diameter": 2.85,
+    "gtin": "8718924477526",
+    "article_number": "PPLA-285SBLK-08000"
   }
 ]

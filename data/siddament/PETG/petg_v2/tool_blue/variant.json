@@ -1,0 +1,10 @@
+{
+  "uuid": "a5381731-525f-4c07-80e7-be357b69700c",
+  "id": "tool_blue",
+  "name": "Tool Blue",
+  "color_hex": "#007577",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "322 C"
+  }
+}

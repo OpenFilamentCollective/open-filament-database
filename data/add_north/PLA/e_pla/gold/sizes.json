@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Gold"
-            }
-        ]
-    }
+  {
+    "uuid": "15aa5da1-8bc8-41b5-b27f-c044906f32b6",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "5c4d1a65-f5f1-426e-8736-bf31a675177c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182902222",
+    "article_number": "ANEP14GLD",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%201000g%20-%20Gold"
+      }
+    ]
+  }
 ]

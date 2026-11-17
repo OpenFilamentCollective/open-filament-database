@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "1779c2e5-ccea-46c1-8e4e-542d274696cf",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476338",
     "article_number": "APOX-175GREY-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "9c9db0b2-85f9-4b44-b8ba-114cf96a84be",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924479858",
     "article_number": "APOX-175GREY-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "b17d906b-069e-4fd9-959f-38ba1ba59a4c",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8719956554407",
     "article_number": "APOX-175GREY-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "d20559a8-4c60-4fd3-a0db-e1e427289060",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8718924479483",
     "article_number": "APOX-175GREY-08000",
     "discontinued": false,
     "purchase_links": [

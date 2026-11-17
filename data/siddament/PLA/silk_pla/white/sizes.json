@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3513f14a-47cd-46e7-a48c-c22c1f7f4d8f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.005",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-white-pla"
+      }
+    ]
+  }
+]

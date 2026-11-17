@@ -1,0 +1,9 @@
+{
+  "uuid": "cc4032a8-2f55-4263-b9a2-c4ca683baa4e",
+  "id": "cold_white",
+  "name": "Cold White",
+  "color_hex": "#D9DAE0",
+  "traits": {
+    "high_flow": true
+  }
+}

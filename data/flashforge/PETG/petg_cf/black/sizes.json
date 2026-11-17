@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "385c368c-75ac-41c2-abfc-f8490c3be0d7",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/flashforge-petg-cf?variant=43784907587662"
+      }
+    ]
   }
 ]

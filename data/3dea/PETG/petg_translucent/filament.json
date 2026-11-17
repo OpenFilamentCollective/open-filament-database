@@ -1,0 +1,12 @@
+{
+  "uuid": "d86c234e-2f40-4b69-9e96-6985b98dfe57",
+  "id": "petg_translucent",
+  "name": "PETG Translucent",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 75,
+  "max_bed_temperature": 90,
+  "discontinued": false
+}

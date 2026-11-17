@@ -1,10 +1,11 @@
 {
+  "uuid": "c3984c80-3acb-4887-942b-8db49efe9430",
   "id": "luminous_purple",
   "name": "Luminous Purple",
   "color_hex": "#AE96D4",
   "traits": {
     "glow": true,
-    "industrially_compostable": true,
-    "abrasive": true
+    "abrasive": true,
+    "high_flow": true
   }
 }

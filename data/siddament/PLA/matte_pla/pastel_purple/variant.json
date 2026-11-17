@@ -1,0 +1,13 @@
+{
+  "uuid": "2a71d2bd-4a92-4f13-ae1d-96eb515f4797",
+  "id": "pastel_purple",
+  "name": "Pastel Purple",
+  "color_hex": "#E0BAFF",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "251 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

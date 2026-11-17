@@ -1,9 +1,10 @@
 {
+  "uuid": "926420d7-92ae-47dd-9645-aace2339f9c0",
   "id": "neon_red",
   "name": "Neon Red",
   "color_hex": "#DF3303",
   "traits": {
-    "filtration_recommended": true,
-    "neon": true
+    "neon": true,
+    "filtration_recommended": true
   }
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1208e496-77c0-4be1-8133-8b851358cf9d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.040",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/peanut-petg"
+      }
+    ]
+  }
+]

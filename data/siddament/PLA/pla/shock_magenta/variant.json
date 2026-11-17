@@ -1,0 +1,10 @@
+{
+  "uuid": "51a9a836-0a45-48d3-a36e-8043b76d1d10",
+  "id": "shock_magenta",
+  "name": "Shock Magenta",
+  "color_hex": "#FE00AF",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Rhodamine Red C"
+  }
+}

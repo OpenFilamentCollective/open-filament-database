@@ -1,9 +1,10 @@
 {
+  "uuid": "0a94ddbf-9622-43cf-a079-865617e8d741",
   "id": "bright_green",
   "name": "Bright Green",
   "color_hex": "#51CC00",
   "traits": {
-    "ipa_soluble": true,
-    "transparent": true
+    "transparent": true,
+    "ipa_soluble": true
   }
 }

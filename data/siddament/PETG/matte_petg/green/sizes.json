@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a72b83a8-260a-43c4-9942-a036879c2b1f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.020",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-green-petg"
+      }
+    ]
+  }
+]

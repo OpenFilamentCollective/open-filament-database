@@ -1,0 +1,9 @@
+{
+  "uuid": "c89b748d-4bfc-4bdf-bfa2-785be6a1e0bb",
+  "id": "pla_pastell",
+  "name": "PLA Pastell",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 195,
+  "max_print_temperature": 235
+}

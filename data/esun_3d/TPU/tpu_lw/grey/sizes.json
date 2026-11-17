@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "2ac0199c-66f6-4013-b86e-be1b40d28bf3",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
@@ -7,6 +8,18 @@
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/tpu-lw"
+      }
+    ]
+  },
+  {
+    "uuid": "c094e0b4-6327-4680-85ed-25127758c1e1",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "6922572209251",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/tpu-lw-grey"
       }
     ]
   }

@@ -1,6 +1,22 @@
 {
-    "id": "refill_r_pla",
-    "name": "Refill R PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "22d571ea-01ec-4c2d-8be9-89fcc20e82f6",
+  "id": "refill_r_pla",
+  "name": "Refill R PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_RPLA_TDS.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://fiberlogy.com/en/product/rpla-filament-s2/",
+      "source_quote": "This innovative filament is made from 100% recycled material sourced exclusively from verified and carefully selected sources.",
+      "retrieved": "2026-11-03"
+    }
+  }
 }

@@ -1,9 +1,10 @@
 {
+  "uuid": "d6815c18-8785-4986-8c32-ab03b032915b",
   "id": "neon_yellow",
   "name": "Neon Yellow",
   "color_hex": "#F3B400",
   "traits": {
-    "filtration_recommended": true,
-    "neon": true
+    "neon": true,
+    "filtration_recommended": true
   }
 }

@@ -1,6 +1,12 @@
 {
-    "id": "pla_matte_dual_color",
-    "name": "PLA Matte Dual-Color",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "72ede74d-0aaf-4adf-a74f-40092f8498e5",
+  "id": "pla_matte_dual_color",
+  "name": "PLA Matte Dual-Color",
+  "diameter_tolerance": 0.02,
+  "density": 1.31,
+  "min_print_temperature": 205,
+  "max_print_temperature": 245,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/a47cd225-7892-4788-9c73-bd27bfd791f5.pdf?filename=TDS"
 }

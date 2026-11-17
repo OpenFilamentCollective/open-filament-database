@@ -1,0 +1,14 @@
+{
+  "uuid": "cf32bf14-567e-4a82-ad01-576f20147329",
+  "id": "disc_grey",
+  "name": "Disc Grey",
+  "color_hex": "#CFC9B8",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "7534 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

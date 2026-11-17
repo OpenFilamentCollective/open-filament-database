@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "c9e149ad-9f5f-464e-aac5-79dd3fd36c48",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.044",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/fire-orange-pla"
+      }
+    ]
+  }
+]

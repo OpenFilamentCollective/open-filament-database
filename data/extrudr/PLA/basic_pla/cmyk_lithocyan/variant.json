@@ -1,4 +1,5 @@
 {
+  "uuid": "f9c117b0-945d-4898-be3e-f2767a157ce3",
   "id": "cmyk_lithocyan",
   "name": "CMYK Lithocyan",
   "color_hex": "#0099E6",
@@ -6,6 +7,7 @@
     "ral": "6027"
   },
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

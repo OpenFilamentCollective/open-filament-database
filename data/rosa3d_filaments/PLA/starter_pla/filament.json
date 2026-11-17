@@ -1,10 +1,11 @@
 {
+  "uuid": "04bfcfc2-19b8-44a9-b1a7-3dbc39cd34a3",
   "id": "starter_pla",
   "name": "Starter PLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_print_temperature": 250,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60
 }

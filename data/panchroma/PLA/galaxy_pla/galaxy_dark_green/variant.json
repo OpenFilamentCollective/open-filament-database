@@ -1,5 +1,12 @@
 {
-    "id": "galaxy_dark_green",
-    "name": "Galaxy Dark Green",
-    "color_hex": "#045c4d"
+  "uuid": "3c3fed30-4149-49c0-b792-a55b67e692d8",
+  "moved_from": [
+    "aa9d1870-c914-4b9d-9957-652450e1f132"
+  ],
+  "id": "galaxy_dark_green",
+  "name": "Galaxy Dark Green",
+  "color_hex": "#045c4d",
+  "traits": {
+    "glitter": true
+  }
 }

@@ -1,10 +1,11 @@
 {
+  "uuid": "e045ac59-027f-4d24-88f1-62b0d6709879",
   "id": "pla_silk_candy",
   "name": "PLA-Silk Candy",
   "diameter_tolerance": 0.03,
-  "density": 1.41,
-  "min_print_temperature": 190,
+  "density": 1.21,
+  "min_print_temperature": 210,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60
 }

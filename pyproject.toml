@@ -29,7 +29,8 @@ dependencies = [
     "argcomplete>=3.1.0",
     "jsonschema>=4.23.0",
     "markdown>=3.0",
-    "ofd-validator>=0.5.1",
+    "ofd-validator>=0.5.3",
+    "pypdf>=6.19.0,<6.20",
     "iniconfig>=2.0.0",
     "referencing>=0.30.0",
     "PyYAML>=6.0",
@@ -52,6 +53,7 @@ Homepage = "https://github.com/OpenFilamentCollective/open-filament-database"
 Documentation = "https://api.openfilamentdatabase.org/"
 Repository = "https://github.com/OpenFilamentCollective/open-filament-database"
 Issues = "https://github.com/OpenFilamentCollective/open-filament-database/issues"
+WebUI = "http://openfilamentdatabase.org/"
 
 [build-system]
 requires = ["hatchling"]

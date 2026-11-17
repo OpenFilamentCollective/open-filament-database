@@ -1,9 +1,9 @@
 {
+  "uuid": "31ac8e05-e471-47ad-926b-0ed0e916fadb",
   "id": "gold",
   "name": "Gold",
   "color_hex": "#CE8D00",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

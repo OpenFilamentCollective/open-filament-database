@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a0d5f8df-8754-4ad9-99e9-9ea2758622a4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.038",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pastel-blue"
+      }
+    ]
+  }
+]

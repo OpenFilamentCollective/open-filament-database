@@ -1,10 +1,11 @@
 {
+  "uuid": "e5178470-d8d4-4c51-bbbf-0a954d40603a",
   "id": "orange",
   "name": "Orange",
   "color_hex": "#F48438",
   "traits": {
-    "filtration_recommended": true,
     "abrasive": true,
+    "filtration_recommended": true,
     "contains_glass_fiber": true
   }
 }

@@ -1,8 +1,9 @@
 {
+  "uuid": "525e4138-aaab-4e93-9b89-85e3f68f8cb1",
   "id": "titanx_abs",
   "name": "TitanX",
   "diameter_tolerance": 0.02,
-  "density": 1.05,
+  "density": 1.1,
   "min_print_temperature": 245,
   "max_print_temperature": 270,
   "min_bed_temperature": 100,

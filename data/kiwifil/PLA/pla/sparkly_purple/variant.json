@@ -1,9 +1,10 @@
 {
+  "uuid": "ddcbd143-6edd-4ea2-99f7-19fa854f9fc3",
   "id": "sparkly_purple",
   "name": "Sparkly Purple",
   "color_hex": "#6C47B2",
   "traits": {
-    "industrially_compostable": true,
-    "glitter": true
+    "glitter": true,
+    "bio_based": true
   }
 }

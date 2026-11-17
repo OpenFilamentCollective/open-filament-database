@@ -1,9 +1,12 @@
 [
   {
+    "uuid": "46c0bd02-1741-4cff-af49-7d7053fb0cd1",
     "filament_weight": 1000.0,
     "diameter": 1.75,
     "spool_refill": true,
-    "gtin": "921128098887",
+    "container_material": "refill",
+    "article_number": "40502",
+    "barcode_identifier": "921128098887",
     "purchase_links": [
       {
         "store_id": "bblstore",

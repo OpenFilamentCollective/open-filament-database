@@ -1,10 +1,10 @@
 {
+  "uuid": "a66d4617-0634-40d1-8d34-a589b771274f",
   "id": "lw_red",
   "name": "LW- Red",
   "color_hex": "#E20010",
   "traits": {
     "matte": true,
-    "industrially_compostable": true,
     "foaming": true
   }
 }

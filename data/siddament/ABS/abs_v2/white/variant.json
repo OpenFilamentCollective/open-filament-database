@@ -1,0 +1,10 @@
+{
+  "uuid": "d9025776-c413-4fb8-8511-34805b253f03",
+  "id": "white",
+  "name": "White",
+  "color_hex": "#D0D0C8",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Cool Gray 2 C"
+  }
+}

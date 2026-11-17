@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "40b8fc42-a9b4-478b-a1e3-cbb8bf654d47",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8720629061757",
+    "article_number": "HPPL-175SKBU-00750"
   }
 ]

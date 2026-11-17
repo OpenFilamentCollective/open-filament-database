@@ -1,10 +1,12 @@
 {
+  "uuid": "64d9ff0e-5480-489e-bbd4-677e373754e8",
   "id": "cf_petg",
   "name": "PETG CF",
   "diameter_tolerance": 0.02,
-  "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "density": 1.32,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/08/FIBERLOGY_PETGCF_TDS.pdf"
 }

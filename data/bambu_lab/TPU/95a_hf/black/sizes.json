@@ -1,12 +1,22 @@
 [
-    {
-        "filament_weight": 1000.0,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pc-tpu/products/tpu-95a-hf?variant=41469410377864"
-            }
-        ]
-    }
+  {
+    "uuid": "1f5fe371-6521-4b8c-ad82-45594622b47d",
+    "moved_from": [
+      "efb0f7b0-b938-4d26-a8d8-b490fcc493e3"
+    ],
+    "filament_weight": 1000.0,
+    "diameter": 1.75,
+    "gtin": "6975337033493",
+    "article_number": "51100",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pc-tpu/products/tpu-95a-hf?variant=41469410377864"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/tpu-95a-hf-black"
+      }
+    ]
+  }
 ]

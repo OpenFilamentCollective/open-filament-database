@@ -1,0 +1,24 @@
+name: Brand sign-off review relay
+# Reviews on fork PRs run with a read-only token, which cannot post the `Brand sign-off`
+# status. This does nothing itself; its completion triggers brand_signoff.yaml (via
+# workflow_run, with a write token and the base branch's code), which reads the PR
+# number from this run's name.
+run-name: "Brand sign-off relay for PR #${{ github.event.pull_request.number }}"
+on:
+  pull_request_review:
+    types: [ submitted, edited, dismissed ]
+
+permissions: {}
+
+# A review runs this file as it is in the PR's test-merge commit, so a PR branched
+# before a fix here keeps the old copy. Keep the step trivial: no `#`, no `${{ }}` in
+# the script. Auto-merge ignores this check (eligibility.IGNORED_CONTEXTS): a failed
+# relay still triggers the real `Brand sign-off` evaluation, which is what counts.
+jobs:
+  relay:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Relay
+        env:
+          PR: ${{ github.event.pull_request.number }}
+        run: echo "Review on PR ${PR}; brand sign-off re-evaluates in its own run."

@@ -1,10 +1,17 @@
 {
+  "uuid": "0b643a9b-454e-47dc-8749-fb0c35b2164c",
   "id": "pa6_low_warp",
   "name": "PA6 Low Warp",
   "diameter_tolerance": 0.02,
   "density": 1.15,
   "min_print_temperature": 250,
-  "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_print_temperature": 280,
+  "min_bed_temperature": 85,
+  "max_bed_temperature": 100,
+  "min_fan_speed": 0,
+  "max_fan_speed": 30,
+  "dry_temperature": 60,
+  "dry_time": 12,
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_tds_spectrum_pa6_low_warp.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_pa6_low_warp.pdf"
 }

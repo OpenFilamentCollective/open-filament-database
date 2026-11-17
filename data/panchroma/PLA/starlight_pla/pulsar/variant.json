@@ -1,0 +1,10 @@
+{
+  "uuid": "22b0d2c1-44ac-420c-b148-85a9ce56236d",
+  "id": "pulsar",
+  "name": "Pulsar",
+  "color_hex": "#5C7BC1",
+  "transmission_distance": 5.1,
+  "traits": {
+    "glitter": true
+  }
+}

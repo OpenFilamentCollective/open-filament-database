@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "84f388e4-4c69-4a19-9889-3f097c196518",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.001",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/black-95a-hf-tpu"
+      }
+    ]
+  }
+]

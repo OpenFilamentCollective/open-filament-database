@@ -1,8 +1,9 @@
 {
+  "uuid": "80102e39-6940-4c30-a73f-5f981e155793",
   "id": "space_grey",
   "name": "Space Grey",
   "color_hex": "#7e7e7e",
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

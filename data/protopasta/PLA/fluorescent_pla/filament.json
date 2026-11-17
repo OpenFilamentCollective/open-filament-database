@@ -1,10 +1,12 @@
 {
+  "uuid": "1b02cd32-6e38-47f5-95b6-17792655e097",
   "id": "fluorescent_pla",
   "name": "Fluorescent PLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
-  "min_print_temperature": 195,
-  "max_print_temperature": 225,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 55,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0717/9095/files/TDS__Translucent_Sparkly_HTPLA_1.0.0.pdf"
 }

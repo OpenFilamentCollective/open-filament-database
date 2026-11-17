@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "775603dc-525c-4f02-8f4a-93e0640d8718",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847051073",
     "article_number": "PLAE-175TBLK-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,13 @@
     ]
   },
   {
+    "uuid": "2c9ef2ed-79c6-43a7-8411-2bea943b082e",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629067308",
     "article_number": "PLAE-175TBLK-C1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,13 @@
     ]
   },
   {
+    "uuid": "f00d5579-3a4c-4681-b86f-952519ca1200",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629067353",
     "article_number": "PLAE-175TBLK-B1000",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +50,13 @@
     ]
   },
   {
+    "uuid": "05ccbd73-7993-4d81-96cc-1ba1aef63557",
     "filament_weight": 2000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 40,
+    "gtin": "8720629067315",
     "article_number": "PLAE-175TBLK-C2000",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +67,12 @@
     ]
   },
   {
+    "uuid": "90aa1348-0f68-46af-94ce-16b3f97caf2a",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847051615",
     "article_number": "PLAE-175TBLK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +83,12 @@
     ]
   },
   {
+    "uuid": "f66f4e88-6c30-447e-b488-7a75777d7602",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847052155",
     "article_number": "PLAE-175TBLK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +99,12 @@
     ]
   },
   {
+    "uuid": "b3f67798-2bdc-4b40-ab2c-3b04827f1e45",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847052698",
     "article_number": "PLAE-175TBLK-08000",
     "discontinued": false,
     "purchase_links": [
@@ -98,10 +115,12 @@
     ]
   },
   {
+    "uuid": "19b49ef9-6e65-4733-9d67-1992c47a76de",
     "filament_weight": 1000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847055477",
     "article_number": "PLAE-285TBLK-01000",
     "discontinued": false,
     "purchase_links": [
@@ -112,10 +131,12 @@
     ]
   },
   {
+    "uuid": "a85e0126-2953-4182-9569-629b4cce75ee",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847056016",
     "article_number": "PLAE-285TBLK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -126,10 +147,12 @@
     ]
   },
   {
+    "uuid": "a0fc0aab-bb25-42e6-9a75-83a316deb5ed",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847056559",
     "article_number": "PLAE-285TBLK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -140,10 +163,12 @@
     ]
   },
   {
+    "uuid": "bc069017-9797-447d-b92e-753e0806a1f4",
     "filament_weight": 8000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847057099",
     "article_number": "PLAE-285TBLK-08000",
     "discontinued": false,
     "purchase_links": [
@@ -152,5 +177,12 @@
         "url": "https://www.formfutura.com/easyfil-epla"
       }
     ]
+  },
+  {
+    "uuid": "cb12a52f-e4e7-4599-9864-d6dc9a3b8352",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720847054937",
+    "article_number": "PLAE-285TBLK-00250"
   }
 ]

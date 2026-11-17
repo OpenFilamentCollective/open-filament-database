@@ -1,15 +1,10 @@
 [
   {
+    "uuid": "fdce3259-2361-44b8-b5c0-17f20c5718f7",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "gtin": "6975337032830",
-    "discontinued": false,
-    "purchase_links": [
-      {
-        "store_id": "3deksperten",
-        "url": "https://3deksperten.dk/products/bambu-lab-petg-basic-purple-1-75mm-1kg"
-      }
-    ]
+    "discontinued": false
   }
 ]

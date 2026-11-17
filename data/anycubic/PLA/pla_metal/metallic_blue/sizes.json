@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "9a4e4dea-f501-4ae1-8b9a-4413b8780b53",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/pla-metal-filament?variant=45405385982114"
+      }
+    ]
   }
 ]

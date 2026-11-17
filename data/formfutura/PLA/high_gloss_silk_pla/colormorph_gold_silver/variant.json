@@ -1,12 +1,13 @@
 {
+  "uuid": "050d3bcb-0374-4da0-b3d8-d73c74645190",
   "id": "colormorph_gold_silver",
   "name": "ColorMorph Gold & Silver",
   "color_hex": [
-    "#ABACB0",
-    "#CE8D00"
+    "#D4AF37",
+    "#ABACB0"
   ],
+  "discontinued": true,
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "iridescent": true
   }

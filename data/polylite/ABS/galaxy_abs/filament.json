@@ -1,6 +1,7 @@
 {
-    "id": "galaxy_abs",
-    "name": "Galaxy ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.12
+  "uuid": "7b997f0b-4921-4518-810f-d644e2ddd3c6",
+  "id": "galaxy_abs",
+  "name": "Galaxy ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.12
 }

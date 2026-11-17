@@ -1,10 +1,10 @@
 {
+  "uuid": "c85396b2-46c8-4c26-9595-6e28a15098ca",
   "id": "ms_pink",
   "name": "Ms. Pink",
   "color_hex": "#E34A94",
   "traits": {
-    "industrially_compostable": true,
-    "blend": true,
-    "silk": true
+    "silk": true,
+    "blend": true
   }
 }

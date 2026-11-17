@@ -1,6 +1,11 @@
 {
+  "uuid": "53bd9e42-3480-42c9-be00-ac6d39f5b42b",
   "id": "peba",
   "name": "PEBA",
   "diameter_tolerance": 0.02,
-  "density": 1.01
+  "density": 1.01,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 60
 }

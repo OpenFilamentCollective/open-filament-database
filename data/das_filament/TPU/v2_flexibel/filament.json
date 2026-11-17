@@ -1,10 +1,12 @@
 {
+  "uuid": "9d10bad7-8cd8-44a1-bac1-b7ceef01b32e",
   "id": "v2_flexibel",
   "name": "TPU V2 Flexibel",
-  "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
+  "diameter_tolerance": 0.08,
+  "density": 1.23,
+  "shore_hardness_a": 94,
+  "min_print_temperature": 205,
+  "max_print_temperature": 235,
   "min_bed_temperature": 30,
   "max_bed_temperature": 60
 }

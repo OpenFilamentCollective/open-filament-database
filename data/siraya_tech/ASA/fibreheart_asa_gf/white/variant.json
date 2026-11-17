@@ -1,0 +1,10 @@
+{
+  "uuid": "3d37131d-c817-4c01-901e-5c748098c7b4",
+  "id": "white",
+  "name": "White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

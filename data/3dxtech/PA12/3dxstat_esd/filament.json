@@ -1,10 +1,12 @@
 {
+  "uuid": "3e5c9c8c-dcc1-4688-85fe-622700923550",
   "id": "3dxstat_esd",
   "name": "PA12 3DXStat ESD",
   "diameter_tolerance": 0.02,
-  "density": 1.01,
+  "density": 1.14,
   "min_print_temperature": 240,
   "max_print_temperature": 270,
   "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/3DXSTAT_ESD_PA12_TDS_v1.pdf?v=1723942768"
 }

@@ -1,10 +1,12 @@
 {
+  "uuid": "c615aaa6-11f2-49d6-b468-2aedb657dd95",
   "id": "cf_pp",
   "name": "PP CF",
   "diameter_tolerance": 0.02,
-  "density": 0.9,
+  "density": 1.07,
   "min_print_temperature": 210,
   "max_print_temperature": 240,
   "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://cdn.prod.website-files.com/68a2e0ec473c03217f7e1bb9/6968e66f33e8acedbb611354_KRATIR%20PP%20CF%20(02-2025).pdf"
 }

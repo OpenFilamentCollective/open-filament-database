@@ -1,10 +1,11 @@
 {
+  "uuid": "f1bb7c3b-4903-4a5d-8736-6d4fdace30ef",
   "id": "abs_glow",
   "name": "Glow ABS",
   "diameter_tolerance": 0.02,
   "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "min_print_temperature": 245,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100
 }

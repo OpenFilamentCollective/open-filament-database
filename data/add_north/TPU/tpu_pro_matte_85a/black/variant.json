@@ -1,8 +1,9 @@
 {
-    "id": "black",
-    "name": "Black",
-    "color_hex": "#000000",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "7dda0850-3015-4a34-a58f-05233b0c9907",
+  "id": "black",
+  "name": "Black",
+  "color_hex": "#000000",
+  "traits": {
+    "matte": true
+  }
 }

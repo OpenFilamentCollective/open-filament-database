@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "e77b8b55-f1b3-4329-a581-d2f1e8e33c2b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.002",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/burnt-grey-petg"
+      }
+    ]
+  }
+]

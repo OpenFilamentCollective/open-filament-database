@@ -1,9 +1,9 @@
 {
+  "uuid": "9628cb8e-7ae3-425b-9c21-64fda39cf0eb",
   "id": "pink_pearl",
   "name": "Pink Pearl",
   "color_hex": "#EFEFEF",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "iridescent": true,
     "neon": true

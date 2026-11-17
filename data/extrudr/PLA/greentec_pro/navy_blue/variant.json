@@ -1,0 +1,12 @@
+{
+  "uuid": "0e75e8e1-ea31-4d94-8bca-477bb04e952e",
+  "id": "navy_blue",
+  "name": "Navy Blue",
+  "color_hex": "#4B4EA2",
+  "color_standards": {
+    "ral": "5003"
+  },
+  "traits": {
+    "bio_based": true
+  }
+}

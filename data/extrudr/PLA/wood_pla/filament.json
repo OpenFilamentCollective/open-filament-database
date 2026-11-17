@@ -1,10 +1,16 @@
 {
+  "uuid": "a07a7cb6-5ed9-468e-b69f-ffef01153365",
   "id": "wood_pla",
   "name": "Wood PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "density": 1.23,
+  "min_print_temperature": 170,
+  "max_print_temperature": 190,
+  "min_bed_temperature": 20,
+  "max_bed_temperature": 60,
+  "min_fan_speed": 50,
+  "max_fan_speed": 80,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/wood-TDS-en.pdf",
+  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/wood-MSDS-en.pdf"
 }

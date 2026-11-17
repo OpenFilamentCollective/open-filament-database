@@ -1,0 +1,22 @@
+[
+  {
+    "uuid": "2178e86c-5778-4f34-b599-652fe3150f66",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6933582327910",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/petg-v2-3d-printer-filament-1kg"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/petg-20-sunny-orange"
+      }
+    ]
+  }
+]

@@ -1,10 +1,10 @@
 {
+  "uuid": "6662ce3e-2013-479c-a6aa-678d9b8a86c6",
   "id": "wood_cherry",
   "name": "Wood Cherry",
   "color_hex": "#8E5850",
   "traits": {
     "matte": true,
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "237406f3-638d-4b8d-9643-9d29943de077",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170534",
+    "article_number": "700-001-1320",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/petg-grey-5"
+      }
+    ]
   }
 ]

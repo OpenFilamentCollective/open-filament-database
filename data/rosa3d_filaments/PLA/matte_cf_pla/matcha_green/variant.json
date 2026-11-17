@@ -1,9 +1,11 @@
 {
+  "uuid": "27cd4dab-c50b-4bb9-b016-f511f7368f4e",
   "id": "matcha_green",
   "name": "Matcha Green",
   "color_hex": "#3D9441",
   "traits": {
     "matte": true,
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

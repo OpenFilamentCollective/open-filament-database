@@ -1,9 +1,9 @@
 {
+  "uuid": "dd5a87af-0156-4842-856d-604a088245ca",
   "id": "gray",
   "name": "Gray",
   "color_hex": "#64676C",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

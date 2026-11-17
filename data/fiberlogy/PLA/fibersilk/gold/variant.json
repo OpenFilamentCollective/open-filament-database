@@ -1,8 +1,9 @@
 {
-    "id": "gold",
-    "name": "Gold",
-    "color_hex": "#E5C100",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "78dcf3ca-30e0-464f-85b1-9c2bd74cefa4",
+  "id": "gold",
+  "name": "Gold",
+  "color_hex": "#E5C100",
+  "traits": {
+    "recyclable": true
+  }
 }

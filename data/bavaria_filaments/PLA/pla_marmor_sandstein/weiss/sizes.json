@@ -1,0 +1,25 @@
+[
+  {
+    "uuid": "08126f26-1ae2-45ee-9ec4-5bafc86f61a5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/pla-marmor-sandstein-filament-fur-3d-drucker?variant=56612357538175"
+      }
+    ]
+  },
+  {
+    "uuid": "7f4ddda8-aafb-47cc-aa62-fdd58952574a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/pla-marmor-sandstein-filament-fur-3d-drucker?variant=56826004636031"
+      }
+    ]
+  }
+]

@@ -1,6 +1,44 @@
 [
   {
+    "uuid": "1238ca05-aa4e-438e-89c6-6aef84c07932",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936709954",
+    "article_number": "PF01002",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/asa?variant=39574343221305"
+      }
+    ]
+  },
+  {
+    "uuid": "e9ab63d2-a0f0-4262-92f1-9a52b883e5bb",
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "gtin": "6938936712626"
+  },
+  {
+    "uuid": "420739f7-19bf-4db4-8f09-7fc43052472a",
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "gtin": "6938936709213"
+  },
+  {
+    "uuid": "cf23525a-2b6b-4d62-88a5-f23ed45a7e8c",
+    "filament_weight": 3000,
+    "diameter": 2.85,
+    "gtin": "6938936712664"
   }
 ]

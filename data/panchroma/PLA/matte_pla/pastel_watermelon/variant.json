@@ -1,5 +1,13 @@
 {
-    "id": "pastel_watermelon",
-    "name": "Pastel Watermelon",
-    "color_hex": "#E93A3F"
+  "uuid": "3db3bbed-cff3-433a-b18e-c288e981577b",
+  "moved_from": [
+    "f73871b6-7f35-47b3-8cff-7e57b5b0ea28"
+  ],
+  "id": "pastel_watermelon",
+  "name": "Pastel Watermelon",
+  "color_hex": "#E93A3F",
+  "transmission_distance": 2.4,
+  "traits": {
+    "matte": true
+  }
 }

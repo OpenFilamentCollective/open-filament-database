@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "324f981b-7882-4f2c-a5c5-b8ae7dafa991",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675131"
+    "gtin": "8594173675131",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-neon-green-1kg-nfc/"
+      }
+    ]
   }
 ]

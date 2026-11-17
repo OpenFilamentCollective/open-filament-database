@@ -1,9 +1,9 @@
 {
+  "uuid": "22f8fcc7-f126-4e75-aa4d-c32eb07450f0",
   "id": "fluffy_sheep_white",
   "name": "Fluffy Sheep (White)",
   "color_hex": "#FFFFFF",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

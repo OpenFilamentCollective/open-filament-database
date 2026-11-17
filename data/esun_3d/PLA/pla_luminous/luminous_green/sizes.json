@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "818983d4-fb2a-416d-9157-67d6c023de29",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204454",
+    "article_number": "PLA-LM175CL-G1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-luminous"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-luminous-green-2"
       }
     ]
   }

@@ -1,6 +1,14 @@
 {
-    "id": "gradient_satin_pla",
-    "name": "Gradient Satin PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "3b932133-e90f-408c-8858-97794bc21db9",
+  "id": "gradient_satin_pla",
+  "name": "Gradient Satin PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_PANCHROMA_V2.pdf"
 }

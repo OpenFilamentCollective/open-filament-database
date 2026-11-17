@@ -1,9 +1,9 @@
 {
+  "uuid": "6907362b-9645-4101-b5f0-0162e476f8a2",
   "id": "classic_lithophane_white",
   "name": "Classic Lithophane White",
   "color_hex": "#FFFFFF",
   "traits": {
-    "industrially_compostable": true,
     "lithophane": true
   }
 }

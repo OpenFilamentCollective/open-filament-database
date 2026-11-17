@@ -1,10 +1,10 @@
 {
+  "uuid": "8624ca76-3c4e-4e38-a03b-560a7820b535",
   "id": "jupiter_brown",
   "name": "Jupiter Brown",
   "color_hex": "#C38C7B",
   "discontinued": false,
   "traits": {
-    "industrially_compostable": true,
     "glitter": true
   }
 }

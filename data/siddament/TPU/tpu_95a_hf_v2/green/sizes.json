@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "d3e17fe5-5c9b-442c-a365-efa1461a3f25",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.010",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/geen-tpu-95a-hf"
+      }
+    ]
+  }
+]

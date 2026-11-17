@@ -1,0 +1,13 @@
+{
+  "uuid": "c1e78199-565b-4efa-b9c9-f0e44b2988bc",
+  "material": "PLA",
+  "material_class": "FFF",
+  "default_slicer_settings": {
+    "generic": {
+      "bed_temp": 60,
+      "first_layer_bed_temp": 65,
+      "first_layer_nozzle_temp": 220,
+      "nozzle_temp": 210
+    }
+  }
+}

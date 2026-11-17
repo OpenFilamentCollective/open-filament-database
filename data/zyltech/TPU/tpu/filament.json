@@ -1,10 +1,12 @@
 {
+  "uuid": "4e12ea6b-a7af-422a-b60c-b73972026592",
   "id": "tpu",
   "name": "TPU",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.21,
+  "shore_hardness_a": 95,
   "min_print_temperature": 210,
-  "max_print_temperature": 240,
+  "max_print_temperature": 260,
   "min_bed_temperature": 30,
   "max_bed_temperature": 60
 }

@@ -1,9 +1,9 @@
 {
+  "uuid": "a573e56d-edfd-4245-a880-ea80442e377c",
   "id": "peppered_mustard",
   "name": "Peppered Mustard",
   "color_hex": "#DC9C43",
   "traits": {
-    "industrially_compostable": true,
     "imitates_marble": true
   }
 }

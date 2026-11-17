@@ -1,0 +1,13 @@
+{
+  "uuid": "6715e162-da5e-4636-b70f-25b52c2ba67a",
+  "id": "bright_teal",
+  "name": "Bright Teal",
+  "color_hex": "#00FEDE",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "319 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

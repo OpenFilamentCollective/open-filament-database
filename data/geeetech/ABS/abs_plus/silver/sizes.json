@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "4402a8aa-f546-4dc4-ab0c-0735aa9f800c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994171104",
+    "article_number": "700-001-1549",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/abs-silver-6"
+      }
+    ]
   }
 ]

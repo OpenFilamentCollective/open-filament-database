@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "ffd7b5c8-c24d-46b7-8897-87f28edfb20f",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 200,
+    "gtin": "8721496001273",
     "article_number": "BPTG-175COLA-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "67664b2a-933d-4963-bd28-3cb58c286cde",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8721496001280",
     "article_number": "BPTG-175COLA-02300",
     "discontinued": false,
     "purchase_links": [

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "6ddbd739-5781-409e-8381-83259591de97",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.006",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pure-white-petg"
+      }
+    ]
+  }
+]

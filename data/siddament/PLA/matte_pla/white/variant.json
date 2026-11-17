@@ -1,0 +1,13 @@
+{
+  "uuid": "ab102fdc-2aa0-4f43-9b71-ac5bf30ef181",
+  "id": "white",
+  "name": "White",
+  "color_hex": "#F1F0EA",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "11-0601 Bright White"
+  },
+  "traits": {
+    "matte": true
+  }
+}

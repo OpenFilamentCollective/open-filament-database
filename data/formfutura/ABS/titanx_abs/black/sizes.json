@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "dbfda2bc-1597-4ea5-b7aa-192a51da3178",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476130",
     "article_number": "TITX-175BLCK-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "592438c2-d75c-47d2-88b1-e1816e4b56eb",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477816",
     "article_number": "TITX-175BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "8e51b961-74e1-4bbd-8f67-67e1e69f5be1",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924477830",
     "article_number": "TITX-175BLCK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "8741f2a2-6e64-4fda-86fa-a5ce7622cae9",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720574291704",
     "article_number": "TITX-175BLCK-08000",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +64,12 @@
     ]
   },
   {
+    "uuid": "60b14534-aca7-4e0c-8e33-61bfb3152bc1",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476147",
     "article_number": "TITX-285BLCK-00750",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +80,12 @@
     ]
   },
   {
+    "uuid": "1d6a70de-3646-4dcd-9b3f-8f80821b4ceb",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477823",
     "article_number": "TITX-285BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +96,12 @@
     ]
   },
   {
+    "uuid": "0be3cd19-39a6-4f06-bbf2-f9c5f15de791",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924477847",
     "article_number": "TITX-285BLCK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -96,5 +110,12 @@
         "url": "https://www.formfutura.com/titanx"
       }
     ]
+  },
+  {
+    "uuid": "95b58153-78ca-485e-8aef-b6045024c1e8",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574298680",
+    "article_number": "TITX-285BLCK-00250"
   }
 ]

@@ -1,10 +1,10 @@
 {
+  "uuid": "556d43f8-5699-4ff2-8350-f48f97f9b800",
   "id": "shimmering_candle",
   "name": "Shimmering Candle",
   "color_hex": "#8A2D40",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true,
-    "iridescent": true
+    "iridescent": true,
+    "recycled": true
   }
 }

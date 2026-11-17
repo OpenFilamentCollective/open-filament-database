@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "97907e1f-71cf-4f31-980b-8acc2e93ba81",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/translucent-smoke-black-petg-pro"
+      }
+    ]
   }
 ]

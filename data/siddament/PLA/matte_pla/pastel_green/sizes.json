@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "58fe154b-ae60-4e30-8db3-ac98841ffcd1",
+    "moved_from": [
+      "057461c8-bdd3-46fe-80c7-d7ccef810501"
+    ],
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.039",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pastel-green"
+      }
+    ]
+  }
+]

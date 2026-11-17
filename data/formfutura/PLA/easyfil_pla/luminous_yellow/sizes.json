@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "0aaaf97f-a694-426e-b78c-18a84fef418a",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8718924475256",
+    "article_number": "EPLA-175LYLW-00750"
   }
 ]

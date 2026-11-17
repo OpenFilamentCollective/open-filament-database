@@ -1,9 +1,10 @@
 {
+  "uuid": "dc082614-ba2e-4f91-8a4e-5c0d2f5d506b",
   "id": "dark_blue",
   "name": "Dark Blue",
   "color_hex": "#2941BD",
   "traits": {
-    "ipa_soluble": true,
-    "transparent": true
+    "transparent": true,
+    "ipa_soluble": true
   }
 }

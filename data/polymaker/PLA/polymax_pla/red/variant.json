@@ -1,8 +1,13 @@
 {
+  "uuid": "c67819df-2351-4c2a-b244-92e697e00116",
+  "moved_from": [
+    "0d9d4677-3c62-4923-b98b-447d54e8bdbf"
+  ],
   "id": "red",
   "name": "Red",
-  "color_hex": "#E72F1D",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#ED2F20",
+  "hex_variants": [
+    "#DE4343",
+    "#E72F1D"
+  ]
 }

@@ -1,6 +1,7 @@
 {
-    "id": "flex",
-    "name": "TPU Flex",
-    "diameter_tolerance": 0.05,
-    "density": 1.14
+  "uuid": "a7be6085-0cb1-4cc2-8bf9-b33bad4e7f58",
+  "id": "flex",
+  "name": "TPU Flex",
+  "diameter_tolerance": 0.05,
+  "density": 1.14
 }

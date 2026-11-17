@@ -1,5 +1,12 @@
 {
-    "id": "obsidian_black",
-    "name": "Obsidian Black",
-    "color_hex": "#181818"
+  "uuid": "7e334a90-7a81-457b-9a71-647efa9fec92",
+  "moved_from": [
+    "019b9f75-a183-417e-9c94-cdd920a402f1"
+  ],
+  "id": "obsidian_black",
+  "name": "Obsidian Black",
+  "color_hex": "#181818",
+  "traits": {
+    "high_temperature": true
+  }
 }

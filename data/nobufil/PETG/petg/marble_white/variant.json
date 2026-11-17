@@ -1,8 +1,10 @@
 {
+  "uuid": "70f1777a-fb93-44ba-a881-260ef4f07a3c",
   "id": "marble_white",
   "name": "Marble White",
   "color_hex": "#EDF0F2",
   "traits": {
-    "imitates_marble": true
+    "imitates_marble": true,
+    "recycled": true
   }
 }

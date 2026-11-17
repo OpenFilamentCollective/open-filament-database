@@ -1,0 +1,10 @@
+{
+  "uuid": "1003a8a7-0804-4617-857f-b410098ad204",
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": "#F14700",
+  "discontinued": false,
+  "traits": {
+    "silk": true
+  }
+}

@@ -1,10 +1,11 @@
 {
+  "uuid": "eb697ae4-d671-45d1-8e2b-482af0ef67c9",
   "id": "odorless_rapido",
   "name": "Odorless ABS Rapido",
   "diameter_tolerance": 0.02,
-  "density": 1.04,
+  "density": 1.05,
   "min_print_temperature": 240,
-  "max_print_temperature": 280,
+  "max_print_temperature": 260,
   "min_bed_temperature": 100,
   "max_bed_temperature": 110
 }

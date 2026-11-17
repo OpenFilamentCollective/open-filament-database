@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "89562982-cfc6-4cb2-990e-2a2e6d71a420",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675766"
+    "gtin": "8594173675766",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-matte-black-1kg-nfc/"
+      }
+    ]
   }
 ]

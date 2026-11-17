@@ -1,8 +1,9 @@
 {
+  "uuid": "4dc2f699-ebe3-4b36-9257-e8ec5d037c80",
   "id": "3dxstat_esd",
   "name": "TPU 3DXStat ESD",
   "diameter_tolerance": 0.02,
-  "density": 1.21,
+  "density": 1.18,
   "min_print_temperature": 210,
   "max_print_temperature": 240,
   "min_bed_temperature": 30,

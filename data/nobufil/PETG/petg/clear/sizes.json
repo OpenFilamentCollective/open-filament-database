@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "1b68d69b-2d1f-4d54-b5c8-f641040b11ac",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460030",
+    "article_number": "PETG-R-001-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-clear-4"
+      }
+    ]
   }
 ]

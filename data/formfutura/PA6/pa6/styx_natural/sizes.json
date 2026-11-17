@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "e3bd1f6d-4300-4572-b264-b3827e94943f",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720574294132",
     "article_number": "SX06-175NTRL-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "cbaceb72-25bc-4c55-bc0e-16eeb93bc3f4",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720574294149",
     "article_number": "SX06-175NTRL-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "b53c7283-fe70-4f9a-a3ff-08ead06fd4a2",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720574294156",
     "article_number": "SX06-175NTRL-04500",
     "discontinued": false,
     "purchase_links": [

@@ -1,9 +1,10 @@
 {
+  "uuid": "42356f4c-b379-4b19-93e0-ff1a6f75e821",
   "id": "medical_natural",
   "name": "Medical Natural",
   "color_hex": "#F1E6B2",
   "traits": {
-    "filtration_recommended": true,
-    "biocompatible": true
+    "biocompatible": true,
+    "filtration_recommended": true
   }
 }

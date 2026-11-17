@@ -1,9 +1,10 @@
 {
-    "id": "sedimentary_rock",
-    "name": "Sedimentary Rock",
-    "color_hex": [
-        "#765540",
-        "#AA876B",
-        "#AE967E"
-    ]
+  "uuid": "23bc318e-51e7-4d9f-8e89-26e9dea28c4d",
+  "id": "sedimentary_rock",
+  "name": "Sedimentary Rock",
+  "color_hex": [
+    "#765540",
+    "#AA876B",
+    "#AE967E"
+  ]
 }

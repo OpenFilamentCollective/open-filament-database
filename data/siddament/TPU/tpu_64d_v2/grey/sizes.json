@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "4f048454-519d-4819-9712-f5a1cf04ed48",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.075",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/grey-tpu-64d"
+      }
+    ]
+  }
+]

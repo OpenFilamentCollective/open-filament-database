@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "5bcc6801-aae5-461c-a239-1eff22c6e951",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/translucent-bright-neon-green-petg-uv-react"
+      }
+    ]
   }
 ]

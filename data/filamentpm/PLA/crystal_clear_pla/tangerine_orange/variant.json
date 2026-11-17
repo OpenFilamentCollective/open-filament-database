@@ -1,9 +1,9 @@
 {
+  "uuid": "a0c18935-191d-4d3a-8eee-9b041b74b3e2",
   "id": "tangerine_orange",
   "name": "Tangerine Orange",
   "color_hex": "#FFB031",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

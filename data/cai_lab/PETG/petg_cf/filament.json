@@ -1,0 +1,15 @@
+{
+  "uuid": "25ffdea9-749a-45e4-a94f-6078e526380c",
+  "id": "petg_cf",
+  "name": "PETG-CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "shore_hardness_a": 82,
+  "shore_hardness_d": 92,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 65,
+  "max_bed_temperature": 70,
+  "max_print_speed": 250,
+  "discontinued": false
+}

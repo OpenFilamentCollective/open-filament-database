@@ -1,9 +1,10 @@
 {
-    "id": "alpine_forest",
-    "name": "Alpine Forest",
-    "color_hex": [
-        "#669C35",
-        "#9AA60E",
-        "#7A4A00"
-    ]
+  "uuid": "d5ada987-c152-46da-b3a9-e0fe7e9c06a3",
+  "id": "alpine_forest",
+  "name": "Alpine Forest",
+  "color_hex": [
+    "#669C35",
+    "#9AA60E",
+    "#7A4A00"
+  ]
 }

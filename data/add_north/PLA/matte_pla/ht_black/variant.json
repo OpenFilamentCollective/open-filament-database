@@ -1,10 +1,10 @@
 {
+  "uuid": "ae8a561d-51f3-4b05-ac3c-0f3f66327b7d",
   "id": "ht_black",
   "name": "HT- Black",
   "color_hex": "#000000",
   "traits": {
     "matte": true,
-    "industrially_compostable": true,
     "high_temperature": true
   }
 }

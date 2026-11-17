@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "a0e973d5-61d6-486e-ac68-b5e8b22442cd",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461044",
+    "article_number": "PETG-C-601-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-candy-green"
+      }
+    ]
   }
 ]

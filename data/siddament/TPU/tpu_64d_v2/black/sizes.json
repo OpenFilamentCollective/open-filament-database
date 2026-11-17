@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "73f655d3-0324-46e5-986c-84a74f98866f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.074",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/black-tpu-64d"
+      }
+    ]
+  }
+]

@@ -1,6 +1,16 @@
 [
   {
+    "uuid": "0a76d77b-e4c1-42d2-87fa-68d3bbb9b5bc",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "5903175655042"
+  },
+  {
+    "uuid": "31bb9475-4c69-42d6-ab6d-ca7229fc07ec",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "5905991404354"
   }
 ]

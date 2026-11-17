@@ -1,0 +1,45 @@
+name: Schema Change
+description: Propose adding, changing, deprecating or removing a field in one of the JSON schemas
+title: '[SCHEMA] '
+labels: ['schema-change', 'enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Schema changes ripple a long way — the validator, the WebUI form, the static API,
+        the SQLite/CSV exports and downstream consumers (slicers, NFC tags, inventory apps)
+        all read these files. The questions below are the ones a maintainer will ask anyway.
+
+        If you only want a filament, brand or store added to the database, use one of the
+        request templates instead — that needs no schema change.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of change
+      options:
+        - Add a new field
+        - Add a new trait (variant schema)
+        - Change an existing field (type, constraints, description)
+        - Deprecate a field
+        - Remove a deprecated field
+        - Add a new material type
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why is this needed?
+      description: >
+        What can't be expressed today, and who needs it? Concrete cases from real
+        products help a lot — link to a manufacturer page if you have one.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I'm willing to open the PR for this

@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "d1b78456-a72e-43bc-8a37-7da110e134dd",
     "filament_weight": 850,
     "diameter": 1.75,
     "purchase_links": [
@@ -10,8 +11,15 @@
     ]
   },
   {
+    "uuid": "2eab364b-331d-49bb-b8d9-ad6e5f24308d",
     "filament_weight": 800,
     "diameter": 1.75,
-    "gtin": "8594173675230"
+    "gtin": "8594173675230",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-asa-prusa-galaxy-black-800g-nfc/"
+      }
+    ]
   }
 ]

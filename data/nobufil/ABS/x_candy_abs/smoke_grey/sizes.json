@@ -1,6 +1,14 @@
 [
   {
+    "uuid": "2ae499bd-d3d2-4ccd-b428-dc73706fe07a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460238",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-candy-smoke-grey"
+      }
+    ]
   }
 ]

@@ -1,0 +1,10 @@
+{
+  "uuid": "e0c9be05-f447-4ba9-8218-c570a8810ad7",
+  "id": "light_grey",
+  "name": "Light Grey",
+  "color_hex": "#CCCCCC",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Cool Gray 2 C"
+  }
+}

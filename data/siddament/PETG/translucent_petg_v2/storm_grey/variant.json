@@ -1,0 +1,10 @@
+{
+  "uuid": "53b33bb7-9c99-4261-93db-c8e246755e1d",
+  "id": "storm_grey",
+  "name": "Storm Grey",
+  "color_hex": "#A1A1A0",
+  "discontinued": false,
+  "traits": {
+    "translucent": true
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a393174c-a392-4c60-a048-bf10a28bf349",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.072",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-sage-petg-v2"
+      }
+    ]
+  }
+]

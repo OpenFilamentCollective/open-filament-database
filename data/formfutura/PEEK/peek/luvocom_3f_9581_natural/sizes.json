@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "b70a4cb0-dc48-4c16-9c60-9b95c69e3374",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8719956556357",
     "article_number": "PEEK-175NTRL-00500",
     "discontinued": false,
     "purchase_links": [

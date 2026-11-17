@@ -1,9 +1,9 @@
 {
+  "uuid": "d87f6286-f508-4af2-b7cd-0a33d38fdb5a",
   "id": "rec_just_brown",
   "name": "REC- Just BROWN",
   "color_hex": "#BE6730",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

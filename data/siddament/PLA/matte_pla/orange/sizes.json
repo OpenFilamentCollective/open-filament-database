@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "91f7d248-ecbe-473a-9de7-f0ba400abec9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "8.010",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-orange-pla-1-75mm-1kg"
+      }
+    ]
+  }
+]

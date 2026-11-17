@@ -1,0 +1,13 @@
+{
+  "uuid": "53e26d31-0eab-49a1-9267-72c79357c01f",
+  "id": "chrome",
+  "name": "Chrome",
+  "color_hex": "#384657",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Cool Gray 11 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

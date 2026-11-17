@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "d4d2abec-9c34-4023-877d-5f71291b8731",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/petg-v2-3d-printer-filament-1kg"
+      }
+    ]
+  }
+]

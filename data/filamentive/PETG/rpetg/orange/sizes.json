@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "dcab69bb-b9a8-44cd-9bcc-5ec98e6895c0",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 34,
+    "spool_core_diameter": 87,
+    "article_number": "https://www.filamentive.com/product/petg-green-3d-printer-filament/",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/petg-orange-3d-printer-filament/"
+      }
+    ]
+  }
+]

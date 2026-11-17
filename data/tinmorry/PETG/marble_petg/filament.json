@@ -1,10 +1,11 @@
 {
+  "uuid": "97e7fd92-675e-4fc6-a654-3d35421c0eac",
   "id": "marble_petg",
   "name": "Marble PETG",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.27,
-  "min_print_temperature": 220,
+  "min_print_temperature": 225,
   "max_print_temperature": 250,
-  "min_bed_temperature": 70,
+  "min_bed_temperature": 75,
   "max_bed_temperature": 90
 }

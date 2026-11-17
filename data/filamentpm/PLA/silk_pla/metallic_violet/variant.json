@@ -1,9 +1,9 @@
 {
+  "uuid": "03452d73-e20c-48d7-be31-663e79dcb9af",
   "id": "metallic_violet",
   "name": "Metallic Violet",
   "color_hex": "#8D5984",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

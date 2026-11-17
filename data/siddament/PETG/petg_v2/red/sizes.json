@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "e5ade963-a047-4aac-a49f-b5ea3c4a5c8b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.016",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/red-petg-v2"
+      }
+    ]
+  }
+]

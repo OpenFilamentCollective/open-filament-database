@@ -1,6 +1,15 @@
 {
-    "id": "pla_tough",
-    "name": "PLA Tough",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "5efb1024-0d02-4838-b3b1-2d378e8ca4fb",
+  "id": "pla_tough",
+  "name": "PLA Tough",
+  "diameter_tolerance": 0.02,
+  "density": 1.2,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pla_tough.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_pla_tough.pdf"
 }

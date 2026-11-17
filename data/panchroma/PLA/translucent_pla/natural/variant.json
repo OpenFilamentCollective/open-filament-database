@@ -1,5 +1,13 @@
 {
+  "uuid": "7a5fdcfa-0e62-4008-b877-ff8c0069ae5d",
+  "moved_from": [
+    "da8adfe3-9064-48b5-885b-0998e82cb9b6"
+  ],
   "id": "natural",
   "name": "Natural",
-  "color_hex": "#E8E6D0"
+  "color_hex": "#E8E6D0",
+  "transmission_distance": 21,
+  "traits": {
+    "transparent": true
+  }
 }

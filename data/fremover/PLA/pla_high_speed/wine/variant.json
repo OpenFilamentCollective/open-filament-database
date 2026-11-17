@@ -1,0 +1,10 @@
+{
+  "uuid": "49e49240-88e9-4a0d-8617-ca40e05f1b7f",
+  "id": "wine",
+  "name": "Wine",
+  "color_hex": "#704041",
+  "discontinued": false,
+  "traits": {
+    "high_flow": true
+  }
+}

@@ -1,10 +1,29 @@
 {
-  "id": "petg+hs",
-  "name": "PETG+HS",
-  "diameter_tolerance": 0.03,
-  "density": 1.26,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+    "uuid": "60009020-94f2-4454-85d5-616e32c6cb0b",
+    "id": "petg+hs",
+    "name": "PETG+HS",
+    "diameter_tolerance": 0.03,
+    "density": 1.26,
+    "min_print_temperature": 220,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 75,
+    "max_bed_temperature": 90,
+    "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PETG_HS/eSUN_PETG_HS_Filament_TDS_V1.0.pdf",
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFYPdQJh",
+            "id": "OFrdZ0cK",
+            "profile_name": "eSUN PETG+HS"
+        },
+        "elegooslicer": {
+            "generic_id": "GFG99",
+            "id": "E2002",
+            "profile_name": "eSUN PETG+HS"
+        },
+        "crealityprint": {
+            "generic_id": "GFG99",
+            "id": "E2002",
+            "profile_name": "eSUN PETG+HS"
+        }
+    }
 }

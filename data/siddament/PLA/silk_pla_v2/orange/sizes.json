@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "6811abbb-893a-45d0-a4b2-76f678871d44",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.014",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-orange-pla-v2"
+      }
+    ]
+  }
+]

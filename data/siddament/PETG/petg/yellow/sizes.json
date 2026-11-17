@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "8de845ff-f472-4563-8d99-4d937b9146cc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.007",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/yellow-petg-1-75mm-1kg"
+      }
+    ]
+  }
+]

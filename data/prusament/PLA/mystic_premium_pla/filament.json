@@ -1,6 +1,11 @@
 {
+  "uuid": "c7248182-cd85-4f67-a0b6-d442062e5a9b",
   "id": "mystic_premium_pla",
   "name": "Mystic Premium PLA",
   "diameter_tolerance": 0.05,
-  "density": 1.24
+  "density": 1.24,
+  "min_print_temperature": 215,
+  "max_print_temperature": 215,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60
 }

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "a3ba286f-c4d1-4ddc-a6d3-e862ffe6231d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/sunlu-pla-filament-neon-transparent-color-collection"
+      }
+    ]
   }
 ]

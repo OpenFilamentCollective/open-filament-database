@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "531c3a41-8797-4883-9640-e33e6069cfa8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.025",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/ultra-violet-petg"
+      }
+    ]
+  }
+]

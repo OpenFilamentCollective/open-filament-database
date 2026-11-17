@@ -1,0 +1,34 @@
+[
+  {
+    "uuid": "4a3e77f0-bcf0-4361-9d09-0bdfc14df3d4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6937285512567",
+    "article_number": "17200",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://store.bambulab.com/products/pla-pure?id=738891519803023378"
+      }
+    ]
+  },
+  {
+    "uuid": "d53eb517-7038-47c2-a277-ee8d074967cc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285512574",
+    "article_number": "17200",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/bambu-pla-pure-milky-pink?sai=44517"
+      }
+    ]
+  }
+]

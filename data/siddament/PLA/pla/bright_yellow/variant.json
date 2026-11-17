@@ -1,0 +1,10 @@
+{
+  "uuid": "c7a38a73-352f-4884-9500-1bf45c189d24",
+  "id": "bright_yellow",
+  "name": "Bright Yellow",
+  "color_hex": "#EDFE00",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Yellow C"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "uuid": "47c0b897-8fbb-4d3f-9e96-ace50ab516e1",
+  "id": "toaster_grey",
+  "name": "Toaster Grey",
+  "color_hex": "#BDB7A8",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

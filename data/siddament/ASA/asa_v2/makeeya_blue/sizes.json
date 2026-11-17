@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "8952501a-c7d1-4f95-aa50-fe9053ae10e5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.016",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/makeeya-blue-asa-v2"
+      }
+    ]
+  }
+]

@@ -1,8 +1,12 @@
 {
+  "uuid": "35d78053-7755-4151-8225-4ff3edae2b66",
   "id": "black_blue",
   "name": "Black Blue",
   "color_hex": [
     "#000000",
     "#3a88fe"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

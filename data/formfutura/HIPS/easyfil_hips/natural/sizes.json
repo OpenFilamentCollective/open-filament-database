@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "4fc24dcf-a287-4ad8-aae0-2e4b2b58c147",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924472200",
     "article_number": "EHPS-175NTRL-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "10973bd4-3ee6-4b17-9f90-b65dc878709e",
     "filament_weight": 2000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 600,
+    "gtin": "8718924478981",
     "article_number": "EHPS-175NTRL-02000",
     "discontinued": false,
     "purchase_links": [
@@ -26,5 +30,12 @@
         "url": "https://www.formfutura.com/easyfil-hips"
       }
     ]
+  },
+  {
+    "uuid": "d45cfd2e-82ac-4d36-bacc-8d181fe41afc",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574299632",
+    "article_number": "EHPS-285NTRL-00250"
   }
 ]

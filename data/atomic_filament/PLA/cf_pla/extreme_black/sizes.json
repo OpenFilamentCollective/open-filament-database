@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "4e57d69a-7863-4861-b905-3d5bbdcdf783",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/carbon-fiber-extreme-pla-filament"
+      }
+    ]
   }
 ]

@@ -1,5 +1,10 @@
 {
-    "id": "steel_grey",
-    "name": "Steel Grey",
-    "color_hex": "#616469"
+  "uuid": "6747391f-70a9-4e5c-8f95-cdb2b4f593da",
+  "moved_from": [
+    "d86cf876-9753-48cf-8c88-ca13029eeedb"
+  ],
+  "id": "steel_grey",
+  "name": "Steel Grey",
+  "color_hex": "#616469",
+  "transmission_distance": 0.6
 }

@@ -1,6 +1,64 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "839aa1cf-c931-4bbd-96fc-dfc283b4627b",
+    "moved_from": [
+      "91b30463-aaa6-47b8-a056-c6aff7a38bba"
+    ],
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936712442"
+  },
+  {
+    "uuid": "c9f88d3b-4dba-48af-b52b-056fc9788786",
+    "moved_from": [
+      "75140e9a-5666-42c7-a471-e7dc68d5959b"
+    ],
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "gtin": "6938936707608"
+  },
+  {
+    "uuid": "61d1e5c5-89b5-4aa4-a51d-14869eb0a753",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polymax-pc"
+      }
+    ]
+  },
+  {
+    "uuid": "2c0dd13a-e78f-4ebc-8a7b-4cc97278a76b",
+    "filament_weight": 3000,
+    "diameter": 2.85,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polymax-pc"
+      }
+    ]
   }
 ]

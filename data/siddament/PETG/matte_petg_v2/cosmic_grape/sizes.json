@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "5d89d914-c11e-4981-9626-d231eed15514",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.078",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-cosmic-grape-petg-v2"
+      }
+    ]
+  }
+]

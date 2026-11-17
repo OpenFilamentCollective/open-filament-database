@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "24e9af79-bb20-4810-8f09-e1b23461b60d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.008",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/black-asa-v2"
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "uuid": "ed03477a-5bf6-4985-b1c4-444f9a0cbb83",
+  "id": "pc_cf",
+  "name": "PC-CF",
+  "diameter_tolerance": 0.03,
+  "density": 1.18,
+  "min_print_temperature": 245,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 110,
+  "max_bed_temperature": 120,
+  "min_nozzle_diameter": 0.4,
+  "discontinued": false
+}

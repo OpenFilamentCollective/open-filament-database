@@ -1,0 +1,20 @@
+[
+  {
+    "uuid": "5998a314-b42f-4f09-8e92-a4ce78ebccd6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 0,
+    "spool_core_diameter": 100,
+    "gtin": "9319239826348",
+    "article_number": "TL6477",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "jaycar_nz",
+        "url": "https://www.jaycar.co.nz/slic3d-pla-spool-less-cocoa-brown-1-75mm-1kg-filament/p/TL6477"
+      }
+    ]
+  }
+]

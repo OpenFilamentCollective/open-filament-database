@@ -1,5 +1,13 @@
 {
-    "id": "lava_red",
-    "name": "Lava Red",
-    "color_hex": "#DE1619"
+  "uuid": "00aed261-fb3e-4d3a-b66d-3ff0a7d62e5e",
+  "moved_from": [
+    "f72d7f39-75a7-48b1-9bdc-9f6f7b0f0b1d"
+  ],
+  "id": "lava_red",
+  "name": "Lava Red",
+  "color_hex": "#DE1619",
+  "transmission_distance": 1.9,
+  "traits": {
+    "matte": true
+  }
 }

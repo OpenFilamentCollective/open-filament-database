@@ -1,6 +1,7 @@
 {
-    "id": "nylon",
-    "name": "PA12 Nylon",
-    "diameter_tolerance": 0.03,
-    "density": 1.06
+  "uuid": "a6108956-d33e-4495-bffd-cba85674422c",
+  "id": "nylon",
+  "name": "PA12 Nylon",
+  "diameter_tolerance": 0.03,
+  "density": 1.06
 }

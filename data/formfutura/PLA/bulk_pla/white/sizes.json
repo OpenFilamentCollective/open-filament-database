@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "aebe4180-36a3-438e-b1c0-94b94e7a317b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 200,
+    "gtin": "8720847069290",
     "article_number": "BPLA-175WHTE-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "cba7927c-0bd7-4464-8c51-bd4ce4373661",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847069306",
     "article_number": "BPLA-175WHTE-02300",
     "discontinued": false,
     "purchase_links": [

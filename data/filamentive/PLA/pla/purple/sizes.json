@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "17ad7ca1-1e72-46ef-a2b1-61d7968efa2d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/purple-pla-3d-printer-filament/"
+      }
+    ]
+  }
+]

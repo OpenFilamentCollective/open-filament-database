@@ -1,0 +1,38 @@
+[
+  {
+    "uuid": "908a51b9-495c-455f-b426-d353b24584e9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6937285513618",
+    "article_number": "35500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://store.bambulab.com/products/petg-matte"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-matte-lime"
+      }
+    ]
+  },
+  {
+    "uuid": "3f12ef47-ad0f-4722-9c07-66a05ffe2487",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285513625",
+    "article_number": "35500",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-matte-lime?sai=47134"
+      }
+    ]
+  }
+]

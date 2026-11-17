@@ -1,9 +1,9 @@
 {
+  "uuid": "ddb99c6f-1735-4562-8ef3-92de879a0772",
   "id": "signal_white",
   "name": "Signal White",
   "color_hex": "#FFFFFF",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

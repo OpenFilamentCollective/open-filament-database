@@ -1,6 +1,12 @@
 {
-    "id": "pla_matte_rainbow",
-    "name": "PLA Matte Rainbow",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "3c55fab1-c86f-4908-9603-9ef181017e1e",
+  "id": "pla_matte_rainbow",
+  "name": "PLA Matte Rainbow",
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-Matte_PLA-TDS.pdf?v=1747277166"
 }

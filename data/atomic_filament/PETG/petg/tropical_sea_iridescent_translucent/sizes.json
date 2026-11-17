@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "908fc59f-c50f-4562-a3d2-39740f26a34b",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/tropical-sea-iridescent-translucent-petg-pro"
+      }
+    ]
   }
 ]

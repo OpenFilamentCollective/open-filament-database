@@ -1,13 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337036999",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-gf?variant=41924135747720"
-            }
-        ]
-    }
+  {
+    "uuid": "c5fc6d0a-a4cb-40a4-b5e7-4c52698b1bce",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337036999",
+    "article_number": "72200",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pa-pet/products/pa6-gf?variant=41924135747720"
+      }
+    ]
+  }
 ]

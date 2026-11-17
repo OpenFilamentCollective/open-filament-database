@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "31352e80-df1b-415c-9062-8a20426042dc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.036",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-swirl-orange-pla-v2"
+      }
+    ]
+  }
+]

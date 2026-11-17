@@ -1,10 +1,12 @@
 {
+  "uuid": "2d1c8717-f06e-4482-b495-b0653f79143b",
   "id": "prime",
   "name": "ASA Prime",
   "diameter_tolerance": 0.02,
   "density": 1.15,
-  "min_print_temperature": 245,
-  "max_print_temperature": 245,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://azurefilm.com/wp-content/uploads/2024/04/TDS-ASA-Prime.pptx.pdf"
 }

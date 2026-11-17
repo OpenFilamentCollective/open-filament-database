@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "9d9c29a9-e901-452b-b245-542ee63e67a1",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574294743",
+    "article_number": "EPLA-285NTRL-00250"
   }
 ]

@@ -1,0 +1,31 @@
+{
+  "uuid": "09fddecd-f9e9-4cf0-9815-667fcfba71d9",
+  "id": "silk_pla_v2",
+  "name": "Silk PLA V2",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "max_dry_temperature": 45,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "discontinued": false,
+  "slicer_settings": {
+    "bambustudio": {
+      "profile_name": "Siddament PLA Silk"
+    },
+    "orcaslicer": {
+      "overrides": {
+        "filament_flow_ratio": 0.95,
+        "filament_max_volumetric_speed": 18
+      },
+      "profile_name": "Siddament PLA Silk"
+    },
+    "generic": {
+      "bed_temp": 60,
+      "first_layer_bed_temp": 60,
+      "first_layer_nozzle_temp": 225,
+      "nozzle_temp": 225
+    }
+  }
+}

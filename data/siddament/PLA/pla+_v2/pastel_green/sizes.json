@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "0f140114-ba5e-43a4-b7c4-179040128ff1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.067",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pastel-green-pla"
+      }
+    ]
+  }
+]

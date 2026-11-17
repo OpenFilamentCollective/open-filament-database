@@ -1,7 +1,12 @@
 [
   {
+    "uuid": "32a9d501-60c6-400b-8d68-12bd983bf80a",
+    "moved_from": [
+      "c8147d8e-4c6b-451b-b0cf-233da0a91e69"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "plastic",
     "ean": "5905991405306",
     "article_number": "TF-24026",
     "purchase_links": [

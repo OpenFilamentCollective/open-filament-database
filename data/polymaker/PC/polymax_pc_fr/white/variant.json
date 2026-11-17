@@ -1,0 +1,12 @@
+{
+  "uuid": "af6e520c-ecf8-4ce6-9ccb-f3bafe12e77c",
+  "moved_from": [
+    "6105ec86-4345-410b-a620-50b2d437e18c"
+  ],
+  "id": "white",
+  "name": "White",
+  "color_hex": "#FFFFFF",
+  "traits": {
+    "self_extinguishing": true
+  }
+}

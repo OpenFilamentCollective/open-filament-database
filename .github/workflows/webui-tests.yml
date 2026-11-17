@@ -15,6 +15,9 @@ permissions:
 jobs:
   test-webui:
     runs-on: ubuntu-latest
+    # Normal runs take ~6 min; cap well below GitHub's 6h default so a stalled
+    # apt mirror or hung step fails instead of running for hours.
+    timeout-minutes: 20
     
     steps:
       - uses: actions/checkout@v4
@@ -28,9 +31,24 @@ jobs:
         working-directory: webui
         run: npm ci
 
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('webui/package-lock.json') }}
+
       - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         working-directory: webui
+        timeout-minutes: 10
         run: npm run test:install
+
+      - name: Install Playwright system dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        working-directory: webui
+        timeout-minutes: 10
+        run: npx playwright install-deps chromium firefox
       
       - name: Build application
         working-directory: webui

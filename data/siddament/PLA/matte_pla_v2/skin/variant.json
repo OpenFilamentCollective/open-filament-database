@@ -1,0 +1,10 @@
+{
+  "uuid": "4d22682b-c9bc-4b59-8f1b-e70a7dec9b7b",
+  "id": "skin",
+  "name": "Skin",
+  "color_hex": "#E7B89A",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

@@ -1,10 +1,11 @@
 {
+  "uuid": "daf5768e-65b8-4567-826b-ae026ddb07d7",
   "id": "pei_1010",
   "name": "PEI 1010",
   "diameter_tolerance": 0.02,
   "density": 1.27,
-  "min_print_temperature": 340,
-  "max_print_temperature": 380,
-  "min_bed_temperature": 120,
+  "min_print_temperature": 370,
+  "max_print_temperature": 395,
+  "min_bed_temperature": 130,
   "max_bed_temperature": 160
 }

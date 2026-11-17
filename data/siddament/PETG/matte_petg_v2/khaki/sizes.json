@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "8bc20d19-17b2-4ff9-a011-1a59faf05dc6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.062",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-khaki-petg-v2"
+      }
+    ]
+  }
+]

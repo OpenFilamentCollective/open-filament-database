@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b8978ef5-7627-4f22-a525-079deaa5d459",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.079",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-mega-blue-petg-v2"
+      }
+    ]
+  }
+]

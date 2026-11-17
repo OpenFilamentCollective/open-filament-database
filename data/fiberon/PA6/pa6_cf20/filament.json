@@ -1,6 +1,30 @@
 {
+    "uuid": "8e2b7b91-df3b-4611-aeb5-a11ff539a4ba",
     "id": "pa6_cf20",
     "name": "PA6-CF20",
     "diameter_tolerance": 0.02,
-    "density": 1.17
+    "density": 1.17,
+    "min_print_temperature": 280,
+    "max_print_temperature": 300,
+    "min_bed_temperature": 40,
+    "max_bed_temperature": 50,
+    "min_fan_speed": 0,
+    "max_fan_speed": 0,
+    "dry_temperature": 100,
+    "dry_time": 10,
+    "data_sheet_url": "https://fiberon.polymaker.com/wp-content/uploads/TDS_FIBERON-PA6-CF20_V1.1_EN.pdf",
+    "slicer_settings": {
+        "orcaslicer": {
+            "id": "OFEabreg",
+            "profile_name": "Fiberon PA6-CF20"
+        },
+        "elegooslicer": {
+            "id": "GFL57",
+            "profile_name": "Fiberon PA6-CF20"
+        },
+        "crealityprint": {
+            "id": "P7003",
+            "profile_name": "Fiberon PA6-CF20"
+        }
+    }
 }

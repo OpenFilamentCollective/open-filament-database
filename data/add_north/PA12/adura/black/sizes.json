@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "empty_spool_weight": 175,
-        "spool_core_diameter": 41,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/Adura%E2%84%A2/Adura%E2%84%A2%20-%201.75mm%20-%20500g%20-%20Black"
-            }
-        ]
-    }
+  {
+    "uuid": "4e5dd1f4-17fa-40ab-ae9a-ecb06a32b57f",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "empty_spool_weight": 175,
+    "spool_core_diameter": 41
+  },
+  {
+    "uuid": "d195a0cf-d0a4-421c-9835-c752706d5f56",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182901850",
+    "article_number": "ANAD14BLA",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/Adura%E2%84%A2/Adura%E2%84%A2%20-%201.75mm%20-%201000g%20-%20Black"
+      }
+    ]
+  }
 ]

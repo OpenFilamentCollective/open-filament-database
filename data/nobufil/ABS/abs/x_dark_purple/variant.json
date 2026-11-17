@@ -1,8 +1,10 @@
 {
+  "uuid": "9655bc01-cd90-4bca-a614-c0c13c50c007",
   "id": "x_dark_purple",
   "name": "x Dark Purple",
   "color_hex": "#6802BC",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

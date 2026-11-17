@@ -1,10 +1,11 @@
 {
+  "uuid": "a15ceba5-6eb2-443b-8f6a-ab10e856a2ce",
   "id": "pearl_pla",
   "name": "Pearl PLA",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.05,
   "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_print_temperature": 200,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 20,
+  "max_bed_temperature": 60
 }

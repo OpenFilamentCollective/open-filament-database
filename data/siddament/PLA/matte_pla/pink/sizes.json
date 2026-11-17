@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7d57b27f-bcc5-4a0a-ae04-140835515842",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "8.017",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pink-pla-1-75mm-1kg"
+      }
+    ]
+  }
+]

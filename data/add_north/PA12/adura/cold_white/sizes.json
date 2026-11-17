@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "empty_spool_weight": 175,
-        "spool_core_diameter": 41,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/Adura%E2%84%A2/Adura%E2%84%A2%20-%201.75mm%20-%20500g%20-%20Cold%20White"
-            }
-        ]
-    }
+  {
+    "uuid": "3abfece5-47f7-4a82-b9e2-953523d23b47",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "empty_spool_weight": 175,
+    "spool_core_diameter": 41
+  },
+  {
+    "uuid": "4609a45b-a01a-4ebc-a640-94cbe4535ab5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182901867",
+    "article_number": "ANAD14COW",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/Adura%E2%84%A2/Adura%E2%84%A2%20-%201.75mm%20-%201000g%20-%20Cold%20White"
+      }
+    ]
+  }
 ]

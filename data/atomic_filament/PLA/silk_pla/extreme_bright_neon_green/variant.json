@@ -1,9 +1,9 @@
 {
+  "uuid": "c126d5a6-6117-450a-a388-2049903f001f",
   "id": "extreme_bright_neon_green",
   "name": "Extreme Bright Neon Green",
   "color_hex": "#9FEC41",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "neon": true
   }

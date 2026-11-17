@@ -1,0 +1,43 @@
+{
+    "uuid": "8a7149c3-ed15-49e9-b7bf-0a933531d38e",
+    "id": "tough",
+    "name": "PLA Tough",
+    "diameter_tolerance": 0.03,
+    "density": 1.26,
+    "max_dry_temperature": 55,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 45,
+    "max_volumetric_speed": 21,
+    "min_fan_speed": 100,
+    "max_fan_speed": 100,
+    "discontinued": true,
+    "slicer_settings": {
+        "bambustudio": {
+            "generic_id": "GFL99",
+            "id": "GFA09",
+            "profile_name": "Bambu PLA Tough"
+        },
+        "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFaQMgRH",
+            "profile_name": "Bambu PLA Tough"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA09",
+            "profile_name": "Bambu PLA Tough"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFA09",
+            "profile_name": "Bambu PLA Tough"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA09",
+            "profile_name": "Bambu PLA Tough"
+        }
+    }
+}

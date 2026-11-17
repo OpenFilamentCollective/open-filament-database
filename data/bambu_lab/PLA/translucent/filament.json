@@ -1,8 +1,18 @@
 {
+    "uuid": "17816713-d79c-459d-b524-e908ee4ddc4b",
     "id": "translucent",
     "name": "PLA Translucent",
     "diameter_tolerance": 0.03,
     "density": 1.22,
+    "min_print_temperature": 200,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 65,
+    "max_volumetric_speed": 12,
+    "min_fan_speed": 100,
+    "max_fan_speed": 100,
+    "dry_temperature": 50,
+    "dry_time": 8,
     "data_sheet_url": "https://store.bblcdn.com/s7/default/729a8bf233e9474db25c8d5be1e64a00/Bambu_PLA_Translucent_Technical_Data_Sheet.pdf",
     "safety_sheet_url": "https://store.bblcdn.com/s7/default/09499afaaa25439cb4e00b729f5e9bf8/Bambu_PLA_Translucent_MSDS.pdf",
     "slicer_settings": {
@@ -12,6 +22,16 @@
             "profile_name": "Bambu PLA Translucent"
         },
         "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFFbSnCD",
+            "profile_name": "Bambu PLA Translucent"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "GFA17",
+            "profile_name": "Bambu PLA Translucent"
+        },
+        "crealityprint": {
             "generic_id": "GFL99",
             "id": "GFA17",
             "profile_name": "Bambu PLA Translucent"

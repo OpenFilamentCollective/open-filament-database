@@ -1,9 +1,9 @@
 {
+  "uuid": "3eab0e90-d944-4baa-a120-1f3ba48b0003",
   "id": "premium",
   "name": "Premium",
   "color_hex": "#FFCB47",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

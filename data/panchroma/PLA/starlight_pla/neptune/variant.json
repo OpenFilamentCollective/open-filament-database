@@ -1,5 +1,12 @@
 {
+  "uuid": "192b7719-a839-49cc-a00e-1fed0c32b8f9",
+  "moved_from": [
+    "800f90c7-52ea-45e0-95f8-e009adc39acc"
+  ],
   "id": "neptune",
   "name": "Neptune",
-  "color_hex": "#4daac5"
+  "color_hex": "#4daac5",
+  "traits": {
+    "glitter": true
+  }
 }

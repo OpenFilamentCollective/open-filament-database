@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "0380ef89-37bc-40f8-9bd0-d3d8051aaee3",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.013",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pink-petg"
+      }
+    ]
+  }
+]

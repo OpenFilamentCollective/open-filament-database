@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "c9e1b1bc-67c1-4718-8d34-4ad43a662fa1",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/amethyst-violet-gemstone-trans-petg"
+      }
+    ]
   }
 ]

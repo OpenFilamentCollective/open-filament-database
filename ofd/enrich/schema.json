@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "enrichments",
+    "not_found",
+    "sustainability_log"
+  ],
+  "properties": {
+    "enrichments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "pointer",
+          "value",
+          "source_url",
+          "source_type"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "pointer": {
+            "type": "string"
+          },
+          "value": {},
+          "source_url": {
+            "type": "string"
+          },
+          "source_quote": {
+            "type": "string"
+          },
+          "source_type": {
+            "enum": [
+              "primary",
+              "secondary"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "not_found": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "fields",
+          "note"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sustainability_log": {
+      "description": "null unless sustainability sections were in the gap list; otherwise what the brand publishes, for docs/sustainability-sources.md.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "found",
+        "sources"
+      ],
+      "properties": {
+        "found": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

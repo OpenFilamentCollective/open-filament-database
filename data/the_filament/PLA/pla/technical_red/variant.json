@@ -1,5 +1,9 @@
 {
-    "id": "technical_red",
-    "name": "Technical Red",
-    "color_hex": "#d42a44"
+  "uuid": "2d7fa665-2eb2-4a3f-ae0f-656a5fbbe7e2",
+  "moved_from": [
+    "c861bc0c-d723-42f3-9b24-b9ff6d449adf"
+  ],
+  "id": "technical_red",
+  "name": "Technical Red",
+  "color_hex": "#d42a44"
 }

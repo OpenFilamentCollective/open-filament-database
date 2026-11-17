@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "a28252cc-7238-467d-b73c-349314e0c7cd",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
@@ -7,6 +8,20 @@
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/pla-pro"
+      }
+    ]
+  },
+  {
+    "uuid": "dc2db41c-f8cc-41f4-9e3b-0e0dcec484ac",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208155",
+    "article_number": "PLA+175Y1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-yellow-7?sai=24493"
       }
     ]
   }

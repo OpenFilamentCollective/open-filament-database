@@ -1,0 +1,37 @@
+[
+  {
+    "uuid": "3923c2fd-7659-4e73-bb37-374514abcc26",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936718345",
+    "article_number": "CA04100",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/en-eu/products/matte-pla?variant=45410820685881"
+      }
+    ]
+  },
+  {
+    "uuid": "e3a47f42-b164-47b9-82e8-468a16f59322",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6938936719984",
+    "article_number": "PC1002033",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/en-eu/products/matte-pla?variant=46258772148281"
+      }
+    ]
+  }
+]

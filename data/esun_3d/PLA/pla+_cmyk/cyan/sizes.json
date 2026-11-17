@@ -1,12 +1,33 @@
 [
   {
+    "uuid": "a92a6a72-e3ea-41b6-8149-7fbcdaf5d80b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572206021",
+    "article_number": "PLA+CMYK175CY1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/pla-cmyk"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-cmyk-cyan?sai=34666"
+      }
+    ]
+  },
+  {
+    "uuid": "237dbd6b-8545-4c38-9aec-4628cafa3f0f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572211742",
+    "article_number": "PLA+CMYK175CY1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-cmyk-cyan?sai=24841"
       }
     ]
   }

@@ -1,9 +1,9 @@
 {
+  "uuid": "a80c1733-4300-4633-bc55-3e96c5f45604",
   "id": "eco_midnight_black",
   "name": "Eco Midnight Black",
   "color_hex": "#000000",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

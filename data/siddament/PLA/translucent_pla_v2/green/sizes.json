@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "626061d3-bd5a-4791-94e0-ee942bd0c225",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.031",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-green-pla-v2"
+      }
+    ]
+  }
+]

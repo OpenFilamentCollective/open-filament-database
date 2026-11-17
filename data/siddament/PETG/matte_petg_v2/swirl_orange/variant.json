@@ -1,0 +1,14 @@
+{
+  "uuid": "f2f9837c-5cf3-4f6c-b505-07ddd914c03c",
+  "id": "swirl_orange",
+  "name": "Swirl Orange",
+  "color_hex": "#F26B21",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "165 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

@@ -1,5 +1,14 @@
 {
+  "uuid": "b2705423-5a4e-44d6-a0ed-1b2be6dd2c1f",
+  "moved_from": [
+    "4e5ecfc5-972a-4407-be57-ae17981b313b"
+  ],
   "id": "twilight",
   "name": "Twilight",
-  "color_hex": "#63a7c9"
+  "color_hex": "#1E3445",
+  "transmission_distance": 3.1,
+  "discontinued": false,
+  "traits": {
+    "iridescent": true
+  }
 }

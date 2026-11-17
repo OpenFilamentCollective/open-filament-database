@@ -1,8 +1,9 @@
 {
-    "id": "natur",
-    "name": "Natur",
-    "color_hex": "#FAF8DF",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "90a0cf56-589a-436c-a877-6b9c1d518610",
+  "id": "natur",
+  "name": "Natur",
+  "color_hex": "#FAF8DF",
+  "traits": {
+    "recyclable": true
+  }
 }

@@ -1,0 +1,118 @@
+name: Brand sign-off
+# Brands listed in ofd/brand_claims.json are claimed by their manufacturer: a PR
+# touching data/<brand_id>/ needs an approving review from one of the brand's
+# representatives on its latest commit. This publishes that as the `Brand sign-off`
+# commit status (make it a required check on main), requests the representatives'
+# review and keeps a sticky comment on the PR. Maintainers can override with the
+# `brand-signoff-waived` label.
+#
+# Runs as pull_request_target / workflow_run so the workflow, the check logic and the
+# claims registry all come from the base branch: a PR cannot edit its way past the
+# check, and fork PRs still get a token that can post statuses. NEVER check out or run
+# the PR's head here.
+#
+# Reviews from forks only get a read-only token, so pull_request_review is relayed
+# through brand_signoff_relay.yaml and re-evaluated here via workflow_run. A relay run
+# from a first-time contributor's fork waits for a maintainer to approve it, so an
+# hourly sweep also re-evaluates every PR whose sign-off is still pending.
+#
+# Run it by hand with no PR number to evaluate every open PR, e.g. right after the
+# check is made required, so PRs opened before that get their status. Runs covering
+# several PRs (that and the sweep) only dispatch one run per PR, so every evaluation of
+# a PR shares that PR's concurrency group.
+on:
+  pull_request_target:
+    types: [ opened, synchronize, reopened, ready_for_review, labeled, unlabeled ]
+  workflow_run:
+    workflows: [ Brand sign-off review relay ]
+    types: [ completed ]
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Pull request number; leave empty for every open PR.'
+        required: false
+
+permissions:
+  contents: read
+  statuses: write
+  pull-requests: write
+  issues: write
+  actions: write
+
+# Every evaluation of a PR must share one key, so a stale evaluation can never finish
+# after (and overwrite) a newer one. The relay's run name is that key. Quoted: an
+# unquoted " #" would start a YAML comment and cut the expression off.
+concurrency:
+  group: "${{ (github.event.pull_request.number || inputs.pr) && format('Brand sign-off relay for PR #{0}', github.event.pull_request.number || inputs.pr) || github.event.workflow_run.display_title || 'brand-signoff-fan-out' }}"
+  cancel-in-progress: false
+
+jobs:
+  brand_signoff:
+    runs-on: ubuntu-24.04
+    # Not "Brand sign-off": that is the required commit status, and this job's own check
+    # run passes even while the status it posts is pending.
+    name: Evaluate brand sign-off
+    steps:
+      - name: Resolve PR number
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr }}
+          # Set by the relay's run-name. Untrusted (the relay runs from the PR), but
+          # only ever parsed as a number: the evaluation reads everything from the API.
+          RELAY_TITLE: ${{ github.event.workflow_run.display_title }}
+          REF: ${{ github.event.repository.default_branch }}
+        run: |
+          if [ -z "$PR_NUMBER" ] && [ "$EVENT" = workflow_run ]; then
+            PR_NUMBER="$(printf '%s' "$RELAY_TITLE" | sed -nE 's/^Brand sign-off relay for PR #([0-9]+)$/\1/p')"
+          elif [ -z "$PR_NUMBER" ]; then
+            if [ "$EVENT" = schedule ]; then
+              FILTER='.[] | select(any(.statusCheckRollup[]?; .context == "Brand sign-off" and .state == "PENDING")) | .number'
+            else
+              FILTER='.[].number'
+            fi
+            PRS="$(gh pr list -R "$GITHUB_REPOSITORY" --state open --limit 1000 --json number,statusCheckRollup -q "$FILTER")"
+            for pr in $PRS; do
+              gh workflow run brand_signoff.yaml -R "$GITHUB_REPOSITORY" --ref "$REF" -f pr="$pr"
+            done
+            echo "Dispatched an evaluation for $(printf '%s' "$PRS" | wc -w) PR(s)."
+            exit 0
+          fi
+          if ! printf '%s' "$PR_NUMBER" | grep -Eq '^[0-9]+$'; then
+            echo "::error::Could not determine the PR number: '$PR_NUMBER'"
+            exit 1
+          fi
+          echo "number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+      # Comments and review requests post as the repo bot (OFD_REPO_BOT);
+      # without it they fall back to github-actions. The bot can bypass the main
+      # ruleset, so its token here is limited to what those calls need.
+      - name: Repo bot token
+        id: bot
+        if: steps.pr.outputs.number != '' && vars.OFD_REPO_BOT_APP_ID != ''
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          private-key: ${{ secrets.OFD_REPO_BOT_PRIVATE_KEY }}
+          permission-pull-requests: write
+          permission-issues: write
+      - name: Checkout base
+        if: steps.pr.outputs.number != ''
+        uses: actions/checkout@v4
+      - name: Set up Python
+        if: steps.pr.outputs.number != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        if: steps.pr.outputs.number != ''
+        run: pip install -r requirements.txt
+      - name: Evaluate and publish sign-off
+        if: steps.pr.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OFD_BOT_TOKEN: ${{ steps.bot.outputs.token }}
+          PR: ${{ steps.pr.outputs.number }}
+        run: python -m ofd claims check --pr "$PR" --post

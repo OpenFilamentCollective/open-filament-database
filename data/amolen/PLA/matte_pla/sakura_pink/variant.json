@@ -1,9 +1,9 @@
 {
+  "uuid": "3310f733-5db5-4b5c-aac4-7aaca28b7ad1",
   "id": "sakura_pink",
   "name": "Sakura Pink",
   "color_hex": "#FFBADE",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

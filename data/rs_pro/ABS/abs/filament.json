@@ -1,0 +1,19 @@
+{
+  "uuid": "de22472b-4558-4f39-a262-9a7d4cb7b1d9",
+  "id": "abs",
+  "name": "ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.03,
+  "max_dry_temperature": 90,
+  "min_print_temperature": 230,
+  "max_print_temperature": 270,
+  "preheat_temperature": 230,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "min_chamber_temperature": 45,
+  "max_chamber_temperature": 65,
+  "chamber_temperature": 50,
+  "data_sheet_url": "https://docs.rs-online.com/909f/0900766b8157cf3f.pdf",
+  "safety_sheet_url": "https://docs.rs-online.com/909f/0900766b8157cf3f.pdf",
+  "discontinued": false
+}

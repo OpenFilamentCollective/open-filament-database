@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "659d1c96-1e19-4d66-9f8e-2efd3bd5e637",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.034",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/bright-teal-pla"
+      }
+    ]
+  }
+]

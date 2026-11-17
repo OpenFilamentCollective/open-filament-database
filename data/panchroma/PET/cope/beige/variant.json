@@ -1,5 +1,10 @@
 {
-    "id": "beige",
-    "name": "Beige",
-    "color_hex": "#DABAA5"
+  "uuid": "70183a6f-6495-41d0-bd12-a04c7b7b78cf",
+  "moved_from": [
+    "d771fa6d-09c7-43d1-816b-421e3d08a5c6"
+  ],
+  "id": "beige",
+  "name": "Beige",
+  "color_hex": "#DABAA5",
+  "transmission_distance": 1.5
 }

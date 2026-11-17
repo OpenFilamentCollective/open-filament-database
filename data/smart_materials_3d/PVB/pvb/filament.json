@@ -1,10 +1,11 @@
 {
+  "uuid": "1fa3f5d7-f23e-4248-b0a9-5ac31d7ecb8d",
   "id": "pvb",
   "name": "PVB",
   "diameter_tolerance": 0.02,
   "density": 1.08,
-  "min_print_temperature": 190,
+  "min_print_temperature": 200,
   "max_print_temperature": 220,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 75
+  "max_bed_temperature": 70
 }

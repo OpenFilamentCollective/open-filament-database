@@ -1,8 +1,9 @@
 {
-    "id": "beige",
-    "name": "Beige",
-    "color_hex": "#E0C6AD",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "7b0500d7-0d74-4ac2-a082-2dfddb30d312",
+  "id": "beige",
+  "name": "Beige",
+  "color_hex": "#E0C6AD",
+  "traits": {
+    "recyclable": true
+  }
 }

@@ -1,10 +1,36 @@
 {
+  "uuid": "9550483e-0643-49b3-b036-3bbe3f853643",
   "id": "asa",
   "name": "ASA",
   "diameter_tolerance": 0.02,
   "density": 1.07,
-  "min_print_temperature": 235,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 120,
+  "data_sheet_url": "https://www.nobufil.com/_files/ugd/c9047f_249f6b91600d4370ac4e462fa5e6e868.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://www.nobufil.com/asa-filament",
+      "source_quote": "Hergestellt aus 100% recycelten industriellen Kunststoffabfällen ist unser ASA (Acrylnitril-Styrol-Acrylat) ein thermoplastisches Polymer",
+      "retrieved": "2026-11-03"
+    },
+    "relative_claims": [
+      {
+        "reduction_pct": 60,
+        "metric": "gwp",
+        "baseline": "raw materials from primary production",
+        "source_type": "primary",
+        "source_url": "https://www.nobufil.com/_files/ugd/c9047f_249f6b91600d4370ac4e462fa5e6e868.pdf",
+        "source_quote": "This product is made from recycled plastic – approx. 60% of CO2 equivalents can be saved compared to raw materials from primary production.",
+        "retrieved": "2026-11-03",
+        "notes": "Datasheet says \"approx.\" 60%; no study, method, boundary or unit published."
+      }
+    ]
+  }
 }

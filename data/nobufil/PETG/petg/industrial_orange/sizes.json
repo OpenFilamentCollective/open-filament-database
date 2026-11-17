@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "e62abc60-8a5f-405e-ab08-d2ef2bc0ae27",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461242",
+    "article_number": "PETG-R-203-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-industrial-orange"
+      }
+    ]
   }
 ]

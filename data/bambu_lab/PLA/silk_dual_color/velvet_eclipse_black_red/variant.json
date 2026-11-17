@@ -1,8 +1,15 @@
 {
-    "id": "velvet_eclipse_black_red",
-    "name": "Velvet Eclipse (Black-Red)",
-    "color_hex": [
-        "#000000",
-        "#A34342"
-    ]
+  "uuid": "f72710c9-b0d2-4b8e-b1b6-d9fd689406aa",
+  "moved_from": [
+    "a255a90f-9391-48eb-a004-5c7e1f6cbbd2"
+  ],
+  "id": "velvet_eclipse_black_red",
+  "name": "Velvet Eclipse (Black-Red)",
+  "color_hex": [
+    "#000000",
+    "#A34342"
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

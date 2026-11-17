@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "54e63cbe-0cea-4eab-a44f-78cd9fe94ba8",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8720629061696",
+    "article_number": "HPPL-175WHAL-00750"
   }
 ]

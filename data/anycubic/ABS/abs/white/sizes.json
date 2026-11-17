@@ -1,12 +1,18 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/abs-filament?variant=44903968538813"
-            }
-        ]
-    }
+  {
+    "uuid": "a345acc4-2f3f-4586-97fd-0e1970562669",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6974662353382",
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/abs-filament?variant=44903968538813"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/anycubic/abs-white-12"
+      }
+    ]
+  }
 ]

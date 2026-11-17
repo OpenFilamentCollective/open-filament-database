@@ -1,6 +1,7 @@
 {
-    "id": "hyper_pc",
-    "name": "Hyper PC",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "90b3c8da-caf9-430c-817a-4ae3b23654d4",
+  "id": "hyper_pc",
+  "name": "Hyper PC",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

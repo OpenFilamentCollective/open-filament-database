@@ -1,0 +1,12 @@
+{
+  "uuid": "091e230b-62a8-4455-834e-89c902e101e2",
+  "id": "fibreheart_ppa",
+  "name": "Fibreheart PPA",
+  "diameter_tolerance": 0.02,
+  "density": 1.21,
+  "min_print_temperature": 280,
+  "max_print_temperature": 300,
+  "min_bed_temperature": 70,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://siraya.tech/pages/siraya-tech-fibreheart-ppa-filament-tds"
+}

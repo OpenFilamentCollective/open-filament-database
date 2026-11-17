@@ -1,8 +1,9 @@
 {
+  "uuid": "7fa0c398-0f63-4409-a586-925a01bc42b1",
   "id": "pearl_gentian_blue",
   "name": "Pearl Gentian Blue",
   "color_hex": "#0078BF",
   "traits": {
-    "industrially_compostable": true
+    "high_flow": true
   }
 }

@@ -1,5 +1,13 @@
 {
-    "id": "spring",
-    "name": "Spring",
-    "color_hex": "#e391a6"
+  "uuid": "bdf449a9-6c97-4fc0-9415-66f2a58c0f7e",
+  "moved_from": [
+    "ad6118e4-c5fe-47c9-8afe-85ba991b7301"
+  ],
+  "id": "spring",
+  "name": "Spring",
+  "color_hex": "#e391a6",
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
 }

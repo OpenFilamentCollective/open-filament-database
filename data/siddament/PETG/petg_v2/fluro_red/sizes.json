@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "46c45243-2540-4d79-a43e-64d1703acf9a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.035",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/fluro-red-petg-1"
+      }
+    ]
+  }
+]

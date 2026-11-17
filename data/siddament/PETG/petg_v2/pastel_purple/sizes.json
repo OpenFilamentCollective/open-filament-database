@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1273077c-a13b-4c50-abc7-e29e03e75f07",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.012",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pastel-purple-petg"
+      }
+    ]
+  }
+]

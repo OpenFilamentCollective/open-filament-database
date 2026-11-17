@@ -1,0 +1,9 @@
+{
+  "uuid": "49a0f612-9bf8-4700-b1aa-896519a3e824",
+  "id": "light_red",
+  "name": "Light Red",
+  "color_hex": "#EF6063",
+  "traits": {
+    "high_flow": true
+  }
+}

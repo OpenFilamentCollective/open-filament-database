@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "4a5b52fc-d9cf-4c49-a3ef-028d9726007e",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "article_number": "ASA-WH075-175",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/asa-750g-white-3d-printer-filament-2/?attribute_diameter=1.75mm"
+      }
+    ]
+  }
+]

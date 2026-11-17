@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "f1a1987c-2550-4774-908a-ba7a6db7fd55",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/starlight-gray-pla"
+      }
+    ]
   }
 ]

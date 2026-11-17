@@ -1,8 +1,7 @@
 {
+  "uuid": "9617556a-a1dc-417e-ae7e-23833add790c",
   "id": "warm_bisque",
   "name": "Warm Bisque",
-  "color_hex": "#EAC2B7",
-  "traits": {
-    "industrially_compostable": true
-  }
+  "color_hex": "#DEB29D",
+  "transmission_distance": 1.1
 }

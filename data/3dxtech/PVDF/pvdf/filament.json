@@ -1,6 +1,12 @@
 {
+  "uuid": "ecf1ec35-cf26-45d1-9ef3-3a592f577f57",
   "id": "pvdf",
   "name": "PVDF",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.71,
+  "min_print_temperature": 245,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/FLUORX_PVDF_TDS_v3.pdf?v=1723942766"
 }

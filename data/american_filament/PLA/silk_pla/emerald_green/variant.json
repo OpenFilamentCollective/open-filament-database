@@ -1,9 +1,9 @@
 {
+  "uuid": "bb770d84-a682-4685-905e-ca087e1a6dc6",
   "id": "emerald_green",
   "name": "Emerald Green",
   "color_hex": "#0CCF81",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

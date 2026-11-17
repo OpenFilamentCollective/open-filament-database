@@ -1,10 +1,21 @@
 {
+  "uuid": "3af00266-918a-43da-9048-70171ef33994",
+  "moved_from": [
+    "0bc0001b-0cb2-4350-b58e-1bb4ce22c711"
+  ],
   "id": "polymax_pla",
-  "name": "Polymax PLA",
+  "name": "PolyMax™ PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
+  "density": 1.21,
+  "max_dry_temperature": 55,
   "min_print_temperature": 190,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/PolyMax_PLA_TDS_EN_V5.4.pdf",
+  "safety_sheet_url": "https://polymaker.com/wp-content/tech-docs/PolyMax_PLA_SDS_US_V1.pdf",
+  "discontinued": false
 }

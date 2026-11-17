@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "cc84607f-36c7-416a-899e-7418dd85dd72",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.028",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-forest-petg-v2"
+      }
+    ]
+  }
+]

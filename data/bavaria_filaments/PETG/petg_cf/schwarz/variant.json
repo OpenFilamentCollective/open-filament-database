@@ -1,0 +1,11 @@
+{
+  "uuid": "84f99a48-3271-444f-a29b-b79d2022e234",
+  "id": "schwarz",
+  "name": "Schwarz",
+  "color_hex": "#000000",
+  "traits": {
+    "recycled": true,
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

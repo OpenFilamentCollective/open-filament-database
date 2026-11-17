@@ -1,12 +1,18 @@
 {
+    "uuid": "22f671f2-480c-467c-9982-d62b3fa087be",
     "id": "asa",
     "name": "ASA",
     "diameter_tolerance": 0.03,
-    "density": 1.17,
+    "density": 1.05,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 75,
+    "max_bed_temperature": 90,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-ASA-TDS.pdf?v=1747275210",
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFB98",
-            "id": "EFL92",
+            "generic_id": "OFLPAxz3",
+            "id": "OFVtIasg",
             "profile_name": "Eryone ASA"
         },
         "elegooslicer": {

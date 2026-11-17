@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "970e449e-2e89-4e9c-b5ac-998b017995d4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 34,
+    "spool_core_diameter": 87,
+    "article_number": "RPET-BK1-175",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/rpetg-recycled-pet-filament-1-75mm-6-colours-500g/?attribute_weight=1kg&attribute_diameter=1.75mm"
+      }
+    ]
+  }
+]

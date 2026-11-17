@@ -1,10 +1,10 @@
 {
+  "uuid": "b64533d2-a996-43ea-a2b2-03b729b0bde3",
   "id": "holiday_pine_ht_2023_special_edition",
   "name": "Holiday Pine HT 2023 Special Edition",
   "color_hex": "#935C34",
   "traits": {
-    "industrially_compostable": true,
-    "high_temperature": true,
-    "imitates_wood": true
+    "imitates_wood": true,
+    "high_temperature": true
   }
 }

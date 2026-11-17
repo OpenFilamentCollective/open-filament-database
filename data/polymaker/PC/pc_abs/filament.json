@@ -1,6 +1,17 @@
 {
-    "id": "pc_abs",
-    "name": "PC-ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.1
+  "uuid": "dbdb2f99-aff5-4334-b710-1ee4f6342fdf",
+  "id": "pc_abs",
+  "name": "PC-ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.1,
+  "min_print_temperature": 250,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 105,
+  "min_fan_speed": 0,
+  "max_fan_speed": 0,
+  "dry_temperature": 75,
+  "dry_time": 6,
+  "enclosure": "required",
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/Polymaker_PC_ABS_TDS_EN_V5.4.pdf"
 }

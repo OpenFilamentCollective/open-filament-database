@@ -1,7 +1,8 @@
 {
-    "id": "prusa_galaxy_black_nfc",
-    "name": "Prusa Galaxy Black (NFC)",
-    "color_hex": [
-        "#3D3E3D"
-    ]
+  "uuid": "611994d6-cb16-4fb5-b8a3-a0e3acba8c75",
+  "id": "prusa_galaxy_black_nfc",
+  "name": "Prusa Galaxy Black (NFC)",
+  "color_hex": [
+    "#3D3E3D"
+  ]
 }

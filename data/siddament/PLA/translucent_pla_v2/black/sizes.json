@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "67abba0d-d714-4df1-995e-ee6dd8b4d10f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.036",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-black-pla-v2"
+      }
+    ]
+  }
+]

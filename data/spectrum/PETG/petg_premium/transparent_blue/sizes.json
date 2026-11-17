@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "e3e62a7f-0cbf-46bd-9b43-d45f11872677",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "spectrum",
+        "url": "https://shop.spectrumfilaments.com/products/the-filament-petg-1-75mm-transparent-blue-1kg"
+      }
+    ]
+  }
+]

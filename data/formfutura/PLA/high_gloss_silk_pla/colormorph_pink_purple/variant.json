@@ -1,12 +1,13 @@
 {
+  "uuid": "d5533763-451a-42f8-a218-0abb215297e0",
   "id": "colormorph_pink_purple",
   "name": "ColorMorph Pink & Purple",
   "color_hex": [
     "#B645A9",
-    "#7142A3"
+    "#800080"
   ],
+  "discontinued": true,
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "iridescent": true,
     "coextruded": true

@@ -1,0 +1,13 @@
+{
+  "uuid": "4404cc1e-2c4a-43df-823e-ee14cbd1210b",
+  "id": "hyper_lime_green",
+  "name": "Hyper Lime Green",
+  "color_hex": "#9AFF00",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "382 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

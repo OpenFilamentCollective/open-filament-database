@@ -1,10 +1,11 @@
 {
+  "uuid": "fc9beedb-6656-47da-9981-ecd78088eab0",
   "id": "python_flex_tpu",
   "name": "Python Flex TPU",
   "diameter_tolerance": 0.02,
   "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 0,
   "max_bed_temperature": 60
 }

@@ -1,11 +1,12 @@
 {
-    "id": "silver",
-    "name": "Silver",
-    "color_hex": "#8F999F",
-    "color_standards": {
-        "ral": "7001"
-    },
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "cce8330e-2f50-4527-9f55-8ccea2d4c8d1",
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#8F999F",
+  "color_standards": {
+    "ral": "7001"
+  },
+  "traits": {
+    "recyclable": true
+  }
 }

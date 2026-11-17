@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1712d4be-054e-4652-8d03-ce8861732850",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.026",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/vivid-cyan-petg"
+      }
+    ]
+  }
+]

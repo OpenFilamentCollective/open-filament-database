@@ -1,0 +1,25 @@
+[
+  {
+    "uuid": "db8a146f-2f2b-4367-988b-2d29cd04120b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/pastell-pla-filament-fur-3d-drucker?variant=56386269741439"
+      }
+    ]
+  },
+  {
+    "uuid": "593d80cf-fcea-4f9e-8321-fa14ecccaa04",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/pastell-pla-filament-fur-3d-drucker?variant=56826037174655"
+      }
+    ]
+  }
+]

@@ -1,8 +1,13 @@
 {
+  "uuid": "18c76867-b9b6-4781-b98f-77ebfad7bc8d",
   "id": "abs_art_marble_gray",
   "name": "ABS Art Marble Gray",
   "diameter_tolerance": 0.03,
   "density": 1.04,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 100,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/TDS-ABS-MARBLE-GRAY.pdf",
   "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/Karta-charakterystyki-msds-ABS-MARBLE-GRAY-Nebula.pdf"
 }

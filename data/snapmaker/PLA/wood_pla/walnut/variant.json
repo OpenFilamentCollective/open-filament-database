@@ -1,0 +1,10 @@
+{
+  "uuid": "ce0a1f37-3c7e-4ec8-bcfd-a7442be45df6",
+  "id": "walnut",
+  "name": "Walnut",
+  "color_hex": "#775C50",
+  "traits": {
+    "imitates_wood": true,
+    "contains_wood": true
+  }
+}

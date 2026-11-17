@@ -1,4 +1,5 @@
 {
+  "uuid": "dcffd02a-6e26-453b-bf3a-340e6ff5f116",
   "id": "abyssal_purple",
   "name": "Abyssal Purple",
   "color_hex": [
@@ -6,8 +7,8 @@
     "#663D7E"
   ],
   "traits": {
-    "industrially_compostable": true,
     "iridescent": true,
-    "coextruded": true
+    "coextruded": true,
+    "high_flow": true
   }
 }

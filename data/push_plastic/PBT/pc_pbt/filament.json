@@ -1,6 +1,11 @@
 {
+  "uuid": "ddbc05e7-b64b-426e-91ef-6bf48e61cc0b",
   "id": "pc_pbt",
   "name": "PC PBT",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.2,
+  "min_print_temperature": 245,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 120
 }

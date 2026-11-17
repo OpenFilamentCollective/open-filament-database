@@ -1,8 +1,9 @@
 {
+  "uuid": "9ab3d579-fdfc-412e-9bff-44e84d790859",
   "id": "pc_cf",
   "name": "Kratos PC CF10",
   "diameter_tolerance": 0.02,
-  "density": 1.2,
+  "density": 1.22,
   "min_print_temperature": 270,
   "max_print_temperature": 310,
   "min_bed_temperature": 100,

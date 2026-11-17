@@ -1,9 +1,9 @@
 {
+  "uuid": "2e3e990f-39d9-426c-9681-9b878e45d53e",
   "id": "woodjet_natur",
   "name": "WOODJet - Natur",
   "color_hex": "#AC8963",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "6bcf7221-f0d0-47a0-b6d0-9bed2497a2de",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461150",
+    "article_number": "ABS-R-404-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-bright-magenta"
+      }
+    ]
   }
 ]

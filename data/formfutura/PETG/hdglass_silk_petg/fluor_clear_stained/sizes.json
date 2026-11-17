@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "ed68eb1e-6e19-4143-ab4b-97c87868ca0c",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476901",
     "article_number": "HDGL-175FCLS-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "b78f333e-6178-4994-a9af-6add2b66ee5c",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476949",
     "article_number": "HDGL-285FCLS-00750",
     "discontinued": false,
     "purchase_links": [

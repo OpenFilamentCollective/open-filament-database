@@ -1,5 +1,12 @@
 {
-    "id": "space_grey",
-    "name": "Space Grey",
-    "color_hex": "#7e7e7e"
+  "uuid": "b70833d4-ded8-44fe-990d-b1a6bbf8bec6",
+  "moved_from": [
+    "267ed439-1e72-43cd-a80c-ae78c2a099de"
+  ],
+  "id": "space_grey",
+  "name": "Space Grey",
+  "color_hex": "#7e7e7e",
+  "traits": {
+    "high_flow": true
+  }
 }

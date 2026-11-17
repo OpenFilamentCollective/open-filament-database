@@ -1,9 +1,10 @@
 {
+  "uuid": "1cccdcc0-6674-4485-813a-23ea00dc7b7b",
   "id": "aquasolve_natural",
   "name": "AquaSolve – Natural",
   "color_hex": "#F2EFE9",
   "traits": {
-    "water_soluble": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "water_soluble": true
   }
 }

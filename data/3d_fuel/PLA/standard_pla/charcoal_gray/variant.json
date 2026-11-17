@@ -1,8 +1,10 @@
 {
+  "uuid": "ecb3faa5-c658-4f42-8b70-d118e458aefc",
   "id": "charcoal_gray",
   "name": "Charcoal Gray",
-  "color_hex": "#4C5975",
+  "color_hex": "#4D565C",
+  "transmission_distance": 0.4,
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

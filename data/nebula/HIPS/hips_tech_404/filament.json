@@ -1,7 +1,12 @@
 {
+  "uuid": "142d9f3e-4dce-4b53-aa7c-73d7a71df99e",
   "id": "hips_tech_404",
   "name": "HIPS Tech 404",
   "diameter_tolerance": 0.05,
   "density": 1.05,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 100,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/TDS-HIPS-404.pdf"
 }

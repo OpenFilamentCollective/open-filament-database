@@ -1,9 +1,11 @@
 {
+  "uuid": "843ce005-6a71-4fbc-86dc-72ebc1fcd54b",
   "id": "carbon_black",
   "name": "Carbon Black",
   "color_hex": "#3E413F",
   "traits": {
     "matte": true,
+    "abrasive": true,
     "contains_carbon_fiber": true
   }
 }

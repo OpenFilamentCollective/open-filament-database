@@ -1,10 +1,12 @@
 {
+  "uuid": "4281fd73-86ee-45b7-8a09-b8eff95a2f29",
   "id": "abs_fr_v0",
   "name": "ABS FR V0",
-  "diameter_tolerance": 0.02,
-  "density": 1.05,
-  "min_print_temperature": 230,
+  "diameter_tolerance": 0.03,
+  "density": 1.1,
+  "min_print_temperature": 240,
   "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0822/8611/7163/files/Inslogic_ABS_FR_V0_Filament_Technical_Data_Sheet_TDS.pdf"
 }

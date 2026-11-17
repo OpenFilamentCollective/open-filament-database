@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "6290afb9-33b3-4e63-83b9-d43fe8af1d6e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/gemstone-ruby-red-translucent-pla"
+      }
+    ]
   }
 ]

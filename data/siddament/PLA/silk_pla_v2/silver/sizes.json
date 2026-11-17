@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "f2c30cdb-a1d5-4b8d-bc96-08bc8a7c1c87",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.004",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-silver-pla-v2"
+      }
+    ]
+  }
+]

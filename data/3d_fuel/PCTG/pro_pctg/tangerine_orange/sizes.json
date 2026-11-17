@@ -1,6 +1,16 @@
 [
   {
+    "uuid": "d8279a35-f55b-4ade-969a-de2c09f6fd44",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "5060665813303",
+    "article_number": "E4505"
+  },
+  {
+    "uuid": "55f96410-9b18-4ea2-95a2-5d783e9d2846",
+    "filament_weight": 4000,
+    "diameter": 1.75,
+    "gtin": "5060665813426",
+    "article_number": "E4705"
   }
 ]

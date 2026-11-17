@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "65b57b41-a889-48f2-b415-abc2d9babc0d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/bright-white-opaque-petg-pro"
+      }
+    ]
   }
 ]

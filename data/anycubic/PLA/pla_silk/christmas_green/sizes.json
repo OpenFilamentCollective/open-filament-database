@@ -1,12 +1,18 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "purchase_links": [
-            {
-                "store_id": "anycubic",
-                "url": "https://store.anycubic.com/products/silk-pla-filament?variant=45219527033021"
-            }
-        ]
-    }
+  {
+    "uuid": "93194846-dc4d-477b-9ed5-0f1b58cfd1e1",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6974662352637",
+    "purchase_links": [
+      {
+        "store_id": "anycubic",
+        "url": "https://store.anycubic.com/products/silk-pla-filament?variant=45219527033021"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/anycubic/pla-silk-christians-green"
+      }
+    ]
+  }
 ]

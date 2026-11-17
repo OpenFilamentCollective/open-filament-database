@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a0c89079-3755-40d3-bfd5-2a946253c7b0",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.065",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-tan-petg-v2"
+      }
+    ]
+  }
+]

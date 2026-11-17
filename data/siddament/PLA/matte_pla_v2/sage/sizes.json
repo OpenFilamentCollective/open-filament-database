@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "8975c2b8-bdec-4688-be17-78231a6f8c40",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.026",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-sage-pla-v2"
+      }
+    ]
+  }
+]

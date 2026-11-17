@@ -1,10 +1,11 @@
 {
+  "uuid": "bc30b20f-ce37-4228-b941-acdf5c4ae9f3",
   "id": "dark_green",
   "name": "Dark Green",
   "color_hex": "#41A840",
   "traits": {
     "glow": true,
-    "industrially_compostable": true,
-    "abrasive": true
+    "abrasive": true,
+    "high_flow": true
   }
 }

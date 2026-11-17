@@ -1,9 +1,10 @@
 {
+  "uuid": "b778a8ec-6bfa-4d6b-a991-317f46bcd82b",
   "id": "olive_gold",
   "name": "Olive gold",
   "color_hex": "#fff480",
   "traits": {
-    "recyclable": true,
-    "silk": true
+    "silk": true,
+    "recyclable": true
   }
 }

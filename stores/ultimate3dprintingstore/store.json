@@ -1,8 +1,9 @@
 {
-    "id": "ultimate3dprintingstore",
-    "name": "Ultimate 3D Printing Store",
-    "storefront_url": "https://ultimate3dprintingstore.com/",
-    "logo": "logo.png",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "df74303a-9e96-40b5-baec-97753fad805d",
+  "id": "ultimate3dprintingstore",
+  "name": "Ultimate 3D Printing Store",
+  "storefront_url": "https://ultimate3dprintingstore.com/",
+  "logo": "logo.png",
+  "ships_from": [],
+  "ships_to": []
 }

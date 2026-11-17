@@ -1,9 +1,10 @@
 {
+  "uuid": "cce9ece8-9e91-44b9-a442-4cdc33f5cecd",
   "id": "marble_dark",
   "name": "Marble Dark",
   "color_hex": "#C3CCD5",
   "traits": {
-    "filtration_recommended": true,
-    "imitates_marble": true
+    "imitates_marble": true,
+    "filtration_recommended": true
   }
 }

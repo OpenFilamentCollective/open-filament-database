@@ -1,5 +1,12 @@
 {
+  "uuid": "19c5bf76-7334-43f3-a69d-bffcccbdc084",
+  "moved_from": [
+    "2cd3449f-445b-48ca-95f3-fe4f359c8f78"
+  ],
   "id": "sandstone",
   "name": "Sandstone",
-  "color_hex": "#c5c680"
+  "color_hex": "#c5c680",
+  "traits": {
+    "imitates_marble": true
+  }
 }

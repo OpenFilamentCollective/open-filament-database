@@ -1,7 +1,15 @@
 [
   {
+    "uuid": "f1de8203-596a-44a5-9f09-766be16e89e2",
+    "moved_from": [
+      "f5f8bb63-d92b-466b-9141-b07fab0247bd"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 153,
+    "gtin": "6932704911785",
+    "article_number": "50.203.0216",
     "purchase_links": [
       {
         "store_id": "elegoo",
@@ -10,8 +18,10 @@
     ]
   },
   {
+    "uuid": "704b80f8-95f8-443f-9009-714b0ebad8fb",
     "filament_weight": 250,
     "diameter": 1.75,
+    "empty_spool_weight": 60,
     "purchase_links": [
       {
         "store_id": "elegoo",
@@ -20,8 +30,10 @@
     ]
   },
   {
+    "uuid": "c118cdb4-a5a2-4451-af5c-3503aea7289c",
     "filament_weight": 3000,
     "diameter": 1.75,
+    "empty_spool_weight": 317,
     "purchase_links": [
       {
         "store_id": "elegoo",

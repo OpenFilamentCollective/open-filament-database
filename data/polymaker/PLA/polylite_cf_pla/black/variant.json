@@ -1,9 +1,9 @@
 {
+  "uuid": "e4cf638d-4eda-4584-9ba8-d49ad695befe",
   "id": "black",
   "name": "Black",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "abrasive": true,
     "contains_carbon_fiber": true
   }

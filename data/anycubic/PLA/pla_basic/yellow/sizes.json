@@ -1,13 +1,19 @@
 [
   {
+    "uuid": "47e378ff-8f0b-47f7-89ed-c405e13025eb",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 125,
     "spool_core_diameter": 52,
+    "gtin": "6974662351708",
     "purchase_links": [
       {
         "store_id": "anycubic",
         "url": "https://store.anycubic.com/products/pla-filament?variant=44831257067709"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/anycubic/pla-basic-yellow-2"
       }
     ]
   }

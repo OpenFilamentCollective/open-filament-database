@@ -1,5 +1,9 @@
 {
+  "uuid": "6f3ef501-cbcb-464d-a00e-f6a707913262",
+  "moved_from": [
+    "ed3beb8b-6a0b-4c47-9c1e-f737867038be"
+  ],
   "id": "coral_red",
   "name": "Coral Red",
-  "color_hex": "#DF3303"
+  "color_hex": "#E10600"
 }

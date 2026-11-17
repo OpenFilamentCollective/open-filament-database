@@ -1,6 +1,12 @@
 {
-    "id": "pla_matte_high_speed_triple_color",
-    "name": "PLA Matte High Speed Triple-Color",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "3d86a74d-1ee6-4d93-aa87-a64dd01baeed",
+  "id": "pla_matte_high_speed_triple_color",
+  "name": "PLA Matte High Speed Triple-Color",
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-HP_Matte_PLA-TDS.pdf?v=1747276290"
 }

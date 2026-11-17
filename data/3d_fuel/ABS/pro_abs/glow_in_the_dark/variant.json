@@ -1,11 +1,12 @@
 {
+  "uuid": "16e9e233-e016-473c-a787-dc1621c06f1d",
   "id": "glow_in_the_dark",
   "name": "Glow-in-the-Dark",
   "color_hex": "#000000",
   "traits": {
     "glow": true,
-    "filtration_recommended": true,
+    "illuminescent_color_change": true,
     "abrasive": true,
-    "illuminescent_color_change": true
+    "filtration_recommended": true
   }
 }

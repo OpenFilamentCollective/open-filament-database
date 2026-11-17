@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "9e1c575a-b36b-44d8-b9cc-1b9481ea1a3e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460900",
+    "article_number": "ABS-R-103-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-industrial-yellow"
+      }
+    ]
   }
 ]

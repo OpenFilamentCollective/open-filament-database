@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a3c260b4-f7cd-42fe-8ece-31ae8e19acfc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.033",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/translucent-green-petg"
+      }
+    ]
+  }
+]

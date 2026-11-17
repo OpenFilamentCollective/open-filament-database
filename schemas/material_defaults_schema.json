@@ -1,0 +1,119 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Material Defaults",
+    "description": "Generic per-material carbon estimates. These are estimates, not manufacturer data, and are kept outside data/.",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "entries": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "material": {
+                        "$ref": "./material_types_schema.json"
+                    },
+                    "virgin_kg_co2e_per_kg": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "minimum": 0
+                    },
+                    "recycled_kg_co2e_per_kg": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "minimum": 0
+                    },
+                    "boundary": {
+                        "type": "string",
+                        "title": "System Boundary",
+                        "description": "Life-cycle stages covered: resin production only, filament up to the factory gate, delivery to the customer, or the full life cycle",
+                        "enum": [
+                            "resin_cradle_to_gate",
+                            "filament_cradle_to_gate",
+                            "cradle_to_customer",
+                            "cradle_to_grave",
+                            "unknown"
+                        ]
+                    },
+                    "packaging_included": {
+                        "type": "string",
+                        "title": "Packaging Included",
+                        "description": "Whether spool and packaging are inside the figure",
+                        "enum": [
+                            "yes",
+                            "no",
+                            "unknown"
+                        ]
+                    },
+                    "sources": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "title": "Source URL",
+                                    "description": "Where the figure is published",
+                                    "format": "uri",
+                                    "pattern": "^https?://",
+                                    "maxLength": 1000,
+                                    "x-placeholder": "https://example.com/..."
+                                },
+                                "quote": {
+                                    "type": "string",
+                                    "title": "Source Quote",
+                                    "description": "Verbatim text from the source. Must contain the number exactly as written.",
+                                    "minLength": 1,
+                                    "maxLength": 2000
+                                },
+                                "retrieved": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                    "title": "Retrieved",
+                                    "description": "Date the source was read (YYYY-MM-DD)"
+                                }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                                "url",
+                                "retrieved"
+                            ]
+                        }
+                    },
+                    "kind": {
+                        "const": "estimate"
+                    },
+                    "version": {
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "material",
+                    "virgin_kg_co2e_per_kg",
+                    "recycled_kg_co2e_per_kg",
+                    "boundary",
+                    "packaging_included",
+                    "sources",
+                    "kind",
+                    "version"
+                ]
+            }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "version",
+        "entries"
+    ]
+}

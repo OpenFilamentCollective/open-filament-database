@@ -1,8 +1,12 @@
 {
+  "uuid": "44c40a55-28ac-434f-a587-9c5ddf9b87c8",
   "id": "military_green",
   "name": "Military Green",
   "color_hex": "#515234",
   "color_standards": {
     "ral": "6003"
+  },
+  "traits": {
+    "recyclable": true
   }
 }

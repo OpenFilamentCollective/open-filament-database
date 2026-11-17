@@ -1,0 +1,28 @@
+[
+  {
+    "uuid": "c82c9324-c579-43cb-a84d-7a7a1950f3af",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6937285512581",
+    "article_number": "17600",
+    "discontinued": false
+  },
+  {
+    "uuid": "2deac598-cdca-49eb-8a91-d2dbca569b68",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285512598",
+    "article_number": "17600",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/bambu-pla-pure-baby-blue?sai=44505"
+      }
+    ]
+  }
+]

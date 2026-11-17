@@ -1,6 +1,23 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "21bf5dc0-89d3-4fa9-accc-cbd5cd26f936",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8719956554735",
+    "article_number": "VPLA-175LGRY-00750"
+  },
+  {
+    "uuid": "923eeee9-0594-4a22-b349-909cfd25806d",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "gtin": "8719956554810",
+    "article_number": "VPLA-175LGRY-02300"
+  },
+  {
+    "uuid": "80931d8c-9bd2-46ee-acf6-538b8e685abb",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720629060156",
+    "article_number": "VPLA-285LGRY-00250"
   }
 ]

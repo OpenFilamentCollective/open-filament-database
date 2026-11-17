@@ -1,8 +1,15 @@
 {
-    "id": "koltron_g1",
-    "name": "PETG Koltron G1",
-    "diameter_tolerance": 0.02,
-    "density": 1.8,
-    "max_dry_temperature": 80,
-    "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/Koltron_G1_TDS_-mHxpF.pdf"
+  "uuid": "093f7fef-0615-4160-8359-8b77d7b05932",
+  "id": "koltron_g1",
+  "name": "PETG Koltron G1",
+  "diameter_tolerance": 0.02,
+  "density": 1.8,
+  "max_dry_temperature": 80,
+  "min_print_temperature": 280,
+  "max_print_temperature": 295,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "dry_temperature": 50,
+  "dry_time": 3,
+  "data_sheet_url": "https://storage.googleapis.com/addnorth-com.appspot.com/imgix/assets/production/Koltron_G1_TDS_-mHxpF.pdf"
 }

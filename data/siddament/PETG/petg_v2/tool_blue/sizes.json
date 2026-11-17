@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "e6ad1d98-614a-4a80-9053-2da50a87e4c6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.028",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/makeeya-blue-petg"
+      }
+    ]
+  }
+]

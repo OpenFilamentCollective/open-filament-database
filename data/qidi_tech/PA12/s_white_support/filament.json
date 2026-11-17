@@ -1,10 +1,11 @@
 {
+  "uuid": "18f01eba-0d76-49fc-959a-a638245252f4",
   "id": "s_white_support",
   "name": "PA12 S-White Support",
   "diameter_tolerance": 0.02,
-  "density": 1.1,
-  "min_print_temperature": 280,
-  "max_print_temperature": 300,
-  "min_bed_temperature": 40,
+  "density": 1.16,
+  "min_print_temperature": 260,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 60,
   "max_bed_temperature": 80
 }

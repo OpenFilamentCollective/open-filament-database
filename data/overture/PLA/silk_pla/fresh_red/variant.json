@@ -1,9 +1,9 @@
 {
+  "uuid": "0d57167f-af27-4180-b19c-67eb31ce20be",
   "id": "fresh_red",
   "name": "Fresh Red",
   "color_hex": "#E72F1D",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

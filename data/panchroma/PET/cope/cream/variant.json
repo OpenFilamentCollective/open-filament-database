@@ -1,5 +1,10 @@
 {
-    "id": "cream",
-    "name": "Cream",
-    "color_hex": "#EED1A8"
+  "uuid": "d6dfc0f2-4e71-4233-9bf4-149f45a0e7bc",
+  "moved_from": [
+    "1cc282e1-3d9f-4884-b86e-2b6df4027492"
+  ],
+  "id": "cream",
+  "name": "Cream",
+  "color_hex": "#EED1A8",
+  "transmission_distance": 2.8
 }

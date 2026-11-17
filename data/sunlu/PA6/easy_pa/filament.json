@@ -1,10 +1,12 @@
 {
+  "uuid": "5fdeb93d-cf49-4663-92aa-72692ad4130c",
   "id": "easy_pa",
   "name": "PA6 Easy PA",
   "diameter_tolerance": 0.02,
-  "density": 1.08,
+  "density": 1.1,
   "min_print_temperature": 250,
-  "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_print_temperature": 280,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 50,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/a5909dda-0573-4f11-a34a-00d495b1ea09.pdf?filename=TDS"
 }

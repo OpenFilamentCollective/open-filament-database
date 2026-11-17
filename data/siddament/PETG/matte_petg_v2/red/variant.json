@@ -1,0 +1,11 @@
+{
+  "uuid": "1d213736-3e98-44cf-acaf-1f79f883502d",
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#B84A1B",
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

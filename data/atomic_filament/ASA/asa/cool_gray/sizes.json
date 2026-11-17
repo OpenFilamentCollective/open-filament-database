@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "4fea5db4-6be7-4468-a709-ce727a7962df",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/cool-gray-asa-filament"
+      }
+    ]
   }
 ]

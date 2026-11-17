@@ -1,4 +1,5 @@
 {
+  "uuid": "5cff497a-af07-440d-866c-5f2e37593672",
   "id": "scarlet_symphony_multicolor_ht",
   "name": "Scarlet Symphony Multicolor HT",
   "color_hex": [
@@ -6,8 +7,7 @@
     "#F09BB5"
   ],
   "traits": {
-    "industrially_compostable": true,
-    "high_temperature": true,
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "high_temperature": true
   }
 }

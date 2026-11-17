@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "a6229e6d-5d56-4e9b-90c0-186ad5e46d04",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847053114",
     "article_number": "PTGE-175PORA-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "8881d882-acee-4151-abef-9a4792db3b80",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847053459",
     "article_number": "PTGE-175PORA-02300",
     "discontinued": false,
     "purchase_links": [

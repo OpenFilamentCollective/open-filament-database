@@ -1,0 +1,11 @@
+{
+  "uuid": "fd6bf14d-dd94-4fad-b16d-802009473f4a",
+  "id": "blue",
+  "name": "Blue",
+  "color_hex": "#2A8DC5",
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
+}

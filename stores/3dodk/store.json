@@ -1,8 +1,9 @@
 {
-    "id": "3dodk",
-    "name": "3DO.dk",
-    "storefront_url": "https://3do.dk/",
-    "logo": "logo.png",
-    "ships_from": "DK",
-    "ships_to": []
+  "uuid": "6e10485f-5959-44a8-bf09-bbeb3366a63a",
+  "id": "3dodk",
+  "name": "3DO.dk",
+  "storefront_url": "https://3do.dk/",
+  "logo": "logo.png",
+  "ships_from": "DK",
+  "ships_to": []
 }

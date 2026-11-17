@@ -1,10 +1,12 @@
 {
+  "uuid": "8fbdc36a-808e-4073-9fb9-6e06e1f75fa7",
   "id": "high_speed_pla",
   "name": "High Speed PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
+  "density": 1.28,
+  "min_print_temperature": 210,
   "max_print_temperature": 230,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/b129fd4c-7d50-46be-874e-84e0bb6ff1ae.pdf?filename=TDS"
 }

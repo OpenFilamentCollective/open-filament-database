@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "18ffac33-279c-44ef-8b76-e45378897e53",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461075",
+    "article_number": "PCTG-R-604-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/pctg-industrial-teal"
+      }
+    ]
   }
 ]

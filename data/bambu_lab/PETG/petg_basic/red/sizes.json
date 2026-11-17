@@ -1,0 +1,34 @@
+[
+  {
+    "uuid": "4bf81d91-2e5f-4c02-9bab-3043d6b27af8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6937285509741",
+    "article_number": "30201",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-red-3"
+      }
+    ]
+  },
+  {
+    "uuid": "c5508a6a-38fe-441c-9d0f-8f08cb3c09cb",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285510143",
+    "article_number": "30201",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-red-3?sai=42646"
+      }
+    ]
+  }
+]

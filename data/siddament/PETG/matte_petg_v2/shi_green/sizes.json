@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a1951d6f-a617-467c-82f2-e82ee0864996",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.070",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-shi-green-petg-v2"
+      }
+    ]
+  }
+]

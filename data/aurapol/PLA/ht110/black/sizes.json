@@ -1,6 +1,16 @@
 [
   {
+    "uuid": "3057a4b9-9d08-413b-8430-89b3e37b7914",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "712221718649",
+    "article_number": "PLAHT718649"
+  },
+  {
+    "uuid": "ee203312-6b63-46b5-9533-407faf78a95f",
+    "filament_weight": 2500,
+    "diameter": 1.75,
+    "gtin": "731093606540",
+    "article_number": "PLAHT606540"
   }
 ]

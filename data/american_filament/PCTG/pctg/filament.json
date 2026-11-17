@@ -1,10 +1,13 @@
 {
+  "uuid": "fa252c54-d58e-4c56-973d-f4b6201c7028",
   "id": "pctg",
   "name": "PCTG",
   "diameter_tolerance": 0.02,
-  "density": 1.23,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
+  "density": 1.27,
+  "min_print_temperature": 240,
+  "max_print_temperature": 270,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0560/2741/4702/files/AF_PCTG_Technical_Data_Sheet_-_TDS.pdf",
+  "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0560/2741/4702/files/AF_PCTG_US_Material_Safety_Data_Sheet_-_MSDS.pdf"
 }

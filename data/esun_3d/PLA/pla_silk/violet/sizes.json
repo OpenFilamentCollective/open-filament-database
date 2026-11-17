@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "5700387f-79cd-4871-a77c-78baf51d61dd",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204126",
+    "article_number": "PLA-SK175O-VI1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-silk"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-violet-1"
       }
     ]
   }

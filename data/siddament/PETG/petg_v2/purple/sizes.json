@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b46af708-6b4e-48e1-8da8-aa6751da3412",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.010",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/purple-petg-v2"
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "uuid": "90147ade-c9c4-4fb4-9c4f-e9c6df3bff3a",
+  "id": "deep_blue",
+  "name": "Deep Blue",
+  "color_hex": "#0000FF",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Blue 072 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

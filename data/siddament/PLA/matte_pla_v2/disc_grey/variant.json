@@ -1,0 +1,10 @@
+{
+  "uuid": "0c9a6656-e8c6-4b8b-9422-a18eba2f2597",
+  "id": "disc_grey",
+  "name": "Disc Grey",
+  "color_hex": "#CFC9B8",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

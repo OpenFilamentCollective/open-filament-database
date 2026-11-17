@@ -1,5 +1,12 @@
 {
-    "id": "red",
-    "name": "Red",
-    "color_hex": "#790B15"
+  "uuid": "a8d19b26-bc9d-4923-a0ea-640b5fa9a500",
+  "moved_from": [
+    "e87f2214-04fe-48ff-90c9-e41e59235fd7"
+  ],
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#790B15",
+  "traits": {
+    "recycled": true
+  }
 }

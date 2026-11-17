@@ -1,0 +1,14 @@
+{
+  "uuid": "230ed827-f96f-4af3-a0be-05ffef395657",
+  "id": "carbon_fiber",
+  "name": "Carbon Fiber",
+  "color_hex": "#0F0F0F",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Neutral Black C"
+  },
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  }
+}

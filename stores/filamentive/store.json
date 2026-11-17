@@ -1,0 +1,14 @@
+{
+  "uuid": "12e71e6b-f415-42a4-aff7-3ac039336fba",
+  "id": "filamentive",
+  "name": "Filamentive",
+  "storefront_url": "https://www.filamentive.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "GB-ENG"
+  ],
+  "ships_to": [
+    "GB"
+  ],
+  "source": "Regular Customer"
+}

@@ -1,6 +1,15 @@
 {
-    "id": "pla_premium",
-    "name": "PLA Premium",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "65fcab98-9e4e-4c8c-9601-0b515251dab6",
+  "id": "pla_premium",
+  "name": "PLA Premium",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 185,
+  "max_print_temperature": 215,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/12/en_tds_spectrum_pla_premium.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/08/en_msds_spectrum_pla_premium.pdf"
 }

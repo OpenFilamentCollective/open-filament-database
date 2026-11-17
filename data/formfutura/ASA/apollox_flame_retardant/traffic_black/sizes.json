@@ -1,10 +1,13 @@
 [
   {
+    "uuid": "d067f33c-fdda-4d05-8cf9-21c500d6ac7b",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
     "spool_core_diameter": 100,
+    "gtin": "8720629068251",
     "article_number": "AXFR-175TBLK-C0500",
     "discontinued": false,
     "purchase_links": [
@@ -15,10 +18,13 @@
     ]
   },
   {
+    "uuid": "111a4058-b62c-432c-b195-3d18764684fe",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629068244",
     "article_number": "AXFR-175TBLK-B1000",
     "discontinued": false,
     "purchase_links": [

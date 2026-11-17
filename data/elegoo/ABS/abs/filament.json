@@ -1,17 +1,22 @@
 {
+    "uuid": "c0747c81-db1f-4015-a713-9fa5b081c347",
     "id": "abs",
     "name": "ABS",
     "diameter_tolerance": 0.02,
     "density": 1.05,
+    "min_print_temperature": 240,
+    "max_print_temperature": 280,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 100,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "EABSB00",
+            "generic_id": "OFY9muEs",
+            "id": "OFxOHhZw",
             "profile_name": "Elegoo ABS"
         },
         "elegooslicer": {
             "generic_id": "GFB99",
-            "id": "EABSB00",
+            "id": "OEABSB00",
             "profile_name": "Elegoo ABS"
         }
     }

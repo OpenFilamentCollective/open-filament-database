@@ -1,11 +1,22 @@
 [
   {
+    "uuid": "89aa9664-62e9-4139-8752-6f5bda888a33",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936714712",
+    "article_number": "CA02029",
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-glow?"
+        "url": "https://us.polymaker.com/products/panchroma-glow"
       }
     ]
   }

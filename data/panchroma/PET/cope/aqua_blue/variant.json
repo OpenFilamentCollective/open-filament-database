@@ -1,5 +1,10 @@
 {
-    "id": "aqua_blue",
-    "name": "Aqua Blue",
-    "color_hex": "#5FBCDD"
+  "uuid": "7e499aa7-59cf-4565-b331-72d288f3df04",
+  "moved_from": [
+    "acbd30b4-6e84-4a56-87ee-e2dc33d8fd09"
+  ],
+  "id": "aqua_blue",
+  "name": "Aqua Blue",
+  "color_hex": "#5FBCDD",
+  "transmission_distance": 2.3
 }

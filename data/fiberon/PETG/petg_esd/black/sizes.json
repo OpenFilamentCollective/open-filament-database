@@ -1,22 +1,32 @@
 [
   {
+    "uuid": "b2611f15-142a-42db-991b-15f5cc7cf78c",
     "filament_weight": 3000,
     "diameter": 1.75,
+    "gtin": "6938936716198",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon-pet-cf17?"
+        "url": "https://us.polymaker.com/products/fiberon-pet-cf17"
       }
     ]
   },
   {
+    "uuid": "2c964dc0-847a-41b1-901e-afb68a8898b4",
     "filament_weight": 500,
     "diameter": 1.75,
+    "gtin": "6938936714651",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/fiberon-pet-cf17?"
+        "url": "https://us.polymaker.com/products/fiberon-pet-cf17"
       }
     ]
+  },
+  {
+    "uuid": "e1a653ee-be46-416c-b3c4-04abad5a5b2d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6938936718383"
   }
 ]

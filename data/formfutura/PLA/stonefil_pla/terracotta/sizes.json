@@ -1,6 +1,28 @@
 [
   {
+    "uuid": "bcbde771-43eb-4ea0-a36e-ea6ee3b11c29",
     "filament_weight": 1000,
     "diameter": 1.75
+  },
+  {
+    "uuid": "5c100e49-3fc9-44d7-b009-46afc8b8879c",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "gtin": "8718924478431",
+    "article_number": "STNF-175TRCT-00500"
+  },
+  {
+    "uuid": "76155865-3195-41c8-ac96-233ab11f6c0f",
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "gtin": "8719956553189",
+    "article_number": "STNF-175TRCT-02000"
+  },
+  {
+    "uuid": "a22e638f-3e5f-4e93-b494-8a819c145681",
+    "filament_weight": 500,
+    "diameter": 2.85,
+    "gtin": "8718924478448",
+    "article_number": "STNF-285TRCT-00500"
   }
 ]

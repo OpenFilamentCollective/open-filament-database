@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "502547b9-4504-4444-954b-e631fdf4c9d6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.051",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pure-violet-pla"
+      }
+    ]
+  }
+]

@@ -1,8 +1,10 @@
 {
+  "uuid": "731b17ee-4585-427d-82d1-ca5d9f69f2f4",
   "id": "cobalt_blue",
   "name": "Cobalt Blue",
-  "color_hex": "#0E21AE",
+  "color_hex": "#00317B",
+  "transmission_distance": 5.4,
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

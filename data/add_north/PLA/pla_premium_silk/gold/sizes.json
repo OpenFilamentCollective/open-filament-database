@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/PLA%20Premium%20Silk/PLA%20Premium%20Silk%20-%201.75mm%20-%20750g%20-%20Gold"
-            }
-        ]
-    }
+  {
+    "uuid": "9fb3c694-f4e9-44af-8708-29b02250cf0f",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "38949c9f-4a83-44cb-8569-75149fa71261",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182904097",
+    "article_number": "ANPS14GLD",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/PLA%20Premium%20Silk/PLA%20Premium%20Silk%20-%201.75mm%20-%201000g%20-%20Gold"
+      }
+    ]
+  }
 ]

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "9b2778f2-3dde-4d6d-ab4d-71927055f361",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994175126",
+    "article_number": "700-001-1726",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/petg-brown-1"
+      }
+    ]
   }
 ]

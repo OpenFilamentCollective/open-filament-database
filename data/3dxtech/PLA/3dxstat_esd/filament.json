@@ -1,10 +1,12 @@
 {
+  "uuid": "8e307a71-301b-46c1-8bb6-0af117caa7c2",
   "id": "3dxstat_esd",
   "name": "PLA 3DXStat ESD",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "density": 1.26,
+  "min_print_temperature": 215,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/3DXTECH_TDS_-_ESD-PLA_v1.0.pdf?v=1761064896"
 }

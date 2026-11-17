@@ -1,4 +1,5 @@
 {
+  "uuid": "e125b2c5-8c3e-4598-a510-1fcb66704c97",
   "id": "sunset_elixir",
   "name": "Sunset Elixir",
   "color_hex": [
@@ -6,8 +7,8 @@
     "#FF00A2"
   ],
   "traits": {
-    "filtration_recommended": true,
     "iridescent": true,
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "filtration_recommended": true
   }
 }

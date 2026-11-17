@@ -1,5 +1,9 @@
 {
-    "id": "cloud_grey",
-    "name": "Cloud Grey",
-    "color_hex": "#6C6E69"
+  "uuid": "9ee9d7bf-eacd-42d9-8fbf-37d6d961b0fe",
+  "moved_from": [
+    "97e96ded-bb94-4dda-973a-64a110e8d3e4"
+  ],
+  "id": "cloud_grey",
+  "name": "Cloud Grey",
+  "color_hex": "#6C6E69"
 }

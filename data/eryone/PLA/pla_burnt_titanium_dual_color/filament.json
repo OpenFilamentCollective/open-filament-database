@@ -1,6 +1,12 @@
 {
-    "id": "pla_burnt_titanium_dual_color",
-    "name": "PLA Burnt Titanium Dual-Color",
-    "diameter_tolerance": 0.03,
-    "density": 1.23
+  "uuid": "d81e4a85-ef5b-43cc-be07-55d10cb6e25e",
+  "id": "pla_burnt_titanium_dual_color",
+  "name": "PLA Burnt Titanium Dual-Color",
+  "diameter_tolerance": 0.03,
+  "density": 1.23,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-Burnt_Titanium_PLA-TDS.pdf?v=1747276429"
 }

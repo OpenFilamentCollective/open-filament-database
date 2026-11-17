@@ -1,9 +1,10 @@
 {
+  "uuid": "0767db4e-215c-494d-b1d0-a46681493558",
   "id": "light_yellow",
   "name": "Light Yellow",
   "color_hex": "#F6FB38",
   "traits": {
-    "ipa_soluble": true,
-    "transparent": true
+    "transparent": true,
+    "ipa_soluble": true
   }
 }

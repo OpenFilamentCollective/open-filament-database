@@ -1,5 +1,13 @@
 {
-    "id": "wood_brown",
-    "name": "Wood Brown",
-    "color_hex": "#AD7441"
+  "uuid": "526eb6d0-8e8e-426d-b0a6-f76a46bd33bc",
+  "moved_from": [
+    "a20a383b-096e-4616-aac1-e9ae32817024"
+  ],
+  "id": "wood_brown",
+  "name": "Wood Brown",
+  "color_hex": "#AD7441",
+  "transmission_distance": 0.2,
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,10 +1,11 @@
 {
+  "uuid": "7a163efc-60ac-4e8b-b5a7-52663d511e98",
   "id": "matte_petg",
   "name": "Matte PETG",
   "diameter_tolerance": 0.02,
   "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
-  "min_bed_temperature": 70,
+  "min_print_temperature": 235,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 75,
   "max_bed_temperature": 90
 }

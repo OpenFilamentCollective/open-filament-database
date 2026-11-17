@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Glitz%20Sapphire"
-            }
-        ]
-    }
+  {
+    "uuid": "796dee8a-9687-4702-ac01-12ba0b2ba2a1",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "d43650e8-6322-42c5-ade6-aecebd503bc8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182902185",
+    "article_number": "ANEP14GSP",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%201000g%20-%20Glitz%20Sapphire"
+      }
+    ]
+  }
 ]

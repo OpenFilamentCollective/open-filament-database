@@ -1,9 +1,9 @@
 {
+  "uuid": "dc394d35-4f82-474f-adc1-5d185f0952b4",
   "id": "venom_green",
   "name": "Venom Green",
   "color_hex": "#9CBF60",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

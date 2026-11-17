@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "388960b8-6b3a-4e8d-a927-3fc5aab98267",
+    "filament_weight": 850,
+    "diameter": 1.75,
+    "gtin": "731093606830",
+    "article_number": "ABS606830"
   }
 ]

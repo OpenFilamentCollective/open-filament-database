@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "4c4af02a-375a-411a-bc11-9aad9ad31321",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.019",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-lime-pla-v2"
+      }
+    ]
+  }
+]

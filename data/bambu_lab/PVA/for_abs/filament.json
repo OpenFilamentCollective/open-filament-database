@@ -1,8 +1,18 @@
 {
+    "uuid": "e313eb35-4f31-410d-88a0-285ef01a45ed",
     "id": "for_abs",
     "name": "Support for ABS",
     "diameter_tolerance": 0.05,
     "density": 1.16,
+    "min_print_temperature": 240,
+    "max_print_temperature": 270,
+    "min_bed_temperature": 80,
+    "max_bed_temperature": 100,
+    "max_volumetric_speed": 6,
+    "min_fan_speed": 10,
+    "max_fan_speed": 30,
+    "dry_temperature": 80,
+    "dry_time": 4,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambus_Support_for_ABS_Technical_Data_Sheet.pdf?v=1721786140",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Support_for_ABS_MSDS.pdf?v=1721034621",
     "slicer_settings": {
@@ -12,11 +22,21 @@
             "profile_name": "Bambu Support for ABS"
         },
         "orcaslicer": {
+            "generic_id": "OFDvXujf",
+            "id": "OFf6mfQO",
+            "profile_name": "Bambu Support for ABS"
+        },
+        "elegooslicer": {
             "generic_id": "GFS99",
             "id": "GFS06",
             "profile_name": "Bambu Support for ABS"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFS99",
+            "id": "GFS06",
+            "profile_name": "Bambu Support for ABS"
+        },
+        "anycubicslicer": {
             "generic_id": "GFS99",
             "id": "GFS06",
             "profile_name": "Bambu Support for ABS"

@@ -1,0 +1,13 @@
+{
+  "uuid": "bb696832-b1da-423a-8355-9714624e6e01",
+  "id": "roamr_tpu_air_hr_80a",
+  "name": "Roamr TPU Air HR 80A",
+  "diameter_tolerance": 0.03,
+  "density": 1.05,
+  "shore_hardness_a": 80,
+  "min_print_temperature": 220,
+  "max_print_temperature": 260,
+  "min_bed_temperature": 35,
+  "max_bed_temperature": 50,
+  "data_sheet_url": "https://siraya.tech/pages/roamr-tpu-air-hr-80a-tds"
+}

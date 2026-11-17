@@ -1,0 +1,34 @@
+[
+  {
+    "uuid": "9e75d50b-dff8-45ea-a374-32fbae7de434",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6937285512543",
+    "article_number": "17101",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://store.bambulab.com/products/pla-pure?id=738891519803023442"
+      }
+    ]
+  },
+  {
+    "uuid": "83efd930-2417-44e3-a5fc-e06c986c13de",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285512550",
+    "article_number": "17101",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/bambu-pla-pure-absolute-black?sai=44511"
+      }
+    ]
+  }
+]

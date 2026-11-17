@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "eb92a1c6-41bb-43ce-9e33-ed7487bfe4cb",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
@@ -7,6 +8,20 @@
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/petg-basic"
+      }
+    ]
+  },
+  {
+    "uuid": "f298dba5-9f22-4e29-92d9-4b0aacd2579c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572226623",
+    "article_number": "PETG-Basic175T-G1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/petg-basic-translucent-green?sai=44424"
       }
     ]
   }

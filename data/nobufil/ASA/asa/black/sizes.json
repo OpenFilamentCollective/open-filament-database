@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "8f208225-82f9-4394-91ae-e88e7a9c6d60",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460405",
+    "article_number": "ASA-R-901-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/asa-black-4"
+      }
+    ]
   }
 ]

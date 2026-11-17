@@ -1,8 +1,13 @@
 {
+  "uuid": "6fa2856b-fb55-4713-9631-cb5cc34a3e5e",
   "id": "pla_premium_silk",
   "name": "PLA Premium Silk",
   "diameter_tolerance": 0.03,
   "density": 1.22,
+  "min_print_temperature": 200,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/07/TDS-PLA-SILK-POL.pdf",
   "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/07/Karta-charakterystyki-msds-PLA-SILK-Nebula.pdf"
 }

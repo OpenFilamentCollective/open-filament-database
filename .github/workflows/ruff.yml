@@ -19,12 +19,17 @@ jobs:
         id: format
         continue-on-error: true
         with:
+          # Pin to the ruff version in uv.lock so CI matches what contributors
+          # run locally; otherwise the action pulls a newer ruff whose formatter
+          # restyles already-compliant code.
+          version: "0.15.0"
           args: "format --check --diff ofd/"
 
       - uses: astral-sh/ruff-action@v3
         id: lint
         continue-on-error: true
         with:
+          version: "0.15.0"
           args: "check ofd/"
 
       - name: Suggest fix command

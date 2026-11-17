@@ -1,8 +1,10 @@
 {
+  "uuid": "01efc19c-0b5c-43ae-a961-231cd0b21180",
   "id": "lime",
   "name": "Lime",
   "color_hex": "#8CB712",
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

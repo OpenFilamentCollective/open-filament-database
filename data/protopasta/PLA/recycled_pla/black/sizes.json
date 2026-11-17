@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "85eb1921-4fe3-470e-86da-4cc79cd00eb5",
     "filament_weight": 500,
     "diameter": 1.75
   },
   {
+    "uuid": "1b50ebc5-f3a9-4fb5-90a3-5bf6ccbc63df",
     "filament_weight": 1000,
     "diameter": 1.75
   }

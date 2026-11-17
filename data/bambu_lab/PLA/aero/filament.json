@@ -1,8 +1,18 @@
 {
+    "uuid": "0df310a8-2aa4-4a57-8bfa-e63b4a873e73",
     "id": "aero",
     "name": "PLA Aero",
     "diameter_tolerance": 0.03,
     "density": 1.21,
+    "min_print_temperature": 210,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 45,
+    "max_volumetric_speed": 6,
+    "min_fan_speed": 30,
+    "max_fan_speed": 100,
+    "dry_temperature": 55,
+    "dry_time": 8,
     "data_sheet_url": "https://cdn.shopify.com/s/files/1/0574/3116/2995/files/Bambu_PLA_Aero_Technical_Data_Sheet.pdf?v=1715335547",
     "safety_sheet_url": "https://cdn.shopify.com/s/files/1/0584/7236/6216/files/Bambu_PLA_Aero_MSDS.pdf?v=1691044402",
     "slicer_settings": {
@@ -12,11 +22,21 @@
             "profile_name": "Bambu PLA Aero"
         },
         "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFBSW57R",
+            "profile_name": "Bambu PLA Aero"
+        },
+        "elegooslicer": {
             "generic_id": "GFL99",
             "id": "GFA11",
             "profile_name": "Bambu PLA Aero"
         },
-        "elegooslicer": {
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "GFA11",
+            "profile_name": "Bambu PLA Aero"
+        },
+        "anycubicslicer": {
             "generic_id": "GFL99",
             "id": "GFA11",
             "profile_name": "Bambu PLA Aero"

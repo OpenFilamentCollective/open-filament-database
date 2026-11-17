@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "16dd22b8-3bbf-46a0-ba4a-23974c35a818",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.026",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/leaf-green-asa-v2"
+      }
+    ]
+  }
+]

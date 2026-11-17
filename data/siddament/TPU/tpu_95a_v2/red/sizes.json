@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "740046c5-7034-4b46-a452-226fdb32a717",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.066",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/red-tpu-95a"
+      }
+    ]
+  }
+]

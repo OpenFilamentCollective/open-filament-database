@@ -1,6 +1,12 @@
 {
-    "id": "pa6_gf",
-    "name": "PA6-GF",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "287a3bc5-6a34-4620-9078-4a9ede09951e",
+  "id": "pa6_gf",
+  "name": "PA6-GF",
+  "diameter_tolerance": 0.02,
+  "density": 1.269,
+  "min_print_temperature": 270,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/e5f16b43-cef6-4f3e-ad93-3cc86f93f7e4.pdf?filename=TDS"
 }

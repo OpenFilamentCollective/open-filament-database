@@ -1,61 +1,89 @@
 [
   {
+    "uuid": "dfad1ea6-b058-4a54-b190-75c6aa2e83a1",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-asa?"
+        "url": "https://us.polymaker.com/products/polylite-asa"
       }
     ]
   },
   {
+    "uuid": "de09a49f-8f41-45aa-8bfe-53432c4d4497",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-asa?"
+        "url": "https://us.polymaker.com/products/polylite-asa"
       }
     ]
   },
   {
+    "uuid": "6769016b-2210-449a-a2bc-d9d4b3da8f42",
     "filament_weight": 5000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-asa?"
+        "url": "https://us.polymaker.com/products/polylite-asa"
       }
     ]
   },
   {
+    "uuid": "29f0cbdb-7ac8-45b5-8e5c-e7e5322028af",
     "filament_weight": 1000,
     "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-asa?"
+        "url": "https://us.polymaker.com/products/polylite-asa"
       }
     ]
   },
   {
+    "uuid": "6d6b71cf-9721-44b0-b5a0-bd27978b5d69",
     "filament_weight": 3000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-asa?"
+        "url": "https://us.polymaker.com/products/polylite-asa"
       }
     ]
   },
   {
+    "uuid": "4412cca5-b0ba-45cd-a14f-b15ca025be73",
     "filament_weight": 5000,
     "diameter": 2.85,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polylite-asa?"
+        "url": "https://us.polymaker.com/products/polylite-asa"
       }
     ]
   }

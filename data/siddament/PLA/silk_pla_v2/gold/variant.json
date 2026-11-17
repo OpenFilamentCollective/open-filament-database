@@ -1,0 +1,13 @@
+{
+  "uuid": "fb1c0304-fd78-4ea9-badd-3908f42b72b2",
+  "id": "gold",
+  "name": "Gold",
+  "color_hex": "#B56600",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "7588 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

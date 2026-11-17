@@ -1,10 +1,12 @@
 {
+  "uuid": "56ffe445-fb80-443e-8d86-a47c76c15670",
   "id": "high_speed_matte_petg",
   "name": "High Speed Matte PETG",
-  "diameter_tolerance": 0.05,
-  "density": 1.24,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
+  "diameter_tolerance": 0.02,
+  "density": 1.28,
+  "min_print_temperature": 240,
+  "max_print_temperature": 260,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/ccf53a55-5b58-49fa-b1d9-08f94c0a4b28.pdf?filename=TDS"
 }

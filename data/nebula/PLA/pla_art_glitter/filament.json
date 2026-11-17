@@ -1,8 +1,13 @@
 {
+  "uuid": "eaa02cde-d080-49fe-a108-9e9d52b9fc4d",
   "id": "pla_art_glitter",
   "name": "PLA Art Glitter",
   "diameter_tolerance": 0.03,
   "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 60,
   "data_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/TDS-PLA-GLITTER.pdf",
   "safety_sheet_url": "https://api.nebulafilaments.com/wp-content/uploads/2025/02/Karta-charakterystyki-msds-PLA-GLITTER-Nebula.pdf"
 }

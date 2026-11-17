@@ -1,6 +1,12 @@
 {
-    "id": "pla_matte_high_speed_rock_rainbow",
-    "name": "PLA Matte High Speed Rock Rainbow",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "4e982039-3ca0-4db7-97f3-667a5c1f8eaf",
+  "id": "pla_matte_high_speed_rock_rainbow",
+  "name": "PLA Matte High Speed Rock Rainbow",
+  "diameter_tolerance": 0.03,
+  "density": 1.25,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 55,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-HP_Matte_PLA-TDS.pdf?v=1747276290"
 }

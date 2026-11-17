@@ -1,5 +1,13 @@
 {
-    "id": "pastel_pezriwinkle",
-    "name": "Pastel Pezriwinkle",
-    "color_hex": "#BFB2E6"
+  "uuid": "9aaf7641-4298-40b0-bc98-d66df6831123",
+  "moved_from": [
+    "b49136fe-3a38-46cc-b75e-1ed101838cbe"
+  ],
+  "id": "pastel_pezriwinkle",
+  "name": "Pastel Periwinkle",
+  "color_hex": "#BFB2E6",
+  "transmission_distance": 1.5,
+  "traits": {
+    "matte": true
+  }
 }

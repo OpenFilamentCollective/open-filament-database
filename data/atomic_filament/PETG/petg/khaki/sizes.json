@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "6f31f069-a95d-4635-a150-757cadc8c666",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/khaki-petg-pro"
+      }
+    ]
   }
 ]

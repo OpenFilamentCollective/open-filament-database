@@ -1,9 +1,9 @@
 {
+  "uuid": "bfd5cd27-9e7c-47a4-836d-e1777b12450d",
   "id": "impact_modified_moss_green",
   "name": "Impact Modified Moss Green",
   "color_hex": "#737282",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

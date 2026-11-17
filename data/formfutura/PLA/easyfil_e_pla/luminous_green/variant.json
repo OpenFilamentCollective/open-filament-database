@@ -1,9 +1,7 @@
 {
+  "uuid": "29d469bc-7288-416f-824a-30bcf0cd34fe",
   "id": "luminous_green",
   "name": "Luminous Green",
   "color_hex": "#06B100",
-  "discontinued": false,
-  "traits": {
-    "industrially_compostable": true
-  }
+  "discontinued": false
 }

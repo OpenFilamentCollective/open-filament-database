@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "829f6f73-a406-4e30-959b-dfa8e2c9950f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.039",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/light-brown-petg"
+      }
+    ]
+  }
+]

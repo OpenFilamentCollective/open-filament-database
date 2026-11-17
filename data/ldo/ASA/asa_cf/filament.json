@@ -1,10 +1,11 @@
 {
+  "uuid": "e80919cc-d286-4814-a0be-99988cbcbae5",
   "id": "asa_cf",
   "name": "ASA-CF",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.1,
-  "min_print_temperature": 230,
+  "min_print_temperature": 260,
   "max_print_temperature": 260,
   "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "max_bed_temperature": 110
 }

@@ -1,10 +1,11 @@
 {
+  "uuid": "86736622-769b-49c2-802a-3a0876e80c07",
   "id": "tefabloc_tpe",
   "name": "Tefabloc TPE",
-  "diameter_tolerance": 0.02,
-  "density": 1.2,
-  "min_print_temperature": 210,
+  "diameter_tolerance": 0.05,
+  "density": 1.09,
+  "min_print_temperature": 220,
   "max_print_temperature": 240,
-  "min_bed_temperature": 30,
+  "min_bed_temperature": 60,
   "max_bed_temperature": 60
 }

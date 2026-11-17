@@ -1,11 +1,26 @@
 [
   {
+    "uuid": "e90cf6e4-1f6c-4498-abfb-b144b5e4dd2e",
+    "moved_from": [
+      "8a670331-01bc-457e-9680-2ffd23dfb48f"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936716006",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-gradient-matte?"
+        "url": "https://us.polymaker.com/products/panchroma-gradient-matte"
+      },
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/gradient-matte-pla?variant=43616479445049"
       }
     ]
   }

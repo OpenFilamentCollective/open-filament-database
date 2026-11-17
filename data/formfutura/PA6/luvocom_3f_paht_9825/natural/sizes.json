@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "61e8cca2-95a8-417e-8593-1b2675e4282a",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720574297669",
     "article_number": "PH98-175NTRL-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "604bf72b-223a-428b-b0c4-a8b901214d77",
     "filament_weight": 500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720574297676",
     "article_number": "PH98-285NTRL-00500",
     "discontinued": false,
     "purchase_links": [

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "57004841-f1d9-43cc-8f15-b7705db57c07",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847050854",
     "article_number": "PLAE-175TUBU-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "f2e5cfe3-92d9-4f62-8009-3cdadabf18ef",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847051394",
     "article_number": "PLAE-175TUBU-02300",
     "discontinued": false,
     "purchase_links": [

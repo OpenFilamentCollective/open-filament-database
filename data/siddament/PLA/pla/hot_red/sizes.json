@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b48be78c-cda3-44dc-9dcc-ff48c395d3ec",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.046",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/hot-red-pla"
+      }
+    ]
+  }
+]

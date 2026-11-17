@@ -1,8 +1,10 @@
 {
+  "uuid": "1d35e62e-1979-4996-b35f-3c461eeb32bd",
   "id": "neon_pink",
   "name": "Neon Pink",
   "color_hex": "#F54053",
   "traits": {
-    "neon": true
+    "neon": true,
+    "recycled": true
   }
 }

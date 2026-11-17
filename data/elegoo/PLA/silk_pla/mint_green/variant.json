@@ -1,9 +1,9 @@
 {
+  "uuid": "10e5eb69-586c-401f-a9d4-035e89b4e6a2",
   "id": "mint_green",
   "name": "Mint Green",
   "color_hex": "#9AE0DD",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

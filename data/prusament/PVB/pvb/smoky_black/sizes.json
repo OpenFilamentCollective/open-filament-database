@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "9c565b22-1cc2-49ce-9121-89c136a0d16d",
     "filament_weight": 500,
     "diameter": 1.75,
-    "gtin": "8594173675520"
+    "gtin": "8594173675520",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pvb-smoky-black-transparent-500g/"
+      }
+    ]
   }
 ]

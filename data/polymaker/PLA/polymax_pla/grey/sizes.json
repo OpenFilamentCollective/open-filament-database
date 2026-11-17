@@ -1,6 +1,98 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "0d553563-5816-44e8-a28b-6406bab444fd",
+    "moved_from": [
+      "f23603a8-0b09-4637-b628-2f28fcdb82b7"
+    ],
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936710455",
+    "article_number": "PA06003",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/polymax-pla?variant=39574348529721"
+      }
+    ]
+  },
+  {
+    "uuid": "81993757-dbfe-4998-af55-dbd9c89131a7",
+    "moved_from": [
+      "b39d7ed3-fc71-4506-a70c-7ccc2928b9f6"
+    ],
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "gtin": "6938936712725",
+    "article_number": "PA06025",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/polymax-pla?variant=39574348660793"
+      }
+    ]
+  },
+  {
+    "uuid": "35e5858f-267b-43e8-b5a4-f8e66fed9054",
+    "moved_from": [
+      "66554c25-9ae7-46a4-baba-fcec11e9ab0d"
+    ],
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936711674",
+    "article_number": "PA06013",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/polymax-pla?variant=39574349348921"
+      }
+    ]
+  },
+  {
+    "uuid": "e520fd28-e43c-4aee-bb6f-56c5ff4368b8",
+    "filament_weight": 3000,
+    "diameter": 2.85,
+    "gtin": "6938936712756",
+    "article_number": "PA06028",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/polymax-pla?variant=39574349250617"
+      }
+    ]
+  },
+  {
+    "uuid": "a856ca63-b197-47b1-8af1-38a05ce957fb",
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "gtin": "6938936708438",
+    "article_number": "PM70843",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/polymax-pla?variant=46478192803897"
+      }
+    ]
   }
 ]

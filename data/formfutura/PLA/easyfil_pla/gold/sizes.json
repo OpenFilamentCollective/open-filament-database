@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "2c71f6cf-00d1-4990-a4df-0d3233deed08",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8718924471104",
+    "article_number": "EPLA-175GOLD-00750"
   }
 ]

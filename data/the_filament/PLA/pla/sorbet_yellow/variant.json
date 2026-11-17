@@ -1,5 +1,9 @@
 {
-    "id": "sorbet_yellow",
-    "name": "Sorbet Yellow",
-    "color_hex": "#f8db11"
+  "uuid": "8aa02165-b4d2-4acc-971a-67f62654d640",
+  "moved_from": [
+    "d247a108-0078-44ee-a5d5-5521de318c09"
+  ],
+  "id": "sorbet_yellow",
+  "name": "Sorbet Yellow",
+  "color_hex": "#f8db11"
 }

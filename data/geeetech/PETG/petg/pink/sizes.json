@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "4e0ce642-7703-4084-a8e7-e7b62e77ef1c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994175164",
+    "article_number": "700-001-1728",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/petg-pink-4"
+      }
+    ]
   }
 ]

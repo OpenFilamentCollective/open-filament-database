@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "544f8428-c76f-4026-9e26-0da9a1a989c2",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/pearl-trans-neon-green-pla-uv-reactive"
+      }
+    ]
   }
 ]

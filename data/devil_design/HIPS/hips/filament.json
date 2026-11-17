@@ -1,10 +1,12 @@
 {
+  "uuid": "44938791-2173-4215-a453-dd2bd39e6802",
   "id": "hips",
   "name": "HIPS",
-  "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
+  "diameter_tolerance": 0.05,
+  "density": 1.05,
+  "min_print_temperature": 230,
+  "max_print_temperature": 240,
   "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://devildesign.com/download/HIPS_-_product_card.pdf"
 }

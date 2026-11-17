@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "2cb4a288-a4a0-44a5-badd-78e74e4e2bbe",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.054",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/deep-violet-pla"
+      }
+    ]
+  }
+]

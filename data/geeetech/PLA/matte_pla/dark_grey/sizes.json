@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "c5dbe124-dd24-4df9-897f-af60bb4b8c5c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994174945",
+    "article_number": "700-001-1442",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/pla-matte-dark-grey-1"
+      }
+    ]
   }
 ]

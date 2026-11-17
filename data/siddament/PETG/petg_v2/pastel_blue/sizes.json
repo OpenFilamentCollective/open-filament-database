@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "bf25effb-1972-4846-b4e5-61bfa5199aca",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.009",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pastel-blue-petg"
+      }
+    ]
+  }
+]

@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "3b0294da-22f3-4bf1-9139-f70dec11b06a",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572207134",
+    "article_number": "PLA-SKRB175O-CA1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-silk-rainbow"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-rainbow-coral"
       }
     ]
   }

@@ -1,9 +1,9 @@
 {
+  "uuid": "1645af9e-d361-4ad9-bab6-deecf4e355a5",
   "id": "crisp_lithophane_gray",
   "name": "Crisp Lithophane Gray",
   "color_hex": "#C5C5BF",
   "traits": {
-    "industrially_compostable": true,
     "lithophane": true
   }
 }

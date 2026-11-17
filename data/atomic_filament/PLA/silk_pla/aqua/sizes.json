@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "0871808d-9e0f-477e-a3be-44a7434fdbfd",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/silky-aqua-pla"
+      }
+    ]
   }
 ]

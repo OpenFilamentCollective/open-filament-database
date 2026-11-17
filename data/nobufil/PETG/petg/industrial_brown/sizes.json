@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "b1b0f9e9-6927-45e2-8d75-7bbf04e0455f",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461464",
+    "article_number": "PETG-R-801-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-industrial-brown"
+      }
+    ]
   }
 ]

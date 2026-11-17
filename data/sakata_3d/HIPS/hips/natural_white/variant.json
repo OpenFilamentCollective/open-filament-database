@@ -1,9 +1,10 @@
 {
+  "uuid": "bb50f99a-f714-405d-9511-6fd96f9e8301",
   "id": "natural_white",
   "name": "Natural white",
   "color_hex": "#F5F5F4",
   "traits": {
-    "limonene_soluble": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "limonene_soluble": true
   }
 }

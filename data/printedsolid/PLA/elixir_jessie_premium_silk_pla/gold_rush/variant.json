@@ -1,9 +1,9 @@
 {
+  "uuid": "2eefe6fa-347b-493b-87e7-67b1cc70bf76",
   "id": "gold_rush",
   "name": "Gold Rush",
   "color_hex": "#CE8D00",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

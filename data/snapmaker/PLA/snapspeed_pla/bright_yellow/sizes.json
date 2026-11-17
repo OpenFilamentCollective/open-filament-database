@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "96ca3e53-f8d5-4c36-b42b-728dd953b380",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "amazon",
+        "url": "https://www.amazon.com/Snapmaker-Filament-Snapspeed-Dimensional-Clog-Free/dp/B0GHN9ZRWF"
+      },
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/snapspeed-pla-filament"
+      }
+    ]
+  }
+]

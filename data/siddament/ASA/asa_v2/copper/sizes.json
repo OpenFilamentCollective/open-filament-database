@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ae735382-e21b-4575-b75f-c181c07fa7ff",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.024",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/copper-asa-v2"
+      }
+    ]
+  }
+]

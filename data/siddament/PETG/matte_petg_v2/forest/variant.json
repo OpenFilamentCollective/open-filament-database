@@ -1,0 +1,14 @@
+{
+  "uuid": "19a16950-252a-4608-8191-f1eda18bcfa8",
+  "id": "forest",
+  "name": "Forest",
+  "color_hex": "#1B4332",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "3435 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

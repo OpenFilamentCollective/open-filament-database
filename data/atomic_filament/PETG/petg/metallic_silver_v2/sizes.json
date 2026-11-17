@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "8d069316-ab57-4dd9-a73f-e42252a5a3ae",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/metallic-silver-v2-petg-pro"
+      }
+    ]
   }
 ]

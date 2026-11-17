@@ -1,9 +1,9 @@
 {
+  "uuid": "11f47082-c59c-47d0-a194-784057f6337f",
   "id": "neonorange",
   "name": "Neonorange",
   "color_hex": "#FF7A33",
   "traits": {
-    "industrially_compostable": true,
     "neon": true
   }
 }

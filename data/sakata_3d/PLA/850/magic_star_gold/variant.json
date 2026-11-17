@@ -1,9 +1,9 @@
 {
+  "uuid": "534b6a7c-9025-4ac3-834d-6a66609b86e8",
   "id": "magic_star_gold",
   "name": "Magic Star Gold",
   "color_hex": "#54514B",
   "traits": {
-    "industrially_compostable": true,
     "iridescent": true
   }
 }

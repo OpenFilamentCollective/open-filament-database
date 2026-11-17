@@ -1,12 +1,43 @@
 [
   {
+    "uuid": "b929e009-800d-4968-b0cf-695e71922499",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [],
+      "notes": "Brand says scrap is reused to make the recyclable spool (a paper reel per the same page); no percentage given.",
+      "source_type": "primary",
+      "source_url": "https://esun3dstore.com/products/epla-matte",
+      "source_quote": "Scrap is reused to produce recyclable spool and packaging box.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 140,
+    "gtin": "6922572201811",
+    "article_number": "PLA-MT175O-MW1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-matte"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-milky-white"
+      }
+    ]
+  },
+  {
+    "uuid": "3d610318-277b-47f2-ba26-7fc243a7ac71",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208223",
+    "article_number": "PLA-MT175O-MW1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-milky-white?sai=24832"
       }
     ]
   }

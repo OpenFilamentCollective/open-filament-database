@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "9c1653fb-d9e9-4ee0-97be-f73e8586242d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460672",
+    "article_number": "ABS-M-601-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-matt-olive-green"
+      }
+    ]
   }
 ]

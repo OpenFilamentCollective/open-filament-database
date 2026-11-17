@@ -1,6 +1,12 @@
 {
-    "id": "silk_pla+_four_color",
-    "name": "Silk PLA+ Four-Color",
-    "diameter_tolerance": 0.02,
-    "density": 1.23
+  "uuid": "34a9684f-91d2-45de-8068-340b5caa4a81",
+  "id": "silk_pla+_four_color",
+  "name": "Silk PLA+ Four-Color",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/27be2474-b2dd-45b3-8a14-5f742b314e33.pdf?filename=TDS"
 }

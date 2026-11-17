@@ -1,0 +1,10 @@
+{
+  "uuid": "79e97952-cc22-4114-bda8-63bd62220420",
+  "id": "copper",
+  "name": "Copper",
+  "color_hex": "#B67233",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "7572 C"
+  }
+}

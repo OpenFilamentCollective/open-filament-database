@@ -1,12 +1,33 @@
 [
   {
+    "uuid": "b88d59c5-d5e8-4007-8fd6-d895d770a1d6",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204096",
+    "article_number": "PLA-SK175CY1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-silk"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-cyan"
+      }
+    ]
+  },
+  {
+    "uuid": "108714b4-e926-4fa3-9f20-7ea467ac230d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208735",
+    "article_number": "PLA-SK175CY1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-cyan?sai=24640"
       }
     ]
   }

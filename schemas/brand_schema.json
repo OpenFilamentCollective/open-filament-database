@@ -17,6 +17,23 @@
         }
     },
     "properties": {
+        "uuid": {
+            "type": "string",
+            "title": "UUID",
+            "description": "Canonical UUID (UUIDv4), assigned automatically by CI on merge. Leave empty when creating.",
+            "readOnly": true,
+            "pattern": "^$|^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "moved_from": {
+            "type": "array",
+            "title": "Moved From",
+            "description": "Former canonical UUIDv4(s) this entity previously had (before a merge or move). Lets old UUID references resolve here. Managed by tooling/CI — leave empty when creating.",
+            "readOnly": true,
+            "items": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+            }
+        },
         "id": {
             "type": "string",
             "title": "ID",
@@ -30,11 +47,26 @@
             "$ref": "#/definitions/string_limit"
         },
         "website": {
-            "type": "string",
+            "type": [
+                "string",
+                "array"
+            ],
             "title": "Website",
-            "description": "The manufacturer's official website",
+            "description": "The manufacturer's official website. If it also publishes on other domains, such as a separate shop or blog, a list with the main site first.",
             "x-placeholder": "https://example.com/...",
-            "$ref": "#/definitions/string_limit"
+            "maxLength": 1000,
+            "items": {
+                "type": "string",
+                "maxLength": 1000
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "parent_brand": {
+            "type": "string",
+            "title": "Parent Brand",
+            "description": "The ID of the parent brand, if this is a sub-brand",
+            "$ref": "#/definitions/id"
         },
         "logo": {
             "type": "string",
@@ -42,14 +74,23 @@
             "description": "The name of the logo file",
             "$ref": "#/definitions/logo"
         },
+        "discontinued": {
+            "type": "boolean",
+            "title": "Discontinued",
+            "description": "Whether this brand is discontinued or not"
+        },
         "origin": {
             "type": "string",
             "title": "Country of Origin",
-            "description": "Two-letter country code (e.g., US, DE, CN) or Unknown",
+            "description": "ISO 3166 country code, optionally with subdivision (e.g., US, DE, GB-NIR) or Unknown",
             "x-placeholder": "e.g., US",
             "anyOf": [
-                { "$ref": "#/definitions/country_code" },
-                { "const": "Unknown" }
+                {
+                    "$ref": "#/definitions/country_code"
+                },
+                {
+                    "const": "Unknown"
+                }
             ]
         },
         "source": {

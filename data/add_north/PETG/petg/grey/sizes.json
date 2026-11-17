@@ -1,13 +1,21 @@
 [
   {
+    "uuid": "7a81eb30-c472-42db-8666-f656560cb9dd",
     "filament_weight": 750,
     "diameter": 1.75,
     "empty_spool_weight": 207,
-    "spool_core_diameter": 53,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "a52747a7-6bc9-4bc9-9dfe-ed2c6559c54f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182903786",
+    "article_number": "ANPE14GRY",
     "purchase_links": [
       {
         "store_id": "add_north",
-        "url": "https://addnorth.com/product/PETG/PETG%20-%201.75mm%20-%20750g%20-%20Grey"
+        "url": "https://addnorth.com/product/PETG/PETG%20-%201.75mm%20-%201000g%20-%20Grey"
       }
     ]
   }

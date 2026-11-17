@@ -1,0 +1,11 @@
+{
+  "uuid": "998b1d0b-acae-4ffd-9d46-d91578d03517",
+  "id": "black",
+  "name": "High Flow Black",
+  "color_hex": "#000000",
+  "traits": {
+    "abrasive": true,
+    "high_flow": true,
+    "contains_carbon_fiber": true
+  }
+}

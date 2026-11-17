@@ -1,18 +1,22 @@
 [
   {
+    "uuid": "147f86d9-db4e-4388-9903-f0dba63f51eb",
     "filament_weight": 500,
     "diameter": 1.75,
     "empty_spool_weight": 175,
-    "spool_core_diameter": 41,
+    "spool_core_diameter": 41
+  },
+  {
+    "uuid": "1fd2d1a8-5da7-4fea-8d97-581db46661e9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182903281",
+    "article_number": "ANEF14ORA",
     "purchase_links": [
       {
         "store_id": "add_north",
-        "url": "https://addnorth.com/product/EasyFlex/EasyFlex%20-%201.75mm%20-%20500g%20-%20Orange"
+        "url": "https://addnorth.com/product/EasyFlex/EasyFlex%20-%201.75mm%20-%201000g%20-%20Orange"
       }
     ]
-  },
-  {
-    "filament_weight": 1000,
-    "diameter": 1.75
   }
 ]

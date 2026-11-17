@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "3d3101dc-e1a1-4556-a8b6-0ef639bc5a54",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "snapmaker",
+        "url": "https://shop.snapmaker.com/products/matte-pla-filament"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/snapmaker/matte-pla-violet-purple-rfid"
+      }
+    ]
+  }
+]

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "7bad070f-33eb-4a95-aafd-1e8909853cf6",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010460986",
+    "article_number": "ABS-R-203-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/absx-industrial-orange"
+      }
+    ]
   }
 ]

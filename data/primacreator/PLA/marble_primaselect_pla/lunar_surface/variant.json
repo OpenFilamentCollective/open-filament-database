@@ -1,9 +1,9 @@
 {
+  "uuid": "cefc7e69-641d-41d2-953c-3001cecc100e",
   "id": "lunar_surface",
   "name": "Lunar Surface",
   "color_hex": "#CCD6E2",
   "traits": {
-    "industrially_compostable": true,
     "imitates_marble": true
   }
 }

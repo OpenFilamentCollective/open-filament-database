@@ -1,6 +1,7 @@
 {
-    "id": "pla_pro",
-    "name": "PLA PRO",
-    "diameter_tolerance": 0.05,
-    "density": 1.27
+  "uuid": "86f840d8-3c31-4cc0-892a-ba45fa2a7b84",
+  "id": "pla_pro",
+  "name": "PLA PRO",
+  "diameter_tolerance": 0.05,
+  "density": 1.27
 }

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "6a8a7c9a-babf-442c-8d11-08210d6a2b85",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461136",
+    "article_number": "PCTG-R-606-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/pctg-industrial-turquoise"
+      }
+    ]
   }
 ]

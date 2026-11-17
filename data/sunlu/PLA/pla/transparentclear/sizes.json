@@ -1,31 +1,34 @@
 [
   {
+    "uuid": "513ab44a-0921-4374-ae46-b81839d17141",
     "filament_weight": 250,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/best-halloween-gift-250g-pla-silk-filament-1-75mm-moq-24-rolls?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/best-halloween-gift-250g-pla-silk-filament-1-75mm-moq-24-rolls"
       }
     ]
   },
   {
+    "uuid": "6a9471af-517b-4a3d-a230-436ff511e93d",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/over-6kg-of-pla-pla-meta-3d-filaments-1kg-2-2lbs-fit-most-of-fdm-printer?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/over-6kg-of-pla-pla-meta-3d-filaments-1kg-2-2lbs-fit-most-of-fdm-printer"
       }
     ]
   },
   {
+    "uuid": "ac774c20-8321-4e1a-8694-70cb256e4fbe",
     "filament_weight": 3000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/pla-filament-3kg-large-spool-3d-printer-filament-3kg?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/pla-filament-3kg-large-spool-3d-printer-filament-3kg"
       }
     ]
   }

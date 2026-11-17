@@ -1,9 +1,11 @@
 {
+  "uuid": "0645611a-8cb5-41f2-b792-f89263b3430f",
   "id": "brick",
   "name": "Brick",
   "color_hex": "#A0522D",
   "traits": {
     "imitates_marble": true,
-    "imitates_stone": true
+    "imitates_stone": true,
+    "high_flow": true
   }
 }

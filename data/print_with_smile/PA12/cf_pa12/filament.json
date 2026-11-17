@@ -1,10 +1,11 @@
 {
+  "uuid": "626ef303-eef4-45d6-8b48-6f6cd8d36f09",
   "id": "cf_pa12",
   "name": "PA12 CF",
   "diameter_tolerance": 0.02,
   "density": 1.01,
-  "min_print_temperature": 240,
+  "min_print_temperature": 250,
   "max_print_temperature": 270,
-  "min_bed_temperature": 80,
+  "min_bed_temperature": 90,
   "max_bed_temperature": 100
 }

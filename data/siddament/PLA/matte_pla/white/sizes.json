@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "0972303f-330a-4354-b3b3-325e3e64f60c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "8.005",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-white-pla-1-75mm-1kg"
+      }
+    ]
+  }
+]

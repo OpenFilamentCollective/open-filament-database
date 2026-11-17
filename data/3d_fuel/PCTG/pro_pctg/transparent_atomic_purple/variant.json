@@ -1,0 +1,10 @@
+{
+  "uuid": "b1525423-4749-455a-8580-467dac6009d1",
+  "id": "transparent_atomic_purple",
+  "name": "Transparent Atomic Purple",
+  "color_hex": "#967B9F",
+  "transmission_distance": 66.9,
+  "traits": {
+    "transparent": true
+  }
+}

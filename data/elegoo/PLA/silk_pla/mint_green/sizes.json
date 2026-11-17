@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "6d816ee7-237f-46aa-9f10-878a78b65dbf",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_material": "plastic",
+    "article_number": "50.203.0286",
+    "purchase_links": [
+      {
+        "store_id": "elegoo",
+        "url": "https://eu.elegoo.com/products/elegoo-silk-pla-filament-1-75mm-colored-1kg"
+      }
+    ]
   }
 ]

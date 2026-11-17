@@ -1,4 +1,5 @@
 {
+  "uuid": "ca1a62d6-4027-4f48-9a64-23367e682b47",
   "id": "blue_purple_fuchsia",
   "name": "Blue Purple Fuchsia",
   "color_hex": [
@@ -7,7 +8,6 @@
     "#7F068C"
   ],
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "glitter": true,
     "gradual_color_change": true

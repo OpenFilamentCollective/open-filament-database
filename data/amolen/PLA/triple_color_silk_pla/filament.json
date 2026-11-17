@@ -1,10 +1,11 @@
 {
+  "uuid": "bb134c18-500a-468b-99b4-b1ee4e6f9e6c",
   "id": "triple_color_silk_pla",
   "name": "Triple Color Silk PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.25,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "diameter_tolerance": 0.03,
+  "density": 1.27,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 65
 }

@@ -1,61 +1,96 @@
 [
   {
+    "uuid": "45e25f11-ccff-459d-a7ac-05d319ffeca0",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936707172",
+    "article_number": "PB01039",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "89b9547e-dc71-4aac-8a26-b4ba79ead239",
     "filament_weight": 3000,
     "diameter": 1.75,
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "1c8f2f35-7fa4-4986-813c-065b0e59163a",
     "filament_weight": 5000,
     "diameter": 1.75,
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "37e4c159-1524-4b8c-bf63-26856b159555",
     "filament_weight": 1000,
     "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "7f6866f2-aeae-433d-9c58-60c8bad18b92",
     "filament_weight": 3000,
     "diameter": 2.85,
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   },
   {
+    "uuid": "5c3a7ae7-23d3-45b7-9afb-92d6e6b362aa",
     "filament_weight": 5000,
     "diameter": 2.85,
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/polymaker-petg?"
+        "url": "https://us.polymaker.com/products/polymaker-petg"
       }
     ]
   }

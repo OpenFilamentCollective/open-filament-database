@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "3990a192-c8ee-4a4b-b48c-38d7fdd9c5dc",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6922572204119",
+    "article_number": "PLA-SK175O-JA1P1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-jacinth"
+      }
+    ]
   }
 ]

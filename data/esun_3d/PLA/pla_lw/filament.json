@@ -1,6 +1,28 @@
 {
+    "uuid": "b960da81-b47c-4936-91a1-0f80c57a0743",
     "id": "pla_lw",
     "name": "PLA-LW",
     "diameter_tolerance": 0.03,
-    "density": 1.21
+    "density": 1.21,
+    "min_print_temperature": 190,
+    "max_print_temperature": 270,
+    "min_bed_temperature": 45,
+    "max_bed_temperature": 60,
+    "slicer_settings": {
+        "orcaslicer": {
+            "generic_id": "OFDSrzZ8",
+            "id": "OFi5RSve",
+            "profile_name": "eSUN PLA-LW"
+        },
+        "elegooslicer": {
+            "generic_id": "GFL99",
+            "id": "00035",
+            "profile_name": "eSUN PLA-LW"
+        },
+        "crealityprint": {
+            "generic_id": "GFL99",
+            "id": "E1008",
+            "profile_name": "eSUN PLA-LW"
+        }
+    }
 }

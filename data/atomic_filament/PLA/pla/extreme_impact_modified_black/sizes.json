@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "60cfd632-fc58-4fd5-9b63-87432e577932",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/extreme-impact-modified-black-pla-filament"
+      }
+    ]
   }
 ]

@@ -1,0 +1,10 @@
+{
+  "uuid": "a8ef6108-2417-44ac-baf5-fa0f74aab1d3",
+  "id": "transparent_smoke_black",
+  "name": "Transparent Smoke Black",
+  "color_hex": "#4A4542",
+  "transmission_distance": 16.0,
+  "traits": {
+    "transparent": true
+  }
+}

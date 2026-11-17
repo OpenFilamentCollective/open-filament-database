@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "09a2ee60-c7bc-4149-b348-7f6340a1e7cd",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847053305",
     "article_number": "PTGE-175TWHT-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,13 @@
     ]
   },
   {
+    "uuid": "0b6ff443-c0e1-4c09-9197-aa35b69862fa",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629068435",
     "article_number": "PTGE-175TWHT-B1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,12 @@
     ]
   },
   {
+    "uuid": "48daebe0-95b7-470c-bfcb-ce61b082872d",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847053640",
     "article_number": "PTGE-175TWHT-02300",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +49,12 @@
     ]
   },
   {
+    "uuid": "4e3a6519-2aab-41ae-9223-4543ce93d8fa",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847053985",
     "article_number": "PTGE-175TWHT-04500",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +65,12 @@
     ]
   },
   {
+    "uuid": "4c5fe6ec-1361-4d46-bfe9-af2c8e8c555b",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847054326",
     "article_number": "PTGE-175TWHT-08000",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +81,12 @@
     ]
   },
   {
+    "uuid": "b4964b94-0a7a-4664-9237-a0099eba3234",
     "filament_weight": 1000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720847057709",
     "article_number": "PTGE-285TWHT-01000",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +97,12 @@
     ]
   },
   {
+    "uuid": "2201076a-1fee-4fc7-8c6c-62acd678afcb",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720847058041",
     "article_number": "PTGE-285TWHT-02300",
     "discontinued": false,
     "purchase_links": [
@@ -98,10 +113,12 @@
     ]
   },
   {
+    "uuid": "cdf171cd-3669-4ada-b268-0b7e79c7751f",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720847058386",
     "article_number": "PTGE-285TWHT-04500",
     "discontinued": false,
     "purchase_links": [
@@ -112,10 +129,12 @@
     ]
   },
   {
+    "uuid": "a0084260-3040-4fd5-bae3-ef5179889c51",
     "filament_weight": 8000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720847058720",
     "article_number": "PTGE-285TWHT-08000",
     "discontinued": false,
     "purchase_links": [
@@ -124,5 +143,12 @@
         "url": "https://www.formfutura.com/easyfil-epetg"
       }
     ]
+  },
+  {
+    "uuid": "793be542-6e1c-40ca-b8fc-a079306a2bea",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720847057365",
+    "article_number": "PTGE-285TWHT-00250"
   }
 ]

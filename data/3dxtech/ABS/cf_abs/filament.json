@@ -1,10 +1,12 @@
 {
+  "uuid": "2fdb6083-73da-4802-8179-edff7f33bab5",
   "id": "cf_abs",
   "name": "ABS CF",
   "diameter_tolerance": 0.02,
-  "density": 1.04,
-  "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "density": 1.11,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/CarbonX_CF_ABS_TDS_v3.pdf?v=1723942765"
 }

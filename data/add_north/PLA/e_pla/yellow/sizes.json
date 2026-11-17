@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 750,
-        "diameter": 1.75,
-        "empty_spool_weight": 207,
-        "spool_core_diameter": 53,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%20750g%20-%20Yellow"
-            }
-        ]
-    }
+  {
+    "uuid": "0851fb1a-d396-4c54-b118-2c9a14bde42e",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "empty_spool_weight": 207,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "e93b0110-6a9b-4f83-a17e-9c4d44fdd54b",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182902772",
+    "article_number": "ANEP14YEL",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/E-PLA/E-PLA%20-%201.75mm%20-%201000g%20-%20Yellow"
+      }
+    ]
+  }
 ]

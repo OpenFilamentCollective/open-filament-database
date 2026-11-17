@@ -1,6 +1,15 @@
 {
-    "id": "pla_glow_in_the_dark",
-    "name": "PLA Glow in the Dark",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "7975500f-42c1-4240-a7a0-61dd685b7d34",
+  "id": "pla_glow_in_the_dark",
+  "name": "PLA Glow in the Dark",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 185,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pla_glow_in_the_dark.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_pla_glow_in_the_dark.pdf"
 }

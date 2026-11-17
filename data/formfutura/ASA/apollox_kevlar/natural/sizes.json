@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "3e8249ee-07cb-4032-a309-839bc6e6d940",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720629065564",
     "article_number": "AXKV-175NTRL-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "2ad6ea54-3728-4d73-8a68-0feb881c8d8a",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720629065571",
     "article_number": "AXKV-175NTRL-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "e9f5193d-d1f7-43d7-aee9-9bfc6c246487",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720629065588",
     "article_number": "AXKV-175NTRL-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "72f3c46c-f885-4e94-aa08-3b710dae5620",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720629065595",
     "article_number": "AXKV-175NTRL-08000",
     "discontinued": false,
     "purchase_links": [

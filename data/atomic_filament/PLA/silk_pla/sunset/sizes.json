@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "c823e378-edc1-4ebe-ac44-f4358a80a4b1",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/silky-sunset-pla-filament"
+      }
+    ]
   }
 ]

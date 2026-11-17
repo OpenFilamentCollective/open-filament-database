@@ -1,9 +1,9 @@
 {
+  "uuid": "bb9a4e15-c923-495d-9b7f-11f96e31b92f",
   "id": "schwarz_matt",
   "name": "Schwarz matt",
   "color_hex": "#000000",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

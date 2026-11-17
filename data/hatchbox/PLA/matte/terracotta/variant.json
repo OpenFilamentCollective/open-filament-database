@@ -1,8 +1,9 @@
 {
-    "id": "terracotta",
-    "name": "Terracotta",
-    "color_hex": "#A46A62",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "e68491af-9239-4eb1-8e00-cbb6d9d623b8",
+  "id": "terracotta",
+  "name": "Terracotta",
+  "color_hex": "#A46A62",
+  "traits": {
+    "matte": true
+  }
 }

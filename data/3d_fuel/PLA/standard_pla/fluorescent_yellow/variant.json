@@ -1,9 +1,11 @@
 {
+  "uuid": "49165ac9-a649-41d0-bc98-499eccfdd38e",
   "id": "fluorescent_yellow",
   "name": "Fluorescent Yellow",
-  "color_hex": "#E4FF33",
+  "color_hex": "#C3D453",
+  "transmission_distance": 8.6,
   "traits": {
-    "industrially_compostable": true,
-    "neon": true
+    "neon": true,
+    "bio_based": true
   }
 }

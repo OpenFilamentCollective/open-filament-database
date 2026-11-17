@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "630e6ce5-bbbb-4fd0-be2a-beb9f80e6f73",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.077",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-super-violet-petg-v2"
+      }
+    ]
+  }
+]

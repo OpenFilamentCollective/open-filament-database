@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "2dc4e088-1ac1-4791-a789-fb023ac81856",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.061",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/vanilla-pla"
+      }
+    ]
+  }
+]

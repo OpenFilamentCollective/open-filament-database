@@ -1,13 +1,19 @@
 [
   {
+    "uuid": "5c012a1a-6da6-47d4-b90c-2be70c81ef38",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 127,
     "spool_core_diameter": 58,
+    "gtin": "6974662353207",
     "purchase_links": [
       {
         "store_id": "anycubic",
         "url": "https://store.anycubic.com/products/asa-filament?variant=44831291310269"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/anycubic/asa-grey-4"
       }
     ]
   }

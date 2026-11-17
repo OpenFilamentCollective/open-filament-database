@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "8a1c2920-4dd2-432c-bf79-693e2c1c29aa",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.010",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-forest-pla-v2"
+      }
+    ]
+  }
+]

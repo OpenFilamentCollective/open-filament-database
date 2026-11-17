@@ -1,9 +1,10 @@
 [
   {
+    "uuid": "b2b1ab5a-20ac-4354-8345-1c17f35b5cc8",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "ean": "5907138400526",
-    "article_number": "81546",
+    "gtin": "5907138400502",
+    "article_number": "81544",
     "purchase_links": [
       {
         "store_id": "spectrum",

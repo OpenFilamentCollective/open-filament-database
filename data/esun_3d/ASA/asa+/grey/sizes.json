@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "69e3d88a-e016-426e-b409-67a32168a824",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572210837",
+    "article_number": "ASA+175H1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/easa"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/asa-grey-3"
       }
     ]
   }

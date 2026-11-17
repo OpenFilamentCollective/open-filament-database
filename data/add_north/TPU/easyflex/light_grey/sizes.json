@@ -1,18 +1,22 @@
 [
   {
+    "uuid": "a04ad0e2-9906-47f4-a61e-3b65b9d49217",
     "filament_weight": 500,
     "diameter": 1.75,
     "empty_spool_weight": 175,
-    "spool_core_diameter": 41,
+    "spool_core_diameter": 41
+  },
+  {
+    "uuid": "1c1038bd-dd24-49a9-b218-053bead5e90e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182902994",
+    "article_number": "ANEF14LGR",
     "purchase_links": [
       {
         "store_id": "add_north",
-        "url": "https://addnorth.com/product/EasyFlex/EasyFlex%20-%201.75mm%20-%20500g%20-%20Light%20Grey"
+        "url": "https://addnorth.com/product/EasyFlex/EasyFlex%20-%201.75mm%20-%201000g%20-%20Light%20Grey"
       }
     ]
-  },
-  {
-    "filament_weight": 1000,
-    "diameter": 1.75
   }
 ]

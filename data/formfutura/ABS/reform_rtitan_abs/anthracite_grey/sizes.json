@@ -1,9 +1,23 @@
 [
   {
+    "uuid": "27d818c7-d23a-4367-bcea-a7fe1eee8d94",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rtitan",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 165,
+    "gtin": "8720629060910",
     "article_number": "RTIT-175ATGY-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +28,24 @@
     ]
   },
   {
+    "uuid": "931e062d-32dc-48fb-be00-2591203581db",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rtitan",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 625,
+    "gtin": "8720629060934",
     "article_number": "RTIT-175ATGY-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +56,24 @@
     ]
   },
   {
+    "uuid": "49e33ee0-bf1f-400a-918d-71e74f2a9f9a",
     "filament_weight": 3500,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rtitan",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 705,
+    "gtin": "8720629060972",
     "article_number": "RTIT-175ATGY-03500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +84,24 @@
     ]
   },
   {
+    "uuid": "d611c637-835b-4cdb-a676-7720a4a5bb80",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rtitan",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 785,
+    "gtin": "8720629060996",
     "article_number": "RTIT-175ATGY-04500",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +112,24 @@
     ]
   },
   {
+    "uuid": "b24ee463-e521-4d5e-a1ba-7bfdf7f75ac2",
     "filament_weight": 1000,
     "diameter": 2.85,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rtitan",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 165,
+    "gtin": "8720629060927",
     "article_number": "RTIT-285ATGY-01000",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +140,24 @@
     ]
   },
   {
+    "uuid": "23d6a9bb-c618-404f-a491-db37587d8ec5",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rtitan",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 785,
+    "gtin": "8720629061023",
     "article_number": "RTIT-285ATGY-04500",
     "discontinued": false,
     "purchase_links": [
@@ -82,5 +166,43 @@
         "url": "https://www.formfutura.com/reform-rtitan"
       }
     ]
+  },
+  {
+    "uuid": "7249a287-2f01-42a9-9f7f-35fa6f0fe0b9",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rtitan",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
+    "gtin": "8720629060897",
+    "article_number": "RTIT-175ATGY-00250"
+  },
+  {
+    "uuid": "0b9078f6-e0d5-4001-9c60-55d23c816ebd",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [
+        "FSC"
+      ],
+      "notes": "Spool described as recycled and FSC certified cardboard; no recycled percentage given.",
+      "source_type": "primary",
+      "source_url": "https://www.formfutura.com/reform-rtitan",
+      "source_quote": "Spooled on sturdy recycled and FSC certified cardboard spools.",
+      "retrieved": "2026-11-03"
+    },
+    "gtin": "8720629060903",
+    "article_number": "RTIT-285ATGY-00250"
   }
 ]

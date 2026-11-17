@@ -1,9 +1,9 @@
 {
+  "uuid": "f7bffda2-fbd2-4728-b42e-4250b277d503",
   "id": "lemon_lime",
   "name": "Lemon Lime",
   "color_hex": "#000000",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "gradual_color_change": true
   }

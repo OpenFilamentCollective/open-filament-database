@@ -1,7 +1,8 @@
 {
-    "id": "high_speed_matte_pla",
-    "name": "High Speed Matte PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24,
-    "max_dry_temperature": 55
+  "uuid": "56c5b29b-166d-4501-b753-dc1c344c698f",
+  "id": "high_speed_matte_pla",
+  "name": "High Speed Matte PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "max_dry_temperature": 55
 }

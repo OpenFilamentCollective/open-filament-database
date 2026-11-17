@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "5d957104-803e-46c1-b56b-a323ad163005",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.069",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-sleeper-beige-petg-v2"
+      }
+    ]
+  }
+]

@@ -1,6 +1,28 @@
 [
   {
+    "uuid": "97966e9e-2076-4962-9a19-a40d65950a47",
     "filament_weight": 1000,
     "diameter": 1.75
+  },
+  {
+    "uuid": "72c0d724-24bb-4d54-a36f-a8a86141a88e",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "gtin": "8718924478417",
+    "article_number": "STNF-175PCLY-00500"
+  },
+  {
+    "uuid": "1ef7403b-af74-4e27-b535-da7f1f589512",
+    "filament_weight": 2000,
+    "diameter": 1.75,
+    "gtin": "8719956553172",
+    "article_number": "STNF-175PCLY-02000"
+  },
+  {
+    "uuid": "aecd6263-7b26-4850-8e55-1d8db815f3d3",
+    "filament_weight": 500,
+    "diameter": 2.85,
+    "gtin": "8718924478424",
+    "article_number": "STNF-285PCLY-00500"
   }
 ]

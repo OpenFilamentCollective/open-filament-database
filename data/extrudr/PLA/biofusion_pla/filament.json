@@ -1,10 +1,17 @@
 {
+  "uuid": "fe021874-78db-49aa-bf4c-2fa9a1ed9829",
   "id": "biofusion_pla",
   "name": "BioFusion PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
+  "density": 1.25,
+  "min_print_temperature": 200,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 20,
+  "max_bed_temperature": 60,
+  "max_volumetric_speed": 6,
+  "min_fan_speed": 10,
+  "max_fan_speed": 30,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/biofusion-TDS-en.pdf",
+  "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/biofusion-MSDS-en.pdf"
 }

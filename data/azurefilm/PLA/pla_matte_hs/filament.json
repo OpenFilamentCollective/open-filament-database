@@ -1,7 +1,12 @@
 {
+  "uuid": "cc3fe921-4874-4a70-a181-0054baf834ac",
   "id": "pla_matte_hs",
   "name": "Matte HS PLA",
   "diameter_tolerance": 0.02,
   "density": 1.35,
-  "data_sheet_url": "https://azurefilm.com/technical-data-sheets/"
+  "min_print_temperature": 205,
+  "max_print_temperature": 225,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://azurefilm.com/wp-content/uploads/2024/05/TDS-PLA-MATTE-HS.pptx.pdf"
 }

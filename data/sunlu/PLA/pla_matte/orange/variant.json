@@ -1,10 +1,11 @@
 {
-    "id": "orange",
-    "name": "Orange",
-    "color_hex": [
-        "#ff8a2a"
-    ],
-    "traits": {
-        "matte": true
-    }
+  "uuid": "53670fee-4e50-4ad9-a71e-f9f302b9d26f",
+  "id": "orange",
+  "name": "Orange",
+  "color_hex": [
+    "#ff8a2a"
+  ],
+  "traits": {
+    "matte": true
+  }
 }

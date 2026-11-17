@@ -1,6 +1,20 @@
 {
-    "id": "pa6_cf15",
-    "name": "PA6 CF15",
-    "diameter_tolerance": 0.02,
-    "density": 1.25
+  "uuid": "d34525d6-98ed-4e83-9da9-cb702735da4e",
+  "id": "pa6_cf15",
+  "name": "PA6 CF15",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "max_dry_temperature": 55,
+  "min_print_temperature": 260,
+  "max_print_temperature": 290,
+  "preheat_temperature": 175,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 110,
+  "min_fan_speed": 0,
+  "max_fan_speed": 10,
+  "enclosure": "not_needed",
+  "min_nozzle_diameter": 0.4,
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pa6_cf15.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_pa6_cf15.pdf",
+  "discontinued": false
 }

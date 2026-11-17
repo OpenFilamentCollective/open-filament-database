@@ -1,0 +1,25 @@
+[
+  {
+    "uuid": "e4d06584-8ac8-44f7-a09b-999232557ead",
+    "filament_weight": 850,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/bavafil-asa?variant=56637851697535"
+      }
+    ]
+  },
+  {
+    "uuid": "c9ec4614-63c8-4442-a67b-f8226f760519",
+    "filament_weight": 850,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/bavafil-asa?variant=56826059489663"
+      }
+    ]
+  }
+]

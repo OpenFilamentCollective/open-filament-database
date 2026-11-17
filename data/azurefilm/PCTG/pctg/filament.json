@@ -1,10 +1,12 @@
 {
+  "uuid": "efdffe25-e385-4261-ba10-b3e063dea003",
   "id": "pctg",
   "name": "PCTG",
   "diameter_tolerance": 0.02,
-  "density": 1.29,
-  "min_print_temperature": 250,
+  "density": 1.26,
+  "min_print_temperature": 230,
   "max_print_temperature": 250,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 80
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 80,
+  "data_sheet_url": "https://azurefilm.com/wp-content/uploads/2026/03/PCTG_TDS.pdf"
 }

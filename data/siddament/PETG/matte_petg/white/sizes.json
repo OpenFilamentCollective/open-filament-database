@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "901b77fc-cbb8-486d-8ca4-d5cdb40262b6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.013",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-white-petg"
+      }
+    ]
+  }
+]

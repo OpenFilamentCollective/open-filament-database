@@ -1,6 +1,10 @@
 {
-    "id": "hips",
-    "name": "HIPS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "1fdf6916-2339-4b9b-b6fa-c2fe584234ff",
+  "id": "hips",
+  "name": "HIPS",
+  "diameter_tolerance": 0.02,
+  "density": 1.04,
+  "min_print_temperature": 230,
+  "max_print_temperature": 245,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_HIPS_TDS.pdf"
 }

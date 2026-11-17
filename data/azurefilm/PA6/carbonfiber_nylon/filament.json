@@ -1,6 +1,7 @@
 {
-    "id": "carbonfiber_nylon",
-    "name": "PA6 Carbonfiber nylon",
-    "diameter_tolerance": 0.02,
-    "density": 1.08
+  "uuid": "fc66b3ed-cc08-4f84-8ec0-44fe388cb119",
+  "id": "carbonfiber_nylon",
+  "name": "PA6 Carbonfiber nylon",
+  "diameter_tolerance": 0.02,
+  "density": 1.08
 }

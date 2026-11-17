@@ -1,21 +1,23 @@
 [
   {
+    "uuid": "4324f29b-9394-4210-aa35-2b1f0533d577",
     "filament_weight": 1000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/over-6kg-of-pla-pla-meta-3d-filaments-1kg-2-2lbs-fit-most-of-fdm-printer?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/over-6kg-of-pla-pla-meta-3d-filaments-1kg-2-2lbs-fit-most-of-fdm-printer"
       }
     ]
   },
   {
+    "uuid": "788f1de4-e92e-4f95-b56b-dcdd74ed7f41",
     "filament_weight": 5000,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/5kg-large-spool-pla-abs-petg-and-pla-3d-printer-filament?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/5kg-large-spool-pla-abs-petg-and-pla-3d-printer-filament"
       }
     ]
   }

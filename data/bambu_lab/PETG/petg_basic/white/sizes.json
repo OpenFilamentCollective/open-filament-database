@@ -1,10 +1,34 @@
 [
   {
+    "uuid": "a56397e5-8c4a-49ff-9bfe-461b1d43ca50",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
-    "discontinued": false
+    "gtin": "6937285509727",
+    "article_number": "30106",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-white-3?sai=42619"
+      }
+    ]
+  },
+  {
+    "uuid": "980150da-0437-4958-87da-0ddbc50cd0c5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285509895",
+    "article_number": "30106",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-basic-white-3"
+      }
+    ]
   }
 ]

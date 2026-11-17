@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "fbb53361-3287-4bf4-b082-4000be047d9d",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675124"
+    "gtin": "8594173675124",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-carmine-red-1kg-nfc/"
+      }
+    ]
   }
 ]

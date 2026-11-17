@@ -1,0 +1,10 @@
+{
+  "uuid": "cc48574e-441a-447b-8642-51cb7d78f922",
+  "id": "metallic_gold",
+  "name": "Metallic Gold",
+  "color_hex": "#DA9F1D",
+  "traits": {
+    "imitates_metal": true,
+    "high_flow": true
+  }
+}

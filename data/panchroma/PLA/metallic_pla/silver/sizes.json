@@ -1,11 +1,25 @@
 [
   {
+    "uuid": "16c197b2-2ba4-4de9-b799-910b877e13cd",
+    "moved_from": [
+      "a9d5ae64-8a9d-43cd-a12d-e07f203a8bbf"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-metallic?"
+        "url": "https://us.polymaker.com/products/panchroma-metallic"
+      },
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/metallic-pla?variant=43595097374777"
       }
     ]
   }

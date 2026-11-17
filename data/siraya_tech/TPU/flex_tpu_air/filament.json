@@ -1,0 +1,13 @@
+{
+  "uuid": "7110db25-c827-4af3-8b32-925d853ab1d6",
+  "id": "flex_tpu_air",
+  "name": "Flex TPU Air 85A",
+  "diameter_tolerance": 0.03,
+  "density": 1.15,
+  "shore_hardness_a": 85,
+  "min_print_temperature": 230,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 45,
+  "data_sheet_url": "https://siraya.tech/pages/siraya-tech-flex-tpu-air-tds"
+}

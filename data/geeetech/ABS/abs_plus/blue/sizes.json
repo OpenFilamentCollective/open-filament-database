@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "ff6bdcd6-c7c3-415b-8043-a0339fd4b84d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170213",
+    "article_number": "700-001-1483",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/abs-blue-9"
+      }
+    ]
   }
 ]

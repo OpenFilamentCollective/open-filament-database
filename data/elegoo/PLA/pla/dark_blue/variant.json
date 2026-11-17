@@ -1,8 +1,9 @@
 {
+  "uuid": "625e7178-f278-45a4-bf9c-18000cb69750",
   "id": "dark_blue",
   "name": "Dark Blue",
   "color_hex": "#2240af",
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

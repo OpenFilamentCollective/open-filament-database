@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "d49e7703-dfac-4a32-9ecb-69855d5e195d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/perfect-purple-petg-pro"
+      }
+    ]
   }
 ]

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "db8cc53b-7e3e-480f-996b-8b79a61adca1",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/pine-green-pla-filament"
+      }
+    ]
   }
 ]

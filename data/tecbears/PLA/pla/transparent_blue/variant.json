@@ -1,9 +1,9 @@
 {
+  "uuid": "50a550ea-4018-491a-b7ae-5bcc11165856",
   "id": "transparent_blue",
   "name": "Transparent Blue",
   "color_hex": "#0353BA",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

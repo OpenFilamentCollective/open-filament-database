@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "9df3f89c-6d57-439c-af20-7ec43ce68d34",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.074",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-pocket-green-petg-v2"
+      }
+    ]
+  }
+]

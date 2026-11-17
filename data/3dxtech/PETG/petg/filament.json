@@ -1,11 +1,12 @@
 {
+    "uuid": "8076df7b-f8c8-4a18-9b78-51163e27279d",
     "id": "petg",
     "name": "PETG",
     "diameter_tolerance": 0.02,
     "density": 1.27,
-    "min_print_temperature": 220,
-    "max_print_temperature": 250,
-    "min_bed_temperature": 70,
+    "min_print_temperature": 230,
+    "max_print_temperature": 260,
+    "min_bed_temperature": 60,
     "max_bed_temperature": 90,
     "slicer_settings": {
         "prusaslicer": {

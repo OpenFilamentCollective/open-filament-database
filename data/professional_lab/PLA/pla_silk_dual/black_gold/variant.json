@@ -1,8 +1,12 @@
 {
+  "uuid": "b7435866-a988-4be3-aad2-da950f352d1a",
   "id": "black_gold",
   "name": "Black Gold",
   "color_hex": [
     "#000000",
     "#D4AF37"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

@@ -1,10 +1,12 @@
 {
+  "uuid": "bf82fd3d-4ea0-477f-a9a1-9f71bcf4b349",
   "id": "cf_pa12",
   "name": "PA12 CF",
   "diameter_tolerance": 0.02,
-  "density": 1.01,
-  "min_print_temperature": 240,
-  "max_print_temperature": 270,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "density": 1.16,
+  "min_print_temperature": 265,
+  "max_print_temperature": 285,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/CarbonXCF_PA12_v1_TDS_1.pdf?v=1728334784"
 }

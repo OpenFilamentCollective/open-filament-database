@@ -1,10 +1,12 @@
 {
+  "uuid": "bef2a959-e94b-4497-ab5a-03c9f35d177a",
   "id": "pla_luminous",
   "name": "PLA-Luminous",
   "diameter_tolerance": 0.03,
   "density": 1.2,
   "min_print_temperature": 190,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Luminous/eSUN_PLA_Luminous_Filament_TDS_V4.0_1.pdf"
 }

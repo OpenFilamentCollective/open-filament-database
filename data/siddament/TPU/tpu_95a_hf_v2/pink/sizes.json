@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "c70f05d2-00c7-4f73-a116-ac60e94c5fbc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.006",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/pink-tpu-95a-hf"
+      }
+    ]
+  }
+]

@@ -1,4 +1,5 @@
 {
+  "uuid": "d7a1686f-4f2e-4e6e-bae8-7274465884b4",
   "id": "cmyk_lithowhite",
   "name": "CMYK Lithowhite",
   "color_hex": "#FFFFFF",
@@ -6,6 +7,7 @@
     "ral": "9003"
   },
   "traits": {
-    "industrially_compostable": true
+    "industrially_compostable": true,
+    "bio_based": true
   }
 }

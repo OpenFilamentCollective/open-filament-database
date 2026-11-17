@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "52b7d3f5-c876-4e3a-8fae-f2a69c352eaa",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "biqu",
+        "url": "https://biqu.equipment/collections/filament/products/biqu-pla-go-series-reliable-low-warp-easy-to-print-filament-for-everyday-use"
+      }
+    ]
+  }
+]

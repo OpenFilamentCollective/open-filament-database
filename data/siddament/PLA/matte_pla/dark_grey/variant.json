@@ -1,0 +1,13 @@
+{
+  "uuid": "1a8570c1-7a46-4c8d-9608-8c311fcb2d8c",
+  "id": "dark_grey",
+  "name": "Dark Grey",
+  "color_hex": "#A1A1A0",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "Cool Gray 6 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

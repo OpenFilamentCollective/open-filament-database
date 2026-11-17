@@ -1,12 +1,38 @@
 [
   {
+    "uuid": "f58dbefd-05ed-4e96-add7-d9dcd8e26253",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675360"
+    "gtin": "8594173675360",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-signal-white-1kg-nfc/"
+      }
+    ]
   },
   {
+    "uuid": "ce61c0dd-7b15-40e2-829d-54a732b2d808",
     "filament_weight": 2000,
     "diameter": 1.75,
-    "gtin": "8594173676015"
+    "gtin": "8594173676015",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-signal-white-2kg-nfc/"
+      }
+    ]
+  },
+  {
+    "uuid": "42ceaa6f-5f9f-455a-8565-642ead502833",
+    "filament_weight": 900,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/prusa/prusament-petg-signal-white-refill-nfc"
+      }
+    ]
   }
 ]

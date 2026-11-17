@@ -1,6 +1,12 @@
 {
-    "id": "refill_abs",
-    "name": "Refill ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "520d142c-838d-4041-a079-42cce596bd6d",
+  "id": "refill_abs",
+  "name": "Refill ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.05,
+  "min_print_temperature": 250,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/07/FIBERLOGY_ABS_TDS.pdf"
 }

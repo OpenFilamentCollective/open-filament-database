@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "699f76d4-4d7e-4f8b-8cab-e7d752bd3a43",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.064",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-rust-petg-v2"
+      }
+    ]
+  }
+]

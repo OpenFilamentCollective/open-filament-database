@@ -1,9 +1,9 @@
 {
+  "uuid": "e175b0ca-cbfd-40f1-beea-564d9385183c",
   "id": "textura_black",
   "name": "Textura™ Black",
   "color_hex": "#000000",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

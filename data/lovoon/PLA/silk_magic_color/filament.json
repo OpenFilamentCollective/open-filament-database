@@ -1,0 +1,10 @@
+{
+  "uuid": "d42a3628-1e26-4011-a051-892ad09b5796",
+  "id": "silk_magic_color",
+  "name": "Silk Magic Color",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "discontinued": false
+}

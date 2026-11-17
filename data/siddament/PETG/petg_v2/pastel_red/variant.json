@@ -1,0 +1,10 @@
+{
+  "uuid": "cb2d3284-4016-4bdf-82f3-44db970b79b0",
+  "id": "pastel_red",
+  "name": "Pastel Red",
+  "color_hex": "#FFECEC",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "705 C"
+  }
+}

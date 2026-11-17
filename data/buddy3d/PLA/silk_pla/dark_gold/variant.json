@@ -1,9 +1,9 @@
 {
+  "uuid": "27c437a9-3f8e-4ab0-adec-50918d3ecc87",
   "id": "dark_gold",
   "name": "Dark gold",
   "color_hex": "#F3B400",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

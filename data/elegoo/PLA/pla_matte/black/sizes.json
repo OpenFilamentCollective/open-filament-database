@@ -1,7 +1,9 @@
 [
   {
+    "uuid": "7f25a276-c751-4ddd-a2de-f0d93cc86849",
     "filament_weight": 250,
     "diameter": 1.75,
+    "empty_spool_weight": 60,
     "purchase_links": [
       {
         "store_id": "elegoo",
@@ -10,7 +12,16 @@
     ]
   },
   {
+    "uuid": "0d0ef598-c9a3-4183-a601-400e2aaf9b6f",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 153,
+    "purchase_links": [
+      {
+        "store_id": "elegoo",
+        "url": "https://eu.elegoo.com/products/pla-matte-filament-1-75mm-colored-1kg"
+      }
+    ]
   }
 ]

@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "ce32267d-f5b1-4b87-a4fc-b6710cc79b05",
+    "filament_weight": 4310,
+    "diameter": 2.85,
+    "spool_refill": false,
+    "empty_spool_weight": 810,
+    "spool_core_diameter": 50,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "proteorprint",
+        "url": "https://www.proteordigital.com/product-page/eva-form"
+      }
+    ]
+  }
+]

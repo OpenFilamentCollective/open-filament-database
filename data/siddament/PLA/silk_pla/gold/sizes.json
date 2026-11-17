@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "0754d019-8902-40d6-b349-16d547252ef8",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.017",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/silk-gold-pla"
+      }
+    ]
+  }
+]

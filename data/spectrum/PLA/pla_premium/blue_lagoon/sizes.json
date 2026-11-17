@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "1f9e31ab-6f29-4801-a535-15cfc65617ec",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5903175657909",
@@ -10,5 +11,13 @@
         "url": "https://shop.spectrumfilaments.com/product-eng-556-Filament-Spectrum-PLA-Premium-1-75mm-BLUE-LAGOON-1kg.html"
       }
     ]
+  },
+  {
+    "uuid": "5581626c-b741-427b-9fc4-9a72d10f14a7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "5905991404392"
   }
 ]

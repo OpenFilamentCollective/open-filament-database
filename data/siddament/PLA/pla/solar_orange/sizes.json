@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "e179ad4c-ec6f-4cc2-8853-3f24b87505bb",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.043",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/solar-orange-pla"
+      }
+    ]
+  }
+]

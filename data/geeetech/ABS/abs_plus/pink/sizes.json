@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "9b98cdab-5227-4a52-bf65-9274b575b9e8",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994175188",
+    "article_number": "700-001-1733",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/abs-pink-5"
+      }
+    ]
   }
 ]

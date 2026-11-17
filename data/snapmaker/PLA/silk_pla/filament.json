@@ -1,0 +1,12 @@
+{
+  "uuid": "34c742bd-5cd8-4938-8a9e-6eb74e5de29a",
+  "id": "silk_pla",
+  "name": "Silk PLA",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 240,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 70,
+  "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+Silk+PLA+Technical+Data+Sheet+V1.0.0.pdf"
+}

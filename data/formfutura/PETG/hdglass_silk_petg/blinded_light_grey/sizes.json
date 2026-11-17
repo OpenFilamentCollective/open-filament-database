@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "003d2432-c360-4a8e-879d-15be8a38cfff",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476093",
     "article_number": "HDGL-175BLGY-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "c0001a29-e35b-4a33-bb8a-7ee8b064912f",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477601",
     "article_number": "HDGL-175BLGY-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "dbc33580-672a-4546-b13b-ef4d4447d82b",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924477595",
     "article_number": "HDGL-175BLGY-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "443856b1-14de-4f94-b6b8-4e63e1ac6a9f",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8718924478080",
     "article_number": "HDGL-175BLGY-08000",
     "discontinued": false,
     "purchase_links": [
@@ -56,10 +64,12 @@
     ]
   },
   {
+    "uuid": "ea245e7a-1069-4ddb-9534-d5270fcd8415",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476109",
     "article_number": "HDGL-285BLGY-00750",
     "discontinued": false,
     "purchase_links": [
@@ -70,10 +80,12 @@
     ]
   },
   {
+    "uuid": "f6360b61-610e-482c-a086-a14602e8ffd3",
     "filament_weight": 2300,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477618",
     "article_number": "HDGL-285BLGY-02300",
     "discontinued": false,
     "purchase_links": [
@@ -84,10 +96,12 @@
     ]
   },
   {
+    "uuid": "b23af21b-79f2-46e4-a175-80eeb8c7aff7",
     "filament_weight": 4500,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8718924477373",
     "article_number": "HDGL-285BLGY-04500",
     "discontinued": false,
     "purchase_links": [
@@ -98,10 +112,12 @@
     ]
   },
   {
+    "uuid": "e8341d9c-daa2-4995-aa45-08e01d023acb",
     "filament_weight": 8000,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8718924478097",
     "article_number": "HDGL-285BLGY-08000",
     "discontinued": false,
     "purchase_links": [
@@ -110,5 +126,19 @@
         "url": "https://www.formfutura.com/hdglass"
       }
     ]
+  },
+  {
+    "uuid": "f6bceb0b-670a-493f-a925-64547ba7bd2e",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720574295269",
+    "article_number": "HDGL-175BLGY-00250"
+  },
+  {
+    "uuid": "d9542af3-117f-4cc5-810e-0340ab52f74f",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574295177",
+    "article_number": "HDGL-285BLGY-00250"
   }
 ]

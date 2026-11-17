@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "d81a9a14-0ec5-479d-91c4-a2c082deaf90",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675650"
+    "gtin": "8594173675650",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-prusa-orange-transparent-1kg-nfc/"
+      }
+    ]
   }
 ]

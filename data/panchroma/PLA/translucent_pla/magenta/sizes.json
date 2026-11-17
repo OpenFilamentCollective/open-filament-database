@@ -1,11 +1,27 @@
 [
   {
+    "uuid": "ab8f6260-2a3f-48c0-8fce-c79244843f07",
+    "moved_from": [
+      "f84339eb-0a8f-4fa9-af88-9b940498b620"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936700180",
+    "article_number": "CA02002",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-translucent?"
+        "url": "https://us.polymaker.com/products/panchroma-translucent"
+      },
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/translucent-pla?variant=43595097833529"
       }
     ]
   }

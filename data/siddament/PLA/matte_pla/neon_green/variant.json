@@ -1,0 +1,14 @@
+{
+  "uuid": "314867d6-0f97-469a-863f-94babc8b96a4",
+  "id": "neon_green",
+  "name": "Neon Green",
+  "color_hex": "#5EFF00",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "802 C"
+  },
+  "traits": {
+    "matte": true,
+    "neon": true
+  }
+}

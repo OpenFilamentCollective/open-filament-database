@@ -1,11 +1,11 @@
 {
+  "uuid": "0baf81ea-d57b-49a6-96bc-63570d6c31b9",
   "id": "gold_dust_ht",
   "name": "Gold Dust HT",
   "color_hex": "#DDB95D",
   "traits": {
     "translucent": true,
-    "industrially_compostable": true,
-    "high_temperature": true,
-    "glitter": true
+    "glitter": true,
+    "high_temperature": true
   }
 }

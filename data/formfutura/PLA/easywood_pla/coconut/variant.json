@@ -1,10 +1,10 @@
 {
+  "uuid": "47e8edd0-730e-4f26-8358-47c862a8cd44",
   "id": "coconut",
   "name": "Coconut",
   "color_hex": "#503529",
   "discontinued": false,
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

@@ -1,0 +1,25 @@
+[
+  {
+    "uuid": "bc3ca1c0-959c-4421-a24e-6c7af87907ed",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/neon-pla-filament-fur-3d-drucker?variant=56557331153279"
+      }
+    ]
+  },
+  {
+    "uuid": "cd994e62-fcc7-4a7f-8f45-a0c57a743dde",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/neon-pla-filament-fur-3d-drucker?variant=56826034094463"
+      }
+    ]
+  }
+]

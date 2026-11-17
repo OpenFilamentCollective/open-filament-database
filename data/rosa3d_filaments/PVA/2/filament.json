@@ -1,10 +1,11 @@
 {
+  "uuid": "7e580321-60e5-416a-b23a-b9d60e0c2592",
   "id": "2",
   "name": "PVA 2",
   "diameter_tolerance": 0.02,
-  "density": 1.23,
-  "min_print_temperature": 180,
-  "max_print_temperature": 210,
+  "density": 1.25,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
   "min_bed_temperature": 50,
-  "max_bed_temperature": 60
+  "max_bed_temperature": 70
 }

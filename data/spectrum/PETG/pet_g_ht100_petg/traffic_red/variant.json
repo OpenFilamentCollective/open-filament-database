@@ -1,8 +1,0 @@
-{
-  "id": "traffic_red",
-  "name": "Traffic Red",
-  "color_hex": "#EC0000",
-  "traits": {
-    "high_temperature": true
-  }
-}

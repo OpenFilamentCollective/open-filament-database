@@ -1,0 +1,10 @@
+{
+  "uuid": "e3f315ac-c6e2-47ea-b85c-0577c6f538f1",
+  "id": "rust",
+  "name": "Rust",
+  "color_hex": "#8B3A1B",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

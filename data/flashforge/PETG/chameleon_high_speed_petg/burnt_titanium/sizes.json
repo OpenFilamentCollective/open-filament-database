@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "c424b95c-e13d-4156-8536-9bec964c51a7",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "flashforge",
+        "url": "https://www.flashforge.com/products/hs-petg?variant=43184846995534"
+      }
+    ]
   }
 ]

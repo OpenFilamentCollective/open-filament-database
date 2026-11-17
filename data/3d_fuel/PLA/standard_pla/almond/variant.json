@@ -1,8 +1,10 @@
 {
+  "uuid": "1b001a6b-2c07-4ef1-9e8c-f38b5d07b06d",
   "id": "almond",
   "name": "Almond",
-  "color_hex": "#000000",
+  "color_hex": "#D9CBB1",
+  "transmission_distance": 1.5,
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

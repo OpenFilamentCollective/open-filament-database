@@ -1,0 +1,12 @@
+{
+  "uuid": "0774200e-4b01-424c-9c86-c3c3bbbea159",
+  "id": "fibreheart_abs_cf_core",
+  "name": "Fibreheart ABS-CF Core",
+  "diameter_tolerance": 0.03,
+  "density": 1.06,
+  "min_print_temperature": 250,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 100,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://siraya.tech/pages/siraya-tech-fibreheart-abs-cf-core-tds"
+}

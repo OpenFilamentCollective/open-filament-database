@@ -1,9 +1,10 @@
 {
+  "uuid": "f42ce0cc-6901-4ba3-af58-cc253d260f1e",
   "id": "9085_natural",
   "name": "9085 Natural",
   "color_hex": "#F1E6B2",
   "traits": {
-    "low_outgassing": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "low_outgassing": true
   }
 }

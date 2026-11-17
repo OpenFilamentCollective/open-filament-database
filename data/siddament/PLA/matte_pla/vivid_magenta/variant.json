@@ -1,0 +1,13 @@
+{
+  "uuid": "9db9b172-29dc-40fe-9c62-be88e1e30e60",
+  "id": "vivid_magenta",
+  "name": "Vivid Magenta",
+  "color_hex": "#FE0194",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "213 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

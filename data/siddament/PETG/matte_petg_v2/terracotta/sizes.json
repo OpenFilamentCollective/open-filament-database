@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "a2f3f024-c283-4117-bb40-fc4fb61fd3dc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.063",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-terracotta-petg-v2"
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "uuid": "3adb22ef-1642-47e8-89d8-1828648871eb",
+  "id": "light_blue",
+  "name": "Light Blue",
+  "color_hex": "#00A0B7",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "320 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

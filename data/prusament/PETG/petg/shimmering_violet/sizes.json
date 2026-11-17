@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "04505f45-5b94-40b5-bdc9-fe311c324bd5",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173676275"
+    "gtin": "8594173676275",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-shimmering-violet-1kg-nfc/"
+      }
+    ]
   }
 ]

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "a3ab38c1-458a-4b74-b345-082dd198b0c9",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461495",
+    "article_number": "PETG-R-405-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-dark-purple"
+      }
+    ]
   }
 ]

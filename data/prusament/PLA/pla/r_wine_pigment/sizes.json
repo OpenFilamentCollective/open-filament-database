@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "e5f4f9fa-30e4-4a7d-9ba4-86d404c404a2",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675957"
+    "gtin": "8594173675957",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-rpla-wine-pigment-1kg-nfc/"
+      }
+    ]
   }
 ]

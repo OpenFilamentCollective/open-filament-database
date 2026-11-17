@@ -1,7 +1,10 @@
 [
   {
+    "uuid": "cd1accce-f246-45cf-8ec1-4f052869013f",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "gtin": "6971636403647",
+    "article_number": "3301020041",
     "purchase_links": [
       {
         "store_id": "crealitystore",

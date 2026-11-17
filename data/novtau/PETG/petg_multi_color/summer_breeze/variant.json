@@ -1,0 +1,12 @@
+{
+  "uuid": "4fb85054-a082-4ea0-9b95-a34153233cbd",
+  "id": "summer_breeze",
+  "name": "Summer Breeze",
+  "color_hex": [
+    "#ADD5E3",
+    "#65ABCF"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

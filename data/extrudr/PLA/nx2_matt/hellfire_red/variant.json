@@ -1,12 +1,12 @@
 {
+  "uuid": "7c819a13-aeea-4150-8c3a-13a91e181045",
   "id": "hellfire_red",
   "name": "Hellfire Red",
-  "color_hex": "#000000",
+  "color_hex": "#C05447",
   "color_standards": {
     "ral": "3024"
   },
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

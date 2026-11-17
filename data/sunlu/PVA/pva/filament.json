@@ -1,6 +1,10 @@
 {
-    "id": "pva",
-    "name": "PVA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "9060a92d-7e9a-4593-b9e0-0593d2187c96",
+  "id": "pva",
+  "name": "PVA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19,
+  "min_print_temperature": 200,
+  "max_print_temperature": 230,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260330/6f3c0e89-fa56-46b2-ab3d-601ee6b70cf9.pdf?filename=TDS"
 }

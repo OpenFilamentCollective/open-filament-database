@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "4add6b04-76c2-46fe-8d19-98e5e69bde4e",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8719956550560",
     "article_number": "GPLA-175CGLD-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "470a8d6e-f569-4c79-b717-91d5d642eee8",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8719956558351",
     "article_number": "GPLA-175CGLD-02300",
     "discontinued": false,
     "purchase_links": [

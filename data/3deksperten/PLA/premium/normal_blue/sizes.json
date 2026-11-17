@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "92a7e136-c6bb-4dd9-87fc-ed83790239fc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 150,
+    "spool_core_diameter": 100,
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3deksperten",
+        "url": "https://3deksperten.dk/products/normal-blue-3de-premium-pla-1-75mm"
+      }
+    ]
+  }
+]

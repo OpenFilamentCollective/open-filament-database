@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "2ddf03d1-535f-44d8-ba6c-4ca31fa08d13",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "4.062",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/yellow-asa-v2"
+      }
+    ]
+  }
+]

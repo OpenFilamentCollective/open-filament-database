@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "bde094e0-1718-402e-871a-e399fa0f5b2f",
     "filament_weight": 500,
     "diameter": 1.75,
-    "gtin": "8594173675490"
+    "gtin": "8594173675490",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pvb-prusa-orange-transparent-500g/"
+      }
+    ]
   }
 ]

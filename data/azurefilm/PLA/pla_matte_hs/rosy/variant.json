@@ -1,10 +1,12 @@
 {
+  "uuid": "b897dae2-4a71-4d73-811c-75cd88766331",
   "id": "rosy",
   "name": "Rosy",
   "color_hex": [
     "#D9BEC0"
   ],
   "traits": {
-    "matte": true
+    "matte": true,
+    "high_flow": true
   }
 }

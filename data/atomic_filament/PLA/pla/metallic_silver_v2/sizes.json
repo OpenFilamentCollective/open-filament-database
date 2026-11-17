@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "5ab66806-6c5d-46d4-b56b-02e735359dbc",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/metallic-silver-pla-filament"
+      }
+    ]
   }
 ]

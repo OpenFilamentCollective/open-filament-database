@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "53c97b3e-66f4-4715-ba0a-69dfca835f05",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.015",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-red-petg"
+      }
+    ]
+  }
+]

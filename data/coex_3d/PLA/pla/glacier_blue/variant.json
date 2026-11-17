@@ -1,9 +1,9 @@
 {
+  "uuid": "14f8f4a3-c7ce-41b0-99d3-b647b02e9e65",
   "id": "glacier_blue",
   "name": "Glacier Blue",
   "color_hex": "#005DA4",
   "traits": {
-    "translucent": true,
-    "industrially_compostable": true
+    "translucent": true
   }
 }

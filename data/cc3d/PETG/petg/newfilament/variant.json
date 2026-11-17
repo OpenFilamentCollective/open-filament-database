@@ -1,9 +1,10 @@
 {
+  "uuid": "0ac583f7-301e-4eb4-ba4c-7df306f11bc1",
   "id": "newfilament",
   "name": "NewFilament",
   "color_hex": "#000000",
   "traits": {
-    "recycled": true,
-    "glitter": true
+    "glitter": true,
+    "recycled": true
   }
 }

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "57ed7310-c409-4147-826e-da02779af1ff",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720629067803",
     "article_number": "ATAX-175TWHT-01000",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,13 @@
     ]
   },
   {
+    "uuid": "bfaf0945-dcf8-44bd-88db-7911dde3a0a9",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 20,
+    "gtin": "8720629067827",
     "article_number": "ATAX-175TWHT-C1000",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +33,13 @@
     ]
   },
   {
+    "uuid": "85fc80f0-a5ab-4e85-8c32-b9c1545ca645",
     "filament_weight": 2000,
     "diameter": 1.75,
     "spool_refill": true,
+    "container_material": "refill",
     "empty_spool_weight": 40,
+    "gtin": "8720629067834",
     "article_number": "ATAX-175TWHT-C2000",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +50,12 @@
     ]
   },
   {
+    "uuid": "f89f9ad3-384f-42bc-b909-6c4321c6ebfa",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720629067810",
     "article_number": "ATAX-175TWHT-02300",
     "discontinued": false,
     "purchase_links": [

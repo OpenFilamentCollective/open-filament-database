@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "21975ccb-e1cd-4e2d-a2f5-089d848b5eae",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-3kg-bundle-1-75mm-sunlu-twinkling-pla-3d-printer-filament-1kg-roll"
+      }
+    ]
   }
 ]

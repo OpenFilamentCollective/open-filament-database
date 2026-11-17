@@ -1,6 +1,12 @@
 {
-    "id": "pla_refill",
-    "name": "PLA Refill",
-    "diameter_tolerance": 0.02,
-    "density": 1.16
+  "uuid": "d6853c4a-a2de-41db-8aa3-176db62b2439",
+  "id": "pla_refill",
+  "name": "PLA Refill",
+  "diameter_tolerance": 0.02,
+  "density": 1.21,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://overture3d.com/cdn/shop/files/OVERTURE_PLA_TDS_EN_V5.1_a4102671-a3b0-416f-9191-7e6feb681e3e.pdf"
 }

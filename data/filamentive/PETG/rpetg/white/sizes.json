@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "f7a0a6ef-f393-45eb-a408-0d33852da44f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 34,
+    "spool_core_diameter": 87,
+    "article_number": "PETG-WH1-175",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "filamentive",
+        "url": "https://www.filamentive.com/product/petg-white-3d-printer-filament/?attribute_weight=1KG&attribute_diameter=1.75mm"
+      }
+    ]
+  }
+]

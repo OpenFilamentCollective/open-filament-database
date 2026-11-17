@@ -1,8 +1,9 @@
 {
+  "uuid": "7369334a-1aeb-41d2-9acc-8d7e2b164f14",
   "id": "haze_blue",
   "name": "Haze Blue",
   "color_hex": "#6299DF",
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

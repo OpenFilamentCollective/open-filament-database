@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7f156f9b-b9da-4d83-8119-d73580542022",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.067",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/orange-bright-tpu-95a"
+      }
+    ]
+  }
+]

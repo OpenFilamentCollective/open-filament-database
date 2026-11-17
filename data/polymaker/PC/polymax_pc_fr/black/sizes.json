@@ -1,0 +1,33 @@
+[
+  {
+    "uuid": "84d241a4-4c37-4256-a5dc-506935a8c363",
+    "moved_from": [
+      "08f752c4-b0b2-4cb1-be8e-a06172cb7f65"
+    ],
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6938936710578",
+    "article_number": "PC03001",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polymax-pc-fr?variant=39574348038201"
+      }
+    ]
+  },
+  {
+    "uuid": "6084498b-7874-492e-81f3-e2c741993539",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "6938936712138",
+    "article_number": "PC03003"
+  },
+  {
+    "uuid": "0d1a76bf-be59-4a6d-b180-f28c2e05108d",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "container_material": "plastic",
+    "gtin": "6938936702535",
+    "article_number": "PM70253"
+  }
+]

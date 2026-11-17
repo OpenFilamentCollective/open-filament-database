@@ -1,0 +1,10 @@
+{
+  "uuid": "201d5e91-2da0-46e0-8cbb-29b2dab08ba9",
+  "id": "vanilla",
+  "name": "Vanilla",
+  "color_hex": "#E7D7A2",
+  "discontinued": false,
+  "traits": {
+    "high_flow": true
+  }
+}

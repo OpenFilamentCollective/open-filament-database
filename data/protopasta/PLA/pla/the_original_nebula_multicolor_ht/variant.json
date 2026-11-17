@@ -1,4 +1,5 @@
 {
+  "uuid": "9d5b8333-83b6-41c0-a043-f283e71b42e6",
   "id": "the_original_nebula_multicolor_ht",
   "name": "The Original Nebula Multicolor HT",
   "color_hex": [
@@ -8,9 +9,8 @@
     "#C80181"
   ],
   "traits": {
-    "industrially_compostable": true,
-    "high_temperature": true,
     "glitter": true,
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "high_temperature": true
   }
 }

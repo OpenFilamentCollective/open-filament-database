@@ -1,8 +1,9 @@
 {
-    "id": "inox",
-    "name": "Inox",
-    "color_hex": "#969AA3",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "1b06be81-14fd-4cf0-b9d5-3a2fdcfe486f",
+  "id": "inox",
+  "name": "Inox",
+  "color_hex": "#969AA3",
+  "traits": {
+    "recyclable": true
+  }
 }

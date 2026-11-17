@@ -1,6 +1,11 @@
 {
-    "id": "pla_glossy",
-    "name": "PLA Glossy",
-    "diameter_tolerance": 0.05,
-    "density": 1.24
+  "uuid": "0751b976-8619-4d92-b97a-377ac5805296",
+  "id": "pla_glossy",
+  "name": "PLA Glossy",
+  "diameter_tolerance": 0.05,
+  "density": 1.24,
+  "min_print_temperature": 210,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 20,
+  "max_bed_temperature": 90
 }

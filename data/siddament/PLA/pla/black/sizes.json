@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "92aa8077-a11b-4158-a0ef-90e6548daea4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.001",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/black-pla"
+      }
+    ]
+  }
+]

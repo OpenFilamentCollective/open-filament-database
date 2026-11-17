@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "f3dabcc1-4d85-4264-8222-aa2ba88c2e96",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
@@ -7,6 +8,20 @@
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/pla-pro"
+      }
+    ]
+  },
+  {
+    "uuid": "a3067b4d-3709-41a0-b608-8bc4a903c828",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208469",
+    "article_number": "PLA+175SP-U1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-space-blue?sai=24799"
       }
     ]
   }

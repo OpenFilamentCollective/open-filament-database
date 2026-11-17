@@ -1,0 +1,13 @@
+{
+  "uuid": "dab19598-272c-4acd-8f1c-5a01528bf7d6",
+  "id": "magenta",
+  "name": "Magenta",
+  "color_hex": "#990050",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "201 C"
+  },
+  "traits": {
+    "silk": true
+  }
+}

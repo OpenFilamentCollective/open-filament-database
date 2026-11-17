@@ -1,8 +1,9 @@
 {
-    "id": "pure_transparent",
-    "name": "Pure Transparent",
-    "color_hex": "#F2F2F2",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "088c9fa5-f0f1-42e8-a983-8dd269a94328",
+  "id": "pure_transparent",
+  "name": "Pure Transparent",
+  "color_hex": "#F2F2F2",
+  "traits": {
+    "recyclable": true
+  }
 }

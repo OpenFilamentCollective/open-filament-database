@@ -1,5 +1,12 @@
 {
-    "id": "silver",
-    "name": "Silver",
-    "color_hex": "#9f9f9f"
+  "uuid": "5a29d0f8-e79c-4420-99e0-2c0a04ece81e",
+  "moved_from": [
+    "7f33ea83-ad66-4708-acd1-7c0523d93c33"
+  ],
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#9f9f9f",
+  "traits": {
+    "high_flow": true
+  }
 }

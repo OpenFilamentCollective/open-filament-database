@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "3006f678-94b5-4859-a756-9c7c7ea8d941",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8720629067667",
     "article_number": "KTPC-175TWHT-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "362a5798-a046-4d1b-a8ce-c8c8773066d2",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720629067674",
     "article_number": "KTPC-175TWHT-02300",
     "discontinued": false,
     "purchase_links": [

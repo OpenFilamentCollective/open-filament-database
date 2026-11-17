@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "55aa917f-515e-496e-b2ae-01452a9b8cec",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.059",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-plum-petg-v2"
+      }
+    ]
+  }
+]

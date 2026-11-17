@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "1fba455b-c637-4219-a54a-bb6369fc2b3b",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994175133",
+    "article_number": "700-001-1727",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/petg-purple-5"
+      }
+    ]
   }
 ]

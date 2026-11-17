@@ -1,9 +1,9 @@
 {
+  "uuid": "c018ff17-8d2b-42fa-93e0-28a326efec01",
   "id": "dark_grey",
   "name": "Dark Grey",
   "color_hex": "#6A6C6E",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

@@ -1,6 +1,12 @@
 {
+  "uuid": "1c7b052c-8d5e-465c-9ce7-dc4d394c0d1b",
   "id": "pes",
   "name": "PES",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.37,
+  "min_print_temperature": 340,
+  "max_print_temperature": 390,
+  "min_bed_temperature": 140,
+  "max_bed_temperature": 160,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/THERMAX_PES_TDS_v1.0.pdf?v=1739974182"
 }

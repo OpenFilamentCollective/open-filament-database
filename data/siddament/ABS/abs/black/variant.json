@@ -1,0 +1,10 @@
+{
+  "uuid": "af33b735-6844-43af-8c83-0df0c48c99c1",
+  "id": "black",
+  "name": "Black",
+  "color_hex": "#0E0E10",
+  "discontinued": true,
+  "color_standards": {
+    "pantone": "Neutral Black C"
+  }
+}

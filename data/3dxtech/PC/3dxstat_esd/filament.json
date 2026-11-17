@@ -1,10 +1,12 @@
 {
+  "uuid": "01de6efe-8530-4c01-bff8-d633ae836079",
   "id": "3dxstat_esd",
   "name": "PC 3DXStat ESD",
   "diameter_tolerance": 0.02,
-  "density": 1.2,
+  "density": 1.24,
   "min_print_temperature": 260,
   "max_print_temperature": 300,
-  "min_bed_temperature": 100,
-  "max_bed_temperature": 120
+  "min_bed_temperature": 110,
+  "max_bed_temperature": 120,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/3DXSTAT_ESD_PC_v3_TDS.pdf?v=1723942765"
 }

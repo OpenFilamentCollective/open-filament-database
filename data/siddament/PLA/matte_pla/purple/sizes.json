@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "80485971-c1f5-425c-801e-e14c29c425ac",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "8.015",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-purple-pla-1-75mm-1kg"
+      }
+    ]
+  }
+]

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "a5098877-d9ac-4a94-8e2b-7a50328292a7",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "9180010461341",
+    "article_number": "PETG-R-605-1-010",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/nobufil/petg-industrial-light-green"
+      }
+    ]
   }
 ]

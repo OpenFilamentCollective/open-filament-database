@@ -1,6 +1,15 @@
 {
-    "id": "pp",
-    "name": "PP",
-    "diameter_tolerance": 0.02,
-    "density": 0.89
+  "uuid": "7c5c4dda-1abb-4e51-8984-fb4db6fdd7a8",
+  "id": "pp",
+  "name": "PP",
+  "diameter_tolerance": 0.02,
+  "density": 0.89,
+  "min_print_temperature": 265,
+  "max_print_temperature": 295,
+  "min_bed_temperature": 95,
+  "max_bed_temperature": 120,
+  "min_fan_speed": 0,
+  "max_fan_speed": 35,
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2022/05/en_tds_spectrum_pp.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2021/09/en_msds_spectrum_pp.pdf"
 }

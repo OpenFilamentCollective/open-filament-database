@@ -1,13 +1,19 @@
 [
   {
+    "uuid": "67077084-6091-41a4-b9ce-48a5ac035f5a",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 125,
     "spool_core_diameter": 52,
+    "gtin": "6974662352446",
     "purchase_links": [
       {
         "store_id": "anycubic",
         "url": "https://store.anycubic.com/products/pla-plus-filament?variant=44831294292157"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/anycubic/pla-purple-9"
       }
     ]
   }

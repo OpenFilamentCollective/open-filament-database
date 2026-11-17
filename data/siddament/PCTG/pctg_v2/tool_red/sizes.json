@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "1975ecb3-95d9-4308-b589-e9127937fdba",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "7.056",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/tool-red-pctg"
+      }
+    ]
+  }
+]

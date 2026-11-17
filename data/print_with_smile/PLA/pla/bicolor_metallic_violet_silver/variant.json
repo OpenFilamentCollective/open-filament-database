@@ -1,4 +1,5 @@
 {
+  "uuid": "5bc34d75-dd25-4299-9837-438e3a6162b5",
   "id": "bicolor_metallic_violet_silver",
   "name": "BICOLOR METALLIC VIOLET SILVER",
   "color_hex": [
@@ -6,7 +7,6 @@
     "#55657C"
   ],
   "traits": {
-    "industrially_compostable": true,
     "iridescent": true,
     "coextruded": true
   }

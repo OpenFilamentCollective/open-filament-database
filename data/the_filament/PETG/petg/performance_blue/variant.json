@@ -1,5 +1,9 @@
 {
-    "id": "performance_blue",
-    "name": "Performance Blue",
-    "color_hex": "#004298"
+  "uuid": "f32d0b7a-94da-4013-b3de-e9b57b84f42e",
+  "moved_from": [
+    "ef175dff-33ca-42e9-9a81-cdf146898bdc"
+  ],
+  "id": "performance_blue",
+  "name": "Performance Blue",
+  "color_hex": "#004298"
 }

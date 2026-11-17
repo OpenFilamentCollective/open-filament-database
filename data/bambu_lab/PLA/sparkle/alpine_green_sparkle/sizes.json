@@ -1,13 +1,15 @@
 [
-    {
-        "filament_weight": 1000,
-        "diameter": 1.75,
-        "ean": "6975337031208",
-        "purchase_links": [
-            {
-                "store_id": "bblstore",
-                "url": "https://us.store.bambulab.com/collections/pla/products/pla-sparkle?variant=41002885349512"
-            }
-        ]
-    }
+  {
+    "uuid": "c005930f-2e1f-4418-89f9-885ee0f3a297",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "ean": "6975337031208",
+    "article_number": "13501",
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/collections/pla/products/pla-sparkle?variant=41002885349512"
+      }
+    ]
+  }
 ]

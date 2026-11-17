@@ -1,0 +1,13 @@
+{
+  "uuid": "abc0da7f-74f3-4c01-b277-c50432d136e6",
+  "id": "fire_orange",
+  "name": "Fire Orange",
+  "color_hex": "#FE8401",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "151 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

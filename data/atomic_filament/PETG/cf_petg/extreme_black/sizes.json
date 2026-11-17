@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "761d1fd3-8247-4d4b-bf4e-530c3f1a1c11",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/carbon-fiber-black-petg-pro-ams-compatible"
+      }
+    ]
   }
 ]

@@ -1,9 +1,9 @@
 {
+  "uuid": "06d5ec59-9d0a-45df-ae4d-db0f283ce02c",
   "id": "royal_blue",
   "name": "Royal Blue",
   "color_hex": "#0353BA",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

@@ -1,10 +1,12 @@
 {
+  "uuid": "d514bc6a-7255-44f3-9640-4c703ddb0f29",
   "id": "cf_petg",
   "name": "PETG CF",
   "diameter_tolerance": 0.02,
-  "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
+  "density": 1.34,
+  "min_print_temperature": 230,
+  "max_print_temperature": 260,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/CarbonX_CF_PETG_TDS_v3.pdf?v=1723942765"
 }

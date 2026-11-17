@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "1d95ffd1-6622-429c-8178-30e9b33ab03a",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572229235",
+    "article_number": "ABS+175O-FR1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/abs-pro"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/abs-fire-engine-red"
       }
     ]
   }

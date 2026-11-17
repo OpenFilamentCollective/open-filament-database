@@ -1,15 +1,11 @@
 [
   {
+    "uuid": "92154507-3fcb-4b9e-9380-dc8ac5de3471",
     "filament_weight": 800,
-    "diameter": 1.75,
-    "purchase_links": [
-      {
-        "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pc-blend-carbon-fiber-black-800g-2/"
-      }
-    ]
+    "diameter": 1.75
   },
   {
+    "uuid": "c2397b7c-19ce-45eb-bebf-8d4db89a77cb",
     "filament_weight": 25,
     "diameter": 1.75,
     "purchase_links": [

@@ -1,18 +1,24 @@
 {
+    "uuid": "493ceb94-acae-42ad-aada-d911968ca92a",
     "id": "pla_basic",
     "name": "PLA Basic",
     "diameter_tolerance": 0.02,
     "density": 1.24,
     "max_dry_temperature": 55,
+    "min_print_temperature": 190,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 35,
+    "max_bed_temperature": 65,
+    "discontinued": false,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFL99",
-            "id": "EPLAB00",
+            "generic_id": "OFDSrzZ8",
+            "id": "OFm06H6V",
             "profile_name": "Elegoo PLA Basic"
         },
         "elegooslicer": {
             "generic_id": "GFL99",
-            "id": "EPLAB00",
+            "id": "OEPLAB00",
             "profile_name": "Elegoo PLA Basic"
         }
     }

@@ -1,10 +1,11 @@
 {
+  "uuid": "d3805bf4-6af2-4817-ad6a-00d400465cbe",
   "id": "pla_silk_galaxy_sparkle_shiny",
   "name": "Galaxy Sparkle Shiny Galaxy Silk PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.25,
+  "density": 1.2,
   "min_print_temperature": 190,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 65
 }

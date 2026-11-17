@@ -1,6 +1,61 @@
 [
   {
+    "uuid": "9b968b9c-6e42-4044-8d3e-632913c06c1d",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936709671",
+    "article_number": "PA02002",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/polylite-pla?variant=43818025877561"
+      }
+    ]
+  },
+  {
+    "uuid": "5424a0f1-4a6d-4a9e-9ac9-8f8322a1c178",
+    "filament_weight": 3000,
+    "diameter": 1.75,
+    "gtin": "6938936712466"
+  },
+  {
+    "uuid": "27626cfc-8798-4af2-8524-66f417bb798b",
+    "filament_weight": 5000,
+    "diameter": 1.75,
+    "gtin": "6938936712923"
+  },
+  {
+    "uuid": "e58055aa-be8b-4808-b86a-9b0b71a619eb",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": 100,
+      "pct_qualifier": "exact",
+      "certifications": [],
+      "notes": "Brand-wide statement on Polymaker's own wiki, not a statement on this product's page. Polymaker announced the switch in October 2021 (https://polymaker.com/polymaker-switches-all-products-to-100-recycled-spools/). Not applied to larger bulk sizes, whose spools the source doesn't describe.",
+      "source_type": "primary",
+      "source_url": "https://wiki.polymaker.com/polymaker-products/about-polymaker/sustainability",
+      "source_quote": "Polymaker has switched all products to 100% recycled spools",
+      "retrieved": "2026-11-06"
+    },
+    "gtin": "6938936711032"
+  },
+  {
+    "uuid": "49396c13-73cd-4acf-8550-e72d203acde9",
+    "filament_weight": 3000,
+    "diameter": 2.85,
+    "gtin": "6938936712480"
   }
 ]

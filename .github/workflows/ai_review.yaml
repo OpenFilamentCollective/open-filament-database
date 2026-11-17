@@ -1,0 +1,299 @@
+name: AI review
+
+# Reviews data pull requests for the mistakes maintainers kept fixing by hand, and
+# researches data the contributor left out. All logic is in ofd/review/ and runs the
+# same locally: `python -m ofd review run --pr <N>`.
+#
+# WHEN IT RUNS
+#
+#   every push     to a non-draft PR, plus open/reopen/ready, the `ai-review` label, a
+#                  `/review` comment from someone with write access, or a dispatch:
+#                  the free checks, the source checks and one model pass, which also
+#                  tries to prove the contributor's values (see ofd/automerge/).
+#   drafts         free checks only, unless sustainability data is touched: that
+#                  always gets the model pass.
+#   applied        a push that only commits the review's own ```suggestion``` blocks
+#   suggestions    skips the model: free checks on the new head, last AI review
+#                  carried forward (ofd/review/applied.py).
+#   same commit    a reopen or a label change (other than `ai-review`) carries the
+#                  last completed AI review of that commit over; only without one
+#                  does the model run again.
+#   new pushes     always win. The job waits OFD_REVIEW_SETTLE_SECONDS (default 20),
+#                  then stops without posting anything if the PR head moved on; a
+#                  push also cancels a review still running for an older commit.
+#                  A per-PR spend cap (OFD_REVIEW_PR_BUDGET_USD) stops model passes
+#                  once a PR has used it.
+#
+# SUSTAINABILITY GATE (ofd/review/sustainability.py)
+#
+#   Every run posts the `Sustainability sources` commit status: make it a required
+#   check on main. It is pending while the job runs and fails closed: a sustainability
+#   entry whose source can't be fetched, whose quote isn't on the page or whose details
+#   contradict it, removed sustainability data, changes to the sustainability rules,
+#   and a missing or failed AI check all fail it. A maintainer (write access) can
+#   override with the `sustainability-verified` label after checking by hand; any push
+#   that touches sustainability data removes that label again. The workflow runs on
+#   every PR (no paths filter), so the required status is never missing.
+#
+# WHAT IT POSTS
+#
+#   One summary comment per PR (found by its marker, edited in place) with a
+#   "LGTM & merge" link to the webui (repo variable OFD_WEBUI_URL), plus, per model
+#   pass, one COMMENT review whose inline comments carry findings and ```suggestion```
+#   blocks for researched data. It never approves, requests changes or pushes.
+#
+# FORK SAFETY
+#
+#   pull_request_target, so fork PRs get a review too. That event runs with secrets,
+#   so nothing from the PR is ever executed: the checkout is the BASE branch, the PR
+#   head is fetched as git objects and only read as JSON, and the model runs with
+#   --restricted (no Bash or other code-running tools, no settings files) and can
+#   read only a throwaway worktree of the head plus the web. Its output is JSON that
+#   ofd/review/suggest.py validates against the schemas before anything is posted.
+#
+# CREDENTIALS: CLAUDE_CODE_OAUTH_TOKEN (`claude setup-token`), else ANTHROPIC_API_KEY.
+# Without either, the free checks still run and post, and any PR touching
+# sustainability data fails the gate.
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review, synchronize, labeled, unlabeled]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Pull request number to review.'
+        required: true
+      no_ai:
+        description: 'Skip the model pass.'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    name: AI review
+    # `issue_comment` fires for every comment on every issue and PR, and `labeled` for
+    # every label, so the guard is narrow. The exact `/review` command is checked in
+    # the first step: startsWith() also admits `/reviewer`.
+    if: >-
+      (github.event_name == 'pull_request_target' &&
+       github.event.action != 'labeled' && github.event.action != 'unlabeled') ||
+      (github.event_name == 'pull_request_target' && github.event.action == 'labeled' &&
+       (github.event.label.name == 'ai-review' || github.event.label.name == 'sustainability-verified')) ||
+      (github.event_name == 'pull_request_target' && github.event.action == 'unlabeled' &&
+       github.event.label.name == 'sustainability-verified') ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request != null &&
+       startsWith(github.event.comment.body, '/review') &&
+       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    # Per PR, on the job: a workflow-level group would let an unrelated comment's
+    # skipped run displace a queued review.
+    concurrency:
+      group: ai-review-${{ github.event.pull_request.number || github.event.issue.number || inputs.pr }}
+      # A push makes any review of an older commit worthless, so it cancels it (its
+      # spend is capped by --max-budget-usd). Other triggers queue.
+      cancel-in-progress: ${{ github.event_name == 'pull_request_target' && github.event.action == 'synchronize' }}
+    permissions:
+      # actions: read lists earlier runs' review artifacts to carry one forward.
+      actions: read
+      contents: read
+      issues: write
+      pull-requests: write
+      statuses: write
+    env:
+      PR: ${{ github.event.pull_request.number || github.event.issue.number || inputs.pr }}
+    steps:
+      - name: Which pull request, and is a model pass wanted
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          COMMENT: ${{ github.event.comment.body }}
+          NO_AI_INPUT: ${{ inputs.no_ai }}
+          LABEL: ${{ github.event.label.name }}
+          EVENT_HEAD: ${{ github.event.pull_request.head.sha }}
+          SETTLE: ${{ vars.OFD_REVIEW_SETTLE_SECONDS || '20' }}
+          HAS_CREDENTIALS: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' || secrets.ANTHROPIC_API_KEY != '' }}
+        run: |
+          stop() { echo "$1"; echo "proceed=false" >> "$GITHUB_OUTPUT"; exit 0; }
+          if [ "$EVENT" = issue_comment ] \
+             && ! printf '%s\n' "$COMMENT" | head -n 1 | grep -Eq '^/review([[:space:]]|$)'; then
+            stop "Not a /review command."
+          fi
+          # Let a burst of pushes settle; the run for the last one does the work. A
+          # superseded run posts nothing, not even a status.
+          if [ "$EVENT" = pull_request_target ]; then
+            sleep "$SETTLE"
+          fi
+          gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR}" > "$RUNNER_TEMP/pr.json"
+          head=$(jq -r .head.sha "$RUNNER_TEMP/pr.json")
+          if [ -n "$EVENT_HEAD" ] && [ "$head" != "$EVENT_HEAD" ]; then
+            stop "Superseded by ${head:0:7}; that push's run reviews it."
+          fi
+          if [ "$(jq -r .state "$RUNNER_TEMP/pr.json")" != open ]; then
+            stop "::notice::#${PR} is not open - nothing to review."
+          fi
+          draft=$(jq -r .draft "$RUNNER_TEMP/pr.json")
+          # always / auto (only when sustainability data is touched) / never.
+          # reuse: the commit didn't change, so a completed AI review of it is carried
+          # over instead of paying for a new one (and auto-merge's E13 still sees it).
+          drop=false
+          reuse=false
+          normal=$([ "$draft" = true ] && echo auto || echo always)
+          case "$EVENT/$ACTION" in
+            pull_request_target/synchronize) ai=$normal; drop=true ;;
+            pull_request_target/labeled)     ai=$([ "$LABEL" = ai-review ] && echo always || echo never)
+                                             [ "$LABEL" = ai-review ] || reuse=true ;;
+            pull_request_target/unlabeled)   ai=$normal; reuse=true ;;
+            pull_request_target/reopened)    ai=$normal; reuse=true ;;
+            pull_request_target/*)           ai=$([ "$draft" = true ] && echo auto || echo always) ;;
+            workflow_dispatch/*)             ai=$([ "$NO_AI_INPUT" = true ] && echo never || echo always) ;;
+            *)                               ai=always ;;
+          esac
+          if [ "$HAS_CREDENTIALS" != true ]; then
+            echo "::notice::No Claude credentials configured; free checks only. PRs touching sustainability data will fail the gate."
+            ai=never
+          fi
+          {
+            echo "proceed=true"; echo "ai=$ai"; echo "drop=$drop"; echo "reuse=$reuse"
+            echo "head=$head"
+          } >> "$GITHUB_OUTPUT"
+
+      # Pending until this run finishes, so a required status can't be merged past
+      # mid-review; a crashed run leaves it pending, which blocks too.
+      - name: Mark the sustainability gate pending
+        if: steps.pr.outputs.proceed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD: ${{ steps.pr.outputs.head }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${HEAD}" \
+            -f state=pending -f context="Sustainability sources" \
+            -f description="Checking sustainability data" -f target_url="$RUN" >/dev/null
+
+      - name: Acknowledge the request
+        if: steps.pr.outputs.proceed == 'true' && github.event_name == 'issue_comment'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+        run: |
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}/reactions" \
+            -f content=eyes >/dev/null
+
+      # The BASE branch: this is the code that runs. The PR head is fetched by
+      # `ofd review run` as objects only. Full history for merge-base and the
+      # flip-flop scan.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.pr.outputs.proceed == 'true'
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        if: steps.pr.outputs.proceed == 'true'
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        if: steps.pr.outputs.proceed == 'true'
+        run: pip install -r requirements.txt
+
+      # A push that only commits the review's own suggestions (the "Commit suggestion"
+      # button) needs no new model pass: the free checks run on the new head and the
+      # last AI review is carried forward, so the gate and auto-merge still see it.
+      # Any doubt means a full review (ofd/review/applied.py).
+      - name: Only the review's own suggestions applied?
+        id: applied
+        if: >-
+          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never' &&
+          github.event.action == 'synchronize'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD: ${{ steps.pr.outputs.head }}
+        run: python -m ofd review applied --pr "$PR" --head "$HEAD" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        if: >-
+          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never'
+        with:
+          node-version: '22'
+
+      - name: Install Claude Code
+        if: >-
+          steps.pr.outputs.proceed == 'true' && steps.pr.outputs.ai != 'never'
+        run: npm install -g @anthropic-ai/claude-code@2.1.306
+
+      - name: Review
+        id: review
+        if: steps.pr.outputs.proceed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          AI: ${{ steps.pr.outputs.ai }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OFD_REVIEW_MODEL: ${{ vars.OFD_REVIEW_MODEL || 'claude-haiku-5-5' }}
+          OFD_REVIEW_BUDGET_USD: ${{ vars.OFD_REVIEW_BUDGET_USD || '2' }}
+          OFD_REVIEW_PR_BUDGET_USD: ${{ vars.OFD_REVIEW_PR_BUDGET_USD || '6' }}
+          CARRY: ${{ steps.applied.outputs.carry }}
+          REUSE: ${{ steps.pr.outputs.reuse }}
+          HEAD: ${{ steps.pr.outputs.head }}
+        run: |
+          flags=()
+          [ -z "$CARRY" ] && [ "$REUSE" = true ] && CARRY=$HEAD
+          [ -n "$CARRY" ] && flags+=(--carry-from "$CARRY")
+          python -m ofd review run --pr "$PR" --ai "$AI" "${flags[@]}" --output "$RUNNER_TEMP/review.json"
+
+      # Exits 1 when the sustainability gate fails, so this job shows red too.
+      - name: Post
+        if: steps.pr.outputs.proceed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OFD_WEBUI_URL: ${{ vars.OFD_WEBUI_URL }}
+          DROP: ${{ steps.pr.outputs.drop }}
+          # The comment's "Auto-merge:" line runs the Auto-merge check's own checklist.
+          OFD_AUTOMERGE: ${{ vars.OFD_AUTOMERGE }}
+          OFD_AUTOMERGE_APP_ID: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          OFD_AUTOMERGE_BLOCKED_USERS: ${{ vars.OFD_AUTOMERGE_BLOCKED_USERS }}
+        run: |
+          flags=()
+          [ "$DROP" = true ] && flags+=(--drop-override)
+          python -m ofd review post --input "$RUNNER_TEMP/review.json" "${flags[@]}"
+
+      # The review step crashed: say so on the gate instead of leaving it pending.
+      - name: Fail the gate if the review crashed
+        if: ${{ !cancelled() && steps.pr.outputs.proceed == 'true' && steps.review.outcome != 'success' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD: ${{ steps.pr.outputs.head }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/statuses/${HEAD}" \
+            -f state=error -f context="Sustainability sources" \
+            -f description="The review crashed; rerun it with /review" -f target_url="$RUN" >/dev/null
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always() && steps.pr.outputs.proceed == 'true'
+        with:
+          name: ai-review-${{ env.PR }}
+          path: ${{ runner.temp }}/review.json
+          if-no-files-found: ignore
+
+      # So adding the label again asks again.
+      - name: Remove the ai-review label
+        if: always() && github.event.action == 'labeled' && github.event.label.name == 'ai-review'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method DELETE "repos/${GITHUB_REPOSITORY}/issues/${PR}/labels/ai-review" >/dev/null

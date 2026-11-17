@@ -1,6 +1,21 @@
 [
   {
+    "uuid": "e546d3bc-718b-49f0-a0d4-33362c402487",
     "filament_weight": 1000,
     "diameter": 1.75
+  },
+  {
+    "uuid": "ccc11e61-0998-432a-a5f9-5b747837dfe6",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720574295870",
+    "article_number": "PPLA-175SPUR-00250"
+  },
+  {
+    "uuid": "99f3a346-e19b-4f05-9e63-3bae9c69261e",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574295887",
+    "article_number": "PPLA-285SPUR-00250"
   }
 ]

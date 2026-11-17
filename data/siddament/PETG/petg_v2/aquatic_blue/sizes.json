@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "2965c84b-e466-4757-abfa-f0b7f88fa33d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.033",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/aquatic-blue-petg-v2"
+      }
+    ]
+  }
+]

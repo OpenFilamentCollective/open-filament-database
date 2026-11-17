@@ -27,7 +27,7 @@ jobs:
           fi
 
           # Check for commits in the last 24 hours affecting relevant paths
-          CHANGES=$(git log --since="24 hours ago" --oneline -- data/ stores/ builder/ schemas/ | wc -l)
+          CHANGES=$(git log --since="24 hours ago" --oneline -- data/ stores/ ofd/ schemas/ | wc -l)
           if [ "$CHANGES" -gt 0 ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "Found $CHANGES commits in last 24 hours"
@@ -48,10 +48,21 @@ jobs:
       id-token: write
 
     steps:
+      # Pushes to main go out as the repo bot: it is the bypass actor of the ruleset
+      # that requires `Brand sign-off`, which GitHub Actions' own token cannot bypass.
+      - name: Repo bot token
+        id: bot
+        if: vars.OFD_REPO_BOT_APP_ID != ''
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ vars.OFD_REPO_BOT_APP_ID }}
+          private-key: ${{ secrets.OFD_REPO_BOT_PRIVATE_KEY }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ steps.bot.outputs.token || github.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v5

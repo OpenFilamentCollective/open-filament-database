@@ -1,0 +1,10 @@
+{
+  "uuid": "9e4fb6fe-9f0e-435d-8903-719d3fa6133c",
+  "id": "pure_white",
+  "name": "Pure White",
+  "color_hex": "#FFFFFF",
+  "discontinued": false,
+  "traits": {
+    "high_flow": true
+  }
+}

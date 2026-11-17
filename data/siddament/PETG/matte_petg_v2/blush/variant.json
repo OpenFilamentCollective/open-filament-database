@@ -1,0 +1,14 @@
+{
+  "uuid": "a8f3ddbd-db37-4a9a-a303-a5d75f0303b1",
+  "id": "blush",
+  "name": "Blush",
+  "color_hex": "#F3C4CE",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "1767 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

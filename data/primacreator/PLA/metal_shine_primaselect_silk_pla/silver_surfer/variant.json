@@ -1,9 +1,9 @@
 {
+  "uuid": "4a67fa2f-3408-4842-bfb4-65084ba4d0f8",
   "id": "silver_surfer",
   "name": "Silver Surfer",
   "color_hex": "#999AA0",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "imitates_metal": true
   }

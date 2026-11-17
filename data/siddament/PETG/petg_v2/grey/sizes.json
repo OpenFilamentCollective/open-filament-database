@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7264cebf-01d6-4da9-9e30-5fbb46e0e6a9",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.003",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/grey-petg"
+      }
+    ]
+  }
+]

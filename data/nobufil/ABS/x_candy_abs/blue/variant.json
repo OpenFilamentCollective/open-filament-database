@@ -1,8 +1,10 @@
 {
+  "uuid": "e0a5b331-d8f2-4efe-abc3-a6d3dfe90deb",
   "id": "blue",
   "name": "Blue",
   "color_hex": "#0E21AE",
   "traits": {
+    "recycled": true,
     "filtration_recommended": true
   }
 }

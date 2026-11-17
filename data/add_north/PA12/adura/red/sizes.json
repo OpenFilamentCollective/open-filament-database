@@ -1,14 +1,22 @@
 [
-    {
-        "filament_weight": 500,
-        "diameter": 1.75,
-        "empty_spool_weight": 175,
-        "spool_core_diameter": 41,
-        "purchase_links": [
-            {
-                "store_id": "add_north",
-                "url": "https://addnorth.com/product/Adura%E2%84%A2/Adura%E2%84%A2%20-%201.75mm%20-%20500g%20-%20Red"
-            }
-        ]
-    }
+  {
+    "uuid": "3a9fa13d-2e05-4e3b-9054-3fc582643633",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "empty_spool_weight": 175,
+    "spool_core_diameter": 41
+  },
+  {
+    "uuid": "ba1416bc-375c-48e2-89f6-5a5a2efde518",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182901898",
+    "article_number": "ANAD14RED",
+    "purchase_links": [
+      {
+        "store_id": "add_north",
+        "url": "https://addnorth.com/product/Adura%E2%84%A2/Adura%E2%84%A2%20-%201.75mm%20-%201000g%20-%20Red"
+      }
+    ]
+  }
 ]

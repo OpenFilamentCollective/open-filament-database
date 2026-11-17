@@ -1,5 +1,13 @@
 {
-    "id": "ash_grey",
-    "name": "Ash Grey",
-    "color_hex": "#575E75"
+  "uuid": "22473732-aba2-41e8-89e1-c3de3667319a",
+  "moved_from": [
+    "df6e0658-67d0-4fdb-9d7a-2c421523cc5d"
+  ],
+  "id": "ash_grey",
+  "name": "Ash Grey",
+  "color_hex": "#575E75",
+  "transmission_distance": 0.1,
+  "traits": {
+    "matte": true
+  }
 }

@@ -1,9 +1,9 @@
 {
+  "uuid": "cbe4d488-299a-4719-a0c6-8b0f628b2053",
   "id": "silver",
   "name": "Silver",
   "color_hex": "#C9D0D4",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

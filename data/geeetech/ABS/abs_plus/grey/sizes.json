@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "1086cbaf-2229-4e47-9bce-574e2cb03c7a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170206",
+    "article_number": "700-001-1482",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/abs-grey-5"
+      }
+    ]
   }
 ]

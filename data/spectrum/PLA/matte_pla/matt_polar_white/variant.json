@@ -1,9 +1,9 @@
 {
+  "uuid": "c10b4d68-55b6-48cc-b024-690c8d5f17b3",
   "id": "matt_polar_white",
   "name": "MATT Polar White",
   "color_hex": "#EFEFEF",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

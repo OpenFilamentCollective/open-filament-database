@@ -1,8 +1,9 @@
 {
-    "id": "isanghu",
-    "name": "iSangHu",
-    "storefront_url": "https://www.isanghu3d.com/",
-    "logo": "logo.jpg",
-    "ships_from": [],
-    "ships_to": []
+  "uuid": "179db6ac-382f-42eb-bfab-a2a8348e5668",
+  "id": "isanghu",
+  "name": "iSangHu",
+  "storefront_url": "https://www.isanghu3d.com/",
+  "logo": "logo.jpg",
+  "ships_from": [],
+  "ships_to": []
 }

@@ -1,4 +1,5 @@
 {
+  "uuid": "04b18236-6a17-4374-b320-cf6885dc6eb0",
   "id": "stardust_multicolor_ht",
   "name": "Stardust Multicolor HT",
   "color_hex": [
@@ -8,9 +9,8 @@
   ],
   "traits": {
     "translucent": true,
-    "industrially_compostable": true,
-    "high_temperature": true,
     "glitter": true,
-    "gradual_color_change": true
+    "gradual_color_change": true,
+    "high_temperature": true
   }
 }

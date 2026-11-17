@@ -1,9 +1,9 @@
 {
+  "uuid": "e417112d-e738-41b9-905b-6849349e54e6",
   "id": "lithophane",
   "name": "Lithophane",
   "color_hex": "#DFDFD3",
   "traits": {
-    "industrially_compostable": true,
     "lithophane": true
   }
 }

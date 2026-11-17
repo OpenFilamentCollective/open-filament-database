@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "92b71c90-c51c-4b58-921e-0bb7564c39d0",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.032",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/electric-green-petg-v2"
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+{
+    "uuid": "2fe27370-c549-4ac7-9cb9-c5a336e1d928",
+    "id": "greentec_pro",
+    "name": "GreenTEC Pro",
+    "diameter_tolerance": 0.02,
+    "density": 1.35,
+    "max_dry_temperature": 60,
+    "min_print_temperature": 210,
+    "max_print_temperature": 230,
+    "min_bed_temperature": 20,
+    "max_bed_temperature": 90,
+    "max_volumetric_speed": 16,
+    "min_fan_speed": 30,
+    "max_fan_speed": 80,
+    "enclosure": "not_needed",
+    "data_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/greentec-pro-TDS-en.pdf",
+    "safety_sheet_url": "https://s3.extrudr.com/extrudr-media/datasheets/msds/msds-en/greentec-pro-MSDS-en.pdf",
+    "sustainability": {
+        "bio_based_content": {
+            "pct": 100,
+            "pct_qualifier": "exact",
+            "method": "declared",
+            "source_type": "primary",
+            "source_url": "https://s3.extrudr.com/extrudr-media/datasheets/tds/tds-en/greentec-pro-TDS-en.pdf",
+            "source_quote": "GreenTEC Pro is the ecologically harmless alternative to commonly used industrial materials, consisting of 100% renewable raw materials",
+            "retrieved": "2026-11-03",
+            "notes": "Brand states '100% renewable raw materials' (TDS and product page); taken as declared bio-based share. No measurement method named."
+        }
+    },
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Extrudr GreenTEC Pro"
+        },
+        "superslicer": {
+            "profile_name": "Extrudr GreenTEC Pro"
+        }
+    }
+}

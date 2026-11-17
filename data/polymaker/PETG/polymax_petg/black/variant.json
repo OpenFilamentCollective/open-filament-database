@@ -1,4 +1,8 @@
 {
+  "uuid": "516c920c-36e8-4634-bd34-a64a91cbe48d",
+  "moved_from": [
+    "423bc569-2c51-4507-bc3a-a676da1d046c"
+  ],
   "id": "black",
   "name": "Black",
   "color_hex": "#000000"

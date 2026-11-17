@@ -1,12 +1,13 @@
 {
+    "uuid": "b4cdbf1b-46fb-4d79-94c0-bc6149b2a1e1",
     "id": "basic",
     "name": "ABS Basic",
     "diameter_tolerance": 0.02,
     "density": 1.05,
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "OVTABS08",
+            "generic_id": "OFY9muEs",
+            "id": "OFDvqJ6n",
             "profile_name": "Overture ABS Basic"
         },
         "elegooslicer": {

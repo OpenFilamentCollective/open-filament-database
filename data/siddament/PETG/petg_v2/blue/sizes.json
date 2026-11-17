@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "3011c111-68bf-4beb-8afd-a4c8af0ce0be",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "1.007",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/blue-petg-v2"
+      }
+    ]
+  }
+]

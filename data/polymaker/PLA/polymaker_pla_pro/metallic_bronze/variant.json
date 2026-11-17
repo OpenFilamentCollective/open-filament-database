@@ -1,0 +1,10 @@
+{
+  "uuid": "db801d90-5f36-4e2d-a998-dc0b0040446a",
+  "id": "metallic_bronze",
+  "name": "Metallic Bronze",
+  "color_hex": "#926043",
+  "traits": {
+    "imitates_metal": true,
+    "high_flow": true
+  }
+}

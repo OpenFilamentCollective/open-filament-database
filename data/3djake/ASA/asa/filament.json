@@ -1,10 +1,12 @@
 {
+  "uuid": "705e1d7c-bd15-43f9-a77c-5e81a08e6c79",
   "id": "asa",
   "name": "ASA",
-  "diameter_tolerance": 0.02,
-  "density": 1.07,
-  "min_print_temperature": 235,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "diameter_tolerance": 0.05,
+  "density": 1.1,
+  "min_print_temperature": 210,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 100,
+  "data_sheet_url": "https://3d.nice-cdn.com/upload/file/Technical_Data_Sheet_ASA_V2.pdf"
 }

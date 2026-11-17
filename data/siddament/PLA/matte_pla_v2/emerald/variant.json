@@ -1,0 +1,10 @@
+{
+  "uuid": "edfd6963-28b5-4366-bf3a-de74db537d31",
+  "id": "emerald",
+  "name": "Emerald",
+  "color_hex": "#1F8A70",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

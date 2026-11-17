@@ -48,6 +48,7 @@ from pathlib import Path
 
 from ofd.base import BaseScript, ScriptResult, register_script
 from ofd.merge import merge_has_errors, merge_trees, save_json
+from ofd.uuids import record_moved_from
 
 
 def _has_doubled_segment(name: str) -> bool:
@@ -164,9 +165,7 @@ class DeduplicateDataScript(BaseScript):
         if brand_filter:
             brand_dirs = [d for d in brand_dirs if d.name == brand_filter]
             if not brand_dirs:
-                return ScriptResult(
-                    success=False, message=f"Brand not found: {brand_filter}"
-                )
+                return ScriptResult(success=False, message=f"Brand not found: {brand_filter}")
 
         # mat_path -> [filament_dir_name, ...]
         filament_dirs: dict[Path, list[str]] = {}
@@ -269,16 +268,17 @@ class DeduplicateDataScript(BaseScript):
             merge_plan.append((mat_path / source_name, mat_path / target_name))
 
         # ── 6. Report plan ──────────────────────────────────────────
-        self.log(f"Found {len(groups)} word-swap group(s), "
-                 f"{len(doubled_standalone)} doubled-modifier dir(s), "
-                 f"{len(material_redundant)} material-type-redundant pair(s)")
+        self.log(
+            f"Found {len(groups)} word-swap group(s), "
+            f"{len(doubled_standalone)} doubled-modifier dir(s), "
+            f"{len(material_redundant)} material-type-redundant pair(s)"
+        )
         self.log("")
 
         if merge_plan:
             self.log(f"{'Planned' if dry_run else 'Executing'} {len(merge_plan)} merge(s):")
             for src, tgt in merge_plan:
-                self.log(f"  {src.relative_to(self.data_dir)} -> "
-                         f"{tgt.relative_to(self.data_dir)}")
+                self.log(f"  {src.relative_to(self.data_dir)} -> {tgt.relative_to(self.data_dir)}")
 
         if rename_plan:
             self.log(f"\n{'Planned' if dry_run else 'Executing'} {len(rename_plan)} rename(s):")
@@ -310,11 +310,18 @@ class DeduplicateDataScript(BaseScript):
                 self.log("  No changes needed")
 
             if delete_source and not merge_has_errors(actions):
+                # Preserve the merged-away directory's canonical UUIDs so old
+                # references still resolve to the surviving target.
+                recorded = record_moved_from(tgt, src)
+                if recorded:
+                    self.log(
+                        f"  Recorded {len(recorded)} former UUID(s) into {tgt.name} moved_from"
+                    )
                 shutil.rmtree(src)
                 self.log(f"  Deleted: {src.name}")
                 merge_ok += 1
             elif delete_source:
-                self.log(f"  Source NOT deleted (merge had errors)")
+                self.log("  Source NOT deleted (merge had errors)")
                 merge_fail += 1
             else:
                 merge_ok += 1
@@ -336,7 +343,7 @@ class DeduplicateDataScript(BaseScript):
                     if isinstance(data, dict) and data.get("id") != new.name:
                         data["id"] = new.name
                         save_json(filament_json, data)
-                        self.log(f"  Updated id in filament.json")
+                        self.log("  Updated id in filament.json")
                 except Exception:
                     pass
             rename_ok += 1
@@ -345,8 +352,9 @@ class DeduplicateDataScript(BaseScript):
         self.log(f"\n{'=' * 40}")
         self.log("DEDUPLICATION SUMMARY")
         self.log(f"{'=' * 40}")
-        self.log(f"Merges: {merge_ok} succeeded"
-                 + (f", {merge_fail} had errors" if merge_fail else ""))
+        self.log(
+            f"Merges: {merge_ok} succeeded" + (f", {merge_fail} had errors" if merge_fail else "")
+        )
         if rename_ok:
             self.log(f"Renames: {rename_ok}")
 

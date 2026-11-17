@@ -1,10 +1,10 @@
 {
+  "uuid": "cd24028a-d5db-4355-aa2b-4f1eda57f39a",
   "id": "obsidian_ht",
   "name": "Obsidian HT",
   "color_hex": "#55555E",
   "traits": {
-    "industrially_compostable": true,
-    "high_temperature": true,
-    "glitter": true
+    "glitter": true,
+    "high_temperature": true
   }
 }

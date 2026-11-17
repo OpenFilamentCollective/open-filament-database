@@ -1,8 +1,10 @@
 [
   {
+    "uuid": "16cb3c36-f93d-4c7d-8ff2-ccc7590ef34c",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "6975337038016",
+    "article_number": "32101",
     "purchase_links": [
       {
         "store_id": "bblstore",
@@ -11,14 +13,21 @@
     ]
   },
   {
+    "uuid": "715a9524-1eb2-4366-a4a5-8d6faa0174a0",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
-    "ean": "6975337038016",
+    "container_material": "refill",
+    "gtin": "6975337038023",
+    "article_number": "32101",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/petg/products/petg-translucent?variant=42479468281992"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/petg-translucent-clear?sai=23549"
       }
     ]
   }

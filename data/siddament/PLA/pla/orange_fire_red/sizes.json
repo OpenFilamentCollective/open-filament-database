@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "8fa1f241-baff-43d8-b030-0dbd2b6e5bf7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.045",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/fire-red-pla"
+      }
+    ]
+  }
+]

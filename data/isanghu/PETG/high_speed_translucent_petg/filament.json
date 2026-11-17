@@ -1,7 +1,8 @@
 {
-    "id": "high_speed_translucent_petg",
-    "name": "High Speed Translucent PETG",
-    "diameter_tolerance": 0.02,
-    "density": 1.25,
-    "max_dry_temperature": 50
+  "uuid": "2426c9ac-7069-4438-b870-e92070106558",
+  "id": "high_speed_translucent_petg",
+  "name": "High Speed Translucent PETG",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "max_dry_temperature": 50
 }

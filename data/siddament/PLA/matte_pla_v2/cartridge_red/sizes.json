@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "efcac41c-5860-43cc-83bd-714207b9cf96",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.031",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-cartridge-red-pla-v2"
+      }
+    ]
+  }
+]

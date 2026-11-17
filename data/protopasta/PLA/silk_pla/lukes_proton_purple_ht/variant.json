@@ -1,11 +1,11 @@
 {
+  "uuid": "50282332-a986-4915-903f-dfcc97241f57",
   "id": "lukes_proton_purple_ht",
   "name": "Luke's Proton Purple HT",
   "color_hex": "#7B4D64",
   "traits": {
-    "industrially_compostable": true,
-    "high_temperature": true,
     "silk": true,
-    "glitter": true
+    "glitter": true,
+    "high_temperature": true
   }
 }

@@ -1,5 +1,9 @@
 {
+  "uuid": "3b6de42e-255c-41ef-9958-5518ee1bb522",
   "id": "upgraded_solid_grey",
   "name": "Upgraded Solid Grey",
-  "color_hex": "#55657C"
+  "color_hex": "#55657C",
+  "traits": {
+    "high_flow": true
+  }
 }

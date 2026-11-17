@@ -1,6 +1,18 @@
 [
   {
+    "uuid": "52500b4f-03a1-4177-8f47-fa234f89d3cf",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6933582316624",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-rainbow-03"
+      },
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/1-75mm-sunlu-regular16m-or-upgraded8m-rainbow-3d-printer-filament-1kg-roll"
+      }
+    ]
   }
 ]

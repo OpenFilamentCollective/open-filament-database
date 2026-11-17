@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "4e60f366-a249-4af2-88de-58902c9501ab",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
@@ -7,6 +8,20 @@
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/pla-pro"
+      }
+    ]
+  },
+  {
+    "uuid": "8dd80d6e-eb7c-45d7-981c-1c236c26b5db",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208551",
+    "article_number": "PLA+175Z1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-purple-2?sai=24511"
       }
     ]
   }

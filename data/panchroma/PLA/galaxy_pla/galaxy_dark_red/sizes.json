@@ -1,11 +1,27 @@
 [
   {
+    "uuid": "ecffb97f-c427-4cd3-a790-4f0378e9edf9",
+    "moved_from": [
+      "65de443f-4551-4ba8-9951-0294a4c54872"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936714699",
+    "article_number": "CA02027",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-galaxy?"
+        "url": "https://us.polymaker.com/products/panchroma-galaxy"
+      },
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/galaxy-pla?variant=43595081777209"
       }
     ]
   }

@@ -1,6 +1,9 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "f1b58e46-61e5-48a5-9ed2-faf99893800c",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720629060194",
+    "article_number": "VPLA-285SLVR-00250"
   }
 ]

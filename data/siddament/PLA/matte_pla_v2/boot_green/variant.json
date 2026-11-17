@@ -1,0 +1,10 @@
+{
+  "uuid": "fd516bb2-5991-4b46-afe7-f95819c7130c",
+  "id": "boot_green",
+  "name": "Boot Green",
+  "color_hex": "#0E7A3A",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

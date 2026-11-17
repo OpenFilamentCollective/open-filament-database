@@ -1,9 +1,9 @@
 {
+  "uuid": "e176aa39-bd57-4652-8a3a-7a49e37eac60",
   "id": "bronze",
   "name": "Bronze",
   "color_hex": "#8C7354",
   "traits": {
-    "industrially_compostable": true,
     "silk": true
   }
 }

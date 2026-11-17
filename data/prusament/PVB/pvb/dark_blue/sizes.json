@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "50ecb553-a077-4b57-9cfd-8e5546ae8ca4",
     "filament_weight": 500,
     "diameter": 1.75,
-    "gtin": "8594173675506"
+    "gtin": "8594173675506",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pvb-dark-blue-transparent-500g/"
+      }
+    ]
   }
 ]

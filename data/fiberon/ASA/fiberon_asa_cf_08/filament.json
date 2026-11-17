@@ -1,0 +1,19 @@
+{
+  "uuid": "4cee8323-0221-48be-b838-75a7f4681331",
+  "id": "fiberon_asa_cf_08",
+  "name": "Fiberon ASA-CF 08",
+  "diameter_tolerance": 0.02,
+  "density": 1.09,
+  "max_dry_temperature": 90,
+  "min_print_temperature": 260,
+  "max_print_temperature": 280,
+  "preheat_temperature": 270,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 100,
+  "min_fan_speed": 0,
+  "max_fan_speed": 0,
+  "dry_temperature": 90,
+  "dry_time": 6,
+  "data_sheet_url": "https://fiberon.polymaker.com/wp-content/uploads/TDS_FIBERON-ASA-CF08_V1.0_EN.pdf",
+  "discontinued": false
+}

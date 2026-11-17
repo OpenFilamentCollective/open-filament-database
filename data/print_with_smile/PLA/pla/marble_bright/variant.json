@@ -1,9 +1,9 @@
 {
+  "uuid": "08644c4a-ea25-44d7-9e95-4c9d70ed43f5",
   "id": "marble_bright",
   "name": "MARBLE Bright",
   "color_hex": "#C3CCD5",
   "traits": {
-    "industrially_compostable": true,
     "imitates_marble": true
   }
 }

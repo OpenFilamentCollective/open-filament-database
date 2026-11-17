@@ -1,0 +1,10 @@
+{
+  "uuid": "4f6fc187-6a8d-4f05-b3f5-eb967936ecfc",
+  "id": "cement",
+  "name": "Cement",
+  "color_hex": "#8A8780",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "uuid": "d31506ef-3d06-442e-98a8-6be3c84c8c70",
+  "id": "translucent_cyan",
+  "name": "Translucent Cyan",
+  "color_hex": "#0091CD",
+  "transmission_distance": 4.7,
+  "traits": {
+    "translucent": true
+  }
+}

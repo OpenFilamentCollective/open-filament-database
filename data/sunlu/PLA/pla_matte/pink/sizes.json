@@ -1,8 +1,20 @@
 [
   {
+    "uuid": "8c4f9a54-483c-492a-805e-df6a4efe430a",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 170,
-    "spool_core_diameter": 54
+    "spool_core_diameter": 54,
+    "gtin": "6933582309671",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-matte-pink"
+      },
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-6kg-bulk-sale-pla-matte-filament-neatly-wound-filament"
+      }
+    ]
   }
 ]

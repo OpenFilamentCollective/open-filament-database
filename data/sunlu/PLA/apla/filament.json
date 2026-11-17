@@ -1,6 +1,12 @@
 {
-    "id": "apla",
-    "name": "APLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.26
+  "uuid": "bd5654bd-eaed-4da7-87e4-b06a80f269e5",
+  "id": "apla",
+  "name": "APLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "min_print_temperature": 205,
+  "max_print_temperature": 245,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://media.sunlu.com/prod/20260414/8479d923-5cbe-4574-97b7-f0b9e356c243.pdf?filename=TDS"
 }

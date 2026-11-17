@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "e66bfcde-923f-4583-9d3c-86ac837d5655",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994174952",
+    "article_number": "700-001-1443",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/pla-matte-brown"
+      }
+    ]
   }
 ]

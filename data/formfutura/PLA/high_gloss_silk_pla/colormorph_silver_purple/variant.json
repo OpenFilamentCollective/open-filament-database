@@ -1,12 +1,13 @@
 {
+  "uuid": "25a2fe37-5876-438f-8170-ff8037e37fdd",
   "id": "colormorph_silver_purple",
   "name": "ColorMorph Silver & Purple",
   "color_hex": [
     "#ABACB0",
-    "#6C47B2"
+    "#800080"
   ],
+  "discontinued": true,
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "iridescent": true
   }

@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "413b4da4-d0a5-4043-aaa9-c747f7e0010e",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8719956552441",
     "article_number": "GPLA-175MBRN-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "002a0c90-2461-4538-abf9-5db37d6e76db",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8719956552458",
     "article_number": "GPLA-285MBRN-00750",
     "discontinued": false,
     "purchase_links": [
@@ -26,5 +30,12 @@
         "url": "https://www.formfutura.com/galaxy-pla"
       }
     ]
+  },
+  {
+    "uuid": "185a31a2-d9e8-424c-9e6f-cbed9ecfc16d",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574298390",
+    "article_number": "GPLA-285MBRN-00250"
   }
 ]

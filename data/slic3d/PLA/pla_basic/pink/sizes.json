@@ -1,0 +1,19 @@
+[
+  {
+    "uuid": "ba0143eb-f3ad-4f89-9edb-5c5c94c4cc09",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "empty_spool_weight": 0,
+    "spool_core_diameter": 100,
+    "article_number": "TL6482",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "jaycar_nz",
+        "url": "https://www.jaycar.co.nz/slic3d-pla-spool-less-pink-1-75mm-1kg-filament/p/TL6482"
+      }
+    ]
+  }
+]

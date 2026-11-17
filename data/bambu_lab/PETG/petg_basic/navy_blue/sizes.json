@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "8e9eafe4-c157-4d56-ae6e-0845a8f5f914",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "article_number": "30604",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "bblstore",
+        "url": "https://us.store.bambulab.com/products/petg-basic?id=738167451007287326"
+      }
+    ]
+  }
+]

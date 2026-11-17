@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "3835757c-7b12-45ca-b2b3-27e2033aae6c",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-6kg-bulk-sale-pla-matte-filament-neatly-wound-filament"
+      }
+    ]
   }
 ]

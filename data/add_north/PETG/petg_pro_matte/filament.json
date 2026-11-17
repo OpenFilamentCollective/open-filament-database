@@ -1,9 +1,16 @@
 {
+    "uuid": "3b566d45-c655-4524-82a2-c2aaf53ba280",
     "id": "petg_pro_matte",
     "name": "PETG PRO Matte",
     "diameter_tolerance": 0.02,
     "density": 1.25,
     "max_dry_temperature": 65,
+    "min_print_temperature": 255,
+    "max_print_temperature": 265,
+    "min_bed_temperature": 0,
+    "max_bed_temperature": 80,
+    "dry_temperature": 60,
+    "dry_time": 4,
     "slicer_settings": {
         "bambustudio": {
             "generic_id": "GFG99",
@@ -11,6 +18,11 @@
             "profile_name": "addnorth PETG PRO Matte"
         },
         "orcaslicer": {
+            "generic_id": "OFYPdQJh",
+            "id": "GF_ANPM",
+            "profile_name": "addnorth PETG PRO Matte"
+        },
+        "elegooslicer": {
             "generic_id": "GFG99",
             "id": "GF_ANPM",
             "profile_name": "addnorth PETG PRO Matte"

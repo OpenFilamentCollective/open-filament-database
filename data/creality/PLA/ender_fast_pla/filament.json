@@ -1,6 +1,7 @@
 {
-    "id": "ender_fast_pla",
-    "name": "Ender Fast PLA",
-    "diameter_tolerance": 0.03,
-    "density": 1.25
+  "uuid": "12b46cfd-1d70-43f8-b8ac-8b437d68f1df",
+  "id": "ender_fast_pla",
+  "name": "Ender Fast PLA",
+  "diameter_tolerance": 0.03,
+  "density": 1.25
 }

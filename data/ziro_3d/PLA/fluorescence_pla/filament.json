@@ -1,0 +1,12 @@
+{
+  "uuid": "2f5f290b-14e8-4f8d-a696-0ac2104a3ea8",
+  "id": "fluorescence_pla",
+  "name": "Fluorescence PLA",
+  "diameter_tolerance": 0.03,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 50,
+  "max_bed_temperature": 60,
+  "discontinued": false
+}

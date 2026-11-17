@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "8e0f9067-09e9-48d2-8ab2-c787b40b9bb2",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6933582326173",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-galaxy-star-brown"
+      }
+    ]
+  }
+]

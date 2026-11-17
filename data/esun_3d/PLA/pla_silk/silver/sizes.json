@@ -1,6 +1,29 @@
 [
   {
+    "uuid": "f45b62fb-d375-467b-88b9-e563f76ab5ee",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6922572210363",
+    "article_number": "PLA-SK175S1RS1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-silver-7"
+      }
+    ]
+  },
+  {
+    "uuid": "b046bcc7-a17c-493c-a21b-aebb4fb76bbc",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208759",
+    "article_number": "PLA-SK175S1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-silver-7?sai=24646"
+      }
+    ]
   }
 ]

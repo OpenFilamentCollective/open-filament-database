@@ -26,6 +26,7 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from ofd.base import BaseScript, ScriptResult, register_script
 from ofd.merge import merge_has_errors, merge_trees
@@ -48,6 +49,146 @@ OPTIONAL_STRING_FIELDS = {
     "gtin",
     "ean",
 }
+
+# URL fields whose tracking/affiliate query params should be stripped.
+URL_FIELDS = {
+    "url",
+    "data_sheet_url",
+    "safety_sheet_url",
+    "storefront_url",
+    "website",
+    "source_url",
+}
+
+# Known tracking query-parameter keys (lowercased). Keep in sync with the ofd-validator Rust
+# rule (crates/ofd-validator-core/src/validators/url_tracker.rs) and the webui urlSanitizer.ts.
+_TRACKING_PARAMS = {
+    "tag",
+    "linkcode",
+    "psc",
+    "th",
+    "ref",
+    "ref_",
+    "fbclid",
+    "gclid",
+    "gclsrc",
+    "dclid",
+    "msclkid",
+    "yclid",
+    "twclid",
+    "ttclid",
+    "igshid",
+    "si",
+    "mc_cid",
+    "mc_eid",
+    "_pos",
+    "_psq",
+    "_ss",
+    "_v",
+    "_sid",
+    "spm",
+    "scm",
+    "aff",
+    "affid",
+    "srsltid",
+    "gad_source",
+    "epik",
+    "pk_campaign",
+    "pk_kwd",
+    # Amazon / marketplace search-result context (identity is the /dp/<ASIN> path)
+    "dib",
+    "dib_tag",
+    "keywords",
+    "qid",
+    "sr",
+    "sprefix",
+    "crid",
+    "ascsubtag",
+    "smid",
+    "content-id",
+    "qsid",
+    "rnid",
+    "refinements",
+    "_encoding",
+    "pldnsite",
+    # SimplyPrint storefront recommender context. Seen on 3dhojor datasheet URLs merged in
+    # #461; the token is per-session and hundreds of characters long.
+    "_su_rec",
+    "_su_rec_id",
+    # Shopify affiliate referral (seen across SUNLU's purchase links).
+    "sca_ref",
+}
+_TRACKING_PREFIXES = ("utm_", "mc_", "pk_", "pd_rd_", "pf_rd_", "_su_")
+# Hosts where the product identity is entirely in the path, so the whole query is disposable.
+_WHOLE_QUERY_HOSTS = re.compile(r"(^|\.)(amazon|ebay)\.[a-z.]+$")
+_SHORTLINK_HOSTS = {"a.co", "amzn.to", "amzn.eu"}
+
+
+def _is_tracking_key(key: str) -> bool:
+    k = key.strip().lower()
+    return k.startswith(_TRACKING_PREFIXES) or k in _TRACKING_PARAMS
+
+
+def _is_tracking_fragment(fragment: str) -> bool:
+    if "=" not in fragment:
+        return False
+    return _is_tracking_key(re.split(r"[&=]", fragment, maxsplit=1)[0])
+
+
+_AMAZON_HOST = re.compile(r"(^|\.)amazon\.[a-z.]+$")
+
+
+def _strip_amazon_ref_path(base: str, host: str) -> str:
+    """Drop Amazon's trailing `/ref=<how-you-got-here>` path breadcrumb.
+
+    Amazon puts a tracker in the *path*, not only the query. PR #408 was submitted as
+    `.../dp/B0FB93XQLM/ref=sr_1_6` ("search result, page 1, position 6") and had to be
+    shortened by hand in review. The product-name slug before `/dp/<ASIN>` is kept — Amazon
+    ignores it and it makes the link readable.
+    """
+    if not _AMAZON_HOST.search(host):
+        return base
+    path = urlsplit(base).path
+    idx = path.find("/ref=")
+    if idx == -1:
+        return base
+    return base[: len(base) - len(path) + idx]
+
+
+def strip_tracking_params(url: str) -> str:
+    """Remove known tracking/affiliate params (plus an empty '?' and tracking-only fragments)
+    from a URL, preserving everything else. Idempotent. Mirrors the ofd-validator Rust rule
+    and the webui urlSanitizer.ts.
+    """
+    if not url:
+        return url
+
+    before_frag, frag = (url.split("#", 1) + [None])[:2]
+    base, query = (before_frag.split("?", 1) + [None])[:2]
+
+    try:
+        host = (urlsplit(base).hostname or "").lower()
+    except ValueError:
+        host = ""
+    drop_all = bool(_WHOLE_QUERY_HOSTS.search(host)) or host in _SHORTLINK_HOSTS
+
+    # Amazon carries tracking in the path, not only the query.
+    base = _strip_amazon_ref_path(base, host)
+
+    out = base
+    if query is not None and not drop_all:
+        kept = [
+            pair
+            for pair in query.split("&")
+            if pair and not _is_tracking_key(pair.split("=", 1)[0])
+        ]
+        if kept:
+            out += "?" + "&".join(kept)
+
+    if frag and not _is_tracking_fragment(frag):
+        out += "#" + frag
+
+    return out
 
 
 @dataclass
@@ -112,7 +253,9 @@ def sanitize_data(data: Any, schema_name: str) -> tuple[Any, list[str]]:
       defined in OPTIONAL_STRING_FIELDS); fix 'id' fields containing
       hyphens by replacing with underscores.
     - sizes: default sizes[].diameter from 0 to 1.75; sanitize nested
-      purchase_links dicts.
+      purchase_links and container_details dicts.
+    - filament/variant: sanitize the sourced entries inside ``sustainability``.
+    - filament: sanitize each sourced entry in ``mechanical``.
     """
     changes: list[str] = []
 
@@ -128,6 +271,8 @@ def sanitize_data(data: Any, schema_name: str) -> tuple[Any, list[str]]:
             for j, link in enumerate(size.get("purchase_links", [])):
                 if isinstance(link, dict):
                     _sanitize_dict(link, changes, f"sizes[{i}].purchase_links[{j}]")
+            if isinstance(size.get("container_details"), dict):
+                _sanitize_dict(size["container_details"], changes, f"sizes[{i}].container_details")
         return data, changes
 
     if isinstance(data, dict):
@@ -140,9 +285,41 @@ def sanitize_data(data: Any, schema_name: str) -> tuple[Any, list[str]]:
                 changes.append(f"id: '{raw_id}' -> '{fixed}'")
 
         _sanitize_dict(data, changes)
+        _sanitize_sustainability(data.get("sustainability"), changes)
+        _sanitize_mechanical(data.get("mechanical"), changes)
         return data, changes
 
     return data, changes
+
+
+def _sanitize_sustainability(sustainability: Any, changes: list[str]) -> None:
+    """Sanitize each sourced entry (object or array item) in a sustainability block."""
+    if not isinstance(sustainability, dict):
+        return
+    for section, value in sustainability.items():
+        if isinstance(value, dict):
+            _sanitize_dict(value, changes, f"sustainability.{section}")
+        elif isinstance(value, list):
+            for i, item in enumerate(value):
+                if isinstance(item, dict):
+                    _sanitize_dict(item, changes, f"sustainability.{section}[{i}]")
+
+
+def _sanitize_mechanical(mechanical: Any, changes: list[str]) -> None:
+    """Sanitize each sourced entry in a filament's ``mechanical`` array."""
+    if not isinstance(mechanical, list):
+        return
+    for i, item in enumerate(mechanical):
+        if not isinstance(item, dict):
+            continue
+        _sanitize_dict(item, changes, f"mechanical[{i}]")
+        specimen = item.get("specimen")
+        if isinstance(specimen, dict):
+            _sanitize_dict(specimen, changes, f"mechanical[{i}].specimen")
+            # Every specimen field is optional: an empty one says nothing.
+            for key in [k for k, v in specimen.items() if v == ""]:
+                del specimen[key]
+                changes.append(f"mechanical[{i}].specimen.{key}: removed empty string")
 
 
 def _sanitize_dict(data: dict[str, Any], changes: list[str], prefix: str = "") -> None:
@@ -152,6 +329,12 @@ def _sanitize_dict(data: dict[str, Any], changes: list[str], prefix: str = "") -
 
     for key, value in data.items():
         if not isinstance(value, str):
+            # brand.json's website can be a list of URLs.
+            if key in URL_FIELDS and isinstance(value, list):
+                cleaned = [strip_tracking_params(v) if isinstance(v, str) else v for v in value]
+                if cleaned != value:
+                    data[key] = cleaned
+                    changes.append(f"{dot}{key}: stripped tracking parameters")
             continue
 
         # Strip whitespace
@@ -160,6 +343,14 @@ def _sanitize_dict(data: dict[str, Any], changes: list[str], prefix: str = "") -
             data[key] = stripped
             changes.append(f"{dot}{key}: stripped whitespace")
             value = stripped
+
+        # Strip tracking/affiliate params from URL fields
+        if key in URL_FIELDS and value:
+            cleaned = strip_tracking_params(value)
+            if cleaned != value:
+                data[key] = cleaned
+                changes.append(f"{dot}{key}: stripped tracking parameters")
+                value = cleaned
 
         # Remove empty optional strings
         if value == "" and key in OPTIONAL_STRING_FIELDS:
@@ -245,25 +436,46 @@ def get_property_order(schema: dict[str, Any]) -> list[str]:
     return []
 
 
-def extract_nested_schemas(schema: dict[str, Any]) -> dict[str, list[str]]:
-    """Recursively extract nested object schemas and their key orderings."""
-    nested = {}
+def resolve_file_ref(prop_schema: dict[str, Any], schemas: dict[str, dict[str, Any]]) -> dict:
+    """Resolve a whole-file ``$ref`` such as ``./sustainability_schema.json``."""
+    ref = prop_schema.get("$ref", "")
+    if ref.startswith("./") and ref.endswith(".json") and "#" not in ref:
+        return schemas.get(Path(ref).stem, prop_schema)
+    return prop_schema
+
+
+def extract_nested_schemas(
+    schema: dict[str, Any], schemas: dict[str, dict[str, Any]] | None = None
+) -> dict[str, list[str]]:
+    """Recursively extract nested object schemas and their key orderings.
+
+    Whole-file ``$ref``s are followed when ``schemas`` is given. The result is a flat
+    map keyed by property name; the first definition of a name wins.
+    """
+    nested: dict[str, list[str]] = {}
+    schemas = schemas or {}
+
+    def visit(props: dict[str, Any]) -> None:
+        for prop_name, prop_schema in props.items():
+            if not isinstance(prop_schema, dict):
+                continue
+            prop_schema = resolve_file_ref(prop_schema, schemas)
+            if prop_schema.get("type") == "array" and "items" in prop_schema:
+                prop_schema = prop_schema["items"]
+                if not isinstance(prop_schema, dict):
+                    continue
+            if prop_schema.get("type") == "object" and "properties" in prop_schema:
+                if prop_name not in nested:
+                    nested[prop_name] = get_property_order(prop_schema)
+                    visit(prop_schema["properties"])
 
     if "properties" in schema:
-        for prop_name, prop_schema in schema["properties"].items():
-            if isinstance(prop_schema, dict):
-                if prop_schema.get("type") == "object" and "properties" in prop_schema:
-                    nested[prop_name] = get_property_order(prop_schema)
-                elif prop_schema.get("type") == "array" and "items" in prop_schema:
-                    items_schema = prop_schema["items"]
-                    if isinstance(items_schema, dict) and items_schema.get("type") == "object":
-                        if "properties" in items_schema:
-                            nested[prop_name] = get_property_order(items_schema)
+        visit(schema["properties"])
 
     if "definitions" in schema:
         for def_name, def_schema in schema["definitions"].items():
             if isinstance(def_schema, dict) and def_schema.get("type") == "object":
-                if "properties" in def_schema:
+                if "properties" in def_schema and def_name not in nested:
                     nested[def_name] = get_property_order(def_schema)
 
     return nested
@@ -280,10 +492,10 @@ def build_key_order_map(schemas_dir: Path) -> dict[str, SchemaInfo]:
         if schema_content.get("type") == "array" and "items" in schema_content:
             items_schema = schema_content["items"]
             keys = get_property_order(items_schema)
-            nested = extract_nested_schemas(items_schema)
+            nested = extract_nested_schemas(items_schema, schemas)
         else:
             keys = get_property_order(schema_content)
-            nested = extract_nested_schemas(schema_content)
+            nested = extract_nested_schemas(schema_content, schemas)
 
         key_order_map[clean_name] = SchemaInfo(keys=keys, nested=nested)
 

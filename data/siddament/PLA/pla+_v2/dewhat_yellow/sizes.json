@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "5e847054-694f-4595-b989-764a95c17815",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.054",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/dewhat-yellow-pla"
+      }
+    ]
+  }
+]

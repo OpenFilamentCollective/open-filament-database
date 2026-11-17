@@ -1,12 +1,33 @@
 [
   {
+    "uuid": "5ad7af78-96d1-41e9-af60-7e048cd8526b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572211704",
+    "article_number": "PLA-Basic175Z1RS1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-basic-purple-1"
+      }
+    ]
+  },
+  {
+    "uuid": "9140930a-3426-4874-91b6-aae0b9cf5690",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572211568",
+    "article_number": "PLA-Basic175Z1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-basic-purple-1?sai=24271"
       }
     ]
   }

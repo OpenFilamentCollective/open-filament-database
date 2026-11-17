@@ -1,0 +1,341 @@
+[
+  {
+    "case": "short_name_untouched",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "Red"
+      },
+      {
+        "id": "b",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    ],
+    "expected": {
+      "a": "Red",
+      "b": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  },
+  {
+    "case": "exact_64",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "word word word word word word word word word word word word word"
+      }
+    ],
+    "expected": {
+      "a": "word word word word word word word word word word word word word"
+    }
+  },
+  {
+    "case": "exactly_65",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "word word word word word word word word word word word word words"
+      }
+    ],
+    "expected": {
+      "a": "word word word word word word word word… word word word words"
+    }
+  },
+  {
+    "case": "parenthetical_drop",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "PLA Silk High-Speed Quadruple Twilight Glow (Black & Red & Dark Purple & Gold)"
+      }
+    ],
+    "expected": {
+      "a": "PLA Silk High-Speed Quadruple Twilight Glow"
+    }
+  },
+  {
+    "case": "parenthetical_collision_forces_elision",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "PLA Matte High Speed Gradient Multi-Color (coffee & khaki & white & dark brown & yellow & light brown)"
+      },
+      {
+        "id": "b",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "PLA Matte High Speed Gradient Multi-Color (dark brown & yellow & light brown & coffee & khaki & white)"
+      }
+    ],
+    "expected": {
+      "a": "PLA Matte High Speed Gradient Multi-Color… yellow & light brown)",
+      "b": "PLA Matte High Speed Gradient Multi-Color… & khaki & white)"
+    }
+  },
+  {
+    "case": "parenthetical_collides_with_short_record",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "PLA Rainbow Long Product Line Name Gradient Multi-Colour Super (a & b & c & d)"
+      },
+      {
+        "id": "b",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "PLA Rainbow Long Product Line Name Gradient Multi-Colour Super"
+      }
+    ],
+    "expected": {
+      "a": "PLA Rainbow Long Product Line Name… Super (a & b & c & d)",
+      "b": "PLA Rainbow Long Product Line Name Gradient Multi-Colour Super"
+    }
+  },
+  {
+    "case": "parenthetical_other_weight_is_not_a_collision",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "PLA Rainbow Long Product Line Name Gradient Multi-Colour Super (a & b & c & d)"
+      },
+      {
+        "id": "b",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 500.0,
+        "diameter": 1.75,
+        "name": "PLA Rainbow Long Product Line Name Gradient Multi-Colour Super"
+      }
+    ],
+    "expected": {
+      "a": "PLA Rainbow Long Product Line Name Gradient Multi-Colour Super",
+      "b": "PLA Rainbow Long Product Line Name Gradient Multi-Colour Super"
+    }
+  },
+  {
+    "case": "middle_elision_keeps_tail",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "Impact Abrasive Uv H2O Microbe Resistant ROSA TPU HardTech+ 83D Neon Yellow"
+      }
+    ],
+    "expected": {
+      "a": "Impact Abrasive Uv H2O Microbe Resistant ROSA… 83D Neon Yellow"
+    }
+  },
+  {
+    "case": "elision_collision_shifts_cut",
+    "records": [
+      {
+        "id": "0",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "Impact Abrasive Uv H2O Microbe Resistant ROSA TPU HardTech+ 83D Neon Yellow"
+      },
+      {
+        "id": "1",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "Impact Abrasive Uv H2O Microbe Resistant ROSA PLA HardTech+ 83D Neon Yellow"
+      },
+      {
+        "id": "2",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "Impact Abrasive Uv H2O Microbe Resistant ROSA ABS HardTech+ 83D Neon Yellow"
+      }
+    ],
+    "expected": {
+      "0": "Impact Abrasive Uv H2O Microbe Resistant ROSA TPU… Neon Yellow",
+      "1": "Impact Abrasive Uv H2O Microbe Resistant ROSA PLA… Neon Yellow",
+      "2": "Impact Abrasive Uv H2O Microbe Resistant ROSA… 83D Neon Yellow"
+    }
+  },
+  {
+    "case": "elision_collides_with_short_record",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "Impact Abrasive Uv H2O Microbe Resistant ROSA TPU HardTech+ 83D Neon Yellow"
+      },
+      {
+        "id": "b",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "Impact Abrasive Uv H2O Microbe Resistant ROSA… 83D Neon Yellow"
+      }
+    ],
+    "expected": {
+      "a": "Impact Abrasive Uv H2O Microbe Resistant ROSA TPU… Neon Yellow",
+      "b": "Impact Abrasive Uv H2O Microbe Resistant ROSA… 83D Neon Yellow"
+    }
+  },
+  {
+    "case": "elision_other_weight_is_not_a_collision",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "Impact Abrasive Uv H2O Microbe Resistant ROSA TPU HardTech+ 83D Neon Yellow"
+      },
+      {
+        "id": "b",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 500.0,
+        "diameter": 1.75,
+        "name": "Impact Abrasive Uv H2O Microbe Resistant ROSA TPU HardTech+ 83D Neon Yellow"
+      }
+    ],
+    "expected": {
+      "a": "Impact Abrasive Uv H2O Microbe Resistant ROSA… 83D Neon Yellow",
+      "b": "Impact Abrasive Uv H2O Microbe Resistant ROSA… 83D Neon Yellow"
+    }
+  },
+  {
+    "case": "all_candidates_taken_digest",
+    "records": [
+      {
+        "id": "0",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAbbbbbbbbbb Red"
+      },
+      {
+        "id": "1",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBbbbbbbbbbb Red"
+      },
+      {
+        "id": "2",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCbbbbbbbbbb Red"
+      },
+      {
+        "id": "3",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaDbbbbbbbbbb Red"
+      }
+    ],
+    "expected": {
+      "0": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa… Red",
+      "1": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa~bfea",
+      "2": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa~103f",
+      "3": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa~8dbf"
+    }
+  },
+  {
+    "case": "refill_marker_kept",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "PLA Silk High-Speed Quadruple Twilight Gorgeous Harmony Red (refill)"
+      }
+    ],
+    "expected": {
+      "a": "PLA Silk High-Speed Quadruple Twilight… Harmony Red (refill)"
+    }
+  },
+  {
+    "case": "refill_with_other_parenthetical",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "PLA Silk High-Speed Quadruple Twilight Glow (Black & Red & Gold) Red (refill)"
+      }
+    ],
+    "expected": {
+      "a": "PLA Silk High-Speed Quadruple Twilight… & Gold) Red (refill)"
+    }
+  },
+  {
+    "case": "unbroken_long_token",
+    "records": [
+      {
+        "id": "a",
+        "manufacturer": "Acme",
+        "material": "PLA",
+        "weight": 1000.0,
+        "diameter": 1.75,
+        "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    ],
+    "expected": {
+      "a": "… xxxxxxxxxxxxxxxxxxxxx"
+    }
+  }
+]

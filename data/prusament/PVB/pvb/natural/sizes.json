@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "1c4ae2b0-6cfe-4a95-a830-068989dde8ce",
     "filament_weight": 500,
     "diameter": 1.75,
-    "gtin": "8594173675476"
+    "gtin": "8594173675476",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-pvb-natural-transparent-500g/"
+      }
+    ]
   }
 ]

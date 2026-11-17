@@ -1,0 +1,32 @@
+[
+  {
+    "uuid": "af7afb2b-5a4d-4a9b-ad58-02ce2605d232",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936718277",
+    "article_number": "CA04093",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/collections/panchroma/products/matte-pla?variant=43631458091065"
+      }
+    ]
+  },
+  {
+    "uuid": "13ca7ad6-e2f4-4368-bb08-8a9ff436e7db",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6938936719915",
+    "article_number": "PC1002026"
+  }
+]

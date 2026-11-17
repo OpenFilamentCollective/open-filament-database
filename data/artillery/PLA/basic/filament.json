@@ -1,0 +1,13 @@
+{
+  "uuid": "fdd56f8d-64c1-495d-af7a-1aa51b69502f",
+  "id": "basic",
+  "name": "Artillery Basic PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.24,
+  "min_print_temperature": 190,
+  "max_print_temperature": 220,
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "min_nozzle_diameter": 0.2,
+  "discontinued": false
+}

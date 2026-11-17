@@ -1,9 +1,9 @@
 {
+  "uuid": "e75777ec-fe76-4931-a34c-e5851f7a9e3f",
   "id": "his_natural",
   "name": "HIS natural",
   "color_hex": "#DFDFD3",
   "traits": {
-    "industrially_compostable": true,
     "high_temperature": true
   }
 }

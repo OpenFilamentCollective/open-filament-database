@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "ec28c92a-ee76-4cf1-b300-677d3c13d75b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572205048",
+    "article_number": "ABS+HS175S1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/eabs-pro-hs"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/abshs-silver"
       }
     ]
   }

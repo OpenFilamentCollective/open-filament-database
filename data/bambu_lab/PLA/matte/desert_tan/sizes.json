@@ -1,21 +1,31 @@
 [
   {
+    "uuid": "65cac879-32f6-4a03-8483-f5a401897f7b",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
-    "gtin": "921139781713",
+    "container_material": "refill",
+    "gtin": "6975337038177",
+    "article_number": "11401",
+    "barcode_identifier": "921139781713",
     "purchase_links": [
       {
         "store_id": "bblstore",
         "url": "https://us.store.bambulab.com/collections/pla/products/pla-matte?variant=42259062620296"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/pla-matte-desert-tan"
       }
     ]
   },
   {
+    "uuid": "f8c97dae-a80c-4461-81bd-6dc8f6ccf8bf",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": true,
-    "gtin": "921188139080",
+    "container_material": "refill",
+    "barcode_identifier": "921188139080",
     "purchase_links": [
       {
         "store_id": "3deksperten",

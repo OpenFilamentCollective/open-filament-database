@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "c7403388-fbea-46c5-ac2a-a1c3c9c3659c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "5.065",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-golden-yellow-pla"
+      }
+    ]
+  }
+]

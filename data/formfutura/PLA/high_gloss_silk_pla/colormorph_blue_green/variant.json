@@ -1,12 +1,13 @@
 {
+  "uuid": "f9ec4548-8708-475d-8c4e-bd9df69961ce",
   "id": "colormorph_blue_green",
   "name": "ColorMorph Blue & Green",
   "color_hex": [
-    "#008059",
-    "#005DA4"
+    "#0000ff",
+    "#008059"
   ],
+  "discontinued": true,
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "iridescent": true,
     "coextruded": true

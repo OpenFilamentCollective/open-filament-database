@@ -1,0 +1,10 @@
+{
+  "uuid": "6d4079dc-915c-4d8f-9928-0d5c8beb9d9f",
+  "id": "tan",
+  "name": "Tan",
+  "color_hex": "#A9763F",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

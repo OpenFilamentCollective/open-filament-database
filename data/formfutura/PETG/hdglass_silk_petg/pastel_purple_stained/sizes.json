@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "0a5b069d-ee7a-421b-85e9-7da3016bf4b8",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924475171",
     "article_number": "HDGL-175PPUS-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "2ef42c16-b8d4-4f20-b37d-33f4bd33ded1",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924475188",
     "article_number": "HDGL-285PPUS-00750",
     "discontinued": false,
     "purchase_links": [

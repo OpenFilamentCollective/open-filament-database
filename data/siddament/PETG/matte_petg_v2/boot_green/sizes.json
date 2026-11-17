@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "6984ad21-1f97-4773-85b1-9b093bfd86bb",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.066",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-boot-green-petg-v2"
+      }
+    ]
+  }
+]

@@ -1,8 +1,9 @@
 {
+  "uuid": "d3f51a49-dbc7-4a58-a1be-5367900c167a",
   "id": "esd_abs",
   "name": "ESD-ABS",
   "diameter_tolerance": 0.05,
-  "density": 1.08,
+  "density": 1.05,
   "min_print_temperature": 230,
   "max_print_temperature": 260,
   "min_bed_temperature": 90,

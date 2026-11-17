@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "ab3f0fc7-9762-41d3-b836-4c24eb92ac66",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "5.067",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-fire-orange-pla"
+      }
+    ]
+  }
+]

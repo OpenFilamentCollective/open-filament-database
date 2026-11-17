@@ -1,10 +1,11 @@
 {
+  "uuid": "de52ae8b-e155-44a0-a5c6-643ef1076c31",
   "id": "700",
   "name": "PLA 700",
-  "diameter_tolerance": 0.02,
+  "diameter_tolerance": 0.03,
   "density": 1.24,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_print_temperature": 235,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 50
 }

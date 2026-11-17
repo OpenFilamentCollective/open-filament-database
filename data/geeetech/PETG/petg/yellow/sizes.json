@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "1b4b6c45-58a2-4e29-a381-36f179e9d933",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170275",
+    "article_number": "700-001-1314",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/petg-yellow-6"
+      }
+    ]
   }
 ]

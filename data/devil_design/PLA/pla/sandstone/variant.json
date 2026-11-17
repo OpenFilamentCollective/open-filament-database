@@ -1,8 +1,10 @@
 {
+  "uuid": "a447ad6a-2f06-49a0-b400-5be7794ac576",
   "id": "sandstone",
   "name": "SANDSTONE",
   "color_hex": "#E2C077",
   "traits": {
-    "imitates_stone": true
+    "imitates_stone": true,
+    "bio_based": true
   }
 }

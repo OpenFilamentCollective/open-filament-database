@@ -1,21 +1,36 @@
 [
   {
+    "uuid": "2bd8e2fb-cb68-4f05-a5fc-a7b3382cf454",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936715467",
+    "article_number": "CA05010",
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-satin?"
+        "url": "https://us.polymaker.com/products/panchroma-satin"
       }
     ]
   },
   {
+    "uuid": "d41bf065-0293-4ec7-8560-b59ecc99524d",
     "filament_weight": 3000,
     "diameter": 1.75,
+    "empty_spool_weight": 425,
+    "container_width": 117,
+    "container_outer_diameter": 250,
+    "container_hole_diameter": 55,
+    "discontinued": true,
     "purchase_links": [
       {
         "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-satin?"
+        "url": "https://us.polymaker.com/products/panchroma-satin"
       }
     ]
   }

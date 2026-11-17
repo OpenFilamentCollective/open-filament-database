@@ -1,5 +1,10 @@
 {
-    "id": "cold_white",
-    "name": "Cold White",
-    "color_hex": "#D9DFE5"
+  "uuid": "7275cb21-7e41-4747-953c-9b080c6f8d4c",
+  "moved_from": [
+    "4cb4765a-168c-48ed-9310-f96da7b4f00d"
+  ],
+  "id": "cold_white",
+  "name": "Cold White",
+  "color_hex": "#D9DFE5",
+  "transmission_distance": 1.5
 }

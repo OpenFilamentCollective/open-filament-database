@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "c96720be-4c13-4367-bcb4-94d3eda73eaf",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "6.060",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/grey-tpu-95a"
+      }
+    ]
+  }
+]

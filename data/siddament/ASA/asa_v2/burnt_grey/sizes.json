@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "aed2a4d2-c19a-4c98-bd9b-50fb0e33203e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "3.010",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/burnt-grey-asa-v2"
+      }
+    ]
+  }
+]

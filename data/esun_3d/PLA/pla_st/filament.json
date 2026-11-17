@@ -1,10 +1,12 @@
 {
+  "uuid": "0733c9eb-7e9c-406c-8c64-5efc38a714b5",
   "id": "pla_st",
   "name": "PLA-ST",
   "diameter_tolerance": 0.03,
-  "density": 1.24,
-  "min_print_temperature": 190,
+  "density": 1.25,
+  "min_print_temperature": 200,
   "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 60,
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-ST/eSUN_PLA-ST_Filament_TDS_V4.0_1.pdf"
 }

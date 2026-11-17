@@ -1,6 +1,36 @@
 [
   {
+    "uuid": "48824f09-6e07-4858-a99a-75114e95f0a8",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "8718924471821"
+  },
+  {
+    "uuid": "925c3543-d206-4315-a529-bd766cdc3e33",
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "gtin": "8718924472996",
+    "article_number": "PPLA-175FRED-02300"
+  },
+  {
+    "uuid": "20403310-8afe-4372-87f9-1db3be66b59a",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574295993",
+    "article_number": "PPLA-285FRED-00250"
+  },
+  {
+    "uuid": "89df2e40-6a97-4b8f-ba71-05ab2f1cdf87",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "8718924472019",
+    "article_number": "PPLA-285FRED-01000"
+  },
+  {
+    "uuid": "93b3b197-5d89-41c4-af1d-bd59c7bb4022",
+    "filament_weight": 2300,
+    "diameter": 2.85,
+    "gtin": "8718924473009",
+    "article_number": "PPLA-285FRED-02300"
   }
 ]

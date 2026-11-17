@@ -1,0 +1,28 @@
+[
+  {
+    "uuid": "ac8e1853-5073-4642-ba7d-48cb28531bc6",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "6937285512604",
+    "article_number": "17300",
+    "discontinued": false
+  },
+  {
+    "uuid": "b1b2ce3d-cbb2-47de-ac05-a098804f7e0a",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6937285512611",
+    "article_number": "17300",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/bambu-lab/bambu-pla-pure-apricot?sai=44529"
+      }
+    ]
+  }
+]

@@ -1,9 +1,9 @@
 {
+  "uuid": "ef4cb398-abe0-4307-88c9-9d22ab274c36",
   "id": "violet_glitter",
   "name": "Violet Glitter",
   "color_hex": "#8A68B5",
   "traits": {
-    "industrially_compostable": true,
     "glitter": true
   }
 }

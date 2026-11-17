@@ -1,9 +1,9 @@
 {
+  "uuid": "79f7e445-46fc-4c67-a2e5-6c65190fbe16",
   "id": "rec_just_red",
   "name": "REC- Just RED",
   "color_hex": "#E72F1D",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

@@ -1,8 +1,10 @@
 {
+  "uuid": "0845956d-c83e-4ef2-a332-2e2f4f5518b4",
   "id": "blue_sky_transparent",
   "name": "Blue Sky Transparent",
   "color_hex": "#0353BA",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

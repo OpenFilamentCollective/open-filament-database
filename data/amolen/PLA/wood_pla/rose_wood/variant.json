@@ -1,9 +1,9 @@
 {
+  "uuid": "e11c1b2e-94bc-4ac6-a036-30be9ad5f45a",
   "id": "rose_wood",
   "name": "Rose Wood",
   "color_hex": "#613B3A",
   "traits": {
-    "industrially_compostable": true,
     "contains_wood": true
   }
 }

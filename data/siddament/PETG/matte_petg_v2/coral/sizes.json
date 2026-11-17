@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b3b019cc-43c0-4e3e-a9dd-80f2901019df",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.069",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-coral-petg-v2"
+      }
+    ]
+  }
+]

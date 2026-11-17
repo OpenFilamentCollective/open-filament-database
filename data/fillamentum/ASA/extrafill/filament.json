@@ -1,12 +1,12 @@
 {
+  "uuid": "f006dc57-2477-4848-bece-cfa780e56827",
   "id": "extrafill",
   "name": "ASA Extrafill",
   "diameter_tolerance": 0.05,
   "density": 1.07,
-  "min_print_temperature": 240,
-  "max_print_temperature": 255,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 105,
-  "data_sheet_url": "https://www.fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_ASA-Extrafill_03012019.pdf",
-  "safety_sheet_url": "https://www.fillamentum.com/wp-content/uploads/2020/10/MSDS_ASA_EN_29072019.pdf"
+  "min_print_temperature": 245,
+  "max_print_temperature": 280,
+  "min_bed_temperature": 65,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://fillamentum.com/wp-content/uploads/2020/10/Technical-Data-Sheet_ASA-Extrafill_03012019.pdf"
 }

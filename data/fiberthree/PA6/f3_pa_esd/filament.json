@@ -1,10 +1,12 @@
 {
+  "uuid": "2c031728-8f1a-4ef4-adaf-63e86ff1520f",
   "id": "f3_pa_esd",
   "name": "F3 PA ESD",
   "diameter_tolerance": 0.02,
   "density": 1.2,
-  "min_print_temperature": 250,
-  "max_print_temperature": 290,
-  "min_bed_temperature": 80,
-  "max_bed_temperature": 100
+  "min_print_temperature": 280,
+  "max_print_temperature": 310,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 0,
+  "data_sheet_url": "http://fiberthree.com/downloads/tdb/filaments/TDS_F3_PA_ESD_English_vers_12_2024.pdf"
 }

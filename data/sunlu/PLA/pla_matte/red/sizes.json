@@ -1,8 +1,20 @@
 [
   {
+    "uuid": "a45c94a2-cd9a-4d82-901c-846ac82b565e",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 170,
-    "spool_core_diameter": 54
+    "spool_core_diameter": 54,
+    "gtin": "6933582309640",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-matte-red"
+      },
+      {
+        "store_id": "sunlu",
+        "url": "https://store.sunlu.com/products/over-6kg-bulk-sale-pla-matte-filament-neatly-wound-filament"
+      }
+    ]
   }
 ]

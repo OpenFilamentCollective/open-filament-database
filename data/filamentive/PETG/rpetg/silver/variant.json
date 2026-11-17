@@ -1,0 +1,11 @@
+{
+  "uuid": "2d1f6891-0ad4-46a7-b0a4-de0a6139a293",
+  "id": "silver",
+  "name": "Silver",
+  "color_hex": "#DEDEDE",
+  "discontinued": false,
+  "traits": {
+    "recycled": true,
+    "recyclable": true
+  }
+}

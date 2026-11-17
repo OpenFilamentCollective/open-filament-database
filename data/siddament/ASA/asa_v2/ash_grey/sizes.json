@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b5398261-281f-48d8-88fb-66ce783eb24e",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.053",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/ash-grey-asa-v2"
+      }
+    ]
+  }
+]

@@ -1,5 +1,12 @@
 {
+  "uuid": "d6a3b482-37fa-4a8f-a170-5941ad3c5b37",
+  "moved_from": [
+    "b50f74bd-8162-425c-ab53-9bccb916090a"
+  ],
   "id": "mars",
   "name": "Mars",
-  "color_hex": "#fb6a41"
+  "color_hex": "#fb6a41",
+  "traits": {
+    "iridescent": true
+  }
 }

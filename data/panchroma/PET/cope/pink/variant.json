@@ -1,5 +1,10 @@
 {
-    "id": "pink",
-    "name": "Pink",
-    "color_hex": "#F1A1AF"
+  "uuid": "76e979a7-6a82-46a6-85bd-559ce8b7dad7",
+  "moved_from": [
+    "5db23517-fafa-4ad5-9211-0754617afa07"
+  ],
+  "id": "pink",
+  "name": "Pink",
+  "color_hex": "#F1A1AF",
+  "transmission_distance": 2.9
 }

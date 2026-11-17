@@ -1,12 +1,33 @@
 [
   {
+    "uuid": "a07978e8-5472-41e7-85b1-a543d6806c22",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572217256",
+    "article_number": "PETG-Basic175W1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/petg-basic"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/petg-basic-white-1"
+      }
+    ]
+  },
+  {
+    "uuid": "fcf5b35d-29d2-4f8d-a066-c98e225e8db7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572226548",
+    "article_number": "PETG-Basic175W1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/petg-basic-white-1?sai=44412"
       }
     ]
   }

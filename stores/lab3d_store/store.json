@@ -1,10 +1,11 @@
 {
-    "id": "lab3d_store",
-    "name": "LAB3D Store",
-    "storefront_url": "https://shop.lab3d.dk/",
-    "logo": "logo.png",
-    "ships_from": [
-        "DK"
-    ],
-    "ships_to": []
+  "uuid": "e6e19d9a-54d8-4521-ad59-2413572c1eaf",
+  "id": "lab3d_store",
+  "name": "LAB3D Store",
+  "storefront_url": "https://shop.lab3d.dk/",
+  "logo": "logo.png",
+  "ships_from": [
+    "DK"
+  ],
+  "ships_to": []
 }

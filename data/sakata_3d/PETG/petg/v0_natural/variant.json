@@ -1,9 +1,10 @@
 {
+  "uuid": "71db8d71-695d-45d2-a932-a64b672d897b",
   "id": "v0_natural",
   "name": "V0 Natural",
   "color_hex": "#F2EFE9",
   "traits": {
-    "self_extinguishing": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "self_extinguishing": true
   }
 }

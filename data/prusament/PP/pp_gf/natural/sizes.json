@@ -1,12 +1,7 @@
 [
   {
+    "uuid": "6da83eeb-c5d6-4bca-8b0a-6185eee20238",
     "filament_weight": 850,
-    "diameter": 1.75,
-    "purchase_links": [
-      {
-        "store_id": "prusa3d",
-        "url": "https://www.prusa3d.com/product/prusament-pp-glass-fiber-850g/"
-      }
-    ]
+    "diameter": 1.75
   }
 ]

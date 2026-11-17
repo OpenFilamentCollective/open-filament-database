@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "f0599ed7-5099-474b-9c8e-8647074774d3",
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 200,
+    "gtin": "8720847067975",
     "article_number": "BPTG-175LGRN-01000",
     "discontinued": false,
     "purchase_links": [

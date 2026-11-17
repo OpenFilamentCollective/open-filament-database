@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7912c8e2-f31f-49ab-9d2c-b2ea4144ed74",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.046",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/white-abs-v2"
+      }
+    ]
+  }
+]

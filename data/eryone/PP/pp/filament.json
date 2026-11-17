@@ -1,12 +1,18 @@
 {
+    "uuid": "907b03a3-0bd1-4492-a52d-a8365071cd1c",
     "id": "pp",
     "name": "PP",
     "diameter_tolerance": 0.03,
     "density": 0.95,
+    "min_print_temperature": 220,
+    "max_print_temperature": 240,
+    "min_bed_temperature": 60,
+    "max_bed_temperature": 80,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-PP-TDS.pdf?v=1747275928",
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFP97",
-            "id": "EFL43",
+            "generic_id": "GFP97_01",
+            "id": "OF5oNRED",
             "profile_name": "Eryone PP"
         },
         "elegooslicer": {

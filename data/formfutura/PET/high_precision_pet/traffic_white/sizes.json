@@ -1,6 +1,30 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "8c5e04f5-4497-4eb6-9597-c24dcdbeab4b",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8720629061207",
+    "article_number": "HPPE-175TWHT-00750"
+  },
+  {
+    "uuid": "213fe510-bf4d-4ba8-bcac-a689aef004d4",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720629061443",
+    "article_number": "HPPE-175TWHT-00250"
+  },
+  {
+    "uuid": "b7d8b080-b201-4fa1-a26c-df7afa56dc2c",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720629061566",
+    "article_number": "HPPE-285TWHT-00250"
+  },
+  {
+    "uuid": "728db23a-e184-4b44-9176-b834e3971acc",
+    "filament_weight": 750,
+    "diameter": 2.85,
+    "gtin": "8720629061320",
+    "article_number": "HPPE-285TWHT-00750"
   }
 ]

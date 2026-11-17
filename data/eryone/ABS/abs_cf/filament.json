@@ -1,12 +1,18 @@
 {
+    "uuid": "cfd7ba79-6fe1-4b69-93b1-ed7e4881ef68",
     "id": "abs_cf",
     "name": "ABS-CF",
-    "diameter_tolerance": 0.03,
-    "density": 1.04,
+    "diameter_tolerance": 0.05,
+    "density": 1.1,
+    "min_print_temperature": 240,
+    "max_print_temperature": 280,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 110,
+    "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-ABS_CF-TDS.pdf?v=1747275649",
     "slicer_settings": {
         "orcaslicer": {
-            "generic_id": "GFB99",
-            "id": "EFL81",
+            "generic_id": "OFY9muEs",
+            "id": "OFQ1zgm3",
             "profile_name": "Eryone ABS-CF"
         },
         "elegooslicer": {

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "fc94aff2-536b-45b5-82bb-7bd1f4d54ff0",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/carbon-fiber-ultra-black-abs"
+      }
+    ]
   }
 ]

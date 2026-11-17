@@ -1,9 +1,9 @@
 {
+  "uuid": "d24de8e6-4074-475a-90a4-703ffc6531bd",
   "id": "light_grey",
   "name": "Light Grey",
   "color_hex": "#C3CCD5",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

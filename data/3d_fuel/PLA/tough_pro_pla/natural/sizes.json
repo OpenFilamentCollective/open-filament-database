@@ -1,6 +1,37 @@
 [
   {
+    "uuid": "b19b8c17-40ac-4301-92c7-6f20878a0c2a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "639302733455",
+    "article_number": "A3500"
+  },
+  {
+    "uuid": "ac926339-79ec-4236-92c2-10b30735cf27",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "793897612233",
+    "article_number": "A36R0"
+  },
+  {
+    "uuid": "50a36a93-c863-4a37-ae72-2dd88e752daf",
+    "filament_weight": 4000,
+    "diameter": 1.75,
+    "gtin": "639302730591",
+    "article_number": "A3700"
+  },
+  {
+    "uuid": "61fbc0af-fc61-4f41-8278-e51c388bef59",
+    "filament_weight": 4000,
+    "diameter": 2.85,
+    "gtin": "793897791143",
+    "article_number": "A38R0"
+  },
+  {
+    "uuid": "69a3d6c0-11fa-444e-9a42-25de186cbd05",
+    "filament_weight": 11000,
+    "diameter": 1.75,
+    "gtin": "793897722802",
+    "article_number": "A3900"
   }
 ]

@@ -1,9 +1,9 @@
 {
+  "uuid": "70f7e9c9-ecfb-4137-a5a4-87a6fbe8acd3",
   "id": "green_army",
   "name": "Green Army",
   "color_hex": "#008059",
   "traits": {
-    "recycled": true,
-    "industrially_compostable": true
+    "recycled": true
   }
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "72d6cbfd-89d9-433d-a5e4-a7e344b0d5c5",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.067",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-disc-grey-petg-v2"
+      }
+    ]
+  }
+]

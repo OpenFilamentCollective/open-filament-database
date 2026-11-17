@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "bf421f47-0c60-4d78-b18f-024621471154",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "7.005",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/wine-red-petg-1-75mm-1kg"
+      }
+    ]
+  }
+]

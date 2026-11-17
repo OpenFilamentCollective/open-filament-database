@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "807d4927-5e0d-47e6-ae67-5480b2e6fbce",
     "filament_weight": 500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 140,
+    "gtin": "8720574293944",
     "article_number": "SX65-175BLCK-00500",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "b13fce5d-36c2-450b-9bc5-175168a4d908",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8720629064093",
     "article_number": "SX65-175BLCK-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "09b9cfc8-6183-40c4-bc13-776ba33d3118",
     "filament_weight": 4500,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 785,
+    "gtin": "8720629064109",
     "article_number": "SX65-175BLCK-04500",
     "discontinued": false,
     "purchase_links": [
@@ -42,10 +48,12 @@
     ]
   },
   {
+    "uuid": "3e1b472f-e986-4fb2-849b-f33baf3d674f",
     "filament_weight": 8000,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 1040,
+    "gtin": "8720629064116",
     "article_number": "SX65-175BLCK-08000",
     "discontinued": false,
     "purchase_links": [

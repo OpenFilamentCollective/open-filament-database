@@ -1,8 +1,9 @@
 {
+  "uuid": "b8ed8dcc-0eef-4493-bba7-92feedec796d",
   "id": "nero_yellow",
   "name": "Nero Yellow",
   "color_hex": "#FFFB00",
   "traits": {
-    "industrially_compostable": true
+    "high_flow": true
   }
 }

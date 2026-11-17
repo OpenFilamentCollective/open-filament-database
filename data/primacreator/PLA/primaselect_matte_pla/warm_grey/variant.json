@@ -1,9 +1,9 @@
 {
+  "uuid": "aae1d5e9-05e3-4f17-9752-b77de99f7127",
   "id": "warm_grey",
   "name": "Warm Grey",
   "color_hex": "#A49D8E",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

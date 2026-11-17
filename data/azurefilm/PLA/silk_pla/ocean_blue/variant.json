@@ -1,9 +1,10 @@
 {
+  "uuid": "977fc94d-bdd5-49f3-8a4a-992b7c0e19f9",
   "id": "ocean_blue",
   "name": "Ocean blue",
   "color_hex": "#5b95e6",
   "traits": {
-    "recyclable": true,
-    "silk": true
+    "silk": true,
+    "recyclable": true
   }
 }

@@ -1,10 +1,11 @@
 {
+  "uuid": "3021bf94-8390-416f-8f02-e6b6c2d3bf1a",
   "id": "glow_pla",
   "name": "Glow PLA",
   "diameter_tolerance": 0.02,
   "density": 1.24,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_print_temperature": 250,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60
 }

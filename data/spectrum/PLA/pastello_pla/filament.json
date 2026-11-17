@@ -1,6 +1,28 @@
 {
-    "id": "pastello_pla",
-    "name": "Pastello PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.24
+  "uuid": "3d2bbd65-6598-4b00-a226-3a20f042d33d",
+  "id": "pastello_pla",
+  "name": "Pastello PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.3,
+  "min_print_temperature": 185,
+  "max_print_temperature": 215,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 60,
+  "max_fan_speed": 100,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2023/10/en_tds_spectrum_pla_pastello.pdf",
+  "safety_sheet_url": "https://spectrumfilaments.com/wp-content/uploads/2023/10/en_msds_spectrum_pla_pastello.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://spectrumfilaments.com/en/filament/pastello-pla/",
+      "source_quote": "Additionally, Pastello PLA incorporates recycled material, making your projects a real contribution to protecting our planet.",
+      "retrieved": "2026-11-03",
+      "notes": "Partial recycled content; no share or origin stated."
+    }
+  }
 }

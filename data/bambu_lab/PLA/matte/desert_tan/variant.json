@@ -1,9 +1,9 @@
 {
+  "uuid": "2f13ff26-89bb-4fae-97a0-e210bf3aa215",
   "id": "desert_tan",
   "name": "Desert Tan",
   "color_hex": "#E8DBB7",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

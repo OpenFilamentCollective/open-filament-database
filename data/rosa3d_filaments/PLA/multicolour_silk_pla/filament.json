@@ -1,10 +1,11 @@
 {
+  "uuid": "d0cc9672-1f3b-499d-a411-bdc309a88cdb",
   "id": "multicolour_silk_pla",
   "name": "Multicolour Silk PLA",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
-  "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "density": 1.25,
+  "min_print_temperature": 195,
+  "max_print_temperature": 235,
+  "min_bed_temperature": 40,
+  "max_bed_temperature": 60
 }

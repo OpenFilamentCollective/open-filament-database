@@ -1,0 +1,39 @@
+{
+    "uuid": "279d9984-0e43-4968-beec-0d148211d8c2",
+    "id": "abs",
+    "name": "ABS",
+    "diameter_tolerance": 0.03,
+    "density": 1.04,
+    "min_print_temperature": 240,
+    "max_print_temperature": 280,
+    "min_bed_temperature": 90,
+    "max_bed_temperature": 100,
+    "min_chamber_temperature": 60,
+    "max_chamber_temperature": 70,
+    "data_sheet_url": "https://s3.us-west-2.amazonaws.com/snapmaker.com/download/manual/Snapmaker+ABS+Technical+Data+Sheet+V1.0.2.pdf",
+    "slicer_settings": {
+        "prusaslicer": {
+            "profile_name": "Snapmaker ABS"
+        },
+        "orcaslicer": {
+            "generic_id": "OFY9muEs",
+            "id": "OF72YYTd",
+            "profile_name": "Snapmaker ABS"
+        },
+        "elegooslicer": {
+            "generic_id": "GFB99",
+            "id": "3811508002",
+            "profile_name": "Snapmaker ABS"
+        },
+        "crealityprint": {
+            "generic_id": "GFB99",
+            "id": "3811508002",
+            "profile_name": "Snapmaker ABS"
+        },
+        "anycubicslicer": {
+            "generic_id": "GFB99",
+            "id": "3811508002",
+            "profile_name": "Snapmaker ABS"
+        }
+    }
+}

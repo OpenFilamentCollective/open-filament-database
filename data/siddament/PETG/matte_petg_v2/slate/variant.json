@@ -1,0 +1,14 @@
+{
+  "uuid": "a83303af-a7fb-45f6-8fad-06dc1840e945",
+  "id": "slate",
+  "name": "Slate",
+  "color_hex": "#51606E",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "5405 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

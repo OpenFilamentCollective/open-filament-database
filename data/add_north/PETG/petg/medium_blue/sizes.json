@@ -1,13 +1,21 @@
 [
   {
+    "uuid": "d147ffd8-3fb4-4683-9f31-4de422a625bb",
     "filament_weight": 750,
     "diameter": 1.75,
     "empty_spool_weight": 207,
-    "spool_core_diameter": 53,
+    "spool_core_diameter": 53
+  },
+  {
+    "uuid": "0c8a7838-a581-4ed9-b09f-4e902587bc75",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "7340182903830",
+    "article_number": "ANPE14MEB",
     "purchase_links": [
       {
         "store_id": "add_north",
-        "url": "https://addnorth.com/product/PETG/PETG%20-%201.75mm%20-%20750g%20-%20Medium%20Blue"
+        "url": "https://addnorth.com/product/PETG/PETG%20-%201.75mm%20-%201000g%20-%20Medium%20Blue"
       }
     ]
   }

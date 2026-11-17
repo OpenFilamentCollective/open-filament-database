@@ -1,12 +1,43 @@
 [
   {
+    "uuid": "031f7f7c-77c9-4ffa-9719-2cbbf2b92002",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "container_details": {
+      "recycled_pct": null,
+      "certifications": [],
+      "notes": "Brand says scrap is reused to make the recyclable spool (a paper reel per the same page); no percentage given.",
+      "source_type": "primary",
+      "source_url": "https://esun3dstore.com/products/epla-matte",
+      "source_quote": "Scrap is reused to produce recyclable spool and packaging box.",
+      "retrieved": "2026-11-03"
+    },
     "empty_spool_weight": 140,
+    "gtin": "6922572201859",
+    "article_number": "PLA-MT175O-MG1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-matte"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-mint-green-1"
+      }
+    ]
+  },
+  {
+    "uuid": "1ab5fe44-20a2-457c-8fe8-2612dee27d45",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "gtin": "6922572208254",
+    "article_number": "PLA-MT175O-MG1R1",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-matte-mint-green-1?sai=24688"
       }
     ]
   }

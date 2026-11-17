@@ -1,10 +1,11 @@
 {
+  "uuid": "6828a0cf-007d-4322-986d-38b8970e50db",
   "id": "carbonx_cf",
   "name": "CarbonX +CF",
   "color_hex": "#000000",
   "traits": {
-    "filtration_recommended": true,
     "abrasive": true,
+    "filtration_recommended": true,
     "contains_carbon_fiber": true
   }
 }

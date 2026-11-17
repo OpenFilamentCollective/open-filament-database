@@ -1,0 +1,10 @@
+{
+  "uuid": "b02d4593-f598-47a0-a11e-ec7bff2a7dce",
+  "id": "metallic_dark_red",
+  "name": "Metallic Dark Red",
+  "color_hex": "#A10C0C",
+  "traits": {
+    "imitates_metal": true,
+    "high_flow": true
+  }
+}

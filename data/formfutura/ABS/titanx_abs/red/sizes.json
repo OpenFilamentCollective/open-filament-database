@@ -1,9 +1,11 @@
 [
   {
+    "uuid": "11ea3638-c595-44a8-bc1c-e9fdfa5736ce",
     "filament_weight": 750,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476239",
     "article_number": "TITX-175REDC-00750",
     "discontinued": false,
     "purchase_links": [
@@ -14,10 +16,12 @@
     ]
   },
   {
+    "uuid": "ea6b740b-0b77-4185-a5bf-139cb88a7725",
     "filament_weight": 2300,
     "diameter": 1.75,
     "spool_refill": false,
     "empty_spool_weight": 625,
+    "gtin": "8718924477205",
     "article_number": "TITX-175REDC-02300",
     "discontinued": false,
     "purchase_links": [
@@ -28,10 +32,12 @@
     ]
   },
   {
+    "uuid": "a60d81c3-f8f5-43b1-8114-a276a12a3743",
     "filament_weight": 750,
     "diameter": 2.85,
     "spool_refill": false,
     "empty_spool_weight": 165,
+    "gtin": "8718924476246",
     "article_number": "TITX-285REDC-00750",
     "discontinued": false,
     "purchase_links": [
@@ -40,5 +46,12 @@
         "url": "https://www.formfutura.com/titanx"
       }
     ]
+  },
+  {
+    "uuid": "835e0893-2cd9-4224-9f85-25b9cbb83d75",
+    "filament_weight": 250,
+    "diameter": 2.85,
+    "gtin": "8720574298710",
+    "article_number": "TITX-285REDC-00250"
   }
 ]

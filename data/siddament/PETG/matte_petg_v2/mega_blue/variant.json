@@ -1,0 +1,14 @@
+{
+  "uuid": "c0ebc443-67ee-4a0e-8a9f-609badffed62",
+  "id": "mega_blue",
+  "name": "Mega Blue",
+  "color_hex": "#1E63C8",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "2132 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

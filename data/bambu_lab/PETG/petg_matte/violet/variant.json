@@ -1,0 +1,10 @@
+{
+  "uuid": "4222dbe9-8049-4ca4-b499-a2b73e9defbd",
+  "id": "violet",
+  "name": "Violet",
+  "color_hex": "#A7A4E0",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

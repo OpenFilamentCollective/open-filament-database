@@ -1,6 +1,24 @@
 {
-    "id": "refill_r_abs",
-    "name": "Refill R ABS",
-    "diameter_tolerance": 0.02,
-    "density": 1.04
+  "uuid": "ff9ccf80-6c7c-4573-aed4-0d6afb7ee0b0",
+  "id": "refill_r_abs",
+  "name": "Refill R ABS",
+  "diameter_tolerance": 0.02,
+  "density": 1.05,
+  "min_print_temperature": 250,
+  "max_print_temperature": 265,
+  "min_bed_temperature": 90,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://fiberlogy.com/app/uploads/2026/05/FIBERLOGY_RABS_TDS.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": 100,
+      "pct_qualifier": "exact",
+      "type": "unknown",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://fiberlogy.com/en/product/rabs-filament-s2/",
+      "source_quote": "This filament is made from 100% recycled ABS sourced from controlled sources.",
+      "retrieved": "2026-11-03"
+    }
+  }
 }

@@ -1,8 +1,9 @@
 {
-    "id": "translucent_dark_blue",
-    "name": "Translucent dark blue",
-    "color_hex": "#2b699c",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "b051ed3d-0bad-4567-80aa-33336ced0b32",
+  "id": "translucent_dark_blue",
+  "name": "Translucent dark blue",
+  "color_hex": "#2b699c",
+  "traits": {
+    "recyclable": true
+  }
 }

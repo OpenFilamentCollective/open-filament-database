@@ -1,6 +1,12 @@
 {
-    "id": "abs_high_speed",
-    "name": "ABS High-Speed",
-    "diameter_tolerance": 0.03,
-    "density": 1.1
+  "uuid": "dbad66cb-522d-470b-a55a-2cfbb4f25325",
+  "id": "abs_high_speed",
+  "name": "ABS High-Speed",
+  "diameter_tolerance": 0.05,
+  "density": 1.1,
+  "min_print_temperature": 240,
+  "max_print_temperature": 290,
+  "min_bed_temperature": 80,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0252/0412/9841/files/ERYONE-ABS-HP-TDS.pdf?v=1747275317"
 }

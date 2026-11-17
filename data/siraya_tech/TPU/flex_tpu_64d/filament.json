@@ -1,0 +1,13 @@
+{
+  "uuid": "03e1ea87-7d85-4742-b6f8-e02b95b0fa27",
+  "id": "flex_tpu_64d",
+  "name": "Flex TPU 64D",
+  "diameter_tolerance": 0.02,
+  "density": 1.23,
+  "shore_hardness_d": 64,
+  "min_print_temperature": 240,
+  "max_print_temperature": 270,
+  "min_bed_temperature": 45,
+  "max_bed_temperature": 45,
+  "data_sheet_url": "https://siraya.tech/pages/flex-tpu-64d-filament-tds"
+}

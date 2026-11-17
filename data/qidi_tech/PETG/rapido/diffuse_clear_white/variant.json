@@ -1,8 +1,10 @@
 {
+  "uuid": "bed01cf2-ae8c-4a7d-8d86-be95bc35cf09",
   "id": "diffuse_clear_white",
   "name": "Diffuse Clear White",
   "color_hex": "#FFFFFF",
   "traits": {
-    "translucent": true
+    "translucent": true,
+    "high_flow": true
   }
 }

@@ -1,10 +1,37 @@
 {
+  "uuid": "3240a7f8-6f80-4b85-b0a5-ba17776ebaaf",
   "id": "petg_cf",
   "name": "PETG CF",
   "diameter_tolerance": 0.02,
-  "density": 1.27,
-  "min_print_temperature": 220,
-  "max_print_temperature": 250,
+  "density": 1.34,
+  "min_print_temperature": 245,
+  "max_print_temperature": 265,
   "min_bed_temperature": 70,
-  "max_bed_temperature": 90
+  "max_bed_temperature": 90,
+  "data_sheet_url": "https://www.nobufil.com/_files/ugd/c9047f_a5ac5d564c38475dbd82effe435d9f39.pdf",
+  "sustainability": {
+    "recycled_content": {
+      "pct": null,
+      "pct_qualifier": "exact",
+      "type": "post_industrial",
+      "evidence": "marketing",
+      "source_type": "primary",
+      "source_url": "https://www.nobufil.com/_files/ugd/c9047f_a5ac5d564c38475dbd82effe435d9f39.pdf",
+      "source_quote": "Nobufil PETG CF is a sustainable 10% carbon fiber reinforced PETG made from recycled industrial waste sourced in Europe.",
+      "retrieved": "2026-11-03",
+      "notes": "The 10% in the quote is the carbon fibre share, not recycled content; no recycled percentage is published."
+    },
+    "relative_claims": [
+      {
+        "reduction_pct": 60,
+        "metric": "gwp",
+        "baseline": "raw materials from primary production",
+        "source_type": "primary",
+        "source_url": "https://www.nobufil.com/_files/ugd/c9047f_a5ac5d564c38475dbd82effe435d9f39.pdf",
+        "source_quote": "This product is made from recycled plastic – approx. 60% of CO2 equivalents can be saved compared to raw materials from primary production.",
+        "retrieved": "2026-11-03",
+        "notes": "Datasheet says \"approx.\" 60%; no study, method, boundary or unit published."
+      }
+    ]
+  }
 }

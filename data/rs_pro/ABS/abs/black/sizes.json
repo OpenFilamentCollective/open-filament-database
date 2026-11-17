@@ -1,0 +1,18 @@
+[
+  {
+    "uuid": "ed5a6651-336a-400c-9c29-339f42f5b79d",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "article_number": "304-19-861",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "rs_components",
+        "url": "https://uk.rs-online.com/web/p/3d-printing-materials/8320453"
+      }
+    ]
+  }
+]

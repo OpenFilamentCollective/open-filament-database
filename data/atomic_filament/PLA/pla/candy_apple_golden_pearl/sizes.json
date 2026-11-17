@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "da46cdf6-12f2-47d2-909b-cdc91a65cf0e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/candy-apple-golden-pearl-pla-filament"
+      }
+    ]
   }
 ]

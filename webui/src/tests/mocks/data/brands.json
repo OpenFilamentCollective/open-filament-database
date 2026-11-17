@@ -1,0 +1,16 @@
+[
+	{
+		"id": "test-brand",
+		"name": "Test Brand",
+		"website": "https://testbrand.com",
+		"logo": "test-brand-logo.svg",
+		"origin": "Test Country"
+	},
+	{
+		"id": "another-brand",
+		"name": "Another Brand",
+		"website": "https://anotherbrand.com",
+		"logo": "another-brand-logo.png",
+		"origin": "Another Country"
+	}
+]

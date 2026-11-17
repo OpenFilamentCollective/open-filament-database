@@ -1,10 +1,12 @@
 {
+  "uuid": "4481b91f-67b4-47d7-8afb-441dcb7b8bfc",
   "id": "tpu",
   "name": "TPU",
   "diameter_tolerance": 0.02,
-  "density": 1.21,
-  "min_print_temperature": 210,
-  "max_print_temperature": 240,
-  "min_bed_temperature": 30,
-  "max_bed_temperature": 60
+  "density": 1.18,
+  "min_print_temperature": 220,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 0,
+  "max_bed_temperature": 45,
+  "data_sheet_url": "https://ninjatek.com/wp-content/uploads/TDS_EEL-Revision1_26-06_V1.pdf"
 }

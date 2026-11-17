@@ -1,9 +1,9 @@
 {
+  "uuid": "3468a2df-972f-4c3e-b021-994b45d987bf",
   "id": "m_grey",
   "name": "M Grey",
   "color_hex": "#B8BAB8",
   "traits": {
-    "matte": true,
-    "industrially_compostable": true
+    "matte": true
   }
 }

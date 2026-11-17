@@ -1,12 +1,15 @@
 [
   {
+    "uuid": "974f2c6e-ce80-4d7f-b7b1-1a2ec73baedd",
+    "moved_from": [
+      "892e17ed-6a34-4c18-b855-fce213512284"
+    ],
     "filament_weight": 1000,
     "diameter": 1.75,
-    "purchase_links": [
-      {
-        "store_id": "polymaker",
-        "url": "https://us.polymaker.com/products/panchroma-temp-shift?"
-      }
-    ]
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55
   }
 ]

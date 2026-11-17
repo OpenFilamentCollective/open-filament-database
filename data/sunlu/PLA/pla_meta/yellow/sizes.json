@@ -1,11 +1,24 @@
 [
   {
+    "uuid": "8d8ee596-db0c-482a-aacc-834a9bc8403b",
     "filament_weight": 250,
     "diameter": 1.75,
     "purchase_links": [
       {
         "store_id": "sunlu",
-        "url": "https://www.sunlu.com/products/best-halloween-gift-250g-pla-silk-filament-1-75mm-moq-24-rolls?sca_ref=9781188.Ca9wv9CZ1J"
+        "url": "https://store.sunlu.com/products/best-halloween-gift-250g-pla-silk-filament-1-75mm-moq-24-rolls"
+      }
+    ]
+  },
+  {
+    "uuid": "b47e3585-8adf-430f-bac8-5d2a734f6ece",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "6933582309046",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/sunlu/pla-meta-yellow"
       }
     ]
   }

@@ -1,6 +1,9 @@
 [
   {
+    "uuid": "bdd79036-da84-41c4-b633-fd50391bc35a",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "731093606762",
+    "article_number": "PETG606762"
   }
 ]

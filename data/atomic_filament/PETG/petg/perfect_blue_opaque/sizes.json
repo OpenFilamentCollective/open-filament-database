@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "c33a866b-e243-437c-b915-e76287f90c9b",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/perfect-blue-opaque-petg-pro"
+      }
+    ]
   }
 ]

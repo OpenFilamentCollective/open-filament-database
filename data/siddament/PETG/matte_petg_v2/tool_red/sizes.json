@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "7b682ad2-40fc-41c8-b6ce-e601e30131ca",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "12.074",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-mil-walkie-red-petg-v2"
+      }
+    ]
+  }
+]

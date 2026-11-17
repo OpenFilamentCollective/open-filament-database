@@ -1,8 +1,12 @@
 {
+  "uuid": "99e4024f-44b9-44c1-8744-15bb52d07488",
   "id": "gold",
   "name": "Gold",
   "color_hex": "#E3B145",
   "color_standards": {
     "ral": "1036"
+  },
+  "traits": {
+    "recyclable": true
   }
 }

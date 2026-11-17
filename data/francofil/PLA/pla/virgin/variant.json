@@ -1,9 +1,12 @@
 {
+  "uuid": "d0af2e1b-fa7d-4911-a296-1610aadb86d4",
   "id": "virgin",
   "name": "Virgin",
   "color_hex": "#FADCA4",
   "traits": {
     "transparent": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "recyclable": true,
+    "bio_based": true
   }
 }

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "31bd564b-eff4-4794-ad9f-3c88aeeb2c83",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/translucent-neon-yellow-petg-pro-uv-reactive"
+      }
+    ]
   }
 ]

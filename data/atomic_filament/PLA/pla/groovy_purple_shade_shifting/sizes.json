@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "1f5b8e49-4c8d-4b62-87fc-f8da6b399352",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/groovy-purple-pla-shade-shifting-ams-comp"
+      }
+    ]
   }
 ]

@@ -1,8 +1,9 @@
 {
-    "id": "cool_mint",
-    "name": "Cool Mint",
-    "color_hex": "#BEC9B4",
-    "traits": {
-        "matte": true
-    }
+  "uuid": "a2e66e9f-43bb-4ec4-bd57-149d7663e93c",
+  "id": "cool_mint",
+  "name": "Cool Mint",
+  "color_hex": "#BEC9B4",
+  "traits": {
+    "matte": true
+  }
 }

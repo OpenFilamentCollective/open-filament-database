@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "c35b1627-fe2a-4817-90cc-6ccae97c3489",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.070",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-skin-petg-v2"
+      }
+    ]
+  }
+]

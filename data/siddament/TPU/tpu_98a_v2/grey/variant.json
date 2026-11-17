@@ -1,0 +1,10 @@
+{
+  "uuid": "a746f45d-c4bc-4152-83cc-d0425293aff9",
+  "id": "grey",
+  "name": "Grey",
+  "color_hex": "#808080",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "416 C"
+  }
+}

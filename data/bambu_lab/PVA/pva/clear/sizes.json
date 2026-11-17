@@ -1,8 +1,11 @@
 [
   {
+    "uuid": "305dcb1f-f5cc-4de8-9800-bd136dda350c",
     "filament_weight": 500,
     "diameter": 1.75,
     "ean": "6975337036708",
+    "article_number": "66400",
+    "barcode_identifier": "921170411006",
     "purchase_links": [
       {
         "store_id": "bblstore",

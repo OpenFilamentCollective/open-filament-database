@@ -1,0 +1,12 @@
+{
+  "uuid": "7add4448-b3eb-450b-b89e-776f008dc361",
+  "id": "yellow",
+  "name": "Yellow",
+  "color_hex": "#FFEA4D",
+  "hex_variants": [
+    "#F4C032"
+  ],
+  "traits": {
+    "high_flow": true
+  }
+}

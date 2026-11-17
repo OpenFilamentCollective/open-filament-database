@@ -1,9 +1,9 @@
 {
+  "uuid": "9bad75e3-ca3e-4ea4-9826-9289fb56456d",
   "id": "metallic_blue",
   "name": "Metallic Blue",
   "color_hex": "#1E2F5A",
   "traits": {
-    "industrially_compostable": true,
     "silk": true,
     "glitter": true
   }

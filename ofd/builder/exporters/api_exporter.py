@@ -10,6 +10,10 @@ import shutil
 import uuid
 from pathlib import Path
 
+from jsonschema import Draft7Validator
+from referencing import Registry, Resource
+from referencing.jsonschema import DRAFT7
+
 from ..models import Database
 from ..serialization import entity_to_dict
 
@@ -65,7 +69,9 @@ def export_schemas(
                 logo_schemas[schema_file.name] = json.load(f)
 
     if schemas_dir.exists():
-        for schema_file in sorted(schemas_dir.glob("*.json")):
+        # `*_schema.json` only: schemas/ also holds shared lookup tables (trait_rules.json)
+        # that are not JSON Schema documents and must not appear in the schemas index.
+        for schema_file in sorted(schemas_dir.glob("*_schema.json")):
             # Check if there's a corresponding logo schema
             logo_schema_name = schema_file.stem + "_logo_schema.json"
 
@@ -294,6 +300,41 @@ def export_store_logos(
     return copied_count, logo_id_mapping
 
 
+def export_material_defaults(api_path: Path, reference_dir: Path, schemas_dir: Path) -> bool:
+    """
+    Publish reference/material_defaults.json as api/v1/material-defaults.json.
+
+    These are generic per-material estimates, not manufacturer data, so they live outside
+    data/ and are published as their own artifact. The file is validated against
+    material_defaults_schema.json first; an invalid file fails the build.
+    """
+    src = reference_dir / "material_defaults.json"
+    if not src.exists():
+        return False
+
+    with open(src, encoding="utf-8") as f:
+        defaults = json.load(f)
+
+    schema_path = schemas_dir / "material_defaults_schema.json"
+    if schema_path.exists():
+        with open(schema_path, encoding="utf-8") as f:
+            schema = json.load(f)
+        # Register every schema by its "./name" so cross-file $refs resolve.
+        registry = Registry().with_resources(
+            (
+                f"./{p.name}",
+                Resource.from_contents(
+                    json.loads(p.read_text(encoding="utf-8")), default_specification=DRAFT7
+                ),
+            )
+            for p in schemas_dir.glob("*_schema.json")
+        )
+        Draft7Validator(schema, registry=registry).validate(defaults)
+
+    shutil.copy2(src, api_path / "material-defaults.json")
+    return True
+
+
 def export_api(
     db: Database,
     output_dir: str,
@@ -304,6 +345,8 @@ def export_api(
     base_url: str = "",
     data_dir: str = "data",
     stores_dir: str = "stores",
+    commit: str | None = None,
+    reference_dir: str | None = None,
     **kwargs,
 ):
     """Export static API structure following native directory hierarchy."""
@@ -312,6 +355,7 @@ def export_api(
 
     # Export schemas if directory provided
     schemas_count = 0
+    trait_rules_written = False
     if schemas_dir:
         schemas_path = Path(schemas_dir)
         builder_schemas_path = Path(builder_schemas_dir) if builder_schemas_dir else None
@@ -319,6 +363,23 @@ def export_api(
             api_path, schemas_path, builder_schemas_path, version, generated_at
         )
         print(f"  Written: {schemas_count} schemas")
+
+        # Shared name -> trait rule table. Published so the webui (and any other
+        # consumer) reads the same rules the validator and backfill script do. Copied
+        # verbatim, and kept out of the schemas index because it is not a schema.
+        trait_rules_src = schemas_path / "trait_rules.json"
+        if trait_rules_src.exists():
+            shutil.copy2(trait_rules_src, api_path / "trait-rules.json")
+            trait_rules_written = True
+            print(f"  Written: {api_path / 'trait-rules.json'}")
+
+    material_defaults_written = False
+    if reference_dir and schemas_dir:
+        material_defaults_written = export_material_defaults(
+            api_path, Path(reference_dir), Path(schemas_dir)
+        )
+        if material_defaults_written:
+            print(f"  Written: {api_path / 'material-defaults.json'}")
 
     # Export brand and store logos (get logo ID mappings)
     data_path = Path(data_dir)
@@ -355,15 +416,23 @@ def export_api(
         "brand_logos": "brands/logo/index.json",
         "store_logos": "stores/logo/index.json",
         "badges": "badges/",
-        "editor": "editor/",
         "all": "../json/all.json",
+        "orcaslicer": "../../orcaslicer/index.json",
+        "search_index": "search-index.json",
+        "gtin_index": "gtin-index.json",
     }
     if schemas_count > 0:
         endpoints["schemas"] = "schemas/index.json"
+    # Only advertised when actually written, so the index can never point at a 404.
+    if trait_rules_written:
+        endpoints["trait_rules"] = "trait-rules.json"
+    if material_defaults_written:
+        endpoints["material_defaults"] = "material-defaults.json"
 
     index = {
         "version": version,
         "generated_at": generated_at,
+        **({"commit": commit} if commit else {}),
         "stats": {
             "brands": len(db.brands),
             "materials": len(db.materials),
@@ -377,6 +446,27 @@ def export_api(
     }
     write_json(api_path / "index.json", index)
     print(f"  Written: {api_path / 'index.json'}")
+
+    # Flat global search index (brands + stores + materials + filaments)
+    from .search_index_exporter import export_search_index
+
+    search_count = export_search_index(
+        db,
+        api_path,
+        version,
+        generated_at,
+        brand_logo_id_mapping,
+        store_logo_id_mapping,
+    )
+    print(f"  Written: {api_path / 'search-index.json'} ({search_count} records)")
+
+    # Barcode lookup: GTIN/EAN/UPC -> the size(s) carrying it (#479). Kept out of the
+    # search index because it is an order of magnitude larger and only needed when a
+    # query actually looks like a barcode, so consumers fetch it on demand.
+    from .gtin_index_exporter import export_gtin_index
+
+    gtin_count = export_gtin_index(db, api_path / "gtin-index.json", version, generated_at)
+    print(f"  Written: {api_path / 'gtin-index.json'} ({gtin_count} codes)")
 
     # Brands index
     brands_path = api_path / "brands"
@@ -392,6 +482,8 @@ def export_api(
             "material_count": len(brand_materials),
             "path": f"{brand['slug']}/index.json",
         }
+        if brand.get("parent_brand_id"):
+            brand_entry["parent_brand_id"] = brand["parent_brand_id"]
         # Add logo_slug if brand has a logo
         if brand["id"] in brand_logo_id_mapping:
             brand_entry["logo_slug"] = brand_logo_id_mapping[brand["id"]]
@@ -472,16 +564,17 @@ def export_api(
                 variants_list = []
                 for var in fil_variants:
                     var_sizes = sizes_by_variant.get(var["id"], [])
-                    variants_list.append(
-                        {
-                            "id": var["id"],
-                            "name": var["name"],
-                            "color_hex": var["color_hex"],
-                            "slug": var["slug"],
-                            "size_count": len(var_sizes),
-                            "path": f"variants/{var['slug']}.json",
-                        }
-                    )
+                    variant_entry = {
+                        "id": var["id"],
+                        "name": var["name"],
+                        "color_hex": var["color_hex"],
+                        "slug": var["slug"],
+                        "size_count": len(var_sizes),
+                        "path": f"variants/{var['slug']}.json",
+                    }
+                    if "color_hexes" in var:
+                        variant_entry["color_hexes"] = var["color_hexes"]
+                    variants_list.append(variant_entry)
 
                 fil_data = entity_to_dict(fil)
                 fil_data["variants"] = variants_list

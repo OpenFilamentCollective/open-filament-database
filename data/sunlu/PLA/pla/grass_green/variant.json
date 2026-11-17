@@ -1,8 +1,9 @@
 {
+  "uuid": "18fd7928-bdd4-4e5c-aeea-189b8eea65af",
   "id": "grass_green",
   "name": "Grass Green",
   "color_hex": "#008476",
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

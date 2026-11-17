@@ -1,0 +1,25 @@
+[
+  {
+    "uuid": "3feaf950-219c-4c89-9679-4443a298b1d7",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/petg-matt-filament?variant=56403880051071"
+      }
+    ]
+  },
+  {
+    "uuid": "bacedc2e-1830-4b9b-ae0a-171ffb59a73f",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "refill",
+    "purchase_links": [
+      {
+        "store_id": "bavaria_filaments",
+        "url": "https://www.bavaria-filaments.com/products/petg-matt-filament?variant=56810190700927"
+      }
+    ]
+  }
+]

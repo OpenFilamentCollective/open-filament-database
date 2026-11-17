@@ -1,8 +1,10 @@
 {
+  "uuid": "aec0fa91-e2e7-4bae-b9a5-fa2d3c17b004",
   "id": "metallic_gold",
   "name": "Metallic Gold",
-  "color_hex": "#E3B145",
+  "color_hex": "#C08C4A",
+  "transmission_distance": 4.8,
   "traits": {
-    "industrially_compostable": true
+    "bio_based": true
   }
 }

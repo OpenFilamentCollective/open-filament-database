@@ -1,0 +1,13 @@
+{
+  "uuid": "66bead7a-4433-459c-917b-f30a2598a218",
+  "id": "soft_green",
+  "name": "Soft Green",
+  "color_hex": "#01FEB2",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "319 C"
+  },
+  "traits": {
+    "matte": true
+  }
+}

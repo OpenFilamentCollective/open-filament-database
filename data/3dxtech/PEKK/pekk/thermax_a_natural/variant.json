@@ -1,9 +1,10 @@
 {
+  "uuid": "59039be1-4c68-4988-a716-6f319cf11d80",
   "id": "thermax_a_natural",
   "name": "THERMAX A Natural",
   "color_hex": "#EADAC2",
   "traits": {
-    "low_outgassing": true,
-    "without_pigments": true
+    "without_pigments": true,
+    "low_outgassing": true
   }
 }

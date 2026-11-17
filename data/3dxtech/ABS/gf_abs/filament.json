@@ -1,10 +1,12 @@
 {
+  "uuid": "52bff49f-34b7-4495-95e5-f0de6158d09c",
   "id": "gf_abs",
   "name": "ABS GF",
   "diameter_tolerance": 0.02,
-  "density": 1.04,
+  "density": 1.15,
   "min_print_temperature": 230,
-  "max_print_temperature": 260,
-  "min_bed_temperature": 90,
-  "max_bed_temperature": 110
+  "max_print_temperature": 245,
+  "min_bed_temperature": 95,
+  "max_bed_temperature": 110,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0625/4185/6821/files/FIBREX_GF_ABS__TDS_v1.pdf?v=1723942769"
 }

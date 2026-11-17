@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "39e9027f-0092-4b99-bd1d-522d6f421db4",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "9.068",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/red-dark-abs-v2"
+      }
+    ]
+  }
+]

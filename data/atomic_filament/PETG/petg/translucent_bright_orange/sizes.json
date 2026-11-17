@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "33caa797-d883-46da-bf70-5810b73bc5d3",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/translucent-bright-orange-petg-pro"
+      }
+    ]
   }
 ]

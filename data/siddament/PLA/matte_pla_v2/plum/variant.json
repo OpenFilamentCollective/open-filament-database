@@ -1,0 +1,10 @@
+{
+  "uuid": "92de80c3-989f-4ae1-8b4a-52404f7e3082",
+  "id": "plum",
+  "name": "Plum",
+  "color_hex": "#3C1F3A",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

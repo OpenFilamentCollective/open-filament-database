@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "6fbda21e-e3b0-4960-a174-feab1ca8421c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "5.069",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-hot-red-pla"
+      }
+    ]
+  }
+]

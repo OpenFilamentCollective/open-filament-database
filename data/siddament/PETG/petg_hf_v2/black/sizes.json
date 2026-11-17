@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "b2d2d9aa-eb3e-41b3-84a7-b918aad9afdb",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.048",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/petg-hf-black-v2"
+      }
+    ]
+  }
+]

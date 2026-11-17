@@ -1,6 +1,17 @@
 {
-    "id": "metallic_pla",
-    "name": "Metallic PLA",
-    "diameter_tolerance": 0.02,
-    "density": 1.19
+  "uuid": "71bcc6c4-9166-48c6-af49-a039d82317dd",
+  "moved_from": [
+    "4645bbeb-271b-4685-863c-6e1a57c678a1"
+  ],
+  "id": "metallic_pla",
+  "name": "Metallic PLA",
+  "diameter_tolerance": 0.02,
+  "density": 1.19,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_PANCHROMA_V2.pdf"
 }

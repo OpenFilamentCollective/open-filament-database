@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "eb3cd44b-e0f7-4e73-908d-fc884bf7c22f",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/extreme-jet-black-pla-filament"
+      }
+    ]
   }
 ]

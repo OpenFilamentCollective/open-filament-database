@@ -1,8 +1,9 @@
 {
-    "id": "neon_lime",
-    "name": "Neon lime",
-    "color_hex": "#acff2d",
-    "traits": {
-        "recyclable": true
-    }
+  "uuid": "6360fbdd-52fe-46e1-a8d4-283c00edefc7",
+  "id": "neon_lime",
+  "name": "Neon lime",
+  "color_hex": "#acff2d",
+  "traits": {
+    "recyclable": true
+  }
 }

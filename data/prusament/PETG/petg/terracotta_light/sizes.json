@@ -1,7 +1,14 @@
 [
   {
+    "uuid": "1e94e76c-8c15-4619-a8c0-1b7bd4cc93d7",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "gtin": "8594173675384"
+    "gtin": "8594173675384",
+    "purchase_links": [
+      {
+        "store_id": "prusa3d",
+        "url": "https://www.prusa3d.com/product/prusament-petg-terracotta-light-1kg-nfc/"
+      }
+    ]
   }
 ]

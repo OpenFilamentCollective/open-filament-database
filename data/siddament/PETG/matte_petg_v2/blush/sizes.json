@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "536220be-f7aa-4fa7-9f68-432b0f84e3ee",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 400,
+    "article_number": "10.068",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/matte-blush-petg-v2"
+      }
+    ]
+  }
+]

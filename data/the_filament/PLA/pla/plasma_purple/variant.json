@@ -1,5 +1,9 @@
 {
-    "id": "plasma_purple",
-    "name": "Plasma Purple",
-    "color_hex": "#99679c"
+  "uuid": "38a0dc23-1033-465f-a58d-7981a7ea6130",
+  "moved_from": [
+    "66248d33-3969-47d4-8cc2-a7f3ead135e8"
+  ],
+  "id": "plasma_purple",
+  "name": "Plasma Purple",
+  "color_hex": "#99679c"
 }

@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "76fc6006-f8a7-46a1-9058-87c72154eda4",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/army-green-abs-filament"
+      }
+    ]
   }
 ]

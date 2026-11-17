@@ -1,6 +1,13 @@
 [
   {
+    "uuid": "2c6be5f1-cea5-4dae-85d9-b05c9b096065",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "purchase_links": [
+      {
+        "store_id": "atomic_filament",
+        "url": "https://atomicfilament.com/products/majestic-brown-petg-pro"
+      }
+    ]
   }
 ]

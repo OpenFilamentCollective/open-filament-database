@@ -1,6 +1,16 @@
 [
   {
-    "filament_weight": 1000,
-    "diameter": 1.75
+    "uuid": "29c06638-a697-45a6-8de2-2371e33d7710",
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "gtin": "8720629061283",
+    "article_number": "HPPE-175YLGN-00750"
+  },
+  {
+    "uuid": "5b78456f-4c37-47f2-923e-5f1b0ca0b3a2",
+    "filament_weight": 250,
+    "diameter": 1.75,
+    "gtin": "8720629061528",
+    "article_number": "HPPE-175YLGN-00250"
   }
 ]

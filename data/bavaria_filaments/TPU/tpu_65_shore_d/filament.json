@@ -1,0 +1,10 @@
+{
+  "uuid": "04072067-24ac-4116-a14a-98390a6ebcab",
+  "id": "tpu_65_shore_d",
+  "name": "TPU 65 Shore D",
+  "diameter_tolerance": 0.05,
+  "density": 1.2,
+  "shore_hardness_d": 65,
+  "min_print_temperature": 230,
+  "max_print_temperature": 250
+}

@@ -1,5 +1,9 @@
 {
-    "id": "machinery_orange",
-    "name": "Machinery Orange",
-    "color_hex": "#f8db11"
+  "uuid": "6fe24f59-6058-45b1-bfba-bb57c770d315",
+  "moved_from": [
+    "a1605fa7-8212-4a02-b9d6-e9dedcea6e2a"
+  ],
+  "id": "machinery_orange",
+  "name": "Machinery Orange",
+  "color_hex": "#f8db11"
 }

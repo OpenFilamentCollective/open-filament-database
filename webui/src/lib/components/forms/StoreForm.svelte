@@ -1,0 +1,147 @@
+<script lang="ts">
+	import { untrack } from 'svelte';
+	import { SchemaForm } from '$lib/components/forms';
+	import { LogoUpload } from '$lib/components/form-fields';
+	import { removeIdFromSchema } from '$lib/utils/schemaUtils';
+	import { initializeFormData, buildSubmitData } from './schemaFormUtils';
+	import type { SchemaFormConfig } from './schemaFormTypes';
+	import { LOGO_REQUIRED_ERROR, LOGO_UPDATE_SUCCESS } from '$lib/config/messages';
+	import { FixHint } from '$lib/components/ui';
+	import { checkNameLeadingCase } from '$lib/utils/dataQuality';
+	import { formDrafts } from '$lib/stores/formDrafts';
+
+	interface Props {
+		store: any;
+		schema: any;
+		onSubmit: (data: any) => void;
+		onLogoChange: (dataUrl: string) => void;
+		logoChanged?: boolean;
+		saving?: boolean;
+		/** Optional key for in-memory draft preservation across modal close/reopen */
+		draftKey?: string;
+	}
+
+	let { store, schema, onSubmit, onLogoChange, logoChanged = false, saving = false, draftKey }: Props = $props();
+
+	// Config for store form - labels, tooltips, and placeholders come from schema
+	const config: SchemaFormConfig = {
+		// `uuid` is the canonical id assigned by CI on merge — never shown or edited here.
+		hiddenFields: ['id', 'uuid', 'moved_from', 'logo'],
+		fieldOrder: ['name', 'storefront_url', 'ships_from', 'ships_to'],
+		fieldGroups: [['ships_from', 'ships_to']],
+		typeOverrides: {
+			ships_from: 'countryList',
+			ships_to: 'countryList'
+		}
+	};
+
+	// Prepare schema - remove id field
+	let preparedSchema = $derived(removeIdFromSchema(schema));
+
+	// Form data state — restored from draft if one exists for this draftKey
+	let formData = $state<Record<string, any>>(
+		(draftKey && formDrafts.has(draftKey))
+			? formDrafts.get(draftKey) as Record<string, any>
+			: initializeFormData(preparedSchema, store, config.hiddenFields)
+	);
+
+	// Logo validation error
+	let logoError: string | null = $state(null);
+
+	// Track entity changes to reinitialize form data
+	// NOTE: must be a plain variable, NOT $state — proxy identity breaks !== comparisons.
+	let lastEntity: any = store;
+	$effect(() => {
+		if (store !== untrack(() => lastEntity)) {
+			lastEntity = store;
+			formData = initializeFormData(preparedSchema, store, config.hiddenFields);
+			logoError = null;
+		}
+	});
+
+	// Clear logo error when logo is uploaded
+	$effect(() => {
+		if (logoChanged || store.logo) {
+			logoError = null;
+		}
+	});
+
+	// Persist form data to the in-memory draft store on every change.
+	$effect(() => {
+		if (!draftKey) return;
+		formDrafts.set(draftKey, formData);
+	});
+
+	// Handle form submission
+	function handleSubmit(data: any) {
+		// Check if logo exists before allowing submission
+		if (!store.logo && !logoChanged) {
+			logoError = LOGO_REQUIRED_ERROR;
+			return;
+		}
+
+		logoError = null;
+		const submitData = buildSubmitData(preparedSchema, data, config.hiddenFields, undefined, config.transforms);
+		// Filter empty strings from country code arrays
+		if (Array.isArray(submitData.ships_from)) {
+			submitData.ships_from = submitData.ships_from.filter((v: string) => v.trim());
+		}
+		if (Array.isArray(submitData.ships_to)) {
+			submitData.ships_to = submitData.ships_to.filter((v: string) => v.trim());
+		}
+		// Preserve the canonical UUID on edit; left empty on create for CI to assign.
+		if (store?.uuid) submitData.uuid = store.uuid;
+		// Preserve former UUIDs so old references still resolve after a move/merge.
+		if (store?.moved_from) submitData.moved_from = store.moved_from;
+		onSubmit(submitData);
+	}
+
+	// Check if form can be submitted (name is required)
+	let canSubmit = $derived(!!formData.name);
+
+	// A display name that starts with a lowercase letter. Only the first letter is
+	// changed — Title Casing the rest would rewrite manufacturer styling.
+	let nameLeadingCase = $derived(checkNameLeadingCase(String(formData?.name ?? '')));
+
+	function fixNameLeadingCase() {
+		if (nameLeadingCase) formData.name = nameLeadingCase.suggestion;
+	}
+</script>
+
+{#if nameLeadingCase}
+	<FixHint
+		fixLabel="Fix"
+		onFix={fixNameLeadingCase}
+		fixTitle="Rename to “{nameLeadingCase.suggestion}”"
+		class="mb-4"
+	>
+		Store names are shown capitalised everywhere they appear. Rename to
+		<strong>{nameLeadingCase.suggestion}</strong>.
+	</FixHint>
+{/if}
+
+<SchemaForm
+	schema={preparedSchema}
+	bind:data={formData}
+	{config}
+	{saving}
+	submitLabel={store?.id ? 'Update Store' : 'Create Store'}
+	submitDisabled={!canSubmit}
+	onSubmit={handleSubmit}
+>
+	{#snippet beforeFields()}
+		<LogoUpload
+			currentLogo={store.logo}
+			entityType="store"
+			entityId={store.id}
+			{onLogoChange}
+			label="Store Logo"
+		/>
+		{#if logoChanged}
+			<p class="text-sm text-green-600 -mt-2 mb-4">{LOGO_UPDATE_SUCCESS}</p>
+		{/if}
+		{#if logoError}
+			<p class="text-sm text-destructive -mt-2 mb-4">{logoError}</p>
+		{/if}
+	{/snippet}
+</SchemaForm>

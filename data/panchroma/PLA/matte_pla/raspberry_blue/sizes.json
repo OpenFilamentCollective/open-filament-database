@@ -1,0 +1,26 @@
+[
+  {
+    "uuid": "be73854f-f326-4cd8-8702-42adfbdcc91c",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "gtin": "6938936718260",
+    "article_number": "CA04092",
+    "discontinued": false
+  },
+  {
+    "uuid": "d92bc2d0-f143-45d0-a1ef-9dd568886ffa",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": true,
+    "container_material": "refill",
+    "gtin": "6938936719908",
+    "article_number": "PC1002025"
+  }
+]

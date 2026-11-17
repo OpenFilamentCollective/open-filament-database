@@ -1,0 +1,16 @@
+[
+  {
+    "uuid": "bd1dac0e-e877-479d-b6b1-ce0f06662fef",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 200,
+    "article_number": "6.022",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "siddament",
+        "url": "https://siddament.com.au/products/fluorescent-lavender-petg"
+      }
+    ]
+  }
+]

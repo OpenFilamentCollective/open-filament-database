@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "96f65720-6c13-4e04-b457-86469539d915",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994171906",
+    "article_number": "700-001-1602",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/pla-wood-ebony"
+      }
+    ]
   }
 ]

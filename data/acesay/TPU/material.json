@@ -1,0 +1,12 @@
+{
+  "uuid": "b798d7f3-2ab9-47bd-aec6-9c21005d71db",
+  "material": "TPU",
+  "material_class": "FFF",
+  "default_slicer_settings": {
+    "orcaslicer": {
+      "bed_temp": 70,
+      "nozzle_temp": 215,
+      "profile_name": "ACESAY TPU 95A"
+    }
+  }
+}

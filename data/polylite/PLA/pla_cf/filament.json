@@ -1,6 +1,15 @@
 {
-    "id": "pla_cf",
-    "name": "PLA-CF",
-    "diameter_tolerance": 0.02,
-    "density": 1.2
+  "uuid": "de0f3f6f-9198-4d89-97ec-746d3df670b0",
+  "id": "pla_cf",
+  "name": "PLA-CF",
+  "diameter_tolerance": 0.02,
+  "density": 1.29,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 25,
+  "max_bed_temperature": 60,
+  "dry_temperature": 55,
+  "dry_time": 6,
+  "enclosure": "not_needed",
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/PolyLite_PLA-CF_TDS_EN_V5.4.pdf"
 }

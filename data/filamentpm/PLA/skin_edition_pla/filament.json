@@ -1,10 +1,11 @@
 {
+  "uuid": "21042789-1331-449b-945e-3d099a1dc99c",
   "id": "skin_edition_pla",
   "name": "Skin Edition PLA",
-  "diameter_tolerance": 0.02,
-  "density": 1.24,
+  "diameter_tolerance": 0.05,
+  "density": 1.25,
   "min_print_temperature": 190,
-  "max_print_temperature": 230,
-  "min_bed_temperature": 50,
-  "max_bed_temperature": 70
+  "max_print_temperature": 210,
+  "min_bed_temperature": 20,
+  "max_bed_temperature": 60
 }

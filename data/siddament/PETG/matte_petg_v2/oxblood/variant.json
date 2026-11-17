@@ -1,0 +1,14 @@
+{
+  "uuid": "e320e6fd-ab4a-4b05-917f-98810905a93c",
+  "id": "oxblood",
+  "name": "Oxblood",
+  "color_hex": "#6E1414",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "1815 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

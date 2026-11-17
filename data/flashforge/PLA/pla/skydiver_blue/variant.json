@@ -1,9 +1,9 @@
 {
+  "uuid": "6fe5a60d-67a6-4a74-9238-60a4cf7a36ea",
   "id": "skydiver_blue",
   "name": "Skydiver Blue",
   "color_hex": "#2E56F1",
   "traits": {
-    "industrially_compostable": true,
     "iridescent": true
   }
 }

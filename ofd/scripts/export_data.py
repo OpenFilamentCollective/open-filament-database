@@ -17,6 +17,7 @@ from typing import Any
 from jsonschema.exceptions import ValidationError as JsonSchemaValidationError
 from jsonschema.validators import Draft7Validator
 from referencing import Registry, Resource
+from referencing.jsonschema import DRAFT7
 
 from ofd.base import BaseScript, ScriptResult, register_script
 
@@ -99,12 +100,18 @@ class SchemaLoader:
     def registry(self) -> Registry:
         """Get schema registry for $ref resolution."""
         if self._registry is None:
-            material_types = self.get("material_types")
+            # Register every schema by its "./name" so cross-file $refs
+            # (material_types, sustainability, ...) resolve.
             resources = []
-            if material_types:
-                resources.append(
-                    ("./material_types_schema.json", Resource.from_contents(material_types))
-                )
+            for path in sorted(self.schemas_dir.glob("*_schema.json")):
+                schema = self.get(path.name.removesuffix("_schema.json"))
+                if schema:
+                    resources.append(
+                        (
+                            f"./{path.name}",
+                            Resource.from_contents(schema, default_specification=DRAFT7),
+                        )
+                    )
             self._registry = Registry().with_resources(resources)
         return self._registry
 

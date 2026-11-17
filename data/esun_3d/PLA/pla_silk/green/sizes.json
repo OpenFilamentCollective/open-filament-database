@@ -1,12 +1,19 @@
 [
   {
+    "uuid": "454063b2-26cc-4192-b55c-ef6828e8b820",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 140,
+    "gtin": "6922572204164",
+    "article_number": "PLA-SK175G1P1",
     "purchase_links": [
       {
         "store_id": "esun3d",
         "url": "https://esun3dstore.com/products/epla-silk"
+      },
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/esun/pla-silk-green-3"
       }
     ]
   }

@@ -1,6 +1,15 @@
 [
   {
+    "uuid": "b808fab0-ca2b-4b39-9a6a-7ce000ebbed7",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "6974994170541",
+    "article_number": "700-001-1321",
+    "purchase_links": [
+      {
+        "store_id": "3djake",
+        "url": "https://www.3djake.com/geeetech/petg-silver-3"
+      }
+    ]
   }
 ]

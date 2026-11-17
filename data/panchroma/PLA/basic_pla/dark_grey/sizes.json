@@ -1,0 +1,21 @@
+[
+  {
+    "uuid": "ec96a6f6-18f9-4a3e-9155-83541f5df718",
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "spool_refill": false,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
+    "spool_core_diameter": 100,
+    "container_width": 66,
+    "container_outer_diameter": 200,
+    "container_hole_diameter": 55,
+    "article_number": "CA19028",
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://shop.polymaker.com/products/panchroma-pla?variant=44863271010361"
+      }
+    ]
+  }
+]

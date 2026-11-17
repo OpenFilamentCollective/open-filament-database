@@ -1,0 +1,14 @@
+{
+  "uuid": "45eb2ae1-8897-45ac-a0c4-2678fbb56670",
+  "id": "pocket_green",
+  "name": "Pocket Green",
+  "color_hex": "#8BAC0F",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "377 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

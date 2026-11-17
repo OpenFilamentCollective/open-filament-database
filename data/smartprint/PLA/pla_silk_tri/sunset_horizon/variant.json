@@ -1,8 +1,12 @@
 {
+  "uuid": "789f4db9-b4c0-44df-9ebd-4068ecbaaa1d",
   "id": "sunset_horizon",
   "name": "Sunset Horizon",
   "color_hex": [
     "#c4bc00",
     "#669c35"
-  ]
+  ],
+  "traits": {
+    "coextruded": true
+  }
 }

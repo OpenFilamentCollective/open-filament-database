@@ -1,7 +1,10 @@
 [
   {
+    "uuid": "01561afa-1634-436b-a819-b4a73df83d5d",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "plastic",
+    "article_number": "50.203.0338",
     "purchase_links": [
       {
         "store_id": "elegoo",

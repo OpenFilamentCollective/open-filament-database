@@ -1,9 +1,10 @@
 {
+  "uuid": "11c3ea0d-0241-4b50-8aea-ba848938f236",
   "id": "a_black",
   "name": "A Black",
   "color_hex": "#000000",
   "traits": {
-    "esd_safe": true,
-    "low_outgassing": true
+    "low_outgassing": true,
+    "esd_safe": true
   }
 }

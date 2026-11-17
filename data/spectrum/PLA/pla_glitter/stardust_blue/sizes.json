@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "fee25c94-145d-49c8-859c-68bab35b40da",
     "filament_weight": 1000,
     "diameter": 1.75,
     "ean": "5903175651594",
@@ -12,6 +13,7 @@
     ]
   },
   {
+    "uuid": "814e378f-dc88-455c-941b-5af594a0715d",
     "filament_weight": 500,
     "diameter": 1.75,
     "ean": "5903175651600",
@@ -22,5 +24,11 @@
         "url": "https://shop.spectrumfilaments.com/product-eng-1153-Filament-Spectrum-PLA-Glitter-1-75mm-STARDUST-BLUE-0-5kg.html"
       }
     ]
+  },
+  {
+    "uuid": "b56dea7c-1ae6-4eed-aca0-0fa35b407d35",
+    "filament_weight": 1000,
+    "diameter": 2.85,
+    "gtin": "5903175651648"
   }
 ]

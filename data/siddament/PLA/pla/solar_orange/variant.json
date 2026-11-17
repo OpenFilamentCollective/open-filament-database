@@ -1,0 +1,10 @@
+{
+  "uuid": "d4203287-01af-487d-ad6a-6d34abe99d81",
+  "id": "solar_orange",
+  "name": "Solar Orange",
+  "color_hex": "#FFB100",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "1245 C"
+  }
+}

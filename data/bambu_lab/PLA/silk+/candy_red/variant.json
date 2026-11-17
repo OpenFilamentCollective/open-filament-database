@@ -1,5 +1,9 @@
 {
-    "id": "candy_red",
-    "name": "Candy Red",
-    "color_hex": "#D02727"
+  "uuid": "ff58a343-8cd7-4e7a-9403-437b49a9a7e3",
+  "moved_from": [
+    "b9f079a3-ce99-4973-b3d8-d151759b62d4"
+  ],
+  "id": "candy_red",
+  "name": "Candy Red",
+  "color_hex": "#D02727"
 }

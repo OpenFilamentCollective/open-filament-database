@@ -1,0 +1,14 @@
+{
+  "uuid": "abd2e720-7948-4e0a-8508-8430fbae54cd",
+  "id": "mocha",
+  "name": "Mocha",
+  "color_hex": "#4B3621",
+  "discontinued": false,
+  "color_standards": {
+    "pantone": "476 C"
+  },
+  "traits": {
+    "matte": true,
+    "abrasive": true
+  }
+}

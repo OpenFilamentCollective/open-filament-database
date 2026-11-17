@@ -1,5 +1,9 @@
 {
-    "id": "circuit_green",
-    "name": "Circuit Green",
-    "color_hex": "#02b31b"
+  "uuid": "7b1f46d7-0668-49c1-8db0-074580888498",
+  "moved_from": [
+    "85f6bd59-fc5b-4332-820d-892008d8c727"
+  ],
+  "id": "circuit_green",
+  "name": "Circuit Green",
+  "color_hex": "#02b31b"
 }

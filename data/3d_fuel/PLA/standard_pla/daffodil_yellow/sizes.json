@@ -1,6 +1,16 @@
 [
   {
+    "uuid": "0938ca55-b752-4fcd-9930-2a4d3513ee2e",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "639302732618",
+    "article_number": "A1506"
+  },
+  {
+    "uuid": "cd17d8c3-698b-44f8-8798-15f3a09b01a4",
+    "filament_weight": 4000,
+    "diameter": 1.75,
+    "gtin": "639302731277",
+    "article_number": "A1706"
   }
 ]
