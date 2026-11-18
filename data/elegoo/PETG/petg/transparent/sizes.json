@@ -11,6 +11,8 @@
         "store_id": "amazon",
         "url": "https://www.amazon.com/dp/B0D41ZMR4G"
       }
-    ]
+    ],
+    "empty_spool_weight": 119,
+    "container_material": "plastic"
   }
 ]
