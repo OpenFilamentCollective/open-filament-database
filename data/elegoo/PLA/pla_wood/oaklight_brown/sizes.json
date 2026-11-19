@@ -8,6 +8,8 @@
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/pla-wood"
       }
-    ]
+    ],
+    "empty_spool_weight": 145,
+    "container_material": "cardboard"
   }
 ]
