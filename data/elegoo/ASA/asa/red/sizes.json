@@ -4,6 +4,7 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "container_material": "cardboard",
+    "empty_spool_weight": 145,
     "gtin": "6932704920268",
     "article_number": "50.203.0739",
     "purchase_links": [
@@ -11,7 +12,6 @@
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/asa-filament-1-75mm-colored-1kg"
       }
-    ],
-    "empty_spool_weight": 145
+    ]
   }
 ]

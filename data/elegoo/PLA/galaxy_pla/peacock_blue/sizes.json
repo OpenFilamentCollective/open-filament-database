@@ -3,14 +3,14 @@
     "uuid": "8604112e-0e93-41a1-8e1e-8a5051f0f2d7",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "plastic",
+    "empty_spool_weight": 174,
     "article_number": "50.203.0261",
     "purchase_links": [
       {
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/galaxy-pla-filament-1-75mm-colored-1kg"
       }
-    ],
-    "empty_spool_weight": 174,
-    "container_material": "plastic"
+    ]
   }
 ]

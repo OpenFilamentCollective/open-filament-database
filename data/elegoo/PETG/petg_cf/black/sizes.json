@@ -3,6 +3,8 @@
     "uuid": "79838ede-3fde-4619-8167-c6865e27c727",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 153,
     "gtin": "6932704917268",
     "article_number": "50.203.0634",
     "purchase_links": [
@@ -10,8 +12,6 @@
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/petg-cf-filament-1-75mm-colored-1kg"
       }
-    ],
-    "empty_spool_weight": 153,
-    "container_material": "cardboard"
+    ]
   }
 ]

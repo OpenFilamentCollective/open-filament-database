@@ -3,14 +3,14 @@
     "uuid": "89f91d77-7723-4bbf-b29e-2f938b008d08",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
     "article_number": "50.203.0362",
     "purchase_links": [
       {
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/pla-wood"
       }
-    ],
-    "empty_spool_weight": 145,
-    "container_material": "cardboard"
+    ]
   }
 ]

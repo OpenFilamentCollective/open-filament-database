@@ -3,13 +3,13 @@
     "uuid": "497b2dfc-55ea-4147-a573-5cffe91f942e",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 153,
     "purchase_links": [
       {
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/paht-cf-filament-1-75mm-colored-1kg"
       }
-    ],
-    "empty_spool_weight": 153,
-    "container_material": "cardboard"
+    ]
   }
 ]

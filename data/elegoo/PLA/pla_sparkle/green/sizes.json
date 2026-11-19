@@ -3,14 +3,14 @@
     "uuid": "8ec2a1d9-2540-41ed-bff8-01aa8a75e05c",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
     "article_number": "50.203.0535",
     "purchase_links": [
       {
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/pla-sparkle-filament-1-75mm-colored-1-kg"
       }
-    ],
-    "empty_spool_weight": 145,
-    "container_material": "cardboard"
+    ]
   }
 ]

@@ -3,14 +3,14 @@
     "uuid": "7e51523e-8e34-4fa2-b35f-68e153342b63",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 153,
     "article_number": "50.203.0632",
     "purchase_links": [
       {
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/rapid-tpu-filament-1-75mm-colored-1kg"
       }
-    ],
-    "empty_spool_weight": 153,
-    "container_material": "cardboard"
+    ]
   }
 ]

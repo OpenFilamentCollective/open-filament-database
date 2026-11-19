@@ -3,6 +3,8 @@
     "uuid": "0660c2e9-42d1-4625-a65d-3a7b35e3c393",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
     "gtin": "6932704921425",
     "article_number": "50.203.0542",
     "purchase_links": [
@@ -10,8 +12,6 @@
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/pc-filament-1-75mm-colored-1kg"
       }
-    ],
-    "empty_spool_weight": 145,
-    "container_material": "cardboard"
+    ]
   }
 ]

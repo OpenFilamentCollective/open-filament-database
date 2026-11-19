@@ -4,6 +4,7 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "spool_refill": false,
+    "container_material": "cardboard",
     "empty_spool_weight": 153,
     "spool_core_diameter": 100,
     "article_number": "50.203.0775",
@@ -13,7 +14,6 @@
         "store_id": "elegoo",
         "url": "https://elegoo.com/products/petg-translucent?variant=52094649630901"
       }
-    ],
-    "container_material": "cardboard"
+    ]
   }
 ]

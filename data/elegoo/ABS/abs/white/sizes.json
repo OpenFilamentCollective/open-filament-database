@@ -3,6 +3,8 @@
     "uuid": "381dc864-eea5-4e1c-ac13-aa8c7668e787",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 145,
     "gtin": "6932704914663",
     "article_number": "50.203.0642",
     "purchase_links": [
@@ -10,8 +12,6 @@
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/abs-filament-1-75mm-colored-1kg"
       }
-    ],
-    "empty_spool_weight": 145,
-    "container_material": "cardboard"
+    ]
   }
 ]

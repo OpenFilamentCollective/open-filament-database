@@ -4,13 +4,13 @@
     "filament_weight": 1000,
     "diameter": 1.75,
     "container_material": "cardboard",
+    "empty_spool_weight": 153,
     "article_number": "50.203.0197",
     "purchase_links": [
       {
         "store_id": "elegoo",
         "url": "https://eu.elegoo.com/products/pla-pro-filament-1-75mm-colored-1kg"
       }
-    ],
-    "empty_spool_weight": 153
+    ]
   }
 ]
