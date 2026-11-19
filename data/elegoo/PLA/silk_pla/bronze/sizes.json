@@ -3,6 +3,7 @@
     "uuid": "c28fb55a-b856-40e8-8a63-e74242add810",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "container_material": "plastic"
+    "container_material": "plastic",
+    "empty_spool_weight": 174
   }
 ]
