@@ -1,0 +1,14 @@
+{
+  "uuid": "4c1a079f-d9ce-4641-84f1-053394389ee7",
+  "id": "translucent_blue_white_orange",
+  "name": "Translucent Blue-White-Orange",
+  "color_hex": [
+    "#D1DFCE",
+    "#EDB55D",
+    "#52C1D6"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "emerald_gold_orange_red_tri",
+  "name": "Emerald-Gold-Orange Red Tri",
+  "color_hex": [
+    "#D18C24",
+    "#0A6F4C",
+    "#C01120"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

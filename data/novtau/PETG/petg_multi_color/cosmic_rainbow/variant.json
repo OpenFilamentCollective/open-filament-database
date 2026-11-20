@@ -1,0 +1,12 @@
+{
+  "id": "cosmic_rainbow",
+  "name": "Cosmic Rainbow",
+  "color_hex": [
+    "#498CB6",
+    "#C6A360",
+    "#A25AAD"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

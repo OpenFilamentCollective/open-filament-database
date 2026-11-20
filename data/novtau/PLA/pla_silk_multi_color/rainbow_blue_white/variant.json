@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_blue_white",
+  "name": "Rainbow Blue-White",
+  "color_hex": [
+    "#D8E6E3",
+    "#17C8E0"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

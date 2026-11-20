@@ -1,0 +1,13 @@
+{
+  "id": "sky_blue_rose_light_green_tri",
+  "name": "Sky Blue-Rose-Light Green Tri",
+  "color_hex": [
+    "#4DA3DF",
+    "#D46DAF",
+    "#7FD47E"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_dream",
+  "name": "Rainbow Dream",
+  "color_hex": [
+    "#7DE1D4",
+    "#C5678C",
+    "#E8DBA6"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

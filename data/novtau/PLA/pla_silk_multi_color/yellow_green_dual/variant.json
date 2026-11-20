@@ -1,13 +1,13 @@
 {
-  "uuid": "5e67d14e-3020-4e15-98fd-f1b16178bb43",
   "id": "yellow_green_dual",
   "name": "Yellow-Green Dual",
   "color_hex": [
-    "#5CA546",
-    "#BFD667"
+    "#5CA346",
+    "#BED567"
   ],
   "traits": {
     "silk": true,
     "coextruded": true
-  }
+  },
+  "uuid": "5e67d14e-3020-4e15-98fd-f1b16178bb43"
 }

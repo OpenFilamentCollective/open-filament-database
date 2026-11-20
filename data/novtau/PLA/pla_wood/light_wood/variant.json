@@ -1,0 +1,8 @@
+{
+  "id": "light_wood",
+  "name": "Light Wood",
+  "color_hex": "#C6AA89",
+  "traits": {
+    "contains_wood": true
+  }
+}

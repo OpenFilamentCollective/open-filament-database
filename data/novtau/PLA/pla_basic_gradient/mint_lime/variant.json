@@ -1,12 +1,12 @@
 {
-  "uuid": "28498f53-6bc1-47dd-a747-4ca9d1df6cf3",
   "id": "mint_lime",
   "name": "Mint Lime",
   "color_hex": [
-    "#DDC693",
-    "#74C8B6"
+    "#DCC592",
+    "#74C4B2"
   ],
   "traits": {
     "gradual_color_change": true
-  }
+  },
+  "uuid": "28498f53-6bc1-47dd-a747-4ca9d1df6cf3"
 }

@@ -1,0 +1,8 @@
+{
+  "id": "white_pine",
+  "name": "White Pine",
+  "color_hex": "#B49E82",
+  "traits": {
+    "contains_wood": true
+  }
+}

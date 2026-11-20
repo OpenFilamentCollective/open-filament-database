@@ -1,0 +1,12 @@
+{
+  "id": "dual_black_purple",
+  "name": "Dual Black-Purple",
+  "color_hex": [
+    "#222428",
+    "#813590"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

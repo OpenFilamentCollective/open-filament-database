@@ -3,6 +3,7 @@
   "id": "mint",
   "name": "Mint",
   "color_hex": "#07955A",
+  "discontinued": true,
   "traits": {
     "silk": true
   }

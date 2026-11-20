@@ -1,0 +1,12 @@
+{
+  "id": "orange_red_purple_dual",
+  "name": "Orange Red-Purple Dual",
+  "color_hex": [
+    "#DA4522",
+    "#6D2982"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

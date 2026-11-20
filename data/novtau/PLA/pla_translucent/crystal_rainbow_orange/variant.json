@@ -1,0 +1,13 @@
+{
+  "id": "crystal_rainbow_orange",
+  "name": "Crystal Rainbow Orange",
+  "color_hex": [
+    "#FA828E",
+    "#F59E45",
+    "#FCE058"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

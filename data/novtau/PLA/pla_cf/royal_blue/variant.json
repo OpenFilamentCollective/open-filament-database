@@ -3,6 +3,7 @@
   "id": "royal_blue",
   "name": "Royal Blue",
   "color_hex": "#2550AF",
+  "discontinued": true,
   "traits": {
     "abrasive": true,
     "contains_carbon_fiber": true

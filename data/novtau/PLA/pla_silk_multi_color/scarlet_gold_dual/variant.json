@@ -1,0 +1,12 @@
+{
+  "id": "scarlet_gold_dual",
+  "name": "Scarlet-Gold Dual",
+  "color_hex": [
+    "#C40C1C",
+    "#E69936"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -3,6 +3,7 @@
   "id": "grass_green",
   "name": "Grass Green",
   "color_hex": "#088C4C",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

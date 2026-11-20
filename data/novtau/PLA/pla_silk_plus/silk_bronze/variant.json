@@ -1,9 +1,9 @@
 {
-  "uuid": "804c82f9-c7fb-463f-9e3e-1fe205042ac3",
   "id": "silk_bronze",
   "name": "Silk Bronze",
-  "color_hex": "#877F4F",
+  "color_hex": "#867E4E",
   "traits": {
     "silk": true
-  }
+  },
+  "uuid": "804c82f9-c7fb-463f-9e3e-1fe205042ac3"
 }

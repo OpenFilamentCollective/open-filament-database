@@ -1,0 +1,13 @@
+{
+  "uuid": "dcec7b3d-2154-49bf-98d9-10067d431823",
+  "id": "matte_dopamine",
+  "name": "Matte Dopamine",
+  "color_hex": [
+    "#87C9EA",
+    "#D7A0B3"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

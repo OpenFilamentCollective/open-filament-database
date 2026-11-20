@@ -1,0 +1,13 @@
+{
+  "id": "black_red_gold_tri",
+  "name": "Black-Red-Gold Tri",
+  "color_hex": [
+    "#222428",
+    "#A82215",
+    "#F3DB7E"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

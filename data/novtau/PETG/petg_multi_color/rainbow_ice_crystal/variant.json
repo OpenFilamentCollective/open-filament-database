@@ -1,0 +1,11 @@
+{
+  "id": "rainbow_ice_crystal",
+  "name": "Rainbow Ice Crystal",
+  "color_hex": [
+    "#E890B4",
+    "#FBAECF"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

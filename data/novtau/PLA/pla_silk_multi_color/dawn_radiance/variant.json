@@ -1,13 +1,13 @@
 {
-  "uuid": "de354f5e-c41d-4fbd-a1a1-eea6ba88cb1b",
   "id": "dawn_radiance",
   "name": "Dawn Radiance",
   "color_hex": [
-    "#DBA7B4",
-    "#D16A73"
+    "#E99192",
+    "#957199"
   ],
   "traits": {
     "silk": true,
     "coextruded": true
-  }
+  },
+  "uuid": "de354f5e-c41d-4fbd-a1a1-eea6ba88cb1b"
 }

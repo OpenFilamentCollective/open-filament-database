@@ -1,9 +1,9 @@
 {
-  "uuid": "e1bf3aaf-e5ec-4c17-b3b9-08397ce425f9",
   "id": "purple",
   "name": "Purple",
   "color_hex": "#905ACF",
   "traits": {
     "translucent": true
-  }
+  },
+  "uuid": "e1bf3aaf-e5ec-4c17-b3b9-08397ce425f9"
 }

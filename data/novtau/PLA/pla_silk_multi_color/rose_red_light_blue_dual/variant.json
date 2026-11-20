@@ -1,0 +1,12 @@
+{
+  "id": "rose_red_light_blue_dual",
+  "name": "Rose Red-Light Blue Dual",
+  "color_hex": [
+    "#C74690",
+    "#68ABDE"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

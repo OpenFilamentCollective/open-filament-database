@@ -1,0 +1,8 @@
+{
+  "id": "glow_sky_blue",
+  "name": "Glow Sky Blue",
+  "color_hex": "#01BAFD",
+  "traits": {
+    "glow": true
+  }
+}

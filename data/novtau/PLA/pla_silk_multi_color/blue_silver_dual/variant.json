@@ -1,0 +1,12 @@
+{
+  "id": "blue_silver_dual",
+  "name": "Blue-Silver Dual",
+  "color_hex": [
+    "#A9ADB5",
+    "#1B77BF"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -1,13 +1,13 @@
 {
-  "uuid": "2432bc55-213b-4ed7-8a38-614c5a83a7e3",
   "id": "peach_cream",
   "name": "Peach Cream",
   "color_hex": [
-    "#F0C8B4",
-    "#B77A64"
+    "#EDC7B3",
+    "#B47963"
   ],
   "traits": {
     "matte": true,
     "coextruded": true
-  }
+  },
+  "uuid": "2432bc55-213b-4ed7-8a38-614c5a83a7e3"
 }

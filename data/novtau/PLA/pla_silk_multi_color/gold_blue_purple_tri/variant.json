@@ -1,0 +1,13 @@
+{
+  "id": "gold_blue_purple_tri",
+  "name": "Gold-Blue-Purple Tri",
+  "color_hex": [
+    "#BF8621",
+    "#0E73A4",
+    "#7F40AD"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

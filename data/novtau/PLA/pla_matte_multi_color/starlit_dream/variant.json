@@ -1,13 +1,13 @@
 {
-  "uuid": "700ca4f2-7c51-4f63-906d-3cf84da56615",
   "id": "starlit_dream",
   "name": "Starlit Dream",
   "color_hex": [
-    "#B5D2E2",
-    "#8099B2"
+    "#B2D0DF",
+    "#7E98AF"
   ],
   "traits": {
     "matte": true,
     "coextruded": true
-  }
+  },
+  "uuid": "700ca4f2-7c51-4f63-906d-3cf84da56615"
 }

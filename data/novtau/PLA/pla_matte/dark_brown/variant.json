@@ -3,6 +3,7 @@
   "id": "dark_brown",
   "name": "Dark Brown",
   "color_hex": "#844132",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

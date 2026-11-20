@@ -3,6 +3,7 @@
   "id": "titan_gray",
   "name": "Titan Gray",
   "color_hex": "#97979B",
+  "discontinued": true,
   "traits": {
     "silk": true
   }

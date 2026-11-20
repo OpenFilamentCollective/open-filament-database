@@ -1,0 +1,13 @@
+{
+  "id": "dark_green_purple_yellow_tri",
+  "name": "Dark Green-Purple-Yellow Tri",
+  "color_hex": [
+    "#196D51",
+    "#D2A12D",
+    "#592871"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

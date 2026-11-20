@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_moon_palace",
+  "name": "Rainbow Moon Palace",
+  "color_hex": [
+    "#3AB0BA",
+    "#C47EA6",
+    "#D1C498"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

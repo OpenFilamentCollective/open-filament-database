@@ -1,13 +1,13 @@
 {
-  "uuid": "a491975b-aefc-4f77-bf27-2581512aec5b",
   "id": "aurora_purple",
   "name": "Aurora Purple",
   "color_hex": [
-    "#D2B9B1",
-    "#6CB7B7"
+    "#D0B6AF",
+    "#6CB4B4"
   ],
   "traits": {
     "silk": true,
     "coextruded": true
-  }
+  },
+  "uuid": "a491975b-aefc-4f77-bf27-2581512aec5b"
 }
