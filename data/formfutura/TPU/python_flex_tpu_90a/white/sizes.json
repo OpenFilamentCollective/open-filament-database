@@ -1,5 +1,6 @@
 [
   {
+    "uuid": "4485a589-cf3a-4eaf-a09c-663ef6360964",
     "filament_weight": 500,
     "diameter": 1.75,
     "container_material": "cardboard",
@@ -14,6 +15,7 @@
     ]
   },
   {
+    "uuid": "2540bd5a-3f9e-4335-abcb-99b8b3667aaa",
     "filament_weight": 1000,
     "diameter": 1.75,
     "empty_spool_weight": 165,
@@ -27,6 +29,7 @@
     ]
   },
   {
+    "uuid": "3e3afd2c-d00a-4fb5-9b32-384c2dca4cbc",
     "filament_weight": 2300,
     "diameter": 1.75,
     "container_material": "plastic",
