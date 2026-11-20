@@ -1,0 +1,44 @@
+[
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 140,
+    "article_number": "PF90-175BLCK-00500",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/filaments/tpu/python-flex-tpu-90a"
+      }
+    ]
+  },
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "container_material": "cardboard",
+    "empty_spool_weight": 165,
+    "article_number": "PF90-175BLCK-01000",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/filaments/tpu/python-flex-tpu-90a"
+      }
+    ]
+  },
+  {
+    "filament_weight": 2300,
+    "diameter": 1.75,
+    "container_material": "plastic",
+    "empty_spool_weight": 625,
+    "article_number": "PF90-175BLCK-02300",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "formfutura",
+        "url": "https://www.formfutura.com/filaments/tpu/python-flex-tpu-90a"
+      }
+    ]
+  }
+]
