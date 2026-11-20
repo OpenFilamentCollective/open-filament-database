@@ -1,0 +1,12 @@
+{
+  "id": "python_flex_tpu_90a",
+  "name": "Python Flex TPU 90A",
+  "diameter_tolerance": 0.02,
+  "density": 1.22,
+  "shore_hardness_a": 90,
+  "dry_time": 0,
+  "enclosure": "recommended",
+  "data_sheet_url": "https://www.formfutura.com/web/content/256619?download=true",
+  "safety_sheet_url": "https://www.formfutura.com/web/content/256620?download=true",
+  "discontinued": false
+}
