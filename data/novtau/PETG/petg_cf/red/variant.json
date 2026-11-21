@@ -1,9 +1,10 @@
 {
+  "uuid": "39854361-78dd-427e-a0ea-fbf182868c95",
   "id": "red",
   "name": "Red",
   "color_hex": "#5D1D29",
   "traits": {
-    "contains_carbon_fiber": true,
-    "abrasive": true
+    "abrasive": true,
+    "contains_carbon_fiber": true
   }
 }

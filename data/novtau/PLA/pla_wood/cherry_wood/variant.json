@@ -1,9 +1,9 @@
 {
+  "uuid": "a190bc59-eebe-42a7-a626-d9ee39f0714a",
   "id": "cherry_wood",
   "name": "Cherry Wood",
   "color_hex": "#774737",
   "traits": {
     "contains_wood": true
-  },
-  "uuid": "a190bc59-eebe-42a7-a626-d9ee39f0714a"
+  }
 }
