@@ -1,0 +1,13 @@
+{
+  "id": "tri_red_yellow_blue",
+  "name": "Tri Red-Yellow-Blue",
+  "color_hex": [
+    "#E83523",
+    "#1E65D1",
+    "#E0C051"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

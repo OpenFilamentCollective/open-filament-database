@@ -1,9 +1,9 @@
 {
-  "uuid": "e1ece71a-2366-46fe-8796-22564d59ce8c",
   "id": "white",
   "name": "White",
   "color_hex": "#D5D5D4",
   "traits": {
     "silk": true
-  }
+  },
+  "uuid": "e1ece71a-2366-46fe-8796-22564d59ce8c"
 }

@@ -1,0 +1,12 @@
+{
+  "id": "dual_sky_blue_purple",
+  "name": "Dual Sky Blue-Purple",
+  "color_hex": [
+    "#5E8DC9",
+    "#9B6CBB"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

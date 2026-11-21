@@ -1,5 +1,4 @@
 {
-  "uuid": "e2ecee78-cbd1-4a29-91f0-17929d6a5214",
   "id": "phantom_blue",
   "name": "Phantom Blue",
   "color_hex": [
@@ -9,5 +8,6 @@
   "traits": {
     "silk": true,
     "coextruded": true
-  }
+  },
+  "uuid": "e2ecee78-cbd1-4a29-91f0-17929d6a5214"
 }

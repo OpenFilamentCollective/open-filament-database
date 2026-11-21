@@ -1,9 +1,9 @@
 {
-  "uuid": "0b9ccb72-7688-4dfa-9aff-358b783e0686",
   "id": "light_jade",
   "name": "Light Jade",
-  "color_hex": "#80D6AF",
+  "color_hex": "#7FD6AF",
   "traits": {
     "translucent": true
-  }
+  },
+  "uuid": "0b9ccb72-7688-4dfa-9aff-358b783e0686"
 }

@@ -1,0 +1,14 @@
+{
+  "id": "glow_rainbow_crystal",
+  "name": "Glow Rainbow Crystal",
+  "color_hex": [
+    "#3EC5D5",
+    "#EB7B6A",
+    "#9461B1",
+    "#A4D783"
+  ],
+  "traits": {
+    "glow": true,
+    "gradual_color_change": true
+  }
+}

@@ -3,6 +3,7 @@
   "id": "plum",
   "name": "Plum",
   "color_hex": "#794FB2",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

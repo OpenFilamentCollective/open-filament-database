@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_red_gold",
+  "name": "Rainbow Red-Gold",
+  "color_hex": [
+    "#D82911",
+    "#EFA342"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

@@ -3,6 +3,7 @@
   "id": "dark_blue",
   "name": "Dark Blue",
   "color_hex": "#233555",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

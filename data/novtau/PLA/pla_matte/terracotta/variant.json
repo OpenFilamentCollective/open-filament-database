@@ -3,6 +3,7 @@
   "id": "terracotta",
   "name": "Terracotta",
   "color_hex": "#F45516",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

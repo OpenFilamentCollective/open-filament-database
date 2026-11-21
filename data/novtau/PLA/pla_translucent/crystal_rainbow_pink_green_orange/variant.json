@@ -1,0 +1,13 @@
+{
+  "id": "crystal_rainbow_pink_green_orange",
+  "name": "Crystal Rainbow Pink-Green-Orange",
+  "color_hex": [
+    "#3BCA9B",
+    "#EF9C2B",
+    "#F277A2"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

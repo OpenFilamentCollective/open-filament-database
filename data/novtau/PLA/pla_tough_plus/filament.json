@@ -1,7 +1,7 @@
 {
-  "uuid": "324d4b0b-8727-41d1-af61-3cf7b4d9e6bc",
   "id": "pla_tough_plus",
   "name": "PLA Tough+",
   "diameter_tolerance": 0.02,
-  "density": 1.24
+  "density": 1.24,
+  "uuid": "324d4b0b-8727-41d1-af61-3cf7b4d9e6bc"
 }

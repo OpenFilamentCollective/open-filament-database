@@ -1,0 +1,14 @@
+{
+  "id": "glow_rainbow_no_2",
+  "name": "Glow Rainbow No.2",
+  "color_hex": [
+    "#67AAD6",
+    "#FBA1DD",
+    "#965CBB",
+    "#6776C9"
+  ],
+  "traits": {
+    "glow": true,
+    "gradual_color_change": true
+  }
+}

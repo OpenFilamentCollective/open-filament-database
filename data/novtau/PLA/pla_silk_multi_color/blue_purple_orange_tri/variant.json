@@ -1,0 +1,13 @@
+{
+  "id": "blue_purple_orange_tri",
+  "name": "Blue-Purple-Orange Tri",
+  "color_hex": [
+    "#1759BD",
+    "#DB7843",
+    "#863993"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

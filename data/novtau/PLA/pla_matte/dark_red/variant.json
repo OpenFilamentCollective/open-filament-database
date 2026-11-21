@@ -3,6 +3,7 @@
   "id": "dark_red",
   "name": "Dark Red",
   "color_hex": "#D42423",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

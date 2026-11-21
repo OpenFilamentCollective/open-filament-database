@@ -1,0 +1,15 @@
+{
+  "id": "white_glow_rainbow",
+  "name": "White Glow Rainbow",
+  "color_hex": [
+    "#EDE8D5",
+    "#20ABBF",
+    "#F0AA80",
+    "#A14DD3"
+  ],
+  "traits": {
+    "glow": true,
+    "gradual_color_change": true,
+    "illuminescent_color_change": true
+  }
+}

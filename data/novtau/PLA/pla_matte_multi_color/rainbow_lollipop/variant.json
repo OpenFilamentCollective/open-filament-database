@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_lollipop",
+  "name": "Rainbow Lollipop",
+  "color_hex": [
+    "#EAA479",
+    "#94CBC3",
+    "#A1B37A"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

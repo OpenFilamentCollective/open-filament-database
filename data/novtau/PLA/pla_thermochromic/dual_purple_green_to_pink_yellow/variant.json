@@ -1,0 +1,14 @@
+{
+  "id": "dual_purple_green_to_pink_yellow",
+  "name": "Dual Purple-Green to Pink-Yellow",
+  "color_hex": [
+    "#8548B8",
+    "#6EC468",
+    "#DE688D",
+    "#E9D66B"
+  ],
+  "traits": {
+    "temperature_color_change": true,
+    "coextruded": true
+  }
+}

@@ -3,6 +3,7 @@
   "id": "dark_chocolate",
   "name": "Dark Chocolate",
   "color_hex": "#493E38",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

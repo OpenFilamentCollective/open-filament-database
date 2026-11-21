@@ -1,0 +1,11 @@
+{
+  "id": "rainbow_autumn",
+  "name": "Rainbow Autumn",
+  "color_hex": [
+    "#E565AD",
+    "#F5A4CE"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}

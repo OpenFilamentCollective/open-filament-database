@@ -1,0 +1,12 @@
+{
+  "id": "dual_purple_green",
+  "name": "Dual Purple-Green",
+  "color_hex": [
+    "#6D5895",
+    "#69B875"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

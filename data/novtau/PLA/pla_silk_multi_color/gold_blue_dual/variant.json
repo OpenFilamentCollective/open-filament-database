@@ -1,0 +1,12 @@
+{
+  "id": "gold_blue_dual",
+  "name": "Gold-Blue Dual",
+  "color_hex": [
+    "#B7A134",
+    "#077AC2"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

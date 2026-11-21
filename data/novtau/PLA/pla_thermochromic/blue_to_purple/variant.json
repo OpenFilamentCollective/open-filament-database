@@ -1,0 +1,11 @@
+{
+  "id": "blue_to_purple",
+  "name": "Blue to Purple",
+  "color_hex": [
+    "#3762B4",
+    "#8F53BB"
+  ],
+  "traits": {
+    "temperature_color_change": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_yellow_green",
+  "name": "Rainbow Yellow-Green",
+  "color_hex": [
+    "#D7EB1B",
+    "#07C4AA"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

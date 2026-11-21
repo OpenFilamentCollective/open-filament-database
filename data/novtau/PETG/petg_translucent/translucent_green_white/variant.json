@@ -1,0 +1,13 @@
+{
+  "uuid": "4a43fa16-6d0c-4966-9558-5a64d9f5791f",
+  "id": "translucent_green_white",
+  "name": "Translucent Green-White",
+  "color_hex": [
+    "#D6EADC",
+    "#68CC98"
+  ],
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

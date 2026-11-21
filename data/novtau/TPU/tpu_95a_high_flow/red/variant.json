@@ -1,0 +1,8 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#FA4D54",
+  "traits": {
+    "high_flow": true
+  }
+}

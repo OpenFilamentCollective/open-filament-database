@@ -1,0 +1,12 @@
+{
+  "id": "dual_sky_blue_pink",
+  "name": "Dual Sky Blue-Pink",
+  "color_hex": [
+    "#DB8BA9",
+    "#78A2DC"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

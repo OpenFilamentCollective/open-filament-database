@@ -1,0 +1,13 @@
+{
+  "id": "gold_green_fuchsia_tri",
+  "name": "Gold-Green-Fuchsia Tri",
+  "color_hex": [
+    "#B49F22",
+    "#107C1A",
+    "#DA2461"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

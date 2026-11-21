@@ -1,0 +1,13 @@
+{
+  "id": "glow_rainbow_earth",
+  "name": "Glow Rainbow Earth",
+  "color_hex": [
+    "#6E7D4B",
+    "#9B8352",
+    "#D4C69E"
+  ],
+  "traits": {
+    "glow": true,
+    "gradual_color_change": true
+  }
+}

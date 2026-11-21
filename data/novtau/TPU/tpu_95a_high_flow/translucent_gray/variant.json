@@ -1,0 +1,8 @@
+{
+  "id": "translucent_gray",
+  "name": "Translucent Gray",
+  "color_hex": "#8D8D8D",
+  "traits": {
+    "high_flow": true
+  }
+}

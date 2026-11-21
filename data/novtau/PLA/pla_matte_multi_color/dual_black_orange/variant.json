@@ -1,0 +1,12 @@
+{
+  "id": "dual_black_orange",
+  "name": "Dual Black-Orange",
+  "color_hex": [
+    "#222428",
+    "#CC6925"
+  ],
+  "traits": {
+    "matte": true,
+    "coextruded": true
+  }
+}

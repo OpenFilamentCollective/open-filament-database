@@ -1,0 +1,8 @@
+{
+  "id": "white_glow_blue",
+  "name": "White Glow Blue",
+  "color_hex": "#0988E5",
+  "traits": {
+    "glow": true
+  }
+}

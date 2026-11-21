@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_peach",
+  "name": "Rainbow Peach",
+  "color_hex": [
+    "#EA7686",
+    "#3EB2A5",
+    "#EEB870"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

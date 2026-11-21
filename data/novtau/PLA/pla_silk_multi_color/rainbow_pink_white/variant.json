@@ -1,0 +1,12 @@
+{
+  "id": "rainbow_pink_white",
+  "name": "Rainbow Pink-White",
+  "color_hex": [
+    "#E8DDDE",
+    "#F592B8"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

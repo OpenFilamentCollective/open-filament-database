@@ -3,6 +3,7 @@
   "id": "sky_blue",
   "name": "Sky Blue",
   "color_hex": "#0989E1",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

@@ -3,6 +3,7 @@
   "id": "dark_green",
   "name": "Dark Green",
   "color_hex": "#414C2D",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

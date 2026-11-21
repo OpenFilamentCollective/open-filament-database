@@ -3,6 +3,7 @@
   "id": "marine_blue",
   "name": "Marine Blue",
   "color_hex": "#1A5F95",
+  "discontinued": true,
   "traits": {
     "matte": true
   }

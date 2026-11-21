@@ -1,0 +1,13 @@
+{
+  "id": "rainbow_flower_mountain",
+  "name": "Rainbow Flower Mountain",
+  "color_hex": [
+    "#DFA84D",
+    "#599CC3",
+    "#8DC368"
+  ],
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
+}

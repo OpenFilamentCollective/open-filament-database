@@ -1,0 +1,12 @@
+{
+  "id": "mini_rainbow",
+  "name": "Mini Rainbow",
+  "color_hex": [
+    "#C1679F",
+    "#51A2D0",
+    "#D2C067"
+  ],
+  "traits": {
+    "coextruded": true
+  }
+}
