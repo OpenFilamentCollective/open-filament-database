@@ -1,0 +1,14 @@
+{
+  "id": "luminous_pla",
+  "name": "Luminous PLA",
+  "density": 1.2,
+  "diameter_tolerance": 0.02,
+  "min_print_temperature": 190,
+  "max_print_temperature": 230,
+  "min_bed_temperature": 30,
+  "max_bed_temperature": 60,
+  "min_print_speed": 15,
+  "max_print_speed": 60,
+  "dry_temperature": 50,
+  "enclosure": "not_needed"
+}
