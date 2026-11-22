@@ -1,8 +1,9 @@
 {
+  "uuid": "776a3b26-c623-4819-b53b-76bfabc7a1fd",
   "id": "lineboss_filament",
   "name": "LineBoss Filament",
   "website": "https://linebossfilament.com/",
+  "logo": "logo.png",
   "origin": "Unknown",
-  "source": "Official LineBoss Filament storefront: https://linebossfilament.com/",
-  "logo": "logo.png"
+  "source": "Official LineBoss Filament storefront: https://linebossfilament.com/"
 }
