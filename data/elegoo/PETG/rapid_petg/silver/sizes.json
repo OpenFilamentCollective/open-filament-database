@@ -3,13 +3,7 @@
     "uuid": "c0e87e0d-9dd6-4254-bb67-e1fa335c916f",
     "filament_weight": 3000,
     "diameter": 1.75,
-    "empty_spool_weight": 317,
-    "purchase_links": [
-      {
-        "store_id": "elegoo",
-        "url": "https://eu.elegoo.com/products/orangestorm-giga-large-3kg-filament?variant=51052659147028"
-      }
-    ]
+    "empty_spool_weight": 317
   },
   {
     "uuid": "ba4f6fc0-2080-4985-a6d3-350b69c42f7f",
