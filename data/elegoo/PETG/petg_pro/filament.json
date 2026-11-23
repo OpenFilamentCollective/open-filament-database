@@ -11,17 +11,17 @@
     "slicer_settings": {
         "orcaslicer": {
             "generic_id": "OFYPdQJh",
-            "id": "OFOsHDnB",
-            "profile_name": "Elegoo PETG PRO"
+            "id": "OGFE02",
+            "profile_name": "Elegoo PETG Pro"
         },
         "elegooslicer": {
             "generic_id": "GFG99",
-            "id": "EPETGB00",
+            "id": "OEPETGB0",
             "profile_name": "Elegoo PETG PRO"
         },
         "anycubicslicer": {
             "generic_id": "GFG99",
-            "id": "EPETGPROB00",
+            "id": "GFG99",
             "profile_name": "Elegoo PETG PRO"
         }
     }
