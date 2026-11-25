@@ -1,0 +1,9 @@
+{
+  "id": "signal_green",
+  "name": "Signal Green",
+  "color_hex": "#0A863C",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

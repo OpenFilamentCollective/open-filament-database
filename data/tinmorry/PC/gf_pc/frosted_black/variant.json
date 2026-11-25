@@ -1,0 +1,9 @@
+{
+  "id": "frosted_black",
+  "name": "Frosted Black",
+  "color_hex": "#2C2C2C",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "apricot",
+  "name": "Apricot",
+  "color_hex": "#BF9B7B",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}
