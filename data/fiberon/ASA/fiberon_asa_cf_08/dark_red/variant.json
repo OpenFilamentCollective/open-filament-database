@@ -1,0 +1,11 @@
+{
+  "uuid": "0a8b2128-e5f5-4f4c-aa51-cf8a3bd84070",
+  "id": "dark_red",
+  "name": "Dark Red",
+  "color_hex": "#7E4342",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  },
+  "discontinued": false
+}

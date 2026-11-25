@@ -1,0 +1,11 @@
+{
+  "uuid": "c67fd429-ac02-4483-87e3-7fdbfc72e24d",
+  "id": "desert_sand",
+  "name": "Desert Sand",
+  "color_hex": "#A18467",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  },
+  "discontinued": false
+}
