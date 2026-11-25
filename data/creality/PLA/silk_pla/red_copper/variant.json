@@ -3,6 +3,7 @@
   "id": "red_copper",
   "name": "Red Copper",
   "color_hex": "#C06341",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

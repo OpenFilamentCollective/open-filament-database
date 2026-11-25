@@ -3,6 +3,7 @@
     "uuid": "8a9b8864-6d73-45c5-a734-4537df67cf94",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "crealitystore",
@@ -14,11 +15,22 @@
     "uuid": "745d7eae-5553-4adb-91e6-80df2f2006c8",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "crealitystore",
         "url": "https://store.creality.com/products/hyper-series-pla-3d-printing-filament-1kg"
       }
     ]
+  },
+  {
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "discontinued": false
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "discontinued": false
   }
 ]

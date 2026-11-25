@@ -1,6 +1,7 @@
 {
   "uuid": "79f01337-411e-4f21-bdfb-88e090a3cc7f",
   "id": "hyper_pc",
-  "name": "Hyper PC",
-  "color_hex": "#d8dddf"
+  "name": "Transparent",
+  "color_hex": "#D9DAD1",
+  "discontinued": false
 }

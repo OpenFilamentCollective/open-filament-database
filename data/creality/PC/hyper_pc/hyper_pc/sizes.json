@@ -3,11 +3,22 @@
     "uuid": "51ae1727-7aae-45f9-8e9b-e2bdb942a981",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "crealitystore",
         "url": "https://store.creality.com/products/hyper-pc-filament-1-75mm-1kg"
       }
     ]
+  },
+  {
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "discontinued": false
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "discontinued": false
   }
 ]

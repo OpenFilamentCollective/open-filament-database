@@ -3,6 +3,7 @@
   "id": "purple",
   "name": "Purple",
   "color_hex": "#8846AE",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

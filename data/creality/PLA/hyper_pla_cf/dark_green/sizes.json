@@ -3,11 +3,22 @@
     "uuid": "9e94ca4c-6fb3-4ef5-913d-e2dc3ecfdb15",
     "filament_weight": 1000,
     "diameter": 1.75,
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "crealitystore",
         "url": "https://store.creality.com/products/hyper-pla-cf"
       }
     ]
+  },
+  {
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "discontinued": false
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "discontinued": false
   }
 ]

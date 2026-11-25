@@ -3,6 +3,7 @@
   "id": "silver",
   "name": "Silver",
   "color_hex": "#C9D0D4",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

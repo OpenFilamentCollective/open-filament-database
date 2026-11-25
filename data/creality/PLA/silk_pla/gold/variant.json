@@ -3,6 +3,7 @@
   "id": "gold",
   "name": "Gold",
   "color_hex": "#F6C500",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

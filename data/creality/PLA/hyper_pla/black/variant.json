@@ -3,6 +3,7 @@
   "id": "black",
   "name": "Black",
   "color_hex": "#282C2C",
+  "discontinued": false,
   "traits": {
     "high_flow": true
   }

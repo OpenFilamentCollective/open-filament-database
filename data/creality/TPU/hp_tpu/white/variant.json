@@ -2,5 +2,6 @@
   "uuid": "c64aa7f7-8293-4c8b-bd8c-037408758e66",
   "id": "white",
   "name": "White",
-  "color_hex": "#dae0e6"
+  "color_hex": "#DAE0E6",
+  "discontinued": false
 }
