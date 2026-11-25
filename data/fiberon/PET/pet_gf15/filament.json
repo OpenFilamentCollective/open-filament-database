@@ -1,0 +1,12 @@
+{
+  "id": "pet_gf15",
+  "name": "PET-GF15",
+  "diameter_tolerance": 0.02,
+  "density": 1.43,
+  "max_dry_temperature": 100,
+  "min_print_temperature": 280,
+  "max_print_temperature": 310,
+  "max_print_speed": 250,
+  "data_sheet_url": "https://cdn.shopify.com/s/files/1/0548/7299/7945/files/TDS_FIBERON_PET-GF15_Compressed-compressed.pdf",
+  "discontinued": false
+}
