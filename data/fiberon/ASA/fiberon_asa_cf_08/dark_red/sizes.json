@@ -1,0 +1,17 @@
+[
+  {
+    "uuid": "8025fe16-3e0f-42bf-9e95-6fede71ecedf",
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "gtin": "6938936716709",
+    "empty_spool_weight": 175,
+    "spool_refill": false,
+    "purchase_links": [
+      {
+        "store_id": "polymaker",
+        "url": "https://us.polymaker.com/products/fiberon-asa-cf08?variant=44810371792953"
+      }
+    ],
+    "discontinued": false
+  }
+]
