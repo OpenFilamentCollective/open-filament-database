@@ -3,9 +3,9 @@
   "id": "desert_sand",
   "name": "Desert Sand",
   "color_hex": "#A18467",
+  "discontinued": false,
   "traits": {
     "abrasive": true,
     "contains_carbon_fiber": true
-  },
-  "discontinued": false
+  }
 }

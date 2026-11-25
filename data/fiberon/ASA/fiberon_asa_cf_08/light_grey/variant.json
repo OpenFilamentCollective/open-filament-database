@@ -3,9 +3,9 @@
   "id": "light_grey",
   "name": "Light Grey",
   "color_hex": "#8B9BA8",
+  "discontinued": false,
   "traits": {
     "abrasive": true,
     "contains_carbon_fiber": true
-  },
-  "discontinued": false
+  }
 }

@@ -3,9 +3,9 @@
   "id": "dark_grey",
   "name": "Dark Grey",
   "color_hex": "#454D53",
+  "discontinued": false,
   "traits": {
     "abrasive": true,
     "contains_carbon_fiber": true
-  },
-  "discontinued": false
+  }
 }

@@ -3,9 +3,9 @@
   "id": "dark_red",
   "name": "Dark Red",
   "color_hex": "#7E4342",
+  "discontinued": false,
   "traits": {
     "abrasive": true,
     "contains_carbon_fiber": true
-  },
-  "discontinued": false
+  }
 }
