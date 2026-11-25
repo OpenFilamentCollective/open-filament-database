@@ -1,0 +1,11 @@
+{
+  "uuid": "f55dec97-c1a0-411f-b193-deae0f729d15",
+  "id": "dark_grey",
+  "name": "Dark Grey",
+  "color_hex": "#454D53",
+  "traits": {
+    "abrasive": true,
+    "contains_carbon_fiber": true
+  },
+  "discontinued": false
+}
