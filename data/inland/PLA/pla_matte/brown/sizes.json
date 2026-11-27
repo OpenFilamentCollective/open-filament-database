@@ -1,0 +1,14 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "gtin": "618996745210",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://microcenter.com/product/642918/matte-pla-1.75mm-mat-brn"
+      }
+    ]
+  }
+]

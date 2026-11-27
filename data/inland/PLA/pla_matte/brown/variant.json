@@ -1,0 +1,9 @@
+{
+  "id": "brown",
+  "name": "Brown",
+  "color_hex": "#DA9B55",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}
