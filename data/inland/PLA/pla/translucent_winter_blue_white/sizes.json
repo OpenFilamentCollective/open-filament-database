@@ -1,0 +1,16 @@
+[
+  {
+    "filament_weight": 1000,
+    "diameter": 1.75,
+    "empty_spool_weight": 250,
+    "spool_core_diameter": 100,
+    "gtin": "618996769742",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://microcenter.com/product/674663/inland-175mm-pla-translucent-3d-printer-filament-seasons-gradient-color-10-kg-(22-lbs)-cardboard-spool-blue-and-white"
+      }
+    ]
+  }
+]

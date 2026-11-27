@@ -1,0 +1,9 @@
+{
+  "id": "red",
+  "name": "Red",
+  "color_hex": "#C43221",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}

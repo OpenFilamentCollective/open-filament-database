@@ -2,6 +2,14 @@
   {
     "uuid": "881587b2-3dbf-4f19-bc9d-ed95a02c6749",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "gtin": "618996737215",
+    "discontinued": false,
+    "purchase_links": [
+      {
+        "store_id": "microcenter",
+        "url": "https://microcenter.com/product/623236/inland-175mm-pla-silk-3d-printer-filament-10-kg-(22-lbs)-spool-red?sp=1875.199951171875"
+      }
+    ]
   }
 ]
