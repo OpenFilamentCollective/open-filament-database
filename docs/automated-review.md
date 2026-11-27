@@ -16,7 +16,7 @@ Committing the bot's own suggestions doesn't trigger another AI pass: the last o
 
 ## Auto-merge
 
-The **Auto-merge** check decides, after an hour with every check green. Adding the `hold` label stops it.
+The **Auto-merge** check decides. Eligible PRs merge once a night, at 22:00 Copenhagen time, before the 00:00 import, if every check has been green for at least an hour by then. A PR that becomes eligible after 21:00 waits for the next night. Adding the `hold` label stops it.
 
 | The PR... | Bar |
 |---|---|

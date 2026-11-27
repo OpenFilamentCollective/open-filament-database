@@ -25,6 +25,13 @@ name: Auto-merge
 #   - it stayed eligible at the same commit for an hour. A `hold` label, a push, or
 #     marking the PR as a draft stops the clock.
 #
+# WHEN: once a night, at 22:00 Copenhagen time, before the 00:00 import; a PR must be
+# eligible by 21:00 to make that night (ofd/automerge/schedule.py). GitHub fires crons
+# hours late when busy, so there is one every ten minutes from 18:00 to 21:50 UTC
+# (22:00 local is 20:00 UTC in summer, 21:00 in winter) and the sweep checks the clock
+# itself: before 22:00 local it does nothing. Later runs in the window retry what an
+# earlier one couldn't merge yet; a late one still merges until 06:00 local.
+#
 # Nothing from a PR is checked out or run: the base branch runs, the PR head is read
 # as git objects, and the merged result is validated with main's own validators.
 #
@@ -45,7 +52,7 @@ on:
   pull_request_target:
     types: [ labeled, unlabeled, converted_to_draft, ready_for_review ]
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/10 18-21 * * *"
   workflow_dispatch:
     inputs:
       pr:
@@ -53,6 +60,10 @@ on:
         required: false
       dry_run:
         description: 'Sweep only: report what would merge, change nothing.'
+        type: boolean
+        default: false
+      ignore_window:
+        description: 'Sweep only: merge anything eligible for an hour now, not only at 22:00 Copenhagen time.'
         type: boolean
         default: false
 
@@ -176,10 +187,12 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app.outputs.token }}
           DRY_RUN: ${{ inputs.dry_run }}
+          IGNORE_WINDOW: ${{ inputs.ignore_window }}
           OFD_AUTOMERGE: ${{ vars.OFD_AUTOMERGE }}
           OFD_AUTOMERGE_APP_ID: ${{ vars.OFD_REPO_BOT_APP_ID }}
           OFD_AUTOMERGE_BLOCKED_USERS: ${{ vars.OFD_AUTOMERGE_BLOCKED_USERS }}
         run: |
           flags=()
           [ "$DRY_RUN" = true ] && flags+=(--dry-run)
+          [ "$IGNORE_WINDOW" = true ] && flags+=(--ignore-window)
           python -m ofd automerge sweep "${flags[@]}" | tee -a "$GITHUB_STEP_SUMMARY"

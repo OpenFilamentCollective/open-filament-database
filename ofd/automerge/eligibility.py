@@ -192,7 +192,13 @@ def evaluate(s: Snapshot, at_merge: bool = False) -> Eligibility:
         not blockers,
         "no changes requested" if not blockers else f"changes requested by {blockers[0]}",
     )
-    check("E18", s.pr.get("mergeable") is True, f"mergeable: {s.pr.get('mergeable')}")
+    mergeable = s.pr.get("mergeable")
+    if mergeable is None and not at_merge:
+        # Lazily computed by GitHub; unknown is no reason to stop the clock. The merge
+        # itself requires a definite True (and validates the merged tree, E19).
+        check("E18", True, "GitHub has not computed mergeability yet; checked before merging")
+    else:
+        check("E18", mergeable is True, f"mergeable: {mergeable}")
     if at_merge:
         errors = s.merged_tree_errors
         check(

@@ -1,11 +1,12 @@
 """
-Evaluate PRs and merge the ones that have been eligible for an hour.
+Evaluate PRs and merge the eligible ones once a night, at 22:00 Copenhagen time.
 
 Both entry points run from the base checkout and never execute anything from a PR:
 its head is read as git objects, its data as JSON. ``evaluate_pr`` collects every
 fact fresh (proofs are re-fetched), scores the checklist and posts the ``Auto-merge``
 check run. ``sweep`` does the same, at merge time, for every PR whose eligible record
-is an hour old, then merges with the head SHA pinned so a push in between is refused.
+is due in tonight's window (``schedule``), then merges with the head SHA pinned so a
+push in between is refused.
 """
 
 import io
@@ -15,12 +16,13 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 import zipfile
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from ofd.automerge import record
-from ofd.automerge.eligibility import Eligibility, Snapshot, evaluate
+from ofd.automerge import record, schedule
+from ofd.automerge.eligibility import DELAY_MINUTES, Eligibility, Snapshot, evaluate
 from ofd.automerge.proof import (
     JUDGED,
     NEW,
@@ -46,6 +48,10 @@ LGTM_MESSAGE = (
     "00:00 Danish time :D"
 )
 REVIEW_ARTIFACT = "ai-review-{pr}"
+# GitHub computes ``mergeable`` lazily and starts over after every push to main: the
+# first read after one is null for a few seconds. Ask again before judging E18.
+MERGEABLE_TRIES = 6
+MERGEABLE_WAIT_SECONDS = 2.0
 
 
 def log(message: str) -> None:
@@ -67,6 +73,21 @@ def settings() -> dict:
 
 
 # --- facts ----------------------------------------------------------------------
+
+
+def settled_pull_request(repo: str, number: int) -> dict:
+    """GET /pulls/{n}, re-read while GitHub is still computing ``mergeable``.
+
+    Still null after the last try means "unknown", never "conflicting": E18 and
+    ``_merge_one`` treat it as a reason to wait, not to reset the eligible clock.
+    """
+    pr = github.pull_request(repo, number)
+    for _ in range(MERGEABLE_TRIES - 1):
+        if pr.get("mergeable") is not None or pr.get("state") != "open":
+            break
+        time.sleep(MERGEABLE_WAIT_SECONDS)
+        pr = github.pull_request(repo, number)
+    return pr
 
 
 def download_review(repo: str, number: int, head_sha: str) -> dict | None:
@@ -184,7 +205,7 @@ def collect(
 ) -> tuple[Snapshot, dict]:
     """A fresh ``Snapshot`` and the proof verdicts behind it."""
     cfg = settings()
-    pr = github.pull_request(repo, number)
+    pr = settled_pull_request(repo, number)
     base, head, _history = fetch_pr(repo_dir, repo, pr)
     if review is None or review.get("head_sha") != head:
         review = download_review(repo, number, head)
@@ -294,14 +315,31 @@ def _merge_reason(snapshot: Snapshot, repo_dir: Path) -> str:
     return "; ".join(parts or ["every check passed"]) + "; see the Auto-merge check."
 
 
-def _merge_one(repo: str, repo_dir: Path, pr: dict, cfg: dict, dry_run: bool) -> str:
+def _merge_one(
+    repo: str, repo_dir: Path, pr: dict, cfg: dict, dry_run: bool, window: datetime | None
+) -> str:
+    """Merge ``pr`` if it is due. ``window`` is tonight's 22:00, or None to merge
+    anything eligible for an hour (a maintainer's ``--ignore-window`` sweep)."""
     number, sha = pr["number"], pr["head"]["sha"]
     previous = record.latest(repo, sha, cfg["app_id"])
-    if record.eligible_since(previous, sha) is None:
+    since = record.eligible_since(previous, sha)
+    if since is None:
         return "not eligible"
+    # Not due yet: come back later. Evaluating now would fail E20 and record "not
+    # eligible", which ends the streak for good (#890).
+    due = since + timedelta(minutes=DELAY_MINUTES)
+    if window is not None and due > window:
+        return f"waiting for {schedule.describe(schedule.merge_time(since))}"
+    if datetime.now(timezone.utc) < due:
+        return f"waiting until {due:%H:%M} UTC"
     snapshot, _ = collect(repo, repo_dir, number, at_merge=True, previous=previous)
     result = evaluate(snapshot, at_merge=True)
     if not result.eligible:
+        # GitHub still computing mergeability is not a reason the PR needs a maintainer:
+        # recording it would end the streak, and nothing re-evaluates an idle PR (#928).
+        failed = {i.id for i in result.failures}
+        if snapshot.pr.get("mergeable") is None and failed <= {"E18", "E20"}:
+            return "waiting: GitHub has not computed mergeability yet"
         if not dry_run:
             record.write(repo, result, previous, cfg["mode"])
         return "no longer eligible: " + "; ".join(f"{i.id} {i.detail}" for i in result.failures)
@@ -327,17 +365,25 @@ def _merge_one(repo: str, repo_dir: Path, pr: dict, cfg: dict, dry_run: bool) ->
     return "merged"
 
 
-def sweep(repo: str, repo_dir: Path, dry_run: bool = False) -> dict[int, str]:
+def sweep(
+    repo: str, repo_dir: Path, dry_run: bool = False, ignore_window: bool = False
+) -> dict[int, str]:
     cfg = settings()
     if cfg["mode"] not in ("shadow", "on"):
         log("auto-merge is off")
         return {}
+    window = schedule.window_start(datetime.now(timezone.utc))
+    if window is None and not ignore_window:
+        log("outside the nightly merge window; nothing to do")
+        return {}
+    if ignore_window:
+        window = None
     outcome: dict[int, str] = {}
     for pr in github.api_list(f"repos/{repo}/pulls?state=open&per_page=100"):
         if pr.get("draft"):
             continue
         try:
-            outcome[pr["number"]] = _merge_one(repo, repo_dir, pr, cfg, dry_run)
+            outcome[pr["number"]] = _merge_one(repo, repo_dir, pr, cfg, dry_run, window)
         except Exception as exc:  # one broken PR must not stop the sweep
             outcome[pr["number"]] = f"error: {exc}"
         if outcome[pr["number"]] != "not eligible":

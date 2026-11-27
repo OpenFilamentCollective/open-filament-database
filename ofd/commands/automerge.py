@@ -6,7 +6,8 @@ Automerge command - proof-based auto-merge for data PRs.
 
 ``evaluate`` scores a PR against the eligibility checklist (see
 ofd/automerge/eligibility.py) and, with ``--post``, records it as the ``Auto-merge``
-check run. ``sweep`` merges every PR that has been eligible for an hour at its head.
+check run. ``sweep`` merges, at 22:00 Copenhagen time, every PR that was eligible at its
+head by 21:00 (``--ignore-window`` merges anything eligible for an hour, now).
 ``OFD_AUTOMERGE`` (off, shadow, on) decides whether anything is posted or merged;
 see .github/workflows/auto_merge.yaml.
 """
@@ -39,9 +40,14 @@ def register_subcommand(subparsers: argparse._SubParsersAction) -> None:
     p_eval.add_argument("--json", action="store_true", help="Print the checklist as JSON")
     p_eval.set_defaults(func=run_evaluate)
 
-    p_sweep = actions.add_parser("sweep", help="Merge PRs eligible for an hour")
+    p_sweep = actions.add_parser("sweep", help="Merge eligible PRs (nightly, 22:00 Copenhagen)")
     p_sweep.add_argument("--repo", default=repo_default, help="owner/name (default: %(default)s)")
     p_sweep.add_argument("--dry-run", action="store_true", help="Report, never merge or post")
+    p_sweep.add_argument(
+        "--ignore-window",
+        action="store_true",
+        help="Merge anything eligible for an hour now, not only at 22:00 Copenhagen time",
+    )
     p_sweep.set_defaults(func=run_sweep)
 
 
@@ -72,7 +78,7 @@ def run_evaluate(args: argparse.Namespace) -> int:
 def run_sweep(args: argparse.Namespace) -> int:
     from ofd.automerge.merge import sweep
 
-    outcome = sweep(args.repo, project_root, dry_run=args.dry_run)
+    outcome = sweep(args.repo, project_root, dry_run=args.dry_run, ignore_window=args.ignore_window)
     for number, what in sorted(outcome.items()):
         if what != "not eligible":
             print(f"#{number}: {what}")
