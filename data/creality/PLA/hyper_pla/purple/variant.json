@@ -3,6 +3,7 @@
   "id": "purple",
   "name": "Purple",
   "color_hex": "#B0347F",
+  "discontinued": false,
   "traits": {
     "high_flow": true
   }

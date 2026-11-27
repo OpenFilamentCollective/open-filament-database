@@ -2,10 +2,8 @@
   "uuid": "48294219-bb9f-4091-857c-ac10222137ac",
   "id": "golden_red",
   "name": "Golden-Red",
-  "color_hex": [
-    "#F6C500",
-    "#E03F26"
-  ],
+  "color_hex": "#F6C500",
+  "discontinued": false,
   "traits": {
     "silk": true
   }

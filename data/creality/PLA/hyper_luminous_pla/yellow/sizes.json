@@ -3,7 +3,6 @@
     "uuid": "b0f5b16f-2e20-43db-9099-904ac8f2dc3d",
     "filament_weight": 1000,
     "diameter": 1.75,
-    "spool_refill": false,
     "empty_spool_weight": 250,
     "spool_core_diameter": 100,
     "discontinued": false,
@@ -13,5 +12,15 @@
         "url": "https://store.creality.com/products/hyper-luminous-pla-3d-printing-filament-1kg"
       }
     ]
+  },
+  {
+    "filament_weight": 750,
+    "diameter": 1.75,
+    "discontinued": false
+  },
+  {
+    "filament_weight": 500,
+    "diameter": 1.75,
+    "discontinued": false
   }
 ]

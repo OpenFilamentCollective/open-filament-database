@@ -1,6 +1,7 @@
 {
   "uuid": "f3642152-124d-4d19-9568-23dd7b0200a4",
   "id": "hp_asa",
-  "name": "HP ASA",
-  "color_hex": "#181818"
+  "name": "Black/Charcoal",
+  "color_hex": "#181818",
+  "discontinued": false
 }

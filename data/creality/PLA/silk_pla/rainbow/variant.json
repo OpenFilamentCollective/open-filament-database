@@ -2,13 +2,8 @@
   "uuid": "3f1f5b1d-8878-4ace-a8f7-414910d80e01",
   "id": "rainbow",
   "name": "Rainbow",
-  "color_hex": [
-    "#8846AE",
-    "#4E7642",
-    "#2E56F1",
-    "#FCE575",
-    "#AD4F54"
-  ],
+  "color_hex": "#8846AE",
+  "discontinued": false,
   "traits": {
     "silk": true,
     "gradual_color_change": true

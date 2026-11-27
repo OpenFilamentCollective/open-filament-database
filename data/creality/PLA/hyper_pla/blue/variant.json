@@ -3,6 +3,7 @@
   "id": "blue",
   "name": "Blue",
   "color_hex": "#0081BF",
+  "discontinued": false,
   "traits": {
     "high_flow": true
   }
