@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { env } from '$env/dynamic/public';
+import { normalizeSizes } from '$lib/utils/legacySizes';
 
 export const IS_CLOUD = env.PUBLIC_APP_MODE === 'cloud';
 export const IS_LOCAL = env.PUBLIC_APP_MODE !== 'cloud';
@@ -152,29 +153,7 @@ function normalizeCloudVariant(variant: any, storeMap: Map<string, string>): any
 	if (result.slug) result.id = result.slug;
 
 	if (Array.isArray(result.sizes)) {
-		result.sizes = result.sizes.map((size: any) => {
-			if (!size || typeof size !== 'object') return size;
-			const { id: _id, variant_id: _vid, spool_refill: legacySizeRefill, ...rest } = size;
-			// Migrate legacy `spool_refill` (size- and link-level, both
-			// deprecated) to size-level `container_material: 'refill'`; the form always
-			// emits the size-level field, so without migration a no-op save
-			// generates a spurious sizes diff.
-			let migratedRefill = legacySizeRefill === true;
-			if (Array.isArray(rest.purchase_links)) {
-				rest.purchase_links = rest.purchase_links.map((link: any) => {
-					if (!link || typeof link !== 'object') return link;
-					const { id: _lid, size_id: _sid, spool_refill: legacyRefill, ...linkRest } = link;
-					if (legacyRefill === true) migratedRefill = true;
-					if (linkRest.store_id && storeMap.has(linkRest.store_id)) {
-						linkRest.store_id = storeMap.get(linkRest.store_id);
-					}
-					return linkRest;
-				});
-			}
-			if (migratedRefill && rest.container_material === undefined) rest.container_material = 'refill';
-			if (rest.discontinued === undefined) rest.discontinued = false;
-			return rest;
-		});
+		result.sizes = normalizeSizes(result.sizes, (id) => storeMap.get(id));
 	}
 
 	return result;

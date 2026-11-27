@@ -492,7 +492,7 @@ describe('Submitted Store', () => {
 			vi.unstubAllGlobals();
 		});
 
-		it('drops a closed submission immediately', async () => {
+		it('stops overlaying a closed submission immediately', async () => {
 			submittedStore.archive({
 				uuid: 'sub-1',
 				prUrl: 'https://example.com/pr/1',
@@ -506,19 +506,28 @@ describe('Submitted Store', () => {
 			expect(submittedStore.has('brands/acme')).toBe(false);
 		});
 
-		it('drops a rejected submission like a closed one', async () => {
-			submittedStore.archive({
-				uuid: 'sub-1',
-				prUrl: 'https://example.com/pr/1',
-				prNumber: 1,
-				changes: [makeChange('brands/acme', 'acme')]
-			});
-			vi.stubGlobal('fetch', mockStatus({ 1: 'rejected' }));
+		it.each(['rejected', 'closed'])(
+			'keeps a %s submission listed so its contributor can see why, but no longer overlaid',
+			async (status) => {
+				submittedStore.archive({
+					uuid: 'sub-1',
+					prUrl: 'https://example.com/pr/1',
+					prNumber: 1,
+					changes: [makeChange('brands/acme', 'acme')]
+				});
+				vi.stubGlobal('fetch', mockStatus({ 1: status }));
 
-			await submittedStore.reconcile();
+				await submittedStore.reconcile();
 
-			expect(submittedStore.getEntries()).toEqual([]);
-		});
+				const [entry] = submittedStore.getEntries();
+				expect(entry.status).toBe(status);
+				expect(submittedStore.has('brands/acme')).toBe(false);
+				expect(get(submissionsNeedingChanges)).toEqual([]);
+				expect(new Date(entry.expiresAt).getTime()).toBeGreaterThan(
+					Date.now() + 29 * 24 * 60 * 60 * 1000
+				);
+			}
+		);
 
 		it('lists entries newest first and flags the ones needing changes (navbar)', async () => {
 			submittedStore.archive({ uuid: 'a', prUrl: '', prNumber: 1, changes: [makeChange('brands/a', 'a')] });

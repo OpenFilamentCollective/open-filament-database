@@ -3,7 +3,7 @@
  * Used for fork + branch + commit + PR creation workflow
  */
 
-const API_BASE = 'https://api.github.com';
+import { githubApiUrl } from './githubHosts';
 
 function headers(token: string) {
 	return {
@@ -14,7 +14,7 @@ function headers(token: string) {
 }
 
 async function ghFetch(token: string, path: string, options?: RequestInit) {
-	const response = await fetch(`${API_BASE}${path}`, {
+	const response = await fetch(`${githubApiUrl()}${path}`, {
 		...options,
 		headers: { ...headers(token), ...options?.headers }
 	});
@@ -374,7 +374,7 @@ export async function getPullRequest(
 	const path = `/repos/${owner}/${repo}/pulls/${prNumber}`;
 	const response = token
 		? await ghFetch(token, path)
-		: await fetch(`${API_BASE}${path}`, { headers: { Accept: 'application/vnd.github+json' } });
+		: await fetch(`${githubApiUrl()}${path}`, { headers: { Accept: 'application/vnd.github+json' } });
 
 	if (response.status === 404) return null;
 	if (!response.ok) throw await ghError(response, 'Failed to get PR');
@@ -610,7 +610,7 @@ export async function mergePullRequest(
 async function ghGet(token: string | null, path: string): Promise<Response> {
 	return token
 		? ghFetch(token, path)
-		: fetch(`${API_BASE}${path}`, { headers: { Accept: 'application/vnd.github+json' } });
+		: fetch(`${githubApiUrl()}${path}`, { headers: { Accept: 'application/vnd.github+json' } });
 }
 
 /**

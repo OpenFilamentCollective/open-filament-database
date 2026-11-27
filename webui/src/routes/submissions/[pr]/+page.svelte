@@ -13,7 +13,13 @@
 	import { requestSubmit } from '$lib/stores/submitRequest';
 	import { authStore } from '$lib/stores/auth';
 	import { changeCount, changeStore, changesList } from '$lib/stores/changes';
-	import { revisionStore, generalFeedback, isAddressed, pendingData } from '$lib/stores/revision';
+	import {
+		revisionStore,
+		generalFeedback,
+		isAddressed,
+		pendingData,
+		openConflicts
+	} from '$lib/stores/revision';
 	import type { FeedbackItem, SubmissionFeedbackResponse } from '$lib/types/feedback';
 	import type { PageData } from './$types';
 
@@ -98,6 +104,43 @@
 
 	let general = $derived(alreadyLoaded ? generalFeedback($revisionStore) : []);
 
+	/**
+	 * Feedback about entries that are no longer part of the changes (undone, or reverted to
+	 * the live value): their cards are gone, so they are listed on their own.
+	 */
+	let orphaned = $derived.by(() => {
+		if (!alreadyLoaded || !$revisionStore) return [];
+		const paths = new Set(cards.map((c) => c.entity.path));
+		return $revisionStore.feedback.filter(
+			(i) => i.location?.entityPath && !paths.has(i.location.entityPath)
+		);
+	});
+
+	/** Fields someone else changed on main since the submission, still undecided. */
+	let conflicts = $derived.by(() => {
+		void $changeStore; // re-run when the pending data changes
+		return alreadyLoaded ? openConflicts($revisionStore) : [];
+	});
+	let allDone = $derived(
+		!!progress && progress.addressed === progress.total && conflicts.length === 0
+	);
+	let handledEarlier = $derived(
+		alreadyLoaded ? ($revisionStore?.handledEarlier ?? []).length : 0
+	);
+
+	function when(iso: string): string {
+		return new Date(iso).toLocaleString(undefined, {
+			month: 'short',
+			day: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit'
+		});
+	}
+
+	function showConflict() {
+		document.querySelector('[data-conflict]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	}
+
 	/** The loaded entries, parents first. */
 	let cards = $derived(
 		alreadyLoaded
@@ -149,6 +192,39 @@
 		return `${type ? type.charAt(0).toUpperCase() + type.slice(1) : ''} ${name}`.trim();
 	}
 </script>
+
+{#snippet editorButton(label: string, variant: 'primary' | 'outline')}
+	{#if confirmDiscard}
+		<div
+			class="mb-3 rounded-md border border-warning-border bg-warning-surface p-3 text-sm text-warning-foreground"
+		>
+			This replaces the {$changeCount} unsaved change{$changeCount === 1 ? '' : 's'} you have in the
+			editor.
+		</div>
+	{/if}
+	<div class="flex flex-wrap items-center gap-3">
+		<Button
+			onclick={() => openInEditor()}
+			variant={confirmDiscard ? 'destructive' : variant}
+			size="md"
+			disabled={opening}
+		>
+			{#if opening}
+				<LoadingSpinner /> Loading…
+			{:else if confirmDiscard}
+				Replace them and continue
+			{:else}
+				{label}
+			{/if}
+		</Button>
+		{#if confirmDiscard}
+			<Button onclick={() => (confirmDiscard = false)} variant="ghost" size="md">Cancel</Button>
+		{/if}
+	</div>
+	{#if openError}
+		<p class="mt-3 text-sm text-destructive">{openError}</p>
+	{/if}
+{/snippet}
 
 <svelte:head>
 	<title>Your contribution · Open Filament Database</title>
@@ -224,20 +300,37 @@
 			<p class="mb-8 rounded-lg border p-4 text-sm">
 				This contribution was closed without being added.
 			</p>
-		{:else if info.status === 'open'}
+		{:else if info.status === 'open' && info.revisedAt && !alreadyLoaded}
+			<section class="mb-8 rounded-lg border bg-card p-5 text-sm shadow-sm">
+				<p>
+					You sent your fixes on <strong>{when(info.revisedAt)}</strong>. The reviewer will look
+					again; anything new they ask for will show up here.
+				</p>
+				{#if info.access.allowed}
+					<div class="mt-4">{@render editorButton('Make more changes', 'outline')}</div>
+				{/if}
+			</section>
+		{:else if info.status === 'open' && !alreadyLoaded}
 			<p class="mb-8 rounded-lg border p-4 text-sm">
 				Waiting for a reviewer. There is no feedback yet.
 			</p>
 		{:else}
 			<!-- Returned, or open with feedback: what happened and what to do. -->
 			<section class="mb-8 rounded-lg border bg-card p-5 shadow-sm">
-				<h2 class="mb-2 text-lg font-semibold">A few things need fixing</h2>
-				<p class="mb-3 text-sm">
-					A reviewer found {info.items.length === 1 ? 'something' : 'some things'} to change in your contribution.
-					{alreadyLoaded
-						? 'Each one is shown next to the field it is about.'
-						: 'Open it in the editor to fix them.'}
-				</p>
+				{#if info.items.length === 0}
+					<h2 class="mb-2 text-lg font-semibold">Make your changes</h2>
+					<p class="mb-3 text-sm">
+						There is no open feedback. Change what you need below, then press Send fixes.
+					</p>
+				{:else}
+					<h2 class="mb-2 text-lg font-semibold">A few things need fixing</h2>
+					<p class="mb-3 text-sm">
+						A reviewer found {info.items.length === 1 ? 'something' : 'some things'} to change in your contribution.
+						{alreadyLoaded
+							? 'Each one is shown next to the field it is about.'
+							: 'Open it in the editor to fix them.'}
+					</p>
+				{/if}
 				<ul class="mb-5 space-y-1 text-sm text-muted-foreground">
 					<li><strong class="text-foreground">Change the field</strong> to fix it.</li>
 					<li>
@@ -253,58 +346,59 @@
 					</li>
 				</ul>
 
-				<FixFlow current={progress && progress.addressed === progress.total ? 'send' : 'fix'} />
+				{#if handledEarlier > 0}
+					<p class="mb-4 text-sm text-muted-foreground">
+						{handledEarlier} item{handledEarlier === 1 ? ' you' : 's you'} dealt with before
+						{handledEarlier === 1 ? 'is' : 'are'} already marked done. Mark
+						{handledEarlier === 1 ? 'it' : 'any'} not done if it still needs work.
+					</p>
+				{/if}
+
+				{#if conflicts.length > 0}
+					<div
+						class="mb-4 rounded-md border border-warning-border bg-warning-surface p-3 text-sm text-warning-foreground"
+					>
+						<p>
+							<strong
+								>Someone else changed {conflicts.length === 1
+									? 'a field'
+									: `${conflicts.length} fields`} you also changed</strong
+							>
+							on the live database after you submitted. Sending your version would replace their
+							change, so check each one marked ⚠: use the live value, or keep yours.
+						</p>
+						<button
+							type="button"
+							class="mt-2 cursor-pointer text-xs font-medium text-primary hover:underline"
+							onclick={showConflict}
+						>
+							Show me
+						</button>
+					</div>
+				{/if}
+
+				<FixFlow current={allDone ? 'send' : 'fix'} />
 
 				<div class="mt-5 border-t pt-4">
 					{#if alreadyLoaded && progress}
 						<div class="flex flex-wrap items-center justify-between gap-3">
 							<p class="text-sm">
 								<strong>{progress.addressed} of {progress.total}</strong> fixed.
-								{#if progress.addressed === progress.total}
+								{#if conflicts.length > 0}
+									<span class="text-warning-foreground"
+										>{conflicts.length} change{conflicts.length === 1 ? '' : 's'} by someone else to
+										check.</span
+									>
+								{:else if allDone}
 									<span class="font-medium text-green-700 dark:text-green-300">All done.</span>
 								{/if}
 							</p>
-							<Button
-								onclick={requestSubmit}
-								variant={progress.addressed === progress.total ? 'primary' : 'outline'}
-								size="md"
-							>
+							<Button onclick={requestSubmit} variant={allDone ? 'primary' : 'outline'} size="md">
 								Send fixes
 							</Button>
 						</div>
 					{:else if info.access.allowed}
-						{#if confirmDiscard}
-							<div
-								class="mb-3 rounded-md border border-warning-border bg-warning-surface p-3 text-sm text-warning-foreground"
-							>
-								This replaces the {$changeCount} unsaved change{$changeCount === 1 ? '' : 's'} you have
-								in the editor.
-							</div>
-						{/if}
-						<div class="flex flex-wrap items-center gap-3">
-							<Button
-								onclick={() => openInEditor()}
-								variant={confirmDiscard ? 'destructive' : 'primary'}
-								size="md"
-								disabled={opening}
-							>
-								{#if opening}
-									<LoadingSpinner /> Loading…
-								{:else if confirmDiscard}
-									Replace them and continue
-								{:else}
-									Fix in the editor
-								{/if}
-							</Button>
-							{#if confirmDiscard}
-								<Button onclick={() => (confirmDiscard = false)} variant="ghost" size="md"
-									>Cancel</Button
-								>
-							{/if}
-						</div>
-						{#if openError}
-							<p class="mt-3 text-sm text-destructive">{openError}</p>
-						{/if}
+						{@render editorButton('Fix in the editor', 'primary')}
 					{:else if info.access.signIn}
 						<p class="mb-3 text-sm text-muted-foreground">{info.access.reason}</p>
 						<Button onclick={() => signIn(info!.access.signIn!)} variant="primary" size="md">
@@ -334,6 +428,27 @@
 							<FeedbackItemView
 								{item}
 								markedDone={($revisionStore?.done ?? []).includes(item.id)}
+				earlier={($revisionStore?.handledEarlier ?? []).includes(item.id)}
+								onToggleDone={() =>
+									revisionStore.setDone(item.id, !($revisionStore?.done ?? []).includes(item.id))}
+							/>
+						</li>
+					{/each}
+				</ul>
+			{/if}
+			{#if orphaned.length > 0}
+				<h2 class="mb-1 text-lg font-semibold">About entries you no longer change</h2>
+				<p class="mb-3 text-sm text-muted-foreground">
+					These entries now match the live database, so this feedback may not apply any more.
+				</p>
+				<ul class="mb-8 space-y-2">
+					{#each orphaned as item (item.id)}
+						<li>
+							<FeedbackItemView
+								{item}
+								showEntity
+								markedDone={($revisionStore?.done ?? []).includes(item.id)}
+								earlier={($revisionStore?.handledEarlier ?? []).includes(item.id)}
 								onToggleDone={() =>
 									revisionStore.setDone(item.id, !($revisionStore?.done ?? []).includes(item.id))}
 							/>
@@ -342,16 +457,25 @@
 				</ul>
 			{/if}
 			<h2 id="your-changes" class="mb-1 scroll-mt-4 text-lg font-semibold">Your changes</h2>
-			<p class="mb-4 text-sm text-muted-foreground">
-				Your edits are kept in the editor until you submit them.
-			</p>
+			{#if cards.length === 0}
+				<p class="mb-4 rounded-lg border p-4 text-sm">
+					Nothing left to send: everything you changed now matches the live database. If that is
+					what you want, there is nothing to resubmit; press <strong>Stop fixing</strong> at the top.
+				</p>
+			{:else}
+				<p class="mb-4 text-sm text-muted-foreground">
+					Your edits are kept in the editor until you submit them.
+				</p>
+			{/if}
 			<div class="space-y-4">
 				{#each cards as change (change.entity.path)}
 					<ChangeCard {change} />
 				{/each}
 			</div>
 		{:else if info.items.length > 0}
-			<h2 class="mb-3 text-lg font-semibold">Feedback</h2>
+			<h2 class="mb-3 text-lg font-semibold">
+				{info.status === 'open' && info.revisedAt ? 'Earlier feedback' : 'Feedback'}
+			</h2>
 			<div class="space-y-6">
 				{#each groups as [entityPath, items] (entityPath)}
 					<section>

@@ -30,6 +30,13 @@
 		/** The contributor's comment on a field, for reviewers; with `onnote`, it can be written. */
 		noteAt?: (pointer: string) => string | undefined;
 		onnote?: (pointer: string, text: string) => void;
+		/**
+		 * A rebase conflict at this field that still needs a decision: main changed it after the
+		 * submission, and the submission's value would overwrite that. `original` holds main's value.
+		 */
+		conflictAt?: (pointer: string) => boolean;
+		/** The contributor keeps their value over main's for the conflict at `pointer`. */
+		onkeep?: (pointer: string) => void;
 	}
 
 	let {
@@ -43,7 +50,9 @@
 		renderFeedback,
 		onchange = () => {},
 		noteAt = () => undefined,
-		onnote
+		onnote,
+		conflictAt = () => false,
+		onkeep
 	}: Props = $props();
 
 	/** Fields whose comment box the contributor opened (before typing anything). */
@@ -129,7 +138,36 @@
 </script>
 
 {#snippet marker(v: unknown, o: unknown, p: string, hasOriginal: boolean)}
-	{#if compare && hasOriginal && !same(v, o)}
+	{#if conflictAt(p)}
+		<span class="flex flex-wrap items-center gap-1.5 text-xs" data-conflict={p}>
+			<span
+				class="rounded border border-warning-border bg-warning-surface px-1.5 py-0.5 font-medium text-warning-foreground"
+				title="Someone else changed this on the live database after you submitted. Sending yours replaces their value."
+				>⚠ changed by someone else since you submitted</span
+			>
+			{#if !isContainer(o)}
+				<span class="text-muted-foreground"
+					>live value: <span class="font-medium text-foreground">{display(o)}</span></span
+				>
+			{/if}
+			{#if !readOnly}
+				<button
+					type="button"
+					class="cursor-pointer font-medium text-primary hover:underline"
+					onclick={() => onchange(p, o)}
+				>
+					Use the live value
+				</button>
+				<button
+					type="button"
+					class="cursor-pointer text-primary hover:underline"
+					onclick={() => onkeep?.(p)}
+				>
+					Keep mine
+				</button>
+			{/if}
+		</span>
+	{:else if compare && hasOriginal && !same(v, o)}
 		<span class="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
 			<span class="rounded bg-primary/10 px-1.5 py-0.5 font-medium text-primary">changed</span>
 			{#if !isContainer(o)}
@@ -299,6 +337,8 @@
 								{onchange}
 								{noteAt}
 								{onnote}
+								{conflictAt}
+								{onkeep}
 							/>
 						{/if}
 					</div>
@@ -357,6 +397,8 @@
 							{onchange}
 							{noteAt}
 							{onnote}
+							{conflictAt}
+							{onkeep}
 						/>
 					</div>
 				{:else}

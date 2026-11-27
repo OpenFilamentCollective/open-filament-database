@@ -102,6 +102,7 @@ export function previewFeedbackResponse(snapshot: PreviewSnapshot): SubmissionFe
 		outcome: { outcome: 'returned', closedAt: snapshot.capturedAt },
 		items: items(snapshot),
 		truncated: false,
+		revisedAt: null,
 		access: { ...SUBMITTER_ACCESS },
 		preview: true
 	};
@@ -114,6 +115,7 @@ export function previewChangesResponse(snapshot: PreviewSnapshot): PrChangesResp
 		url: snapshot.pr.url,
 		uuid: null,
 		feedback: items(snapshot),
+		revisedAt: null,
 		access: { ...SUBMITTER_ACCESS },
 		preview: true
 	};

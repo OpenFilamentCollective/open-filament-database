@@ -42,6 +42,7 @@ export const GET: RequestHandler = async ({ params, cookies }) => {
 			url: ctx.pr.html_url,
 			uuid: ctx.uuid,
 			feedback: feedback?.items ?? [],
+			revisedAt: feedback?.revisedAt ?? null,
 			access: publicAccess(ctx.access)
 		});
 	} catch (err) {

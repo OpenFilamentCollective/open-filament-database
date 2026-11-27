@@ -5,7 +5,16 @@
 	 * whose field the contributor has changed since loading, so working through the list is
 	 * a matter of reading down it.
 	 */
-	import { revisionStore, feedbackForEntity, changedSinceLoaded } from '$lib/stores/revision';
+	import {
+		revisionStore,
+		feedbackForEntity,
+		changedSinceLoaded,
+		conflictsForEntity,
+		isConflictOpen,
+		pendingData,
+		pendingOriginal
+	} from '$lib/stores/revision';
+	import { changeStore } from '$lib/stores/changes';
 	import FeedbackItemView from '$lib/components/feedback/FeedbackItemView.svelte';
 
 	interface Props {
@@ -27,7 +36,29 @@
 	);
 	let done = $derived(new Set($revisionStore?.done ?? []));
 	let open = $derived(items.filter((i) => !changed.has(i.id) && !done.has(i.id)).length);
+	/** Fields of this entry someone else changed on main since the submission, undecided. */
+	let conflicts = $derived.by(() => {
+		void $changeStore;
+		if (!$revisionStore || !entityPath) return 0;
+		return conflictsForEntity($revisionStore, entityPath).filter((c) =>
+			isConflictOpen($revisionStore!, c, pendingData(entityPath), pendingOriginal(entityPath))
+		).length;
+	});
 </script>
+
+{#if $revisionStore && conflicts > 0}
+	<div
+		class="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-warning-border bg-warning-surface p-3 text-sm text-warning-foreground"
+	>
+		<span>
+			⚠ Someone else changed {conflicts} field{conflicts === 1 ? '' : 's'} of this entry after you
+			submitted. Sending yours would replace their change.
+		</span>
+		<a href="/submissions/{$revisionStore.prNumber}" class="text-xs font-medium text-primary hover:underline">
+			Check {conflicts === 1 ? 'it' : 'them'}
+		</a>
+	</div>
+{/if}
 
 {#if $revisionStore && items.length > 0}
 	<section
@@ -52,6 +83,7 @@
 						{item}
 						changed={changed.has(item.id)}
 						markedDone={done.has(item.id)}
+						earlier={($revisionStore?.handledEarlier ?? []).includes(item.id)}
 						onToggleDone={() => revisionStore.setDone(item.id, !done.has(item.id))}
 					/>
 				</li>

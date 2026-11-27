@@ -621,6 +621,8 @@
 			changes: exportData.changes
 		});
 		userPrefs.addSubmission(uuid, result.prUrl || '', result.prNumber || 0);
+		// So the items dealt with now still show as dealt with if the PR is loaded again.
+		revisionStore.rememberSent();
 		changeStore.clear();
 		revisionStore.clear();
 
@@ -930,6 +932,10 @@
 												class="rounded bg-warning-surface px-1.5 py-0.5 text-xs font-medium text-warning-foreground"
 											>
 												Changes requested
+											</span>
+										{:else if entry.status === 'rejected' || entry.status === 'closed'}
+											<span class="rounded bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground">
+												{entry.status === 'rejected' ? 'Not accepted' : 'Closed'}
 											</span>
 										{/if}
 									</div>

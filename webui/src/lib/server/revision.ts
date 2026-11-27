@@ -48,7 +48,13 @@ import {
 } from '$lib/server/prBuilder';
 import { createAnonPR, isAnonBotEnabled } from '$lib/server/anonBot';
 import { createForkPR } from '$lib/server/forkPr';
-import { prKind, lineOfPath, labelFromPointer, type PrKind } from '$lib/server/feedback';
+import {
+	prKind,
+	lineOfPath,
+	labelFromPointer,
+	REVISION_MARKER,
+	type PrKind
+} from '$lib/server/feedback';
 import type { PrOutcome } from '$lib/server/prOutcomes';
 import type { SubmissionRecord } from '$lib/server/submissionStore';
 
@@ -383,7 +389,7 @@ export async function announceRevision(opts: {
 		owner,
 		repo,
 		pr.number,
-		`Updated via the web editor by ${who} (${opts.commitSha.slice(0, 7)}).`
+		`${REVISION_MARKER}\nUpdated via the web editor by ${who} (${opts.commitSha.slice(0, 7)}).`
 	);
 }
 

@@ -14,6 +14,8 @@
 		showEntity?: boolean;
 		/** The contributor marked it as dealt with. */
 		markedDone?: boolean;
+		/** Marked done because it was dealt with in an earlier round (an earlier fix or load). */
+		earlier?: boolean;
 		/** When set, a "Mark done" toggle is shown. */
 		onToggleDone?: () => void;
 		/** Pinned under its field, inside the field's box: no label, no box of its own. */
@@ -25,6 +27,7 @@
 		changed = false,
 		showEntity = false,
 		markedDone = false,
+		earlier = false,
 		onToggleDone,
 		compact = false
 	}: Props = $props();
@@ -91,6 +94,12 @@
 		{#if changed}
 			<span class="rounded bg-green-500/15 px-1.5 py-0.5 text-green-700 dark:text-green-300"
 				>✓ fixed</span
+			>
+		{:else if markedDone && earlier}
+			<span
+				class="rounded bg-green-500/15 px-1.5 py-0.5 text-green-700 dark:text-green-300"
+				title="You dealt with this in an earlier update. Mark it not done if it still needs work."
+				>✓ dealt with before</span
 			>
 		{:else if markedDone}
 			<span class="rounded bg-green-500/15 px-1.5 py-0.5 text-green-700 dark:text-green-300"

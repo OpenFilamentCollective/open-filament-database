@@ -37,6 +37,18 @@ async function sendEmail(
 	to: string,
 	{ subject, text: textBody, html: htmlBody }: EmailContent
 ): Promise<void> {
+	// Testing only: hand the email to a local outbox (scripts/fake-github/) instead of ZeptoMail.
+	if (privateEnv.EMAIL_OUTBOX_URL) {
+		const res = await fetch(privateEnv.EMAIL_OUTBOX_URL, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ from: getFrom(), to, subject, text: textBody, html: htmlBody })
+		});
+		if (!res.ok) throw new Error(`[Email] Outbox rejected email: ${res.status}`);
+		console.log(`[Email] Delivered to outbox for ${to}: ${subject}`);
+		return;
+	}
+
 	const c = getClient();
 	if (!c) return;
 

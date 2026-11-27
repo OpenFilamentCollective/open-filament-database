@@ -28,7 +28,7 @@ export const GET: RequestHandler = async ({ params, cookies }) => {
 
 		return json({
 			pr: feedback.pr,
-			status: submissionStatus(ctx.pr, ctx.outcome, feedback.items.length),
+			status: submissionStatus(ctx.pr, ctx.outcome, feedback.items, feedback.revisedAt),
 			outcome: ctx.outcome
 				? {
 						outcome: ctx.outcome.outcome,
@@ -39,6 +39,7 @@ export const GET: RequestHandler = async ({ params, cookies }) => {
 				: null,
 			items: feedback.items,
 			truncated: feedback.truncated,
+			revisedAt: feedback.revisedAt,
 			access: publicAccess(ctx.access)
 		});
 	} catch (err) {

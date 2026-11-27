@@ -6,6 +6,7 @@
 import type { Cookies } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import { env } from '$env/dynamic/private';
+import { githubApiUrl, githubWebUrl } from './githubHosts';
 
 const GH_COOKIE = 'ofd_gh_token';
 const SP_COOKIE = 'ofd_sp_token';
@@ -55,7 +56,7 @@ export async function exchangeCodeForToken(
 	clientId = clientId.trim();
 	clientSecret = clientSecret.trim();
 
-	const response = await fetch('https://github.com/login/oauth/access_token', {
+	const response = await fetch(`${githubWebUrl()}/login/oauth/access_token`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -88,7 +89,7 @@ export async function exchangeCodeForToken(
 }
 
 export async function getGitHubUser(token: string): Promise<{ login: string; name: string; avatar_url: string }> {
-	const response = await fetch('https://api.github.com/user', {
+	const response = await fetch(`${githubApiUrl()}/user`, {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			Accept: 'application/vnd.github+json'
@@ -108,9 +109,11 @@ export async function getGitHubUser(token: string): Promise<{ login: string; nam
  * The API lives at {domain}/api (not an api.{domain} subdomain) — matching the
  * official Cura/Fusion/Blender integrations. */
 const SP_DOMAIN = (env.SIMPLYPRINT_BASE_URL || 'simplyprint.io').replace(/^https?:\/\//, '');
+// Keep http:// only when SIMPLYPRINT_BASE_URL asks for it (local fake); default https.
+const SP_SCHEME = /^http:\/\//.test(env.SIMPLYPRINT_BASE_URL || '') ? 'http' : 'https';
 // Strip any trailing slash so `${SP_API_BASE}/oauth2/Token` never doubles up.
-const SP_API_BASE = (env.SIMPLYPRINT_API_URL || `https://${SP_DOMAIN}/api`).replace(/\/+$/, '');
-export const SP_AUTHORIZE_URL = `https://${SP_DOMAIN}/panel/oauth2/authorize`;
+const SP_API_BASE = (env.SIMPLYPRINT_API_URL || `${SP_SCHEME}://${SP_DOMAIN}/api`).replace(/\/+$/, '');
+export const SP_AUTHORIZE_URL = `${SP_SCHEME}://${SP_DOMAIN}/panel/oauth2/authorize`;
 
 export function getSimplyPrintToken(cookies: Cookies): string | undefined {
 	return cookies.get(SP_COOKIE);

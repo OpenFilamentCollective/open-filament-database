@@ -70,10 +70,14 @@ export async function loadSubmissionContext(
 export function submissionStatus(
 	pr: PullRequestDetails,
 	outcome: PrOutcome | undefined,
-	feedbackCount: number
+	items: { createdAt: string }[],
+	revisedAt: string | null = null
 ): SubmissionStatus {
 	if (pr.merged) return 'merged';
-	if (pr.state === 'open') return feedbackCount > 0 ? 'feedback' : 'open';
+	// An open PR needs the contributor only for feedback newer than the last fix they sent;
+	// after that it is back with the reviewer.
+	if (pr.state === 'open')
+		return items.some((i) => !revisedAt || i.createdAt > revisedAt) ? 'feedback' : 'open';
 	if (outcome?.outcome === 'returned' || outcome?.outcome === 'rejected') return outcome.outcome;
 	return 'closed';
 }

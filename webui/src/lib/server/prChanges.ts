@@ -25,6 +25,7 @@ import {
 } from '$lib/server/github';
 import { repoPathToEntityPath, type RepoFileEntity } from '$lib/server/prBuilder';
 import { prKind, type PrKind } from '$lib/server/feedback';
+import { normalizeSizes } from '$lib/utils/legacySizes';
 
 import type { LoadedChange, LoadedImage } from '$lib/types/feedback';
 export type { LoadedChange, LoadedImage };
@@ -184,7 +185,10 @@ async function readEntity(
 	if (!data || typeof data !== 'object') return null;
 	if (type === 'variant') {
 		const sizes = await read(tree, `${dir}/sizes.json`);
-		if (Array.isArray(sizes)) data.sizes = sizes;
+		// In the editor's shape (deprecated `spool_refill` migrated, defaults filled), the same
+		// way every other read normalises them. Applied to base, head and main alike, so the
+		// migration never shows up as a change the contributor made.
+		if (Array.isArray(sizes)) data.sizes = normalizeSizes(sizes);
 	}
 	return data;
 }

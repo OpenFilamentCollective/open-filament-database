@@ -227,7 +227,8 @@ describe('loadPrChanges', () => {
 			color_hex: '#63666A',
 			uuid: 'u-grey',
 			dry_time: 4,
-			sizes: [{ filament_weight: 1000, diameter: 1.75 }]
+			// Sizes come in the editor's shape (utils/legacySizes.ts).
+			sizes: [{ filament_weight: 1000, diameter: 1.75, discontinued: false }]
 		});
 		expect(byPath.grey.originalData.color_hex).toBe('#808080');
 
@@ -308,5 +309,32 @@ describe('loadPrChanges', () => {
 		const result = await loadPrChanges('token', 820, PR);
 		expect(result!.changes[0]).toMatchObject({ operation: 'create', data: { name: 'SUNLU' } });
 		expect(result!.conflicts).toEqual([{ entityPath: 'brands/sunlu', pointer: '' }]);
+	});
+});
+
+describe('loadPrChanges: legacy size fields', () => {
+	it('does not report the spool_refill migration as a change the PR made', async () => {
+		const F = 'data/acme/PLA/basic';
+		const sizes = j([{ filament_weight: 1000, diameter: 1.75, spool_refill: false }]);
+		const variant = j({ id: 'red', name: 'Red', color_hex: '#FF0000' });
+		gh.trees.base = { [`${F}/red/variant.json`]: variant, [`${F}/red/sizes.json`]: sizes };
+		gh.trees.main = { ...gh.trees.base };
+		// The editor saved the variant: name changed, spool_refill dropped by the size form.
+		gh.trees.head = {
+			[`${F}/red/variant.json`]: j({ id: 'red', name: 'Signal Red', color_hex: '#FF0000' }),
+			[`${F}/red/sizes.json`]: j([{ filament_weight: 1000, diameter: 1.75, discontinued: false }])
+		};
+		gh.files = [
+			{ filename: `${F}/red/variant.json`, status: 'modified' },
+			{ filename: `${F}/red/sizes.json`, status: 'modified' }
+		];
+
+		const result = await loadPrChanges('token', 900, PR);
+		const red = result!.changes.find((c) => c.entity.id === 'red')!;
+		// Both sides in the same shape: the only difference is the name.
+		expect(red.originalData.sizes).toEqual(red.data.sizes);
+		expect(red.data.sizes[0]).not.toHaveProperty('spool_refill');
+		expect(red.data.name).toBe('Signal Red');
+		expect(result!.conflicts).toEqual([]);
 	});
 });

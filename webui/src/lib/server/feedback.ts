@@ -45,6 +45,18 @@ export type { PrKind, FeedbackLocation, FeedbackItem, RejectComment, PrSummary, 
 /** Login of the Actions bot that posts the AI review, as GraphQL spells it (no `[bot]`). */
 export const AI_REVIEW_LOGIN = 'github-actions';
 
+/**
+ * Marks the comment the editor posts when a fix is pushed onto a PR (revision.ts). It records
+ * when fixes were last sent; it is never feedback, whoever's token posted it.
+ */
+export const REVISION_MARKER = '<!-- ofd-revision -->';
+/** The same comment from before the marker existed. */
+const LEGACY_REVISION = /^Updated via the web editor by .+ \([0-9a-f]{7}\)\.$/;
+
+function isRevisionNotice(body: string): boolean {
+	return body.includes(REVISION_MARKER) || LEGACY_REVISION.test(body.trim());
+}
+
 const NOTE = /^[\s>*_~`#-]*notes?\b/i;
 const REJECT = /^[\s>*_~`#-]*reject(?:ed|ing)?\b[\s:.,-]*/i;
 const COMMAND = /^\s*\//;
@@ -258,7 +270,12 @@ export function selectFeedback(raw: RawPullRequest): PrFeedback {
 	};
 
 	// Conversation comments.
+	let revisedAt: string | null = null;
 	for (const c of raw.comments.nodes) {
+		if (isRevisionNotice(c.body)) {
+			if (!revisedAt || c.createdAt > revisedAt) revisedAt = c.createdAt;
+			continue;
+		}
 		if (considerReject(c)) continue;
 		if (!humanEligible(c)) continue;
 		items.push({
@@ -346,7 +363,7 @@ export function selectFeedback(raw: RawPullRequest): PrFeedback {
 		raw.reviewThreads.totalCount > raw.reviewThreads.nodes.length;
 
 	items.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
-	return { pr, items, rejectComment, truncated };
+	return { pr, items, rejectComment, truncated, revisedAt };
 }
 
 // --- Line → JSON pointer ---

@@ -14,6 +14,7 @@ import {
 	pointerFromPath,
 	labelFromPointer,
 	feedbackToText,
+	REVISION_MARKER,
 	type RawPullRequest,
 	type RawThread,
 	type RawThreadComment,
@@ -286,6 +287,36 @@ describe('selectFeedback', () => {
 			'🟡 The colour name is misspelled.',
 			'This is a link to the store listing, not the datasheet.'
 		]);
+	});
+
+	it('records when fixes were last sent, and never treats that notice as feedback', () => {
+		const result = selectFeedback(
+			pr({
+				author: human('contributor'),
+				headRefName: 'ofd-changes-1',
+				comments: {
+					totalCount: 4,
+					nodes: [
+						comment(human('maintainer'), 'Please fix the hex.', '2026-10-31T10:00:00Z'),
+						// Posted with the maintainer's own token when they push a fix to a fork PR.
+						comment(
+							human('maintainer'),
+							`${REVISION_MARKER}\nUpdated via the web editor by maintainer (abc1234).`,
+							'2026-11-01T10:00:00Z'
+						),
+						// The same notice from before the marker existed.
+						comment(
+							human('contributor'),
+							'Updated via the web editor by the contributor (def5678).',
+							'2026-11-02T10:00:00Z'
+						),
+						comment(human('maintainer'), 'One more thing.', '2026-11-03T10:00:00Z')
+					]
+				}
+			})
+		);
+		expect(result.items.map((i) => i.body)).toEqual(['Please fix the hex.', 'One more thing.']);
+		expect(result.revisedAt).toBe('2026-11-02T10:00:00Z');
 	});
 
 	it('takes the latest maintainer "Reject" comment as the reason, not as feedback', () => {

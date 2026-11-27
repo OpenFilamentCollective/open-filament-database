@@ -2,7 +2,8 @@
 	import { Button, LoadingSpinner, FixHint } from '$lib/components/ui';
 	import { isAuthenticated, currentUser, isSpAuthenticated, currentSpUser, authStore } from '$lib/stores/auth';
 	import type { SubmittedEntry } from '$lib/types/changes';
-	import type { ActiveRevision } from '$lib/stores/revision';
+	import { openConflicts, type ActiveRevision } from '$lib/stores/revision';
+	import { changeStore } from '$lib/stores/changes';
 
 	type Step = 'method' | 'details' | 'revision' | 'success';
 	type SubmitMethod = 'simplyprint' | 'github';
@@ -64,6 +65,11 @@
 	let revisionNeedsSp = $derived(revision?.via === 'bot' && revision?.as === 'submitter');
 	let revisionSignedIn = $derived(revisionNeedsSp ? $isSpAuthenticated : $isAuthenticated);
 	let revisionNote = $state('');
+	/** Fields someone else changed on main since the submission that are still undecided. */
+	let revisionConflicts = $derived.by(() => {
+		void $changeStore;
+		return revision ? openConflicts(revision).length : 0;
+	});
 
 	// The submission to add to. Amending is only wired up for the SimplyPrint/anon path —
 	// GitHub submissions go to a fork on a per-submission branch, which the bot doesn't own.
@@ -142,6 +148,17 @@
 					Your fixed version goes back to the reviewer, together with any comments you wrote.
 					{#if revision.as === 'maintainer'}You are fixing someone else's contribution as a maintainer.{/if}
 				</p>
+
+				{#if revisionConflicts > 0}
+					<div class="rounded-md border border-warning-border bg-warning-surface p-3 text-warning-foreground">
+						Someone else changed {revisionConflicts} field{revisionConflicts === 1 ? '' : 's'} on the live
+						database after this was submitted. Sending now replaces
+						{revisionConflicts === 1 ? 'that change' : 'those changes'} with your values.
+						<a href="/submissions/{revision.prNumber}" class="font-medium text-primary hover:underline"
+							>Check {revisionConflicts === 1 ? 'it' : 'them'} first</a
+						>
+					</div>
+				{/if}
 
 				{#if revision.mode === 'resubmit'}
 					<div>

@@ -5,7 +5,13 @@
 	 * to the field it is about. Edits go straight into the pending change set.
 	 */
 	import { changeStore } from '$lib/stores/changes';
-	import { revisionStore, feedbackForEntity, changedSinceLoaded } from '$lib/stores/revision';
+	import {
+		revisionStore,
+		feedbackForEntity,
+		changedSinceLoaded,
+		conflictsForEntity,
+		isConflictOpen
+	} from '$lib/stores/revision';
 	import { updateAtPointer, valueAtPointer } from '$lib/utils/jsonPointer';
 	import type { EntityChange } from '$lib/types/changes';
 	import type { FeedbackItem } from '$lib/types/feedback';
@@ -41,6 +47,23 @@
 			: 0
 	);
 
+	/** Rebase conflicts in this entry that still need a decision (see stores/revision.ts). */
+	let conflicts = $derived(
+		$revisionStore
+			? conflictsForEntity($revisionStore, change.entity.path).filter((c) =>
+					isConflictOpen($revisionStore!, c, data, change.originalData)
+				)
+			: []
+	);
+	let entityConflict = $derived(conflicts.find((c) => c.pointer === ''));
+	function conflictAt(pointer: string): boolean {
+		return pointer !== '' && conflicts.some((c) => c.pointer === pointer);
+	}
+	function keep(pointer: string) {
+		const conflict = conflicts.find((c) => c.pointer === pointer);
+		if (conflict) revisionStore.setConflictKept(conflict, true);
+	}
+
 	function feedbackAt(pointer: string): FeedbackItem[] {
 		return pinned.filter((i) => i.location!.pointer === pointer);
 	}
@@ -65,6 +88,7 @@
 			compact
 			changed={$revisionStore ? changedSinceLoaded($revisionStore, item, data) : false}
 			markedDone={($revisionStore?.done ?? []).includes(item.id)}
+				earlier={($revisionStore?.handledEarlier ?? []).includes(item.id)}
 			onToggleDone={() =>
 				revisionStore.setDone(item.id, !($revisionStore?.done ?? []).includes(item.id))}
 		/>
@@ -95,6 +119,14 @@
 				{open > 0 ? `${open} to address` : '✓ all addressed'}
 			</span>
 		{/if}
+		{#if conflicts.length > 0}
+			<span
+				class="rounded-full border border-warning-border bg-warning-surface px-2 py-0.5 text-xs font-medium text-warning-foreground"
+				title="Someone else changed these on the live database after you submitted"
+			>
+				⚠ {conflicts.length} changed by someone else
+			</span>
+		{/if}
 	</header>
 
 	<div class="space-y-3 p-4">
@@ -103,6 +135,33 @@
 				class="overflow-hidden rounded-md border border-warning-border [&>article:first-child]:border-t-0"
 			>
 				{@render pinnedFeedback(unpinned)}
+			</div>
+		{/if}
+
+		{#if entityConflict}
+			<div
+				class="rounded-md border border-warning-border bg-warning-surface p-3 text-sm text-warning-foreground"
+			>
+				<p>
+					This entry was removed from the live database after you submitted. Sending your version
+					adds it back.
+				</p>
+				<div class="mt-2 flex gap-3 text-xs">
+					<button
+						type="button"
+						class="cursor-pointer font-medium text-primary hover:underline"
+						onclick={() => changeStore.removeChange(change.entity.path)}
+					>
+						Leave it removed
+					</button>
+					<button
+						type="button"
+						class="cursor-pointer text-primary hover:underline"
+						onclick={() => revisionStore.setConflictKept(entityConflict!, true)}
+					>
+						Keep mine
+					</button>
+				</div>
 			</div>
 		{/if}
 
@@ -125,6 +184,8 @@
 				onchange={apply}
 				noteAt={(p) => $revisionStore?.notes?.[change.entity.path]?.[p]}
 				onnote={(p, text) => revisionStore.setNote(change.entity.path, p, text)}
+				{conflictAt}
+				onkeep={keep}
 			/>
 		{/if}
 	</div>

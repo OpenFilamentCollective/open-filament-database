@@ -11,7 +11,10 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: isDocker ? adapterNode() : adapterAuto()
+		adapter: isDocker ? adapterNode() : adapterAuto(),
+		// OFD_ENV_DIR lets scripts/fake-github/dev.mjs load an isolated .env, so a test
+		// run never picks up the real credentials in webui/.env.
+		env: { dir: process.env.OFD_ENV_DIR || '.' }
 	}
 };
 

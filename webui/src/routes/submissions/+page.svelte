@@ -21,8 +21,15 @@
 			label: 'Returned for changes',
 			class: 'bg-warning-surface text-warning-foreground'
 		},
-		merged: { label: 'Merged', class: 'bg-green-500/15 text-green-700 dark:text-green-400' }
+		merged: { label: 'Merged', class: 'bg-green-500/15 text-green-700 dark:text-green-400' },
+		rejected: { label: 'Not accepted', class: 'bg-muted text-muted-foreground' },
+		closed: { label: 'Closed', class: 'bg-muted text-muted-foreground' }
 	};
+
+	/** Turned down or closed: listed only so the contributor can see what happened. */
+	function finished(entry: SubmittedEntry): boolean {
+		return entry.status === 'rejected' || entry.status === 'closed';
+	}
 
 	function status(entry: SubmittedEntry) {
 		return STATUS[entry.status ?? 'open'] ?? STATUS.open;
@@ -69,10 +76,10 @@
 		<ul class="divide-y rounded-lg border">
 			{#each $submissionEntries as entry (entry.uuid)}
 				{@const s = status(entry)}
-				<li>
+				<li class="flex items-start">
 					<a
 						href="/submissions/{entry.prNumber}"
-						class="flex items-start gap-3 p-4 transition-colors hover:bg-muted/50"
+						class="flex min-w-0 flex-1 items-start gap-3 p-4 transition-colors hover:bg-muted/50"
 					>
 						<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center">
 							{#if needsChanges(entry)}
@@ -111,9 +118,23 @@
 								<span class="mt-1 block text-xs font-medium text-warning-foreground">
 									A reviewer sent feedback. Open it to fix it in the editor →
 								</span>
+							{:else if finished(entry)}
+								<span class="mt-1 block text-xs text-muted-foreground">
+									Not added to the database. Open it to see why →
+								</span>
 							{/if}
 						</span>
 					</a>
+					{#if finished(entry)}
+						<button
+							type="button"
+							class="m-4 shrink-0 cursor-pointer text-xs text-muted-foreground hover:text-foreground hover:underline"
+							title="Remove it from this list"
+							onclick={() => submittedStore.remove(entry.uuid)}
+						>
+							Remove
+						</button>
+					{/if}
 				</li>
 			{/each}
 		</ul>

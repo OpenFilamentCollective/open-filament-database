@@ -4,6 +4,7 @@ import { env } from '$env/dynamic/public';
 import { env as privateEnv } from '$env/dynamic/private';
 import { dev } from '$app/environment';
 import { safeReturnPath } from '$lib/server/auth';
+import { githubWebUrl } from '$lib/server/githubHosts';
 import crypto from 'crypto';
 
 const STATE_COOKIE = 'ofd_gh_oauth_state';
@@ -44,5 +45,5 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 		state
 	});
 
-	throw redirect(302, `https://github.com/login/oauth/authorize?${params}`);
+	throw redirect(302, `${githubWebUrl()}/login/oauth/authorize?${params}`);
 };

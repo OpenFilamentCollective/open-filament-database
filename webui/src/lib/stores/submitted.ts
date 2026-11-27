@@ -10,8 +10,17 @@ import { STORAGE_KEY_SUBMITTED } from '$lib/config/storageKeys';
 import { datasetVisibleAfter } from '$lib/config/datasetSchedule';
 
 const DEFAULT_TTL_DAYS = 7;
-/** How long a returned submission stays listed, so its contributor can come back to fix it. */
+/**
+ * How long a returned, rejected or closed submission stays listed: long enough to come back
+ * to fix a returned one, or to read why one was turned down.
+ */
 const RETURNED_TTL_DAYS = 30;
+
+/** Closed without merging: its data is never coming, so it must not overlay anything. */
+function isFinishedUnmerged(entry: SubmittedEntry): boolean {
+	const status = statusOf(entry);
+	return status === 'returned' || status === 'rejected' || status === 'closed';
+}
 
 function createEmptyBuffer(): SubmittedBuffer {
 	return { entries: {}, version: 1 };
@@ -31,7 +40,7 @@ function isOpen(entry: SubmittedEntry): boolean {
 /**
  * True once a merged entry's data can be expected to have reached the upstream API, so the
  * overlay copy is redundant and should be dropped. Open/closed entries are not stale by this
- * measure — open ones are still pending, and closed ones are removed outright.
+ * measure — open ones are still pending, and closed ones never overlay anything.
  */
 function isMergedAndPublished(entry: SubmittedEntry, now: number): boolean {
 	if (statusOf(entry) !== 'merged') return false;
@@ -52,8 +61,8 @@ function buildIndex(
 	);
 
 	for (const entry of sorted) {
-		// A returned PR is closed: its data is not coming, so it must not overlay anything.
-		if (entry.status === 'returned' || entry.status === 'rejected') continue;
+		// Returned, rejected or closed: its data is not coming, so it must not overlay anything.
+		if (isFinishedUnmerged(entry)) continue;
 		for (const change of entry.changes) {
 			index.set(change.entity.path, { change, entry });
 		}
@@ -174,7 +183,9 @@ function createSubmittedStore() {
 		 * Asks the server for the current status of each tracked PR (which checks GitHub for
 		 * anything the merge webhook may have missed) and records it on the entry.
 		 *
-		 * A **closed** PR is dropped immediately — its data is never coming.
+		 * A **closed** (or rejected, or returned) PR stops overlaying the editor at once — its
+		 * data is never coming — but stays listed on /submissions for a while, so the
+		 * contributor can still find out what happened to it.
 		 *
 		 * A **merged** PR is deliberately *kept*, marked `merged` with the merge time, until
 		 * the nightly dataset rebuild has plausibly published it (`datasetVisibleAfter`).
@@ -215,18 +226,12 @@ function createSubmittedStore() {
 					const status = statuses[entry.prNumber] as SubmissionStatus | 'unknown' | undefined;
 					if (!status || status === 'unknown') continue;
 
-					if (status === 'closed' || status === 'rejected') {
-						delete buffer.entries[entry.uuid];
-						changed = true;
-						continue;
-					}
-
-					if (status === 'returned') {
-						// Keep it listed (with a "Fix" link) long enough to come back to.
-						// The window starts when it is first seen returned, not on every reconcile.
-						if (entry.status !== 'returned') {
+					if (status === 'returned' || status === 'closed' || status === 'rejected') {
+						// Keep it listed long enough to come back to (a "Fix" link, or the reason).
+						// The window starts when it is first seen in this state, not on every reconcile.
+						if (entry.status !== status) {
 							const keepUntil = Date.now() + RETURNED_TTL_DAYS * 24 * 60 * 60 * 1000;
-							entry.status = 'returned';
+							entry.status = status;
 							entry.expiresAt = new Date(Math.max(keepUntil, new Date(entry.expiresAt).getTime())).toISOString();
 							changed = true;
 						}

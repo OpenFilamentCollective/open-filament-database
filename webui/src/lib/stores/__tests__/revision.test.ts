@@ -35,9 +35,13 @@ import {
 	generalFeedback,
 	changedSinceLoaded,
 	isAddressed,
+	openConflicts,
 	pendingData
 } from '../revision';
-import { STORAGE_KEY_ACTIVE_REVISION } from '$lib/config/storageKeys';
+import {
+	STORAGE_KEY_ACTIVE_REVISION,
+	STORAGE_KEY_FEEDBACK_PROGRESS
+} from '$lib/config/storageKeys';
 import type { FeedbackItem, PrChangesResponse } from '$lib/types/feedback';
 
 const VARIANT = 'brands/insignia/materials/PLA/filaments/glitter_pla/variants/night_saphire';
@@ -108,6 +112,7 @@ function response(overrides: Partial<PrChangesResponse> = {}): PrChangesResponse
 		url: 'https://github.com/o/r/pull/827',
 		uuid: '4df9035c-eff0-4bfc-b4df-4c109ec197cc',
 		feedback: [typo, general],
+		revisedAt: null,
 		access: {
 			allowed: true,
 			as: 'submitter',
@@ -130,6 +135,7 @@ function mockFetchOnce(status: number, body: unknown) {
 
 beforeEach(() => {
 	revisionStore.clear({ discardChanges: true });
+	localStorage.removeItem(STORAGE_KEY_FEEDBACK_PROGRESS);
 	(globalThis.fetch as any).mockReset();
 	// Schema lookups fail in tests, which leaves data unfiltered.
 	(globalThis.fetch as any).mockRejectedValue(new Error('offline'));
@@ -246,3 +252,68 @@ describe('clearing the changes', () => {
 	});
 });
 
+describe('progress across loads', () => {
+	it('marks items older than the last fix sent as dealt with before', async () => {
+		// general (c1) is from 2026-10-31; the typo item is newer than the fix.
+		const newer = { ...typo, createdAt: '2026-11-05T00:00:00Z' };
+		mockFetchOnce(200, response({ feedback: [newer, general], revisedAt: '2026-11-01T00:00:00Z' }));
+		await revisionStore.load(827);
+
+		const revision = get(revisionStore)!;
+		expect(revision.done).toEqual(['c1']);
+		expect(revision.handledEarlier).toEqual(['c1']);
+		expect(isAddressed(revision, general, null)).toBe(true);
+		expect(isAddressed(revision, newer, pendingData(VARIANT))).toBe(false);
+	});
+
+	it('remembers what was dealt with when the fixes were sent, for the next load', async () => {
+		mockFetchOnce(200, response());
+		await revisionStore.load(827);
+		revisionStore.setDone('c1', true);
+		revisionStore.rememberSent();
+		revisionStore.clear({ discardChanges: true });
+
+		mockFetchOnce(200, response());
+		await revisionStore.load(827);
+		expect(get(revisionStore)!.done).toEqual(['c1']);
+		expect(get(revisionStore)!.handledEarlier).toEqual(['c1']);
+	});
+
+	it('tells edits apart from a freshly loaded copy', async () => {
+		mockFetchOnce(200, response());
+		await revisionStore.load(827);
+		expect(revisionStore.hasEdits()).toBe(false);
+		revisionStore.setDone('c1', true);
+		expect(revisionStore.hasEdits()).toBe(false);
+
+		changeStore.trackUpdate(
+			{ type: 'brand', path: 'brands/insignia', id: 'insignia' },
+			{ id: 'insignia', name: 'Insignia', website: 'https://Bestbuy.com' },
+			{ id: 'insignia', name: 'Insignia', website: 'https://insignia.example' }
+		);
+		expect(revisionStore.hasEdits()).toBe(true);
+	});
+});
+
+describe('rebase conflicts', () => {
+	const conflict = { entityPath: 'brands/insignia', pointer: '/website' };
+
+	it('stays open until the contributor takes the live value or keeps theirs', async () => {
+		mockFetchOnce(200, response({ conflicts: [conflict] }));
+		await revisionStore.load(827);
+		expect(openConflicts(get(revisionStore))).toEqual([conflict]);
+
+		revisionStore.setConflictKept(conflict, true);
+		expect(openConflicts(get(revisionStore))).toEqual([]);
+		revisionStore.setConflictKept(conflict, false);
+		expect(openConflicts(get(revisionStore))).toEqual([conflict]);
+
+		// "Use the live value": the pending value now equals main's.
+		changeStore.trackUpdate(
+			{ type: 'brand', path: 'brands/insignia', id: 'insignia' },
+			{ id: 'insignia', name: 'Insignia', website: 'https://Bestbuy.com' },
+			{ id: 'insignia', name: 'Insignia', website: 'https://Bestbuy.com' }
+		);
+		expect(openConflicts(get(revisionStore))).toEqual([]);
+	});
+});

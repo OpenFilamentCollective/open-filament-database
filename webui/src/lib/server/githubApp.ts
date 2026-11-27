@@ -5,6 +5,7 @@
  */
 import crypto from 'crypto';
 import { env as privateEnv } from '$env/dynamic/private';
+import { githubApiUrl } from './githubHosts';
 
 // --- Types ---
 
@@ -88,7 +89,7 @@ export async function getInstallationToken(): Promise<string> {
 	if (!installationId) throw new Error('GITHUB_APP_INSTALLATION_ID not configured');
 
 	const response = await fetch(
-		`https://api.github.com/app/installations/${installationId}/access_tokens`,
+		`${githubApiUrl()}/app/installations/${installationId}/access_tokens`,
 		{
 			method: 'POST',
 			headers: {

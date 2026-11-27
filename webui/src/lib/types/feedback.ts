@@ -65,6 +65,8 @@ export interface PrFeedback {
 	rejectComment: RejectComment | null;
 	/** Some listing hit GitHub's page size, so older items may be missing. */
 	truncated: boolean;
+	/** When a fix was last pushed onto the PR from the web editor, or null. */
+	revisedAt: string | null;
 }
 
 /** Where a submission stands, as the contributor sees it. */
@@ -96,6 +98,8 @@ export interface SubmissionFeedbackResponse {
 	} | null;
 	items: FeedbackItem[];
 	truncated: boolean;
+	/** When a fix was last pushed onto the PR from the web editor, or null. */
+	revisedAt: string | null;
 	access: ReviseAccessInfo;
 	/** Served from a development snapshot (/api/dev/preview/<pr>), not GitHub. */
 	preview?: boolean;
@@ -138,6 +142,8 @@ export interface PrChangesResponse {
 	url: string;
 	uuid: string | null;
 	feedback: FeedbackItem[];
+	/** When a fix was last pushed onto the PR from the web editor, or null. */
+	revisedAt: string | null;
 	access: ReviseAccessInfo;
 	/** Served from a development snapshot (/api/dev/preview/<pr>): it can be loaded but not submitted. */
 	preview?: boolean;

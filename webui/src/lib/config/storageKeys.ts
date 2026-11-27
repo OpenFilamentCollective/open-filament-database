@@ -7,6 +7,8 @@ export const STORAGE_KEY_SUBMITTED = 'ofd_submitted_changes';
 export const STORAGE_KEY_WELCOME_DISMISSED = 'ofd_welcome_dismissed';
 /** The PR currently loaded into the editor for revision (see stores/revision.ts). */
 export const STORAGE_KEY_ACTIVE_REVISION = 'ofd_active_revision';
+/** Per pull request: the feedback items this browser marked done or fixed (stores/revision.ts). */
+export const STORAGE_KEY_FEEDBACK_PROGRESS = 'ofd_feedback_progress';
 
 /**
  * localStorage keys that hold user settings/preferences rather than working
