@@ -2,7 +2,7 @@
   "id": "pla_2_0",
   "name": "PLA+ 2.0",
   "diameter_tolerance": 0.02,
-  "density": 1.24,
+  "density": 1.21,
   "shore_hardness_d": 81,
   "max_dry_temperature": 50,
   "min_print_temperature": 205,
