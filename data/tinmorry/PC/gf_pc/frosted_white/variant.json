@@ -1,0 +1,9 @@
+{
+  "id": "frosted_white",
+  "name": "Frosted White",
+  "color_hex": "#E2E0DB",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}

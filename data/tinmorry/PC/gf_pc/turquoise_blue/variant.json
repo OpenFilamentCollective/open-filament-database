@@ -1,0 +1,9 @@
+{
+  "id": "turquoise_blue",
+  "name": "Turquoise Blue",
+  "color_hex": "#01948D",
+  "traits": {
+    "abrasive": true,
+    "contains_glass_fiber": true
+  }
+}
