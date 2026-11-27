@@ -91,6 +91,8 @@ interface ClosedPr {
 	number: number;
 	html_url: string;
 	head_ref: string;
+	/** The head repository's owner; null when it was deleted. */
+	head_owner?: string | null;
 	author: string;
 	authorIsBot: boolean;
 }
@@ -104,7 +106,7 @@ export async function handleWebEditorClose(
 	closedBy: { login: string; isBot: boolean },
 	uuid: string | null
 ): Promise<PrOutcome | null> {
-	const kind = prKind(pr.head_ref);
+	const kind = prKind(pr.head_ref, pr.head_owner);
 	if (!isWebEditorPr(kind)) return null;
 
 	try {
@@ -130,9 +132,34 @@ export async function handleWebEditorClose(
 		const email = uuid ? await getEmailByUuidFromDb(uuid).catch(() => undefined) : undefined;
 		const fixUrl = webuiUrl() ? submissionUrl(pr.number) : undefined;
 
+		// A returned fork PR is told through the sticky @mention comment, so it only counts as
+		// notified once that comment is actually posted.
+		let mentioned = false;
+		if (outcome === 'returned' && token && privateEnv.GITHUB_APP_ID) {
+			mentioned = await upsertMarkedComment(
+				token,
+				privateEnv.GITHUB_UPSTREAM_OWNER!,
+				privateEnv.GITHUB_UPSTREAM_REPO!,
+				pr.number,
+				FEEDBACK_MARKER,
+				returnedComment({
+					kind: kind as 'bot' | 'fork',
+					author: pr.author,
+					itemCount: items.length,
+					prNumber: pr.number,
+					emailed: kind === 'bot' && !!email
+				})
+			)
+				.then(() => true)
+				.catch((err) => {
+					console.warn(`[Close] Could not comment on #${pr.number}:`, err.message);
+					return false;
+				});
+		}
+
 		let notified: PrOutcome['notified'] = 'none';
 		if (kind === 'bot' && email) notified = 'email';
-		else if (kind === 'fork' && outcome === 'returned') notified = 'mention';
+		else if (kind === 'fork' && mentioned) notified = 'mention';
 
 		const record = await setOutcome({
 			prNumber: pr.number,
@@ -171,23 +198,6 @@ export async function handleWebEditorClose(
 			await send.catch((err: any) =>
 				console.error(`[Close] Email for #${pr.number} failed:`, err?.message ?? err)
 			);
-		}
-
-		if (outcome === 'returned' && token && privateEnv.GITHUB_APP_ID) {
-			await upsertMarkedComment(
-				token,
-				privateEnv.GITHUB_UPSTREAM_OWNER!,
-				privateEnv.GITHUB_UPSTREAM_REPO!,
-				pr.number,
-				FEEDBACK_MARKER,
-				returnedComment({
-					kind: kind as 'bot' | 'fork',
-					author: pr.author,
-					itemCount: items.length,
-					prNumber: pr.number,
-					emailed: notified === 'email'
-				})
-			).catch((err) => console.warn(`[Close] Could not comment on #${pr.number}:`, err.message));
 		}
 
 		console.log(

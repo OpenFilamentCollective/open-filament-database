@@ -53,10 +53,12 @@ import {
 	lineOfPath,
 	labelFromPointer,
 	REVISION_MARKER,
+	MAINTAINER_REVISION_MARKER,
 	type PrKind
 } from '$lib/server/feedback';
 import type { PrOutcome } from '$lib/server/prOutcomes';
 import type { SubmissionRecord } from '$lib/server/submissionStore';
+import { sameEmail } from '$lib/utils/email';
 
 // --- Access ---
 
@@ -124,7 +126,7 @@ export async function checkReviseAccess(
 	record: SubmissionRecord | undefined,
 	outcome: PrOutcome | undefined
 ): Promise<ReviseAccess> {
-	const kind = prKind(pr.head_ref);
+	const kind = prKind(pr.head_ref, pr.head_owner);
 	const v = await viewer(cookies);
 	const login = v.github?.login;
 
@@ -168,9 +170,7 @@ export async function checkReviseAccess(
 	// The submitter.
 	if (
 		kind === 'bot' &&
-		record?.email &&
-		v.simplyprint?.email &&
-		record.email === v.simplyprint.email
+		sameEmail(record?.email, v.simplyprint?.email)
 	) {
 		if (!isAnonBotEnabled()) return deny('The submission bot is not configured on this server.');
 		return { ...base, allowed: true, as: 'submitter', via: 'bot', mode };
@@ -185,7 +185,7 @@ export async function checkReviseAccess(
 	if (isMaintainer) {
 		if (mode === 'resubmit') {
 			return deny(
-				'This pull request was returned to its contributor. Reopen it on GitHub to fix it yourself.'
+				'This pull request was returned to its contributor. Reopen it on GitHub to fix it yourself (restore its branch first if GitHub asks).'
 			);
 		}
 		if (kind === 'bot') {
@@ -389,7 +389,7 @@ export async function announceRevision(opts: {
 		owner,
 		repo,
 		pr.number,
-		`${REVISION_MARKER}\nUpdated via the web editor by ${who} (${opts.commitSha.slice(0, 7)}).`
+		`${access.as === 'submitter' ? REVISION_MARKER : MAINTAINER_REVISION_MARKER}\nUpdated via the web editor by ${who} (${opts.commitSha.slice(0, 7)}).`
 	);
 }
 

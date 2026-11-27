@@ -14,11 +14,12 @@ import { env as privateEnv } from '$env/dynamic/private';
 import { runCloudValidation } from '$lib/server/cloudValidator';
 import type { Job } from '$lib/server/jobManager';
 import { checkRateLimit } from '$lib/server/rateLimit';
-import { trackSubmission } from '$lib/server/submissionStore';
+import { trackSubmission, getEmailByUuidFromDb } from '$lib/server/submissionStore';
 import { setSupersededBy } from '$lib/server/prOutcomes';
 import { invalidateFeedback } from '$lib/server/feedback';
 import { sendWebhook } from '$lib/server/webhooks';
-import { createIssueComment, getPullRequestDetails } from '$lib/server/github';
+import { createIssueComment, deleteBranch, getPullRequestDetails } from '$lib/server/github';
+import { getInstallationToken } from '$lib/server/githubApp';
 import { getReadToken } from '$lib/server/readToken';
 import { previewFor } from '$lib/server/devFixtures';
 import {
@@ -37,14 +38,39 @@ import {
 	publicAccess
 } from '$lib/server/submissionContext';
 
-export const POST: RequestHandler = async ({ params, cookies, request, getClientAddress }) => {
+/**
+ * PRs with a revision in progress. A resubmission takes seconds (fork, branch retries) and
+ * only records `supersededBy` at the end, so a double-click or a retry would otherwise open a
+ * second replacement PR. Held for the whole request, before the access check reads the PR's
+ * state, so the second request can't slip in between. Per process: one instance serves this.
+ */
+const inProgress = new Set<number>();
+
+export const POST: RequestHandler = async (event) => {
 	let prNumber: number;
 	try {
-		prNumber = parsePrNumber(params.pr);
+		prNumber = parsePrNumber(event.params.pr);
 	} catch (err) {
 		return json({ error: (err as Error).message }, { status: 404 });
 	}
+	if (inProgress.has(prNumber)) {
+		return json(
+			{ error: 'A revision of this pull request is already being sent. Wait a moment and reload.' },
+			{ status: 409 }
+		);
+	}
+	inProgress.add(prNumber);
+	try {
+		return await revise(event, prNumber);
+	} finally {
+		inProgress.delete(prNumber);
+	}
+};
 
+async function revise(
+	{ cookies, request, getClientAddress }: Parameters<RequestHandler>[0],
+	prNumber: number
+): Promise<Response> {
 	// A development preview (/api/dev/preview/<pr>) is a snapshot of someone else's PR: never submit it.
 	if (previewFor(cookies, prNumber)) {
 		return json(
@@ -71,8 +97,6 @@ export const POST: RequestHandler = async ({ params, cookies, request, getClient
 		return json({ error: 'Invalid JSON' }, { status: 400 });
 	}
 	const { changes, images, expectedHeadSha, title, description } = body ?? {};
-	// The contributor's comments on fields, posted on those lines once the change is pushed.
-	const notes = sanitizeNotes(body?.notes);
 	if (!Array.isArray(changes) || changes.length === 0) {
 		return json({ error: 'No changes to submit' }, { status: 400 });
 	}
@@ -86,6 +110,10 @@ export const POST: RequestHandler = async ({ params, cookies, request, getClient
 				{ status: access.signIn ? 401 : 403 }
 			);
 		}
+		// The contributor's comments on fields, posted on those lines once the change is pushed.
+		// Only the submitter's: they are labelled as coming from the contributor, and a
+		// maintainer can comment on GitHub directly.
+		const notes = access.as === 'submitter' ? sanitizeNotes(body?.notes) : [];
 		if (access.mode === 'amend' && typeof expectedHeadSha !== 'string') {
 			return json({ error: 'expectedHeadSha is required' }, { status: 400 });
 		}
@@ -109,6 +137,11 @@ export const POST: RequestHandler = async ({ params, cookies, request, getClient
 		}
 
 		const changeData = JSON.stringify({ changes, images: images || {} });
+		// The submitter's email, for the notifications that follow. This process may not have
+		// cached the record (another instance created it, or it restarted), so ask the DB.
+		const email =
+			ctx.record?.email ??
+			(ctx.uuid ? await getEmailByUuidFromDb(ctx.uuid).catch(() => undefined) : undefined);
 
 		if (access.mode === 'amend') {
 			const token = await pushToken(access, cookies);
@@ -155,7 +188,7 @@ export const POST: RequestHandler = async ({ params, cookies, request, getClient
 				);
 			}
 			// The record now describes the whole revised submission, replacing earlier batches.
-			if (ctx.uuid) trackSubmission(ctx.uuid, prNumber, pr.html_url, changeData, ctx.record?.email);
+			if (ctx.uuid) trackSubmission(ctx.uuid, prNumber, pr.html_url, changeData, email);
 
 			return json({
 				success: true,
@@ -185,11 +218,27 @@ export const POST: RequestHandler = async ({ params, cookies, request, getClient
 			result.prNumber,
 			result.prUrl,
 			changeData,
-			access.via === 'bot' ? ctx.record?.email : undefined
+			access.via === 'bot' ? email : undefined
 		);
 		await setSupersededBy(prNumber, result.prNumber).catch((err) =>
 			console.warn('[Revise] Failed to record supersededBy:', err.message)
 		);
+		// A returned bot PR keeps its branch so a maintainer can still reopen it (see the
+		// webhook); once it is replaced, nobody will.
+		if (access.kind === 'bot' && pr.head_ref.startsWith('ofd-anon-')) {
+			getInstallationToken()
+				.then((t) =>
+					deleteBranch(
+						t,
+						privateEnv.GITHUB_UPSTREAM_OWNER!,
+						privateEnv.GITHUB_UPSTREAM_REPO!,
+						pr.head_ref
+					)
+				)
+				.catch((err) =>
+					console.warn(`[Revise] Could not delete ${pr.head_ref}:`, err.message)
+				);
+		}
 
 		// Point the old PR at the new one. The App posts it when it can, so a contributor
 		// without GitHub notifications on still leaves a trail; otherwise the user does.
@@ -253,4 +302,4 @@ export const POST: RequestHandler = async ({ params, cookies, request, getClient
 			{ status: 500 }
 		);
 	}
-};
+}

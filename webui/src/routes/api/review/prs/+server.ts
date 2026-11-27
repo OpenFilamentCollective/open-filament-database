@@ -48,7 +48,8 @@ function pushability(
 	if (pr.state !== 'open')
 		return {
 			pushable: false,
-			pushReason: 'Returned to its contributor; reopen it on GitHub to fix it yourself.'
+			pushReason:
+				'Returned to its contributor; reopen it on GitHub to fix it yourself (restore its branch first if GitHub asks).'
 		};
 	if (kind === 'bot') {
 		return isAnonBotEnabled()
@@ -102,7 +103,7 @@ export const GET: RequestHandler = async ({ cookies }) => {
 		});
 
 		const rows = await mapLimit([...open, ...returned], 8, async (pr): Promise<PickerRow> => {
-			const kind = prKind(pr.head_ref);
+			const kind = prKind(pr.head_ref, pr.head_owner);
 			const feedbackCount = await countFeedback(pr.number, token).catch(() => null);
 			return {
 				number: pr.number,

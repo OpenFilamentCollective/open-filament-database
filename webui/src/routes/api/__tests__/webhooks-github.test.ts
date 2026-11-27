@@ -102,27 +102,33 @@ describe('POST /api/webhooks/github', () => {
 		expect(res.status).toBe(401);
 	});
 
-	it('a closed web-editor PR is classified after the settle delay', async () => {
-		const res = await call('pull_request', prPayload('closed', {}));
-		expect(res.body).toMatchObject({ classifying: true, uuid: UUID });
+	it('a closed web-editor PR is classified inline, after the settle delay', async () => {
+		mocks.handleWebEditorClose.mockResolvedValueOnce({ outcome: 'rejected' } as any);
+		const pending = call('pull_request', prPayload('closed', {}));
 		// Nothing is decided (or emailed) until the closing comment has had time to land.
+		await vi.advanceTimersByTimeAsync(2_000);
 		expect(mocks.handleWebEditorClose).not.toHaveBeenCalled();
 		expect(mocks.sendClosedEmail).not.toHaveBeenCalled();
 		expect(mocks.updateStatus).not.toHaveBeenCalled();
 
-		await vi.advanceTimersByTimeAsync(5_000);
+		await vi.advanceTimersByTimeAsync(1_000);
+		const res = await pending;
+		// The response waits for the classification, so a restart can't drop it.
+		expect(res.body).toMatchObject({ event: 'closed', outcome: 'rejected', uuid: UUID });
 		expect(mocks.handleWebEditorClose).toHaveBeenCalledWith(
 			{
 				number: 827,
 				html_url: 'https://github.com/o/r/pull/827',
 				head_ref: `ofd-anon-${UUID}`,
+				head_owner: null,
 				author: 'ofd-anon-pr-bot',
 				authorIsBot: true
 			},
 			{ login: 'maintainer', isBot: false },
 			UUID
 		);
-		// The bot's branch is still cleaned up; the PR's commits stay under refs/pull/<n>/head.
+		// Not returned: the bot's branch is cleaned up; its commits stay under refs/pull/<n>/head.
+		await vi.runAllTimersAsync();
 		expect(mocks.deleteBranch).toHaveBeenCalledWith(
 			'app-token',
 			'TestOwner',
@@ -131,22 +137,56 @@ describe('POST /api/webhooks/github', () => {
 		);
 	});
 
+	it('a returned bot PR keeps its branch, so a maintainer can still reopen it', async () => {
+		mocks.handleWebEditorClose.mockResolvedValueOnce({ outcome: 'returned' } as any);
+		const pending = call('pull_request', prPayload('closed', {}));
+		await vi.runAllTimersAsync();
+		expect((await pending).body).toMatchObject({ outcome: 'returned' });
+		expect(mocks.deleteBranch).not.toHaveBeenCalled();
+	});
+
+	it('reports a failed classification so the delivery can be redelivered', async () => {
+		mocks.handleWebEditorClose.mockResolvedValueOnce(null);
+		const pending = call('pull_request', prPayload('closed', {}));
+		await vi.runAllTimersAsync();
+		expect((await pending).status).toBe(500);
+		expect(mocks.deleteBranch).not.toHaveBeenCalled();
+	});
+
 	it('covers fork PRs without a UUID marker (#820)', async () => {
-		await call(
+		mocks.handleWebEditorClose.mockResolvedValueOnce({ outcome: 'returned' } as any);
+		const pending = call(
 			'pull_request',
 			prPayload('closed', {
 				number: 820,
 				body: 'Updated colors',
 				user: { login: 'contributor', type: 'User' },
-				head: { ref: 'ofd-changes-1793377165446' }
+				head: { ref: 'ofd-changes-1793377165446', repo: { owner: { login: 'contributor' } } }
 			})
 		);
-		await vi.advanceTimersByTimeAsync(5_000);
+		await vi.runAllTimersAsync();
+		await pending;
 		expect(mocks.handleWebEditorClose).toHaveBeenCalledWith(
-			expect.objectContaining({ number: 820, author: 'contributor', authorIsBot: false }),
+			expect.objectContaining({
+				number: 820,
+				author: 'contributor',
+				authorIsBot: false,
+				head_owner: 'contributor'
+			}),
 			{ login: 'maintainer', isBot: false },
 			null
 		);
+	});
+
+	it('treats an ofd-anon-* branch on a fork as an ordinary PR', async () => {
+		const res = await call(
+			'pull_request',
+			prPayload('closed', { head: { ref: 'ofd-anon-test', repo: { owner: { login: 'someone' } } } })
+		);
+		await vi.runAllTimersAsync();
+		expect(res.body).toMatchObject({ ok: true });
+		expect(mocks.handleWebEditorClose).not.toHaveBeenCalled();
+		expect(mocks.deleteBranch).not.toHaveBeenCalled();
 	});
 
 	it('merged: status, webhook and email as before, no classification', async () => {

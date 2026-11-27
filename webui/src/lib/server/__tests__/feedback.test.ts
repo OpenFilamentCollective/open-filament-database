@@ -15,6 +15,7 @@ import {
 	labelFromPointer,
 	feedbackToText,
 	REVISION_MARKER,
+	MAINTAINER_REVISION_MARKER,
 	type RawPullRequest,
 	type RawThread,
 	type RawThreadComment,
@@ -123,6 +124,17 @@ describe('rule helpers', () => {
 		expect(rejectReason('REJECT')).toBe('');
 		expect(rejectReason('Rejecting this one, sorry')).toBe('this one, sorry');
 		expect(rejectReason('This should be rejected')).toBeNull();
+	});
+
+	it('only trusts a web-editor branch name on the right repository', () => {
+		// The bot pushes to upstream (TestOwner in the test env), the signed-in flow to a fork.
+		expect(prKind('ofd-anon-x', 'TestOwner')).toBe('bot');
+		expect(prKind('ofd-anon-x', 'someone')).toBe('other');
+		expect(prKind('ofd-changes-1', 'someone')).toBe('fork');
+		expect(prKind('ofd-changes-1', 'testowner')).toBe('other');
+		// Unknown owner (a deleted fork): the name decides.
+		expect(prKind('ofd-anon-x', null)).toBe('bot');
+		expect(prKind('ofd-changes-1', null)).toBe('fork');
 	});
 
 	it('tells PR kinds apart by branch', () => {
@@ -259,6 +271,7 @@ describe('selectFeedback', () => {
 			pr({
 				author: { login: 'ofd-anon-pr-bot', __typename: 'Bot' },
 				headRefName: 'ofd-anon-4df9035c-eff0-4bfc-b4df-4c109ec197cc',
+				headRepository: { name: 'test-repo', owner: { login: 'TestOwner' } },
 				comments: {
 					totalCount: 1,
 					nodes: [
@@ -317,6 +330,31 @@ describe('selectFeedback', () => {
 		);
 		expect(result.items.map((i) => i.body)).toEqual(['Please fix the hex.', 'One more thing.']);
 		expect(result.revisedAt).toBe('2026-11-02T10:00:00Z');
+	});
+
+	it("only the submission's own pushes count as fixes sent", () => {
+		const notice = (marker: string, who: string) =>
+			`${marker}\nUpdated via the web editor by ${who} (abc1234).`;
+		const result = selectFeedback(
+			pr({
+				author: { login: 'ofd-anon-pr-bot', __typename: 'Bot' },
+				headRefName: 'ofd-anon-x',
+				comments: {
+					totalCount: 4,
+					nodes: [
+						comment(human('maintainer'), 'Please fix the hex.', '2026-10-31T10:00:00Z'),
+						// A maintainer's push on a bot PR is posted by the bot too, with its own marker.
+						comment(ai, notice(MAINTAINER_REVISION_MARKER, 'maintainer'), '2026-11-01T10:00:00Z'),
+						// Someone copying the contributor marker by hand is not the submission.
+						comment(human('stranger'), notice(REVISION_MARKER, 'the contributor'), '2026-11-02T10:00:00Z'),
+						// A marker inside a real comment doesn't hide the comment.
+						comment(human('maintainer'), `${REVISION_MARKER} Also check the TD.`, '2026-11-03T10:00:00Z')
+					]
+				}
+			})
+		);
+		expect(result.revisedAt).toBeNull();
+		expect(result.items.map((i) => i.body)).toEqual(['Please fix the hex.', 'Also check the TD.']);
 	});
 
 	it('takes the latest maintainer "Reject" comment as the reason, not as feedback', () => {

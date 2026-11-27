@@ -63,7 +63,7 @@ export interface PrFeedback {
 	pr: PrSummary;
 	items: FeedbackItem[];
 	rejectComment: RejectComment | null;
-	/** Some listing hit GitHub's page size, so older items may be missing. */
+	/** Some listing hit GitHub's page size, so the oldest items may be missing. */
 	truncated: boolean;
 	/** When a fix was last pushed onto the PR from the web editor, or null. */
 	revisedAt: string | null;

@@ -338,7 +338,7 @@ export async function loadPrChanges(
 		headSha: pr.head_sha,
 		mergeBaseSha,
 		mainSha,
-		kind: prKind(pr.head_ref),
+		kind: prKind(pr.head_ref, pr.head_owner),
 		changes: kept,
 		images,
 		conflicts,

@@ -13,6 +13,7 @@ import { getSimplyPrintToken, getSimplyPrintUser } from '$lib/server/auth';
 import { checkRateLimit } from '$lib/server/rateLimit';
 import type { Job } from '$lib/server/jobManager';
 import crypto from 'crypto';
+import { sameEmail } from '$lib/utils/email';
 
 export const POST: RequestHandler = async ({ request, cookies, getClientAddress }) => {
 	// 1. Check feature flag
@@ -80,7 +81,7 @@ export const POST: RequestHandler = async ({ request, cookies, getClientAddress 
 		if (!existing) {
 			return json({ error: 'Unknown submission to add to.' }, { status: 404 });
 		}
-		if (!spUser.email || existing.email !== spUser.email) {
+		if (!sameEmail(existing.email, spUser.email)) {
 			return json({ error: 'That submission belongs to someone else.' }, { status: 403 });
 		}
 		if (existing.status !== 'open' && existing.status !== 'changes_requested') {

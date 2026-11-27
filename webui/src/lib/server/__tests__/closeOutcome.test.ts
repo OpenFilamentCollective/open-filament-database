@@ -256,6 +256,15 @@ describe('handleWebEditorClose', () => {
 		);
 	});
 
+	it('returned fork PR: not counted as notified when the mention could not be posted', async () => {
+		mocks.getPrFeedback.mockResolvedValue({ items: [item], rejectComment: null });
+		mocks.upsertMarkedComment.mockRejectedValueOnce(new Error('403'));
+
+		const outcome = await handleWebEditorClose(forkPr, maintainer, null);
+
+		expect(outcome).toMatchObject({ outcome: 'returned', notified: 'none' });
+	});
+
 	it('author withdrew it: a plain close with the old closed email', async () => {
 		mocks.getPrFeedback.mockResolvedValue({ items: [item], rejectComment: null });
 		mocks.getEmailByUuidFromDb.mockResolvedValue('maker@example.com');

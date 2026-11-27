@@ -46,15 +46,25 @@ export type { PrKind, FeedbackLocation, FeedbackItem, RejectComment, PrSummary, 
 export const AI_REVIEW_LOGIN = 'github-actions';
 
 /**
- * Marks the comment the editor posts when a fix is pushed onto a PR (revision.ts). It records
- * when fixes were last sent; it is never feedback, whoever's token posted it.
+ * Mark the comment the editor posts when a fix is pushed onto a PR (revision.ts). A
+ * contributor's push records when fixes were last sent; a maintainer's push gets its own
+ * marker so it never counts as the contributor dealing with the feedback. Neither is feedback.
  */
 export const REVISION_MARKER = '<!-- ofd-revision -->';
-/** The same comment from before the marker existed. */
-const LEGACY_REVISION = /^Updated via the web editor by .+ \([0-9a-f]{7}\)\.$/;
+export const MAINTAINER_REVISION_MARKER = '<!-- ofd-revision:maintainer -->';
 
-function isRevisionNotice(body: string): boolean {
-	return body.includes(REVISION_MARKER) || LEGACY_REVISION.test(body.trim());
+/** The notice's exact shape, so a marker pasted into a real comment doesn't hide it. */
+const REVISION_NOTICE =
+	/^(<!-- ofd-revision(:maintainer)? -->\n)?Updated via the web editor by (.+) \([0-9a-f]{7}\)\.$/;
+
+/** `contributor`/`maintainer` for the editor's push notice, else null. */
+function revisionNotice(body: string): 'contributor' | 'maintainer' | null {
+	const match = REVISION_NOTICE.exec(body.trim());
+	if (!match) return null;
+	if (match[2]) return 'maintainer';
+	if (match[1]) return 'contributor';
+	// From before the markers existed: only the wording tells them apart.
+	return match[3] === 'the contributor' ? 'contributor' : 'maintainer';
 }
 
 const NOTE = /^[\s>*_~`#-]*notes?\b/i;
@@ -77,9 +87,15 @@ export function rejectReason(body: string): string | null {
  * to upstream, the signed-in flow pushes `ofd-changes-<timestamp>` to the user's fork.
  * Both carry the submission UUID marker in the body, so the branch is what tells them apart.
  */
-export function prKind(headRef: string): PrKind {
-	if (headRef.startsWith('ofd-anon-')) return 'bot';
-	if (headRef.startsWith('ofd-changes-')) return 'fork';
+export function prKind(headRef: string, headOwner?: string | null): PrKind {
+	// The branch name alone can be copied: the bot pushes to upstream, the signed-in flow to
+	// the user's fork, so a known head owner must match too. Unknown (a deleted fork, or a
+	// caller without it) falls back to the name.
+	const upstreamOwner = privateEnv.GITHUB_UPSTREAM_OWNER;
+	const known = !!headOwner && !!upstreamOwner;
+	const onUpstream = known && headOwner!.toLowerCase() === upstreamOwner!.toLowerCase();
+	if (headRef.startsWith('ofd-anon-')) return !known || onUpstream ? 'bot' : 'other';
+	if (headRef.startsWith('ofd-changes-')) return !known || !onUpstream ? 'fork' : 'other';
 	return 'other';
 }
 
@@ -173,6 +189,11 @@ export interface RawPullRequest {
 }
 
 const PAGE = 100;
+/**
+ * GitHub connections run oldest first, so `last:` keeps the newest items when a PR has more
+ * than a page: the closing "Reject…" comment and the latest review are always among them.
+ */
+const THREAD_PAGE = 50;
 
 const FEEDBACK_QUERY = `
 query PrFeedback($owner: String!, $repo: String!, $number: Int!) {
@@ -183,19 +204,19 @@ query PrFeedback($owner: String!, $repo: String!, $number: Int!) {
       headRefName headRefOid
       headRepository { name owner { login } }
       maintainerCanModify
-      comments(first: ${PAGE}) {
+      comments(last: ${PAGE}) {
         totalCount
         nodes { databaseId body url createdAt author { login __typename } }
       }
-      reviews(first: ${PAGE}) {
+      reviews(last: ${PAGE}) {
         totalCount
         nodes { databaseId body url createdAt state submittedAt author { login __typename } }
       }
-      reviewThreads(first: ${PAGE}) {
+      reviewThreads(last: ${PAGE}) {
         totalCount
         nodes {
           isResolved isOutdated path line originalLine diffSide
-          comments(first: 50) {
+          comments(last: ${THREAD_PAGE}) {
             nodes {
               databaseId body url createdAt
               author { login __typename }
@@ -235,7 +256,7 @@ export function summarizePr(raw: RawPullRequest): PrSummary {
 		headOwner: raw.headRepository?.owner.login ?? null,
 		headRepo: raw.headRepository?.name ?? null,
 		maintainerCanModify: raw.maintainerCanModify,
-		kind: prKind(raw.headRefName),
+		kind: prKind(raw.headRefName, raw.headRepository?.owner.login),
 		updatedAt: raw.updatedAt,
 		closedAt: raw.closedAt
 	};
@@ -272,8 +293,13 @@ export function selectFeedback(raw: RawPullRequest): PrFeedback {
 	// Conversation comments.
 	let revisedAt: string | null = null;
 	for (const c of raw.comments.nodes) {
-		if (isRevisionNotice(c.body)) {
-			if (!revisedAt || c.createdAt > revisedAt) revisedAt = c.createdAt;
+		const notice = revisionNotice(c.body);
+		if (notice) {
+			// Only the submission's own pushes count: posted by the bot (bot PRs) or the PR's
+			// author (fork PRs). Anyone else's copy is ignored, and never shown as feedback.
+			const trusted = isBot(c.author) || login(c.author) === pr.author;
+			if (notice === 'contributor' && trusted && (!revisedAt || c.createdAt > revisedAt))
+				revisedAt = c.createdAt;
 			continue;
 		}
 		if (considerReject(c)) continue;
@@ -526,7 +552,7 @@ export async function getPrFeedback(prNumber: number, token: string): Promise<Pr
 	const feedback = selectFeedback(raw);
 	if (feedback.truncated) {
 		console.warn(
-			`[Feedback] PR #${prNumber} has more than ${PAGE} comments, reviews or threads; older ones are not shown`
+			`[Feedback] PR #${prNumber} has more than ${PAGE} comments, reviews or threads; only the newest are read`
 		);
 	}
 	await locate(token, raw, feedback);

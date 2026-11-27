@@ -183,7 +183,9 @@
 				renderFeedback={pinnedFeedback}
 				onchange={apply}
 				noteAt={(p) => $revisionStore?.notes?.[change.entity.path]?.[p]}
-				onnote={(p, text) => revisionStore.setNote(change.entity.path, p, text)}
+				onnote={$revisionStore?.as === 'submitter'
+					? (p, text) => revisionStore.setNote(change.entity.path, p, text)
+					: undefined}
 				{conflictAt}
 				onkeep={keep}
 			/>

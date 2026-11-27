@@ -32,7 +32,7 @@ import { env as privateEnv } from '$env/dynamic/private';
  */
 function closeSettleMs(): number {
 	const configured = Number(privateEnv.OFD_CLOSE_SETTLE_MS);
-	return Number.isFinite(configured) && configured >= 0 ? configured : 5_000;
+	return Number.isFinite(configured) && configured >= 0 ? configured : 3_000;
 }
 
 function lookupUuid(pr: any): string | null {
@@ -120,7 +120,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	const pr = payload.pull_request;
 
 	if (!pr) return json({ ok: true });
-	const kind = prKind(pr.head?.ref ?? '');
+	const kind = prKind(pr.head?.ref ?? '', pr.head?.repo?.owner?.login);
 
 	if (action === 'reopened') {
 		if (!isWebEditorPr(kind)) return json({ ok: true });
@@ -140,10 +140,13 @@ export const POST: RequestHandler = async ({ request }) => {
 	const uuid = lookupUuid(pr);
 	const isMerged = pr.merged === true;
 
-	// 5. Clean up the bot's head branch (best-effort, fire-and-forget). The PR's commits stay
-	//    reachable through `refs/pull/<n>/head`, which is what loading a returned PR reads.
+	// 5. The bot's head branch is deleted once the close is understood (best-effort). The PR's
+	//    commits stay reachable through `refs/pull/<n>/head`, which is what loading a returned PR
+	//    reads. A *returned* PR keeps its branch: GitHub can't reopen a PR whose head branch is
+	//    gone, and reopening is how a maintainer takes one back. It goes when it is resubmitted.
 	const headRef = pr.head?.ref;
-	if (headRef?.startsWith('ofd-anon-')) {
+	const cleanUpBranch = () => {
+		if (kind !== 'bot' || !headRef) return;
 		getInstallationToken()
 			.then((token) =>
 				deleteBranch(
@@ -153,27 +156,32 @@ export const POST: RequestHandler = async ({ request }) => {
 					headRef
 				)
 			)
-			.catch((err: any) =>
-				console.warn(`Branch cleanup failed for ${headRef}:`, err.message)
-			);
-	}
+			.catch((err: any) => console.warn(`Branch cleanup failed for ${headRef}:`, err.message));
+	};
 
 	// 6. A web-editor PR closed without merging: returned, rejected or closed. Decided once the
-	//    closing comment is readable; the handler records it and notifies the contributor.
+	//    closing comment is readable, and inline rather than in a detached timer, so a restart
+	//    can't drop it: a graceful shutdown waits for this request. If it fails, the delivery is
+	//    reported as failed so it can be redelivered from GitHub.
 	if (!isMerged && isWebEditorPr(kind)) {
 		const closedPr = {
 			number: pr.number,
 			html_url: pr.html_url || pr._links?.html?.href || '',
 			head_ref: headRef ?? '',
+			head_owner: pr.head?.repo?.owner?.login ?? null,
 			author: pr.user?.login ?? 'ghost',
 			authorIsBot: pr.user?.type === 'Bot'
 		};
 		const closedBy = { login: payload.sender?.login ?? 'ghost', isBot: payload.sender?.type === 'Bot' };
-		setTimeout(() => {
-			void handleWebEditorClose(closedPr, closedBy, uuid);
-		}, closeSettleMs());
-		return json({ ok: true, uuid, event: 'closed', classifying: true });
+		await new Promise((resolve) => setTimeout(resolve, closeSettleMs()));
+		const record = await handleWebEditorClose(closedPr, closedBy, uuid);
+		if (!record) {
+			return json({ error: `Could not classify the close of #${pr.number}` }, { status: 500 });
+		}
+		if (record.outcome !== 'returned') cleanUpBranch();
+		return json({ ok: true, uuid, event: 'closed', outcome: record.outcome });
 	}
+	cleanUpBranch();
 
 	if (!uuid) {
 		return json({ ok: true });

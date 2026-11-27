@@ -36,7 +36,8 @@ export function trackSubmission(uuid: string, prNumber: number, prUrl: string, c
 		createdAt: new Date().toISOString(),
 		status: 'open',
 		changeData,
-		email
+		// Re-tracking an existing submission (an amend) without an email must not forget it.
+		email: email || submissions.get(uuid)?.email
 	};
 	submissions.set(uuid, record);
 	prNumberIndex.set(prNumber, uuid);
@@ -85,7 +86,8 @@ async function persistSubmission(record: SubmissionRecord): Promise<void> {
 	await pool.query(
 		`INSERT INTO submissions (uuid, pr_number, pr_url, created_at, status, change_data, email)
 		 VALUES ($1, $2, $3, $4, $5, $6, $7)
-		 ON CONFLICT (uuid) DO UPDATE SET pr_number = $2, pr_url = $3, status = $5, change_data = $6, email = $7`,
+		 ON CONFLICT (uuid) DO UPDATE SET pr_number = $2, pr_url = $3, status = $5, change_data = $6,
+		   email = COALESCE($7, submissions.email)`,
 		[record.uuid, record.prNumber, record.prUrl, record.createdAt, record.status, record.changeData || null, record.email || null]
 	);
 }

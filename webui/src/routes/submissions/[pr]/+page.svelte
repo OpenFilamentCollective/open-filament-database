@@ -496,7 +496,7 @@
 			</div>
 			{#if info.truncated}
 				<p class="mt-4 text-xs text-muted-foreground">
-					There is a lot of discussion on this contribution; only the first 100 comments of each
+					There is a lot of discussion on this contribution; only the latest 100 comments of each
 					kind are shown.
 				</p>
 			{/if}
