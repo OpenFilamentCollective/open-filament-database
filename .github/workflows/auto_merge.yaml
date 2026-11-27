@@ -25,6 +25,14 @@ name: Auto-merge
 #   - it stayed eligible at the same commit for an hour. A `hold` label, a push, or
 #     marking the PR as a draft stops the clock.
 #
+# WHEN: once a night, at 22:00 Copenhagen time, before the 00:00 import; a PR must be
+# eligible by 21:00 to make that night (ofd/automerge/schedule.py). GitHub fires crons
+# hours late, or drops them, when busy, so there is one every ten minutes from 18:00
+# UTC through the window (22:00-06:00 local: 20:00-04:00 UTC in summer, 21:00-05:00
+# in winter). A first step checks the local clock and skips the rest outside the
+# window, so the extra runs cost seconds. Inside it, later runs only retry what an
+# earlier one couldn't merge yet.
+#
 # Nothing from a PR is checked out or run: the base branch runs, the PR head is read
 # as git objects, and the merged result is validated with main's own validators.
 #
@@ -45,7 +53,8 @@ on:
   pull_request_target:
     types: [ labeled, unlabeled, converted_to_draft, ready_for_review ]
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/10 18-23 * * *"
+    - cron: "*/10 0-4 * * *"
   workflow_dispatch:
     inputs:
       pr:
@@ -53,6 +62,10 @@ on:
         required: false
       dry_run:
         description: 'Sweep only: report what would merge, change nothing.'
+        type: boolean
+        default: false
+      ignore_window:
+        description: 'Sweep only: merge anything eligible for an hour now, not only at 22:00 Copenhagen time.'
         type: boolean
         default: false
 
@@ -147,8 +160,23 @@ jobs:
       group: auto-merge-sweep
       cancel-in-progress: false
     steps:
+      # Cheap pre-check before the checkout and install; the sweep checks again in
+      # Python (ofd/automerge/schedule.py), which is what decides.
+      - name: Inside the nightly window
+        id: window
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          hour=$(TZ=Europe/Copenhagen date +%-H)
+          if [ "$EVENT" != schedule ] || [ "$hour" -ge 22 ] || [ "$hour" -lt 6 ]; then
+            echo "open=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "$hour:xx Copenhagen time: outside the 22:00-06:00 window, skipping."
+          fi
+
       - name: App token
         id: app
+        if: steps.window.outputs.open == 'true'
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           app-id: ${{ vars.OFD_REPO_BOT_APP_ID }}
@@ -160,26 +188,32 @@ jobs:
           permission-actions: read
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.window.outputs.open == 'true'
         with:
           ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
           persist-credentials: false
 
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        if: steps.window.outputs.open == 'true'
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.window.outputs.open == 'true'
         run: pip install -r requirements.txt
 
       - name: Sweep
+        if: steps.window.outputs.open == 'true'
         env:
           GH_TOKEN: ${{ steps.app.outputs.token }}
           DRY_RUN: ${{ inputs.dry_run }}
+          IGNORE_WINDOW: ${{ inputs.ignore_window }}
           OFD_AUTOMERGE: ${{ vars.OFD_AUTOMERGE }}
           OFD_AUTOMERGE_APP_ID: ${{ vars.OFD_REPO_BOT_APP_ID }}
           OFD_AUTOMERGE_BLOCKED_USERS: ${{ vars.OFD_AUTOMERGE_BLOCKED_USERS }}
         run: |
           flags=()
           [ "$DRY_RUN" = true ] && flags+=(--dry-run)
+          [ "$IGNORE_WINDOW" = true ] && flags+=(--ignore-window)
           python -m ofd automerge sweep "${flags[@]}" | tee -a "$GITHUB_STEP_SUMMARY"

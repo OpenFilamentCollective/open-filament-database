@@ -277,3 +277,19 @@ def test_a_new_file_outside_data_and_stores_blocks():
     snapshot = additions((NEW_VARIANT, "variant"))
     snapshot.raw_diff.append(("A", "000000", "100644", "scripts/evil.py"))
     assert "E6" in [i.id for i in evaluate(snapshot).failures]
+
+
+def test_unknown_mergeability_is_decided_by_git_and_blocks_the_merge():
+    """GitHub computes ``mergeable`` lazily: until it has, our own ``git merge-tree``
+    decides, so a real conflict never gets a green check. Only a merge needs GitHub's
+    definite True."""
+    snapshot = copy.deepcopy(green())
+    snapshot.pr["mergeable"] = None
+    snapshot.merges_cleanly = True
+    assert evaluate(snapshot).eligible
+    assert not evaluate(snapshot, at_merge=True).eligible
+    for unknown in (False, None):
+        snapshot.merges_cleanly = unknown
+        assert "E18" in [i.id for i in evaluate(snapshot).failures]
+    snapshot.pr["mergeable"] = False
+    assert not evaluate(snapshot).eligible

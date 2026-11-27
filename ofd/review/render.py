@@ -235,8 +235,9 @@ def automerge_section(result: dict) -> list[str]:
         )
     else:
         verdict = (
-            "nothing holds it now, so it can merge on its own an hour after every other "
-            "check is green and GitHub reports no conflicts (`hold` stops it)."
+            "nothing holds it now, so it can merge on its own at 22:00 Copenhagen time "
+            "once every other check has been green for an hour and GitHub reports no "
+            "conflicts (`hold` stops it)."
         )
     return [f"**Auto-merge:** {verdict} The {check} decides.", ""]
 
