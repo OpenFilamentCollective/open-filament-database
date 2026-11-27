@@ -1,0 +1,9 @@
+{
+  "id": "flexible_pla",
+  "name": "Flexible PLA",
+  "diameter_tolerance": 0.04,
+  "density": 1.15,
+  "min_print_temperature": 220,
+  "max_print_temperature": 240,
+  "dry_temperature": 70
+}
