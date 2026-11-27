@@ -8,10 +8,13 @@ than as a preset that imports but prints wrong.
 
 import json
 import zipfile
+from pathlib import Path
 
 from ofd.builder.exporters.orca_exporter import export_orca
 from ofd.builder.models import Database
 from ofd.builder.orca_mapping import (
+    ORCA_BASE_BY_MATERIAL,
+    ORCA_FILAMENT_TYPE_BY_MATERIAL,
     ORCA_PRESET_VERSION,
     build_profile,
     resolve_base_profile,
@@ -19,6 +22,7 @@ from ofd.builder.orca_mapping import (
     resolve_temps,
 )
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
 BRAND = {"id": "b1", "name": "Acme", "slug": "acme"}
 MATERIAL = {"id": "m1", "brand_id": "b1", "material": "PLA", "slug": "PLA"}
 
@@ -68,6 +72,25 @@ def test_material_with_no_orca_base_is_unmapped():
     silently hand the user another material's print behaviour."""
     assert resolve_base_profile("PEEK", "Ultra PEEK") is None
     assert resolve_base_profile("", "Whatever") is None
+
+
+def test_breakaway_is_a_material_type_without_an_orca_base():
+    """BREAKAWAY (proprietary breakaway support filaments, whose base polymer vendors
+    often do not name) is a valid material type. OrcaSlicer ships no breakaway generic
+    profile, so it stays unmapped rather than inheriting another material's behaviour.
+    The name is upper case like every other material: the WebUI upper-cases material
+    folder names, so a mixed-case value would not round-trip."""
+    schema = json.loads((REPO_ROOT / "schemas" / "material_types_schema.json").read_text())
+    assert "BREAKAWAY" in schema["enum"]
+    assert resolve_base_profile("BREAKAWAY", "Breakaway-80") is None
+    assert resolve_base_profile("Breakaway", "Breakaway-80") is None
+
+
+def test_every_orca_mapped_material_is_a_schema_material():
+    """A typo in the mapping tables would otherwise be silently unreachable."""
+    schema = json.loads((REPO_ROOT / "schemas" / "material_types_schema.json").read_text())
+    assert set(ORCA_BASE_BY_MATERIAL) <= set(schema["enum"])
+    assert set(ORCA_FILAMENT_TYPE_BY_MATERIAL) <= set(schema["enum"])
 
 
 def test_name_refines_the_base():

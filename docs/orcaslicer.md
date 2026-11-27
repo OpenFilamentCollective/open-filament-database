@@ -44,7 +44,7 @@ The database does not record those values for any filament, so the presets do no
 
 Every preset says this in its own notes field, visible in OrcaSlicer under **Filament Settings → Notes → Filament notes**, together with the API URL it was generated from.
 
-Filaments made of materials OrcaSlicer has no generic profile for — PEEK, PEKK, PPS, PPSU, PVDF, PEI, PVB and similar — are **skipped** rather than published against a wrong-behaving parent.
+Filaments made of materials OrcaSlicer has no generic profile for — PEEK, PEKK, PPS, PPSU, PVDF, PEI, PVB, BREAKAWAY and similar — are **skipped** rather than published against a wrong-behaving parent.
 
 ---
 
