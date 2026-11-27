@@ -12,6 +12,7 @@ push in between is refused.
 import io
 import json
 import os
+import re
 import subprocess
 import sys
 import tarfile
@@ -157,6 +158,22 @@ def _extract(repo_dir: Path, treeish: str, dest: Path) -> tuple[Path, Path]:
     return dest / "data", dest / "stores"
 
 
+def merges_cleanly(repo_dir: Path, main_ref: str, head: str) -> bool | None:
+    """E18 while GitHub's ``mergeable`` is null: does ``head`` merge onto main?"""
+    proc = subprocess.run(
+        ["git", "merge-tree", "--write-tree", main_ref, head],
+        cwd=repo_dir,
+        capture_output=True,
+        text=True,
+    )
+    # Exit 1 is both "conflicts" and some errors (an unknown ref); only a conflict
+    # prints the merged tree's id first.
+    oid = (proc.stdout.split() or [""])[0]
+    if not re.fullmatch(r"[0-9a-f]{40,64}", oid):
+        return None
+    return {0: True, 1: False}.get(proc.returncode)
+
+
 def merged_tree_errors(repo_dir: Path, main_ref: str, head: str) -> list[str]:
     """Validate the PR as merged onto main, using main's own validators (E19).
 
@@ -267,6 +284,8 @@ def collect(
         reviews=github.api_list(f"repos/{repo}/pulls/{number}/reviews?per_page=100"),
         blocked_users=cfg["blocked"],
     )
+    if pr.get("mergeable") is None:
+        snapshot.merges_cleanly = merges_cleanly(repo_dir, main_ref, head)
     if at_merge:
         snapshot.merged_tree_errors = merged_tree_errors(repo_dir, main_ref, head)
         snapshot.eligible_since = record.eligible_since(previous, head)
@@ -372,12 +391,18 @@ def sweep(
     if cfg["mode"] not in ("shadow", "on"):
         log("auto-merge is off")
         return {}
-    window = schedule.window_start(datetime.now(timezone.utc))
-    if window is None and not ignore_window:
-        log("outside the nightly merge window; nothing to do")
-        return {}
+    now = datetime.now(timezone.utc)
+    window = schedule.window_start(now)
     if ignore_window:
         window = None
+    elif window is None and dry_run:
+        # A daytime preview answers "what merges tonight?"; PRs due by then but not
+        # yet an hour old show as "waiting until".
+        window = schedule.next_window(now)
+        log(f"dry run: previewing the {schedule.describe(window)} sweep")
+    elif window is None:
+        log("outside the nightly merge window; nothing to do")
+        return {}
     outcome: dict[int, str] = {}
     for pr in github.api_list(f"repos/{repo}/pulls?state=open&per_page=100"):
         if pr.get("draft"):

@@ -81,6 +81,9 @@ class Snapshot:
     ruleset_contexts: list[str]
     reviews: list[dict]  # GET /pulls/{n}/reviews
     blocked_users: set[str] = field(default_factory=set)
+    # `git merge-tree` of the head onto main, only when GitHub's `mergeable` is still
+    # null: True clean, False conflicts, None not checked.
+    merges_cleanly: bool | None = None
     # Merge-time only.
     merged_tree_errors: list[str] | None = None
     eligible_since: datetime | None = None
@@ -194,9 +197,16 @@ def evaluate(s: Snapshot, at_merge: bool = False) -> Eligibility:
     )
     mergeable = s.pr.get("mergeable")
     if mergeable is None and not at_merge:
-        # Lazily computed by GitHub; unknown is no reason to stop the clock. The merge
-        # itself requires a definite True (and validates the merged tree, E19).
-        check("E18", True, "GitHub has not computed mergeability yet; checked before merging")
+        # GitHub computes it lazily: decide from our own merge of the head onto main
+        # instead, so neither a real conflict passes nor an unknown stops the clock.
+        # The merge itself still waits for GitHub's definite True.
+        clean = s.merges_cleanly
+        detail = {
+            True: "merges cleanly onto main (git; GitHub hasn't computed it yet)",
+            False: "conflicts with main (git; GitHub hasn't computed it yet)",
+            None: "mergeable: unknown",
+        }[clean]
+        check("E18", clean is True, detail)
     else:
         check("E18", mergeable is True, f"mergeable: {mergeable}")
     if at_merge:

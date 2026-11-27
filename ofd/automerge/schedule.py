@@ -33,6 +33,16 @@ def window_start(now: datetime) -> datetime | None:
     return start if local - start < timedelta(hours=WINDOW_HOURS) else None
 
 
+def next_window(now: datetime) -> datetime:
+    """The window ``now`` is in, else the next one: what a daytime dry run previews."""
+    open_ = window_start(now)
+    if open_ is not None:
+        return open_
+    local = now.astimezone(MERGE_TZ)
+    start = local.replace(hour=MERGE_HOUR, minute=0, second=0, microsecond=0)
+    return start if local < start else start + timedelta(days=1)
+
+
 def merge_time(since: datetime) -> datetime:
     """The first 22:00 at least ``DELAY_MINUTES`` after a PR became eligible."""
     due = (since + timedelta(minutes=DELAY_MINUTES)).astimezone(MERGE_TZ)

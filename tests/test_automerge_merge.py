@@ -193,6 +193,33 @@ def test_a_sweep_outside_the_window_touches_nothing(monkeypatch):
     assert merge.sweep("o/r", ROOT) == {}
 
 
+def test_a_daytime_dry_run_previews_instead_of_returning_nothing(monkeypatch):
+    gh = FakeGitHub()
+    seen = []
+    monkeypatch.setattr(merge, "github", gh)
+    monkeypatch.setattr(merge, "settings", lambda: {"mode": "on", "app_id": APP})
+    monkeypatch.setattr(schedule, "window_start", lambda now: None)
+    monkeypatch.setattr(gh, "api_list", lambda *a: [PR], raising=False)
+    monkeypatch.setattr(merge, "_merge_one", lambda *a: seen.append(a[-1]) or "would merge")
+    assert merge.sweep("o/r", ROOT, dry_run=True) == {7: "would merge"}
+    assert seen[0].hour == schedule.MERGE_HOUR
+
+
+def test_git_decides_whether_a_pr_merges_cleanly(tmp_path):
+    git = ["git", "-c", "user.name=t", "-c", "user.email=t@t"]
+    _git(tmp_path, "init", "-q", "-b", "main")
+    (tmp_path / "f").write_text("a\n")
+    subprocess.run([*git, "add", "."], cwd=tmp_path, check=True)
+    subprocess.run([*git, "commit", "-qm", "base"], cwd=tmp_path, check=True)
+    for branch, text in (("pr", "pr\n"), ("main", "main\n")):
+        _git(tmp_path, "checkout", "-q", "-B", branch, "main")
+        (tmp_path / "f").write_text(text)
+        subprocess.run([*git, "commit", "-qam", branch], cwd=tmp_path, check=True)
+    assert merge.merges_cleanly(tmp_path, "main", "pr") is False
+    assert merge.merges_cleanly(tmp_path, "main", "main~1") is True
+    assert merge.merges_cleanly(tmp_path, "main", "no-such-ref") is None
+
+
 def test_mergeability_not_computed_yet_waits_and_keeps_the_clock(monkeypatch):
     """GitHub's lazily computed ``mergeable: null`` once ended the streak of PRs that
     were fine in every other way (#928, #927, #921, #899, #897, #895)."""

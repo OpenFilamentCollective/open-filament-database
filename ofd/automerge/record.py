@@ -1,8 +1,8 @@
 """
 The ``Auto-merge`` check run: the persisted eligibility record on a head commit.
 
-Eligible is conclusion ``success`` ("Auto-merges at 22:00 Copenhagen time on 28 Nov
-unless labelled `hold`"); not eligible is ``neutral`` with the reasons, so neither GitHub nor the
+Eligible is conclusion ``success`` ("Auto-merges in the 22:00 Copenhagen time on 28 Nov
+sweep unless labelled `hold`"); not eligible is ``neutral`` with the reasons, so neither GitHub nor the
 webui merge page shows it as a failure. A small JSON record in the run's text carries
 the time the PR became eligible at this commit; the proofs themselves are re-read
 from the review artifact and re-fetched at merge time.
@@ -79,7 +79,7 @@ def write(repo: str, result: Eligibility, previous: dict | None, mode: str) -> d
     shadow = " (shadow mode)" if mode == "shadow" else ""
     if result.eligible:
         when = schedule.describe(schedule.merge_time(since))
-        title = f"{'Would auto-merge' if shadow else 'Auto-merges'} at {when} unless labelled `{HOLD_LABEL}`{shadow}"
+        title = f"{'Would auto-merge' if shadow else 'Auto-merges'} in the {when} sweep unless labelled `{HOLD_LABEL}`{shadow}"
     else:
         title = f"Needs a maintainer: {len(result.failures)} reason(s){shadow}"
     record = {
