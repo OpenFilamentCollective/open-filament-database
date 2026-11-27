@@ -3,6 +3,7 @@
   "name": "Carbon Fiber Black",
   "color_hex": "#353537",
   "traits": {
-    "contains_carbon_fiber": true
+    "contains_carbon_fiber": true,
+    "abrasive": true
   }
 }
