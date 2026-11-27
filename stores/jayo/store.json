@@ -1,0 +1,12 @@
+{
+  "id": "jayo",
+  "name": "JAYO",
+  "storefront_url": "https://store.jayo3d.com/",
+  "logo": "logo.png",
+  "ships_from": [
+    "US"
+  ],
+  "ships_to": [
+    "US"
+  ]
+}
