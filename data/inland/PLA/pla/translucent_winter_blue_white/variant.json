@@ -1,0 +1,12 @@
+{
+  "id": "translucent_winter_blue_white",
+  "name": "Winter Translucent Blue White",
+  "color_hex": [
+    "#00FDFF",
+    "#FFFFFF"
+  ],
+  "discontinued": false,
+  "traits": {
+    "translucent": true
+  }
+}
