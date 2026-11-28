@@ -1,0 +1,10 @@
+{
+  "id": "pink_crystal",
+  "name": "Pink Crystal",
+  "color_hex": "#E4B9D7",
+  "discontinued": false,
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

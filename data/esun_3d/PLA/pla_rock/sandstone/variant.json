@@ -1,0 +1,13 @@
+{
+  "id": "sandstone",
+  "name": "Sandstone",
+  "color_hex": [
+    "#FFFEE8",
+    "#F0B882"
+  ],
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

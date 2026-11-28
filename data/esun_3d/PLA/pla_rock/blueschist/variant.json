@@ -1,0 +1,13 @@
+{
+  "id": "blueschist",
+  "name": "Blueschist",
+  "color_hex": [
+    "#C6F4FD",
+    "#4485CD"
+  ],
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

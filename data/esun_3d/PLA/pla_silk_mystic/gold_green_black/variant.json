@@ -1,0 +1,16 @@
+{
+  "id": "gold_green_black",
+  "name": "Gold Green Black",
+  "color_hex": [
+    "#CAD1B8",
+    "#6DAE79",
+    "#50526A"
+  ],
+  "transmission_distance": 0,
+  "discontinued": false,
+  "traits": {
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

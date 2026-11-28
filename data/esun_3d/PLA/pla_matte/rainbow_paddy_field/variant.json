@@ -3,9 +3,10 @@
   "id": "rainbow_paddy_field",
   "name": "Rainbow Paddy Field",
   "color_hex": [
-    "#FCE575",
-    "#62E480"
+    "#F5FF6B",
+    "#9CCD7A"
   ],
+  "discontinued": false,
   "traits": {
     "matte": true,
     "gradual_color_change": true

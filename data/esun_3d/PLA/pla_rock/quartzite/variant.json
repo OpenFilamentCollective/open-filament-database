@@ -1,0 +1,13 @@
+{
+  "id": "quartzite",
+  "name": "Quartzite",
+  "color_hex": [
+    "#F6C7CC",
+    "#8E6061"
+  ],
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

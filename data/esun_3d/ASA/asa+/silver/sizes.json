@@ -6,6 +6,7 @@
     "empty_spool_weight": 140,
     "gtin": "6922572210851",
     "article_number": "ASA+175S1P1",
+    "discontinued": false,
     "purchase_links": [
       {
         "store_id": "esun3d",

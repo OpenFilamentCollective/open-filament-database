@@ -3,10 +3,10 @@
   "id": "rainbow_sunrise",
   "name": "Rainbow Sunrise",
   "color_hex": [
-    "#FCE575",
-    "#F67405",
-    "#E03F26"
+    "#ED8232",
+    "#C34223"
   ],
+  "discontinued": false,
   "traits": {
     "matte": true,
     "gradual_color_change": true

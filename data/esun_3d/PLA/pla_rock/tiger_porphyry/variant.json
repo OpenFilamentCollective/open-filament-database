@@ -1,0 +1,13 @@
+{
+  "id": "tiger_porphyry",
+  "name": "Tiger-Porphyry",
+  "color_hex": [
+    "#FFFFFF",
+    "#141414"
+  ],
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

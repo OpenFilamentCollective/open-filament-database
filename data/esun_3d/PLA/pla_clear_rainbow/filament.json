@@ -1,0 +1,13 @@
+{
+  "id": "pla_clear_rainbow",
+  "name": "PLA-Clear Rainbow",
+  "diameter_tolerance": 0.02,
+  "density": 1.25,
+  "min_print_temperature": 210,
+  "max_print_temperature": 240,
+  "max_print_speed": 200,
+  "max_fan_speed": 100,
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Clear_Rainbow/PLA-Clear_Rainbow_TDS.pdf",
+  "safety_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Clear_Rainbow/PLA-Clear_Rainbow-MSDS-2025.11.1_.pdf",
+  "discontinued": false
+}

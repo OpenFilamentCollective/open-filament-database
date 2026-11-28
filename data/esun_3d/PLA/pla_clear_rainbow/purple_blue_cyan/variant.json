@@ -1,0 +1,10 @@
+{
+  "id": "purple_blue_cyan",
+  "name": "Purple Blue Cyan",
+  "color_hex": "#E4B9D7",
+  "discontinued": false,
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}
