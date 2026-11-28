@@ -4,8 +4,9 @@
   "name": "Dual Color Green Pink",
   "color_hex": [
     "#62E480",
-    "#F87FB5"
+    "#C56BBB"
   ],
+  "discontinued": false,
   "traits": {
     "matte": true,
     "coextruded": true

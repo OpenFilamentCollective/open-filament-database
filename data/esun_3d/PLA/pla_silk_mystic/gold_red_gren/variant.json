@@ -1,0 +1,16 @@
+{
+  "id": "gold_red_gren",
+  "name": "Gold Red Gren",
+  "color_hex": [
+    "#D49660",
+    "#9C5A75",
+    "#687846"
+  ],
+  "transmission_distance": 0,
+  "discontinued": false,
+  "traits": {
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

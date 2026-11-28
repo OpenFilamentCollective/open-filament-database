@@ -1,12 +1,13 @@
 {
   "uuid": "85a61205-0ae7-4cb7-aa1a-81558a99d4f5",
   "id": "pla_silk_mystic",
-  "name": "Mystic Silk PLA",
+  "name": "PLA-Mystic",
   "diameter_tolerance": 0.02,
   "density": 1.23,
   "min_print_temperature": 190,
   "max_print_temperature": 230,
   "min_bed_temperature": 45,
   "max_bed_temperature": 60,
-  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Silk_Mystic/eSUN_PLA-Silk_Mystic_Filament_TDS_V4.0.pdf"
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Silk_Mystic/eSUN_PLA-Silk_Mystic_Filament_TDS_V4.0.pdf",
+  "discontinued": false
 }

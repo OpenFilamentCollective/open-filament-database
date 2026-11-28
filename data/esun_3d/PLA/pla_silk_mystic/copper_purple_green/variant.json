@@ -1,0 +1,15 @@
+{
+  "id": "copper_purple_green",
+  "name": "Copper Purple Green",
+  "color_hex": [
+    "#803333",
+    "#49389C",
+    "#1D7C6A"
+  ],
+  "discontinued": false,
+  "traits": {
+    "silk": true,
+    "iridescent": true,
+    "coextruded": true
+  }
+}

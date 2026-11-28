@@ -1,0 +1,13 @@
+{
+  "id": "pegmatite",
+  "name": "Pegmatite",
+  "color_hex": [
+    "#F0B882",
+    "#484646"
+  ],
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

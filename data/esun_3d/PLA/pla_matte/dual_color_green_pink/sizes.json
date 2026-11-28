@@ -2,6 +2,7 @@
   {
     "uuid": "caf51257-187b-42b7-a154-ff0a23352aa9",
     "filament_weight": 1000,
-    "diameter": 1.75
+    "diameter": 1.75,
+    "discontinued": false
   }
 ]

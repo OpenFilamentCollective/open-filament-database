@@ -3,10 +3,11 @@
   "id": "blue_orange_green",
   "name": "Blue Orange Green",
   "color_hex": [
-    "#60AB61",
-    "#BB6D48",
-    "#0353BA"
+    "#112A66",
+    "#A86234",
+    "#60AB61"
   ],
+  "discontinued": false,
   "traits": {
     "silk": true,
     "iridescent": true,

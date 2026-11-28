@@ -1,7 +1,10 @@
 {
   "uuid": "9d0a56ab-e9e5-4d18-acf0-8fdac0534909",
   "id": "dark_twinkling_pla_magic",
-  "name": "Dark Twinkling PLA Magic",
+  "name": "PLA-Magic Dark Twinkling",
   "diameter_tolerance": 0.03,
-  "density": 1.24
+  "density": 1.24,
+  "data_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Magic/eSUN_PLA-Magic-Filament_TDS_V4.0_2_.pdf",
+  "safety_sheet_url": "https://www.esun3d.com/media/esun/catalog/certification/product/PLA-Magic/PLA-Magic-MSDS-2025.11.1.pdf",
+  "discontinued": false
 }

@@ -1,0 +1,13 @@
+{
+  "id": "hornfels",
+  "name": "Hornfels",
+  "color_hex": [
+    "#B0D4CE",
+    "#668C83"
+  ],
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

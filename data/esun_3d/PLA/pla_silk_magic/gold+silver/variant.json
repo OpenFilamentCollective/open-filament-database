@@ -2,5 +2,13 @@
   "uuid": "444fdb33-2ec8-4346-9bb7-fb32e7629d58",
   "id": "gold+silver",
   "name": "Gold+Silver",
-  "color_hex": "#DDD9C8"
+  "color_hex": [
+    "#DBCB96",
+    "#E7F2F7"
+  ],
+  "discontinued": false,
+  "traits": {
+    "silk": true,
+    "coextruded": true
+  }
 }

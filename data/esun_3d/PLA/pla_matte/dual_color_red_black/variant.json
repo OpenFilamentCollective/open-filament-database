@@ -6,6 +6,7 @@
     "#E20010",
     "#000000"
   ],
+  "discontinued": false,
   "traits": {
     "matte": true,
     "coextruded": true

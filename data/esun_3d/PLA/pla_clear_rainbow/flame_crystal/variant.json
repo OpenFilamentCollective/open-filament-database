@@ -1,0 +1,10 @@
+{
+  "id": "flame_crystal",
+  "name": "Flame Crystal",
+  "color_hex": "#DB805B",
+  "discontinued": false,
+  "traits": {
+    "translucent": true,
+    "gradual_color_change": true
+  }
+}

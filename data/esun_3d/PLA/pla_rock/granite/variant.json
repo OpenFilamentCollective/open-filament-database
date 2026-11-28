@@ -1,0 +1,13 @@
+{
+  "id": "granite",
+  "name": "Granite",
+  "color_hex": [
+    "#F0B882",
+    "#CE997F"
+  ],
+  "discontinued": false,
+  "traits": {
+    "matte": true,
+    "gradual_color_change": true
+  }
+}

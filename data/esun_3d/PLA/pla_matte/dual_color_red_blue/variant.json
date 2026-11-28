@@ -3,9 +3,10 @@
   "id": "dual_color_red_blue",
   "name": "Dual Color Red Blue",
   "color_hex": [
-    "#2E56F1",
-    "#E20010"
+    "#E2311D",
+    "#2E56F1"
   ],
+  "discontinued": false,
   "traits": {
     "matte": true,
     "coextruded": true
