@@ -1,0 +1,14 @@
+{
+  "id": "petg",
+  "name": "PETG",
+  "density": 1.27,
+  "diameter_tolerance": 0.02,
+  "min_print_temperature": 220,
+  "max_print_temperature": 250,
+  "min_bed_temperature": 60,
+  "max_bed_temperature": 85,
+  "min_print_speed": 30,
+  "max_print_speed": 140,
+  "dry_temperature": 70,
+  "enclosure": "not_needed"
+}
