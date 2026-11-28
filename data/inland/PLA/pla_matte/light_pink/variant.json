@@ -1,0 +1,9 @@
+{
+  "id": "light_pink",
+  "name": "Light Pink",
+  "color_hex": "#DBC2B0",
+  "discontinued": false,
+  "traits": {
+    "matte": true
+  }
+}
